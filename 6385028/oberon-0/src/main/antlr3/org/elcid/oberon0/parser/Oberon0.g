@@ -6,6 +6,9 @@ options {
 	backtrack=true;
 }
 
+@header {package org.elcid.oberon0.parser}
+@lexer::header {package org.elcid.oberon0.parser}
+
 @members {
     public static void main(String[] args) throws Exception {
         SimpleCalcLexer lex = new SimpleCalcLexer(new ANTLRFileStream(args[0]));
