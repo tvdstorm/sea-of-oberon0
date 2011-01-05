@@ -16,6 +16,8 @@ fragment LETTER	:	('a'..'z' | 'A'..'Z');
 
 INTEGER			:	(DIGIT)+ ;
 
+IDENT 			:	LETTER (LETTER | DIGIT)*;
+
 WHITESPACE		:	( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ 	{ $channel = HIDDEN; } ;
 
 
@@ -23,13 +25,9 @@ WHITESPACE		:	( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ 	{ $channel = HIDDEN; } ;
  * PARSER RULES
  *------------------------------------------------------------------*/
 
-number			:	INTEGER;
+selector		:	('.' IDENT | '[' expression ']')+;
 
-ident			:	LETTER (LETTER | DIGIT)*;
-
-selector		:	('.' ident | '[' expression ']')+;
-
-factor			:	ident selector | number | '(' expression ')' | '~' factor;
+factor			:	IDENT selector | INTEGER | '(' expression ')' | '~' factor;
 
 term			:	factor (('*' |  'DIV' | 'MOD' | '&') factor)*;
 
@@ -39,12 +37,12 @@ simpleExpression
 expression
 				:	simpleExpression (('=' | '#' |  '<' | '<=' | '>' | '>=') simpleExpression)?;
 
-assignment		:	ident selector ':=' expression;
+assignment		:	IDENT selector ':=' expression;
 
 actualParameters
 				:	'(' (expression (',' expression)*)? ')';
 
-procedureCall	:	ident selector (actualParameters)?;
+procedureCall	:	IDENT selector (actualParameters)?;
 
 ifStatement		:	'IF' expression 'THEN' statementSequence
 					('ELSEIF' expression 'THEN' statementSequence)*
@@ -57,7 +55,7 @@ statement		:	(assignment | procedureCall | ifStatement | whileStatement)?;
 statementSequence
 				:	statement (';' statement)*;
 
-identList		:	ident (',' ident)*;
+identList		:	IDENT (',' IDENT)*;
 
 arrayType		:	'ARRAY' expression 'OF' type;
 
@@ -65,7 +63,7 @@ fieldList		:	(identList ':' type)?;
 
 recordType		:	'RECORD' fieldList (';' fieldList)* 'END';
 
-type			:	ident | arrayType | recordType;
+type			:	IDENT | arrayType | recordType;
 
 fPSection		:	('VAR')? identList ':' type;
 
@@ -73,17 +71,17 @@ formalParameters
 				:	'(' (fPSection (';' fPSection)*)? ')';
 
 procedureHeading
-				:	'PROCEDURE' ident (formalParameters)?;
+				:	'PROCEDURE' IDENT (formalParameters)?;
 
-procedureBody	:	declarations ('BEGIN' statementSequence)? 'END' ident;
+procedureBody	:	declarations ('BEGIN' statementSequence)? 'END' IDENT;
 
 procedureDeclaration
 				:	procedureHeading ';' procedureBody;
 
-declarations	:	('CONST' (ident '=' expression ';')*)?
-					('TYPE' (ident '=' type ';')*)?
+declarations	:	('CONST' (IDENT '=' expression ';')*)?
+					('TYPE' (IDENT '=' type ';')*)?
 					('VAR' (identList ':' type ';')*)?
 					(procedureDeclaration ';')*;
 
-module			:	'MODULE' ident ';' declarations
-					('BEGIN' statementSequence) 'END' ident '.';
+module			:	'MODULE' IDENT ';' declarations
+					('BEGIN' statementSequence) 'END' IDENT '.';
