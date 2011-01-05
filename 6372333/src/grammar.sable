@@ -1,0 +1,22 @@
+Package oberon;
+Helpers 
+    /* Our helpers */ 
+    digit = ['0' .. '9'] ; 
+    sp = ' ' ; 
+    nl = 10 ; 
+  
+Tokens 
+    /* Our simple token definition(s). */ 
+    integer = digit+ sp*;
+    plus = '+' sp*;
+    mult = '*' sp*;
+    min = '-' sp*;
+    div = 'DIV' sp*;
+    mod = 'MOD' sp*;
+    semi = ';' nl?; 
+    
+Productions 
+    /* Our super-simple grammar */
+    program = [left]:integer operator [right]:integer semi;
+    
+    operator = {plus} plus | {minus} min | {multiply} mult | {div} div | {mod} mod;
