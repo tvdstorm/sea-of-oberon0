@@ -6,6 +6,22 @@ options {
 	backtrack=true;
 }
 
+@members {
+    public static void main(String[] args) throws Exception {
+        SimpleCalcLexer lex = new SimpleCalcLexer(new ANTLRFileStream(args[0]));
+       	CommonTokenStream tokens = new CommonTokenStream(lex);
+
+        SimpleCalc parser = new SimpleCalc(tokens);
+
+        try {
+            parser.expr();
+        } catch (RecognitionException e)  {
+            e.printStackTrace();
+        }
+    }
+}
+
+
 /*------------------------------------------------------------------
  * LEXER RULES
  *------------------------------------------------------------------*/
