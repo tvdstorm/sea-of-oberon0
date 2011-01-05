@@ -6,15 +6,15 @@ options {
 	backtrack=true;
 }
 
-@header {package org.elcid.oberon0.parser}
-@lexer::header {package org.elcid.oberon0.parser}
+@header {package org.elcid.oberon0.parser;}
+@lexer::header {package org.elcid.oberon0.parser;}
 
 @members {
     public static void main(String[] args) throws Exception {
-        SimpleCalcLexer lex = new SimpleCalcLexer(new ANTLRFileStream(args[0]));
+        Oberon0Lexer lex = new Oberon0Lexer(new ANTLRFileStream(args[0]));
        	CommonTokenStream tokens = new CommonTokenStream(lex);
 
-        SimpleCalc parser = new SimpleCalc(tokens);
+        Oberon0Parser parser = new Oberon0Parser(tokens);
 
         try {
             parser.expr();
