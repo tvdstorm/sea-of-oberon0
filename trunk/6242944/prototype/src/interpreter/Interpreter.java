@@ -1,18 +1,26 @@
 package interpreter;
 
+import runtime.BuiltinFunction;
+import runtime.IntegerValue;
+import runtime.Value;
+import runtime.VoidValue;
 import xtc.lang.javacc.syntaxtree.Expression;
 import ast.AddExpression;
 import ast.BinaryExpression;
 import ast.IntegerLiteral;
 import ast.Module;
+import ast.ProcedureCall;
 import ast.SubExpression;
 import ast.Visitor;
 
 public class Interpreter extends Visitor<Value> {
-	protected Value voidValue;
+
+	private Context _context;
 	
 	public Interpreter() {
-		this.voidValue = new VoidValue();
+		_context = new Context();
+		_context.registerBuiltin("Read", new runtime.Read());
+		_context.registerBuiltin("Write", new runtime.Write());
 	}
 
 	public void interpret(Module module) {
@@ -21,11 +29,10 @@ public class Interpreter extends Visitor<Value> {
 	
 	@Override
 	protected Value visit(Module m) {
-		for (ast.Expression e : m.getStatements()) {
-			Value v = e.accept(this);
-			System.out.println(((IntegerValue)v).getValue());
+		for (ast.Statement s : m.getStatements()) {
+			Value v = s.accept(this);
 		}
-		return voidValue;
+		return _context.getVoid();
 	}
 		
 	@Override
@@ -61,5 +68,20 @@ public class Interpreter extends Visitor<Value> {
 	@Override
 	protected Value visit(IntegerLiteral e) {
 		return new IntegerValue(e.getValue());
+	}
+
+	@Override
+	protected Value visit(ProcedureCall procedureCall) {
+		String name = procedureCall.getName();
+		
+		ast.Expression[] argExprs = procedureCall.getArgs();
+		Value[] args = new Value[argExprs.length];
+
+		for(int i=0; i<argExprs.length; i++) {
+			args[i] = argExprs[i].accept(this);
+		}
+		
+		BuiltinFunction fun = _context.lookupFunction(name);
+		return fun.execute(_context, args);		
 	}
 }

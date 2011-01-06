@@ -1,4 +1,4 @@
-package interpreter;
+package runtime;
 
 public class IntegerValue extends Value {
 	private int _value;
@@ -19,5 +19,10 @@ public class IntegerValue extends Value {
 	@Override
 	public IntegerValue toInteger() {
 		return this;
+	}
+
+	@Override
+	public String toNativeString() {
+		return "" + _value;
 	}
 }

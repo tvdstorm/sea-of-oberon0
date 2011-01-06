@@ -1,4 +1,4 @@
-package interpreter;
+package runtime;
 
 public class VoidValue extends Value {
 
@@ -8,4 +8,8 @@ public class VoidValue extends Value {
 		return null;
 	}
 
+	@Override
+	public String toNativeString() {
+		return "<void>";
+	}
 }

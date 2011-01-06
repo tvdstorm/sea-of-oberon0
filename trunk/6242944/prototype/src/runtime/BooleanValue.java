@@ -1,4 +1,4 @@
-package interpreter;
+package runtime;
 
 public class BooleanValue extends Value {
 	private boolean _value;
@@ -11,5 +11,10 @@ public class BooleanValue extends Value {
 	public IntegerValue toInteger() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String toNativeString() {
+		return "" + _value;
 	}
 }
