@@ -12,4 +12,10 @@ public class VoidValue extends Value {
 	public String toNativeString() {
 		return "<void>";
 	}
+
+	@Override
+	public BooleanValue toBoolean() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -25,4 +25,10 @@ public class IntegerValue extends Value {
 	public String toNativeString() {
 		return "" + _value;
 	}
+
+	@Override
+	public BooleanValue toBoolean() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

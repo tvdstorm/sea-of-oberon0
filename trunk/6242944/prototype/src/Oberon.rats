@@ -59,10 +59,7 @@ ast.Procedure ProcedureDeclaration =
 	Spacing
 	"END" Spacing 
 	Ident Spacing
-	{	
-		if (stat == null) 
-			stat = Pair.EMPTY;
-		yyValue = new ast.Procedure(name, stat.list());  }
+	{	yyValue = new ast.Procedure(name, stat);  }
 	;
 
 public Pair<ast.Expression> ActualParameters = 
@@ -74,14 +71,25 @@ public ast.ProcedureCall ProcedureCall =
 	name:Ident params:ActualParameters
 	{ yyValue = new ast.ProcedureCall(name, params.list()); }
 	;
-	
-public ast.Statement Statement = Assignment Spacing / ProcedureCall Spacing;
 
-Pair<ast.Statement> StatementSequence = 
+public ast.IfStatement IfStatement = 
+	void:"IF" Spacing expr:Expression 
+	void:"THEN" stat:StatementSequence
+	void:"END"
+	{ yyValue = new ast.IfStatement(expr, stat); }
+	;
+
+public ast.Statement Statement = 
+	  Assignment Spacing 
+	/ IfStatement Spacing
+	/ ProcedureCall Spacing
+	;
+
+ast.StatementSequence StatementSequence = 
 	void:Spacing
 	s1:Statement
 	s2:(void:Spacing void:";" void:Spacing Statement)*
-	{ yyValue = new Pair(s1, s2); }
+	{ yyValue = new ast.StatementSequence((new Pair(s1, s2)).list()); } //FIXME
 	;
 
 public ast.Node Module = 
@@ -92,6 +100,6 @@ public ast.Node Module =
 	stat:(void:"BEGIN" StatementSequence)?
 	"END" void:Spacing void:Ident void:"."
 	EndOfFile
-	{  yyValue = new ast.Module(ident, decl.list(), stat.list());  }
+	{  yyValue = new ast.Module(ident, decl.list(), stat);  }
 	;
 
