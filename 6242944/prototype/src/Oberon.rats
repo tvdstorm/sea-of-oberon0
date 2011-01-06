@@ -39,12 +39,6 @@ ast.Statement Assignment =
 	{ yyValue = new ast.Assignment(lhs, rhs); }
 	;
 
-Pair<ast.Statement> StatementSequence = 
-	s1:Statement
-	s2:(void:";" Statement)*
-	{ yyValue = new Pair(s1, s2); }
-	;
-
 ast.Declaration Declaration = ProcedureDeclaration void:";";
 
 Pair<ast.Declaration> Declarations = Declaration*;
@@ -75,14 +69,21 @@ public ast.ProcedureCall ProcedureCall =
 	{ yyValue = new ast.ProcedureCall(name, params.list()); }
 	;
 	
-public ast.Statement Statement = Assignment / ProcedureCall;
+public ast.Statement Statement = Assignment Spacing / ProcedureCall Spacing;
+
+Pair<ast.Statement> StatementSequence = 
+	void:Spacing
+	s1:Statement
+	s2:(void:Spacing void:";" void:Spacing Statement)*
+	{ yyValue = new Pair(s1, s2); }
+	;
 
 public ast.Node Module = 
 	Spacing 
 	"MODULE" Spacing ident:Ident Spacing ";" 
 	Spacing
 	decl:Declarations
-	stat:(void:"BEGIN" void:Spacing Statement*)?
+	stat:(void:"BEGIN" StatementSequence)?
 	"END" void:Spacing void:Ident void:"."
 	EndOfFile
 	{  yyValue = new ast.Module(ident, decl.list(), stat.list());  }
