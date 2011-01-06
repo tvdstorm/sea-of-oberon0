@@ -1,0 +1,63 @@
+module Oberon;
+
+// NOTE: a mess, need to clean this up
+
+transient String Digit = [0-9];
+transient String Letter = [A-Za-z];
+
+transient void Space = ' ' / '\t' / '\f' ;
+transient void Spacing = Space*;
+transient void EndOfFile = !_ ;
+
+String Ident = Letter (Letter / Digit)*;
+
+ast.Declaration Declaration = ProcedureDeclaration void:";";
+Pair<ast.Declaration> Declarations = Declaration*;
+
+transient String IntString = Digit+;
+
+ast.IntegerLiteral Integer = 
+	i:IntString
+	{ yyValue = new ast.IntegerLiteral(new Integer(i)); }
+	;
+
+ast.Expression Expression = Integer;
+
+ast.Statement Assignment = 
+	lhs:Ident Spacing ":=" Spacing rhs:Expression
+	{ yyValue = new ast.Assignment(lhs, rhs); }
+	;
+
+ast.Statement Statement = 
+	void:Spacing Assignment
+	;
+Pair<ast.Statement> StatementSequence = 
+	s1:Statement
+	s2:(void:";" Statement)*
+	{ yyValue = new Pair(s1, s2); }
+	;
+
+ast.Procedure ProcedureDeclaration = 
+	"PROCEDURE" Spacing name:Ident ";" 
+	Spacing
+	decl:Declarations
+	Spacing
+	stat:(void:"BEGIN" Spacing StatementSequence)? 
+	Spacing
+	"END" Spacing 
+	Ident Spacing
+	{	
+		if (stat == null) 
+			stat = Pair.EMPTY;
+		yyValue = new ast.Procedure(name, stat.list());  }
+	;
+
+public ast.Node Module = 
+	Spacing 
+	"MODULE" Spacing ident:Ident Spacing ";" 
+	Spacing
+	decl:Declarations
+	EndOfFile
+	{  yyValue = new ast.Module(ident, decl.list());  }
+	;
+
