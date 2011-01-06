@@ -9,20 +9,6 @@ options {
 @header {package org.elcid.oberon0.parser;}
 @lexer::header {package org.elcid.oberon0.parser;}
 
-@members {
-    public static void main(String[] args) throws Exception {
-        Oberon0Lexer lex = new Oberon0Lexer(new ANTLRFileStream(args[0]));
-       	CommonTokenStream tokens = new CommonTokenStream(lex);
-
-        Oberon0Parser parser = new Oberon0Parser(tokens);
-
-        try {
-            parser.expr();
-        } catch (RecognitionException e)  {
-            e.printStackTrace();
-        }
-    }
-}
 
 
 /*------------------------------------------------------------------
