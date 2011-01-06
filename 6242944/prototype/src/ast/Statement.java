@@ -1,5 +1,5 @@
 package ast;
 
-public class Statement extends Node {
+public abstract class Statement extends Node {
 
 }
