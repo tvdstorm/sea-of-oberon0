@@ -1,5 +1,6 @@
 package interpreter;
 
+import runtime.BooleanValue;
 import runtime.BuiltinFunction;
 import runtime.IntegerValue;
 import runtime.Value;
@@ -8,6 +9,7 @@ import xtc.lang.javacc.syntaxtree.Expression;
 import ast.AddExpression;
 import ast.BinaryExpression;
 import ast.IntegerLiteral;
+import ast.LtExpression;
 import ast.Module;
 import ast.ProcedureCall;
 import ast.SubExpression;
@@ -57,6 +59,8 @@ public class Interpreter extends Visitor<Value> {
 				return new IntegerValue(l + r);
 			else if (e instanceof ast.SubExpression)
 				return new IntegerValue(l - r);
+			else if (e instanceof ast.LtExpression)
+				return new BooleanValue(l < r);
 			else
 				return null; //FIXME
 		} else {
@@ -83,5 +87,10 @@ public class Interpreter extends Visitor<Value> {
 		
 		BuiltinFunction fun = _context.lookupFunction(name);
 		return fun.execute(_context, args);		
+	}
+
+	@Override
+	protected Value visit(LtExpression e) {
+		return doBinary(e);
 	}
 }

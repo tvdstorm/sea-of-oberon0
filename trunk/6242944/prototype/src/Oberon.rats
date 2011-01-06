@@ -20,9 +20,9 @@ ast.IntegerLiteral Integer =
 
 ast.Expression Term = Integer Spacing;
 
-ast.Expression BinaryExpression =
+ast.Expression SimpleExpression =
 	//FIXME
-	lhs:Term op:("+" / "-") rhs:Term
+	lhs:Term op:("+" / "-" / "OR") rhs:SimpleExpression
 		{ if (op == "+") 
 			yyValue = new ast.AddExpression(lhs, rhs);
 		  else //FIXME
@@ -32,8 +32,14 @@ ast.Expression BinaryExpression =
 	Term
 	;
 
-ast.Expression Expression = BinaryExpression;
-
+ast.Expression Expression = 
+	  lhs:SimpleExpression op:("=" / "<=" / "<") rhs:SimpleExpression
+		{ if (op == "<") yyValue = new ast.LtExpression(lhs, rhs);
+		  else return null; //FIXME
+		}
+	/ SimpleExpression
+	;
+	
 ast.Statement Assignment = 
 	lhs:Ident Spacing ":=" Spacing rhs:Expression
 	{ yyValue = new ast.Assignment(lhs, rhs); }
