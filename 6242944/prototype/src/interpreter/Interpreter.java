@@ -8,10 +8,12 @@ import runtime.VoidValue;
 import xtc.lang.javacc.syntaxtree.Expression;
 import ast.AddExpression;
 import ast.BinaryExpression;
+import ast.IfStatement;
 import ast.IntegerLiteral;
 import ast.LtExpression;
 import ast.Module;
 import ast.ProcedureCall;
+import ast.StatementSequence;
 import ast.SubExpression;
 import ast.Visitor;
 
@@ -31,9 +33,7 @@ public class Interpreter extends Visitor<Value> {
 	
 	@Override
 	protected Value visit(Module m) {
-		for (ast.Statement s : m.getStatements()) {
-			Value v = s.accept(this);
-		}
+		m.getStatements().accept(this);
 		return _context.getVoid();
 	}
 		
@@ -92,5 +92,29 @@ public class Interpreter extends Visitor<Value> {
 	@Override
 	protected Value visit(LtExpression e) {
 		return doBinary(e);
+	}
+
+	@Override
+	protected Value visit(StatementSequence sequence) {
+		for (ast.Statement s : sequence.getStatements()) {
+			Value v = s.accept(this);
+		}
+		return _context.getVoid();
+	}
+	
+	@Override
+	protected Value visit(IfStatement statement) {
+		Value test = statement.getTest().accept(this);
+		boolean execIf = false;
+		
+		if (test.isBoolean()) {
+			execIf = test.toBoolean().getValue();
+		} else {
+			//FIXME
+		}
+		if (execIf) {
+			statement.getThen().accept(this);
+		}
+		return _context.getVoid();
 	}
 }

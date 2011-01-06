@@ -6,6 +6,10 @@ public class BooleanValue extends Value {
 	public BooleanValue(boolean value) {
 		this._value = value;
 	}
+	
+	public boolean getValue() {
+		return _value;
+	}
 
 	@Override
 	public IntegerValue toInteger() {
@@ -17,4 +21,15 @@ public class BooleanValue extends Value {
 	public String toNativeString() {
 		return "" + _value;
 	}
+
+	@Override
+	public BooleanValue toBoolean() {
+		return this;
+	}
+	
+	@Override
+	public boolean isBoolean() {
+		return true;
+	}
+
 }
