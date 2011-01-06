@@ -11,9 +11,6 @@ transient void EndOfFile = !_ ;
 
 String Ident = Letter (Letter / Digit)*;
 
-ast.Declaration Declaration = ProcedureDeclaration void:";";
-Pair<ast.Declaration> Declarations = Declaration*;
-
 transient String IntString = Digit+;
 
 ast.IntegerLiteral Integer = 
@@ -21,7 +18,21 @@ ast.IntegerLiteral Integer =
 	{ yyValue = new ast.IntegerLiteral(new Integer(i)); }
 	;
 
-ast.Expression Expression = Integer;
+ast.Expression Term = Integer Spacing;
+
+ast.Expression BinaryExpression =
+	//FIXME
+	lhs:Term op:("+" / "-") rhs:Term
+		{ if (op == "+") 
+			yyValue = new ast.AddExpression(lhs, rhs);
+		  else //FIXME
+		  	yyValue = new ast.SubExpression(lhs, rhs);
+		}
+	/
+	Term
+	;
+
+ast.Expression Expression = BinaryExpression;
 
 ast.Statement Assignment = 
 	lhs:Ident Spacing ":=" Spacing rhs:Expression
@@ -36,6 +47,11 @@ Pair<ast.Statement> StatementSequence =
 	s2:(void:";" Statement)*
 	{ yyValue = new Pair(s1, s2); }
 	;
+
+ast.Declaration Declaration = ProcedureDeclaration void:";";
+
+Pair<ast.Declaration> Declarations = Declaration*;
+
 
 ast.Procedure ProcedureDeclaration = 
 	"PROCEDURE" Spacing name:Ident ";" 
@@ -57,7 +73,9 @@ public ast.Node Module =
 	"MODULE" Spacing ident:Ident Spacing ";" 
 	Spacing
 	decl:Declarations
+	expr:(void:"BEGIN" void:Spacing Expression*)?
+	"END" void:Spacing void:Ident void:"."
 	EndOfFile
-	{  yyValue = new ast.Module(ident, decl.list());  }
+	{  yyValue = new ast.Module(ident, decl.list(), expr.list());  }
 	;
 
