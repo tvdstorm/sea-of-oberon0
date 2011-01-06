@@ -14,25 +14,31 @@ public class Interpreter extends Visitor<Value> {
 	public Interpreter() {
 		this.voidValue = new VoidValue();
 	}
+
+	public void interpret(Module module) {
+		module.accept(this);
+	}
 	
 	@Override
-	public Value visit(Module m) {
+	protected Value visit(Module m) {
 		for (ast.Expression e : m.getStatements()) {
 			Value v = e.accept(this);
 			System.out.println(((IntegerValue)v).getValue());
 		}
 		return voidValue;
 	}
-	
-	public void interpret(Module module) {
-		module.accept(this);
-	}
-	
+		
 	@Override
-	public Value visit(AddExpression e) {
+	protected Value visit(AddExpression e) {
 		return doBinary(e);
 	}
-	private Value doBinary(BinaryExpression e) {
+
+	@Override
+	protected Value visit(SubExpression e) {
+		return doBinary(e);
+	}
+	
+	protected Value doBinary(BinaryExpression e) {
 		Value lhs = e.getLhs().accept(this);
 		Value rhs = e.getRhs().accept(this);
 		
@@ -51,15 +57,9 @@ public class Interpreter extends Visitor<Value> {
 			return null;
 		}
 	}
-
+	
 	@Override
-	public Value visit(SubExpression m) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Value visit(IntegerLiteral e) {
+	protected Value visit(IntegerLiteral e) {
 		return new IntegerValue(e.getValue());
 	}
 }
