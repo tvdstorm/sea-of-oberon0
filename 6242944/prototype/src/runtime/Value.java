@@ -1,4 +1,4 @@
-package interpreter;
+package runtime;
 
 public abstract class Value {
 
@@ -8,4 +8,6 @@ public abstract class Value {
 	}
 	
 	public abstract IntegerValue toInteger();
+
+	public abstract String toNativeString();
 }

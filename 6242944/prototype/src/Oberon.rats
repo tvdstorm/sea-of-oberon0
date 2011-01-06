@@ -39,9 +39,6 @@ ast.Statement Assignment =
 	{ yyValue = new ast.Assignment(lhs, rhs); }
 	;
 
-ast.Statement Statement = 
-	void:Spacing Assignment
-	;
 Pair<ast.Statement> StatementSequence = 
 	s1:Statement
 	s2:(void:";" Statement)*
@@ -68,14 +65,26 @@ ast.Procedure ProcedureDeclaration =
 		yyValue = new ast.Procedure(name, stat.list());  }
 	;
 
+public Pair<ast.Expression> ActualParameters = 
+	void:"(" expr1:Expression expr2:(void:"," Expression)* void:")"
+	{ yyValue = new Pair<ast.Expression>(expr1, expr2); }
+	;
+
+public ast.ProcedureCall ProcedureCall = 
+	name:Ident params:ActualParameters
+	{ yyValue = new ast.ProcedureCall(name, params.list()); }
+	;
+	
+public ast.Statement Statement = Assignment / ProcedureCall;
+
 public ast.Node Module = 
 	Spacing 
 	"MODULE" Spacing ident:Ident Spacing ";" 
 	Spacing
 	decl:Declarations
-	expr:(void:"BEGIN" void:Spacing Expression*)?
+	stat:(void:"BEGIN" void:Spacing Statement*)?
 	"END" void:Spacing void:Ident void:"."
 	EndOfFile
-	{  yyValue = new ast.Module(ident, decl.list(), expr.list());  }
+	{  yyValue = new ast.Module(ident, decl.list(), stat.list());  }
 	;
 

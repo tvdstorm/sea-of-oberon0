@@ -9,5 +9,6 @@ public abstract class Visitor<T> {
 	
 	protected abstract T visit(IntegerLiteral e);
 
+	protected abstract T visit(ProcedureCall procedureCall);
 }
 

@@ -5,9 +5,9 @@ import java.util.List;
 public class Module extends Node {
 	protected String _name;
 	protected List<Declaration> _declarations;
-	protected List<Expression> _statements;
+	protected List<Statement> _statements;
 	
-	public Module(String name, List<Declaration> declarations, List<Expression> statements) {
+	public Module(String name, List<Declaration> declarations, List<Statement> statements) {
 		this._name = name;
 		this._declarations = declarations;
 		this._statements = statements;
@@ -19,7 +19,7 @@ public class Module extends Node {
 	public List<Declaration> getDeclarations() {
 		return _declarations;
 	}
-	public List<Expression> getStatements() {
+	public List<Statement> getStatements() {
 		return _statements;
 	}
 
