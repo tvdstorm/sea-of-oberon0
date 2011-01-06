@@ -40,9 +40,20 @@
 						<configuration>
 							<outputDirectory>target/generated-sources/antlr3</outputDirectory>
 						</configuration>
+						<goals>
+							<goal>antlr</goal>
+						</goals>
 					</execution>
 				</executions>
 			</plugin>
 		</plugins>
+		<!--resources>
+			<resource>
+				<directory>target/generated-sources/antlr</directory>
+				<includes>
+					<include>**/*.tokens</include>
+				</includes>
+			</resource>
+		</resources-->
 	</build>
 </project>
