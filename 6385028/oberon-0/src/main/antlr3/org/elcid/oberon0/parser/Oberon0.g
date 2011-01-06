@@ -37,7 +37,7 @@ INTEGER			:	(DIGIT)+ ;
 
 IDENT 			:	LETTER (LETTER | DIGIT)*;
 
-WHITESPACE		:	( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ 	{ $channel = HIDDEN; } ;
+WHITESPACE		:	( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ 	{ skip(); } ;
 
 
 /*------------------------------------------------------------------
