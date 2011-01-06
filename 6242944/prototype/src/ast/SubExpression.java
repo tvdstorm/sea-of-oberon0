@@ -8,8 +8,7 @@ public class SubExpression extends BinaryExpression {
 
 	@Override
 	public <T> T accept(Visitor<T> visitor) {
-		// TODO Auto-generated method stub
-		return null;
+		return visitor.visit(this);
 	}
 
 }
