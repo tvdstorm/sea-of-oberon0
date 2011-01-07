@@ -146,13 +146,14 @@ public class Interpreter extends Visitor<Value> {
 	protected Value visit(ConstDeclaration declaration) {
 		String name = declaration.getName();
 		Value value = declaration.getValue().accept(this);
-		return null;
+		_context.getScope().defineConstant(name, value);
+		return _context.getVoid();
 	}
 
 	@Override
 	protected Value visit(Identifier identifier) {
-		System.out.println(identifier.getName());
-		return null;
+		String name = identifier.getName();
+		return _context.getScope().lookupValue(name);
 	}
 
 	@Override
