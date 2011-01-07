@@ -40,15 +40,6 @@ public class Scope {
 		}
 		
 		if (_variables.containsKey(name)) {
-			return _variables.get(name).getValue();
-		}
-		
-		//XXX
-		return null;
-	}
-
-	public ValueRef lookupValueRef(String name) {
-		if (_variables.containsKey(name)) {
 			return _variables.get(name);
 		}
 		
