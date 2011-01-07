@@ -72,16 +72,36 @@ public ast.ProcedureCall ProcedureCall =
 	{ yyValue = new ast.ProcedureCall(name, params.list()); }
 	;
 
+public ast.Node ElseTail = 
+	  void:"ELSE" StatementSequence
+	/ void:"ELSIF" Spacing expr:Expression 
+	  void:"THEN"
+	  stat1:StatementSequence
+	  stat2:ElseTail? 
+	  { yyValue = new ast.IfStatement(expr, stat1, stat2); }
+	;
+
 public ast.IfStatement IfStatement = 
 	void:"IF" Spacing expr:Expression 
-	void:"THEN" stat:StatementSequence
+	void:"THEN" 
+	stat1:StatementSequence
+	stat2:ElseTail?
 	void:"END"
-	{ yyValue = new ast.IfStatement(expr, stat); }
+	{ yyValue = new ast.IfStatement(expr, stat1, stat2); }
+	;
+
+public ast.WhileStatement WhileStatement =
+	void:"WHILE" Spacing expr:Expression
+	void:"DO"
+	stat:StatementSequence
+	void:"END"
+	{ yyValue = new ast.WhileStatement(expr, stat); }
 	;
 
 public ast.Statement Statement = 
 	  Assignment Spacing 
 	/ IfStatement Spacing
+	/ WhileStatement Spacing
 	/ ProcedureCall Spacing
 	;
 
