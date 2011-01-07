@@ -4,8 +4,10 @@ import runtime.BooleanValue;
 import runtime.BuiltinFunction;
 import runtime.IntegerValue;
 import runtime.Value;
+import runtime.ValueRef;
 import runtime.VoidValue;
 import ast.AddExpression;
+import ast.Assignment;
 import ast.BinaryExpression;
 import ast.ConstDeclaration;
 import ast.Declarations;
@@ -171,6 +173,15 @@ public class Interpreter extends Visitor<Value> {
 		for(String name : declaration.getNames()) {
 			_context.getScope().defineVar(name, type);
 		}
+		return _context.getVoid();
+	}
+
+	@Override
+	protected Value visit(Assignment assignment) {
+		String name = assignment.getLhs();
+		Value value = assignment.getRhs().accept(this);
+		ValueRef ref = _context.getScope().lookupValueRef(name);
+		ref.setValue(value);
 		return _context.getVoid();
 	}
 }
