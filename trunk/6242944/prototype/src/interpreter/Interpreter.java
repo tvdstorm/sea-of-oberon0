@@ -5,7 +5,6 @@ import runtime.BuiltinFunction;
 import runtime.IntegerValue;
 import runtime.Value;
 import runtime.VoidValue;
-import xtc.lang.javacc.syntaxtree.Expression;
 import ast.AddExpression;
 import ast.BinaryExpression;
 import ast.IfStatement;
@@ -16,6 +15,7 @@ import ast.ProcedureCall;
 import ast.StatementSequence;
 import ast.SubExpression;
 import ast.Visitor;
+import ast.WhileStatement;
 
 public class Interpreter extends Visitor<Value> {
 
@@ -114,6 +114,26 @@ public class Interpreter extends Visitor<Value> {
 		}
 		if (execIf) {
 			statement.getThen().accept(this);
+		} else if (statement.getElse() != null) {
+			statement.getElse().accept(this);
+		}
+		return _context.getVoid();
+	}
+
+	@Override
+	protected Value visit(WhileStatement statement) {
+		boolean execLoop = false;
+		
+		while(true) {
+			Value test = statement.getTest().accept(this);
+			
+			if (test.isBoolean()) {
+				if (!test.toBoolean().getValue())
+					break;
+			} else {
+			//FIXME
+			}
+			statement.getBody().accept(this);
 		}
 		return _context.getVoid();
 	}
