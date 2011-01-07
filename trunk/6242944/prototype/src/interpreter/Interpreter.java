@@ -93,7 +93,8 @@ public class Interpreter extends Visitor<Value> {
 		}
 		
 		BuiltinFunction fun = _context.lookupFunction(name);
-		return fun.execute(_context, args);		
+		fun.execute(_context, args);		
+		return _context.getVoid();
 	}
 
 	@Override
@@ -180,7 +181,7 @@ public class Interpreter extends Visitor<Value> {
 	protected Value visit(Assignment assignment) {
 		String name = assignment.getLhs();
 		Value value = assignment.getRhs().accept(this);
-		ValueRef ref = _context.getScope().lookupValueRef(name);
+		ValueRef ref = (ValueRef)_context.getScope().lookupValue(name); //FIXME
 		ref.setValue(value);
 		return _context.getVoid();
 	}

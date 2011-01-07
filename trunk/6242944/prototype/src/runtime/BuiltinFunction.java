@@ -5,5 +5,5 @@ import interpreter.Context;
 
 public abstract class BuiltinFunction {
 
-	public abstract Value execute(Context ctx, Value[] arguments);
+	public abstract void execute(Context ctx, Value[] arguments);
 }
