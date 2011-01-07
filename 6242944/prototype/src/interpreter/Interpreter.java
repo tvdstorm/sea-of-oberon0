@@ -17,6 +17,7 @@ import ast.Module;
 import ast.ProcedureCall;
 import ast.StatementSequence;
 import ast.SubExpression;
+import ast.VarDeclaration;
 import ast.Visitor;
 import ast.WhileStatement;
 
@@ -160,6 +161,15 @@ public class Interpreter extends Visitor<Value> {
 	protected Value visit(Declarations declarations) {
 		for(ast.Declaration decl : declarations.getDeclarations()) {
 			decl.accept(this);
+		}
+		return _context.getVoid();
+	}
+
+	@Override
+	protected Value visit(VarDeclaration declaration) {
+		String type = declaration.getType();
+		for(String name : declaration.getNames()) {
+			_context.getScope().defineVar(name, type);
 		}
 		return _context.getVoid();
 	}

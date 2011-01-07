@@ -10,7 +10,7 @@ import xtc.parser.Result;
 public class Main {
 	
 	public static void main(String[] args) {
-		StringReader reader = new StringReader("MODULE test; CONST foo = 10; bar = 12; BEGIN Write(foo); Write(bar) END test.");
+		StringReader reader = new StringReader("MODULE test; CONST foo = 10; bar = 12; VAR i: INTEGER; BEGIN Write(i) END test.");
 		Oberon o = new Oberon(reader, "<input>");
 		
 		ast.Module module = null;
