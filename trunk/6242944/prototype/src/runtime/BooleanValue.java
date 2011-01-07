@@ -32,4 +32,10 @@ public class BooleanValue extends Value {
 		return true;
 	}
 
+	@Override
+	public ArrayValue toArray() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

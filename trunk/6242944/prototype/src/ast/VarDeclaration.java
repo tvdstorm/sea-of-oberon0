@@ -4,9 +4,9 @@ import java.util.List;
 
 public class VarDeclaration extends Declaration {
 	private List<String> _names;
-	private String _type;
+	private Type _type;
 	
-	public VarDeclaration(List<String> names, String type) {
+	public VarDeclaration(List<String> names, Type type) {
 		this._names = names;
 		this._type = type;
 	}
@@ -15,7 +15,7 @@ public class VarDeclaration extends Declaration {
 		return _names;
 	}
 	
-	public String getType() {
+	public Type getType() {
 		return _type;
 	}
 	

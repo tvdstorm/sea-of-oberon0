@@ -24,6 +24,12 @@ public class ValueRef extends Value {
 	public boolean isInteger() {
 		return _value.isInteger();
 	}
+	
+	@Override
+	public boolean isArray() {
+		return _value.isArray();
+	}
+
 
 	@Override	
 	public boolean isBoolean() {
@@ -38,5 +44,9 @@ public class ValueRef extends Value {
 	@Override
 	public String toNativeString() {
 		return _value.toNativeString();
+	}
+	@Override
+	public ArrayValue toArray() {
+		return _value.toArray();
 	}
 }

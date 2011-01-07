@@ -28,8 +28,22 @@ ast.Identifier Identifier =
 	{ yyValue = new ast.Identifier(ident); }
 	;
 
+//FIXME: use Action here?
+ast.Expression IdentifierSelector = 
+	ident:Identifier
+	exprs:(void:"[" Expression void:"]")*
+	{ 
+		List<ast.Expression> list = exprs.list();
+		ast.Expression expr = ident;
+		for(int i=0; i<list.size(); i++) {
+			expr = new ast.Selector(expr, list.get(i));
+		}
+		yyValue = expr;
+	}
+	;
+
 ast.Expression Factor = 
- 	  Identifier
+ 	  IdentifierSelector
 	/ Integer Spacing
 	;
 
@@ -65,11 +79,23 @@ ast.Expression Expression =
 	;
 	
 ast.Statement Assignment = 
-	lhs:Ident Spacing ":=" Spacing rhs:Expression
+	lhs:IdentifierSelector Spacing ":=" Spacing rhs:Expression
 	{ yyValue = new ast.Assignment(lhs, rhs); }
 	;
 
-String Type = Ident;
+ast.IdentifierType IdentifierType = 
+	ident:Ident void:Spacing
+	{ yyValue = new ast.IdentifierType(ident); }
+	;
+
+ast.ArrayType ArrayType = 
+	void:"ARRAY" void:Spacing 
+	length:Expression void:Spacing
+	void:"OF" void:Spacing type:Type
+	{ yyValue = new ast.ArrayType(length, type); }
+	;
+
+ast.Type Type = ArrayType / IdentifierType;
 
 Pair<String> IdentList = 
 	ident1:Ident void:Spacing 

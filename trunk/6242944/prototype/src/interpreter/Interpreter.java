@@ -1,5 +1,6 @@
 package interpreter;
 
+import runtime.ArrayValue;
 import runtime.BooleanValue;
 import runtime.BuiltinFunction;
 import runtime.IntegerValue;
@@ -7,18 +8,22 @@ import runtime.Value;
 import runtime.ValueRef;
 import runtime.VoidValue;
 import ast.AddExpression;
+import ast.ArrayType;
 import ast.Assignment;
 import ast.BinaryExpression;
 import ast.ConstDeclaration;
 import ast.Declarations;
 import ast.Identifier;
+import ast.IdentifierType;
 import ast.IfStatement;
 import ast.IntegerLiteral;
 import ast.LtExpression;
 import ast.Module;
 import ast.ProcedureCall;
+import ast.Selector;
 import ast.StatementSequence;
 import ast.SubExpression;
+import ast.Type;
 import ast.VarDeclaration;
 import ast.Visitor;
 import ast.WhileStatement;
@@ -170,19 +175,62 @@ public class Interpreter extends Visitor<Value> {
 
 	@Override
 	protected Value visit(VarDeclaration declaration) {
-		String type = declaration.getType();
 		for(String name : declaration.getNames()) {
-			_context.getScope().defineVar(name, type);
+			Value value = declaration.getType().accept(this);
+			_context.getScope().defineVar(name, value);
 		}
 		return _context.getVoid();
 	}
 
 	@Override
 	protected Value visit(Assignment assignment) {
-		String name = assignment.getLhs();
+		ValueRef ref = (ValueRef)assignment.getLhs().accept(this); //FIXME
 		Value value = assignment.getRhs().accept(this);
-		ValueRef ref = (ValueRef)_context.getScope().lookupValue(name); //FIXME
 		ref.setValue(value);
 		return _context.getVoid();
+	}
+
+	@Override
+	protected Value visit(IdentifierType type) {
+		String name = type.getName();
+		//FIXME: move somewhere else?
+		if ("INTEGER".equals(name)) {
+			return new IntegerValue(0);
+		} else {
+			//XXX
+			return null;
+		}
+	}
+
+	@Override
+	protected Value visit(ArrayType type) {
+		Value sizeValue = type.getSize().accept(this);
+		
+		if (sizeValue.isInteger()) {
+			int size = sizeValue.toInteger().getValue();
+			ValueRef[] values = new ValueRef[size];
+			
+			for (int i=0; i<size; i++) {
+				Value element = type.getElementType().accept(this);
+				values[i] = new ValueRef(element);
+			}
+			return new ArrayValue(values);
+		} else {
+			return null;
+		}
+	}
+
+	@Override
+	protected Value visit(Selector selector) {
+		Value base = selector.getBase().accept(this);
+		Value index = selector.getIndex().accept(this);
+
+		if (base.isArray() && index.isInteger()) {
+			ArrayValue arr = base.toArray();
+			return arr.getValueAt(index.toInteger().getValue());
+		} else {
+			//XXX
+			return null;
+		}
 	}
 }

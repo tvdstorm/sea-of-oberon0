@@ -31,4 +31,10 @@ public class IntegerValue extends Value {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public ArrayValue toArray() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

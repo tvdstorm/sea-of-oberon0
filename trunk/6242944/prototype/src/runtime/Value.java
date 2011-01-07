@@ -9,9 +9,13 @@ public abstract class Value {
 	public boolean isBoolean() {
 		return false;
 	}
-
+	public boolean isArray() {
+		return false;
+	}
+	
 	public abstract IntegerValue toInteger();
 	public abstract BooleanValue toBoolean();
+	public abstract ArrayValue toArray();
 
 	public abstract String toNativeString();
 
