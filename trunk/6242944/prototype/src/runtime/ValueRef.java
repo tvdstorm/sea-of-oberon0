@@ -7,7 +7,6 @@ public class ValueRef extends Value {
 	public ValueRef(Value value) {
 		_value = value;
 	}
-	
 	public Value getValue() {
 		return _value;
 	}
@@ -21,6 +20,16 @@ public class ValueRef extends Value {
 		return _value.toInteger();
 	}
 
+	@Override	
+	public boolean isInteger() {
+		return _value.isInteger();
+	}
+
+	@Override	
+	public boolean isBoolean() {
+		return _value.isBoolean();
+	}
+	
 	@Override
 	public BooleanValue toBoolean() {
 		return _value.toBoolean();
