@@ -8,6 +8,7 @@ import runtime.VoidValue;
 import ast.AddExpression;
 import ast.BinaryExpression;
 import ast.ConstDeclaration;
+import ast.Declarations;
 import ast.Identifier;
 import ast.IfStatement;
 import ast.IntegerLiteral;
@@ -35,6 +36,7 @@ public class Interpreter extends Visitor<Value> {
 	
 	@Override
 	protected Value visit(Module m) {
+		m.getDeclarations().accept(this);
 		m.getStatements().accept(this);
 		return _context.getVoid();
 	}
@@ -142,7 +144,8 @@ public class Interpreter extends Visitor<Value> {
 
 	@Override
 	protected Value visit(ConstDeclaration declaration) {
-		// TODO Auto-generated method stub
+		String name = declaration.getName();
+		Value value = declaration.getValue().accept(this);
 		return null;
 	}
 
@@ -150,5 +153,13 @@ public class Interpreter extends Visitor<Value> {
 	protected Value visit(Identifier identifier) {
 		System.out.println(identifier.getName());
 		return null;
+	}
+
+	@Override
+	protected Value visit(Declarations declarations) {
+		for(ast.Declaration decl : declarations.getDeclarations()) {
+			decl.accept(this);
+		}
+		return _context.getVoid();
 	}
 }

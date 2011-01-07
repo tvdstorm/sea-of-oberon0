@@ -4,10 +4,10 @@ import java.util.List;
 
 public class Module extends Node {
 	protected String _name;
-	protected List<Declaration> _declarations;
+	protected Declarations _declarations;
 	protected StatementSequence _statements;
 	
-	public Module(String name, List<Declaration> declarations, StatementSequence statements) {
+	public Module(String name, Declarations declarations, StatementSequence statements) {
 		this._name = name;
 		this._declarations = declarations;
 		this._statements = statements;
@@ -16,7 +16,7 @@ public class Module extends Node {
 	public String getName() {
 		return _name;
 	}
-	public List<Declaration> getDeclarations() {
+	public Declarations getDeclarations() {
 		return _declarations;
 	}
 	public StatementSequence getStatements() {

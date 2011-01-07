@@ -14,4 +14,12 @@ public class ConstDeclaration extends Declaration {
 		return visitor.visit(this);
 	}
 
+	public String getName() {
+		return _name;
+	}
+
+	public Expression getValue() {
+		return _value;
+	}
+
 }

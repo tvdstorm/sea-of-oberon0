@@ -4,6 +4,7 @@ public abstract class Visitor<T> {
 	
 	protected abstract T visit(Module m);
 
+	protected abstract T visit(Declarations declarations);
 	protected abstract T visit(ConstDeclaration declaration);
 	
 	protected abstract T visit(StatementSequence sequence);
