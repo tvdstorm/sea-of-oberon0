@@ -11,6 +11,14 @@ public class Assignment extends Statement {
 
 	@Override
 	public <T> T accept(Visitor<T> visitor) {
-		return null;
+		return visitor.visit(this);
+	}
+
+	public String getLhs() {
+		return _lhs;
+	}
+
+	public Expression getRhs() {
+		return _rhs;
 	}
 }

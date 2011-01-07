@@ -13,6 +13,7 @@ public abstract class Visitor<T> {
 	protected abstract T visit(ProcedureCall procedureCall);
 	protected abstract T visit(IfStatement statement);
 	protected abstract T visit(WhileStatement statement);
+	protected abstract T visit(Assignment assignment);
 
 	protected abstract T visit(AddExpression e);
 	protected abstract T visit(SubExpression e);
