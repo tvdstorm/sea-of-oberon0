@@ -83,12 +83,12 @@ ast.ConstDeclaration ConstDeclaration =
 	{ yyValue = new ast.ConstDeclaration(ident, expr); }
 	;
 
-List<ast.Declaration> Declarations = 
+ast.Declarations Declarations = 
 	consts:(void:"CONST" void:Spacing ConstDeclaration*)?
 	procs:(ProcedureDeclaration void:";")*
 	{ 	List<ast.Declaration> decls = new ArrayList<ast.Declaration>();
 		consts.addTo(decls);
-		yyValue = decls; 
+		yyValue = new ast.Declarations(decls); 
 	}
 	;
 
