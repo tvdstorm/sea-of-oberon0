@@ -7,6 +7,8 @@ import runtime.Value;
 import runtime.VoidValue;
 import ast.AddExpression;
 import ast.BinaryExpression;
+import ast.ConstDeclaration;
+import ast.Identifier;
 import ast.IfStatement;
 import ast.IntegerLiteral;
 import ast.LtExpression;
@@ -136,5 +138,17 @@ public class Interpreter extends Visitor<Value> {
 			statement.getBody().accept(this);
 		}
 		return _context.getVoid();
+	}
+
+	@Override
+	protected Value visit(ConstDeclaration declaration) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected Value visit(Identifier identifier) {
+		System.out.println(identifier.getName());
+		return null;
 	}
 }
