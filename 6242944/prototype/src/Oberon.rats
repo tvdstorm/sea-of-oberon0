@@ -1,5 +1,9 @@
 module Oberon;
 
+header {
+	import xtc.util.Action;
+	import java.util.*;
+}
 // NOTE: a mess, need to clean this up
 
 transient String Digit = [0-9];
@@ -13,21 +17,41 @@ String Ident = Letter (Letter / Digit)*;
 
 transient String IntString = Digit+;
 
+
 ast.IntegerLiteral Integer = 
 	i:IntString
 	{ yyValue = new ast.IntegerLiteral(new Integer(i)); }
 	;
 
-ast.Expression Term = Integer Spacing;
+ast.Identifier Identifier = 
+	ident:Ident Spacing
+	{ yyValue = new ast.Identifier(ident); }
+	;
+
+ast.Expression Factor = 
+ 	  Identifier
+	/ Integer Spacing
+	;
+
+ast.Expression Term = Factor;
+
+//FIXME: try to clean this up somehow
+constant Action<ast.Expression> SimpleExpressionTail =
+	op:("+" / "-") rhs:Term 
+		{
+          yyValue = new Action<ast.Expression>() {
+            public ast.Expression run(ast.Expression lhs) {
+            	ast.Expression result = null;
+            	if (op == "+") result = new ast.AddExpression(lhs, rhs);
+            	if (op == "-") result = new ast.SubExpression(lhs, rhs);
+            	return result;
+            }};
+      	}
+	;
 
 ast.Expression SimpleExpression =
-	//FIXME
-	lhs:Term op:("+" / "-" / "OR") rhs:SimpleExpression
-		{ if (op == "+") 
-			yyValue = new ast.AddExpression(lhs, rhs);
-		  else //FIXME
-		  	yyValue = new ast.SubExpression(lhs, rhs);
-		}
+	seed:Term actions:SimpleExpressionTail*
+		{ yyValue = apply(actions, seed); }
 	/
 	Term
 	;
@@ -45,10 +69,28 @@ ast.Statement Assignment =
 	{ yyValue = new ast.Assignment(lhs, rhs); }
 	;
 
-ast.Declaration Declaration = ProcedureDeclaration void:";";
+ast.Declaration Declaration = 
+	;
 
-Pair<ast.Declaration> Declarations = Declaration*;
+ast.ConstDeclaration ConstDeclaration = 
+	ident:Ident 
+	void:Spacing 
+	void:"=" 
+	void:Spacing 
+	expr:Expression 
+	void:";" 
+	void:Spacing
+	{ yyValue = new ast.ConstDeclaration(ident, expr); }
+	;
 
+List<ast.Declaration> Declarations = 
+	consts:(void:"CONST" void:Spacing ConstDeclaration*)?
+	procs:(ProcedureDeclaration void:";")*
+	{ 	List<ast.Declaration> decls = new ArrayList<ast.Declaration>();
+		consts.addTo(decls);
+		yyValue = decls; 
+	}
+	;
 
 ast.Procedure ProcedureDeclaration = 
 	"PROCEDURE" Spacing name:Ident ";" 
@@ -120,6 +162,6 @@ public ast.Node Module =
 	stat:(void:"BEGIN" StatementSequence)?
 	"END" void:Spacing void:Ident void:"."
 	EndOfFile
-	{  yyValue = new ast.Module(ident, decl.list(), stat);  }
+	{  yyValue = new ast.Module(ident, decl, stat);  }
 	;
 
