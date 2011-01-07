@@ -30,7 +30,7 @@ WHITESPACE		:	( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ 	{ skip(); } ;
  * PARSER RULES
  *------------------------------------------------------------------*/
 
-selector		:	('.' IDENT | '[' expression ']')+;
+selector		:	('.' IDENT | '[' expression ']')*;
 
 factor			:	IDENT selector | INTEGER | '(' expression ')' | '~' factor;
 
