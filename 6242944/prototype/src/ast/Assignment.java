@@ -1,10 +1,10 @@
 package ast;
 
 public class Assignment extends Statement {
-	protected String _lhs;
+	protected Expression _lhs;
 	protected Expression _rhs;
 	
-	public Assignment(String lhs, Expression rhs) {
+	public Assignment(Expression lhs, Expression rhs) {
 		this._lhs = lhs;
 		this._rhs = rhs;
 	}
@@ -14,7 +14,7 @@ public class Assignment extends Statement {
 		return visitor.visit(this);
 	}
 
-	public String getLhs() {
+	public Expression getLhs() {
 		return _lhs;
 	}
 

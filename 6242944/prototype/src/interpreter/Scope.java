@@ -8,7 +8,10 @@ import runtime.ValueRef;
 import java.util.HashMap;
 import java.util.Map;
 
+import ast.ArrayType;
 import ast.Identifier;
+import ast.IdentifierType;
+import ast.Type;
 
 public class Scope {
 	private Scope _parentScope;
@@ -26,12 +29,8 @@ public class Scope {
 	}
 	
 	//FIXME: type: String -> object?
-	public void defineVar(String name, String type) {
-		//FIXME: move this somewhere else
-		Value v = null;
-		if (type.equals("INTEGER"))  //FIXME!
-			v = new IntegerValue(0);
-		_variables.put(name, new ValueRef(v));
+	public void defineVar(String name, Value value) {
+		_variables.put(name, new ValueRef(value));
 	}
 
 	public Value lookupValue(String name) {
