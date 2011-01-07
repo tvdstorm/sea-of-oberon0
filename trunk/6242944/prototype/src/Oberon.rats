@@ -69,25 +69,36 @@ ast.Statement Assignment =
 	{ yyValue = new ast.Assignment(lhs, rhs); }
 	;
 
-ast.Declaration Declaration = 
+String Type = Ident;
+
+Pair<String> IdentList = 
+	ident1:Ident void:Spacing 
+	ident2:(void:"," void:Spacing Ident void:Spacing)*
+	{ yyValue = new Pair<String>(ident1, ident2); }
 	;
 
 ast.ConstDeclaration ConstDeclaration = 
-	ident:Ident 
-	void:Spacing 
-	void:"=" 
-	void:Spacing 
-	expr:Expression 
-	void:";" 
-	void:Spacing
+	ident:Ident void:Spacing 
+	void:"=" void:Spacing 
+	expr:Expression void:";" void:Spacing
 	{ yyValue = new ast.ConstDeclaration(ident, expr); }
+	;
+
+ast.VarDeclaration VarDeclaration = 
+	idents:IdentList void:Spacing 
+	void:":" void:Spacing 
+	type:Type void:Spacing
+	void:";" void:Spacing
+	{ yyValue = new ast.VarDeclaration(idents.list(), type); }
 	;
 
 ast.Declarations Declarations = 
 	consts:(void:"CONST" void:Spacing ConstDeclaration*)?
+	vars:(void:"VAR" void:Spacing VarDeclaration*)?
 	procs:(ProcedureDeclaration void:";")*
 	{ 	List<ast.Declaration> decls = new ArrayList<ast.Declaration>();
 		consts.addTo(decls);
+		vars.addTo(decls);
 		yyValue = new ast.Declarations(decls); 
 	}
 	;
