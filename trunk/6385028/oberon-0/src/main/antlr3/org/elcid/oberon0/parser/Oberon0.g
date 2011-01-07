@@ -23,7 +23,7 @@ INTEGER			:	(DIGIT)+ ;
 
 IDENT 			:	LETTER (LETTER | DIGIT)*;
 
-WHITESPACE		:	( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ 	{ skip(); } ;
+WHITESPACE		:	( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ 	{ $channel = HIDDEN; } ;
 
 
 /*------------------------------------------------------------------
@@ -50,7 +50,7 @@ actualParameters
 procedureCall	:	IDENT selector (actualParameters)?;
 
 ifStatement		:	'IF' expression 'THEN' statementSequence
-					('ELSEIF' expression 'THEN' statementSequence)*
+					('ELSIF' expression 'THEN' statementSequence)*
 					('ELSE' statementSequence)?  'END';
 
 whileStatement	:	'WHILE' expression 'DO' statementSequence 'END';
