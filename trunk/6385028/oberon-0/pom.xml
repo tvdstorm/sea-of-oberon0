@@ -46,6 +46,20 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<archive>
+						<manifest>
+							<mainClass>org.elcid.oberon0.parser.ManualInputParser</mainClass>
+							<packageName>org.elcid.oberon0.parser</packageName>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
 		</plugins>
 		<!--resources>
 			<resource>
