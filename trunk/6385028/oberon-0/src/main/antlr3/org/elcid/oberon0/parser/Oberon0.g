@@ -2,8 +2,6 @@ grammar Oberon0;
 
 options {
 	language = Java;
-	/* Without this backtrack option Antlr will fail at 'statement' -- not sure why */
-	backtrack=true;
 }
 
 @header {package org.elcid.oberon0.parser;}
