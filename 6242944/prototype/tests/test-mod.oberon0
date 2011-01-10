@@ -1,0 +1,13 @@
+MODULE test;
+BEGIN
+    AssertEq(1 MOD 1, 0);
+    AssertEq(0 MOD 1, 0);
+    AssertEq(10 MOD 2, 0);
+
+    AssertEq(20 MOD 11, 9);
+    AssertEq(10 MOD 3, 1);
+
+    AssertEq(10 MOD (3-9), 4);
+    AssertEq(43 MOD 10 MOD 9, 3);
+    AssertEq(43 MOD (10 MOD 9), 0)
+END test.
