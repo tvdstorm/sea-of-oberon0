@@ -16,10 +16,13 @@ public class AssertEq extends BuiltinFunction {
 		Value v1 = arguments[0];
 		Value v2 = arguments[1];
 		
-		if (v1.equals(v2)) {
-			System.out.println("OK");
+		if (v1.valueEquals(v2)) {
+			System.err.println("OK");
 		} else {
-			System.out.println("ERROR");			
+			System.err.print("Assertion failure, ");
+			System.err.print("actual: " + v1.toNativeString() + ", ");
+			System.err.print("expected: " + v2.toNativeString());
+			System.err.print("\n");
 		}
 	}
 

@@ -52,4 +52,8 @@ public class ValueRef extends Value {
 	public ArrayValue toArray() {
 		return _value.toArray();
 	}
+	@Override
+	public boolean valueEquals(Value other) {
+		return _value.valueEquals(other);
+	}
 }
