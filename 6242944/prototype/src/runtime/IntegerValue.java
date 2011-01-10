@@ -12,6 +12,20 @@ public class IntegerValue extends Value {
 	}
 	
 	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		IntegerValue other = (IntegerValue) obj;
+		if (_value != other._value)
+			return false;
+		return true;
+	}
+
+	@Override
 	public boolean isInteger() {
 		return true; //FIXME: alternative design?
 	}
