@@ -7,7 +7,7 @@ import oberon.analysis.*;
 @SuppressWarnings("nls")
 public final class ASimpleexpression extends PSimpleexpression
 {
-    private PPlusorminus _plusorminus_;
+    private TPlusorminus _plusorminus_;
     private PTerm _term_;
     private PMoreterms _moreterms_;
 
@@ -17,7 +17,7 @@ public final class ASimpleexpression extends PSimpleexpression
     }
 
     public ASimpleexpression(
-        @SuppressWarnings("hiding") PPlusorminus _plusorminus_,
+        @SuppressWarnings("hiding") TPlusorminus _plusorminus_,
         @SuppressWarnings("hiding") PTerm _term_,
         @SuppressWarnings("hiding") PMoreterms _moreterms_)
     {
@@ -44,12 +44,12 @@ public final class ASimpleexpression extends PSimpleexpression
         ((Analysis) sw).caseASimpleexpression(this);
     }
 
-    public PPlusorminus getPlusorminus()
+    public TPlusorminus getPlusorminus()
     {
         return this._plusorminus_;
     }
 
-    public void setPlusorminus(PPlusorminus node)
+    public void setPlusorminus(TPlusorminus node)
     {
         if(this._plusorminus_ != null)
         {
@@ -159,7 +159,7 @@ public final class ASimpleexpression extends PSimpleexpression
         // Replace child
         if(this._plusorminus_ == oldChild)
         {
-            setPlusorminus((PPlusorminus) newChild);
+            setPlusorminus((TPlusorminus) newChild);
             return;
         }
 

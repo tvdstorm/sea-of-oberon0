@@ -1,10 +1,7 @@
 package oberon.interpret;
 
 import oberon.analysis.DepthFirstAdapter;
-import oberon.node.AMinusOperator;
-import oberon.node.APlusOperator;
 import oberon.node.AProgram;
-import oberon.node.POperator;
 
 public class Interpreter extends DepthFirstAdapter { 
 	  

@@ -7,7 +7,7 @@ import oberon.analysis.*;
 @SuppressWarnings("nls")
 public final class AMoreterms extends PMoreterms
 {
-    private PPlusorminusoror _plusorminusoror_;
+    private TPlusorminusoror _plusorminusoror_;
     private PTerm _term_;
 
     public AMoreterms()
@@ -16,7 +16,7 @@ public final class AMoreterms extends PMoreterms
     }
 
     public AMoreterms(
-        @SuppressWarnings("hiding") PPlusorminusoror _plusorminusoror_,
+        @SuppressWarnings("hiding") TPlusorminusoror _plusorminusoror_,
         @SuppressWarnings("hiding") PTerm _term_)
     {
         // Constructor
@@ -39,12 +39,12 @@ public final class AMoreterms extends PMoreterms
         ((Analysis) sw).caseAMoreterms(this);
     }
 
-    public PPlusorminusoror getPlusorminusoror()
+    public TPlusorminusoror getPlusorminusoror()
     {
         return this._plusorminusoror_;
     }
 
-    public void setPlusorminusoror(PPlusorminusoror node)
+    public void setPlusorminusoror(TPlusorminusoror node)
     {
         if(this._plusorminusoror_ != null)
         {
@@ -122,7 +122,7 @@ public final class AMoreterms extends PMoreterms
         // Replace child
         if(this._plusorminusoror_ == oldChild)
         {
-            setPlusorminusoror((PPlusorminusoror) newChild);
+            setPlusorminusoror((TPlusorminusoror) newChild);
             return;
         }
 
