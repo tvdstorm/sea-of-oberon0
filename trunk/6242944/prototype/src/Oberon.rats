@@ -44,10 +44,30 @@ ast.Expression IdentifierSelector =
 
 ast.Expression Factor = 
  	  IdentifierSelector
+ 	/ void:"(" void:Spacing Expression void:Spacing void:")"
 	/ Integer Spacing
 	;
 
-ast.Expression Term = Factor;
+//FIXME: try to clean this up somehow
+constant Action<ast.Expression> FactorTail =
+	void:Spacing op:("*" / "DIV" / "MOD" / "&") void:Spacing rhs:Term 
+		{
+          yyValue = new Action<ast.Expression>() {
+            public ast.Expression run(ast.Expression lhs) {
+            	ast.Expression result = null;
+            	if (op.equals("*")) result = new ast.MulExpression(lhs, rhs);
+            	if (op.equals("DIV")) result = new ast.DivExpression(lhs, rhs);
+            	if (op.equals("MOD")) result = new ast.ModExpression(lhs, rhs);
+            	if (op.equals("&")) result = new ast.AndExpression(lhs, rhs);
+            	return result;
+            }};
+      	}
+	;
+
+ast.Expression Term =
+	seed:Factor actions:FactorTail*
+	{ yyValue = apply(actions, seed); }
+	;
 
 //FIXME: try to clean this up somehow
 constant Action<ast.Expression> SimpleExpressionTail =
@@ -56,8 +76,8 @@ constant Action<ast.Expression> SimpleExpressionTail =
           yyValue = new Action<ast.Expression>() {
             public ast.Expression run(ast.Expression lhs) {
             	ast.Expression result = null;
-            	if (op == "+") result = new ast.AddExpression(lhs, rhs);
-            	if (op == "-") result = new ast.SubExpression(lhs, rhs);
+            	if (op.equals("+")) result = new ast.AddExpression(lhs, rhs);
+            	if (op.equals("-")) result = new ast.SubExpression(lhs, rhs);
             	return result;
             }};
       	}
@@ -71,9 +91,15 @@ ast.Expression SimpleExpression =
 	;
 
 ast.Expression Expression = 
-	  lhs:SimpleExpression void:Spacing op:("=" / "<=" / "<") void:Spacing rhs:SimpleExpression
-		{ if (op == "<") yyValue = new ast.LtExpression(lhs, rhs);
-		  else return null; //FIXME
+	  lhs:SimpleExpression void:Spacing op:("=" / "#" / "<=" / ">=" / "<" / ">") void:Spacing rhs:SimpleExpression
+		{ yyValue = null;
+		  if ("=".equals(op)) yyValue = new ast.EqExpression(lhs, rhs);
+		  if ("#".equals(op)) yyValue = new ast.NeExpression(lhs, rhs);
+		  if ("<".equals(op)) yyValue = new ast.LtExpression(lhs, rhs);
+		  if (">".equals(op)) yyValue = new ast.GtExpression(lhs, rhs);
+		  if ("<=".equals(op)) yyValue = new ast.LeExpression(lhs, rhs);
+		  if (">=".equals(op)) yyValue = new ast.GeExpression(lhs, rhs);		  
+		  else assert false;
 		}
 	/ SimpleExpression
 	;
@@ -197,7 +223,7 @@ public ast.IfStatement IfStatement =
 	;
 
 public ast.WhileStatement WhileStatement =
-	void:"WHILE" Spacing expr:Expression
+	void:"WHILE" void:Spacing expr:Expression void:Spacing
 	void:"DO"
 	stat:StatementSequence
 	void:"END"

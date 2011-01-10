@@ -1,5 +1,9 @@
 package runtime.builtins;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 import runtime.BuiltinFunction;
 import runtime.IntegerValue;
 import runtime.Value;
@@ -12,7 +16,20 @@ public class Read extends BuiltinFunction {
 	public void execute(Context ctx, Value[] arguments) {
 		if (arguments.length == 1 && arguments[0] instanceof ValueRef) {
 			ValueRef ref = (ValueRef)arguments[0];
-			ref.setValue(new IntegerValue(100)); //XXX
+			
+			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+			int value = 0;
+			try {
+				value = Integer.parseInt(reader.readLine());
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			ref.setValue(new IntegerValue(value)); //XXX
 		} else {
 			//XXX
 		}
