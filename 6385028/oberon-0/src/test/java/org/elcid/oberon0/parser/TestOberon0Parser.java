@@ -1,5 +1,8 @@
 package org.elcid.oberon0.parser;
 
+import org.antlr.runtime.tree.TreeAdaptor;
+import org.antlr.runtime.tree.CommonTreeAdaptor;
+import org.antlr.runtime.tree.CommonTree;
 import org.antlr.runtime.*;
 
 import org.junit.After;
@@ -15,8 +18,8 @@ import static org.junit.Assert.*;
  */
 public class TestOberon0Parser {
 
-    public TestOberon0Parser() {
-    }
+	public TestOberon0Parser() {
+	}
 
 	@BeforeClass
 	public static void setUpClass() throws Exception {
@@ -26,13 +29,13 @@ public class TestOberon0Parser {
 	public static void tearDownClass() throws Exception {
 	}
 
-    @Before
-    public void setUp() {
-    }
+	@Before
+	public void setUp() {
+	}
 
-    @After
-    public void tearDown() {
-    }
+	@After
+	public void tearDown() {
+	}
 
 	@Test
 	public void testOberon0Parser() throws Exception {
@@ -45,9 +48,32 @@ public class TestOberon0Parser {
 		// Create a parser that feeds off the token stream
 		Oberon0Parser parser = new Oberon0Parser(tokens);
 		// Begin parsing at rule module
-		parser.module();
+		Oberon0Parser.prog_return result = parser.prog();
+
+		CommonTree tree = (CommonTree) result.getTree();
+		printTree(tree, 0);
+
 
 		assertTrue(true);
 	}
 
+	static final TreeAdaptor adaptor = new CommonTreeAdaptor() {
+
+		public Object create(Token payload) {
+			return new CommonTree(payload);
+		}
+	};
+
+	public static void printTree(CommonTree t, int indent) {
+		if (t != null) {
+			StringBuffer sb = new StringBuffer(indent);
+			for (int i = 0; i < indent; i++) {
+				sb = sb.append("   ");
+			}
+			for (int i = 0; i < t.getChildCount(); i++) {
+				System.out.println(sb.toString() + t.getChild(i).toString());
+				printTree((CommonTree) t.getChild(i), indent + 1);
+			}
+		}
+	}
 }
