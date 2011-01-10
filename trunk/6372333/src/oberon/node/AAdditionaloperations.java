@@ -7,7 +7,7 @@ import oberon.analysis.*;
 @SuppressWarnings("nls")
 public final class AAdditionaloperations extends PAdditionaloperations
 {
-    private PTermoperator _termoperator_;
+    private TTermoperator _termoperator_;
     private PFactor _factor_;
 
     public AAdditionaloperations()
@@ -16,7 +16,7 @@ public final class AAdditionaloperations extends PAdditionaloperations
     }
 
     public AAdditionaloperations(
-        @SuppressWarnings("hiding") PTermoperator _termoperator_,
+        @SuppressWarnings("hiding") TTermoperator _termoperator_,
         @SuppressWarnings("hiding") PFactor _factor_)
     {
         // Constructor
@@ -39,12 +39,12 @@ public final class AAdditionaloperations extends PAdditionaloperations
         ((Analysis) sw).caseAAdditionaloperations(this);
     }
 
-    public PTermoperator getTermoperator()
+    public TTermoperator getTermoperator()
     {
         return this._termoperator_;
     }
 
-    public void setTermoperator(PTermoperator node)
+    public void setTermoperator(TTermoperator node)
     {
         if(this._termoperator_ != null)
         {
@@ -122,7 +122,7 @@ public final class AAdditionaloperations extends PAdditionaloperations
         // Replace child
         if(this._termoperator_ == oldChild)
         {
-            setTermoperator((PTermoperator) newChild);
+            setTermoperator((TTermoperator) newChild);
             return;
         }
 

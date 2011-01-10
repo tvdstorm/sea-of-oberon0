@@ -16,6 +16,22 @@ Helpers
 	horizontal_tab = 9;
 	newline = cr | lf | cr lf | next_line | line_separator | paragraph_separator;
     
+    mult = '*' sp*;
+    div = 'DIV' sp*;
+    mod = 'MOD' sp*;
+    amp = '&' sp*;
+    plus = '+' sp*;
+    min = '-' sp*; 
+        
+    exeq = '=';
+    exha = '#';
+    exst = '<';
+    exse = '<=';
+    exgt = '>';
+    exge = '>=';  
+     
+    ortxt = 'OR' sp*;
+    
     letter = lowercase | uppercase; 
   
 Tokens 
@@ -28,24 +44,13 @@ Tokens
 	r_brc = '}';
 	r_par = ')';
 	tilde = '~';
+	
 	comma = ',';
 	colon = ':';
-    
-    plus = '+' sp*;
-    mult = '*' sp*;
-    min = '-' sp*;
-    div = 'DIV' sp*;
-    mod = 'MOD' sp*;
-    amp = '&' sp*;
-    ass = '=' sp*;
+	
+	ass = '=' sp*;  
     semi = ';' nl?;
     
-    exeq = '=';
-    exha = '#';
-    exst = '<';
-    exse = '<=';
-    exgt = '>';
-    exge = '>=';
     
     moduletxt = 'MODULE' sp*;
     consttxt = 'CONST' sp*;
@@ -62,12 +67,29 @@ Tokens
     thentxt = 'THEN' sp*;
     elsiftxt = 'ELSIF' sp*;
     elsetxt = 'ELSE' sp*;
-    proceduretxt = 'PROCEDURE' sp*;    
-    ortxt = 'OR' sp*;
+    proceduretxt = 'PROCEDURE' sp*;
     sptxt = sp;
     
-	integer = number* sp*;
+    expressionoperator = 
+   		exeq |
+   		exha |
+   		exgt |
+   		exge |
+   		exst |
+   		exse;
+
+	plusorminus = 
+		plus |
+		min; 
+	plusorminusoror =
+		plus |
+		min |
+		ortxt;
+ 	
+    integer = number* sp*;
     identifier = letter (letter | number)* sp*;
+    
+	termoperator = mult | div | mod | amp;
     
     blank_newline = newline+;
     blank_whitespace = sp+;
@@ -90,10 +112,10 @@ Productions
     assignment = identifier ass expression;
     typedeclaration = identifier ass type;
     statementsequence = statement andstatement*;
-    declproceduredeclaration = proceduredeclaration semi; //TODO
+    declproceduredeclaration = proceduredeclaration semi; 
     vardeclaration = identlist colon type semi;
     
-    expression = simpleexpression simpleexpressionevaluation; //TODO
+    expression = simpleexpression simpleexpressionevaluation?; 
     type = 
     	{idtype} identifier | 
     	{arrtype} arraytype | 
@@ -110,7 +132,7 @@ Productions
     
     andidentifier = comma identifier;
     simpleexpressionevaluation = expressionoperator simpleexpression;
-    simpleexpression = plusorminus term moreterms;
+    simpleexpression = plusorminus? term moreterms;
     recordtype = recordtxt fieldlist morefields endtxt;
     arraytype = arraytxt expression oftxt type;
     whilestatement = whiletxt expression dotxt statementsequence endtxt;
@@ -119,16 +141,6 @@ Productions
     procedureheading = proceduretxt identifier formalparams?;
     procedurebody = declarations procedurebodystatements? endtxt; 
    
-   	expressionoperator = 
-   		{exprequals} exeq |
-   		{exprhash} exha |
-   		{exgreater} exgt |
-   		{exgreaterequals} exge |
-   		{exsmaller} exst |
-   		{exsmallerequals} exse;
- 	plusorminus = 
-		{plus} plus |
-		{minus} min; 
  	term = factor additionaloperations;
  	moreterms = plusorminusoror term;
 	fieldlist = 
@@ -149,20 +161,10 @@ Productions
     	{tilfactor} tilde factor;
    	actualparameters = expression moreactualparameters*;
    	formalparameters = l_par fpsection? r_par;
-   	plusorminusoror =
-		{plus} plus |
-		{minus} min |
-		{or} ortxt; 
    
     selector = 
     	{dotselector} dot identifier |
     	{arrselector} l_bkt expression r_bkt;
-   	termoperator = 
-   		{termmult} mult |
-   		{termdiv} div |
-   		{termmod} mod |
-   		{termamp} amp;
+
    	fpsection = vartxt? identlist colon type;
 	moreactualparameters = comma expression;
-
-    operator = {plus} plus | {minus} min | {multiply} mult | {div} div | {mod} mod;

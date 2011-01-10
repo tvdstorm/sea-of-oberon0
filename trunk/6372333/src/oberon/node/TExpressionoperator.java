@@ -5,14 +5,14 @@ package oberon.node;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
-public final class TAmp extends Token
+public final class TExpressionoperator extends Token
 {
-    public TAmp(String text)
+    public TExpressionoperator(String text)
     {
         setText(text);
     }
 
-    public TAmp(String text, int line, int pos)
+    public TExpressionoperator(String text, int line, int pos)
     {
         setText(text);
         setLine(line);
@@ -22,11 +22,11 @@ public final class TAmp extends Token
     @Override
     public Object clone()
     {
-      return new TAmp(getText(), getLine(), getPos());
+      return new TExpressionoperator(getText(), getLine(), getPos());
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTAmp(this);
+        ((Analysis) sw).caseTExpressionoperator(this);
     }
 }

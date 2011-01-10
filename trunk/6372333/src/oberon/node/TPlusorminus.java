@@ -5,14 +5,14 @@ package oberon.node;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
-public final class TMin extends Token
+public final class TPlusorminus extends Token
 {
-    public TMin(String text)
+    public TPlusorminus(String text)
     {
         setText(text);
     }
 
-    public TMin(String text, int line, int pos)
+    public TPlusorminus(String text, int line, int pos)
     {
         setText(text);
         setLine(line);
@@ -22,11 +22,11 @@ public final class TMin extends Token
     @Override
     public Object clone()
     {
-      return new TMin(getText(), getLine(), getPos());
+      return new TPlusorminus(getText(), getLine(), getPos());
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTMin(this);
+        ((Analysis) sw).caseTPlusorminus(this);
     }
 }

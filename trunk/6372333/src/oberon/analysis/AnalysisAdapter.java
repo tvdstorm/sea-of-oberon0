@@ -234,46 +234,6 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseAExprequalsExpressionoperator(AExprequalsExpressionoperator node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAExprhashExpressionoperator(AExprhashExpressionoperator node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAExgreaterExpressionoperator(AExgreaterExpressionoperator node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAExgreaterequalsExpressionoperator(AExgreaterequalsExpressionoperator node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAExsmallerExpressionoperator(AExsmallerExpressionoperator node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAExsmallerequalsExpressionoperator(AExsmallerequalsExpressionoperator node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAPlusPlusorminus(APlusPlusorminus node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAMinusPlusorminus(AMinusPlusorminus node)
-    {
-        defaultCase(node);
-    }
-
     public void caseATerm(ATerm node)
     {
         defaultCase(node);
@@ -359,21 +319,6 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseAPlusPlusorminusoror(APlusPlusorminusoror node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAMinusPlusorminusoror(AMinusPlusorminusoror node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAOrPlusorminusoror(AOrPlusorminusoror node)
-    {
-        defaultCase(node);
-    }
-
     public void caseADotselectorSelector(ADotselectorSelector node)
     {
         defaultCase(node);
@@ -384,57 +329,12 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseATermmultTermoperator(ATermmultTermoperator node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseATermdivTermoperator(ATermdivTermoperator node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseATermmodTermoperator(ATermmodTermoperator node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseATermampTermoperator(ATermampTermoperator node)
-    {
-        defaultCase(node);
-    }
-
     public void caseAFpsection(AFpsection node)
     {
         defaultCase(node);
     }
 
     public void caseAMoreactualparameters(AMoreactualparameters node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAPlusOperator(APlusOperator node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAMinusOperator(AMinusOperator node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAMultiplyOperator(AMultiplyOperator node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseADivOperator(ADivOperator node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAModOperator(AModOperator node)
     {
         defaultCase(node);
     }
@@ -489,72 +389,12 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseTPlus(TPlus node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseTMult(TMult node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseTMin(TMin node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseTDiv(TDiv node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseTMod(TMod node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseTAmp(TAmp node)
-    {
-        defaultCase(node);
-    }
-
     public void caseTAss(TAss node)
     {
         defaultCase(node);
     }
 
     public void caseTSemi(TSemi node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseTExeq(TExeq node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseTExha(TExha node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseTExst(TExst node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseTExse(TExse node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseTExgt(TExgt node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseTExge(TExge node)
     {
         defaultCase(node);
     }
@@ -639,12 +479,22 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseTOrtxt(TOrtxt node)
+    public void caseTSptxt(TSptxt node)
     {
         defaultCase(node);
     }
 
-    public void caseTSptxt(TSptxt node)
+    public void caseTExpressionoperator(TExpressionoperator node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTPlusorminus(TPlusorminus node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTPlusorminusoror(TPlusorminusoror node)
     {
         defaultCase(node);
     }
@@ -655,6 +505,11 @@ public class AnalysisAdapter implements Analysis
     }
 
     public void caseTIdentifier(TIdentifier node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTTermoperator(TTermoperator node)
     {
         defaultCase(node);
     }

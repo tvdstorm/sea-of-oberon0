@@ -7,7 +7,7 @@ import oberon.analysis.*;
 @SuppressWarnings("nls")
 public final class ASimpleexpressionevaluation extends PSimpleexpressionevaluation
 {
-    private PExpressionoperator _expressionoperator_;
+    private TExpressionoperator _expressionoperator_;
     private PSimpleexpression _simpleexpression_;
 
     public ASimpleexpressionevaluation()
@@ -16,7 +16,7 @@ public final class ASimpleexpressionevaluation extends PSimpleexpressionevaluati
     }
 
     public ASimpleexpressionevaluation(
-        @SuppressWarnings("hiding") PExpressionoperator _expressionoperator_,
+        @SuppressWarnings("hiding") TExpressionoperator _expressionoperator_,
         @SuppressWarnings("hiding") PSimpleexpression _simpleexpression_)
     {
         // Constructor
@@ -39,12 +39,12 @@ public final class ASimpleexpressionevaluation extends PSimpleexpressionevaluati
         ((Analysis) sw).caseASimpleexpressionevaluation(this);
     }
 
-    public PExpressionoperator getExpressionoperator()
+    public TExpressionoperator getExpressionoperator()
     {
         return this._expressionoperator_;
     }
 
-    public void setExpressionoperator(PExpressionoperator node)
+    public void setExpressionoperator(TExpressionoperator node)
     {
         if(this._expressionoperator_ != null)
         {
@@ -122,7 +122,7 @@ public final class ASimpleexpressionevaluation extends PSimpleexpressionevaluati
         // Replace child
         if(this._expressionoperator_ == oldChild)
         {
-            setExpressionoperator((PExpressionoperator) newChild);
+            setExpressionoperator((TExpressionoperator) newChild);
             return;
         }
 
