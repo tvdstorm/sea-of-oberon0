@@ -1,5 +1,9 @@
-package runtime;
+package runtime.builtins;
 
+import runtime.BuiltinFunction;
+import runtime.IntegerValue;
+import runtime.Value;
+import runtime.ValueRef;
 import interpreter.Context;
 
 public class Read extends BuiltinFunction {
