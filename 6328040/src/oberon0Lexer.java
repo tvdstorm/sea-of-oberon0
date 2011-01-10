@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g 2011-01-10 11:15:16
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g 2011-01-10 22:45:11
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -7,49 +7,54 @@ import java.util.ArrayList;
 
 public class oberon0Lexer extends Lexer {
     public static final int EOF=-1;
-    public static final int MODULE=4;
-    public static final int IDENT=5;
-    public static final int SEMICOLON=6;
-    public static final int BEGIN=7;
-    public static final int END=8;
-    public static final int DOT=9;
-    public static final int SQROPEN=10;
-    public static final int SQRCLOSE=11;
-    public static final int INTEGER=12;
-    public static final int RNDOPEN=13;
-    public static final int RNDCLOSE=14;
-    public static final int TILDE=15;
-    public static final int STAR=16;
-    public static final int DIV=17;
-    public static final int MOD=18;
-    public static final int AMPERSAND=19;
-    public static final int PLUS=20;
-    public static final int MINUS=21;
-    public static final int OR=22;
-    public static final int EQUALS=23;
-    public static final int HASH=24;
-    public static final int SMALLERTHEN=25;
-    public static final int SMALLEREQUAL=26;
-    public static final int GREATERTHEN=27;
-    public static final int GREATEREQUAL=28;
-    public static final int ASSIGN=29;
-    public static final int COMMA=30;
-    public static final int IF=31;
-    public static final int THEN=32;
-    public static final int ELSIF=33;
-    public static final int ELSE=34;
-    public static final int WHILE=35;
-    public static final int DO=36;
-    public static final int ARRAY=37;
-    public static final int OF=38;
-    public static final int COLON=39;
-    public static final int RECORD=40;
-    public static final int VAR=41;
-    public static final int PROCEDURE=42;
-    public static final int CONST=43;
-    public static final int TYPE=44;
-    public static final int WS=45;
-    public static final int OPTWS=46;
+    public static final int STAR=4;
+    public static final int DIV=5;
+    public static final int MOD=6;
+    public static final int AMPERSAND=7;
+    public static final int PLUS=8;
+    public static final int MINUS=9;
+    public static final int OR=10;
+    public static final int EQUALS=11;
+    public static final int HASH=12;
+    public static final int SMALLERTHEN=13;
+    public static final int SMALLEREQUAL=14;
+    public static final int GREATERTHEN=15;
+    public static final int GREATEREQUAL=16;
+    public static final int DOT=17;
+    public static final int COMMA=18;
+    public static final int COLON=19;
+    public static final int RNDOPEN=20;
+    public static final int RNDCLOSE=21;
+    public static final int SQROPEN=22;
+    public static final int SQRCLOSE=23;
+    public static final int OF=24;
+    public static final int THEN=25;
+    public static final int DO=26;
+    public static final int TILDE=27;
+    public static final int ASSIGN=28;
+    public static final int SEMICOLON=29;
+    public static final int END=30;
+    public static final int ELSE=31;
+    public static final int ELSIF=32;
+    public static final int IF=33;
+    public static final int WHILE=34;
+    public static final int ARRAY=35;
+    public static final int RECORD=36;
+    public static final int CONST=37;
+    public static final int NWTYPE=38;
+    public static final int VAR=39;
+    public static final int PROCEDURE=40;
+    public static final int BEGIN=41;
+    public static final int MODULE=42;
+    public static final int PARAMETERS=43;
+    public static final int BODY=44;
+    public static final int CONDITION=45;
+    public static final int TYPE=46;
+    public static final int NAME=47;
+    public static final int IDENT=48;
+    public static final int INTEGER=49;
+    public static final int WS=50;
+    public static final int OPTWS=51;
 
     // delegates
     // delegators
@@ -69,8 +74,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = STAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:80:6: ( '*' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:80:9: '*'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:3:6: ( '*' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:3:8: '*'
             {
             match('*'); 
 
@@ -89,8 +94,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = DIV;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:81:5: ( 'DIV' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:81:7: 'DIV'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:4:5: ( 'DIV' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:4:7: 'DIV'
             {
             match("DIV"); 
 
@@ -110,8 +115,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = MOD;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:82:5: ( 'MOD' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:82:7: 'MOD'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:5:5: ( 'MOD' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:5:7: 'MOD'
             {
             match("MOD"); 
 
@@ -131,8 +136,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = AMPERSAND;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:84:2: ( '&' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:84:4: '&'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:6:11: ( '&' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:6:13: '&'
             {
             match('&'); 
 
@@ -151,8 +156,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = PLUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:85:6: ( '+' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:85:8: '+'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:7:6: ( '+' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:7:8: '+'
             {
             match('+'); 
 
@@ -171,8 +176,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = MINUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:86:7: ( '-' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:86:9: '-'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:8:7: ( '-' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:8:9: '-'
             {
             match('-'); 
 
@@ -191,8 +196,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = OR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:87:4: ( 'OR' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:87:6: 'OR'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:9:4: ( 'OR' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:9:6: 'OR'
             {
             match("OR"); 
 
@@ -212,8 +217,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = EQUALS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:88:8: ( '=' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:88:10: '='
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:10:8: ( '=' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:10:10: '='
             {
             match('='); 
 
@@ -232,8 +237,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = HASH;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:89:6: ( '#' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:89:8: '#'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:11:6: ( '#' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:11:8: '#'
             {
             match('#'); 
 
@@ -252,8 +257,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = SMALLERTHEN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:91:2: ( '<' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:91:4: '<'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:12:13: ( '<' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:12:15: '<'
             {
             match('<'); 
 
@@ -272,8 +277,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = SMALLEREQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:93:2: ( '<=' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:93:4: '<='
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:13:14: ( '<=' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:13:16: '<='
             {
             match("<="); 
 
@@ -293,8 +298,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = GREATERTHEN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:95:2: ( '>' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:95:4: '>'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:14:13: ( '>' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:14:15: '>'
             {
             match('>'); 
 
@@ -313,8 +318,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = GREATEREQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:97:2: ( '>=' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:97:4: '>='
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:15:14: ( '>=' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:15:16: '>='
             {
             match(">="); 
 
@@ -334,8 +339,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = DOT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:98:5: ( '.' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:98:7: '.'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:16:5: ( '.' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:16:7: '.'
             {
             match('.'); 
 
@@ -354,8 +359,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = COMMA;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:99:7: ( ',' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:99:9: ','
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:17:7: ( ',' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:17:9: ','
             {
             match(','); 
 
@@ -374,8 +379,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = COLON;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:100:7: ( ':' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:100:9: ':'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:18:7: ( ':' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:18:9: ':'
             {
             match(':'); 
 
@@ -394,8 +399,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = RNDOPEN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:101:9: ( '(' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:101:11: '('
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:19:9: ( '(' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:19:11: '('
             {
             match('('); 
 
@@ -414,8 +419,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = RNDCLOSE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:102:9: ( ')' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:102:11: ')'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:20:10: ( ')' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:20:12: ')'
             {
             match(')'); 
 
@@ -434,8 +439,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = SQROPEN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:103:9: ( '[' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:103:11: '['
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:21:9: ( '[' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:21:11: '['
             {
             match('['); 
 
@@ -454,8 +459,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = SQRCLOSE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:104:9: ( ']' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:104:11: ']'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:22:10: ( ']' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:22:12: ']'
             {
             match(']'); 
 
@@ -474,8 +479,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = OF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:105:4: ( 'OF' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:105:6: 'OF'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:23:4: ( 'OF' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:23:6: 'OF'
             {
             match("OF"); 
 
@@ -495,8 +500,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = THEN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:106:6: ( 'THEN' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:106:8: 'THEN'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:24:6: ( 'THEN' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:24:8: 'THEN'
             {
             match("THEN"); 
 
@@ -516,8 +521,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = DO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:107:4: ( 'DO' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:107:6: 'DO'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:25:4: ( 'DO' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:25:6: 'DO'
             {
             match("DO"); 
 
@@ -537,8 +542,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = TILDE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:108:7: ( '~' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:108:9: '~'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:26:7: ( '~' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:26:9: '~'
             {
             match('~'); 
 
@@ -557,8 +562,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = ASSIGN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:109:8: ( ':=' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:109:10: ':='
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:27:8: ( ':=' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:27:10: ':='
             {
             match(":="); 
 
@@ -578,8 +583,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = SEMICOLON;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:111:2: ( ';' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:111:4: ';'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:28:11: ( ';' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:28:13: ';'
             {
             match(';'); 
 
@@ -598,8 +603,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = END;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:112:5: ( 'END' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:112:7: 'END'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:29:5: ( 'END' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:29:7: 'END'
             {
             match("END"); 
 
@@ -619,8 +624,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = ELSE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:113:6: ( 'ELSE' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:113:8: 'ELSE'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:30:6: ( 'ELSE' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:30:8: 'ELSE'
             {
             match("ELSE"); 
 
@@ -640,8 +645,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = ELSIF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:114:7: ( 'ELSIF' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:114:9: 'ELSIF'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:31:7: ( 'ELSIF' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:31:9: 'ELSIF'
             {
             match("ELSIF"); 
 
@@ -661,8 +666,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = IF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:115:4: ( 'IF' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:115:6: 'IF'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:32:4: ( 'IF' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:32:6: 'IF'
             {
             match("IF"); 
 
@@ -682,8 +687,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = WHILE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:116:7: ( 'WHILE' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:116:9: 'WHILE'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:33:7: ( 'WHILE' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:33:9: 'WHILE'
             {
             match("WHILE"); 
 
@@ -703,8 +708,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = ARRAY;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:117:7: ( 'ARRAY' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:117:9: 'ARRAY'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:34:7: ( 'ARRAY' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:34:9: 'ARRAY'
             {
             match("ARRAY"); 
 
@@ -724,8 +729,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = RECORD;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:118:8: ( 'RECORD' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:118:10: 'RECORD'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:35:8: ( 'RECORD' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:35:10: 'RECORD'
             {
             match("RECORD"); 
 
@@ -745,8 +750,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = CONST;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:119:7: ( 'CONST' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:119:9: 'CONST'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:36:7: ( 'CONST' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:36:9: 'CONST'
             {
             match("CONST"); 
 
@@ -761,13 +766,13 @@ public class oberon0Lexer extends Lexer {
     }
     // $ANTLR end "CONST"
 
-    // $ANTLR start "TYPE"
-    public final void mTYPE() throws RecognitionException {
+    // $ANTLR start "NWTYPE"
+    public final void mNWTYPE() throws RecognitionException {
         try {
-            int _type = TYPE;
+            int _type = NWTYPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:120:6: ( 'TYPE' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:120:8: 'TYPE'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:37:8: ( 'TYPE' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:37:10: 'TYPE'
             {
             match("TYPE"); 
 
@@ -780,15 +785,15 @@ public class oberon0Lexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "TYPE"
+    // $ANTLR end "NWTYPE"
 
     // $ANTLR start "VAR"
     public final void mVAR() throws RecognitionException {
         try {
             int _type = VAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:121:5: ( 'VAR' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:121:7: 'VAR'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:38:5: ( 'VAR' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:38:7: 'VAR'
             {
             match("VAR"); 
 
@@ -808,8 +813,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = PROCEDURE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:123:2: ( 'PROCEDURE' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:123:4: 'PROCEDURE'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:39:11: ( 'PROCEDURE' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:39:13: 'PROCEDURE'
             {
             match("PROCEDURE"); 
 
@@ -829,8 +834,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = BEGIN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:124:7: ( 'BEGIN' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:124:9: 'BEGIN'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:40:7: ( 'BEGIN' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:40:9: 'BEGIN'
             {
             match("BEGIN"); 
 
@@ -850,8 +855,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = MODULE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:125:8: ( 'MODULE' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:125:10: 'MODULE'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:41:8: ( 'MODULE' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:41:10: 'MODULE'
             {
             match("MODULE"); 
 
@@ -871,8 +876,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = IDENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:127:9: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:127:11: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:182:9: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:182:11: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -883,7 +888,7 @@ public class oberon0Lexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:128:3: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:183:3: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             loop1:
             do {
                 int alt1=2;
@@ -932,10 +937,10 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = INTEGER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:129:9: ( ( '0' .. '9' )+ )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:129:11: ( '0' .. '9' )+
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:184:9: ( ( '0' .. '9' )+ )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:184:11: ( '0' .. '9' )+
             {
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:129:11: ( '0' .. '9' )+
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:184:11: ( '0' .. '9' )+
             int cnt2=0;
             loop2:
             do {
@@ -949,7 +954,7 @@ public class oberon0Lexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:129:11: '0' .. '9'
+            	    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:184:11: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -981,10 +986,10 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:131:4: ( ( ' ' | '\\t' | '\\n' | '\\r' )+ )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:131:7: ( ' ' | '\\t' | '\\n' | '\\r' )+
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:186:4: ( ( ' ' | '\\t' | '\\n' | '\\r' )+ )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:186:7: ( ' ' | '\\t' | '\\n' | '\\r' )+
             {
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:131:7: ( ' ' | '\\t' | '\\n' | '\\r' )+
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:186:7: ( ' ' | '\\t' | '\\n' | '\\r' )+
             int cnt3=0;
             loop3:
             do {
@@ -1039,10 +1044,10 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = OPTWS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:132:7: ( ( ' ' | '\\t' | '\\n' | '\\r' )* )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:132:9: ( ' ' | '\\t' | '\\n' | '\\r' )*
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:187:7: ( ( ' ' | '\\t' | '\\n' | '\\r' )* )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:187:9: ( ' ' | '\\t' | '\\n' | '\\r' )*
             {
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:132:9: ( ' ' | '\\t' | '\\n' | '\\r' )*
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:187:9: ( ' ' | '\\t' | '\\n' | '\\r' )*
             loop4:
             do {
                 int alt4=2;
@@ -1088,7 +1093,7 @@ public class oberon0Lexer extends Lexer {
     // $ANTLR end "OPTWS"
 
     public void mTokens() throws RecognitionException {
-        // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:8: ( STAR | DIV | MOD | AMPERSAND | PLUS | MINUS | OR | EQUALS | HASH | SMALLERTHEN | SMALLEREQUAL | GREATERTHEN | GREATEREQUAL | DOT | COMMA | COLON | RNDOPEN | RNDCLOSE | SQROPEN | SQRCLOSE | OF | THEN | DO | TILDE | ASSIGN | SEMICOLON | END | ELSE | ELSIF | IF | WHILE | ARRAY | RECORD | CONST | TYPE | VAR | PROCEDURE | BEGIN | MODULE | IDENT | INTEGER | WS | OPTWS )
+        // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:8: ( STAR | DIV | MOD | AMPERSAND | PLUS | MINUS | OR | EQUALS | HASH | SMALLERTHEN | SMALLEREQUAL | GREATERTHEN | GREATEREQUAL | DOT | COMMA | COLON | RNDOPEN | RNDCLOSE | SQROPEN | SQRCLOSE | OF | THEN | DO | TILDE | ASSIGN | SEMICOLON | END | ELSE | ELSIF | IF | WHILE | ARRAY | RECORD | CONST | NWTYPE | VAR | PROCEDURE | BEGIN | MODULE | IDENT | INTEGER | WS | OPTWS )
         int alt5=43;
         alt5 = dfa5.predict(input);
         switch (alt5) {
@@ -1331,63 +1336,63 @@ public class oberon0Lexer extends Lexer {
                 }
                 break;
             case 35 :
-                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:236: TYPE
+                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:236: NWTYPE
                 {
-                mTYPE(); 
+                mNWTYPE(); 
 
                 }
                 break;
             case 36 :
-                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:241: VAR
+                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:243: VAR
                 {
                 mVAR(); 
 
                 }
                 break;
             case 37 :
-                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:245: PROCEDURE
+                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:247: PROCEDURE
                 {
                 mPROCEDURE(); 
 
                 }
                 break;
             case 38 :
-                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:255: BEGIN
+                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:257: BEGIN
                 {
                 mBEGIN(); 
 
                 }
                 break;
             case 39 :
-                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:261: MODULE
+                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:263: MODULE
                 {
                 mMODULE(); 
 
                 }
                 break;
             case 40 :
-                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:268: IDENT
+                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:270: IDENT
                 {
                 mIDENT(); 
 
                 }
                 break;
             case 41 :
-                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:274: INTEGER
+                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:276: INTEGER
                 {
                 mINTEGER(); 
 
                 }
                 break;
             case 42 :
-                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:282: WS
+                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:284: WS
                 {
                 mWS(); 
 
                 }
                 break;
             case 43 :
-                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:285: OPTWS
+                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:287: OPTWS
                 {
                 mOPTWS(); 
 
@@ -1592,7 +1597,7 @@ public class oberon0Lexer extends Lexer {
             this.transition = DFA5_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( STAR | DIV | MOD | AMPERSAND | PLUS | MINUS | OR | EQUALS | HASH | SMALLERTHEN | SMALLEREQUAL | GREATERTHEN | GREATEREQUAL | DOT | COMMA | COLON | RNDOPEN | RNDCLOSE | SQROPEN | SQRCLOSE | OF | THEN | DO | TILDE | ASSIGN | SEMICOLON | END | ELSE | ELSIF | IF | WHILE | ARRAY | RECORD | CONST | TYPE | VAR | PROCEDURE | BEGIN | MODULE | IDENT | INTEGER | WS | OPTWS );";
+            return "1:1: Tokens : ( STAR | DIV | MOD | AMPERSAND | PLUS | MINUS | OR | EQUALS | HASH | SMALLERTHEN | SMALLEREQUAL | GREATERTHEN | GREATEREQUAL | DOT | COMMA | COLON | RNDOPEN | RNDCLOSE | SQROPEN | SQRCLOSE | OF | THEN | DO | TILDE | ASSIGN | SEMICOLON | END | ELSE | ELSIF | IF | WHILE | ARRAY | RECORD | CONST | NWTYPE | VAR | PROCEDURE | BEGIN | MODULE | IDENT | INTEGER | WS | OPTWS );";
         }
     }
  
