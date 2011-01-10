@@ -39,6 +39,7 @@ tokens
 	GREATERTHEN='>';
 	SMALLEREQUALS='<=';
 	GREATEREQUALS='>=';
+	REFVAR;
 	PROCEDURECALL;
 	PARAMETERS;
 	EXPRESSION;
@@ -108,11 +109,13 @@ recordType
 	:	 RECORD ws fieldList (';' ws fieldList)* END;
 type 	
 	:	 ident | arrayType | recordType;
-fPSection 
-	:	 (VAR ws)? identList ':' ws type;
-formalParameters 
-	:	 '(' ws (fPSection ws (';' ws fPSection)*)? ')';
-	
+
+fPSection:		VAR ws identList ':' ws type
+				-> ^(REFVAR type identList) |
+			identList ':' ws type
+				-> ^(VAR type identList);
+formalParameters:	'(' ws (fPSection ws (';' ws fPSection)*)? ')'
+				-> ^(PARAMETERS (fPSection (fPSection)*)?);
 procedureBody:		BEGIN ws statementSequence
 				-> ^(BODY statementSequence);
 procedureDeclaration:	PROCEDURE ws ident (ws formalParameters)? ws ';' ws declarations (procedureBody)? END ws ident 
