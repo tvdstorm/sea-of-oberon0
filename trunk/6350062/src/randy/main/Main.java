@@ -13,7 +13,8 @@ public class Main
 	public static void main(String args[]) throws Exception
 	{
 		Oberon0Program p = new Oberon0Program();
-		p.loadProgram("test/simpletest.oberon0");
+		//p.loadProgram("test/simpletest.oberon0");
+		p.loadProgram("test/quicksort.oberon0");
 		
 		//processAndRender("test/sample.oberon0", "test/sample.dot", "test/sample.png");
 		//processAndRender("test/quicksort.oberon0", "test/quicksort.dot", "test/quicksort.png");

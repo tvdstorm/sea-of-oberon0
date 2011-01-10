@@ -3,6 +3,7 @@ package randy.interpreter;
 import java.io.IOException;
 import org.antlr.runtime.*;
 import org.antlr.runtime.tree.Tree;
+import com.sun.org.apache.xpath.internal.VariableStack;
 import randy.grammar.*;
 import randy.grammar.Oberon0Parser.*;
 import randy.ast.OASTNode;
@@ -49,6 +50,9 @@ public class Oberon0Program
 		
 		//System.out.println("Output: " + ((OExpression)astTree).run());
 		astTree.print("");
+		System.out.println("++++++++++++++++++++++++");
+		Oberon0VariableStack vars = new Oberon0VariableStack(null);
+		astTree.run(vars);
 		
 		return true;
 	}
