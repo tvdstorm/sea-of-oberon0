@@ -12,6 +12,9 @@ public class ValueRef extends Value {
 	}
 	
 	public void setValue(Value value) {
+		if (value instanceof ValueRef) {
+			value = ((ValueRef)value).getValue();
+		}
 		_value = value;
 	}
 
