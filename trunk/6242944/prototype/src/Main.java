@@ -1,6 +1,8 @@
 import interpreter.Context;
 import interpreter.Interpreter;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.StringReader;
 
@@ -11,7 +13,7 @@ import xtc.parser.Result;
 public class Main {
 	
 	public static void main(String[] args) {
-		StringReader reader = new StringReader(
+		/*StringReader reader = new StringReader(
 					"MODULE test; " +
 					"VAR a: INTEGER; " +
 					"PROCEDURE f(VAR i : INTEGER); " + 
@@ -19,8 +21,17 @@ public class Main {
 					"END f;" +
 					"BEGIN f(a); f(a); Write(a) " +
 					"END test.");
-		Oberon o = new Oberon(reader, "<input>");
+		Oberon o = new Oberon(reader, "<input>");*/
 		
+		FileReader reader = null;
+		try {
+			reader = new FileReader("src/test.oberon0");
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			return;
+		}
+		Oberon o = new Oberon(reader, "<input>");
 		ast.Module module = null;
 		
 		try {

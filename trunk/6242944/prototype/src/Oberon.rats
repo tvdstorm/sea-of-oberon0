@@ -9,7 +9,7 @@ header {
 transient String Digit = [0-9];
 transient String Letter = [A-Za-z];
 
-transient void Space = ' ' / '\t' / '\f' ;
+transient void Space = ' ' / '\t' / '\f' / '\n' / '\r';
 transient void Spacing = Space*;
 transient void EndOfFile = !_ ;
 
@@ -71,7 +71,7 @@ ast.Expression SimpleExpression =
 	;
 
 ast.Expression Expression = 
-	  lhs:SimpleExpression op:("=" / "<=" / "<") rhs:SimpleExpression
+	  lhs:SimpleExpression void:Spacing op:("=" / "<=" / "<") void:Spacing rhs:SimpleExpression
 		{ if (op == "<") yyValue = new ast.LtExpression(lhs, rhs);
 		  else return null; //FIXME
 		}
@@ -156,7 +156,7 @@ List<ast.Parameter> FormalParameters =
 	;
 
 ast.Procedure ProcedureDeclaration = 
-	"PROCEDURE" Spacing name:Ident params:FormalParameters? ";" 
+	"PROCEDURE" Spacing name:Ident params:FormalParameters ";" 
 	Spacing
 	decl:Declarations
 	Spacing
@@ -174,8 +174,9 @@ public Pair<ast.Expression> ActualParameters =
 	;
 
 public ast.ProcedureCall ProcedureCall = 
-	name:Ident params:ActualParameters
-	{ yyValue = new ast.ProcedureCall(name, params.list()); }
+	name:Ident params:ActualParameters?
+	{ 	if (params == null) params = Pair.EMPTY;
+		yyValue = new ast.ProcedureCall(name, params.list()); }
 	;
 
 public ast.Node ElseTail = 
