@@ -121,7 +121,7 @@ ast.VarDeclaration VarDeclaration =
 ast.Declarations Declarations = 
 	consts:(void:"CONST" void:Spacing ConstDeclaration*)?
 	vars:(void:"VAR" void:Spacing VarDeclaration*)?
-	procs:(ProcedureDeclaration void:";")*
+	procs:(ProcedureDeclaration void:";" void:Spacing)*
 	{ 	List<ast.Declaration> decls = new ArrayList<ast.Declaration>();
 		if (consts != null) consts.addTo(decls);
 		if (vars != null) vars.addTo(decls);
@@ -162,8 +162,7 @@ ast.Procedure ProcedureDeclaration =
 	Spacing
 	stat:(void:"BEGIN" Spacing StatementSequence)? 
 	Spacing
-	"END" Spacing 
-	Ident Spacing
+	"END" Spacing Ident Spacing
 	{	yyValue = new ast.Procedure(name, params, decl, stat);  }
 	;
 
