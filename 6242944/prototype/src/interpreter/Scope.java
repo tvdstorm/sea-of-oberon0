@@ -43,7 +43,15 @@ public class Scope {
 	
 	//FIXME: type: String -> object?
 	public void defineVar(String name, Value value) {
-		_variables.put(name, new ValueRef(value));
+		_variables.put(name, ensureRef(value));
+	}
+	
+	//XXX
+	private ValueRef ensureRef(Value value) {
+		if (value instanceof ValueRef) {
+			return (ValueRef)value;
+		}
+		return new ValueRef(value);
 	}
 
 	public Value lookupValue(String name) {

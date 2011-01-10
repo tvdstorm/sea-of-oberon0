@@ -11,9 +11,13 @@ import xtc.parser.Result;
 public class Main {
 	
 	public static void main(String[] args) {
-		StringReader reader = new StringReader("MODULE test; " +
-					"PROCEDURE f(); CONST i = 10; BEGIN Write(i); Write(i+1) END f;" +
-					"BEGIN f(10); f(10); Write(11) " +
+		StringReader reader = new StringReader(
+					"MODULE test; " +
+					"VAR a: INTEGER; " +
+					"PROCEDURE f(VAR i : INTEGER); " + 
+						"BEGIN i := i + 1 " +
+					"END f;" +
+					"BEGIN f(a); f(a); Write(a) " +
 					"END test.");
 		Oberon o = new Oberon(reader, "<input>");
 		

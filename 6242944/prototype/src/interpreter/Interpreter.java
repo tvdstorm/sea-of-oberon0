@@ -1,5 +1,7 @@
 package interpreter;
 
+import java.util.List;
+
 import runtime.ArrayValue;
 import runtime.BooleanValue;
 import runtime.BuiltinFunction;
@@ -21,6 +23,7 @@ import ast.IfStatement;
 import ast.IntegerLiteral;
 import ast.LtExpression;
 import ast.Module;
+import ast.Parameter;
 import ast.Procedure;
 import ast.ProcedureCall;
 import ast.Selector;
@@ -251,6 +254,22 @@ public class Interpreter extends Visitor<Value> {
 	public void interpret(ScriptedProcedure proc, Value[] arguments) {
 		_context.pushScope();
 		Procedure node = proc.getNode();
+		
+		List<Parameter> params = node.getParameters();
+		
+		for(int i=0; i<arguments.length; i++) {
+			Parameter param = params.get(i);
+			String name = param.getName();
+			
+			Value val = arguments[i];
+			if (!param.isByRef()) {
+				if (val instanceof ValueRef) { //XXX
+					val = ((ValueRef)val).getValue();
+				}
+			}
+			_context.getScope().defineVar(name, val);
+		}
+		
 		node.getDeclarations().accept(this);
 		node.getStatements().accept(this);
 		_context.popScope();

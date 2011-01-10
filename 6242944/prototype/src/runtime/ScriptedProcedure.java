@@ -18,5 +18,6 @@ public class ScriptedProcedure extends Callable {
 	public ast.Procedure getNode() {
 		return _node;
 	}
+
 }
 
