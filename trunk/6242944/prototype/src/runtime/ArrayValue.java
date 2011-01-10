@@ -51,4 +51,10 @@ public class ArrayValue extends Value {
 		return this;
 	}
 
+	@Override
+	public boolean valueEquals(Value other) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

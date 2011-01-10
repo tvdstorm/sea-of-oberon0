@@ -51,4 +51,12 @@ public class IntegerValue extends Value {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public boolean valueEquals(Value other) {
+		if (!other.isInteger())
+			return false;
+		int val = other.toInteger().getValue();
+		return _value == val;
+	}
 }

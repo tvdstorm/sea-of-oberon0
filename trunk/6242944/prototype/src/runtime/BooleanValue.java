@@ -38,4 +38,12 @@ public class BooleanValue extends Value {
 		return null;
 	}
 
+	@Override
+	public boolean valueEquals(Value other) {
+		if (!other.isBoolean())
+			return false;
+		boolean val = other.toBoolean().getValue();
+		return _value == val;
+	}
+
 }

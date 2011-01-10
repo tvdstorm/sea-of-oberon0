@@ -24,4 +24,10 @@ public class VoidValue extends Value {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public boolean valueEquals(Value other) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

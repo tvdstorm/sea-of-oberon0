@@ -18,5 +18,5 @@ public abstract class Value {
 	public abstract ArrayValue toArray();
 
 	public abstract String toNativeString();
-
+	public abstract boolean valueEquals(Value other);
 }
