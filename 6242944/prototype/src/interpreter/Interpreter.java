@@ -12,17 +12,26 @@ import runtime.Value;
 import runtime.ValueRef;
 import runtime.VoidValue;
 import ast.AddExpression;
+import ast.AndExpression;
 import ast.ArrayType;
 import ast.Assignment;
 import ast.BinaryExpression;
 import ast.ConstDeclaration;
 import ast.Declarations;
+import ast.DivExpression;
+import ast.EqExpression;
+import ast.GeExpression;
+import ast.GtExpression;
 import ast.Identifier;
 import ast.IdentifierType;
 import ast.IfStatement;
 import ast.IntegerLiteral;
+import ast.LeExpression;
 import ast.LtExpression;
+import ast.ModExpression;
 import ast.Module;
+import ast.MulExpression;
+import ast.NeExpression;
 import ast.Parameter;
 import ast.Procedure;
 import ast.ProcedureCall;
@@ -75,11 +84,39 @@ public class Interpreter extends Visitor<Value> {
 				return new IntegerValue(l + r);
 			else if (e instanceof ast.SubExpression)
 				return new IntegerValue(l - r);
+			if (e instanceof ast.MulExpression)
+				return new IntegerValue(l * r);
+			if (e instanceof ast.DivExpression)
+				return new IntegerValue(l / r);
+			if (e instanceof ast.ModExpression)
+				return new IntegerValue(l % r);
 			else if (e instanceof ast.LtExpression)
 				return new BooleanValue(l < r);
-			else
+			else if (e instanceof ast.LeExpression)
+				return new BooleanValue(l <= r);
+			else if (e instanceof ast.GtExpression)
+				return new BooleanValue(l > r);
+			else if (e instanceof ast.GeExpression)
+				return new BooleanValue(l >= r);
+			else if (e instanceof ast.EqExpression)
+				return new BooleanValue(l == r);
+			else if (e instanceof ast.NeExpression)
+				return new BooleanValue(l != r);
+			else {
+				assert false;
 				return null; //FIXME
-		} else {
+			}
+		} else if (lhs.isBoolean() && rhs.isBoolean()) {
+			boolean l = lhs.toBoolean().getValue();
+			boolean r = rhs.toBoolean().getValue();
+
+			if (e instanceof ast.AndExpression)
+				return new BooleanValue(l && r);
+			assert false;
+			return null;
+		}
+		
+		else {
 			//FIXME
 			return null;
 		}
@@ -274,5 +311,50 @@ public class Interpreter extends Visitor<Value> {
 		node.getDeclarations().accept(this);
 		node.getStatements().accept(this);
 		_context.popScope();
+	}
+
+	@Override
+	protected Value visit(GtExpression e) {
+		return doBinary(e);
+	}
+
+	@Override
+	protected Value visit(MulExpression e) {
+		return doBinary(e);
+	}
+
+	@Override
+	protected Value visit(DivExpression e) {
+		return doBinary(e);
+	}
+
+	@Override
+	protected Value visit(ModExpression e) {
+		return doBinary(e);
+	}
+
+	@Override
+	protected Value visit(AndExpression e) {
+		return doBinary(e);
+	}
+
+	@Override
+	protected Value visit(LeExpression e) {
+		return doBinary(e);
+	}
+
+	@Override
+	protected Value visit(GeExpression e) {
+		return doBinary(e);
+	}
+
+	@Override
+	protected Value visit(EqExpression e) {
+		return doBinary(e);
+	}
+
+	@Override
+	protected Value visit(NeExpression e) {
+		return doBinary(e);
 	}
 }
