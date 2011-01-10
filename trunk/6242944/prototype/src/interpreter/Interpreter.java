@@ -287,6 +287,7 @@ public class Interpreter extends Visitor<Value> {
 		_context.registerBuiltin("Read", new runtime.builtins.Read());
 		_context.registerBuiltin("Write", new runtime.builtins.Write());
 		_context.registerBuiltin("WriteLn", new runtime.builtins.WriteLn());
+		_context.registerBuiltin("AssertEq", new runtime.builtins.AssertEq());
 	}
 
 	public void interpret(ScriptedProcedure proc, Value[] arguments) {
