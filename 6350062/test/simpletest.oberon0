@@ -1,0 +1,7 @@
+MODULE Simpletest;
+
+BEGIN
+
+Write(2 + 3 DIV 4 * 5 - (6 - 7 * 8))
+
+END Simpletest.
