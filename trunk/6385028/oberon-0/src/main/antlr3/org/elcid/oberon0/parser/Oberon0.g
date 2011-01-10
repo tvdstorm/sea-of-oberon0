@@ -2,6 +2,9 @@ grammar Oberon0;
 
 options {
 	language = Java;
+	backtrack = true;
+	output=AST;
+	ASTLabelType=CommonTree;
 }
 
 @header {package org.elcid.oberon0.parser;}
@@ -32,22 +35,22 @@ integer			:	INT ;
 
 identifier		:	IDENT ;
 
-selector		:	('.' identifier | '[' expression ']')*;
+selector		:	('.'! identifier | '['! expression ']'!)*;
 
-factor			:	identifier selector | integer | '(' expression ')' | '~' factor;
+factor			:	identifier selector | integer | '('! expression ')'! | '~' factor;
 
-term			:	factor (('*' |  'DIV' | 'MOD' | '&') factor)*;
+term			:	factor (('*'^ |  'DIV'^ | 'MOD'^ | '&'^) factor)*;
 
 simpleExpression
-				:	('+'|'-')? term (('+'|'-' | 'OR') term)*;
+				:	('+'|'-')? term (('+'^|'-'^|'OR') term)*;
 
 expression
-				:	simpleExpression (('=' | '#' |  '<' | '<=' | '>' | '>=') simpleExpression)?;
+				:	simpleExpression (('='^ | '#'^ |  '<'^ | '<='^ | '>'^ | '>='^) simpleExpression)?;
 
-assignment		:	identifier selector ':=' expression;
+assignment		:	identifier selector ':='^ expression;
 
 actualParameters
-				:	'(' (expression (',' expression)*)? ')';
+				:	'('! (expression (','! expression)*)? ')'!;
 
 procedureCall	:	identifier selector (actualParameters)?;
 
@@ -60,22 +63,22 @@ whileStatement	:	'WHILE' expression 'DO' statementSequence 'END';
 statement		:	(assignment | procedureCall | ifStatement | whileStatement)?;
 
 statementSequence
-				:	statement (';' statement)*;
+				:	statement (';'! statement)*;
 
-identList		:	identifier (',' identifier)*;
+identList		:	identifier (','! identifier)*;
 
-arrayType		:	'ARRAY' expression 'OF' type;
+arrayType		:	'ARRAY' expression 'OF' type -> ^('ARRAY' expression type) ;
 
-fieldList		:	(identList ':' type)?;
+fieldList		:	(identList ':'! type)?;
 
-recordType		:	'RECORD' fieldList (';' fieldList)* 'END';
+recordType		:	'RECORD' fieldList (';'! fieldList)* 'END';
 
 type			:	identifier | arrayType | recordType;
 
-fPSection		:	('VAR')? identList ':' type;
+fPSection		:	('VAR')? identList ':'! type;
 
 formalParameters
-				:	'(' (fPSection (';' fPSection)*)? ')';
+				:	'('! (fPSection (';'! fPSection)*)? ')'!;
 
 procedureHeading
 				:	'PROCEDURE' identifier (formalParameters)?;
@@ -85,10 +88,12 @@ procedureBody	:	declarations ('BEGIN' statementSequence)? 'END' identifier;
 procedureDeclaration
 				:	procedureHeading ';' procedureBody;
 
-declarations	:	('CONST' (identifier '=' expression ';')*)?
-					('TYPE' (identifier '=' type ';')*)?
-					('VAR' (identList ':' type ';')*)?
-					(procedureDeclaration ';')*;
+declarations	:	('CONST' (identifier '=' expression ';'!)*)?
+					('TYPE' (identifier '=' type ';'!)*)?
+					('VAR' (identList ':' type ';'!)*)?
+					(procedureDeclaration ';'!)*;
 
-module			:	'MODULE' identifier ';' declarations
-					('BEGIN' statementSequence) 'END' identifier '.';
+module			:	'MODULE' identifier ';'! declarations
+					('BEGIN' statementSequence) 'END' identifier '.'!;
+
+prog			:	( module {System.out.println($module.tree.toStringTree());} )+ ;
