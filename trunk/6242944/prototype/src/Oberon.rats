@@ -50,7 +50,7 @@ ast.Expression Factor =
 
 //FIXME: try to clean this up somehow
 constant Action<ast.Expression> FactorTail =
-	void:Spacing op:("*" / "DIV" / "MOD" / "&") void:Spacing rhs:Term 
+	void:Spacing op:("*" / "DIV" / "MOD" / "&") void:Spacing rhs:Factor
 		{
           yyValue = new Action<ast.Expression>() {
             public ast.Expression run(ast.Expression lhs) {

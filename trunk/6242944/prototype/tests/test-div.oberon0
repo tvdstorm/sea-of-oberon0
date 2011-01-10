@@ -1,0 +1,13 @@
+MODULE test;
+BEGIN
+    AssertEq(1 DIV 1, 1);
+    AssertEq(0 DIV 1, 0);
+    AssertEq(10 DIV 2, 5);
+
+    AssertEq(20 DIV (3-1), 10);
+    AssertEq(20 DIV (3-5), 1-11);
+
+    AssertEq(100 DIV 10 DIV 2, 5);
+    AssertEq(1000 DIV 10 DIV 5 DIV 2, 10);
+    AssertEq((1000 DIV 10) DIV (4 DIV 2), 50)
+END test.
