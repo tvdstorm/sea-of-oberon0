@@ -14,5 +14,6 @@ BEGIN
     AssertEq(3 * (5+10), 45);
 
     AssertEq((15 - 10) * (3 - 2), 5);
-    AssertEq(15 - 10 * 3 + 57, 42)
+    AssertEq(15 - 10 * 3 + 57, 42);
+    AssertEq(100 DIV 10 DIV 2, 5)
 END test.
