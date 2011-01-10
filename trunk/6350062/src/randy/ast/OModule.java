@@ -35,10 +35,8 @@ public class OModule extends OASTNode
 					break;
 				case Oberon0Parser.VAR:
 				case Oberon0Parser.CONST:
-					bodyDeclarations.add(OBodyDeclaration.buildBodyDeclaration(child));
-					break;
 				case Oberon0Parser.PROCEDURE:
-					// TODO: procedure afwerken
+					bodyDeclarations.add(OBodyDeclaration.buildBodyDeclaration(child));
 					break;
 				default:
 					throw new Oberon0Exception("Unknown child type '" + child.getType() + "' in module.");
