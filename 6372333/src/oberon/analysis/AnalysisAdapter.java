@@ -74,6 +74,346 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
+    public void caseADeclconstDeclarations(ADeclconstDeclarations node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseADecltypeDeclarations(ADecltypeDeclarations node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseADeclvarDeclarations(ADeclvarDeclarations node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseADeclproceduredeclarationDeclarations(ADeclproceduredeclarationDeclarations node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseABegstat(ABegstat node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAAssignment(AAssignment node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseATypedeclaration(ATypedeclaration node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAStatementsequence(AStatementsequence node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseADeclproceduredeclaration(ADeclproceduredeclaration node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAVardeclaration(AVardeclaration node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAExpression(AExpression node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAIdtypeType(AIdtypeType node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAArrtypeType(AArrtypeType node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseARectypeType(ARectypeType node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAStatassStatement(AStatassStatement node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAStatprocStatement(AStatprocStatement node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAStatifStatement(AStatifStatement node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAStatwhiStatement(AStatwhiStatement node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAStatnoneStatement(AStatnoneStatement node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAIdentlist(AIdentlist node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAProceduredeclaration(AProceduredeclaration node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAAndstatement(AAndstatement node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAAndidentifier(AAndidentifier node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseASimpleexpressionevaluation(ASimpleexpressionevaluation node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseASimpleexpression(ASimpleexpression node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseARecordtype(ARecordtype node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAArraytype(AArraytype node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAWhilestatement(AWhilestatement node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAIfstatement(AIfstatement node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAProcedurecall(AProcedurecall node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAProcedureheading(AProcedureheading node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAProcedurebody(AProcedurebody node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAExprequalsExpressionoperator(AExprequalsExpressionoperator node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAExprhashExpressionoperator(AExprhashExpressionoperator node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAExgreaterExpressionoperator(AExgreaterExpressionoperator node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAExgreaterequalsExpressionoperator(AExgreaterequalsExpressionoperator node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAExsmallerExpressionoperator(AExsmallerExpressionoperator node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAExsmallerequalsExpressionoperator(AExsmallerequalsExpressionoperator node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAPlusPlusorminus(APlusPlusorminus node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAMinusPlusorminus(AMinusPlusorminus node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseATerm(ATerm node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAMoreterms(AMoreterms node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAFieldlistFieldlist(AFieldlistFieldlist node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAListnoneFieldlist(AListnoneFieldlist node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAMorefields(AMorefields node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAElsif(AElsif node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAElse(AElse node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAActualparams(AActualparams node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAFormalparams(AFormalparams node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAProcedurebodystatements(AProcedurebodystatements node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAAdditionaloperations(AAdditionaloperations node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAIdfactorFactor(AIdfactorFactor node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAIntfactorFactor(AIntfactorFactor node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAExpfactorFactor(AExpfactorFactor node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseATilfactorFactor(ATilfactorFactor node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAActualparameters(AActualparameters node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAFormalparameters(AFormalparameters node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAPlusPlusorminusoror(APlusPlusorminusoror node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAMinusPlusorminusoror(AMinusPlusorminusoror node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAOrPlusorminusoror(AOrPlusorminusoror node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseADotselectorSelector(ADotselectorSelector node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAArrselectorSelector(AArrselectorSelector node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseATermmultTermoperator(ATermmultTermoperator node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseATermdivTermoperator(ATermdivTermoperator node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseATermmodTermoperator(ATermmodTermoperator node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseATermampTermoperator(ATermampTermoperator node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAFpsection(AFpsection node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAMoreactualparameters(AMoreactualparameters node)
+    {
+        defaultCase(node);
+    }
+
     public void caseAPlusOperator(APlusOperator node)
     {
         defaultCase(node);
@@ -99,7 +439,52 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseTInteger(TInteger node)
+    public void caseTDot(TDot node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTLBkt(TLBkt node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTLBrc(TLBrc node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTLPar(TLPar node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTRBkt(TRBkt node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTRBrc(TRBrc node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTRPar(TRPar node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTTilde(TTilde node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTComma(TComma node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTColon(TColon node)
     {
         defaultCase(node);
     }
@@ -129,7 +514,162 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
+    public void caseTAmp(TAmp node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTAss(TAss node)
+    {
+        defaultCase(node);
+    }
+
     public void caseTSemi(TSemi node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTExeq(TExeq node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTExha(TExha node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTExst(TExst node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTExse(TExse node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTExgt(TExgt node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTExge(TExge node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTModuletxt(TModuletxt node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTConsttxt(TConsttxt node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTTypetxt(TTypetxt node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTVartxt(TVartxt node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTBegintxt(TBegintxt node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTEndtxt(TEndtxt node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTRecordtxt(TRecordtxt node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTArraytxt(TArraytxt node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTOftxt(TOftxt node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTWhiletxt(TWhiletxt node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTDotxt(TDotxt node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTIftxt(TIftxt node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTThentxt(TThentxt node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTElsiftxt(TElsiftxt node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTElsetxt(TElsetxt node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTProceduretxt(TProceduretxt node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTOrtxt(TOrtxt node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTSptxt(TSptxt node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTInteger(TInteger node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTIdentifier(TIdentifier node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTBlankNewline(TBlankNewline node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTBlankWhitespace(TBlankWhitespace node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTTab(TTab node)
     {
         defaultCase(node);
     }
