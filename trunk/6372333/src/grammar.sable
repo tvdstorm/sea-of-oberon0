@@ -1,22 +1,168 @@
 Package oberon;
 Helpers 
-    /* Our helpers */ 
-    digit = ['0' .. '9'] ; 
+    /* Our helpers */
+    all = [0 .. 0xFFFF]; 
+	lowercase = ['a' .. 'z'];
+	uppercase = ['A' .. 'Z'];
+	number = ['0' .. '9'];
     sp = ' ' ; 
-    nl = 10 ; 
+    nl = 10 ;
+    
+   	cr = 13;
+	lf = 10;
+	next_line = 0x85;
+	line_separator = 0x2028;
+	paragraph_separator = 0x2029;
+	horizontal_tab = 9;
+	newline = cr | lf | cr lf | next_line | line_separator | paragraph_separator;
+    
+    letter = lowercase | uppercase; 
   
 Tokens 
-    /* Our simple token definition(s). */ 
-    integer = digit+ sp*;
+    /* Our simple token definition(s). */
+    dot = '.';  
+    l_bkt = '[';
+	l_brc = '{';
+	l_par = '(';
+	r_bkt = ']';
+	r_brc = '}';
+	r_par = ')';
+	tilde = '~';
+	comma = ',';
+	colon = ':';
+    
     plus = '+' sp*;
     mult = '*' sp*;
     min = '-' sp*;
     div = 'DIV' sp*;
     mod = 'MOD' sp*;
-    semi = ';' nl?; 
+    amp = '&' sp*;
+    ass = '=' sp*;
+    semi = ';' nl?;
+    
+    exeq = '=';
+    exha = '#';
+    exst = '<';
+    exse = '<=';
+    exgt = '>';
+    exge = '>=';
+    
+    moduletxt = 'MODULE' sp*;
+    consttxt = 'CONST' sp*;
+    typetxt = 'TYPE' sp*;
+    vartxt = 'VAR' sp*;
+    begintxt = 'BEGIN' sp*;
+    endtxt = 'END' sp*;
+    recordtxt = 'RECORD' sp*;
+    arraytxt = 'ARRAY' sp*;
+    oftxt = 'OF' sp*;
+    whiletxt = 'WHILE' sp*;
+    dotxt = 'DO' sp*;
+    iftxt = 'IF' sp*;
+    thentxt = 'THEN' sp*;
+    elsiftxt = 'ELSIF' sp*;
+    elsetxt = 'ELSE' sp*;
+    proceduretxt = 'PROCEDURE' sp*;    
+    ortxt = 'OR' sp*;
+    sptxt = sp;
+    
+	integer = number* sp*;
+    identifier = letter (letter | number)* sp*;
+    
+    blank_newline = newline+;
+    blank_whitespace = sp+;
+    tab = horizontal_tab;
+    
+Ignored Tokens  
+	blank_newline, blank_whitespace, tab;  
     
 Productions 
-    /* Our super-simple grammar */
-    program = [left]:integer operator [right]:integer semi;
+    program = moduletxt [beginid]:identifier semi declarations begstat? endtxt [endid]:identifier dot;
     
+    declarations = 
+		{declconst} consttxt assignment* |
+		{decltype} typetxt typedeclaration* |
+		{declvar} vartxt vardeclaration* |
+		{declproceduredeclaration} declproceduredeclaration semi;
+    begstat = 
+    	begintxt statementsequence;
+    
+    assignment = identifier ass expression;
+    typedeclaration = identifier ass type;
+    statementsequence = statement andstatement*;
+    declproceduredeclaration = proceduredeclaration semi; //TODO
+    vardeclaration = identlist colon type semi;
+    
+    expression = simpleexpression simpleexpressionevaluation; //TODO
+    type = 
+    	{idtype} identifier | 
+    	{arrtype} arraytype | 
+    	{rectype} recordtype;
+    statement = 
+    	{statass} assignment |
+    	{statproc} procedurecall | 
+    	{statif} ifstatement |
+    	{statwhi} whilestatement |
+    	{statnone} sptxt;
+    identlist = identifier andidentifier;
+    proceduredeclaration  = procedureheading semi procedurebody identifier;
+    andstatement = semi statement;
+    
+    andidentifier = comma identifier;
+    simpleexpressionevaluation = expressionoperator simpleexpression;
+    simpleexpression = plusorminus term moreterms;
+    recordtype = recordtxt fieldlist morefields endtxt;
+    arraytype = arraytxt expression oftxt type;
+    whilestatement = whiletxt expression dotxt statementsequence endtxt;
+    ifstatement = iftxt expression thentxt statementsequence elsif else endtxt; 
+    procedurecall = identifier actualparams*; 
+    procedureheading = proceduretxt identifier formalparams?;
+    procedurebody = declarations procedurebodystatements? endtxt; 
+   
+   	expressionoperator = 
+   		{exprequals} exeq |
+   		{exprhash} exha |
+   		{exgreater} exgt |
+   		{exgreaterequals} exge |
+   		{exsmaller} exst |
+   		{exsmallerequals} exse;
+ 	plusorminus = 
+		{plus} plus |
+		{minus} min; 
+ 	term = factor additionaloperations;
+ 	moreterms = plusorminusoror term;
+	fieldlist = 
+		{fieldlist} identlist colon type |
+		{listnone} sptxt; 
+	morefields = semi fieldlist;
+	elsif = elsiftxt expression thentxt statementsequence;
+	else = elsetxt statementsequence; 
+	actualparams = l_par actualparameters? r_par;
+	formalparams = l_par formalparameters? r_par;
+	procedurebodystatements = begintxt statementsequence;
+   
+   	additionaloperations = termoperator factor;
+    factor = 
+    	{idfactor} identifier selector | 
+    	{intfactor} integer | 
+    	{expfactor} r_par expression l_par |
+    	{tilfactor} tilde factor;
+   	actualparameters = expression moreactualparameters*;
+   	formalparameters = l_par fpsection? r_par;
+   	plusorminusoror =
+		{plus} plus |
+		{minus} min |
+		{or} ortxt; 
+   
+    selector = 
+    	{dotselector} dot identifier |
+    	{arrselector} l_bkt expression r_bkt;
+   	termoperator = 
+   		{termmult} mult |
+   		{termdiv} div |
+   		{termmod} mod |
+   		{termamp} amp;
+   	fpsection = vartxt? identlist colon type;
+	moreactualparameters = comma expression;
+
     operator = {plus} plus | {minus} min | {multiply} mult | {div} div | {mod} mod;

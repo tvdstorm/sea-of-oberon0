@@ -7,10 +7,14 @@ import oberon.analysis.*;
 @SuppressWarnings("nls")
 public final class AProgram extends PProgram
 {
-    private TInteger _left_;
-    private POperator _operator_;
-    private TInteger _right_;
+    private TModuletxt _moduletxt_;
+    private TIdentifier _beginid_;
     private TSemi _semi_;
+    private PDeclarations _declarations_;
+    private PBegstat _begstat_;
+    private TEndtxt _endtxt_;
+    private TIdentifier _endid_;
+    private TDot _dot_;
 
     public AProgram()
     {
@@ -18,19 +22,31 @@ public final class AProgram extends PProgram
     }
 
     public AProgram(
-        @SuppressWarnings("hiding") TInteger _left_,
-        @SuppressWarnings("hiding") POperator _operator_,
-        @SuppressWarnings("hiding") TInteger _right_,
-        @SuppressWarnings("hiding") TSemi _semi_)
+        @SuppressWarnings("hiding") TModuletxt _moduletxt_,
+        @SuppressWarnings("hiding") TIdentifier _beginid_,
+        @SuppressWarnings("hiding") TSemi _semi_,
+        @SuppressWarnings("hiding") PDeclarations _declarations_,
+        @SuppressWarnings("hiding") PBegstat _begstat_,
+        @SuppressWarnings("hiding") TEndtxt _endtxt_,
+        @SuppressWarnings("hiding") TIdentifier _endid_,
+        @SuppressWarnings("hiding") TDot _dot_)
     {
         // Constructor
-        setLeft(_left_);
+        setModuletxt(_moduletxt_);
 
-        setOperator(_operator_);
-
-        setRight(_right_);
+        setBeginid(_beginid_);
 
         setSemi(_semi_);
+
+        setDeclarations(_declarations_);
+
+        setBegstat(_begstat_);
+
+        setEndtxt(_endtxt_);
+
+        setEndid(_endid_);
+
+        setDot(_dot_);
 
     }
 
@@ -38,10 +54,14 @@ public final class AProgram extends PProgram
     public Object clone()
     {
         return new AProgram(
-            cloneNode(this._left_),
-            cloneNode(this._operator_),
-            cloneNode(this._right_),
-            cloneNode(this._semi_));
+            cloneNode(this._moduletxt_),
+            cloneNode(this._beginid_),
+            cloneNode(this._semi_),
+            cloneNode(this._declarations_),
+            cloneNode(this._begstat_),
+            cloneNode(this._endtxt_),
+            cloneNode(this._endid_),
+            cloneNode(this._dot_));
     }
 
     public void apply(Switch sw)
@@ -49,16 +69,16 @@ public final class AProgram extends PProgram
         ((Analysis) sw).caseAProgram(this);
     }
 
-    public TInteger getLeft()
+    public TModuletxt getModuletxt()
     {
-        return this._left_;
+        return this._moduletxt_;
     }
 
-    public void setLeft(TInteger node)
+    public void setModuletxt(TModuletxt node)
     {
-        if(this._left_ != null)
+        if(this._moduletxt_ != null)
         {
-            this._left_.parent(null);
+            this._moduletxt_.parent(null);
         }
 
         if(node != null)
@@ -71,19 +91,19 @@ public final class AProgram extends PProgram
             node.parent(this);
         }
 
-        this._left_ = node;
+        this._moduletxt_ = node;
     }
 
-    public POperator getOperator()
+    public TIdentifier getBeginid()
     {
-        return this._operator_;
+        return this._beginid_;
     }
 
-    public void setOperator(POperator node)
+    public void setBeginid(TIdentifier node)
     {
-        if(this._operator_ != null)
+        if(this._beginid_ != null)
         {
-            this._operator_.parent(null);
+            this._beginid_.parent(null);
         }
 
         if(node != null)
@@ -96,32 +116,7 @@ public final class AProgram extends PProgram
             node.parent(this);
         }
 
-        this._operator_ = node;
-    }
-
-    public TInteger getRight()
-    {
-        return this._right_;
-    }
-
-    public void setRight(TInteger node)
-    {
-        if(this._right_ != null)
-        {
-            this._right_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._right_ = node;
+        this._beginid_ = node;
     }
 
     public TSemi getSemi()
@@ -149,41 +144,194 @@ public final class AProgram extends PProgram
         this._semi_ = node;
     }
 
+    public PDeclarations getDeclarations()
+    {
+        return this._declarations_;
+    }
+
+    public void setDeclarations(PDeclarations node)
+    {
+        if(this._declarations_ != null)
+        {
+            this._declarations_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._declarations_ = node;
+    }
+
+    public PBegstat getBegstat()
+    {
+        return this._begstat_;
+    }
+
+    public void setBegstat(PBegstat node)
+    {
+        if(this._begstat_ != null)
+        {
+            this._begstat_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._begstat_ = node;
+    }
+
+    public TEndtxt getEndtxt()
+    {
+        return this._endtxt_;
+    }
+
+    public void setEndtxt(TEndtxt node)
+    {
+        if(this._endtxt_ != null)
+        {
+            this._endtxt_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._endtxt_ = node;
+    }
+
+    public TIdentifier getEndid()
+    {
+        return this._endid_;
+    }
+
+    public void setEndid(TIdentifier node)
+    {
+        if(this._endid_ != null)
+        {
+            this._endid_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._endid_ = node;
+    }
+
+    public TDot getDot()
+    {
+        return this._dot_;
+    }
+
+    public void setDot(TDot node)
+    {
+        if(this._dot_ != null)
+        {
+            this._dot_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._dot_ = node;
+    }
+
     @Override
     public String toString()
     {
         return ""
-            + toString(this._left_)
-            + toString(this._operator_)
-            + toString(this._right_)
-            + toString(this._semi_);
+            + toString(this._moduletxt_)
+            + toString(this._beginid_)
+            + toString(this._semi_)
+            + toString(this._declarations_)
+            + toString(this._begstat_)
+            + toString(this._endtxt_)
+            + toString(this._endid_)
+            + toString(this._dot_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._left_ == child)
+        if(this._moduletxt_ == child)
         {
-            this._left_ = null;
+            this._moduletxt_ = null;
             return;
         }
 
-        if(this._operator_ == child)
+        if(this._beginid_ == child)
         {
-            this._operator_ = null;
-            return;
-        }
-
-        if(this._right_ == child)
-        {
-            this._right_ = null;
+            this._beginid_ = null;
             return;
         }
 
         if(this._semi_ == child)
         {
             this._semi_ = null;
+            return;
+        }
+
+        if(this._declarations_ == child)
+        {
+            this._declarations_ = null;
+            return;
+        }
+
+        if(this._begstat_ == child)
+        {
+            this._begstat_ = null;
+            return;
+        }
+
+        if(this._endtxt_ == child)
+        {
+            this._endtxt_ = null;
+            return;
+        }
+
+        if(this._endid_ == child)
+        {
+            this._endid_ = null;
+            return;
+        }
+
+        if(this._dot_ == child)
+        {
+            this._dot_ = null;
             return;
         }
 
@@ -194,27 +342,51 @@ public final class AProgram extends PProgram
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._left_ == oldChild)
+        if(this._moduletxt_ == oldChild)
         {
-            setLeft((TInteger) newChild);
+            setModuletxt((TModuletxt) newChild);
             return;
         }
 
-        if(this._operator_ == oldChild)
+        if(this._beginid_ == oldChild)
         {
-            setOperator((POperator) newChild);
-            return;
-        }
-
-        if(this._right_ == oldChild)
-        {
-            setRight((TInteger) newChild);
+            setBeginid((TIdentifier) newChild);
             return;
         }
 
         if(this._semi_ == oldChild)
         {
             setSemi((TSemi) newChild);
+            return;
+        }
+
+        if(this._declarations_ == oldChild)
+        {
+            setDeclarations((PDeclarations) newChild);
+            return;
+        }
+
+        if(this._begstat_ == oldChild)
+        {
+            setBegstat((PBegstat) newChild);
+            return;
+        }
+
+        if(this._endtxt_ == oldChild)
+        {
+            setEndtxt((TEndtxt) newChild);
+            return;
+        }
+
+        if(this._endid_ == oldChild)
+        {
+            setEndid((TIdentifier) newChild);
+            return;
+        }
+
+        if(this._dot_ == oldChild)
+        {
+            setDot((TDot) newChild);
             return;
         }
 

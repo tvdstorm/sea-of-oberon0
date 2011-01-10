@@ -9,7 +9,7 @@ import oberon.node.POperator;
 public class Interpreter extends DepthFirstAdapter { 
 	  
 	   public void caseAProgram(AProgram node) { 	
-		  String lhs = node.getLeft().getText().trim(); 
+		  /*String lhs = node.getLeft().getText().trim(); 
 	      String rhs = node.getRight().getText().trim();
 	      POperator operator = node.getOperator();
 	      int result = 0;
@@ -25,6 +25,6 @@ public class Interpreter extends DepthFirstAdapter {
 	    	  operatorString = "-";
 	      }
 	      
-	      System.out.println(lhs + operatorString + rhs + "=" + result); 
+	      System.out.println(lhs + operatorString + rhs + "=" + result); */
 	   } 
 	}
