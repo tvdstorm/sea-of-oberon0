@@ -1,3 +1,4 @@
+import interpreter.Context;
 import interpreter.Interpreter;
 
 import java.io.IOException;
@@ -10,7 +11,10 @@ import xtc.parser.Result;
 public class Main {
 	
 	public static void main(String[] args) {
-		StringReader reader = new StringReader("MODULE test; CONST LENGTH = 10; bar = 12; VAR i, j: INTEGER; arr: ARRAY 10 OF INTEGER; BEGIN i := 1; Read(arr[0]); Read(arr[1]); arr[1]:=arr[1]+50; Write(arr); Write(arr[0]+arr[1]) END test.");
+		StringReader reader = new StringReader("MODULE test; " +
+					"PROCEDURE f(); CONST i = 10; BEGIN Write(i); Write(i+1) END f;" +
+					"BEGIN f(10); f(10); Write(11) " +
+					"END test.");
 		Oberon o = new Oberon(reader, "<input>");
 		
 		ast.Module module = null;
@@ -25,7 +29,11 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Interpreter interpreter = new Interpreter();
+		
+		//FIXME: move this
+		Context ctx = new Context();
+		Interpreter interpreter = new Interpreter(ctx);
+		interpreter.initBuiltins();
 		interpreter.interpret(module);
 	}
 }

@@ -3,7 +3,9 @@ package interpreter;
 import runtime.ArrayValue;
 import runtime.BooleanValue;
 import runtime.BuiltinFunction;
+import runtime.Callable;
 import runtime.IntegerValue;
+import runtime.ScriptedProcedure;
 import runtime.Value;
 import runtime.ValueRef;
 import runtime.VoidValue;
@@ -19,6 +21,7 @@ import ast.IfStatement;
 import ast.IntegerLiteral;
 import ast.LtExpression;
 import ast.Module;
+import ast.Procedure;
 import ast.ProcedureCall;
 import ast.Selector;
 import ast.StatementSequence;
@@ -32,10 +35,8 @@ public class Interpreter extends Visitor<Value> {
 
 	private Context _context;
 	
-	public Interpreter() {
-		_context = new Context();
-		_context.registerBuiltin("Read", new runtime.Read());
-		_context.registerBuiltin("Write", new runtime.Write());
+	public Interpreter(Context context) {
+		_context = context;
 	}
 
 	public void interpret(Module module) {
@@ -97,8 +98,8 @@ public class Interpreter extends Visitor<Value> {
 			args[i] = argExprs[i].accept(this);
 		}
 		
-		BuiltinFunction fun = _context.lookupFunction(name);
-		fun.execute(_context, args);		
+		Callable c = _context.getScope().lookupProcedure(name);
+		c.execute(_context, args);		
 		return _context.getVoid();
 	}
 
@@ -232,5 +233,26 @@ public class Interpreter extends Visitor<Value> {
 			//XXX
 			return null;
 		}
+	}
+
+	@Override
+	protected Value visit(Procedure procedure) {
+		
+		ScriptedProcedure proc = new ScriptedProcedure(procedure);
+		_context.getScope().defineProcedure(procedure.getName(), proc);
+		return null;
+	}
+
+	public void initBuiltins() {
+		_context.registerBuiltin("Read", new runtime.Read());
+		_context.registerBuiltin("Write", new runtime.Write());
+	}
+
+	public void interpret(ScriptedProcedure proc, Value[] arguments) {
+		_context.pushScope();
+		Procedure node = proc.getNode();
+		node.getDeclarations().accept(this);
+		node.getStatements().accept(this);
+		_context.popScope();
 	}
 }
