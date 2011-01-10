@@ -51,7 +51,7 @@ ast.Expression Term = Factor;
 
 //FIXME: try to clean this up somehow
 constant Action<ast.Expression> SimpleExpressionTail =
-	op:("+" / "-") rhs:Term 
+	void:Spacing op:("+" / "-") void:Spacing rhs:Term 
 		{
           yyValue = new Action<ast.Expression>() {
             public ast.Expression run(ast.Expression lhs) {
@@ -131,18 +131,20 @@ ast.Declarations Declarations =
 	;
 
 List<ast.Parameter> FPSection = 
-	names:IdentList Spacing ":" Spacing type:Type
+	var:"VAR"? Spacing names:IdentList Spacing ":" Spacing type:Type
 	{ 
 		List<ast.Parameter> list = new ArrayList<ast.Parameter>();
+		boolean byRef = ("VAR".equals(var));
 		for(int i=0; i<names.size(); i++) {
-			list.add(new ast.Parameter(names.get(i), type));
+			list.add(new ast.Parameter(names.get(i), type, byRef));
 		}
 		yyValue = list;
 	}
 	;
 
 List<ast.Parameter> FormalParameters = 
-	"(" args1:FPSection? args2:(void:";" FPSection)* ")"
+	  void:"(" void:Spacing void:")" yyValue:null
+	/ void:"(" args1:FPSection args2:(void:";" FPSection)* ")"
 	{ 	List<ast.Parameter> params = new ArrayList<ast.Parameter>();
 		if (args1 != null) params.addAll(args1);
 		if (args2 != null) {
@@ -154,7 +156,7 @@ List<ast.Parameter> FormalParameters =
 	;
 
 ast.Procedure ProcedureDeclaration = 
-	"PROCEDURE" Spacing name:Ident params:FormalParameters ";" 
+	"PROCEDURE" Spacing name:Ident params:FormalParameters? ";" 
 	Spacing
 	decl:Declarations
 	Spacing
@@ -162,12 +164,13 @@ ast.Procedure ProcedureDeclaration =
 	Spacing
 	"END" Spacing 
 	Ident Spacing
-	{	yyValue = new ast.Procedure(name, decl, stat);  }
+	{	yyValue = new ast.Procedure(name, params, decl, stat);  }
 	;
 
 public Pair<ast.Expression> ActualParameters = 
-	void:"(" expr1:Expression expr2:(void:"," Expression)* void:")"
-	{ yyValue = new Pair<ast.Expression>(expr1, expr2); }
+	  void:"(" void:Spacing void:")"
+	/ void:"(" expr1:Expression void:Spacing expr2:(void:"," void:Spacing Expression)* void:")"
+	  { yyValue = new Pair<ast.Expression>(expr1, expr2); }
 	;
 
 public ast.ProcedureCall ProcedureCall = 
