@@ -4,6 +4,7 @@ import randy.value.*;
 
 import org.antlr.runtime.tree.Tree;
 import randy.exception.Oberon0Exception;
+import randy.interpreter.Oberon0VariableStack;
 
 public class OIntegerLiteral extends OExpression
 {
@@ -23,7 +24,7 @@ public class OIntegerLiteral extends OExpression
 		return new OIntegerLiteral(new OInteger(Integer.parseInt(tree.getText())));
 	}
 	@Override // TODO: nodig?
-	public OValue run() throws Oberon0Exception
+	public OValue run(Oberon0VariableStack vars) throws Oberon0Exception
 	{
 		return value;
 	}

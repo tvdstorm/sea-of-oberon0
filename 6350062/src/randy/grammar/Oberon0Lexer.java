@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g 2011-01-08 13:33:32
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 C:\\Data\\software_construction\\grammar\\Oberon0.g 2011-01-10 15:24:21
 
 package randy.grammar;
 
@@ -10,28 +10,6 @@ import java.util.ArrayList;
 
 public class Oberon0Lexer extends Lexer {
     public static final int EOF=-1;
-    public static final int T__22=22;
-    public static final int T__23=23;
-    public static final int T__24=24;
-    public static final int T__25=25;
-    public static final int T__26=26;
-    public static final int T__27=27;
-    public static final int T__28=28;
-    public static final int T__29=29;
-    public static final int T__30=30;
-    public static final int T__31=31;
-    public static final int T__32=32;
-    public static final int T__33=33;
-    public static final int T__34=34;
-    public static final int T__35=35;
-    public static final int T__36=36;
-    public static final int T__37=37;
-    public static final int T__38=38;
-    public static final int T__39=39;
-    public static final int T__40=40;
-    public static final int T__41=41;
-    public static final int T__42=42;
-    public static final int T__43=43;
     public static final int T__44=44;
     public static final int T__45=45;
     public static final int T__46=46;
@@ -40,29 +18,46 @@ public class Oberon0Lexer extends Lexer {
     public static final int T__49=49;
     public static final int T__50=50;
     public static final int T__51=51;
-    public static final int T__52=52;
-    public static final int T__53=53;
-    public static final int T__54=54;
-    public static final int T__55=55;
-    public static final int T__56=56;
     public static final int MINUS=4;
     public static final int PLUS=5;
     public static final int TIMES=6;
     public static final int DIVIDE=7;
-    public static final int PROCEDURECALL=8;
-    public static final int PARAMETERS=9;
-    public static final int EXPRESSION=10;
-    public static final int BODY=11;
-    public static final int LH=12;
-    public static final int RH=13;
-    public static final int TYPE=14;
-    public static final int SELECTOR=15;
-    public static final int DOTSELECTOR=16;
-    public static final int ARRAYSELECTOR=17;
-    public static final int MODULE=18;
-    public static final int IDENT=19;
-    public static final int WHITESPACE=20;
-    public static final int INTEGER=21;
+    public static final int CONST=8;
+    public static final int VAR=9;
+    public static final int TYPE=10;
+    public static final int IF=11;
+    public static final int THEN=12;
+    public static final int ELSE=13;
+    public static final int ELSIF=14;
+    public static final int END=15;
+    public static final int MODULE=16;
+    public static final int DO=17;
+    public static final int WHILE=18;
+    public static final int BEGIN=19;
+    public static final int PROCEDURE=20;
+    public static final int ARRAY=21;
+    public static final int OF=22;
+    public static final int RECORD=23;
+    public static final int MOD=24;
+    public static final int AND=25;
+    public static final int OR=26;
+    public static final int ASSIGNMENT=27;
+    public static final int EQUALS=28;
+    public static final int SMALLERTHEN=29;
+    public static final int GREATERTHEN=30;
+    public static final int SMALLEREQUALS=31;
+    public static final int GREATEREQUALS=32;
+    public static final int PROCEDURECALL=33;
+    public static final int PARAMETERS=34;
+    public static final int EXPRESSION=35;
+    public static final int BODY=36;
+    public static final int LH=37;
+    public static final int RH=38;
+    public static final int DOTSELECTOR=39;
+    public static final int ARRAYSELECTOR=40;
+    public static final int IDENT=41;
+    public static final int WHITESPACE=42;
+    public static final int INTEGER=43;
 
     // delegates
     // delegators
@@ -75,15 +70,15 @@ public class Oberon0Lexer extends Lexer {
         super(input,state);
 
     }
-    public String getGrammarFileName() { return "X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g"; }
+    public String getGrammarFileName() { return "C:\\Data\\software_construction\\grammar\\Oberon0.g"; }
 
     // $ANTLR start "MINUS"
     public final void mMINUS() throws RecognitionException {
         try {
             int _type = MINUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:11:7: ( '-' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:11:9: '-'
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:11:7: ( '-' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:11:9: '-'
             {
             match('-'); 
 
@@ -102,8 +97,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = PLUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:12:6: ( '+' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:12:8: '+'
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:12:6: ( '+' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:12:8: '+'
             {
             match('+'); 
 
@@ -122,8 +117,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = TIMES;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:13:7: ( '*' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:13:9: '*'
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:13:7: ( '*' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:13:9: '*'
             {
             match('*'); 
 
@@ -142,8 +137,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = DIVIDE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:14:8: ( 'DIV' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:14:10: 'DIV'
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:14:8: ( 'DIV' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:14:10: 'DIV'
             {
             match("DIV"); 
 
@@ -158,135 +153,15 @@ public class Oberon0Lexer extends Lexer {
     }
     // $ANTLR end "DIVIDE"
 
-    // $ANTLR start "T__22"
-    public final void mT__22() throws RecognitionException {
+    // $ANTLR start "CONST"
+    public final void mCONST() throws RecognitionException {
         try {
-            int _type = T__22;
+            int _type = CONST;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:15:7: ( '.' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:15:9: '.'
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:15:7: ( 'CONST' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:15:9: 'CONST'
             {
-            match('.'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__22"
-
-    // $ANTLR start "T__23"
-    public final void mT__23() throws RecognitionException {
-        try {
-            int _type = T__23;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:16:7: ( '[' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:16:9: '['
-            {
-            match('['); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__23"
-
-    // $ANTLR start "T__24"
-    public final void mT__24() throws RecognitionException {
-        try {
-            int _type = T__24;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:17:7: ( ']' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:17:9: ']'
-            {
-            match(']'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__24"
-
-    // $ANTLR start "T__25"
-    public final void mT__25() throws RecognitionException {
-        try {
-            int _type = T__25;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:18:7: ( '(' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:18:9: '('
-            {
-            match('('); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__25"
-
-    // $ANTLR start "T__26"
-    public final void mT__26() throws RecognitionException {
-        try {
-            int _type = T__26;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:19:7: ( ')' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:19:9: ')'
-            {
-            match(')'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__26"
-
-    // $ANTLR start "T__27"
-    public final void mT__27() throws RecognitionException {
-        try {
-            int _type = T__27;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:20:7: ( '~' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:20:9: '~'
-            {
-            match('~'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__27"
-
-    // $ANTLR start "T__28"
-    public final void mT__28() throws RecognitionException {
-        try {
-            int _type = T__28;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:21:7: ( 'MOD' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:21:9: 'MOD'
-            {
-            match("MOD"); 
+            match("CONST"); 
 
 
             }
@@ -297,37 +172,17 @@ public class Oberon0Lexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "T__28"
+    // $ANTLR end "CONST"
 
-    // $ANTLR start "T__29"
-    public final void mT__29() throws RecognitionException {
+    // $ANTLR start "VAR"
+    public final void mVAR() throws RecognitionException {
         try {
-            int _type = T__29;
+            int _type = VAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:22:7: ( '&' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:22:9: '&'
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:16:5: ( 'VAR' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:16:7: 'VAR'
             {
-            match('&'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__29"
-
-    // $ANTLR start "T__30"
-    public final void mT__30() throws RecognitionException {
-        try {
-            int _type = T__30;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:23:7: ( 'OR' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:23:9: 'OR'
-            {
-            match("OR"); 
+            match("VAR"); 
 
 
             }
@@ -338,77 +193,17 @@ public class Oberon0Lexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "T__30"
+    // $ANTLR end "VAR"
 
-    // $ANTLR start "T__31"
-    public final void mT__31() throws RecognitionException {
+    // $ANTLR start "TYPE"
+    public final void mTYPE() throws RecognitionException {
         try {
-            int _type = T__31;
+            int _type = TYPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:24:7: ( '=' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:24:9: '='
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:17:6: ( 'TYPE' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:17:8: 'TYPE'
             {
-            match('='); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__31"
-
-    // $ANTLR start "T__32"
-    public final void mT__32() throws RecognitionException {
-        try {
-            int _type = T__32;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:25:7: ( '#' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:25:9: '#'
-            {
-            match('#'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__32"
-
-    // $ANTLR start "T__33"
-    public final void mT__33() throws RecognitionException {
-        try {
-            int _type = T__33;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:26:7: ( '<' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:26:9: '<'
-            {
-            match('<'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__33"
-
-    // $ANTLR start "T__34"
-    public final void mT__34() throws RecognitionException {
-        try {
-            int _type = T__34;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:27:7: ( '<=' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:27:9: '<='
-            {
-            match("<="); 
+            match("TYPE"); 
 
 
             }
@@ -419,76 +214,15 @@ public class Oberon0Lexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "T__34"
+    // $ANTLR end "TYPE"
 
-    // $ANTLR start "T__35"
-    public final void mT__35() throws RecognitionException {
+    // $ANTLR start "IF"
+    public final void mIF() throws RecognitionException {
         try {
-            int _type = T__35;
+            int _type = IF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:28:7: ( '>' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:28:9: '>'
-            {
-            match('>'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__35"
-
-    // $ANTLR start "T__36"
-    public final void mT__36() throws RecognitionException {
-        try {
-            int _type = T__36;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:29:7: ( '>=' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:29:9: '>='
-            {
-            match(">="); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__36"
-
-    // $ANTLR start "T__37"
-    public final void mT__37() throws RecognitionException {
-        try {
-            int _type = T__37;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:30:7: ( ',' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:30:9: ','
-            {
-            match(','); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__37"
-
-    // $ANTLR start "T__38"
-    public final void mT__38() throws RecognitionException {
-        try {
-            int _type = T__38;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:31:7: ( 'IF' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:31:9: 'IF'
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:18:4: ( 'IF' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:18:6: 'IF'
             {
             match("IF"); 
 
@@ -501,15 +235,15 @@ public class Oberon0Lexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "T__38"
+    // $ANTLR end "IF"
 
-    // $ANTLR start "T__39"
-    public final void mT__39() throws RecognitionException {
+    // $ANTLR start "THEN"
+    public final void mTHEN() throws RecognitionException {
         try {
-            int _type = T__39;
+            int _type = THEN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:32:7: ( 'THEN' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:32:9: 'THEN'
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:19:6: ( 'THEN' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:19:8: 'THEN'
             {
             match("THEN"); 
 
@@ -522,36 +256,15 @@ public class Oberon0Lexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "T__39"
+    // $ANTLR end "THEN"
 
-    // $ANTLR start "T__40"
-    public final void mT__40() throws RecognitionException {
+    // $ANTLR start "ELSE"
+    public final void mELSE() throws RecognitionException {
         try {
-            int _type = T__40;
+            int _type = ELSE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:33:7: ( 'ELSIF' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:33:9: 'ELSIF'
-            {
-            match("ELSIF"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__40"
-
-    // $ANTLR start "T__41"
-    public final void mT__41() throws RecognitionException {
-        try {
-            int _type = T__41;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:34:7: ( 'ELSE' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:34:9: 'ELSE'
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:20:6: ( 'ELSE' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:20:8: 'ELSE'
             {
             match("ELSE"); 
 
@@ -564,15 +277,36 @@ public class Oberon0Lexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "T__41"
+    // $ANTLR end "ELSE"
 
-    // $ANTLR start "T__42"
-    public final void mT__42() throws RecognitionException {
+    // $ANTLR start "ELSIF"
+    public final void mELSIF() throws RecognitionException {
         try {
-            int _type = T__42;
+            int _type = ELSIF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:35:7: ( 'END' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:35:9: 'END'
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:21:7: ( 'ELSIF' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:21:9: 'ELSIF'
+            {
+            match("ELSIF"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "ELSIF"
+
+    // $ANTLR start "END"
+    public final void mEND() throws RecognitionException {
+        try {
+            int _type = END;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:22:5: ( 'END' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:22:7: 'END'
             {
             match("END"); 
 
@@ -585,15 +319,57 @@ public class Oberon0Lexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "T__42"
+    // $ANTLR end "END"
 
-    // $ANTLR start "T__43"
-    public final void mT__43() throws RecognitionException {
+    // $ANTLR start "MODULE"
+    public final void mMODULE() throws RecognitionException {
         try {
-            int _type = T__43;
+            int _type = MODULE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:36:7: ( 'WHILE' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:36:9: 'WHILE'
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:23:8: ( 'MODULE' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:23:10: 'MODULE'
+            {
+            match("MODULE"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "MODULE"
+
+    // $ANTLR start "DO"
+    public final void mDO() throws RecognitionException {
+        try {
+            int _type = DO;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:24:4: ( 'DO' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:24:6: 'DO'
+            {
+            match("DO"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "DO"
+
+    // $ANTLR start "WHILE"
+    public final void mWHILE() throws RecognitionException {
+        try {
+            int _type = WHILE;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:25:7: ( 'WHILE' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:25:9: 'WHILE'
             {
             match("WHILE"); 
 
@@ -606,18 +382,347 @@ public class Oberon0Lexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "T__43"
+    // $ANTLR end "WHILE"
+
+    // $ANTLR start "BEGIN"
+    public final void mBEGIN() throws RecognitionException {
+        try {
+            int _type = BEGIN;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:26:7: ( 'BEGIN' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:26:9: 'BEGIN'
+            {
+            match("BEGIN"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "BEGIN"
+
+    // $ANTLR start "PROCEDURE"
+    public final void mPROCEDURE() throws RecognitionException {
+        try {
+            int _type = PROCEDURE;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:27:11: ( 'PROCEDURE' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:27:13: 'PROCEDURE'
+            {
+            match("PROCEDURE"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "PROCEDURE"
+
+    // $ANTLR start "ARRAY"
+    public final void mARRAY() throws RecognitionException {
+        try {
+            int _type = ARRAY;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:28:7: ( 'ARRAY' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:28:9: 'ARRAY'
+            {
+            match("ARRAY"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "ARRAY"
+
+    // $ANTLR start "OF"
+    public final void mOF() throws RecognitionException {
+        try {
+            int _type = OF;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:29:4: ( 'OF' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:29:6: 'OF'
+            {
+            match("OF"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "OF"
+
+    // $ANTLR start "RECORD"
+    public final void mRECORD() throws RecognitionException {
+        try {
+            int _type = RECORD;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:30:8: ( 'RECORD' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:30:10: 'RECORD'
+            {
+            match("RECORD"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "RECORD"
+
+    // $ANTLR start "MOD"
+    public final void mMOD() throws RecognitionException {
+        try {
+            int _type = MOD;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:31:5: ( 'MOD' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:31:7: 'MOD'
+            {
+            match("MOD"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "MOD"
+
+    // $ANTLR start "AND"
+    public final void mAND() throws RecognitionException {
+        try {
+            int _type = AND;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:32:5: ( '&' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:32:7: '&'
+            {
+            match('&'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "AND"
+
+    // $ANTLR start "OR"
+    public final void mOR() throws RecognitionException {
+        try {
+            int _type = OR;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:33:4: ( 'OR' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:33:6: 'OR'
+            {
+            match("OR"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "OR"
+
+    // $ANTLR start "ASSIGNMENT"
+    public final void mASSIGNMENT() throws RecognitionException {
+        try {
+            int _type = ASSIGNMENT;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:34:12: ( ':=' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:34:14: ':='
+            {
+            match(":="); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "ASSIGNMENT"
+
+    // $ANTLR start "EQUALS"
+    public final void mEQUALS() throws RecognitionException {
+        try {
+            int _type = EQUALS;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:35:8: ( '=' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:35:10: '='
+            {
+            match('='); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "EQUALS"
+
+    // $ANTLR start "SMALLERTHEN"
+    public final void mSMALLERTHEN() throws RecognitionException {
+        try {
+            int _type = SMALLERTHEN;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:36:13: ( '<' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:36:15: '<'
+            {
+            match('<'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "SMALLERTHEN"
+
+    // $ANTLR start "GREATERTHEN"
+    public final void mGREATERTHEN() throws RecognitionException {
+        try {
+            int _type = GREATERTHEN;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:37:13: ( '>' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:37:15: '>'
+            {
+            match('>'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "GREATERTHEN"
+
+    // $ANTLR start "SMALLEREQUALS"
+    public final void mSMALLEREQUALS() throws RecognitionException {
+        try {
+            int _type = SMALLEREQUALS;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:38:15: ( '<=' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:38:17: '<='
+            {
+            match("<="); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "SMALLEREQUALS"
+
+    // $ANTLR start "GREATEREQUALS"
+    public final void mGREATEREQUALS() throws RecognitionException {
+        try {
+            int _type = GREATEREQUALS;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:39:15: ( '>=' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:39:17: '>='
+            {
+            match(">="); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "GREATEREQUALS"
+
+    // $ANTLR start "DOTSELECTOR"
+    public final void mDOTSELECTOR() throws RecognitionException {
+        try {
+            int _type = DOTSELECTOR;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:40:13: ( '.' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:40:15: '.'
+            {
+            match('.'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "DOTSELECTOR"
+
+    // $ANTLR start "ARRAYSELECTOR"
+    public final void mARRAYSELECTOR() throws RecognitionException {
+        try {
+            int _type = ARRAYSELECTOR;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:41:15: ( '[' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:41:17: '['
+            {
+            match('['); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "ARRAYSELECTOR"
 
     // $ANTLR start "T__44"
     public final void mT__44() throws RecognitionException {
         try {
             int _type = T__44;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:37:7: ( 'DO' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:37:9: 'DO'
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:42:7: ( ']' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:42:9: ']'
             {
-            match("DO"); 
-
+            match(']'); 
 
             }
 
@@ -634,11 +739,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__45;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:38:7: ( ':=' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:38:9: ':='
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:43:7: ( '(' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:43:9: '('
             {
-            match(":="); 
-
+            match('('); 
 
             }
 
@@ -655,10 +759,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__46;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:39:7: ( ';' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:39:9: ';'
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:44:7: ( ')' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:44:9: ')'
             {
-            match(';'); 
+            match(')'); 
 
             }
 
@@ -675,11 +779,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__47;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:40:7: ( 'ARRAY' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:40:9: 'ARRAY'
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:45:7: ( '~' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:45:9: '~'
             {
-            match("ARRAY"); 
-
+            match('~'); 
 
             }
 
@@ -696,11 +799,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__48;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:41:7: ( 'OF' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:41:9: 'OF'
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:46:7: ( '#' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:46:9: '#'
             {
-            match("OF"); 
-
+            match('#'); 
 
             }
 
@@ -717,10 +819,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__49;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:42:7: ( ':' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:42:9: ':'
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:47:7: ( ',' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:47:9: ','
             {
-            match(':'); 
+            match(','); 
 
             }
 
@@ -737,11 +839,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__50;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:43:7: ( 'RECORD' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:43:9: 'RECORD'
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:48:7: ( ';' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:48:9: ';'
             {
-            match("RECORD"); 
-
+            match(';'); 
 
             }
 
@@ -758,11 +859,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__51;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:44:7: ( 'VAR' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:44:9: 'VAR'
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:49:7: ( ':' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:49:9: ':'
             {
-            match("VAR"); 
-
+            match(':'); 
 
             }
 
@@ -774,118 +874,13 @@ public class Oberon0Lexer extends Lexer {
     }
     // $ANTLR end "T__51"
 
-    // $ANTLR start "T__52"
-    public final void mT__52() throws RecognitionException {
-        try {
-            int _type = T__52;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:45:7: ( 'BEGIN' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:45:9: 'BEGIN'
-            {
-            match("BEGIN"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__52"
-
-    // $ANTLR start "T__53"
-    public final void mT__53() throws RecognitionException {
-        try {
-            int _type = T__53;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:46:7: ( 'PROCEDURE' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:46:9: 'PROCEDURE'
-            {
-            match("PROCEDURE"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__53"
-
-    // $ANTLR start "T__54"
-    public final void mT__54() throws RecognitionException {
-        try {
-            int _type = T__54;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:47:7: ( 'CONST' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:47:9: 'CONST'
-            {
-            match("CONST"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__54"
-
-    // $ANTLR start "T__55"
-    public final void mT__55() throws RecognitionException {
-        try {
-            int _type = T__55;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:48:7: ( 'TYPE' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:48:9: 'TYPE'
-            {
-            match("TYPE"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__55"
-
-    // $ANTLR start "T__56"
-    public final void mT__56() throws RecognitionException {
-        try {
-            int _type = T__56;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:49:7: ( 'MODULE' )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:49:9: 'MODULE'
-            {
-            match("MODULE"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__56"
-
     // $ANTLR start "IDENT"
     public final void mIDENT() throws RecognitionException {
         try {
             int _type = IDENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:40:6: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:40:10: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:63:6: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:63:10: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -896,7 +891,7 @@ public class Oberon0Lexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:40:30: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:63:30: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
             loop1:
             do {
                 int alt1=2;
@@ -909,7 +904,7 @@ public class Oberon0Lexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:
+            	    // C:\\Data\\software_construction\\grammar\\Oberon0.g:
             	    {
             	    if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
             	        input.consume();
@@ -945,8 +940,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = WHITESPACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:41:11: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:41:14: ( ' ' | '\\t' | '\\r' | '\\n' )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:64:11: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:64:14: ( ' ' | '\\t' | '\\r' | '\\n' )
             {
             if ( (input.LA(1)>='\t' && input.LA(1)<='\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
                 input.consume();
@@ -957,7 +952,7 @@ public class Oberon0Lexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            _channel = HIDDEN;
+             skip(); 
 
             }
 
@@ -974,10 +969,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = INTEGER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:44:8: ( ( '0' .. '9' )+ )
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:44:11: ( '0' .. '9' )+
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:67:8: ( ( '0' .. '9' )+ )
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:67:11: ( '0' .. '9' )+
             {
-            // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:44:11: ( '0' .. '9' )+
+            // C:\\Data\\software_construction\\grammar\\Oberon0.g:67:11: ( '0' .. '9' )+
             int cnt2=0;
             loop2:
             do {
@@ -991,7 +986,7 @@ public class Oberon0Lexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:44:12: '0' .. '9'
+            	    // C:\\Data\\software_construction\\grammar\\Oberon0.g:67:12: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1019,299 +1014,299 @@ public class Oberon0Lexer extends Lexer {
     // $ANTLR end "INTEGER"
 
     public void mTokens() throws RecognitionException {
-        // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:8: ( MINUS | PLUS | TIMES | DIVIDE | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | IDENT | WHITESPACE | INTEGER )
+        // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:8: ( MINUS | PLUS | TIMES | DIVIDE | CONST | VAR | TYPE | IF | THEN | ELSE | ELSIF | END | MODULE | DO | WHILE | BEGIN | PROCEDURE | ARRAY | OF | RECORD | MOD | AND | OR | ASSIGNMENT | EQUALS | SMALLERTHEN | GREATERTHEN | SMALLEREQUALS | GREATEREQUALS | DOTSELECTOR | ARRAYSELECTOR | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | IDENT | WHITESPACE | INTEGER )
         int alt3=42;
         alt3 = dfa3.predict(input);
         switch (alt3) {
             case 1 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:10: MINUS
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:10: MINUS
                 {
                 mMINUS(); 
 
                 }
                 break;
             case 2 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:16: PLUS
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:16: PLUS
                 {
                 mPLUS(); 
 
                 }
                 break;
             case 3 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:21: TIMES
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:21: TIMES
                 {
                 mTIMES(); 
 
                 }
                 break;
             case 4 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:27: DIVIDE
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:27: DIVIDE
                 {
                 mDIVIDE(); 
 
                 }
                 break;
             case 5 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:34: T__22
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:34: CONST
                 {
-                mT__22(); 
+                mCONST(); 
 
                 }
                 break;
             case 6 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:40: T__23
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:40: VAR
                 {
-                mT__23(); 
+                mVAR(); 
 
                 }
                 break;
             case 7 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:46: T__24
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:44: TYPE
                 {
-                mT__24(); 
+                mTYPE(); 
 
                 }
                 break;
             case 8 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:52: T__25
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:49: IF
                 {
-                mT__25(); 
+                mIF(); 
 
                 }
                 break;
             case 9 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:58: T__26
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:52: THEN
                 {
-                mT__26(); 
+                mTHEN(); 
 
                 }
                 break;
             case 10 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:64: T__27
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:57: ELSE
                 {
-                mT__27(); 
+                mELSE(); 
 
                 }
                 break;
             case 11 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:70: T__28
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:62: ELSIF
                 {
-                mT__28(); 
+                mELSIF(); 
 
                 }
                 break;
             case 12 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:76: T__29
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:68: END
                 {
-                mT__29(); 
+                mEND(); 
 
                 }
                 break;
             case 13 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:82: T__30
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:72: MODULE
                 {
-                mT__30(); 
+                mMODULE(); 
 
                 }
                 break;
             case 14 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:88: T__31
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:79: DO
                 {
-                mT__31(); 
+                mDO(); 
 
                 }
                 break;
             case 15 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:94: T__32
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:82: WHILE
                 {
-                mT__32(); 
+                mWHILE(); 
 
                 }
                 break;
             case 16 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:100: T__33
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:88: BEGIN
                 {
-                mT__33(); 
+                mBEGIN(); 
 
                 }
                 break;
             case 17 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:106: T__34
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:94: PROCEDURE
                 {
-                mT__34(); 
+                mPROCEDURE(); 
 
                 }
                 break;
             case 18 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:112: T__35
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:104: ARRAY
                 {
-                mT__35(); 
+                mARRAY(); 
 
                 }
                 break;
             case 19 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:118: T__36
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:110: OF
                 {
-                mT__36(); 
+                mOF(); 
 
                 }
                 break;
             case 20 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:124: T__37
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:113: RECORD
                 {
-                mT__37(); 
+                mRECORD(); 
 
                 }
                 break;
             case 21 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:130: T__38
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:120: MOD
                 {
-                mT__38(); 
+                mMOD(); 
 
                 }
                 break;
             case 22 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:136: T__39
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:124: AND
                 {
-                mT__39(); 
+                mAND(); 
 
                 }
                 break;
             case 23 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:142: T__40
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:128: OR
                 {
-                mT__40(); 
+                mOR(); 
 
                 }
                 break;
             case 24 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:148: T__41
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:131: ASSIGNMENT
                 {
-                mT__41(); 
+                mASSIGNMENT(); 
 
                 }
                 break;
             case 25 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:154: T__42
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:142: EQUALS
                 {
-                mT__42(); 
+                mEQUALS(); 
 
                 }
                 break;
             case 26 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:160: T__43
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:149: SMALLERTHEN
                 {
-                mT__43(); 
+                mSMALLERTHEN(); 
 
                 }
                 break;
             case 27 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:166: T__44
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:161: GREATERTHEN
+                {
+                mGREATERTHEN(); 
+
+                }
+                break;
+            case 28 :
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:173: SMALLEREQUALS
+                {
+                mSMALLEREQUALS(); 
+
+                }
+                break;
+            case 29 :
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:187: GREATEREQUALS
+                {
+                mGREATEREQUALS(); 
+
+                }
+                break;
+            case 30 :
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:201: DOTSELECTOR
+                {
+                mDOTSELECTOR(); 
+
+                }
+                break;
+            case 31 :
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:213: ARRAYSELECTOR
+                {
+                mARRAYSELECTOR(); 
+
+                }
+                break;
+            case 32 :
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:227: T__44
                 {
                 mT__44(); 
 
                 }
                 break;
-            case 28 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:172: T__45
+            case 33 :
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:233: T__45
                 {
                 mT__45(); 
 
                 }
                 break;
-            case 29 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:178: T__46
+            case 34 :
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:239: T__46
                 {
                 mT__46(); 
 
                 }
                 break;
-            case 30 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:184: T__47
+            case 35 :
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:245: T__47
                 {
                 mT__47(); 
 
                 }
                 break;
-            case 31 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:190: T__48
+            case 36 :
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:251: T__48
                 {
                 mT__48(); 
 
                 }
                 break;
-            case 32 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:196: T__49
+            case 37 :
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:257: T__49
                 {
                 mT__49(); 
 
                 }
                 break;
-            case 33 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:202: T__50
+            case 38 :
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:263: T__50
                 {
                 mT__50(); 
 
                 }
                 break;
-            case 34 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:208: T__51
+            case 39 :
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:269: T__51
                 {
                 mT__51(); 
 
                 }
                 break;
-            case 35 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:214: T__52
-                {
-                mT__52(); 
-
-                }
-                break;
-            case 36 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:220: T__53
-                {
-                mT__53(); 
-
-                }
-                break;
-            case 37 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:226: T__54
-                {
-                mT__54(); 
-
-                }
-                break;
-            case 38 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:232: T__55
-                {
-                mT__55(); 
-
-                }
-                break;
-            case 39 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:238: T__56
-                {
-                mT__56(); 
-
-                }
-                break;
             case 40 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:244: IDENT
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:275: IDENT
                 {
                 mIDENT(); 
 
                 }
                 break;
             case 41 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:250: WHITESPACE
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:281: WHITESPACE
                 {
                 mWHITESPACE(); 
 
                 }
                 break;
             case 42 :
-                // X:\\portfolio\\Software Engineering\\Blok 3\\Software Construction\\grammar\\Oberon0.g:1:261: INTEGER
+                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:292: INTEGER
                 {
                 mINTEGER(); 
 
@@ -1325,160 +1320,159 @@ public class Oberon0Lexer extends Lexer {
 
     protected DFA3 dfa3 = new DFA3(this);
     static final String DFA3_eotS =
-        "\4\uffff\1\37\6\uffff\1\37\1\uffff\1\37\2\uffff\1\50\1\52\1\uffff"+
-        "\4\37\1\62\1\uffff\6\37\3\uffff\1\37\1\72\1\37\1\74\1\75\4\uffff"+
-        "\1\76\5\37\2\uffff\6\37\1\112\1\uffff\1\114\3\uffff\3\37\1\121\3"+
-        "\37\1\125\3\37\1\uffff\1\37\1\uffff\1\132\1\133\1\37\1\135\1\uffff"+
-        "\3\37\1\uffff\4\37\2\uffff\1\145\1\uffff\1\146\1\147\1\37\1\151"+
-        "\1\37\1\153\1\154\3\uffff\1\155\1\uffff\1\37\3\uffff\2\37\1\161"+
-        "\1\uffff";
+        "\4\uffff\15\37\1\uffff\1\64\1\uffff\1\66\1\70\14\uffff\1\37\1\72"+
+        "\4\37\1\77\7\37\1\107\1\110\1\37\6\uffff\1\112\1\uffff\1\37\1\114"+
+        "\2\37\1\uffff\1\37\1\121\1\123\4\37\2\uffff\1\37\1\uffff\1\37\1"+
+        "\uffff\1\132\1\133\1\134\1\37\1\uffff\1\37\1\uffff\5\37\1\144\3"+
+        "\uffff\1\145\1\37\1\147\1\150\1\37\1\152\1\37\2\uffff\1\154\2\uffff"+
+        "\1\37\1\uffff\1\156\1\uffff\1\37\1\uffff\1\37\1\161\1\uffff";
     static final String DFA3_eofS =
         "\162\uffff";
     static final String DFA3_minS =
-        "\1\11\3\uffff\1\111\6\uffff\1\117\1\uffff\1\106\2\uffff\2\75\1"+
-        "\uffff\1\106\1\110\1\114\1\110\1\75\1\uffff\1\122\1\105\1\101\1"+
-        "\105\1\122\1\117\3\uffff\1\126\1\60\1\104\2\60\4\uffff\1\60\1\105"+
-        "\1\120\1\123\1\104\1\111\2\uffff\1\122\1\103\1\122\1\107\1\117\1"+
-        "\116\1\60\1\uffff\1\60\3\uffff\1\116\2\105\1\60\1\114\1\101\1\117"+
-        "\1\60\1\111\1\103\1\123\1\uffff\1\114\1\uffff\2\60\1\106\1\60\1"+
-        "\uffff\1\105\1\131\1\122\1\uffff\1\116\1\105\1\124\1\105\2\uffff"+
-        "\1\60\1\uffff\2\60\1\104\1\60\1\104\2\60\3\uffff\1\60\1\uffff\1"+
-        "\125\3\uffff\1\122\1\105\1\60\1\uffff";
+        "\1\11\3\uffff\1\111\1\117\1\101\1\110\1\106\1\114\1\117\1\110\1"+
+        "\105\2\122\1\106\1\105\1\uffff\1\75\1\uffff\2\75\14\uffff\1\126"+
+        "\1\60\1\116\1\122\1\120\1\105\1\60\1\123\2\104\1\111\1\107\1\117"+
+        "\1\122\2\60\1\103\6\uffff\1\60\1\uffff\1\123\1\60\1\105\1\116\1"+
+        "\uffff\1\105\2\60\1\114\1\111\1\103\1\101\2\uffff\1\117\1\uffff"+
+        "\1\124\1\uffff\3\60\1\106\1\uffff\1\114\1\uffff\1\105\1\116\1\105"+
+        "\1\131\1\122\1\60\3\uffff\1\60\1\105\2\60\1\104\1\60\1\104\2\uffff"+
+        "\1\60\2\uffff\1\125\1\uffff\1\60\1\uffff\1\122\1\uffff\1\105\1\60"+
+        "\1\uffff";
     static final String DFA3_maxS =
-        "\1\176\3\uffff\1\117\6\uffff\1\117\1\uffff\1\122\2\uffff\2\75\1"+
-        "\uffff\1\106\1\131\1\116\1\110\1\75\1\uffff\1\122\1\105\1\101\1"+
-        "\105\1\122\1\117\3\uffff\1\126\1\172\1\104\2\172\4\uffff\1\172\1"+
-        "\105\1\120\1\123\1\104\1\111\2\uffff\1\122\1\103\1\122\1\107\1\117"+
-        "\1\116\1\172\1\uffff\1\172\3\uffff\1\116\1\105\1\111\1\172\1\114"+
-        "\1\101\1\117\1\172\1\111\1\103\1\123\1\uffff\1\114\1\uffff\2\172"+
-        "\1\106\1\172\1\uffff\1\105\1\131\1\122\1\uffff\1\116\1\105\1\124"+
-        "\1\105\2\uffff\1\172\1\uffff\2\172\1\104\1\172\1\104\2\172\3\uffff"+
-        "\1\172\1\uffff\1\125\3\uffff\1\122\1\105\1\172\1\uffff";
+        "\1\176\3\uffff\2\117\1\101\1\131\1\106\1\116\1\117\1\110\1\105"+
+        "\3\122\1\105\1\uffff\1\75\1\uffff\2\75\14\uffff\1\126\1\172\1\116"+
+        "\1\122\1\120\1\105\1\172\1\123\2\104\1\111\1\107\1\117\1\122\2\172"+
+        "\1\103\6\uffff\1\172\1\uffff\1\123\1\172\1\105\1\116\1\uffff\1\111"+
+        "\2\172\1\114\1\111\1\103\1\101\2\uffff\1\117\1\uffff\1\124\1\uffff"+
+        "\3\172\1\106\1\uffff\1\114\1\uffff\1\105\1\116\1\105\1\131\1\122"+
+        "\1\172\3\uffff\1\172\1\105\2\172\1\104\1\172\1\104\2\uffff\1\172"+
+        "\2\uffff\1\125\1\uffff\1\172\1\uffff\1\122\1\uffff\1\105\1\172\1"+
+        "\uffff";
     static final String DFA3_acceptS =
-        "\1\uffff\1\1\1\2\1\3\1\uffff\1\5\1\6\1\7\1\10\1\11\1\12\1\uffff"+
-        "\1\14\1\uffff\1\16\1\17\2\uffff\1\24\5\uffff\1\35\6\uffff\1\50\1"+
-        "\51\1\52\5\uffff\1\21\1\20\1\23\1\22\6\uffff\1\34\1\40\7\uffff\1"+
-        "\33\1\uffff\1\15\1\37\1\25\13\uffff\1\4\1\uffff\1\13\4\uffff\1\31"+
-        "\3\uffff\1\42\4\uffff\1\26\1\46\1\uffff\1\30\7\uffff\1\27\1\32\1"+
-        "\36\1\uffff\1\43\1\uffff\1\45\1\47\1\41\3\uffff\1\44";
+        "\1\uffff\1\1\1\2\1\3\15\uffff\1\26\1\uffff\1\31\2\uffff\1\36\1"+
+        "\37\1\40\1\41\1\42\1\43\1\44\1\45\1\46\1\50\1\51\1\52\21\uffff\1"+
+        "\30\1\47\1\34\1\32\1\35\1\33\1\uffff\1\16\4\uffff\1\10\7\uffff\1"+
+        "\23\1\27\1\uffff\1\4\1\uffff\1\6\4\uffff\1\14\1\uffff\1\25\6\uffff"+
+        "\1\7\1\11\1\12\7\uffff\1\5\1\13\1\uffff\1\17\1\20\1\uffff\1\22\1"+
+        "\uffff\1\15\1\uffff\1\24\2\uffff\1\21";
     static final String DFA3_specialS =
         "\162\uffff}>";
     static final String[] DFA3_transitionS = {
-            "\2\40\2\uffff\1\40\22\uffff\1\40\2\uffff\1\17\2\uffff\1\14"+
-            "\1\uffff\1\10\1\11\1\3\1\2\1\22\1\1\1\5\1\uffff\12\41\1\27\1"+
-            "\30\1\20\1\16\1\21\2\uffff\1\31\1\34\1\36\1\4\1\25\3\37\1\23"+
-            "\3\37\1\13\1\37\1\15\1\35\1\37\1\32\1\37\1\24\1\37\1\33\1\26"+
-            "\3\37\1\6\1\uffff\1\7\3\uffff\32\37\3\uffff\1\12",
+            "\2\40\2\uffff\1\40\22\uffff\1\40\2\uffff\1\34\2\uffff\1\21"+
+            "\1\uffff\1\31\1\32\1\3\1\2\1\35\1\1\1\26\1\uffff\12\41\1\22"+
+            "\1\36\1\24\1\23\1\25\2\uffff\1\16\1\14\1\5\1\4\1\11\3\37\1\10"+
+            "\3\37\1\12\1\37\1\17\1\15\1\37\1\20\1\37\1\7\1\37\1\6\1\13\3"+
+            "\37\1\27\1\uffff\1\30\3\uffff\32\37\3\uffff\1\33",
             "",
             "",
             "",
             "\1\42\5\uffff\1\43",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
             "\1\44",
-            "",
-            "\1\46\13\uffff\1\45",
-            "",
-            "",
-            "\1\47",
-            "\1\51",
-            "",
+            "\1\45",
+            "\1\47\20\uffff\1\46",
+            "\1\50",
+            "\1\51\1\uffff\1\52",
             "\1\53",
-            "\1\54\20\uffff\1\55",
-            "\1\56\1\uffff\1\57",
-            "\1\60",
-            "\1\61",
+            "\1\54",
+            "\1\55",
+            "\1\56",
+            "\1\57",
+            "\1\60\13\uffff\1\61",
+            "\1\62",
             "",
             "\1\63",
-            "\1\64",
+            "",
             "\1\65",
-            "\1\66",
             "\1\67",
-            "\1\70",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
             "",
             "",
             "",
             "\1\71",
             "\12\37\7\uffff\32\37\6\uffff\32\37",
             "\1\73",
+            "\1\74",
+            "\1\75",
+            "\1\76",
             "\12\37\7\uffff\32\37\6\uffff\32\37",
-            "\12\37\7\uffff\32\37\6\uffff\32\37",
-            "",
-            "",
-            "",
-            "",
-            "\12\37\7\uffff\32\37\6\uffff\32\37",
-            "\1\77",
             "\1\100",
             "\1\101",
             "\1\102",
             "\1\103",
-            "",
-            "",
             "\1\104",
             "\1\105",
             "\1\106",
-            "\1\107",
-            "\1\110",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
             "\1\111",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\12\37\7\uffff\32\37\6\uffff\32\37",
             "",
-            "\12\37\7\uffff\24\37\1\113\5\37\6\uffff\32\37",
-            "",
-            "",
-            "",
+            "\1\113",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
             "\1\115",
             "\1\116",
-            "\1\120\3\uffff\1\117",
+            "",
+            "\1\117\3\uffff\1\120",
             "\12\37\7\uffff\32\37\6\uffff\32\37",
-            "\1\122",
-            "\1\123",
+            "\12\37\7\uffff\24\37\1\122\5\37\6\uffff\32\37",
             "\1\124",
-            "\12\37\7\uffff\32\37\6\uffff\32\37",
+            "\1\125",
             "\1\126",
             "\1\127",
+            "",
+            "",
             "\1\130",
             "",
             "\1\131",
             "",
             "\12\37\7\uffff\32\37\6\uffff\32\37",
             "\12\37\7\uffff\32\37\6\uffff\32\37",
-            "\1\134",
             "\12\37\7\uffff\32\37\6\uffff\32\37",
+            "\1\135",
             "",
             "\1\136",
+            "",
             "\1\137",
             "\1\140",
-            "",
             "\1\141",
             "\1\142",
             "\1\143",
-            "\1\144",
-            "",
-            "",
-            "\12\37\7\uffff\32\37\6\uffff\32\37",
-            "",
-            "\12\37\7\uffff\32\37\6\uffff\32\37",
-            "\12\37\7\uffff\32\37\6\uffff\32\37",
-            "\1\150",
-            "\12\37\7\uffff\32\37\6\uffff\32\37",
-            "\1\152",
-            "\12\37\7\uffff\32\37\6\uffff\32\37",
             "\12\37\7\uffff\32\37\6\uffff\32\37",
             "",
             "",
             "",
             "\12\37\7\uffff\32\37\6\uffff\32\37",
+            "\1\146",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
+            "\1\151",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
+            "\1\153",
             "",
-            "\1\156",
+            "",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
             "",
             "",
+            "\1\155",
+            "",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
             "",
             "\1\157",
+            "",
             "\1\160",
             "\12\37\7\uffff\32\37\6\uffff\32\37",
             ""
@@ -1514,7 +1508,7 @@ public class Oberon0Lexer extends Lexer {
             this.transition = DFA3_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( MINUS | PLUS | TIMES | DIVIDE | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | IDENT | WHITESPACE | INTEGER );";
+            return "1:1: Tokens : ( MINUS | PLUS | TIMES | DIVIDE | CONST | VAR | TYPE | IF | THEN | ELSE | ELSIF | END | MODULE | DO | WHILE | BEGIN | PROCEDURE | ARRAY | OF | RECORD | MOD | AND | OR | ASSIGNMENT | EQUALS | SMALLERTHEN | GREATERTHEN | SMALLEREQUALS | GREATEREQUALS | DOTSELECTOR | ARRAYSELECTOR | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | IDENT | WHITESPACE | INTEGER );";
         }
     }
  

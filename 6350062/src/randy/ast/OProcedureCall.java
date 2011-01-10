@@ -4,12 +4,14 @@ import java.util.*;
 import org.antlr.runtime.tree.Tree;
 import randy.exception.Oberon0Exception;
 import randy.grammar.Oberon0Parser;
-import randy.value.OValue;
+import randy.interpreter.Oberon0VariableStack;
+import randy.value.*;
 
 public class OProcedureCall extends OExpression
 {
 	private String name;
 	private List<OExpression> parameters;
+	static private int cur = 10; // TODO: tijdelijk, Read functie moet worden geimplementeerd onder run()
 	
 	public OProcedureCall(String _name, List<OExpression> _parameters)
 	{
@@ -31,9 +33,32 @@ public class OProcedureCall extends OExpression
 		return new OProcedureCall(name, parameters);
 	}
 	@Override
-	public OValue run() throws Oberon0Exception
+	public OValue run(Oberon0VariableStack vars) throws Oberon0Exception
 	{
-		// TODO Auto-generated method stub
+		if (name.equals("Write") && parameters.size() == 1)
+		{
+			OValue param = parameters.get(0).run(vars);
+			System.out.println(param.toString());
+		}
+		else if (name.equals("Read") && parameters.size() == 1)
+		{
+			OValue param = parameters.get(0).run(vars);
+			System.out.println("--> Reading " + cur + "...");
+			param.setValue(new OInteger(cur));
+			cur++;
+		}
+		else if (name.equals("WriteLn"))
+		{
+			System.out.println("");
+		}
+		else if (name.equals("pv")) // TODO: verwijderen uit real versie, debug functie
+		{
+			System.out.println("++++");
+			System.out.println(vars.toString());
+			System.out.println("++++");
+		}
+		else
+			throw new Oberon0Exception("Unknown function '" + name + "'");
 		return null;
 	}
 	public void print(String indent)

@@ -3,6 +3,8 @@ package randy.ast;
 import java.util.*;
 import org.antlr.runtime.tree.Tree;
 import randy.exception.Oberon0Exception;
+import randy.interpreter.Oberon0VariableStack;
+import randy.value.OValue;
 
 public class OBlock extends OASTNode
 {
@@ -29,5 +31,14 @@ public class OBlock extends OASTNode
 		{
 			st.print(indent + "\t");
 		}
+	}
+	@Override
+	public OValue run(Oberon0VariableStack vars) throws Oberon0Exception
+	{
+		for (OStatement st : statements)
+		{
+			st.run(vars);
+		}
+		return null;
 	}
 }

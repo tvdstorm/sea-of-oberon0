@@ -1,22 +1,22 @@
 package randy.value;
 
 import randy.ast.Type;
-import randy.exception.Oberon0Exception;
+import randy.exception.Oberon0Exception; 
 
-public class OInteger extends OValue
+public class OBoolean extends OValue
 {
-	private int value;
+	private boolean value;
 	
-	public OInteger(int _value)
+	public OBoolean(boolean _value)
 	{
 		value = _value;
 	}
-	public OInteger(OInteger _value)
+	public OBoolean(OBoolean _value)
 	{
 		// Copy constructor
 		value = _value.value;
 	}
-	public int getIntValue()
+	public boolean getBoolValue()
 	{
 		return value;
 	}
@@ -24,7 +24,7 @@ public class OInteger extends OValue
 	{
 		return this;
 	}
-	public void setValue(int _value)
+	public void setValue(boolean _value)
 	{
 		value = _value;
 	}
@@ -32,9 +32,9 @@ public class OInteger extends OValue
 	{
 		// Resolve CONST
 		_val = _val.getValue();
-		if (_val instanceof OInteger)
+		if (_val instanceof OBoolean)
 		{
-			OInteger v = (OInteger)_val;
+			OBoolean v = (OBoolean)_val;
 			this.value = v.value;
 		}
 		else
@@ -42,7 +42,7 @@ public class OInteger extends OValue
 	}
 	public Type getType()
 	{
-		return Type.INTEGER;
+		return Type.BOOL;
 	}
 	@Override
 	public String toString()
