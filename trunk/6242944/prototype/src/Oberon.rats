@@ -123,14 +123,38 @@ ast.Declarations Declarations =
 	vars:(void:"VAR" void:Spacing VarDeclaration*)?
 	procs:(ProcedureDeclaration void:";")*
 	{ 	List<ast.Declaration> decls = new ArrayList<ast.Declaration>();
-		consts.addTo(decls);
-		vars.addTo(decls);
+		if (consts != null) consts.addTo(decls);
+		if (vars != null) vars.addTo(decls);
+		if (procs != null) procs.addTo(decls);
 		yyValue = new ast.Declarations(decls); 
 	}
 	;
 
+List<ast.Parameter> FPSection = 
+	names:IdentList Spacing ":" Spacing type:Type
+	{ 
+		List<ast.Parameter> list = new ArrayList<ast.Parameter>();
+		for(int i=0; i<names.size(); i++) {
+			list.add(new ast.Parameter(names.get(i), type));
+		}
+		yyValue = list;
+	}
+	;
+
+List<ast.Parameter> FormalParameters = 
+	"(" args1:FPSection? args2:(void:";" FPSection)* ")"
+	{ 	List<ast.Parameter> params = new ArrayList<ast.Parameter>();
+		if (args1 != null) params.addAll(args1);
+		if (args2 != null) {
+			for(List<ast.Parameter> l : args2.list())
+				params.addAll(l);
+		}
+		yyValue = params;
+	}
+	;
+
 ast.Procedure ProcedureDeclaration = 
-	"PROCEDURE" Spacing name:Ident ";" 
+	"PROCEDURE" Spacing name:Ident params:FormalParameters ";" 
 	Spacing
 	decl:Declarations
 	Spacing
@@ -138,7 +162,7 @@ ast.Procedure ProcedureDeclaration =
 	Spacing
 	"END" Spacing 
 	Ident Spacing
-	{	yyValue = new ast.Procedure(name, stat);  }
+	{	yyValue = new ast.Procedure(name, decl, stat);  }
 	;
 
 public Pair<ast.Expression> ActualParameters = 

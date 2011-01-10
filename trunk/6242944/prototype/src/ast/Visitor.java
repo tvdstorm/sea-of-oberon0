@@ -10,6 +10,7 @@ public abstract class Visitor<T> {
 	
 	protected abstract T visit(StatementSequence sequence);
 
+	protected abstract T visit(Procedure procedure);
 	protected abstract T visit(ProcedureCall procedureCall);
 	protected abstract T visit(IfStatement statement);
 	protected abstract T visit(WhileStatement statement);

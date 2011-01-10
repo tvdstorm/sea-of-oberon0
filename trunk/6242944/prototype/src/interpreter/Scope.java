@@ -1,7 +1,9 @@
 package interpreter;
 
 import runtime.BuiltinFunction;
+import runtime.Callable;
 import runtime.IntegerValue;
+import runtime.ScriptedProcedure;
 import runtime.Value;
 import runtime.ValueRef;
 
@@ -11,17 +13,28 @@ import java.util.Map;
 import ast.ArrayType;
 import ast.Identifier;
 import ast.IdentifierType;
+import ast.Procedure;
 import ast.Type;
 
 public class Scope {
 	private Scope _parentScope;
+	//XXX
 	private Map<String, Value> _constants;
 	private Map<String, ValueRef> _variables;
-	
-	public Scope(Scope parentScope) {
-		_parentScope = parentScope;
+	private Map<String, Callable> _procedures;
+
+	public Scope() {
 		_constants = new HashMap<String, Value>();
 		_variables = new HashMap<String, ValueRef>();
+		_procedures = new HashMap<String, Callable>();
+	}
+	
+	public Scope(Scope parentScope) {
+		//XXX
+		_parentScope = parentScope;
+		_constants = new HashMap<String, Value>(parentScope._constants);
+		_variables = new HashMap<String, ValueRef>(parentScope._variables);
+		_procedures = new HashMap<String, Callable>(parentScope._procedures);
 	}
 	
 	public void defineConstant(String name, Value value) {
@@ -44,5 +57,17 @@ public class Scope {
 		
 		//XXX
 		return null;
+	}
+
+	public void defineProcedure(String name, Callable procedure) {
+		_procedures.put(name, procedure);
+	}
+
+	public Callable lookupProcedure(String name) {
+		return _procedures.get(name);
+	}
+
+	public Scope getParentScope() {
+		return _parentScope;
 	}
 }
