@@ -1,4 +1,3 @@
-T__7=7
 T__8=8
 T__9=9
 T__10=10
@@ -37,14 +36,15 @@ T__42=42
 T__43=43
 T__44=44
 T__45=45
-IDENT=4
-INTEGER=5
-WS=6
-'MODULE '=7
+MODULE=4
+IDENT=5
+INTEGER=6
+WS=7
+'MODULE'=4
 ';'=8
-'BEGIN'=9
-'END'=10
-'.'=11
+'.'=9
+'BEGIN'=10
+'END'=11
 'CONST'=12
 '='=13
 'TYPE'=14

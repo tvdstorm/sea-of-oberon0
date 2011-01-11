@@ -1,6 +1,7 @@
 package oberon0;
 import org.antlr.runtime.*;
 import org.antlr.runtime.tree.*;
+import org.antlr.runtime.TokenRewriteStream;
 
 import parser.oberon0Lexer;
 import parser.oberon0Parser;
@@ -21,19 +22,28 @@ public class ParserOutput {
    * Parses the input file and returns an tree represetation of the
    * given source code
    */
-  public Tree getTree()
+  public CommonTree getTree()
   {
-    Tree parserOutput = null;
+    CommonTree parserOutput = null;
     
     try
     {
       CharStream input = new ANTLRFileStream( this.filename );
       oberon0Lexer lex = new oberon0Lexer(input);
-      CommonTokenStream tokens = new CommonTokenStream(lex);
+      
+      TokenRewriteStream tokens = new TokenRewriteStream(lex);
       //System.out.println("tokens="+tokens);
       oberon0Parser parser = new oberon0Parser(tokens);
-      oberon0Parser.module_return r = parser.module();
-      parserOutput = (Tree)r.getTree();
+      
+      final TreeAdaptor adaptor = new CommonTreeAdaptor() {
+        public Object create(Token payload) {
+          return new CommonTree(payload);
+        }
+      };
+      
+      parser.setTreeAdaptor(adaptor);
+      oberon0Parser.module_return ret = parser.module();
+      parserOutput = (CommonTree)ret.getTree();
     }
     catch( IOException e )
     {
