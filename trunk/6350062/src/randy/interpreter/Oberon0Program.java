@@ -11,9 +11,14 @@ import randy.exception.*;
 public class Oberon0Program
 {
 	private OASTNode astTree;
+	private IOberon0BuildinFunctions buildinFunctions;
+	private static Oberon0Program singleton; // TODO: betere oplossing zoeken
+	
 	public Oberon0Program()
 	{
 		astTree = null;
+		buildinFunctions = new Oberon0BuildinFunctions();
+		singleton = this;
 	}
 	public boolean loadProgram(String filename) throws Oberon0Exception
 	{
@@ -45,13 +50,24 @@ public class Oberon0Program
 		randy.main.Main.printTree((Tree)parserOutput.getTree(), "");
 		
 		astTree = OASTNode.buildASTTree((Tree)parserOutput.getTree());
-		
-		//System.out.println("Output: " + ((OExpression)astTree).run());
-		astTree.print("");
+		return true;
+	}
+	public void run() throws Oberon0Exception
+	{
 		System.out.println("++++++++++++++++++++++++");
 		Oberon0VariableStack vars = new Oberon0VariableStack(null);
 		astTree.run(vars);
-		
-		return true;
+	}
+	public void setBuildinFunctions(IOberon0BuildinFunctions _buildinFunctions)
+	{
+		buildinFunctions = _buildinFunctions;
+	}
+	public IOberon0BuildinFunctions getBuildinFunctions()
+	{
+		return buildinFunctions;
+	}
+	public static Oberon0Program getProgram()
+	{
+		return singleton;
 	}
 }

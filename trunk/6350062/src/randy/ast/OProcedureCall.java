@@ -4,6 +4,7 @@ import java.util.*;
 import org.antlr.runtime.tree.Tree;
 import randy.exception.Oberon0Exception;
 import randy.generated.Oberon0Parser;
+import randy.interpreter.Oberon0Program;
 import randy.interpreter.Oberon0VariableStack;
 import randy.value.*;
 
@@ -11,7 +12,6 @@ public class OProcedureCall extends OExpression
 {
 	private String name;
 	private List<OExpression> parameters;
-	static private int cur = 10; // TODO: tijdelijk, Read functie moet worden geimplementeerd onder run()
 	
 	public OProcedureCall(String _name, List<OExpression> _parameters)
 	{
@@ -38,18 +38,20 @@ public class OProcedureCall extends OExpression
 		if (name.equals("Write") && parameters.size() == 1)
 		{
 			OValue param = parameters.get(0).run(vars);
-			System.out.println(param.toString());
+			Oberon0Program.getProgram().getBuildinFunctions().write(param.toString());
 		}
 		else if (name.equals("Read") && parameters.size() == 1)
 		{
 			OValue param = parameters.get(0).run(vars);
-			System.out.println("--> Reading " + cur + "...");
-			param.setValue(new OInteger(cur));
-			cur++;
+			String input = Oberon0Program.getProgram().getBuildinFunctions().read();
+			if (param.getType().isInteger())
+				param.setValue(new OInteger(Integer.parseInt(input)));
+			else
+				throw new Oberon0Exception("Read output must be converted..."); // TODO: andere formaten implementeren
 		}
 		else if (name.equals("WriteLn"))
 		{
-			System.out.println("");
+			Oberon0Program.getProgram().getBuildinFunctions().writeLn();
 		}
 		else if (name.equals("pv")) // TODO: verwijderen uit real versie, debug functie
 		{

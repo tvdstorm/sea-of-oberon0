@@ -6,7 +6,7 @@ import randy.exception.Oberon0Exception;
 import randy.interpreter.Oberon0VariableStack;
 import randy.value.OValue;
 
-public class OBlock extends OASTNode
+public class OBlock extends OASTNode // TODO: extends OStatement?
 {
 	private List<OStatement> statements;
 	
