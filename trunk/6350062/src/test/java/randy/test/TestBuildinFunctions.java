@@ -1,10 +1,11 @@
 package randy.test;
 
 import java.util.*;
+import org.junit.Ignore;
 import randy.exception.Oberon0Exception;
 import randy.interpreter.IOberon0BuildinFunctions;
-import randy.value.OValue;
 
+@Ignore
 public class TestBuildinFunctions implements IOberon0BuildinFunctions
 {
 	private Queue<String> input;
