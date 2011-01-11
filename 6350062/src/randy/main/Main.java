@@ -15,6 +15,7 @@ public class Main
 		Oberon0Program p = new Oberon0Program();
 		//p.loadProgram("test/simpletest.oberon0");
 		p.loadProgram("test/quicksort.oberon0");
+		p.run();
 		
 		//processAndRender("test/sample.oberon0", "test/sample.dot", "test/sample.png");
 		//processAndRender("test/quicksort.oberon0", "test/quicksort.dot", "test/quicksort.png");
