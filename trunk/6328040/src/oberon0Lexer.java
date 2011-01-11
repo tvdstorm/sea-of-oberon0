@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g 2011-01-10 22:45:11
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g 2011-01-11 14:41:30
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -41,20 +41,23 @@ public class oberon0Lexer extends Lexer {
     public static final int ARRAY=35;
     public static final int RECORD=36;
     public static final int CONST=37;
-    public static final int NWTYPE=38;
+    public static final int TYPEDECL=38;
     public static final int VAR=39;
     public static final int PROCEDURE=40;
     public static final int BEGIN=41;
     public static final int MODULE=42;
     public static final int PARAMETERS=43;
-    public static final int BODY=44;
-    public static final int CONDITION=45;
-    public static final int TYPE=46;
-    public static final int NAME=47;
-    public static final int IDENT=48;
-    public static final int INTEGER=49;
-    public static final int WS=50;
-    public static final int OPTWS=51;
+    public static final int REFVAR=44;
+    public static final int BODY=45;
+    public static final int CONDITION=46;
+    public static final int TYPE=47;
+    public static final int NAME=48;
+    public static final int PROCEDURECALL=49;
+    public static final int SELECTOR=50;
+    public static final int IDENT=51;
+    public static final int INTEGER=52;
+    public static final int WS=53;
+    public static final int OPTWS=54;
 
     // delegates
     // delegators
@@ -766,13 +769,13 @@ public class oberon0Lexer extends Lexer {
     }
     // $ANTLR end "CONST"
 
-    // $ANTLR start "NWTYPE"
-    public final void mNWTYPE() throws RecognitionException {
+    // $ANTLR start "TYPEDECL"
+    public final void mTYPEDECL() throws RecognitionException {
         try {
-            int _type = NWTYPE;
+            int _type = TYPEDECL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:37:8: ( 'TYPE' )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:37:10: 'TYPE'
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:37:10: ( 'TYPE' )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:37:12: 'TYPE'
             {
             match("TYPE"); 
 
@@ -785,7 +788,7 @@ public class oberon0Lexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "NWTYPE"
+    // $ANTLR end "TYPEDECL"
 
     // $ANTLR start "VAR"
     public final void mVAR() throws RecognitionException {
@@ -876,8 +879,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = IDENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:182:9: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:182:11: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:203:9: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:203:11: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -888,7 +891,7 @@ public class oberon0Lexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:183:3: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:204:3: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             loop1:
             do {
                 int alt1=2;
@@ -937,10 +940,10 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = INTEGER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:184:9: ( ( '0' .. '9' )+ )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:184:11: ( '0' .. '9' )+
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:205:9: ( ( '0' .. '9' )+ )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:205:11: ( '0' .. '9' )+
             {
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:184:11: ( '0' .. '9' )+
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:205:11: ( '0' .. '9' )+
             int cnt2=0;
             loop2:
             do {
@@ -954,7 +957,7 @@ public class oberon0Lexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:184:11: '0' .. '9'
+            	    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:205:11: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -986,10 +989,10 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:186:4: ( ( ' ' | '\\t' | '\\n' | '\\r' )+ )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:186:7: ( ' ' | '\\t' | '\\n' | '\\r' )+
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:207:4: ( ( ' ' | '\\t' | '\\n' | '\\r' )+ )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:207:7: ( ' ' | '\\t' | '\\n' | '\\r' )+
             {
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:186:7: ( ' ' | '\\t' | '\\n' | '\\r' )+
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:207:7: ( ' ' | '\\t' | '\\n' | '\\r' )+
             int cnt3=0;
             loop3:
             do {
@@ -1044,10 +1047,10 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = OPTWS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:187:7: ( ( ' ' | '\\t' | '\\n' | '\\r' )* )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:187:9: ( ' ' | '\\t' | '\\n' | '\\r' )*
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:208:7: ( ( ' ' | '\\t' | '\\n' | '\\r' )* )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:208:9: ( ' ' | '\\t' | '\\n' | '\\r' )*
             {
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:187:9: ( ' ' | '\\t' | '\\n' | '\\r' )*
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:208:9: ( ' ' | '\\t' | '\\n' | '\\r' )*
             loop4:
             do {
                 int alt4=2;
@@ -1093,7 +1096,7 @@ public class oberon0Lexer extends Lexer {
     // $ANTLR end "OPTWS"
 
     public void mTokens() throws RecognitionException {
-        // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:8: ( STAR | DIV | MOD | AMPERSAND | PLUS | MINUS | OR | EQUALS | HASH | SMALLERTHEN | SMALLEREQUAL | GREATERTHEN | GREATEREQUAL | DOT | COMMA | COLON | RNDOPEN | RNDCLOSE | SQROPEN | SQRCLOSE | OF | THEN | DO | TILDE | ASSIGN | SEMICOLON | END | ELSE | ELSIF | IF | WHILE | ARRAY | RECORD | CONST | NWTYPE | VAR | PROCEDURE | BEGIN | MODULE | IDENT | INTEGER | WS | OPTWS )
+        // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:8: ( STAR | DIV | MOD | AMPERSAND | PLUS | MINUS | OR | EQUALS | HASH | SMALLERTHEN | SMALLEREQUAL | GREATERTHEN | GREATEREQUAL | DOT | COMMA | COLON | RNDOPEN | RNDCLOSE | SQROPEN | SQRCLOSE | OF | THEN | DO | TILDE | ASSIGN | SEMICOLON | END | ELSE | ELSIF | IF | WHILE | ARRAY | RECORD | CONST | TYPEDECL | VAR | PROCEDURE | BEGIN | MODULE | IDENT | INTEGER | WS | OPTWS )
         int alt5=43;
         alt5 = dfa5.predict(input);
         switch (alt5) {
@@ -1336,63 +1339,63 @@ public class oberon0Lexer extends Lexer {
                 }
                 break;
             case 35 :
-                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:236: NWTYPE
+                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:236: TYPEDECL
                 {
-                mNWTYPE(); 
+                mTYPEDECL(); 
 
                 }
                 break;
             case 36 :
-                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:243: VAR
+                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:245: VAR
                 {
                 mVAR(); 
 
                 }
                 break;
             case 37 :
-                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:247: PROCEDURE
+                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:249: PROCEDURE
                 {
                 mPROCEDURE(); 
 
                 }
                 break;
             case 38 :
-                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:257: BEGIN
+                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:259: BEGIN
                 {
                 mBEGIN(); 
 
                 }
                 break;
             case 39 :
-                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:263: MODULE
+                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:265: MODULE
                 {
                 mMODULE(); 
 
                 }
                 break;
             case 40 :
-                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:270: IDENT
+                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:272: IDENT
                 {
                 mIDENT(); 
 
                 }
                 break;
             case 41 :
-                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:276: INTEGER
+                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:278: INTEGER
                 {
                 mINTEGER(); 
 
                 }
                 break;
             case 42 :
-                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:284: WS
+                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:286: WS
                 {
                 mWS(); 
 
                 }
                 break;
             case 43 :
-                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:287: OPTWS
+                // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\interpreter1\\oberon0.g:1:289: OPTWS
                 {
                 mOPTWS(); 
 
@@ -1597,7 +1600,7 @@ public class oberon0Lexer extends Lexer {
             this.transition = DFA5_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( STAR | DIV | MOD | AMPERSAND | PLUS | MINUS | OR | EQUALS | HASH | SMALLERTHEN | SMALLEREQUAL | GREATERTHEN | GREATEREQUAL | DOT | COMMA | COLON | RNDOPEN | RNDCLOSE | SQROPEN | SQRCLOSE | OF | THEN | DO | TILDE | ASSIGN | SEMICOLON | END | ELSE | ELSIF | IF | WHILE | ARRAY | RECORD | CONST | NWTYPE | VAR | PROCEDURE | BEGIN | MODULE | IDENT | INTEGER | WS | OPTWS );";
+            return "1:1: Tokens : ( STAR | DIV | MOD | AMPERSAND | PLUS | MINUS | OR | EQUALS | HASH | SMALLERTHEN | SMALLEREQUAL | GREATERTHEN | GREATEREQUAL | DOT | COMMA | COLON | RNDOPEN | RNDCLOSE | SQROPEN | SQRCLOSE | OF | THEN | DO | TILDE | ASSIGN | SEMICOLON | END | ELSE | ELSIF | IF | WHILE | ARRAY | RECORD | CONST | TYPEDECL | VAR | PROCEDURE | BEGIN | MODULE | IDENT | INTEGER | WS | OPTWS );";
         }
     }
  

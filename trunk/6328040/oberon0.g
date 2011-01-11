@@ -48,17 +48,20 @@ tokens
 	ARRAY	=	'ARRAY';
 	RECORD	=	'RECORD';
 	CONST	=	'CONST';
-	NWTYPE	=	'TYPE';
+	TYPEDECL=	'TYPE';
 	VAR	=	'VAR';
 	PROCEDURE
 		=	'PROCEDURE';
 	BEGIN	=	'BEGIN';
 	MODULE	=	'MODULE';
 	PARAMETERS;
+	REFVAR;
 	BODY;
 	CONDITION;
 	TYPE;
 	NAME;
+	PROCEDURECALL;
+	SELECTOR;
 }
 
 module	:	MODULE nameident semicolon moduleBody IDENT DOT EOF
@@ -79,26 +82,94 @@ constDeclaration
 			-> ^(CONST (nameident expression)*);
 				
 typeDeclaration
-	:	(NWTYPE (IDENT EQUALS type semicolon)*)
-			-> ^(NWTYPE (IDENT type)*);
+	:	(TYPEDECL (IDENT EQUALS type semicolon)*)
+			-> ^(TYPEDECL (IDENT type)*);
 				
 varDeclarations
-	:	(VAR (identList colon type semicolon)*)
-			-> ^(VAR type identList)*;
+	:	(VAR (identList COLON type semicolon)*)
+			-> ^(VAR identList type)*;
 
 procedureDeclaration
-	:	PROCEDURE IDENT (formalParameters)? semicolon declarations (procedureBody)? IDENT 
-			-> ^(PROCEDURE IDENT (formalParameters)? declarations (procedureBody)?);
+	:	PROCEDURE nameident (formalParameters)? SEMICOLON declarations (procedureBody)? IDENT 
+			-> ^(PROCEDURE nameident (formalParameters)? declarations (procedureBody)?);
 				
 procedureBody
 	:	BEGIN statementSequence END
 			-> ^(BODY statementSequence);
 
-selector: 	(DOT IDENT -> ^(IDENT) | sqrExpression 
-			-> ^(sqrExpression))*;
+assignment
+	:	identselector ASSIGN^ expression;
+
+actualParameters
+	:	RNDOPEN (expression (COMMA expression)*)? RNDCLOSE
+			-> ^(PARAMETERS expression+);
+
+procedureCall
+	:	identselector (actualParameters)? 
+			-> ^(PROCEDURECALL identselector (actualParameters)?)  ;
+
+
+ifStatement:		IF expression THEN statementSequence 
+			(ELSIF expression THEN statementSequence)+ 
+			(ELSE statementSequence) END
+				-> ^(IF ^(CONDITION expression) ^(BODY statementSequence) 
+				^(ELSIF ^(CONDITION expression) ^(BODY statementSequence))+ 
+				^(ELSE ^(BODY statementSequence))) 
+			| IF expression THEN statementSequence 
+			(ELSIF expression THEN statementSequence)+ END
+				-> ^(IF ^(CONDITION expression) ^(BODY statementSequence) 
+				^(ELSIF ^(CONDITION expression) ^(BODY statementSequence))+) 
+			| IF expression THEN statementSequence 
+			(ELSE statementSequence) END
+				-> ^(IF ^(CONDITION expression)^(BODY statementSequence)  
+				^(ELSE ^(BODY statementSequence))) 
+			| IF expression THEN statementSequence END
+				-> ^(IF ^(CONDITION expression) ^(BODY statementSequence));
+
+whileStatement:		WHILE expression DO statementSequence END
+				-> ^(WHILE ^(CONDITION expression) ^(BODY statementSequence));
+
+statement
+	:	(assignment | procedureCall | ifStatement | whileStatement)?;
+	
+statementSequence
+	:	statement (semicolon statement)*;
+
+identList
+	:	IDENT (comma IDENT)* ->
+			^(NAME IDENT+);
+
+arrayType 
+	:	ARRAY expression OF type 
+			-> ^(ARRAY expression type);	
+	
+fieldList
+	:	(identList colon type)?;
+
+recordType 
+	:	RECORD fieldList (semicolon fieldList)* END
+			-> ^(RECORD fieldList+);
+
+type	:	(IDENT -> ^( TYPE IDENT)| arrayType -> ^(TYPE arrayType)| recordType -> ^(TYPE recordType));	
+
+fpSection
+	:	identList COLON type
+			-> ^(REFVAR identList type)
+		|VAR identList COLON type
+			-> ^(VAR identList type);
+
+formalParameters 
+	:	RNDOPEN (fpSection (SEMICOLON fpSection)*)? RNDCLOSE 
+			-> ^(PARAMETERS (fpSection+)?);
+			
+selector: 	(DOT IDENT 
+			-> ^(SELECTOR IDENT) 
+		| sqrExpression
+			-> ^(SELECTOR sqrExpression)
+		)*;
 
 identselector
-	:	IDENT selector;
+	:	IDENT^ selector;
 
 factor 	:	(identselector | number | rndExpression | TILDE factor);
 
@@ -116,56 +187,6 @@ sqrExpression
 	:	SQROPEN expression SQRCLOSE -> expression;
 rndExpression
 	:	RNDOPEN expression RNDCLOSE-> expression;
-
-assignment
-	:	identselector ASSIGN^ expression;
-
-actualParameters
-	:	RNDOPEN (expression (comma expression)*)? RNDCLOSE
-			-> ^(PARAMETERS expression+);
-
-procedureCall
-	:	identselector^ (actualParameters)? ;
-
-
-ifStatement:		IF expression THEN statementSequence (ELSIF expression THEN statementSequence)+ (ELSE statementSequence) END
-				-> ^(IF ^(CONDITION expression) ^(BODY statementSequence) ^(ELSIF ^(CONDITION expression) ^(BODY statementSequence))+ ^(ELSE ^(BODY statementSequence))) |
-			IF expression THEN statementSequence (ELSIF expression THEN statementSequence)+ END
-				-> ^(IF ^(CONDITION expression) ^(BODY statementSequence) ^(ELSIF ^(CONDITION expression) ^(BODY statementSequence))+) |
-			IF expression THEN statementSequence (ELSE statementSequence) END
-				-> ^(IF ^(CONDITION expression)^(BODY statementSequence)  ^(ELSE ^(BODY statementSequence))) |
-			IF expression THEN statementSequence END
-				-> ^(IF ^(CONDITION expression) ^(BODY statementSequence));
-whileStatement:		WHILE expression DO statementSequence END
-				-> ^(WHILE ^(CONDITION expression) ^(BODY statementSequence));
-
-statement
-	:	(assignment | procedureCall | ifStatement | whileStatement)?;
-	
-statementSequence
-	:	statement (semicolon statement)*;
-
-identList
-	:	IDENT (comma IDENT)*;
-
-arrayType 
-	:	ARRAY expression OF type 
-			-> ^(ARRAY expression type);	
-	
-fieldList
-	:	(identList colon type)?;
-
-recordType 
-	:	RECORD fieldList (semicolon fieldList)* END;
-
-type	:	(IDENT | arrayType | recordType);	
-
-fpSection
-	:	VAR? identList colon type;
-
-formalParameters 
-	:	RNDOPEN (fpSection (semicolon fpSection)*)? RNDCLOSE 
-			-> ^(PARAMETERS (fpSection (fpSection)*)?);
 
 nameident
 	:	IDENT -> ^(NAME IDENT);
