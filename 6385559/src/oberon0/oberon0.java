@@ -1,7 +1,7 @@
 package oberon0;
 import oberon0.ParserOutput;
 import oberon0.ParserInput;
-import org.antlr.runtime.tree.Tree;
+import org.antlr.runtime.tree.CommonTree;
 import parsetreeReduction.singletonReduce;
 
 public class oberon0 {
@@ -13,7 +13,7 @@ public class oberon0 {
     ParserInput     pIn       = new ParserInput( );
     ParserOutput    Pout      = new ParserOutput( );
     singletonReduce reduction = new singletonReduce( );
-    Tree AST;
+    CommonTree AST;
     
     // get the AST from the parser
     Pout.setFile( pIn.getInputFile( args ) );
@@ -22,7 +22,7 @@ public class oberon0 {
     reduction.setAST( AST );
     AST = reduction.reduce( );
 
-    System.out.println( AST.toStringTree() );
+    //System.out.println( AST.toStringTree() );
     return;
   }
 

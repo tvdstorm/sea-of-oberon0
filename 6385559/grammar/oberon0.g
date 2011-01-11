@@ -5,9 +5,18 @@ options
   output=AST;
 }
 
+tokens
+{
+  MODULE = 'MODULE';
+}
+
 module
-	: 'MODULE ' IDENT ';' declarations ('BEGIN' statementsequence)? 'END' IDENT '.'
+	: MODULE IDENT ';' modulebody IDENT '.' -> ^(MODULE IDENT modulebody)
 	;
+	
+modulebody
+  : declarations ('BEGIN' statementsequence)? 'END'
+  ;
 
 declarations
 	: ('CONST' (IDENT '=' expression ';')+)? ('TYPE' (IDENT '=' type)+)? ('VAR' (identlist ':' type ';')+ )? (proceduredeclaration ';')*
