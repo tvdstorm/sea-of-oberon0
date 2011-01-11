@@ -4,8 +4,8 @@ import java.io.*;
 import org.antlr.runtime.*;
 import org.antlr.runtime.tree.*;
 import org.antlr.stringtemplate.StringTemplate;
-import randy.grammar.*;
-import randy.grammar.Oberon0Parser.module_return;
+import randy.generated.*;
+import randy.generated.Oberon0Parser.module_return;
 import randy.interpreter.Oberon0Program;
 
 public class Main

@@ -1,6 +1,6 @@
 // $ANTLR 3.3 Nov 30, 2010 12:45:30 C:\\Data\\software_construction\\grammar\\Oberon0.g 2011-01-10 16:25:12
 
-package randy.grammar;
+package randy.generated;
 
 
 import org.antlr.runtime.*;

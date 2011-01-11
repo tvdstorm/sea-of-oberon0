@@ -53,12 +53,12 @@ tokens
 
 @parser::header
 {
-package randy.grammar;
+package randy.generated;
 }
 
 @lexer::header
 {
-package randy.grammar;
+package randy.generated;
 }
 
 IDENT:			('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'0'..'9')*; // TODO: moet LETTER (LETTER|DIGIT)* worden

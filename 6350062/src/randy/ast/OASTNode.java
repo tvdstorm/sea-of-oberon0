@@ -2,7 +2,7 @@ package randy.ast;
 
 import org.antlr.runtime.tree.Tree;
 import randy.exception.Oberon0Exception;
-import randy.grammar.Oberon0Parser;
+import randy.generated.Oberon0Parser;
 import randy.interpreter.Oberon0VariableStack;
 import randy.value.OValue;
 
