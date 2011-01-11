@@ -1,5 +1,10 @@
 grammar oberon0;
 
+options
+{
+  output=AST;
+}
+
 module
 	: 'MODULE ' IDENT ';' declarations ('BEGIN' statementsequence)? 'END' IDENT '.'
 	;
