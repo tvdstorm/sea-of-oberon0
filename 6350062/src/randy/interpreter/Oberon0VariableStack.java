@@ -1,18 +1,17 @@
 package randy.interpreter;
 
 import java.util.*;
-import randy.ast.Type;
 import randy.exception.Oberon0Exception;
 import randy.value.*;
 
 public class Oberon0VariableStack
 {
-	private Oberon0VariableStack parent;
+	private Oberon0VariableStack globalStack;
 	private Map<String, OValue> variables;
 	
-	public Oberon0VariableStack(Oberon0VariableStack _parent)
+	public Oberon0VariableStack(Oberon0VariableStack _globalStack)
 	{
-		parent = _parent;
+		globalStack = _globalStack;
 		variables = new HashMap<String, OValue>();
 	}
 	public void addVariable(String name, OValue var) throws Oberon0Exception
@@ -29,8 +28,8 @@ public class Oberon0VariableStack
 	{
 		if (variables.containsKey(name))
 			return variables.get(name);
-		else if (parent != null)
-			return parent.getVariable(name);
+		else if (globalStack != null)
+			return globalStack.getVariable(name);
 		else
 			throw new Oberon0Exception("Unknown variable '" + name + "'...");
 	}

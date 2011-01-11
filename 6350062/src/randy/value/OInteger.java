@@ -20,7 +20,7 @@ public class OInteger extends OValue
 	{
 		return value;
 	}
-	public OValue getValue()
+	public OValue dereference()
 	{
 		return this;
 	}
@@ -31,7 +31,7 @@ public class OInteger extends OValue
 	public void setValue(OValue _val) throws Oberon0Exception
 	{
 		// Resolve CONST
-		_val = _val.getValue();
+		_val = _val.dereference();
 		if (_val instanceof OInteger)
 		{
 			OInteger v = (OInteger)_val;

@@ -30,7 +30,7 @@ public class OArray extends OValue
 		// TODO: check if out of bounds
 		return values[_index];
 	}
-	public OValue getValue()
+	public OValue dereference()
 	{
 		return this;
 	}

@@ -3,11 +3,9 @@ package randy.interpreter;
 import java.io.IOException;
 import org.antlr.runtime.*;
 import org.antlr.runtime.tree.Tree;
-import com.sun.org.apache.xpath.internal.VariableStack;
 import randy.generated.*;
 import randy.generated.Oberon0Parser.*;
 import randy.ast.OASTNode;
-import randy.ast.OExpression;
 import randy.exception.*;
 
 public class Oberon0Program

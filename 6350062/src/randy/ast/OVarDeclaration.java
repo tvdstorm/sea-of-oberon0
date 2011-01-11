@@ -4,7 +4,6 @@ import java.util.*;
 import org.antlr.runtime.tree.Tree;
 import randy.exception.Oberon0Exception;
 import randy.interpreter.Oberon0VariableStack;
-import randy.main.Main;
 import randy.value.OValue;
 
 public class OVarDeclaration extends OBodyDeclaration

@@ -5,7 +5,7 @@ import randy.ast.Type;
 
 public abstract class OValue
 {
-	public abstract OValue getValue();
+	public abstract OValue dereference();
 	public abstract void setValue(OValue _val) throws Oberon0Exception;
 	public abstract Type getType();
 	public static OValue makeNew(Type type) throws Oberon0Exception
