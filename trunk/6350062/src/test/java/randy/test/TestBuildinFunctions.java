@@ -1,4 +1,4 @@
-package randy.unittest;
+package randy.test;
 
 import java.util.*;
 import randy.exception.Oberon0Exception;

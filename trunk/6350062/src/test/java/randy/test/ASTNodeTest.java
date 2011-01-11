@@ -1,4 +1,4 @@
-package randy.unittest;
+package randy.test;
 
 import org.junit.*;
 import randy.exception.Oberon0Exception;
@@ -25,7 +25,7 @@ public class ASTNodeTest
 	private TestBuildinFunctions runTest(String testName) throws Oberon0Exception
 	{
 		Oberon0Program program = new Oberon0Program();
-		program.loadProgram("src/randy/unittest/" + testName + ".oberon0");
+		program.loadProgram("src/test/java/randy/test/" + testName + ".oberon0");
 		TestBuildinFunctions functions = new TestBuildinFunctions();
 		program.setBuildinFunctions(functions);
 		program.run();
