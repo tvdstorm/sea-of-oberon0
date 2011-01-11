@@ -11,9 +11,9 @@ public class OConst extends OValue
 	{
 		value = _value;
 	}
-	public OValue getValue()
+	public OValue dereference()
 	{
-		return value;
+		return value.dereference();
 	}
 	public Type getType()
 	{

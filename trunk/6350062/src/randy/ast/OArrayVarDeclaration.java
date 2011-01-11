@@ -26,7 +26,7 @@ public class OArrayVarDeclaration extends OVarDeclaration
 	@Override
 	public OValue run(Oberon0VariableStack vars) throws Oberon0Exception
 	{
-		OValue len = arrayLength.run(vars).getValue();
+		OValue len = arrayLength.run(vars).dereference();
 		if (!len.getType().isInteger())
 			throw new Oberon0Exception("Length of array is not an integer...");
 		OInteger length = (OInteger)len;

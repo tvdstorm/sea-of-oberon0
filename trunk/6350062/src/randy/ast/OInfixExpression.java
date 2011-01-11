@@ -1,6 +1,5 @@
 package randy.ast;
 
-import java.util.*;
 import org.antlr.runtime.tree.Tree;
 import randy.exception.Oberon0Exception;
 import randy.interpreter.Oberon0VariableStack;
@@ -28,8 +27,8 @@ public class OInfixExpression extends OExpression
 	@Override // TODO: nodig?
 	public OValue run(Oberon0VariableStack vars) throws Oberon0Exception
 	{
-		OValue lhsVal = lhs.run(vars).getValue();
-		OValue rhsVal = rhs.run(vars).getValue();
+		OValue lhsVal = lhs.run(vars).dereference();
+		OValue rhsVal = rhs.run(vars).dereference();
 		OValue result;
 		if (lhsVal instanceof OInteger && rhsVal instanceof OInteger)
 		{
