@@ -7,11 +7,13 @@ import randy.value.*;
 
 public class OArrayVarDeclaration extends OVarDeclaration
 {
-	private OExpression arrayLength;
+	protected OExpression arrayLength;
 	
 	public OArrayVarDeclaration(Type _type, List<String> _names, OExpression _arrayLength)
 	{
-		super(_type, _names);
+		// TODO: references verwerken in de code
+		super(_type, false, _names);
+		bIsArray = true;
 		arrayLength = _arrayLength;
 	}
 	@Override

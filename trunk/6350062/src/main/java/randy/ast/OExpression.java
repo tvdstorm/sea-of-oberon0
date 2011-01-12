@@ -20,6 +20,8 @@ public abstract class OExpression extends OASTNode
 			case Oberon0Parser.GREATEREQUALS:
 			case Oberon0Parser.SMALLEREQUALS:
 			case Oberon0Parser.EQUALS:
+			case Oberon0Parser.AND:
+			case Oberon0Parser.OR:
 				return OInfixExpression.buildInfixExpression(tree);
 			case Oberon0Parser.INTEGER:
 				return OIntegerLiteral.buildIntegerLiteral(tree);

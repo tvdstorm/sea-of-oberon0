@@ -4,6 +4,7 @@ import java.util.*;
 import org.antlr.runtime.tree.Tree;
 import randy.exception.Oberon0Exception;
 import randy.generated.Oberon0Parser;
+import randy.interpreter.Oberon0Program;
 import randy.interpreter.Oberon0VariableStack;
 import randy.value.OValue;
 
@@ -41,7 +42,21 @@ public class OProcedureDeclaration extends OBodyDeclaration
 	@Override
 	public OValue run(Oberon0VariableStack vars) throws Oberon0Exception
 	{
-		// TODO Auto-generated method stub
+		return null;
+	}
+	public OValue invoke(Oberon0VariableStack callerVars, Queue<OValue> parameterValues) throws Oberon0Exception
+	{
+		System.out.println("Invoking " + name);
+		Oberon0VariableStack functionVars = new Oberon0VariableStack(callerVars.getGlobalStack());
+		for (OVarDeclaration p : parameters)
+		{
+			p.runForParameter(functionVars, parameterValues);
+		}
+		for (OBodyDeclaration bodyDecl : bodyDeclarations)
+		{
+			bodyDecl.run(functionVars);
+		}
+		body.run(functionVars);
 		return null;
 	}
 	public static OProcedureDeclaration buildProcedureDeclaration(Tree tree) throws Oberon0Exception
@@ -71,6 +86,9 @@ public class OProcedureDeclaration extends OBodyDeclaration
 			}
 		}
 		
-		return new OProcedureDeclaration(name, parameters, bodyDeclarations, body);
+		OProcedureDeclaration procDecl = new OProcedureDeclaration(name, parameters, bodyDeclarations, body);
+		// TODO: netter maken
+		Oberon0Program.getProgram().procedures.put(name, procDecl);
+		return procDecl;
 	}
 }

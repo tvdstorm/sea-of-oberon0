@@ -59,6 +59,16 @@ public class OProcedureCall extends OExpression
 			System.out.println(vars.toString());
 			System.out.println("++++");
 		}
+		else if (Oberon0Program.getProgram().procedures.containsKey(name))
+		{
+			Queue<OValue> params = new LinkedList<OValue>();
+			for (OExpression p : parameters)
+			{
+				OValue v = p.run(vars);
+				params.add(v);
+			}
+			return Oberon0Program.getProgram().procedures.get(name).invoke(vars, params);
+		}
 		else
 			throw new Oberon0Exception("Unknown function '" + name + "'");
 		return null;

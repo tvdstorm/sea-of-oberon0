@@ -9,26 +9,38 @@ public class ASTNodeTest
 	@Test
 	public void test_Multiplication()
 	{
+		TestBuildinFunctions functions = runTest("multiplication");
+		Assert.assertTrue(functions.popOutput().equals("" + (12*35)));
+		Assert.assertTrue(functions.popOutput().equals("" + (3*4*5*6)));
+		Assert.assertTrue(functions.outputIsEmpty());
+	}
+	@Test
+	public void test_VarRef()
+	{
+		int getal = 12345;
+		TestBuildinFunctions functions = runTest("refvar", ""+getal);
+		Assert.assertTrue(functions.popOutput().equals("" + (getal+1)));
+	}
+	@Ignore
+	private TestBuildinFunctions runTest(String testName, String ... input)
+	{
 		try
 		{
-			TestBuildinFunctions functions = runTest("multiplication");
-			Assert.assertTrue(functions.popOutput().equals("" + (12*35)));
-			Assert.assertTrue(functions.popOutput().equals("" + (3*4*5*6)));
-			Assert.assertTrue(functions.outputIsEmpty());
-			// TODO: read/write functies maken waarmee geunittest kan worden
+			Oberon0Program program = new Oberon0Program();
+			program.loadProgram("src/test/java/randy/test/" + testName + ".oberon0");
+			TestBuildinFunctions functions = new TestBuildinFunctions();
+			for (String in : input)
+			{
+				functions.addInput(in);
+			}
+			program.setBuildinFunctions(functions);
+			program.run();
+			return functions;
 		}
 		catch (Oberon0Exception e)
 		{
 			Assert.fail(e.getMessage());
+			return null;
 		}
-	}
-	private TestBuildinFunctions runTest(String testName) throws Oberon0Exception
-	{
-		Oberon0Program program = new Oberon0Program();
-		program.loadProgram("src/test/java/randy/test/" + testName + ".oberon0");
-		TestBuildinFunctions functions = new TestBuildinFunctions();
-		program.setBuildinFunctions(functions);
-		program.run();
-		return functions;
 	}
 }

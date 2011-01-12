@@ -17,8 +17,7 @@ public abstract class OStatement extends OASTNode
 			case Oberon0Parser.WHILE:
 				return OWhileStatement.buildWhileStatement(tree);
 			case Oberon0Parser.IF:
-				// TODO: implementeren
-				return null;
+				return OIfStatement.buildIfStatement(tree);
 			default:
 				throw new Oberon0Exception("Unknown statement type '" + tree.getType() + "'");
 		}

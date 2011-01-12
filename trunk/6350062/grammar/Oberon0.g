@@ -119,7 +119,7 @@ formalParameters:	'(' ws (fPSection ws (';' ws fPSection)*)? ')'
 procedureBody:		BEGIN ws statementSequence
 				-> ^(BODY statementSequence);
 procedureDeclaration:	PROCEDURE ws ident (ws formalParameters)? ws ';' ws declarations (procedureBody)? END ws ident 
-				-> ^(PROCEDURE ident (formalParameters)? declarations (procedureBody)?);
+				-> ^(PROCEDURE ident (formalParameters)? declarations? (procedureBody)?);
 constDeclaration:	(CONST ws (ident ws '=' ws expression ';')*)
 				-> ^(CONST ident expression)*;
 typeDeclaration:	(TYPE ws (ident ws '=' ws type ws ';')*)
