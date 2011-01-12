@@ -18,7 +18,7 @@ public class OWhileStatement extends OStatement
 	@Override
 	public void print(String indent)
 	{
-		System.out.println("WHILE");
+		System.out.println(indent + "WHILE");
 		expression.print(indent + "\t");
 		body.print(indent + "\t");
 	}
@@ -39,7 +39,6 @@ public class OWhileStatement extends OStatement
 	}
 	public static OWhileStatement buildWhileStatement(Tree tree) throws Oberon0Exception
 	{
-		randy.main.Main.printTree(tree, "");
 		OExpression expression = OExpression.buildExpression(tree.getChild(0).getChild(0));
 		OBlock statement = OBlock.buildBlock(tree.getChild(1));
 		return new OWhileStatement(expression, statement);

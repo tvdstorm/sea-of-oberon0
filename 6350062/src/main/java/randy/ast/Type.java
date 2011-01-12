@@ -63,4 +63,15 @@ public class Type
 				return "UNKNOWN TYPE";
 		}
 	}
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (obj instanceof Type)
+		{
+			Type t = (Type)obj;
+			return t.type == type;
+		}
+		else
+			return false;
+	}
 }

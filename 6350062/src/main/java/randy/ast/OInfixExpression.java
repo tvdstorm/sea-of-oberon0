@@ -53,7 +53,18 @@ public class OInfixExpression extends OExpression
 			else if (operand.equals("="))
 				result = new OBoolean(l.getIntValue() == r.getIntValue());
 			else
-				throw new Oberon0Exception("Unknown operand: " + operand);
+				throw new Oberon0Exception("Unknown integer operand: " + operand);
+		}
+		else if (lhsVal instanceof OBoolean && rhsVal instanceof OBoolean)
+		{
+			OBoolean l = new OBoolean((OBoolean)lhsVal);
+			OBoolean r = new OBoolean((OBoolean)rhsVal);
+			if (operand.equals("&"))
+				result = new OBoolean(l.getBoolValue() && r.getBoolValue());
+			else if (operand.equals("OR"))
+				result = new OBoolean(l.getBoolValue() || r.getBoolValue());
+			else
+				throw new Oberon0Exception("Unknown boolean operand: " + operand);
 		}
 		else
 			throw new Oberon0Exception("InfixExpression not defined for " + lhsVal.getClass().toString() + " and " + rhsVal.getClass().toString());

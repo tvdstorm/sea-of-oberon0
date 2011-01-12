@@ -34,6 +34,10 @@ public class TestBuildinFunctions implements IOberon0BuildinFunctions
 	{
 		output.add("\r\n");
 	}
+	public void addInput(String value)
+	{
+		input.add(value);
+	}
 	public String popOutput()
 	{
 		return output.poll();

@@ -33,6 +33,10 @@ public class Oberon0VariableStack
 		else
 			throw new Oberon0Exception("Unknown variable '" + name + "'...");
 	}
+	public Oberon0VariableStack getGlobalStack()
+	{
+		return globalStack;
+	}
 	@Override
 	public String toString()
 	{
