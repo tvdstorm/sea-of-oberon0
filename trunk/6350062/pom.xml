@@ -10,6 +10,29 @@
   <name>6350062</name>
   <url>http://maven.apache.org</url>
 
+  <reporting>
+  	<plugins>
+  		<plugin>
+  			<groupId>org.codehaus.mojo</groupId>
+  			<artifactId>javancss-maven-plugin</artifactId>
+  			<version>2.0</version>
+  			<configuration>
+  				<excludes>
+  					<exclude>src/test/java/randy/test/**</exclude>
+  					<exclude>src/main/java/randy/generated/**</exclude>
+  				</excludes>
+  			</configuration>
+  		</plugin>
+  		<plugin>
+  			<groupId>org.codehaus.mojo</groupId>
+  			<artifactId>jdepend-maven-plugin</artifactId>
+  			<version>2.0-beta-2</version>
+  			<reportSets>
+  				<reportSet></reportSet>
+  			</reportSets>
+  		</plugin>
+  	</plugins>
+  </reporting>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>

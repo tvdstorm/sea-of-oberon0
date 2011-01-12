@@ -7,10 +7,10 @@ import randy.value.*;
 
 public class OArraySelector extends OSelector
 {
-	private OExpression lhs; // TODO: kijken voor strakkere typering (ook voor arrayIndex)
+	private OSelector lhs;
 	private OExpression arrayIndex;
 	
-	public OArraySelector(OExpression _lhs, OExpression _arrayIndex)
+	public OArraySelector(OSelector _lhs, OExpression _arrayIndex)
 	{
 		lhs = _lhs;
 		arrayIndex = _arrayIndex;
@@ -37,7 +37,7 @@ public class OArraySelector extends OSelector
 	}
 	public static OArraySelector buildArraySelector(Tree tree) throws Oberon0Exception
 	{
-		OExpression lhs = OExpression.buildExpression(tree.getChild(0));
+		OSelector lhs = OSelector.buildSelector(tree.getChild(0));
 		OExpression arrayIndex = OExpression.buildExpression(tree.getChild(1));
 		return new OArraySelector(lhs, arrayIndex);
 	}

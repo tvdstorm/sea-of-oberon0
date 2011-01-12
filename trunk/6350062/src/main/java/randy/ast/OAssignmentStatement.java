@@ -8,10 +8,10 @@ import randy.value.OValue;
 
 public class OAssignmentStatement extends OStatement
 {
-	private OExpression lhs; // TODO: Selector van maken...
+	private OSelector lhs;
 	private OExpression rhs;
 	
-	public OAssignmentStatement(OExpression _lhs, OExpression _rhs)
+	public OAssignmentStatement(OSelector _lhs, OExpression _rhs)
 	{
 		lhs = _lhs;
 		rhs = _rhs;
@@ -35,7 +35,7 @@ public class OAssignmentStatement extends OStatement
 	{
 		if (tree.getChild(0).getType() != Oberon0Parser.LH || tree.getChild(1).getType() != Oberon0Parser.RH)
 			throw new Oberon0Exception("Misformed assignment...");
-		OExpression lhs = OExpression.buildExpression(tree.getChild(0).getChild(0));
+		OSelector lhs = OSelector.buildSelector(tree.getChild(0).getChild(0));
 		OExpression rhs = OExpression.buildExpression(tree.getChild(1).getChild(0));
 		return new OAssignmentStatement(lhs, rhs);
 	}

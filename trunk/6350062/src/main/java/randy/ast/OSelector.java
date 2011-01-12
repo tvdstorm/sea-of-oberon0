@@ -12,6 +12,8 @@ public abstract class OSelector extends OExpression
 		{
 			case Oberon0Parser.ARRAYSELECTOR:
 				return OArraySelector.buildArraySelector(tree);
+			case Oberon0Parser.IDENT:
+				return OVariableSelector.buildVariableSelector(tree);
 			default:
 					throw new Oberon0Exception("Unknown selector type '" + tree.getType() + "'...");
 		}
