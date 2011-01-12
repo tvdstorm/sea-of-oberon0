@@ -9,6 +9,7 @@ public class ASTNodeTest
 {
 	private final int numTests = 1000;
 	private Random random;
+	private Oberon0Program program;
 	
 	public ASTNodeTest()
 	{
@@ -16,9 +17,9 @@ public class ASTNodeTest
 		int seed = random.nextInt();
 		System.out.println("Seed: " + seed);
 		random = new Random(seed);
+		program = null;
 	}
 	/*
-	 * swaps
 	 * r - l > 0
 	 * (l + r) div 2
 	 * (l <= pivot) & (r >= pivot)
@@ -36,10 +37,11 @@ public class ASTNodeTest
 	@Test
 	public void test_Addition()
 	{
+		prepareTest("addition");
 		for (int i=0;i<numTests;i++)
 		{
 			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
-			TestBuildinFunctions functions = runTest("addition", ""+a, ""+b, ""+c);
+			TestBuildinFunctions functions = runTest(""+a, ""+b, ""+c);
 			Assert.assertTrue(functions.popOutput().equals("" + (a+b)));
 			Assert.assertTrue(functions.popOutput().equals("" + (a+b+c)));
 			Assert.assertTrue(functions.outputIsEmpty());
@@ -48,10 +50,11 @@ public class ASTNodeTest
 	@Test
 	public void test_Subtraction()
 	{
+		prepareTest("subtraction");
 		for (int i=0;i<numTests;i++)
 		{
 			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
-			TestBuildinFunctions functions = runTest("subtraction", ""+a, ""+b, ""+c);
+			TestBuildinFunctions functions = runTest(""+a, ""+b, ""+c);
 			Assert.assertTrue(functions.popOutput().equals("" + (a-b)));
 			Assert.assertTrue(functions.popOutput().equals("" + (a-b-c)));
 			Assert.assertTrue(functions.outputIsEmpty());
@@ -60,10 +63,11 @@ public class ASTNodeTest
 	@Test
 	public void test_Multiplication()
 	{
+		prepareTest("multiplication");
 		for (int i=0;i<numTests;i++)
 		{
 			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
-			TestBuildinFunctions functions = runTest("multiplication", ""+a, ""+b, ""+c);
+			TestBuildinFunctions functions = runTest(""+a, ""+b, ""+c);
 			Assert.assertTrue(functions.popOutput().equals("" + (a*b)));
 			Assert.assertTrue(functions.popOutput().equals("" + (a*b*c)));
 			Assert.assertTrue(functions.outputIsEmpty());
@@ -72,10 +76,11 @@ public class ASTNodeTest
 	@Test
 	public void test_Division()
 	{
+		prepareTest("division");
 		for (int i=0;i<numTests;i++)
 		{
 			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
-			TestBuildinFunctions functions = runTest("division", ""+a, ""+b, ""+c);
+			TestBuildinFunctions functions = runTest(""+a, ""+b, ""+c);
 			Assert.assertTrue(functions.popOutput().equals("" + (a/b)));
 			Assert.assertTrue(functions.popOutput().equals("" + (a/b/c)));
 			Assert.assertTrue(functions.outputIsEmpty());
@@ -84,32 +89,89 @@ public class ASTNodeTest
 	@Test
 	public void test_VarRef()
 	{
+		prepareTest("refvar");
 		for (int i=0;i<numTests;i++)
 		{
 			int getal = random.nextInt();
-			TestBuildinFunctions functions = runTest("refvar", ""+getal);
+			TestBuildinFunctions functions = runTest(""+getal);
 			Assert.assertTrue(functions.popOutput().equals("" + (getal+1)));
+			Assert.assertTrue(functions.outputIsEmpty());
 		}
 	}
 	@Test
 	public void test_VarRefArray()
 	{
+		prepareTest("refvararray");
 		for (int i=0;i<numTests;i++)
 		{
 			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
-			TestBuildinFunctions functions = runTest("refvararray", ""+a, ""+b, ""+c);
+			TestBuildinFunctions functions = runTest(""+a, ""+b, ""+c);
 			Assert.assertTrue(functions.popOutput().equals("" + a));
 			Assert.assertTrue(functions.popOutput().equals("" + (b+1)));
 			Assert.assertTrue(functions.popOutput().equals("" + c));
+			Assert.assertTrue(functions.outputIsEmpty());
+		}
+	}
+	@Test
+	public void test_Swap()
+	{
+		prepareTest("swap");
+		for (int i=0;i<numTests;i++)
+		{
+			int a = random.nextInt(), b = random.nextInt();
+			TestBuildinFunctions functions = runTest(""+a, ""+b);
+			// Integer
+			Assert.assertTrue(functions.popOutput().equals("" + a));
+			Assert.assertTrue(functions.popOutput().equals("" + b));
+			// Swap
+			Assert.assertTrue(functions.popOutput().equals("" + b));
+			Assert.assertTrue(functions.popOutput().equals("" + a));
+			
+			// Array
+			Assert.assertTrue(functions.popOutput().equals("" + a));
+			Assert.assertTrue(functions.popOutput().equals("" + b));
+			// Swap
+			Assert.assertTrue(functions.popOutput().equals("" + b));
+			Assert.assertTrue(functions.popOutput().equals("" + a));
+			
+			// Check
+			Assert.assertTrue(functions.popOutput().equals("" + a));
+			Assert.assertTrue(functions.popOutput().equals("" + b));
+			Assert.assertTrue(functions.outputIsEmpty());
+		}
+	}
+	@Test
+	public void test_GreaterSmallerThen()
+	{
+		prepareTest("greatersmallerthen");
+		for (int i=0;i<numTests;i++)
+		{
+			int a = random.nextInt(), b = random.nextInt();
+			TestBuildinFunctions functions = runTest(""+a, ""+b);
+
+			Assert.assertTrue(functions.popOutput().equals("" + Math.max(a, b)));
+			Assert.assertTrue(functions.popOutput().equals("" + Math.min(a, b)));
+			Assert.assertTrue(functions.outputIsEmpty());
 		}
 	}
 	@Ignore
-	private TestBuildinFunctions runTest(String testName, String ... input)
+	private void prepareTest(String testName)
 	{
 		try
 		{
-			Oberon0Program program = new Oberon0Program();
+			program = new Oberon0Program();
 			program.loadProgram("src/test/java/randy/test/" + testName + ".oberon0");
+		}
+		catch (Oberon0Exception e)
+		{
+			Assert.fail(e.getMessage());
+		}
+	}
+	@Ignore
+	private TestBuildinFunctions runTest(String... input)
+	{
+		try
+		{
 			TestBuildinFunctions functions = new TestBuildinFunctions();
 			for (String in : input)
 			{

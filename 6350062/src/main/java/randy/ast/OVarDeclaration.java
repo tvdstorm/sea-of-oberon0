@@ -94,7 +94,7 @@ public class OVarDeclaration extends OBodyDeclaration
 		{
 			type = new Type(tree.getChild(0).getChild(0).getChild(0).getText());
 			OExpression arrayLength = OExpression.buildExpression(tree.getChild(0).getChild(1).getChild(0));
-			return new OArrayVarDeclaration(type, names, arrayLength);
+			return new OArrayVarDeclaration(type, isReference, names, arrayLength);
 		}
 		else
 			return new OVarDeclaration(type, isReference, names);
