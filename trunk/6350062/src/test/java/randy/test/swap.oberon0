@@ -1,0 +1,38 @@
+MODULE Swap;
+VAR a, b: INTEGER;
+    in1, in2: INTEGER;
+    inArray: ARRAY 2 OF INTEGER;
+
+PROCEDURE Swap(VAR x, y: INTEGER);
+  VAR
+    temp: INTEGER;
+  BEGIN
+    temp := x;
+    x := y;
+    y := temp
+  END Swap;
+  
+BEGIN
+Read(a);
+Read(b);
+
+in1 := a;
+in2 := b;
+Write(in1);
+Write(in2);
+Swap(in1, in2);
+Write(in1);
+Write(in2);
+
+inArray[0] := a;
+inArray[1] := b;
+Write(inArray[0]);
+Write(inArray[1]);
+Swap(inArray[0], inArray[1]);
+Write(inArray[0]);
+Write(inArray[1]);
+
+Write(a);
+Write(b)
+
+END Swap.

@@ -28,7 +28,7 @@ public class OArraySelector extends OSelector
 		OValue valArray = lhs.run(vars);
 		if (!valArray.getType().isArray())
 			throw new Oberon0Exception("Trying to access the index of a '" + valArray.getType() + "', which is not an array...");
-		OArray array = (OArray)valArray;
+		OArray array = (OArray)valArray.dereference();
 		OValue valIndex = arrayIndex.run(vars);
 		if (!valIndex.getType().isInteger())
 			throw new Oberon0Exception("Index of array access is not an integer, but a '" + valIndex.getType() + "'...");

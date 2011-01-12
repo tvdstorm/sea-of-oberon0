@@ -86,7 +86,7 @@ public class OIfStatement extends OStatement
 					elseifBodys.add(OBlock.buildBlock(child.getChild(1)));
 					break;
 				case Oberon0Parser.ELSE:
-					elseBody = OBlock.buildBlock(child);
+					elseBody = OBlock.buildBlock(child.getChild(0));
 					break;
 				default:
 					throw new Oberon0Exception("Unknown child type in if statement...");

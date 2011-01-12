@@ -9,10 +9,9 @@ public class OArrayVarDeclaration extends OVarDeclaration
 {
 	protected OExpression arrayLength;
 	
-	public OArrayVarDeclaration(Type _type, List<String> _names, OExpression _arrayLength)
+	public OArrayVarDeclaration(Type _type, boolean _bIsReference, List<String> _names, OExpression _arrayLength)
 	{
-		// TODO: references verwerken in de code
-		super(_type, false, _names);
+		super(_type, _bIsReference, _names);
 		bIsArray = true;
 		arrayLength = _arrayLength;
 	}

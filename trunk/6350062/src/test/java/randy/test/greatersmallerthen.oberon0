@@ -1,0 +1,19 @@
+MODULE Greatersmallerthen;
+VAR a, b: INTEGER;
+BEGIN
+
+Read(a);
+Read(b);
+IF a > b THEN
+  Write(a)
+ELSE
+  Write(b)
+END;
+
+IF a < b THEN
+  Write(a)
+ELSE
+  Write(b)
+END;
+
+END Greatersmallerthen.
