@@ -49,7 +49,7 @@ public class OInfixExpression extends OExpression
 			else if (operand.equals("<="))
 				result = new OBoolean(l.getIntValue() <= r.getIntValue());
 			else if (operand.equals(">="))
-				result = new OBoolean(l.getIntValue() <= r.getIntValue());
+				result = new OBoolean(l.getIntValue() >= r.getIntValue());
 			else if (operand.equals("="))
 				result = new OBoolean(l.getIntValue() == r.getIntValue());
 			else
