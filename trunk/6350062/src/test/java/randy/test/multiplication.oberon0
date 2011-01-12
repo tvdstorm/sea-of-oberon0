@@ -1,8 +1,11 @@
 MODULE Multiplication;
-
+VAR a, b, c: INTEGER;
 BEGIN
 
-Write(12*35);
-Write(3*4*5*6);
+Read(a);
+Read(b);
+Read(c);
+Write(a*b);
+Write(a*b*c);
 
 END Multiplication.
