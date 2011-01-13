@@ -1,7 +1,7 @@
 package randy.ast;
 
 import org.antlr.runtime.tree.Tree;
-import randy.exception.Oberon0Exception;
+import randy.exception.*;
 import randy.interpreter.Oberon0VariableStack;
 import randy.value.OValue;
 
@@ -22,7 +22,7 @@ public class OExpressionStatement extends OStatement
 		expression.print(indent);
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars) throws Oberon0Exception
+	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
 		return expression.run(vars);
 	}

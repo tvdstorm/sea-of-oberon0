@@ -1,7 +1,7 @@
 package randy.ast;
 
 import org.antlr.runtime.tree.Tree;
-import randy.exception.Oberon0Exception;
+import randy.exception.*;
 import randy.interpreter.Oberon0VariableStack;
 import randy.value.*;
 
@@ -23,13 +23,13 @@ public class OWhileStatement extends OStatement
 		body.print(indent + "\t");
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars) throws Oberon0Exception
+	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
 		while (true)
 		{
 			OValue expr = expression.run(vars);
 			if (!expr.getType().isBool())
-				throw new Oberon0Exception("Expression in while must be boolean...");
+				throw new Oberon0TypeMismatchException(expr.getType(), Type.BOOL);
 			OBoolean b = (OBoolean)expr;
 			if (!b.getBoolValue())
 				break;

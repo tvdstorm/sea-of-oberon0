@@ -15,7 +15,7 @@ public abstract class OSelector extends OExpression
 			case Oberon0Parser.IDENT:
 				return OVariableSelector.buildVariableSelector(tree);
 			default:
-					throw new Oberon0ASTTreeBuildException(tree);
+					throw new Oberon0ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + ".");
 		}
 	}
 }

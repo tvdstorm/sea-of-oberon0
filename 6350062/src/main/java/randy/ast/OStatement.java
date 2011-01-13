@@ -19,7 +19,7 @@ public abstract class OStatement extends OASTNode
 			case Oberon0Parser.IF:
 				return OIfStatement.buildIfStatement(tree);
 			default:
-				throw new Oberon0ASTTreeBuildException(tree);
+				throw new Oberon0ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + ".");
 		}
 	}
 }

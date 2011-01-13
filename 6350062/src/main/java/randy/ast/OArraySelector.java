@@ -1,7 +1,7 @@
 package randy.ast;
 
 import org.antlr.runtime.tree.Tree;
-import randy.exception.Oberon0Exception;
+import randy.exception.*;
 import randy.interpreter.Oberon0VariableStack;
 import randy.value.*;
 
@@ -23,15 +23,15 @@ public class OArraySelector extends OSelector
 		arrayIndex.print(indent + "\t");
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars) throws Oberon0Exception
+	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
 		OValue valArray = lhs.run(vars);
 		if (!valArray.getType().isArray())
-			throw new Oberon0Exception("Trying to access the index of a '" + valArray.getType() + "', which is not an array...");
+			throw new Oberon0SelectorException("Trying to access the index of a '" + valArray.getType() + "' variable, which is not an array.");
 		OArray array = (OArray)valArray.dereference();
 		OValue valIndex = arrayIndex.run(vars);
 		if (!valIndex.getType().isInteger())
-			throw new Oberon0Exception("Index of array access is not an integer, but a '" + valIndex.getType() + "'...");
+			throw new Oberon0SelectorException("Cannot cast the index of an array access from " + valIndex.getType() + " to " + Type.INTEGER + ".");
 		OInteger index = (OInteger)valIndex;
 		return array.getIndexValue(index.getIntValue());
 	}

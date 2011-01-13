@@ -33,7 +33,7 @@ public class Oberon0Program
 		}
 		catch (IOException e)
 		{
-			throw new Oberon0Exception("Problem reading or lexing file: " + e.getMessage());
+			throw new Oberon0ASTTreeBuildException("Problem reading or lexing file: " + e.getMessage());
 		}
 		CommonTokenStream tokens = new CommonTokenStream();
 		tokens.setTokenSource(lexer);
@@ -47,7 +47,7 @@ public class Oberon0Program
 		}
 		catch (RecognitionException e)
 		{
-			throw new Oberon0Exception("Problem parsing file: " + e.getMessage());
+			throw new Oberon0ASTTreeBuildException("Problem parsing file: " + e.getMessage());
 		}
 		
 		//randy.main.Main.printTree((Tree)parserOutput.getTree(), "");
@@ -56,7 +56,7 @@ public class Oberon0Program
 		astTree = OASTNode.buildASTTree((Tree)parserOutput.getTree());
 		return true;
 	}
-	public void run() throws Oberon0Exception
+	public void run() throws Oberon0RuntimeException
 	{
 		//System.out.println("++++++++++++++++++++++++");
 		Oberon0VariableStack vars = new Oberon0VariableStack(null);

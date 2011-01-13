@@ -25,7 +25,7 @@ public class OInfixExpression extends OExpression
 		return new OInfixExpression(left, operand, right);
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars) throws Oberon0Exception
+	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
 		OValue lhsVal = lhs.run(vars).dereference();
 		OValue rhsVal = rhs.run(vars).dereference();

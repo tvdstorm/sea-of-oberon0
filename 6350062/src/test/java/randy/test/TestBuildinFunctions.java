@@ -2,7 +2,7 @@ package randy.test;
 
 import java.util.*;
 import org.junit.Ignore;
-import randy.exception.Oberon0Exception;
+import randy.exception.*;
 import randy.interpreter.IOberon0BuildinFunctions;
 
 @Ignore
@@ -17,20 +17,20 @@ public class TestBuildinFunctions implements IOberon0BuildinFunctions
 		output = new LinkedList<String>();
 	}
 	@Override
-	public String read() throws Oberon0Exception
+	public String read() throws Oberon0RuntimeException
 	{
 		String v = input.poll();
 		if (v != null)
 			return v;
-		throw new Oberon0Exception("Input stack is empty...");
+		throw new Oberon0IOErrorException("Input stack is empty...");
 	}
 	@Override
-	public void write(String value) throws Oberon0Exception
+	public void write(String value) throws Oberon0RuntimeException
 	{
 		output.add(value);
 	}
 	@Override
-	public void writeLn() throws Oberon0Exception
+	public void writeLn() throws Oberon0RuntimeException
 	{
 		output.add("\r\n");
 	}

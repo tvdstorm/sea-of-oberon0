@@ -1,7 +1,7 @@
 package randy.value;
 
 import randy.ast.Type;
-import randy.exception.Oberon0TypeMismatchException;
+import randy.exception.*;
 
 public class OBoolean extends OValue
 {
@@ -11,10 +11,10 @@ public class OBoolean extends OValue
 	{
 		value = _value;
 	}
-	public OBoolean(OBoolean _value)
+	public OBoolean(OBoolean _value) throws Oberon0RuntimeException
 	{
 		// Copy constructor
-		value = _value.value;
+		setValue(_value);
 	}
 	public boolean getBoolValue()
 	{
@@ -28,7 +28,7 @@ public class OBoolean extends OValue
 	{
 		value = _value;
 	}*/
-	public void setValue(OValue _val) throws Oberon0TypeMismatchException
+	public void setValue(OValue _val) throws Oberon0RuntimeException
 	{
 		// Resolve CONST
 		_val = _val.dereference();

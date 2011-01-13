@@ -2,10 +2,9 @@ package randy.ast;
 
 import java.util.*;
 import org.antlr.runtime.tree.Tree;
-import randy.exception.Oberon0Exception;
+import randy.exception.*;
 import randy.generated.Oberon0Parser;
-import randy.interpreter.Oberon0Program;
-import randy.interpreter.Oberon0VariableStack;
+import randy.interpreter.*;
 import randy.value.*;
 
 public class OProcedureCall extends OExpression
@@ -33,7 +32,7 @@ public class OProcedureCall extends OExpression
 		return new OProcedureCall(name, parameters);
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars) throws Oberon0Exception
+	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
 		if (name.equals("Write") && parameters.size() == 1)
 		{
@@ -46,8 +45,7 @@ public class OProcedureCall extends OExpression
 			String input = Oberon0Program.getProgram().getBuildinFunctions().read();
 			if (param.getType().isInteger())
 				param.setValue(new OInteger(Integer.parseInt(input)));
-			else
-				throw new Oberon0Exception("Read output must be converted..."); // TODO: andere formaten implementeren
+			// TODO: andere formaten implementeren
 		}
 		else if (name.equals("WriteLn"))
 		{
@@ -70,7 +68,7 @@ public class OProcedureCall extends OExpression
 			return Oberon0Program.getProgram().procedures.get(name).invoke(vars, params);
 		}
 		else
-			throw new Oberon0Exception("Unknown function '" + name + "'");
+			throw new Oberon0UndefinedMethodException("Unknown function '" + name + "'");
 		return null;
 	}
 	public void print(String indent)

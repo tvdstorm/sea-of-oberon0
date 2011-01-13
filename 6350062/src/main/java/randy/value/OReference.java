@@ -1,7 +1,7 @@
 package randy.value;
 
 import randy.ast.Type;
-import randy.exception.Oberon0Exception;
+import randy.exception.*;
 
 public class OReference extends OValue
 {
@@ -19,7 +19,7 @@ public class OReference extends OValue
 	{
 		return reference.dereference();
 	}
-	public void setValue(OValue _val) throws Oberon0Exception
+	public void setValue(OValue _val) throws Oberon0RuntimeException
 	{
 		reference.setValue(_val);
 	}

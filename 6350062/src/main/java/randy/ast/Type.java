@@ -1,6 +1,7 @@
 package randy.ast;
 
 import randy.exception.Oberon0Exception;
+import randy.exception.Oberon0UnknownTypeException;
 
 public class Type
 {
@@ -25,7 +26,7 @@ public class Type
 		else if (_type.equals("BOOL"))
 			type = TYPES.BOOL;
 		else
-			throw new Oberon0Exception("Unknown type '" + _type + "'");
+			throw new Oberon0UnknownTypeException(_type);
 	}
 	public Type(TYPES _type)
 	{
