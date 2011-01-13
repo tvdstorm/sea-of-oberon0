@@ -42,11 +42,11 @@ public class OIfStatement extends OStatement
 		}
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars) throws Oberon0Exception
+	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
 		OValue expr = expression.run(vars);
 		if (!expr.getType().isBool())
-			throw new Oberon0Exception("Expression in if must be boolean...");
+			throw new Oberon0TypeMismatchException(expr.getType(), Type.BOOL);
 		OBoolean b = (OBoolean)expr;
 		if (b.getBoolValue())
 		{
@@ -57,7 +57,7 @@ public class OIfStatement extends OStatement
 		{
 			expr = elseifExpressions.get(i).run(vars);
 			if (!expr.getType().isBool())
-				throw new Oberon0Exception("Expression in if must be boolean...");
+				throw new Oberon0TypeMismatchException(expr.getType(), Type.BOOL);
 			b = (OBoolean)expr;
 			if (b.getBoolValue())
 			{
@@ -89,7 +89,7 @@ public class OIfStatement extends OStatement
 					elseBody = OBlock.buildBlock(child.getChild(0));
 					break;
 				default:
-					throw new Oberon0ASTTreeBuildException(tree);
+					throw new Oberon0ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + ".");
 			}
 		}
 		return new OIfStatement(expression, body, elseifExpressions, elseifBodys, elseBody);

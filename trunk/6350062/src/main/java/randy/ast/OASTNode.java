@@ -15,9 +15,9 @@ public abstract class OASTNode
 			case Oberon0Parser.MODULE:
 				return OModule.buildModule(tree);
 			default:
-				throw new Oberon0ASTTreeBuildException(tree);
+				throw new Oberon0ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + ".");
 		}
 	}
 	public abstract void print(String indent);
-	public abstract OValue run(Oberon0VariableStack vars) throws Oberon0Exception;
+	public abstract OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException;
 }

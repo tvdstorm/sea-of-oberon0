@@ -2,7 +2,7 @@ package randy.exception;
 
 import randy.ast.Type;
 
-public class Oberon0OperatorTypeUndefinedException extends Oberon0Exception
+public class Oberon0OperatorTypeUndefinedException extends Oberon0RuntimeException
 {
 	private static final long serialVersionUID = -4452312422101125649L;
 

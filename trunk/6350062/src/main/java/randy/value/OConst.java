@@ -20,7 +20,7 @@ public class OConst extends OValue
 		return value.getType();
 	}
 	@Override
-	public void setValue(OValue _val) throws Oberon0Exception
+	public void setValue(OValue _val) throws Oberon0RuntimeException
 	{
 		throw new Oberon0ConstAssignmentException();	
 	}

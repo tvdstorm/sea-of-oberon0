@@ -2,7 +2,7 @@ package randy.ast;
 
 import java.util.*;
 import org.antlr.runtime.tree.Tree;
-import randy.exception.Oberon0Exception;
+import randy.exception.*;
 import randy.generated.Oberon0Parser;
 import randy.interpreter.Oberon0VariableStack;
 import randy.value.*;
@@ -30,7 +30,7 @@ public class OVarDeclaration extends OBodyDeclaration
 		}
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars) throws Oberon0Exception
+	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
 		for (String name : names)
 		{
@@ -38,10 +38,10 @@ public class OVarDeclaration extends OBodyDeclaration
 		}
 		return null;
 	}
-	public OValue runForParameter(Oberon0VariableStack vars, Queue<OValue> parameters) throws Oberon0Exception
+	public OValue runForParameter(Oberon0VariableStack vars, Queue<OValue> parameters) throws Oberon0RuntimeException
 	{
 		if (parameters.size() < names.size())
-			throw new Oberon0Exception("Number of given parameters is smaller than the number of required parameters...");
+			throw new Oberon0IncorrectNumberOfArgumentsException();
 		for (String name : names)
 		{
 			if (parameters.peek().getType().isArray() && bIsArray)
@@ -49,7 +49,7 @@ public class OVarDeclaration extends OBodyDeclaration
 				// Ok
 			}
 			else if (!parameters.peek().getType().equals(type))
-				throw new Oberon0Exception("The type of the given parameter '" + name + "' had the type '" + parameters.peek().getType() + "', which is not the same as the required type '" + type + "'...");
+				throw new Oberon0TypeMismatchException(parameters.peek().getType(), type); 
 			if (isReference)
 			{
 				OReference ref = new OReference(parameters.poll());

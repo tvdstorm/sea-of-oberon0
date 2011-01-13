@@ -2,10 +2,9 @@ package randy.ast;
 
 import java.util.*;
 import org.antlr.runtime.tree.Tree;
-import randy.exception.Oberon0Exception;
+import randy.exception.*;
 import randy.generated.Oberon0Parser;
-import randy.interpreter.Oberon0Program;
-import randy.interpreter.Oberon0VariableStack;
+import randy.interpreter.*;
 import randy.value.OValue;
 
 public class OProcedureDeclaration extends OBodyDeclaration
@@ -40,17 +39,19 @@ public class OProcedureDeclaration extends OBodyDeclaration
 		body.print(indent + "\t\t");
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars) throws Oberon0Exception
+	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
 		return null;
 	}
-	public OValue invoke(Oberon0VariableStack callerVars, Queue<OValue> parameterValues) throws Oberon0Exception
+	public OValue invoke(Oberon0VariableStack callerVars, Queue<OValue> parameterValues) throws Oberon0RuntimeException
 	{
 		Oberon0VariableStack functionVars = new Oberon0VariableStack(callerVars.getGlobalStack());
 		for (OVarDeclaration p : parameters)
 		{
 			p.runForParameter(functionVars, parameterValues);
 		}
+		if (parameterValues.size() > 0)
+			throw new Oberon0IncorrectNumberOfArgumentsException();
 		for (OBodyDeclaration bodyDecl : bodyDeclarations)
 		{
 			bodyDecl.run(functionVars);

@@ -39,7 +39,7 @@ public class OModule extends OASTNode
 					bodyDeclarations.add(OBodyDeclaration.buildBodyDeclaration(child));
 					break;
 				default:
-					throw new Oberon0ASTTreeBuildException(tree);
+					throw new Oberon0ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + ".");
 			}
 		}
 		return new OModule(name, bodyDeclarations, body);
@@ -55,7 +55,7 @@ public class OModule extends OASTNode
 		}
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars) throws Oberon0Exception
+	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
 		for (OBodyDeclaration bd : bodyDeclarations)
 		{

@@ -1,7 +1,7 @@
 package randy.ast;
 
 import org.antlr.runtime.tree.Tree;
-import randy.exception.Oberon0Exception;
+import randy.exception.*;
 import randy.interpreter.Oberon0VariableStack;
 import randy.value.OValue;
 
@@ -23,7 +23,7 @@ public class OConstDeclaration extends OBodyDeclaration
 		value.print(indent + "\t");
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars) throws Oberon0Exception
+	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
 		vars.addConstant(name, value.run(vars));
 		return null;
