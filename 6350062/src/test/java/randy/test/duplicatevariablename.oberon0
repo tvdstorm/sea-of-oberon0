@@ -1,0 +1,9 @@
+MODULE Duplicatevariablename;
+
+VAR a, a: INTEGER;
+BEGIN
+
+a := 1;
+
+END Duplicatevariablename.
+

@@ -35,16 +35,9 @@ public class Oberon0VariableStack
 	}
 	public Oberon0VariableStack getGlobalStack()
 	{
-		return globalStack;
-	}
-	@Override
-	public String toString()
-	{
-		String ret = new String();
-		for (String var : variables.keySet())
-		{
-			ret += var + " = " + variables.get(var) + "\r\n";
-		}
-		return ret;
+		if (globalStack != null)
+			return globalStack;
+		else
+			return this;
 	}
 }

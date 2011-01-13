@@ -41,7 +41,7 @@ public class OVarDeclaration extends OBodyDeclaration
 				// Ok
 			}
 			else if (!parameters.peek().getType().equals(type))
-				throw new Oberon0TypeMismatchException(parameters.peek().getType(), type); 
+				throw new Oberon0TypeMismatchException(parameters.peek().getType(), type); // TODO: testcase voor schrijven
 			if (isReference)
 			{
 				OReference ref = new OReference(parameters.poll());
@@ -51,6 +51,7 @@ public class OVarDeclaration extends OBodyDeclaration
 			{
 				if (bIsArray)
 				{
+					// TODO: testcase voor dit pad schrijven
 					OArray val = new OArray((OArray)parameters.poll());
 					vars.addVariable(name, val);
 				}

@@ -32,7 +32,7 @@ public class TestBuildinFunctions implements IOberon0BuildinFunctions
 	@Override
 	public void writeLn() throws Oberon0RuntimeException
 	{
-		output.add("\r\n");
+		output.add(null);
 	}
 	public void addInput(String value)
 	{

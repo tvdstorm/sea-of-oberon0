@@ -14,10 +14,6 @@ public class OIntegerLiteral extends OExpression
 	{
 		value = _value;
 	}
-	public OValue getValue()
-	{
-		return value;
-	}
 	public static OIntegerLiteral buildIntegerLiteral(Tree tree) throws Oberon0Exception
 	{
 		// TODO: parseException opvangen
