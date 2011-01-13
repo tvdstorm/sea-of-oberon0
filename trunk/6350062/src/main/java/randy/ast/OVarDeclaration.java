@@ -22,14 +22,6 @@ public class OVarDeclaration extends OBodyDeclaration
 		names = _names;
 	}
 	@Override
-	public void print(String indent)
-	{
-		for (String name : names)
-		{
-			System.out.println(indent + type + " " + name);
-		}
-	}
-	@Override
 	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
 		for (String name : names)

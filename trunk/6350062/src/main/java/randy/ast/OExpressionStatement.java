@@ -17,10 +17,6 @@ public class OExpressionStatement extends OStatement
 	{
 		return new OExpressionStatement(OExpression.buildExpression(tree.getChild(0)));
 	}
-	public void print(String indent)
-	{
-		expression.print(indent);
-	}
 	@Override
 	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{

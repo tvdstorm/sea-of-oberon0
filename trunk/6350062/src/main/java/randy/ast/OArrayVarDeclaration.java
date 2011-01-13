@@ -16,15 +16,6 @@ public class OArrayVarDeclaration extends OVarDeclaration
 		arrayLength = _arrayLength;
 	}
 	@Override
-	public void print(String indent)
-	{
-		for (String name : names)
-		{
-			System.out.println(indent + type + "[] " + name);
-			arrayLength.print(indent + "\t");
-		}
-	}
-	@Override
 	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
 		OValue len = arrayLength.run(vars).dereference();

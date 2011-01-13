@@ -16,13 +16,6 @@ public class OWhileStatement extends OStatement
 		body = _body;
 	}
 	@Override
-	public void print(String indent)
-	{
-		System.out.println(indent + "WHILE");
-		expression.print(indent + "\t");
-		body.print(indent + "\t");
-	}
-	@Override
 	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
 		while (true)

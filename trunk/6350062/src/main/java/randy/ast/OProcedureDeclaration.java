@@ -22,23 +22,6 @@ public class OProcedureDeclaration extends OBodyDeclaration
 		body = _body;
 	}
 	@Override
-	public void print(String indent)
-	{
-		System.out.println(indent + "PROCEDURE");
-		System.out.println(indent + "\t" + name);
-		System.out.println(indent + "\tPARAMETERS");
-		for (OVarDeclaration param : parameters)
-		{
-			param.print(indent + "\t\t");
-		}
-		for (OBodyDeclaration bodyDecl : bodyDeclarations)
-		{
-			bodyDecl.print(indent + "\t");
-		}
-		System.out.println(indent + "\tBODY");
-		body.print(indent + "\t\t");
-	}
-	@Override
 	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
 		return null;

@@ -29,7 +29,7 @@ public class Main
 		module_return ret = parser.module();
 		
 		Tree ast = (Tree)ret.getTree();
-		printTree(ast, "");
+		//printTree(ast, "");
 		DOTTreeGenerator dot = new DOTTreeGenerator();
 		StringTemplate outp = dot.toDOT(ast);
 		BufferedWriter out = new BufferedWriter(new FileWriter(dotFilename));
@@ -51,7 +51,7 @@ public class Main
 		for (int i=0;i<tree.getChildCount();i++)
 		{
 			Tree ch = tree.getChild(i);
-			//System.out.println(indent + "\t" + ch.toString());
+			System.out.println(indent + "\t" + ch.toString());
 			printTree(ch, indent + "\t");
 		}
 	}

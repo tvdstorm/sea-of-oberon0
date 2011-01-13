@@ -24,24 +24,6 @@ public class OIfStatement extends OStatement
 		elseBody = _elseBody;
 	}
 	@Override
-	public void print(String indent)
-	{
-		System.out.println(indent + "IF");
-		expression.print(indent + "\t");
-		body.print(indent + "\t");
-		for (int i=0;i<elseifExpressions.size();i++)
-		{
-			System.out.println(indent + "\tELSEIF");
-			elseifExpressions.get(i).print(indent + "\t\t");
-			elseifBodys.get(i).print(indent + "\t\t");
-		}
-		if (elseBody != null)
-		{
-			System.out.println(indent + "\tELSE");
-			elseBody.print(indent + "\t\t");
-		}
-	}
-	@Override
 	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
 		OValue expr = expression.run(vars);

@@ -44,16 +44,6 @@ public class OModule extends OASTNode
 		}
 		return new OModule(name, bodyDeclarations, body);
 	}
-	public void print(String indent)
-	{
-		System.out.println(indent + "MODULE " + name);
-		// TODO: bodyDeclarations
-		if (body != null)
-		{
-			System.out.println(indent + "\tBODY");
-			body.print(indent + "\t\t");
-		}
-	}
 	@Override
 	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
