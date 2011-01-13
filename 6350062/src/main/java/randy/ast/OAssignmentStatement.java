@@ -16,14 +16,6 @@ public class OAssignmentStatement extends OStatement
 		lhs = _lhs;
 		rhs = _rhs;
 	}
-	
-	@Override
-	public void print(String indent)
-	{
-		System.out.println(indent + ":=");
-		lhs.print(indent + "\t");
-		rhs.print(indent + "\t");
-	}
 	@Override
 	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{

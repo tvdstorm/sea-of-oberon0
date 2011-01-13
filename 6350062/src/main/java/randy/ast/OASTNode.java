@@ -18,6 +18,5 @@ public abstract class OASTNode
 				throw new Oberon0ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + ".");
 		}
 	}
-	public abstract void print(String indent);
 	public abstract OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException;
 }

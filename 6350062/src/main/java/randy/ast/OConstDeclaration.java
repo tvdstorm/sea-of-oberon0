@@ -16,13 +16,6 @@ public class OConstDeclaration extends OBodyDeclaration
 		value = _value;
 	}
 	@Override
-	public void print(String indent)
-	{
-		System.out.println(indent + "CONST");
-		System.out.println(indent + "\t" + name);
-		value.print(indent + "\t");
-	}
-	@Override
 	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
 		vars.addConstant(name, value.run(vars));

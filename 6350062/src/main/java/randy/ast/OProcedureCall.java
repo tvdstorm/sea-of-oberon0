@@ -51,12 +51,6 @@ public class OProcedureCall extends OExpression
 		{
 			Oberon0Program.getProgram().getBuildinFunctions().writeLn();
 		}
-		else if (name.equals("pv")) // TODO: verwijderen uit real versie, debug functie
-		{
-			System.out.println("++++");
-			System.out.println(vars.toString());
-			System.out.println("++++");
-		}
 		else if (Oberon0Program.getProgram().procedures.containsKey(name))
 		{
 			Queue<OValue> params = new LinkedList<OValue>();
@@ -70,13 +64,5 @@ public class OProcedureCall extends OExpression
 		else
 			throw new Oberon0UndefinedMethodException("Unknown function '" + name + "'");
 		return null;
-	}
-	public void print(String indent)
-	{
-		System.out.println(indent + "PROCEDURECALL " + name);
-		for (OExpression param : parameters)
-		{
-			param.print(indent + "\t");
-		}
 	}
 }

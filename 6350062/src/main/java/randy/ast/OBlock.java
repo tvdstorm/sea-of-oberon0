@@ -24,14 +24,6 @@ public class OBlock extends OASTNode // TODO: extends OStatement?
 		}
 		return new OBlock(statements);
 	}
-	public void print(String indent)
-	{
-		System.out.println(indent + "BLOCK"); 
-		for (OStatement st : statements)
-		{
-			st.print(indent + "\t");
-		}
-	}
 	@Override
 	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{

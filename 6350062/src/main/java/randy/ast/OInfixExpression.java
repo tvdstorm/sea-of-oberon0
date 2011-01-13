@@ -70,10 +70,4 @@ public class OInfixExpression extends OExpression
 		else
 			throw new Oberon0OperatorTypeUndefinedException(operator, lhs.getType(), rhs.getType());
 	}
-	public void print(String indent)
-	{
-		System.out.println(indent + operator);
-		lhs.print(indent + "\t");
-		rhs.print(indent + "\t");
-	}
 }

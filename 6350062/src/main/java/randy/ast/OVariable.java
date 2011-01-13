@@ -14,11 +14,6 @@ public class OVariable extends OExpression
 		name = _name;
 	}
 	@Override
-	public void print(String indent)
-	{
-		System.out.println(indent + name);
-	}
-	@Override
 	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
 		return vars.getVariable(name);

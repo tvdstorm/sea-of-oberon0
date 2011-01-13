@@ -16,13 +16,6 @@ public class OArraySelector extends OSelector
 		arrayIndex = _arrayIndex;
 	}
 	@Override
-	public void print(String indent)
-	{
-		System.out.println(indent + "[]");
-		lhs.print(indent + "\t");
-		arrayIndex.print(indent + "\t");
-	}
-	@Override
 	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
 		OValue valArray = lhs.run(vars);

@@ -50,15 +50,11 @@ public class Oberon0Program
 			throw new Oberon0ASTTreeBuildException("Problem parsing file: " + e.getMessage());
 		}
 		
-		//randy.main.Main.printTree((Tree)parserOutput.getTree(), "");
-		//System.out.flush();
-		
 		astTree = OASTNode.buildASTTree((Tree)parserOutput.getTree());
 		return true;
 	}
 	public void run() throws Oberon0RuntimeException
 	{
-		//System.out.println("++++++++++++++++++++++++");
 		Oberon0VariableStack vars = new Oberon0VariableStack(null);
 		astTree.run(vars);
 	}
