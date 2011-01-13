@@ -9,19 +9,17 @@ import randy.value.OValue;
 
 public class OModule extends OASTNode
 {
-	private String name;
 	private OASTNode body;
 	private List<OBodyDeclaration> bodyDeclarations;
 	
-	public OModule(String _name, List<OBodyDeclaration> _bodyDeclarations, OASTNode _body)
+	public OModule(List<OBodyDeclaration> _bodyDeclarations, OASTNode _body)
 	{
-		name = _name;
 		body = _body;
 		bodyDeclarations = _bodyDeclarations;
 	}
 	public static OModule buildModule(Tree tree) throws Oberon0Exception
 	{
-		String name = tree.getChild(0).getText();
+		//String name = tree.getChild(0).getText();
 		OASTNode body = null;
 		List<OBodyDeclaration> bodyDeclarations = new Vector<OBodyDeclaration>();
 		for (int i=1;i<tree.getChildCount();i++)
@@ -42,7 +40,7 @@ public class OModule extends OASTNode
 					throw new Oberon0ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + ".");
 			}
 		}
-		return new OModule(name, bodyDeclarations, body);
+		return new OModule(bodyDeclarations, body);
 	}
 	@Override
 	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException

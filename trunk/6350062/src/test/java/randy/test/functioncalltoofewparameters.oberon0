@@ -1,0 +1,11 @@
+MODULE Functioncalltoofewparameters;
+
+PROCEDURE Func(x, y: INTEGER);
+  BEGIN
+    x := y;
+  END Func;
+BEGIN
+
+Func(4)
+
+END Functioncalltoofewparameters.

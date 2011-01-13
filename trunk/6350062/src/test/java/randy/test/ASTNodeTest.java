@@ -2,8 +2,8 @@ package randy.test;
 
 import java.util.Random;
 import org.junit.*;
-import randy.exception.Oberon0ConstAssignmentException;
-import randy.exception.Oberon0Exception;
+import randy.ast.Type;
+import randy.exception.*;
 import randy.interpreter.Oberon0Program;
 import java.util.*;
 
@@ -159,6 +159,11 @@ public class ASTNodeTest
 		Assert.assertTrue(functions.popOutput().equals("1"));
 		Assert.assertTrue(functions.popOutput().equals("1"));
 		Assert.assertTrue(functions.popOutput().equals("0"));
+
+		Assert.assertTrue(functions.popOutput().equals("1"));
+		Assert.assertTrue(functions.popOutput().equals("1"));
+		Assert.assertTrue(functions.popOutput().equals("0"));
+		Assert.assertTrue(functions.popOutput().equals("0"));
 		Assert.assertTrue(functions.outputIsEmpty());
 	}
 	@Test
@@ -180,6 +185,209 @@ public class ASTNodeTest
 		}
 	}
 	@Test
+	public void test_IfNumber()
+	{
+		try
+		{
+			prepareTest("ifnumber");
+			program.run();
+			Assert.fail("Should be throwing an Oberon0TypeMismatchException...");
+		}
+		catch (Oberon0TypeMismatchException e)
+		{
+			// Success
+		}
+		catch (Oberon0Exception e)
+		{
+			Assert.fail("Should be throwing an Oberon0TypeMismatchException instead of a general Oberon0Exception...");
+		}
+	}
+	@Test
+	public void test_ElseIfNumber()
+	{
+		try
+		{
+			prepareTest("elseifnumber");
+			program.run();
+			Assert.fail("Should be throwing an Oberon0TypeMismatchException...");
+		}
+		catch (Oberon0TypeMismatchException e)
+		{
+			// Success
+		}
+		catch (Oberon0Exception e)
+		{
+			Assert.fail("Should be throwing an Oberon0TypeMismatchException instead of a general Oberon0Exception...");
+		}
+	}
+	@Test
+	public void test_InfixIntegerAnd()
+	{
+		try
+		{
+			prepareTest("infixintegerand");
+			program.run();
+			Assert.fail("Should be throwing an Oberon0OperatorTypeUndefinedException...");
+		}
+		catch (Oberon0OperatorTypeUndefinedException e)
+		{
+			// Success
+		}
+		catch (Oberon0Exception e)
+		{
+			Assert.fail("Should be throwing an Oberon0OperatorTypeUndefinedException instead of a general Oberon0Exception...");
+		}
+	}
+	@Test
+	public void test_InfixBooleanAdd()
+	{
+		try
+		{
+			prepareTest("infixbooleanadd");
+			program.run();
+			Assert.fail("Should be throwing an Oberon0OperatorTypeUndefinedException...");
+		}
+		catch (Oberon0OperatorTypeUndefinedException e)
+		{
+			// Success
+		}
+		catch (Oberon0Exception e)
+		{
+			Assert.fail("Should be throwing an Oberon0OperatorTypeUndefinedException instead of a general Oberon0Exception...");
+		}
+	}
+	@Test
+	public void test_UnknownFunction()
+	{
+		try
+		{
+			prepareTest("unknownfunction");
+			program.run();
+			Assert.fail("Should be throwing an Oberon0UndefinedMethodException...");
+		}
+		catch (Oberon0UndefinedMethodException e)
+		{
+			// Success
+		}
+		catch (Oberon0Exception e)
+		{
+			Assert.fail("Should be throwing an Oberon0UndefinedMethodException instead of a general Oberon0Exception...");
+		}
+	}
+	@Test
+	public void test_FunctionCallTooManyParameters()
+	{
+		try
+		{
+			prepareTest("functioncalltoomanyparameters");
+			program.run();
+			Assert.fail("Should be throwing an Oberon0IncorrectNumberOfArgumentsException...");
+		}
+		catch (Oberon0IncorrectNumberOfArgumentsException e)
+		{
+			// Success
+		}
+		catch (Oberon0Exception e)
+		{
+			Assert.fail("Should be throwing an Oberon0IncorrectNumberOfArgumentsException instead of a general Oberon0Exception...");
+		}
+	}
+	@Test
+	public void test_FunctionCallFewManyParameters()
+	{
+		try
+		{
+			prepareTest("functioncalltoofewparameters");
+			program.run();
+			Assert.fail("Should be throwing an Oberon0IncorrectNumberOfArgumentsException...");
+		}
+		catch (Oberon0IncorrectNumberOfArgumentsException e)
+		{
+			// Success
+		}
+		catch (Oberon0Exception e)
+		{
+			Assert.fail("Should be throwing an Oberon0IncorrectNumberOfArgumentsException instead of a general Oberon0Exception...");
+		}
+	}
+	@Test
+	public void test_WhileIntegerExpression()
+	{
+		try
+		{
+			prepareTest("whileintegerexpression");
+			program.run();
+			Assert.fail("Should be throwing an Oberon0TypeMismatchException...");
+		}
+		catch (Oberon0TypeMismatchException e)
+		{
+			// Success
+		}
+		catch (Oberon0Exception e)
+		{
+			Assert.fail("Should be throwing an Oberon0TypeMismatchException instead of a general Oberon0Exception...");
+		}
+	}
+	@Test
+	public void test_Type()
+	{
+		try
+		{
+			Type bool = Type.BOOL;
+			Type integer = Type.INTEGER;
+			Type array = Type.ARRAY;
+			
+			Assert.assertTrue(bool.equals(new Type("BOOL")));
+			Assert.assertTrue(integer.equals(new Type("INTEGER")));
+			Assert.assertTrue(array.equals(new Type("ARRAY")));
+			
+			Assert.assertTrue(bool.equals(new Type(bool.toString())));
+			Assert.assertTrue(integer.equals(new Type(integer.toString())));
+			Assert.assertTrue(array.equals(new Type(array.toString())));
+			
+			Assert.assertTrue(bool.equals(bool));
+			Assert.assertFalse(bool.equals(integer));
+			Assert.assertFalse(bool.equals(array));
+			Assert.assertFalse(integer.equals(bool));
+			Assert.assertTrue(integer.equals(integer));
+			Assert.assertFalse(integer.equals(array));
+			Assert.assertFalse(array.equals(bool));
+			Assert.assertFalse(array.equals(integer));
+			Assert.assertTrue(array.equals(array));
+			
+			Assert.assertTrue(bool.getType() == Type.TYPES.BOOL);
+			Assert.assertTrue(integer.getType() == Type.TYPES.INTEGER);
+			Assert.assertTrue(array.getType() == Type.TYPES.ARRAY);
+			
+			Assert.assertTrue(bool.isBool());
+			Assert.assertFalse(bool.isInteger());
+			Assert.assertFalse(bool.isArray());
+			Assert.assertFalse(integer.isBool());
+			Assert.assertTrue(integer.isInteger());
+			Assert.assertFalse(integer.isArray());
+			Assert.assertFalse(array.isBool());
+			Assert.assertFalse(array.isInteger());
+			Assert.assertTrue(array.isArray());
+		}
+		catch (Oberon0Exception e)
+		{
+			Assert.fail("Shouldn't be throwing an Oberon0Exception...");
+		}
+		try
+		{
+			Type t = new Type("BLAAT");
+			Assert.fail("Should be throwing an Oberon0UnknownTypeException...");
+		}
+		catch (Oberon0UnknownTypeException e)
+		{
+			// Success
+		}
+		catch (Oberon0Exception e)
+		{
+			Assert.fail("Shouldn't be throwing an Oberon0Exception...");
+		}
+	}
+	@Test
 	public void test_SmoketestQuicksort()
 	{
 		prepareTest("smoketest_quicksort");
@@ -196,8 +404,96 @@ public class ASTNodeTest
 			for (int n=0;n<5;n++)
 			{
 				Assert.assertTrue(functions.popOutput().equals("" + numbers[n]));
+				Assert.assertTrue(functions.popOutput() == null);
 			}
 			Assert.assertTrue(functions.outputIsEmpty());
+		}
+	}
+	@Test
+	public void test_DuplicateVariableName()
+	{
+		try
+		{
+			prepareTest("duplicatevariablename");
+			program.run();
+			Assert.fail("Should be throwing an Oberon0DuplicateVariableException...");
+		}
+		catch (Oberon0DuplicateVariableException e)
+		{
+			// Success
+		}
+		catch (Oberon0Exception e)
+		{
+			Assert.fail("Should be throwing an Oberon0DuplicateVariableException...");
+		}
+	}
+	@Test
+	public void test_UndefinedVariable()
+	{
+		try
+		{
+			prepareTest("undefinedvariable");
+			program.run();
+			Assert.fail("Should be throwing an Oberon0UndefinedVariableException...");
+		}
+		catch (Oberon0UndefinedVariableException e)
+		{
+			// Success
+		}
+		catch (Oberon0Exception e)
+		{
+			Assert.fail("Should be throwing an Oberon0UndefinedVariableException...");
+		}
+	}
+	@Test
+	public void test_GlobalVariable()
+	{
+		prepareTest("globalvariable");
+		for (int i=0;i<numTests;i++)
+		{
+			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
+			TestBuildinFunctions functions = runTest(""+a, ""+b, ""+c);
+			
+			Assert.assertTrue(functions.popOutput().equals("" + a));
+			Assert.assertTrue(functions.popOutput().equals("" + b));
+			Assert.assertTrue(functions.popOutput().equals("" + ((a + 1) + (b + 1))));
+			Assert.assertTrue(functions.outputIsEmpty());
+		}
+	}
+	@Test
+	public void test_ArrayIndexBoolean()
+	{
+		try
+		{
+			prepareTest("arrayindexboolean");
+			program.run();
+			Assert.fail("Should be throwing an Oberon0SelectorException...");
+		}
+		catch (Oberon0SelectorException e)
+		{
+			// Success
+		}
+		catch (Oberon0Exception e)
+		{
+			Assert.fail("Should be throwing an Oberon0SelectorException...");
+		}
+	}
+	@Test
+	public void test_ArrayAccessorInteger()
+	{
+		try
+		{
+			prepareTest("arrayaccessoroninteger");
+			program.run();
+			Assert.fail("Should be throwing an Oberon0SelectorException...");
+		}
+		catch (Oberon0SelectorException e)
+		{
+			// Success
+		}
+		catch (Oberon0Exception e)
+		{
+			Assert.fail("Should be throwing an Oberon0SelectorException...");
 		}
 	}
 	@Ignore
