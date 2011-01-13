@@ -59,18 +59,11 @@ public class OVarDeclaration extends OBodyDeclaration
 			{
 				if (bIsArray)
 				{
-					/*OValue len = ((OArrayVarDeclaration)this).arrayLength.run(vars).dereference();
-					if (!len.getType().isInteger())
-						throw new Oberon0Exception("Length of array is not an integer...");
-					OInteger length = (OInteger)len;
-					OArray val = new OArray(length.getIntValue(), type);
-					OArray original = parama*/
 					OArray val = new OArray((OArray)parameters.poll());
 					vars.addVariable(name, val);
 				}
 				else
 				{
-					// TODO: array afhandelen
 					OValue val = OValue.makeNew(type);
 					val.setValue(parameters.poll());
 					vars.addVariable(name, val);

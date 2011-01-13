@@ -11,10 +11,10 @@ public class OReference extends OValue
 	{
 		reference = _reference;
 	}
-	public OReference(OReference _value)
+	/*public OReference(OReference _value)
 	{
 		reference = _value.reference;
-	}
+	}*/
 	public OValue dereference()
 	{
 		return reference.dereference();

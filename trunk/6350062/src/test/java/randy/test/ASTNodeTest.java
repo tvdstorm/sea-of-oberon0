@@ -4,6 +4,7 @@ import java.util.Random;
 import org.junit.*;
 import randy.exception.Oberon0Exception;
 import randy.interpreter.Oberon0Program;
+import java.util.*;
 
 public class ASTNodeTest
 {
@@ -19,21 +20,6 @@ public class ASTNodeTest
 		random = new Random(seed);
 		program = null;
 	}
-	/*
-	 * r - l > 0
-	 * (l + r) div 2
-	 * (l <= pivot) & (r >= pivot)
-	 * l := l + 1
-	 * array access
-	 * pointers in functies
-	 * pointers in functions op array elementen als input
-	 * l - 1 = pivot
-	 * r + 1 = pivot
-	 * if
-	 * if elseif 
-	 * if else
-	 * if elseif else
-	 */
 	@Test
 	public void test_Addition()
 	{
@@ -146,11 +132,52 @@ public class ASTNodeTest
 		prepareTest("greatersmallerthen");
 		for (int i=0;i<numTests;i++)
 		{
-			int a = random.nextInt(), b = random.nextInt();
+			int a = random.nextInt(10), b = random.nextInt(10);
 			TestBuildinFunctions functions = runTest(""+a, ""+b);
 
 			Assert.assertTrue(functions.popOutput().equals("" + Math.max(a, b)));
 			Assert.assertTrue(functions.popOutput().equals("" + Math.min(a, b)));
+			Assert.assertTrue(functions.popOutput().equals((a == b)?"1":"0"));
+			Assert.assertTrue(functions.popOutput().equals("" + ((a <= b)?a:b)));
+			Assert.assertTrue(functions.popOutput().equals("" + ((a >= b)?a:b)));
+			Assert.assertTrue(functions.outputIsEmpty());
+		}
+	}
+	@Test
+	public void test_Andor()
+	{
+		prepareTest("andor");
+		TestBuildinFunctions functions = runTest();
+
+		Assert.assertTrue(functions.popOutput().equals("1"));
+		Assert.assertTrue(functions.popOutput().equals("0"));
+		Assert.assertTrue(functions.popOutput().equals("0"));
+		Assert.assertTrue(functions.popOutput().equals("0"));
+		
+		Assert.assertTrue(functions.popOutput().equals("1"));
+		Assert.assertTrue(functions.popOutput().equals("1"));
+		Assert.assertTrue(functions.popOutput().equals("1"));
+		Assert.assertTrue(functions.popOutput().equals("0"));
+		Assert.assertTrue(functions.outputIsEmpty());
+	}
+	@Test
+	public void test_SmoketestQuicksort()
+	{
+		prepareTest("smoketest_quicksort");
+		for (int i=0;i<numTests;i++)
+		{
+			int numbers[] = new int[5];
+			for (int n=0;n<5;n++)
+			{
+				numbers[n] = random.nextInt();
+			}
+			TestBuildinFunctions functions = runTest(""+numbers[0], ""+numbers[1], ""+numbers[2], ""+numbers[3], ""+numbers[4]);
+			Arrays.sort(numbers);
+			
+			for (int n=0;n<5;n++)
+			{
+				Assert.assertTrue(functions.popOutput().equals("" + numbers[n]));
+			}
 			Assert.assertTrue(functions.outputIsEmpty());
 		}
 	}

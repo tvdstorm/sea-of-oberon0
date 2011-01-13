@@ -24,10 +24,10 @@ public class OInteger extends OValue
 	{
 		return this;
 	}
-	public void setValue(int _value)
+	/*public void setValue(int _value)
 	{
 		value = _value;
-	}
+	}*/
 	public void setValue(OValue _val) throws Oberon0Exception
 	{
 		// Resolve CONST

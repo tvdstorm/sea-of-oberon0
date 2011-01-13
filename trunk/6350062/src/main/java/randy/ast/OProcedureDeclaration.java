@@ -46,7 +46,6 @@ public class OProcedureDeclaration extends OBodyDeclaration
 	}
 	public OValue invoke(Oberon0VariableStack callerVars, Queue<OValue> parameterValues) throws Oberon0Exception
 	{
-		System.out.println("Invoking " + name);
 		Oberon0VariableStack functionVars = new Oberon0VariableStack(callerVars.getGlobalStack());
 		for (OVarDeclaration p : parameters)
 		{
