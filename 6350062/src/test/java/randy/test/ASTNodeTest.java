@@ -2,6 +2,7 @@ package randy.test;
 
 import java.util.Random;
 import org.junit.*;
+import randy.exception.Oberon0ConstAssignmentException;
 import randy.exception.Oberon0Exception;
 import randy.interpreter.Oberon0Program;
 import java.util.*;
@@ -159,6 +160,24 @@ public class ASTNodeTest
 		Assert.assertTrue(functions.popOutput().equals("1"));
 		Assert.assertTrue(functions.popOutput().equals("0"));
 		Assert.assertTrue(functions.outputIsEmpty());
+	}
+	@Test
+	public void test_ConstAssignment()
+	{
+		try
+		{
+			prepareTest("constassignment");
+			program.run();
+			Assert.fail("Should be throwing an Oberon0ConstAssignmentException...");
+		}
+		catch (Oberon0ConstAssignmentException e)
+		{
+			// Success
+		}
+		catch (Oberon0Exception e)
+		{
+			Assert.fail("Should be throwing an Oberon0ConstAssignmentException instead of a general Oberon0Exception...");
+		}
 	}
 	@Test
 	public void test_SmoketestQuicksort()

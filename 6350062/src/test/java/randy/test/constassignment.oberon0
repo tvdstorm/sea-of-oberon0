@@ -1,0 +1,10 @@
+MODULE Constassignment;
+
+CONST a = 123;
+
+BEGIN
+
+a := 1234;
+
+END Constassignment.
+

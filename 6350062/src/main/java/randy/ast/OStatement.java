@@ -1,7 +1,7 @@
 package randy.ast;
 
 import org.antlr.runtime.tree.Tree;
-import randy.exception.Oberon0Exception;
+import randy.exception.*;
 import randy.generated.Oberon0Parser;
 
 public abstract class OStatement extends OASTNode
@@ -19,7 +19,7 @@ public abstract class OStatement extends OASTNode
 			case Oberon0Parser.IF:
 				return OIfStatement.buildIfStatement(tree);
 			default:
-				throw new Oberon0Exception("Unknown statement type '" + tree.getType() + "'");
+				throw new Oberon0ASTTreeBuildException(tree);
 		}
 	}
 }

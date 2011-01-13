@@ -1,7 +1,7 @@
 package randy.ast;
 
 import org.antlr.runtime.tree.Tree;
-import randy.exception.Oberon0Exception;
+import randy.exception.*;
 import randy.interpreter.Oberon0VariableStack;
 import randy.value.*;
 
@@ -9,12 +9,12 @@ public class OInfixExpression extends OExpression
 {
 	private OExpression lhs;
 	private OExpression rhs;
-	private String operand; // TODO: ander type van maken
+	private String operator; // TODO: ander type van maken
 	
-	public OInfixExpression(OExpression _lhs, String _operand, OExpression _rhs)
+	public OInfixExpression(OExpression _lhs, String _operator, OExpression _rhs)
 	{
 		lhs = _lhs;
-		operand = _operand;
+		operator = _operator;
 		rhs = _rhs;
 	}
 	public static OInfixExpression buildInfixExpression(Tree tree) throws Oberon0Exception
@@ -24,55 +24,55 @@ public class OInfixExpression extends OExpression
 		OExpression right = OExpression.buildExpression(tree.getChild(1));
 		return new OInfixExpression(left, operand, right);
 	}
-	@Override // TODO: nodig?
+	@Override
 	public OValue run(Oberon0VariableStack vars) throws Oberon0Exception
 	{
 		OValue lhsVal = lhs.run(vars).dereference();
 		OValue rhsVal = rhs.run(vars).dereference();
-		OValue result;
 		if (lhsVal instanceof OInteger && rhsVal instanceof OInteger)
-		{
-			OInteger l = new OInteger((OInteger)lhsVal);
-			OInteger r = ((OInteger)rhsVal);
-			if (operand.equals("+"))
-				result = new OInteger(l.getIntValue() + r.getIntValue());
-			else if (operand.equals("-"))
-				result = new OInteger(l.getIntValue() - r.getIntValue());
-			else if (operand.equals("DIV"))
-				result = new OInteger(l.getIntValue() / r.getIntValue());
-			else if (operand.equals("*"))
-				result = new OInteger(l.getIntValue() * r.getIntValue());
-			else if (operand.equals("<"))
-				result = new OBoolean(l.getIntValue() < r.getIntValue());
-			else if (operand.equals(">"))
-				result = new OBoolean(l.getIntValue() > r.getIntValue());
-			else if (operand.equals("<="))
-				result = new OBoolean(l.getIntValue() <= r.getIntValue());
-			else if (operand.equals(">="))
-				result = new OBoolean(l.getIntValue() >= r.getIntValue());
-			else if (operand.equals("="))
-				result = new OBoolean(l.getIntValue() == r.getIntValue());
-			else
-				throw new Oberon0Exception("Unknown integer operand: " + operand);
-		}
+			return processIntegerExpression((OInteger)lhsVal, (OInteger)rhsVal);
 		else if (lhsVal instanceof OBoolean && rhsVal instanceof OBoolean)
-		{
-			OBoolean l = new OBoolean((OBoolean)lhsVal);
-			OBoolean r = new OBoolean((OBoolean)rhsVal);
-			if (operand.equals("&"))
-				result = new OBoolean(l.getBoolValue() && r.getBoolValue());
-			else if (operand.equals("OR"))
-				result = new OBoolean(l.getBoolValue() || r.getBoolValue());
-			else
-				throw new Oberon0Exception("Unknown boolean operand: " + operand);
-		}
+			return processBooleanExpression((OBoolean)lhsVal, (OBoolean)rhsVal);
 		else
-			throw new Oberon0Exception("InfixExpression not defined for " + lhsVal.getClass().toString() + " and " + rhsVal.getClass().toString());
-		return result;
+			throw new Oberon0OperatorTypeUndefinedException(operator, lhsVal.getType(), rhsVal.getType());
+	}
+	private OValue processIntegerExpression(OInteger lhs, OInteger rhs) throws Oberon0OperatorTypeUndefinedException
+	{
+		if (operator.equals("+"))
+			return new OInteger(lhs.getIntValue() + rhs.getIntValue());
+		else if (operator.equals("-"))
+			return new OInteger(lhs.getIntValue() - rhs.getIntValue());
+		else if (operator.equals("DIV"))
+			return new OInteger(lhs.getIntValue() / rhs.getIntValue());
+		else if (operator.equals("*"))
+			return new OInteger(lhs.getIntValue() * rhs.getIntValue());
+		else if (operator.equals("<"))
+			return new OBoolean(lhs.getIntValue() < rhs.getIntValue());
+		else if (operator.equals(">"))
+			return new OBoolean(lhs.getIntValue() > rhs.getIntValue());
+		else if (operator.equals("<="))
+			return new OBoolean(lhs.getIntValue() <= rhs.getIntValue());
+		else if (operator.equals(">="))
+			return new OBoolean(lhs.getIntValue() >= rhs.getIntValue());
+		else if (operator.equals("="))
+			return new OBoolean(lhs.getIntValue() == rhs.getIntValue());
+		else
+			throw new Oberon0OperatorTypeUndefinedException(operator, lhs.getType(), rhs.getType());
+	}
+	private OValue processBooleanExpression(OBoolean lhs, OBoolean rhs) throws Oberon0OperatorTypeUndefinedException
+	{
+		if (operator.equals("&"))
+			return new OBoolean(lhs.getBoolValue() && rhs.getBoolValue());
+		else if (operator.equals("OR"))
+			return new OBoolean(lhs.getBoolValue() || rhs.getBoolValue());
+		else if (operator.equals("="))
+			return new OBoolean(lhs.getBoolValue() == rhs.getBoolValue());
+		else
+			throw new Oberon0OperatorTypeUndefinedException(operator, lhs.getType(), rhs.getType());
 	}
 	public void print(String indent)
 	{
-		System.out.println(indent + operand);
+		System.out.println(indent + operator);
 		lhs.print(indent + "\t");
 		rhs.print(indent + "\t");
 	}
