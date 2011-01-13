@@ -2,7 +2,7 @@ package randy.ast;
 
 import java.util.*;
 import org.antlr.runtime.tree.Tree;
-import randy.exception.Oberon0Exception;
+import randy.exception.*;
 import randy.generated.Oberon0Parser;
 import randy.interpreter.Oberon0VariableStack;
 import randy.value.*;
@@ -89,7 +89,7 @@ public class OIfStatement extends OStatement
 					elseBody = OBlock.buildBlock(child.getChild(0));
 					break;
 				default:
-					throw new Oberon0Exception("Unknown child type in if statement...");
+					throw new Oberon0ASTTreeBuildException(tree);
 			}
 		}
 		return new OIfStatement(expression, body, elseifExpressions, elseifBodys, elseBody);

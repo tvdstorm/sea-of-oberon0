@@ -1,7 +1,7 @@
 package randy.ast;
 
 import org.antlr.runtime.tree.Tree;
-import randy.exception.Oberon0Exception;
+import randy.exception.*;
 import randy.generated.Oberon0Parser;
 
 public abstract class OSelector extends OExpression
@@ -15,7 +15,7 @@ public abstract class OSelector extends OExpression
 			case Oberon0Parser.IDENT:
 				return OVariableSelector.buildVariableSelector(tree);
 			default:
-					throw new Oberon0Exception("Unknown selector type '" + tree.getType() + "'...");
+					throw new Oberon0ASTTreeBuildException(tree);
 		}
 	}
 }

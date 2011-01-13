@@ -1,7 +1,7 @@
 package randy.value;
 
 import randy.ast.Type;
-import randy.exception.Oberon0Exception;
+import randy.exception.*;
 
 public class OConst extends OValue
 {
@@ -22,7 +22,7 @@ public class OConst extends OValue
 	@Override
 	public void setValue(OValue _val) throws Oberon0Exception
 	{
-		throw new Oberon0Exception("Can't set the value of a constant...");	
+		throw new Oberon0ConstAssignmentException();	
 	}
 	@Override
 	public String toString()

@@ -1,7 +1,7 @@
 package randy.value;
 
 import randy.ast.Type;
-import randy.exception.Oberon0Exception;
+import randy.exception.Oberon0TypeMismatchException;;
 
 public class OInteger extends OValue
 {
@@ -28,7 +28,7 @@ public class OInteger extends OValue
 	{
 		value = _value;
 	}*/
-	public void setValue(OValue _val) throws Oberon0Exception
+	public void setValue(OValue _val) throws Oberon0TypeMismatchException
 	{
 		// Resolve CONST
 		_val = _val.dereference();
@@ -38,7 +38,7 @@ public class OInteger extends OValue
 			this.value = v.value;
 		}
 		else
-			throw new Oberon0Exception("Can't set value on another type...");
+			throw new Oberon0TypeMismatchException(_val.getType(), getType());
 	}
 	public Type getType()
 	{

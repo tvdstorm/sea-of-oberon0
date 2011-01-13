@@ -2,7 +2,7 @@ package randy.ast;
 
 import java.util.*;
 import org.antlr.runtime.tree.Tree;
-import randy.exception.Oberon0Exception;
+import randy.exception.*;
 import randy.generated.Oberon0Parser;
 import randy.interpreter.Oberon0VariableStack;
 import randy.value.OValue;
@@ -39,7 +39,7 @@ public class OModule extends OASTNode
 					bodyDeclarations.add(OBodyDeclaration.buildBodyDeclaration(child));
 					break;
 				default:
-					throw new Oberon0Exception("Unknown child type '" + child.getType() + "' in module.");
+					throw new Oberon0ASTTreeBuildException(tree);
 			}
 		}
 		return new OModule(name, bodyDeclarations, body);
