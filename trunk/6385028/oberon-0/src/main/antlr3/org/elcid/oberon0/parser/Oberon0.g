@@ -94,6 +94,6 @@ declarations	:	('CONST' (identifier '=' expression ';'!)*)?
 					(procedureDeclaration ';'!)*;
 
 module			:	'MODULE' identifier ';'! declarations
-					('BEGIN' statementSequence) 'END' identifier '.'!;
+					('BEGIN' statementSequence)+ 'END' identifier '.'!;
 
 prog			:	( module {System.out.println($module.tree.toStringTree());} )+ ;
