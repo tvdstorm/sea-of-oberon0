@@ -43,7 +43,7 @@ public class OInfixExpression extends OExpression
 		else if (operator.equals("-"))
 			return new OInteger(lhs.getIntValue() - rhs.getIntValue());
 		else if (operator.equals("DIV"))
-			return new OInteger(lhs.getIntValue() / rhs.getIntValue());
+			return new OInteger(lhs.getIntValue() / rhs.getIntValue()); // TODO: handle divide by zero exceptions
 		else if (operator.equals("*"))
 			return new OInteger(lhs.getIntValue() * rhs.getIntValue());
 		else if (operator.equals("<"))
