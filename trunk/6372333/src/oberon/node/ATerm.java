@@ -2,13 +2,15 @@
 
 package oberon.node;
 
+import java.util.*;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
 public final class ATerm extends PTerm
 {
     private PFactor _factor_;
-    private PAdditionaloperations _additionaloperations_;
+    private final LinkedList<TSptxt> _sptxt_ = new LinkedList<TSptxt>();
+    private final LinkedList<PAdditionaloperations> _additionaloperations_ = new LinkedList<PAdditionaloperations>();
 
     public ATerm()
     {
@@ -17,10 +19,13 @@ public final class ATerm extends PTerm
 
     public ATerm(
         @SuppressWarnings("hiding") PFactor _factor_,
-        @SuppressWarnings("hiding") PAdditionaloperations _additionaloperations_)
+        @SuppressWarnings("hiding") List<TSptxt> _sptxt_,
+        @SuppressWarnings("hiding") List<PAdditionaloperations> _additionaloperations_)
     {
         // Constructor
         setFactor(_factor_);
+
+        setSptxt(_sptxt_);
 
         setAdditionaloperations(_additionaloperations_);
 
@@ -31,7 +36,8 @@ public final class ATerm extends PTerm
     {
         return new ATerm(
             cloneNode(this._factor_),
-            cloneNode(this._additionaloperations_));
+            cloneList(this._sptxt_),
+            cloneList(this._additionaloperations_));
     }
 
     public void apply(Switch sw)
@@ -64,29 +70,44 @@ public final class ATerm extends PTerm
         this._factor_ = node;
     }
 
-    public PAdditionaloperations getAdditionaloperations()
+    public LinkedList<TSptxt> getSptxt()
+    {
+        return this._sptxt_;
+    }
+
+    public void setSptxt(List<TSptxt> list)
+    {
+        this._sptxt_.clear();
+        this._sptxt_.addAll(list);
+        for(TSptxt e : list)
+        {
+            if(e.parent() != null)
+            {
+                e.parent().removeChild(e);
+            }
+
+            e.parent(this);
+        }
+    }
+
+    public LinkedList<PAdditionaloperations> getAdditionaloperations()
     {
         return this._additionaloperations_;
     }
 
-    public void setAdditionaloperations(PAdditionaloperations node)
+    public void setAdditionaloperations(List<PAdditionaloperations> list)
     {
-        if(this._additionaloperations_ != null)
+        this._additionaloperations_.clear();
+        this._additionaloperations_.addAll(list);
+        for(PAdditionaloperations e : list)
         {
-            this._additionaloperations_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
+            if(e.parent() != null)
             {
-                node.parent().removeChild(node);
+                e.parent().removeChild(e);
             }
 
-            node.parent(this);
+            e.parent(this);
         }
-
-        this._additionaloperations_ = node;
     }
 
     @Override
@@ -94,6 +115,7 @@ public final class ATerm extends PTerm
     {
         return ""
             + toString(this._factor_)
+            + toString(this._sptxt_)
             + toString(this._additionaloperations_);
     }
 
@@ -107,9 +129,13 @@ public final class ATerm extends PTerm
             return;
         }
 
-        if(this._additionaloperations_ == child)
+        if(this._sptxt_.remove(child))
         {
-            this._additionaloperations_ = null;
+            return;
+        }
+
+        if(this._additionaloperations_.remove(child))
+        {
             return;
         }
 
@@ -126,10 +152,40 @@ public final class ATerm extends PTerm
             return;
         }
 
-        if(this._additionaloperations_ == oldChild)
+        for(ListIterator<TSptxt> i = this._sptxt_.listIterator(); i.hasNext();)
         {
-            setAdditionaloperations((PAdditionaloperations) newChild);
-            return;
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((TSptxt) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
+
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
+        }
+
+        for(ListIterator<PAdditionaloperations> i = this._additionaloperations_.listIterator(); i.hasNext();)
+        {
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((PAdditionaloperations) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
+
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
         throw new RuntimeException("Not a child.");

@@ -5,17 +5,17 @@ package oberon.node;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ADotselectorSelector extends PSelector
+public final class ADotselectorRealselector extends PRealselector
 {
     private TDot _dot_;
     private TIdentifier _identifier_;
 
-    public ADotselectorSelector()
+    public ADotselectorRealselector()
     {
         // Constructor
     }
 
-    public ADotselectorSelector(
+    public ADotselectorRealselector(
         @SuppressWarnings("hiding") TDot _dot_,
         @SuppressWarnings("hiding") TIdentifier _identifier_)
     {
@@ -29,14 +29,14 @@ public final class ADotselectorSelector extends PSelector
     @Override
     public Object clone()
     {
-        return new ADotselectorSelector(
+        return new ADotselectorRealselector(
             cloneNode(this._dot_),
             cloneNode(this._identifier_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseADotselectorSelector(this);
+        ((Analysis) sw).caseADotselectorRealselector(this);
     }
 
     public TDot getDot()

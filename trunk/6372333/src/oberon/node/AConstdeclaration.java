@@ -5,55 +5,60 @@ package oberon.node;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AArrselectorSelector extends PSelector
+public final class AConstdeclaration extends PConstdeclaration
 {
-    private TLBkt _lBkt_;
+    private TIdentifier _identifier_;
+    private TEqu _equ_;
     private PExpression _expression_;
-    private TRBkt _rBkt_;
+    private TSemi _semi_;
 
-    public AArrselectorSelector()
+    public AConstdeclaration()
     {
         // Constructor
     }
 
-    public AArrselectorSelector(
-        @SuppressWarnings("hiding") TLBkt _lBkt_,
+    public AConstdeclaration(
+        @SuppressWarnings("hiding") TIdentifier _identifier_,
+        @SuppressWarnings("hiding") TEqu _equ_,
         @SuppressWarnings("hiding") PExpression _expression_,
-        @SuppressWarnings("hiding") TRBkt _rBkt_)
+        @SuppressWarnings("hiding") TSemi _semi_)
     {
         // Constructor
-        setLBkt(_lBkt_);
+        setIdentifier(_identifier_);
+
+        setEqu(_equ_);
 
         setExpression(_expression_);
 
-        setRBkt(_rBkt_);
+        setSemi(_semi_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AArrselectorSelector(
-            cloneNode(this._lBkt_),
+        return new AConstdeclaration(
+            cloneNode(this._identifier_),
+            cloneNode(this._equ_),
             cloneNode(this._expression_),
-            cloneNode(this._rBkt_));
+            cloneNode(this._semi_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAArrselectorSelector(this);
+        ((Analysis) sw).caseAConstdeclaration(this);
     }
 
-    public TLBkt getLBkt()
+    public TIdentifier getIdentifier()
     {
-        return this._lBkt_;
+        return this._identifier_;
     }
 
-    public void setLBkt(TLBkt node)
+    public void setIdentifier(TIdentifier node)
     {
-        if(this._lBkt_ != null)
+        if(this._identifier_ != null)
         {
-            this._lBkt_.parent(null);
+            this._identifier_.parent(null);
         }
 
         if(node != null)
@@ -66,7 +71,32 @@ public final class AArrselectorSelector extends PSelector
             node.parent(this);
         }
 
-        this._lBkt_ = node;
+        this._identifier_ = node;
+    }
+
+    public TEqu getEqu()
+    {
+        return this._equ_;
+    }
+
+    public void setEqu(TEqu node)
+    {
+        if(this._equ_ != null)
+        {
+            this._equ_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._equ_ = node;
     }
 
     public PExpression getExpression()
@@ -94,16 +124,16 @@ public final class AArrselectorSelector extends PSelector
         this._expression_ = node;
     }
 
-    public TRBkt getRBkt()
+    public TSemi getSemi()
     {
-        return this._rBkt_;
+        return this._semi_;
     }
 
-    public void setRBkt(TRBkt node)
+    public void setSemi(TSemi node)
     {
-        if(this._rBkt_ != null)
+        if(this._semi_ != null)
         {
-            this._rBkt_.parent(null);
+            this._semi_.parent(null);
         }
 
         if(node != null)
@@ -116,25 +146,32 @@ public final class AArrselectorSelector extends PSelector
             node.parent(this);
         }
 
-        this._rBkt_ = node;
+        this._semi_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._lBkt_)
+            + toString(this._identifier_)
+            + toString(this._equ_)
             + toString(this._expression_)
-            + toString(this._rBkt_);
+            + toString(this._semi_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._lBkt_ == child)
+        if(this._identifier_ == child)
         {
-            this._lBkt_ = null;
+            this._identifier_ = null;
+            return;
+        }
+
+        if(this._equ_ == child)
+        {
+            this._equ_ = null;
             return;
         }
 
@@ -144,9 +181,9 @@ public final class AArrselectorSelector extends PSelector
             return;
         }
 
-        if(this._rBkt_ == child)
+        if(this._semi_ == child)
         {
-            this._rBkt_ = null;
+            this._semi_ = null;
             return;
         }
 
@@ -157,9 +194,15 @@ public final class AArrselectorSelector extends PSelector
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._lBkt_ == oldChild)
+        if(this._identifier_ == oldChild)
         {
-            setLBkt((TLBkt) newChild);
+            setIdentifier((TIdentifier) newChild);
+            return;
+        }
+
+        if(this._equ_ == oldChild)
+        {
+            setEqu((TEqu) newChild);
             return;
         }
 
@@ -169,9 +212,9 @@ public final class AArrselectorSelector extends PSelector
             return;
         }
 
-        if(this._rBkt_ == oldChild)
+        if(this._semi_ == oldChild)
         {
-            setRBkt((TRBkt) newChild);
+            setSemi((TSemi) newChild);
             return;
         }
 

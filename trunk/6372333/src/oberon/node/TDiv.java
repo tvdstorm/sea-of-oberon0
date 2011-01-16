@@ -5,14 +5,14 @@ package oberon.node;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
-public final class TTermoperator extends Token
+public final class TDiv extends Token
 {
-    public TTermoperator(String text)
+    public TDiv(String text)
     {
         setText(text);
     }
 
-    public TTermoperator(String text, int line, int pos)
+    public TDiv(String text, int line, int pos)
     {
         setText(text);
         setLine(line);
@@ -22,11 +22,11 @@ public final class TTermoperator extends Token
     @Override
     public Object clone()
     {
-      return new TTermoperator(getText(), getLine(), getPos());
+      return new TDiv(getText(), getLine(), getPos());
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTTermoperator(this);
+        ((Analysis) sw).caseTDiv(this);
     }
 }

@@ -6,50 +6,50 @@ import java.util.*;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ADeclconstDeclarations extends PDeclarations
+public final class ATypedecl extends PTypedecl
 {
-    private TConsttxt _consttxt_;
-    private final LinkedList<PAssignment> _assignment_ = new LinkedList<PAssignment>();
+    private TTypetxt _typetxt_;
+    private final LinkedList<PTypedeclaration> _typedeclaration_ = new LinkedList<PTypedeclaration>();
 
-    public ADeclconstDeclarations()
+    public ATypedecl()
     {
         // Constructor
     }
 
-    public ADeclconstDeclarations(
-        @SuppressWarnings("hiding") TConsttxt _consttxt_,
-        @SuppressWarnings("hiding") List<PAssignment> _assignment_)
+    public ATypedecl(
+        @SuppressWarnings("hiding") TTypetxt _typetxt_,
+        @SuppressWarnings("hiding") List<PTypedeclaration> _typedeclaration_)
     {
         // Constructor
-        setConsttxt(_consttxt_);
+        setTypetxt(_typetxt_);
 
-        setAssignment(_assignment_);
+        setTypedeclaration(_typedeclaration_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ADeclconstDeclarations(
-            cloneNode(this._consttxt_),
-            cloneList(this._assignment_));
+        return new ATypedecl(
+            cloneNode(this._typetxt_),
+            cloneList(this._typedeclaration_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseADeclconstDeclarations(this);
+        ((Analysis) sw).caseATypedecl(this);
     }
 
-    public TConsttxt getConsttxt()
+    public TTypetxt getTypetxt()
     {
-        return this._consttxt_;
+        return this._typetxt_;
     }
 
-    public void setConsttxt(TConsttxt node)
+    public void setTypetxt(TTypetxt node)
     {
-        if(this._consttxt_ != null)
+        if(this._typetxt_ != null)
         {
-            this._consttxt_.parent(null);
+            this._typetxt_.parent(null);
         }
 
         if(node != null)
@@ -62,19 +62,19 @@ public final class ADeclconstDeclarations extends PDeclarations
             node.parent(this);
         }
 
-        this._consttxt_ = node;
+        this._typetxt_ = node;
     }
 
-    public LinkedList<PAssignment> getAssignment()
+    public LinkedList<PTypedeclaration> getTypedeclaration()
     {
-        return this._assignment_;
+        return this._typedeclaration_;
     }
 
-    public void setAssignment(List<PAssignment> list)
+    public void setTypedeclaration(List<PTypedeclaration> list)
     {
-        this._assignment_.clear();
-        this._assignment_.addAll(list);
-        for(PAssignment e : list)
+        this._typedeclaration_.clear();
+        this._typedeclaration_.addAll(list);
+        for(PTypedeclaration e : list)
         {
             if(e.parent() != null)
             {
@@ -89,21 +89,21 @@ public final class ADeclconstDeclarations extends PDeclarations
     public String toString()
     {
         return ""
-            + toString(this._consttxt_)
-            + toString(this._assignment_);
+            + toString(this._typetxt_)
+            + toString(this._typedeclaration_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._consttxt_ == child)
+        if(this._typetxt_ == child)
         {
-            this._consttxt_ = null;
+            this._typetxt_ = null;
             return;
         }
 
-        if(this._assignment_.remove(child))
+        if(this._typedeclaration_.remove(child))
         {
             return;
         }
@@ -115,19 +115,19 @@ public final class ADeclconstDeclarations extends PDeclarations
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._consttxt_ == oldChild)
+        if(this._typetxt_ == oldChild)
         {
-            setConsttxt((TConsttxt) newChild);
+            setTypetxt((TTypetxt) newChild);
             return;
         }
 
-        for(ListIterator<PAssignment> i = this._assignment_.listIterator(); i.hasNext();)
+        for(ListIterator<PTypedeclaration> i = this._typedeclaration_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)
             {
                 if(newChild != null)
                 {
-                    i.set((PAssignment) newChild);
+                    i.set((PTypedeclaration) newChild);
                     newChild.parent(this);
                     oldChild.parent(null);
                     return;

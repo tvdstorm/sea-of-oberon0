@@ -2,6 +2,7 @@
 
 package oberon.node;
 
+import java.util.*;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
@@ -9,7 +10,7 @@ public final class ASimpleexpression extends PSimpleexpression
 {
     private TPlusorminus _plusorminus_;
     private PTerm _term_;
-    private PMoreterms _moreterms_;
+    private final LinkedList<PMoreterms> _moreterms_ = new LinkedList<PMoreterms>();
 
     public ASimpleexpression()
     {
@@ -19,7 +20,7 @@ public final class ASimpleexpression extends PSimpleexpression
     public ASimpleexpression(
         @SuppressWarnings("hiding") TPlusorminus _plusorminus_,
         @SuppressWarnings("hiding") PTerm _term_,
-        @SuppressWarnings("hiding") PMoreterms _moreterms_)
+        @SuppressWarnings("hiding") List<PMoreterms> _moreterms_)
     {
         // Constructor
         setPlusorminus(_plusorminus_);
@@ -36,7 +37,7 @@ public final class ASimpleexpression extends PSimpleexpression
         return new ASimpleexpression(
             cloneNode(this._plusorminus_),
             cloneNode(this._term_),
-            cloneNode(this._moreterms_));
+            cloneList(this._moreterms_));
     }
 
     public void apply(Switch sw)
@@ -94,29 +95,24 @@ public final class ASimpleexpression extends PSimpleexpression
         this._term_ = node;
     }
 
-    public PMoreterms getMoreterms()
+    public LinkedList<PMoreterms> getMoreterms()
     {
         return this._moreterms_;
     }
 
-    public void setMoreterms(PMoreterms node)
+    public void setMoreterms(List<PMoreterms> list)
     {
-        if(this._moreterms_ != null)
+        this._moreterms_.clear();
+        this._moreterms_.addAll(list);
+        for(PMoreterms e : list)
         {
-            this._moreterms_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
+            if(e.parent() != null)
             {
-                node.parent().removeChild(node);
+                e.parent().removeChild(e);
             }
 
-            node.parent(this);
+            e.parent(this);
         }
-
-        this._moreterms_ = node;
     }
 
     @Override
@@ -144,9 +140,8 @@ public final class ASimpleexpression extends PSimpleexpression
             return;
         }
 
-        if(this._moreterms_ == child)
+        if(this._moreterms_.remove(child))
         {
-            this._moreterms_ = null;
             return;
         }
 
@@ -169,10 +164,22 @@ public final class ASimpleexpression extends PSimpleexpression
             return;
         }
 
-        if(this._moreterms_ == oldChild)
+        for(ListIterator<PMoreterms> i = this._moreterms_.listIterator(); i.hasNext();)
         {
-            setMoreterms((PMoreterms) newChild);
-            return;
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((PMoreterms) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
+
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
         throw new RuntimeException("Not a child.");

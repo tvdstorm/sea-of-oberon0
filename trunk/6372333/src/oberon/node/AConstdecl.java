@@ -6,50 +6,50 @@ import java.util.*;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ADeclvarDeclarations extends PDeclarations
+public final class AConstdecl extends PConstdecl
 {
-    private TVartxt _vartxt_;
-    private final LinkedList<PVardeclaration> _vardeclaration_ = new LinkedList<PVardeclaration>();
+    private TConsttxt _consttxt_;
+    private final LinkedList<PConstdeclaration> _constdeclaration_ = new LinkedList<PConstdeclaration>();
 
-    public ADeclvarDeclarations()
+    public AConstdecl()
     {
         // Constructor
     }
 
-    public ADeclvarDeclarations(
-        @SuppressWarnings("hiding") TVartxt _vartxt_,
-        @SuppressWarnings("hiding") List<PVardeclaration> _vardeclaration_)
+    public AConstdecl(
+        @SuppressWarnings("hiding") TConsttxt _consttxt_,
+        @SuppressWarnings("hiding") List<PConstdeclaration> _constdeclaration_)
     {
         // Constructor
-        setVartxt(_vartxt_);
+        setConsttxt(_consttxt_);
 
-        setVardeclaration(_vardeclaration_);
+        setConstdeclaration(_constdeclaration_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ADeclvarDeclarations(
-            cloneNode(this._vartxt_),
-            cloneList(this._vardeclaration_));
+        return new AConstdecl(
+            cloneNode(this._consttxt_),
+            cloneList(this._constdeclaration_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseADeclvarDeclarations(this);
+        ((Analysis) sw).caseAConstdecl(this);
     }
 
-    public TVartxt getVartxt()
+    public TConsttxt getConsttxt()
     {
-        return this._vartxt_;
+        return this._consttxt_;
     }
 
-    public void setVartxt(TVartxt node)
+    public void setConsttxt(TConsttxt node)
     {
-        if(this._vartxt_ != null)
+        if(this._consttxt_ != null)
         {
-            this._vartxt_.parent(null);
+            this._consttxt_.parent(null);
         }
 
         if(node != null)
@@ -62,19 +62,19 @@ public final class ADeclvarDeclarations extends PDeclarations
             node.parent(this);
         }
 
-        this._vartxt_ = node;
+        this._consttxt_ = node;
     }
 
-    public LinkedList<PVardeclaration> getVardeclaration()
+    public LinkedList<PConstdeclaration> getConstdeclaration()
     {
-        return this._vardeclaration_;
+        return this._constdeclaration_;
     }
 
-    public void setVardeclaration(List<PVardeclaration> list)
+    public void setConstdeclaration(List<PConstdeclaration> list)
     {
-        this._vardeclaration_.clear();
-        this._vardeclaration_.addAll(list);
-        for(PVardeclaration e : list)
+        this._constdeclaration_.clear();
+        this._constdeclaration_.addAll(list);
+        for(PConstdeclaration e : list)
         {
             if(e.parent() != null)
             {
@@ -89,21 +89,21 @@ public final class ADeclvarDeclarations extends PDeclarations
     public String toString()
     {
         return ""
-            + toString(this._vartxt_)
-            + toString(this._vardeclaration_);
+            + toString(this._consttxt_)
+            + toString(this._constdeclaration_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._vartxt_ == child)
+        if(this._consttxt_ == child)
         {
-            this._vartxt_ = null;
+            this._consttxt_ = null;
             return;
         }
 
-        if(this._vardeclaration_.remove(child))
+        if(this._constdeclaration_.remove(child))
         {
             return;
         }
@@ -115,19 +115,19 @@ public final class ADeclvarDeclarations extends PDeclarations
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._vartxt_ == oldChild)
+        if(this._consttxt_ == oldChild)
         {
-            setVartxt((TVartxt) newChild);
+            setConsttxt((TConsttxt) newChild);
             return;
         }
 
-        for(ListIterator<PVardeclaration> i = this._vardeclaration_.listIterator(); i.hasNext();)
+        for(ListIterator<PConstdeclaration> i = this._constdeclaration_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)
             {
                 if(newChild != null)
                 {
-                    i.set((PVardeclaration) newChild);
+                    i.set((PConstdeclaration) newChild);
                     newChild.parent(this);
                     oldChild.parent(null);
                     return;

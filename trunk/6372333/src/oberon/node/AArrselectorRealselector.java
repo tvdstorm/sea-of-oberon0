@@ -5,55 +5,55 @@ package oberon.node;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AExpfactorFactor extends PFactor
+public final class AArrselectorRealselector extends PRealselector
 {
-    private TLPar _lPar_;
+    private TLBkt _lBkt_;
     private PExpression _expression_;
-    private TRPar _rPar_;
+    private TRBkt _rBkt_;
 
-    public AExpfactorFactor()
+    public AArrselectorRealselector()
     {
         // Constructor
     }
 
-    public AExpfactorFactor(
-        @SuppressWarnings("hiding") TLPar _lPar_,
+    public AArrselectorRealselector(
+        @SuppressWarnings("hiding") TLBkt _lBkt_,
         @SuppressWarnings("hiding") PExpression _expression_,
-        @SuppressWarnings("hiding") TRPar _rPar_)
+        @SuppressWarnings("hiding") TRBkt _rBkt_)
     {
         // Constructor
-        setLPar(_lPar_);
+        setLBkt(_lBkt_);
 
         setExpression(_expression_);
 
-        setRPar(_rPar_);
+        setRBkt(_rBkt_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AExpfactorFactor(
-            cloneNode(this._lPar_),
+        return new AArrselectorRealselector(
+            cloneNode(this._lBkt_),
             cloneNode(this._expression_),
-            cloneNode(this._rPar_));
+            cloneNode(this._rBkt_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAExpfactorFactor(this);
+        ((Analysis) sw).caseAArrselectorRealselector(this);
     }
 
-    public TLPar getLPar()
+    public TLBkt getLBkt()
     {
-        return this._lPar_;
+        return this._lBkt_;
     }
 
-    public void setLPar(TLPar node)
+    public void setLBkt(TLBkt node)
     {
-        if(this._lPar_ != null)
+        if(this._lBkt_ != null)
         {
-            this._lPar_.parent(null);
+            this._lBkt_.parent(null);
         }
 
         if(node != null)
@@ -66,7 +66,7 @@ public final class AExpfactorFactor extends PFactor
             node.parent(this);
         }
 
-        this._lPar_ = node;
+        this._lBkt_ = node;
     }
 
     public PExpression getExpression()
@@ -94,16 +94,16 @@ public final class AExpfactorFactor extends PFactor
         this._expression_ = node;
     }
 
-    public TRPar getRPar()
+    public TRBkt getRBkt()
     {
-        return this._rPar_;
+        return this._rBkt_;
     }
 
-    public void setRPar(TRPar node)
+    public void setRBkt(TRBkt node)
     {
-        if(this._rPar_ != null)
+        if(this._rBkt_ != null)
         {
-            this._rPar_.parent(null);
+            this._rBkt_.parent(null);
         }
 
         if(node != null)
@@ -116,25 +116,25 @@ public final class AExpfactorFactor extends PFactor
             node.parent(this);
         }
 
-        this._rPar_ = node;
+        this._rBkt_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._lPar_)
+            + toString(this._lBkt_)
             + toString(this._expression_)
-            + toString(this._rPar_);
+            + toString(this._rBkt_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._lPar_ == child)
+        if(this._lBkt_ == child)
         {
-            this._lPar_ = null;
+            this._lBkt_ = null;
             return;
         }
 
@@ -144,9 +144,9 @@ public final class AExpfactorFactor extends PFactor
             return;
         }
 
-        if(this._rPar_ == child)
+        if(this._rBkt_ == child)
         {
-            this._rPar_ = null;
+            this._rBkt_ = null;
             return;
         }
 
@@ -157,9 +157,9 @@ public final class AExpfactorFactor extends PFactor
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._lPar_ == oldChild)
+        if(this._lBkt_ == oldChild)
         {
-            setLPar((TLPar) newChild);
+            setLBkt((TLBkt) newChild);
             return;
         }
 
@@ -169,9 +169,9 @@ public final class AExpfactorFactor extends PFactor
             return;
         }
 
-        if(this._rPar_ == oldChild)
+        if(this._rBkt_ == oldChild)
         {
-            setRPar((TRPar) newChild);
+            setRBkt((TRBkt) newChild);
             return;
         }
 

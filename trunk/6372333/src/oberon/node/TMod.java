@@ -5,14 +5,14 @@ package oberon.node;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
-public final class TRPar extends Token
+public final class TMod extends Token
 {
-    public TRPar(String text)
+    public TMod(String text)
     {
         setText(text);
     }
 
-    public TRPar(String text, int line, int pos)
+    public TMod(String text, int line, int pos)
     {
         setText(text);
         setLine(line);
@@ -22,11 +22,11 @@ public final class TRPar extends Token
     @Override
     public Object clone()
     {
-      return new TRPar(getText(), getLine(), getPos());
+      return new TMod(getText(), getLine(), getPos());
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTRPar(this);
+        ((Analysis) sw).caseTMod(this);
     }
 }
