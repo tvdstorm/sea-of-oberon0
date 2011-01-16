@@ -2,13 +2,14 @@
 
 package oberon.node;
 
+import java.util.*;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
 public final class AIdentlist extends PIdentlist
 {
     private TIdentifier _identifier_;
-    private PAndidentifier _andidentifier_;
+    private final LinkedList<PAndidentifier> _andidentifier_ = new LinkedList<PAndidentifier>();
 
     public AIdentlist()
     {
@@ -17,7 +18,7 @@ public final class AIdentlist extends PIdentlist
 
     public AIdentlist(
         @SuppressWarnings("hiding") TIdentifier _identifier_,
-        @SuppressWarnings("hiding") PAndidentifier _andidentifier_)
+        @SuppressWarnings("hiding") List<PAndidentifier> _andidentifier_)
     {
         // Constructor
         setIdentifier(_identifier_);
@@ -31,7 +32,7 @@ public final class AIdentlist extends PIdentlist
     {
         return new AIdentlist(
             cloneNode(this._identifier_),
-            cloneNode(this._andidentifier_));
+            cloneList(this._andidentifier_));
     }
 
     public void apply(Switch sw)
@@ -64,29 +65,24 @@ public final class AIdentlist extends PIdentlist
         this._identifier_ = node;
     }
 
-    public PAndidentifier getAndidentifier()
+    public LinkedList<PAndidentifier> getAndidentifier()
     {
         return this._andidentifier_;
     }
 
-    public void setAndidentifier(PAndidentifier node)
+    public void setAndidentifier(List<PAndidentifier> list)
     {
-        if(this._andidentifier_ != null)
+        this._andidentifier_.clear();
+        this._andidentifier_.addAll(list);
+        for(PAndidentifier e : list)
         {
-            this._andidentifier_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
+            if(e.parent() != null)
             {
-                node.parent().removeChild(node);
+                e.parent().removeChild(e);
             }
 
-            node.parent(this);
+            e.parent(this);
         }
-
-        this._andidentifier_ = node;
     }
 
     @Override
@@ -107,9 +103,8 @@ public final class AIdentlist extends PIdentlist
             return;
         }
 
-        if(this._andidentifier_ == child)
+        if(this._andidentifier_.remove(child))
         {
-            this._andidentifier_ = null;
             return;
         }
 
@@ -126,10 +121,22 @@ public final class AIdentlist extends PIdentlist
             return;
         }
 
-        if(this._andidentifier_ == oldChild)
+        for(ListIterator<PAndidentifier> i = this._andidentifier_.listIterator(); i.hasNext();)
         {
-            setAndidentifier((PAndidentifier) newChild);
-            return;
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((PAndidentifier) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
+
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
         throw new RuntimeException("Not a child.");

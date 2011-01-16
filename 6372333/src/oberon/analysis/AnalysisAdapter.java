@@ -74,22 +74,7 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseADeclconstDeclarations(ADeclconstDeclarations node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseADecltypeDeclarations(ADecltypeDeclarations node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseADeclvarDeclarations(ADeclvarDeclarations node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseADeclproceduredeclarationDeclarations(ADeclproceduredeclarationDeclarations node)
+    public void caseADeclarations(ADeclarations node)
     {
         defaultCase(node);
     }
@@ -99,7 +84,27 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
+    public void caseAConstdecl(AConstdecl node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseATypedecl(ATypedecl node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAVardecl(AVardecl node)
+    {
+        defaultCase(node);
+    }
+
     public void caseAAssignment(AAssignment node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAConstdeclaration(AConstdeclaration node)
     {
         defaultCase(node);
     }
@@ -110,11 +115,6 @@ public class AnalysisAdapter implements Analysis
     }
 
     public void caseAStatementsequence(AStatementsequence node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseADeclproceduredeclaration(ADeclproceduredeclaration node)
     {
         defaultCase(node);
     }
@@ -140,6 +140,11 @@ public class AnalysisAdapter implements Analysis
     }
 
     public void caseARectypeType(ARectypeType node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAProceduredeclaration(AProceduredeclaration node)
     {
         defaultCase(node);
     }
@@ -170,11 +175,6 @@ public class AnalysisAdapter implements Analysis
     }
 
     public void caseAIdentlist(AIdentlist node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAProceduredeclaration(AProceduredeclaration node)
     {
         defaultCase(node);
     }
@@ -289,11 +289,6 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseAIdfactorFactor(AIdfactorFactor node)
-    {
-        defaultCase(node);
-    }
-
     public void caseAIntfactorFactor(AIntfactorFactor node)
     {
         defaultCase(node);
@@ -309,6 +304,11 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
+    public void caseAIdfactorFactor(AIdfactorFactor node)
+    {
+        defaultCase(node);
+    }
+
     public void caseAActualparameters(AActualparameters node)
     {
         defaultCase(node);
@@ -319,12 +319,37 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseADotselectorSelector(ADotselectorSelector node)
+    public void caseASelector(ASelector node)
     {
         defaultCase(node);
     }
 
-    public void caseAArrselectorSelector(AArrselectorSelector node)
+    public void caseATemmultTermoperator(ATemmultTermoperator node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseATermdivTermoperator(ATermdivTermoperator node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseATermmodTermoperator(ATermmodTermoperator node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseATermampTermoperator(ATermampTermoperator node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseADotselectorRealselector(ADotselectorRealselector node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAArrselectorRealselector(AArrselectorRealselector node)
     {
         defaultCase(node);
     }
@@ -335,6 +360,11 @@ public class AnalysisAdapter implements Analysis
     }
 
     public void caseAMoreactualparameters(AMoreactualparameters node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAMoreformalparameters(AMoreformalparameters node)
     {
         defaultCase(node);
     }
@@ -385,6 +415,11 @@ public class AnalysisAdapter implements Analysis
     }
 
     public void caseTColon(TColon node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTEqu(TEqu node)
     {
         defaultCase(node);
     }
@@ -489,12 +524,32 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
+    public void caseTPlusorminusoror(TPlusorminusoror node)
+    {
+        defaultCase(node);
+    }
+
     public void caseTPlusorminus(TPlusorminus node)
     {
         defaultCase(node);
     }
 
-    public void caseTPlusorminusoror(TPlusorminusoror node)
+    public void caseTMult(TMult node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTMod(TMod node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTAmp(TAmp node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTDiv(TDiv node)
     {
         defaultCase(node);
     }
@@ -505,11 +560,6 @@ public class AnalysisAdapter implements Analysis
     }
 
     public void caseTIdentifier(TIdentifier node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseTTermoperator(TTermoperator node)
     {
         defaultCase(node);
     }

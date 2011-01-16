@@ -2,6 +2,7 @@
 
 package oberon.node;
 
+import java.util.*;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
@@ -10,6 +11,7 @@ public final class AFpsection extends PFpsection
     private TVartxt _vartxt_;
     private PIdentlist _identlist_;
     private TColon _colon_;
+    private final LinkedList<TSptxt> _sptxt_ = new LinkedList<TSptxt>();
     private PType _type_;
 
     public AFpsection()
@@ -21,6 +23,7 @@ public final class AFpsection extends PFpsection
         @SuppressWarnings("hiding") TVartxt _vartxt_,
         @SuppressWarnings("hiding") PIdentlist _identlist_,
         @SuppressWarnings("hiding") TColon _colon_,
+        @SuppressWarnings("hiding") List<TSptxt> _sptxt_,
         @SuppressWarnings("hiding") PType _type_)
     {
         // Constructor
@@ -29,6 +32,8 @@ public final class AFpsection extends PFpsection
         setIdentlist(_identlist_);
 
         setColon(_colon_);
+
+        setSptxt(_sptxt_);
 
         setType(_type_);
 
@@ -41,6 +46,7 @@ public final class AFpsection extends PFpsection
             cloneNode(this._vartxt_),
             cloneNode(this._identlist_),
             cloneNode(this._colon_),
+            cloneList(this._sptxt_),
             cloneNode(this._type_));
     }
 
@@ -124,6 +130,26 @@ public final class AFpsection extends PFpsection
         this._colon_ = node;
     }
 
+    public LinkedList<TSptxt> getSptxt()
+    {
+        return this._sptxt_;
+    }
+
+    public void setSptxt(List<TSptxt> list)
+    {
+        this._sptxt_.clear();
+        this._sptxt_.addAll(list);
+        for(TSptxt e : list)
+        {
+            if(e.parent() != null)
+            {
+                e.parent().removeChild(e);
+            }
+
+            e.parent(this);
+        }
+    }
+
     public PType getType()
     {
         return this._type_;
@@ -156,6 +182,7 @@ public final class AFpsection extends PFpsection
             + toString(this._vartxt_)
             + toString(this._identlist_)
             + toString(this._colon_)
+            + toString(this._sptxt_)
             + toString(this._type_);
     }
 
@@ -178,6 +205,11 @@ public final class AFpsection extends PFpsection
         if(this._colon_ == child)
         {
             this._colon_ = null;
+            return;
+        }
+
+        if(this._sptxt_.remove(child))
+        {
             return;
         }
 
@@ -210,6 +242,24 @@ public final class AFpsection extends PFpsection
         {
             setColon((TColon) newChild);
             return;
+        }
+
+        for(ListIterator<TSptxt> i = this._sptxt_.listIterator(); i.hasNext();)
+        {
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((TSptxt) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
+
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
         if(this._type_ == oldChild)

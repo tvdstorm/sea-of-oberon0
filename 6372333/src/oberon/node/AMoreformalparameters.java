@@ -6,55 +6,55 @@ import java.util.*;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AAndidentifier extends PAndidentifier
+public final class AMoreformalparameters extends PMoreformalparameters
 {
-    private TComma _comma_;
+    private TSemi _semi_;
     private final LinkedList<TSptxt> _sptxt_ = new LinkedList<TSptxt>();
-    private TIdentifier _identifier_;
+    private PFpsection _fpsection_;
 
-    public AAndidentifier()
+    public AMoreformalparameters()
     {
         // Constructor
     }
 
-    public AAndidentifier(
-        @SuppressWarnings("hiding") TComma _comma_,
+    public AMoreformalparameters(
+        @SuppressWarnings("hiding") TSemi _semi_,
         @SuppressWarnings("hiding") List<TSptxt> _sptxt_,
-        @SuppressWarnings("hiding") TIdentifier _identifier_)
+        @SuppressWarnings("hiding") PFpsection _fpsection_)
     {
         // Constructor
-        setComma(_comma_);
+        setSemi(_semi_);
 
         setSptxt(_sptxt_);
 
-        setIdentifier(_identifier_);
+        setFpsection(_fpsection_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AAndidentifier(
-            cloneNode(this._comma_),
+        return new AMoreformalparameters(
+            cloneNode(this._semi_),
             cloneList(this._sptxt_),
-            cloneNode(this._identifier_));
+            cloneNode(this._fpsection_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAAndidentifier(this);
+        ((Analysis) sw).caseAMoreformalparameters(this);
     }
 
-    public TComma getComma()
+    public TSemi getSemi()
     {
-        return this._comma_;
+        return this._semi_;
     }
 
-    public void setComma(TComma node)
+    public void setSemi(TSemi node)
     {
-        if(this._comma_ != null)
+        if(this._semi_ != null)
         {
-            this._comma_.parent(null);
+            this._semi_.parent(null);
         }
 
         if(node != null)
@@ -67,7 +67,7 @@ public final class AAndidentifier extends PAndidentifier
             node.parent(this);
         }
 
-        this._comma_ = node;
+        this._semi_ = node;
     }
 
     public LinkedList<TSptxt> getSptxt()
@@ -90,16 +90,16 @@ public final class AAndidentifier extends PAndidentifier
         }
     }
 
-    public TIdentifier getIdentifier()
+    public PFpsection getFpsection()
     {
-        return this._identifier_;
+        return this._fpsection_;
     }
 
-    public void setIdentifier(TIdentifier node)
+    public void setFpsection(PFpsection node)
     {
-        if(this._identifier_ != null)
+        if(this._fpsection_ != null)
         {
-            this._identifier_.parent(null);
+            this._fpsection_.parent(null);
         }
 
         if(node != null)
@@ -112,25 +112,25 @@ public final class AAndidentifier extends PAndidentifier
             node.parent(this);
         }
 
-        this._identifier_ = node;
+        this._fpsection_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._comma_)
+            + toString(this._semi_)
             + toString(this._sptxt_)
-            + toString(this._identifier_);
+            + toString(this._fpsection_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._comma_ == child)
+        if(this._semi_ == child)
         {
-            this._comma_ = null;
+            this._semi_ = null;
             return;
         }
 
@@ -139,9 +139,9 @@ public final class AAndidentifier extends PAndidentifier
             return;
         }
 
-        if(this._identifier_ == child)
+        if(this._fpsection_ == child)
         {
-            this._identifier_ = null;
+            this._fpsection_ = null;
             return;
         }
 
@@ -152,9 +152,9 @@ public final class AAndidentifier extends PAndidentifier
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._comma_ == oldChild)
+        if(this._semi_ == oldChild)
         {
-            setComma((TComma) newChild);
+            setSemi((TSemi) newChild);
             return;
         }
 
@@ -176,9 +176,9 @@ public final class AAndidentifier extends PAndidentifier
             }
         }
 
-        if(this._identifier_ == oldChild)
+        if(this._fpsection_ == oldChild)
         {
-            setIdentifier((TIdentifier) newChild);
+            setFpsection((PFpsection) newChild);
             return;
         }
 

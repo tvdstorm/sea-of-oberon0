@@ -8,8 +8,9 @@ import oberon.analysis.*;
 public final class ATypedeclaration extends PTypedeclaration
 {
     private TIdentifier _identifier_;
-    private TAss _ass_;
+    private TEqu _equ_;
     private PType _type_;
+    private TSemi _semi_;
 
     public ATypedeclaration()
     {
@@ -18,15 +19,18 @@ public final class ATypedeclaration extends PTypedeclaration
 
     public ATypedeclaration(
         @SuppressWarnings("hiding") TIdentifier _identifier_,
-        @SuppressWarnings("hiding") TAss _ass_,
-        @SuppressWarnings("hiding") PType _type_)
+        @SuppressWarnings("hiding") TEqu _equ_,
+        @SuppressWarnings("hiding") PType _type_,
+        @SuppressWarnings("hiding") TSemi _semi_)
     {
         // Constructor
         setIdentifier(_identifier_);
 
-        setAss(_ass_);
+        setEqu(_equ_);
 
         setType(_type_);
+
+        setSemi(_semi_);
 
     }
 
@@ -35,8 +39,9 @@ public final class ATypedeclaration extends PTypedeclaration
     {
         return new ATypedeclaration(
             cloneNode(this._identifier_),
-            cloneNode(this._ass_),
-            cloneNode(this._type_));
+            cloneNode(this._equ_),
+            cloneNode(this._type_),
+            cloneNode(this._semi_));
     }
 
     public void apply(Switch sw)
@@ -69,16 +74,16 @@ public final class ATypedeclaration extends PTypedeclaration
         this._identifier_ = node;
     }
 
-    public TAss getAss()
+    public TEqu getEqu()
     {
-        return this._ass_;
+        return this._equ_;
     }
 
-    public void setAss(TAss node)
+    public void setEqu(TEqu node)
     {
-        if(this._ass_ != null)
+        if(this._equ_ != null)
         {
-            this._ass_.parent(null);
+            this._equ_.parent(null);
         }
 
         if(node != null)
@@ -91,7 +96,7 @@ public final class ATypedeclaration extends PTypedeclaration
             node.parent(this);
         }
 
-        this._ass_ = node;
+        this._equ_ = node;
     }
 
     public PType getType()
@@ -119,13 +124,39 @@ public final class ATypedeclaration extends PTypedeclaration
         this._type_ = node;
     }
 
+    public TSemi getSemi()
+    {
+        return this._semi_;
+    }
+
+    public void setSemi(TSemi node)
+    {
+        if(this._semi_ != null)
+        {
+            this._semi_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._semi_ = node;
+    }
+
     @Override
     public String toString()
     {
         return ""
             + toString(this._identifier_)
-            + toString(this._ass_)
-            + toString(this._type_);
+            + toString(this._equ_)
+            + toString(this._type_)
+            + toString(this._semi_);
     }
 
     @Override
@@ -138,15 +169,21 @@ public final class ATypedeclaration extends PTypedeclaration
             return;
         }
 
-        if(this._ass_ == child)
+        if(this._equ_ == child)
         {
-            this._ass_ = null;
+            this._equ_ = null;
             return;
         }
 
         if(this._type_ == child)
         {
             this._type_ = null;
+            return;
+        }
+
+        if(this._semi_ == child)
+        {
+            this._semi_ = null;
             return;
         }
 
@@ -163,15 +200,21 @@ public final class ATypedeclaration extends PTypedeclaration
             return;
         }
 
-        if(this._ass_ == oldChild)
+        if(this._equ_ == oldChild)
         {
-            setAss((TAss) newChild);
+            setEqu((TEqu) newChild);
             return;
         }
 
         if(this._type_ == oldChild)
         {
             setType((PType) newChild);
+            return;
+        }
+
+        if(this._semi_ == oldChild)
+        {
+            setSemi((TSemi) newChild);
             return;
         }
 

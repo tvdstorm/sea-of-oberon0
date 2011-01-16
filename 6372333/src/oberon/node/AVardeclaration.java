@@ -2,6 +2,7 @@
 
 package oberon.node;
 
+import java.util.*;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
@@ -9,6 +10,7 @@ public final class AVardeclaration extends PVardeclaration
 {
     private PIdentlist _identlist_;
     private TColon _colon_;
+    private final LinkedList<TSptxt> _sptxt_ = new LinkedList<TSptxt>();
     private PType _type_;
     private TSemi _semi_;
 
@@ -20,6 +22,7 @@ public final class AVardeclaration extends PVardeclaration
     public AVardeclaration(
         @SuppressWarnings("hiding") PIdentlist _identlist_,
         @SuppressWarnings("hiding") TColon _colon_,
+        @SuppressWarnings("hiding") List<TSptxt> _sptxt_,
         @SuppressWarnings("hiding") PType _type_,
         @SuppressWarnings("hiding") TSemi _semi_)
     {
@@ -27,6 +30,8 @@ public final class AVardeclaration extends PVardeclaration
         setIdentlist(_identlist_);
 
         setColon(_colon_);
+
+        setSptxt(_sptxt_);
 
         setType(_type_);
 
@@ -40,6 +45,7 @@ public final class AVardeclaration extends PVardeclaration
         return new AVardeclaration(
             cloneNode(this._identlist_),
             cloneNode(this._colon_),
+            cloneList(this._sptxt_),
             cloneNode(this._type_),
             cloneNode(this._semi_));
     }
@@ -99,6 +105,26 @@ public final class AVardeclaration extends PVardeclaration
         this._colon_ = node;
     }
 
+    public LinkedList<TSptxt> getSptxt()
+    {
+        return this._sptxt_;
+    }
+
+    public void setSptxt(List<TSptxt> list)
+    {
+        this._sptxt_.clear();
+        this._sptxt_.addAll(list);
+        for(TSptxt e : list)
+        {
+            if(e.parent() != null)
+            {
+                e.parent().removeChild(e);
+            }
+
+            e.parent(this);
+        }
+    }
+
     public PType getType()
     {
         return this._type_;
@@ -155,6 +181,7 @@ public final class AVardeclaration extends PVardeclaration
         return ""
             + toString(this._identlist_)
             + toString(this._colon_)
+            + toString(this._sptxt_)
             + toString(this._type_)
             + toString(this._semi_);
     }
@@ -172,6 +199,11 @@ public final class AVardeclaration extends PVardeclaration
         if(this._colon_ == child)
         {
             this._colon_ = null;
+            return;
+        }
+
+        if(this._sptxt_.remove(child))
+        {
             return;
         }
 
@@ -204,6 +236,24 @@ public final class AVardeclaration extends PVardeclaration
         {
             setColon((TColon) newChild);
             return;
+        }
+
+        for(ListIterator<TSptxt> i = this._sptxt_.listIterator(); i.hasNext();)
+        {
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((TSptxt) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
+
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
         if(this._type_ == oldChild)

@@ -16,10 +16,6 @@ Helpers
 	horizontal_tab = 9;
 	newline = cr | lf | cr lf | next_line | line_separator | paragraph_separator;
     
-    mult = '*' sp*;
-    div = 'DIV' sp*;
-    mod = 'MOD' sp*;
-    amp = '&' sp*;
     plus = '+' sp*;
     min = '-' sp*; 
         
@@ -42,16 +38,16 @@ Tokens
 	l_par = '(';
 	r_bkt = ']';
 	r_brc = '}';
-	r_par = ')';
+	r_par = ')' sp*;
 	tilde = '~';
 	
 	comma = ',';
 	colon = ':';
 	
-	ass = '=' sp*;  
+	equ = exeq sp*;
+	ass = ':=' sp*;  
     semi = ';' nl?;
-    
-    
+        
     moduletxt = 'MODULE' sp*;
     consttxt = 'CONST' sp*;
     typetxt = 'TYPE' sp*;
@@ -71,28 +67,31 @@ Tokens
     sptxt = sp;
     
     expressionoperator = 
-   		exeq |
-   		exha |
-   		exgt |
-   		exge |
-   		exst |
-   		exse;
+   		exeq sp* |
+   		exha sp* |
+   		exgt sp*|
+   		exge sp*|
+   		exst sp*|
+   		exse sp*;
 
-	plusorminus = 
-		plus |
-		min; 
 	plusorminusoror =
 		plus |
 		min |
 		ortxt;
+ 	plusorminus = 
+		plus |
+		min; 
+		
+	mult = '*' sp*;
+    mod = 'MOD' sp*;
+    amp = '&' sp*;
+    div = 'DIV' sp*;
  	
-    integer = number* sp*;
+    integer = number+ sp*;
     identifier = letter (letter | number)* sp*;
     
-	termoperator = mult | div | mod | amp;
-    
-    blank_newline = newline+;
-    blank_whitespace = sp+;
+    blank_newline = newline*;
+    blank_whitespace = sp*;
     tab = horizontal_tab;
     
 Ignored Tokens  
@@ -101,47 +100,45 @@ Ignored Tokens
 Productions 
     program = moduletxt [beginid]:identifier semi declarations begstat? endtxt [endid]:identifier dot;
     
-    declarations = 
-		{declconst} consttxt assignment* |
-		{decltype} typetxt typedeclaration* |
-		{declvar} vartxt vardeclaration* |
-		{declproceduredeclaration} declproceduredeclaration semi;
-    begstat = 
-    	begintxt statementsequence;
+    declarations = constdecl? typedecl? vardecl? proceduredeclaration*;
+    begstat = begintxt statementsequence;
     
+    constdecl = consttxt constdeclaration+;
+    typedecl = typetxt typedeclaration+;
+    vardecl = vartxt vardeclaration+;
     assignment = identifier ass expression;
-    typedeclaration = identifier ass type;
+    constdeclaration = identifier equ expression semi;
+    typedeclaration = identifier equ type semi;
     statementsequence = statement andstatement*;
-    declproceduredeclaration = proceduredeclaration semi; 
-    vardeclaration = identlist colon type semi;
+    vardeclaration = identlist colon sptxt* type semi;
     
     expression = simpleexpression simpleexpressionevaluation?; 
     type = 
     	{idtype} identifier | 
     	{arrtype} arraytype | 
     	{rectype} recordtype;
+    proceduredeclaration = procedureheading [beginsemi]:semi procedurebody identifier [endsemi]:semi;
     statement = 
     	{statass} assignment |
     	{statproc} procedurecall | 
     	{statif} ifstatement |
     	{statwhi} whilestatement |
     	{statnone} sptxt;
-    identlist = identifier andidentifier;
-    proceduredeclaration  = procedureheading semi procedurebody identifier;
+    identlist = identifier andidentifier*;
     andstatement = semi statement;
     
-    andidentifier = comma identifier;
+    andidentifier = comma sptxt* identifier;
     simpleexpressionevaluation = expressionoperator simpleexpression;
-    simpleexpression = plusorminus? term moreterms;
+    simpleexpression = plusorminus? term moreterms*;
     recordtype = recordtxt fieldlist morefields endtxt;
     arraytype = arraytxt expression oftxt type;
     whilestatement = whiletxt expression dotxt statementsequence endtxt;
-    ifstatement = iftxt expression thentxt statementsequence elsif else endtxt; 
+    ifstatement = iftxt expression thentxt statementsequence elsif? else? endtxt; 
     procedurecall = identifier actualparams*; 
     procedureheading = proceduretxt identifier formalparams?;
     procedurebody = declarations procedurebodystatements? endtxt; 
    
- 	term = factor additionaloperations;
+ 	term = factor sptxt* additionaloperations*;
  	moreterms = plusorminusoror term;
 	fieldlist = 
 		{fieldlist} identlist colon type |
@@ -153,18 +150,25 @@ Productions
 	formalparams = l_par formalparameters? r_par;
 	procedurebodystatements = begintxt statementsequence;
    
-   	additionaloperations = termoperator factor;
+   	additionaloperations = termoperator sptxt* factor;
     factor = 
-    	{idfactor} identifier selector | 
     	{intfactor} integer | 
-    	{expfactor} r_par expression l_par |
-    	{tilfactor} tilde factor;
+    	{expfactor} l_par expression r_par |
+    	{tilfactor} tilde factor |
+    	{idfactor} identifier selector;
    	actualparameters = expression moreactualparameters*;
-   	formalparameters = l_par fpsection? r_par;
+   	formalparameters = fpsection sptxt* moreformalparameters*;
    
-    selector = 
+	selector = realselector*;
+	termoperator = 
+		{temmult} mult | 
+		{termdiv} div | 
+		{termmod} mod | 
+		{termamp} amp; 
+
+    realselector = 
     	{dotselector} dot identifier |
     	{arrselector} l_bkt expression r_bkt;
-
-   	fpsection = vartxt? identlist colon type;
-	moreactualparameters = comma expression;
+   	fpsection = vartxt? identlist colon sptxt* type;
+	moreactualparameters = comma sptxt* expression;
+	moreformalparameters = semi sptxt* fpsection; 

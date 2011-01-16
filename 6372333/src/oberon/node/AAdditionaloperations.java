@@ -2,12 +2,14 @@
 
 package oberon.node;
 
+import java.util.*;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
 public final class AAdditionaloperations extends PAdditionaloperations
 {
-    private TTermoperator _termoperator_;
+    private PTermoperator _termoperator_;
+    private final LinkedList<TSptxt> _sptxt_ = new LinkedList<TSptxt>();
     private PFactor _factor_;
 
     public AAdditionaloperations()
@@ -16,11 +18,14 @@ public final class AAdditionaloperations extends PAdditionaloperations
     }
 
     public AAdditionaloperations(
-        @SuppressWarnings("hiding") TTermoperator _termoperator_,
+        @SuppressWarnings("hiding") PTermoperator _termoperator_,
+        @SuppressWarnings("hiding") List<TSptxt> _sptxt_,
         @SuppressWarnings("hiding") PFactor _factor_)
     {
         // Constructor
         setTermoperator(_termoperator_);
+
+        setSptxt(_sptxt_);
 
         setFactor(_factor_);
 
@@ -31,6 +36,7 @@ public final class AAdditionaloperations extends PAdditionaloperations
     {
         return new AAdditionaloperations(
             cloneNode(this._termoperator_),
+            cloneList(this._sptxt_),
             cloneNode(this._factor_));
     }
 
@@ -39,12 +45,12 @@ public final class AAdditionaloperations extends PAdditionaloperations
         ((Analysis) sw).caseAAdditionaloperations(this);
     }
 
-    public TTermoperator getTermoperator()
+    public PTermoperator getTermoperator()
     {
         return this._termoperator_;
     }
 
-    public void setTermoperator(TTermoperator node)
+    public void setTermoperator(PTermoperator node)
     {
         if(this._termoperator_ != null)
         {
@@ -62,6 +68,26 @@ public final class AAdditionaloperations extends PAdditionaloperations
         }
 
         this._termoperator_ = node;
+    }
+
+    public LinkedList<TSptxt> getSptxt()
+    {
+        return this._sptxt_;
+    }
+
+    public void setSptxt(List<TSptxt> list)
+    {
+        this._sptxt_.clear();
+        this._sptxt_.addAll(list);
+        for(TSptxt e : list)
+        {
+            if(e.parent() != null)
+            {
+                e.parent().removeChild(e);
+            }
+
+            e.parent(this);
+        }
     }
 
     public PFactor getFactor()
@@ -94,6 +120,7 @@ public final class AAdditionaloperations extends PAdditionaloperations
     {
         return ""
             + toString(this._termoperator_)
+            + toString(this._sptxt_)
             + toString(this._factor_);
     }
 
@@ -104,6 +131,11 @@ public final class AAdditionaloperations extends PAdditionaloperations
         if(this._termoperator_ == child)
         {
             this._termoperator_ = null;
+            return;
+        }
+
+        if(this._sptxt_.remove(child))
+        {
             return;
         }
 
@@ -122,8 +154,26 @@ public final class AAdditionaloperations extends PAdditionaloperations
         // Replace child
         if(this._termoperator_ == oldChild)
         {
-            setTermoperator((TTermoperator) newChild);
+            setTermoperator((PTermoperator) newChild);
             return;
+        }
+
+        for(ListIterator<TSptxt> i = this._sptxt_.listIterator(); i.hasNext();)
+        {
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((TSptxt) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
+
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
         if(this._factor_ == oldChild)

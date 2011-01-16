@@ -2,14 +2,15 @@
 
 package oberon.node;
 
+import java.util.*;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
 public final class AFormalparameters extends PFormalparameters
 {
-    private TLPar _lPar_;
     private PFpsection _fpsection_;
-    private TRPar _rPar_;
+    private final LinkedList<TSptxt> _sptxt_ = new LinkedList<TSptxt>();
+    private final LinkedList<PMoreformalparameters> _moreformalparameters_ = new LinkedList<PMoreformalparameters>();
 
     public AFormalparameters()
     {
@@ -17,16 +18,16 @@ public final class AFormalparameters extends PFormalparameters
     }
 
     public AFormalparameters(
-        @SuppressWarnings("hiding") TLPar _lPar_,
         @SuppressWarnings("hiding") PFpsection _fpsection_,
-        @SuppressWarnings("hiding") TRPar _rPar_)
+        @SuppressWarnings("hiding") List<TSptxt> _sptxt_,
+        @SuppressWarnings("hiding") List<PMoreformalparameters> _moreformalparameters_)
     {
         // Constructor
-        setLPar(_lPar_);
-
         setFpsection(_fpsection_);
 
-        setRPar(_rPar_);
+        setSptxt(_sptxt_);
+
+        setMoreformalparameters(_moreformalparameters_);
 
     }
 
@@ -34,39 +35,14 @@ public final class AFormalparameters extends PFormalparameters
     public Object clone()
     {
         return new AFormalparameters(
-            cloneNode(this._lPar_),
             cloneNode(this._fpsection_),
-            cloneNode(this._rPar_));
+            cloneList(this._sptxt_),
+            cloneList(this._moreformalparameters_));
     }
 
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAFormalparameters(this);
-    }
-
-    public TLPar getLPar()
-    {
-        return this._lPar_;
-    }
-
-    public void setLPar(TLPar node)
-    {
-        if(this._lPar_ != null)
-        {
-            this._lPar_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._lPar_ = node;
     }
 
     public PFpsection getFpsection()
@@ -94,59 +70,72 @@ public final class AFormalparameters extends PFormalparameters
         this._fpsection_ = node;
     }
 
-    public TRPar getRPar()
+    public LinkedList<TSptxt> getSptxt()
     {
-        return this._rPar_;
+        return this._sptxt_;
     }
 
-    public void setRPar(TRPar node)
+    public void setSptxt(List<TSptxt> list)
     {
-        if(this._rPar_ != null)
+        this._sptxt_.clear();
+        this._sptxt_.addAll(list);
+        for(TSptxt e : list)
         {
-            this._rPar_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
+            if(e.parent() != null)
             {
-                node.parent().removeChild(node);
+                e.parent().removeChild(e);
             }
 
-            node.parent(this);
+            e.parent(this);
         }
+    }
 
-        this._rPar_ = node;
+    public LinkedList<PMoreformalparameters> getMoreformalparameters()
+    {
+        return this._moreformalparameters_;
+    }
+
+    public void setMoreformalparameters(List<PMoreformalparameters> list)
+    {
+        this._moreformalparameters_.clear();
+        this._moreformalparameters_.addAll(list);
+        for(PMoreformalparameters e : list)
+        {
+            if(e.parent() != null)
+            {
+                e.parent().removeChild(e);
+            }
+
+            e.parent(this);
+        }
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._lPar_)
             + toString(this._fpsection_)
-            + toString(this._rPar_);
+            + toString(this._sptxt_)
+            + toString(this._moreformalparameters_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._lPar_ == child)
-        {
-            this._lPar_ = null;
-            return;
-        }
-
         if(this._fpsection_ == child)
         {
             this._fpsection_ = null;
             return;
         }
 
-        if(this._rPar_ == child)
+        if(this._sptxt_.remove(child))
         {
-            this._rPar_ = null;
+            return;
+        }
+
+        if(this._moreformalparameters_.remove(child))
+        {
             return;
         }
 
@@ -157,22 +146,46 @@ public final class AFormalparameters extends PFormalparameters
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._lPar_ == oldChild)
-        {
-            setLPar((TLPar) newChild);
-            return;
-        }
-
         if(this._fpsection_ == oldChild)
         {
             setFpsection((PFpsection) newChild);
             return;
         }
 
-        if(this._rPar_ == oldChild)
+        for(ListIterator<TSptxt> i = this._sptxt_.listIterator(); i.hasNext();)
         {
-            setRPar((TRPar) newChild);
-            return;
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((TSptxt) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
+
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
+        }
+
+        for(ListIterator<PMoreformalparameters> i = this._moreformalparameters_.listIterator(); i.hasNext();)
+        {
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((PMoreformalparameters) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
+
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
         throw new RuntimeException("Not a child.");

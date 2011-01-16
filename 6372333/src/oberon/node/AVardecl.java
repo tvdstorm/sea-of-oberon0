@@ -6,50 +6,50 @@ import java.util.*;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ADecltypeDeclarations extends PDeclarations
+public final class AVardecl extends PVardecl
 {
-    private TTypetxt _typetxt_;
-    private final LinkedList<PTypedeclaration> _typedeclaration_ = new LinkedList<PTypedeclaration>();
+    private TVartxt _vartxt_;
+    private final LinkedList<PVardeclaration> _vardeclaration_ = new LinkedList<PVardeclaration>();
 
-    public ADecltypeDeclarations()
+    public AVardecl()
     {
         // Constructor
     }
 
-    public ADecltypeDeclarations(
-        @SuppressWarnings("hiding") TTypetxt _typetxt_,
-        @SuppressWarnings("hiding") List<PTypedeclaration> _typedeclaration_)
+    public AVardecl(
+        @SuppressWarnings("hiding") TVartxt _vartxt_,
+        @SuppressWarnings("hiding") List<PVardeclaration> _vardeclaration_)
     {
         // Constructor
-        setTypetxt(_typetxt_);
+        setVartxt(_vartxt_);
 
-        setTypedeclaration(_typedeclaration_);
+        setVardeclaration(_vardeclaration_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ADecltypeDeclarations(
-            cloneNode(this._typetxt_),
-            cloneList(this._typedeclaration_));
+        return new AVardecl(
+            cloneNode(this._vartxt_),
+            cloneList(this._vardeclaration_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseADecltypeDeclarations(this);
+        ((Analysis) sw).caseAVardecl(this);
     }
 
-    public TTypetxt getTypetxt()
+    public TVartxt getVartxt()
     {
-        return this._typetxt_;
+        return this._vartxt_;
     }
 
-    public void setTypetxt(TTypetxt node)
+    public void setVartxt(TVartxt node)
     {
-        if(this._typetxt_ != null)
+        if(this._vartxt_ != null)
         {
-            this._typetxt_.parent(null);
+            this._vartxt_.parent(null);
         }
 
         if(node != null)
@@ -62,19 +62,19 @@ public final class ADecltypeDeclarations extends PDeclarations
             node.parent(this);
         }
 
-        this._typetxt_ = node;
+        this._vartxt_ = node;
     }
 
-    public LinkedList<PTypedeclaration> getTypedeclaration()
+    public LinkedList<PVardeclaration> getVardeclaration()
     {
-        return this._typedeclaration_;
+        return this._vardeclaration_;
     }
 
-    public void setTypedeclaration(List<PTypedeclaration> list)
+    public void setVardeclaration(List<PVardeclaration> list)
     {
-        this._typedeclaration_.clear();
-        this._typedeclaration_.addAll(list);
-        for(PTypedeclaration e : list)
+        this._vardeclaration_.clear();
+        this._vardeclaration_.addAll(list);
+        for(PVardeclaration e : list)
         {
             if(e.parent() != null)
             {
@@ -89,21 +89,21 @@ public final class ADecltypeDeclarations extends PDeclarations
     public String toString()
     {
         return ""
-            + toString(this._typetxt_)
-            + toString(this._typedeclaration_);
+            + toString(this._vartxt_)
+            + toString(this._vardeclaration_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._typetxt_ == child)
+        if(this._vartxt_ == child)
         {
-            this._typetxt_ = null;
+            this._vartxt_ = null;
             return;
         }
 
-        if(this._typedeclaration_.remove(child))
+        if(this._vardeclaration_.remove(child))
         {
             return;
         }
@@ -115,19 +115,19 @@ public final class ADecltypeDeclarations extends PDeclarations
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._typetxt_ == oldChild)
+        if(this._vartxt_ == oldChild)
         {
-            setTypetxt((TTypetxt) newChild);
+            setVartxt((TVartxt) newChild);
             return;
         }
 
-        for(ListIterator<PTypedeclaration> i = this._typedeclaration_.listIterator(); i.hasNext();)
+        for(ListIterator<PVardeclaration> i = this._vardeclaration_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)
             {
                 if(newChild != null)
                 {
-                    i.set((PTypedeclaration) newChild);
+                    i.set((PVardeclaration) newChild);
                     newChild.parent(this);
                     oldChild.parent(null);
                     return;
