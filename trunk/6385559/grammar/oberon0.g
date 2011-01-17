@@ -16,16 +16,18 @@ options
   package parser;
 }
 
-module
-	: 'MODULE' IDENT ';' modulebody IDENT '.'
+module returns [ ASTnode e ]
+	: 'MODULE' ind1=IDENT ';' declarations ('BEGIN' statementsequence)? 'END' ind2=IDENT '.' 
+	{
+	  $e = new ModuleNode( $ind1.text, $ind2.text, $declarations.e, $statementsequence.e ); // also send the indent.text for error logging 
+	}
 	;
-	
-modulebody
-  : declarations ('BEGIN' statementsequence)? 'END'
-  ;
 
-declarations
+declarations returns [ ASTnode e ]
 	: ('CONST' (IDENT '=' expression ';')+)? ('TYPE' (IDENT '=' type)+)? ('VAR' (identlist ':' type ';')+ )? (proceduredeclaration ';')*
+	{
+	  $e = new DeclarationsNode();
+	}
 	;
 
 type
@@ -57,10 +59,10 @@ factor
 	| '~' factor
 	;
 
-number [ return ASTnode e ]
+number returns [ ASTnode e ]
 	: INTEGER
 	{
-	   $e = new integerNode( Integer.parseInt( $INTEGER.text ) );
+	   $e = new IntegerNode( Integer.parseInt( $INTEGER.text ) );
 	}
 	; 
 	
@@ -80,8 +82,11 @@ identlist
 	: IDENT (',' IDENT)*
 	;
 
-statementsequence
+statementsequence returns [ ASTnode e ]
 	: statement ( ';' statement)*
+	{
+	  $e = new StatementSequenceNode();
+	}
 	;
 
 statement
@@ -141,8 +146,8 @@ IDENT
 	;
 	
 WS
-	:	(	' '
-		|	'\t'
+	:	( ' '
+		| '\t'
 		| '\n'
 		| '\r'
 	)+

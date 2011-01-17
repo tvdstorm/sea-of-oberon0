@@ -7,6 +7,7 @@ import parser.oberon0Lexer;
 import parser.oberon0Parser;
 
 import java.io.IOException;
+import ASTnodes.*;
 
 /*
  * Reads the input file and returns a abstraction of the given
@@ -22,9 +23,9 @@ public class ParserOutput {
    * Parses the input file and returns an tree represetation of the
    * given source code
    */
-  public CommonTree getTree()
+  public ASTnode getTree()
   {
-    CommonTree parserOutput = null;
+    ASTnode parserOutput = null;
     
     try
     {
@@ -35,16 +36,15 @@ public class ParserOutput {
       //System.out.println("tokens="+tokens);
       oberon0Parser parser = new oberon0Parser(tokens);
       
-      final TreeAdaptor adaptor = new CommonTreeAdaptor() {
-        public Object create(Token payload) {
-          return new CommonTree(payload);
-        }
-      };
-      
+      parserOutput = parser.module(); 
     }
     catch( IOException e )
     {
       System.out.println( "Error on filereading:\n" + e.getMessage() );
+    }
+    catch( RecognitionException e )
+    {
+  	  System.out.println( "Parse error: " + e.getMessage() );
     }
     
     return parserOutput; // if output null error on execution, stop
