@@ -17,14 +17,7 @@ Helpers
 	newline = cr | lf | cr lf | next_line | line_separator | paragraph_separator;
     
     plus = '+' sp*;
-    min = '-' sp*; 
-        
-    exeq = '=';
-    exha = '#';
-    exst = '<';
-    exse = '<=';
-    exgt = '>';
-    exge = '>=';  
+    min = '-' sp*;   
      
     ortxt = 'OR' sp*;
     
@@ -40,11 +33,17 @@ Tokens
 	r_brc = '}';
 	r_par = ')' sp*;
 	tilde = '~';
+        
+    exeq = '=';
+    exha = '#';
+    exst = '<';
+    exse = '<=';
+    exgt = '>';
+    exge = '>=';
 	
 	comma = ',';
 	colon = ':';
 	
-	equ = exeq sp*;
 	ass = ':=' sp*;  
     semi = ';' nl?;
         
@@ -65,14 +64,6 @@ Tokens
     elsetxt = 'ELSE' sp*;
     proceduretxt = 'PROCEDURE' sp*;
     sptxt = sp;
-    
-    expressionoperator = 
-   		exeq sp* |
-   		exha sp* |
-   		exgt sp*|
-   		exge sp*|
-   		exst sp*|
-   		exse sp*;
 
 	plusorminusoror =
 		plus |
@@ -101,14 +92,14 @@ Productions
     program = moduletxt [beginid]:identifier semi declarations begstat? endtxt [endid]:identifier dot;
     
     declarations = constdecl? typedecl? vardecl? proceduredeclaration*;
-    begstat = begintxt statementsequence;
+    begstat = begintxt sptxt* statementsequence;
     
     constdecl = consttxt constdeclaration+;
     typedecl = typetxt typedeclaration+;
     vardecl = vartxt vardeclaration+;
     assignment = identifier ass expression;
-    constdeclaration = identifier equ expression semi;
-    typedeclaration = identifier equ type semi;
+    constdeclaration = identifier exeq sptxt* expression semi;
+    typedeclaration = identifier exeq sptxt* type semi;
     statementsequence = statement andstatement*;
     vardeclaration = identlist colon sptxt* type semi;
     
@@ -122,13 +113,12 @@ Productions
     	{statass} assignment |
     	{statproc} procedurecall | 
     	{statif} ifstatement |
-    	{statwhi} whilestatement |
-    	{statnone} sptxt;
+    	{statwhi} whilestatement;
     identlist = identifier andidentifier*;
-    andstatement = semi statement;
+    andstatement = semi sptxt* statement;
     
     andidentifier = comma sptxt* identifier;
-    simpleexpressionevaluation = expressionoperator simpleexpression;
+    simpleexpressionevaluation = expressionoperator sptxt* simpleexpression;
     simpleexpression = plusorminus? term moreterms*;
     recordtype = recordtxt fieldlist morefields endtxt;
     arraytype = arraytxt expression oftxt type;
@@ -172,3 +162,12 @@ Productions
    	fpsection = vartxt? identlist colon sptxt* type;
 	moreactualparameters = comma sptxt* expression;
 	moreformalparameters = semi sptxt* fpsection; 
+	
+	
+    expressionoperator = 
+   		{exequ} exeq |
+   		{exhas} exha |
+   		{exgrt} exgt |
+   		{exgre} exge |
+   		{exsmt} exst |
+   		{exsme} exse;

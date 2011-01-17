@@ -5,45 +5,45 @@ package oberon.node;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AStatnoneStatement extends PStatement
+public final class AExgreExpressionoperator extends PExpressionoperator
 {
-    private TSptxt _sptxt_;
+    private TExge _exge_;
 
-    public AStatnoneStatement()
+    public AExgreExpressionoperator()
     {
         // Constructor
     }
 
-    public AStatnoneStatement(
-        @SuppressWarnings("hiding") TSptxt _sptxt_)
+    public AExgreExpressionoperator(
+        @SuppressWarnings("hiding") TExge _exge_)
     {
         // Constructor
-        setSptxt(_sptxt_);
+        setExge(_exge_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AStatnoneStatement(
-            cloneNode(this._sptxt_));
+        return new AExgreExpressionoperator(
+            cloneNode(this._exge_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAStatnoneStatement(this);
+        ((Analysis) sw).caseAExgreExpressionoperator(this);
     }
 
-    public TSptxt getSptxt()
+    public TExge getExge()
     {
-        return this._sptxt_;
+        return this._exge_;
     }
 
-    public void setSptxt(TSptxt node)
+    public void setExge(TExge node)
     {
-        if(this._sptxt_ != null)
+        if(this._exge_ != null)
         {
-            this._sptxt_.parent(null);
+            this._exge_.parent(null);
         }
 
         if(node != null)
@@ -56,23 +56,23 @@ public final class AStatnoneStatement extends PStatement
             node.parent(this);
         }
 
-        this._sptxt_ = node;
+        this._exge_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._sptxt_);
+            + toString(this._exge_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._sptxt_ == child)
+        if(this._exge_ == child)
         {
-            this._sptxt_ = null;
+            this._exge_ = null;
             return;
         }
 
@@ -83,9 +83,9 @@ public final class AStatnoneStatement extends PStatement
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._sptxt_ == oldChild)
+        if(this._exge_ == oldChild)
         {
-            setSptxt((TSptxt) newChild);
+            setExge((TExge) newChild);
             return;
         }
 

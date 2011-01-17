@@ -139,6 +139,13 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getBegintxt().apply(this);
         }
+        {
+            List<TSptxt> copy = new ArrayList<TSptxt>(node.getSptxt());
+            for(TSptxt e : copy)
+            {
+                e.apply(this);
+            }
+        }
         if(node.getStatementsequence() != null)
         {
             node.getStatementsequence().apply(this);
@@ -277,9 +284,16 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getIdentifier().apply(this);
         }
-        if(node.getEqu() != null)
+        if(node.getExeq() != null)
         {
-            node.getEqu().apply(this);
+            node.getExeq().apply(this);
+        }
+        {
+            List<TSptxt> copy = new ArrayList<TSptxt>(node.getSptxt());
+            for(TSptxt e : copy)
+            {
+                e.apply(this);
+            }
         }
         if(node.getExpression() != null)
         {
@@ -310,9 +324,16 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getIdentifier().apply(this);
         }
-        if(node.getEqu() != null)
+        if(node.getExeq() != null)
         {
-            node.getEqu().apply(this);
+            node.getExeq().apply(this);
+        }
+        {
+            List<TSptxt> copy = new ArrayList<TSptxt>(node.getSptxt());
+            for(TSptxt e : copy)
+            {
+                e.apply(this);
+            }
         }
         if(node.getType() != null)
         {
@@ -602,27 +623,6 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outAStatwhiStatement(node);
     }
 
-    public void inAStatnoneStatement(AStatnoneStatement node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAStatnoneStatement(AStatnoneStatement node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAStatnoneStatement(AStatnoneStatement node)
-    {
-        inAStatnoneStatement(node);
-        if(node.getSptxt() != null)
-        {
-            node.getSptxt().apply(this);
-        }
-        outAStatnoneStatement(node);
-    }
-
     public void inAIdentlist(AIdentlist node)
     {
         defaultIn(node);
@@ -668,6 +668,13 @@ public class DepthFirstAdapter extends AnalysisAdapter
         if(node.getSemi() != null)
         {
             node.getSemi().apply(this);
+        }
+        {
+            List<TSptxt> copy = new ArrayList<TSptxt>(node.getSptxt());
+            for(TSptxt e : copy)
+            {
+                e.apply(this);
+            }
         }
         if(node.getStatement() != null)
         {
@@ -725,6 +732,13 @@ public class DepthFirstAdapter extends AnalysisAdapter
         if(node.getExpressionoperator() != null)
         {
             node.getExpressionoperator().apply(this);
+        }
+        {
+            List<TSptxt> copy = new ArrayList<TSptxt>(node.getSptxt());
+            for(TSptxt e : copy)
+            {
+                e.apply(this);
+            }
         }
         if(node.getSimpleexpression() != null)
         {
@@ -1734,5 +1748,131 @@ public class DepthFirstAdapter extends AnalysisAdapter
             node.getFpsection().apply(this);
         }
         outAMoreformalparameters(node);
+    }
+
+    public void inAExequExpressionoperator(AExequExpressionoperator node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAExequExpressionoperator(AExequExpressionoperator node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAExequExpressionoperator(AExequExpressionoperator node)
+    {
+        inAExequExpressionoperator(node);
+        if(node.getExeq() != null)
+        {
+            node.getExeq().apply(this);
+        }
+        outAExequExpressionoperator(node);
+    }
+
+    public void inAExhasExpressionoperator(AExhasExpressionoperator node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAExhasExpressionoperator(AExhasExpressionoperator node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAExhasExpressionoperator(AExhasExpressionoperator node)
+    {
+        inAExhasExpressionoperator(node);
+        if(node.getExha() != null)
+        {
+            node.getExha().apply(this);
+        }
+        outAExhasExpressionoperator(node);
+    }
+
+    public void inAExgrtExpressionoperator(AExgrtExpressionoperator node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAExgrtExpressionoperator(AExgrtExpressionoperator node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAExgrtExpressionoperator(AExgrtExpressionoperator node)
+    {
+        inAExgrtExpressionoperator(node);
+        if(node.getExgt() != null)
+        {
+            node.getExgt().apply(this);
+        }
+        outAExgrtExpressionoperator(node);
+    }
+
+    public void inAExgreExpressionoperator(AExgreExpressionoperator node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAExgreExpressionoperator(AExgreExpressionoperator node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAExgreExpressionoperator(AExgreExpressionoperator node)
+    {
+        inAExgreExpressionoperator(node);
+        if(node.getExge() != null)
+        {
+            node.getExge().apply(this);
+        }
+        outAExgreExpressionoperator(node);
+    }
+
+    public void inAExsmtExpressionoperator(AExsmtExpressionoperator node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAExsmtExpressionoperator(AExsmtExpressionoperator node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAExsmtExpressionoperator(AExsmtExpressionoperator node)
+    {
+        inAExsmtExpressionoperator(node);
+        if(node.getExst() != null)
+        {
+            node.getExst().apply(this);
+        }
+        outAExsmtExpressionoperator(node);
+    }
+
+    public void inAExsmeExpressionoperator(AExsmeExpressionoperator node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAExsmeExpressionoperator(AExsmeExpressionoperator node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAExsmeExpressionoperator(AExsmeExpressionoperator node)
+    {
+        inAExsmeExpressionoperator(node);
+        if(node.getExse() != null)
+        {
+            node.getExse().apply(this);
+        }
+        outAExsmeExpressionoperator(node);
     }
 }
