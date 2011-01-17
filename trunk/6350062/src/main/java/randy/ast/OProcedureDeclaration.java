@@ -9,7 +9,7 @@ import randy.value.OValue;
 
 public class OProcedureDeclaration extends OBodyDeclaration
 {
-	private String name;
+	public String name; // TODO: weer private maken
 	private List<OVarDeclaration> parameters;
 	private List<OBodyDeclaration> bodyDeclarations;
 	private OBlock body;
@@ -73,5 +73,21 @@ public class OProcedureDeclaration extends OBodyDeclaration
 		// TODO: netter maken
 		Oberon0Program.getProgram().procedures.put(name, procDecl);
 		return procDecl;
+	}
+	@Override
+	public void accept(OASTNodeVisitor visitor)
+	{
+		visitor.visitBefore(this);
+		visitor.visit(this);
+		for (OVarDeclaration p : parameters)
+		{
+			p.accept(visitor);
+		}
+		for (OBodyDeclaration bodyDecl : bodyDeclarations)
+		{
+			bodyDecl.accept(visitor);
+		}
+		body.accept(visitor);
+		visitor.visitAfter(this);
 	}
 }

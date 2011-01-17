@@ -36,4 +36,13 @@ public class OWhileStatement extends OStatement
 		OBlock statement = OBlock.buildBlock(tree.getChild(1));
 		return new OWhileStatement(expression, statement);
 	}
+	@Override
+	public void accept(OASTNodeVisitor visitor)
+	{
+		visitor.visitBefore(this);
+		visitor.visit(this);
+		expression.accept(visitor);
+		body.accept(visitor);
+		visitor.visitAfter(this);
+	}
 }

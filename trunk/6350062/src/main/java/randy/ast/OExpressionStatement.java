@@ -22,4 +22,12 @@ public class OExpressionStatement extends OStatement
 	{
 		return expression.run(vars);
 	}
+	@Override
+	public void accept(OASTNodeVisitor visitor)
+	{
+		visitor.visitBefore(this);
+		visitor.visit(this);
+		expression.accept(visitor);
+		visitor.visitAfter(this);
+	}
 }

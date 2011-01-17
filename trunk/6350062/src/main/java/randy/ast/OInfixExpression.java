@@ -70,4 +70,13 @@ public class OInfixExpression extends OExpression
 		else
 			throw new Oberon0OperatorTypeUndefinedException(operator, lhs.getType(), rhs.getType());
 	}
+	@Override
+	public void accept(OASTNodeVisitor visitor)
+	{
+		visitor.visitBefore(this);
+		visitor.visit(this);
+		lhs.accept(visitor);
+		rhs.accept(visitor);
+		visitor.visitAfter(this);
+	}
 }

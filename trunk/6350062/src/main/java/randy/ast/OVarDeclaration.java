@@ -85,4 +85,11 @@ public class OVarDeclaration extends OBodyDeclaration
 		else
 			return new OVarDeclaration(type, isReference, names);
 	}
+	@Override
+	public void accept(OASTNodeVisitor visitor)
+	{
+		visitor.visitBefore(this);
+		visitor.visit(this);
+		visitor.visitAfter(this);
+	}
 }

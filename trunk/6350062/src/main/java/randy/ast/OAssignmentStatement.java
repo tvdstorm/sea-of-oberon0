@@ -31,4 +31,13 @@ public class OAssignmentStatement extends OStatement
 		OExpression rhs = OExpression.buildExpression(tree.getChild(1).getChild(0));
 		return new OAssignmentStatement(lhs, rhs);
 	}
+	@Override
+	public void accept(OASTNodeVisitor visitor)
+	{
+		visitor.visitBefore(this);
+		visitor.visit(this);
+		lhs.accept(visitor);
+		rhs.accept(visitor);
+		visitor.visitAfter(this);
+	}
 }

@@ -51,6 +51,10 @@ public class Oberon0Program
 		}
 		
 		astTree = OASTNode.buildASTTree((Tree)parserOutput.getTree());
+		
+		FunctionTreeBuilder ftb = new FunctionTreeBuilder();
+		astTree.accept(ftb);
+		ftb.print();
 		return true;
 	}
 	public void run() throws Oberon0RuntimeException

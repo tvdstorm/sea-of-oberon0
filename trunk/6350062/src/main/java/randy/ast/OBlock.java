@@ -33,4 +33,15 @@ public class OBlock extends OASTNode // TODO: extends OStatement?
 		}
 		return null;
 	}
+	@Override
+	public void accept(OASTNodeVisitor visitor)
+	{
+		visitor.visitBefore(this);
+		visitor.visit(this);
+		for (OStatement st : statements)
+		{
+			st.accept(visitor);
+		}
+		visitor.visitAfter(this);
+	}
 }

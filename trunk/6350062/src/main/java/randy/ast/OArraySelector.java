@@ -34,4 +34,13 @@ public class OArraySelector extends OSelector
 		OExpression arrayIndex = OExpression.buildExpression(tree.getChild(1));
 		return new OArraySelector(lhs, arrayIndex);
 	}
+	@Override
+	public void accept(OASTNodeVisitor visitor)
+	{
+		visitor.visitBefore(this);
+		visitor.visit(this);
+		lhs.accept(visitor);
+		arrayIndex.accept(visitor);
+		visitor.visitAfter(this);
+	}
 }

@@ -65,4 +65,15 @@ public class OProcedureCall extends OExpression
 			throw new Oberon0UndefinedMethodException("Unknown function '" + name + "'");
 		return null;
 	}
+	@Override
+	public void accept(OASTNodeVisitor visitor)
+	{
+		visitor.visitBefore(this);
+		visitor.visit(this);
+		for (OExpression p : parameters)
+		{
+			p.accept(visitor);
+		}
+		visitor.visitAfter(this);
+	}
 }

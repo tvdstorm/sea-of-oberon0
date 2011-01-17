@@ -27,4 +27,12 @@ public class OConstDeclaration extends OBodyDeclaration
 		OExpression value = OExpression.buildExpression(tree.getChild(1));
 		return new OConstDeclaration(name, value);
 	}
+	@Override
+	public void accept(OASTNodeVisitor visitor)
+	{
+		visitor.visitBefore(this);
+		visitor.visit(this);
+		value.accept(visitor);
+		visitor.visitAfter(this);
+	}
 }

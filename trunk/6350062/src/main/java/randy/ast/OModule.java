@@ -9,8 +9,8 @@ import randy.value.OValue;
 
 public class OModule extends OASTNode
 {
-	private OASTNode body;
 	private List<OBodyDeclaration> bodyDeclarations;
+	private OASTNode body;
 	
 	public OModule(List<OBodyDeclaration> _bodyDeclarations, OASTNode _body)
 	{
@@ -50,5 +50,17 @@ public class OModule extends OASTNode
 			bd.run(vars);
 		}
 		return body.run(vars);
+	}
+	@Override
+	public void accept(OASTNodeVisitor visitor)
+	{
+		visitor.visitBefore(this);
+		visitor.visit(this);
+		body.accept(visitor);
+		for (OBodyDeclaration bd : bodyDeclarations)
+		{
+			bd.accept(visitor);
+		}
+		visitor.visitAfter(this);
 	}
 }

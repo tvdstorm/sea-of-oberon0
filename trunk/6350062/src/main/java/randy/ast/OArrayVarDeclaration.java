@@ -29,4 +29,12 @@ public class OArrayVarDeclaration extends OVarDeclaration
 		}
 		return null;
 	}
+	@Override
+	public void accept(OASTNodeVisitor visitor)
+	{
+		visitor.visitBefore(this);
+		visitor.visit(this);
+		arrayLength.accept(visitor);
+		visitor.visitAfter(this);
+	}
 }

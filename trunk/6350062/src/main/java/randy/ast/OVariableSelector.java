@@ -23,4 +23,11 @@ public class OVariableSelector extends OSelector
 		String name = tree.getText();
 		return new OVariableSelector(name);
 	}
+	@Override
+	public void accept(OASTNodeVisitor visitor)
+	{
+		visitor.visitBefore(this);
+		visitor.visit(this);
+		visitor.visitAfter(this);
+	}
 }
