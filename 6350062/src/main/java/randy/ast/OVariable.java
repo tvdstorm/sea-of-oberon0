@@ -23,4 +23,11 @@ public class OVariable extends OExpression
 		String name = tree.getText();
 		return new OVariable(name);
 	}
+	@Override
+	public void accept(OASTNodeVisitor visitor)
+	{
+		visitor.visitBefore(this);
+		visitor.visit(this);
+		visitor.visitAfter(this);
+	}
 }

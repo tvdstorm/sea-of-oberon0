@@ -76,4 +76,23 @@ public class OIfStatement extends OStatement
 		}
 		return new OIfStatement(expression, body, elseifExpressions, elseifBodys, elseBody);
 	}
+	@Override
+	public void accept(OASTNodeVisitor visitor)
+	{
+		visitor.visitBefore(this);
+		visitor.visit(this);
+		expression.accept(visitor);
+		body.accept(visitor);
+		for (OExpression expr : elseifExpressions)
+		{
+			expr.accept(visitor);
+		}
+		for (OBlock bl : elseifBodys)
+		{
+			bl.accept(visitor);
+		}
+		if (elseBody != null)
+			elseBody.accept(visitor);
+		visitor.visitAfter(this);
+	}
 }

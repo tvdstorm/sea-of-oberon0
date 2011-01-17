@@ -496,6 +496,18 @@ public class ASTNodeTest
 			Assert.fail("Should be throwing an Oberon0SelectorException...");
 		}
 	}
+	@Test
+	public void test_Functionnesting()
+	{
+		prepareTest("functionnesting");
+		for (int i=0;i<numTests;i++)
+		{
+			TestBuildinFunctions functions = runTest();
+			Assert.assertTrue(functions.outputIsEmpty());
+			return;
+		}
+	}
+	
 	@Ignore
 	private void prepareTest(String testName)
 	{
