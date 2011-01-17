@@ -7,6 +7,8 @@ options
 
 @header{
   package parser;
+  
+  import ASTnodes.*;
 }
 
 @lexer::header
@@ -55,9 +57,12 @@ factor
 	| '~' factor
 	;
 
-number
+number [ return ASTnode e ]
 	: INTEGER
-	;
+	{
+	   $e = new integerNode( Integer.parseInt( $INTEGER.text ) );
+	}
+	; 
 	
 selector
 	: ( '.' IDENT | '[' expression ']' )*
@@ -129,7 +134,7 @@ fpsection
 			
 INTEGER
 	: ('0'..'9')+
-	;
+	; 
 
 IDENT
 	: ('a'..'z'|'A'..'Z')('a'..'z'|'A'..'Z'|'0'..'9')*
