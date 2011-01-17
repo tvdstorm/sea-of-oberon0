@@ -2,16 +2,20 @@ grammar oberon0;
 
 options
 {
-  output=AST;
+  language = Java;
 }
 
-tokens
+@header{
+  package parser;
+}
+
+@lexer::header
 {
-  MODULE = 'MODULE';
+  package parser;
 }
 
 module
-	: MODULE IDENT ';' modulebody IDENT '.' -> ^(MODULE IDENT modulebody)
+	: 'MODULE' IDENT ';' modulebody IDENT '.'
 	;
 	
 modulebody
