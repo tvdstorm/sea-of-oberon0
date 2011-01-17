@@ -32,7 +32,6 @@ public interface Analysis extends Switch
     void caseAStatprocStatement(AStatprocStatement node);
     void caseAStatifStatement(AStatifStatement node);
     void caseAStatwhiStatement(AStatwhiStatement node);
-    void caseAStatnoneStatement(AStatnoneStatement node);
     void caseAIdentlist(AIdentlist node);
     void caseAAndstatement(AAndstatement node);
     void caseAAndidentifier(AAndidentifier node);
@@ -72,6 +71,12 @@ public interface Analysis extends Switch
     void caseAFpsection(AFpsection node);
     void caseAMoreactualparameters(AMoreactualparameters node);
     void caseAMoreformalparameters(AMoreformalparameters node);
+    void caseAExequExpressionoperator(AExequExpressionoperator node);
+    void caseAExhasExpressionoperator(AExhasExpressionoperator node);
+    void caseAExgrtExpressionoperator(AExgrtExpressionoperator node);
+    void caseAExgreExpressionoperator(AExgreExpressionoperator node);
+    void caseAExsmtExpressionoperator(AExsmtExpressionoperator node);
+    void caseAExsmeExpressionoperator(AExsmeExpressionoperator node);
 
     void caseTDot(TDot node);
     void caseTLBkt(TLBkt node);
@@ -81,9 +86,14 @@ public interface Analysis extends Switch
     void caseTRBrc(TRBrc node);
     void caseTRPar(TRPar node);
     void caseTTilde(TTilde node);
+    void caseTExeq(TExeq node);
+    void caseTExha(TExha node);
+    void caseTExst(TExst node);
+    void caseTExse(TExse node);
+    void caseTExgt(TExgt node);
+    void caseTExge(TExge node);
     void caseTComma(TComma node);
     void caseTColon(TColon node);
-    void caseTEqu(TEqu node);
     void caseTAss(TAss node);
     void caseTSemi(TSemi node);
     void caseTModuletxt(TModuletxt node);
@@ -103,7 +113,6 @@ public interface Analysis extends Switch
     void caseTElsetxt(TElsetxt node);
     void caseTProceduretxt(TProceduretxt node);
     void caseTSptxt(TSptxt node);
-    void caseTExpressionoperator(TExpressionoperator node);
     void caseTPlusorminusoror(TPlusorminusoror node);
     void caseTPlusorminus(TPlusorminus node);
     void caseTMult(TMult node);

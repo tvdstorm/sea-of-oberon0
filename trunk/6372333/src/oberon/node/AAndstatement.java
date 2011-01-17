@@ -2,12 +2,14 @@
 
 package oberon.node;
 
+import java.util.*;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
 public final class AAndstatement extends PAndstatement
 {
     private TSemi _semi_;
+    private final LinkedList<TSptxt> _sptxt_ = new LinkedList<TSptxt>();
     private PStatement _statement_;
 
     public AAndstatement()
@@ -17,10 +19,13 @@ public final class AAndstatement extends PAndstatement
 
     public AAndstatement(
         @SuppressWarnings("hiding") TSemi _semi_,
+        @SuppressWarnings("hiding") List<TSptxt> _sptxt_,
         @SuppressWarnings("hiding") PStatement _statement_)
     {
         // Constructor
         setSemi(_semi_);
+
+        setSptxt(_sptxt_);
 
         setStatement(_statement_);
 
@@ -31,6 +36,7 @@ public final class AAndstatement extends PAndstatement
     {
         return new AAndstatement(
             cloneNode(this._semi_),
+            cloneList(this._sptxt_),
             cloneNode(this._statement_));
     }
 
@@ -64,6 +70,26 @@ public final class AAndstatement extends PAndstatement
         this._semi_ = node;
     }
 
+    public LinkedList<TSptxt> getSptxt()
+    {
+        return this._sptxt_;
+    }
+
+    public void setSptxt(List<TSptxt> list)
+    {
+        this._sptxt_.clear();
+        this._sptxt_.addAll(list);
+        for(TSptxt e : list)
+        {
+            if(e.parent() != null)
+            {
+                e.parent().removeChild(e);
+            }
+
+            e.parent(this);
+        }
+    }
+
     public PStatement getStatement()
     {
         return this._statement_;
@@ -94,6 +120,7 @@ public final class AAndstatement extends PAndstatement
     {
         return ""
             + toString(this._semi_)
+            + toString(this._sptxt_)
             + toString(this._statement_);
     }
 
@@ -104,6 +131,11 @@ public final class AAndstatement extends PAndstatement
         if(this._semi_ == child)
         {
             this._semi_ = null;
+            return;
+        }
+
+        if(this._sptxt_.remove(child))
+        {
             return;
         }
 
@@ -124,6 +156,24 @@ public final class AAndstatement extends PAndstatement
         {
             setSemi((TSemi) newChild);
             return;
+        }
+
+        for(ListIterator<TSptxt> i = this._sptxt_.listIterator(); i.hasNext();)
+        {
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((TSptxt) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
+
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
         if(this._statement_ == oldChild)

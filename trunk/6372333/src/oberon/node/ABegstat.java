@@ -2,12 +2,14 @@
 
 package oberon.node;
 
+import java.util.*;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
 public final class ABegstat extends PBegstat
 {
     private TBegintxt _begintxt_;
+    private final LinkedList<TSptxt> _sptxt_ = new LinkedList<TSptxt>();
     private PStatementsequence _statementsequence_;
 
     public ABegstat()
@@ -17,10 +19,13 @@ public final class ABegstat extends PBegstat
 
     public ABegstat(
         @SuppressWarnings("hiding") TBegintxt _begintxt_,
+        @SuppressWarnings("hiding") List<TSptxt> _sptxt_,
         @SuppressWarnings("hiding") PStatementsequence _statementsequence_)
     {
         // Constructor
         setBegintxt(_begintxt_);
+
+        setSptxt(_sptxt_);
 
         setStatementsequence(_statementsequence_);
 
@@ -31,6 +36,7 @@ public final class ABegstat extends PBegstat
     {
         return new ABegstat(
             cloneNode(this._begintxt_),
+            cloneList(this._sptxt_),
             cloneNode(this._statementsequence_));
     }
 
@@ -64,6 +70,26 @@ public final class ABegstat extends PBegstat
         this._begintxt_ = node;
     }
 
+    public LinkedList<TSptxt> getSptxt()
+    {
+        return this._sptxt_;
+    }
+
+    public void setSptxt(List<TSptxt> list)
+    {
+        this._sptxt_.clear();
+        this._sptxt_.addAll(list);
+        for(TSptxt e : list)
+        {
+            if(e.parent() != null)
+            {
+                e.parent().removeChild(e);
+            }
+
+            e.parent(this);
+        }
+    }
+
     public PStatementsequence getStatementsequence()
     {
         return this._statementsequence_;
@@ -94,6 +120,7 @@ public final class ABegstat extends PBegstat
     {
         return ""
             + toString(this._begintxt_)
+            + toString(this._sptxt_)
             + toString(this._statementsequence_);
     }
 
@@ -104,6 +131,11 @@ public final class ABegstat extends PBegstat
         if(this._begintxt_ == child)
         {
             this._begintxt_ = null;
+            return;
+        }
+
+        if(this._sptxt_.remove(child))
+        {
             return;
         }
 
@@ -124,6 +156,24 @@ public final class ABegstat extends PBegstat
         {
             setBegintxt((TBegintxt) newChild);
             return;
+        }
+
+        for(ListIterator<TSptxt> i = this._sptxt_.listIterator(); i.hasNext();)
+        {
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((TSptxt) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
+
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
         if(this._statementsequence_ == oldChild)

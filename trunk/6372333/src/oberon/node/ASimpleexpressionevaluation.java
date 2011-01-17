@@ -2,12 +2,14 @@
 
 package oberon.node;
 
+import java.util.*;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
 public final class ASimpleexpressionevaluation extends PSimpleexpressionevaluation
 {
-    private TExpressionoperator _expressionoperator_;
+    private PExpressionoperator _expressionoperator_;
+    private final LinkedList<TSptxt> _sptxt_ = new LinkedList<TSptxt>();
     private PSimpleexpression _simpleexpression_;
 
     public ASimpleexpressionevaluation()
@@ -16,11 +18,14 @@ public final class ASimpleexpressionevaluation extends PSimpleexpressionevaluati
     }
 
     public ASimpleexpressionevaluation(
-        @SuppressWarnings("hiding") TExpressionoperator _expressionoperator_,
+        @SuppressWarnings("hiding") PExpressionoperator _expressionoperator_,
+        @SuppressWarnings("hiding") List<TSptxt> _sptxt_,
         @SuppressWarnings("hiding") PSimpleexpression _simpleexpression_)
     {
         // Constructor
         setExpressionoperator(_expressionoperator_);
+
+        setSptxt(_sptxt_);
 
         setSimpleexpression(_simpleexpression_);
 
@@ -31,6 +36,7 @@ public final class ASimpleexpressionevaluation extends PSimpleexpressionevaluati
     {
         return new ASimpleexpressionevaluation(
             cloneNode(this._expressionoperator_),
+            cloneList(this._sptxt_),
             cloneNode(this._simpleexpression_));
     }
 
@@ -39,12 +45,12 @@ public final class ASimpleexpressionevaluation extends PSimpleexpressionevaluati
         ((Analysis) sw).caseASimpleexpressionevaluation(this);
     }
 
-    public TExpressionoperator getExpressionoperator()
+    public PExpressionoperator getExpressionoperator()
     {
         return this._expressionoperator_;
     }
 
-    public void setExpressionoperator(TExpressionoperator node)
+    public void setExpressionoperator(PExpressionoperator node)
     {
         if(this._expressionoperator_ != null)
         {
@@ -62,6 +68,26 @@ public final class ASimpleexpressionevaluation extends PSimpleexpressionevaluati
         }
 
         this._expressionoperator_ = node;
+    }
+
+    public LinkedList<TSptxt> getSptxt()
+    {
+        return this._sptxt_;
+    }
+
+    public void setSptxt(List<TSptxt> list)
+    {
+        this._sptxt_.clear();
+        this._sptxt_.addAll(list);
+        for(TSptxt e : list)
+        {
+            if(e.parent() != null)
+            {
+                e.parent().removeChild(e);
+            }
+
+            e.parent(this);
+        }
     }
 
     public PSimpleexpression getSimpleexpression()
@@ -94,6 +120,7 @@ public final class ASimpleexpressionevaluation extends PSimpleexpressionevaluati
     {
         return ""
             + toString(this._expressionoperator_)
+            + toString(this._sptxt_)
             + toString(this._simpleexpression_);
     }
 
@@ -104,6 +131,11 @@ public final class ASimpleexpressionevaluation extends PSimpleexpressionevaluati
         if(this._expressionoperator_ == child)
         {
             this._expressionoperator_ = null;
+            return;
+        }
+
+        if(this._sptxt_.remove(child))
+        {
             return;
         }
 
@@ -122,8 +154,26 @@ public final class ASimpleexpressionevaluation extends PSimpleexpressionevaluati
         // Replace child
         if(this._expressionoperator_ == oldChild)
         {
-            setExpressionoperator((TExpressionoperator) newChild);
+            setExpressionoperator((PExpressionoperator) newChild);
             return;
+        }
+
+        for(ListIterator<TSptxt> i = this._sptxt_.listIterator(); i.hasNext();)
+        {
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((TSptxt) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
+
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
         if(this._simpleexpression_ == oldChild)

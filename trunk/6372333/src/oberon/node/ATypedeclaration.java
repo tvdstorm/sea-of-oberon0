@@ -2,13 +2,15 @@
 
 package oberon.node;
 
+import java.util.*;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
 public final class ATypedeclaration extends PTypedeclaration
 {
     private TIdentifier _identifier_;
-    private TEqu _equ_;
+    private TExeq _exeq_;
+    private final LinkedList<TSptxt> _sptxt_ = new LinkedList<TSptxt>();
     private PType _type_;
     private TSemi _semi_;
 
@@ -19,14 +21,17 @@ public final class ATypedeclaration extends PTypedeclaration
 
     public ATypedeclaration(
         @SuppressWarnings("hiding") TIdentifier _identifier_,
-        @SuppressWarnings("hiding") TEqu _equ_,
+        @SuppressWarnings("hiding") TExeq _exeq_,
+        @SuppressWarnings("hiding") List<TSptxt> _sptxt_,
         @SuppressWarnings("hiding") PType _type_,
         @SuppressWarnings("hiding") TSemi _semi_)
     {
         // Constructor
         setIdentifier(_identifier_);
 
-        setEqu(_equ_);
+        setExeq(_exeq_);
+
+        setSptxt(_sptxt_);
 
         setType(_type_);
 
@@ -39,7 +44,8 @@ public final class ATypedeclaration extends PTypedeclaration
     {
         return new ATypedeclaration(
             cloneNode(this._identifier_),
-            cloneNode(this._equ_),
+            cloneNode(this._exeq_),
+            cloneList(this._sptxt_),
             cloneNode(this._type_),
             cloneNode(this._semi_));
     }
@@ -74,16 +80,16 @@ public final class ATypedeclaration extends PTypedeclaration
         this._identifier_ = node;
     }
 
-    public TEqu getEqu()
+    public TExeq getExeq()
     {
-        return this._equ_;
+        return this._exeq_;
     }
 
-    public void setEqu(TEqu node)
+    public void setExeq(TExeq node)
     {
-        if(this._equ_ != null)
+        if(this._exeq_ != null)
         {
-            this._equ_.parent(null);
+            this._exeq_.parent(null);
         }
 
         if(node != null)
@@ -96,7 +102,27 @@ public final class ATypedeclaration extends PTypedeclaration
             node.parent(this);
         }
 
-        this._equ_ = node;
+        this._exeq_ = node;
+    }
+
+    public LinkedList<TSptxt> getSptxt()
+    {
+        return this._sptxt_;
+    }
+
+    public void setSptxt(List<TSptxt> list)
+    {
+        this._sptxt_.clear();
+        this._sptxt_.addAll(list);
+        for(TSptxt e : list)
+        {
+            if(e.parent() != null)
+            {
+                e.parent().removeChild(e);
+            }
+
+            e.parent(this);
+        }
     }
 
     public PType getType()
@@ -154,7 +180,8 @@ public final class ATypedeclaration extends PTypedeclaration
     {
         return ""
             + toString(this._identifier_)
-            + toString(this._equ_)
+            + toString(this._exeq_)
+            + toString(this._sptxt_)
             + toString(this._type_)
             + toString(this._semi_);
     }
@@ -169,9 +196,14 @@ public final class ATypedeclaration extends PTypedeclaration
             return;
         }
 
-        if(this._equ_ == child)
+        if(this._exeq_ == child)
         {
-            this._equ_ = null;
+            this._exeq_ = null;
+            return;
+        }
+
+        if(this._sptxt_.remove(child))
+        {
             return;
         }
 
@@ -200,10 +232,28 @@ public final class ATypedeclaration extends PTypedeclaration
             return;
         }
 
-        if(this._equ_ == oldChild)
+        if(this._exeq_ == oldChild)
         {
-            setEqu((TEqu) newChild);
+            setExeq((TExeq) newChild);
             return;
+        }
+
+        for(ListIterator<TSptxt> i = this._sptxt_.listIterator(); i.hasNext();)
+        {
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((TSptxt) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
+
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
         if(this._type_ == oldChild)
