@@ -41,17 +41,10 @@ public class ParserOutput {
         }
       };
       
-      parser.setTreeAdaptor(adaptor);
-      oberon0Parser.module_return ret = parser.module();
-      parserOutput = (CommonTree)ret.getTree();
     }
     catch( IOException e )
     {
       System.out.println( "Error on filereading:\n" + e.getMessage() );
-    }
-    catch( RecognitionException e )
-    {
-      System.out.println( "Error on lex data read:\n" + e.getMessage() );
     }
     
     return parserOutput; // if output null error on execution, stop
