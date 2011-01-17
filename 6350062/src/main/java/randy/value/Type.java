@@ -1,4 +1,4 @@
-package randy.ast;
+package randy.value;
 
 import randy.exception.Oberon0Exception;
 import randy.exception.Oberon0UnknownTypeException;
@@ -12,18 +12,21 @@ public class Type
 		BOOL
 	};
 	static final public Type INTEGER = new Type(TYPES.INTEGER);
+	static final private String STRINTEGER = "INTEGER";
 	static final public Type ARRAY = new Type(TYPES.ARRAY);
+	static final private String STRARRAY = "ARRAY";
 	static final public Type BOOL = new Type(TYPES.BOOL);
+	static final private String STRBOOL = "BOOL";
 	
 	private TYPES type;
 	
 	public Type(String _type) throws Oberon0Exception
 	{
-		if (_type.equals("INTEGER"))
+		if (_type.equals(STRINTEGER))
 			type = TYPES.INTEGER;
-		else if (_type.equals("ARRAY"))
+		else if (_type.equals(STRARRAY))
 			type = TYPES.ARRAY;
-		else if (_type.equals("BOOL"))
+		else if (_type.equals(STRBOOL))
 			type = TYPES.BOOL;
 		else
 			throw new Oberon0UnknownTypeException(_type);
@@ -55,11 +58,11 @@ public class Type
 		switch (type)
 		{
 			case INTEGER:
-				return "INTEGER";
+				return STRINTEGER;
 			case ARRAY:
-				return "ARRAY";
+				return STRARRAY;
 			case BOOL:
-				return "BOOL";
+				return STRBOOL;
 			default:
 				return "UNKNOWN TYPE";
 		}

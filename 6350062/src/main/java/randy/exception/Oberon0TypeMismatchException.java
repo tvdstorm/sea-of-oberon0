@@ -1,6 +1,6 @@
 package randy.exception;
 
-import randy.ast.Type;
+import randy.value.Type;
 
 public class Oberon0TypeMismatchException extends Oberon0RuntimeException
 {

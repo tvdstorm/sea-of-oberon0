@@ -1,6 +1,5 @@
 package randy.value;
 
-import randy.ast.Type;
 import randy.exception.*;
 
 public class OBoolean extends OValue

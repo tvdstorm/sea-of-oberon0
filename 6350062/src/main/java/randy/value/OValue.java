@@ -1,7 +1,6 @@
 package randy.value;
 
 import randy.exception.*;
-import randy.ast.Type;
 
 public abstract class OValue
 {

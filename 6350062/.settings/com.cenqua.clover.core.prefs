@@ -1,4 +1,4 @@
-#Thu Jan 13 14:13:41 CET 2011
+#Mon Jan 17 14:16:54 CET 2011
 block_filters=SourceDirective
 eclipse.preferences.version=1
 exclude_filter=src/main/java/randy/generated/**, src/main/java/randy/main/**, src/test/java/randy/test/**, src/main/java/randy/generated/Oberon0Lexer.java, src/main/java/randy/generated/Oberon0Parser.java
@@ -10,7 +10,7 @@ init_string_default=true
 init_string_project_relative=true
 instrument_selected_source_folders=true
 instrumented_source_folder_patterns[0]=src/main/java\n**/*.java\n**/generated/**, **/main/**\nenabled
-instrumented_source_folder_patterns[1]=src/test/java\n**/*.java\n\nenabled
+instrumented_source_folder_patterns[1]=src/test/java\n**/*.java\n**/test/**\nenabled
 output_root=.clover/bin
 output_root_same_as_project=true
 recreate_output_dirs=true

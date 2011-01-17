@@ -2,9 +2,9 @@ package randy.test;
 
 import java.util.Random;
 import org.junit.*;
-import randy.ast.Type;
 import randy.exception.*;
 import randy.interpreter.Oberon0Program;
+import randy.value.Type;
 import java.util.*;
 
 public class ASTNodeTest
@@ -375,7 +375,7 @@ public class ASTNodeTest
 		}
 		try
 		{
-			Type t = new Type("BLAAT");
+			new Type("BLAAT");
 			Assert.fail("Should be throwing an Oberon0UnknownTypeException...");
 		}
 		catch (Oberon0UnknownTypeException e)
