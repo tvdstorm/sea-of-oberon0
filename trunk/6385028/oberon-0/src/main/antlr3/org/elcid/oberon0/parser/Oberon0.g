@@ -173,12 +173,32 @@ actualParameters
 				->	expression+ ;
 
 expression
-				:	simpleExpression (( EQUALS_OP^ | HASH_OP^ |  LESSER_OP^ | LESSER_OR_EQUAL_OP^ | GREATER_OP^ | GREATER_OR_EQUAL_OP^ ) simpleExpression)? ;
+				:	simpleExpression (expressionOperator^ simpleExpression)? ;
+
+expressionOperator
+				:	EQUALS_OP				-> 	EQUALS
+				|	HASH_OP					->	HASH
+				|	LESSER_OP				->	LESSER
+				|	LESSER_OR_EQUAL_OP		->	LESSER_OR_EQUAL
+				|	GREATER_OP				->	GREATER
+				|	GREATER_OR_EQUAL_OP		->	GREATER_OR_EQUAL ;
+
 
 simpleExpression
-				:	(PLUS_OP | MINUS_OP)? term (( PLUS_OP^ | MINUS_OP^ | OR_OP^ ) term)* ;
+				:	(PLUS_OP | MINUS_OP)? term (simpleExpressionOperator^ term)* ;
 
-term			:	factor ((MULTIPLY_OP^ |  DIVIDE_OP^ | MODULO_OP^ | AND_OP^ ) factor)* ;
+simpleExpressionOperator
+				:	PLUS_OP					->	PLUS
+				|	MINUS_OP				->	MINUS
+				|	OR_OP					->	OR ;
+
+term			:	factor (termOperator^ factor)* ;
+
+termOperator
+				:	MULTIPLY_OP					->	MULTIPLY
+				|	DIVIDE_OP					->	DIVIDE
+				|	MODULO_OP					->	MODULO
+				|	AND_OP						->	AND ;
 
 factor			:	identSelector 
 				|	integer
