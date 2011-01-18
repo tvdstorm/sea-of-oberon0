@@ -195,10 +195,10 @@ simpleExpressionOperator
 term			:	factor (termOperator^ factor)* ;
 
 termOperator
-				:	MULTIPLY_OP					->	MULTIPLY
-				|	DIVIDE_OP					->	DIVIDE
-				|	MODULO_OP					->	MODULO
-				|	AND_OP						->	AND ;
+				:	MULTIPLY_OP				->	MULTIPLY
+				|	DIVIDE_OP				->	DIVIDE
+				|	MODULO_OP				->	MODULO
+				|	AND_OP					->	AND ;
 
 factor			:	identSelector 
 				|	integer
