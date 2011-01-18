@@ -1,27 +1,22 @@
 package randy.interpreter;
 
 import java.io.IOException;
-import java.util.*;
 import org.antlr.runtime.*;
 import org.antlr.runtime.tree.Tree;
 import randy.generated.*;
 import randy.generated.Oberon0Parser.*;
 import randy.ast.OASTNode;
-import randy.ast.OProcedureDeclaration;
 import randy.exception.*;
 
 public class Oberon0Program
 {
 	private OASTNode astTree;
 	private IOberon0BuildinFunctions buildinFunctions;
-	public Map<String, OProcedureDeclaration> procedures = new HashMap<String, OProcedureDeclaration>();
-	private static Oberon0Program singleton; // TODO: betere oplossing zoeken
 	
 	public Oberon0Program()
 	{
 		astTree = null;
 		buildinFunctions = new Oberon0BuildinFunctions();
-		singleton = this;
 	}
 	public boolean loadProgram(String filename, IOberon0BuildinFunctions buildinFunctions) throws Oberon0Exception
 	{
@@ -70,9 +65,5 @@ public class Oberon0Program
 	public IOberon0BuildinFunctions getBuildinFunctions()
 	{
 		return buildinFunctions;
-	}
-	public static Oberon0Program getProgram()
-	{
-		return singleton;
 	}
 }

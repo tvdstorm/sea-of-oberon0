@@ -69,10 +69,7 @@ public class OProcedureDeclaration extends OBodyDeclaration implements OInvokabl
 			}
 		}
 		
-		OProcedureDeclaration procDecl = new OProcedureDeclaration(name, parameters, bodyDeclarations, body);
-		// TODO: netter maken
-		Oberon0Program.getProgram().procedures.put(name, procDecl);
-		return procDecl;
+		return new OProcedureDeclaration(name, parameters, bodyDeclarations, body);
 	}
 	@Override
 	public void accept(OASTNodeVisitor visitor) throws Oberon0Exception
