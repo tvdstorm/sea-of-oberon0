@@ -3,6 +3,7 @@ grammar oberon0;
 options
 {
   language = Java;
+  backtrace = true;
 }
 
 @header{
@@ -96,23 +97,19 @@ followupStatementSequence returns [ StatementSequenceNode e ]
 	}
 	;
 
-statement
-	: ( assProc | ifstatement | whilestatement )?
-	;
-	
-assProc returns [ ASTnode e ]
-	: IDENT selector ( assignment | procedurecall )
+statement returns [ StatementNode e ]
+	: statementRv=( assignment | procedurecall | ifstatement | whilestatement )?
 	{
-	
+	  $e = $statementRv;
 	}
 	;
 	
 assignment
-	: ':=' expression
+	: IDENT selector ':=' expression
 	;
 	
 procedurecall
-	: (actualparameters)?
+	: IDENT selector (actualparameters)?
 	;
 	
 actualparameters
