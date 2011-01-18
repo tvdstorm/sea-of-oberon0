@@ -48,7 +48,7 @@ public class TestOberon0Parser {
 		// Create a parser that feeds off the token stream
 		Oberon0Parser parser = new Oberon0Parser(tokens);
 		// Begin parsing at rule module
-		Oberon0Parser.prog_return result = parser.prog();
+		Oberon0Parser.module_return result = parser.module();
 
 		CommonTree tree = (CommonTree) result.getTree();
 		printTree(tree, 0);
