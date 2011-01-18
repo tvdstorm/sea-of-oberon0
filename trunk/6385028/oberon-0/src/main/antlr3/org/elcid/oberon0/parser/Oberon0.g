@@ -7,6 +7,69 @@ options {
 	ASTLabelType=CommonTree;
 }
 
+tokens
+{
+	MODULE_KW 	= 	'MODULE'	;
+	BEGIN_KW	=	'BEGIN'		;
+	END_KW		=	'END'		;
+	CONST_KW	=	'CONST'		;
+	TYPE_KW		=	'TYPE'		;
+	VAR_KW		=	'VAR'		;
+	PROCEDURE_KW
+				=	'PROCEDURE'	;
+	ARRAY_KW	=	'ARRAY'		;
+	OF_KW		=	'OF'		;
+	RECORD_KW	=	'RECORD'	;
+	WHILE_KW	=	'WHILE'		;
+	DO_KW		=	'DO'		;
+	IF_KW		=	'IF'		;
+	THEN_KW		=	'THEN'		;
+	ELSIF_KW	=	'ELSIF'		;
+	ELSE_KW		=	'ELSE'		;
+
+	SEMI_COLON	=	';'			;
+	COLON		=	':'			;
+	DOT			=	'.'			;
+	COMMA		=	','			;
+	TILDE		=	'~'			;
+	EQUALS		=	'='			;
+	RND_OPEN 	=	'('			;
+	RND_CLOSE 	=	')'			;
+	SQR_OPEN	=	'['			;
+	SQR_CLOSE	=	']'			;
+	HASH		=	'#'			;
+	LESSER		=	'<'			;
+	LESSER_OR_EQUAL
+				=	'<='		;
+	GREATER		=	'>'			;
+	GREATER_OR_EQUAL
+				=	'>='		;
+	ASSIGN_OP	=	':='		;
+	PLUS_OP		=	'+'			;
+	MINUS_OP	=	'-'			;
+	MULTIPLY_OP	=	'*'			;
+	DIVIDE_OP	=	'DIV'		;
+	MODULO_OP	=	'MOD'		;
+	AND_OP		=	'&'			;
+	OR_OP		=	'OR'		;
+
+	MODULE			;
+	CONST			;
+	TYPE			;
+	VAR				;
+	PARAMS			;
+	ARRAY			;
+	RECORD 			;
+	PROCEDURE 		;
+	SELECTOR 		;
+	WHILE_LOOP		;
+	ASSIGNMENT		;
+	PROCEDURE_CALL	;
+	IF_STATEMENT	;
+	EXPRESSION		;
+
+}
+
 @header {package org.elcid.oberon0.parser;}
 @lexer::header {package org.elcid.oberon0.parser;}
 
@@ -35,65 +98,64 @@ integer			:	INT ;
 
 identifier		:	IDENT ;
 
-selector		:	('.'! identifier | '['! expression ']'!)*;
+selector		:	(DOT identifier | SQR_OPEN expression SQR_CLOSE)*;
 
-factor			:	identifier selector | integer | '('! expression ')'! | '~' factor;
+factor			:	identifier selector | integer | RND_OPEN expression RND_CLOSE | '~' factor;
 
-term			:	factor (('*'^ |  'DIV'^ | 'MOD'^ | '&'^) factor)*;
+term			:	factor ((MULTIPLY_OP |  DIVIDE_OP | MODULO_OP | AND_OP ) factor)*;
 
 simpleExpression
-				:	('+'|'-')? term (('+'^|'-'^|'OR') term)*;
+				:	(PLUS_OP | MINUS_OP )? term (( PLUS_OP | MINUS_OP | OR_OP ) term)*;
 
 expression
-				:	simpleExpression (('='^ | '#'^ |  '<'^ | '<='^ | '>'^ | '>='^) simpleExpression)?;
+				:	simpleExpression (( EQUALS | HASH |  LESSER | LESSER_OR_EQUAL | GREATER | GREATER_OR_EQUAL ) simpleExpression)?;
 
-assignment		:	identifier selector ':='^ expression;
+assignment		:	identifier selector ASSIGN_OP expression;
 
 actualParameters
-				:	'('! (expression (','! expression)*)? ')'!;
+				:	RND_OPEN (expression (COMMA expression)*)? RND_CLOSE;
 
 procedureCall	:	identifier selector (actualParameters)?;
 
-ifStatement		:	'IF' expression 'THEN' statementSequence
-					('ELSIF' expression 'THEN' statementSequence)*
-					('ELSE' statementSequence)?  'END';
+ifStatement		:	IF_KW expression THEN_KW statementSequence
+					(ELSIF_KW expression THEN_KW statementSequence)*
+					(ELSE_KW statementSequence)?  END_KW;
 
-whileStatement	:	'WHILE' expression 'DO' statementSequence 'END';
+whileStatement	:	WHILE_KW expression DO_KW statementSequence END_KW;
 
 statement		:	(assignment | procedureCall | ifStatement | whileStatement)?;
 
 statementSequence
-				:	statement (';'! statement)*;
+				:	statement (SEMI_COLON statement)*;
 
-identList		:	identifier (','! identifier)*;
+identList		:	identifier (COMMA identifier)*;
 
-arrayType		:	'ARRAY' expression 'OF' type -> ^('ARRAY' expression type) ;
+arrayType		:	ARRAY_KW expression OF_KW type ;
 
-fieldList		:	(identList ':'! type)?;
+fieldList		:	(identList COLON type)?;
 
-recordType		:	'RECORD' fieldList (';'! fieldList)* 'END';
+recordType		:	RECORD_KW fieldList (SEMI_COLON fieldList)* END_KW;
 
 type			:	identifier | arrayType | recordType;
 
-fPSection		:	('VAR')? identList ':'! type;
+fPSection		:	(VAR_KW)? identList COLON type;
 
 formalParameters
-				:	'('! (fPSection (';'! fPSection)*)? ')'!;
+				:	RND_OPEN (fPSection (SEMI_COLON fPSection)*)? RND_CLOSE;
 
 procedureHeading
-				:	'PROCEDURE' identifier (formalParameters)?;
+				:	PROCEDURE_KW identifier (formalParameters)?;
 
-procedureBody	:	declarations ('BEGIN' statementSequence)? 'END' identifier;
+procedureBody	:	declarations (BEGIN_KW statementSequence)? END_KW identifier;
 
 procedureDeclaration
-				:	procedureHeading ';' procedureBody;
+				:	procedureHeading SEMI_COLON procedureBody;
 
-declarations	:	('CONST' (identifier '=' expression ';'!)*)?
-					('TYPE' (identifier '=' type ';'!)*)?
-					('VAR' (identList ':' type ';'!)*)?
-					(procedureDeclaration ';'!)*;
+declarations	:	(CONST_KW (identifier EQUALS expression SEMI_COLON)*)?
+					(TYPE_KW (identifier EQUALS type SEMI_COLON)*)?
+					(VAR_KW (identList COLON type SEMI_COLON)*)?
+					(procedureDeclaration SEMI_COLON)*;
 
-module			:	'MODULE' identifier ';'! declarations
-					('BEGIN' statementSequence)+ 'END' identifier '.'!;
+module			:	MODULE_KW identifier SEMI_COLON declarations (BEGIN_KW statementSequence)+ END_KW identifier DOT;
 
-prog			:	( module {System.out.println($module.tree.toStringTree());} )+ ;
+prog			:	module+ ;
