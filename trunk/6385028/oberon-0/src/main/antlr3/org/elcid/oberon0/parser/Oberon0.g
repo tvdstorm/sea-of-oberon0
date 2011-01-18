@@ -2,7 +2,6 @@ grammar Oberon0;
 
 options {
 	language = Java;
-	backtrack = true;
 	output=AST;
 	ASTLabelType=CommonTree;
 }
@@ -142,7 +141,7 @@ statementSequence
 				:	statement (SEMI_COLON statement)*
 				->	statement+ ;
 
-statement		:	assignment
+statement		:	((identSelector ASSIGN_OP) => assignment)
 				|	procedureCall
 				|	ifStatement
 				|	whileStatement ;
