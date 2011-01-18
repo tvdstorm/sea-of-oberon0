@@ -1,37 +1,31 @@
 package randy.interpreter;
 
 import java.util.*;
-import randy.ast.OProcedureDeclaration;
+import randy.ast.OInvokableFunction;
+import randy.exception.*;
 
 public class Oberon0FunctionTree
 {
 	private Map<String, Oberon0FunctionTree> functions;
-	private OProcedureDeclaration declaration;
+	private OInvokableFunction declaration;
 	
-	public Oberon0FunctionTree(OProcedureDeclaration _declaration)
+	public Oberon0FunctionTree(OInvokableFunction _declaration)
 	{
 		functions = new HashMap<String, Oberon0FunctionTree>();
 		declaration = _declaration;
 	}
-	public void addBranch(String _name, Oberon0FunctionTree _function)
+	public void addBranch(String _name, Oberon0FunctionTree _function) throws Oberon0Exception
 	{
-		assert functions.containsKey(_name) == false;	// TODO: exception van maken
+		if (functions.containsKey(_name))
+			throw new Oberon0DuplicateFunctionException(_name);
 		functions.put(_name, _function);
 	}
 	public Oberon0FunctionTree getFunction(String _name)
 	{
 		return functions.get(_name);
 	}
-	public OProcedureDeclaration getDeclaration()
+	public OInvokableFunction getDeclaration()
 	{
 		return declaration;
-	}
-	public void print(String indent)
-	{
-		for (String name : functions.keySet())
-		{
-			System.out.println(indent + name);
-			functions.get(name).print(indent + "\t");
-		}
 	}
 }

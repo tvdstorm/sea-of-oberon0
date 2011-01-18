@@ -23,7 +23,7 @@ public class Oberon0Program
 		buildinFunctions = new Oberon0BuildinFunctions();
 		singleton = this;
 	}
-	public boolean loadProgram(String filename) throws Oberon0Exception
+	public boolean loadProgram(String filename, IOberon0BuildinFunctions buildinFunctions) throws Oberon0Exception
 	{
 		Oberon0Lexer lexer = null;
 		try
@@ -53,8 +53,9 @@ public class Oberon0Program
 		astTree = OASTNode.buildASTTree((Tree)parserOutput.getTree());
 		
 		FunctionTreeBuilder ftb = new FunctionTreeBuilder();
+		buildinFunctions.register(ftb);
 		astTree.accept(ftb);
-		ftb.print();
+		ftb.resolveAllFunctionCalls();
 		return true;
 	}
 	public void run() throws Oberon0RuntimeException

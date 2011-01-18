@@ -7,9 +7,9 @@ import randy.generated.Oberon0Parser;
 import randy.interpreter.*;
 import randy.value.OValue;
 
-public class OProcedureDeclaration extends OBodyDeclaration
+public class OProcedureDeclaration extends OBodyDeclaration implements OInvokableFunction
 {
-	public String name; // TODO: weer private maken
+	private String name;
 	private List<OVarDeclaration> parameters;
 	private List<OBodyDeclaration> bodyDeclarations;
 	private OBlock body;
@@ -75,7 +75,7 @@ public class OProcedureDeclaration extends OBodyDeclaration
 		return procDecl;
 	}
 	@Override
-	public void accept(OASTNodeVisitor visitor)
+	public void accept(OASTNodeVisitor visitor) throws Oberon0Exception
 	{
 		visitor.visitBefore(this);
 		visitor.visit(this);
@@ -89,5 +89,10 @@ public class OProcedureDeclaration extends OBodyDeclaration
 		}
 		body.accept(visitor);
 		visitor.visitAfter(this);
+	}
+	@Override
+	public String getName()
+	{
+		return name;
 	}
 }

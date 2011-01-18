@@ -77,7 +77,7 @@ public class OIfStatement extends OStatement
 		return new OIfStatement(expression, body, elseifExpressions, elseifBodys, elseBody);
 	}
 	@Override
-	public void accept(OASTNodeVisitor visitor)
+	public void accept(OASTNodeVisitor visitor) throws Oberon0Exception
 	{
 		visitor.visitBefore(this);
 		visitor.visit(this);

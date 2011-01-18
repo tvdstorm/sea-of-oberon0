@@ -11,11 +11,21 @@ public class OProcedureCall extends OExpression
 {
 	private String name;
 	private List<OExpression> parameters;
+	private OInvokableFunction functionDeclaration;
 	
 	public OProcedureCall(String _name, List<OExpression> _parameters)
 	{
 		name = _name;
 		parameters = _parameters;
+		functionDeclaration = null;
+	}
+	public String getName()
+	{
+		return name;
+	}
+	public void setFunctionDeclaration(OInvokableFunction _functionDeclaration)
+	{
+		functionDeclaration = _functionDeclaration;
 	}
 	public static OProcedureCall buildProcedureCall(Tree tree) throws Oberon0Exception
 	{
@@ -34,24 +44,7 @@ public class OProcedureCall extends OExpression
 	@Override
 	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
-		if (name.equals("Write") && parameters.size() == 1)
-		{
-			OValue param = parameters.get(0).run(vars);
-			Oberon0Program.getProgram().getBuildinFunctions().write(param.toString());
-		}
-		else if (name.equals("Read") && parameters.size() == 1)
-		{
-			OValue param = parameters.get(0).run(vars);
-			String input = Oberon0Program.getProgram().getBuildinFunctions().read();
-			if (param.getType().isInteger())
-				param.setValue(new OInteger(Integer.parseInt(input)));
-			// TODO: andere formaten implementeren
-		}
-		else if (name.equals("WriteLn"))
-		{
-			Oberon0Program.getProgram().getBuildinFunctions().writeLn();
-		}
-		else if (Oberon0Program.getProgram().procedures.containsKey(name))
+		if (functionDeclaration != null)
 		{
 			Queue<OValue> params = new LinkedList<OValue>();
 			for (OExpression p : parameters)
@@ -59,14 +52,13 @@ public class OProcedureCall extends OExpression
 				OValue v = p.run(vars);
 				params.add(v);
 			}
-			return Oberon0Program.getProgram().procedures.get(name).invoke(vars, params);
+			return functionDeclaration.invoke(vars, params);
 		}
 		else
-			throw new Oberon0UndefinedMethodException("Unknown function '" + name + "'");
-		return null;
+			throw new Oberon0UndefinedMethodException(name);
 	}
 	@Override
-	public void accept(OASTNodeVisitor visitor)
+	public void accept(OASTNodeVisitor visitor) throws Oberon0Exception
 	{
 		visitor.visitBefore(this);
 		visitor.visit(this);

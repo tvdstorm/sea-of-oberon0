@@ -1,32 +1,24 @@
 package randy.interpreter;
 
-import java.util.Random;
-import randy.exception.Oberon0RuntimeException;
+import randy.exception.Oberon0Exception;
 
 public class Oberon0BuildinFunctions implements IOberon0BuildinFunctions
 {
-	private Random random;
+	private Oberon0DefaultReadFunction read;
+	private Oberon0DefaultWriteFunction write;
+	private Oberon0DefaultWriteLnFunction writeLn;
 	
 	public Oberon0BuildinFunctions()
 	{
-		random = new Random();
-	}	
-	@Override
-	public String read() throws Oberon0RuntimeException
-	{
-		String val = "" + random.nextInt(1000);
-		System.out.println("Read() <-- " + val);
-		return val;
+		read = new Oberon0DefaultReadFunction();
+		write = new Oberon0DefaultWriteFunction();
+		writeLn = new Oberon0DefaultWriteLnFunction();
 	}
 	@Override
-	public void write(String value) throws Oberon0RuntimeException
+	public void register(FunctionTreeBuilder ftb) throws Oberon0Exception
 	{
-		System.out.println("Write() --> " + value);
-		System.out.println(value);		
-	}
-	@Override
-	public void writeLn() throws Oberon0RuntimeException
-	{
-		System.out.println("");
+		ftb.register(read);
+		ftb.register(write);
+		ftb.register(writeLn);
 	}
 }

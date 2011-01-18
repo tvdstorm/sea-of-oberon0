@@ -37,7 +37,7 @@ public class OWhileStatement extends OStatement
 		return new OWhileStatement(expression, statement);
 	}
 	@Override
-	public void accept(OASTNodeVisitor visitor)
+	public void accept(OASTNodeVisitor visitor) throws Oberon0Exception
 	{
 		visitor.visitBefore(this);
 		visitor.visit(this);

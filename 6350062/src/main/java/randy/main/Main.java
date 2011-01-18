@@ -6,6 +6,7 @@ import org.antlr.runtime.tree.*;
 import org.antlr.stringtemplate.StringTemplate;
 import randy.generated.*;
 import randy.generated.Oberon0Parser.module_return;
+import randy.interpreter.Oberon0BuildinFunctions;
 import randy.interpreter.Oberon0Program;
 
 public class Main
@@ -14,7 +15,7 @@ public class Main
 	{
 		Oberon0Program p = new Oberon0Program();
 		//p.loadProgram("test/simpletest.oberon0");
-		p.loadProgram("test/quicksort.oberon0");
+		p.loadProgram("test/quicksort.oberon0", new Oberon0BuildinFunctions());
 		p.run();
 		
 		//processAndRender("test/sample.oberon0", "test/sample.dot", "test/sample.png");

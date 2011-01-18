@@ -3,36 +3,30 @@ package randy.test;
 import java.util.*;
 import org.junit.Ignore;
 import randy.exception.*;
-import randy.interpreter.IOberon0BuildinFunctions;
+import randy.interpreter.*;
 
 @Ignore
 public class TestBuildinFunctions implements IOberon0BuildinFunctions
 {
 	private Queue<String> input;
 	private Queue<String> output;
+	private TestReadFunction read;
+	private TestWriteFunction write;
+	private TestWriteLnFunction writeLn;
 	
 	public TestBuildinFunctions()
 	{
 		input = new LinkedList<String>();
 		output = new LinkedList<String>();
+		read = new TestReadFunction(input);
+		write = new TestWriteFunction(output);
+		writeLn = new TestWriteLnFunction(output);
 	}
-	@Override
-	public String read() throws Oberon0RuntimeException
+	public void register(FunctionTreeBuilder ftb) throws Oberon0Exception
 	{
-		String v = input.poll();
-		if (v != null)
-			return v;
-		throw new Oberon0IOErrorException("Input stack is empty...");
-	}
-	@Override
-	public void write(String value) throws Oberon0RuntimeException
-	{
-		output.add(value);
-	}
-	@Override
-	public void writeLn() throws Oberon0RuntimeException
-	{
-		output.add(null);
+		ftb.register(read);
+		ftb.register(write);
+		ftb.register(writeLn);
 	}
 	public void addInput(String value)
 	{

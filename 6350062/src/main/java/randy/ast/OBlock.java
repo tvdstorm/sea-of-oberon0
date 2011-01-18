@@ -34,7 +34,7 @@ public class OBlock extends OASTNode // TODO: extends OStatement?
 		return null;
 	}
 	@Override
-	public void accept(OASTNodeVisitor visitor)
+	public void accept(OASTNodeVisitor visitor) throws Oberon0Exception
 	{
 		visitor.visitBefore(this);
 		visitor.visit(this);

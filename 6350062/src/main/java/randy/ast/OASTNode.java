@@ -19,5 +19,5 @@ public abstract class OASTNode
 		}
 	}
 	public abstract OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException;
-	public abstract void accept(OASTNodeVisitor visitor);
+	public abstract void accept(OASTNodeVisitor visitor) throws Oberon0Exception;
 }

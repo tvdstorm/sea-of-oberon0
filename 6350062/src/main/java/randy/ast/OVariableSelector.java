@@ -24,7 +24,7 @@ public class OVariableSelector extends OSelector
 		return new OVariableSelector(name);
 	}
 	@Override
-	public void accept(OASTNodeVisitor visitor)
+	public void accept(OASTNodeVisitor visitor) throws Oberon0Exception
 	{
 		visitor.visitBefore(this);
 		visitor.visit(this);
