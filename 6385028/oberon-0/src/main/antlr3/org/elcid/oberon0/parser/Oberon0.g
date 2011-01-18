@@ -66,7 +66,9 @@ tokens
 	WHILE_LOOP		;
 	ASSIGNMENT		;
 	PROCEDURE_CALL	;
-	IF_STATEMENT	;
+	IF				;
+	ELSIF			;
+	ELSE			;
 	EXPRESSION		;
 	EQUALS			;
 	HASH			;
@@ -166,12 +168,12 @@ actualParameters
 				->	expression+ ;
 
 expression
-				:	simpleExpression (( EQUALS_OP | HASH_OP |  LESSER_OP | LESSER_OR_EQUAL_OP | GREATER_OP | GREATER_OR_EQUAL_OP ) simpleExpression)? ;
+				:	simpleExpression (( EQUALS_OP^ | HASH_OP^ |  LESSER_OP^ | LESSER_OR_EQUAL_OP^ | GREATER_OP^ | GREATER_OR_EQUAL_OP^ ) simpleExpression)? ;
 
 simpleExpression
-				:	(PLUS_OP | MINUS_OP )? term (( PLUS_OP | MINUS_OP | OR_OP ) term)* ;
+				:	(PLUS_OP | MINUS_OP)? term (( PLUS_OP^ | MINUS_OP^ | OR_OP^ ) term)* ;
 
-term			:	factor ((MULTIPLY_OP |  DIVIDE_OP | MODULO_OP | AND_OP ) factor)* ;
+term			:	factor ((MULTIPLY_OP^ |  DIVIDE_OP^ | MODULO_OP^ | AND_OP^ ) factor)* ;
 
 factor			:	identSelector 
 				|	integer
