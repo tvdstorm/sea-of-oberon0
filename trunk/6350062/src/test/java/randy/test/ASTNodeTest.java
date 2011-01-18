@@ -501,12 +501,8 @@ public class ASTNodeTest
 	public void test_Functionnesting()
 	{
 		prepareTest("functionnesting");
-		for (int i=0;i<numTests;i++)
-		{
-			runTest();
-			Assert.assertTrue(functions.outputIsEmpty());
-			return;
-		}
+		runTest();
+		Assert.assertTrue(functions.outputIsEmpty());
 	}
 	
 	@Ignore
