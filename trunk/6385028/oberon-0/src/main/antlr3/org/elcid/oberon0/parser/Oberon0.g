@@ -79,10 +79,8 @@ tokens
  * PARSER RULES
  *------------------------------------------------------------------*/
 
-prog			:	module+ ;
-
-module			:	MODULE_KW identifier SEMI_COLON declarations (BEGIN_KW statementSequence)+ END_KW identifier DOT
-				->	^(MODULE identifier declarations statementSequence) ;
+module			:	MODULE_KW identifier SEMI_COLON declarations (BEGIN_KW statementSequence)? END_KW identifier DOT
+				->	^(MODULE identifier declarations statementSequence?) ;
 
 declarations 	: 	constDecl?
 					typeDecl?
