@@ -8,5 +8,5 @@ BEGIN
 		x := y-1;
 		y := y-1
 	END;
-	z := x*y
+	z := -45
 END Sample.

@@ -41,12 +41,25 @@ arraytype
 	: 'ARRAY' expression 'OF' type
 	;
 	
-expression
-	: simpleexpression (('='|'#'|'<'|'<='|'>'|'>=') simpleexpression)?
+expression returns [ ExpressionNode e ] 
+	: simpleLeft=simpleexpression (operator=('='|'#'|'<'|'<='|'>'|'>=') simpleRight=simpleexpression)?
+	{
+	  $e = new ExpressionNode( $simpleLeft.e, $operator.text, $simpleRight.e );
+	}
 	;
 	
-simpleexpression
-	: ('+'|'-')? term (('+'|'-'|'OR')? term)*
+simpleexpression returns [ SimpleExpression e ]
+	: operator=('+'|'-')? term simpleExpressionFollowup?
+	{
+	  $e = new SimpleExpression( $operator.text, $term.text, $simpleExpressionFollowup.e );
+	}
+	;
+	
+simpleExpressionFollowup returns [ SimpleExpression e ]
+	: operator=('+'|'-'|'OR') term simpleExpressionFollowup?
+	{
+	  $e = new SimpleExpression( $operator.text, $term.text, $simpleExpressionFollowup.e );
+	}
 	;
 	
 term
@@ -107,7 +120,7 @@ statement returns [ StatementNode e ]
 assignment returns [ StatementNode e ]
 	: IDENT selector ':=' expression
 	{
-	  $e = new AssignmentNode( $IDENT.text, $expression.text );
+	  $e = new AssignmentNode( $IDENT.text, $expression.e );
 	}
 	;
 	
