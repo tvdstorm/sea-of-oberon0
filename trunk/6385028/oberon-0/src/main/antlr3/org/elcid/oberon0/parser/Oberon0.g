@@ -32,17 +32,17 @@ tokens
 	DOT			=	'.'			;
 	COMMA		=	','			;
 	TILDE		=	'~'			;
-	EQUALS		=	'='			;
 	RND_OPEN 	=	'('			;
 	RND_CLOSE 	=	')'			;
 	SQR_OPEN	=	'['			;
 	SQR_CLOSE	=	']'			;
-	HASH		=	'#'			;
-	LESSER		=	'<'			;
-	LESSER_OR_EQUAL
+	EQUALS_OP	=	'='			;
+	HASH_OP		=	'#'			;
+	LESSER_OP	=	'<'			;
+	LESSER_OR_EQUAL_OP
 				=	'<='		;
-	GREATER		=	'>'			;
-	GREATER_OR_EQUAL
+	GREATER_OP	=	'>'			;
+	GREATER_OR_EQUAL_OP
 				=	'>='		;
 	ASSIGN_OP	=	':='		;
 	PLUS_OP		=	'+'			;
@@ -69,6 +69,19 @@ tokens
 	PROCEDURE_CALL	;
 	IF_STATEMENT	;
 	EXPRESSION		;
+	EQUALS			;
+	HASH			;
+	LESSER			;
+	LESSER_OR_EQUAL ;
+	GREATER			;
+	GREATER_OR_EQUAL;
+	PLUS			;
+	MINUS			;
+	MULTIPLY		;
+	DIVIDE			;
+	MODULO			;
+	AND				;
+	OR				;
 
 }
 
@@ -88,10 +101,10 @@ declarations 	: 	constDecl?
 					(procedureDecl SEMI_COLON)*
 				->	constDecl? typeDecl? varDecl? procedureDecl* ;
 
-constDecl		:	CONST_KW (identifier EQUALS expression SEMI_COLON)*
+constDecl		:	CONST_KW (identifier EQUALS_OP expression SEMI_COLON)*
 				-> 	^(CONST identifier expression) ;
 
-typeDecl		:	TYPE_KW (identifier EQUALS type SEMI_COLON)*
+typeDecl		:	TYPE_KW (identifier EQUALS_OP type SEMI_COLON)*
 				->	^(TYPE identifier type) ;
 
 varDecl			:	VAR_KW (identList COLON type SEMI_COLON)*
@@ -129,7 +142,7 @@ statementSequence
 				:	statement (SEMI_COLON statement)*
 				->	statement+ ;
 
-statement		:	assignment 
+statement		:	assignment
 				|	procedureCall
 				|	ifStatement
 				|	whileStatement ;
@@ -154,7 +167,7 @@ actualParameters
 				->	expression+ ;
 
 expression
-				:	simpleExpression (( EQUALS | HASH |  LESSER | LESSER_OR_EQUAL | GREATER | GREATER_OR_EQUAL ) simpleExpression)? ;
+				:	simpleExpression (( EQUALS_OP | HASH_OP |  LESSER_OP | LESSER_OR_EQUAL_OP | GREATER_OP | GREATER_OR_EQUAL_OP ) simpleExpression)? ;
 
 simpleExpression
 				:	(PLUS_OP | MINUS_OP )? term (( PLUS_OP | MINUS_OP | OR_OP ) term)* ;
