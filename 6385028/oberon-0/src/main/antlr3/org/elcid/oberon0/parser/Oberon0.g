@@ -54,6 +54,8 @@ tokens
 	OR_OP		=	'OR'		;
 
 	MODULE			;
+	IDENTIFIER		;
+	INTEGER			;
 	CONST			;
 	TYPE			;
 	VAR				;
@@ -79,35 +81,51 @@ tokens
 
 prog			:	module+ ;
 
-module			:	MODULE_KW identifier SEMI_COLON declarations (BEGIN_KW statementSequence)+ END_KW identifier DOT ;
+module			:	MODULE_KW identifier SEMI_COLON declarations (BEGIN_KW statementSequence)+ END_KW identifier DOT
+				->	^(MODULE identifier declarations statementSequence) ;
 
-declarations	:	(CONST_KW (identifier EQUALS expression SEMI_COLON)*)?
-					(TYPE_KW (identifier EQUALS type SEMI_COLON)*)?
-					(VAR_KW (identList COLON type SEMI_COLON)*)?
-					(procedureDeclaration SEMI_COLON)* ;
+declarations 	: 	constDecl?
+					typeDecl?
+					varDecl?
+					(procedureDecl SEMI_COLON)*
+				->	constDecl? typeDecl? varDecl? procedureDecl* ;
 
-procedureDeclaration
-				:	procedureHeading SEMI_COLON procedureBody ;
+constDecl		:	CONST_KW (identifier EQUALS expression SEMI_COLON)*
+				-> 	^(CONST identifier expression) ;
 
-procedureBody	:	declarations (BEGIN_KW statementSequence)? END_KW identifier ;
+typeDecl		:	TYPE_KW (identifier EQUALS type SEMI_COLON)*
+				->	^(TYPE identifier type) ;
 
-procedureHeading
-				:	PROCEDURE_KW identifier (formalParameters)? ;
+varDecl			:	VAR_KW (identList COLON type SEMI_COLON)*
+				->	^(VAR identList type) ;
 
-formalParameters
-				:	RND_OPEN (fPSection (SEMI_COLON fPSection)*)? RND_CLOSE ;
+procedureDecl 	: 	PROCEDURE_KW identifier (formalParams)? SEMI_COLON procedureBody
+				->	^(PROCEDURE identifier (formalParams)? procedureBody) ;
 
-fPSection		:	(VAR_KW)? identList COLON type ;
+procedureBody	:	declarations (BEGIN_KW statementSequence)? END_KW identifier
+				->	declarations statementSequence ;
+
+formalParams 	:	RND_OPEN (fPSection (SEMI_COLON fPSection)*)? RND_CLOSE
+				->	^(PARAMS fPSection*) ;
+
+fPSection 		: 	VAR_KW identList COLON type
+				->	^(VAR identList type)
+				|	identList COLON type
+				->	identList type ;
 
 type			:	identifier | arrayType | recordType ;
 
-recordType		:	RECORD_KW fieldList (SEMI_COLON fieldList)* END_KW ;
+identList		:	identifier (COMMA identifier)*
+				->	identifier+ ;
 
-fieldList		:	(identList COLON type)? ;
+arrayType		:	ARRAY_KW expression OF_KW type
+				->	^(ARRAY expression type) ;
 
-arrayType		:	ARRAY_KW expression OF_KW type ;
+fieldList		:	(identList COLON type)?
+				->	identList type ;
 
-identList		:	identifier (COMMA identifier)* ;
+recordType		:	RECORD_KW fieldList (SEMI_COLON fieldList)* END_KW
+				->	^(RECORD fieldList+) ;
 
 statementSequence
 				:	statement (SEMI_COLON statement)* ;
@@ -139,9 +157,11 @@ factor			:	identifier selector | integer | RND_OPEN expression RND_CLOSE | '~' f
 
 selector		:	(DOT identifier | SQR_OPEN expression SQR_CLOSE)* ;
 
-identifier		:	IDENT ;
+identifier		:	IDENT
+				->	^(IDENTIFIER IDENT) ;
 
-integer			:	INT ;
+integer			:	INT
+				->	^(INTEGER INT) ;
 
 
 /*------------------------------------------------------------------
