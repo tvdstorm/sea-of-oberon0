@@ -15,6 +15,8 @@ public class oberon0 {
     ParserOutput    Pout      = new ParserOutput( );
     ModuleNode AST;
     
+    System.out.println( "Start execution\n" );
+    
     // get the AST from the parser
     Pout.setFile( pIn.getInputFile( args ) );
     AST = Pout.getAST( );
@@ -23,7 +25,10 @@ public class oberon0 {
     {
       parseErrorLog.printMessages();
     }
-    
+    else
+    {
+      System.out.println( "\nExit execution OK." );
+    }
     return;
   }
 

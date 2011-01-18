@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 oberon0.g 2011-01-18 10:57:56
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 oberon0.g 2011-01-18 13:27:25
 
   package parser;
 
@@ -873,10 +873,10 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = INTEGER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // oberon0.g:160:2: ( ( '0' .. '9' )+ )
-            // oberon0.g:160:4: ( '0' .. '9' )+
+            // oberon0.g:170:2: ( ( '0' .. '9' )+ )
+            // oberon0.g:170:4: ( '0' .. '9' )+
             {
-            // oberon0.g:160:4: ( '0' .. '9' )+
+            // oberon0.g:170:4: ( '0' .. '9' )+
             int cnt1=0;
             loop1:
             do {
@@ -890,7 +890,7 @@ public class oberon0Lexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // oberon0.g:160:5: '0' .. '9'
+            	    // oberon0.g:170:5: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -922,8 +922,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = IDENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // oberon0.g:164:2: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
-            // oberon0.g:164:4: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
+            // oberon0.g:174:2: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
+            // oberon0.g:174:4: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -934,7 +934,7 @@ public class oberon0Lexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // oberon0.g:164:23: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
+            // oberon0.g:174:23: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -983,10 +983,10 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // oberon0.g:168:2: ( ( ' ' | '\\t' | '\\n' | '\\r' )+ )
-            // oberon0.g:168:4: ( ' ' | '\\t' | '\\n' | '\\r' )+
+            // oberon0.g:178:2: ( ( ' ' | '\\t' | '\\n' | '\\r' )+ )
+            // oberon0.g:178:4: ( ' ' | '\\t' | '\\n' | '\\r' )+
             {
-            // oberon0.g:168:4: ( ' ' | '\\t' | '\\n' | '\\r' )+
+            // oberon0.g:178:4: ( ' ' | '\\t' | '\\n' | '\\r' )+
             int cnt3=0;
             loop3:
             do {
