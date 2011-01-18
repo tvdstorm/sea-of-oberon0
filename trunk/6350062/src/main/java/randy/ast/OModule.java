@@ -19,7 +19,6 @@ public class OModule extends OASTNode
 	}
 	public static OModule buildModule(Tree tree) throws Oberon0Exception
 	{
-		//String name = tree.getChild(0).getText();
 		OASTNode body = null;
 		List<OBodyDeclaration> bodyDeclarations = new Vector<OBodyDeclaration>();
 		for (int i=1;i<tree.getChildCount();i++)
@@ -28,7 +27,6 @@ public class OModule extends OASTNode
 			switch (child.getType())
 			{
 				case Oberon0Parser.BODY:
-					// TODO: body moet null zijn
 					body = OBlock.buildBlock(child);
 					break;
 				case Oberon0Parser.VAR:
@@ -49,6 +47,7 @@ public class OModule extends OASTNode
 		{
 			bd.run(vars);
 		}
+		// TODO: rekening houden met body's die leeg (null) zijn
 		return body.run(vars);
 	}
 	@Override

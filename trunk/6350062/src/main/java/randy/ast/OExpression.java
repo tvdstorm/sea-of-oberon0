@@ -6,7 +6,6 @@ import randy.generated.Oberon0Parser;
 
 public abstract class OExpression extends OASTNode
 {
-	// TODO: invullen
 	public static OExpression buildExpression(Tree tree) throws Oberon0Exception
 	{
 		switch (tree.getType())
