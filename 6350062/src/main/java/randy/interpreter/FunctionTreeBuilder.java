@@ -68,7 +68,6 @@ public class FunctionTreeBuilder implements OASTNodeVisitor
 	{
 		if (astNode instanceof OProcedureDeclaration)
 		{
-			OProcedureDeclaration pd = (OProcedureDeclaration)astNode;
 			stack.pop();
 		}
 	}
