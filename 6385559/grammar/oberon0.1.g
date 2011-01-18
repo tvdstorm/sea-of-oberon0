@@ -7,8 +7,6 @@ options
 
 @header{
   package parser;
-  
-  import ASTnodes.*;
 }
 
 @lexer::header
@@ -16,18 +14,12 @@ options
   package parser;
 }
 
-module returns [ ASTnode e ]
-	: 'MODULE' ind1=IDENT ';' declarations ('BEGIN' statementsequence)? 'END' ind2=IDENT '.' 
-	{
-	  $e = new ModuleNode( $ind1.text, $ind2.text, $declarations.e, $statementsequence.e ); // also send the indent.text for error logging 
-	}
+module returns [ ModuleNode e ]
+	: ^'MODULE' IDENT ';' declarations ('BEGIN' statementsequence)? 'END' IDENT '.' 
 	;
 
-declarations returns [ ASTnode e ]
+declarations returns [ DeclarationsNode e ]
 	: ('CONST' (IDENT '=' expression ';')+)? ('TYPE' (IDENT '=' type)+)? ('VAR' (identlist ':' type ';')+ )? (proceduredeclaration ';')*
-	{
-	  $e = new DeclarationsNode();
-	}
 	;
 
 type
@@ -59,11 +51,8 @@ factor
 	| '~' factor
 	;
 
-number returns [ ASTnode e ]
+number returns [ IntegerNode e ]
 	: INTEGER
-	{
-	   $e = new IntegerNode( Integer.parseInt( $INTEGER.text ) );
-	}
 	; 
 	
 selector
@@ -82,11 +71,8 @@ identlist
 	: IDENT (',' IDENT)*
 	;
 
-statementsequence returns [ ASTnode e ]
-	: statement ( ';' statement)*
-	{
-	  $e = new StatementSequenceNode();
-	}
+statementsequence
+	: statement ( ';' statement )?
 	;
 
 statement

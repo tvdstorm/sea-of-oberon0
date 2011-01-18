@@ -23,9 +23,9 @@ public class ParserOutput {
    * Parses the input file and returns an tree represetation of the
    * given source code
    */
-  public ASTnode getTree()
+  public ModuleNode getAST()
   {
-    ASTnode parserOutput = null;
+    ModuleNode parserOutput = null;
     
     try
     {

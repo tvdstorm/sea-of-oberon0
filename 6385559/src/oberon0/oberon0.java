@@ -13,18 +13,17 @@ public class oberon0 {
   public static void main( String[] args ) {
     ParserInput     pIn       = new ParserInput( );
     ParserOutput    Pout      = new ParserOutput( );
-    ASTnode AST;
+    ModuleNode AST;
     
     // get the AST from the parser
     Pout.setFile( pIn.getInputFile( args ) );
-    AST = Pout.getTree( );
-    
+    AST = Pout.getAST( );
     
     if( parseErrorLog.hasErrors() > 0 )
     {
       parseErrorLog.printMessages();
     }
-    //System.out.println( AST.toStringTree() );
+    
     return;
   }
 
