@@ -3,7 +3,7 @@ grammar oberon0;
 options
 {
   language = Java;
-  backtrace = true;
+  backtrack = true;
 }
 
 @header{
@@ -86,42 +86,54 @@ identlist
 statementsequence returns [ StatementSequenceNode e ]
 	: statement ( followOne=followupStatementSequence )?
 	{
-	  $e = new StatementSequenceNode( $statement.text, $followOne.e );
+	  $e = new StatementSequenceNode( $statement.e, $followOne.e );
 	}
 	;
 
 followupStatementSequence returns [ StatementSequenceNode e ]
 	: ';' statement ( followTwo=followupStatementSequence)?
 	{
-	  $e = new StatementSequenceNode( $statement.text, $followTwo.e );
+	  $e = new StatementSequenceNode( $statement.e, $followTwo.e );
 	}
 	;
 
 statement returns [ StatementNode e ]
-	: statementRv=( assignment | procedurecall | ifstatement | whilestatement )?
+	: ( statementRv=assignment | statementRv=procedurecall | statementRv=ifstatement | statementRv=whilestatement )?
 	{
-	  $e = $statementRv;
+	  $e = $statementRv.e;
 	}
 	;
 	
-assignment
+assignment returns [ StatementNode e ]
 	: IDENT selector ':=' expression
+	{
+	  $e = new AssignmentNode( $IDENT.text, $expression.text );
+	}
 	;
 	
-procedurecall
+procedurecall returns [ StatementNode e ]
 	: IDENT selector (actualparameters)?
+	{
+	  $e = new ProcedureCallNode();
+	}
 	;
 	
 actualparameters
 	: '(' ( expression ( ',' expression)*)? ')'
 	;
 	
-ifstatement
+ifstatement returns [ StatementNode e ]
 	: 'IF' expression 'THEN' statementsequence ( 'ELSIF' expression 'THEN' statementsequence )* ( 'ELSE' statementsequence )? 'END'
+	{
+	  $e = new IfStatementNode( );
+	}
 	;
 	
-whilestatement
-	: 'WHILE' expression 'DO' statementsequence 'END'
+whilestatement returns [ StatementNode e ]
+	: 'WHILE' cond=expression 'DO' ifTrueDo=statementsequence 'END'
+	{
+	  $e = new WhileStatementNode( $cond.text, $ifTrueDo.e );
+	}
 	;
 	
 proceduredeclaration

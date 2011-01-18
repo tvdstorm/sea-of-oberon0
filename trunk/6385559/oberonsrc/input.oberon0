@@ -4,5 +4,9 @@ VAR x,y,z: INTEGER;
 BEGIN
 	x := 5;
 	y := 6;
+	WHILE x = 5 DO
+		x := y-1;
+		y := y-1
+	END;
 	z := x*y
 END Sample.
