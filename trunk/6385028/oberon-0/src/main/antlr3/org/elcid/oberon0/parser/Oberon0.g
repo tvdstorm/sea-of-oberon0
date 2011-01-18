@@ -148,7 +148,10 @@ ifStatement		:	IF_KW expression THEN_KW statementSequence
 					(ELSE_KW statementSequence)?  END_KW ;
 
 actualParameters
-				:	RND_OPEN (expression (COMMA expression)*)? RND_CLOSE ;
+				: 	RND_OPEN RND_CLOSE
+				->
+				|	RND_OPEN expression (COMMA expression)* RND_CLOSE
+				->	expression+ ;
 
 expression
 				:	simpleExpression (( EQUALS | HASH |  LESSER | LESSER_OR_EQUAL | GREATER | GREATER_OR_EQUAL ) simpleExpression)? ;
