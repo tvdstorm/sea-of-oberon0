@@ -126,22 +126,29 @@ recordType		:	RECORD_KW fieldList (SEMI_COLON fieldList)* END_KW
 				->	^(RECORD fieldList+) ;
 
 statementSequence
-				:	statement (SEMI_COLON statement)* ;
+				:	statement (SEMI_COLON statement)*
+				->	statement+ ;
 
-statement		:	(assignment | procedureCall | ifStatement | whileStatement)? ;
+statement		:	assignment 
+				|	procedureCall
+				|	ifStatement
+				|	whileStatement ;
 
-whileStatement	:	WHILE_KW expression DO_KW statementSequence END_KW ;
+assignment		:	identSelector ASSIGN_OP expression
+				->	^(ASSIGNMENT identSelector expression);
+
+procedureCall	:	identSelector (actualParameters)?
+				->	^(PROCEDURE_CALL identSelector actualParameters?);
+
+whileStatement	:	WHILE_KW expression DO_KW statementSequence END_KW
+				->	^(WHILE_LOOP expression statementSequence) ;
 
 ifStatement		:	IF_KW expression THEN_KW statementSequence
 					(ELSIF_KW expression THEN_KW statementSequence)*
 					(ELSE_KW statementSequence)?  END_KW ;
 
-procedureCall	:	identifier selector (actualParameters)? ;
-
 actualParameters
 				:	RND_OPEN (expression (COMMA expression)*)? RND_CLOSE ;
-
-assignment		:	identifier selector ASSIGN_OP expression ;
 
 expression
 				:	simpleExpression (( EQUALS | HASH |  LESSER | LESSER_OR_EQUAL | GREATER | GREATER_OR_EQUAL ) simpleExpression)? ;
@@ -151,9 +158,14 @@ simpleExpression
 
 term			:	factor ((MULTIPLY_OP |  DIVIDE_OP | MODULO_OP | AND_OP ) factor)* ;
 
-factor			:	identifier selector | integer | RND_OPEN expression RND_CLOSE | '~' factor ;
+factor			:	identSelector | integer | RND_OPEN expression RND_CLOSE | '~' factor ;
 
-selector		:	(DOT identifier | SQR_OPEN expression SQR_CLOSE)* ;
+identSelector	:	identifier selector* ;
+
+selector		:	DOT identifier
+				->	^(SELECTOR identifier)
+				|	SQR_OPEN expression SQR_CLOSE
+				->	^(SELECTOR expression) ;
 
 identifier		:	IDENT
 				->	^(IDENTIFIER IDENT) ;
