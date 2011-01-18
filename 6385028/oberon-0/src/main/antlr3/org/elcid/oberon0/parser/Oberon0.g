@@ -157,9 +157,14 @@ procedureCall	:	identSelector (actualParameters)?
 whileStatement	:	WHILE_KW expression DO_KW statementSequence END_KW
 				->	^(WHILE_LOOP expression statementSequence) ;
 
-ifStatement		:	IF_KW expression THEN_KW statementSequence
-					(ELSIF_KW expression THEN_KW statementSequence)*
-					(ELSE_KW statementSequence)?  END_KW ;
+ifStatement		:	IF_KW expression THEN_KW statementSequence (elsifStatement)* (elseStatement)? END_KW
+				->	^(IF expression statementSequence (elsifStatement)* (elseStatement)?) ;
+
+elsifStatement	:	ELSIF_KW expression THEN_KW statementSequence
+				->	^(ELSIF expression statementSequence) ;
+
+elseStatement	:	ELSE_KW statementSequence
+				->	^(ELSE statementSequence) ;
 
 actualParameters
 				: 	RND_OPEN RND_CLOSE
