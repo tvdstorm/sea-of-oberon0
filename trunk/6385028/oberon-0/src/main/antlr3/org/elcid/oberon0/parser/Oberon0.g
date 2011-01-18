@@ -173,7 +173,7 @@ simpleExpression
 
 term			:	factor ((MULTIPLY_OP |  DIVIDE_OP | MODULO_OP | AND_OP ) factor)* ;
 
-factor			:	identSelector | integer | RND_OPEN expression RND_CLOSE | '~' factor ;
+factor			:	identSelector | integer | RND_OPEN expression RND_CLOSE | TILDE factor ;
 
 identSelector	:	identifier selector* ;
 
