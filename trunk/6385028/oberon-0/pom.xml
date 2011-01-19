@@ -7,7 +7,15 @@
 	<packaging>jar</packaging>
 	<version>1.0-SNAPSHOT</version>
 	<name>Oberon-0 Interpreter</name>
-	<url>http://maven.apache.org</url>
+	<description>An interpreter for the Oberon-0 language</description>
+	<url>http://code.google.com/p/sea-of-oberon0/</url>
+	<developers>
+		<developer>
+			<name>Pieter Brandwijk</name>
+			<organization>University of Amsterdam</organization>
+			<timezone>+1</timezone>
+		</developer>
+	</developers>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
