@@ -1,19 +1,20 @@
 package ar.oberon0.interpreter;
 
-public class ArrayItemSelector implements Interpretable {
+public class ArrayItemSelector extends Selector {
 
 	private Interpretable _expression;
 	
 	public ArrayItemSelector(Interpretable expression)
 	{
 		_expression = expression;
-		System.out.println("In constructor ArrayItemSelector");
 	}
 
 	@Override
 	public Object Interpret() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		if(getNextNode() != null)
+			return "[" + _expression.Interpret() + "]" + "." + getNextNode().Interpret();
+		else
+			return "[" + _expression.Interpret() + "]";
 	}
 
 	

@@ -1,18 +1,20 @@
 package ar.oberon0.interpreter;
 
-public class IdentSelector implements Interpretable {
+public class IdentSelector extends Selector {
 
 	private String _identName;
 	
 	public IdentSelector(String identName)
 	{
 		_identName = identName;
-		System.out.println("In constructor IdentSelector");
 	}
 
 	@Override
 	public Object Interpret() throws Exception {
-		return _identName;
+		if(getNextNode() != null)
+			return _identName + "." + getNextNode().Interpret();
+		else
+			return _identName;
 	}
 	
 }

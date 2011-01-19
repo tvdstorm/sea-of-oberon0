@@ -14,16 +14,18 @@ options {
 }
 
 	
-selector returns [VariableSelector result]
-	:												{VariableSelector variableSelector = new VariableSelector();}
-		(	'.' IDENT 								{variableSelector.AddSelector(new IdentSelector($IDENT.getText()));}
-		| 	'[' expression ']' 						{variableSelector.AddSelector(new ArrayItemSelector($expression.result));}
+selector [Selector selector] returns [Selector result]
+@init											{Selector tempSelector = $selector;}
+	:
+		(	'.' IDENT 								{tempSelector.setNextNode(new IdentSelector($IDENT.getText())); tempSelector = tempSelector.getNextNode();}
+		| 	'[' expression ']' 						{tempSelector.setNextNode(new ArrayItemSelector($expression.result)); tempSelector = tempSelector.getNextNode();}
 		)*
-													{$result = variableSelector;}
+													{$result = selector;}
 	; 
 
 factor returns [Interpretable result]
-	:	IDENT selector 								{$selector.result.SetRootVariable(new IdentSelector($IDENT.getText())); $result = $selector.result;}
+	:	IDENT 										{Selector sel = new IdentSelector($IDENT.getText());}
+		selector[sel]								{$result = sel;}
 	| 	INTEGER 									{$result = new IntegerNode($INTEGER.getText());}
 	| 	'(' expression ')' 							{$result = $expression.result;} 
 	| 	'~' factor									{$result = null;}
@@ -67,30 +69,52 @@ expression returns [Interpretable result]
 	; 
 
 assignment returns [Interpretable result]
-	:	IDENT selector ':=' expression 				{$selector.result.SetRootVariable(new IdentSelector($IDENT.getText())); $result = new AssignmentNode($selector.result,$expression.result);}
+	:	IDENT 
+													{Selector sel = new IdentSelector($IDENT.getText());} 
+		selector[sel] ':=' expression 				{$result = new AssignmentNode(sel,$expression.result);}
 	; 
 
-actualParameters
-	:	'(' (expression (',' expression)*)? ')' 
+actualParameters returns [ActualParametersNode result]
+	:												{$result = new ActualParametersNode();}	
+		'(' 
+		(	firstParameter=expression				{$result.AddParameter($firstParameter.result);} 
+			(	',' 
+				otherParameter=expression			{$result.AddParameter($otherParameter.result);}
+			)*
+		)? 
+		')' 
 	; 
 
-procedureCall
-	:	IDENT (actualParameters)? 
+procedureCall returns [Interpretable result]
+	:	IDENT (actualParameters)? 					{$result = new ProcedureCallNode($IDENT.getText(),$actualParameters.result); }
 	;
 	
-ifStatement
-	:	'IF' expression 'THEN' statementSequence ('ELSIF' expression 'THEN' statementSequence)* ('ELSE' statementSequence)? 'END'
+ifStatement returns [Interpretable result]
+	:	'IF' ifExpression=expression 
+		'THEN' ifStatementSequence=statementSequence			{$result = new IfNode($ifExpression.result,$ifStatementSequence.result);} 
+		(	'ELSIF' elseIfExpression=expression 
+			'THEN' elseIfStatementSequence=statementSequence	{$result.addElseIf($elseIfExpression.result,$elseIfStatementSequence.result);}
+		)* 
+		(	'ELSE' elseStatementSequence=statementSequence		{$result.setElse($elseStatementSequence.result);}
+		)? 
+		'END'
 	;
 
-whileStatement
-	:	'WHILE' expression 'DO' statementSequence 'END'
+whileStatement returns [Interpretable result]
+	:	'WHILE' expression 
+		'DO' statementSequence 
+		'END'
 	;
 
-statement
-	:	(assignment | procedureCall | ifStatement | whileStatement)? 
+statement returns [Interpretable result]
+	:	(assignment												{$result = $assignment.result;} 
+		| procedureCall 										{$result = $procedureCall.result;}
+		| ifStatement 											{$result = $ifStatement.result;}
+		| whileStatement										{$result = $whileStatement.result;}
+		)? 
 	;
 
-statementSequence
+statementSequence returns [Interpretable result]
 	:	statement (';' statement)* 
 	;
 
@@ -143,8 +167,8 @@ declarations
 	;
 	
 module 
-	:	'MODULE'! IDENT ';' declarations 
-		('BEGIN'! statementSequence)? 
+	:	'MODULE' IDENT ';' declarations 
+		('BEGIN' statementSequence)? 
 		'END'! IDENT
 	;
 
