@@ -2,17 +2,19 @@ package ar.oberon0.interpreter;
 
 public class AssignmentNode implements Interpretable {
 
-	private Object _variableName;
-	private Object _value;
+	private Selector _variable;
+	private Interpretable _value;
 
 	@Override
-	public Object Interpret() {
-		return 0;
+	public Object Interpret() throws Exception {
+		_variable.Interpret();
+		_value.Interpret();
+		return "Ok";
 	}
 	
-	public AssignmentNode(Interpretable variableName, Interpretable value)
+	public AssignmentNode(Selector variable, Interpretable value)
 	{
-		_variableName = variableName;
+		_variable = variable;
 		_value = value;
 	}
 

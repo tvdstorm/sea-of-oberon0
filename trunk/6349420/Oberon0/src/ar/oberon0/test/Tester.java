@@ -123,9 +123,9 @@ public class Tester {
 		}
 	}
 	
-	public void TestFactorWithIdent()
+	public void TestFactorWithSelector()
 	{
-		Oberon0Parser parser = GetParser("a.b");
+		Oberon0Parser parser = GetParser("a.b[1+1]");
 		Interpretable interpreter = null;
 		try {
 			interpreter = parser.factor().result;
@@ -135,7 +135,26 @@ public class Tester {
 		}
 		try {
 			Object result = interpreter.Interpret();
-			System.out.println(getResultString("factor with ident",result.toString().compareTo("ab") == 0));
+			System.out.println(getResultString("factor with ident",result.toString().compareTo("a.b.[2]") == 0));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void TestAssignmentNode()
+	{
+		Oberon0Parser parser = GetParser("a.b := 3");
+		Interpretable interpreter = null;
+		try {
+			interpreter = parser.assignment().result;
+		} catch (RecognitionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Object result = interpreter.Interpret();
+			System.out.println(getResultString("assignment",result.toString().compareTo("Ok") == 0));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -216,13 +235,14 @@ public class Tester {
 		Tester tester = new Tester();
 		tester.TestTerm();
 		tester.TestFactorWithInteger();
-		tester.TestFactorWithIdent();
+		tester.TestFactorWithSelector();
 		tester.TestSimpleExpressionWithNegation();
 		tester.TestSimpleExpressionWithAdd();
 		tester.TestSimpleExpressionWithMin();
 		tester.TestExpressionWithEquals();
 		tester.TestExpressionWithGreater();
 		tester.TestSimpleExpressionBIG();
+		tester.TestAssignmentNode();
 		System.out.println("Finished");
 	}
 
