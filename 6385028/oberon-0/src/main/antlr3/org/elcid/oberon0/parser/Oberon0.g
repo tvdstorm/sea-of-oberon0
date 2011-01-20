@@ -66,6 +66,8 @@ tokens
 	WHILE_LOOP		;
 	ASSIGNMENT		;
 	PROCEDURE_CALL	;
+	SEQUENCE		;
+	LIST			;
 	IF				;
 	ELSIF			;
 	ELSE			;
@@ -128,7 +130,7 @@ fPSection 		: 	VAR_KW identList COLON type
 type			:	identifier | arrayType | recordType ;
 
 identList		:	identifier (COMMA identifier)*
-				->	identifier+ ;
+				->	^(LIST identifier+) ;
 
 arrayType		:	ARRAY_KW expression OF_KW type
 				->	^(ARRAY expression type) ;
@@ -141,7 +143,7 @@ recordType		:	RECORD_KW fieldList (SEMI_COLON fieldList)* END_KW
 
 statementSequence
 				:	statement (SEMI_COLON statement)*
-				->	statement+ ;
+				->	^(SEQUENCE statement+) ;
 
 statement		:	((identSelector ASSIGN_OP) => assignment)
 				|	procedureCall
@@ -170,7 +172,7 @@ actualParameters
 				: 	RND_OPEN RND_CLOSE
 				->
 				|	RND_OPEN expression (COMMA expression)* RND_CLOSE
-				->	expression+ ;
+				->	(PARAMS expression+) ;
 
 expression
 				:	simpleExpression (expressionOperator^ simpleExpression)? ;
