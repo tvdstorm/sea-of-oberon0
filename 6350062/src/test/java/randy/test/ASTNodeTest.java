@@ -510,7 +510,7 @@ public class ASTNodeTest
 	{
 		functions = new TestBuildinFunctions();
 		program = new Oberon0Program();
-		program.loadProgram("src/test/java/randy/test/" + testName + ".oberon0", functions);
+		program.loadProgram("src/test/java/randy/test/testscripts/" + testName + ".oberon0", functions);
 	}
 	private void prepareTest(String testName)
 	{
