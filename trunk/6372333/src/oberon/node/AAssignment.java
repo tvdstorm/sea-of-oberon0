@@ -8,8 +8,7 @@ import oberon.analysis.*;
 public final class AAssignment extends PAssignment
 {
     private TIdentifier _identifier_;
-    private TAss _ass_;
-    private PExpression _expression_;
+    private PExp _exp_;
 
     public AAssignment()
     {
@@ -18,15 +17,12 @@ public final class AAssignment extends PAssignment
 
     public AAssignment(
         @SuppressWarnings("hiding") TIdentifier _identifier_,
-        @SuppressWarnings("hiding") TAss _ass_,
-        @SuppressWarnings("hiding") PExpression _expression_)
+        @SuppressWarnings("hiding") PExp _exp_)
     {
         // Constructor
         setIdentifier(_identifier_);
 
-        setAss(_ass_);
-
-        setExpression(_expression_);
+        setExp(_exp_);
 
     }
 
@@ -35,8 +31,7 @@ public final class AAssignment extends PAssignment
     {
         return new AAssignment(
             cloneNode(this._identifier_),
-            cloneNode(this._ass_),
-            cloneNode(this._expression_));
+            cloneNode(this._exp_));
     }
 
     public void apply(Switch sw)
@@ -69,16 +64,16 @@ public final class AAssignment extends PAssignment
         this._identifier_ = node;
     }
 
-    public TAss getAss()
+    public PExp getExp()
     {
-        return this._ass_;
+        return this._exp_;
     }
 
-    public void setAss(TAss node)
+    public void setExp(PExp node)
     {
-        if(this._ass_ != null)
+        if(this._exp_ != null)
         {
-            this._ass_.parent(null);
+            this._exp_.parent(null);
         }
 
         if(node != null)
@@ -91,32 +86,7 @@ public final class AAssignment extends PAssignment
             node.parent(this);
         }
 
-        this._ass_ = node;
-    }
-
-    public PExpression getExpression()
-    {
-        return this._expression_;
-    }
-
-    public void setExpression(PExpression node)
-    {
-        if(this._expression_ != null)
-        {
-            this._expression_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._expression_ = node;
+        this._exp_ = node;
     }
 
     @Override
@@ -124,8 +94,7 @@ public final class AAssignment extends PAssignment
     {
         return ""
             + toString(this._identifier_)
-            + toString(this._ass_)
-            + toString(this._expression_);
+            + toString(this._exp_);
     }
 
     @Override
@@ -138,15 +107,9 @@ public final class AAssignment extends PAssignment
             return;
         }
 
-        if(this._ass_ == child)
+        if(this._exp_ == child)
         {
-            this._ass_ = null;
-            return;
-        }
-
-        if(this._expression_ == child)
-        {
-            this._expression_ = null;
+            this._exp_ = null;
             return;
         }
 
@@ -163,15 +126,9 @@ public final class AAssignment extends PAssignment
             return;
         }
 
-        if(this._ass_ == oldChild)
+        if(this._exp_ == oldChild)
         {
-            setAss((TAss) newChild);
-            return;
-        }
-
-        if(this._expression_ == oldChild)
-        {
-            setExpression((PExpression) newChild);
+            setExp((PExp) newChild);
             return;
         }
 

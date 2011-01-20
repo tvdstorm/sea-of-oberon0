@@ -2,18 +2,16 @@
 
 package oberon.node;
 
+import java.util.*;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
 public final class AIfstatement extends PIfstatement
 {
-    private TIftxt _iftxt_;
-    private PExpression _expression_;
-    private TThentxt _thentxt_;
-    private PStatementsequence _statementsequence_;
-    private PElsif _elsif_;
-    private PElse _else_;
-    private TEndtxt _endtxt_;
+    private PExp _condition_;
+    private final LinkedList<PStatement> _body_ = new LinkedList<PStatement>();
+    private final LinkedList<PIfstatement> _elseifs_ = new LinkedList<PIfstatement>();
+    private final LinkedList<PStatement> _else_ = new LinkedList<PStatement>();
 
     public AIfstatement()
     {
@@ -21,28 +19,19 @@ public final class AIfstatement extends PIfstatement
     }
 
     public AIfstatement(
-        @SuppressWarnings("hiding") TIftxt _iftxt_,
-        @SuppressWarnings("hiding") PExpression _expression_,
-        @SuppressWarnings("hiding") TThentxt _thentxt_,
-        @SuppressWarnings("hiding") PStatementsequence _statementsequence_,
-        @SuppressWarnings("hiding") PElsif _elsif_,
-        @SuppressWarnings("hiding") PElse _else_,
-        @SuppressWarnings("hiding") TEndtxt _endtxt_)
+        @SuppressWarnings("hiding") PExp _condition_,
+        @SuppressWarnings("hiding") List<PStatement> _body_,
+        @SuppressWarnings("hiding") List<PIfstatement> _elseifs_,
+        @SuppressWarnings("hiding") List<PStatement> _else_)
     {
         // Constructor
-        setIftxt(_iftxt_);
+        setCondition(_condition_);
 
-        setExpression(_expression_);
+        setBody(_body_);
 
-        setThentxt(_thentxt_);
-
-        setStatementsequence(_statementsequence_);
-
-        setElsif(_elsif_);
+        setElseifs(_elseifs_);
 
         setElse(_else_);
-
-        setEndtxt(_endtxt_);
 
     }
 
@@ -50,13 +39,10 @@ public final class AIfstatement extends PIfstatement
     public Object clone()
     {
         return new AIfstatement(
-            cloneNode(this._iftxt_),
-            cloneNode(this._expression_),
-            cloneNode(this._thentxt_),
-            cloneNode(this._statementsequence_),
-            cloneNode(this._elsif_),
-            cloneNode(this._else_),
-            cloneNode(this._endtxt_));
+            cloneNode(this._condition_),
+            cloneList(this._body_),
+            cloneList(this._elseifs_),
+            cloneList(this._else_));
     }
 
     public void apply(Switch sw)
@@ -64,16 +50,16 @@ public final class AIfstatement extends PIfstatement
         ((Analysis) sw).caseAIfstatement(this);
     }
 
-    public TIftxt getIftxt()
+    public PExp getCondition()
     {
-        return this._iftxt_;
+        return this._condition_;
     }
 
-    public void setIftxt(TIftxt node)
+    public void setCondition(PExp node)
     {
-        if(this._iftxt_ != null)
+        if(this._condition_ != null)
         {
-            this._iftxt_.parent(null);
+            this._condition_.parent(null);
         }
 
         if(node != null)
@@ -86,215 +72,101 @@ public final class AIfstatement extends PIfstatement
             node.parent(this);
         }
 
-        this._iftxt_ = node;
+        this._condition_ = node;
     }
 
-    public PExpression getExpression()
+    public LinkedList<PStatement> getBody()
     {
-        return this._expression_;
+        return this._body_;
     }
 
-    public void setExpression(PExpression node)
+    public void setBody(List<PStatement> list)
     {
-        if(this._expression_ != null)
+        this._body_.clear();
+        this._body_.addAll(list);
+        for(PStatement e : list)
         {
-            this._expression_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
+            if(e.parent() != null)
             {
-                node.parent().removeChild(node);
+                e.parent().removeChild(e);
             }
 
-            node.parent(this);
+            e.parent(this);
         }
-
-        this._expression_ = node;
     }
 
-    public TThentxt getThentxt()
+    public LinkedList<PIfstatement> getElseifs()
     {
-        return this._thentxt_;
+        return this._elseifs_;
     }
 
-    public void setThentxt(TThentxt node)
+    public void setElseifs(List<PIfstatement> list)
     {
-        if(this._thentxt_ != null)
+        this._elseifs_.clear();
+        this._elseifs_.addAll(list);
+        for(PIfstatement e : list)
         {
-            this._thentxt_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
+            if(e.parent() != null)
             {
-                node.parent().removeChild(node);
+                e.parent().removeChild(e);
             }
 
-            node.parent(this);
+            e.parent(this);
         }
-
-        this._thentxt_ = node;
     }
 
-    public PStatementsequence getStatementsequence()
-    {
-        return this._statementsequence_;
-    }
-
-    public void setStatementsequence(PStatementsequence node)
-    {
-        if(this._statementsequence_ != null)
-        {
-            this._statementsequence_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._statementsequence_ = node;
-    }
-
-    public PElsif getElsif()
-    {
-        return this._elsif_;
-    }
-
-    public void setElsif(PElsif node)
-    {
-        if(this._elsif_ != null)
-        {
-            this._elsif_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._elsif_ = node;
-    }
-
-    public PElse getElse()
+    public LinkedList<PStatement> getElse()
     {
         return this._else_;
     }
 
-    public void setElse(PElse node)
+    public void setElse(List<PStatement> list)
     {
-        if(this._else_ != null)
+        this._else_.clear();
+        this._else_.addAll(list);
+        for(PStatement e : list)
         {
-            this._else_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
+            if(e.parent() != null)
             {
-                node.parent().removeChild(node);
+                e.parent().removeChild(e);
             }
 
-            node.parent(this);
+            e.parent(this);
         }
-
-        this._else_ = node;
-    }
-
-    public TEndtxt getEndtxt()
-    {
-        return this._endtxt_;
-    }
-
-    public void setEndtxt(TEndtxt node)
-    {
-        if(this._endtxt_ != null)
-        {
-            this._endtxt_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._endtxt_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._iftxt_)
-            + toString(this._expression_)
-            + toString(this._thentxt_)
-            + toString(this._statementsequence_)
-            + toString(this._elsif_)
-            + toString(this._else_)
-            + toString(this._endtxt_);
+            + toString(this._condition_)
+            + toString(this._body_)
+            + toString(this._elseifs_)
+            + toString(this._else_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._iftxt_ == child)
+        if(this._condition_ == child)
         {
-            this._iftxt_ = null;
+            this._condition_ = null;
             return;
         }
 
-        if(this._expression_ == child)
+        if(this._body_.remove(child))
         {
-            this._expression_ = null;
             return;
         }
 
-        if(this._thentxt_ == child)
+        if(this._elseifs_.remove(child))
         {
-            this._thentxt_ = null;
             return;
         }
 
-        if(this._statementsequence_ == child)
+        if(this._else_.remove(child))
         {
-            this._statementsequence_ = null;
-            return;
-        }
-
-        if(this._elsif_ == child)
-        {
-            this._elsif_ = null;
-            return;
-        }
-
-        if(this._else_ == child)
-        {
-            this._else_ = null;
-            return;
-        }
-
-        if(this._endtxt_ == child)
-        {
-            this._endtxt_ = null;
             return;
         }
 
@@ -305,46 +177,64 @@ public final class AIfstatement extends PIfstatement
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._iftxt_ == oldChild)
+        if(this._condition_ == oldChild)
         {
-            setIftxt((TIftxt) newChild);
+            setCondition((PExp) newChild);
             return;
         }
 
-        if(this._expression_ == oldChild)
+        for(ListIterator<PStatement> i = this._body_.listIterator(); i.hasNext();)
         {
-            setExpression((PExpression) newChild);
-            return;
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((PStatement) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
+
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
-        if(this._thentxt_ == oldChild)
+        for(ListIterator<PIfstatement> i = this._elseifs_.listIterator(); i.hasNext();)
         {
-            setThentxt((TThentxt) newChild);
-            return;
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((PIfstatement) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
+
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
-        if(this._statementsequence_ == oldChild)
+        for(ListIterator<PStatement> i = this._else_.listIterator(); i.hasNext();)
         {
-            setStatementsequence((PStatementsequence) newChild);
-            return;
-        }
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((PStatement) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
 
-        if(this._elsif_ == oldChild)
-        {
-            setElsif((PElsif) newChild);
-            return;
-        }
-
-        if(this._else_ == oldChild)
-        {
-            setElse((PElse) newChild);
-            return;
-        }
-
-        if(this._endtxt_ == oldChild)
-        {
-            setEndtxt((TEndtxt) newChild);
-            return;
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
         throw new RuntimeException("Not a child.");

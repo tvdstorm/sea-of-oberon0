@@ -8,10 +8,7 @@ import oberon.analysis.*;
 @SuppressWarnings("nls")
 public final class AFpsection extends PFpsection
 {
-    private TVartxt _vartxt_;
-    private PIdentlist _identlist_;
-    private TColon _colon_;
-    private final LinkedList<TSptxt> _sptxt_ = new LinkedList<TSptxt>();
+    private final LinkedList<TIdentifier> _identifier_ = new LinkedList<TIdentifier>();
     private PType _type_;
 
     public AFpsection()
@@ -20,20 +17,11 @@ public final class AFpsection extends PFpsection
     }
 
     public AFpsection(
-        @SuppressWarnings("hiding") TVartxt _vartxt_,
-        @SuppressWarnings("hiding") PIdentlist _identlist_,
-        @SuppressWarnings("hiding") TColon _colon_,
-        @SuppressWarnings("hiding") List<TSptxt> _sptxt_,
+        @SuppressWarnings("hiding") List<TIdentifier> _identifier_,
         @SuppressWarnings("hiding") PType _type_)
     {
         // Constructor
-        setVartxt(_vartxt_);
-
-        setIdentlist(_identlist_);
-
-        setColon(_colon_);
-
-        setSptxt(_sptxt_);
+        setIdentifier(_identifier_);
 
         setType(_type_);
 
@@ -43,10 +31,7 @@ public final class AFpsection extends PFpsection
     public Object clone()
     {
         return new AFpsection(
-            cloneNode(this._vartxt_),
-            cloneNode(this._identlist_),
-            cloneNode(this._colon_),
-            cloneList(this._sptxt_),
+            cloneList(this._identifier_),
             cloneNode(this._type_));
     }
 
@@ -55,91 +40,16 @@ public final class AFpsection extends PFpsection
         ((Analysis) sw).caseAFpsection(this);
     }
 
-    public TVartxt getVartxt()
+    public LinkedList<TIdentifier> getIdentifier()
     {
-        return this._vartxt_;
+        return this._identifier_;
     }
 
-    public void setVartxt(TVartxt node)
+    public void setIdentifier(List<TIdentifier> list)
     {
-        if(this._vartxt_ != null)
-        {
-            this._vartxt_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._vartxt_ = node;
-    }
-
-    public PIdentlist getIdentlist()
-    {
-        return this._identlist_;
-    }
-
-    public void setIdentlist(PIdentlist node)
-    {
-        if(this._identlist_ != null)
-        {
-            this._identlist_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._identlist_ = node;
-    }
-
-    public TColon getColon()
-    {
-        return this._colon_;
-    }
-
-    public void setColon(TColon node)
-    {
-        if(this._colon_ != null)
-        {
-            this._colon_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._colon_ = node;
-    }
-
-    public LinkedList<TSptxt> getSptxt()
-    {
-        return this._sptxt_;
-    }
-
-    public void setSptxt(List<TSptxt> list)
-    {
-        this._sptxt_.clear();
-        this._sptxt_.addAll(list);
-        for(TSptxt e : list)
+        this._identifier_.clear();
+        this._identifier_.addAll(list);
+        for(TIdentifier e : list)
         {
             if(e.parent() != null)
             {
@@ -179,10 +89,7 @@ public final class AFpsection extends PFpsection
     public String toString()
     {
         return ""
-            + toString(this._vartxt_)
-            + toString(this._identlist_)
-            + toString(this._colon_)
-            + toString(this._sptxt_)
+            + toString(this._identifier_)
             + toString(this._type_);
     }
 
@@ -190,25 +97,7 @@ public final class AFpsection extends PFpsection
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._vartxt_ == child)
-        {
-            this._vartxt_ = null;
-            return;
-        }
-
-        if(this._identlist_ == child)
-        {
-            this._identlist_ = null;
-            return;
-        }
-
-        if(this._colon_ == child)
-        {
-            this._colon_ = null;
-            return;
-        }
-
-        if(this._sptxt_.remove(child))
+        if(this._identifier_.remove(child))
         {
             return;
         }
@@ -226,31 +115,13 @@ public final class AFpsection extends PFpsection
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._vartxt_ == oldChild)
-        {
-            setVartxt((TVartxt) newChild);
-            return;
-        }
-
-        if(this._identlist_ == oldChild)
-        {
-            setIdentlist((PIdentlist) newChild);
-            return;
-        }
-
-        if(this._colon_ == oldChild)
-        {
-            setColon((TColon) newChild);
-            return;
-        }
-
-        for(ListIterator<TSptxt> i = this._sptxt_.listIterator(); i.hasNext();)
+        for(ListIterator<TIdentifier> i = this._identifier_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)
             {
                 if(newChild != null)
                 {
-                    i.set((TSptxt) newChild);
+                    i.set((TIdentifier) newChild);
                     newChild.parent(this);
                     oldChild.parent(null);
                     return;

@@ -8,7 +8,6 @@ import oberon.analysis.*;
 @SuppressWarnings("nls")
 public final class AVardecl extends PVardecl
 {
-    private TVartxt _vartxt_;
     private final LinkedList<PVardeclaration> _vardeclaration_ = new LinkedList<PVardeclaration>();
 
     public AVardecl()
@@ -17,12 +16,9 @@ public final class AVardecl extends PVardecl
     }
 
     public AVardecl(
-        @SuppressWarnings("hiding") TVartxt _vartxt_,
         @SuppressWarnings("hiding") List<PVardeclaration> _vardeclaration_)
     {
         // Constructor
-        setVartxt(_vartxt_);
-
         setVardeclaration(_vardeclaration_);
 
     }
@@ -31,38 +27,12 @@ public final class AVardecl extends PVardecl
     public Object clone()
     {
         return new AVardecl(
-            cloneNode(this._vartxt_),
             cloneList(this._vardeclaration_));
     }
 
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAVardecl(this);
-    }
-
-    public TVartxt getVartxt()
-    {
-        return this._vartxt_;
-    }
-
-    public void setVartxt(TVartxt node)
-    {
-        if(this._vartxt_ != null)
-        {
-            this._vartxt_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._vartxt_ = node;
     }
 
     public LinkedList<PVardeclaration> getVardeclaration()
@@ -89,7 +59,6 @@ public final class AVardecl extends PVardecl
     public String toString()
     {
         return ""
-            + toString(this._vartxt_)
             + toString(this._vardeclaration_);
     }
 
@@ -97,12 +66,6 @@ public final class AVardecl extends PVardecl
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._vartxt_ == child)
-        {
-            this._vartxt_ = null;
-            return;
-        }
-
         if(this._vardeclaration_.remove(child))
         {
             return;
@@ -115,12 +78,6 @@ public final class AVardecl extends PVardecl
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._vartxt_ == oldChild)
-        {
-            setVartxt((TVartxt) newChild);
-            return;
-        }
-
         for(ListIterator<PVardeclaration> i = this._vardeclaration_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)

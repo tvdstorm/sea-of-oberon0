@@ -2,17 +2,13 @@
 
 package oberon.node;
 
-import java.util.*;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
 public final class ATypedeclaration extends PTypedeclaration
 {
     private TIdentifier _identifier_;
-    private TExeq _exeq_;
-    private final LinkedList<TSptxt> _sptxt_ = new LinkedList<TSptxt>();
     private PType _type_;
-    private TSemi _semi_;
 
     public ATypedeclaration()
     {
@@ -21,21 +17,12 @@ public final class ATypedeclaration extends PTypedeclaration
 
     public ATypedeclaration(
         @SuppressWarnings("hiding") TIdentifier _identifier_,
-        @SuppressWarnings("hiding") TExeq _exeq_,
-        @SuppressWarnings("hiding") List<TSptxt> _sptxt_,
-        @SuppressWarnings("hiding") PType _type_,
-        @SuppressWarnings("hiding") TSemi _semi_)
+        @SuppressWarnings("hiding") PType _type_)
     {
         // Constructor
         setIdentifier(_identifier_);
 
-        setExeq(_exeq_);
-
-        setSptxt(_sptxt_);
-
         setType(_type_);
-
-        setSemi(_semi_);
 
     }
 
@@ -44,10 +31,7 @@ public final class ATypedeclaration extends PTypedeclaration
     {
         return new ATypedeclaration(
             cloneNode(this._identifier_),
-            cloneNode(this._exeq_),
-            cloneList(this._sptxt_),
-            cloneNode(this._type_),
-            cloneNode(this._semi_));
+            cloneNode(this._type_));
     }
 
     public void apply(Switch sw)
@@ -80,51 +64,6 @@ public final class ATypedeclaration extends PTypedeclaration
         this._identifier_ = node;
     }
 
-    public TExeq getExeq()
-    {
-        return this._exeq_;
-    }
-
-    public void setExeq(TExeq node)
-    {
-        if(this._exeq_ != null)
-        {
-            this._exeq_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._exeq_ = node;
-    }
-
-    public LinkedList<TSptxt> getSptxt()
-    {
-        return this._sptxt_;
-    }
-
-    public void setSptxt(List<TSptxt> list)
-    {
-        this._sptxt_.clear();
-        this._sptxt_.addAll(list);
-        for(TSptxt e : list)
-        {
-            if(e.parent() != null)
-            {
-                e.parent().removeChild(e);
-            }
-
-            e.parent(this);
-        }
-    }
-
     public PType getType()
     {
         return this._type_;
@@ -150,40 +89,12 @@ public final class ATypedeclaration extends PTypedeclaration
         this._type_ = node;
     }
 
-    public TSemi getSemi()
-    {
-        return this._semi_;
-    }
-
-    public void setSemi(TSemi node)
-    {
-        if(this._semi_ != null)
-        {
-            this._semi_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._semi_ = node;
-    }
-
     @Override
     public String toString()
     {
         return ""
             + toString(this._identifier_)
-            + toString(this._exeq_)
-            + toString(this._sptxt_)
-            + toString(this._type_)
-            + toString(this._semi_);
+            + toString(this._type_);
     }
 
     @Override
@@ -196,26 +107,9 @@ public final class ATypedeclaration extends PTypedeclaration
             return;
         }
 
-        if(this._exeq_ == child)
-        {
-            this._exeq_ = null;
-            return;
-        }
-
-        if(this._sptxt_.remove(child))
-        {
-            return;
-        }
-
         if(this._type_ == child)
         {
             this._type_ = null;
-            return;
-        }
-
-        if(this._semi_ == child)
-        {
-            this._semi_ = null;
             return;
         }
 
@@ -232,39 +126,9 @@ public final class ATypedeclaration extends PTypedeclaration
             return;
         }
 
-        if(this._exeq_ == oldChild)
-        {
-            setExeq((TExeq) newChild);
-            return;
-        }
-
-        for(ListIterator<TSptxt> i = this._sptxt_.listIterator(); i.hasNext();)
-        {
-            if(i.next() == oldChild)
-            {
-                if(newChild != null)
-                {
-                    i.set((TSptxt) newChild);
-                    newChild.parent(this);
-                    oldChild.parent(null);
-                    return;
-                }
-
-                i.remove();
-                oldChild.parent(null);
-                return;
-            }
-        }
-
         if(this._type_ == oldChild)
         {
             setType((PType) newChild);
-            return;
-        }
-
-        if(this._semi_ == oldChild)
-        {
-            setSemi((TSemi) newChild);
             return;
         }
 

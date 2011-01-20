@@ -8,7 +8,6 @@ import oberon.analysis.*;
 @SuppressWarnings("nls")
 public final class AConstdecl extends PConstdecl
 {
-    private TConsttxt _consttxt_;
     private final LinkedList<PConstdeclaration> _constdeclaration_ = new LinkedList<PConstdeclaration>();
 
     public AConstdecl()
@@ -17,12 +16,9 @@ public final class AConstdecl extends PConstdecl
     }
 
     public AConstdecl(
-        @SuppressWarnings("hiding") TConsttxt _consttxt_,
         @SuppressWarnings("hiding") List<PConstdeclaration> _constdeclaration_)
     {
         // Constructor
-        setConsttxt(_consttxt_);
-
         setConstdeclaration(_constdeclaration_);
 
     }
@@ -31,38 +27,12 @@ public final class AConstdecl extends PConstdecl
     public Object clone()
     {
         return new AConstdecl(
-            cloneNode(this._consttxt_),
             cloneList(this._constdeclaration_));
     }
 
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAConstdecl(this);
-    }
-
-    public TConsttxt getConsttxt()
-    {
-        return this._consttxt_;
-    }
-
-    public void setConsttxt(TConsttxt node)
-    {
-        if(this._consttxt_ != null)
-        {
-            this._consttxt_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._consttxt_ = node;
     }
 
     public LinkedList<PConstdeclaration> getConstdeclaration()
@@ -89,7 +59,6 @@ public final class AConstdecl extends PConstdecl
     public String toString()
     {
         return ""
-            + toString(this._consttxt_)
             + toString(this._constdeclaration_);
     }
 
@@ -97,12 +66,6 @@ public final class AConstdecl extends PConstdecl
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._consttxt_ == child)
-        {
-            this._consttxt_ = null;
-            return;
-        }
-
         if(this._constdeclaration_.remove(child))
         {
             return;
@@ -115,12 +78,6 @@ public final class AConstdecl extends PConstdecl
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._consttxt_ == oldChild)
-        {
-            setConsttxt((TConsttxt) newChild);
-            return;
-        }
-
         for(ListIterator<PConstdeclaration> i = this._constdeclaration_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)

@@ -26,26 +26,26 @@ Helpers
 Tokens 
     /* Our simple token definition(s). */
     dot = '.';  
-    l_bkt = '[';
-	l_brc = '{';
-	l_par = '(';
-	r_bkt = ']';
-	r_brc = '}';
+    l_bkt = '[' sp*;
+	l_brc = '{' sp*;
+	l_par = '(' sp*;
+	r_bkt = ']' sp*;
+	r_brc = '}' sp*;
 	r_par = ')' sp*;
-	tilde = '~';
+	til = '~';
         
-    exeq = '=';
-    exha = '#';
-    exst = '<';
-    exse = '<=';
-    exgt = '>';
-    exge = '>=';
+    exeq = '=' sp*;
+    exha = '#' sp*;
+    exst = '<' sp*;
+    exse = '<=' sp*;
+    exgt = '>' sp*;
+    exge = '>=' sp*;
 	
-	comma = ',';
-	colon = ':';
+	comma = ',' sp*;
+	colon = ':' sp*;
 	
 	ass = ':=' sp*;  
-    semi = ';' nl?;
+    semi = ';' sp* nl?;
         
     moduletxt = 'MODULE' sp*;
     consttxt = 'CONST' sp*;
@@ -64,16 +64,10 @@ Tokens
     elsetxt = 'ELSE' sp*;
     proceduretxt = 'PROCEDURE' sp*;
     sptxt = sp;
-
-	plusorminusoror =
-		plus |
-		min |
-		ortxt;
- 	plusorminus = 
-		plus |
-		min; 
 		
-	mult = '*' sp*;
+	add = '+' sp*;
+    sub = '-' sp*;   
+	mul = '*' sp*;
     mod = 'MOD' sp*;
     amp = '&' sp*;
     div = 'DIV' sp*;
@@ -81,7 +75,7 @@ Tokens
     integer = number+ sp*;
     identifier = letter (letter | number)* sp*;
     
-    blank_newline = newline*;
+    blank_newline = newline* sp*;
     blank_whitespace = sp*;
     tab = horizontal_tab;
     
@@ -89,85 +83,197 @@ Ignored Tokens
 	blank_newline, blank_whitespace, tab;  
     
 Productions 
-    program = moduletxt [beginid]:identifier semi declarations begstat? endtxt [endid]:identifier dot;
+    module {-> module}
+    	=	{withstat} moduletxt [beginid]:identifier semi declarations begintxt sptxt* statements endtxt [endid]:identifier dot
+    	{-> New module(beginid, declarations, [statements.statement])}
+    	|	{nostat} moduletxt [beginid]:identifier semi declarations endtxt [endid]:identifier dot
+    	{-> New module(beginid, declarations, [])};
+    
+    declarations {-> declarations}
+     	= 	constdecl? typedecl? vardecl? proceduredeclaration*
+     	{-> New declarations(constdecl, typedecl, vardecl, [proceduredeclaration])}
+     	;
+   	
+   	statements {-> statement*} =
+      {statement}   statement {-> [statement] }
+    | {more}		statements semi statement {-> [statements.statement, statement] }
+  	;
+	statement {-> statement}= 
+    	{statass} assignment |
+    	{statproc} procedurecall | 
+    	{statif} ifstatement |
+    	{statwhi} whilestatement;
+    
+    constdeclarations {-> constdeclaration*} =
+      {constdeclaration}   	constdeclaration {-> [constdeclaration] }
+    | {more}				constdeclarations semi constdeclaration {-> [constdeclarations.constdeclaration, constdeclaration] }
+  	;
+	constdecl {-> constdecl} = 
+		consttxt constdeclaration* {-> New constdecl([constdeclaration])};
+    constdeclaration {-> constdeclaration} = 
+    	identifier exeq sptxt* exp semi {-> New constdeclaration(identifier, exp)};
+    
+    typedeclarations {-> typedeclaration*} =
+      {typedeclaration}   	typedeclaration {-> [typedeclaration] }
+    | {more}				typedeclarations semi typedeclaration {-> [typedeclarations.typedeclaration, typedeclaration] }
+  	;
+	typedecl {-> typedecl} = 
+		typetxt typedeclaration* {-> New typedecl([typedeclaration])};
+    typedeclaration {-> typedeclaration} = 
+    	identifier exeq sptxt* type semi {-> New typedeclaration(identifier, type)};
+    
+	vardeclarations {-> vardeclaration*} =
+      {vardeclaration}   	vardeclaration {-> [vardeclaration] }
+    | {more}				vardeclarations semi vardeclaration {-> [vardeclarations.vardeclaration, vardeclaration] }
+  	;
+	vardecl {-> vardecl} = 
+		vartxt vardeclaration* {-> New vardecl([vardeclaration])};
+    vardeclaration {-> vardeclaration} = 
+    	identifiers colon type semi {-> New vardeclaration([identifiers.identifier], type)};
+    
+   	assignment {-> assignment} = 
+   		identifier ass exp {-> New assignment(identifier, exp)};
+
+	type {-> type}
+    	= {array}	arraytxt exp oftxt type {-> New type.array(exp, type)}
+    	| {identifier} 	identifier
+    	;	
+    	
+	identifiers {-> identifier*} =
+      {identifier}   	identifier {-> [identifier] }
+    | {more}			identifiers comma identifier {-> [identifiers.identifier, identifier] }
+  	;
+
+	proceduredeclaration {-> proceduredeclaration} = 
+		procedureheading [beginsemi]:semi procedurebody identifier [endsemi]:semi 
+		{-> New proceduredeclaration(procedureheading, procedurebody, identifier)};
+  	procedurecall {-> procedurecall} = 
+  		identifier actualparameters? {-> New procedurecall(identifier, [actualparameters.exp])}; 
+    procedureheading {-> procedureheading} = 
+    	proceduretxt identifier formalparameters? {-> New procedureheading(identifier, [formalparameters.fpsection])};
+    procedurebody {-> procedurebody} 
+    	= {withstat} declarations begintxt sptxt* statements endtxt {-> New procedurebody(declarations, [statements.statement])}
+    	| {nostat} declarations endtxt {-> New procedurebody(declarations, [])}
+    	; 
+  	
+	actualparameters {-> exp*} = 
+		l_par exps r_par {-> [exps.exp]};
+	
+	formalparameters {-> fpsection*} = 
+		l_par fpsections r_par {-> [fpsections.fpsection]};	
+		
+	fpsections {-> fpsection*} =
+      {fpsection}   	fpsection {-> [fpsection] }
+    | {more}			fpsections semi fpsection {-> [fpsections.fpsection, fpsection] }
+  	;
+	fpsection {-> fpsection} = 
+		vartxt? identifiers colon type {-> New fpsection([identifiers.identifier], type)};
+	
+    whilestatement {-> whilestatement} = 
+    	whiletxt exp dotxt statements endtxt {-> New whilestatement(exp, [statements.statement])};
+    	
+    ifstatement {-> ifstatement} = 
+    	iftxt exp thentxt statements elsif* else? endtxt {-> New ifstatement(exp, [statements.statement], [elsif.ifstatement], [else.statement])};
+    
+    elsif {-> ifstatement} = 
+    	elsiftxt exp thentxt statements {-> New ifstatement(exp, [statements.statement], [], [])};
+    
+	else {-> statement*} = 
+		elsetxt statements {-> [statements.statement]};
+	
+	exps {-> exp*} =
+      {exp}   	exp {-> [exp] }
+    | {more}	exps comma exp {-> [exps.exp, exp] }
+  	;	 
+    exp {-> exp}
+		= {add}		[left]:exp add [right]:factor			{-> New exp.add(left, right.exp)}
+		| {sub}		[left]:exp sub [right]:factor 			{-> New exp.sub(left, right.exp)}
+		| {exeq}	[left]:exp exeq [right]:factor 			{-> New exp.exeq(left, right.exp)}
+    	| {exha}	[left]:exp exha [right]:factor 			{-> New exp.exha(left, right.exp)}
+    	| {exst}	[left]:exp exst [right]:factor 			{-> New exp.exst(left, right.exp)}
+    	| {exse}	[left]:exp exse [right]:factor 			{-> New exp.exse(left, right.exp)}
+    	| {exgt}	[left]:exp exgt [right]:factor 			{-> New exp.exgt(left, right.exp)}
+    	| {exge}	[left]:exp exge [right]:factor 			{-> New exp.exge(left, right.exp)}
+		| {factor}	factor									{-> factor.exp}
+		;
+		
+	factor {-> exp}
+		= {mul}		[left]:factor mul [right]:unary			{-> New exp.mul(left.exp, right.exp)}
+		| {div}		[left]:factor div [right]:unary			{-> New exp.div(left.exp, right.exp)}
+		| {mod}		[left]:factor mod [right]:unary			{-> New exp.mod(left.exp, right.exp)}
+		| {amp}		[left]:factor amp [right]:unary			{-> New exp.amp(left.exp, right.exp)}
+		| {til}		[left]:factor til [right]:unary			{-> New exp.amp(left.exp, right.exp)}
+		| {unary}	unary									{-> unary.exp}
+		;
+		
+	unary {-> exp}
+		= {integer}	integer									{-> New exp.integer(integer)}
+		| {identsel} identifier selector					{-> New exp.identsel(identifier, selector)}
+		| {paren}	l_par exp r_par							{-> New exp.paren(exp)}
+		;
+		
+	selector {-> selector} 
+		= {identifier} dot identifier {-> New selector.identifier(identifier)}
+		| {expression} l_bkt exp r_bkt {-> New selector.expression(exp)}
+		| {none} {-> New selector.none()}
+		;
+   		
+Abstract Syntax Tree
+    module = [name]:identifier [decl]:declarations [statement]:statement*;
     
     declarations = constdecl? typedecl? vardecl? proceduredeclaration*;
-    begstat = begintxt sptxt* statementsequence;
     
-    constdecl = consttxt constdeclaration+;
-    typedecl = typetxt typedeclaration+;
-    vardecl = vartxt vardeclaration+;
-    assignment = identifier ass expression;
-    constdeclaration = identifier exeq sptxt* expression semi;
-    typedeclaration = identifier exeq sptxt* type semi;
-    statementsequence = statement andstatement*;
-    vardeclaration = identlist colon sptxt* type semi;
+    constdecl = constdeclaration*;
+    constdeclaration = identifier exp;
     
-    expression = simpleexpression simpleexpressionevaluation?; 
-    type = 
-    	{idtype} identifier | 
-    	{arrtype} arraytype | 
-    	{rectype} recordtype;
-    proceduredeclaration = procedureheading [beginsemi]:semi procedurebody identifier [endsemi]:semi;
+    typedecl = typedeclaration*;
+    typedeclaration = identifier type;
+    
+    vardecl = vardeclaration*;
+    vardeclaration = identifier* type;
+    
+    assignment = identifier exp;
+    
+    type 
+    	= {array} exp type
+    	| {identifier} identifier;
+    
+    proceduredeclaration = procedureheading procedurebody identifier;
+    procedurecall = identifier exp*;
+    procedureheading = identifier fpsection*;
+    procedurebody = declarations statement*;
+    
+    fpsection = identifier* type;
+	
+    whilestatement = [condition]:exp [body]:statement*;
+    ifstatement = [condition]:exp [body]:statement* [elseifs]:ifstatement* [else]:statement*;
+    
+	exp
+		= {add}			[left]:exp [right]:exp
+		| {sub}			[left]:exp [right]:exp
+		| {mul}			[left]:exp [right]:exp
+		| {div}			[left]:exp [right]:exp
+		| {mod}			[left]:exp [right]:exp
+		| {amp}			[left]:exp [right]:exp
+		| {til}			[left]:exp [right]:exp
+		| {exeq}		[left]:exp [right]:exp
+    	| {exha}		[left]:exp [right]:exp
+    	| {exst}		[left]:exp [right]:exp
+    	| {exse}		[left]:exp [right]:exp
+    	| {exgt}		[left]:exp [right]:exp
+    	| {exge}		[left]:exp [right]:exp
+		| {paren}		exp
+		| {integer}		integer
+		| {identsel}	identifier selector
+		;
+	
+	selector 
+		= {identifier} identifier
+		| {expression} exp
+		| {none};
+    
     statement = 
     	{statass} assignment |
     	{statproc} procedurecall | 
     	{statif} ifstatement |
     	{statwhi} whilestatement;
-    identlist = identifier andidentifier*;
-    andstatement = semi sptxt* statement;
-    
-    andidentifier = comma sptxt* identifier;
-    simpleexpressionevaluation = expressionoperator sptxt* simpleexpression;
-    simpleexpression = plusorminus? term moreterms*;
-    recordtype = recordtxt fieldlist morefields endtxt;
-    arraytype = arraytxt expression oftxt type;
-    whilestatement = whiletxt expression dotxt statementsequence endtxt;
-    ifstatement = iftxt expression thentxt statementsequence elsif? else? endtxt; 
-    procedurecall = identifier actualparams*; 
-    procedureheading = proceduretxt identifier formalparams?;
-    procedurebody = declarations procedurebodystatements? endtxt; 
-   
- 	term = factor sptxt* additionaloperations*;
- 	moreterms = plusorminusoror term;
-	fieldlist = 
-		{fieldlist} identlist colon type |
-		{listnone} sptxt; 
-	morefields = semi fieldlist;
-	elsif = elsiftxt expression thentxt statementsequence;
-	else = elsetxt statementsequence; 
-	actualparams = l_par actualparameters? r_par;
-	formalparams = l_par formalparameters? r_par;
-	procedurebodystatements = begintxt statementsequence;
-   
-   	additionaloperations = termoperator sptxt* factor;
-    factor = 
-    	{intfactor} integer | 
-    	{expfactor} l_par expression r_par |
-    	{tilfactor} tilde factor |
-    	{idfactor} identifier selector;
-   	actualparameters = expression moreactualparameters*;
-   	formalparameters = fpsection sptxt* moreformalparameters*;
-   
-	selector = realselector*;
-	termoperator = 
-		{temmult} mult | 
-		{termdiv} div | 
-		{termmod} mod | 
-		{termamp} amp; 
-
-    realselector = 
-    	{dotselector} dot identifier |
-    	{arrselector} l_bkt expression r_bkt;
-   	fpsection = vartxt? identlist colon sptxt* type;
-	moreactualparameters = comma sptxt* expression;
-	moreformalparameters = semi sptxt* fpsection; 
-	
-	
-    expressionoperator = 
-   		{exequ} exeq |
-   		{exhas} exha |
-   		{exgrt} exgt |
-   		{exgre} exge |
-   		{exsmt} exst |
-   		{exsme} exse;

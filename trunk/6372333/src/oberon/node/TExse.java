@@ -7,14 +7,14 @@ import oberon.analysis.*;
 @SuppressWarnings("nls")
 public final class TExse extends Token
 {
-    public TExse()
+    public TExse(String text)
     {
-        super.setText("<=");
+        setText(text);
     }
 
-    public TExse(int line, int pos)
+    public TExse(String text, int line, int pos)
     {
-        super.setText("<=");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,17 +22,11 @@ public final class TExse extends Token
     @Override
     public Object clone()
     {
-      return new TExse(getLine(), getPos());
+      return new TExse(getText(), getLine(), getPos());
     }
 
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTExse(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TExse text.");
     }
 }

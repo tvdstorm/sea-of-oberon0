@@ -1,11 +1,13 @@
 package oberon.interpret;
 
 import oberon.analysis.DepthFirstAdapter;
-import oberon.node.AProgram;
+import oberon.node.ADeclarations;
+import oberon.node.AModule;
+import oberon.node.PConstdecl;
 
 public class Interpreter extends DepthFirstAdapter { 
 	  
-	   public void caseAProgram(AProgram node) { 	
+	   public void caseAModule(AModule node) {
 		  /*String lhs = node.getLeft().getText().trim(); 
 	      String rhs = node.getRight().getText().trim();
 	      POperator operator = node.getOperator();
@@ -23,5 +25,5 @@ public class Interpreter extends DepthFirstAdapter {
 	      }
 	      
 	      System.out.println(lhs + operatorString + rhs + "=" + result); */
-	   } 
+	   }
 	}

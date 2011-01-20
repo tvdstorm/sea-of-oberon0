@@ -2,14 +2,14 @@
 
 package oberon.node;
 
+import java.util.*;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
 public final class AProcedurebody extends PProcedurebody
 {
     private PDeclarations _declarations_;
-    private PProcedurebodystatements _procedurebodystatements_;
-    private TEndtxt _endtxt_;
+    private final LinkedList<PStatement> _statement_ = new LinkedList<PStatement>();
 
     public AProcedurebody()
     {
@@ -18,15 +18,12 @@ public final class AProcedurebody extends PProcedurebody
 
     public AProcedurebody(
         @SuppressWarnings("hiding") PDeclarations _declarations_,
-        @SuppressWarnings("hiding") PProcedurebodystatements _procedurebodystatements_,
-        @SuppressWarnings("hiding") TEndtxt _endtxt_)
+        @SuppressWarnings("hiding") List<PStatement> _statement_)
     {
         // Constructor
         setDeclarations(_declarations_);
 
-        setProcedurebodystatements(_procedurebodystatements_);
-
-        setEndtxt(_endtxt_);
+        setStatement(_statement_);
 
     }
 
@@ -35,8 +32,7 @@ public final class AProcedurebody extends PProcedurebody
     {
         return new AProcedurebody(
             cloneNode(this._declarations_),
-            cloneNode(this._procedurebodystatements_),
-            cloneNode(this._endtxt_));
+            cloneList(this._statement_));
     }
 
     public void apply(Switch sw)
@@ -69,54 +65,24 @@ public final class AProcedurebody extends PProcedurebody
         this._declarations_ = node;
     }
 
-    public PProcedurebodystatements getProcedurebodystatements()
+    public LinkedList<PStatement> getStatement()
     {
-        return this._procedurebodystatements_;
+        return this._statement_;
     }
 
-    public void setProcedurebodystatements(PProcedurebodystatements node)
+    public void setStatement(List<PStatement> list)
     {
-        if(this._procedurebodystatements_ != null)
+        this._statement_.clear();
+        this._statement_.addAll(list);
+        for(PStatement e : list)
         {
-            this._procedurebodystatements_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
+            if(e.parent() != null)
             {
-                node.parent().removeChild(node);
+                e.parent().removeChild(e);
             }
 
-            node.parent(this);
+            e.parent(this);
         }
-
-        this._procedurebodystatements_ = node;
-    }
-
-    public TEndtxt getEndtxt()
-    {
-        return this._endtxt_;
-    }
-
-    public void setEndtxt(TEndtxt node)
-    {
-        if(this._endtxt_ != null)
-        {
-            this._endtxt_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._endtxt_ = node;
     }
 
     @Override
@@ -124,8 +90,7 @@ public final class AProcedurebody extends PProcedurebody
     {
         return ""
             + toString(this._declarations_)
-            + toString(this._procedurebodystatements_)
-            + toString(this._endtxt_);
+            + toString(this._statement_);
     }
 
     @Override
@@ -138,15 +103,8 @@ public final class AProcedurebody extends PProcedurebody
             return;
         }
 
-        if(this._procedurebodystatements_ == child)
+        if(this._statement_.remove(child))
         {
-            this._procedurebodystatements_ = null;
-            return;
-        }
-
-        if(this._endtxt_ == child)
-        {
-            this._endtxt_ = null;
             return;
         }
 
@@ -163,16 +121,22 @@ public final class AProcedurebody extends PProcedurebody
             return;
         }
 
-        if(this._procedurebodystatements_ == oldChild)
+        for(ListIterator<PStatement> i = this._statement_.listIterator(); i.hasNext();)
         {
-            setProcedurebodystatements((PProcedurebodystatements) newChild);
-            return;
-        }
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((PStatement) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
 
-        if(this._endtxt_ == oldChild)
-        {
-            setEndtxt((TEndtxt) newChild);
-            return;
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
         throw new RuntimeException("Not a child.");

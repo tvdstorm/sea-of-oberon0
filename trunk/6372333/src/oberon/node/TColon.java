@@ -7,14 +7,14 @@ import oberon.analysis.*;
 @SuppressWarnings("nls")
 public final class TColon extends Token
 {
-    public TColon()
+    public TColon(String text)
     {
-        super.setText(":");
+        setText(text);
     }
 
-    public TColon(int line, int pos)
+    public TColon(String text, int line, int pos)
     {
-        super.setText(":");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,17 +22,11 @@ public final class TColon extends Token
     @Override
     public Object clone()
     {
-      return new TColon(getLine(), getPos());
+      return new TColon(getText(), getLine(), getPos());
     }
 
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTColon(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TColon text.");
     }
 }

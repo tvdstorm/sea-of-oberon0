@@ -7,7 +7,7 @@ import oberon.analysis.*;
 @SuppressWarnings("nls")
 public final class Start extends Node
 {
-    private PProgram _pProgram_;
+    private PModule _pModule_;
     private EOF _eof_;
 
     public Start()
@@ -16,10 +16,10 @@ public final class Start extends Node
     }
 
     public Start(
-        @SuppressWarnings("hiding") PProgram _pProgram_,
+        @SuppressWarnings("hiding") PModule _pModule_,
         @SuppressWarnings("hiding") EOF _eof_)
     {
-        setPProgram(_pProgram_);
+        setPModule(_pModule_);
         setEOF(_eof_);
     }
 
@@ -27,7 +27,7 @@ public final class Start extends Node
     public Object clone()
     {
         return new Start(
-            cloneNode(this._pProgram_),
+            cloneNode(this._pModule_),
             cloneNode(this._eof_));
     }
 
@@ -36,16 +36,16 @@ public final class Start extends Node
         ((Analysis) sw).caseStart(this);
     }
 
-    public PProgram getPProgram()
+    public PModule getPModule()
     {
-        return this._pProgram_;
+        return this._pModule_;
     }
 
-    public void setPProgram(PProgram node)
+    public void setPModule(PModule node)
     {
-        if(this._pProgram_ != null)
+        if(this._pModule_ != null)
         {
-            this._pProgram_.parent(null);
+            this._pModule_.parent(null);
         }
 
         if(node != null)
@@ -58,7 +58,7 @@ public final class Start extends Node
             node.parent(this);
         }
 
-        this._pProgram_ = node;
+        this._pModule_ = node;
     }
 
     public EOF getEOF()
@@ -89,9 +89,9 @@ public final class Start extends Node
     @Override
     void removeChild(Node child)
     {
-        if(this._pProgram_ == child)
+        if(this._pModule_ == child)
         {
-            this._pProgram_ = null;
+            this._pModule_ = null;
             return;
         }
 
@@ -107,9 +107,9 @@ public final class Start extends Node
     @Override
     void replaceChild(Node oldChild, Node newChild)
     {
-        if(this._pProgram_ == oldChild)
+        if(this._pModule_ == oldChild)
         {
-            setPProgram((PProgram) newChild);
+            setPModule((PModule) newChild);
             return;
         }
 
@@ -126,7 +126,7 @@ public final class Start extends Node
     public String toString()
     {
         return "" +
-            toString(this._pProgram_) +
+            toString(this._pModule_) +
             toString(this._eof_);
     }
 }

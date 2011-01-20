@@ -8,7 +8,6 @@ import oberon.analysis.*;
 @SuppressWarnings("nls")
 public final class ATypedecl extends PTypedecl
 {
-    private TTypetxt _typetxt_;
     private final LinkedList<PTypedeclaration> _typedeclaration_ = new LinkedList<PTypedeclaration>();
 
     public ATypedecl()
@@ -17,12 +16,9 @@ public final class ATypedecl extends PTypedecl
     }
 
     public ATypedecl(
-        @SuppressWarnings("hiding") TTypetxt _typetxt_,
         @SuppressWarnings("hiding") List<PTypedeclaration> _typedeclaration_)
     {
         // Constructor
-        setTypetxt(_typetxt_);
-
         setTypedeclaration(_typedeclaration_);
 
     }
@@ -31,38 +27,12 @@ public final class ATypedecl extends PTypedecl
     public Object clone()
     {
         return new ATypedecl(
-            cloneNode(this._typetxt_),
             cloneList(this._typedeclaration_));
     }
 
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseATypedecl(this);
-    }
-
-    public TTypetxt getTypetxt()
-    {
-        return this._typetxt_;
-    }
-
-    public void setTypetxt(TTypetxt node)
-    {
-        if(this._typetxt_ != null)
-        {
-            this._typetxt_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._typetxt_ = node;
     }
 
     public LinkedList<PTypedeclaration> getTypedeclaration()
@@ -89,7 +59,6 @@ public final class ATypedecl extends PTypedecl
     public String toString()
     {
         return ""
-            + toString(this._typetxt_)
             + toString(this._typedeclaration_);
     }
 
@@ -97,12 +66,6 @@ public final class ATypedecl extends PTypedecl
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._typetxt_ == child)
-        {
-            this._typetxt_ = null;
-            return;
-        }
-
         if(this._typedeclaration_.remove(child))
         {
             return;
@@ -115,12 +78,6 @@ public final class ATypedecl extends PTypedecl
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._typetxt_ == oldChild)
-        {
-            setTypetxt((TTypetxt) newChild);
-            return;
-        }
-
         for(ListIterator<PTypedeclaration> i = this._typedeclaration_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)

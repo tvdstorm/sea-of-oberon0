@@ -8,10 +8,8 @@ import oberon.analysis.*;
 public final class AProceduredeclaration extends PProceduredeclaration
 {
     private PProcedureheading _procedureheading_;
-    private TSemi _beginsemi_;
     private PProcedurebody _procedurebody_;
     private TIdentifier _identifier_;
-    private TSemi _endsemi_;
 
     public AProceduredeclaration()
     {
@@ -20,21 +18,15 @@ public final class AProceduredeclaration extends PProceduredeclaration
 
     public AProceduredeclaration(
         @SuppressWarnings("hiding") PProcedureheading _procedureheading_,
-        @SuppressWarnings("hiding") TSemi _beginsemi_,
         @SuppressWarnings("hiding") PProcedurebody _procedurebody_,
-        @SuppressWarnings("hiding") TIdentifier _identifier_,
-        @SuppressWarnings("hiding") TSemi _endsemi_)
+        @SuppressWarnings("hiding") TIdentifier _identifier_)
     {
         // Constructor
         setProcedureheading(_procedureheading_);
 
-        setBeginsemi(_beginsemi_);
-
         setProcedurebody(_procedurebody_);
 
         setIdentifier(_identifier_);
-
-        setEndsemi(_endsemi_);
 
     }
 
@@ -43,10 +35,8 @@ public final class AProceduredeclaration extends PProceduredeclaration
     {
         return new AProceduredeclaration(
             cloneNode(this._procedureheading_),
-            cloneNode(this._beginsemi_),
             cloneNode(this._procedurebody_),
-            cloneNode(this._identifier_),
-            cloneNode(this._endsemi_));
+            cloneNode(this._identifier_));
     }
 
     public void apply(Switch sw)
@@ -77,31 +67,6 @@ public final class AProceduredeclaration extends PProceduredeclaration
         }
 
         this._procedureheading_ = node;
-    }
-
-    public TSemi getBeginsemi()
-    {
-        return this._beginsemi_;
-    }
-
-    public void setBeginsemi(TSemi node)
-    {
-        if(this._beginsemi_ != null)
-        {
-            this._beginsemi_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._beginsemi_ = node;
     }
 
     public PProcedurebody getProcedurebody()
@@ -154,40 +119,13 @@ public final class AProceduredeclaration extends PProceduredeclaration
         this._identifier_ = node;
     }
 
-    public TSemi getEndsemi()
-    {
-        return this._endsemi_;
-    }
-
-    public void setEndsemi(TSemi node)
-    {
-        if(this._endsemi_ != null)
-        {
-            this._endsemi_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._endsemi_ = node;
-    }
-
     @Override
     public String toString()
     {
         return ""
             + toString(this._procedureheading_)
-            + toString(this._beginsemi_)
             + toString(this._procedurebody_)
-            + toString(this._identifier_)
-            + toString(this._endsemi_);
+            + toString(this._identifier_);
     }
 
     @Override
@@ -200,12 +138,6 @@ public final class AProceduredeclaration extends PProceduredeclaration
             return;
         }
 
-        if(this._beginsemi_ == child)
-        {
-            this._beginsemi_ = null;
-            return;
-        }
-
         if(this._procedurebody_ == child)
         {
             this._procedurebody_ = null;
@@ -215,12 +147,6 @@ public final class AProceduredeclaration extends PProceduredeclaration
         if(this._identifier_ == child)
         {
             this._identifier_ = null;
-            return;
-        }
-
-        if(this._endsemi_ == child)
-        {
-            this._endsemi_ = null;
             return;
         }
 
@@ -237,12 +163,6 @@ public final class AProceduredeclaration extends PProceduredeclaration
             return;
         }
 
-        if(this._beginsemi_ == oldChild)
-        {
-            setBeginsemi((TSemi) newChild);
-            return;
-        }
-
         if(this._procedurebody_ == oldChild)
         {
             setProcedurebody((PProcedurebody) newChild);
@@ -252,12 +172,6 @@ public final class AProceduredeclaration extends PProceduredeclaration
         if(this._identifier_ == oldChild)
         {
             setIdentifier((TIdentifier) newChild);
-            return;
-        }
-
-        if(this._endsemi_ == oldChild)
-        {
-            setEndsemi((TSemi) newChild);
             return;
         }
 

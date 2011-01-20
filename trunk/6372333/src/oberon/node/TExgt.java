@@ -7,14 +7,14 @@ import oberon.analysis.*;
 @SuppressWarnings("nls")
 public final class TExgt extends Token
 {
-    public TExgt()
+    public TExgt(String text)
     {
-        super.setText(">");
+        setText(text);
     }
 
-    public TExgt(int line, int pos)
+    public TExgt(String text, int line, int pos)
     {
-        super.setText(">");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,17 +22,11 @@ public final class TExgt extends Token
     @Override
     public Object clone()
     {
-      return new TExgt(getLine(), getPos());
+      return new TExgt(getText(), getLine(), getPos());
     }
 
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTExgt(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TExgt text.");
     }
 }

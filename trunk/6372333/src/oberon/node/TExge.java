@@ -7,14 +7,14 @@ import oberon.analysis.*;
 @SuppressWarnings("nls")
 public final class TExge extends Token
 {
-    public TExge()
+    public TExge(String text)
     {
-        super.setText(">=");
+        setText(text);
     }
 
-    public TExge(int line, int pos)
+    public TExge(String text, int line, int pos)
     {
-        super.setText(">=");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,17 +22,11 @@ public final class TExge extends Token
     @Override
     public Object clone()
     {
-      return new TExge(getLine(), getPos());
+      return new TExge(getText(), getLine(), getPos());
     }
 
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTExge(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TExge text.");
     }
 }
