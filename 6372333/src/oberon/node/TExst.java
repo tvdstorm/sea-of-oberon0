@@ -7,14 +7,14 @@ import oberon.analysis.*;
 @SuppressWarnings("nls")
 public final class TExst extends Token
 {
-    public TExst()
+    public TExst(String text)
     {
-        super.setText("<");
+        setText(text);
     }
 
-    public TExst(int line, int pos)
+    public TExst(String text, int line, int pos)
     {
-        super.setText("<");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,17 +22,11 @@ public final class TExst extends Token
     @Override
     public Object clone()
     {
-      return new TExst(getLine(), getPos());
+      return new TExst(getText(), getLine(), getPos());
     }
 
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTExst(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TExst text.");
     }
 }

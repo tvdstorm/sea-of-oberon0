@@ -2,14 +2,14 @@
 
 package oberon.node;
 
+import java.util.*;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
 public final class AProcedureheading extends PProcedureheading
 {
-    private TProceduretxt _proceduretxt_;
     private TIdentifier _identifier_;
-    private PFormalparams _formalparams_;
+    private final LinkedList<PFpsection> _fpsection_ = new LinkedList<PFpsection>();
 
     public AProcedureheading()
     {
@@ -17,16 +17,13 @@ public final class AProcedureheading extends PProcedureheading
     }
 
     public AProcedureheading(
-        @SuppressWarnings("hiding") TProceduretxt _proceduretxt_,
         @SuppressWarnings("hiding") TIdentifier _identifier_,
-        @SuppressWarnings("hiding") PFormalparams _formalparams_)
+        @SuppressWarnings("hiding") List<PFpsection> _fpsection_)
     {
         // Constructor
-        setProceduretxt(_proceduretxt_);
-
         setIdentifier(_identifier_);
 
-        setFormalparams(_formalparams_);
+        setFpsection(_fpsection_);
 
     }
 
@@ -34,39 +31,13 @@ public final class AProcedureheading extends PProcedureheading
     public Object clone()
     {
         return new AProcedureheading(
-            cloneNode(this._proceduretxt_),
             cloneNode(this._identifier_),
-            cloneNode(this._formalparams_));
+            cloneList(this._fpsection_));
     }
 
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAProcedureheading(this);
-    }
-
-    public TProceduretxt getProceduretxt()
-    {
-        return this._proceduretxt_;
-    }
-
-    public void setProceduretxt(TProceduretxt node)
-    {
-        if(this._proceduretxt_ != null)
-        {
-            this._proceduretxt_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._proceduretxt_ = node;
     }
 
     public TIdentifier getIdentifier()
@@ -94,59 +65,46 @@ public final class AProcedureheading extends PProcedureheading
         this._identifier_ = node;
     }
 
-    public PFormalparams getFormalparams()
+    public LinkedList<PFpsection> getFpsection()
     {
-        return this._formalparams_;
+        return this._fpsection_;
     }
 
-    public void setFormalparams(PFormalparams node)
+    public void setFpsection(List<PFpsection> list)
     {
-        if(this._formalparams_ != null)
+        this._fpsection_.clear();
+        this._fpsection_.addAll(list);
+        for(PFpsection e : list)
         {
-            this._formalparams_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
+            if(e.parent() != null)
             {
-                node.parent().removeChild(node);
+                e.parent().removeChild(e);
             }
 
-            node.parent(this);
+            e.parent(this);
         }
-
-        this._formalparams_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._proceduretxt_)
             + toString(this._identifier_)
-            + toString(this._formalparams_);
+            + toString(this._fpsection_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._proceduretxt_ == child)
-        {
-            this._proceduretxt_ = null;
-            return;
-        }
-
         if(this._identifier_ == child)
         {
             this._identifier_ = null;
             return;
         }
 
-        if(this._formalparams_ == child)
+        if(this._fpsection_.remove(child))
         {
-            this._formalparams_ = null;
             return;
         }
 
@@ -157,22 +115,28 @@ public final class AProcedureheading extends PProcedureheading
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._proceduretxt_ == oldChild)
-        {
-            setProceduretxt((TProceduretxt) newChild);
-            return;
-        }
-
         if(this._identifier_ == oldChild)
         {
             setIdentifier((TIdentifier) newChild);
             return;
         }
 
-        if(this._formalparams_ == oldChild)
+        for(ListIterator<PFpsection> i = this._fpsection_.listIterator(); i.hasNext();)
         {
-            setFormalparams((PFormalparams) newChild);
-            return;
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((PFpsection) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
+
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
         throw new RuntimeException("Not a child.");

@@ -2,17 +2,13 @@
 
 package oberon.node;
 
-import java.util.*;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
 public final class AConstdeclaration extends PConstdeclaration
 {
     private TIdentifier _identifier_;
-    private TExeq _exeq_;
-    private final LinkedList<TSptxt> _sptxt_ = new LinkedList<TSptxt>();
-    private PExpression _expression_;
-    private TSemi _semi_;
+    private PExp _exp_;
 
     public AConstdeclaration()
     {
@@ -21,21 +17,12 @@ public final class AConstdeclaration extends PConstdeclaration
 
     public AConstdeclaration(
         @SuppressWarnings("hiding") TIdentifier _identifier_,
-        @SuppressWarnings("hiding") TExeq _exeq_,
-        @SuppressWarnings("hiding") List<TSptxt> _sptxt_,
-        @SuppressWarnings("hiding") PExpression _expression_,
-        @SuppressWarnings("hiding") TSemi _semi_)
+        @SuppressWarnings("hiding") PExp _exp_)
     {
         // Constructor
         setIdentifier(_identifier_);
 
-        setExeq(_exeq_);
-
-        setSptxt(_sptxt_);
-
-        setExpression(_expression_);
-
-        setSemi(_semi_);
+        setExp(_exp_);
 
     }
 
@@ -44,10 +31,7 @@ public final class AConstdeclaration extends PConstdeclaration
     {
         return new AConstdeclaration(
             cloneNode(this._identifier_),
-            cloneNode(this._exeq_),
-            cloneList(this._sptxt_),
-            cloneNode(this._expression_),
-            cloneNode(this._semi_));
+            cloneNode(this._exp_));
     }
 
     public void apply(Switch sw)
@@ -80,16 +64,16 @@ public final class AConstdeclaration extends PConstdeclaration
         this._identifier_ = node;
     }
 
-    public TExeq getExeq()
+    public PExp getExp()
     {
-        return this._exeq_;
+        return this._exp_;
     }
 
-    public void setExeq(TExeq node)
+    public void setExp(PExp node)
     {
-        if(this._exeq_ != null)
+        if(this._exp_ != null)
         {
-            this._exeq_.parent(null);
+            this._exp_.parent(null);
         }
 
         if(node != null)
@@ -102,77 +86,7 @@ public final class AConstdeclaration extends PConstdeclaration
             node.parent(this);
         }
 
-        this._exeq_ = node;
-    }
-
-    public LinkedList<TSptxt> getSptxt()
-    {
-        return this._sptxt_;
-    }
-
-    public void setSptxt(List<TSptxt> list)
-    {
-        this._sptxt_.clear();
-        this._sptxt_.addAll(list);
-        for(TSptxt e : list)
-        {
-            if(e.parent() != null)
-            {
-                e.parent().removeChild(e);
-            }
-
-            e.parent(this);
-        }
-    }
-
-    public PExpression getExpression()
-    {
-        return this._expression_;
-    }
-
-    public void setExpression(PExpression node)
-    {
-        if(this._expression_ != null)
-        {
-            this._expression_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._expression_ = node;
-    }
-
-    public TSemi getSemi()
-    {
-        return this._semi_;
-    }
-
-    public void setSemi(TSemi node)
-    {
-        if(this._semi_ != null)
-        {
-            this._semi_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._semi_ = node;
+        this._exp_ = node;
     }
 
     @Override
@@ -180,10 +94,7 @@ public final class AConstdeclaration extends PConstdeclaration
     {
         return ""
             + toString(this._identifier_)
-            + toString(this._exeq_)
-            + toString(this._sptxt_)
-            + toString(this._expression_)
-            + toString(this._semi_);
+            + toString(this._exp_);
     }
 
     @Override
@@ -196,26 +107,9 @@ public final class AConstdeclaration extends PConstdeclaration
             return;
         }
 
-        if(this._exeq_ == child)
+        if(this._exp_ == child)
         {
-            this._exeq_ = null;
-            return;
-        }
-
-        if(this._sptxt_.remove(child))
-        {
-            return;
-        }
-
-        if(this._expression_ == child)
-        {
-            this._expression_ = null;
-            return;
-        }
-
-        if(this._semi_ == child)
-        {
-            this._semi_ = null;
+            this._exp_ = null;
             return;
         }
 
@@ -232,39 +126,9 @@ public final class AConstdeclaration extends PConstdeclaration
             return;
         }
 
-        if(this._exeq_ == oldChild)
+        if(this._exp_ == oldChild)
         {
-            setExeq((TExeq) newChild);
-            return;
-        }
-
-        for(ListIterator<TSptxt> i = this._sptxt_.listIterator(); i.hasNext();)
-        {
-            if(i.next() == oldChild)
-            {
-                if(newChild != null)
-                {
-                    i.set((TSptxt) newChild);
-                    newChild.parent(this);
-                    oldChild.parent(null);
-                    return;
-                }
-
-                i.remove();
-                oldChild.parent(null);
-                return;
-            }
-        }
-
-        if(this._expression_ == oldChild)
-        {
-            setExpression((PExpression) newChild);
-            return;
-        }
-
-        if(this._semi_ == oldChild)
-        {
-            setSemi((TSemi) newChild);
+            setExp((PExp) newChild);
             return;
         }
 

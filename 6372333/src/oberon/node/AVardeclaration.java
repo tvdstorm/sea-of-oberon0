@@ -8,11 +8,8 @@ import oberon.analysis.*;
 @SuppressWarnings("nls")
 public final class AVardeclaration extends PVardeclaration
 {
-    private PIdentlist _identlist_;
-    private TColon _colon_;
-    private final LinkedList<TSptxt> _sptxt_ = new LinkedList<TSptxt>();
+    private final LinkedList<TIdentifier> _identifier_ = new LinkedList<TIdentifier>();
     private PType _type_;
-    private TSemi _semi_;
 
     public AVardeclaration()
     {
@@ -20,22 +17,13 @@ public final class AVardeclaration extends PVardeclaration
     }
 
     public AVardeclaration(
-        @SuppressWarnings("hiding") PIdentlist _identlist_,
-        @SuppressWarnings("hiding") TColon _colon_,
-        @SuppressWarnings("hiding") List<TSptxt> _sptxt_,
-        @SuppressWarnings("hiding") PType _type_,
-        @SuppressWarnings("hiding") TSemi _semi_)
+        @SuppressWarnings("hiding") List<TIdentifier> _identifier_,
+        @SuppressWarnings("hiding") PType _type_)
     {
         // Constructor
-        setIdentlist(_identlist_);
-
-        setColon(_colon_);
-
-        setSptxt(_sptxt_);
+        setIdentifier(_identifier_);
 
         setType(_type_);
-
-        setSemi(_semi_);
 
     }
 
@@ -43,11 +31,8 @@ public final class AVardeclaration extends PVardeclaration
     public Object clone()
     {
         return new AVardeclaration(
-            cloneNode(this._identlist_),
-            cloneNode(this._colon_),
-            cloneList(this._sptxt_),
-            cloneNode(this._type_),
-            cloneNode(this._semi_));
+            cloneList(this._identifier_),
+            cloneNode(this._type_));
     }
 
     public void apply(Switch sw)
@@ -55,66 +40,16 @@ public final class AVardeclaration extends PVardeclaration
         ((Analysis) sw).caseAVardeclaration(this);
     }
 
-    public PIdentlist getIdentlist()
+    public LinkedList<TIdentifier> getIdentifier()
     {
-        return this._identlist_;
+        return this._identifier_;
     }
 
-    public void setIdentlist(PIdentlist node)
+    public void setIdentifier(List<TIdentifier> list)
     {
-        if(this._identlist_ != null)
-        {
-            this._identlist_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._identlist_ = node;
-    }
-
-    public TColon getColon()
-    {
-        return this._colon_;
-    }
-
-    public void setColon(TColon node)
-    {
-        if(this._colon_ != null)
-        {
-            this._colon_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._colon_ = node;
-    }
-
-    public LinkedList<TSptxt> getSptxt()
-    {
-        return this._sptxt_;
-    }
-
-    public void setSptxt(List<TSptxt> list)
-    {
-        this._sptxt_.clear();
-        this._sptxt_.addAll(list);
-        for(TSptxt e : list)
+        this._identifier_.clear();
+        this._identifier_.addAll(list);
+        for(TIdentifier e : list)
         {
             if(e.parent() != null)
             {
@@ -150,59 +85,19 @@ public final class AVardeclaration extends PVardeclaration
         this._type_ = node;
     }
 
-    public TSemi getSemi()
-    {
-        return this._semi_;
-    }
-
-    public void setSemi(TSemi node)
-    {
-        if(this._semi_ != null)
-        {
-            this._semi_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._semi_ = node;
-    }
-
     @Override
     public String toString()
     {
         return ""
-            + toString(this._identlist_)
-            + toString(this._colon_)
-            + toString(this._sptxt_)
-            + toString(this._type_)
-            + toString(this._semi_);
+            + toString(this._identifier_)
+            + toString(this._type_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._identlist_ == child)
-        {
-            this._identlist_ = null;
-            return;
-        }
-
-        if(this._colon_ == child)
-        {
-            this._colon_ = null;
-            return;
-        }
-
-        if(this._sptxt_.remove(child))
+        if(this._identifier_.remove(child))
         {
             return;
         }
@@ -213,12 +108,6 @@ public final class AVardeclaration extends PVardeclaration
             return;
         }
 
-        if(this._semi_ == child)
-        {
-            this._semi_ = null;
-            return;
-        }
-
         throw new RuntimeException("Not a child.");
     }
 
@@ -226,25 +115,13 @@ public final class AVardeclaration extends PVardeclaration
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._identlist_ == oldChild)
-        {
-            setIdentlist((PIdentlist) newChild);
-            return;
-        }
-
-        if(this._colon_ == oldChild)
-        {
-            setColon((TColon) newChild);
-            return;
-        }
-
-        for(ListIterator<TSptxt> i = this._sptxt_.listIterator(); i.hasNext();)
+        for(ListIterator<TIdentifier> i = this._identifier_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)
             {
                 if(newChild != null)
                 {
-                    i.set((TSptxt) newChild);
+                    i.set((TIdentifier) newChild);
                     newChild.parent(this);
                     oldChild.parent(null);
                     return;
@@ -259,12 +136,6 @@ public final class AVardeclaration extends PVardeclaration
         if(this._type_ == oldChild)
         {
             setType((PType) newChild);
-            return;
-        }
-
-        if(this._semi_ == oldChild)
-        {
-            setSemi((TSemi) newChild);
             return;
         }
 

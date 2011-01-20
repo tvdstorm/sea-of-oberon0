@@ -7,14 +7,14 @@ import oberon.analysis.*;
 @SuppressWarnings("nls")
 public final class TComma extends Token
 {
-    public TComma()
+    public TComma(String text)
     {
-        super.setText(",");
+        setText(text);
     }
 
-    public TComma(int line, int pos)
+    public TComma(String text, int line, int pos)
     {
-        super.setText(",");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,17 +22,11 @@ public final class TComma extends Token
     @Override
     public Object clone()
     {
-      return new TComma(getLine(), getPos());
+      return new TComma(getText(), getLine(), getPos());
     }
 
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTComma(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TComma text.");
     }
 }

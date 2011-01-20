@@ -2,16 +2,14 @@
 
 package oberon.node;
 
+import java.util.*;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
 public final class AWhilestatement extends PWhilestatement
 {
-    private TWhiletxt _whiletxt_;
-    private PExpression _expression_;
-    private TDotxt _dotxt_;
-    private PStatementsequence _statementsequence_;
-    private TEndtxt _endtxt_;
+    private PExp _condition_;
+    private final LinkedList<PStatement> _body_ = new LinkedList<PStatement>();
 
     public AWhilestatement()
     {
@@ -19,22 +17,13 @@ public final class AWhilestatement extends PWhilestatement
     }
 
     public AWhilestatement(
-        @SuppressWarnings("hiding") TWhiletxt _whiletxt_,
-        @SuppressWarnings("hiding") PExpression _expression_,
-        @SuppressWarnings("hiding") TDotxt _dotxt_,
-        @SuppressWarnings("hiding") PStatementsequence _statementsequence_,
-        @SuppressWarnings("hiding") TEndtxt _endtxt_)
+        @SuppressWarnings("hiding") PExp _condition_,
+        @SuppressWarnings("hiding") List<PStatement> _body_)
     {
         // Constructor
-        setWhiletxt(_whiletxt_);
+        setCondition(_condition_);
 
-        setExpression(_expression_);
-
-        setDotxt(_dotxt_);
-
-        setStatementsequence(_statementsequence_);
-
-        setEndtxt(_endtxt_);
+        setBody(_body_);
 
     }
 
@@ -42,11 +31,8 @@ public final class AWhilestatement extends PWhilestatement
     public Object clone()
     {
         return new AWhilestatement(
-            cloneNode(this._whiletxt_),
-            cloneNode(this._expression_),
-            cloneNode(this._dotxt_),
-            cloneNode(this._statementsequence_),
-            cloneNode(this._endtxt_));
+            cloneNode(this._condition_),
+            cloneList(this._body_));
     }
 
     public void apply(Switch sw)
@@ -54,16 +40,16 @@ public final class AWhilestatement extends PWhilestatement
         ((Analysis) sw).caseAWhilestatement(this);
     }
 
-    public TWhiletxt getWhiletxt()
+    public PExp getCondition()
     {
-        return this._whiletxt_;
+        return this._condition_;
     }
 
-    public void setWhiletxt(TWhiletxt node)
+    public void setCondition(PExp node)
     {
-        if(this._whiletxt_ != null)
+        if(this._condition_ != null)
         {
-            this._whiletxt_.parent(null);
+            this._condition_.parent(null);
         }
 
         if(node != null)
@@ -76,151 +62,49 @@ public final class AWhilestatement extends PWhilestatement
             node.parent(this);
         }
 
-        this._whiletxt_ = node;
+        this._condition_ = node;
     }
 
-    public PExpression getExpression()
+    public LinkedList<PStatement> getBody()
     {
-        return this._expression_;
+        return this._body_;
     }
 
-    public void setExpression(PExpression node)
+    public void setBody(List<PStatement> list)
     {
-        if(this._expression_ != null)
+        this._body_.clear();
+        this._body_.addAll(list);
+        for(PStatement e : list)
         {
-            this._expression_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
+            if(e.parent() != null)
             {
-                node.parent().removeChild(node);
+                e.parent().removeChild(e);
             }
 
-            node.parent(this);
+            e.parent(this);
         }
-
-        this._expression_ = node;
-    }
-
-    public TDotxt getDotxt()
-    {
-        return this._dotxt_;
-    }
-
-    public void setDotxt(TDotxt node)
-    {
-        if(this._dotxt_ != null)
-        {
-            this._dotxt_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._dotxt_ = node;
-    }
-
-    public PStatementsequence getStatementsequence()
-    {
-        return this._statementsequence_;
-    }
-
-    public void setStatementsequence(PStatementsequence node)
-    {
-        if(this._statementsequence_ != null)
-        {
-            this._statementsequence_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._statementsequence_ = node;
-    }
-
-    public TEndtxt getEndtxt()
-    {
-        return this._endtxt_;
-    }
-
-    public void setEndtxt(TEndtxt node)
-    {
-        if(this._endtxt_ != null)
-        {
-            this._endtxt_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._endtxt_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._whiletxt_)
-            + toString(this._expression_)
-            + toString(this._dotxt_)
-            + toString(this._statementsequence_)
-            + toString(this._endtxt_);
+            + toString(this._condition_)
+            + toString(this._body_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._whiletxt_ == child)
+        if(this._condition_ == child)
         {
-            this._whiletxt_ = null;
+            this._condition_ = null;
             return;
         }
 
-        if(this._expression_ == child)
+        if(this._body_.remove(child))
         {
-            this._expression_ = null;
-            return;
-        }
-
-        if(this._dotxt_ == child)
-        {
-            this._dotxt_ = null;
-            return;
-        }
-
-        if(this._statementsequence_ == child)
-        {
-            this._statementsequence_ = null;
-            return;
-        }
-
-        if(this._endtxt_ == child)
-        {
-            this._endtxt_ = null;
             return;
         }
 
@@ -231,34 +115,28 @@ public final class AWhilestatement extends PWhilestatement
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._whiletxt_ == oldChild)
+        if(this._condition_ == oldChild)
         {
-            setWhiletxt((TWhiletxt) newChild);
+            setCondition((PExp) newChild);
             return;
         }
 
-        if(this._expression_ == oldChild)
+        for(ListIterator<PStatement> i = this._body_.listIterator(); i.hasNext();)
         {
-            setExpression((PExpression) newChild);
-            return;
-        }
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((PStatement) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
 
-        if(this._dotxt_ == oldChild)
-        {
-            setDotxt((TDotxt) newChild);
-            return;
-        }
-
-        if(this._statementsequence_ == oldChild)
-        {
-            setStatementsequence((PStatementsequence) newChild);
-            return;
-        }
-
-        if(this._endtxt_ == oldChild)
-        {
-            setEndtxt((TEndtxt) newChild);
-            return;
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
         throw new RuntimeException("Not a child.");

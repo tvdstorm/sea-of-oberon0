@@ -69,7 +69,7 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseAProgram(AProgram node)
+    public void caseAModule(AModule node)
     {
         defaultCase(node);
     }
@@ -79,27 +79,7 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseABegstat(ABegstat node)
-    {
-        defaultCase(node);
-    }
-
     public void caseAConstdecl(AConstdecl node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseATypedecl(ATypedecl node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAVardecl(AVardecl node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAAssignment(AAssignment node)
     {
         defaultCase(node);
     }
@@ -109,12 +89,17 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
+    public void caseATypedecl(ATypedecl node)
+    {
+        defaultCase(node);
+    }
+
     public void caseATypedeclaration(ATypedeclaration node)
     {
         defaultCase(node);
     }
 
-    public void caseAStatementsequence(AStatementsequence node)
+    public void caseAVardecl(AVardecl node)
     {
         defaultCase(node);
     }
@@ -124,27 +109,147 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseAExpression(AExpression node)
+    public void caseAAssignment(AAssignment node)
     {
         defaultCase(node);
     }
 
-    public void caseAIdtypeType(AIdtypeType node)
+    public void caseAArrayType(AArrayType node)
     {
         defaultCase(node);
     }
 
-    public void caseAArrtypeType(AArrtypeType node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseARectypeType(ARectypeType node)
+    public void caseAIdentifierType(AIdentifierType node)
     {
         defaultCase(node);
     }
 
     public void caseAProceduredeclaration(AProceduredeclaration node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAProcedurecall(AProcedurecall node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAProcedureheading(AProcedureheading node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAProcedurebody(AProcedurebody node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAFpsection(AFpsection node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAWhilestatement(AWhilestatement node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAIfstatement(AIfstatement node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAAddExp(AAddExp node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseASubExp(ASubExp node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAMulExp(AMulExp node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseADivExp(ADivExp node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAModExp(AModExp node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAAmpExp(AAmpExp node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseATilExp(ATilExp node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAExeqExp(AExeqExp node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAExhaExp(AExhaExp node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAExstExp(AExstExp node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAExseExp(AExseExp node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAExgtExp(AExgtExp node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAExgeExp(AExgeExp node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAParenExp(AParenExp node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAIntegerExp(AIntegerExp node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAIdentselExp(AIdentselExp node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAIdentifierSelector(AIdentifierSelector node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAExpressionSelector(AExpressionSelector node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseANoneSelector(ANoneSelector node)
     {
         defaultCase(node);
     }
@@ -165,231 +270,6 @@ public class AnalysisAdapter implements Analysis
     }
 
     public void caseAStatwhiStatement(AStatwhiStatement node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAIdentlist(AIdentlist node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAAndstatement(AAndstatement node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAAndidentifier(AAndidentifier node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseASimpleexpressionevaluation(ASimpleexpressionevaluation node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseASimpleexpression(ASimpleexpression node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseARecordtype(ARecordtype node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAArraytype(AArraytype node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAWhilestatement(AWhilestatement node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAIfstatement(AIfstatement node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAProcedurecall(AProcedurecall node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAProcedureheading(AProcedureheading node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAProcedurebody(AProcedurebody node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseATerm(ATerm node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAMoreterms(AMoreterms node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAFieldlistFieldlist(AFieldlistFieldlist node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAListnoneFieldlist(AListnoneFieldlist node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAMorefields(AMorefields node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAElsif(AElsif node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAElse(AElse node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAActualparams(AActualparams node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAFormalparams(AFormalparams node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAProcedurebodystatements(AProcedurebodystatements node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAAdditionaloperations(AAdditionaloperations node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAIntfactorFactor(AIntfactorFactor node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAExpfactorFactor(AExpfactorFactor node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseATilfactorFactor(ATilfactorFactor node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAIdfactorFactor(AIdfactorFactor node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAActualparameters(AActualparameters node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAFormalparameters(AFormalparameters node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseASelector(ASelector node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseATemmultTermoperator(ATemmultTermoperator node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseATermdivTermoperator(ATermdivTermoperator node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseATermmodTermoperator(ATermmodTermoperator node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseATermampTermoperator(ATermampTermoperator node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseADotselectorRealselector(ADotselectorRealselector node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAArrselectorRealselector(AArrselectorRealselector node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAFpsection(AFpsection node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAMoreactualparameters(AMoreactualparameters node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAMoreformalparameters(AMoreformalparameters node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAExequExpressionoperator(AExequExpressionoperator node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAExhasExpressionoperator(AExhasExpressionoperator node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAExgrtExpressionoperator(AExgrtExpressionoperator node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAExgreExpressionoperator(AExgreExpressionoperator node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAExsmtExpressionoperator(AExsmtExpressionoperator node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAExsmeExpressionoperator(AExsmeExpressionoperator node)
     {
         defaultCase(node);
     }
@@ -429,7 +309,7 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseTTilde(TTilde node)
+    public void caseTTil(TTil node)
     {
         defaultCase(node);
     }
@@ -569,17 +449,17 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseTPlusorminusoror(TPlusorminusoror node)
+    public void caseTAdd(TAdd node)
     {
         defaultCase(node);
     }
 
-    public void caseTPlusorminus(TPlusorminus node)
+    public void caseTSub(TSub node)
     {
         defaultCase(node);
     }
 
-    public void caseTMult(TMult node)
+    public void caseTMul(TMul node)
     {
         defaultCase(node);
     }

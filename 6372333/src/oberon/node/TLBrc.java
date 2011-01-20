@@ -7,14 +7,14 @@ import oberon.analysis.*;
 @SuppressWarnings("nls")
 public final class TLBrc extends Token
 {
-    public TLBrc()
+    public TLBrc(String text)
     {
-        super.setText("{");
+        setText(text);
     }
 
-    public TLBrc(int line, int pos)
+    public TLBrc(String text, int line, int pos)
     {
-        super.setText("{");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,17 +22,11 @@ public final class TLBrc extends Token
     @Override
     public Object clone()
     {
-      return new TLBrc(getLine(), getPos());
+      return new TLBrc(getText(), getLine(), getPos());
     }
 
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTLBrc(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TLBrc text.");
     }
 }

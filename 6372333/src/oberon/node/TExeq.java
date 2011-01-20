@@ -7,14 +7,14 @@ import oberon.analysis.*;
 @SuppressWarnings("nls")
 public final class TExeq extends Token
 {
-    public TExeq()
+    public TExeq(String text)
     {
-        super.setText("=");
+        setText(text);
     }
 
-    public TExeq(int line, int pos)
+    public TExeq(String text, int line, int pos)
     {
-        super.setText("=");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,17 +22,11 @@ public final class TExeq extends Token
     @Override
     public Object clone()
     {
-      return new TExeq(getLine(), getPos());
+      return new TExeq(getText(), getLine(), getPos());
     }
 
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTExeq(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TExeq text.");
     }
 }

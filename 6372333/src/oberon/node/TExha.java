@@ -7,14 +7,14 @@ import oberon.analysis.*;
 @SuppressWarnings("nls")
 public final class TExha extends Token
 {
-    public TExha()
+    public TExha(String text)
     {
-        super.setText("#");
+        setText(text);
     }
 
-    public TExha(int line, int pos)
+    public TExha(String text, int line, int pos)
     {
-        super.setText("#");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,17 +22,11 @@ public final class TExha extends Token
     @Override
     public Object clone()
     {
-      return new TExha(getLine(), getPos());
+      return new TExha(getText(), getLine(), getPos());
     }
 
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTExha(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TExha text.");
     }
 }

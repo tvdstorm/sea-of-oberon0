@@ -9,7 +9,7 @@ import oberon.analysis.*;
 public final class AProcedurecall extends PProcedurecall
 {
     private TIdentifier _identifier_;
-    private final LinkedList<PActualparams> _actualparams_ = new LinkedList<PActualparams>();
+    private final LinkedList<PExp> _exp_ = new LinkedList<PExp>();
 
     public AProcedurecall()
     {
@@ -18,12 +18,12 @@ public final class AProcedurecall extends PProcedurecall
 
     public AProcedurecall(
         @SuppressWarnings("hiding") TIdentifier _identifier_,
-        @SuppressWarnings("hiding") List<PActualparams> _actualparams_)
+        @SuppressWarnings("hiding") List<PExp> _exp_)
     {
         // Constructor
         setIdentifier(_identifier_);
 
-        setActualparams(_actualparams_);
+        setExp(_exp_);
 
     }
 
@@ -32,7 +32,7 @@ public final class AProcedurecall extends PProcedurecall
     {
         return new AProcedurecall(
             cloneNode(this._identifier_),
-            cloneList(this._actualparams_));
+            cloneList(this._exp_));
     }
 
     public void apply(Switch sw)
@@ -65,16 +65,16 @@ public final class AProcedurecall extends PProcedurecall
         this._identifier_ = node;
     }
 
-    public LinkedList<PActualparams> getActualparams()
+    public LinkedList<PExp> getExp()
     {
-        return this._actualparams_;
+        return this._exp_;
     }
 
-    public void setActualparams(List<PActualparams> list)
+    public void setExp(List<PExp> list)
     {
-        this._actualparams_.clear();
-        this._actualparams_.addAll(list);
-        for(PActualparams e : list)
+        this._exp_.clear();
+        this._exp_.addAll(list);
+        for(PExp e : list)
         {
             if(e.parent() != null)
             {
@@ -90,7 +90,7 @@ public final class AProcedurecall extends PProcedurecall
     {
         return ""
             + toString(this._identifier_)
-            + toString(this._actualparams_);
+            + toString(this._exp_);
     }
 
     @Override
@@ -103,7 +103,7 @@ public final class AProcedurecall extends PProcedurecall
             return;
         }
 
-        if(this._actualparams_.remove(child))
+        if(this._exp_.remove(child))
         {
             return;
         }
@@ -121,13 +121,13 @@ public final class AProcedurecall extends PProcedurecall
             return;
         }
 
-        for(ListIterator<PActualparams> i = this._actualparams_.listIterator(); i.hasNext();)
+        for(ListIterator<PExp> i = this._exp_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)
             {
                 if(newChild != null)
                 {
-                    i.set((PActualparams) newChild);
+                    i.set((PExp) newChild);
                     newChild.parent(this);
                     oldChild.parent(null);
                     return;
