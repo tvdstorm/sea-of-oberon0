@@ -44,8 +44,7 @@ public class OVarDeclaration extends OBodyDeclaration
 				throw new Oberon0TypeMismatchException(parameters.peek().getType(), type); // TODO: testcase voor schrijven
 			if (isReference)
 			{
-				OReference ref = new OReference(parameters.poll());
-				vars.addVariable(name, ref);
+				vars.addVariable(name, parameters.poll());
 			}
 			else
 			{
