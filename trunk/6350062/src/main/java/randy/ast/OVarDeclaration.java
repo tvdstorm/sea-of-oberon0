@@ -40,8 +40,8 @@ public class OVarDeclaration extends OBodyDeclaration
 			{
 				// Ok
 			}
-			else if (!parameters.peek().getType().equals(type))
-				throw new Oberon0TypeMismatchException(parameters.peek().getType(), type); // TODO: testcase voor schrijven
+			else if (!parameters.peek().getType().equals(type) || (parameters.peek().getType().isArray() && !bIsArray) || (!parameters.peek().getType().isArray() && bIsArray))
+				throw new Oberon0TypeMismatchException(parameters.peek().getType(), type);
 			if (isReference)
 			{
 				vars.addVariable(name, parameters.poll());
@@ -50,7 +50,7 @@ public class OVarDeclaration extends OBodyDeclaration
 			{
 				if (bIsArray)
 				{
-					// TODO: testcase voor dit pad schrijven
+					// TODO: kijken of array length overeenkomen en dit opsplitsen met OArrayVarDeclaration
 					OArray val = new OArray((OArray)parameters.poll());
 					vars.addVariable(name, val);
 				}

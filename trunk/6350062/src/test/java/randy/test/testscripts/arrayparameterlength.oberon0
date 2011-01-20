@@ -1,0 +1,18 @@
+MODULE Arrayparameterlength;
+VAR ar: ARRAY 5 OF INTEGER;
+PROCEDURE Func(x: ARRAY 3 OF INTEGER);
+  BEGIN
+    Write(ar[0]);
+    Write(ar[1]);
+    Write(ar[2])
+  END Func;
+BEGIN
+
+Read(ar[0]);
+Read(ar[1]);
+Read(ar[2]);
+ar[3] := 0;
+ar[4] := 0;
+Func(ar)
+
+END Arrayparameterlength.
