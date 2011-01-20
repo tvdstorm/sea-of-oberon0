@@ -504,6 +504,53 @@ public class ASTNodeTest
 		runTest();
 		Assert.assertTrue(functions.outputIsEmpty());
 	}
+	@Test
+	public void test_IncorrectParameterType()
+	{
+		try
+		{
+			prepareTest("incorrectparametertype");
+			program.run();
+			Assert.fail("Should be throwing an Oberon0TypeMismatchException...");
+		}
+		catch (Oberon0TypeMismatchException e)
+		{
+			// Success
+		}
+		catch (Oberon0Exception e)
+		{
+			Assert.fail("Should be throwing an Oberon0TypeMismatchException...");
+		}
+	}
+	@Test
+	public void test_ArrayParameter()
+	{
+		prepareTest("arrayparameter");
+		for (int i=0;i<numTests;i++)
+		{
+			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt(), d = random.nextInt(), e = random.nextInt();
+			runTest(""+a, ""+b, ""+c, ""+d, ""+e);
+			
+			Assert.assertTrue(functions.popOutput().equals("" + a));
+			Assert.assertTrue(functions.popOutput().equals("" + b));
+			Assert.assertTrue(functions.popOutput().equals("" + c));
+			Assert.assertTrue(functions.popOutput().equals("" + d));
+			Assert.assertTrue(functions.popOutput().equals("" + e));
+			Assert.assertTrue(functions.outputIsEmpty());
+		}
+	}
+	@Test
+	public void test_ArrayParameterLength()
+	{
+		prepareTest("arrayparameterlength");
+		for (int i=0;i<numTests;i++)
+		{
+			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt(), d = random.nextInt(), e = random.nextInt();
+			runTest(""+a, ""+b, ""+c, ""+d, ""+e);
+			
+			Assert.fail("Should be throwing an Exception..."); // TODO: exceptie specificeren en code verbeteren.
+		}
+	}
 	
 	@Ignore
 	private void prepareTestThrowException(String testName) throws Oberon0Exception
