@@ -172,7 +172,7 @@ actualParameters
 				: 	RND_OPEN RND_CLOSE
 				->
 				|	RND_OPEN expression (COMMA expression)* RND_CLOSE
-				->	(PARAMS expression+) ;
+				->	^(PARAMS expression+) ;
 
 expression
 				:	simpleExpression (expressionOperator^ simpleExpression)? ;
