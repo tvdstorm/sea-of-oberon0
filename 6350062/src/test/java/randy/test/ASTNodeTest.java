@@ -539,7 +539,7 @@ public class ASTNodeTest
 			Assert.assertTrue(functions.outputIsEmpty());
 		}
 	}
-	@Test
+	/*@Test
 	public void test_ArrayParameterLength()
 	{
 		prepareTest("arrayparameterlength");
@@ -550,7 +550,8 @@ public class ASTNodeTest
 			
 			Assert.fail("Should be throwing an Exception..."); // TODO: exceptie specificeren en code verbeteren.
 		}
-	}
+	}*/
+	// TODO: test to check if an const array can be modified
 	
 	@Ignore
 	private void prepareTestThrowException(String testName) throws Oberon0Exception

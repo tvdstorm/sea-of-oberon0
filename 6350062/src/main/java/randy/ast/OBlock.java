@@ -12,6 +12,7 @@ public class OBlock extends OStatement
 	
 	public OBlock(List<OStatement> _statements)
 	{
+		assert(_statements != null);
 		statements = _statements;
 	}
 	public static OBlock buildBlock(Tree tree) throws Oberon0Exception
@@ -27,6 +28,8 @@ public class OBlock extends OStatement
 	@Override
 	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
+		assert(vars != null);
+		// Loop through all statements and run them
 		for (OStatement st : statements)
 		{
 			st.run(vars);

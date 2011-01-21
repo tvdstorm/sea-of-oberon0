@@ -10,6 +10,7 @@ public abstract class OASTNode
 {
 	public static OASTNode buildASTTree(Tree tree) throws Oberon0Exception
 	{
+		assert(tree != null);
 		switch (tree.getType())
 		{
 			case Oberon0Parser.MODULE:

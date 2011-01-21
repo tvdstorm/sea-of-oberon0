@@ -14,11 +14,16 @@ public class OModule extends OASTNode
 	
 	public OModule(List<OBodyDeclaration> _bodyDeclarations, OASTNode _body)
 	{
+		assert(_body != null);
+		assert(_bodyDeclarations != null);
 		body = _body;
 		bodyDeclarations = _bodyDeclarations;
 	}
 	public static OModule buildModule(Tree tree) throws Oberon0Exception
 	{
+		assert(tree.getType() == Oberon0Parser.MODULE);
+		assert(tree.getChildCount() >= 1);
+		assert(tree.getChild(0).getType() == Oberon0Parser.IDENT);
 		OASTNode body = null;
 		List<OBodyDeclaration> bodyDeclarations = new Vector<OBodyDeclaration>();
 		for (int i=1;i<tree.getChildCount();i++)
@@ -43,11 +48,16 @@ public class OModule extends OASTNode
 	@Override
 	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
+		assert(vars != null);
+		assert(bodyDeclarations != null);
+		assert(body != null);
+		// Run all the body declarations
 		for (OBodyDeclaration bd : bodyDeclarations)
 		{
 			bd.run(vars);
 		}
-		// TODO: rekening houden met body's die leeg (null) zijn
+		// TODO: rekening houden met body's die leeg (null) zijn, als dit mogelijk is
+		// Run the body of the module
 		return body.run(vars);
 	}
 	@Override
