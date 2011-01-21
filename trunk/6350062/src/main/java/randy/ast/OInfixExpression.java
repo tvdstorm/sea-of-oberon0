@@ -49,12 +49,16 @@ public class OInfixExpression extends OExpression
 	
 	public OInfixExpression(OExpression _lhs, Operator _operator, OExpression _rhs)
 	{
+		assert(_lhs != null);
+		assert(_operator != null);
+		assert(_rhs != null);
 		lhs = _lhs;
 		operator = _operator;
 		rhs = _rhs;
 	}
 	public static OInfixExpression buildInfixExpression(Tree tree) throws Oberon0Exception
 	{
+		assert(tree.getChildCount() == 2);
 		OExpression left = OExpression.buildExpression(tree.getChild(0));
 		OExpression right = OExpression.buildExpression(tree.getChild(1));
 		Operator operator = Operator.get(tree.getText());
@@ -65,8 +69,12 @@ public class OInfixExpression extends OExpression
 	@Override
 	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
+		assert(vars != null);
+		// Evaluate the left hand side and right hand side and see if they are both integers of booleans
 		OValue lhsVal = lhs.run(vars).dereference();
 		OValue rhsVal = rhs.run(vars).dereference();
+		assert(lhsVal != null);
+		assert(rhsVal != null);
 		if (lhsVal instanceof OInteger && rhsVal instanceof OInteger)
 			return processIntegerExpression((OInteger)lhsVal, (OInteger)rhsVal);
 		else if (lhsVal instanceof OBoolean && rhsVal instanceof OBoolean)
@@ -76,6 +84,7 @@ public class OInfixExpression extends OExpression
 	}
 	private OValue processIntegerExpression(OInteger lhs, OInteger rhs) throws Oberon0OperatorTypeUndefinedException
 	{
+		// Process the infix integer expression
 		if (operator == Operator.PLUS)
 			return new OInteger(lhs.getIntValue() + rhs.getIntValue());
 		else if (operator == Operator.MINUS)
@@ -99,6 +108,7 @@ public class OInfixExpression extends OExpression
 	}
 	private OValue processBooleanExpression(OBoolean lhs, OBoolean rhs) throws Oberon0OperatorTypeUndefinedException
 	{
+		// Process the boolean infix expression
 		if (operator == Operator.AND)
 			return new OBoolean(lhs.getBoolValue() && rhs.getBoolValue());
 		else if (operator == Operator.OR)

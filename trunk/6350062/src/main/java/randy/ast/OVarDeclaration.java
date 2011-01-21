@@ -16,6 +16,8 @@ public class OVarDeclaration extends OBodyDeclaration
 	
 	public OVarDeclaration(Type _type, boolean _isReference, List<String> _names)
 	{
+		assert(_type != null);
+		assert(_names != null);
 		bIsArray = false;
 		type = _type;
 		isReference = _isReference;
@@ -24,14 +26,17 @@ public class OVarDeclaration extends OBodyDeclaration
 	@Override
 	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
+		assert(vars != null);
 		for (String name : names)
 		{
+			assert(name.length() >= 1);
 			vars.addVariable(name, OValue.makeNew(type));
 		}
 		return null;
 	}
 	public OValue runForParameter(Oberon0VariableStack vars, Queue<OValue> parameters) throws Oberon0RuntimeException
 	{
+		// TODO: asserts toevoegen
 		if (parameters.size() < names.size())
 			throw new Oberon0IncorrectNumberOfArgumentsException();
 		for (String name : names)
@@ -66,6 +71,9 @@ public class OVarDeclaration extends OBodyDeclaration
 	}
 	public static OVarDeclaration buildVarDeclaration(Tree tree) throws Oberon0Exception
 	{
+		assert(tree.getType() == Oberon0Parser.VAR || tree.getType() == Oberon0Parser.REFVAR);
+		assert(tree.getChildCount() >= 1);
+		assert(tree.getType() == Oberon0Parser.IDENT);
 		boolean isReference = false;
 		if (tree.getType() == Oberon0Parser.REFVAR)
 			isReference = true;
