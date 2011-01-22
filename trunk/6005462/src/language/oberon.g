@@ -13,8 +13,6 @@ tokens {
     ACTUALPARAMS;
     IFSTATEMENT;
     TILDEFACTOR;
-    EXPRESSION;
-    SIMPLEEXPR;
     IDENTIFIER;
     STATEMENT;
     FPSECTION;
@@ -25,14 +23,10 @@ tokens {
     PROCDECL;
     PROCHEAD;
     PROCBODY;
-    SELECTOR;
     DOTSELECTOR;
     BRACKETSELECTOR;
     NUMBER;
-    FACTOR;
     VARS;
-    TYPE;
-    TERM;
 } 
 
 @header {
@@ -100,26 +94,16 @@ module
     :   MODULE ident SEMI declarations (BEGIN statementSequence)? END ident DOT ->
         ^(MODULE ident declarations (BEGIN statementSequence)? ident) ; 
 
-//NOTE CHECKME: alleen de expression heeft een sterretje?
 identSelector    
-    :   ident (selectorRightPart)* 
-    ->  ^(SELECTOR ident (selectorRightPart)*) ;
+    :   ident (selectorRightPart)* ;
 
 selectorRightPart
     :   (DOT ident)         ->  ^(DOTSELECTOR ident)
     |   (LB expression RB)  ->  ^(BRACKETSELECTOR expression) ;
-    
-/*selector    
-    :   ((DOT ident)          ->  ^(SELECTOR ident)
-    |   (LB expression RB) )* ->  ^(SELECTOR expression)* ;*/
 
 number      
     :   INTEGER 
     -> ^(NUMBER INTEGER);
-
-/*factor
-    :   factor_ 
-    ->  ^(FACTOR factor_)* ;*/ 
 
 factor      
     :   identSelector      
@@ -127,23 +111,11 @@ factor
     |   ( LP! expression RP! ) 
     |   (TILDE factor)          -> ^(TILDEFACTOR factor) ;
 
-/*term
-    : term_
-    -> ^(TERM term_);*/
-
 term    
     :   factor ((MULT^ | DIV^ | MOD^ | AMP^) factor)* ;
 
-/*simpleExpression
-    :   simpleExpression_
-    ->  ^(SIMPLEEXPR simpleExpression_);*/
-    
 simpleExpression 
     :   (PLUS^ | MIN^)? term ((PLUS^ | MIN^ | OR^)+ term)* ;
-
-/*expression
-    :   expression_
-    ->  ^(EXPRESSION expression_) ;*/
     
 expression 
     :   simpleExpression ((EQ^ | HASH^ | LT^ | LTEQ^ | GT^ | GTEQ^) simpleExpression)? ;
