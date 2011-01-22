@@ -1,6 +1,6 @@
 package org.elcid.oberon0.ast.visitor;
 
-import org.elcid.oberon0.ast.IntegerNode;
+import org.elcid.oberon0.ast.*;
 
 /**
  *
@@ -9,5 +9,8 @@ import org.elcid.oberon0.ast.IntegerNode;
 public interface NodeVisitor {
 
 	public Object visitIntegerNode(IntegerNode node);
+	public Object visitIdentifierNode(IdentifierNode node);
+	public Object visitArrayNode(ArrayNode node);
+	public Object visitBinaryExpNode(BinaryExpNode node);
 
 }
