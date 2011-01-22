@@ -3,7 +3,7 @@ package org.elcid.oberon0.ast.visitor;
 import org.elcid.oberon0.ast.ArrayNode;
 import org.elcid.oberon0.ast.BinaryExpNode;
 import org.elcid.oberon0.ast.IdentifierNode;
-import org.elcid.oberon0.ast.IntegerNode;
+import org.elcid.oberon0.ast.IntegerExpNode;
 import org.elcid.oberon0.ast.NodeType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +18,7 @@ public class EvaluationVisitor implements NodeVisitor {
 	private static final Logger LOG = LoggerFactory.getLogger(EvaluationVisitor.class);
 
 	@Override
-	public Object visitIntegerNode(IntegerNode node) {
+	public Object visitIntegerNode(IntegerExpNode node) {
 		return node.getValue();
 	}
 
