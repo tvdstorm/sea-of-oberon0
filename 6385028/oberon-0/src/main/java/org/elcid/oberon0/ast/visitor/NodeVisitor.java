@@ -8,7 +8,7 @@ import org.elcid.oberon0.ast.*;
  */
 public interface NodeVisitor {
 
-	public Object visitIntegerNode(IntegerNode node);
+	public Object visitIntegerNode(IntegerExpNode node);
 	public Object visitIdentifierNode(IdentifierNode node);
 	public Object visitArrayNode(ArrayNode node);
 	public Object visitBinaryExpNode(BinaryExpNode node);

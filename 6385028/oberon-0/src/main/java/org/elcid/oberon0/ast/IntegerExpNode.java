@@ -8,12 +8,12 @@ import org.elcid.oberon0.ast.visitor.NodeVisitor;
  *
  * @author Pieter Brandwijk
  */
-public class IntegerNode extends Node {
+public class IntegerExpNode extends ExpressionNode {
 
 	/** The integer's value can only be set once, when the object is constructed */
 	private final int value;
 
-	public IntegerNode(int value) {
+	public IntegerExpNode(int value) {
 		this.value = value;
 	}
 
