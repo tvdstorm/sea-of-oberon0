@@ -10,15 +10,29 @@ tokens {
     DECLARATIONS;
     FORMALPARAMS;
     STATEMENTSEQ;
+    ACTUALPARAMS;
+    IFSTATEMENT;
+    TILDEFACTOR;
+    EXPRESSION;
+    SIMPLEEXPR;
+    IDENTIFIER;
+    STATEMENT;
     FPSECTION;
     RECFIELDS;
     FIELDLIST;
     IDENTLIST;
+    PROCCALL;
     PROCDECL;
     PROCHEAD;
     PROCBODY;
+    SELECTOR;
+    DOTSELECTOR;
+    BRACKETSELECTOR;
+    NUMBER;
+    FACTOR;
     VARS;
     TYPE;
+    TERM;
 } 
 
 @header {
@@ -83,81 +97,120 @@ root
     : module EOF!;
 
 module
-    :   MODULE IDENT SEMI declarations (BEGIN statementSequence)? END IDENT DOT ->
-        ^(MODULE IDENT declarations (BEGIN statementSequence)? IDENT)
-    ; 
+    :   MODULE ident SEMI declarations (BEGIN statementSequence)? END ident DOT ->
+        ^(MODULE ident declarations (BEGIN statementSequence)? ident) ; 
 
-selector    
-    :   ((DOT IDENT) | (LB! expression RB!) )* ;
+//NOTE CHECKME: alleen de expression heeft een sterretje?
+identSelector    
+    :   ident (selectorRightPart)* 
+    ->  ^(SELECTOR ident (selectorRightPart)*) ;
+
+selectorRightPart
+    :   (DOT ident)         ->  ^(DOTSELECTOR ident)
+    |   (LB expression RB)  ->  ^(BRACKETSELECTOR expression) ;
+    
+/*selector    
+    :   ((DOT ident)          ->  ^(SELECTOR ident)
+    |   (LB expression RB) )* ->  ^(SELECTOR expression)* ;*/
 
 number      
-    :   INTEGER ;
+    :   INTEGER 
+    -> ^(NUMBER INTEGER);
+
+/*factor
+    :   factor_ 
+    ->  ^(FACTOR factor_)* ;*/ 
 
 factor      
-    :   (IDENT selector) | number | ( LP! expression RP! ) | (TILDE^ factor) ;
+    :   identSelector      
+    |   number                 
+    |   ( LP! expression RP! ) 
+    |   (TILDE factor)          -> ^(TILDEFACTOR factor) ;
+
+/*term
+    : term_
+    -> ^(TERM term_);*/
 
 term    
     :   factor ((MULT^ | DIV^ | MOD^ | AMP^) factor)* ;
 
+/*simpleExpression
+    :   simpleExpression_
+    ->  ^(SIMPLEEXPR simpleExpression_);*/
+    
 simpleExpression 
     :   (PLUS^ | MIN^)? term ((PLUS^ | MIN^ | OR^)+ term)* ;
 
-expression
+/*expression
+    :   expression_
+    ->  ^(EXPRESSION expression_) ;*/
+    
+expression 
     :   simpleExpression ((EQ^ | HASH^ | LT^ | LTEQ^ | GT^ | GTEQ^) simpleExpression)? ;
     
 actualParameters
-    :   LP! (expression (COMMA! expression)* )? RP! ;
+    :   LP (expression (COMMA expression)* )? RP 
+    ->  ^(ACTUALPARAMS expression+) ;
 
 procedureCall
-    :   IDENT selector actualParameters? ;
+    :   identSelector actualParameters? 
+    ->  ^(PROCCALL identSelector actualParameters?) ;
 
 assignment
-    :   IDENT selector ASSIGN^ expression ;
-    
+    :   identSelector ASSIGN expression 
+    ->  ^(ASSIGN identSelector expression) ;
+   
 ifStatement
-    :   IF^ expression THEN statementSequence
-        (ELSIF expression THEN statementSequence)*
-        (ELSE statementSequence)? END ;
+    :   IF expression THEN statementSequence elsifStatement* elseStatement? END 
+    ->  ^(IFSTATEMENT ^(IF expression statementSequence) elsifStatement* elseStatement?) ;
+
+elsifStatement
+    :   ELSIF^ expression THEN! statementSequence ;
+
+elseStatement
+    :   ELSE^ statementSequence ;
 
 whileStatement
-    :   WHILE^ expression DO statementSequence END! ; 
+    :   WHILE^ expression DO! statementSequence END! ; 
 
 statement
-    :
-        (((IDENT selector ASSIGN expression) => assignment) | procedureCall | ifStatement | whileStatement )? ;
+    :   (((identSelector ASSIGN expression) => assignment -> ^(STATEMENT assignment)) 
+        | procedureCall -> ^(STATEMENT procedureCall)
+        | ifStatement -> ^(STATEMENT ifStatement)
+        | whileStatement -> ^(STATEMENT whileStatement))? ;
         
 statementSequence
     :   statement (SEMI statement)* 
-    ->  ^(STATEMENTSEQ ^(statement)+);
+    ->  ^(STATEMENTSEQ ^(statement)+) ;
     
 identList
-    :   IDENT (COMMA IDENT)* 
-    ->  ^(IDENTLIST ^(IDENT)+); 
+    :   ident (COMMA ident)* 
+    ->  ^(IDENTLIST ^(ident)+) ; 
     
 fieldList
     :   (identList SEMI type)? 
-    ->  ^(FIELDLIST identList type)?;
+    ->  ^(FIELDLIST identList type)? ;
 
 type
-    :   IDENT -> ^(TYPE IDENT)
+    :   ident -> ^(TYPE ident)
     |   arrayType -> ^(TYPE arrayType) 
     |   recordType -> ^(TYPE recordType) ;
     
 fpSection
     :   VAR? identList COLON type 
-    ->  ^(FPSECTION identList type);
+    ->  ^(FPSECTION identList type) ;
     
 formalParameters
     :   LP (fpSection (SEMI fpSection)* )? RP 
-    ->  ^(FORMALPARAMS fpSection*);
+    ->  ^(FORMALPARAMS fpSection*) ;
 
 procedureHeading
-    :   PROCEDURE IDENT (formalParameters)? 
-    ->  ^(PROCHEAD IDENT formalParameters?) ;
+    :   PROCEDURE ident (formalParameters)? 
+    ->  ^(PROCHEAD ident formalParameters?) ;
     
 procedureBody
-    :   declarations (BEGIN statementSequence)? END IDENT 
-    ->  ^(PROCBODY declarations statementSequence? IDENT) ;
+    :   declarations (BEGIN statementSequence)? END ident 
+    ->  ^(PROCBODY declarations statementSequence? ident) ;
     
 procedureDeclaration
     :   procedureHeading SEMI procedureBody 
@@ -165,27 +218,27 @@ procedureDeclaration
 
 declarations
     :   constDecls? typeDecls? varDecls? (procedureDeclaration SEMI)* 
-    -> ^(DECLARATIONS constDecls? typeDecls? varDecls? (procedureDeclaration)*); 
+    -> ^(DECLARATIONS constDecls? typeDecls? varDecls? (procedureDeclaration)*) ; 
 
 constDecls
-    :   CONST (IDENT EQ expression SEMI)* 
-    ->  ^(CONST ^(IDENT expression)*);
+    :   CONST (ident EQ expression SEMI)* 
+    ->  ^(CONST ^(ident expression)*) ;
 
 typeDecls
-    :   TYPE (IDENT EQ type SEMI)* 
-    ->  ^(TYPE ^(IDENT type)*);
+    :   TYPE (ident EQ type SEMI)* 
+    ->  ^(TYPE ^(ident type)*) ;
  
 varDecls
     :   VAR (identList COLON type SEMI)* 
-    ->  ^(VARS ^(VAR identList type)*);   
+    ->  ^(VARS ^(VAR identList type)*) ;   
 
 recordType
     :   RECORD fieldList (SEMI fieldList)* END
-    ->  ^(RECORD fieldList ^(RECFIELDS fieldList)*);
+    ->  ^(RECORD fieldList ^(RECFIELDS fieldList)*) ;
      
 arrayType
     :   ARRAY expression OF type 
-    ->  ^(ARRAY expression type);
+    ->  ^(ARRAY expression type) ;
     
 COMMENT
     :   '//' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}
@@ -199,6 +252,10 @@ WS  :   ( ' '
         ) {$channel=HIDDEN;}
     ;
   
+ident
+    :   IDENT
+    ->  ^(IDENTIFIER IDENT);
+    
 IDENT       
     :   LETTER (LETTER |DIGIT)* ;
 
