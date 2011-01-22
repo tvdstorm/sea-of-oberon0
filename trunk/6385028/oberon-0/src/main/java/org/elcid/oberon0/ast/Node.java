@@ -17,9 +17,6 @@ public abstract class Node {
 
 	public abstract List<Node> childNodes();
 
-	/**
-	 * @return the nodeId
-	 */
 	public abstract NodeType getNodeType();
 
 	protected static List<Node> createList(Node... nodes) {
@@ -32,12 +29,5 @@ public abstract class Node {
 		}
 
 		return list;
-	}
-
-	protected String getNodeName() {
-		String name = getClass().getName();
-		int i = name.lastIndexOf('.');
-		String nodeType = name.substring(i + 1);
-		return nodeType;
 	}
 }
