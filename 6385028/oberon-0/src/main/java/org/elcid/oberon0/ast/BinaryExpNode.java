@@ -6,18 +6,19 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * Represents binary, logical expressions in Oberon-0.
  *
  * @author Pieter Brandwijk
  */
-public class BinaryExpNode extends Node {
+public class BinaryExpNode extends ExpressionNode {
 
 	private static final Logger LOG = LoggerFactory.getLogger(BinaryExpNode.class);
 
-	private Node leftExp;
-	private Node rightExp;
+	private ExpressionNode leftExp;
+	private ExpressionNode rightExp;
 	private Node operator;
 
-	public BinaryExpNode(Node leftExp, Node rightExp, Node operator) {
+	public BinaryExpNode(ExpressionNode leftExp, ExpressionNode rightExp, Node operator) {
 		this.leftExp = leftExp;
 		this.rightExp = rightExp;
 		this.operator = operator;
