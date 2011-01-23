@@ -1,4 +1,4 @@
-package ar.oberon0.interpreter;
+package ar.oberon0.interpreter.Operators;
 
 public enum CompareOperator {
     EQUAL,
