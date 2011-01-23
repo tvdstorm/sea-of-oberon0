@@ -5,13 +5,13 @@ import org.elcid.oberon0.ast.visitor.NodeVisitor;
 import java.util.List;
 
 /**
- * Represents the equals operator in the Oberon-0 language.
+ * Represents the lesser-than-or-equals operator in the Oberon-0 language.
  *
  * @author Pieter Brandwijk
  */
-public class EqualsOpNode extends OperatorNode {
+public class LesserOrEqualsOpNode extends OperatorNode {
 
-	public EqualsOpNode() { }
+	public LesserOrEqualsOpNode() { }
 
 	@Override
 	public Object accept(NodeVisitor visitor) {
@@ -25,7 +25,7 @@ public class EqualsOpNode extends OperatorNode {
 
 	@Override
 	public NodeType getNodeType() {
-		return NodeType.EQUALSNODE;
+		return NodeType.LESSEROREQUALSNODE;
 	}
 
 }
