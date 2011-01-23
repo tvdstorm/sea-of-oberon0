@@ -41,6 +41,7 @@ public class EvaluationVisitor implements NodeVisitor {
 				// Return true if expressions are equal, else false
 				return node.getLeftExp().accept(this) == node.getRightExp().accept(this);
 			default:
+				// Throws a runtime exception, because program cannot recover from this exception
 				throw new UnexpectedNodeException("Operator node " + operatorType + "is not a logical operator");
 		}
 	}
