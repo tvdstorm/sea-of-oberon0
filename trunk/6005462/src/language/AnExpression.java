@@ -33,7 +33,13 @@ public class AnExpression implements IType {
 		if (this.numVals == 1) {
 			return rhs.eval();
 		} else {
-			return rhs.eval().operate(op, lhs.eval());
+			AnValue lhsValue;
+			if (lhs == null) {
+				lhsValue = null;
+			} else {
+				lhsValue = lhs.eval();
+			}
+			return rhs.eval().operate(op, lhsValue);
 		}
 	}
 	

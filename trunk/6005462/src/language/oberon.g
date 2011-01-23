@@ -159,7 +159,7 @@ statement
 
 statementSequence
     :   statement (SEMI statement)* 
-    ->  ^(STATEMENTSEQ ^(statement)+) ;
+    ->  ^(STATEMENTSEQ (statement)+) ;
     
 identList
     :   ident (COMMA ident)* 
