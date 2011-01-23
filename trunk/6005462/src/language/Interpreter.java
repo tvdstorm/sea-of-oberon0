@@ -3,78 +3,69 @@ package language;
 import java.io.IOException;
 
 import language.parser.*;
-import language.parser.oberonParser.expression_return;
-import language.parser.oberonParser.root_return;
 
 import org.antlr.runtime.ANTLRFileStream;
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CharStream;
-import org.antlr.runtime.CommonToken;
 import org.antlr.runtime.CommonTokenStream;
-import org.antlr.runtime.Lexer;
+import org.antlr.runtime.ParserRuleReturnScope;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.tree.CommonTree;
 import org.antlr.runtime.tree.CommonTreeAdaptor;
-import org.antlr.runtime.tree.TreeAdaptor;
 
 public class Interpreter {
 
 	public static void main(String[] args) {
-		//testExpression("1 + 2 * 3");
-		testExpression("i + 3 * 4");
+		CommonTree tree;
+		//tree = stringToTree("1 + 2 * 3");
+		//tree = stringToTree("i + 3 * 4");
+		tree =  stringToTree("+ 3 + 4");
+		//tree = stringToTree("i := 1");
+		
+		//tree = fileToTree("C:\\SE\\oberon\\quicksort.oberon0");
+		AnExpression x = AstNodeFactory.createExpression(tree);
+		try {
+			AnValue a = x.eval();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
-	private static void smokeTest(){
-		CharStream cs;
-		root_return parsedTree;
+	private static CommonTree fileToTree(String fileName){
+		CharStream cs = null;
 		try {
-			cs = new ANTLRFileStream("C:\\SE\\oberon\\quicksort.oberon0");
+			cs = new ANTLRFileStream(fileName);
 		} catch (IOException e) {
 			System.out.println("Unable to open file");
-			return;
+			return null;
 		}
 		
-		oberonLexer lexer = new oberonLexer(cs);
-		CommonTokenStream tokens = new CommonTokenStream(lexer); 
-		oberonParser parser = new oberonParser(tokens);
-		CommonTreeAdaptor adaptor = new CommonTreeAdaptor();
-		parser.setTreeAdaptor(adaptor);
-		
-		//parser.setTreeAdaptor(adaptor);
-		
-		try {
-			parsedTree = parser.root();
-		} catch (RecognitionException e) {
-			e.printStackTrace();
-			return;
-		}
-		
-		CommonTree tree = (CommonTree) parsedTree.getTree();	
-		
+		return parse(cs);
 	}
 	
-	private static oberonParser getParserFor(String input){
-		CharStream cs = new ANTLRStringStream(input);
+	private static CommonTree parse(CharStream cs){
 		oberonLexer lexer = new oberonLexer(cs);
 		CommonTokenStream tokens = new CommonTokenStream(lexer); 
 		oberonParser parser = new oberonParser(tokens);
 		CommonTreeAdaptor adaptor = new CommonTreeAdaptor();
 		parser.setTreeAdaptor(adaptor);
-		return parser;
-	}
-
-	private static void testExpression(String input){
-		expression_return a = null;
 		
-		oberonParser prs = getParserFor(input);
+		ParserRuleReturnScope ruleReturn = null;
 		try {
-			a = prs.expression();
+			ruleReturn = parser.expression();
 		} catch (RecognitionException e) {
 			e.printStackTrace();
 		}
 		
-		if (a == null) return;
+		if (ruleReturn == null) return null;
 		
-		CommonTree tree = (CommonTree) a.getTree();
+		CommonTree tree = (CommonTree) ruleReturn.getTree();
+		return tree;
+	}
+	
+	private static CommonTree stringToTree(String input){
+		CharStream cs = new ANTLRStringStream(input);
+		return parse(cs);
 	}
 }
