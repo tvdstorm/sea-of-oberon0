@@ -14,7 +14,17 @@ public class ModuleNode implements ASTnode{
 	this.declarations = declarations;
 	this.statementSequence = statementSequence;
   }
+
+  public void printNode()
+  {
+	System.out.println( "MODULE x;");
+	if( this.declarations != null )
+      this.declarations.printNode();
+	if( this.statementSequence != null )
+	  this.statementSequence.printNode();
+	System.out.println( "END x.");
+  }
   
-  public DeclarationsNode declarations = null;
-  public StatementSequenceNode statementSequence = null;
+  private DeclarationsNode declarations = null;
+  private StatementSequenceNode statementSequence = null;
 }

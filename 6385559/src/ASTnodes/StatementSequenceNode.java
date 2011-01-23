@@ -7,6 +7,14 @@ public class StatementSequenceNode implements ASTnode {
 	this.statementSequence = statementSequence;
   }
   
-  public StatementNode statement;
-  public StatementSequenceNode statementSequence;
+  public void printNode()
+  {
+	if( this.statement != null )
+	  this.statement.printNode();
+	if( this.statementSequence != null )
+	  this.statementSequence.printNode();
+  }
+  
+  private StatementNode statement;
+  private StatementSequenceNode statementSequence;
 }

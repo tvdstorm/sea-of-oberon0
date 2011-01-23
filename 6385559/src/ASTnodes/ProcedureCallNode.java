@@ -5,4 +5,9 @@ public class ProcedureCallNode implements StatementNode {
   {
 	  
   }
+  
+  public void printNode()
+  {
+	
+  }
 }

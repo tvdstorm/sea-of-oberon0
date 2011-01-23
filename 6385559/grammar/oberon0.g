@@ -49,28 +49,44 @@ expression returns [ ExpressionNode e ]
 	;
 	
 simpleexpression returns [ SimpleExpression e ]
-	: operator=('+'|'-')? term simpleExpressionFollowup?
+	: specialTerm ( operator=('+'|'-'|'OR') simpleExpressionFollowup)?
 	{
-	  $e = new SimpleExpression( $operator.text, $term.text, $simpleExpressionFollowup.e );
+	  $e = new SimpleExpression( $operator.text, $specialTerm.e, $simpleExpressionFollowup.e );
 	}
 	;
+	
+specialTerm returns [ ASTnode e ]
+  : operator=('+') term { $e = $term.e; }
+  | operator=('-') term { $e = new MinusNode( $term.e ); }
+  | term { $e = $term.e; }
+  ;
 	
 simpleExpressionFollowup returns [ SimpleExpression e ]
-	: operator=('+'|'-'|'OR') term simpleExpressionFollowup?
+	:  term (operator=('+'|'-'|'OR') follow2=simpleExpressionFollowup)?
 	{
-	  $e = new SimpleExpression( $operator.text, $term.text, $simpleExpressionFollowup.e );
+	  $e = new SimpleExpression( $operator.text, $term.e, $follow2.e );
 	}
 	;
 	
-term
-	: factor (('*'|'DIV'|'MOD'|'&') factor)*
+term returns [ TermNode e ]
+	: factor (operator=('*'|'DIV'|'MOD'|'&') termFollowUp)?
+	{
+	  $e = new TermNode( $factor.e, $operator.text, $termFollowUp.e );
+	}
 	;
+	
+termFollowUp returns [ TermNode e ]
+  : factor (operator=('*'|'DIV'|'MOD'|'&') follow2=termFollowUp)?
+  {
+    $e = new TermNode( $factor.e, $operator.text, $follow2.e );
+  }
+  ;
 
-factor
-	: IDENT selector
-	| number
-	| '(' expression ')'
-	| '~' factor
+factor returns [ ASTnode e ]
+	: IDENT selector { $e = new SelectorNode( $IDENT.text ); }
+	| number { $e = $number.e; }
+	| '(' expression ')' { $e = $expression.e; }
+	| '~' factorOperand=factor { $e = new NotNode( $factorOperand.e ); }
 	;
 
 number returns [ IntegerNode e ]
@@ -136,16 +152,27 @@ actualparameters
 	;
 	
 ifstatement returns [ StatementNode e ]
-	: 'IF' expression 'THEN' statementsequence ( 'ELSIF' expression 'THEN' statementsequence )* ( 'ELSE' statementsequence )? 'END'
+	: 'IF' expression 'THEN' statementsequence elsestatement? 'END'
 	{
-	  $e = new IfStatementNode( );
+	  $e = new IfStatementNode( $expression.e, $statementsequence.e, $elsestatement.e );
 	}
 	;
+	
+elsestatement returns [ StatementNode e ]
+  : 'ELSIF' expression 'THEN' statementsequence elseNode=elsestatement
+  {
+    $e = new IfStatementNode( $expression.e, $statementsequence.e, $elseNode.e );
+  } 
+  | 'ELSE' statementsequence
+  {
+    $e = new ElseStatementNode( $statementsequence.e );
+  }
+  ;
 	
 whilestatement returns [ StatementNode e ]
 	: 'WHILE' cond=expression 'DO' ifTrueDo=statementsequence 'END'
 	{
-	  $e = new WhileStatementNode( $cond.text, $ifTrueDo.e );
+	  $e = new WhileStatementNode( $cond.e, $ifTrueDo.e );
 	}
 	;
 	

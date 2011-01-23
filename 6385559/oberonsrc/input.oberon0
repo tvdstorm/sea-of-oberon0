@@ -2,11 +2,8 @@ MODULE Sample;
 
 VAR x,y,z: INTEGER;
 BEGIN
-	x := 5;
-	y := 6;
-	WHILE x = 5 DO
-		x := y-1;
-		y := y-1
+	z := -45 + (-5) - 4 + 7;
+	WHILE x < 5 DO
+	  x := x + 1;
 	END;
-	z := -45
 END Sample.
