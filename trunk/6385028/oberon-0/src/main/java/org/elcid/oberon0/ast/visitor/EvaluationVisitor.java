@@ -43,7 +43,7 @@ public class EvaluationVisitor implements NodeVisitor {
 				return node.getLeftExp().accept(this) == node.getRightExp().accept(this);
 			default:
 				// Throws a runtime exception, because program cannot recover from this exception
-				throw new UnexpectedNodeException("Operator node " + operatorType + "is not a logical operator");
+				throw new UnexpectedNodeException("Operator node " + operatorType + "is not a logical operator or is not yet implemented");
 		}
 	}
 
