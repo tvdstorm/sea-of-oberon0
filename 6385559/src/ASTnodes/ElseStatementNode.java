@@ -6,9 +6,10 @@ public class ElseStatementNode implements StatementNode {
 	this.sequence = sequence;
   }
   
-  public void printNode()
+  public void printNode( int depth )
   {
-	
+	if( this.sequence != null )
+	  this.sequence.printNode( depth );
   }
   
   private StatementSequenceNode sequence;

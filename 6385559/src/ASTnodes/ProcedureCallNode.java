@@ -6,7 +6,7 @@ public class ProcedureCallNode implements StatementNode {
 	  
   }
   
-  public void printNode()
+  public void printNode( int depth )
   {
 	
   }

@@ -7,10 +7,12 @@ public class AssignmentNode implements StatementNode {
 	this.expression = expression;
   }
   
-  public void printNode()
+  public void printNode( int depth )
   {
+	for( int i = 0; i < depth; i++ )
+	  System.out.print( " " );
 	System.out.print( this.ident + " := " );
-	this.expression.printNode();
+	this.expression.printNode( depth );
 	System.out.println( "" );
   }
   

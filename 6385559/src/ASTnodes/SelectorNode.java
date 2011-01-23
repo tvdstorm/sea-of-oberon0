@@ -6,7 +6,7 @@ public class SelectorNode implements ASTnode {
 	this.identifier = identifier;
   }
 	
-  public void printNode()
+  public void printNode( int depth )
   {
 	if( this.identifier != null )
 	  System.out.print( this.identifier );

@@ -167,6 +167,10 @@ elsestatement returns [ StatementNode e ]
   {
     $e = new ElseStatementNode( $statementsequence.e );
   }
+  | 
+  {
+    $e = null;
+  }
   ;
 	
 whilestatement returns [ StatementNode e ]

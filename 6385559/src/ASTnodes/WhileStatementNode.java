@@ -7,14 +7,18 @@ public class WhileStatementNode implements StatementNode {
 	this.executionSequence = statements;
   }
   
-  public void printNode()
+  public void printNode( int depth )
   {
+	for( int i = 0; i < depth; i++ )
+	  System.out.print( " " );
 	System.out.print( "WHILE " );
 	if( this.cond != null )
-	  this.cond.printNode();
+	  this.cond.printNode( 0 );
 	System.out.println( " DO" );
 	if( this.executionSequence != null )
-	  this.executionSequence.printNode();
+	  this.executionSequence.printNode( depth+2 );
+	for( int i = 0; i < depth; i++ )
+	  System.out.print( " " );
 	System.out.println( "END;");
   }
   

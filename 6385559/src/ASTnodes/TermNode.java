@@ -8,14 +8,14 @@ public class TermNode implements ASTnode {
 	this.follow = follow;
   }
   
-  public void printNode()
+  public void printNode( int depth )
   {
 	if( this.factor != null )
-	  this.factor.printNode();
+	  this.factor.printNode( depth );
 	if( this.operator != null )
 	  System.out.print( this.operator );
     if( this.follow != null )
-      this.follow.printNode();
+      this.follow.printNode( depth );
   }
   
   private ASTnode factor = null;

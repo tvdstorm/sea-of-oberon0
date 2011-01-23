@@ -6,10 +6,10 @@ public class MinusNode implements ASTnode {
 	this.child = e;
   }
   
-  public void printNode()
+  public void printNode( int depth )
   {
 	System.out.print( "(-" );
-	this.child.printNode();
+	this.child.printNode( 0 );
 	System.out.print( ')' );
   }
   

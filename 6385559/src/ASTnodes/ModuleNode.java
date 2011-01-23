@@ -11,20 +11,23 @@ public class ModuleNode implements ASTnode{
 	  parseErrorLog.addMessage( "Module has no end." );
 	}
 	
+	this.ModuleName = idn1;
 	this.declarations = declarations;
 	this.statementSequence = statementSequence;
   }
 
-  public void printNode()
+  public void printNode( int depth )
   {
-	System.out.println( "MODULE x;");
+	System.out.println( "MODULE " + this.ModuleName + ";");
 	if( this.declarations != null )
-      this.declarations.printNode();
+      this.declarations.printNode( depth+2 );
+	System.out.println( "BEGIN" );
 	if( this.statementSequence != null )
-	  this.statementSequence.printNode();
-	System.out.println( "END x.");
+	  this.statementSequence.printNode( depth+2 );
+	System.out.println( "END " + this.ModuleName + ".");
   }
   
   private DeclarationsNode declarations = null;
   private StatementSequenceNode statementSequence = null;
+  private String ModuleName = null;
 }
