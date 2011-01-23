@@ -3,6 +3,7 @@ package ar.oberon0.interpreter.Memory;
 import java.util.Map.Entry;
 
 import ar.oberon0.interpreter.DataTypes.DataType;
+import ar.oberon0.interpreter.DataTypes.SimpleType;
 import ar.oberon0.interpreter.DataTypes.Type;
 import ar.oberon0.interpreter.Lists.BaseList;
 import ar.oberon0.interpreter.Lists.ConstantList;
@@ -31,7 +32,7 @@ public final class Context {
 				_constants = constants;
 			else
 			{
-				for(Entry<String,DataType> item : constants)
+				for(Entry<String,DataField> item : constants)
 				{
 					_constants.AddItem(item.getKey(), item.getValue());
 				}
@@ -63,7 +64,7 @@ public final class Context {
 				_variables = variables;
 			else
 			{
-				for(Entry<String,Var> item : variables)
+				for(Entry<String,DataField> item : variables)
 				{
 					_variables.AddItem(item.getKey(),item.getValue());
 				}
@@ -71,14 +72,14 @@ public final class Context {
 		}
 	}
 	
-	public DataType getConstant(String name) throws Exception
+	private DataField getConstant(String name) throws Exception
 	{
 		if(!itemExist(name,_constants))
 			throw new Exception("There was no constant named " + name + " in the context.");
 		return _constants.getItem(name);
 	}
 	
-	public Type getTypeIdentifier(String name) throws Exception
+	private Type getTypeIdentifier(String name) throws Exception
 	{
 		if(!itemExist(name,_variables))
 			throw new Exception("There was no type named " + name + " in the context.");
@@ -88,7 +89,7 @@ public final class Context {
 	/*
 	 * Returns the the variable with the specified name if it exists.
 	 */
-	public Var getVariable(String name) throws Exception
+	private DataField getVariable(String name) throws Exception
 	{		
 		if(!itemExist(name,_variables))
 			throw new Exception("There was no variable named " + name + " in the context.");
@@ -105,13 +106,18 @@ public final class Context {
 		else 
 			return true;		
 	}
+	
+	public DataType getVarOrConstantAsDataType(String name,Context context) throws Exception
+	{
+		return getVarOrConstantAsVar(name).getValue(context);
+	}
 
-	public Var getValueOf(String name) throws Exception 
+	public DataField getVarOrConstantAsVar(String name) throws Exception 
 	{
 		if(itemExist(name,_variables))
 			return _variables.getItem(name);
 		else if(itemExist(name,_constants))
-			return new Var(null,_constants.getItem(name));
+			return _constants.getItem(name).Clone();
 		else
 			throw new Exception("There was no variable or constant named " + name + " in the context.");
 	}	

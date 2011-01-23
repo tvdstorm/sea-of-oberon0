@@ -14,9 +14,10 @@ import ar.oberon0.interpreter.Interpretable;
 import ar.oberon0.parser.Oberon0Lexer;
 import ar.oberon0.parser.Oberon0Parser;
 import ar.oberon0.interpreter.DataTypes.*;
+import ar.oberon0.interpreter.Lists.ConstantList;
 import ar.oberon0.interpreter.Lists.VarList;
 import ar.oberon0.interpreter.Memory.Context;
-import ar.oberon0.interpreter.Memory.Var;
+import ar.oberon0.interpreter.Memory.DataField;
 
 
 
@@ -30,6 +31,8 @@ public class Tester {
 	public static void main(String[] args) throws IOException {
 				
 		Tester tester = new Tester();
+		tester.TestConstantImmutability();
+		tester.TestArray();
 		tester.TestConstants();
 		tester.TestIf();
 		tester.TestIfElse();
@@ -57,10 +60,44 @@ public class Tester {
 		Oberon0Parser parser = new Oberon0Parser(tokenStream);
 		return parser;
 	}
+	
+	public void TestArray()
+	{
+		Oberon0Parser parser = GetParser("MODULE module;CONST length = 5; VAR input: ARRAY length OF INTEGER; BEGIN input[2] := 5; PRINT input[2]; input[2] := 9; PRINT input[2] END module");
+		Interpretable interpreter = null;
+		try {
+			interpreter = parser.module().result;
+		} catch (RecognitionException e) {
+			e.printStackTrace();
+		}
+		try {
+			Integer result = (Integer)interpreter.Interpret(null);
+			System.out.println(getResultString("constant",result.equals(0)));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 		
 	public void TestConstants()
 	{
 		Oberon0Parser parser = GetParser("MODULE module;CONST const = 9; BEGIN PRINT const END module");
+		Interpretable interpreter = null;
+		try {
+			interpreter = parser.module().result;
+		} catch (RecognitionException e) {
+			e.printStackTrace();
+		}
+		try {
+			Integer result = (Integer)interpreter.Interpret(null);
+			System.out.println(getResultString("constant",result.equals(0)));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void TestConstantImmutability()
+	{
+		Oberon0Parser parser = GetParser("MODULE module;CONST const = 9; BEGIN PRINT const; const := 10; PRINT const END module");
 		Interpretable interpreter = null;
 		try {
 			interpreter = parser.module().result;
@@ -128,7 +165,7 @@ public class Tester {
 	
 	public void TestSimpleModule()
 	{
-		Oberon0Parser parser = GetParser("MODULE module;CONST const1 = 9; TYPE type1 = Integer; VAR var1 : Integer; BEGIN var1 := 1+1; PRINT \"testtt\" END module");
+		Oberon0Parser parser = GetParser("MODULE module;CONST const1 = 9; TYPE type1 = INTEGER; VAR var1 : INTEGER; BEGIN var1 := 1+1; PRINT \"testtt\" END module");
 		Interpretable interpreter = null;
 		try {
 			interpreter = parser.module().result;
@@ -145,7 +182,7 @@ public class Tester {
 	
 	public void TestWhileLoop()
 	{
-		Oberon0Parser parser = GetParser("MODULE module;VAR iterations, i : Integer; BEGIN iterations := 5; i := 0; WHILE i < iterations DO PRINT \"a\"; i := i + 1 END END module");
+		Oberon0Parser parser = GetParser("MODULE module;VAR iterations, i : INTEGER; BEGIN iterations := 5; i := 0; WHILE i < iterations DO PRINT \"a\"; i := i + 1 END END module");
 		Interpretable interpreter = null;
 		try {
 			interpreter = parser.module().result;
@@ -247,7 +284,7 @@ public class Tester {
 	
 	public void TestFactorWithSelector()
 	{
-		Oberon0Parser parser = GetParser("a.b[1+1]");
+		Oberon0Parser parser = GetParser("a");
 		Interpretable interpreter = null;
 		try {
 			interpreter = parser.factor().result;
@@ -255,8 +292,12 @@ public class Tester {
 			e.printStackTrace();
 		}
 		try {
-			Object result = interpreter.Interpret(new Context());
-			System.out.println(getResultString("factor with ident",result.toString().compareTo("a.b.[2]") == 0));
+			Context context = new Context();
+			ConstantList constants = new ConstantList();
+			constants.AddItem("a",new DataField(new SimpleType("INTEGER"), new IntegerNode(9)));
+			context.AddConstants(constants);
+			Object result = interpreter.Interpret(context);
+			System.out.println(getResultString("factor with ident",((DataField)result).getValue(context).toString().compareTo("9") == 0));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -274,7 +315,7 @@ public class Tester {
 		try {
 			Context context = new Context();
 			VarList varList = new VarList();
-			Var variable = new Var(null);			
+			DataField variable = new DataField(new SimpleType("INTEGER"));			
 			varList.AddItem("a", variable);
 			context.AddVariables(varList);
 			Object result = interpreter.Interpret(context);

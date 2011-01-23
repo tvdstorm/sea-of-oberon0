@@ -1,17 +1,8 @@
 package ar.oberon0.interpreter.DataTypes;
 
-public class Type {
+import ar.oberon0.interpreter.Memory.Context;
 
-	public Type(String name) {
-		// TODO Auto-generated constructor stub
-	}
-
-	public Type(ArrayType arrayType) {
-		// TODO Auto-generated constructor stub
-	}
-
-	public Type(RecordType recordType) {
-		// TODO Auto-generated constructor stub
-	}
-
+public abstract class Type 
+{
+	public abstract DataType createInstance(Context context) throws Exception;
 }
