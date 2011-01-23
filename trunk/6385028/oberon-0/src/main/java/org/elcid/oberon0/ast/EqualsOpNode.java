@@ -5,6 +5,7 @@ import java.util.List;
 import org.elcid.oberon0.ast.visitor.NodeVisitor;
 
 /**
+ * Represents the equals operator in the Oberon-0 language.
  *
  * @author Pieter Brandwijk
  */
