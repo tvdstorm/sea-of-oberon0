@@ -8,83 +8,85 @@ options {
 
 tokens
 {
-	MODULE_KW 	= 	'MODULE'	;
-	BEGIN_KW	=	'BEGIN'		;
-	END_KW		=	'END'		;
-	CONST_KW	=	'CONST'		;
-	TYPE_KW		=	'TYPE'		;
-	VAR_KW		=	'VAR'		;
-	PROCEDURE_KW
-				=	'PROCEDURE'	;
-	ARRAY_KW	=	'ARRAY'		;
-	OF_KW		=	'OF'		;
-	RECORD_KW	=	'RECORD'	;
-	WHILE_KW	=	'WHILE'		;
-	DO_KW		=	'DO'		;
-	IF_KW		=	'IF'		;
-	THEN_KW		=	'THEN'		;
-	ELSIF_KW	=	'ELSIF'		;
-	ELSE_KW		=	'ELSE'		;
+	/* Key words */
+	MODULE_KW		= 	'MODULE'		;
+	BEGIN_KW		=	'BEGIN'			;
+	END_KW			=	'END'			;
+	CONST_KW		=	'CONST'			;
+	TYPE_KW			=	'TYPE'			;
+	VAR_KW			=	'VAR'			;
+	PROCEDURE_KW	=	'PROCEDURE'		;
+	ARRAY_KW		=	'ARRAY'			;
+	OF_KW			=	'OF'			;
+	RECORD_KW		=	'RECORD'		;
+	WHILE_KW		=	'WHILE'			;
+	DO_KW			=	'DO'			;
+	IF_KW			=	'IF'			;
+	THEN_KW			=	'THEN'			;
+	ELSIF_KW		=	'ELSIF'			;
+	ELSE_KW			=	'ELSE'			;
 
-	SEMI_COLON	=	';'			;
-	COLON		=	':'			;
-	DOT			=	'.'			;
-	COMMA		=	','			;
-	TILDE		=	'~'			;
-	RND_OPEN 	=	'('			;
-	RND_CLOSE 	=	')'			;
-	SQR_OPEN	=	'['			;
-	SQR_CLOSE	=	']'			;
-	EQUALS_OP	=	'='			;
-	HASH_OP		=	'#'			;
-	LESSER_OP	=	'<'			;
-	LESSER_OR_EQUAL_OP
-				=	'<='		;
-	GREATER_OP	=	'>'			;
-	GREATER_OR_EQUAL_OP
-				=	'>='		;
-	ASSIGN_OP	=	':='		;
-	PLUS_OP		=	'+'			;
-	MINUS_OP	=	'-'			;
-	MULTIPLY_OP	=	'*'			;
-	DIVIDE_OP	=	'DIV'		;
-	MODULO_OP	=	'MOD'		;
-	AND_OP		=	'&'			;
-	OR_OP		=	'OR'		;
+	/* Symbols */
+	SEMI_COLON			=	';'			;
+	COLON				=	':'			;
+	DOT					=	'.'			;
+	COMMA				=	','			;
+	TILDE				=	'~'			;
+	RND_OPEN			=	'('			;
+	RND_CLOSE			=	')'			;
+	SQR_OPEN			=	'['			;
+	SQR_CLOSE			=	']'			;
 
-	MODULE			;
-	IDENTIFIER		;
-	INTEGER			;
-	CONST			;
-	TYPE			;
-	VAR				;
-	PARAMS			;
-	ARRAY			;
-	RECORD 			;
-	PROCEDURE 		;
-	SELECTOR 		;
-	WHILE_LOOP		;
-	ASSIGNMENT		;
-	PROCEDURE_CALL	;
-	SEQUENCE		;
-	LIST			;
-	IF				;
-	ELSIF			;
-	ELSE			;
-	EXPRESSION		;
-	EQUALS			;
-	HASH			;
-	LESSER			;
-	LESSER_OR_EQUAL ;
-	GREATER			;
-	GREATER_OR_EQUAL;
-	PLUS			;
-	MINUS			;
-	MULTIPLY		;
-	DIVIDE			;
-	MODULO			;
-	AND				;
-	OR				;
+	/* Operators */
+	EQUALS_OP			=	'='			;
+	HASH_OP				=	'#'			;
+	LESSER_OP			=	'<'			;
+	LESSER_OR_EQUAL_OP	=	'<='		;
+	GREATER_OP			=	'>'			;
+	GREATER_OR_EQUAL_OP	=	'>='		;
+	ASSIGN_OP			=	':='		;
+	PLUS_OP				=	'+'			;
+	MINUS_OP			=	'-'			;
+	MULTIPLY_OP			=	'*'			;
+	DIVIDE_OP			=	'DIV'		;
+	MODULO_OP			=	'MOD'		;
+	AND_OP				=	'&'			;
+	OR_OP				=	'OR'		;
+
+	/* Empty tokens */
+	MODULE								;
+	IDENTIFIER							;
+	INTEGER								;
+	CONST								;
+	TYPE								;
+	VAR									;
+	PARAMS								;
+	ARRAY								;
+	RECORD								;
+	PROCEDURE							;
+	SELECTOR							;
+	WHILE_LOOP							;
+	ASSIGNMENT							;
+	PROCEDURE_CALL						;
+	SEQUENCE							;
+	LIST								;
+	IF									;
+	ELSIF								;
+	ELSE								;
+	EXPRESSION							;
+	EQUALS								;
+	HASH								;
+	LESSER								;
+	LESSER_OR_EQUAL						;
+	GREATER								;
+	GREATER_OR_EQUAL					;
+	PLUS								;
+	MINUS								;
+	MULTIPLY							;
+	DIVIDE								;
+	MODULO								;
+	AND									;
+	OR									;
 
 }
 
