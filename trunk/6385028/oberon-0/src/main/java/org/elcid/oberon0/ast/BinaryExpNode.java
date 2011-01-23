@@ -39,7 +39,7 @@ public class BinaryExpNode extends ExpressionNode {
 
 	@Override
 	public Object accept(NodeVisitor visitor) {
-			return visitor.visitBinaryExpNode(this);
+		return visitor.visitBinaryExpNode(this);
 	}
 
 	@Override
