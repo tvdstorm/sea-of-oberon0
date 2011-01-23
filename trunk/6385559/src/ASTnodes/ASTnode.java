@@ -1,5 +1,5 @@
 package ASTnodes;
 
 public interface ASTnode {
-  public void printNode();
+  public void printNode( int depth );
 }

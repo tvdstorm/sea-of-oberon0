@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 oberon0.g 2011-01-23 19:42:12
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 oberon0.g 2011-01-23 21:56:16
 
   package parser;
   
@@ -1757,6 +1757,13 @@ public class oberon0Parser extends Parser {
             if ( ((LA27_0>=41 && LA27_0<=42)) ) {
                 alt27=1;
             }
+            else if ( (LA27_0==10) ) {
+                int LA27_2 = input.LA(2);
+
+                if ( (synpred50_oberon0()) ) {
+                    alt27=1;
+                }
+            }
             switch (alt27) {
                 case 1 :
                     // oberon0.g:0:0: elsestatement
@@ -1794,7 +1801,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "elsestatement"
-    // oberon0.g:161:1: elsestatement returns [ StatementNode e ] : ( 'ELSIF' expression 'THEN' statementsequence elseNode= elsestatement | 'ELSE' statementsequence );
+    // oberon0.g:161:1: elsestatement returns [ StatementNode e ] : ( 'ELSIF' expression 'THEN' statementsequence elseNode= elsestatement | 'ELSE' statementsequence | );
     public final StatementNode elsestatement() throws RecognitionException {
         StatementNode e = null;
 
@@ -1808,23 +1815,33 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:162:3: ( 'ELSIF' expression 'THEN' statementsequence elseNode= elsestatement | 'ELSE' statementsequence )
-            int alt28=2;
-            int LA28_0 = input.LA(1);
-
-            if ( (LA28_0==41) ) {
+            // oberon0.g:162:3: ( 'ELSIF' expression 'THEN' statementsequence elseNode= elsestatement | 'ELSE' statementsequence | )
+            int alt28=3;
+            switch ( input.LA(1) ) {
+            case 41:
+                {
                 alt28=1;
-            }
-            else if ( (LA28_0==42) ) {
+                }
+                break;
+            case 42:
+                {
                 alt28=2;
-            }
-            else {
+                }
+                break;
+            case EOF:
+            case 10:
+                {
+                alt28=3;
+                }
+                break;
+            default:
                 if (state.backtracking>0) {state.failed=true; return e;}
                 NoViableAltException nvae =
                     new NoViableAltException("", 28, 0, input);
 
                 throw nvae;
             }
+
             switch (alt28) {
                 case 1 :
                     // oberon0.g:162:5: 'ELSIF' expression 'THEN' statementsequence elseNode= elsestatement
@@ -1871,6 +1888,17 @@ public class oberon0Parser extends Parser {
 
                     }
                     break;
+                case 3 :
+                    // oberon0.g:171:3: 
+                    {
+                    if ( state.backtracking==0 ) {
+
+                          e = null;
+                        
+                    }
+
+                    }
+                    break;
 
             }
         }
@@ -1886,7 +1914,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "whilestatement"
-    // oberon0.g:172:1: whilestatement returns [ StatementNode e ] : 'WHILE' cond= expression 'DO' ifTrueDo= statementsequence 'END' ;
+    // oberon0.g:176:1: whilestatement returns [ StatementNode e ] : 'WHILE' cond= expression 'DO' ifTrueDo= statementsequence 'END' ;
     public final StatementNode whilestatement() throws RecognitionException {
         StatementNode e = null;
 
@@ -1896,22 +1924,22 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:173:2: ( 'WHILE' cond= expression 'DO' ifTrueDo= statementsequence 'END' )
-            // oberon0.g:173:4: 'WHILE' cond= expression 'DO' ifTrueDo= statementsequence 'END'
+            // oberon0.g:177:2: ( 'WHILE' cond= expression 'DO' ifTrueDo= statementsequence 'END' )
+            // oberon0.g:177:4: 'WHILE' cond= expression 'DO' ifTrueDo= statementsequence 'END'
             {
-            match(input,43,FOLLOW_43_in_whilestatement851); if (state.failed) return e;
-            pushFollow(FOLLOW_expression_in_whilestatement855);
+            match(input,43,FOLLOW_43_in_whilestatement860); if (state.failed) return e;
+            pushFollow(FOLLOW_expression_in_whilestatement864);
             cond=expression();
 
             state._fsp--;
             if (state.failed) return e;
-            match(input,44,FOLLOW_44_in_whilestatement857); if (state.failed) return e;
-            pushFollow(FOLLOW_statementsequence_in_whilestatement861);
+            match(input,44,FOLLOW_44_in_whilestatement866); if (state.failed) return e;
+            pushFollow(FOLLOW_statementsequence_in_whilestatement870);
             ifTrueDo=statementsequence();
 
             state._fsp--;
             if (state.failed) return e;
-            match(input,10,FOLLOW_10_in_whilestatement863); if (state.failed) return e;
+            match(input,10,FOLLOW_10_in_whilestatement872); if (state.failed) return e;
             if ( state.backtracking==0 ) {
 
               	  e = new WhileStatementNode( cond, ifTrueDo );
@@ -1933,19 +1961,19 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "proceduredeclaration"
-    // oberon0.g:179:1: proceduredeclaration : procedureheading ';' procedurebody ;
+    // oberon0.g:183:1: proceduredeclaration : procedureheading ';' procedurebody ;
     public final void proceduredeclaration() throws RecognitionException {
         try {
-            // oberon0.g:180:2: ( procedureheading ';' procedurebody )
-            // oberon0.g:180:4: procedureheading ';' procedurebody
+            // oberon0.g:184:2: ( procedureheading ';' procedurebody )
+            // oberon0.g:184:4: procedureheading ';' procedurebody
             {
-            pushFollow(FOLLOW_procedureheading_in_proceduredeclaration878);
+            pushFollow(FOLLOW_procedureheading_in_proceduredeclaration887);
             procedureheading();
 
             state._fsp--;
             if (state.failed) return ;
-            match(input,8,FOLLOW_8_in_proceduredeclaration880); if (state.failed) return ;
-            pushFollow(FOLLOW_procedurebody_in_proceduredeclaration882);
+            match(input,8,FOLLOW_8_in_proceduredeclaration889); if (state.failed) return ;
+            pushFollow(FOLLOW_procedurebody_in_proceduredeclaration891);
             procedurebody();
 
             state._fsp--;
@@ -1966,15 +1994,15 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "procedureheading"
-    // oberon0.g:183:1: procedureheading : 'PROCEDURE' IDENT ( formalparameters )? ;
+    // oberon0.g:187:1: procedureheading : 'PROCEDURE' IDENT ( formalparameters )? ;
     public final void procedureheading() throws RecognitionException {
         try {
-            // oberon0.g:184:2: ( 'PROCEDURE' IDENT ( formalparameters )? )
-            // oberon0.g:184:4: 'PROCEDURE' IDENT ( formalparameters )?
+            // oberon0.g:188:2: ( 'PROCEDURE' IDENT ( formalparameters )? )
+            // oberon0.g:188:4: 'PROCEDURE' IDENT ( formalparameters )?
             {
-            match(input,45,FOLLOW_45_in_procedureheading894); if (state.failed) return ;
-            match(input,IDENT,FOLLOW_IDENT_in_procedureheading896); if (state.failed) return ;
-            // oberon0.g:184:22: ( formalparameters )?
+            match(input,45,FOLLOW_45_in_procedureheading903); if (state.failed) return ;
+            match(input,IDENT,FOLLOW_IDENT_in_procedureheading905); if (state.failed) return ;
+            // oberon0.g:188:22: ( formalparameters )?
             int alt29=2;
             int LA29_0 = input.LA(1);
 
@@ -1983,9 +2011,9 @@ public class oberon0Parser extends Parser {
             }
             switch (alt29) {
                 case 1 :
-                    // oberon0.g:184:23: formalparameters
+                    // oberon0.g:188:23: formalparameters
                     {
-                    pushFollow(FOLLOW_formalparameters_in_procedureheading899);
+                    pushFollow(FOLLOW_formalparameters_in_procedureheading908);
                     formalparameters();
 
                     state._fsp--;
@@ -2012,18 +2040,18 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "procedurebody"
-    // oberon0.g:187:1: procedurebody : declarations ( 'BEGIN' statementsequence )? 'END' IDENT ;
+    // oberon0.g:191:1: procedurebody : declarations ( 'BEGIN' statementsequence )? 'END' IDENT ;
     public final void procedurebody() throws RecognitionException {
         try {
-            // oberon0.g:188:2: ( declarations ( 'BEGIN' statementsequence )? 'END' IDENT )
-            // oberon0.g:188:4: declarations ( 'BEGIN' statementsequence )? 'END' IDENT
+            // oberon0.g:192:2: ( declarations ( 'BEGIN' statementsequence )? 'END' IDENT )
+            // oberon0.g:192:4: declarations ( 'BEGIN' statementsequence )? 'END' IDENT
             {
-            pushFollow(FOLLOW_declarations_in_procedurebody913);
+            pushFollow(FOLLOW_declarations_in_procedurebody922);
             declarations();
 
             state._fsp--;
             if (state.failed) return ;
-            // oberon0.g:188:17: ( 'BEGIN' statementsequence )?
+            // oberon0.g:192:17: ( 'BEGIN' statementsequence )?
             int alt30=2;
             int LA30_0 = input.LA(1);
 
@@ -2032,10 +2060,10 @@ public class oberon0Parser extends Parser {
             }
             switch (alt30) {
                 case 1 :
-                    // oberon0.g:188:18: 'BEGIN' statementsequence
+                    // oberon0.g:192:18: 'BEGIN' statementsequence
                     {
-                    match(input,9,FOLLOW_9_in_procedurebody916); if (state.failed) return ;
-                    pushFollow(FOLLOW_statementsequence_in_procedurebody918);
+                    match(input,9,FOLLOW_9_in_procedurebody925); if (state.failed) return ;
+                    pushFollow(FOLLOW_statementsequence_in_procedurebody927);
                     statementsequence();
 
                     state._fsp--;
@@ -2046,8 +2074,8 @@ public class oberon0Parser extends Parser {
 
             }
 
-            match(input,10,FOLLOW_10_in_procedurebody922); if (state.failed) return ;
-            match(input,IDENT,FOLLOW_IDENT_in_procedurebody924); if (state.failed) return ;
+            match(input,10,FOLLOW_10_in_procedurebody931); if (state.failed) return ;
+            match(input,IDENT,FOLLOW_IDENT_in_procedurebody933); if (state.failed) return ;
 
             }
 
@@ -2064,14 +2092,14 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "formalparameters"
-    // oberon0.g:191:1: formalparameters : '(' ( fpsection ( ';' fpsection )* )? ')' ;
+    // oberon0.g:195:1: formalparameters : '(' ( fpsection ( ';' fpsection )* )? ')' ;
     public final void formalparameters() throws RecognitionException {
         try {
-            // oberon0.g:192:2: ( '(' ( fpsection ( ';' fpsection )* )? ')' )
-            // oberon0.g:192:4: '(' ( fpsection ( ';' fpsection )* )? ')'
+            // oberon0.g:196:2: ( '(' ( fpsection ( ';' fpsection )* )? ')' )
+            // oberon0.g:196:4: '(' ( fpsection ( ';' fpsection )* )? ')'
             {
-            match(input,31,FOLLOW_31_in_formalparameters936); if (state.failed) return ;
-            // oberon0.g:192:8: ( fpsection ( ';' fpsection )* )?
+            match(input,31,FOLLOW_31_in_formalparameters945); if (state.failed) return ;
+            // oberon0.g:196:8: ( fpsection ( ';' fpsection )* )?
             int alt32=2;
             int LA32_0 = input.LA(1);
 
@@ -2080,14 +2108,14 @@ public class oberon0Parser extends Parser {
             }
             switch (alt32) {
                 case 1 :
-                    // oberon0.g:192:9: fpsection ( ';' fpsection )*
+                    // oberon0.g:196:9: fpsection ( ';' fpsection )*
                     {
-                    pushFollow(FOLLOW_fpsection_in_formalparameters939);
+                    pushFollow(FOLLOW_fpsection_in_formalparameters948);
                     fpsection();
 
                     state._fsp--;
                     if (state.failed) return ;
-                    // oberon0.g:192:19: ( ';' fpsection )*
+                    // oberon0.g:196:19: ( ';' fpsection )*
                     loop31:
                     do {
                         int alt31=2;
@@ -2100,10 +2128,10 @@ public class oberon0Parser extends Parser {
 
                         switch (alt31) {
                     	case 1 :
-                    	    // oberon0.g:192:20: ';' fpsection
+                    	    // oberon0.g:196:20: ';' fpsection
                     	    {
-                    	    match(input,8,FOLLOW_8_in_formalparameters942); if (state.failed) return ;
-                    	    pushFollow(FOLLOW_fpsection_in_formalparameters944);
+                    	    match(input,8,FOLLOW_8_in_formalparameters951); if (state.failed) return ;
+                    	    pushFollow(FOLLOW_fpsection_in_formalparameters953);
                     	    fpsection();
 
                     	    state._fsp--;
@@ -2123,7 +2151,7 @@ public class oberon0Parser extends Parser {
 
             }
 
-            match(input,32,FOLLOW_32_in_formalparameters950); if (state.failed) return ;
+            match(input,32,FOLLOW_32_in_formalparameters959); if (state.failed) return ;
 
             }
 
@@ -2140,13 +2168,13 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "fpsection"
-    // oberon0.g:195:1: fpsection : ( 'VAR' )? identlist ':' type ;
+    // oberon0.g:199:1: fpsection : ( 'VAR' )? identlist ':' type ;
     public final void fpsection() throws RecognitionException {
         try {
-            // oberon0.g:196:2: ( ( 'VAR' )? identlist ':' type )
-            // oberon0.g:196:4: ( 'VAR' )? identlist ':' type
+            // oberon0.g:200:2: ( ( 'VAR' )? identlist ':' type )
+            // oberon0.g:200:4: ( 'VAR' )? identlist ':' type
             {
-            // oberon0.g:196:4: ( 'VAR' )?
+            // oberon0.g:200:4: ( 'VAR' )?
             int alt33=2;
             int LA33_0 = input.LA(1);
 
@@ -2155,22 +2183,22 @@ public class oberon0Parser extends Parser {
             }
             switch (alt33) {
                 case 1 :
-                    // oberon0.g:196:5: 'VAR'
+                    // oberon0.g:200:5: 'VAR'
                     {
-                    match(input,15,FOLLOW_15_in_fpsection962); if (state.failed) return ;
+                    match(input,15,FOLLOW_15_in_fpsection971); if (state.failed) return ;
 
                     }
                     break;
 
             }
 
-            pushFollow(FOLLOW_identlist_in_fpsection966);
+            pushFollow(FOLLOW_identlist_in_fpsection975);
             identlist();
 
             state._fsp--;
             if (state.failed) return ;
-            match(input,16,FOLLOW_16_in_fpsection968); if (state.failed) return ;
-            pushFollow(FOLLOW_type_in_fpsection970);
+            match(input,16,FOLLOW_16_in_fpsection977); if (state.failed) return ;
+            pushFollow(FOLLOW_type_in_fpsection979);
             type();
 
             state._fsp--;
@@ -2225,8 +2253,37 @@ public class oberon0Parser extends Parser {
     }
     // $ANTLR end synpred44_oberon0
 
+    // $ANTLR start synpred50_oberon0
+    public final void synpred50_oberon0_fragment() throws RecognitionException {   
+        // oberon0.g:155:45: ( elsestatement )
+        // oberon0.g:155:45: elsestatement
+        {
+        pushFollow(FOLLOW_elsestatement_in_synpred50_oberon0784);
+        elsestatement();
+
+        state._fsp--;
+        if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred50_oberon0
+
     // Delegated rules
 
+    public final boolean synpred50_oberon0() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred50_oberon0_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
     public final boolean synpred44_oberon0() {
         state.backtracking++;
         int start = input.mark();
@@ -2456,32 +2513,33 @@ public class oberon0Parser extends Parser {
     public static final BitSet FOLLOW_elsestatement_in_elsestatement817 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_42_in_elsestatement828 = new BitSet(new long[]{0x0000088000000110L});
     public static final BitSet FOLLOW_statementsequence_in_elsestatement830 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_43_in_whilestatement851 = new BitSet(new long[]{0x0000000283000030L});
-    public static final BitSet FOLLOW_expression_in_whilestatement855 = new BitSet(new long[]{0x0000100000000000L});
-    public static final BitSet FOLLOW_44_in_whilestatement857 = new BitSet(new long[]{0x0000088000000110L});
-    public static final BitSet FOLLOW_statementsequence_in_whilestatement861 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_10_in_whilestatement863 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_procedureheading_in_proceduredeclaration878 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_8_in_proceduredeclaration880 = new BitSet(new long[]{0x000020000000D600L});
-    public static final BitSet FOLLOW_procedurebody_in_proceduredeclaration882 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_45_in_procedureheading894 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENT_in_procedureheading896 = new BitSet(new long[]{0x0000000080000002L});
-    public static final BitSet FOLLOW_formalparameters_in_procedureheading899 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_declarations_in_procedurebody913 = new BitSet(new long[]{0x0000000000000600L});
-    public static final BitSet FOLLOW_9_in_procedurebody916 = new BitSet(new long[]{0x0000088000000110L});
-    public static final BitSet FOLLOW_statementsequence_in_procedurebody918 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_10_in_procedurebody922 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENT_in_procedurebody924 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_31_in_formalparameters936 = new BitSet(new long[]{0x0000000100008010L});
-    public static final BitSet FOLLOW_fpsection_in_formalparameters939 = new BitSet(new long[]{0x0000000100000100L});
-    public static final BitSet FOLLOW_8_in_formalparameters942 = new BitSet(new long[]{0x0000000000008010L});
-    public static final BitSet FOLLOW_fpsection_in_formalparameters944 = new BitSet(new long[]{0x0000000100000100L});
-    public static final BitSet FOLLOW_32_in_formalparameters950 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_15_in_fpsection962 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_identlist_in_fpsection966 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_16_in_fpsection968 = new BitSet(new long[]{0x0000001000020010L});
-    public static final BitSet FOLLOW_type_in_fpsection970 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_43_in_whilestatement860 = new BitSet(new long[]{0x0000000283000030L});
+    public static final BitSet FOLLOW_expression_in_whilestatement864 = new BitSet(new long[]{0x0000100000000000L});
+    public static final BitSet FOLLOW_44_in_whilestatement866 = new BitSet(new long[]{0x0000088000000110L});
+    public static final BitSet FOLLOW_statementsequence_in_whilestatement870 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_10_in_whilestatement872 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_procedureheading_in_proceduredeclaration887 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_8_in_proceduredeclaration889 = new BitSet(new long[]{0x000020000000D600L});
+    public static final BitSet FOLLOW_procedurebody_in_proceduredeclaration891 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_45_in_procedureheading903 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_IDENT_in_procedureheading905 = new BitSet(new long[]{0x0000000080000002L});
+    public static final BitSet FOLLOW_formalparameters_in_procedureheading908 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_declarations_in_procedurebody922 = new BitSet(new long[]{0x0000000000000600L});
+    public static final BitSet FOLLOW_9_in_procedurebody925 = new BitSet(new long[]{0x0000088000000110L});
+    public static final BitSet FOLLOW_statementsequence_in_procedurebody927 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_10_in_procedurebody931 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_IDENT_in_procedurebody933 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_31_in_formalparameters945 = new BitSet(new long[]{0x0000000100008010L});
+    public static final BitSet FOLLOW_fpsection_in_formalparameters948 = new BitSet(new long[]{0x0000000100000100L});
+    public static final BitSet FOLLOW_8_in_formalparameters951 = new BitSet(new long[]{0x0000000000008010L});
+    public static final BitSet FOLLOW_fpsection_in_formalparameters953 = new BitSet(new long[]{0x0000000100000100L});
+    public static final BitSet FOLLOW_32_in_formalparameters959 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_15_in_fpsection971 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_identlist_in_fpsection975 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_16_in_fpsection977 = new BitSet(new long[]{0x0000001000020010L});
+    public static final BitSet FOLLOW_type_in_fpsection979 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_assignment_in_synpred43_oberon0657 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_procedurecall_in_synpred44_oberon0663 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_elsestatement_in_synpred50_oberon0784 = new BitSet(new long[]{0x0000000000000002L});
 
 }

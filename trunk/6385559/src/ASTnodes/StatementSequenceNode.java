@@ -7,12 +7,12 @@ public class StatementSequenceNode implements ASTnode {
 	this.statementSequence = statementSequence;
   }
   
-  public void printNode()
+  public void printNode( int depth )
   {
 	if( this.statement != null )
-	  this.statement.printNode();
+	  this.statement.printNode( depth );
 	if( this.statementSequence != null )
-	  this.statementSequence.printNode();
+	  this.statementSequence.printNode( depth );
   }
   
   private StatementNode statement;

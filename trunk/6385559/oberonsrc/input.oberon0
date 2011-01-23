@@ -4,6 +4,13 @@ VAR x,y,z: INTEGER;
 BEGIN
 	z := -45 + (-5) - 4 + 7;
 	WHILE x < 5 DO
+	  IF x < 4 THEN
+	    x := x + 1;
+	  ELSIF x < 3 THEN
+	    x := x-1;
+	  ELSE
+	    x := x;
+	  END;
 	  x := x + 1;
 	END;
 END Sample.

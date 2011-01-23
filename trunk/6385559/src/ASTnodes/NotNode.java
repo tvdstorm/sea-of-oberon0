@@ -6,7 +6,7 @@ public class NotNode implements ASTnode {
 	this.expression = expression;
   }
   
-  public void printNode()
+  public void printNode( int depth )
   {
 	
   }

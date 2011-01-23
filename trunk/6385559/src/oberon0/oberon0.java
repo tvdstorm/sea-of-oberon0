@@ -27,7 +27,7 @@ public class oberon0 {
     }
     else
     {
-      AST.printNode();
+      AST.printNode( 0 );
     	
       System.out.println( "\nExit execution OK." );
     }

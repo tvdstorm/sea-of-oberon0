@@ -8,14 +8,14 @@ public class ExpressionNode implements ASTnode {
 	this.right = right;
   }
   
-  public void printNode()
+  public void printNode( int depth )
   {
 	if( this.left != null )
-      this.left.printNode();
+      this.left.printNode( depth );
 	if( this.operator != null )
 	  System.out.print( this.operator );
     if( this.right != null )
-      this.right.printNode();
+      this.right.printNode( depth );
   }
   
   private String operator = null;

@@ -8,14 +8,14 @@ public class SimpleExpression implements ASTnode {
 	this.followup = followup;
   }
   
-  public void printNode()
+  public void printNode( int depth )
   {
 	if( this.term != null )
-      this.term.printNode();
+      this.term.printNode( depth );
     if( this.operator != null )
       System.out.print( this.operator );
     if( this.followup != null )
-      this.followup.printNode();
+      this.followup.printNode( 0 );
   }
   
   private String operator = null;
