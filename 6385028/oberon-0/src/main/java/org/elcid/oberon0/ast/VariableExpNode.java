@@ -23,7 +23,7 @@ public class VariableExpNode extends ExpressionNode {
 
 	@Override
 	public List<Node> childNodes() {
-		return EMPTY_LIST;
+		return createList(variableName);
 	}
 
 	@Override

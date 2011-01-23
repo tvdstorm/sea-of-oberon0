@@ -4,6 +4,7 @@ import org.elcid.oberon0.ast.ArrayNode;
 import org.elcid.oberon0.ast.BinaryExpNode;
 import org.elcid.oberon0.ast.IdentifierNode;
 import org.elcid.oberon0.ast.IntegerExpNode;
+import org.elcid.oberon0.ast.VariableExpNode;
 import org.elcid.oberon0.ast.util.NodeType;
 import org.elcid.oberon0.exceptions.UnexpectedNodeException;
 import org.slf4j.Logger;
@@ -44,5 +45,10 @@ public class EvaluationVisitor implements NodeVisitor {
 				// Throws a runtime exception, because program cannot recover from this exception
 				throw new UnexpectedNodeException("Operator node " + operatorType + "is not a logical operator");
 		}
+	}
+
+	@Override
+	public Object visitVariableExpNode(VariableExpNode node) {
+		return node.getValue().accept(this);
 	}
 }
