@@ -4,7 +4,7 @@ import org.elcid.oberon0.ast.ArrayNode;
 import org.elcid.oberon0.ast.BinaryExpNode;
 import org.elcid.oberon0.ast.IdentifierNode;
 import org.elcid.oberon0.ast.IntegerExpNode;
-import org.elcid.oberon0.ast.NodeType;
+import org.elcid.oberon0.ast.util.NodeType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

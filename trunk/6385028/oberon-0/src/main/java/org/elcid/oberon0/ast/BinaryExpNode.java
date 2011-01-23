@@ -1,5 +1,6 @@
 package org.elcid.oberon0.ast;
 
+import org.elcid.oberon0.ast.util.NodeType;
 import java.util.List;
 import org.elcid.oberon0.ast.visitor.NodeVisitor;
 import org.slf4j.Logger;
