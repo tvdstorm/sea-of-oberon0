@@ -1,3 +1,4 @@
+
 grammar oberon;
 
 options {
@@ -23,10 +24,12 @@ tokens {
     PROCDECL;
     PROCHEAD;
     PROCBODY;
+    EXPRESSION;
     DOTSELECTOR;
     BRACKETSELECTOR;
     NUMBER;
     VARS;
+    VALUE;
 } 
 
 @header {
@@ -99,7 +102,7 @@ identSelector
 
 selectorRightPart
     :   (DOT ident)         ->  ^(DOTSELECTOR ident)
-    |   (LB expression RB)  ->  ^(BRACKETSELECTOR expression) ;
+    |   (LB expression_ RB)  ->  ^(BRACKETSELECTOR expression_) ;
 
 number      
     :   INTEGER 
@@ -115,9 +118,13 @@ term
     :   factor ((MULT^ | DIV^ | MOD^ | AMP^) factor)* ;
 
 simpleExpression 
-    :   (PLUS^ | MIN^)? term ((PLUS^ | MIN^ | OR^)+ term)* ;
+    :   (PLUS^ | MIN^)? term ((PLUS^ | MIN^ | OR^) term)* ;
     
-expression 
+expression
+    :   expression_
+    ->  ^(EXPRESSION expression_);
+    
+expression_ 
     :   simpleExpression ((EQ^ | HASH^ | LT^ | LTEQ^ | GT^ | GTEQ^) simpleExpression)? ;
     
 actualParameters
@@ -129,8 +136,7 @@ procedureCall
     ->  ^(PROCCALL identSelector actualParameters?) ;
 
 assignment
-    :   identSelector ASSIGN expression 
-    ->  ^(ASSIGN identSelector expression) ;
+    :   identSelector ASSIGN^ expression; 
    
 ifStatement
     :   IF expression THEN statementSequence elsifStatement* elseStatement? END 
@@ -150,7 +156,7 @@ statement
         | procedureCall -> ^(STATEMENT procedureCall)
         | ifStatement -> ^(STATEMENT ifStatement)
         | whileStatement -> ^(STATEMENT whileStatement))? ;
-        
+
 statementSequence
     :   statement (SEMI statement)* 
     ->  ^(STATEMENTSEQ ^(statement)+) ;
