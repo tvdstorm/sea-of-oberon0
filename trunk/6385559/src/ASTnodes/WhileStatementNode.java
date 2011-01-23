@@ -1,12 +1,23 @@
 package ASTnodes;
 
 public class WhileStatementNode implements StatementNode {
-  public WhileStatementNode( String cond, StatementSequenceNode statements )
+  public WhileStatementNode( ExpressionNode cond, StatementSequenceNode statements )
   {
 	this.cond = cond;
 	this.executionSequence = statements;
   }
   
-  String cond = null;
-  StatementSequenceNode executionSequence = null;
+  public void printNode()
+  {
+	System.out.print( "WHILE " );
+	if( this.cond != null )
+	  this.cond.printNode();
+	System.out.println( " DO" );
+	if( this.executionSequence != null )
+	  this.executionSequence.printNode();
+	System.out.println( "END;");
+  }
+  
+  private ExpressionNode cond = null;
+  private StatementSequenceNode executionSequence = null;
 }

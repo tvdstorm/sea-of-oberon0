@@ -6,5 +6,10 @@ public class IntegerNode implements ASTnode {
 	this.intValue = x;
   }
   
+  public void printNode()
+  {
+	System.out.print( this.intValue );
+  }
+  
   private int intValue = 0;
 }

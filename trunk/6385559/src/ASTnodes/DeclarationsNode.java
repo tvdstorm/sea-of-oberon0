@@ -5,4 +5,9 @@ public class DeclarationsNode implements ASTnode {
   {
 	
   }
+  
+  public void printNode()
+  {
+	
+  }
 }
