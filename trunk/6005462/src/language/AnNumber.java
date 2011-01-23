@@ -31,24 +31,33 @@ public class AnNumber implements IType {
 		if (secondVal.getType() != ValueType.NUMBER)  throw new Exception("Typemismatch exception");
 		AnNumber secondNumber = secondVal.getNumber();
 		
-		int newval;
 		switch(op){
 			case oberonLexer.PLUS:
-				newval = this.getValue() + secondNumber.getValue(); break;
+				return new AnValue(this.getValue() + secondNumber.getValue());
 			case oberonLexer.MIN:
-				newval = this.getValue() - secondNumber.getValue(); break;
+				return new AnValue(this.getValue() - secondNumber.getValue());
 			case oberonLexer.MULT:
-				newval = this.getValue() * secondNumber.getValue(); break;
+				return new AnValue(this.getValue() * secondNumber.getValue());
 			case oberonLexer.DIV:
-				newval = this.getValue() / secondNumber.getValue(); break;
+				return new AnValue(this.getValue() / secondNumber.getValue());
 			case oberonLexer.MOD:
-				newval = this.getValue() % secondNumber.getValue(); break;
+				return new AnValue(this.getValue() % secondNumber.getValue());
 			case oberonLexer.AMP:
-				newval = this.getValue() & secondNumber.getValue(); break;
+				return new AnValue(this.getValue() & secondNumber.getValue());
+			case oberonLexer.EQ:
+				return new AnValue(this.getValue() == secondNumber.getValue());
+			case oberonLexer.GTEQ:
+				return new AnValue(this.getValue() >= secondNumber.getValue());
+			case oberonLexer.LTEQ:
+				return new AnValue(this.getValue() <= secondNumber.getValue());
+			case oberonLexer.LT:
+				return new AnValue(this.getValue() < secondNumber.getValue());
+			case oberonLexer.GT:
+				return new AnValue(this.getValue() > secondNumber.getValue());
+			case oberonLexer.HASH:
+				return new AnValue(this.getValue() != secondNumber.getValue());
 			default: throw new UnsupportedOperationException();
 		}
-		
-		return new AnValue(newval);
 	}
 	
 	private AnValue operateSingle(int op){
