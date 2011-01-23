@@ -4,7 +4,7 @@ import ar.oberon0.interpreter.IdentList;
 import ar.oberon0.interpreter.DataTypes.Type;
 import ar.oberon0.interpreter.Memory.*;
 
-public class VarList extends BaseList<Var> 
+public class VarList extends BaseList<DataField> 
 {	
 	public VarList()
 	{
@@ -15,7 +15,12 @@ public class VarList extends BaseList<Var>
 	{
 		for(String identifier : identifiers)
 		{
-			AddItem(identifier, new Var(type));
+			try {
+				AddItem(identifier, new DataField(type));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 		

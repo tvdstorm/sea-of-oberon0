@@ -12,7 +12,7 @@ options {
   import ar.oberon0.interpreter.Lists.*;
   import ar.oberon0.interpreter.Operators.*;
   import ar.oberon0.interpreter.Memory.*;
-  import ar.oberon0.interpreter.Procedure.*;
+  import ar.oberon0.interpreter.Procedure.*; 
 }
 
 @lexer::header {
@@ -30,7 +30,7 @@ selector [Selector selector] returns [Selector result]
 	; 
 
 factor returns [Interpretable result]
-	:	IDENT 													{Selector sel = new IdentSelector($IDENT.getText());}
+	:	IDENT 													{IdentSelector sel = new IdentSelector($IDENT.getText());}
 		selector[sel]											{$result = sel;}
 	| 	INTEGER 												{$result = new IntegerNode(Integer.parseInt($INTEGER.getText()));}
 	| 	'(' expression ')' 										{$result = $expression.result;} 
@@ -76,7 +76,7 @@ expression returns [Interpretable result]
 
 assignment returns [Interpretable result]
 	:	IDENT 
-																{Selector sel = new IdentSelector($IDENT.getText());} 
+																{IdentSelector sel = new IdentSelector($IDENT.getText());} 
 		selector[sel] ':=' expression 							{$result = new AssignmentNode(sel,$expression.result);}
 	; 
 
@@ -167,9 +167,9 @@ recordType returns [RecordType result]
 	; 
 
 type returns [Type result]
-	:	IDENT 													{$result = new Type($IDENT.getText());}
-	| 	arrayType 												{$result = new Type($arrayType.result);}
-	| 	recordType												{$result = new Type($recordType.result);}
+	:	IDENT 													{$result = new SimpleType($IDENT.getText());}
+	| 	arrayType 												{$result = $arrayType.result;}
+	| 	recordType												{$result = $recordType.result;}
 	; 
 
 fPSection returns [FPSection result]
@@ -213,7 +213,7 @@ procedureDeclaration returns [Procedure result]
 	
 declarations returns [ConstantList constants, TypeIdentifierList types, VarList vars, List<Procedure> childProcedures]
 	:	(	'CONST' 											{$constants = new ConstantList();}
-			(constIDENT=IDENT '=' expression ';'				{$constants.AddItem($constIDENT.getText(),Helper.getDataType($expression.result,null));}
+			(constIDENT=IDENT '=' expression ';'				{$constants.AddItem($constIDENT.getText(),new DataField(new SimpleType("INTEGER"),(DataType)$expression.result));}
 			)*
 		)?
 		(	'TYPE' 												{$types = new TypeIdentifierList();}

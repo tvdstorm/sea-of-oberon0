@@ -9,7 +9,7 @@ import ar.oberon0.interpreter.Lists.ConstantList;
 import ar.oberon0.interpreter.Lists.TypeIdentifierList;
 import ar.oberon0.interpreter.Lists.VarList;
 import ar.oberon0.interpreter.Memory.Context;
-import ar.oberon0.interpreter.Memory.Var;
+import ar.oberon0.interpreter.Memory.DataField;
 import ar.oberon0.interpreter.Procedure.Procedure;
 
 public class Module implements Interpretable {

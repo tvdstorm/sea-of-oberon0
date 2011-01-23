@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g 2011-01-23 12:12:56
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g 2011-01-23 22:10:08
 
   package ar.oberon0.parser;
   import ar.oberon0.interpreter.*;
@@ -7,7 +7,7 @@
   import ar.oberon0.interpreter.Lists.*;
   import ar.oberon0.interpreter.Operators.*;
   import ar.oberon0.interpreter.Memory.*;
-  import ar.oberon0.interpreter.Procedure.*;
+  import ar.oberon0.interpreter.Procedure.*; 
 
 
 import org.antlr.runtime.*;
@@ -280,7 +280,7 @@ public class Oberon0Parser extends Parser {
                     IDENT6_tree = (Object)adaptor.create(IDENT6);
                     adaptor.addChild(root_0, IDENT6_tree);
 
-                    Selector sel = new IdentSelector(IDENT6.getText());
+                    IdentSelector sel = new IdentSelector(IDENT6.getText());
                     pushFollow(FOLLOW_selector_in_factor166);
                     selector7=selector(sel);
 
@@ -960,7 +960,7 @@ public class Oberon0Parser extends Parser {
             IDENT29_tree = (Object)adaptor.create(IDENT29);
             adaptor.addChild(root_0, IDENT29_tree);
 
-            Selector sel = new IdentSelector(IDENT29.getText());
+            IdentSelector sel = new IdentSelector(IDENT29.getText());
             pushFollow(FOLLOW_selector_in_assignment725);
             selector30=selector(sel);
 
@@ -2224,7 +2224,7 @@ public class Oberon0Parser extends Parser {
                     IDENT71_tree = (Object)adaptor.create(IDENT71);
                     adaptor.addChild(root_0, IDENT71_tree);
 
-                    retval.result = new Type(IDENT71.getText());
+                    retval.result = new SimpleType(IDENT71.getText());
 
                     }
                     break;
@@ -2239,7 +2239,7 @@ public class Oberon0Parser extends Parser {
                     state._fsp--;
 
                     adaptor.addChild(root_0, arrayType72.getTree());
-                    retval.result = new Type((arrayType72!=null?arrayType72.result:null));
+                    retval.result = (arrayType72!=null?arrayType72.result:null);
 
                     }
                     break;
@@ -2254,7 +2254,7 @@ public class Oberon0Parser extends Parser {
                     state._fsp--;
 
                     adaptor.addChild(root_0, recordType73.getTree());
-                    retval.result = new Type((recordType73!=null?recordType73.result:null));
+                    retval.result = (recordType73!=null?recordType73.result:null);
 
                     }
                     break;
@@ -2841,7 +2841,7 @@ public class Oberon0Parser extends Parser {
                     	    char_literal93_tree = (Object)adaptor.create(char_literal93);
                     	    adaptor.addChild(root_0, char_literal93_tree);
 
-                    	    retval.constants.AddItem(constIDENT.getText(),Helper.getDataType((expression92!=null?expression92.result:null),null));
+                    	    retval.constants.AddItem(constIDENT.getText(),new DataField(new SimpleType("INTEGER"),(DataType)(expression92!=null?expression92.result:null)));
 
                     	    }
                     	    break;

@@ -6,6 +6,11 @@ public class IntegerNode implements DataType {
 
 	private int _value;
 			
+	public IntegerNode()
+	{
+		this(0);
+	}
+	
 	public IntegerNode(int value)
 	{
 		_value = value;
@@ -106,5 +111,10 @@ public class IntegerNode implements DataType {
 			throw new Exception("Could not modulo the value of type " +IntegerNode.class + " from the value of type " + value.getClass() + ".");
 		
 		return new IntegerNode(_value % ((IntegerNode)value)._value);
-	}	
+	}
+	
+	public int getValueAsInt()
+	{
+		return _value;
+	}
 }

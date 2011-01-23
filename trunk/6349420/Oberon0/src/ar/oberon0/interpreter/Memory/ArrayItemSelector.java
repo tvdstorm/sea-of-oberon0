@@ -1,5 +1,8 @@
 package ar.oberon0.interpreter.Memory;
 
+import ar.oberon0.interpreter.DataTypes.Array;
+import ar.oberon0.interpreter.DataTypes.DataType;
+import ar.oberon0.interpreter.DataTypes.IntegerNode;
 import ar.oberon0.interpreter.Memory.*;
 import ar.oberon0.interpreter.Interpretable;
 
@@ -13,13 +16,11 @@ public class ArrayItemSelector extends Selector {
 	}
 
 	@Override
-	public Object Interpret(Context context) throws Exception {
-		if(getNextNode() != null)
-			return "[" + _expression.Interpret(context) + "]" + "." + getNextNode().Interpret(context);
-		else
-			return "[" + _expression.Interpret(context) + "]";
+	protected DataField getVar(DataField parent, Context context) throws Exception 
+	{
+		return ((Array)parent.getValue(context)).getVarAt((IntegerNode)_expression.Interpret(context));
 	}
 
-
+	
 	
 }
