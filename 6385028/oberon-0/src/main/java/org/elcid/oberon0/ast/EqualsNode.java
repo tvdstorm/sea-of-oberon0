@@ -8,7 +8,7 @@ import org.elcid.oberon0.ast.visitor.NodeVisitor;
  *
  * @author Pieter Brandwijk
  */
-public class EqualsNode extends Node {
+public class EqualsNode extends OperatorNode {
 
 	public EqualsNode() {
 		

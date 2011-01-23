@@ -17,9 +17,9 @@ public class BinaryExpNode extends ExpressionNode {
 
 	private ExpressionNode leftExp;
 	private ExpressionNode rightExp;
-	private Node operator;
+	private OperatorNode operator;
 
-	public BinaryExpNode(ExpressionNode leftExp, ExpressionNode rightExp, Node operator) {
+	public BinaryExpNode(ExpressionNode leftExp, ExpressionNode rightExp, OperatorNode operator) {
 		this.leftExp = leftExp;
 		this.rightExp = rightExp;
 		this.operator = operator;
