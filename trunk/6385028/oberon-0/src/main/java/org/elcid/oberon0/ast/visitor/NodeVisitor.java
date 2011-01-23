@@ -12,5 +12,6 @@ public interface NodeVisitor {
 	public Object visitIdentifierNode(IdentifierNode node);
 	public Object visitArrayNode(ArrayNode node);
 	public Object visitBinaryExpNode(BinaryExpNode node);
+	public Object visitVariableExpNode(VariableExpNode node);
 
 }
