@@ -1,4 +1,4 @@
-package org.elcid.oberon0.ast;
+package org.elcid.oberon0.ast.util;
 
 /**
  * Enummeration of all possible node types in the oberon-0 AST.
