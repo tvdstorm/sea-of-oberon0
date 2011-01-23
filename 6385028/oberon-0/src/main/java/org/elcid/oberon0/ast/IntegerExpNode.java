@@ -5,7 +5,7 @@ import java.util.List;
 import org.elcid.oberon0.ast.visitor.NodeVisitor;
 
 /**
- * A representation of an integer in the Oberon-0 language
+ * A representation of an integer expression in the Oberon-0 language.
  *
  * @author Pieter Brandwijk
  */
