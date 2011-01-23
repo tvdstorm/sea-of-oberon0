@@ -26,6 +26,8 @@ public class AstNodeFactory {
 				return new AnExpression(ident);
 			//Expressions that include an operator
 			case oberonLexer.EXPRESSION:
+				assert (tree.getChildCount() == 1);
+				return createExpression(tree.getChild(0));
 			case oberonLexer.PLUS:
 			case oberonLexer.MIN:
 			case oberonLexer.TILDEFACTOR:
