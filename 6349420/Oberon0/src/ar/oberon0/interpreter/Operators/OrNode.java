@@ -1,4 +1,8 @@
-package ar.oberon0.interpreter;
+package ar.oberon0.interpreter.Operators;
+
+import ar.oberon0.interpreter.BinaryNode;
+import ar.oberon0.interpreter.Interpretable;
+import ar.oberon0.interpreter.Memory.Context;
 
 public class OrNode extends BinaryNode {
 
@@ -8,7 +12,7 @@ public class OrNode extends BinaryNode {
 	}
 
 	@Override
-	public Object Interpret() throws Exception {
+	public Object Interpret(Context context) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

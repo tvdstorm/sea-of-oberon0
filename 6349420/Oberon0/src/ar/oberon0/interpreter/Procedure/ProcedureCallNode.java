@@ -1,4 +1,7 @@
-package ar.oberon0.interpreter;
+package ar.oberon0.interpreter.Procedure;
+
+import ar.oberon0.interpreter.Interpretable;
+import ar.oberon0.interpreter.Memory.Context;
 
 public class ProcedureCallNode implements Interpretable {
 
@@ -12,7 +15,7 @@ public class ProcedureCallNode implements Interpretable {
 	}
 	
 	@Override
-	public Object Interpret() throws Exception {
+	public Object Interpret(Context context) throws Exception {
 		return _procedureName;
 	}
 
