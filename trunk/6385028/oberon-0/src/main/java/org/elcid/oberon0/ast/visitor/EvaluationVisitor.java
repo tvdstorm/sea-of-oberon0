@@ -5,6 +5,7 @@ import org.elcid.oberon0.ast.BinaryExpNode;
 import org.elcid.oberon0.ast.IdentifierNode;
 import org.elcid.oberon0.ast.IntegerExpNode;
 import org.elcid.oberon0.ast.util.NodeType;
+import org.elcid.oberon0.exceptions.Oberon0Exception;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,11 +38,11 @@ public class EvaluationVisitor implements NodeVisitor {
 		NodeType operatorType = node.getOperator().getNodeType();
 		switch (operatorType) {
 			case EQUALSNODE:
+				// Return true if expressions are equal, else false
 				return node.getLeftExp().accept(this) == node.getRightExp().accept(this);
 			default:
-				LOG.warn("Unexpected node : " + operatorType + ", returning false");
+				LOG.warn("Operator type {} is not a logical operator, returning false", operatorType);
 				return false;
 		}
-
 	}
 }
