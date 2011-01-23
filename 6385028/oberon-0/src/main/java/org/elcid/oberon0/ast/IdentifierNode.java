@@ -28,8 +28,8 @@ public class IdentifierNode extends Node {
 	}
 
 	@Override
-	public Object accept(NodeVisitor iVisitor) {
-		return iVisitor.visitIdentifierNode(this);
+	public Object accept(NodeVisitor visitor) {
+		return visitor.visitIdentifierNode(this);
 	}
 
 	@Override

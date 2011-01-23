@@ -31,8 +31,8 @@ public class ArrayNode extends Node {
 	}
 
 	@Override
-	public Object accept(NodeVisitor iVisitor) {
-		return iVisitor.visitArrayNode(this);
+	public Object accept(NodeVisitor visitor) {
+		return visitor.visitArrayNode(this);
 	}
 
 	@Override

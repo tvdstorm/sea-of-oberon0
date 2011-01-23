@@ -28,8 +28,8 @@ public class IntegerExpNode extends ExpressionNode {
 	}
 
 	@Override
-	public Object accept(NodeVisitor iVisitor) {
-		return iVisitor.visitIntegerNode(this);
+	public Object accept(NodeVisitor visitor) {
+		return visitor.visitIntegerNode(this);
 	}
 
 	@Override
