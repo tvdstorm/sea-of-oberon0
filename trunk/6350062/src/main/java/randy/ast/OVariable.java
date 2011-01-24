@@ -1,8 +1,6 @@
 package randy.ast;
 
-import org.antlr.runtime.tree.Tree;
 import randy.exception.*;
-import randy.generated.Oberon0Parser;
 import randy.interpreter.Oberon0VariableStack;
 import randy.value.OValue;
 
@@ -22,12 +20,6 @@ public class OVariable extends OExpression
 		assert(vars != null);
 		// Resolve the variable with the variable stack
 		return vars.getVariable(name);
-	}
-	public static OVariable buildVariable(Tree tree) throws Oberon0Exception
-	{
-		assert(tree.getType() == Oberon0Parser.IDENT);
-		String name = tree.getText();
-		return new OVariable(name);
 	}
 	@Override
 	public void accept(OASTNodeVisitor visitor) throws Oberon0Exception
