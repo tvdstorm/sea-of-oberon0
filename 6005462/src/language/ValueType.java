@@ -2,5 +2,9 @@ package language;
 
 public enum ValueType {
 	NUMBER,
-	BOOLEAN
+	CONST,
+	BOOLEAN,
+	PROCEDURE,
+	ARRAY,
+	RECORD
 }
