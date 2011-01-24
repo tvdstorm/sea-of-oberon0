@@ -1,8 +1,6 @@
 package randy.ast;
 
-import org.antlr.runtime.tree.Tree;
 import randy.exception.*;
-import randy.generated.Oberon0Parser;
 import randy.interpreter.Oberon0VariableStack;
 import randy.value.OValue;
 
@@ -27,16 +25,6 @@ public class OAssignmentStatement extends OStatement
 		assert(var != null);
 		var.setValue(rhs.run(vars));
 		return null;
-	}
-	public static OAssignmentStatement buildAssignmentStatement(Tree tree) throws Oberon0Exception
-	{
-		assert(tree.getType() == Oberon0Parser.ASSIGNMENT);
-		assert(tree.getChildCount() == 2);
-		if (tree.getChild(0).getType() != Oberon0Parser.LH || tree.getChild(1).getType() != Oberon0Parser.RH)
-			throw new Oberon0ASTTreeBuildException("Missing LH or RH children on assignment.");
-		OSelector lhs = OSelector.buildSelector(tree.getChild(0).getChild(0));
-		OExpression rhs = OExpression.buildExpression(tree.getChild(1).getChild(0));
-		return new OAssignmentStatement(lhs, rhs);
 	}
 	@Override
 	public void accept(OASTNodeVisitor visitor) throws Oberon0Exception

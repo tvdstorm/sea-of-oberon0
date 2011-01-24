@@ -1,8 +1,6 @@
 package randy.ast;
 
-import org.antlr.runtime.tree.Tree;
 import randy.exception.*;
-import randy.generated.Oberon0Parser;
 import randy.interpreter.Oberon0VariableStack;
 import randy.value.*;
 
@@ -36,14 +34,6 @@ public class OArraySelector extends OSelector
 		
 		// Return the requested index of the array
 		return array.getIndexValue(index.getIntValue());
-	}
-	public static OArraySelector buildArraySelector(Tree tree) throws Oberon0Exception
-	{
-		assert(tree.getType() == Oberon0Parser.ARRAYSELECTOR);
-		assert(tree.getChildCount() == 2);
-		OSelector lhs = OSelector.buildSelector(tree.getChild(0));
-		OExpression arrayIndex = OExpression.buildExpression(tree.getChild(1));
-		return new OArraySelector(lhs, arrayIndex);
 	}
 	@Override
 	public void accept(OASTNodeVisitor visitor) throws Oberon0Exception

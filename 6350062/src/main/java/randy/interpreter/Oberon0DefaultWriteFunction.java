@@ -4,10 +4,8 @@ import java.util.Queue;
 import randy.ast.OInvokableFunction;
 import randy.exception.Oberon0IncorrectNumberOfArgumentsException;
 import randy.exception.Oberon0RuntimeException;
-import randy.exception.Oberon0TypeMismatchException;
 import randy.value.OInteger;
 import randy.value.OValue;
-import randy.value.Type;
 
 public class Oberon0DefaultWriteFunction implements OInvokableFunction
 {

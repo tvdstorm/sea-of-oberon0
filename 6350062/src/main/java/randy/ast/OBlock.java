@@ -1,7 +1,6 @@
 package randy.ast;
 
 import java.util.*;
-import org.antlr.runtime.tree.Tree;
 import randy.exception.*;
 import randy.interpreter.Oberon0VariableStack;
 import randy.value.OValue;
@@ -14,16 +13,6 @@ public class OBlock extends OStatement
 	{
 		assert(_statements != null);
 		statements = _statements;
-	}
-	public static OBlock buildBlock(Tree tree) throws Oberon0Exception
-	{
-		List<OStatement> statements = new Vector<OStatement>();
-		for (int i=0;i<tree.getChildCount();i++)
-		{
-			Tree child = tree.getChild(i);
-			statements.add(OStatement.buildStatement(child));
-		}
-		return new OBlock(statements);
 	}
 	@Override
 	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException

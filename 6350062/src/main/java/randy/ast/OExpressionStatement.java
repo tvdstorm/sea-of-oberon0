@@ -1,8 +1,6 @@
 package randy.ast;
 
-import org.antlr.runtime.tree.Tree;
 import randy.exception.*;
-import randy.generated.Oberon0Parser;
 import randy.interpreter.Oberon0VariableStack;
 import randy.value.OValue;
 
@@ -14,12 +12,6 @@ public class OExpressionStatement extends OStatement
 	{
 		assert(_expression != null);
 		expression = _expression;
-	}
-	public static OExpressionStatement buildExpressionStatement(Tree tree) throws Oberon0Exception
-	{
-		assert(tree.getType() == Oberon0Parser.EXPRESSION);
-		assert(tree.getChildCount() == 1);
-		return new OExpressionStatement(OExpression.buildExpression(tree.getChild(0)));
 	}
 	@Override
 	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException

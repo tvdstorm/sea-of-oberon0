@@ -1,48 +1,11 @@
 package randy.ast;
 
-import java.util.*;
-import org.antlr.runtime.tree.Tree;
 import randy.exception.*;
 import randy.interpreter.Oberon0VariableStack;
 import randy.value.*;
 
 public class OInfixExpression extends OExpression
 {
-	enum Operator
-	{
-		PLUS("+"),
-		MINUS("-"),
-		DIV("DIV"),
-		TIMES("*"),
-		SMALLERTHAN("<"),
-		GREATERTHAN(">"),
-		SMALLEREQUALS("<="),
-		GREATEREQUALS(">="),
-		EQUALS("="),
-		AND("&"),
-		OR("OR");
-		
-		private static final Map<String, Operator> lookup = new HashMap<String, Operator>();
-		
-		static
-		{
-			for (Operator s : EnumSet.allOf(Operator.class))
-				lookup.put(s.getOperatorText(), s);
-		}
-		private String operatorText;
-		private Operator(String _operatorText)
-		{
-			operatorText = _operatorText;
-		}
-		public String getOperatorText()
-		{
-			return operatorText;
-		}
-		public static Operator get(String operatorText)
-		{
-			return lookup.get(operatorText);
-		}
-	};
 	private OExpression lhs;
 	private OExpression rhs;
 	private Operator operator;
@@ -55,16 +18,6 @@ public class OInfixExpression extends OExpression
 		lhs = _lhs;
 		operator = _operator;
 		rhs = _rhs;
-	}
-	public static OInfixExpression buildInfixExpression(Tree tree) throws Oberon0Exception
-	{
-		assert(tree.getChildCount() == 2);
-		OExpression left = OExpression.buildExpression(tree.getChild(0));
-		OExpression right = OExpression.buildExpression(tree.getChild(1));
-		Operator operator = Operator.get(tree.getText());
-		if (operator == null)
-			throw new Oberon0UnknownOperatorException(tree.getText());
-		return new OInfixExpression(left, operator, right);
 	}
 	@Override
 	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
