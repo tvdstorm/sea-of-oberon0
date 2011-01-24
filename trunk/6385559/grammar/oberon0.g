@@ -25,9 +25,9 @@ module returns [ ModuleNode e ]
 	;
 
 declarations returns [ DeclarationsNode e ]
-	: ('CONST' constants)? ('TYPE' (IDENT '=' type ';')+)? ('VAR' (identlist ':' type ';')+ )? (proceduredeclaration ';')*
+	: ('CONST' constants)? ('TYPE' typeDefs)? ('VAR' (identlist ':' type ';')+ )? (proceduredeclaration ';')*
 	{
-	  $e = new DeclarationsNode( $constants.e );
+	  $e = new DeclarationsNode( $constants.e, $typeDefs.e );
 	}
 	;
 	
@@ -41,7 +41,7 @@ constants returns [ ConstantNode e ]
 typeDefs returns [ TypeDefNode e ]
 	: (IDENT '=' type ';') typeDefsFollowUp=typeDefs?
 	{
-	  $e = new TypeDefNode( $IDENT.text, $type.e, $typeDefFollowUp.e );
+	  $e = new TypeDefNode( $IDENT.text, $type.e, $typeDefsFollowUp.e );
 	}
 	;
 
@@ -58,11 +58,25 @@ arraytype returns [ ArrayNode e ]
 	}
 	;
 	
-recordtype returns [ RecordType e ]
-	: 'RECORD' fieldlist (';' fieldlist)* 'END'
+recordtype returns [ RecordNode e ]
+	: 'RECORD' fields 'END'
 	{
-	  $e = new RecordType();
+	  $e = new RecordNode( $fields.e );
 	}
+	;
+	
+fields returns [ FieldsNode e ]
+	: fieldlist (fieldsFollowup)?
+	{
+	  $e = new FieldsNode( $fieldlist.e, $fieldsFollowup.e );
+	}
+	;
+
+fieldsFollowup returns [ FieldsNode e ]
+	: ';' fieldlist (followup=fieldsFollowup)?
+	{
+	  $e = new FieldsNode( $fieldlist.e, $followup.e );
+        }
 	;
 	
 expression returns [ ExpressionNode e ] 
@@ -142,12 +156,25 @@ variable returns [ VarNode e ]
         }
         ;
 	
-fieldlist
+fieldlist returns [ FieldlistNode e ]
 	: (identlist ':' type)?
+	{
+	  $e = new FieldlistNode( $identlist.e, $type.e );
+	}
 	;
 	
-identlist
-	: IDENT (',' IDENT)*
+identlist returns [ IdentListNode e ]
+	: IDENT ( identlistFollowUp )?
+	{
+	  $e = new IdentListNode( $IDENT.text, $identlistFollowUp.e );
+	}
+	;
+	
+identlistFollowUp returns [ IdentListNode e ]
+	: ',' IDENT ( followup=identlistFollowUp)?
+	{
+	  $e = new IdentListNode( $IDENT.text, $followup.e );
+	}
 	;
 
 statementsequence returns [ StatementSequenceNode e ]
