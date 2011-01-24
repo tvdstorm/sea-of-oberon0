@@ -176,7 +176,7 @@ type
     
 fpSection
     :   VAR? identList COLON type 
-    ->  ^(FPSECTION identList type) ;
+    ->  ^(FPSECTION VAR? identList type) ;
     
 formalParameters
     :   LP (fpSection (SEMI fpSection)* )? RP 
@@ -196,7 +196,7 @@ procedureDeclaration
 
 declarations
     :   constDecls? typeDecls? varDecls? (procedureDeclaration SEMI)* 
-    -> ^(DECLARATIONS constDecls? typeDecls? varDecls? (procedureDeclaration)*) ; 
+    -> ^(DECLARATIONS constDecls? typeDecls? varDecls? procedureDeclaration*) ; 
 
 constDecls
     :   CONST (ident EQ expression SEMI)* 
