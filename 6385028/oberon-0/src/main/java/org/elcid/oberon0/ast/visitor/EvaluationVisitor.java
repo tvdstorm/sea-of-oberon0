@@ -1,13 +1,11 @@
 package org.elcid.oberon0.ast.visitor;
 
 import org.elcid.oberon0.ast.ArrayNode;
-import org.elcid.oberon0.ast.BinaryExpNode;
+import org.elcid.oberon0.ast.EqualsExpNode;
 import org.elcid.oberon0.ast.IdentifierNode;
 import org.elcid.oberon0.ast.IntegerExpNode;
 import org.elcid.oberon0.ast.UnaryExpNode;
 import org.elcid.oberon0.ast.VariableExpNode;
-import org.elcid.oberon0.ast.util.NodeType;
-import org.elcid.oberon0.exceptions.UnexpectedNodeException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,16 +34,8 @@ public class EvaluationVisitor implements NodeVisitor {
 	}
 
 	@Override
-	public Object visitBinaryExpNode(BinaryExpNode node) {
-		NodeType operatorType = node.getOperator().getNodeType();
-		switch (operatorType) {
-			case EQUALSNODE:
-				// Return true if expressions are equal, else false
-				return node.getLeftExp().accept(this) == node.getRightExp().accept(this);
-			default:
-				// Throws a runtime exception, because program cannot recover from this exception
-				throw new UnexpectedNodeException("Operator node " + operatorType + "is not a logical operator or is not yet implemented");
-		}
+	public Object visitEqualsExpNode(EqualsExpNode node) {
+		return node.getLeftExp().accept(this) == node.getRightExp().accept(this);
 	}
 
 	@Override

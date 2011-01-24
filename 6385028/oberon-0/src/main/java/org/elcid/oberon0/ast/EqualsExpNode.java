@@ -9,18 +9,32 @@ import java.util.List;
  *
  * @author Pieter Brandwijk
  */
-public class EqualsOpNode extends OperatorNode {
+public class EqualsExpNode extends ExpressionNode {
 
-	public EqualsOpNode() { }
+	private ExpressionNode leftExp;
+	private ExpressionNode rightExp;
+
+	public EqualsExpNode(ExpressionNode leftExp, ExpressionNode rightExp) {
+		this.leftExp = leftExp;
+		this.rightExp = rightExp;
+	}
+
+	public Node getLeftExp() {
+		return leftExp;
+	}
+
+	public Node getRightExp() {
+		return rightExp;
+	}
 
 	@Override
 	public Object accept(NodeVisitor visitor) {
-		throw new UnsupportedOperationException("Not supported for this class.");
+		return visitor.visitEqualsExpNode(this);
 	}
 
 	@Override
 	public List<Node> childNodes() {
-		return EMPTY_LIST;
+		return createList(leftExp, rightExp);
 	}
 
 	@Override

@@ -1,8 +1,6 @@
 package org.elcid.oberon0.ast.visitor;
 
-import org.elcid.oberon0.ast.EqualsOpNode;
-import org.elcid.oberon0.ast.IntegerExpNode;
-import org.elcid.oberon0.ast.BinaryExpNode;
+import org.elcid.oberon0.ast.*;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -48,20 +46,14 @@ public class EvaluationVisitorTest {
 	}
 
 	@Test
-	public void testVisitBinaryExpNode() {
+	public void testVisitEqualsExpNode() {
 		EvaluationVisitor visitor = new EvaluationVisitor();
 
-		BinaryExpNode trueBinExp = new BinaryExpNode(new IntegerExpNode(2), new IntegerExpNode(2), new EqualsOpNode());
-		assertTrue((Boolean) trueBinExp.accept(visitor));
+		EqualsExpNode trueNode = new EqualsExpNode(new IntegerExpNode(1), new IntegerExpNode(1));
+		assertTrue((Boolean) visitor.visitEqualsExpNode(trueNode));
 
-		BinaryExpNode falseBinExp = new BinaryExpNode(new IntegerExpNode(3), new IntegerExpNode(2), new EqualsOpNode());
-		assertFalse((Boolean) falseBinExp.accept(visitor));
-
-		BinaryExpNode falseLogicalBinExp = new BinaryExpNode(
-				new BinaryExpNode(new IntegerExpNode(3), new IntegerExpNode(3), new EqualsOpNode() ),
-				new BinaryExpNode(new IntegerExpNode(2), new IntegerExpNode(2), new EqualsOpNode() ),
-				new EqualsOpNode());
-		assertTrue((Boolean) falseLogicalBinExp.accept(visitor));
+		EqualsExpNode falseNode = new EqualsExpNode(new IntegerExpNode(2), new IntegerExpNode(1));
+		assertFalse((Boolean) visitor.visitEqualsExpNode(falseNode));
 	}
 
 }
