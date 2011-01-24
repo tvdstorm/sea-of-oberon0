@@ -115,6 +115,7 @@ public class Oberon0ASTTreeGenerator
 			case Oberon0Parser.GREATEREQUALS:
 			case Oberon0Parser.SMALLEREQUALS:
 			case Oberon0Parser.EQUALS:
+			case Oberon0Parser.NOTEQUALS:
 			case Oberon0Parser.AND:
 			case Oberon0Parser.OR:
 				return buildInfixExpression(tree);

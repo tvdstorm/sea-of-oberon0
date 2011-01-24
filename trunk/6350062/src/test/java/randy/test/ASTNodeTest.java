@@ -140,6 +140,7 @@ public class ASTNodeTest
 			Assert.assertTrue(functions.popOutput().equals("" + Math.max(a, b)));
 			Assert.assertTrue(functions.popOutput().equals("" + Math.min(a, b)));
 			Assert.assertTrue(functions.popOutput().equals((a == b)?"1":"0"));
+			Assert.assertTrue(functions.popOutput().equals((a != b)?"1":"0"));
 			Assert.assertTrue(functions.popOutput().equals("" + ((a <= b)?a:b)));
 			Assert.assertTrue(functions.popOutput().equals("" + ((a >= b)?a:b)));
 			Assert.assertTrue(functions.outputIsEmpty());
@@ -165,6 +166,11 @@ public class ASTNodeTest
 		Assert.assertTrue(functions.popOutput().equals("1"));
 		Assert.assertTrue(functions.popOutput().equals("0"));
 		Assert.assertTrue(functions.popOutput().equals("0"));
+		
+		Assert.assertTrue(functions.popOutput().equals("0"));
+		Assert.assertTrue(functions.popOutput().equals("0"));
+		Assert.assertTrue(functions.popOutput().equals("1"));
+		Assert.assertTrue(functions.popOutput().equals("1"));
 		Assert.assertTrue(functions.outputIsEmpty());
 	}
 	@Test
@@ -618,7 +624,6 @@ public class ASTNodeTest
 	}*/
 	// TODO: test to check if an const array can be modified
 	// TODO: prefix plus/minus
-	// TODO: infix #
 	// TODO: ~ (boolean prefix not)
 	// TODO: . selector/RECORD
 	// TODO: BOOLEAN implementeren (en TRUE en FALSE onderscheiden)

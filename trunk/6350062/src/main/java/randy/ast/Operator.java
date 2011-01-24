@@ -13,6 +13,7 @@ public enum Operator
 	SMALLEREQUALS("<="),
 	GREATEREQUALS(">="),
 	EQUALS("="),
+	NOTEQUALS("#"),
 	AND("&"),
 	OR("OR");
 	

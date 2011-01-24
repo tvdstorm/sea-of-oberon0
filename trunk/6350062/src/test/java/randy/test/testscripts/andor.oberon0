@@ -78,5 +78,29 @@ ELSE
 	Write(0)
 END;
 
+IF (a = a) # (b = b) THEN
+	Write(1)
+ELSE
+	Write(0)
+END;
+
+IF (a = b) # (b = a) THEN
+	Write(1)
+ELSE
+	Write(0)
+END;
+
+IF (a = b) # (b = b) THEN
+	Write(1)
+ELSE
+	Write(0)
+END;
+
+IF (a = a) # (a = b) THEN
+	Write(1)
+ELSE
+	Write(0)
+END;
+
 END andor.
 

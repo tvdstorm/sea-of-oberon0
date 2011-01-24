@@ -60,6 +60,8 @@ public class OInfixExpression extends OExpression
 			return new OBoolean(lhs.getIntValue() >= rhs.getIntValue());
 		else if (operator == Operator.EQUALS)
 			return new OBoolean(lhs.getIntValue() == rhs.getIntValue());
+		else if (operator == Operator.NOTEQUALS)
+			return new OBoolean(lhs.getIntValue() != rhs.getIntValue());
 		else
 			throw new Oberon0OperatorTypeUndefinedException(operator.getOperatorText(), lhs.getType(), rhs.getType());
 	}
@@ -72,6 +74,8 @@ public class OInfixExpression extends OExpression
 			return new OBoolean(lhs.getBoolValue() || rhs.getBoolValue());
 		else if (operator == Operator.EQUALS)
 			return new OBoolean(lhs.getBoolValue() == rhs.getBoolValue());
+		else if (operator == Operator.NOTEQUALS)
+			return new OBoolean(lhs.getBoolValue() != rhs.getBoolValue());
 		else
 			throw new Oberon0OperatorTypeUndefinedException(operator.getOperatorText(), lhs.getType(), rhs.getType());
 	}
