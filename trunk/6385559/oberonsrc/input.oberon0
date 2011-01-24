@@ -1,6 +1,8 @@
 MODULE Sample;
 
-VAR x,y,z: INTEGER;
+CONST a = a+b; c = 5;
+TYPE x = INTEGER; y = INTEGER;
+
 BEGIN
 	z := -45 + (-5) - 4 + 7;
 	WHILE x < 5 DO
@@ -8,9 +10,12 @@ BEGIN
 	    x := x + 1;
 	  ELSIF x < 3 THEN
 	    x := x-1;
+	  ELSIF x > 3 THEN
+	    x := 3;
 	  ELSE
 	    x := x;
 	  END;
-	  x := x + 1;
+	  x[b+5].t := x[6].t + 1;
 	END;
+	a(a[b+5].t,b,c);
 END Sample.
