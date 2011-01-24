@@ -1,7 +1,7 @@
 MODULE Sample;
 
 CONST a = a+b; c = 5;
-TYPE x = INTEGER; y = INTEGER;
+TYPE x = INTEGER; y = INTEGER; z = ARRAY 32 OF INTEGER; a = RECORD b,c,d : INTEGER; e,f : BOOLEAN END;
 
 BEGIN
 	z := -45 + (-5) - 4 + 7;
