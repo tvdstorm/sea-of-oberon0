@@ -6,8 +6,8 @@ import org.antlr.runtime.*;
 import org.antlr.runtime.tree.Tree;
 import randy.ast.*;
 import randy.exception.*;
-import randy.generated.*;
-import randy.generated.Oberon0Parser.module_return;
+import randy.generated.antlr.*;
+import randy.generated.antlr.Oberon0Parser.module_return;
 import randy.value.*;
 
 public class Oberon0ASTTreeGenerator
