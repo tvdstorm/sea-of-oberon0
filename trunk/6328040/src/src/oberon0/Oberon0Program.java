@@ -1,11 +1,8 @@
 package oberon0;
-
 import java.io.IOException;
 
 import oberon0.grammar.oberon0Lexer;
 import oberon0.grammar.oberon0Parser;
-import oberon0.routine.BaseRoutine;
-import oberon0.routine.Module;
 
 import org.antlr.runtime.ANTLRFileStream;
 import org.antlr.runtime.RecognitionException;
@@ -16,12 +13,11 @@ import org.antlr.runtime.tree.CommonTreeAdaptor;
 import org.antlr.runtime.tree.Tree;
 import org.antlr.runtime.tree.TreeAdaptor;
 
-public class Program extends BaseRoutine{
+public class Oberon0Program {
 	
 	private Tree _oberon0AST;
 	
-	public Program(){
-		super(null);
+	public Oberon0Program(){
 		_oberon0AST = null;
 	}
 	
@@ -61,7 +57,7 @@ public class Program extends BaseRoutine{
 	}
 	
 	public void execute() {
-		Module module = new Module(_oberon0AST);
-		module.execute();
+		//Module module = new Module(_oberon0AST);
+		//module.execute();
 	}
 }
