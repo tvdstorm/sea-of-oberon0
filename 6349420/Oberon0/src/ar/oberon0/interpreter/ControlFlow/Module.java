@@ -3,11 +3,10 @@ package ar.oberon0.interpreter.ControlFlow;
 import java.util.List;
 
 import ar.oberon0.interpreter.Interpretable;
-import ar.oberon0.interpreter.Statement;
-import ar.oberon0.interpreter.StatementSequence;
 import ar.oberon0.interpreter.Lists.ConstantList;
+import ar.oberon0.interpreter.Lists.ProcedureList;
 import ar.oberon0.interpreter.Lists.TypeIdentifierList;
-import ar.oberon0.interpreter.Lists.VarList;
+import ar.oberon0.interpreter.Lists.DataFieldList;
 import ar.oberon0.interpreter.Memory.Context;
 import ar.oberon0.interpreter.Memory.DataField;
 import ar.oberon0.interpreter.Procedure.Procedure;
@@ -17,7 +16,6 @@ public class Module implements Interpretable {
 	private Context _context;
 	
 	private String _name;
-	private List<Procedure> _childProcedures;
 	private StatementSequence _statements;
 	
 	public void setConstants(ConstantList constants)
@@ -30,14 +28,14 @@ public class Module implements Interpretable {
 		_context.AddTypeIdentifiers(types);
 	}
 
-	public void setVars(VarList variables) 
+	public void setVars(DataFieldList variables) 
 	{
 		_context.AddVariables(variables);
 	}
 
-	public void setChildProcedures(List<Procedure> childProcedures) 
+	public void setChildProcedures(ProcedureList childProcedures) 
 	{
-		_childProcedures = childProcedures;
+		_context.setProcedures(childProcedures);
 	}
 	
 	public void setStatements(StatementSequence statements)

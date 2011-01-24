@@ -2,6 +2,7 @@ package ar.oberon0.interpreter.Operators;
 
 import ar.oberon0.interpreter.DataTypes.DataType;
 import ar.oberon0.interpreter.Memory.*;
+import ar.oberon0.interpreter.Helper;
 import ar.oberon0.interpreter.Interpretable;
 import ar.oberon0.interpreter.Memory.Selector;
 
@@ -13,7 +14,7 @@ public class AssignmentNode implements Interpretable {
 	@Override
 	public Object Interpret(Context context) throws Exception {
 		DataField variable = (DataField)_variable.Interpret(context);
-		DataType value = (DataType)_value.Interpret(context);
+		DataType value = Helper.getDataType(_value, context);
 		variable.setValue(value,context);
 		return "Ok";
 	}

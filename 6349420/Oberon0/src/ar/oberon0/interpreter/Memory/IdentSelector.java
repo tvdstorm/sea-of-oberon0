@@ -17,10 +17,6 @@ public class IdentSelector extends Selector implements Interpretable {
 	public Object Interpret(Context context) throws Exception 
 	{
 		return getVar(null, context);
-		//if(getNextNode() != null)
-		//	return _identName + "." + getNextNode().Interpret(context);
-		//else
-		//	return context.getValueOf(_identName);
 	}
 
 	@Override
@@ -28,7 +24,7 @@ public class IdentSelector extends Selector implements Interpretable {
 	{
 		if(parent == null)
 		{
-			DataField currentVar = context.getVarOrConstantAsVar(_identName);
+			DataField currentVar = context.getVarOrConstantAsDataField(_identName);
 			if(getNextNode() == null)
 				return currentVar;
 			else

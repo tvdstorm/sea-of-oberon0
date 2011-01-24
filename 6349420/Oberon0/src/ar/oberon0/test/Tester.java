@@ -15,7 +15,7 @@ import ar.oberon0.parser.Oberon0Lexer;
 import ar.oberon0.parser.Oberon0Parser;
 import ar.oberon0.interpreter.DataTypes.*;
 import ar.oberon0.interpreter.Lists.ConstantList;
-import ar.oberon0.interpreter.Lists.VarList;
+import ar.oberon0.interpreter.Lists.DataFieldList;
 import ar.oberon0.interpreter.Memory.Context;
 import ar.oberon0.interpreter.Memory.DataField;
 
@@ -31,6 +31,10 @@ public class Tester {
 	public static void main(String[] args) throws IOException {
 				
 		Tester tester = new Tester();
+		tester.TestIntegerDivision();
+		tester.SmokeTest();
+		/*tester.TestProcedureWithParamters();
+		tester.TestProcedureWithoutVars();
 		tester.TestConstantImmutability();
 		tester.TestArray();
 		tester.TestConstants();
@@ -48,7 +52,7 @@ public class Tester {
 		tester.TestExpressionWithEquals();
 		tester.TestExpressionWithGreater();
 		tester.TestSimpleExpressionBIG();
-		tester.TestAssignmentNode();
+		tester.TestAssignmentNode();*/
 		System.out.println("Finished");
 	}
 
@@ -61,9 +65,83 @@ public class Tester {
 		return parser;
 	}
 	
+	private void SmokeTest()
+	{
+		try {
+			CharStream stream = new ANTLRFileStream("D:\\DropBox\\My Dropbox\\UVA\\SC\\smoke.txt");
+			Oberon0Lexer lexer = new Oberon0Lexer(stream);
+			TokenStream tokenStream = new CommonTokenStream(lexer);
+			Oberon0Parser parser = new Oberon0Parser(tokenStream);
+			Interpretable interpreter = parser.module().result;
+			interpreter.Interpret(null);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (RecognitionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	public void TestIntegerDivision()
+	{
+		Oberon0Parser parser = GetParser("MODULE module; BEGIN Write( 7 DIV 2 ) END module");
+		Interpretable interpreter = null;
+		try {
+			interpreter = parser.module().result;
+		} catch (RecognitionException e) {
+			e.printStackTrace();
+		}
+		try {
+			Integer result = (Integer)interpreter.Interpret(null);
+			System.out.println(getResultString("Procedure with parameters",result.equals(0)));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+			
+	public void TestProcedureWithParamters()
+	{
+		Oberon0Parser parser = GetParser("MODULE module; VAR i: INTEGER; PROCEDURE PrintHallo(VAR message: INTEGER); BEGIN Write(\"hallo\"); Write(message); message := 3; Write(message) END PrintHallo; BEGIN i := 1; PrintHallo(i); Write(i) END module");
+		Interpretable interpreter = null;
+		try {
+			interpreter = parser.module().result;
+		} catch (RecognitionException e) {
+			e.printStackTrace();
+		}
+		try {
+			Integer result = (Integer)interpreter.Interpret(null);
+			System.out.println(getResultString("Procedure with parameters",result.equals(0)));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void TestProcedureWithoutVars()
+	{
+		Oberon0Parser parser = GetParser("MODULE module; PROCEDURE PrintHallo; BEGIN Write(\"hallo\") END PrintHallo; BEGIN PrintHallo END module");
+		Interpretable interpreter = null;
+		try {
+			interpreter = parser.module().result;
+		} catch (RecognitionException e) {
+			e.printStackTrace();
+		}
+		try {
+			Integer result = (Integer)interpreter.Interpret(null);
+			System.out.println(getResultString("Procedure without vars",result.equals(0)));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void TestArray()
 	{
-		Oberon0Parser parser = GetParser("MODULE module;CONST length = 5; VAR input: ARRAY length OF INTEGER; BEGIN input[2] := 5; PRINT input[2]; input[2] := 9; PRINT input[2] END module");
+		Oberon0Parser parser = GetParser("MODULE module;CONST length = 5; VAR input: ARRAY length OF INTEGER; BEGIN input[2] := 5; Write(input[2]); input[2] := 9; Write(input[2]) END module");
 		Interpretable interpreter = null;
 		try {
 			interpreter = parser.module().result;
@@ -80,7 +158,7 @@ public class Tester {
 		
 	public void TestConstants()
 	{
-		Oberon0Parser parser = GetParser("MODULE module;CONST const = 9; BEGIN PRINT const END module");
+		Oberon0Parser parser = GetParser("MODULE module;CONST const = 9; BEGIN Write(const) END module");
 		Interpretable interpreter = null;
 		try {
 			interpreter = parser.module().result;
@@ -97,7 +175,7 @@ public class Tester {
 	
 	public void TestConstantImmutability()
 	{
-		Oberon0Parser parser = GetParser("MODULE module;CONST const = 9; BEGIN PRINT const; const := 10; PRINT const END module");
+		Oberon0Parser parser = GetParser("MODULE module;CONST const = 9; BEGIN Write(const); const := 10; Write(const) END module");
 		Interpretable interpreter = null;
 		try {
 			interpreter = parser.module().result;
@@ -114,7 +192,7 @@ public class Tester {
 	
 	public void TestIf()
 	{
-		Oberon0Parser parser = GetParser("IF 2 = 2 THEN PRINT \"in if\" ELSE PRINT \"in else\" END");
+		Oberon0Parser parser = GetParser("IF 2 = 2 THEN Write(\"in if\") ELSE Write(\"in else\") END");
 		Interpretable interpreter = null;
 		try {
 			interpreter = parser.ifStatement().result;
@@ -131,7 +209,7 @@ public class Tester {
 	
 	public void TestIfElse()
 	{
-		Oberon0Parser parser = GetParser("IF 2 = 3 THEN PRINT \"in if\" ELSE PRINT \"in else\" END");
+		Oberon0Parser parser = GetParser("IF 2 = 3 THEN Write(\"in if\") ELSE Write(\"in else\") END");
 		Interpretable interpreter = null;
 		try {
 			interpreter = parser.ifStatement().result;
@@ -148,7 +226,7 @@ public class Tester {
 	
 	public void TestIfElseIf()
 	{
-		Oberon0Parser parser = GetParser("IF 2 = 3 THEN PRINT \"in if\" ELSIF 3 = 3 THEN PRINT \"in else if\" ELSE PRINT \"in else\" END");
+		Oberon0Parser parser = GetParser("IF 2 = 3 THEN Write(\"in if\") ELSIF 3 = 3 THEN Write(\"in else if\") ELSE Write(\"in else\") END");
 		Interpretable interpreter = null;
 		try {
 			interpreter = parser.ifStatement().result;
@@ -165,7 +243,7 @@ public class Tester {
 	
 	public void TestSimpleModule()
 	{
-		Oberon0Parser parser = GetParser("MODULE module;CONST const1 = 9; TYPE type1 = INTEGER; VAR var1 : INTEGER; BEGIN var1 := 1+1; PRINT \"testtt\" END module");
+		Oberon0Parser parser = GetParser("MODULE module;CONST const1 = 9; TYPE type1 = INTEGER; VAR var1 : INTEGER; BEGIN var1 := 1+1; Write(\"testtt\") END module");
 		Interpretable interpreter = null;
 		try {
 			interpreter = parser.module().result;
@@ -182,7 +260,7 @@ public class Tester {
 	
 	public void TestWhileLoop()
 	{
-		Oberon0Parser parser = GetParser("MODULE module;VAR iterations, i : INTEGER; BEGIN iterations := 5; i := 0; WHILE i < iterations DO PRINT \"a\"; i := i + 1 END END module");
+		Oberon0Parser parser = GetParser("MODULE module;VAR iterations, i : INTEGER; BEGIN iterations := 5; i := 0; WHILE i < iterations DO Write(\"a\"); i := i + 1 END END module");
 		Interpretable interpreter = null;
 		try {
 			interpreter = parser.module().result;
@@ -314,7 +392,7 @@ public class Tester {
 		}
 		try {
 			Context context = new Context();
-			VarList varList = new VarList();
+			DataFieldList varList = new DataFieldList();
 			DataField variable = new DataField(new SimpleType("INTEGER"));			
 			varList.AddItem("a", variable);
 			context.AddVariables(varList);

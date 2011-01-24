@@ -7,17 +7,17 @@ public class Array implements DataType {
 
 	DataField[] _items;
 	
-	public Array(IntegerNode length, Type type, Context context)
+	public Array(IntegerNode length, CreatableType type, Context context)
+	{
+		InitArray(length, type);
+	}
+	
+	private void InitArray(IntegerNode length, CreatableType type)
 	{
 		_items = new DataField[length.getValueAsInt()];
 		for(int i = 0; i < length.getValueAsInt(); i++)
 		{			
-			try {
-				_items[i] = new DataField(type);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			_items[i] = new DataField(type);
 		}
 	}
 	
