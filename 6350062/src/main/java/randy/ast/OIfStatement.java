@@ -11,20 +11,17 @@ public class OIfStatement extends OStatement
 {
 	private OExpression expression;
 	private OBlock body;
-	private List<OExpression> elseifExpressions; // TODO: elseif expressions en bodys bundelen
-	private List<OBlock> elseifBodys;
+	private List<Tuple<OExpression, OBlock>> elseifs;
 	private OBlock elseBody;
 	
-	public OIfStatement(OExpression _expression, OBlock _body, List<OExpression> _elseifExpressions, List<OBlock> _elseifBodys, OBlock _elseBody)
+	public OIfStatement(OExpression _expression, OBlock _body, List<Tuple<OExpression, OBlock>> _elseifs, OBlock _elseBody)
 	{
 		assert(_expression != null);
 		assert(_body != null);
-		assert(_elseifExpressions != null);
-		assert(_elseifBodys != null);
+		assert(_elseifs != null);
 		expression = _expression;
 		body = _body;
-		elseifExpressions = _elseifExpressions;
-		elseifBodys = _elseifBodys;
+		elseifs = _elseifs;
 		elseBody = _elseBody;
 	}
 	@Override
@@ -33,7 +30,7 @@ public class OIfStatement extends OStatement
 		assert(vars != null);
 		// Evaluate the main expression and convert it to an boolean
 		OValue expr = expression.run(vars);
-		if (!expr.getType().isBool())
+		if (expr.getType() != Type.BOOL)
 			throw new Oberon0TypeMismatchException(expr.getType(), Type.BOOL);
 		OBoolean b = (OBoolean)expr;
 		// If the main expression is true, run the body
@@ -43,17 +40,17 @@ public class OIfStatement extends OStatement
 			return null;
 		}
 		// Loop through all elseif expression until one is true
-		for (int i=0;i<elseifExpressions.size();i++)
+		for (Tuple<OExpression, OBlock> curElseif : elseifs)
 		{
 			// Run the expression and convert it to an boolean
-			expr = elseifExpressions.get(i).run(vars);
-			if (!expr.getType().isBool())
+			expr = curElseif.getFirst().run(vars);
+			if (expr.getType() != Type.BOOL)
 				throw new Oberon0TypeMismatchException(expr.getType(), Type.BOOL);
 			b = (OBoolean)expr;
 			// If the expression is true, run the body
 			if (b.getBoolValue())
 			{
-				elseifBodys.get(i).run(vars);
+				curElseif.getSecond().run(vars);
 				return null;
 			}
 		}
@@ -69,8 +66,7 @@ public class OIfStatement extends OStatement
 		assert(tree.getChild(1).getType() == Oberon0Parser.BODY); 
 		OExpression expression = OExpression.buildExpression(tree.getChild(0).getChild(0));
 		OBlock body = OBlock.buildBlock(tree.getChild(1));
-		List<OExpression> elseifExpressions = new Vector<OExpression>();
-		List<OBlock> elseifBodys = new Vector<OBlock>();
+		List<Tuple<OExpression, OBlock>> elseifs = new Vector<Tuple<OExpression, OBlock>>();
 		OBlock elseBody = null;
 		for (int i=2;i<tree.getChildCount();i++)
 		{
@@ -78,8 +74,9 @@ public class OIfStatement extends OStatement
 			switch (child.getType())
 			{
 				case Oberon0Parser.ELSIF:
-					elseifExpressions.add(OExpression.buildExpression(child.getChild(0).getChild(0)));
-					elseifBodys.add(OBlock.buildBlock(child.getChild(1)));
+					elseifs.add(new Tuple<OExpression, OBlock>(
+							OExpression.buildExpression(child.getChild(0).getChild(0)),
+							OBlock.buildBlock(child.getChild(1))));
 					break;
 				case Oberon0Parser.ELSE:
 					elseBody = OBlock.buildBlock(child.getChild(0));
@@ -88,7 +85,7 @@ public class OIfStatement extends OStatement
 					throw new Oberon0ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + ".");
 			}
 		}
-		return new OIfStatement(expression, body, elseifExpressions, elseifBodys, elseBody);
+		return new OIfStatement(expression, body, elseifs, elseBody);
 	}
 	@Override
 	public void accept(OASTNodeVisitor visitor) throws Oberon0Exception
@@ -97,13 +94,10 @@ public class OIfStatement extends OStatement
 		visitor.visit(this);
 		expression.accept(visitor);
 		body.accept(visitor);
-		for (OExpression expr : elseifExpressions)
+		for (Tuple<OExpression, OBlock> curElseif : elseifs)
 		{
-			expr.accept(visitor);
-		}
-		for (OBlock bl : elseifBodys)
-		{
-			bl.accept(visitor);
+			curElseif.getFirst().accept(visitor);
+			curElseif.getSecond().accept(visitor);
 		}
 		if (elseBody != null)
 			elseBody.accept(visitor);

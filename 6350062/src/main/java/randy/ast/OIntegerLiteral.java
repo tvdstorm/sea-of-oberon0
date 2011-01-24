@@ -19,7 +19,6 @@ public class OIntegerLiteral extends OExpression
 	public static OIntegerLiteral buildIntegerLiteral(Tree tree) throws Oberon0Exception
 	{
 		assert(tree.getType() == Oberon0Parser.INTEGER);
-		// TODO: parseException opvangen
 		return new OIntegerLiteral(new OInteger(Integer.parseInt(tree.getText())));
 	}
 	@Override

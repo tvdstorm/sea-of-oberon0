@@ -1,81 +1,31 @@
 package randy.value;
 
-import randy.exception.Oberon0Exception;
-import randy.exception.Oberon0UnknownTypeException;
+import java.util.*;
 
-public class Type
+public enum Type
 {
-	public enum TYPES
-	{
-		INTEGER,
-		ARRAY,
-		BOOL
-	};
-	static final public Type INTEGER = new Type(TYPES.INTEGER);
-	static final private String STRINTEGER = "INTEGER";
-	static final public Type ARRAY = new Type(TYPES.ARRAY);
-	static final private String STRARRAY = "ARRAY";
-	static final public Type BOOL = new Type(TYPES.BOOL);
-	static final private String STRBOOL = "BOOL";
+	INTEGER("INTEGER"),
+	ARRAY("ARRAY"),
+	BOOL("BOOL");
 	
-	private TYPES type;
+	private static final Map<String, Type> lookup = new HashMap<String, Type>();
 	
-	public Type(String _type) throws Oberon0Exception
+	static
 	{
-		if (_type.equals(STRINTEGER))
-			type = TYPES.INTEGER;
-		else if (_type.equals(STRARRAY))
-			type = TYPES.ARRAY;
-		else if (_type.equals(STRBOOL))
-			type = TYPES.BOOL;
-		else
-			throw new Oberon0UnknownTypeException(_type);
+		for (Type s : EnumSet.allOf(Type.class))
+			lookup.put(s.getTypeText(), s);
 	}
-	public Type(TYPES _type)
+	private String typeText;
+	private Type(String _typeText)
 	{
-		type = _type;
+		typeText = _typeText;
 	}
-	public TYPES getType()
+	public String getTypeText()
 	{
-		return type;
+		return typeText;
 	}
-	public boolean isInteger()
+	public static Type get(String typeText)
 	{
-		return type == TYPES.INTEGER;
-	}
-	public boolean isArray()
-	{
-		return type == TYPES.ARRAY;
-	}
-	public boolean isBool()
-	{
-		return type == TYPES.BOOL;
-	}
-	@Override
-	public String toString()
-	{
-		// TODO: mooier maken i.c.m. constructor
-		switch (type)
-		{
-			case INTEGER:
-				return STRINTEGER;
-			case ARRAY:
-				return STRARRAY;
-			case BOOL:
-				return STRBOOL;
-			default:
-				return "UNKNOWN TYPE";
-		}
-	}
-	@Override
-	public boolean equals(Object obj)
-	{
-		if (obj instanceof Type)
-		{
-			Type t = (Type)obj;
-			return t.type == type;
-		}
-		else
-			return false;
+		return lookup.get(typeText);
 	}
 }

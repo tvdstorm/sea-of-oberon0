@@ -9,9 +9,9 @@ public abstract class OValue
 	public abstract Type getType();
 	public static OValue makeNew(Type type) throws Oberon0RuntimeException
 	{
-		if (type.isInteger())
+		if (type == Type.INTEGER)
 			return new OInteger(0);
-		else if (type.isBool())
+		else if (type == Type.BOOL)
 			return new OBoolean(false);
 		else
 			throw new Oberon0UnknownTypeException(type.toString());

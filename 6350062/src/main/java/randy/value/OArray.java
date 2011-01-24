@@ -20,9 +20,10 @@ public class OArray extends OValue
 		// Copy constructor
 		setValue(_value);
 	}
-	public OValue getIndexValue(int _index)
+	public OValue getIndexValue(int _index) throws Oberon0OutOfBoundsException
 	{
-		// TODO: check if out of bounds
+		if (_index >= values.length)
+			throw new Oberon0OutOfBoundsException(_index);
 		return values[_index];
 	}
 	public OValue dereference()

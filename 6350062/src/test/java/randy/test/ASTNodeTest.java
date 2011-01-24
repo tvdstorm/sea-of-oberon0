@@ -332,61 +332,25 @@ public class ASTNodeTest
 	@Test
 	public void test_Type()
 	{
-		try
-		{
-			Type bool = Type.BOOL;
-			Type integer = Type.INTEGER;
-			Type array = Type.ARRAY;
-			
-			Assert.assertTrue(bool.equals(new Type("BOOL")));
-			Assert.assertTrue(integer.equals(new Type("INTEGER")));
-			Assert.assertTrue(array.equals(new Type("ARRAY")));
-			
-			Assert.assertTrue(bool.equals(new Type(bool.toString())));
-			Assert.assertTrue(integer.equals(new Type(integer.toString())));
-			Assert.assertTrue(array.equals(new Type(array.toString())));
-			
-			Assert.assertTrue(bool.equals(bool));
-			Assert.assertFalse(bool.equals(integer));
-			Assert.assertFalse(bool.equals(array));
-			Assert.assertFalse(integer.equals(bool));
-			Assert.assertTrue(integer.equals(integer));
-			Assert.assertFalse(integer.equals(array));
-			Assert.assertFalse(array.equals(bool));
-			Assert.assertFalse(array.equals(integer));
-			Assert.assertTrue(array.equals(array));
-			
-			Assert.assertTrue(bool.getType() == Type.TYPES.BOOL);
-			Assert.assertTrue(integer.getType() == Type.TYPES.INTEGER);
-			Assert.assertTrue(array.getType() == Type.TYPES.ARRAY);
-			
-			Assert.assertTrue(bool.isBool());
-			Assert.assertFalse(bool.isInteger());
-			Assert.assertFalse(bool.isArray());
-			Assert.assertFalse(integer.isBool());
-			Assert.assertTrue(integer.isInteger());
-			Assert.assertFalse(integer.isArray());
-			Assert.assertFalse(array.isBool());
-			Assert.assertFalse(array.isInteger());
-			Assert.assertTrue(array.isArray());
-		}
-		catch (Oberon0Exception e)
-		{
-			Assert.fail("Shouldn't be throwing an Oberon0Exception...");
-		}
-		try
-		{
-			new Type("BLAAT");
-			Assert.fail("Should be throwing an Oberon0UnknownTypeException...");
-		}
-		catch (Oberon0UnknownTypeException e)
-		{
-			// Success
-		}
-		catch (Oberon0Exception e)
-		{
-			Assert.fail("Shouldn't be throwing an Oberon0Exception...");
-		}
+		Type bool = Type.BOOL;
+		Type integer = Type.INTEGER;
+		Type array = Type.ARRAY;
+		
+		Assert.assertTrue(bool.equals(Type.BOOL));
+		Assert.assertTrue(integer.equals(Type.INTEGER));
+		Assert.assertTrue(array.equals(Type.ARRAY));
+		
+		Assert.assertTrue(bool.equals(bool));
+		Assert.assertFalse(bool.equals(integer));
+		Assert.assertFalse(bool.equals(array));
+		Assert.assertFalse(integer.equals(bool));
+		Assert.assertTrue(integer.equals(integer));
+		Assert.assertFalse(integer.equals(array));
+		Assert.assertFalse(array.equals(bool));
+		Assert.assertFalse(array.equals(integer));
+		Assert.assertTrue(array.equals(array));
+		
+		Assert.assertTrue(Type.get("BLAAT") == null);
 	}
 	@Test
 	public void test_SmoketestQuicksort()
@@ -542,13 +506,19 @@ public class ASTNodeTest
 	/*@Test
 	public void test_ArrayParameterLength()
 	{
-		prepareTest("arrayparameterlength");
-		for (int i=0;i<numTests;i++)
+		try
 		{
-			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt(), d = random.nextInt(), e = random.nextInt();
-			runTest(""+a, ""+b, ""+c, ""+d, ""+e);
-			
-			Assert.fail("Should be throwing an Exception..."); // TODO: exceptie specificeren en code verbeteren.
+			prepareTest("arrayparameterlength");
+			program.run();
+			Assert.fail("Should be throwing an Oberon0Exception...");
+		}	
+		//catch (Oberon0OutOfBoundsException e)
+		{
+			// Success
+		}
+		catch (Oberon0Exception e)
+		{
+			Assert.fail("Should be throwing an Oberon0OutOfBoundsException...");
 		}
 	}*/
 	// TODO: test to check if an const array can be modified
