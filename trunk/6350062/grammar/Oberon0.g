@@ -68,7 +68,7 @@ ident:		IDENT;
 INTEGER:		('0'..'9')+;
 selector:		ident ((DOTSELECTOR^ ident)|(ARRAYSELECTOR^ expression ']'!))+ | ident;
 number:		INTEGER;
-factor:		selector | number | '('! expression ')'! | '~'^ factor; // TODO: kijken of () een extra node nodig heeft of niet
+factor:		selector | number | '('! expression ')'! | '~'^ factor;
 term:			factor ((TIMES|DIVIDE|MOD|AND)^ factor)*;
 
 simpleExpression
