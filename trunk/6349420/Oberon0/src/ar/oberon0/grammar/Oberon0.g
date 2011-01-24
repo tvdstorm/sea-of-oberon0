@@ -80,12 +80,12 @@ assignment returns [Interpretable result]
 		selector[sel] ':=' expression 							{$result = new AssignmentNode(sel,$expression.result);}
 	; 
 
-actualParameters returns [ActualParametersNode result]
-	:															{$result = new ActualParametersNode();}	
+actualParameters returns [List<Interpretable> result]
+	:															{$result = new ArrayList<Interpretable>();}	
 		'(' 
-		(	firstParameter=expression							{$result.AddParameter($firstParameter.result);} 
+		(	firstParameter=expression							{$result.add($firstParameter.result);} 
 			(	',' 
-				otherParameter=expression						{$result.AddParameter($otherParameter.result);}
+				otherParameter=expression						{$result.add($otherParameter.result);}
 			)*
 		)? 
 		')' 
@@ -111,23 +111,14 @@ whileStatement returns [Interpretable result]
 		'DO' statementSequence 									{$result = new WhileNode($expression.result, $statementSequence.result);}
 		'END'
 	;
-	
-	
-print returns [Interpretable result]
-	:	'PRINT' 
-		(	factor												{$result = new PrintNode($factor.result);}
-		|														{PrintNode printNode = new PrintNode();}
-			'"'(	IDENT										{printNode.AddToMessage($IDENT.getText() + " ");}
-			)*'"'												{$result = printNode;}
-		)
-	;	
 
 statement returns [Interpretable result]
 	:	(assignment												{$result = $assignment.result;} 
 		| procedureCall 										{$result = $procedureCall.result;}
 		| ifStatement 											{$result = $ifStatement.result;}
 		| whileStatement										{$result = $whileStatement.result;}
-		| print													{$result = $print.result;}
+		| write													{$result = $write.result;}
+		| read													{$result = $read.result;}
 		)? 
 	;
 
@@ -172,46 +163,49 @@ type returns [Type result]
 	| 	recordType												{$result = $recordType.result;}
 	; 
 
-fPSection returns [FPSection result]
-	:	(
-			'VAR'
-		)? 
-		identList ':' type 										{$result = new FPSection($identList.result, $type.result);}
+
+fPSection returns [IdentList identList, Type type, FormalParameter.Direction direction]
+	:															{$direction = FormalParameter.Direction.IN;}
+		(	'VAR'												{$direction = FormalParameter.Direction.IN_OUT;}
+		)?														 
+		identList ':' type 										{$identList = $identList.result; $type = $type.result;}
 	;
 
-formalParameters returns [FormalParameters result]
-	:	'(' 													{$result = new FormalParameters();}
-			(	firstFPSection=fPSection 						{$result.AddFPSection($firstFPSection.result);}
-				(	';' otherFPSection=fPSection				{$result.AddFPSection($otherFPSection.result);}
-				)*
+formalParameters returns [FormalParameterList result]
+	:	'(' 													{$result = new FormalParameterList();}
+			(	firstFPSection=fPSection 						{$result.AddParameters($firstFPSection.identList, $firstFPSection.type, $firstFPSection.direction);}
+				(	';' otherFPSection=fPSection				{$result.AddParameters($otherFPSection.identList, $otherFPSection.type, $otherFPSection.direction);}
+				)* 
 			)? 
 		')'
 	; 
 
-procedureHeading returns [FormalParameters result]
-	:	'PROCEDURE'  
-		(	formalParameters
+procedureHeading returns [FormalParameterList result, String procedureName]
+	:	'PROCEDURE' IDENT 										{$procedureName = $IDENT.getText();}
+		(	formalParameters									{$result = $formalParameters.result;}
 		)?
 	; 
 
-procedureBody returns [ConstantList constants, TypeIdentifierList types, VarList vars, List<Procedure> childProcedures, StatementSequence statementSequence]  
-	:	declarations 											{$constants = $declarations.constants; $types = $declarations.types; $vars = $declarations.vars;$childProcedures = $declarations.childProcedures;}
+procedureBody returns [ConstantList constants, TypeIdentifierList types, VarList vars, ProcedureList childProcedures, StatementSequence statementSequence]  
+	:	declarations 											{$constants = $declarations.constants; $types = $declarations.types; $vars = $declarations.vars;$childProcedures = $declarations.procedures;}
 		(	'BEGIN' firstStatementSequence=statementSequence	{$statementSequence = (StatementSequence)$firstStatementSequence.result;}
 		)? 
 		'END' 
 	;
 
 
-procedureDeclaration returns [Procedure result]
-	:	procedureHeading ';' procedureBody IDENT				{$result = new Procedure($IDENT.getText()); $result.setFormalParameters = $procedureHeading.result;}
-																{$result.setConstants = $procedureBody.constants;}
-																{$result.setTypes = $procedureBody.types;}
-																{$result.setVars = $procedureBody.vars;}
-																{$result.setChildProcedures = $procedureBody.childProcedures;}
-																{$result.setStatementSequence = $procedureBody.statementSequence;}
+procedureDeclaration returns [Procedure result, String procedureName]
+	:	procedureHeading ';' procedureBody IDENT				{$procedureName = $IDENT.getText();}
+																{$result = new Procedure($procedureHeading.procedureName);}
+																{$result.setFormalParameters($procedureHeading.result);}
+																{$result.setConstants($procedureBody.constants);}
+																{$result.setTypes($procedureBody.types);}
+																{$result.setVars($procedureBody.vars);}
+																{$result.setChildProcedures($procedureBody.childProcedures);}
+																{$result.setStatementSequence($procedureBody.statementSequence);}
 	;	
 	
-declarations returns [ConstantList constants, TypeIdentifierList types, VarList vars, List<Procedure> childProcedures]
+declarations returns [ConstantList constants, TypeIdentifierList types, VarList vars, ProcedureList procedures]
 	:	(	'CONST' 											{$constants = new ConstantList();}
 			(constIDENT=IDENT '=' expression ';'				{$constants.AddItem($constIDENT.getText(),new DataField(new SimpleType("INTEGER"),(DataType)$expression.result));}
 			)*
@@ -223,8 +217,8 @@ declarations returns [ConstantList constants, TypeIdentifierList types, VarList 
 		(	'VAR' 												{$vars = new VarList();}
 			(	identList ':' varType=type ';'					{$vars.AddVariables($identList.result, $varType.result);}
 			)*
-		)?
-		(	procedureDeclaration ';'
+		)?														{$procedures = new ProcedureList();}
+		(	procedureDeclaration ';'							{$procedures.AddItem( $procedureDeclaration.procedureName, $procedureDeclaration.result);}
 		)*
 	;
 	
@@ -233,7 +227,7 @@ module	returns [Module result]
 																{$result.setConstants($declarations.constants);}
 																{$result.setTypeIdentifiers($declarations.types);}
 																{$result.setVars($declarations.vars);}
-																{$result.setChildProcedures($declarations.childProcedures);}
+																{$result.setChildProcedures($declarations.procedures);}
 																
 		(	'BEGIN' statementSequence							{$result.setStatements((StatementSequence)$statementSequence.result);}
 		)? 
@@ -242,6 +236,23 @@ module	returns [Module result]
 
 
 
+
+write returns [Interpretable result]
+	:	
+		('Write' 
+			(	'(' expression ')'										{$result = new PrintNode($expression.result);}
+			|														{PrintNode printNode = new PrintNode();}
+				'("'(	IDENT										{printNode.AddToMessage($IDENT.getText() + " ");}
+				)*'")'												{$result = printNode;}
+			)
+		)
+	|	('WriteLn')													{$result = new PrintNode(); ((PrintNode)$result).AddToMessage("\n");}	
+	;	
+	
+read returns [Interpretable result]
+	:	'Read''(' IDENT  										{IdentSelector sel = new IdentSelector($IDENT.getText());}
+		selector[sel] ')'										{$result = new ReadNode(sel);}
+	;
 
 
 

@@ -3,7 +3,7 @@ package ar.oberon0.interpreter.DataTypes;
 import ar.oberon0.interpreter.Lists.FieldList;
 import ar.oberon0.interpreter.Memory.Context;
 
-public class RecordType extends Type {
+public class RecordType implements CreatableType {
 
 	public void addFieldList(FieldList fieldList) {
 		// TODO Auto-generated method stub

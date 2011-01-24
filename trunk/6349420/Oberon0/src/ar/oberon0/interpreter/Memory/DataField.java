@@ -3,19 +3,19 @@ package ar.oberon0.interpreter.Memory;
 import ar.oberon0.interpreter.Memory.*;
 import ar.oberon0.interpreter.Interpretable;
 import ar.oberon0.interpreter.DataTypes.DataType;
-import ar.oberon0.interpreter.DataTypes.Type;
+import ar.oberon0.interpreter.DataTypes.CreatableType;
 
 public class DataField implements Interpretable
 {
-	private Type _type;
+	private CreatableType _type;
 	private DataType _value;
 	
-	public DataField(Type type) throws Exception
+	public DataField(CreatableType type)
 	{
 		this(type,null);
 	}
 	
-	public DataField(Type type, DataType value)
+	public DataField(CreatableType type, DataType value)
 	{
 		_type = type;
 		_value = value;

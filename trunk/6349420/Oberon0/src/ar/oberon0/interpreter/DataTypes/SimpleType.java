@@ -2,7 +2,7 @@ package ar.oberon0.interpreter.DataTypes;
 
 import ar.oberon0.interpreter.Memory.Context;
 
-public class SimpleType extends Type 
+public class SimpleType implements CreatableType 
 {
 	private String _typeName;
 	

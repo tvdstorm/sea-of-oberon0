@@ -4,12 +4,12 @@ import ar.oberon0.interpreter.Helper;
 import ar.oberon0.interpreter.Interpretable;
 import ar.oberon0.interpreter.Memory.Context;
 
-public class ArrayType extends Type
+public class ArrayType implements CreatableType
 {
 	private Interpretable _length;
-	private Type _type;
+	private CreatableType _type;
 	
-	public ArrayType(Interpretable length, Type type) 
+	public ArrayType(Interpretable length, CreatableType type) 
 	{
 		_length = length;
 		_type = type;

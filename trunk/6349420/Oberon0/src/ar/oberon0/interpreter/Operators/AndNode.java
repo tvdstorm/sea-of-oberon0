@@ -1,20 +1,19 @@
 package ar.oberon0.interpreter.Operators;
 
-import ar.oberon0.interpreter.BinaryNode;
 import ar.oberon0.interpreter.Interpretable;
 import ar.oberon0.interpreter.Memory.Context;
 
 public class AndNode extends BinaryNode {
 
-	public AndNode(Interpretable leftNode, Interpretable rightNode) {
+	public AndNode(Interpretable leftNode, Interpretable rightNode) 
+	{
 		super(leftNode, rightNode);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public Object Interpret(Context context) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public Object Interpret(Context context) throws Exception 
+	{
+		return (Boolean)this.getLeftExpression().Interpret(context) && (Boolean)this.getRightExpression().Interpret(context);
 	}
 
 }

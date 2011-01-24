@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 
-public abstract class BaseList<itemType> implements Iterable<Entry<String,itemType>> 
+public abstract class BaseMap<itemType> implements Iterable<Entry<String,itemType>> 
 {
 	private Map<String,itemType> _items;
 	
@@ -15,7 +15,7 @@ public abstract class BaseList<itemType> implements Iterable<Entry<String,itemTy
 		return _items;
 	}
 	
-	protected BaseList()
+	protected BaseMap()
 	{
 		_items = new HashMap<String,itemType>();
 	}
@@ -28,6 +28,14 @@ public abstract class BaseList<itemType> implements Iterable<Entry<String,itemTy
 	public itemType getItem(String name)
 	{
 		return _items.get(name);
+	}
+	
+	/*
+	 * Add the items of the parameter to the current list.
+	 */
+	public void Add(BaseMap<itemType> listToAdd)
+	{
+		_items.putAll(listToAdd._items);
 	}
 	
 	public int getCount()

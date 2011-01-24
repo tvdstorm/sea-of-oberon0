@@ -1,6 +1,5 @@
 package ar.oberon0.interpreter.Operators;
 
-import ar.oberon0.interpreter.BinaryNode;
 import ar.oberon0.interpreter.Interpretable;
 import ar.oberon0.interpreter.Memory.Context;
 

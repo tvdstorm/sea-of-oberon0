@@ -1,6 +1,5 @@
 package ar.oberon0.interpreter.Operators;
 
-import ar.oberon0.interpreter.BinaryNode;
 import ar.oberon0.interpreter.Helper;
 import ar.oberon0.interpreter.Memory.*;
 import ar.oberon0.interpreter.Interpretable;
@@ -13,10 +12,9 @@ public class AddNode extends BinaryNode {
 	}
 
 	@Override
-	public Object Interpret(Context context) throws Exception {
-		DataType leftValue = Helper.getDataType(getLeftExpression(), context);
-		DataType rightValue = Helper.getDataType(getRightExpression(), context);
-		return (leftValue.Add(rightValue));
+	public Object Interpret(Context context) throws Exception 
+	{
+		return getLeftValue(context).Add(getRightValue(context));
 	}
 
 }

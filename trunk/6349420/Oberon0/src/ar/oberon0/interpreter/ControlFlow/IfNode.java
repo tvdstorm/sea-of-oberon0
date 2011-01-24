@@ -51,7 +51,7 @@ public class IfNode implements Interpretable
 			_else.Interpret(context);
 			return 0;
 		}
-		throw new Exception("Error in if statement.");				
+		return 0; // nothing to execute
 	}
 	
 	private class IfStatement
