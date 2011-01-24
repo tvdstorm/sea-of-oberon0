@@ -2,7 +2,7 @@ package language;
 
 public class AnAssignment implements IAstNode {
 
-	public AnAssignment(IAstNode lhs, AnValue val){
+	public AnAssignment(){
 		
 	}
 	@Override
