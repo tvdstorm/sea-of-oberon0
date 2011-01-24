@@ -3,6 +3,7 @@ package org.elcid.oberon0.ast.visitor;
 import org.elcid.oberon0.ast.*;
 
 /**
+ * Interface for visitor classes that visit the AST of Oberon-0.
  *
  * @author Pieter Brandwijk
  */
@@ -13,6 +14,5 @@ public interface NodeVisitor {
 	public Object visitArrayNode(ArrayNode node);
 	public Object visitEqualsExpNode(EqualsExpNode node);
 	public Object visitVariableExpNode(VariableExpNode node);
-	public Object visitUnaryExpNode(UnaryExpNode node);
 
 }
