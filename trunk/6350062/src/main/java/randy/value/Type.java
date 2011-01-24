@@ -6,7 +6,7 @@ public enum Type
 {
 	INTEGER("INTEGER"),
 	ARRAY("ARRAY"),
-	BOOL("BOOL");
+	BOOLEAN("BOOLEAN");
 	
 	private static final Map<String, Type> lookup = new HashMap<String, Type>();
 	

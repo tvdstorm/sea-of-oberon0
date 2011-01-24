@@ -26,18 +26,12 @@ public class OBoolean extends OValue
 	public void setValue(OValue _val) throws Oberon0RuntimeException
 	{
 		// Resolve CONST
-		_val = _val.dereference();
-		if (_val instanceof OBoolean)
-		{
-			OBoolean v = (OBoolean)_val;
-			this.value = v.value;
-		}
-		else
-			throw new Oberon0TypeMismatchException(_val.getType(), getType());
+		OBoolean v = _val.dereference().castToBoolean();
+		this.value = v.value;
 	}
 	public Type getType()
 	{
-		return Type.BOOL;
+		return Type.BOOLEAN;
 	}
 	@Override
 	public String toString()

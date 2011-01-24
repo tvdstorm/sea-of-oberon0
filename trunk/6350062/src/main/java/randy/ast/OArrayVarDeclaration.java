@@ -36,6 +36,29 @@ public class OArrayVarDeclaration extends OVarDeclaration
 		return null;
 	}
 	@Override
+	public void runForParameter(Oberon0VariableStack vars, Queue<OValue> parameters) throws Oberon0RuntimeException
+	{
+		assert(vars != null);
+		assert(parameters != null);
+		assert(names != null);
+		assert(arrayLength != null);
+		if (parameters.size() < names.size())
+			throw new Oberon0IncorrectNumberOfArgumentsException();
+		for (String name : names)
+		{
+			OArray param = parameters.poll().castToArray();
+			if (isReference)
+				vars.addVariable(name, param);
+			else
+			{
+				if (arrayLength.run(vars).castToInteger().getIntValue() != param.getLength())
+					throw new Oberon0ArrayLengthMismatch();
+				OArray val = new OArray(param);
+				vars.addVariable(name, val);
+			}
+		}
+	}
+	@Override
 	public void accept(OASTNodeVisitor visitor) throws Oberon0Exception
 	{
 		visitor.visitBefore(this);

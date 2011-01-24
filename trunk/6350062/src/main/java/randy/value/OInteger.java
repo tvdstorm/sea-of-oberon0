@@ -26,14 +26,8 @@ public class OInteger extends OValue
 	public void setValue(OValue _val) throws Oberon0RuntimeException
 	{
 		// Resolve CONST
-		_val = _val.dereference();
-		if (_val instanceof OInteger)
-		{
-			OInteger v = (OInteger)_val;
-			this.value = v.value;
-		}
-		else
-			throw new Oberon0TypeMismatchException(_val.getType(), getType());
+		OInteger v = _val.dereference().castToInteger();
+		this.value = v.value;
 	}
 	public Type getType()
 	{
