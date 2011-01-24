@@ -22,6 +22,12 @@ ELSE
 	Write(0)
 END;
 
+IF a # b THEN
+	Write(1)
+ELSE
+	Write(0)
+END;
+
 IF a <= b THEN
 	Write(a)
 ELSE
