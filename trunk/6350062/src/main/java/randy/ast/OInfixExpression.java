@@ -82,7 +82,7 @@ public class OInfixExpression extends OExpression
 		else
 			throw new Oberon0OperatorTypeUndefinedException(operator.getOperatorText(), lhsVal.getType(), rhsVal.getType());
 	}
-	private OValue processIntegerExpression(OInteger lhs, OInteger rhs) throws Oberon0OperatorTypeUndefinedException
+	private OValue processIntegerExpression(OInteger lhs, OInteger rhs) throws Oberon0OperatorTypeUndefinedException, Oberon0DivideByZeroException
 	{
 		// Process the infix integer expression
 		if (operator == Operator.PLUS)
@@ -90,7 +90,11 @@ public class OInfixExpression extends OExpression
 		else if (operator == Operator.MINUS)
 			return new OInteger(lhs.getIntValue() - rhs.getIntValue());
 		else if (operator == Operator.DIV)
-			return new OInteger(lhs.getIntValue() / rhs.getIntValue()); // TODO: handle divide by zero exceptions
+		{
+			if (rhs.getIntValue() == 0)
+				throw new Oberon0DivideByZeroException();
+			return new OInteger(lhs.getIntValue() / rhs.getIntValue());
+		}
 		else if (operator == Operator.TIMES)
 			return new OInteger(lhs.getIntValue() * rhs.getIntValue());
 		else if (operator == Operator.SMALLERTHAN)

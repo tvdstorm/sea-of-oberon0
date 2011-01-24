@@ -26,7 +26,7 @@ public class OWhileStatement extends OStatement
 		{
 			// Evaluate the expression and convert it to a boolean
 			OValue expr = expression.run(vars);
-			if (!expr.getType().isBool())
+			if (expr.getType() != Type.BOOL)
 				throw new Oberon0TypeMismatchException(expr.getType(), Type.BOOL);
 			OBoolean b = (OBoolean)expr;
 			// If the expression is false, skip the body

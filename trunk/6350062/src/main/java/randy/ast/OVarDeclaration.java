@@ -36,16 +36,18 @@ public class OVarDeclaration extends OBodyDeclaration
 	}
 	public OValue runForParameter(Oberon0VariableStack vars, Queue<OValue> parameters) throws Oberon0RuntimeException
 	{
-		// TODO: asserts toevoegen
+		assert(vars != null);
+		assert(parameters != null);
+		assert(names != null);
 		if (parameters.size() < names.size())
 			throw new Oberon0IncorrectNumberOfArgumentsException();
 		for (String name : names)
 		{
-			if (parameters.peek().getType().isArray() && bIsArray)
+			if (parameters.peek().getType() == Type.ARRAY && bIsArray)
 			{
 				// Ok
 			}
-			else if (!parameters.peek().getType().equals(type) || (parameters.peek().getType().isArray() && !bIsArray) || (!parameters.peek().getType().isArray() && bIsArray))
+			else if (!parameters.peek().getType().equals(type) || (parameters.peek().getType() == Type.ARRAY && !bIsArray) || (parameters.peek().getType() != Type.ARRAY && bIsArray))
 				throw new Oberon0TypeMismatchException(parameters.peek().getType(), type);
 			if (isReference)
 			{
@@ -77,15 +79,15 @@ public class OVarDeclaration extends OBodyDeclaration
 		boolean isReference = false;
 		if (tree.getType() == Oberon0Parser.REFVAR)
 			isReference = true;
-		Type type = new Type(tree.getChild(0).getText());
+		Type type = Type.get(tree.getChild(0).getText());
 		List<String> names = new Vector<String>();
 		for (int i=1;i<tree.getChildCount();i++)
 		{
 			names.add(tree.getChild(i).getText());
 		}
-		if (type.isArray())
+		if (type == Type.ARRAY)
 		{
-			type = new Type(tree.getChild(0).getChild(0).getChild(0).getText());
+			type = Type.get(tree.getChild(0).getChild(0).getChild(0).getText());
 			OExpression arrayLength = OExpression.buildExpression(tree.getChild(0).getChild(1).getChild(0));
 			return new OArrayVarDeclaration(type, isReference, names, arrayLength);
 		}

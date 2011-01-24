@@ -24,7 +24,7 @@ public class OArrayVarDeclaration extends OVarDeclaration
 		assert(vars != null);
 		// Evaluate the length of the array and convert it to an integer
 		OValue len = arrayLength.run(vars).dereference();
-		if (!len.getType().isInteger())
+		if (len.getType() != Type.INTEGER)
 			throw new Oberon0SelectorException("Cannot cast the length of an array from " + len.getType() + " to " + Type.INTEGER + ".");
 		OInteger length = (OInteger)len;
 		// Add all variable instances to the variable scope

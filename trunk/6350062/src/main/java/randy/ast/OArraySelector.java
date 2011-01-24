@@ -24,13 +24,13 @@ public class OArraySelector extends OSelector
 		assert(vars != null);
 		// Evaluate the left hand side and convert it to an array
 		OValue valLhs = lhs.run(vars);
-		if (!valLhs.getType().isArray())
+		if (valLhs.getType() != Type.ARRAY)
 			throw new Oberon0SelectorException("Trying to access the index of a '" + valLhs.getType() + "' variable, which is not an array.");
 		OArray array = (OArray)valLhs.dereference();
 		
 		// Evaluate the array index and convert it to an integer
 		OValue valIndex = arrayIndex.run(vars);
-		if (!valIndex.getType().isInteger())
+		if (valIndex.getType() != Type.INTEGER)
 			throw new Oberon0SelectorException("Cannot cast the index of an array access from " + valIndex.getType() + " to " + Type.INTEGER + ".");
 		OInteger index = (OInteger)valIndex;
 		
