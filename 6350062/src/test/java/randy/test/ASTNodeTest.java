@@ -619,8 +619,9 @@ public class ASTNodeTest
 	// TODO: test to check if an const array can be modified
 	// TODO: prefix plus/minus
 	// TODO: infix #
-	// TODO: ~
+	// TODO: ~ (boolean prefix not)
 	// TODO: . selector/RECORD
+	// TODO: BOOLEAN implementeren (en TRUE en FALSE onderscheiden)
 	@Ignore
 	private void prepareTestThrowException(String testName) throws Oberon0Exception
 	{
