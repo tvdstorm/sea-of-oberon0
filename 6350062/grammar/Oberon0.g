@@ -5,7 +5,7 @@ options {
 	output = AST;
 	ASTLabelType = CommonTree;
 	backtrack=true;
-//    memoize=true;
+	// memoize=true;
 }
 
 tokens
@@ -61,74 +61,74 @@ package randy.generated;
 package randy.generated;
 }
 
-IDENT:			('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'0'..'9')*; // TODO: moet LETTER (LETTER|DIGIT)* worden
-WHITESPACE:		(' '|'\t'|'\r'|'\n')  { skip(); };
+IDENT:		('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'0'..'9')*; // TODO: moet LETTER (LETTER|DIGIT)* worden
+WHITESPACE:		(' '|'\t'|'\r'|'\n') { skip(); };
 ws:			(WHITESPACE)*;
-ident:			IDENT;
+ident:		IDENT;
 INTEGER:		('0'..'9')+;
-selector:		ident ((DOTSELECTOR^ ident)|(ARRAYSELECTOR^ ws expression ws ']'!))+ | ident;
-number:			INTEGER;
-factor:			selector | number | '('! ws expression ')'! | '~'^ ws factor; // TODO: kijken of () een extra node nodig heeft of niet
-term:			factor ((TIMES|DIVIDE|MOD|AND)^ ws factor)*;
+selector:		ident ((DOTSELECTOR^ ident)|(ARRAYSELECTOR^ expression ']'!))+ | ident;
+number:		INTEGER;
+factor:		selector | number | '('! expression ')'! | '~'^ factor; // TODO: kijken of () een extra node nodig heeft of niet
+term:			factor ((TIMES|DIVIDE|MOD|AND)^ factor)*;
 
 simpleExpression
- 	:	 (PLUS|MINUS^ ws)? term ((PLUS|MINUS |OR)^ ws term)*;
+ 	:	 (PLUS|MINUS^ )? term ((PLUS|MINUS |OR)^ term)*;
 
 infixOperand:		EQUALS | '#' | SMALLERTHEN | SMALLEREQUALS | GREATERTHEN | GREATEREQUALS;
-expression:		simpleExpression infixOperand ws simpleExpression ws
+expression:		simpleExpression infixOperand simpleExpression 
 				-> ^(infixOperand simpleExpression simpleExpression) |
 			simpleExpression
 				-> simpleExpression;
-actualParameters:	'(' ws (expression (',' ws expression)*)? ')' ws
+actualParameters:	'(' (expression (',' expression)*)? ')' 
 				-> ^(PARAMETERS expression+);
-ifStatement:		IF ws expression THEN ws statementSequence (ELSIF ws expression THEN ws statementSequence)+ (ELSE ws statementSequence) END
+ifStatement:		IF expression THEN statementSequence (ELSIF expression THEN statementSequence)+ (ELSE statementSequence) END
 				-> ^(IF ^(EXPRESSION expression) ^(BODY statementSequence) ^(ELSIF ^(EXPRESSION expression) ^(BODY statementSequence))+ ^(ELSE ^(BODY statementSequence))) |
-			IF ws expression THEN ws statementSequence (ELSIF ws expression THEN ws statementSequence)+ END
+			IF expression THEN statementSequence (ELSIF expression THEN statementSequence)+ END
 				-> ^(IF ^(EXPRESSION expression) ^(BODY statementSequence) ^(ELSIF ^(EXPRESSION expression) ^(BODY statementSequence))+) |
-			IF ws expression THEN ws statementSequence (ELSE ws statementSequence) END
-				-> ^(IF ^(EXPRESSION expression)^(BODY statementSequence)  ^(ELSE ^(BODY statementSequence))) |
-			IF ws expression THEN ws statementSequence END
+			IF expression THEN statementSequence (ELSE statementSequence) END
+				-> ^(IF ^(EXPRESSION expression)^(BODY statementSequence) ^(ELSE ^(BODY statementSequence))) |
+			IF expression THEN statementSequence END
 				-> ^(IF ^(EXPRESSION expression) ^(BODY statementSequence));
-whileStatement:		WHILE ws expression DO ws statementSequence END
+whileStatement:		WHILE expression DO statementSequence END
 				-> ^(WHILE ^(EXPRESSION expression) ^(BODY statementSequence));
 assignment:		selector ASSIGNMENT expression
 				-> ^(ASSIGNMENT ^(LH selector) ^(RH expression));
 procedureCall:		selector (actualParameters)?
 				-> ^(EXPRESSION ^(PROCEDURECALL selector actualParameters?));
 statement:		(assignment | procedureCall| ifStatement | whileStatement)?;
-statementSequence:	statement (';' ws statement)*
+statementSequence:	statement (';' statement)*
 				-> statement (statement)*;
-identList:		ident (ws ',' ws ident)*
+identList:		ident ( ',' ident)*
 				-> ident (ident)*;
-arrayType:		ARRAY ws expression OF ws type
+arrayType:		ARRAY expression OF type
 				-> ^(ARRAY ^(TYPE type) ^(EXPRESSION expression));
 
 fieldList 
-	:	 (identList ':' ws type ws)?;
+	:	 (identList ':' type )?;
 recordType
-	:	 RECORD ws fieldList (';' ws fieldList)* END;
+	:	 RECORD fieldList (';' fieldList)* END;
 type 	
 	:	 ident | arrayType | recordType;
 
-fPSection:		VAR ws identList ':' ws type
+fPSection:		VAR identList ':' type
 				-> ^(REFVAR type identList) |
-			identList ':' ws type
+			identList ':' type
 				-> ^(VAR type identList);
-formalParameters:	'(' ws (fPSection ws (';' ws fPSection)*)? ')'
+formalParameters:	'(' (fPSection (';' fPSection)*)? ')'
 				-> ^(PARAMETERS (fPSection (fPSection)*)?);
-procedureBody:		BEGIN ws statementSequence
+procedureBody:		BEGIN statementSequence
 				-> ^(BODY statementSequence);
-procedureDeclaration:	PROCEDURE ws ident (ws formalParameters)? ws ';' ws declarations (procedureBody)? END ws ident 
+procedureDeclaration:	PROCEDURE ident ( formalParameters)? ';' declarations (procedureBody)? END ident 
 				-> ^(PROCEDURE ident (formalParameters)? declarations? (procedureBody)?);
-constDeclaration:	(CONST ws (ident ws '=' ws expression ';')*)
+constDeclaration:	(CONST (ident '=' expression ';')*)
 				-> ^(CONST ident expression)*;
-typeDeclaration:	(TYPE ws (ident ws '=' ws type ws ';')*)
+typeDeclaration:	(TYPE (ident '=' type ';')*)
 				-> ^(TYPE ident type)*;
-varDeclarations:	(VAR ws (identList ':' ws type ws ';')*)
+varDeclarations:	(VAR (identList ':' type ';')*)
 				-> ^(VAR type identList)*;
-declarations:		constDeclaration? typeDeclaration? varDeclarations? (procedureDeclaration ws ';')*
+declarations:		constDeclaration? typeDeclaration? varDeclarations? (procedureDeclaration ';')*
 				-> constDeclaration? typeDeclaration? varDeclarations? (procedureDeclaration)*;
-moduleBody:		ws declarations (BEGIN ws statementSequence)? END
+moduleBody:		 declarations (BEGIN statementSequence)? END
 				-> declarations? ^(BODY statementSequence)?;
-module:			MODULE ws ident ws ';' moduleBody ws ident ws '.' ws EOF
+module:			MODULE ident ';' moduleBody ident '.' EOF
 				-> ^(MODULE ident moduleBody);

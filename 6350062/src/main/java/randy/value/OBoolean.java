@@ -23,10 +23,6 @@ public class OBoolean extends OValue
 	{
 		return this;
 	}
-	/*public void setValue(boolean _value)
-	{
-		value = _value;
-	}*/
 	public void setValue(OValue _val) throws Oberon0RuntimeException
 	{
 		// Resolve CONST

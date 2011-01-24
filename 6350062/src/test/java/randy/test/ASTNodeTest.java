@@ -4,6 +4,11 @@ import java.util.Random;
 import org.junit.*;
 import randy.exception.*;
 import randy.interpreter.Oberon0Program;
+import randy.value.OArray;
+import randy.value.OBoolean;
+import randy.value.OConst;
+import randy.value.OInteger;
+import randy.value.OValue;
 import randy.value.Type;
 import java.util.*;
 
@@ -501,6 +506,101 @@ public class ASTNodeTest
 			Assert.assertTrue(functions.popOutput().equals("" + d));
 			Assert.assertTrue(functions.popOutput().equals("" + e));
 			Assert.assertTrue(functions.outputIsEmpty());
+		}
+	}
+	@Test
+	public void test_Values()
+	{
+		try
+		{
+			for (int i=0;i<numTests;i++)
+			{
+				int iRand = random.nextInt();
+				OInteger integer = new OInteger(iRand);
+				Assert.assertTrue(iRand == integer.getIntValue());
+				OInteger integer2 = new OInteger(integer);
+				Assert.assertTrue(integer.getIntValue() == integer2.getIntValue());
+				OInteger integer3 = new OInteger(0);
+				integer3.setValue(integer);
+				Assert.assertTrue(integer.getIntValue() == integer3.getIntValue());
+				OConst cInteger = new OConst(integer);
+				Assert.assertTrue(cInteger.getType() == integer.getType());
+				Assert.assertTrue(cInteger.toString().equals(integer.toString()));
+				
+				boolean bRand = random.nextBoolean();
+				OBoolean bool = new OBoolean(bRand);
+				Assert.assertTrue(bRand == bool.getBoolValue());
+				OBoolean bool2 = new OBoolean(bool);
+				Assert.assertTrue(bool.getBoolValue() == bool2.getBoolValue());
+				OBoolean bool3 = new OBoolean(false);
+				bool3.setValue(bool);
+				Assert.assertTrue(bool.getBoolValue() == bool3.getBoolValue());
+				OConst cBool = new OConst(bool);
+				Assert.assertTrue(cBool.getType() == bool.getType());
+				Assert.assertTrue(cBool.toString().equals(bool.toString()));
+				
+				int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
+				OArray array = new OArray(3, Type.INTEGER);
+				array.getIndexValue(0).setValue(new OInteger(a));
+				array.getIndexValue(1).setValue(new OInteger(b));
+				array.getIndexValue(2).setValue(new OInteger(c));
+				try
+				{
+					array.getIndexValue(3);
+					Assert.fail("Should be throwing an Oberon0OutOfBoundsException...");
+				}
+				catch (Oberon0OutOfBoundsException e)
+				{
+					// Success
+				}
+				OConst cArray = new OConst(array);
+				Assert.assertTrue(cArray.getType() == array.getType());
+				Assert.assertTrue(cArray.toString().equals(array.toString()));
+				
+				Assert.assertTrue(OValue.makeNew(Type.INTEGER).getType() == Type.INTEGER);
+				Assert.assertTrue(OValue.makeNew(Type.BOOL).getType() == Type.BOOL);
+				try
+				{
+					OValue.makeNew(Type.ARRAY);
+					Assert.fail("Should be throwing an Oberon0UnknownTypeException...");
+				}
+				catch (Oberon0UnknownTypeException e)
+				{
+					// Success
+				}
+				
+				try
+				{
+					integer.setValue(bool2);
+					Assert.fail("Should be throwing an Oberon0TypeMismatchException...");
+				}
+				catch (Oberon0TypeMismatchException e)
+				{
+					// Success
+				}
+				try
+				{
+					bool.setValue(integer2);
+					Assert.fail("Should be throwing an Oberon0TypeMismatchException...");
+				}
+				catch (Oberon0TypeMismatchException e)
+				{
+					// Success
+				}
+				try
+				{
+					array.setValue(integer2);
+					Assert.fail("Should be throwing an Oberon0TypeMismatchException...");
+				}
+				catch (Oberon0TypeMismatchException e)
+				{
+					// Success
+				}
+			}
+		}
+		catch (Oberon0Exception e)
+		{
+			Assert.fail("Shouldn't be throwing an Oberon0Exception...");
 		}
 	}
 	/*@Test
