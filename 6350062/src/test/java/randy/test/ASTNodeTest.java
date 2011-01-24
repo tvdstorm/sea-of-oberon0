@@ -4,12 +4,7 @@ import java.util.Random;
 import org.junit.*;
 import randy.exception.*;
 import randy.interpreter.Oberon0Program;
-import randy.value.OArray;
-import randy.value.OBoolean;
-import randy.value.OConst;
-import randy.value.OInteger;
-import randy.value.OValue;
-import randy.value.Type;
+import randy.value.*;
 import java.util.*;
 
 public class ASTNodeTest
@@ -622,7 +617,10 @@ public class ASTNodeTest
 		}
 	}*/
 	// TODO: test to check if an const array can be modified
-	
+	// TODO: prefix plus/minus
+	// TODO: infix #
+	// TODO: ~
+	// TODO: . selector/RECORD
 	@Ignore
 	private void prepareTestThrowException(String testName) throws Oberon0Exception
 	{
