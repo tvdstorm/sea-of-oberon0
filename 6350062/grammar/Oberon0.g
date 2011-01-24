@@ -35,10 +35,12 @@ tokens
 	OR='OR';
 	ASSIGNMENT=':=';
 	EQUALS='=';
+	NOTEQUALS='#';
 	SMALLERTHEN='<';
 	GREATERTHEN='>';
 	SMALLEREQUALS='<=';
 	GREATEREQUALS='>=';
+	NOT='~';
 	REFVAR;
 	PROCEDURECALL;
 	PARAMETERS;
@@ -53,12 +55,12 @@ tokens
 
 @parser::header
 {
-package randy.generated;
+package randy.generated.antlr;
 }
 
 @lexer::header
 {
-package randy.generated;
+package randy.generated.antlr;
 }
 
 IDENT:		('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'0'..'9')*; // TODO: moet LETTER (LETTER|DIGIT)* worden
@@ -68,13 +70,13 @@ ident:		IDENT;
 INTEGER:		('0'..'9')+;
 selector:		ident ((DOTSELECTOR^ ident)|(ARRAYSELECTOR^ expression ']'!))+ | ident;
 number:		INTEGER;
-factor:		selector | number | '('! expression ')'! | '~'^ factor;
+factor:		selector | number | '('! expression ')'! | NOT^ factor;
 term:			factor ((TIMES|DIVIDE|MOD|AND)^ factor)*;
 
 simpleExpression
  	:	 (PLUS|MINUS^ )? term ((PLUS|MINUS |OR)^ term)*;
 
-infixOperand:		EQUALS | '#' | SMALLERTHEN | SMALLEREQUALS | GREATERTHEN | GREATEREQUALS;
+infixOperand:		EQUALS | NOTEQUALS | SMALLERTHEN | SMALLEREQUALS | GREATERTHEN | GREATEREQUALS;
 expression:		simpleExpression infixOperand simpleExpression 
 				-> ^(infixOperand simpleExpression simpleExpression) |
 			simpleExpression
@@ -104,9 +106,11 @@ arrayType:		ARRAY expression OF type
 				-> ^(ARRAY ^(TYPE type) ^(EXPRESSION expression));
 
 fieldList 
-	:	 (identList ':' type )?;
+	:	 (identList ':' type )?
+			-> ^(VAR type? identList?);
 recordType
-	:	 RECORD fieldList (';' fieldList)* END;
+	:	 RECORD fieldList (';' fieldList)* END
+			-> ^(RECORD fieldList*);
 type 	
 	:	 ident | arrayType | recordType;
 

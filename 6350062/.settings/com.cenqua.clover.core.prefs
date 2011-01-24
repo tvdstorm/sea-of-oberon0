@@ -1,5 +1,5 @@
-#Mon Jan 17 14:16:54 CET 2011
-block_filters=SourceDirective
+#Mon Jan 24 15:31:36 CET 2011
+block_filters=SourceDirective, assert
 eclipse.preferences.version=1
 exclude_filter=src/main/java/randy/generated/**, src/main/java/randy/main/**, src/test/java/randy/test/**, src/main/java/randy/generated/Oberon0Lexer.java, src/main/java/randy/generated/Oberon0Parser.java
 flush_interval=1000
