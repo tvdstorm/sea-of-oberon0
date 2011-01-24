@@ -1,16 +1,20 @@
 package ASTnodes;
 
 public class SelectorNode implements ASTnode {
-  public SelectorNode( String identifier )
+  public SelectorNode( ASTnode value, ASTnode next )
   {
-	this.identifier = identifier;
+	this.value = value;
+	this.next = next;
   }
 	
   public void printNode( int depth )
   {
-	if( this.identifier != null )
-	  System.out.print( this.identifier );
+	if( this.value != null )
+	  this.value.printNode( depth );
+	if( this.next != null )
+	  this.next.printNode( 0 );
   }
   
-  private String identifier = null;
+  private ASTnode value = null;
+  private ASTnode next = null;
 }

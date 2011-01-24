@@ -1,9 +1,9 @@
 package ASTnodes;
 
 public class AssignmentNode implements StatementNode {
-  public AssignmentNode( String ident, ExpressionNode expression )
+  public AssignmentNode( VarNode var, ExpressionNode expression )
   {
-	this.ident = ident;
+	this.var = var;
 	this.expression = expression;
   }
   
@@ -11,11 +11,14 @@ public class AssignmentNode implements StatementNode {
   {
 	for( int i = 0; i < depth; i++ )
 	  System.out.print( " " );
-	System.out.print( this.ident + " := " );
-	this.expression.printNode( depth );
-	System.out.println( "" );
+	if( this.var != null )
+	  this.var.printNode( 0 );
+	System.out.print( " := " );
+	if( this.expression != null )
+	  this.expression.printNode( depth );
+	System.out.println( ";" );
   }
   
-  private String ident = null;
+  private VarNode var = null;
   private ExpressionNode expression = null;
 }

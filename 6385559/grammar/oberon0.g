@@ -25,20 +25,44 @@ module returns [ ModuleNode e ]
 	;
 
 declarations returns [ DeclarationsNode e ]
-	: ('CONST' (IDENT '=' expression ';')+)? ('TYPE' (IDENT '=' type)+)? ('VAR' (identlist ':' type ';')+ )? (proceduredeclaration ';')*
+	: ('CONST' constants)? ('TYPE' (IDENT '=' type ';')+)? ('VAR' (identlist ':' type ';')+ )? (proceduredeclaration ';')*
 	{
-	  $e = new DeclarationsNode();
+	  $e = new DeclarationsNode( $constants.e );
+	}
+	;
+	
+constants returns [ ConstantNode e ]
+	: (IDENT '=' expression ';') constantFollowUp=constants?
+	{
+	  $e = new ConstantNode( $IDENT.text, $expression.e, $constantFollowUp.e );
 	}
 	;
 
-type
-	: IDENT
-	| arraytype
-	| recordtype
+typeDefs returns [ TypeDefNode e ]
+	: (IDENT '=' type ';') typeDefsFollowUp=typeDefs?
+	{
+	  $e = new TypeDefNode( $IDENT.text, $type.e, $typeDefFollowUp.e );
+	}
 	;
 
-arraytype
+type returns [ ASTnode e ]
+	: IDENT { $e = new TypeNode( $IDENT.text ); }
+	| arraytype { $e = $arraytype.e; }
+	| recordtype { $e  = $recordtype.e; }
+	;
+
+arraytype returns [ ArrayNode e ]
 	: 'ARRAY' expression 'OF' type
+	{
+	  $e = new ArrayNode( $expression.e, $type.e );
+	}
+	;
+	
+recordtype returns [ RecordType e ]
+	: 'RECORD' fieldlist (';' fieldlist)* 'END'
+	{
+	  $e = new RecordType();
+	}
 	;
 	
 expression returns [ ExpressionNode e ] 
@@ -83,7 +107,7 @@ termFollowUp returns [ TermNode e ]
   ;
 
 factor returns [ ASTnode e ]
-	: IDENT selector { $e = new SelectorNode( $IDENT.text ); }
+	: variable { $e = $variable.e; }
 	| number { $e = $number.e; }
 	| '(' expression ')' { $e = $expression.e; }
 	| '~' factorOperand=factor { $e = new NotNode( $factorOperand.e ); }
@@ -96,13 +120,27 @@ number returns [ IntegerNode e ]
 	}
 	; 
 	
-selector
-	: ( '.' IDENT | '[' expression ']' )*
+selector returns [ ASTnode e ]
+	: 
+	( 
+	'.' var=IDENT selectorFollowup=selector 
+	{
+	  $e = new SelectorRecordNode( $var.text, $selectorFollowup.e );
+	}
+	| 
+	'[' exp=expression ']' selectorFollowup=selector 
+	{
+	  $e = new SelectorArrayNode( $exp.e, $selectorFollowup.e );
+	}
+	)?
 	;
-
-recordtype
-	: 'RECORD' fieldlist (';' fieldlist)* 'END'
-	;
+	
+variable returns [ VarNode e ]
+        : IDENT selector
+        {
+          $e = new VarNode( $IDENT.text, $selector.e );
+        }
+        ;
 	
 fieldlist
 	: (identlist ':' type)?
@@ -134,21 +172,31 @@ statement returns [ StatementNode e ]
 	;
 	
 assignment returns [ StatementNode e ]
-	: IDENT selector ':=' expression
+	: variable ':=' expression
 	{
-	  $e = new AssignmentNode( $IDENT.text, $expression.e );
+	  $e = new AssignmentNode( $variable.e, $expression.e );
 	}
 	;
 	
 procedurecall returns [ StatementNode e ]
-	: IDENT selector (actualparameters)?
+	: IDENT (actualparameters)?
 	{
-	  $e = new ProcedureCallNode();
+	  $e = new ProcedureCallNode( $IDENT.text, $actualparameters.e );
 	}
 	;
 	
-actualparameters
-	: '(' ( expression ( ',' expression)*)? ')'
+actualparameters returns [ ParamNode e ]
+	: '(' ( expression ( follow=actualparametersfollowup)? )? ')'
+	{
+	  $e = new ParamNode( $expression.e, $follow.e );
+	}
+	;
+	
+actualparametersfollowup returns [ ParamNode e]
+	: ',' expression (follow=actualparametersfollowup)?
+	{
+	  $e = new ParamNode( $expression.e, $follow.e );
+	}
 	;
 	
 ifstatement returns [ StatementNode e ]
