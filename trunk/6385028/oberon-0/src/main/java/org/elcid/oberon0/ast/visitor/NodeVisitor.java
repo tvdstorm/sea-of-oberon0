@@ -14,5 +14,9 @@ public interface NodeVisitor {
 	public Object visitArrayNode(ArrayNode node);
 	public Object visitEqualsExpNode(EqualsExpNode node);
 	public Object visitVariableExpNode(VariableExpNode node);
+	public Object visitGreaterExpNode(GreaterExpNode node);
+	public Object visitGreaterOrEqualsExpNode(GreaterOrEqualsExpNode node);
+	public Object visitLesserExpNode(LesserExpNode node);
+	public Object visitLesserOrEqualsExpNode(LesserOrEqualsExpNode node);
 
 }

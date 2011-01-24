@@ -14,6 +14,8 @@ import static org.junit.Assert.*;
  */
 public class EvaluationVisitorTest {
 
+	EvaluationVisitor visitor;
+
     public EvaluationVisitorTest() {
     }
 
@@ -27,6 +29,7 @@ public class EvaluationVisitorTest {
 
     @Before
     public void setUp() {
+		visitor = new EvaluationVisitor();
     }
 
     @After
@@ -47,13 +50,19 @@ public class EvaluationVisitorTest {
 
 	@Test
 	public void testVisitEqualsExpNode() {
-		EvaluationVisitor visitor = new EvaluationVisitor();
+		EqualsExpNode trueExp = new EqualsExpNode(new IntegerExpNode(1), new IntegerExpNode(1));
+		assertTrue((Boolean) visitor.visitEqualsExpNode(trueExp));
 
-		EqualsExpNode trueNode = new EqualsExpNode(new IntegerExpNode(1), new IntegerExpNode(1));
-		assertTrue((Boolean) visitor.visitEqualsExpNode(trueNode));
-
-		EqualsExpNode falseNode = new EqualsExpNode(new IntegerExpNode(2), new IntegerExpNode(1));
-		assertFalse((Boolean) visitor.visitEqualsExpNode(falseNode));
+		EqualsExpNode falseExp = new EqualsExpNode(new IntegerExpNode(2), new IntegerExpNode(1));
+		assertFalse((Boolean) visitor.visitEqualsExpNode(falseExp));
 	}
 
+	@Test
+	public void testVisitGreaterExpNode() {
+		GreaterExpNode trueExp = new GreaterExpNode(new IntegerExpNode(2), new IntegerExpNode(1));
+		assertTrue((Boolean) visitor.visitGreaterExpNode(trueExp));
+
+		GreaterExpNode falseExp = new GreaterExpNode(new IntegerExpNode(1), new IntegerExpNode(1));
+		assertFalse((Boolean) visitor.visitGreaterExpNode(falseExp));
+	}
 }
