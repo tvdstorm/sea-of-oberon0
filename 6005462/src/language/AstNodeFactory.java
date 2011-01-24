@@ -1,5 +1,6 @@
 package language;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import language.parser.oberonLexer;
@@ -13,6 +14,78 @@ public class AstNodeFactory {
 	private static AnExpression createExpression(Tree tree){
 		return createExpression((BaseTree) tree); 
 	}
+	
+	public static AnProcedure createProcedure(BaseTree tree){
+		return null;
+	}
+	
+	public static AnStatementSeq AnStatementSeq(BaseTree tree){
+		
+		List<IStatement> statementList = new ArrayList<IStatement>();
+		List<BaseTree> children = tree.getChildren();
+		IStatement newStatement;
+		for (BaseTree child : children){
+			assert (child.getType() == oberonLexer.STATEMENT);
+			newStatement = createStatement(tree);
+			statementList.add(newStatement);
+		}
+		return new AnStatementSeq(statementList);
+	}
+	
+	public static IStatement createStatement(BaseTree tree){
+		assert (tree.getChildCount() == 1);
+		
+		BaseTree btStatement = (BaseTree) tree.getChild(0);
+		int statType = btStatement.getType();
+		
+		switch(statType){
+			case oberonLexer.ASSIGN: return createSmtAssignment(btStatement);
+			case oberonLexer.PROCCALL: return createSmtProcCall(btStatement);
+			case oberonLexer.IFSTATEMENT: return createSmtIf(btStatement);
+			case oberonLexer.WHILE: return createSmtWhile(btStatement);
+			default: throw new UnsupportedOperationException();
+		}
+	}
+	
+	
+	public static AnSmtWhile createSmtWhile(BaseTree tree){
+		return null;
+	}
+	
+	public static AnSmtIf createSmtIf(BaseTree tree){
+		return null;
+	}
+	
+	public static AnSmtProcCall createSmtProcCall(BaseTree tree){
+		return null;
+	}
+	private static AnSmtAssignment createSmtAssignment(BaseTree tree){
+		assert (tree.getChildCount() == 2);
+		
+		AnIdent lhsNode = null;
+		BaseTree btLhs = (BaseTree) tree.getChild(0);
+		int lhsType = btLhs.getType();
+		switch(lhsType){
+			case oberonLexer.IDENTIFIER: lhsNode = createIdent(btLhs); break;
+			case oberonLexer.DOTSELECTOR: {
+				lhsNode = null; 
+				throw new UnsupportedOperationException("DOTSELECTOR nog maken");
+			}
+			case oberonLexer.BRACKETSELECTOR: {
+				lhsNode = null; 
+				throw new UnsupportedOperationException("BRACKETSELECTOR nog maken");
+			}
+			default: {
+				lhsNode = null; 
+				throw new UnsupportedOperationException();
+			}
+		}
+		
+		BaseTree btExpr = (BaseTree) tree.getChild(1);
+		AnExpression expr = createExpression(btExpr);
+		return new AnSmtAssignment(lhsNode, expr);
+	}
+
 	
 	public static AnExpression createExpression(BaseTree tree){
 		int exprType = tree.getType();
@@ -54,38 +127,7 @@ public class AstNodeFactory {
 		
 	}
 	
-	private static AnStatement createStatement(BaseTree tree){
-		throw new UnsupportedOperationException();
-	}
-	
-	private static AnAssignment createAssignment(List<BaseTree> trees){
-		assert (trees.size() == 2);
-		
-		IAstNode lhsNode = null;
-		BaseTree btLhs = trees.get(0);
-		int lhsType = btLhs.getType();
-		switch(lhsType){
-			case oberonLexer.IDENTIFIER: lhsNode = createIdent(btLhs); break;
-			case oberonLexer.DOTSELECTOR: {
-				lhsNode = null; 
-				throw new UnsupportedOperationException("DOTSELECTOR nog maken");
-			}
-			case oberonLexer.BRACKETSELECTOR: {
-				lhsNode = null; 
-				throw new UnsupportedOperationException("BRACKETSELECTOR nog maken");
-			}
-			default: {
-				lhsNode = null; 
-				throw new UnsupportedOperationException();
-			}
-		}
-		
-		BaseTree btValue = trees.get(1);
-		AnValue val = createValue(btValue);
-		return new AnAssignment(lhsNode, val);
-	}
-	
-	private static IType createIdent(BaseTree btIdent){
+	private static AnIdent createIdent(BaseTree btIdent){
 		return new AnIdent(btIdent.toString());
 	}
 	
@@ -113,7 +155,14 @@ public class AstNodeFactory {
 		return module;
 	}
 	
-	
+	private static BaseTree getChildOfType(BaseTree tree, int type){
+
+		List<BaseTree> children = tree.getChildren();
+		for (BaseTree child : children){
+			if (child.getType() == type) return child;
+		}
+		return null;
+	}
 	
 	
 	

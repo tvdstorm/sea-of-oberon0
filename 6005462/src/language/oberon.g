@@ -159,11 +159,11 @@ statement
 
 statementSequence
     :   statement (SEMI statement)* 
-    ->  ^(STATEMENTSEQ (statement)+) ;
+    ->  ^(STATEMENTSEQ statement+) ;
     
 identList
     :   ident (COMMA ident)* 
-    ->  ^(IDENTLIST ^(ident)+) ; 
+    ->  ^(IDENTLIST ident+) ; 
     
 fieldList
     :   (identList SEMI type)? 
@@ -183,7 +183,7 @@ formalParameters
     ->  ^(FORMALPARAMS fpSection*) ;
 
 procedureHeading
-    :   PROCEDURE ident (formalParameters)? 
+    :   PROCEDURE ident formalParameters? 
     ->  ^(PROCHEAD ident formalParameters?) ;
     
 procedureBody
