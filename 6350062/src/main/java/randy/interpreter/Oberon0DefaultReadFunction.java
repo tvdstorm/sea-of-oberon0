@@ -20,9 +20,7 @@ public class Oberon0DefaultReadFunction implements OInvokableFunction
 		{
 			if (parameterValues.size() != 1)
 				throw new Oberon0IncorrectNumberOfArgumentsException();
-			OValue param = parameterValues.poll();
-			if (!param.getType().equals(Type.INTEGER))
-				throw new Oberon0TypeMismatchException(param.getType(), Type.INTEGER);
+			OInteger param = parameterValues.poll().castToInteger();
 			byte input[] = new byte[1024];
 			int length = System.in.read(input);
 			String in = new String(input, 0, length);

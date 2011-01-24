@@ -29,12 +29,9 @@ public class OIfStatement extends OStatement
 	{
 		assert(vars != null);
 		// Evaluate the main expression and convert it to an boolean
-		OValue expr = expression.run(vars);
-		if (expr.getType() != Type.BOOL)
-			throw new Oberon0TypeMismatchException(expr.getType(), Type.BOOL);
-		OBoolean b = (OBoolean)expr;
+		OBoolean bExpression = expression.run(vars).castToBoolean();
 		// If the main expression is true, run the body
-		if (b.getBoolValue())
+		if (bExpression.getBoolValue())
 		{
 			body.run(vars);
 			return null;
@@ -43,12 +40,9 @@ public class OIfStatement extends OStatement
 		for (Tuple<OExpression, OBlock> curElseif : elseifs)
 		{
 			// Run the expression and convert it to an boolean
-			expr = curElseif.getFirst().run(vars);
-			if (expr.getType() != Type.BOOL)
-				throw new Oberon0TypeMismatchException(expr.getType(), Type.BOOL);
-			b = (OBoolean)expr;
+			bExpression = curElseif.getFirst().run(vars).castToBoolean();
 			// If the expression is true, run the body
-			if (b.getBoolValue())
+			if (bExpression.getBoolValue())
 			{
 				curElseif.getSecond().run(vars);
 				return null;

@@ -4,7 +4,7 @@ import randy.exception.*;
 
 public class OConst extends OValue
 {
-	private OValue value; // TODO: final?
+	private final OValue value;
 	
 	public OConst(OValue _value)
 	{

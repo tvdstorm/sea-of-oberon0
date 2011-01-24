@@ -337,11 +337,11 @@ public class ASTNodeTest
 	@Test
 	public void test_Type()
 	{
-		Type bool = Type.BOOL;
+		Type bool = Type.BOOLEAN;
 		Type integer = Type.INTEGER;
 		Type array = Type.ARRAY;
 		
-		Assert.assertTrue(bool.equals(Type.BOOL));
+		Assert.assertTrue(bool.equals(Type.BOOLEAN));
 		Assert.assertTrue(integer.equals(Type.INTEGER));
 		Assert.assertTrue(array.equals(Type.ARRAY));
 		
@@ -558,7 +558,7 @@ public class ASTNodeTest
 				Assert.assertTrue(cArray.toString().equals(array.toString()));
 				
 				Assert.assertTrue(OValue.makeNew(Type.INTEGER).getType() == Type.INTEGER);
-				Assert.assertTrue(OValue.makeNew(Type.BOOL).getType() == Type.BOOL);
+				Assert.assertTrue(OValue.makeNew(Type.BOOLEAN).getType() == Type.BOOLEAN);
 				try
 				{
 					OValue.makeNew(Type.ARRAY);

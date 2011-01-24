@@ -34,7 +34,7 @@ public class OVarDeclaration extends OBodyDeclaration
 		}
 		return null;
 	}
-	public OValue runForParameter(Oberon0VariableStack vars, Queue<OValue> parameters) throws Oberon0RuntimeException
+	public void runForParameter(Oberon0VariableStack vars, Queue<OValue> parameters) throws Oberon0RuntimeException
 	{
 		assert(vars != null);
 		assert(parameters != null);
@@ -43,33 +43,19 @@ public class OVarDeclaration extends OBodyDeclaration
 			throw new Oberon0IncorrectNumberOfArgumentsException();
 		for (String name : names)
 		{
-			if (parameters.peek().getType() == Type.ARRAY && bIsArray)
-			{
-				// Ok
-			}
-			else if (!parameters.peek().getType().equals(type) || (parameters.peek().getType() == Type.ARRAY && !bIsArray) || (parameters.peek().getType() != Type.ARRAY && bIsArray))
-				throw new Oberon0TypeMismatchException(parameters.peek().getType(), type);
+			OValue param = parameters.poll();
+			if (param.getType() != type)
+				throw new Oberon0TypeMismatchException(param.getType(), type);
+			OValue val;
 			if (isReference)
-			{
-				vars.addVariable(name, parameters.poll());
-			}
+				val = param;
 			else
-			{
-				if (bIsArray)
-				{
-					// TODO: kijken of array length overeenkomen en dit opsplitsen met OArrayVarDeclaration
-					OArray val = new OArray((OArray)parameters.poll());
-					vars.addVariable(name, val);
-				}
-				else
-				{
-					OValue val = OValue.makeNew(type);
-					val.setValue(parameters.poll());
-					vars.addVariable(name, val);
-				}
+			{	
+				val = OValue.makeNew(type);
+				val.setValue(param);
 			}
+			vars.addVariable(name, val);
 		}
-		return null;
 	}
 	public static OVarDeclaration buildVarDeclaration(Tree tree) throws Oberon0Exception
 	{
