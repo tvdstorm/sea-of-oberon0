@@ -4,6 +4,7 @@ import org.elcid.oberon0.ast.ArrayNode;
 import org.elcid.oberon0.ast.BinaryExpNode;
 import org.elcid.oberon0.ast.IdentifierNode;
 import org.elcid.oberon0.ast.IntegerExpNode;
+import org.elcid.oberon0.ast.UnaryExpNode;
 import org.elcid.oberon0.ast.VariableExpNode;
 import org.elcid.oberon0.ast.util.NodeType;
 import org.elcid.oberon0.exceptions.UnexpectedNodeException;
@@ -50,5 +51,10 @@ public class EvaluationVisitor implements NodeVisitor {
 	@Override
 	public Object visitVariableExpNode(VariableExpNode node) {
 		return node.getValue().accept(this);
+	}
+
+	@Override
+	public Object visitUnaryExpNode(UnaryExpNode node) {
+		throw new UnsupportedOperationException("Not supported yet.");
 	}
 }
