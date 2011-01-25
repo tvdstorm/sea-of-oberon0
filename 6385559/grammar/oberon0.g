@@ -258,28 +258,43 @@ whilestatement returns [ StatementNode e ]
 procedureList returns [ ProcedureListNode e ]
 	: (proceduredeclaration ';' ( followup=procedureList )? )?
 	{
-	  $e = new ProcedureListNode( $proceduredeclaration.text, $followup.e );
+	  $e = new ProcedureListNode( $proceduredeclaration.e, $followup.e );
 	}
 	;
 	
-proceduredeclaration
+proceduredeclaration returns [ ProcedureDeclarationNode e ]
 	: procedureheading ';' procedurebody
+	{
+	  $e = new ProcedureDeclarationNode( $procedureheading.e, $procedurebody.e );
+	}
 	;
 	
-procedureheading
-	: 'PROCEDURE' IDENT (formalparameters)?
+procedureheading returns [ ProcedureHeadingNode e ]
+	: 'PROCEDURE' IDENT ( '(' formalparameters? ')' )?
+	{
+	  $e = new ProcedureHeadingNode( $IDENT.text, $formalparameters.e );
+	}
 	;
 	
-procedurebody
+procedurebody returns [ ProcedureBodyNode e ]
 	: declarations ('BEGIN' statementsequence)? 'END' IDENT
+	{
+	  $e = new ProcedureBodyNode( $declarations.e, $statementsequence.e, $IDENT.text);
+	}
 	;
 	
-formalparameters
-	: '(' (fpsection (';' fpsection)*)? ')'
+formalparameters returns [ FormalParameterNode e ]
+	: fpsection ( ';' followup=formalparameters )?
+	{
+	  $e = new FormalParameterNode( $fpsection.e, $followup.e );
+	}
 	;
 
-fpsection
-	: ('VAR')? identlist ':' type
+fpsection returns [ FpSectionNode e ]
+	: (ident='VAR')? identlist ':' type
+	{
+	  $e = new FpSectionNode( $ident.text, $identlist.e, $type.e );
+	}
 	;
 			
 INTEGER

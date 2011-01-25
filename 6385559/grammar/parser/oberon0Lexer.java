@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 oberon0.g 2011-01-24 16:48:13
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 oberon0.g 2011-01-25 09:31:00
 
   package parser;
 
@@ -873,10 +873,10 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = INTEGER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // oberon0.g:286:2: ( ( '0' .. '9' )+ )
-            // oberon0.g:286:4: ( '0' .. '9' )+
+            // oberon0.g:301:2: ( ( '0' .. '9' )+ )
+            // oberon0.g:301:4: ( '0' .. '9' )+
             {
-            // oberon0.g:286:4: ( '0' .. '9' )+
+            // oberon0.g:301:4: ( '0' .. '9' )+
             int cnt1=0;
             loop1:
             do {
@@ -890,7 +890,7 @@ public class oberon0Lexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // oberon0.g:286:5: '0' .. '9'
+            	    // oberon0.g:301:5: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -922,8 +922,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = IDENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // oberon0.g:290:2: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
-            // oberon0.g:290:4: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
+            // oberon0.g:305:2: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
+            // oberon0.g:305:4: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -934,7 +934,7 @@ public class oberon0Lexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // oberon0.g:290:23: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
+            // oberon0.g:305:23: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -983,10 +983,10 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // oberon0.g:294:2: ( ( ' ' | '\\t' | '\\n' | '\\r' )+ )
-            // oberon0.g:294:4: ( ' ' | '\\t' | '\\n' | '\\r' )+
+            // oberon0.g:309:2: ( ( ' ' | '\\t' | '\\n' | '\\r' )+ )
+            // oberon0.g:309:4: ( ' ' | '\\t' | '\\n' | '\\r' )+
             {
-            // oberon0.g:294:4: ( ' ' | '\\t' | '\\n' | '\\r' )+
+            // oberon0.g:309:4: ( ' ' | '\\t' | '\\n' | '\\r' )+
             int cnt3=0;
             loop3:
             do {
@@ -1343,13 +1343,13 @@ public class oberon0Lexer extends Lexer {
 
     protected DFA4 dfa4 = new DFA4(this);
     static final String DFA4_eotS =
-        "\1\uffff\1\40\1\uffff\2\40\1\uffff\3\40\1\uffff\3\40\1\uffff\1\57"+
-        "\1\61\3\uffff\1\40\6\uffff\1\65\1\uffff\3\40\3\uffff\11\40\1\102"+
-        "\1\103\1\40\4\uffff\1\40\1\106\2\uffff\1\107\2\40\1\113\1\40\1\115"+
-        "\4\40\1\123\1\40\2\uffff\1\40\1\126\2\uffff\3\40\1\uffff\1\40\1"+
-        "\uffff\1\40\1\134\1\40\1\136\1\137\1\uffff\2\40\1\uffff\3\40\1\145"+
-        "\1\146\1\uffff\1\147\2\uffff\1\150\1\40\1\152\1\40\1\154\4\uffff"+
-        "\1\155\1\uffff\1\40\2\uffff\2\40\1\161\1\uffff";
+        "\1\uffff\1\40\1\uffff\2\40\1\uffff\3\40\1\uffff\3\40\1\uffff\1"+
+        "\57\1\61\3\uffff\1\40\6\uffff\1\65\1\uffff\3\40\3\uffff\11\40\1"+
+        "\102\1\103\1\40\4\uffff\1\40\1\106\2\uffff\1\107\2\40\1\113\1\40"+
+        "\1\115\4\40\1\123\1\40\2\uffff\1\40\1\126\2\uffff\3\40\1\uffff\1"+
+        "\40\1\uffff\1\40\1\134\1\40\1\136\1\137\1\uffff\2\40\1\uffff\3\40"+
+        "\1\145\1\146\1\uffff\1\147\2\uffff\1\150\1\40\1\152\1\40\1\154\4"+
+        "\uffff\1\155\1\uffff\1\40\2\uffff\2\40\1\161\1\uffff";
     static final String DFA4_eofS =
         "\162\uffff";
     static final String DFA4_minS =
@@ -1382,8 +1382,8 @@ public class oberon0Lexer extends Lexer {
     static final String DFA4_specialS =
         "\162\uffff}>";
     static final String[] DFA4_transitionS = {
-            "\2\41\2\uffff\1\41\22\uffff\1\41\2\uffff\1\15\2\uffff\1\24\1"+
-            "\uffff\1\25\1\26\1\22\1\20\1\33\1\21\1\5\1\uffff\12\37\1\32"+
+            "\2\41\2\uffff\1\41\22\uffff\1\41\2\uffff\1\15\2\uffff\1\24"+
+            "\1\uffff\1\25\1\26\1\22\1\20\1\33\1\21\1\5\1\uffff\12\37\1\32"+
             "\1\2\1\16\1\11\1\17\2\uffff\1\12\1\3\1\6\1\23\1\4\3\40\1\34"+
             "\3\40\1\1\1\40\1\13\1\36\1\40\1\14\1\40\1\7\1\40\1\10\1\35\3"+
             "\40\1\30\1\uffff\1\31\3\uffff\32\40\3\uffff\1\27",
