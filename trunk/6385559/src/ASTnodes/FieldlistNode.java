@@ -10,9 +10,16 @@ public class FieldlistNode implements ASTnode {
   public void printNode(int depth) 
   {
     if( this.identlist != null )
+    {
       this.identlist.printNode( 0 );
+      System.out.print( " : " );
+    }
     if( this.type != null )
+    {
       this.type.printNode( 0 );
+      System.out.print( "; " );
+    }
+    
   }
   
   private IdentListNode identlist = null;
