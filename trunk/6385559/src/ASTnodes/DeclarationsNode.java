@@ -37,6 +37,7 @@ public class DeclarationsNode implements ASTnode {
 	
 	if( this.procedureList != null )
 	{
+	  System.out.println();
 	  this.procedureList.printNode( depth );
 	}
   }

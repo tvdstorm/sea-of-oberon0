@@ -1,13 +1,25 @@
 MODULE Sample;
 
 CONST a = a+b; c = 5;
-TYPE x = INTEGER; y = INTEGER; z = ARRAY 32 OF INTEGER; a = RECORD b,c,d : INTEGER; e,f : BOOLEAN END;
+TYPE x = INTEGER; y = INTEGER; z = ARRAY 32 OF INTEGER; a = RECORD b,c,d : INTEGER; e,f : BOOLEAN; END;
 VAR x, y, z : INTEGER; a,b,c : BOOLEAN;
 
 PROCEDURE x( b : INTEGER );
 BEGIN
   b := b;
 END x;
+
+PROCEDURE y();
+  VAR temp : INTEGER;
+  PROCEDURE swap( VAR z, y : INTEGER; temp : INTEGER );
+  BEGIN
+    temp := z;
+    z := y;
+    y := temp
+  END swap;
+BEGIN
+  z := z;
+END y;
 
 BEGIN
 	z := -45 + (-5) - 4 + 7;

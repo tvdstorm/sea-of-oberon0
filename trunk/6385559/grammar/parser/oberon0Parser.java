@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 oberon0.g 2011-01-24 16:48:12
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 oberon0.g 2011-01-25 09:31:00
 
   package parser;
   
@@ -2386,7 +2386,7 @@ public class oberon0Parser extends Parser {
 
         ProcedureListNode followup = null;
 
-        oberon0Parser.proceduredeclaration_return proceduredeclaration54 = null;
+        ProcedureDeclarationNode proceduredeclaration54 = null;
 
 
         try {
@@ -2470,7 +2470,7 @@ public class oberon0Parser extends Parser {
 
             if ( state.backtracking==0 ) {
 
-              	  e = new ProcedureListNode( (proceduredeclaration54!=null?input.toString(proceduredeclaration54.start,proceduredeclaration54.stop):null), followup );
+              	  e = new ProcedureListNode( proceduredeclaration54, followup );
               	
             }
 
@@ -2487,34 +2487,39 @@ public class oberon0Parser extends Parser {
     }
     // $ANTLR end "procedureList"
 
-    public static class proceduredeclaration_return extends ParserRuleReturnScope {
-    };
 
     // $ANTLR start "proceduredeclaration"
-    // oberon0.g:265:1: proceduredeclaration : procedureheading ';' procedurebody ;
-    public final oberon0Parser.proceduredeclaration_return proceduredeclaration() throws RecognitionException {
-        oberon0Parser.proceduredeclaration_return retval = new oberon0Parser.proceduredeclaration_return();
-        retval.start = input.LT(1);
+    // oberon0.g:265:1: proceduredeclaration returns [ ProcedureDeclarationNode e ] : procedureheading ';' procedurebody ;
+    public final ProcedureDeclarationNode proceduredeclaration() throws RecognitionException {
+        ProcedureDeclarationNode e = null;
+
+        ProcedureHeadingNode procedureheading55 = null;
+
+        ProcedureBodyNode procedurebody56 = null;
+
 
         try {
             // oberon0.g:266:2: ( procedureheading ';' procedurebody )
             // oberon0.g:266:4: procedureheading ';' procedurebody
             {
-            pushFollow(FOLLOW_procedureheading_in_proceduredeclaration1173);
-            procedureheading();
+            pushFollow(FOLLOW_procedureheading_in_proceduredeclaration1177);
+            procedureheading55=procedureheading();
 
             state._fsp--;
-            if (state.failed) return retval;
-            match(input,8,FOLLOW_8_in_proceduredeclaration1175); if (state.failed) return retval;
-            pushFollow(FOLLOW_procedurebody_in_proceduredeclaration1177);
-            procedurebody();
+            if (state.failed) return e;
+            match(input,8,FOLLOW_8_in_proceduredeclaration1179); if (state.failed) return e;
+            pushFollow(FOLLOW_procedurebody_in_proceduredeclaration1181);
+            procedurebody56=procedurebody();
 
             state._fsp--;
-            if (state.failed) return retval;
+            if (state.failed) return e;
+            if ( state.backtracking==0 ) {
 
+              	  e = new ProcedureDeclarationNode( procedureheading55, procedurebody56 );
+              	
             }
 
-            retval.stop = input.LT(-1);
+            }
 
         }
         catch (RecognitionException re) {
@@ -2523,42 +2528,72 @@ public class oberon0Parser extends Parser {
         }
         finally {
         }
-        return retval;
+        return e;
     }
     // $ANTLR end "proceduredeclaration"
 
 
     // $ANTLR start "procedureheading"
-    // oberon0.g:269:1: procedureheading : 'PROCEDURE' IDENT ( formalparameters )? ;
-    public final void procedureheading() throws RecognitionException {
+    // oberon0.g:272:1: procedureheading returns [ ProcedureHeadingNode e ] : 'PROCEDURE' IDENT ( '(' ( formalparameters )? ')' )? ;
+    public final ProcedureHeadingNode procedureheading() throws RecognitionException {
+        ProcedureHeadingNode e = null;
+
+        Token IDENT57=null;
+        FormalParameterNode formalparameters58 = null;
+
+
         try {
-            // oberon0.g:270:2: ( 'PROCEDURE' IDENT ( formalparameters )? )
-            // oberon0.g:270:4: 'PROCEDURE' IDENT ( formalparameters )?
+            // oberon0.g:273:2: ( 'PROCEDURE' IDENT ( '(' ( formalparameters )? ')' )? )
+            // oberon0.g:273:4: 'PROCEDURE' IDENT ( '(' ( formalparameters )? ')' )?
             {
-            match(input,45,FOLLOW_45_in_procedureheading1189); if (state.failed) return ;
-            match(input,IDENT,FOLLOW_IDENT_in_procedureheading1191); if (state.failed) return ;
-            // oberon0.g:270:22: ( formalparameters )?
-            int alt33=2;
-            int LA33_0 = input.LA(1);
+            match(input,45,FOLLOW_45_in_procedureheading1200); if (state.failed) return e;
+            IDENT57=(Token)match(input,IDENT,FOLLOW_IDENT_in_procedureheading1202); if (state.failed) return e;
+            // oberon0.g:273:22: ( '(' ( formalparameters )? ')' )?
+            int alt34=2;
+            int LA34_0 = input.LA(1);
 
-            if ( (LA33_0==31) ) {
-                alt33=1;
+            if ( (LA34_0==31) ) {
+                alt34=1;
             }
-            switch (alt33) {
+            switch (alt34) {
                 case 1 :
-                    // oberon0.g:270:23: formalparameters
+                    // oberon0.g:273:24: '(' ( formalparameters )? ')'
                     {
-                    pushFollow(FOLLOW_formalparameters_in_procedureheading1194);
-                    formalparameters();
+                    match(input,31,FOLLOW_31_in_procedureheading1206); if (state.failed) return e;
+                    // oberon0.g:273:28: ( formalparameters )?
+                    int alt33=2;
+                    int LA33_0 = input.LA(1);
 
-                    state._fsp--;
-                    if (state.failed) return ;
+                    if ( (LA33_0==IDENT||LA33_0==14) ) {
+                        alt33=1;
+                    }
+                    switch (alt33) {
+                        case 1 :
+                            // oberon0.g:0:0: formalparameters
+                            {
+                            pushFollow(FOLLOW_formalparameters_in_procedureheading1208);
+                            formalparameters58=formalparameters();
+
+                            state._fsp--;
+                            if (state.failed) return e;
+
+                            }
+                            break;
+
+                    }
+
+                    match(input,32,FOLLOW_32_in_procedureheading1211); if (state.failed) return e;
 
                     }
                     break;
 
             }
 
+            if ( state.backtracking==0 ) {
+
+              	  e = new ProcedureHeadingNode( (IDENT57!=null?IDENT57.getText():null), formalparameters58 );
+              	
+            }
 
             }
 
@@ -2569,48 +2604,61 @@ public class oberon0Parser extends Parser {
         }
         finally {
         }
-        return ;
+        return e;
     }
     // $ANTLR end "procedureheading"
 
 
     // $ANTLR start "procedurebody"
-    // oberon0.g:273:1: procedurebody : declarations ( 'BEGIN' statementsequence )? 'END' IDENT ;
-    public final void procedurebody() throws RecognitionException {
+    // oberon0.g:279:1: procedurebody returns [ ProcedureBodyNode e ] : declarations ( 'BEGIN' statementsequence )? 'END' IDENT ;
+    public final ProcedureBodyNode procedurebody() throws RecognitionException {
+        ProcedureBodyNode e = null;
+
+        Token IDENT61=null;
+        DeclarationsNode declarations59 = null;
+
+        StatementSequenceNode statementsequence60 = null;
+
+
         try {
-            // oberon0.g:274:2: ( declarations ( 'BEGIN' statementsequence )? 'END' IDENT )
-            // oberon0.g:274:4: declarations ( 'BEGIN' statementsequence )? 'END' IDENT
+            // oberon0.g:280:2: ( declarations ( 'BEGIN' statementsequence )? 'END' IDENT )
+            // oberon0.g:280:4: declarations ( 'BEGIN' statementsequence )? 'END' IDENT
             {
-            pushFollow(FOLLOW_declarations_in_procedurebody1208);
-            declarations();
+            pushFollow(FOLLOW_declarations_in_procedurebody1233);
+            declarations59=declarations();
 
             state._fsp--;
-            if (state.failed) return ;
-            // oberon0.g:274:17: ( 'BEGIN' statementsequence )?
-            int alt34=2;
-            int LA34_0 = input.LA(1);
+            if (state.failed) return e;
+            // oberon0.g:280:17: ( 'BEGIN' statementsequence )?
+            int alt35=2;
+            int LA35_0 = input.LA(1);
 
-            if ( (LA34_0==9) ) {
-                alt34=1;
+            if ( (LA35_0==9) ) {
+                alt35=1;
             }
-            switch (alt34) {
+            switch (alt35) {
                 case 1 :
-                    // oberon0.g:274:18: 'BEGIN' statementsequence
+                    // oberon0.g:280:18: 'BEGIN' statementsequence
                     {
-                    match(input,9,FOLLOW_9_in_procedurebody1211); if (state.failed) return ;
-                    pushFollow(FOLLOW_statementsequence_in_procedurebody1213);
-                    statementsequence();
+                    match(input,9,FOLLOW_9_in_procedurebody1236); if (state.failed) return e;
+                    pushFollow(FOLLOW_statementsequence_in_procedurebody1238);
+                    statementsequence60=statementsequence();
 
                     state._fsp--;
-                    if (state.failed) return ;
+                    if (state.failed) return e;
 
                     }
                     break;
 
             }
 
-            match(input,10,FOLLOW_10_in_procedurebody1217); if (state.failed) return ;
-            match(input,IDENT,FOLLOW_IDENT_in_procedurebody1219); if (state.failed) return ;
+            match(input,10,FOLLOW_10_in_procedurebody1242); if (state.failed) return e;
+            IDENT61=(Token)match(input,IDENT,FOLLOW_IDENT_in_procedurebody1244); if (state.failed) return e;
+            if ( state.backtracking==0 ) {
+
+              	  e = new ProcedureBodyNode( declarations59, statementsequence60, (IDENT61!=null?IDENT61.getText():null));
+              	
+            }
 
             }
 
@@ -2621,72 +2669,58 @@ public class oberon0Parser extends Parser {
         }
         finally {
         }
-        return ;
+        return e;
     }
     // $ANTLR end "procedurebody"
 
 
     // $ANTLR start "formalparameters"
-    // oberon0.g:277:1: formalparameters : '(' ( fpsection ( ';' fpsection )* )? ')' ;
-    public final void formalparameters() throws RecognitionException {
+    // oberon0.g:286:1: formalparameters returns [ FormalParameterNode e ] : fpsection ( ';' followup= formalparameters )? ;
+    public final FormalParameterNode formalparameters() throws RecognitionException {
+        FormalParameterNode e = null;
+
+        FormalParameterNode followup = null;
+
+        FpSectionNode fpsection62 = null;
+
+
         try {
-            // oberon0.g:278:2: ( '(' ( fpsection ( ';' fpsection )* )? ')' )
-            // oberon0.g:278:4: '(' ( fpsection ( ';' fpsection )* )? ')'
+            // oberon0.g:287:2: ( fpsection ( ';' followup= formalparameters )? )
+            // oberon0.g:287:4: fpsection ( ';' followup= formalparameters )?
             {
-            match(input,31,FOLLOW_31_in_formalparameters1231); if (state.failed) return ;
-            // oberon0.g:278:8: ( fpsection ( ';' fpsection )* )?
+            pushFollow(FOLLOW_fpsection_in_formalparameters1263);
+            fpsection62=fpsection();
+
+            state._fsp--;
+            if (state.failed) return e;
+            // oberon0.g:287:14: ( ';' followup= formalparameters )?
             int alt36=2;
             int LA36_0 = input.LA(1);
 
-            if ( (LA36_0==IDENT||LA36_0==14) ) {
+            if ( (LA36_0==8) ) {
                 alt36=1;
             }
             switch (alt36) {
                 case 1 :
-                    // oberon0.g:278:9: fpsection ( ';' fpsection )*
+                    // oberon0.g:287:16: ';' followup= formalparameters
                     {
-                    pushFollow(FOLLOW_fpsection_in_formalparameters1234);
-                    fpsection();
+                    match(input,8,FOLLOW_8_in_formalparameters1267); if (state.failed) return e;
+                    pushFollow(FOLLOW_formalparameters_in_formalparameters1271);
+                    followup=formalparameters();
 
                     state._fsp--;
-                    if (state.failed) return ;
-                    // oberon0.g:278:19: ( ';' fpsection )*
-                    loop35:
-                    do {
-                        int alt35=2;
-                        int LA35_0 = input.LA(1);
-
-                        if ( (LA35_0==8) ) {
-                            alt35=1;
-                        }
-
-
-                        switch (alt35) {
-                    	case 1 :
-                    	    // oberon0.g:278:20: ';' fpsection
-                    	    {
-                    	    match(input,8,FOLLOW_8_in_formalparameters1237); if (state.failed) return ;
-                    	    pushFollow(FOLLOW_fpsection_in_formalparameters1239);
-                    	    fpsection();
-
-                    	    state._fsp--;
-                    	    if (state.failed) return ;
-
-                    	    }
-                    	    break;
-
-                    	default :
-                    	    break loop35;
-                        }
-                    } while (true);
-
+                    if (state.failed) return e;
 
                     }
                     break;
 
             }
 
-            match(input,32,FOLLOW_32_in_formalparameters1245); if (state.failed) return ;
+            if ( state.backtracking==0 ) {
+
+              	  e = new FormalParameterNode( fpsection62, followup );
+              	
+            }
 
             }
 
@@ -2697,19 +2731,27 @@ public class oberon0Parser extends Parser {
         }
         finally {
         }
-        return ;
+        return e;
     }
     // $ANTLR end "formalparameters"
 
 
     // $ANTLR start "fpsection"
-    // oberon0.g:281:1: fpsection : ( 'VAR' )? identlist ':' type ;
-    public final void fpsection() throws RecognitionException {
+    // oberon0.g:293:1: fpsection returns [ FpSectionNode e ] : (ident= 'VAR' )? identlist ':' type ;
+    public final FpSectionNode fpsection() throws RecognitionException {
+        FpSectionNode e = null;
+
+        Token ident=null;
+        IdentListNode identlist63 = null;
+
+        ASTnode type64 = null;
+
+
         try {
-            // oberon0.g:282:2: ( ( 'VAR' )? identlist ':' type )
-            // oberon0.g:282:4: ( 'VAR' )? identlist ':' type
+            // oberon0.g:294:2: ( (ident= 'VAR' )? identlist ':' type )
+            // oberon0.g:294:4: (ident= 'VAR' )? identlist ':' type
             {
-            // oberon0.g:282:4: ( 'VAR' )?
+            // oberon0.g:294:4: (ident= 'VAR' )?
             int alt37=2;
             int LA37_0 = input.LA(1);
 
@@ -2718,26 +2760,31 @@ public class oberon0Parser extends Parser {
             }
             switch (alt37) {
                 case 1 :
-                    // oberon0.g:282:5: 'VAR'
+                    // oberon0.g:294:5: ident= 'VAR'
                     {
-                    match(input,14,FOLLOW_14_in_fpsection1257); if (state.failed) return ;
+                    ident=(Token)match(input,14,FOLLOW_14_in_fpsection1295); if (state.failed) return e;
 
                     }
                     break;
 
             }
 
-            pushFollow(FOLLOW_identlist_in_fpsection1261);
-            identlist();
+            pushFollow(FOLLOW_identlist_in_fpsection1299);
+            identlist63=identlist();
 
             state._fsp--;
-            if (state.failed) return ;
-            match(input,36,FOLLOW_36_in_fpsection1263); if (state.failed) return ;
-            pushFollow(FOLLOW_type_in_fpsection1265);
-            type();
+            if (state.failed) return e;
+            match(input,36,FOLLOW_36_in_fpsection1301); if (state.failed) return e;
+            pushFollow(FOLLOW_type_in_fpsection1303);
+            type64=type();
 
             state._fsp--;
-            if (state.failed) return ;
+            if (state.failed) return e;
+            if ( state.backtracking==0 ) {
+
+              	  e = new FpSectionNode( (ident!=null?ident.getText():null), identlist63, type64 );
+              	
+            }
 
             }
 
@@ -2748,7 +2795,7 @@ public class oberon0Parser extends Parser {
         }
         finally {
         }
-        return ;
+        return e;
     }
     // $ANTLR end "fpsection"
 
@@ -2802,11 +2849,11 @@ public class oberon0Parser extends Parser {
 
     // Delegated rules
 
-    public final boolean synpred55_oberon0() {
+    public final boolean synpred5_oberon0() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred55_oberon0_fragment(); // can never throw exception
+            synpred5_oberon0_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -2816,11 +2863,11 @@ public class oberon0Parser extends Parser {
         state.failed=false;
         return success;
     }
-    public final boolean synpred5_oberon0() {
+    public final boolean synpred55_oberon0() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred5_oberon0_fragment(); // can never throw exception
+            synpred55_oberon0_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -2976,26 +3023,26 @@ public class oberon0Parser extends Parser {
     public static final BitSet FOLLOW_proceduredeclaration_in_procedureList1144 = new BitSet(new long[]{0x0000000000000100L});
     public static final BitSet FOLLOW_8_in_procedureList1146 = new BitSet(new long[]{0x0000200000000000L});
     public static final BitSet FOLLOW_procedureList_in_procedureList1152 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_procedureheading_in_proceduredeclaration1173 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_8_in_proceduredeclaration1175 = new BitSet(new long[]{0x0000200000007000L});
-    public static final BitSet FOLLOW_procedurebody_in_proceduredeclaration1177 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_45_in_procedureheading1189 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENT_in_procedureheading1191 = new BitSet(new long[]{0x0000000080000002L});
-    public static final BitSet FOLLOW_formalparameters_in_procedureheading1194 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_declarations_in_procedurebody1208 = new BitSet(new long[]{0x0000000000000600L});
-    public static final BitSet FOLLOW_9_in_procedurebody1211 = new BitSet(new long[]{0x0000088000000110L});
-    public static final BitSet FOLLOW_statementsequence_in_procedurebody1213 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_10_in_procedurebody1217 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENT_in_procedurebody1219 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_31_in_formalparameters1231 = new BitSet(new long[]{0x0000000100004010L});
-    public static final BitSet FOLLOW_fpsection_in_formalparameters1234 = new BitSet(new long[]{0x0000000100000100L});
-    public static final BitSet FOLLOW_8_in_formalparameters1237 = new BitSet(new long[]{0x0000000000004010L});
-    public static final BitSet FOLLOW_fpsection_in_formalparameters1239 = new BitSet(new long[]{0x0000000100000100L});
-    public static final BitSet FOLLOW_32_in_formalparameters1245 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_fpsection1257 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_identlist_in_fpsection1261 = new BitSet(new long[]{0x0000001000000000L});
-    public static final BitSet FOLLOW_36_in_fpsection1263 = new BitSet(new long[]{0x0000000000050010L});
-    public static final BitSet FOLLOW_type_in_fpsection1265 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_procedureheading_in_proceduredeclaration1177 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_8_in_proceduredeclaration1179 = new BitSet(new long[]{0x0000200000007000L});
+    public static final BitSet FOLLOW_procedurebody_in_proceduredeclaration1181 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_45_in_procedureheading1200 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_IDENT_in_procedureheading1202 = new BitSet(new long[]{0x0000000080000002L});
+    public static final BitSet FOLLOW_31_in_procedureheading1206 = new BitSet(new long[]{0x0000000100004010L});
+    public static final BitSet FOLLOW_formalparameters_in_procedureheading1208 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_32_in_procedureheading1211 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_declarations_in_procedurebody1233 = new BitSet(new long[]{0x0000000000000600L});
+    public static final BitSet FOLLOW_9_in_procedurebody1236 = new BitSet(new long[]{0x0000088000000110L});
+    public static final BitSet FOLLOW_statementsequence_in_procedurebody1238 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_10_in_procedurebody1242 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_IDENT_in_procedurebody1244 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_fpsection_in_formalparameters1263 = new BitSet(new long[]{0x0000000000000102L});
+    public static final BitSet FOLLOW_8_in_formalparameters1267 = new BitSet(new long[]{0x0000000000004010L});
+    public static final BitSet FOLLOW_formalparameters_in_formalparameters1271 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_14_in_fpsection1295 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_identlist_in_fpsection1299 = new BitSet(new long[]{0x0000001000000000L});
+    public static final BitSet FOLLOW_36_in_fpsection1301 = new BitSet(new long[]{0x0000000000050010L});
+    public static final BitSet FOLLOW_type_in_fpsection1303 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_procedureList_in_synpred5_oberon0117 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_elsestatement_in_synpred52_oberon01036 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_procedureList_in_synpred55_oberon01152 = new BitSet(new long[]{0x0000000000000002L});
