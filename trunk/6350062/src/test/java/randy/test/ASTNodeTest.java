@@ -626,7 +626,9 @@ public class ASTNodeTest
 	// TODO: prefix plus/minus
 	// TODO: ~ (boolean prefix not)
 	// TODO: . selector/RECORD
+	// TODO: types support
 	// TODO: BOOLEAN implementeren (en TRUE en FALSE onderscheiden)
+	// TODO: visitor verbeteren
 	@Ignore
 	private void prepareTestThrowException(String testName) throws Oberon0Exception
 	{
