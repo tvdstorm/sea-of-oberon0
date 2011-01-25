@@ -10,7 +10,7 @@ public class RecordNode implements ASTnode {
     System.out.print( "RECORD " );
     if( this.fields != null )
       this.fields.printNode( 0 );
-    System.out.print( " END;" );
+    System.out.print( " END" );
   }
   
   private FieldsNode fields = null;

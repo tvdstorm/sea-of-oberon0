@@ -25,9 +25,9 @@ module returns [ ModuleNode e ]
 	;
 
 declarations returns [ DeclarationsNode e ]
-	: ('CONST' constants)? ('TYPE' typeDefs)? ('VAR' (identlist ':' type ';')+ )? (proceduredeclaration ';')*
+	: ('CONST' constants)? ('TYPE' typeDefs)? ('VAR' fields )? (procedureList)?
 	{
-	  $e = new DeclarationsNode( $constants.e, $typeDefs.e );
+	  $e = new DeclarationsNode( $constants.e, $typeDefs.e, $fields.e, $procedureList.e );
 	}
 	;
 	
@@ -252,6 +252,13 @@ whilestatement returns [ StatementNode e ]
 	: 'WHILE' cond=expression 'DO' ifTrueDo=statementsequence 'END'
 	{
 	  $e = new WhileStatementNode( $cond.e, $ifTrueDo.e );
+	}
+	;
+	
+procedureList returns [ ProcedureListNode e ]
+	: (proceduredeclaration ';' ( followup=procedureList )? )?
+	{
+	  $e = new ProcedureListNode( $proceduredeclaration.text, $followup.e );
 	}
 	;
 	

@@ -1,10 +1,12 @@
 package ASTnodes;
 
 public class DeclarationsNode implements ASTnode {
-  public DeclarationsNode( ConstantNode constant, TypeDefNode typeDefs )
+  public DeclarationsNode( ConstantNode constant, TypeDefNode typeDefs, FieldsNode vars, ProcedureListNode procedureList )
   {
 	this.constant = constant;
 	this.typeDefs = typeDefs;
+	this.vars = vars;
+	this.procedureList = procedureList;
   }
   
   public void printNode( int depth )
@@ -15,10 +17,27 @@ public class DeclarationsNode implements ASTnode {
 	  System.out.print( "CONST " );
 	  this.constant.printNode( depth );
 	  System.out.println();
+	}
+	
+	if( this.typeDefs != null )
+	{
 	  this.addWhitespace( depth );
 	  System.out.print( "TYPE ");
 	  this.typeDefs.printNode( depth );
 	  System.out.println();
+	}
+	
+	if( this.vars != null )
+	{
+	  this.addWhitespace( depth );
+	  System.out.print( "VAR ");
+	  this.vars.printNode( depth );
+	  System.out.println();
+	}
+	
+	if( this.procedureList != null )
+	{
+	  this.procedureList.printNode( depth );
 	}
   }
   
@@ -30,4 +49,6 @@ public class DeclarationsNode implements ASTnode {
   
   private ConstantNode constant = null;
   private TypeDefNode typeDefs = null; 
+  private FieldsNode vars = null;
+  private ProcedureListNode procedureList = null;
 }
