@@ -225,12 +225,11 @@ public class Oberon0ASTTreeGenerator
 		assert(tree.getChildCount() >= 2);
 		String name = tree.getChild(0).getText();
 		List<OExpression> parameters = new Vector<OExpression>();
-		// TODO: PARAMETERS verwijderen of anders opbouwen
-		if (tree.getChildCount() >= 2 && tree.getChild(1).getType() == Oberon0Parser.PARAMETERS)
+		if (tree.getChildCount() >= 2)
 		{
-			for (int i=0;i<tree.getChild(1).getChildCount();i++)
+			for (int i=1;i<tree.getChildCount();i++)
 			{
-				parameters.add(buildExpression(tree.getChild(1).getChild(i)));
+				parameters.add(buildExpression(tree.getChild(i)));
 			}
 		}
 		return new OProcedureCall(name, parameters);
