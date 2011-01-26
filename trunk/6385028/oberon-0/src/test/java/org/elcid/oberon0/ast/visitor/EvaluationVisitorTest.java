@@ -38,10 +38,15 @@ public class EvaluationVisitorTest {
 
 	@Test
 	public void testVisitIntegerNode() {
+		IntegerExpNode intExp = new IntegerExpNode(10);
+		assertTrue((Integer) visitor.visitIntegerNode(intExp) == 10);
 	}
 
 	@Test
 	public void testVisitIdentifierNode() {
+		String value = "identifier";
+		IdentifierNode ident = new IdentifierNode(value);
+		assertTrue(visitor.visitIdentifierNode(ident).equals(value));
 	}
 
 	@Test
@@ -64,5 +69,38 @@ public class EvaluationVisitorTest {
 
 		GreaterExpNode falseExp = new GreaterExpNode(new IntegerExpNode(1), new IntegerExpNode(1));
 		assertFalse((Boolean) visitor.visitGreaterExpNode(falseExp));
+	}
+
+	@Test
+	public void testVisitGreaterOrEqualsExpNode() {
+		GreaterOrEqualsExpNode trueGreater = new GreaterOrEqualsExpNode(new IntegerExpNode(2), new IntegerExpNode(1));
+		assertTrue((Boolean) visitor.visitGreaterOrEqualsExpNode(trueGreater));
+
+		GreaterOrEqualsExpNode trueEquals = new GreaterOrEqualsExpNode(new IntegerExpNode(2), new IntegerExpNode(2));
+		assertTrue((Boolean) visitor.visitGreaterOrEqualsExpNode(trueEquals));
+
+		GreaterOrEqualsExpNode falseGreater = new GreaterOrEqualsExpNode(new IntegerExpNode(2), new IntegerExpNode(3));
+		assertFalse((Boolean) visitor.visitGreaterOrEqualsExpNode(falseGreater));
+	}
+
+	@Test
+	public void testVisitLesserExpNode() {
+		LesserExpNode trueExp = new LesserExpNode(new IntegerExpNode(1), new IntegerExpNode(2));
+		assertTrue((Boolean) visitor.visitLesserExpNode(trueExp));
+
+		LesserExpNode falseExp = new LesserExpNode(new IntegerExpNode(1), new IntegerExpNode(1));
+		assertFalse((Boolean) visitor.visitLesserExpNode(falseExp));
+	}
+
+	@Test
+	public void testVisitLesserOrEqualsExpNode() {
+		LesserOrEqualsExpNode trueLesser = new LesserOrEqualsExpNode(new IntegerExpNode(1), new IntegerExpNode(2));
+		assertTrue((Boolean) visitor.visitLesserOrEqualsExpNode(trueLesser));
+
+		LesserOrEqualsExpNode trueEquals = new LesserOrEqualsExpNode(new IntegerExpNode(2), new IntegerExpNode(2));
+		assertTrue((Boolean) visitor.visitLesserOrEqualsExpNode(trueEquals));
+
+		LesserOrEqualsExpNode falseLesser = new LesserOrEqualsExpNode(new IntegerExpNode(3), new IntegerExpNode(2));
+		assertFalse((Boolean) visitor.visitLesserOrEqualsExpNode(falseLesser));
 	}
 }
