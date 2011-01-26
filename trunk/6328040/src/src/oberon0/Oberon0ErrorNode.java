@@ -4,7 +4,8 @@ import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.Token;
 import org.antlr.runtime.TokenStream;
 
-public class Oberon0ErrorNode extends Oberon0AST {
+public class Oberon0ErrorNode extends OberonAST {
+	
     public Oberon0ErrorNode(TokenStream input, Token start, Token stop,
                         RecognitionException e)
     {
