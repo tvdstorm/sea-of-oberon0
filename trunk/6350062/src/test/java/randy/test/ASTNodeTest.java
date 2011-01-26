@@ -171,6 +171,9 @@ public class ASTNodeTest
 		Assert.assertTrue(functions.popOutput().equals("0"));
 		Assert.assertTrue(functions.popOutput().equals("1"));
 		Assert.assertTrue(functions.popOutput().equals("1"));
+		
+		Assert.assertTrue(functions.popOutput().equals("0"));
+		Assert.assertTrue(functions.popOutput().equals("1"));
 		Assert.assertTrue(functions.outputIsEmpty());
 	}
 	@Test
@@ -655,7 +658,6 @@ public class ASTNodeTest
 		}
 	}
 	// TODO: test to check if an const array can be modified
-	// TODO: ~ (boolean prefix not)
 	// TODO: . selector/RECORD
 	// TODO: types support
 	// TODO: BOOLEAN implementeren (en TRUE en FALSE onderscheiden)

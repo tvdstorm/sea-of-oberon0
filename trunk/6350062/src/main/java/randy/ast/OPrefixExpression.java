@@ -24,6 +24,8 @@ public class OPrefixExpression extends OExpression
 		assert(rhsVal != null);
 		if (rhsVal instanceof OInteger)
 			return processIntegerExpression((OInteger)rhsVal);
+		else if (rhsVal instanceof OBoolean)
+			return processBooleanExpression((OBoolean)rhsVal);
 		else
 			throw new Oberon0OperatorTypeUndefinedException(operator.getOperatorText(), rhsVal.getType());
 	}
@@ -33,6 +35,13 @@ public class OPrefixExpression extends OExpression
 			return new OInteger(rhs);
 		else if (operator == Operator.MINUS)
 			return new OInteger(-rhs.getIntValue());
+		else
+			throw new Oberon0OperatorTypeUndefinedException(operator.getOperatorText(), rhs.getType());
+	}
+	private OValue processBooleanExpression(OBoolean rhs) throws Oberon0RuntimeException
+	{
+		if (operator == Operator.NOT)
+			return new OBoolean(!rhs.getBoolValue());
 		else
 			throw new Oberon0OperatorTypeUndefinedException(operator.getOperatorText(), rhs.getType());
 	}

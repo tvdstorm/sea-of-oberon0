@@ -108,6 +108,7 @@ public class Oberon0ASTTreeGenerator
 		{
 			case Oberon0Parser.MINUS:
 			case Oberon0Parser.PLUS:
+			case Oberon0Parser.NOT:
 				if (tree.getChildCount() == 1)
 					return buildPrefixExpression(tree);
 				else
