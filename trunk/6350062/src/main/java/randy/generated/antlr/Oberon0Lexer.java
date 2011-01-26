@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 C:\\Data\\software_construction\\grammar\\Oberon0.g 2011-01-24 15:52:25
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g 2011-01-26 15:39:24
 
 package randy.generated.antlr;
 
@@ -72,15 +72,15 @@ public class Oberon0Lexer extends Lexer {
         super(input,state);
 
     }
-    public String getGrammarFileName() { return "C:\\Data\\software_construction\\grammar\\Oberon0.g"; }
+    public String getGrammarFileName() { return "D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g"; }
 
     // $ANTLR start "MINUS"
     public final void mMINUS() throws RecognitionException {
         try {
             int _type = MINUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:11:7: ( '-' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:11:9: '-'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:11:7: ( '-' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:11:9: '-'
             {
             match('-'); 
 
@@ -99,8 +99,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = PLUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:12:6: ( '+' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:12:8: '+'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:12:6: ( '+' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:12:8: '+'
             {
             match('+'); 
 
@@ -119,8 +119,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = TIMES;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:13:7: ( '*' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:13:9: '*'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:13:7: ( '*' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:13:9: '*'
             {
             match('*'); 
 
@@ -139,8 +139,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = DIVIDE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:14:8: ( 'DIV' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:14:10: 'DIV'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:14:8: ( 'DIV' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:14:10: 'DIV'
             {
             match("DIV"); 
 
@@ -160,8 +160,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = CONST;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:15:7: ( 'CONST' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:15:9: 'CONST'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:15:7: ( 'CONST' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:15:9: 'CONST'
             {
             match("CONST"); 
 
@@ -181,8 +181,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = VAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:16:5: ( 'VAR' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:16:7: 'VAR'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:16:5: ( 'VAR' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:16:7: 'VAR'
             {
             match("VAR"); 
 
@@ -202,8 +202,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = TYPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:17:6: ( 'TYPE' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:17:8: 'TYPE'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:17:6: ( 'TYPE' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:17:8: 'TYPE'
             {
             match("TYPE"); 
 
@@ -223,8 +223,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = IF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:18:4: ( 'IF' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:18:6: 'IF'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:18:4: ( 'IF' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:18:6: 'IF'
             {
             match("IF"); 
 
@@ -244,8 +244,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = THEN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:19:6: ( 'THEN' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:19:8: 'THEN'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:19:6: ( 'THEN' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:19:8: 'THEN'
             {
             match("THEN"); 
 
@@ -265,8 +265,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = ELSE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:20:6: ( 'ELSE' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:20:8: 'ELSE'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:20:6: ( 'ELSE' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:20:8: 'ELSE'
             {
             match("ELSE"); 
 
@@ -286,8 +286,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = ELSIF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:21:7: ( 'ELSIF' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:21:9: 'ELSIF'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:21:7: ( 'ELSIF' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:21:9: 'ELSIF'
             {
             match("ELSIF"); 
 
@@ -307,8 +307,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = END;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:22:5: ( 'END' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:22:7: 'END'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:22:5: ( 'END' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:22:7: 'END'
             {
             match("END"); 
 
@@ -328,8 +328,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = MODULE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:23:8: ( 'MODULE' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:23:10: 'MODULE'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:23:8: ( 'MODULE' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:23:10: 'MODULE'
             {
             match("MODULE"); 
 
@@ -349,8 +349,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = DO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:24:4: ( 'DO' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:24:6: 'DO'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:24:4: ( 'DO' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:24:6: 'DO'
             {
             match("DO"); 
 
@@ -370,8 +370,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = WHILE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:25:7: ( 'WHILE' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:25:9: 'WHILE'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:25:7: ( 'WHILE' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:25:9: 'WHILE'
             {
             match("WHILE"); 
 
@@ -391,8 +391,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = BEGIN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:26:7: ( 'BEGIN' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:26:9: 'BEGIN'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:26:7: ( 'BEGIN' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:26:9: 'BEGIN'
             {
             match("BEGIN"); 
 
@@ -412,8 +412,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = PROCEDURE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:27:11: ( 'PROCEDURE' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:27:13: 'PROCEDURE'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:27:11: ( 'PROCEDURE' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:27:13: 'PROCEDURE'
             {
             match("PROCEDURE"); 
 
@@ -433,8 +433,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = ARRAY;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:28:7: ( 'ARRAY' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:28:9: 'ARRAY'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:28:7: ( 'ARRAY' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:28:9: 'ARRAY'
             {
             match("ARRAY"); 
 
@@ -454,8 +454,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = OF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:29:4: ( 'OF' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:29:6: 'OF'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:29:4: ( 'OF' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:29:6: 'OF'
             {
             match("OF"); 
 
@@ -475,8 +475,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = RECORD;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:30:8: ( 'RECORD' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:30:10: 'RECORD'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:30:8: ( 'RECORD' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:30:10: 'RECORD'
             {
             match("RECORD"); 
 
@@ -496,8 +496,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = MOD;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:31:5: ( 'MOD' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:31:7: 'MOD'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:31:5: ( 'MOD' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:31:7: 'MOD'
             {
             match("MOD"); 
 
@@ -517,8 +517,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = AND;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:32:5: ( '&' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:32:7: '&'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:32:5: ( '&' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:32:7: '&'
             {
             match('&'); 
 
@@ -537,8 +537,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = OR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:33:4: ( 'OR' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:33:6: 'OR'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:33:4: ( 'OR' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:33:6: 'OR'
             {
             match("OR"); 
 
@@ -558,8 +558,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = ASSIGNMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:34:12: ( ':=' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:34:14: ':='
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:34:12: ( ':=' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:34:14: ':='
             {
             match(":="); 
 
@@ -579,8 +579,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = EQUALS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:35:8: ( '=' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:35:10: '='
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:35:8: ( '=' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:35:10: '='
             {
             match('='); 
 
@@ -599,8 +599,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = NOTEQUALS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:36:11: ( '#' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:36:13: '#'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:36:11: ( '#' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:36:13: '#'
             {
             match('#'); 
 
@@ -619,8 +619,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = SMALLERTHEN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:37:13: ( '<' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:37:15: '<'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:37:13: ( '<' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:37:15: '<'
             {
             match('<'); 
 
@@ -639,8 +639,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = GREATERTHEN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:38:13: ( '>' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:38:15: '>'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:38:13: ( '>' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:38:15: '>'
             {
             match('>'); 
 
@@ -659,8 +659,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = SMALLEREQUALS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:39:15: ( '<=' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:39:17: '<='
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:39:15: ( '<=' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:39:17: '<='
             {
             match("<="); 
 
@@ -680,8 +680,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = GREATEREQUALS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:40:15: ( '>=' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:40:17: '>='
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:40:15: ( '>=' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:40:17: '>='
             {
             match(">="); 
 
@@ -701,8 +701,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = NOT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:41:5: ( '~' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:41:7: '~'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:41:5: ( '~' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:41:7: '~'
             {
             match('~'); 
 
@@ -721,8 +721,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = DOTSELECTOR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:42:13: ( '.' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:42:15: '.'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:42:13: ( '.' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:42:15: '.'
             {
             match('.'); 
 
@@ -741,8 +741,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = ARRAYSELECTOR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:43:15: ( '[' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:43:17: '['
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:43:15: ( '[' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:43:17: '['
             {
             match('['); 
 
@@ -761,8 +761,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__47;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:44:7: ( ']' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:44:9: ']'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:44:7: ( ']' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:44:9: ']'
             {
             match(']'); 
 
@@ -781,8 +781,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__48;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:45:7: ( '(' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:45:9: '('
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:45:7: ( '(' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:45:9: '('
             {
             match('('); 
 
@@ -801,8 +801,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__49;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:46:7: ( ')' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:46:9: ')'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:46:7: ( ')' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:46:9: ')'
             {
             match(')'); 
 
@@ -821,8 +821,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__50;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:47:7: ( ',' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:47:9: ','
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:47:7: ( ',' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:47:9: ','
             {
             match(','); 
 
@@ -841,8 +841,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__51;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:48:7: ( ';' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:48:9: ';'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:48:7: ( ';' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:48:9: ';'
             {
             match(';'); 
 
@@ -861,8 +861,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__52;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:49:7: ( ':' )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:49:9: ':'
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:49:7: ( ':' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:49:9: ':'
             {
             match(':'); 
 
@@ -881,8 +881,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = IDENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:66:6: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:66:9: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:66:6: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:66:9: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -893,7 +893,7 @@ public class Oberon0Lexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:66:29: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:66:29: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
             loop1:
             do {
                 int alt1=2;
@@ -906,7 +906,7 @@ public class Oberon0Lexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // C:\\Data\\software_construction\\grammar\\Oberon0.g:
+            	    // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:
             	    {
             	    if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
             	        input.consume();
@@ -942,8 +942,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = WHITESPACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:67:11: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:67:14: ( ' ' | '\\t' | '\\r' | '\\n' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:67:11: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:67:14: ( ' ' | '\\t' | '\\r' | '\\n' )
             {
             if ( (input.LA(1)>='\t' && input.LA(1)<='\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
                 input.consume();
@@ -971,10 +971,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = INTEGER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:70:8: ( ( '0' .. '9' )+ )
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:70:11: ( '0' .. '9' )+
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:70:8: ( ( '0' .. '9' )+ )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:70:11: ( '0' .. '9' )+
             {
-            // C:\\Data\\software_construction\\grammar\\Oberon0.g:70:11: ( '0' .. '9' )+
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:70:11: ( '0' .. '9' )+
             int cnt2=0;
             loop2:
             do {
@@ -988,7 +988,7 @@ public class Oberon0Lexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // C:\\Data\\software_construction\\grammar\\Oberon0.g:70:12: '0' .. '9'
+            	    // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:70:12: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1016,299 +1016,299 @@ public class Oberon0Lexer extends Lexer {
     // $ANTLR end "INTEGER"
 
     public void mTokens() throws RecognitionException {
-        // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:8: ( MINUS | PLUS | TIMES | DIVIDE | CONST | VAR | TYPE | IF | THEN | ELSE | ELSIF | END | MODULE | DO | WHILE | BEGIN | PROCEDURE | ARRAY | OF | RECORD | MOD | AND | OR | ASSIGNMENT | EQUALS | NOTEQUALS | SMALLERTHEN | GREATERTHEN | SMALLEREQUALS | GREATEREQUALS | NOT | DOTSELECTOR | ARRAYSELECTOR | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | IDENT | WHITESPACE | INTEGER )
+        // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:8: ( MINUS | PLUS | TIMES | DIVIDE | CONST | VAR | TYPE | IF | THEN | ELSE | ELSIF | END | MODULE | DO | WHILE | BEGIN | PROCEDURE | ARRAY | OF | RECORD | MOD | AND | OR | ASSIGNMENT | EQUALS | NOTEQUALS | SMALLERTHEN | GREATERTHEN | SMALLEREQUALS | GREATEREQUALS | NOT | DOTSELECTOR | ARRAYSELECTOR | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | IDENT | WHITESPACE | INTEGER )
         int alt3=42;
         alt3 = dfa3.predict(input);
         switch (alt3) {
             case 1 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:10: MINUS
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:10: MINUS
                 {
                 mMINUS(); 
 
                 }
                 break;
             case 2 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:16: PLUS
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:16: PLUS
                 {
                 mPLUS(); 
 
                 }
                 break;
             case 3 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:21: TIMES
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:21: TIMES
                 {
                 mTIMES(); 
 
                 }
                 break;
             case 4 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:27: DIVIDE
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:27: DIVIDE
                 {
                 mDIVIDE(); 
 
                 }
                 break;
             case 5 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:34: CONST
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:34: CONST
                 {
                 mCONST(); 
 
                 }
                 break;
             case 6 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:40: VAR
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:40: VAR
                 {
                 mVAR(); 
 
                 }
                 break;
             case 7 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:44: TYPE
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:44: TYPE
                 {
                 mTYPE(); 
 
                 }
                 break;
             case 8 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:49: IF
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:49: IF
                 {
                 mIF(); 
 
                 }
                 break;
             case 9 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:52: THEN
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:52: THEN
                 {
                 mTHEN(); 
 
                 }
                 break;
             case 10 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:57: ELSE
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:57: ELSE
                 {
                 mELSE(); 
 
                 }
                 break;
             case 11 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:62: ELSIF
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:62: ELSIF
                 {
                 mELSIF(); 
 
                 }
                 break;
             case 12 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:68: END
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:68: END
                 {
                 mEND(); 
 
                 }
                 break;
             case 13 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:72: MODULE
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:72: MODULE
                 {
                 mMODULE(); 
 
                 }
                 break;
             case 14 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:79: DO
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:79: DO
                 {
                 mDO(); 
 
                 }
                 break;
             case 15 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:82: WHILE
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:82: WHILE
                 {
                 mWHILE(); 
 
                 }
                 break;
             case 16 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:88: BEGIN
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:88: BEGIN
                 {
                 mBEGIN(); 
 
                 }
                 break;
             case 17 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:94: PROCEDURE
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:94: PROCEDURE
                 {
                 mPROCEDURE(); 
 
                 }
                 break;
             case 18 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:104: ARRAY
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:104: ARRAY
                 {
                 mARRAY(); 
 
                 }
                 break;
             case 19 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:110: OF
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:110: OF
                 {
                 mOF(); 
 
                 }
                 break;
             case 20 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:113: RECORD
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:113: RECORD
                 {
                 mRECORD(); 
 
                 }
                 break;
             case 21 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:120: MOD
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:120: MOD
                 {
                 mMOD(); 
 
                 }
                 break;
             case 22 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:124: AND
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:124: AND
                 {
                 mAND(); 
 
                 }
                 break;
             case 23 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:128: OR
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:128: OR
                 {
                 mOR(); 
 
                 }
                 break;
             case 24 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:131: ASSIGNMENT
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:131: ASSIGNMENT
                 {
                 mASSIGNMENT(); 
 
                 }
                 break;
             case 25 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:142: EQUALS
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:142: EQUALS
                 {
                 mEQUALS(); 
 
                 }
                 break;
             case 26 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:149: NOTEQUALS
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:149: NOTEQUALS
                 {
                 mNOTEQUALS(); 
 
                 }
                 break;
             case 27 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:159: SMALLERTHEN
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:159: SMALLERTHEN
                 {
                 mSMALLERTHEN(); 
 
                 }
                 break;
             case 28 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:171: GREATERTHEN
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:171: GREATERTHEN
                 {
                 mGREATERTHEN(); 
 
                 }
                 break;
             case 29 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:183: SMALLEREQUALS
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:183: SMALLEREQUALS
                 {
                 mSMALLEREQUALS(); 
 
                 }
                 break;
             case 30 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:197: GREATEREQUALS
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:197: GREATEREQUALS
                 {
                 mGREATEREQUALS(); 
 
                 }
                 break;
             case 31 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:211: NOT
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:211: NOT
                 {
                 mNOT(); 
 
                 }
                 break;
             case 32 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:215: DOTSELECTOR
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:215: DOTSELECTOR
                 {
                 mDOTSELECTOR(); 
 
                 }
                 break;
             case 33 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:227: ARRAYSELECTOR
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:227: ARRAYSELECTOR
                 {
                 mARRAYSELECTOR(); 
 
                 }
                 break;
             case 34 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:241: T__47
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:241: T__47
                 {
                 mT__47(); 
 
                 }
                 break;
             case 35 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:247: T__48
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:247: T__48
                 {
                 mT__48(); 
 
                 }
                 break;
             case 36 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:253: T__49
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:253: T__49
                 {
                 mT__49(); 
 
                 }
                 break;
             case 37 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:259: T__50
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:259: T__50
                 {
                 mT__50(); 
 
                 }
                 break;
             case 38 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:265: T__51
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:265: T__51
                 {
                 mT__51(); 
 
                 }
                 break;
             case 39 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:271: T__52
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:271: T__52
                 {
                 mT__52(); 
 
                 }
                 break;
             case 40 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:277: IDENT
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:277: IDENT
                 {
                 mIDENT(); 
 
                 }
                 break;
             case 41 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:283: WHITESPACE
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:283: WHITESPACE
                 {
                 mWHITESPACE(); 
 
                 }
                 break;
             case 42 :
-                // C:\\Data\\software_construction\\grammar\\Oberon0.g:1:294: INTEGER
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:294: INTEGER
                 {
                 mINTEGER(); 
 

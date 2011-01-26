@@ -81,8 +81,9 @@ expression:		simpleExpression infixOperand simpleExpression
 				-> ^(infixOperand simpleExpression simpleExpression) |
 			simpleExpression
 				-> simpleExpression;
-actualParameters:	'(' (expression (',' expression)*)? ')' 
-				-> ^(PARAMETERS expression+);
+//actualParameters:	'('! (expression^ (','! expression^)*)? ')'!;
+actualParameters:	'(' (expression (',' expression)*)? ')'
+				-> (expression (expression)*)?;
 ifStatement:		IF expression THEN statementSequence (ELSIF expression THEN statementSequence)+ (ELSE statementSequence) END
 				-> ^(IF ^(EXPRESSION expression) ^(BODY statementSequence) ^(ELSIF ^(EXPRESSION expression) ^(BODY statementSequence))+ ^(ELSE ^(BODY statementSequence))) |
 			IF expression THEN statementSequence (ELSIF expression THEN statementSequence)+ END
