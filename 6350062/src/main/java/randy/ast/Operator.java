@@ -15,7 +15,8 @@ public enum Operator
 	EQUALS("="),
 	NOTEQUALS("#"),
 	AND("&"),
-	OR("OR");
+	OR("OR"),
+	NOT("~");
 	
 	private static final Map<String, Operator> lookup = new HashMap<String, Operator>();
 	
