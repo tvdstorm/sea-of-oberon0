@@ -103,4 +103,34 @@ public class EvaluationVisitorTest {
 		LesserOrEqualsExpNode falseLesser = new LesserOrEqualsExpNode(new IntegerExpNode(3), new IntegerExpNode(2));
 		assertFalse((Boolean) visitor.visitLesserOrEqualsExpNode(falseLesser));
 	}
+
+	@Test
+	public void testVisitPlusExpNode() {
+		PlusExpNode node = new PlusExpNode(new IntegerExpNode(2), new IntegerExpNode(3));
+		assertTrue((Integer) visitor.visitPlusExpNode(node) == 5);
+	}
+
+	@Test
+	public void testVisitMinusExpNode() {
+		MinusExpNode node = new MinusExpNode(new IntegerExpNode(5), new IntegerExpNode(3));
+		assertTrue((Integer) visitor.visitMinusExpNode(node) == 2);
+	}
+
+	@Test
+	public void testVisitMultiplyExpNode() {
+		MultiplyExpNode node = new MultiplyExpNode(new IntegerExpNode(2), new IntegerExpNode(3));
+		assertTrue((Integer) visitor.visitMultiplyExpNode(node) == 6);
+	}
+
+	@Test
+	public void testVisitDivideExpNode() {
+		DivideExpNode node = new DivideExpNode(new IntegerExpNode(10), new IntegerExpNode(2));
+		assertTrue((Integer) visitor.visitDivideExpNode(node) == 5);
+	}
+
+	@Test
+	public void testVisitModuloExpNode() {
+		ModuloExpNode node = new ModuloExpNode(new IntegerExpNode(10), new IntegerExpNode(3));
+		assertTrue((Integer) visitor.visitModuloExpNode(node) == 1);
+	}
 }

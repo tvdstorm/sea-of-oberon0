@@ -18,5 +18,10 @@ public interface NodeVisitor {
 	public Object visitGreaterOrEqualsExpNode(GreaterOrEqualsExpNode node);
 	public Object visitLesserExpNode(LesserExpNode node);
 	public Object visitLesserOrEqualsExpNode(LesserOrEqualsExpNode node);
+	public Object visitPlusExpNode(PlusExpNode node);
+	public Object visitMinusExpNode(MinusExpNode node);
+	public Object visitMultiplyExpNode(MultiplyExpNode node);
+	public Object visitDivideExpNode(DivideExpNode node);
+	public Object visitModuloExpNode(ModuloExpNode node);
 
 }
