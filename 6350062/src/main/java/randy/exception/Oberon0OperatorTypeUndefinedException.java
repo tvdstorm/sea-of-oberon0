@@ -10,8 +10,4 @@ public class Oberon0OperatorTypeUndefinedException extends Oberon0RuntimeExcepti
 	{
 		super("The prefix operator '" + operator + "' is undefined for the argument type " + rhsType + ".");
 	}
-	public Oberon0OperatorTypeUndefinedException(String operator, Type lhsType, Type rhsType)
-	{
-		super("The infix operator '" + operator + "' is undefined for the argument types " + lhsType + ", " + rhsType + ".");
-	}
 }
