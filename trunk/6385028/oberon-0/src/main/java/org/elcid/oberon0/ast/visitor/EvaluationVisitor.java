@@ -66,4 +66,39 @@ public class EvaluationVisitor implements NodeVisitor {
 		assert node.getRightExp().getNodeType() == NodeType.INTEGERNODE: "Right node is not an integer node";
 		return (Integer) node.getLeftExp().accept(this) <= (Integer) node.getRightExp().accept(this);
 	}
+
+	@Override
+	public Object visitPlusExpNode(PlusExpNode node) {
+		assert node.getLeftExp().getNodeType() == NodeType.INTEGERNODE: "Left node is not an integer node";
+		assert node.getRightExp().getNodeType() == NodeType.INTEGERNODE: "Right node is not an integer node";
+		return (Integer) node.getLeftExp().accept(this) + (Integer) node.getRightExp().accept(this);
+	}
+
+	@Override
+	public Object visitMinusExpNode(MinusExpNode node) {
+		assert node.getLeftExp().getNodeType() == NodeType.INTEGERNODE: "Left node is not an integer node";
+		assert node.getRightExp().getNodeType() == NodeType.INTEGERNODE: "Right node is not an integer node";
+		return (Integer) node.getLeftExp().accept(this) - (Integer) node.getRightExp().accept(this);
+	}
+
+	@Override
+	public Object visitMultiplyExpNode(MultiplyExpNode node) {
+		assert node.getLeftExp().getNodeType() == NodeType.INTEGERNODE: "Left node is not an integer node";
+		assert node.getRightExp().getNodeType() == NodeType.INTEGERNODE: "Right node is not an integer node";
+		return (Integer) node.getLeftExp().accept(this) * (Integer) node.getRightExp().accept(this);
+	}
+
+	@Override
+	public Object visitDivideExpNode(DivideExpNode node) {
+		assert node.getLeftExp().getNodeType() == NodeType.INTEGERNODE: "Left node is not an integer node";
+		assert node.getRightExp().getNodeType() == NodeType.INTEGERNODE: "Right node is not an integer node";
+		return (Integer) node.getLeftExp().accept(this) / (Integer) node.getRightExp().accept(this);
+	}
+
+	@Override
+	public Object visitModuloExpNode(ModuloExpNode node) {
+		assert node.getLeftExp().getNodeType() == NodeType.INTEGERNODE: "Left node is not an integer node";
+		assert node.getRightExp().getNodeType() == NodeType.INTEGERNODE: "Right node is not an integer node";
+		return (Integer) node.getLeftExp().accept(this) % (Integer) node.getRightExp().accept(this);
+	}
 }
