@@ -661,7 +661,6 @@ public class ASTNodeTest
 	// TODO: . selector/RECORD
 	// TODO: types support
 	// TODO: BOOLEAN implementeren (en TRUE en FALSE onderscheiden)
-	// TODO: visitor verbeteren
 	// TODO: JavaDoc, meer comments, asserts, finals?
 	@Ignore
 	private void prepareTestThrowException(String testName) throws Oberon0Exception

@@ -5,7 +5,7 @@ import randy.ast.*;
 import randy.exception.Oberon0Exception;
 import randy.exception.Oberon0UndefinedMethodException;
 
-public class FunctionTreeBuilder implements OASTNodeVisitor
+public class FunctionTreeBuilder extends OASTNodeNullVisitor
 {
 	private Oberon0FunctionTree tree;
 	private Stack<Oberon0FunctionTree> stack;
@@ -44,31 +44,21 @@ public class FunctionTreeBuilder implements OASTNodeVisitor
 		}
 	}
 	@Override
-	public void visitBefore(OASTNode astNode) throws Oberon0Exception
+	public void visitBefore(OProcedureDeclaration procedureDeclaration) throws Oberon0Exception
 	{
-		if (astNode instanceof OProcedureDeclaration)
-		{
-			OProcedureDeclaration pd = (OProcedureDeclaration)astNode;
-			Oberon0FunctionTree branch = new Oberon0FunctionTree(pd);
-			stack.peek().addBranch(pd.getName(), branch);
-			stack.add(branch);
-		}
+		Oberon0FunctionTree branch = new Oberon0FunctionTree(procedureDeclaration);
+		stack.peek().addBranch(procedureDeclaration.getName(), branch);
+		stack.add(branch);
 	}
 	@SuppressWarnings("unchecked")
 	@Override
-	public void visit(OASTNode astNode) throws Oberon0Exception
+	public void visit(OProcedureCall procedureCall) throws Oberon0Exception
 	{
-		if (astNode instanceof OProcedureCall)
-		{
-			procedureCalls.put((OProcedureCall)astNode, (Stack<Oberon0FunctionTree>)stack.clone());
-		}
+		procedureCalls.put(procedureCall, (Stack<Oberon0FunctionTree>)stack.clone());
 	}
 	@Override
-	public void visitAfter(OASTNode astNode) throws Oberon0Exception
+	public void visitAfter(OProcedureDeclaration procedureDeclaration) throws Oberon0Exception
 	{
-		if (astNode instanceof OProcedureDeclaration)
-		{
-			stack.pop();
-		}
+		stack.pop();
 	}
 }
