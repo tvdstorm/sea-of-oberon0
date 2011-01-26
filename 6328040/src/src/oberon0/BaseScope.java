@@ -3,27 +3,27 @@ package oberon0;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public abstract class BaseScope implements Scope {
-	Scope enclosingScope; // null if global (outermost) scope
-	Map<String, Symbol> symbols = new LinkedHashMap<String, Symbol>();
+public abstract class BaseScope implements IScope {
+	IScope enclosingScope; 						// null if global (outermost) scope
+	Map<String, BaseSymbol> symbols = new LinkedHashMap<String, BaseSymbol>();
 
-    public BaseScope(Scope parent) { this.enclosingScope = parent;	}
+    public BaseScope(IScope parent) { this.enclosingScope = parent;	}
 
-    public Symbol resolve(String name) {
-		Symbol s = symbols.get(name);
+    public BaseSymbol resolve(String name) {
+    	BaseSymbol s = symbols.get(name);
         if ( s!=null ) return s;
 		// if not here, check any enclosing scope
 		if ( getParentScope() != null ) return getParentScope().resolve(name);
-		return null; // not found
+		return null; 							// not found
 	}
 
-	public void define(Symbol sym) {
+	public void define(BaseSymbol sym) {
 		symbols.put(sym.name, sym);
-		sym.scope = this; // track the scope in each symbol
+		sym.scope = this; 						// track the scope in each symbol
 	}
 
-    public Scope getParentScope() { return getEnclosingScope(); }
-    public Scope getEnclosingScope() { return enclosingScope; }
+    public IScope getParentScope() { return getEnclosingScope(); }
+    public IScope getEnclosingScope() { return enclosingScope; }
 
 	public String toString() { return symbols.keySet().toString(); }
 }
