@@ -1,0 +1,13 @@
+MODULE testmodule;
+
+CONST
+  INPUTLENGTH = 5;
+
+VAR
+  i: INTEGER;
+
+BEGIN
+ i := 0 DIV 1;
+ i := i + 4;
+ i := 2 + 1 * INPUTLENGTH;
+END testmodule.
