@@ -23,6 +23,7 @@ public class OInfixExpression extends OExpression
 	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
 		assert(vars != null);
+		// TODO: lazy evaluation and casting
 		// Evaluate the left hand side and right hand side and see if they are both integers of booleans
 		OValue lhsVal = lhs.run(vars).dereference();
 		OValue rhsVal = rhs.run(vars).dereference();

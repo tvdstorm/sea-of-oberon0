@@ -622,8 +622,39 @@ public class ASTNodeTest
 			Assert.fail("Should be throwing an Oberon0OutOfBoundsException...");
 		}
 	}*/
+	@Test
+	public void test_Prefixoperators()
+	{
+		prepareTest("prefixoperators");
+		for (int i=0;i<numTests;i++)
+		{
+			int a = random.nextInt(), b = random.nextInt();
+			runTest(""+a, ""+b);
+			
+			Assert.assertTrue(functions.popOutput().equals("" + (a + b)));
+			Assert.assertTrue(functions.popOutput().equals("" + (a - b)));
+			Assert.assertTrue(functions.popOutput().equals("" + (a * b)));
+			Assert.assertTrue(functions.popOutput().equals("" + (a / b)));
+			
+			Assert.assertTrue(functions.popOutput().equals("" + (-a + b)));
+			Assert.assertTrue(functions.popOutput().equals("" + (-a - b)));
+			Assert.assertTrue(functions.popOutput().equals("" + (-a * b)));
+			Assert.assertTrue(functions.popOutput().equals("" + (-a / b)));
+			
+			Assert.assertTrue(functions.popOutput().equals("" + (a + -b)));
+			Assert.assertTrue(functions.popOutput().equals("" + (a - -b)));
+			Assert.assertTrue(functions.popOutput().equals("" + (a * -b)));
+			Assert.assertTrue(functions.popOutput().equals("" + (a / -b)));
+			
+			Assert.assertTrue(functions.popOutput().equals("" + (-a + -b)));
+			Assert.assertTrue(functions.popOutput().equals("" + (-a - -b)));
+			Assert.assertTrue(functions.popOutput().equals("" + (-a * -b)));
+			Assert.assertTrue(functions.popOutput().equals("" + (-a / -b)));
+			
+			Assert.assertTrue(functions.outputIsEmpty());
+		}
+	}
 	// TODO: test to check if an const array can be modified
-	// TODO: prefix plus/minus
 	// TODO: ~ (boolean prefix not)
 	// TODO: . selector/RECORD
 	// TODO: types support

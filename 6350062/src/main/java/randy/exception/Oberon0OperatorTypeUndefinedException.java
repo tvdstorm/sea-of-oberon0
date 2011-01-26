@@ -6,8 +6,12 @@ public class Oberon0OperatorTypeUndefinedException extends Oberon0RuntimeExcepti
 {
 	private static final long serialVersionUID = -4452312422101125649L;
 
+	public Oberon0OperatorTypeUndefinedException(String operator, Type rhsType)
+	{
+		super("The prefix operator '" + operator + "' is undefined for the argument type " + rhsType + ".");
+	}
 	public Oberon0OperatorTypeUndefinedException(String operator, Type lhsType, Type rhsType)
 	{
-		super("The operator '" + operator + "' is undefined for the argument types " + lhsType + ", " + rhsType + ".");
+		super("The infix operator '" + operator + "' is undefined for the argument types " + lhsType + ", " + rhsType + ".");
 	}
 }
