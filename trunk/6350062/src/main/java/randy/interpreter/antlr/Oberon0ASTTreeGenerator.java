@@ -108,6 +108,10 @@ public class Oberon0ASTTreeGenerator
 		{
 			case Oberon0Parser.MINUS:
 			case Oberon0Parser.PLUS:
+				if (tree.getChildCount() == 1)
+					return buildPrefixExpression(tree);
+				else
+					return buildInfixExpression(tree);
 			case Oberon0Parser.DIVIDE:
 			case Oberon0Parser.TIMES:
 			case Oberon0Parser.GREATERTHEN:
@@ -204,6 +208,15 @@ public class Oberon0ASTTreeGenerator
 			}
 		}
 		return new OModule(bodyDeclarations, body);
+	}
+	public static OPrefixExpression buildPrefixExpression(Tree tree) throws Oberon0Exception
+	{
+		assert(tree.getChildCount() == 1);
+		OExpression right = buildExpression(tree.getChild(0));
+		Operator operator = Operator.get(tree.getText());
+		if (operator == null)
+			throw new Oberon0UnknownOperatorException(tree.getText());
+		return new OPrefixExpression(operator, right);
 	}
 	public static OProcedureCall buildProcedureCall(Tree tree) throws Oberon0Exception
 	{
