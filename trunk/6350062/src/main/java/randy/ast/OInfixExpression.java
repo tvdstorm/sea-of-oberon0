@@ -23,62 +23,76 @@ public class OInfixExpression extends OExpression
 	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
 		assert(vars != null);
-		// TODO: lazy evaluation and casting
 		// Evaluate the left hand side and right hand side and see if they are both integers of booleans
 		OValue lhsVal = lhs.run(vars).dereference();
-		OValue rhsVal = rhs.run(vars).dereference();
 		assert(lhsVal != null);
-		assert(rhsVal != null);
-		if (lhsVal instanceof OInteger && rhsVal instanceof OInteger)
-			return processIntegerExpression((OInteger)lhsVal, (OInteger)rhsVal);
-		else if (lhsVal instanceof OBoolean && rhsVal instanceof OBoolean)
-			return processBooleanExpression((OBoolean)lhsVal, (OBoolean)rhsVal);
+		if (lhsVal instanceof OInteger)
+			return processIntegerExpression(((OInteger)lhsVal).getIntValue(), vars);
+		else if (lhsVal instanceof OBoolean)
+			return processBooleanExpression(((OBoolean)lhsVal).getBoolValue(), vars);
 		else
-			throw new Oberon0OperatorTypeUndefinedException(operator.getOperatorText(), lhsVal.getType(), rhsVal.getType());
+			throw new Oberon0OperatorTypeUndefinedException(operator.getOperatorText(), lhsVal.getType());
 	}
-	private OValue processIntegerExpression(OInteger lhs, OInteger rhs) throws Oberon0OperatorTypeUndefinedException, Oberon0DivideByZeroException
+	private OValue processIntegerExpression(int valLhs, Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
 		// Process the infix integer expression
+		// Operators that can have a lazy right hand side
+		
+		// Operators that don't have a lazy right hand side
+		int valRhs = rhs.run(vars).dereference().castToInteger().getIntValue();
 		if (operator == Operator.PLUS)
-			return new OInteger(lhs.getIntValue() + rhs.getIntValue());
+			return new OInteger(valLhs + valRhs);
 		else if (operator == Operator.MINUS)
-			return new OInteger(lhs.getIntValue() - rhs.getIntValue());
+			return new OInteger(valLhs - valRhs);
 		else if (operator == Operator.DIV)
 		{
-			if (rhs.getIntValue() == 0)
+			if (valRhs == 0)
 				throw new Oberon0DivideByZeroException();
-			return new OInteger(lhs.getIntValue() / rhs.getIntValue());
+			return new OInteger(valLhs / valRhs);
 		}
 		else if (operator == Operator.TIMES)
-			return new OInteger(lhs.getIntValue() * rhs.getIntValue());
+			return new OInteger(valLhs * valRhs);
 		else if (operator == Operator.SMALLERTHAN)
-			return new OBoolean(lhs.getIntValue() < rhs.getIntValue());
+			return new OBoolean(valLhs < valRhs);
 		else if (operator == Operator.GREATERTHAN)
-			return new OBoolean(lhs.getIntValue() > rhs.getIntValue());
+			return new OBoolean(valLhs > valRhs);
 		else if (operator == Operator.SMALLEREQUALS)
-			return new OBoolean(lhs.getIntValue() <= rhs.getIntValue());
+			return new OBoolean(valLhs <= valRhs);
 		else if (operator == Operator.GREATEREQUALS)
-			return new OBoolean(lhs.getIntValue() >= rhs.getIntValue());
+			return new OBoolean(valLhs >= valRhs);
 		else if (operator == Operator.EQUALS)
-			return new OBoolean(lhs.getIntValue() == rhs.getIntValue());
+			return new OBoolean(valLhs == valRhs);
 		else if (operator == Operator.NOTEQUALS)
-			return new OBoolean(lhs.getIntValue() != rhs.getIntValue());
+			return new OBoolean(valLhs != valRhs);
 		else
-			throw new Oberon0OperatorTypeUndefinedException(operator.getOperatorText(), lhs.getType(), rhs.getType());
+			throw new Oberon0OperatorTypeUndefinedException(operator.getOperatorText(), Type.INTEGER);
 	}
-	private OValue processBooleanExpression(OBoolean lhs, OBoolean rhs) throws Oberon0OperatorTypeUndefinedException
+	private OValue processBooleanExpression(boolean valLhs, Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
 		// Process the boolean infix expression
+		// Operators that can have a lazy right hand side
 		if (operator == Operator.AND)
-			return new OBoolean(lhs.getBoolValue() && rhs.getBoolValue());
+		{
+			if (!valLhs)
+				return new OBoolean(false);
+			else
+				return new OBoolean(rhs.run(vars).dereference().castToBoolean().getBoolValue());
+		}
 		else if (operator == Operator.OR)
-			return new OBoolean(lhs.getBoolValue() || rhs.getBoolValue());
-		else if (operator == Operator.EQUALS)
-			return new OBoolean(lhs.getBoolValue() == rhs.getBoolValue());
+		{
+			if (valLhs)
+				return new OBoolean(true);
+			else
+				return new OBoolean(rhs.run(vars).dereference().castToBoolean().getBoolValue());
+		}
+		// Operators that don't have a lazy right hand side
+		boolean valRhs = rhs.run(vars).dereference().castToBoolean().getBoolValue();
+		if (operator == Operator.EQUALS)
+			return new OBoolean(valLhs == valRhs);
 		else if (operator == Operator.NOTEQUALS)
-			return new OBoolean(lhs.getBoolValue() != rhs.getBoolValue());
+			return new OBoolean(valLhs != valRhs);
 		else
-			throw new Oberon0OperatorTypeUndefinedException(operator.getOperatorText(), lhs.getType(), rhs.getType());
+			throw new Oberon0OperatorTypeUndefinedException(operator.getOperatorText(), Type.BOOLEAN);
 	}
 	@Override
 	public void accept(OASTNodeVisitor visitor) throws Oberon0Exception
