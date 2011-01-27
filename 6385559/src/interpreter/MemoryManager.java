@@ -71,7 +71,7 @@ public class MemoryManager {
   {
 	System.out.println( "\n\n#\n" +
 			"#\tMemoryManager dump\n" +
-			"#\n\n" +
+			"#\n" +
 			"Varname:       Scope:              Location:   Is reference:    Value:\n" );
     MemoryMap printBuffer = null;
     for( int i = 0; i < list.size(); i++ )

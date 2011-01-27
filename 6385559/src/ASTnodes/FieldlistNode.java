@@ -1,4 +1,6 @@
 package ASTnodes;
+import interpreter.TypeDefinitionManager;
+
 import java.util.Vector;
 
 public class FieldlistNode implements ASTnode {
@@ -24,6 +26,11 @@ public class FieldlistNode implements ASTnode {
   
   public int eval( String scope )
   {
+    if( this.type != null )
+    { // to remove type definitions
+      this.correctType( );
+    }
+		
 	if( this.identlist != null )
 	{
 	  // this call is to test the generations of all possible array elements
@@ -32,7 +39,7 @@ public class FieldlistNode implements ASTnode {
 	  {
 		elements = ((ArrayNode) this.type).getArrayElementList();
 	  }
-	  if( this.type != null && this.type instanceof RecordNode )
+	  else if( this.type != null && this.type instanceof RecordNode )
 	  {
 		elements = ((RecordNode) this.type).getRecordElementList();
 	  }
@@ -44,6 +51,11 @@ public class FieldlistNode implements ASTnode {
   
   public Vector<String> getVariableList()
   {
+	if( this.type != null )
+    { // to remove type definitions
+      this.correctType( );
+    }	
+	  
     Vector<String> returnList = new Vector<String>(0);
     if( this.identlist != null )
     {
@@ -75,6 +87,19 @@ public class FieldlistNode implements ASTnode {
   	  }
     }
     return returnList;
+  }
+  
+  private void correctType( )
+  {
+    String identName = "";
+    while( this.type != null && this.type instanceof TypeNode && !identName.contentEquals( "INTEGER" ))
+    {
+      identName = ((TypeNode) this.type ).getIdentName();
+      if( !identName.contentEquals( "INTEGER" ) )
+      {
+        this.type = TypeDefinitionManager.getTypeDefinition( identName );
+      }
+    }
   }
   
   private IdentListNode identlist = null;

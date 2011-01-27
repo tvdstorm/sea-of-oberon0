@@ -2,8 +2,6 @@ package oberon0;
 
 /*
  * This class read the commandline options given and can be questioned what to do
- * 
- * 
  */
 public class CommandLineOptions {
   public CommandLineOptions( String[] args )
@@ -21,6 +19,10 @@ public class CommandLineOptions {
       else if( args[i].contentEquals( "-memory" ) )
       {
     	this.memoryDump = true;
+      }
+      else if( args[i].contentEquals( "-definitions" ) )
+      {
+        this.definitions = true;
       }
       else
       {
@@ -43,8 +45,14 @@ public class CommandLineOptions {
   {
     return this.sourcefile;
   }
+  
+  public boolean doPrintTypeDefinitions( )
+  {
+    return this.definitions;
+  }
 	
   private boolean print = false;
   private boolean memoryDump = false;
+  private boolean definitions = false;
   private String sourcefile = "";
 }
