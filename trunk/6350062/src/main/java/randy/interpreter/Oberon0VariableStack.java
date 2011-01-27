@@ -6,12 +6,12 @@ import randy.value.*;
 
 public class Oberon0VariableStack
 {
-	private Oberon0VariableStack globalStack;
+	private Oberon0VariableStack parentScope;
 	private Map<String, OValue> variables;
 	
-	public Oberon0VariableStack(Oberon0VariableStack _globalStack)
+	public Oberon0VariableStack(Oberon0VariableStack _parentScope)
 	{
-		globalStack = _globalStack;
+		parentScope = _parentScope;
 		variables = new HashMap<String, OValue>();
 	}
 	public void addVariable(String name, OValue var) throws Oberon0RuntimeException
@@ -28,15 +28,15 @@ public class Oberon0VariableStack
 	{
 		if (variables.containsKey(name))
 			return variables.get(name);
-		else if (globalStack != null)
-			return globalStack.getVariable(name);
+		else if (parentScope != null)
+			return parentScope.getVariable(name);
 		else
 			throw new Oberon0UndefinedVariableException(name);
 	}
-	public Oberon0VariableStack getGlobalStack()
+	public Oberon0VariableStack getParentScope()
 	{
-		if (globalStack != null)
-			return globalStack;
+		if (parentScope != null)
+			return parentScope;
 		else
 			return this;
 	}
