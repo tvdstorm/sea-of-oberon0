@@ -1,5 +1,7 @@
 package ASTnodes;
 
+import interpreter.MemoryManager;
+
 public class AssignmentNode implements StatementNode {
   public AssignmentNode( VarNode var, ExpressionNode expression )
   {
@@ -17,6 +19,15 @@ public class AssignmentNode implements StatementNode {
 	if( this.expression != null )
 	  this.expression.printNode( depth );
 	System.out.println( ";" );
+  }
+  
+  public int eval( String scope )
+  {
+    if( this.expression != null && this.var != null )
+    {
+      MemoryManager.set( this.var.getVarname( scope ), this.expression.eval( scope ) );      
+    }
+    return 0;
   }
   
   private VarNode var = null;

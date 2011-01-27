@@ -17,8 +17,13 @@ public class ConstantNode implements ASTnode {
     if( this.constant != null )
       this.constant.printNode( 0 );
   }
+  
+  public int eval( String scope )
+  {
+    return 0;
+  }
 
   private String identifier = null;
-  private ExpressionNode expression;
+  private ExpressionNode expression = null;
   private ConstantNode constant = null;
 }

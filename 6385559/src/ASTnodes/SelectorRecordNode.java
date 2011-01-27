@@ -13,6 +13,11 @@ public class SelectorRecordNode implements ASTnode {
     if( this.selector != null )
       this.selector.printNode( 0 );
   }
+  
+  public int eval( String scope )
+  {
+    return 0;
+  }
 
   private String ident = null;
   private ASTnode selector = null;

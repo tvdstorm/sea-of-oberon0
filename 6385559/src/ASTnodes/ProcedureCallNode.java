@@ -23,6 +23,11 @@ public class ProcedureCallNode implements StatementNode {
 	System.out.println( ";" );
   }
   
+  public int eval( String scope )
+  {
+    return 0;
+  }
+  
   private String identifier = null;
   private ParamNode params = null;
 }

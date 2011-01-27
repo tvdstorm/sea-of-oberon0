@@ -19,6 +19,11 @@ public class FpSectionNode implements ASTnode {
         this.type.printNode( 0 );
     }
   }
+  
+  public int eval( String scope )
+  {
+    return 0;
+  }
 
   private boolean callByRef = false;
   private IdentListNode variables = null;

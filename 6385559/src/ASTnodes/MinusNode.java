@@ -13,5 +13,10 @@ public class MinusNode implements ASTnode {
 	System.out.print( ')' );
   }
   
+  public int eval( String scope )
+  {
+    return -1*this.child.eval( scope );
+  }
+  
   private TermNode child = null;
 }

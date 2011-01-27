@@ -24,6 +24,11 @@ public class ProcedureHeadingNode implements ASTnode {
       System.out.println( ";" );
     }
   }
+  
+  public int eval( String scope )
+  {
+    return 0;
+  }
 
   private String identifier = null;
   private FormalParameterNode formalParams = null;

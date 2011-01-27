@@ -1,16 +1,14 @@
 package oberon0;
 import oberon0.ParserOutput;
+import interpreter.MemoryManager;
 import oberon0.ParserInput;
-import org.antlr.runtime.tree.CommonTree;
 import parseErrorLog.*;
 import ASTnodes.*;
 
-public class oberon0 {
-
-  /**
-   * @param args
-   */
-  public static void main( String[] args ) {
+public class oberon0 
+{
+  public static void main( String[] args ) 
+  {
     ParserInput     pIn       = new ParserInput( );
     ParserOutput    Pout      = new ParserOutput( );
     ModuleNode AST;
@@ -27,10 +25,14 @@ public class oberon0 {
     }
     else
     {
-      AST.printNode( 0 );
-    	
+      //AST.printNode( 0 );
+      
+      AST.eval( null );
+      MemoryManager.print();
+      
       System.out.println( "\nExit execution OK." );
     }
+    
     return;
   }
 

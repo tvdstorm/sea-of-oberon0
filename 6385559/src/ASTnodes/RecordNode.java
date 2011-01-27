@@ -1,5 +1,7 @@
 package ASTnodes;
 
+import java.util.Vector;
+
 public class RecordNode implements ASTnode {
   public RecordNode( FieldsNode fields )
   {
@@ -11,6 +13,19 @@ public class RecordNode implements ASTnode {
     if( this.fields != null )
       this.fields.printNode( 0 );
     System.out.print( " END" );
+  }
+  
+  public int eval( String scope )
+  {
+    return 0;
+  }
+  
+  public Vector<String> getRecordElementList()
+  {
+    Vector<String> returnList = null;
+    returnList = this.fields.getVariableList();
+
+    return returnList;
   }
   
   private FieldsNode fields = null;

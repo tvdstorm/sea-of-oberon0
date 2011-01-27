@@ -12,5 +12,14 @@ public class ElseStatementNode implements StatementNode {
 	  this.sequence.printNode( depth );
   }
   
-  private StatementSequenceNode sequence;
+  public int eval( String scope )
+  {
+	if( this.sequence != null )
+	{
+	  this.sequence.eval( scope );
+	}
+    return 0;
+  }
+  
+  private StatementSequenceNode sequence = null;
 }

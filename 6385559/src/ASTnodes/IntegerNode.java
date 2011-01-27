@@ -11,5 +11,10 @@ public class IntegerNode implements ASTnode {
 	System.out.print( this.intValue );
   }
   
+  public int eval( String scope )
+  {
+    return this.intValue;
+  }
+  
   private int intValue = 0;
 }

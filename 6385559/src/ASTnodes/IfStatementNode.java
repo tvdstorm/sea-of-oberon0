@@ -31,6 +31,22 @@ public class IfStatementNode implements StatementNode {
 	System.out.println( "END;" );
   }
   
+  public int eval( String scope )
+  {
+	if( this.expression.eval( scope ) == 1 )
+	{
+      if( this.sequence != null )
+      {
+	    this.sequence.eval( scope );
+      }
+	}
+	else if( this.elseStatement != null )
+	{
+	  this.elseStatement.eval( scope );
+	}
+    return 0;
+  }
+  
   private ExpressionNode expression = null;
   private StatementSequenceNode sequence = null;
   private StatementNode elseStatement = null;

@@ -17,6 +17,15 @@ public class SelectorArrayNode implements ASTnode {
     if( this.selector != null )
       this.selector.printNode( 0 );
   }
+  
+  public int eval( String scope )
+  {
+	if( this.expression != null )
+	{
+	  return this.expression.eval( scope );
+	}
+	return 0;
+  }
 
   private ExpressionNode expression = null;
   private ASTnode selector = null;

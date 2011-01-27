@@ -17,6 +17,11 @@ public class ParamNode implements ASTnode {
       nextParam.printNode( 0 );
     }
   }
+  
+  public int eval( String scope )
+  {
+    return 0;
+  }
 
   private ExpressionNode param = null;
   private ParamNode nextParam = null;
