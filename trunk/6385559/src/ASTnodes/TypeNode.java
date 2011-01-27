@@ -10,6 +10,11 @@ public class TypeNode implements ASTnode {
     if( this.ident != null )
       System.out.print( this.ident );
   }
+  
+  public int eval( String scope )
+  {
+    return 0;
+  }
 
   private String ident = null;
 }

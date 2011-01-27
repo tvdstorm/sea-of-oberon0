@@ -16,6 +16,11 @@ public class FormalParameterNode implements ASTnode {
       this.followup.printNode( 0 );
     }
   }
+	
+  public int eval( String scope )
+  {
+    return 0;
+  }
 
   private FpSectionNode fpSection = null;
   private FormalParameterNode followup = null;

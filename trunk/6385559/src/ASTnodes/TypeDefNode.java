@@ -19,6 +19,11 @@ public class TypeDefNode implements ASTnode {
     if( this.followup != null )
       this.followup.printNode( 0 );
   }
+
+  public int eval( String scope )
+  {
+    return 0;
+  }
   
   private String identifier = null;
   private ASTnode type = null;

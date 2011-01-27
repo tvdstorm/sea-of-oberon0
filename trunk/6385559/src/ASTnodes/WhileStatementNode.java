@@ -22,6 +22,18 @@ public class WhileStatementNode implements StatementNode {
 	System.out.println( "END;");
   }
   
+  public int eval( String scope )
+  {
+	while( cond.eval( scope ) == 1 )
+	{
+	  if( this.executionSequence != null )
+	  {
+	    this.executionSequence.eval( scope );
+	  }
+	}
+    return 0;
+  }
+  
   private ExpressionNode cond = null;
   private StatementSequenceNode executionSequence = null;
 }

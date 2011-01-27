@@ -15,6 +15,15 @@ public class SelectorNode implements ASTnode {
 	  this.next.printNode( 0 );
   }
   
+  public int eval( String scope )
+  {
+	if( this.value != null )
+	{
+      return this.value.eval( scope );
+	}
+    return 0;
+  }
+  
   private ASTnode value = null;
   private ASTnode next = null;
 }

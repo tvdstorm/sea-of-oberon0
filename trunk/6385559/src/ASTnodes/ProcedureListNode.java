@@ -16,6 +16,11 @@ public class ProcedureListNode implements ASTnode {
     if( this.procedureList != null )
       this.procedureList.printNode( depth );
   }
+  
+  public int eval( String scope )
+  {
+    return 0;
+  }
 
   private ProcedureDeclarationNode procedureDeclaration = null;
   private ProcedureListNode procedureList = null;

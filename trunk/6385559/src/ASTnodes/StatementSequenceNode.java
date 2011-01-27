@@ -14,6 +14,19 @@ public class StatementSequenceNode implements ASTnode {
 	if( this.statementSequence != null )
 	  this.statementSequence.printNode( depth );
   }
+
+  public int eval( String scope )
+  {
+    if( this.statement != null )
+    {
+      this.statement.eval( scope );
+    }
+    if( this.statementSequence != null )
+    {
+      this.statementSequence.eval( scope );
+    }
+    return 0;
+  }
   
   private StatementNode statement;
   private StatementSequenceNode statementSequence;

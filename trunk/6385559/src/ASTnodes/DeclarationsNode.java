@@ -48,6 +48,15 @@ public class DeclarationsNode implements ASTnode {
 	  System.out.print( " " );
   }
   
+  public int eval( String scope )
+  {
+    if( this.vars != null )
+    {
+      this.vars.eval( scope );
+    }
+    return 0;
+  }
+  
   private ConstantNode constant = null;
   private TypeDefNode typeDefs = null; 
   private FieldsNode vars = null;

@@ -24,6 +24,11 @@ public class ProcedureDeclarationNode implements ASTnode {
 	  System.out.print( " " );
   }
   
+  public int eval( String scope )
+  {
+    return 0;
+  }
+  
   private ProcedureHeadingNode heading = null;
   private ProcedureBodyNode body = null;
 }

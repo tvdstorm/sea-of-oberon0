@@ -27,6 +27,19 @@ public class ModuleNode implements ASTnode{
 	System.out.println( "END " + this.ModuleName + ".");
   }
   
+  public int eval( String scope )
+  {
+	if( this.declarations != null )
+	{
+	  declarations.eval( this.ModuleName );
+	}
+	if( this.statementSequence != null )
+	{
+      this.statementSequence.eval( this.ModuleName );
+	}
+    return 0;
+  }
+  
   private DeclarationsNode declarations = null;
   private StatementSequenceNode statementSequence = null;
   private String ModuleName = null;
