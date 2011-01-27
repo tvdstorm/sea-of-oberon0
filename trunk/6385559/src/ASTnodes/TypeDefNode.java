@@ -1,5 +1,7 @@
 package ASTnodes;
 
+import interpreter.TypeDefinitionManager;
+
 public class TypeDefNode implements ASTnode {
   public TypeDefNode( String identifier, ASTnode type, TypeDefNode followup )
   {
@@ -22,6 +24,14 @@ public class TypeDefNode implements ASTnode {
 
   public int eval( String scope )
   {
+    if( this.identifier != null && this.type != null )
+    {
+      TypeDefinitionManager.addTypeDefinition( this.identifier, type );
+    }
+    if( this.followup != null )
+    {
+      this.followup.eval( scope );
+    }
     return 0;
   }
   

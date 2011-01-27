@@ -1,4 +1,6 @@
 package ASTnodes;
+import interpreter.TypeDefinitionManager;
+
 import java.util.Vector;
 
 public class ArrayNode implements ASTnode {
@@ -26,6 +28,11 @@ public class ArrayNode implements ASTnode {
   
   public Vector<String> getArrayElementList()
   { // fetch the list of all array elements
+	if( this.type != null )
+	{ // to remove type definitions
+      this.correctType( );
+	}
+	
     int numberOfElements = this.eval( null ); // get the number of current elements to add
     Vector<String> nextList;
     Vector<String> returnList = new Vector<String>(0);
@@ -59,6 +66,19 @@ public class ArrayNode implements ASTnode {
       }
     }
     return returnList;
+  }
+  
+  private void correctType( )
+  {
+    String identName = "";
+    while( this.type != null && this.type instanceof TypeNode && !identName.contentEquals( "INTEGER" ))
+    {
+      identName = ((TypeNode) this.type ).getIdentName();
+      if( !identName.contentEquals( "INTEGER" ) )
+      {
+        this.type = TypeDefinitionManager.getTypeDefinition( identName );
+      }
+    }
   }
 
   private ExpressionNode expression = null;

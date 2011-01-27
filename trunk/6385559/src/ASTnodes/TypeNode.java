@@ -15,6 +15,11 @@ public class TypeNode implements ASTnode {
   {
     return 0;
   }
+  
+  public String getIdentName( )
+  {
+    return this.ident;
+  }
 
   private String ident = null;
 }

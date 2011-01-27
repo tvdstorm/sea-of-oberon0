@@ -10,15 +10,10 @@ public class ParserInput {
   /*
    * fetch input file
    */
-  public String getInputFile( String[] args )
+  public String getInputFile( String sourcefile )
   {
-    String filename = null;
+    String filename = sourcefile;
     Scanner input = new Scanner( System.in );
-    
-    if( args.length != 0 )
-    { // check for commandline file input
-      filename = args[0];
-    }
     
     while( filename == null || !this.file_exists( filename ) )
     { // as long as the filename is null and the file does not exist

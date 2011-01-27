@@ -1,5 +1,6 @@
 MODULE Sample;
-VAR x, y, z, counter : INTEGER; b : RECORD a, b, c ,d : INTEGER; e : ARRAY 2 OF RECORD f : RECORD f : INTEGER; END; END; END;
+TYPE bla = ARRAY 2 OF INTEGER; sa = bla;
+VAR x, y, z, counter : sa; b : RECORD a, b, c ,d : INTEGER; e : ARRAY 2 OF RECORD f : RECORD f : INTEGER; END; END; END;
 
 BEGIN
   x := 3;
