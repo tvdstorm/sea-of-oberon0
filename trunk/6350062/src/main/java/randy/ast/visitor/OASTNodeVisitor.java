@@ -1,5 +1,23 @@
-package randy.ast;
+package randy.ast.visitor;
 
+import randy.ast.OArraySelector;
+import randy.ast.OArrayVarDeclaration;
+import randy.ast.OAssignmentStatement;
+import randy.ast.OBlock;
+import randy.ast.OBooleanLiteral;
+import randy.ast.OConstDeclaration;
+import randy.ast.OExpressionStatement;
+import randy.ast.OIfStatement;
+import randy.ast.OInfixExpression;
+import randy.ast.OIntegerLiteral;
+import randy.ast.OModule;
+import randy.ast.OPrefixExpression;
+import randy.ast.OProcedureCall;
+import randy.ast.OProcedureDeclaration;
+import randy.ast.OVarDeclaration;
+import randy.ast.OVariable;
+import randy.ast.OVariableSelector;
+import randy.ast.OWhileStatement;
 import randy.exception.Oberon0Exception;
 
 public interface OASTNodeVisitor
