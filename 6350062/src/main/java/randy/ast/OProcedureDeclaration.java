@@ -38,7 +38,7 @@ public class OProcedureDeclaration extends OBodyDeclaration implements OInvokabl
 		assert(bodyDeclarations != null);
 		assert(body != null);
 		// Create a new variable scope for the invoked function
-		Oberon0VariableStack functionVars = new Oberon0VariableStack(callerVars.getGlobalStack());
+		Oberon0VariableStack functionVars = new Oberon0VariableStack(callerVars);
 		// Loop through all parameters and declare them in the invoked functions variable scope
 		for (OVarDeclaration p : parameters)
 		{

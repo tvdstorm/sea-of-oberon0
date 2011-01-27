@@ -1,0 +1,29 @@
+MODULE Variablescoping;
+VAR varMod: INTEGER;
+
+PROCEDURE first();
+  VAR varFirst: INTEGER;
+  PROCEDURE second();
+    VAR varSecond: INTEGER;
+    BEGIN
+      varSecond := varFirst;
+      Write(varSecond);
+      varSecond := varMod;
+      Write(varMod)
+    END second;
+ BEGIN
+    varFirst := varMod;
+    Write(varFirst);
+    second
+END a;
+PROCEDURE ah();
+  VAR x: INTEGER;
+  BEGIN
+    x := 1
+END first;
+BEGIN
+
+Read(varMod);
+first
+
+END Variablescoping.

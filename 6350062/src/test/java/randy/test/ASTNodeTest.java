@@ -657,6 +657,21 @@ public class ASTNodeTest
 			Assert.assertTrue(functions.outputIsEmpty());
 		}
 	}
+	@Test
+	public void test_VariableScoping()
+	{
+		prepareTest("variablescoping");
+		for (int i=0;i<numTests;i++)
+		{
+			int a = random.nextInt();
+			runTest(""+a);
+			
+			Assert.assertTrue(functions.popOutput().equals("" + a));
+			Assert.assertTrue(functions.popOutput().equals("" + a));
+			Assert.assertTrue(functions.popOutput().equals("" + a));
+			Assert.assertTrue(functions.outputIsEmpty());
+		}
+	}
 	// TODO: test to check if an const array can be modified
 	// TODO: . selector/RECORD
 	// TODO: types support
