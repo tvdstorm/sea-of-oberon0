@@ -1,9 +1,10 @@
-package randy.interpreter;
+package randy.interpreter.buildinfunctions;
 
 import java.util.Queue;
 import randy.ast.OInvokableFunction;
 import randy.exception.Oberon0IncorrectNumberOfArgumentsException;
 import randy.exception.Oberon0RuntimeException;
+import randy.interpreter.runtime.Oberon0VariableStack;
 import randy.value.OInteger;
 import randy.value.OValue;
 

@@ -3,7 +3,7 @@ package randy.test;
 import java.util.Queue;
 import randy.ast.OInvokableFunction;
 import randy.exception.*;
-import randy.interpreter.Oberon0VariableStack;
+import randy.interpreter.runtime.Oberon0VariableStack;
 import randy.value.*;
 
 public class TestReadFunction implements OInvokableFunction

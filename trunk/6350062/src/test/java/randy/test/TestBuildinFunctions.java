@@ -3,7 +3,8 @@ package randy.test;
 import java.util.*;
 import org.junit.Ignore;
 import randy.exception.*;
-import randy.interpreter.*;
+import randy.interpreter.buildinfunctions.IOberon0BuildinFunctions;
+import randy.interpreter.preprocess.FunctionTreeBuilder;
 
 @Ignore
 public class TestBuildinFunctions implements IOberon0BuildinFunctions

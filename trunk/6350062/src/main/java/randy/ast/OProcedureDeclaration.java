@@ -2,7 +2,7 @@ package randy.ast;
 
 import java.util.*;
 import randy.exception.*;
-import randy.interpreter.*;
+import randy.interpreter.runtime.Oberon0VariableStack;
 import randy.value.OValue;
 
 public class OProcedureDeclaration extends OBodyDeclaration implements OInvokableFunction

@@ -6,8 +6,8 @@ import org.antlr.runtime.tree.*;
 import org.antlr.stringtemplate.StringTemplate;
 import randy.generated.antlr.*;
 import randy.generated.antlr.Oberon0Parser.module_return;
-import randy.interpreter.Oberon0BuildinFunctions;
-import randy.interpreter.Oberon0Program;
+import randy.interpreter.buildinfunctions.Oberon0BuildinFunctions;
+import randy.interpreter.runtime.Oberon0Program;
 
 public class Main
 {

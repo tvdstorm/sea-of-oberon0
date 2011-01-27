@@ -3,7 +3,7 @@ package randy.test;
 import java.util.Random;
 import org.junit.*;
 import randy.exception.*;
-import randy.interpreter.Oberon0Program;
+import randy.interpreter.runtime.Oberon0Program;
 import randy.value.*;
 import java.util.*;
 
@@ -672,7 +672,7 @@ public class ASTNodeTest
 			Assert.assertTrue(functions.outputIsEmpty());
 		}
 	}
-	// TODO: test to check if an const array can be modified
+	// TODO: test to check if an const array can be modified and check if const variable can be assigned as non const parameters
 	// TODO: . selector/RECORD
 	// TODO: types support
 	// TODO: JavaDoc, meer comments, asserts, finals?
