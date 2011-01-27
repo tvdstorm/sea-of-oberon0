@@ -2,7 +2,7 @@ package randy.ast;
 
 import randy.value.*;
 import randy.exception.*;
-import randy.interpreter.Oberon0VariableStack;
+import randy.interpreter.runtime.Oberon0VariableStack;
 
 public class OIntegerLiteral extends OExpression
 {

@@ -2,7 +2,7 @@ package randy.ast;
 
 import java.util.*;
 import randy.exception.*;
-import randy.interpreter.Oberon0VariableStack;
+import randy.interpreter.runtime.Oberon0VariableStack;
 import randy.value.OValue;
 
 public class OBlock extends OStatement

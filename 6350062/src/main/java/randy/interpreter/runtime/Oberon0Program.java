@@ -1,6 +1,9 @@
-package randy.interpreter;
+package randy.interpreter.runtime;
 
 import randy.interpreter.antlr.Oberon0ASTTreeGenerator;
+import randy.interpreter.buildinfunctions.IOberon0BuildinFunctions;
+import randy.interpreter.buildinfunctions.Oberon0BuildinFunctions;
+import randy.interpreter.preprocess.FunctionTreeBuilder;
 import randy.ast.OASTNode;
 import randy.exception.*;
 

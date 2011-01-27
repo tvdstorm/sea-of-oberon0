@@ -1,9 +1,10 @@
-package randy.interpreter;
+package randy.interpreter.buildinfunctions;
 
 import java.io.IOException;
 import java.util.Queue;
 import randy.ast.OInvokableFunction;
 import randy.exception.*;
+import randy.interpreter.runtime.Oberon0VariableStack;
 import randy.value.*;
 
 public class Oberon0DefaultReadFunction implements OInvokableFunction
