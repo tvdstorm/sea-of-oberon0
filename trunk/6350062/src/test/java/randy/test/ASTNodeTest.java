@@ -675,7 +675,6 @@ public class ASTNodeTest
 	// TODO: test to check if an const array can be modified
 	// TODO: . selector/RECORD
 	// TODO: types support
-	// TODO: BOOLEAN implementeren (en TRUE en FALSE onderscheiden)
 	// TODO: JavaDoc, meer comments, asserts, finals?
 	@Ignore
 	private void prepareTestThrowException(String testName) throws Oberon0Exception

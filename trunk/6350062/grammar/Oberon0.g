@@ -10,6 +10,8 @@ options {
 
 tokens
 {
+	TRUE='TRUE';
+	FALSE='FALSE';
 	MINUS='-';
 	PLUS='+';
 	TIMES='*';
@@ -63,25 +65,22 @@ package randy.generated.antlr;
 package randy.generated.antlr;
 }
 
-IDENT:		('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'0'..'9')*; // TODO: moet LETTER (LETTER|DIGIT)* worden
+IDENT:			('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'0'..'9')*; // TODO: moet LETTER (LETTER|DIGIT)* worden
 WHITESPACE:		(' '|'\t'|'\r'|'\n') { skip(); };
 ws:			(WHITESPACE)*;
-ident:		IDENT;
+ident:			IDENT;
 INTEGER:		('0'..'9')+;
 selector:		ident ((DOTSELECTOR^ ident)|(ARRAYSELECTOR^ expression ']'!))+ | ident;
-number:		INTEGER;
-factor:		selector | number | '('! expression ')'! | NOT^ factor;
+numberLiteral:		INTEGER;
+booleanLiteral:		TRUE|FALSE;
+factor:			selector | booleanLiteral | numberLiteral | '('! expression ')'! | NOT^ factor;
 term:			factor ((TIMES|DIVIDE|MOD|AND)^ factor)*;
-
-simpleExpression
- 	:	 (PLUS|MINUS^ )? term ((PLUS|MINUS |OR)^ term)*;
-
+simpleExpression:	(PLUS|MINUS^ )? term ((PLUS|MINUS |OR)^ term)*;
 infixOperand:		EQUALS | NOTEQUALS | SMALLERTHEN | SMALLEREQUALS | GREATERTHEN | GREATEREQUALS;
 expression:		simpleExpression infixOperand simpleExpression 
 				-> ^(infixOperand simpleExpression simpleExpression) |
 			simpleExpression
 				-> simpleExpression;
-//actualParameters:	'('! (expression^ (','! expression^)*)? ')'!;
 actualParameters:	'(' (expression (',' expression)*)? ')'
 				-> (expression (expression)*)?;
 ifStatement:		IF expression THEN statementSequence (ELSIF expression THEN statementSequence)+ (ELSE statementSequence) END
@@ -105,16 +104,11 @@ identList:		ident ( ',' ident)*
 				-> ident (ident)*;
 arrayType:		ARRAY expression OF type
 				-> ^(ARRAY ^(TYPE type) ^(EXPRESSION expression));
-
-fieldList 
-	:	 (identList ':' type )?
-			-> ^(VAR type? identList?);
-recordType
-	:	 RECORD fieldList (';' fieldList)* END
-			-> ^(RECORD fieldList*);
-type 	
-	:	 ident | arrayType | recordType;
-
+fieldList:		(identList ':' type )?
+				-> ^(VAR type? identList?);
+recordType:		RECORD fieldList (';' fieldList)* END
+				-> ^(RECORD fieldList*);
+type:			ident | arrayType | recordType;
 fPSection:		VAR identList ':' type
 				-> ^(REFVAR type identList) |
 			identList ':' type
@@ -133,7 +127,7 @@ varDeclarations:	(VAR (identList ':' type ';')*)
 				-> ^(VAR type identList)*;
 declarations:		constDeclaration? typeDeclaration? varDeclarations? (procedureDeclaration ';')*
 				-> constDeclaration? typeDeclaration? varDeclarations? (procedureDeclaration)*;
-moduleBody:		 declarations (BEGIN statementSequence)? END
+moduleBody:		declarations (BEGIN statementSequence)? END
 				-> declarations? ^(BODY statementSequence)?;
 module:			MODULE ident ';' moduleBody ident '.' EOF
 				-> ^(MODULE ident moduleBody);

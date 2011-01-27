@@ -1,14 +1,14 @@
 package randy.ast;
 
-import randy.value.*;
 import randy.exception.*;
 import randy.interpreter.Oberon0VariableStack;
+import randy.value.*;
 
-public class OIntegerLiteral extends OExpression
+public class OBooleanLiteral extends OExpression
 {
-	private OInteger value;
+	private OBoolean value;
 	
-	public OIntegerLiteral(OInteger _value)
+	public OBooleanLiteral(OBoolean _value)
 	{
 		assert(_value != null);
 		value = _value;
@@ -17,7 +17,7 @@ public class OIntegerLiteral extends OExpression
 	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
 	{
 		assert(vars != null);
-		// Return the integer value
+		// Return the boolean value
 		return value;
 	}
 	@Override

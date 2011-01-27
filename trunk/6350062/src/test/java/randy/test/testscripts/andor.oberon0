@@ -1,114 +1,114 @@
 MODULE Andor;
 
-VAR a, b: INTEGER;
+VAR t, f: BOOLEAN;
 BEGIN
 
-a := 12;
-b := 13;
+t := TRUE;
+f := FALSE;
 
-IF (a = a) & (b = b) THEN
+IF t & t THEN
 	Write(1)
 ELSE
 	Write(0)
 END;
 
-IF (a = a) & (a = b) THEN
+IF t & f THEN
 	Write(1)
 ELSE
 	Write(0)
 END;
 
-IF (a = b) & (b = b) THEN
+IF f & t THEN
 	Write(1)
 ELSE
 	Write(0)
 END;
 
-IF (a = b) & (a = b) THEN
+IF f & f THEN
 	Write(1)
 ELSE
 	Write(0)
 END;
 
-IF (a = a) OR (b = b) THEN
+IF t OR t THEN
 	Write(1)
 ELSE
 	Write(0)
 END;
 
-IF (a = a) OR (a = b) THEN
+IF t OR f THEN
 	Write(1)
 ELSE
 	Write(0)
 END;
 
-IF (a = b) OR (b = b) THEN
+IF f OR t THEN
 	Write(1)
 ELSE
 	Write(0)
 END;
 
-IF (a = b) OR (a = b) THEN
+IF f OR f THEN
 	Write(1)
 ELSE
 	Write(0)
 END;
 
-IF (a = a) = (b = b) THEN
+IF t = t THEN
 	Write(1)
 ELSE
 	Write(0)
 END;
 
-IF (a = b) = (b = a) THEN
+IF f = f THEN
 	Write(1)
 ELSE
 	Write(0)
 END;
 
-IF (a = b) = (b = b) THEN
+IF f = t THEN
 	Write(1)
 ELSE
 	Write(0)
 END;
 
-IF (a = a) = (a = b) THEN
+IF t = f THEN
 	Write(1)
 ELSE
 	Write(0)
 END;
 
-IF (a = a) # (b = b) THEN
+IF t # t THEN
 	Write(1)
 ELSE
 	Write(0)
 END;
 
-IF (a = b) # (b = a) THEN
+IF f # f THEN
 	Write(1)
 ELSE
 	Write(0)
 END;
 
-IF (a = b) # (b = b) THEN
+IF f # t THEN
 	Write(1)
 ELSE
 	Write(0)
 END;
 
-IF (a = a) # (a = b) THEN
+IF t # f THEN
 	Write(1)
 ELSE
 	Write(0)
 END;
 
-IF (a = b) THEN
+IF f THEN
 	Write(1)
 ELSE
 	Write(0)
 END;
 
-IF ~(a = b) THEN
+IF ~f THEN
 	Write(1)
 ELSE
 	Write(0)
