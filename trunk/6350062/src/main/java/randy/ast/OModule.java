@@ -28,7 +28,6 @@ public class OModule extends OASTNode
 		{
 			bd.run(vars);
 		}
-		// TODO: rekening houden met body's die leeg (null) zijn, als dit mogelijk is
 		// Run the body of the module
 		return body.run(vars);
 	}
