@@ -56,6 +56,19 @@ public class OASTNodeNullVisitor implements OASTNodeVisitor
 		
 	}
 	
+	public void visitBefore(OBooleanLiteral booleanLiteral) throws Oberon0Exception
+	{
+		
+	}
+	public void visit(OBooleanLiteral booleanLiteral) throws Oberon0Exception
+	{
+		
+	}
+	public void visitAfter(OBooleanLiteral booleanLiteral) throws Oberon0Exception
+	{
+		
+	}
+
 	public void visitBefore(OConstDeclaration constDeclaration) throws Oberon0Exception
 	{
 		

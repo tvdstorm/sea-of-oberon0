@@ -93,7 +93,13 @@ public class Oberon0ASTTreeGenerator
 			default:
 				throw new Oberon0ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + "."); 
 		}
-	}public static OConstDeclaration buildConstDeclaration(Tree tree) throws Oberon0Exception
+	}
+	public static OBooleanLiteral buildBooleanLiteral(Tree tree) throws Oberon0Exception
+	{
+		assert(tree.getType() == Oberon0Parser.TRUE || tree.getType() == Oberon0Parser.FALSE);
+		return new OBooleanLiteral(new OBoolean(Boolean.parseBoolean(tree.getText())));
+	}
+	public static OConstDeclaration buildConstDeclaration(Tree tree) throws Oberon0Exception
 	{
 		assert(tree.getType() == Oberon0Parser.CONST);
 		assert(tree.getChildCount() == 2);
@@ -124,6 +130,9 @@ public class Oberon0ASTTreeGenerator
 			case Oberon0Parser.AND:
 			case Oberon0Parser.OR:
 				return buildInfixExpression(tree);
+			case Oberon0Parser.TRUE:
+			case Oberon0Parser.FALSE:
+				return buildBooleanLiteral(tree);
 			case Oberon0Parser.INTEGER:
 				return buildIntegerLiteral(tree);
 			case Oberon0Parser.PROCEDURECALL:

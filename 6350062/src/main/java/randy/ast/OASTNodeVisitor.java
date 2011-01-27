@@ -20,6 +20,10 @@ public interface OASTNodeVisitor
 	public void visit(OBlock block) throws Oberon0Exception;
 	public void visitAfter(OBlock block) throws Oberon0Exception;
 	
+	public void visitBefore(OBooleanLiteral booleanLiteral) throws Oberon0Exception;
+	public void visit(OBooleanLiteral booleanLiteral) throws Oberon0Exception;
+	public void visitAfter(OBooleanLiteral booleanLiteral) throws Oberon0Exception;
+	
 	public void visitBefore(OConstDeclaration constDeclaration) throws Oberon0Exception;
 	public void visit(OConstDeclaration constDeclaration) throws Oberon0Exception;
 	public void visitAfter(OConstDeclaration constDeclaration) throws Oberon0Exception;
