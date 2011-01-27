@@ -1,6 +1,7 @@
 package randy.ast;
 
 import java.util.*;
+import randy.ast.visitor.OASTNodeVisitor;
 import randy.exception.*;
 import randy.interpreter.runtime.Oberon0VariableStack;
 import randy.value.*;
