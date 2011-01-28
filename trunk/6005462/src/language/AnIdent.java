@@ -45,4 +45,8 @@ public class AnIdent implements IType {
 			return this.value.operate(op, secondVal);
 		}
 	}
+	
+	public AnValue getValue(){
+		return this.value;
+	}
 }

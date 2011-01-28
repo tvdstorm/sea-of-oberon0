@@ -30,6 +30,8 @@ tokens {
     NUMBER;
     VARS;
     VALUE;
+    CONSTS;
+    TYPES;
 } 
 
 @header {
@@ -200,11 +202,11 @@ declarations
 
 constDecls
     :   CONST (ident EQ expression SEMI)* 
-    ->  ^(CONST ^(ident expression)*) ;
+    ->  ^(CONSTS ^(CONST ident expression)*) ;
 
 typeDecls
     :   TYPE (ident EQ type SEMI)* 
-    ->  ^(TYPE ^(ident type)*) ;
+    ->  ^(TYPES ^(TYPE ident type)*) ;
  
 varDecls
     :   VAR (identList COLON type SEMI)* 
