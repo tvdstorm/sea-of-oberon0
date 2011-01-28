@@ -3,17 +3,16 @@ package nl.bve.uva.oberon.treeadaptor;
 import org.antlr.runtime.tree.CommonTree;
 import org.antlr.runtime.Token;
 
-public class OberonNode extends CommonTree {
+public class OberonRootNode extends CommonTree {
 	protected int value = 0;
 	
-	public OberonNode() {
+	public OberonRootNode() {
 		super();
-		System.out.println("OberonNode()");
+		
 	}
 	
-	public OberonNode(Token t) {
+	public OberonRootNode(Token t) {
 		super(t);
-		System.out.println("OberonNode(" +t+ ")");
 	}
 	
 	/** Get the List value of this node. */ 

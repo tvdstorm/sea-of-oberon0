@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g 2011-01-28 11:56:03
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g 2011-01-28 14:36:50
 
 package nl.bve.uva.oberon.parser;
 
@@ -791,8 +791,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = DECL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:18:6: ()
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:18:8: 
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:17:6: ()
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:17:8: 
             {
             }
 
@@ -809,8 +809,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = PROCEDURE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:20:2: ( 'PROCEDURE' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:20:4: 'PROCEDURE'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:19:2: ( 'PROCEDURE' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:19:4: 'PROCEDURE'
             {
             match("PROCEDURE"); 
 
@@ -830,8 +830,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = TYPEDEF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:23:9: ( 'TYPE' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:23:11: 'TYPE'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:22:9: ( 'TYPE' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:22:11: 'TYPE'
             {
             match("TYPE"); 
 
@@ -851,8 +851,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = CONSTDEF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:24:9: ( 'CONST' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:24:11: 'CONST'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:23:9: ( 'CONST' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:23:11: 'CONST'
             {
             match("CONST"); 
 
@@ -872,8 +872,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = VARDEF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:25:8: ( 'VAR' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:25:10: 'VAR'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:24:8: ( 'VAR' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:24:10: 'VAR'
             {
             match("VAR"); 
 
@@ -893,10 +893,10 @@ public class OberonLexer extends Lexer {
         try {
             int _type = NEWLINE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:28:9: ( ( '\\r' )? '\\n' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:28:11: ( '\\r' )? '\\n'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:27:9: ( ( '\\r' )? '\\n' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:27:11: ( '\\r' )? '\\n'
             {
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:28:11: ( '\\r' )?
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:27:11: ( '\\r' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -905,7 +905,7 @@ public class OberonLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:28:11: '\\r'
+                    // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:27:11: '\\r'
                     {
                     match('\r'); 
 
@@ -932,10 +932,10 @@ public class OberonLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:29:4: ( ( ' ' | '\\t' | '\\n' | '\\r' )+ )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:29:6: ( ' ' | '\\t' | '\\n' | '\\r' )+
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:28:4: ( ( ' ' | '\\t' | '\\n' | '\\r' )+ )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:28:6: ( ' ' | '\\t' | '\\n' | '\\r' )+
             {
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:29:6: ( ' ' | '\\t' | '\\n' | '\\r' )+
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:28:6: ( ' ' | '\\t' | '\\n' | '\\r' )+
             int cnt2=0;
             loop2:
             do {
@@ -990,10 +990,10 @@ public class OberonLexer extends Lexer {
         try {
             int _type = LETTER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:30:8: ( ( 'a' .. 'z' | 'A' .. 'Z' )+ )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:30:10: ( 'a' .. 'z' | 'A' .. 'Z' )+
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:29:8: ( ( 'a' .. 'z' | 'A' .. 'Z' )+ )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:29:10: ( 'a' .. 'z' | 'A' .. 'Z' )+
             {
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:30:10: ( 'a' .. 'z' | 'A' .. 'Z' )+
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:29:10: ( 'a' .. 'z' | 'A' .. 'Z' )+
             int cnt3=0;
             loop3:
             do {
@@ -1047,10 +1047,10 @@ public class OberonLexer extends Lexer {
         try {
             int _type = DIGIT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:31:7: ( ( '0' .. '9' )+ )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:31:9: ( '0' .. '9' )+
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:30:7: ( ( '0' .. '9' )+ )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:30:9: ( '0' .. '9' )+
             {
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:31:9: ( '0' .. '9' )+
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:30:9: ( '0' .. '9' )+
             int cnt4=0;
             loop4:
             do {
@@ -1064,7 +1064,7 @@ public class OberonLexer extends Lexer {
 
                 switch (alt4) {
             	case 1 :
-            	    // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:31:9: '0' .. '9'
+            	    // C:\\Eclipse\\workspace\\OberonInterpreter\\src\\main\\java\\nl\\bve\\uva\\oberon\\parser\\Oberon.g:30:9: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 

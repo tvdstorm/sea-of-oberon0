@@ -30,11 +30,12 @@ public class App {
 		// Begin parsing at rule prog
 		OberonParser.module_return r = parser.module();
 		// WALK RESULTING TREE
-		CommonTree t = (CommonTree)r.getTree(); // get tree from parse
+		OberonRootNode t = (OberonRootNode)r.getTree(); // get tree from parse
 		// Create a tree node stream from resulting tree
 		CommonTreeNodeStream nodes = new CommonTreeNodeStream(t);
 		
 		System.out.println(t.toStringTree());
+		System.out.println(nodes.toTokenTypeString());
 		
 //		Eval walker = new Eval(nodes); // create a tree parser
 //		walker.prog(); // launch at start rule prog

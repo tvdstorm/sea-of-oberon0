@@ -7,12 +7,15 @@ import org.antlr.runtime.tree.CommonTreeAdaptor;
 public class OberonNodeAdaptor extends CommonTreeAdaptor {
 	public OberonNodeAdaptor() {
 		super();
-		System.out.println("OberonNodeAdaptor()");
 	}
 	
 	
     public Object create(Token t) {
-    	System.out.println("creating: " +t);
-    	return new OberonNode(t);
+    	if (t != null) {
+    		System.out.println("create(" +t.getType()+ ", " +t.getText()+ ", " +t.getTokenIndex()+ ")");
+    		return new OberonRootNode(t);
+    	}
+
+    	return new OberonRootNode();
     } 
 }
