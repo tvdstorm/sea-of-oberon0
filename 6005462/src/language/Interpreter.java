@@ -54,7 +54,7 @@ public class Interpreter {
 		CharStream cs = new ANTLRStringStream(input);
 		CommonTree tree = parseExpression(cs);
 		
-		AnExpression exp = AstNodeFactory.createExpression(tree);
+		AnExpression exp = AstNodeFactory.createAnExpression(tree);
 		AnValue a = exp.eval();
 		if (!a.getBoolean().getValue()) throw new Exception("WTF");
 	}

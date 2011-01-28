@@ -1,21 +1,17 @@
 package language;
 
 public class AnIdentConst extends AnIdent {
-
-	private boolean hasBeenAssigned;
+	//TODO Mss niet extenden van AnIdent omdat Assign niet van toepassing is op een const
+	// mogelijke oplossing is een abstracte Ident te maken mss zelfs met de naam variabele
 	
-	public AnIdentConst(String name, ValueType valType) {
-		super(name, valType);
-		this.hasBeenAssigned = false;
+	public AnIdentConst(String name, AnValue constVal) throws Exception {
+		super(name, constVal.getType());
+		super.value = constVal;
 	}
 	
 	@Override
 	public void assign(AnValue value) throws Exception{
-		if (!hasBeenAssigned){
-		super.value = value;
-		} else {
-			throw new Exception("Cannot reassign to a const");
-		}
+		throw new Exception("Cannot reassign to a const");
 	}
 
 }
