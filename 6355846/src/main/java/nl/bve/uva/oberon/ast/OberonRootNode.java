@@ -1,4 +1,4 @@
-package nl.bve.uva.oberon.treeadaptor;
+package nl.bve.uva.oberon.ast;
 
 import org.antlr.runtime.tree.CommonTree;
 import org.antlr.runtime.Token;

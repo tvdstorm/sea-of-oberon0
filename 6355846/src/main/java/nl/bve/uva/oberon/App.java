@@ -2,6 +2,7 @@ package nl.bve.uva.oberon;
 
 import java.io.FileInputStream;
 
+import nl.bve.uva.oberon.ast.OberonRootNode;
 import nl.bve.uva.oberon.parser.OberonLexer;
 import nl.bve.uva.oberon.parser.OberonParser;
 

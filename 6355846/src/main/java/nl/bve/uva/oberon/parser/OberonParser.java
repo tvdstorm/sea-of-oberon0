@@ -2,7 +2,7 @@
 
 package nl.bve.uva.oberon.parser;
 
-import nl.bve.uva.oberon.treeadaptor.OberonRootNode;
+import nl.bve.uva.oberon.ast.OberonRootNode;
 
 
 import org.antlr.runtime.*;
