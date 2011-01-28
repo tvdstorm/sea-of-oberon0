@@ -53,8 +53,7 @@ public class Oberon0ASTTreeGenerator
 	{
 		assert(tree.getType() == Oberon0Parser.ASSIGNMENT);
 		assert(tree.getChildCount() == 2);
-		if (tree.getChild(0).getType() != Oberon0Parser.LH || tree.getChild(1).getType() != Oberon0Parser.RH)
-			throw new Oberon0ASTTreeBuildException("Missing LH or RH children on assignment.");
+		assert(tree.getChild(0).getType() == Oberon0Parser.LH && tree.getChild(1).getType() == Oberon0Parser.RH);
 		OSelector lhs = buildSelector(tree.getChild(0).getChild(0));
 		OExpression rhs = buildExpression(tree.getChild(1).getChild(0));
 		return new OAssignmentStatement(lhs, rhs);
@@ -62,13 +61,8 @@ public class Oberon0ASTTreeGenerator
 	public static OASTNode buildASTTree(Tree tree) throws Oberon0Exception
 	{
 		assert(tree != null);
-		switch (tree.getType())
-		{
-			case Oberon0Parser.MODULE:
-				return buildModule(tree);
-			default:
-				throw new Oberon0ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + ".");
-		}
+		assert(tree.getType() == Oberon0Parser.MODULE);
+		return buildModule(tree);
 	}
 	public static OBlock buildBlock(Tree tree) throws Oberon0Exception
 	{
