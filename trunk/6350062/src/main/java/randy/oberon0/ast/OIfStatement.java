@@ -1,7 +1,6 @@
 package randy.oberon0.ast;
 
 import java.util.*;
-import randy.oberon0.ast.visitor.OASTNodeVisitor;
 import randy.oberon0.ast.datastructures.Tuple;
 import randy.oberon0.exception.*;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
@@ -38,19 +37,5 @@ public class OIfStatement extends OStatement
 		if (elseBody != null)
 			elseBody.run(environment);
 		return null;
-	}
-	@Override
-	public void accept(OASTNodeVisitor visitor) throws Oberon0Exception
-	{
-		visitor.visitBefore(this);
-		visitor.visit(this);
-		for (Tuple<OExpression, OBlock> curIf : ifStatements)
-		{
-			curIf.getFirst().accept(visitor);
-			curIf.getSecond().accept(visitor);
-		}
-		if (elseBody != null)
-			elseBody.accept(visitor);
-		visitor.visitAfter(this);
 	}
 }
