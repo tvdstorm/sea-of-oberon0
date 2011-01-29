@@ -12,16 +12,17 @@ package com.arievanderveek.soo.util;
  */
 public class SeaOfOberonConfiguration {
 	
-	private String oberonParserClass = "com.arievanderveek.soo.parser.antlrimpl.AntlParserImpl";
-	private String sourceCodeFileName = null; 
+	
+	
+	private String parserImplClass, visitorImplClass, sourceCodeFileName; 
 
 	/**
-	 * Setter for Oberon Parser Implementation
-	 * 
-	 * @param oberonParser the oberonParser to set
+	 * Setter for Oberon Parser Implementation class. Default value is: 
+	 * "com.arievanderveek.soo.parser.antlrimpl.AntlParserImpl"
+	 * @param parserImplClass The Oberon-0 parser implementation fully qualified classname
 	 */
-	public void setOberonParser(String oberonParserClass) {
-		this.oberonParserClass = oberonParserClass;
+	public void setParserImplClass(String parserImplClass) {
+		this.parserImplClass = parserImplClass;
 	}
 
 	/**
@@ -29,15 +30,14 @@ public class SeaOfOberonConfiguration {
 	 * 
 	 * @return the oberonParser
 	 */
-	public String getOberonParserClass() {
-		return oberonParserClass;
+	public String getParserImplClass() {
+		return parserImplClass;
 	}
 
 	/**
 	 * Setter for source code file name that is input for the Oberon-0 parser
 	 * and interpreter
-	 * 
-	 * @param sourceCodeFile the sourceCodeFile to set
+	 * @param sourceCodeFileName the sourceCodeFile to set 
 	 */
 	public void setSourceCodeFileName(String sourceCodeFileName) {
 		this.sourceCodeFileName = sourceCodeFileName;
@@ -51,6 +51,23 @@ public class SeaOfOberonConfiguration {
 	public String getSourceCodeFileName() {
 		return sourceCodeFileName;
 	}
-	
 
+	/**
+	 * Getter for the visitorImplClass
+	 * 
+	 * @return the visitorImplClass
+	 */
+	public String getVisitorImplClass() {
+		return visitorImplClass;
+	}
+
+	/**
+	 * Setter for the visitorImplClass. By default it is: 
+	 * "com.arievanderveek.soo.visitors.PrettyPrintVisitor"
+	 * 
+	 * @param visitorImplClass the visitorImplClass to set
+	 */
+	public void setVisitorImplClass(String visitorImplClass) {
+		this.visitorImplClass = visitorImplClass;
+	}
 }

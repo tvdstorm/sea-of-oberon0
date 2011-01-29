@@ -1,5 +1,8 @@
 package com.arievanderveek.soo;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import com.arievanderveek.soo.util.ConfigurationFactory;
 import com.arievanderveek.soo.util.SeaOfOberonConfiguration;
 
@@ -10,6 +13,9 @@ import com.arievanderveek.soo.util.SeaOfOberonConfiguration;
  * 
  */
 public class Main {
+	
+	private final static Logger LOGGER = Logger
+	.getLogger(Main.class.getName());
 	
 	/**
 	 * Parses the arguments and instantiates a instance of the oberon-0
@@ -24,7 +30,7 @@ public class Main {
 			sooc.executeSourceCode();
 			System.exit(0);
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE,"Exception encountered, exiting program", e);
 			System.exit(1);
 		}
 	}

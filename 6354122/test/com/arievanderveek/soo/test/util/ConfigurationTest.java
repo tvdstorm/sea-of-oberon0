@@ -1,0 +1,108 @@
+/**
+ * 
+ */
+package com.arievanderveek.soo.test.util;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import com.arievanderveek.soo.SeaOfOberonException;
+import com.arievanderveek.soo.util.ConfigurationFactory;
+import com.arievanderveek.soo.util.SeaOfOberonConfiguration;
+import com.sun.net.httpserver.Authenticator.Success;
+
+/**
+ * @author arieveek
+ * 
+ */
+public class ConfigurationTest {
+
+	private static final String correctAllArguments[] = { "-sourcefile",
+			"oberon.0", "-parser", "arie.test.parser.iscorrect", 
+			"-visitor", "arie.test.visitor.iscorrect" };
+	private static final String correctRequiredArguments[] = { "-sourcefile",
+			"oberon.0" };
+	private static final String faultyArguments[] = { "-sourcefile",
+			"oberon.0", "-pigscanfly" };
+
+	/**
+	 * Test method for
+	 * {@link com.arievanderveek.soo.util.ConfigurationFactory#createConfiguration(java.lang.String[])}
+	 * .
+	 * 
+	 * Tests if the {@link SeaOfOberonConfiguration} is created correctly with
+	 * all arguments.
+	 * 
+	 * @throws SeaOfOberonException
+	 *             If the given arguments were not correct.
+	 */
+	@Test
+	public void testCreateConfigurationAllArguments()
+			throws SeaOfOberonException {
+		// Create the reference correct object for the assert
+		SeaOfOberonConfiguration refConfig = new SeaOfOberonConfiguration();
+		refConfig.setSourceCodeFileName(correctAllArguments[1]);
+		refConfig.setParserImplClass(correctAllArguments[3]);
+		refConfig.setVisitorImplClass(correctAllArguments[5]);
+		// Create the configuration using the factory
+		SeaOfOberonConfiguration config = ConfigurationFactory
+				.createConfiguration(correctAllArguments);
+		// Assert the config against the reference object
+		assertEquals(config.getSourceCodeFileName(),
+				refConfig.getSourceCodeFileName());
+		assertEquals(config.getParserImplClass(),
+				refConfig.getParserImplClass());
+		assertEquals(config.getVisitorImplClass(),
+				refConfig.getVisitorImplClass());
+	}
+
+	/**
+	 * Test method for
+	 * {@link com.arievanderveek.soo.util.ConfigurationFactory#createConfiguration(java.lang.String[])}
+	 * .
+	 * 
+	 * Tests if the {@link SeaOfOberonConfiguration} is created correctly with
+	 * the required arguments.
+	 * 
+	 * @throws SeaOfOberonException
+	 *             If the given arguments were not correct.
+	 */
+	@Test
+	public void testCreateConfigurationRequiredArguments()
+			throws SeaOfOberonException {
+		// Create the reference correct object for the assert
+		SeaOfOberonConfiguration refConfig = new SeaOfOberonConfiguration();
+		refConfig.setSourceCodeFileName(correctRequiredArguments[1]);
+		// Create the configuration using the factory
+		SeaOfOberonConfiguration config = ConfigurationFactory
+				.createConfiguration(correctRequiredArguments);
+		// Assert the config against the reference object
+		assertEquals(config.getSourceCodeFileName(),
+				refConfig.getSourceCodeFileName());
+	}
+
+	/**
+	 * Test method for
+	 * {@link com.arievanderveek.soo.util.ConfigurationFactory#createConfiguration(java.lang.String[])}
+	 * .
+	 * 
+	 * Tests if the {@link SeaOfOberonConfiguration} throws a correct exception
+	 * with faulty arguments.
+	 */
+	@Test
+	public void testCreateConfigurationFaultyArguments() {
+		// Create the configuration using the factory
+		try {
+			SeaOfOberonConfiguration config = ConfigurationFactory
+					.createConfiguration(faultyArguments);
+			fail("Creating a configuration with faulty arguments shoul result in an Exception");
+		} catch (SeaOfOberonException sooe) {
+			// This should result in a message stating that pigscanfly is a
+			// faulty argument
+			assertTrue(
+					"Exception is thrown, but argument is not in the exception message",
+					sooe.getCause().getMessage().contains("-pigscanfly"));
+		}
+	}
+}

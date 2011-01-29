@@ -28,9 +28,15 @@ public class ConfigurationFactory {
 
 	private final static Logger LOGGER = Logger
 			.getLogger(SeaOfOberonException.class.getName());
-	
+
+	private final static String OPTION_SOURCE_FILE = "sourcefile"; 
+	private final static String OPTION_PARSER = "parser"; 
+	private final static String OPTION_VISITOR = "visitor"; 
+
 	private final static String DEFAULT_PARSER_IMPL = 
-			"com.arievanderveek.soo.parser.antlrimpl.AntlParserImpl";
+		"com.arievanderveek.soo.parser.antlrimpl.AntlrParserImpl";
+	private final static String DEFAULT_VISITOR_IMPL = 
+		"com.arievanderveek.soo.visitors.EvaluatorVisitor";	
 
 	/**
 	 * Creates a SeaOfOberonConfiguration containing the configuration to be 
@@ -70,18 +76,29 @@ public class ConfigurationFactory {
 			CommandLine cmd = cliParser.parse(options, args);
 			// Fill the configuration object with all the parsed options or
 			// if applicable an default value
-			String oberonParserClass = cmd.getOptionValue("implclass");
-			if (oberonParserClass == null) {
+			String parserImplClass = cmd.getOptionValue(OPTION_PARSER);
+			if (parserImplClass == null) {
 				LOGGER.log(Level.FINEST,
 						"Using default parser. Class:" + " {}",
 						new Object[] { DEFAULT_PARSER_IMPL });
-				configuration.setOberonParser(DEFAULT_PARSER_IMPL);
+				configuration.setParserImplClass(DEFAULT_PARSER_IMPL);
 			} else {
 				LOGGER.log(Level.FINEST, "Using alternative parser. Class:"
-						+ " {}", new Object[] { oberonParserClass });
-				configuration.setOberonParser(oberonParserClass);
+						+ " {}", new Object[] { parserImplClass });
+				configuration.setParserImplClass(parserImplClass);
 			}
-			String sourceFileName = cmd.getOptionValue("sourcefile");
+			String visitorImplClass = cmd.getOptionValue("visitor");
+			if (visitorImplClass == null) {
+				LOGGER.log(Level.FINEST,
+						"Using default parser. Class:" + " {}",
+						new Object[] { DEFAULT_PARSER_IMPL });
+				configuration.setVisitorImplClass(DEFAULT_VISITOR_IMPL);
+			} else {
+				LOGGER.log(Level.FINEST, "Using alternative parser. Class:"
+						+ " {}", new Object[] { visitorImplClass });
+				configuration.setVisitorImplClass(visitorImplClass);
+			}			
+			String sourceFileName = cmd.getOptionValue(OPTION_SOURCE_FILE);
 			if (sourceFileName == null) {
 				throw new SeaOfOberonException(
 						"The source input file was not provided.");
@@ -94,6 +111,7 @@ public class ConfigurationFactory {
 		} catch (ParseException exp) {
 			// parsing of arguments went wrong. Print message and help
 			printHelp(options, exp.getMessage());
+			throw new SeaOfOberonException("Command line arguments where not correct", exp);
 		}
 		return configuration;
 
@@ -111,29 +129,35 @@ public class ConfigurationFactory {
 		// automatically generate the help statement
 		HelpFormatter formatter = new HelpFormatter();
 		formatter.printHelp(message, options);
-		//TODO: Arie: Is it smart to use exit outside main method? Rethinks approach
-		System.exit(1);
 	}
 
+	//TODO: Arie: Remove warnings, think of best solution.For now suppres them
+	@SuppressWarnings("static-access")
 	private static Options creatOptions() {
-		//TODO: Arie: Remove warnings, think of best solution.
-		// Create the option objects to add the options
-		// Mandatory option Source File Name
-		Option sourceFile = OptionBuilder.withArgName("sourcefile")
+		// Create the option objects that represent the arguments
+		Option sourceFile = OptionBuilder.withArgName(OPTION_SOURCE_FILE)
 				.isRequired()
 				.hasArg()
 				.withDescription("The input Oberon-0 source file")
-				.create("sourcefile");
-		// Optional Option Parser Implementation Class
-		Option implClass = OptionBuilder
-				.withArgName("implclass")
+				.create(OPTION_SOURCE_FILE);
+		Option parserImpl = OptionBuilder
+				.withArgName(OPTION_PARSER)
 				.hasArg()
 				.withDescription(
-						"The parser implementation class. ANTLR is used by default")
-				.create("implclass");
+						"The parser implementation fully qualified class name. " +
+						"ANTLR is used by default.")
+				.create(OPTION_PARSER);
+		Option visitorImpl = OptionBuilder
+		.withArgName(OPTION_VISITOR)
+		.hasArg()
+		.withDescription(
+				"The visitor implementation class fully qualified class name. " +
+				"PrettyPrintVisitor is used by default.")
+		.create(OPTION_VISITOR);		
 		// Create an options object to add 0 or more options to.
 		Options options = new Options();
-		options.addOption(implClass);
+		options.addOption(parserImpl);
+		options.addOption(visitorImpl);
 		options.addOption(sourceFile);
 		return options;
 	}
