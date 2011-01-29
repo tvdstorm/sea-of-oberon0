@@ -10,4 +10,8 @@ public class Oberon0TypeMismatchException extends Oberon0RuntimeException
 	{
 		super("Type mismatch: cannot convert from " + fromType + " to " + toType + ".");
 	}
+	public Oberon0TypeMismatchException(Type fromType, String toType)
+	{
+		super("Type mismatch: cannot convert from " + fromType + " to " + toType + ".");
+	}
 }

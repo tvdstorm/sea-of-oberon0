@@ -38,7 +38,7 @@ public class OArray extends OValue
 		values = new OValue[v.values.length];
 		for (int i=0;i<v.values.length;i++)
 		{
-			values[i] = OValue.makeNew(v.values[i].getType());
+			values[i] = OValue.makeNew(v.values[i].getType()); // TODO: anders aanpakken i.v.m. RECORDS en POINTER TO
 		}
 	}
 	public Type getType()

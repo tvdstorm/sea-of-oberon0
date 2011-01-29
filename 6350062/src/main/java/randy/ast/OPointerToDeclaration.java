@@ -20,7 +20,7 @@ public class OPointerToDeclaration extends OAbstractTypeDeclaration
 	@Override
 	public OValue run(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
 	{
-		// TODO Auto-generated method stub
+		// Leeg
 		return null;
 	}
 	@Override

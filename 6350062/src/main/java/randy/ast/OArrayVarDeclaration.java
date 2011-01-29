@@ -55,11 +55,17 @@ public class OArrayVarDeclaration extends OVarDeclaration
 				vars.addVariable(name, param);
 			else
 			{
-				if (arrayLength.run(vars, typeRegistry).castToInteger().getIntValue() != param.getLength())
+				OInteger length = arrayLength.run(vars, typeRegistry).castToInteger();
+				if (length.getIntValue() != param.getLength())
 					throw new Oberon0ArrayLengthMismatch();
-				// TODO: Vervangen door nieuwe methode
-				OArray val = new OArray(param);
-				vars.addVariable(name, val);
+				OInstantiateableVariable arrayType = typeRegistry.resolve(type);
+				OArrayVariableInstantiation arrayCreator = new OArrayVariableInstantiation(arrayType);
+				arrayCreator.setLength(length.getIntValue());
+				OArray val = (OArray)arrayCreator.instantiate(typeRegistry);
+				for (int i=0;i<length.getIntValue();i++)
+				{
+					val.getIndexValue(i).setValue(param.getIndexValue(i));
+				}
 			}
 		}
 	}
