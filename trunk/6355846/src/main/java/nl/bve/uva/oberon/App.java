@@ -5,8 +5,7 @@ import java.io.FileInputStream;
 import nl.bve.uva.oberon.ast.OberonRootNode;
 import nl.bve.uva.oberon.parser.OberonLexer;
 import nl.bve.uva.oberon.parser.OberonParser;
-
-import nl.bve.uva.oberon.treeadaptor.*;
+import nl.bve.uva.oberon.treeadaptor.OberonNodeAdaptor;
 
 import org.antlr.runtime.ANTLRInputStream;
 import org.antlr.runtime.CommonTokenStream;
@@ -31,7 +30,9 @@ public class App {
 		// Begin parsing at rule prog
 		OberonParser.module_return r = parser.module();
 		// WALK RESULTING TREE
-		OberonRootNode t = (OberonRootNode)r.getTree(); // get tree from parse
+		CommonTree t = (CommonTree)r.getTree(); // get tree from parser
+		System.out.println(t+ " ## " +t.getClass());
+		System.out.println("$$$$: " +t.toString());
 		// Create a tree node stream from resulting tree
 		CommonTreeNodeStream nodes = new CommonTreeNodeStream(t);
 		
