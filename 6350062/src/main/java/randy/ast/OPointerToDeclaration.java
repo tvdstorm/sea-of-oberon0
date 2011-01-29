@@ -3,8 +3,8 @@ package randy.ast;
 import randy.ast.visitor.OASTNodeVisitor;
 import randy.exception.Oberon0Exception;
 import randy.exception.Oberon0RuntimeException;
-import randy.interpreter.preprocess.TypeRegistry;
 import randy.interpreter.runtime.Oberon0VariableStack;
+import randy.interpreter.runtime.TypeRegistry;
 import randy.value.OValue;
 
 public class OPointerToDeclaration extends OAbstractTypeDeclaration
@@ -20,7 +20,7 @@ public class OPointerToDeclaration extends OAbstractTypeDeclaration
 	@Override
 	public OValue run(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
 	{
-		// Leeg
+		typeRegistry.addType(getName(), new OPointerToInstantiation(getPointsTo()));
 		return null;
 	}
 	@Override

@@ -1,7 +1,7 @@
 package randy.ast;
 
 import randy.exception.Oberon0RuntimeException;
-import randy.interpreter.preprocess.TypeRegistry;
+import randy.interpreter.runtime.TypeRegistry;
 import randy.value.*;
 
 public class OArrayVariableInstantiation implements OInstantiateableVariable

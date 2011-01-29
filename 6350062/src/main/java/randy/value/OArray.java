@@ -2,7 +2,7 @@ package randy.value;
 
 import randy.ast.OInstantiateableVariable;
 import randy.exception.*;
-import randy.interpreter.preprocess.TypeRegistry;
+import randy.interpreter.runtime.TypeRegistry;
 
 public class OArray extends OValue
 {

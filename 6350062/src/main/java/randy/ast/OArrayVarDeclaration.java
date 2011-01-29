@@ -3,8 +3,8 @@ package randy.ast;
 import java.util.*;
 import randy.ast.visitor.OASTNodeVisitor;
 import randy.exception.*;
-import randy.interpreter.preprocess.TypeRegistry;
 import randy.interpreter.runtime.Oberon0VariableStack;
+import randy.interpreter.runtime.TypeRegistry;
 import randy.value.*;
 
 public class OArrayVarDeclaration extends OVarDeclaration

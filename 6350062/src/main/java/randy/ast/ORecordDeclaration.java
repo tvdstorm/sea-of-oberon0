@@ -3,8 +3,8 @@ package randy.ast;
 import java.util.*;
 import randy.ast.visitor.OASTNodeVisitor;
 import randy.exception.*;
-import randy.interpreter.preprocess.TypeRegistry;
 import randy.interpreter.runtime.Oberon0VariableStack;
+import randy.interpreter.runtime.TypeRegistry;
 import randy.value.OValue;
 
 public class ORecordDeclaration extends OAbstractTypeDeclaration
@@ -20,7 +20,7 @@ public class ORecordDeclaration extends OAbstractTypeDeclaration
 	@Override
 	public OValue run(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
 	{
-		// Niets
+		typeRegistry.addType(getName(), new ORecordInstantiation(getMembers()));
 		return null;
 	}
 	@Override

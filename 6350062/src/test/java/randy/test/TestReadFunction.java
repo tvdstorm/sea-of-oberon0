@@ -3,8 +3,8 @@ package randy.test;
 import java.util.Queue;
 import randy.ast.OInvokableFunction;
 import randy.exception.*;
-import randy.interpreter.preprocess.TypeRegistry;
 import randy.interpreter.runtime.Oberon0VariableStack;
+import randy.interpreter.runtime.TypeRegistry;
 import randy.value.*;
 
 public class TestReadFunction implements OInvokableFunction
@@ -32,5 +32,11 @@ public class TestReadFunction implements OInvokableFunction
 	public String getName()
 	{
 		return "Read";
+	}
+	@Override
+	public OValue runTypeDeclarations(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
+	{
+		// Leeg
+		return null;
 	}
 }
