@@ -2,8 +2,11 @@ package randy.oberon0.test;
 
 import java.util.Random;
 import org.junit.*;
+import randy.oberon0.exception.Exception;
 import randy.oberon0.exception.*;
 import randy.oberon0.interpreter.runtime.*;
+import randy.oberon0.value.Boolean;
+import randy.oberon0.value.Integer;
 import randy.oberon0.value.*;
 import java.util.*;
 
@@ -11,7 +14,7 @@ public class ASTNodeTest
 {
 	private final int numTests = 1000;
 	private Random random;
-	private Oberon0Program program;
+	private Program program;
 	private TestBuildinFunctions functions;
 	
 	public ASTNodeTest()
@@ -185,11 +188,11 @@ public class ASTNodeTest
 			program.run();
 			Assert.fail("Should be throwing an Oberon0ConstAssignmentException...");
 		}
-		catch (Oberon0ConstAssignmentException e)
+		catch (ConstAssignmentException e)
 		{
 			// Success
 		}
-		catch (Oberon0Exception e)
+		catch (Exception e)
 		{
 			Assert.fail("Should be throwing an Oberon0ConstAssignmentException instead of a general Oberon0Exception...");
 		}
@@ -203,11 +206,11 @@ public class ASTNodeTest
 			program.run();
 			Assert.fail("Should be throwing an Oberon0TypeMismatchException...");
 		}
-		catch (Oberon0TypeMismatchException e)
+		catch (TypeMismatchException e)
 		{
 			// Success
 		}
-		catch (Oberon0Exception e)
+		catch (Exception e)
 		{
 			Assert.fail("Should be throwing an Oberon0TypeMismatchException instead of a general Oberon0Exception...");
 		}
@@ -221,11 +224,11 @@ public class ASTNodeTest
 			program.run();
 			Assert.fail("Should be throwing an Oberon0TypeMismatchException...");
 		}
-		catch (Oberon0TypeMismatchException e)
+		catch (TypeMismatchException e)
 		{
 			// Success
 		}
-		catch (Oberon0Exception e)
+		catch (Exception e)
 		{
 			Assert.fail("Should be throwing an Oberon0TypeMismatchException instead of a general Oberon0Exception...");
 		}
@@ -239,11 +242,11 @@ public class ASTNodeTest
 			program.run();
 			Assert.fail("Should be throwing an Oberon0OperatorTypeUndefinedException...");
 		}
-		catch (Oberon0OperatorTypeUndefinedException e)
+		catch (OperatorTypeUndefinedException e)
 		{
 			// Success
 		}
-		catch (Oberon0Exception e)
+		catch (Exception e)
 		{
 			Assert.fail("Should be throwing an Oberon0OperatorTypeUndefinedException instead of a general Oberon0Exception...");
 		}
@@ -257,11 +260,11 @@ public class ASTNodeTest
 			program.run();
 			Assert.fail("Should be throwing an Oberon0OperatorTypeUndefinedException...");
 		}
-		catch (Oberon0OperatorTypeUndefinedException e)
+		catch (OperatorTypeUndefinedException e)
 		{
 			// Success
 		}
-		catch (Oberon0Exception e)
+		catch (Exception e)
 		{
 			Assert.fail("Should be throwing an Oberon0OperatorTypeUndefinedException instead of a general Oberon0Exception...");
 		}
@@ -275,11 +278,11 @@ public class ASTNodeTest
 			program.run();
 			Assert.fail("Should be throwing an Oberon0UndefinedMethodException...");
 		}
-		catch (Oberon0UndefinedMethodException e)
+		catch (UndefinedMethodException e)
 		{
 			// Success
 		}
-		catch (Oberon0Exception e)
+		catch (Exception e)
 		{
 			Assert.fail("Should be throwing an Oberon0UndefinedMethodException instead of a general Oberon0Exception...");
 		}
@@ -293,11 +296,11 @@ public class ASTNodeTest
 			program.run();
 			Assert.fail("Should be throwing an Oberon0IncorrectNumberOfArgumentsException...");
 		}
-		catch (Oberon0IncorrectNumberOfArgumentsException e)
+		catch (IncorrectNumberOfArgumentsException e)
 		{
 			// Success
 		}
-		catch (Oberon0Exception e)
+		catch (Exception e)
 		{
 			Assert.fail("Should be throwing an Oberon0IncorrectNumberOfArgumentsException instead of a general Oberon0Exception...");
 		}
@@ -311,11 +314,11 @@ public class ASTNodeTest
 			program.run();
 			Assert.fail("Should be throwing an Oberon0IncorrectNumberOfArgumentsException...");
 		}
-		catch (Oberon0IncorrectNumberOfArgumentsException e)
+		catch (IncorrectNumberOfArgumentsException e)
 		{
 			// Success
 		}
-		catch (Oberon0Exception e)
+		catch (Exception e)
 		{
 			Assert.fail("Should be throwing an Oberon0IncorrectNumberOfArgumentsException instead of a general Oberon0Exception...");
 		}
@@ -329,11 +332,11 @@ public class ASTNodeTest
 			program.run();
 			Assert.fail("Should be throwing an Oberon0TypeMismatchException...");
 		}
-		catch (Oberon0TypeMismatchException e)
+		catch (TypeMismatchException e)
 		{
 			// Success
 		}
-		catch (Oberon0Exception e)
+		catch (Exception e)
 		{
 			Assert.fail("Should be throwing an Oberon0TypeMismatchException instead of a general Oberon0Exception...");
 		}
@@ -392,11 +395,11 @@ public class ASTNodeTest
 			program.run();
 			Assert.fail("Should be throwing an Oberon0DuplicateVariableException...");
 		}
-		catch (Oberon0DuplicateVariableException e)
+		catch (DuplicateVariableException e)
 		{
 			// Success
 		}
-		catch (Oberon0Exception e)
+		catch (Exception e)
 		{
 			Assert.fail("Should be throwing an Oberon0DuplicateVariableException...");
 		}
@@ -410,11 +413,11 @@ public class ASTNodeTest
 			program.run();
 			Assert.fail("Should be throwing an Oberon0UndefinedVariableException...");
 		}
-		catch (Oberon0UndefinedVariableException e)
+		catch (UndefinedVariableException e)
 		{
 			// Success
 		}
-		catch (Oberon0Exception e)
+		catch (Exception e)
 		{
 			Assert.fail("Should be throwing an Oberon0UndefinedVariableException...");
 		}
@@ -443,11 +446,11 @@ public class ASTNodeTest
 			program.run();
 			Assert.fail("Should be throwing an Oberon0SelectorException...");
 		}
-		catch (Oberon0SelectorException e)
+		catch (SelectorException e)
 		{
 			// Success
 		}
-		catch (Oberon0Exception e)
+		catch (Exception e)
 		{
 			Assert.fail("Should be throwing an Oberon0SelectorException...");
 		}
@@ -461,11 +464,11 @@ public class ASTNodeTest
 			program.run();
 			Assert.fail("Should be throwing an Oberon0SelectorException...");
 		}
-		catch (Oberon0SelectorException e)
+		catch (SelectorException e)
 		{
 			// Success
 		}
-		catch (Oberon0Exception e)
+		catch (Exception e)
 		{
 			Assert.fail("Should be throwing an Oberon0SelectorException...");
 		}
@@ -486,11 +489,11 @@ public class ASTNodeTest
 			program.run();
 			Assert.fail("Should be throwing an Oberon0TypeMismatchException...");
 		}
-		catch (Oberon0TypeMismatchException e)
+		catch (TypeMismatchException e)
 		{
 			// Success
 		}
-		catch (Oberon0Exception e)
+		catch (Exception e)
 		{
 			Assert.fail("Should be throwing an Oberon0TypeMismatchException...");
 		}
@@ -520,29 +523,30 @@ public class ASTNodeTest
 			for (int i=0;i<numTests;i++)
 			{
 				int iRand = random.nextInt();
-				OInteger integer = new OInteger(iRand);
+				Integer integer = new Integer(iRand);
 				Assert.assertTrue(iRand == integer.getIntValue());
-				OInteger integer2 = new OInteger(integer);
+				Integer integer2 = new Integer(integer);
 				Assert.assertTrue(integer.getIntValue() == integer2.getIntValue());
-				OInteger integer3 = new OInteger(0);
+				Integer integer3 = new Integer(0);
 				integer3.setValue(integer);
 				Assert.assertTrue(integer.getIntValue() == integer3.getIntValue());
-				OConst cInteger = new OConst(integer);
+				Const cInteger = new Const(integer);
 				Assert.assertTrue(cInteger.getType() == integer.getType());
 				Assert.assertTrue(cInteger.toString().equals(integer.toString()));
 				
 				boolean bRand = random.nextBoolean();
-				OBoolean bool = new OBoolean(bRand);
+				Boolean bool = new Boolean(bRand);
 				Assert.assertTrue(bRand == bool.getBoolValue());
-				OBoolean bool2 = new OBoolean(bool);
+				Boolean bool2 = new Boolean(bool);
 				Assert.assertTrue(bool.getBoolValue() == bool2.getBoolValue());
-				OBoolean bool3 = new OBoolean(false);
+				Boolean bool3 = new Boolean(false);
 				bool3.setValue(bool);
 				Assert.assertTrue(bool.getBoolValue() == bool3.getBoolValue());
-				OConst cBool = new OConst(bool);
+				Const cBool = new Const(bool);
 				Assert.assertTrue(cBool.getType() == bool.getType());
 				Assert.assertTrue(cBool.toString().equals(bool.toString()));
 				
+				// TODO: fixen
 				/*int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
 				TypeRegistry typeRegistry = new TypeRegistry(null);
 				typeRegistry.addType(Type.INTEGER.getTypeText(), new OPrimitiveVariableInstantiation(Type.INTEGER));
@@ -563,14 +567,14 @@ public class ASTNodeTest
 				Assert.assertTrue(cArray.getType() == array.getType());
 				Assert.assertTrue(cArray.toString().equals(array.toString()));*/
 				
-				Assert.assertTrue(OValue.makeNew(Type.INTEGER).getType() == Type.INTEGER);
-				Assert.assertTrue(OValue.makeNew(Type.BOOLEAN).getType() == Type.BOOLEAN);
+				Assert.assertTrue(Value.makeNew(Type.INTEGER).getType() == Type.INTEGER);
+				Assert.assertTrue(Value.makeNew(Type.BOOLEAN).getType() == Type.BOOLEAN);
 				try
 				{
-					OValue.makeNew(Type.ARRAY);
+					Value.makeNew(Type.ARRAY);
 					Assert.fail("Should be throwing an Oberon0UnknownTypeException...");
 				}
-				catch (Oberon0UnknownTypeException e)
+				catch (UnknownTypeException e)
 				{
 					// Success
 				}
@@ -580,7 +584,7 @@ public class ASTNodeTest
 					integer.setValue(bool2);
 					Assert.fail("Should be throwing an Oberon0TypeMismatchException...");
 				}
-				catch (Oberon0TypeMismatchException e)
+				catch (TypeMismatchException e)
 				{
 					// Success
 				}
@@ -589,7 +593,7 @@ public class ASTNodeTest
 					bool.setValue(integer2);
 					Assert.fail("Should be throwing an Oberon0TypeMismatchException...");
 				}
-				catch (Oberon0TypeMismatchException e)
+				catch (TypeMismatchException e)
 				{
 					// Success
 				}
@@ -604,7 +608,7 @@ public class ASTNodeTest
 				}*/
 			}
 		}
-		catch (Oberon0Exception e)
+		catch (Exception e)
 		{
 			Assert.fail("Shouldn't be throwing an Oberon0Exception...");
 		}
@@ -719,10 +723,10 @@ public class ASTNodeTest
 	// TODO: types support
 	// TODO: JavaDoc, meer comments, asserts, finals?
 	@Ignore
-	private void prepareTestThrowException(String testName) throws Oberon0Exception
+	private void prepareTestThrowException(String testName) throws Exception
 	{
 		functions = new TestBuildinFunctions();
-		program = new Oberon0Program();
+		program = new Program();
 		program.loadProgram("src/test/java/randy/oberon0/test/testscripts/" + testName + ".oberon0", functions);
 	}
 	private void prepareTest(String testName)
@@ -731,7 +735,7 @@ public class ASTNodeTest
 		{
 			prepareTestThrowException(testName);
 		}
-		catch (Oberon0Exception e)
+		catch (Exception e)
 		{
 			Assert.fail(e.getMessage());
 		}
@@ -749,7 +753,7 @@ public class ASTNodeTest
 			program.setBuildinFunctions(functions);
 			program.run();
 		}
-		catch (Oberon0Exception e)
+		catch (Exception e)
 		{
 			Assert.fail(e.getMessage());
 		}

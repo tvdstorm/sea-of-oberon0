@@ -2,36 +2,37 @@ package randy.oberon0.interpreter.runtime;
 
 import java.util.*;
 import randy.oberon0.exception.*;
+import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.value.*;
 
 public class VariableStack
 {
 	private VariableStack parentScope;
-	private Map<String, OValue> variables;
+	private Map<String, Value> variables;
 	
 	public VariableStack(VariableStack _parentScope)
 	{
 		parentScope = _parentScope;
-		variables = new HashMap<String, OValue>();
+		variables = new HashMap<String, Value>();
 	}
-	public void addVariable(String name, OValue var) throws Oberon0RuntimeException
+	public void addVariable(String name, Value var) throws RuntimeException
 	{
 		if (variables.containsKey(name))
-			throw new Oberon0DuplicateVariableException(name);
+			throw new DuplicateVariableException(name);
 		variables.put(name, var);
 	}
-	public void addConstant(String name, OValue value) throws Oberon0RuntimeException
+	public void addConstant(String name, Value value) throws RuntimeException
 	{
-		addVariable(name, new OConst(value));
+		addVariable(name, new Const(value));
 	}
-	public OValue getVariable(String name) throws Oberon0RuntimeException
+	public Value getVariable(String name) throws RuntimeException
 	{
 		if (variables.containsKey(name))
 			return variables.get(name);
 		else if (parentScope != null)
 			return parentScope.getVariable(name);
 		else
-			throw new Oberon0UndefinedVariableException(name);
+			throw new UndefinedVariableException(name);
 	}
 	public VariableStack getParentScope()
 	{

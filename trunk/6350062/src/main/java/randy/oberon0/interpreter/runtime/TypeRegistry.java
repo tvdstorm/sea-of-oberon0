@@ -1,31 +1,31 @@
 package randy.oberon0.interpreter.runtime;
 
 import java.util.*;
-import randy.oberon0.exception.Oberon0UnknownTypeException;
+import randy.oberon0.exception.UnknownTypeException;
 
 public class TypeRegistry
 {
-	private Map<String, OInstantiateableVariable> types;
+	private Map<String, IInstantiateableVariable> types;
 	private TypeRegistry parent;
 	
 	public TypeRegistry(TypeRegistry _parent)
 	{
-		types = new HashMap<String, OInstantiateableVariable>();
+		types = new HashMap<String, IInstantiateableVariable>();
 		parent = _parent;
 	}
-	public void addType(String name, OInstantiateableVariable creator)
+	public void addType(String name, IInstantiateableVariable creator)
 	{
 		assert(types.get(name) == null);
 		//System.out.println("Registered " + name);
 		types.put(name, creator);
 	}
-	public OInstantiateableVariable resolve(String name) throws Oberon0UnknownTypeException
+	public IInstantiateableVariable resolve(String name) throws UnknownTypeException
 	{
 		if (types.get(name) != null)
 			return types.get(name);
 		else if (parent != null)
 			return parent.resolve(name);
 		else
-			throw new Oberon0UnknownTypeException(name);
+			throw new UnknownTypeException(name);
 	}
 }

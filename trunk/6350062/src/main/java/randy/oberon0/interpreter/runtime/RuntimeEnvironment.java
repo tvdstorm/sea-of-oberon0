@@ -1,11 +1,10 @@
 package randy.oberon0.interpreter.runtime;
 
-import randy.oberon0.ast.OInvokableFunction;
+import randy.oberon0.ast.IInvokableFunction;
 import randy.oberon0.ast.datastructures.Tuple;
-import randy.oberon0.exception.Oberon0RuntimeException;
-import randy.oberon0.exception.Oberon0UndefinedMethodException;
-import randy.oberon0.exception.Oberon0UnknownTypeException;
-import randy.oberon0.value.OValue;
+import randy.oberon0.exception.RuntimeException;
+import randy.oberon0.exception.*;
+import randy.oberon0.value.Value;
 
 public class RuntimeEnvironment
 {
@@ -46,33 +45,33 @@ public class RuntimeEnvironment
 		return depth;
 	}
 	// Variable functions
-	public void addVariable(String name, OValue var) throws Oberon0RuntimeException
+	public void addVariable(String name, Value var) throws RuntimeException
 	{
 		variableStack.addVariable(name, var);
 	}
-	public void addConstant(String name, OValue value) throws Oberon0RuntimeException
+	public void addConstant(String name, Value value) throws RuntimeException
 	{
 		variableStack.addConstant(name, value);
 	}
-	public OValue getVariable(String name) throws Oberon0RuntimeException
+	public Value getVariable(String name) throws RuntimeException
 	{
 		return variableStack.getVariable(name);
 	}
 	// Function functions
-	public void addFunction(String name, OInvokableFunction function)
+	public void addFunction(String name, IInvokableFunction function)
 	{
 		functionRegistry.addFunction(name, function, depth);
 	}
-	public Tuple<Integer, OInvokableFunction> resolveFunction(String name) throws Oberon0UndefinedMethodException
+	public Tuple<Integer, IInvokableFunction> resolveFunction(String name) throws UndefinedMethodException
 	{
 		return functionRegistry.resolve(name);
 	}
 	// Type functions
-	public void addType(String name, OInstantiateableVariable creator)
+	public void addType(String name, IInstantiateableVariable creator)
 	{
 		typeRegistry.addType(name, creator);
 	}
-	public OInstantiateableVariable resolveType(String name) throws Oberon0UnknownTypeException
+	public IInstantiateableVariable resolveType(String name) throws UnknownTypeException
 	{
 		return typeRegistry.resolve(name);
 	}

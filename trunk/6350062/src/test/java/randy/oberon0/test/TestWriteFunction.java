@@ -1,12 +1,14 @@
 package randy.oberon0.test;
 
 import java.util.Queue;
-import randy.oberon0.ast.OInvokableFunction;
+import randy.oberon0.ast.IInvokableFunction;
 import randy.oberon0.exception.*;
+import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.*;
+import randy.oberon0.value.Integer;
 import randy.oberon0.value.*;
 
-public class TestWriteFunction implements OInvokableFunction
+public class TestWriteFunction implements IInvokableFunction
 {
 	private Queue<String> output;
 	public TestWriteFunction(Queue<String> _output)
@@ -14,14 +16,14 @@ public class TestWriteFunction implements OInvokableFunction
 		output = _output;
 	}
 	@Override
-	public OValue invoke(RuntimeEnvironment environment, Queue<OValue> parameterValues) throws Oberon0RuntimeException
+	public Value invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
 	{
 		if (parameterValues.size() != 1)
-			throw new Oberon0IncorrectNumberOfArgumentsException();
-		OValue param = parameterValues.poll();
+			throw new IncorrectNumberOfArgumentsException();
+		Value param = parameterValues.poll();
 		if (!param.getType().equals(Type.INTEGER))
-			throw new Oberon0TypeMismatchException(param.getType(), Type.INTEGER);
-		output.add(((OInteger)param).toString());
+			throw new TypeMismatchException(param.getType(), Type.INTEGER);
+		output.add(((Integer)param).toString());
 		return null;
 	}
 	public String getName()
@@ -29,7 +31,7 @@ public class TestWriteFunction implements OInvokableFunction
 		return "Write";
 	}
 	@Override
-	public OValue runTypeDeclarations(RuntimeEnvironment environment) throws Oberon0RuntimeException
+	public Value runTypeDeclarations(RuntimeEnvironment environment) throws RuntimeException
 	{
 		// Leeg
 		return null;

@@ -1,31 +1,27 @@
-package randy.oberon0.test;
+package randy.oberon0.interpreter.buildinfunctions;
 
 import java.util.Queue;
 import randy.oberon0.ast.IInvokableFunction;
+import randy.oberon0.exception.IncorrectNumberOfArgumentsException;
 import randy.oberon0.exception.RuntimeException;
-import randy.oberon0.exception.*;
 import randy.oberon0.interpreter.runtime.*;
 import randy.oberon0.value.*;
 
-public class TestWriteLnFunction implements IInvokableFunction
+public class DefaultNEWFunction implements IInvokableFunction
 {
-	private Queue<String> output;
-	
-	public TestWriteLnFunction(Queue<String> _output)
+	@Override
+	public String getName()
 	{
-		output = _output;
+		return "NEW";
 	}
 	@Override
 	public Value invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
 	{
-		if (parameterValues.size() != 0)
+		if (parameterValues.size() != 1)
 			throw new IncorrectNumberOfArgumentsException();
-		output.add(null);
+		PointerToValue param = parameterValues.poll().castToPointerTo();
+		param.invokeNew(environment);
 		return null;
-	}
-	public String getName()
-	{
-		return "WriteLn";
 	}
 	@Override
 	public Value runTypeDeclarations(RuntimeEnvironment environment) throws RuntimeException
