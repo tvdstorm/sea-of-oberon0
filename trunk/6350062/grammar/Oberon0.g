@@ -12,6 +12,7 @@ tokens
 {
 	TRUE='TRUE';
 	FALSE='FALSE';
+	NIL='NIL';
 	MINUS='-';
 	PLUS='+';
 	TIMES='*';
@@ -74,7 +75,7 @@ INTEGER:		('0'..'9')+;
 selector:		ident ((DOTSELECTOR^ ident)|(ARRAYSELECTOR^ expression ']'!))+ | ident;
 numberLiteral:		INTEGER;
 booleanLiteral:		TRUE|FALSE;
-factor:			selector | booleanLiteral | numberLiteral | '('! expression ')'! | NOT^ factor;
+factor:			selector | NIL | booleanLiteral | numberLiteral | '('! expression ')'! | NOT^ factor;
 term:			factor ((TIMES|DIVIDE|MOD|AND)^ factor)*;
 simpleExpression:	(PLUS|MINUS^ )? term ((PLUS|MINUS |OR)^ term)*;
 infixOperand:		EQUALS | NOTEQUALS | SMALLERTHEN | SMALLEREQUALS | GREATERTHEN | GREATEREQUALS;

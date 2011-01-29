@@ -15,5 +15,8 @@ public class TypeRegistryRegistrator extends OASTNodeNullVisitor
 	{
 		typeRegistry.addType(recordDeclaration.getName(), new ORecordInstantiation(recordDeclaration.getMembers()));
 	}
-	// TODO: implement
+	public void visit(OPointerToDeclaration pointerToDeclaration)
+	{
+		typeRegistry.addType(pointerToDeclaration.getName(), new OPointerToInstantiation(pointerToDeclaration.getPointsTo()));
+	}
 }

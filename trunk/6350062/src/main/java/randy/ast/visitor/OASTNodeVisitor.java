@@ -53,6 +53,14 @@ public interface OASTNodeVisitor
 	public void visit(OModule module) throws Oberon0Exception;
 	public void visitAfter(OModule module) throws Oberon0Exception;
 	
+	public void visitBefore(ONilLiteral nilLiteral) throws Oberon0Exception;
+	public void visit(ONilLiteral nilLiteral) throws Oberon0Exception;
+	public void visitAfter(ONilLiteral nilLiteral) throws Oberon0Exception;
+	
+	public void visitBefore(OPointerToDeclaration pointerToDeclaration) throws Oberon0Exception;
+	public void visit(OPointerToDeclaration pointerToDeclaration) throws Oberon0Exception;
+	public void visitAfter(OPointerToDeclaration pointerToDeclaration) throws Oberon0Exception;
+	
 	public void visitBefore(OPrefixExpression prefixExpression) throws Oberon0Exception;
 	public void visit(OPrefixExpression prefixExpression) throws Oberon0Exception;
 	public void visitAfter(OPrefixExpression prefixExpression) throws Oberon0Exception;

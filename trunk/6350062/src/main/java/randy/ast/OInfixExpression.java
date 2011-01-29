@@ -26,14 +26,43 @@ public class OInfixExpression extends OExpression
 	{
 		assert(vars != null);
 		// Evaluate the left hand side and right hand side and see if they are both integers of booleans
-		OValue lhsVal = lhs.run(vars, typeRegistry).dereference();
+		OValue lhsVal = lhs.run(vars, typeRegistry);
 		assert(lhsVal != null);
-		if (lhsVal instanceof OInteger)
-			return processIntegerExpression(((OInteger)lhsVal).getIntValue(), vars, typeRegistry);
-		else if (lhsVal instanceof OBoolean)
-			return processBooleanExpression(((OBoolean)lhsVal).getBoolValue(), vars, typeRegistry);
+		if (lhsVal instanceof OPointerToValue)
+			return processPointerToExpression((OPointerToValue)lhsVal, vars, typeRegistry);
 		else
-			throw new Oberon0OperatorTypeUndefinedException(operator.getOperatorText(), lhsVal.getType());
+		{
+			lhsVal = lhsVal.dereference();
+			if (lhsVal instanceof OInteger)
+				return processIntegerExpression(((OInteger)lhsVal).getIntValue(), vars, typeRegistry);
+			else if (lhsVal instanceof OBoolean)
+				return processBooleanExpression(((OBoolean)lhsVal).getBoolValue(), vars, typeRegistry);
+			else
+				throw new Oberon0OperatorTypeUndefinedException(operator.getOperatorText(), lhsVal.getType());
+		}
+	}
+	private OValue processPointerToExpression(OPointerToValue valLhs, Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
+	{
+		// Process the infix pointer to expression
+		OValue valRhs = rhs.run(vars, typeRegistry).dereference();
+		if (operator == Operator.EQUALS)
+		{
+			if (valLhs.isNill() && valRhs instanceof ONilValue)
+				return new OBoolean(true);
+			// TODO: uitbreiden
+			return new OBoolean(false);
+		}
+		else if (operator == Operator.NOTEQUALS)
+		{
+			boolean l = valLhs.isNill();
+			boolean r = valRhs instanceof ONilValue;
+			if (l != r)
+				return new OBoolean(true);
+			// TODO: uitbreiden
+			return new OBoolean(false);
+		}
+		else
+			throw new Oberon0OperatorTypeUndefinedException(operator.getOperatorText(), Type.POINTERTO);
 	}
 	private OValue processIntegerExpression(int valLhs, Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
 	{

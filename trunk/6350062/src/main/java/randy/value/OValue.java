@@ -40,4 +40,16 @@ public abstract class OValue
 			return (ORecord)this;
 		throw new Oberon0TypeMismatchException(this.getType(), Type.RECORD);
 	}
+	public ONilValue castToNil() throws Oberon0TypeMismatchException
+	{
+		if (this instanceof ONilValue)
+			return (ONilValue)this;
+		throw new Oberon0TypeMismatchException(this.getType(), Type.NIL);
+	}
+	public OPointerToValue castToPointerTo() throws Oberon0TypeMismatchException
+	{
+		if (this instanceof OPointerToValue)
+			return (OPointerToValue)this;
+		throw new Oberon0TypeMismatchException(this.getType(), Type.POINTERTO);
+	}
 }

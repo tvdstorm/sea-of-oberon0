@@ -23,7 +23,7 @@ public class ODotSelector extends OSelector
 	{
 		assert(vars != null);
 		// Evaluate the left hand side and convert it to a record
-		OValue valLhs = lhs.run(vars, typeRegistry);
+		OValue valLhs = lhs.run(vars, typeRegistry).dereference();
 		if (valLhs.getType() != Type.RECORD)
 			throw new Oberon0SelectorException("Trying to access a member of a '" + valLhs.getType() + "' variable, which is not a record.");
 		ORecord record = (ORecord)valLhs.dereference();

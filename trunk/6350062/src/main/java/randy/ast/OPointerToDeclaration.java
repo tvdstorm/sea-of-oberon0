@@ -1,22 +1,21 @@
 package randy.ast;
 
 import randy.ast.visitor.OASTNodeVisitor;
-import randy.exception.*;
+import randy.exception.Oberon0Exception;
+import randy.exception.Oberon0RuntimeException;
 import randy.interpreter.preprocess.TypeRegistry;
 import randy.interpreter.runtime.Oberon0VariableStack;
 import randy.value.OValue;
 
-public class OTypeDeclaration extends OAbstractTypeDeclaration
+public class OPointerToDeclaration extends OAbstractTypeDeclaration
 {
 	private String name;
-	private String resolvesTo;
-	private boolean isPointerTo;
+	private String pointsTo;
 	
-	public OTypeDeclaration(String _name, String _resolvesTo, boolean _isPointerTo)
+	public OPointerToDeclaration(String _name, String _pointsTo)
 	{
 		name = _name;
-		resolvesTo = _resolvesTo;
-		isPointerTo = _isPointerTo;
+		pointsTo = _pointsTo;
 	}
 	@Override
 	public OValue run(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
@@ -30,5 +29,13 @@ public class OTypeDeclaration extends OAbstractTypeDeclaration
 		visitor.visitBefore(this);
 		visitor.visit(this);
 		visitor.visitAfter(this);
+	}
+	public String getName()
+	{
+		return name;
+	}
+	public String getPointsTo()
+	{
+		return pointsTo;
 	}
 }

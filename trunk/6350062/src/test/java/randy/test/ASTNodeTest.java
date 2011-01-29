@@ -691,8 +691,33 @@ public class ASTNodeTest
 			Assert.assertTrue(functions.outputIsEmpty());
 		}
 	}
+	@Test
+	public void test_PointerTo()
+	{
+		prepareTest("pointerto");
+		for (int i=0;i<numTests;i++)
+		{
+			List<String> list = new LinkedList<String>();
+			while (true)
+			{
+				int number = random.nextInt(100);
+				list.add("" + number);
+				if (number == 0)
+					break;
+			}
+			String input[] = new String[list.size()];
+			input = list.toArray(input);
+			runTest(input);
+			
+			// De linked list implementatie draait de list om zodat het gemakkelijker is om elementen toe te voegen
+			for (int j=input.length-2;j>=0;j--)
+			{
+				Assert.assertTrue(functions.popOutput().equals(input[j]));
+			}
+			Assert.assertTrue(functions.outputIsEmpty());
+		}
+	}
 	// TODO: test to check if an const array can be modified and check if const variable can be assigned as non const parameters
-	// TODO: . selector/RECORD
 	// TODO: types support
 	// TODO: JavaDoc, meer comments, asserts, finals?
 	@Ignore

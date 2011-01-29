@@ -14,13 +14,13 @@ public class TypeRegistry
 	public void addType(String name, OInstantiateableVariable creator)
 	{
 		assert(types.get(name) == null);
-		System.out.println("Registered " + name);
+		//System.out.println("Registered " + name);
 		types.put(name, creator);
 	}
 	public OInstantiateableVariable resolve(String name)
 	{
 		assert(types.get(name) != null);
-		System.out.println("Resolving " + name + (types.get(name) == null?" NULL":" OK"));
+		//System.out.println("Resolving " + name + (types.get(name) == null?" NULL":" OK"));
 		return types.get(name);
 	}
 }
