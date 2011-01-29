@@ -1,4 +1,4 @@
-package randy.oberon0.ast;
+package randy.oberon0.ast.enums;
 
 import java.util.*;
 

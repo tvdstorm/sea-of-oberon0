@@ -1,9 +1,8 @@
 package randy.oberon0.value;
 
 import java.util.*;
-import randy.oberon0.ast.OInstantiateableVariable;
 import randy.oberon0.exception.Oberon0RuntimeException;
-import randy.oberon0.interpreter.runtime.TypeRegistry;
+import randy.oberon0.interpreter.runtime.*;
 
 public class ORecord extends OValue
 {

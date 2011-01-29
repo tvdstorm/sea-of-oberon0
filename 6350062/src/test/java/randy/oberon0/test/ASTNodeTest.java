@@ -2,10 +2,8 @@ package randy.oberon0.test;
 
 import java.util.Random;
 import org.junit.*;
-import randy.oberon0.ast.OPrimitiveVariableInstantiation;
 import randy.oberon0.exception.*;
-import randy.oberon0.interpreter.runtime.Oberon0Program;
-import randy.oberon0.interpreter.runtime.TypeRegistry;
+import randy.oberon0.interpreter.runtime.*;
 import randy.oberon0.value.*;
 import java.util.*;
 

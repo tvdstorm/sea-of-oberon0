@@ -1,8 +1,7 @@
 package randy.oberon0.value;
 
-import randy.oberon0.ast.OInstantiateableVariable;
 import randy.oberon0.exception.*;
-import randy.oberon0.interpreter.runtime.TypeRegistry;
+import randy.oberon0.interpreter.runtime.*;
 
 public class OArray extends OValue
 {

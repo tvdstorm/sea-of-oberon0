@@ -1,7 +1,6 @@
 package randy.oberon0.interpreter.runtime;
 
 import java.util.*;
-import randy.oberon0.ast.OInstantiateableVariable;
 import randy.oberon0.exception.Oberon0UnknownTypeException;
 
 public class TypeRegistry
