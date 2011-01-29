@@ -59,6 +59,21 @@ public class IdentListNode implements ASTnode {
     elements.add( "." + this.identifier ); // this will only be called for the record type
     return elements;
   }
+  
+  public Vector<String> getFormalIdentList()
+  {
+	Vector<String> elements;
+    if( this.followup == null )
+    {
+      elements = new Vector<String>(0);
+    }
+    else
+    {
+      elements = this.followup.getFormalIdentList();
+    }
+    elements.add( this.identifier ); // this will only be called for the record type
+    return elements;
+  }
 
   private String identifier = null;
   private IdentListNode followup = null;

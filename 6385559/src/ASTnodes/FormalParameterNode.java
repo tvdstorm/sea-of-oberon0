@@ -1,5 +1,8 @@
 package ASTnodes;
 
+import java.util.Vector;
+import interpreter.ParamContainer;
+
 public class FormalParameterNode implements ASTnode {
   public FormalParameterNode( FpSectionNode fpSection, FormalParameterNode followup )
   {
@@ -20,6 +23,19 @@ public class FormalParameterNode implements ASTnode {
   public int eval( String scope )
   {
     return 0;
+  }
+  
+  public Vector<ParamContainer> declare( String scope, Vector<ParamContainer> params )
+  {
+	if( this.fpSection != null )
+	{
+      params = fpSection.declare( scope, params );
+	}
+	if( followup != null )
+    {
+      params = this.followup.declare( scope, params );
+    }
+	return params;
   }
 
   private FpSectionNode fpSection = null;

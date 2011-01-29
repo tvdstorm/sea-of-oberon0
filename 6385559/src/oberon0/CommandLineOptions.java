@@ -10,6 +10,8 @@ public class CommandLineOptions {
     
     // -print print the source back to the screen
     // -memory memory dump will be done after the execution of the source file
+    // -type type dump will be printed
+    // -procedure proceduredump will be printed
     for( int i = 0; i < numberOfParams; i++ )
     {
       if( args[i].contentEquals( "-print" ) )
@@ -20,9 +22,13 @@ public class CommandLineOptions {
       {
     	this.memoryDump = true;
       }
-      else if( args[i].contentEquals( "-definitions" ) )
+      else if( args[i].contentEquals( "-type" ) )
       {
-        this.definitions = true;
+        this.type = true;
+      }
+      else if( args[i].contentEquals( "-procedure" ) )
+      {
+        this.procedure = true;
       }
       else
       {
@@ -48,11 +54,17 @@ public class CommandLineOptions {
   
   public boolean doPrintTypeDefinitions( )
   {
-    return this.definitions;
+    return this.type;
+  }
+  
+  public boolean doPrintProcedureDefinitions( )
+  {
+    return this.procedure;
   }
 	
   private boolean print = false;
   private boolean memoryDump = false;
-  private boolean definitions = false;
+  private boolean type = false;
+  private boolean procedure = false;
   private String sourcefile = "";
 }

@@ -19,6 +19,14 @@ public class ProcedureListNode implements ASTnode {
   
   public int eval( String scope )
   {
+	if( this.procedureDeclaration != null )
+	{
+      this.procedureDeclaration.eval( scope );
+	}
+	if( this.procedureList != null )
+	{
+      this.procedureList.eval( scope );
+	}
     return 0;
   }
 

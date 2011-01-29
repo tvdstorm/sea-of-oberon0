@@ -64,6 +64,11 @@ public class DeclarationsNode implements ASTnode {
     {
       this.vars.eval( scope );
     }
+    
+    if( this.procedureList != null )
+    {
+      this.procedureList.eval( scope );
+    }
     return 0;
   }
   

@@ -30,6 +30,14 @@ public class ProcedureBodyNode implements ASTnode {
   
   public int eval( String scope )
   {
+	if( this.declarations != null )
+	{
+      declarations.eval( scope );
+	}
+	if( this.statements != null )
+	{
+	  this.statements.eval( scope );
+	}
     return 0;
   }
   
