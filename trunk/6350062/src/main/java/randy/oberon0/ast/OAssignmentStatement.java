@@ -2,8 +2,7 @@ package randy.oberon0.ast;
 
 import randy.oberon0.ast.visitor.OASTNodeVisitor;
 import randy.oberon0.exception.*;
-import randy.oberon0.interpreter.runtime.Oberon0VariableStack;
-import randy.oberon0.interpreter.runtime.TypeRegistry;
+import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
 import randy.oberon0.value.OValue;
 
 public class OAssignmentStatement extends OStatement
@@ -19,13 +18,13 @@ public class OAssignmentStatement extends OStatement
 		rhs = _rhs;
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
+	public OValue run(RuntimeEnvironment environment) throws Oberon0RuntimeException
 	{
-		assert(vars != null);
+		assert(environment != null);
 		// Evaluate the left hand side and right hand side and assign the value of the right hand side to the left hand side
-		OValue var = lhs.run(vars, typeRegistry);
+		OValue var = lhs.run(environment);
 		assert(var != null);
-		var.setValue(rhs.run(vars, typeRegistry));
+		var.setValue(rhs.run(environment));
 		return null;
 	}
 	@Override

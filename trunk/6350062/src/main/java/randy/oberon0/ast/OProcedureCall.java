@@ -3,15 +3,13 @@ package randy.oberon0.ast;
 import java.util.*;
 import randy.oberon0.ast.visitor.OASTNodeVisitor;
 import randy.oberon0.exception.*;
-import randy.oberon0.interpreter.runtime.Oberon0VariableStack;
-import randy.oberon0.interpreter.runtime.TypeRegistry;
+import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
 import randy.oberon0.value.*;
 
 public class OProcedureCall extends OExpression
 {
 	private String name;
 	private List<OExpression> parameters;
-	private OInvokableFunction functionDeclaration;
 	
 	public OProcedureCall(String _name, List<OExpression> _parameters)
 	{
@@ -19,34 +17,24 @@ public class OProcedureCall extends OExpression
 		assert(_parameters != null);
 		name = _name;
 		parameters = _parameters;
-		functionDeclaration = null;
-	}
-	public String getName()
-	{
-		assert(name != null);
-		return name;
-	}
-	public void setFunctionDeclaration(OInvokableFunction _functionDeclaration)
-	{
-		assert(_functionDeclaration != null);
-		functionDeclaration = _functionDeclaration;
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
+	public OValue run(RuntimeEnvironment environment) throws Oberon0RuntimeException
 	{
-		assert(functionDeclaration != null);
+		assert(environment != null);
 		assert(parameters != null);
 		// Evaluate all the parameters
 		Queue<OValue> params = new LinkedList<OValue>();
 		for (OExpression p : parameters)
 		{
-			OValue v = p.run(vars, typeRegistry);
+			OValue v = p.run(environment);
 			params.add(v);
 		}
-		TypeRegistry newTypeRegistry = new TypeRegistry(typeRegistry);
-		functionDeclaration.runTypeDeclarations(vars, newTypeRegistry);
+		RuntimeEnvironment invokedEnvironment = environment.createRuntimeEnviroment(environment.getDepth()+1);
+		OInvokableFunction functionDeclaration = environment.resolveFunction(name).getSecond();
+		functionDeclaration.runTypeDeclarations(invokedEnvironment);
 		// Invoke the function
-		return functionDeclaration.invoke(vars, params, newTypeRegistry);
+		return functionDeclaration.invoke(invokedEnvironment, params);
 	}
 	@Override
 	public void accept(OASTNodeVisitor visitor) throws Oberon0Exception

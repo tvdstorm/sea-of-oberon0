@@ -12,8 +12,8 @@ public class OPointerToInstantiation implements OInstantiateableVariable
 		pointsTo = _pointsTo;
 	}
 	@Override
-	public OValue instantiate(TypeRegistry _typeRegistry) throws Oberon0RuntimeException
+	public OValue instantiate(RuntimeEnvironment environment) throws Oberon0RuntimeException
 	{
-		return new OPointerToValue(_typeRegistry.resolve(pointsTo));
+		return new OPointerToValue(environment.resolveType(pointsTo));
 	}
 }

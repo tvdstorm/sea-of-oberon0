@@ -1,7 +1,7 @@
 package randy.oberon0.interpreter.buildinfunctions;
 
 import randy.oberon0.exception.Oberon0Exception;
-import randy.oberon0.interpreter.preprocess.FunctionTreeBuilder;
+import randy.oberon0.interpreter.runtime.FunctionRegistry;
 
 public class Oberon0BuildinFunctions implements IOberon0BuildinFunctions
 {
@@ -18,11 +18,11 @@ public class Oberon0BuildinFunctions implements IOberon0BuildinFunctions
 		newFunction = new Oberon0DefaultNEWFunction();
 	}
 	@Override
-	public void register(FunctionTreeBuilder ftb) throws Oberon0Exception
+	public void register(FunctionRegistry functionRegistry) throws Oberon0Exception
 	{
-		ftb.register(read);
-		ftb.register(write);
-		ftb.register(writeLn);
-		ftb.register(newFunction);
+		functionRegistry.addFunction(read.getName(), read, 0);
+		functionRegistry.addFunction(write.getName(), write, 0);
+		functionRegistry.addFunction(writeLn.getName(), writeLn, 0);
+		functionRegistry.addFunction(newFunction.getName(), newFunction, 0);
 	}
 }

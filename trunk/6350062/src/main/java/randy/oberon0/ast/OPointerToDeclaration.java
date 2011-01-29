@@ -16,9 +16,9 @@ public class OPointerToDeclaration extends OAbstractTypeDeclaration
 		pointsTo = _pointsTo;
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
+	public OValue run(RuntimeEnvironment environment) throws Oberon0RuntimeException
 	{
-		typeRegistry.addType(getName(), new OPointerToInstantiation(getPointsTo()));
+		environment.addType(getName(), new OPointerToInstantiation(getPointsTo()));
 		return null;
 	}
 	@Override

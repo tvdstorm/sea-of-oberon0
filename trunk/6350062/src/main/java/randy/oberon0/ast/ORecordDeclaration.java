@@ -17,9 +17,9 @@ public class ORecordDeclaration extends OAbstractTypeDeclaration
 		members = _members;
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
+	public OValue run(RuntimeEnvironment environment) throws Oberon0RuntimeException
 	{
-		typeRegistry.addType(getName(), new ORecordInstantiation(getMembers()));
+		environment.addType(getName(), new ORecordInstantiation(getMembers()));
 		return null;
 	}
 	@Override

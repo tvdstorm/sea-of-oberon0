@@ -12,7 +12,7 @@ public class OPrimitiveVariableInstantiation implements OInstantiateableVariable
 		type = _type;
 	}
 	@Override
-	public OValue instantiate(TypeRegistry _typeRegistry) throws Oberon0RuntimeException
+	public OValue instantiate(RuntimeEnvironment environment) throws Oberon0RuntimeException
 	{
 		return OValue.makeNew(type);
 	}

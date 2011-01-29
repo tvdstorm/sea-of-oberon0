@@ -4,12 +4,12 @@ import java.util.*;
 import randy.oberon0.exception.*;
 import randy.oberon0.value.*;
 
-public class Oberon0VariableStack
+public class VariableStack
 {
-	private Oberon0VariableStack parentScope;
+	private VariableStack parentScope;
 	private Map<String, OValue> variables;
 	
-	public Oberon0VariableStack(Oberon0VariableStack _parentScope)
+	public VariableStack(VariableStack _parentScope)
 	{
 		parentScope = _parentScope;
 		variables = new HashMap<String, OValue>();
@@ -33,7 +33,7 @@ public class Oberon0VariableStack
 		else
 			throw new Oberon0UndefinedVariableException(name);
 	}
-	public Oberon0VariableStack getParentScope()
+	public VariableStack getParentScope()
 	{
 		if (parentScope != null)
 			return parentScope;

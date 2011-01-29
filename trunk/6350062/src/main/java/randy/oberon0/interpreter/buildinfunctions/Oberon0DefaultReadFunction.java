@@ -4,8 +4,7 @@ import java.io.IOException;
 import java.util.Queue;
 import randy.oberon0.ast.OInvokableFunction;
 import randy.oberon0.exception.*;
-import randy.oberon0.interpreter.runtime.Oberon0VariableStack;
-import randy.oberon0.interpreter.runtime.TypeRegistry;
+import randy.oberon0.interpreter.runtime.*;
 import randy.oberon0.value.*;
 
 public class Oberon0DefaultReadFunction implements OInvokableFunction
@@ -16,7 +15,7 @@ public class Oberon0DefaultReadFunction implements OInvokableFunction
 		return "Read";
 	}
 	@Override
-	public OValue invoke(Oberon0VariableStack callerVars, Queue<OValue> parameterValues, TypeRegistry typeRegistry) throws Oberon0RuntimeException
+	public OValue invoke(RuntimeEnvironment environment, Queue<OValue> parameterValues) throws Oberon0RuntimeException
 	{
 		try
 		{
@@ -36,7 +35,7 @@ public class Oberon0DefaultReadFunction implements OInvokableFunction
 		}
 	}
 	@Override
-	public OValue runTypeDeclarations(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
+	public OValue runTypeDeclarations(RuntimeEnvironment environment) throws Oberon0RuntimeException
 	{
 		// Leeg
 		return null;
