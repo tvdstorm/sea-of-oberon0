@@ -32,6 +32,7 @@ tokens
 	ARRAY='ARRAY';
 	OF='OF';
 	RECORD='RECORD';
+	POINTERTO='POINTER TO';
 	MOD='MOD';
 	AND='&';
 	OR='OR';
@@ -108,7 +109,9 @@ fieldList:		(identList ':' type )?
 				-> ^(VAR type? identList?);
 recordType:		RECORD fieldList (';' fieldList)* END
 				-> ^(RECORD fieldList*);
-type:			ident | arrayType | recordType;
+pointerType:		POINTERTO ident
+				-> ^(POINTERTO ident);
+type:			ident | arrayType | recordType | pointerType;
 fPSection:		VAR identList ':' type
 				-> ^(REFVAR type identList) |
 			identList ':' type

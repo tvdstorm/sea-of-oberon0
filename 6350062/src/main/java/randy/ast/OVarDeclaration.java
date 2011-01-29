@@ -3,17 +3,18 @@ package randy.ast;
 import java.util.*;
 import randy.ast.visitor.OASTNodeVisitor;
 import randy.exception.*;
+import randy.interpreter.runtime.Oberon0Program;
 import randy.interpreter.runtime.Oberon0VariableStack;
 import randy.value.*;
 
 public class OVarDeclaration extends OBodyDeclaration
 {
-	protected Type type;
+	protected String type;
 	protected boolean bIsArray;
 	protected boolean isReference;
 	protected List<String> names;
 	
-	public OVarDeclaration(Type _type, boolean _isReference, List<String> _names)
+	public OVarDeclaration(String _type, boolean _isReference, List<String> _names)
 	{
 		assert(_type != null);
 		assert(_names != null);
@@ -29,7 +30,7 @@ public class OVarDeclaration extends OBodyDeclaration
 		for (String name : names)
 		{
 			assert(name.length() >= 1);
-			vars.addVariable(name, OValue.makeNew(type));
+			vars.addVariable(name, Oberon0Program.t.resolve(type).instantiate());
 		}
 		return null;
 	}
@@ -43,18 +44,22 @@ public class OVarDeclaration extends OBodyDeclaration
 		for (String name : names)
 		{
 			OValue param = parameters.poll();
-			if (param.getType() != type)
-				throw new Oberon0TypeMismatchException(param.getType(), type);
+			//if (param.getType() != type) // TODO: aanpassen
+			//	throw new Oberon0TypeMismatchException(param.getType(), type);
 			OValue val;
 			if (isReference)
 				val = param;
 			else
 			{	
-				val = OValue.makeNew(type);
+				val = Oberon0Program.t.resolve(type).instantiate();
 				val.setValue(param);
 			}
 			vars.addVariable(name, val);
 		}
+	}
+	public String getType()
+	{
+		return type;
 	}
 	@Override
 	public void accept(OASTNodeVisitor visitor) throws Oberon0Exception

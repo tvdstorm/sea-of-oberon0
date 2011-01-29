@@ -34,4 +34,10 @@ public abstract class OValue
 			return (OArray)this;
 		throw new Oberon0TypeMismatchException(this.getType(), Type.ARRAY);
 	}
+	public ORecord castToRecord() throws Oberon0TypeMismatchException
+	{
+		if (this instanceof ORecord)
+			return (ORecord)this;
+		throw new Oberon0TypeMismatchException(this.getType(), Type.RECORD);
+	}
 }

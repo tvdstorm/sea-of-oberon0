@@ -1,23 +1,6 @@
 package randy.ast.visitor;
 
-import randy.ast.OArraySelector;
-import randy.ast.OArrayVarDeclaration;
-import randy.ast.OAssignmentStatement;
-import randy.ast.OBlock;
-import randy.ast.OBooleanLiteral;
-import randy.ast.OConstDeclaration;
-import randy.ast.OExpressionStatement;
-import randy.ast.OIfStatement;
-import randy.ast.OInfixExpression;
-import randy.ast.OIntegerLiteral;
-import randy.ast.OModule;
-import randy.ast.OPrefixExpression;
-import randy.ast.OProcedureCall;
-import randy.ast.OProcedureDeclaration;
-import randy.ast.OVarDeclaration;
-import randy.ast.OVariable;
-import randy.ast.OVariableSelector;
-import randy.ast.OWhileStatement;
+import randy.ast.*;
 import randy.exception.Oberon0Exception;
 
 public interface OASTNodeVisitor
@@ -45,6 +28,10 @@ public interface OASTNodeVisitor
 	public void visitBefore(OConstDeclaration constDeclaration) throws Oberon0Exception;
 	public void visit(OConstDeclaration constDeclaration) throws Oberon0Exception;
 	public void visitAfter(OConstDeclaration constDeclaration) throws Oberon0Exception;
+	
+	public void visitBefore(ODotSelector dotSelector) throws Oberon0Exception;
+	public void visit(ODotSelector dotSelector) throws Oberon0Exception;
+	public void visitAfter(ODotSelector dotSelector) throws Oberon0Exception;
 	
 	public void visitBefore(OExpressionStatement expressionStatement) throws Oberon0Exception;
 	public void visit(OExpressionStatement expressionStatement) throws Oberon0Exception;
@@ -77,6 +64,14 @@ public interface OASTNodeVisitor
 	public void visitBefore(OProcedureDeclaration procedureDeclaration) throws Oberon0Exception;
 	public void visit(OProcedureDeclaration procedureDeclaration) throws Oberon0Exception;
 	public void visitAfter(OProcedureDeclaration procedureDeclaration) throws Oberon0Exception;
+	
+	public void visitBefore(ORecordDeclaration recordDeclaration) throws Oberon0Exception;
+	public void visit(ORecordDeclaration recordDeclaration) throws Oberon0Exception;
+	public void visitAfter(ORecordDeclaration recordDeclaration) throws Oberon0Exception;
+	
+	public void visitBefore(OTypeDeclaration typeDeclaration) throws Oberon0Exception;
+	public void visit(OTypeDeclaration typeDeclaration) throws Oberon0Exception;
+	public void visitAfter(OTypeDeclaration typeDeclaration) throws Oberon0Exception;
 	
 	public void visitBefore(OVarDeclaration varDeclaration) throws Oberon0Exception;
 	public void visit(OVarDeclaration varDeclaration) throws Oberon0Exception;

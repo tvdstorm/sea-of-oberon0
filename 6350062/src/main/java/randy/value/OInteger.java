@@ -1,6 +1,6 @@
 package randy.value;
 
-import randy.exception.*;;
+import randy.exception.*;
 
 public class OInteger extends OValue
 {

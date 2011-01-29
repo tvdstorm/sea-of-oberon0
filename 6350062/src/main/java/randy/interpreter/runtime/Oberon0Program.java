@@ -1,16 +1,17 @@
 package randy.interpreter.runtime;
 
 import randy.interpreter.antlr.Oberon0ASTTreeGenerator;
-import randy.interpreter.buildinfunctions.IOberon0BuildinFunctions;
-import randy.interpreter.buildinfunctions.Oberon0BuildinFunctions;
-import randy.interpreter.preprocess.FunctionTreeBuilder;
-import randy.ast.OASTNode;
+import randy.interpreter.buildinfunctions.*;
+import randy.interpreter.preprocess.*;
+import randy.value.Type;
+import randy.ast.*;
 import randy.exception.*;
 
 public class Oberon0Program
 {
 	private OASTNode astTree;
 	private IOberon0BuildinFunctions buildinFunctions;
+	public static TypeRegistry t;
 	
 	public Oberon0Program()
 	{
@@ -26,6 +27,16 @@ public class Oberon0Program
 		buildinFunctions.register(ftb);
 		astTree.accept(ftb);
 		ftb.resolveAllFunctionCalls();
+		
+		TypeRegistry typeRegistry = new TypeRegistry();
+		t = typeRegistry;
+		// Registrate buildin primitive types
+		typeRegistry.addType(Type.INTEGER.getTypeText(), new OPrimitiveVariableInstantiation(Type.INTEGER));
+		typeRegistry.addType(Type.BOOLEAN.getTypeText(), new OPrimitiveVariableInstantiation(Type.BOOLEAN));
+		
+		TypeRegistryRegistrator registrator = new TypeRegistryRegistrator(typeRegistry);
+		astTree.accept(registrator);
+		
 		return true;
 	}
 	public void run() throws Oberon0RuntimeException
