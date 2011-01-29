@@ -4,18 +4,20 @@ import ar.oberon0.interpreter.Interpretable;
 import ar.oberon0.interpreter.DataTypes.DataType;
 import ar.oberon0.interpreter.Memory.Context;
 
-public class NegationNode implements Interpretable {
+public class NegationNode implements Interpretable
+{
 
 	private Interpretable _nodeToNegate;
-	
+
 	public NegationNode(Interpretable nodeToNegate)
 	{
 		_nodeToNegate = nodeToNegate;
 	}
-	
+
 	@Override
-	public Object Interpret(Context context) throws Exception {
-		return ((DataType)_nodeToNegate.Interpret(context)).Negate();
+	public Object Interpret(Context context) throws Exception
+	{
+		return ((DataType) _nodeToNegate.Interpret(context)).Negate();
 	}
 
 }

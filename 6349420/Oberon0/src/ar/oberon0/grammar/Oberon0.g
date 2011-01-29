@@ -157,14 +157,14 @@ recordType returns [RecordType result]
 		'END'
 	; 
 
-type returns [Type result]
+type returns [CreatableType result]
 	:	IDENT 													{$result = new SimpleType($IDENT.getText());}
 	| 	arrayType 												{$result = $arrayType.result;}
 	| 	recordType												{$result = $recordType.result;}
 	; 
 
 
-fPSection returns [IdentList identList, Type type, FormalParameter.Direction direction]
+fPSection returns [IdentList identList, CreatableType type, FormalParameter.Direction direction]
 	:															{$direction = FormalParameter.Direction.IN;}
 		(	'VAR'												{$direction = FormalParameter.Direction.IN_OUT;}
 		)?														 
@@ -186,7 +186,7 @@ procedureHeading returns [FormalParameterList result, String procedureName]
 		)?
 	; 
 
-procedureBody returns [ConstantList constants, TypeIdentifierList types, VarList vars, ProcedureList childProcedures, StatementSequence statementSequence]  
+procedureBody returns [ConstantList constants, TypeIdentifierList types, DataFieldList vars, ProcedureList childProcedures, StatementSequence statementSequence]  
 	:	declarations 											{$constants = $declarations.constants; $types = $declarations.types; $vars = $declarations.vars;$childProcedures = $declarations.procedures;}
 		(	'BEGIN' firstStatementSequence=statementSequence	{$statementSequence = (StatementSequence)$firstStatementSequence.result;}
 		)? 
@@ -194,9 +194,9 @@ procedureBody returns [ConstantList constants, TypeIdentifierList types, VarList
 	;
 
 
-procedureDeclaration returns [Procedure result, String procedureName]
+procedureDeclaration returns [ProcedureDeclaration result, String procedureName]
 	:	procedureHeading ';' procedureBody IDENT				{$procedureName = $IDENT.getText();}
-																{$result = new Procedure($procedureHeading.procedureName);}
+																{$result = new ProcedureDeclaration($procedureHeading.procedureName);}
 																{$result.setFormalParameters($procedureHeading.result);}
 																{$result.setConstants($procedureBody.constants);}
 																{$result.setTypes($procedureBody.types);}
@@ -205,7 +205,7 @@ procedureDeclaration returns [Procedure result, String procedureName]
 																{$result.setStatementSequence($procedureBody.statementSequence);}
 	;	
 	
-declarations returns [ConstantList constants, TypeIdentifierList types, VarList vars, ProcedureList procedures]
+declarations returns [ConstantList constants, TypeIdentifierList types, DataFieldList vars, ProcedureList procedures]
 	:	(	'CONST' 											{$constants = new ConstantList();}
 			(constIDENT=IDENT '=' expression ';'				{$constants.AddItem($constIDENT.getText(),new DataField(new SimpleType("INTEGER"),(DataType)$expression.result));}
 			)*
@@ -214,7 +214,7 @@ declarations returns [ConstantList constants, TypeIdentifierList types, VarList 
 			(	typeIDENT=IDENT '=' typeType=type ';' 			{$types.AddItem($typeIDENT.getText(),$typeType.result);}
 			)*
 		)?
-		(	'VAR' 												{$vars = new VarList();}
+		(	'VAR' 												{$vars = new DataFieldList();}
 			(	identList ':' varType=type ';'					{$vars.AddVariables($identList.result, $varType.result);}
 			)*
 		)?														{$procedures = new ProcedureList();}
@@ -222,8 +222,8 @@ declarations returns [ConstantList constants, TypeIdentifierList types, VarList 
 		)*
 	;
 	
-module	returns [Module result] 
-	:	'MODULE' name=IDENT ';' declarations					{$result = new Module($name.getText());} 
+module	returns [ModuleNode result] 
+	:	'MODULE' name=IDENT ';' declarations					{$result = new ModuleNode($name.getText());} 
 																{$result.setConstants($declarations.constants);}
 																{$result.setTypeIdentifiers($declarations.types);}
 																{$result.setVars($declarations.vars);}
@@ -240,13 +240,13 @@ module	returns [Module result]
 write returns [Interpretable result]
 	:	
 		('Write' 
-			(	'(' expression ')'										{$result = new PrintNode($expression.result);}
-			|														{PrintNode printNode = new PrintNode();}
-				'("'(	IDENT										{printNode.AddToMessage($IDENT.getText() + " ");}
-				)*'")'												{$result = printNode;}
+			(	'(' expression ')'									{$result = new WriteNode($expression.result);}
+			|														{WriteNode writeNode = new WriteNode();}
+				'("'(	IDENT										{writeNode.AddToMessage($IDENT.getText() + " ");}
+				)*'")'												{$result = writeNode;}
 			)
 		)
-	|	('WriteLn')													{$result = new PrintNode(); ((PrintNode)$result).AddToMessage("\n");}	
+	|	('WriteLn')													{$result = new WriteNode(); ((WriteNode)$result).AddToMessage("\n");}	
 	;	
 	
 read returns [Interpretable result]

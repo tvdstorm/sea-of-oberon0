@@ -8,19 +8,18 @@ public class ArrayType implements CreatableType
 {
 	private Interpretable _length;
 	private CreatableType _type;
-	
-	public ArrayType(Interpretable length, CreatableType type) 
+
+	public ArrayType(Interpretable length, CreatableType type)
 	{
 		_length = length;
 		_type = type;
 	}
 
 	@Override
-	public DataType createInstance(Context context) throws Exception 
+	public DataType createInstance(Context context) throws Exception
 	{
-		IntegerNode length = (IntegerNode)Helper.getDataType((Interpretable)_length.Interpret(context), context);
-		return new Array(length, _type,context);
+		IntegerNode length = (IntegerNode) Helper.getDataType((Interpretable) _length.Interpret(context), context);
+		return new Array(length, _type);
 	}
-
 
 }

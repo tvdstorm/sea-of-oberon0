@@ -1,32 +1,55 @@
 package ar.oberon0.interpreter.Memory;
 
+import ar.oberon0.interpreter.Helper;
+import ar.oberon0.interpreter.Interpretable;
 import ar.oberon0.interpreter.DataTypes.Array;
 import ar.oberon0.interpreter.DataTypes.DataType;
 import ar.oberon0.interpreter.DataTypes.IntegerNode;
-import ar.oberon0.interpreter.Memory.*;
-import ar.oberon0.interpreter.Helper;
-import ar.oberon0.interpreter.Interpretable;
 
-public class ArrayItemSelector extends Selector {
+/*
+ * This class is used to get the DataField of a array item.
+ * An expression is to indicate the location within the array.
+ */
+public class ArrayItemSelector extends Selector
+{
+	/*
+	 * The expression that gives the location within the array.
+	 */
+	private Interpretable _locationExpression;
 
-	private Interpretable _expression;
-	
+	/*
+	 * Create a new ArrayItemSelector and use the expression when interpreted to
+	 * find the location within the array to return.
+	 */
 	public ArrayItemSelector(Interpretable expression)
 	{
-		_expression = expression;
+		_locationExpression = expression;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * ar.oberon0.interpreter.Memory.Selector#getVar(ar.oberon0.interpreter.
+	 * Memory.DataField, ar.oberon0.interpreter.Memory.Context)
+	 */
 	@Override
-	protected DataField getVar(DataField parent, Context context) throws Exception 
+	protected DataField getItem(DataField parent, Context context) throws Exception
 	{
-		DataType expressionResult = Helper.getDataType(_expression, context);
-		if(!(expressionResult instanceof IntegerNode))
+		if (parent == null)
+		{
+			throw new IllegalArgumentException("Parent can't be null.");
+		}
+		if (!(parent.getValue(context) instanceof Array))
+		{
+			throw new IllegalArgumentException("The parent parameter doesn't contain an Array.");
+		}
+
+		DataType expressionResult = Helper.getDataType(_locationExpression, context);
+		if (!(expressionResult instanceof IntegerNode))
 		{
 			throw new Exception("The array indexer is not a valid integer datatype.");
-		}		
-		return ((Array)parent.getValue(context)).getVarAt((IntegerNode)expressionResult);
+		}
+		return ((Array) parent.getValue(context)).getDataFieldAt((IntegerNode) expressionResult);
 	}
-
-	
-	
 }
