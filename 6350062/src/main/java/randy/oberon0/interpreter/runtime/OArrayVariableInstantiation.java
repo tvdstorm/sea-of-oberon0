@@ -18,8 +18,8 @@ public class OArrayVariableInstantiation implements OInstantiateableVariable
 		length = _length;
 	}
 	@Override
-	public OValue instantiate(TypeRegistry _typeRegistry) throws Oberon0RuntimeException
+	public OValue instantiate(RuntimeEnvironment environment) throws Oberon0RuntimeException
 	{
-		return new OArray(length, childType, _typeRegistry);
+		return new OArray(length, childType, environment);
 	}
 }

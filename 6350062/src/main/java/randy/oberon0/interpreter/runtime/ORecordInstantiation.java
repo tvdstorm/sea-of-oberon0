@@ -13,13 +13,13 @@ public class ORecordInstantiation implements OInstantiateableVariable
 		members = _members;
 	}
 	@Override
-	public OValue instantiate(TypeRegistry _typeRegistry) throws Oberon0RuntimeException
+	public OValue instantiate(RuntimeEnvironment environment) throws Oberon0RuntimeException
 	{
 		HashMap<String, OInstantiateableVariable> vars = new HashMap<String, OInstantiateableVariable>();
 		for (String name : members.keySet())
 		{
-			vars.put(name, _typeRegistry.resolve(members.get(name)));
+			vars.put(name, environment.resolveType(members.get(name)));
 		}
-		return new ORecord(vars, _typeRegistry);
+		return new ORecord(vars, environment);
 	}
 }

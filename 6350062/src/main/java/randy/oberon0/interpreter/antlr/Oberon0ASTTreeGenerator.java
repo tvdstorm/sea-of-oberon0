@@ -358,7 +358,7 @@ public class Oberon0ASTTreeGenerator
 	{
 		assert(tree.getType() == Oberon0Parser.VAR || tree.getType() == Oberon0Parser.REFVAR);
 		assert(tree.getChildCount() >= 1);
-		assert(tree.getType() == Oberon0Parser.IDENT);
+		assert(tree.getChild(0).getType() == Oberon0Parser.IDENT);
 		boolean isReference = false;
 		if (tree.getType() == Oberon0Parser.REFVAR)
 			isReference = true;

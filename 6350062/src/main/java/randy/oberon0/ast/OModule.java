@@ -3,8 +3,7 @@ package randy.oberon0.ast;
 import java.util.*;
 import randy.oberon0.ast.visitor.OASTNodeVisitor;
 import randy.oberon0.exception.*;
-import randy.oberon0.interpreter.runtime.Oberon0VariableStack;
-import randy.oberon0.interpreter.runtime.TypeRegistry;
+import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
 import randy.oberon0.value.OValue;
 
 public class OModule extends OASTNode
@@ -20,19 +19,19 @@ public class OModule extends OASTNode
 		bodyDeclarations = _bodyDeclarations;
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
+	public OValue run(RuntimeEnvironment environment) throws Oberon0RuntimeException
 	{
-		assert(vars != null);
+		assert(environment != null);
 		assert(bodyDeclarations != null);
 		assert(body != null);
-		TypeRegistry newTypeRegistry = new TypeRegistry(typeRegistry);
+		RuntimeEnvironment moduleEnvironment = environment.createRuntimeEnviroment(0);
 		// Run all the body declarations
 		for (OBodyDeclaration bd : bodyDeclarations)
 		{
-			bd.run(vars, newTypeRegistry);
+			bd.run(moduleEnvironment);
 		}
 		// Run the body of the module
-		return body.run(vars, newTypeRegistry);
+		return body.run(moduleEnvironment);
 	}
 	@Override
 	public void accept(OASTNodeVisitor visitor) throws Oberon0Exception

@@ -2,8 +2,7 @@ package randy.oberon0.ast;
 
 import randy.oberon0.ast.visitor.OASTNodeVisitor;
 import randy.oberon0.exception.*;
-import randy.oberon0.interpreter.runtime.Oberon0VariableStack;
-import randy.oberon0.interpreter.runtime.TypeRegistry;
+import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
 import randy.oberon0.value.*;
 
 public class OWhileStatement extends OStatement
@@ -19,18 +18,18 @@ public class OWhileStatement extends OStatement
 		body = _body;
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
+	public OValue run(RuntimeEnvironment environment) throws Oberon0RuntimeException
 	{
-		assert(vars != null);
+		assert(environment != null);
 		while (true)
 		{
 			// Evaluate the expression and convert it to a boolean
-			OBoolean bExpression = expression.run(vars, typeRegistry).castToBoolean();
+			OBoolean bExpression = expression.run(environment).castToBoolean();
 			// If the expression is false, skip the body
 			if (!bExpression.getBoolValue())
 				return null;
 			// Evaluate the body
-			body.run(vars, typeRegistry);
+			body.run(environment);
 		}
 	}
 	@Override

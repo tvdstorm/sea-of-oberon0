@@ -3,8 +3,7 @@ package randy.oberon0.ast;
 import java.util.*;
 import randy.oberon0.ast.visitor.OASTNodeVisitor;
 import randy.oberon0.exception.*;
-import randy.oberon0.interpreter.runtime.Oberon0VariableStack;
-import randy.oberon0.interpreter.runtime.TypeRegistry;
+import randy.oberon0.interpreter.runtime.*;
 import randy.oberon0.value.OValue;
 
 public class OProcedureDeclaration extends OBodyDeclaration implements OInvokableFunction
@@ -27,38 +26,35 @@ public class OProcedureDeclaration extends OBodyDeclaration implements OInvokabl
 		body = _body;
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
+	public OValue run(RuntimeEnvironment environment) throws Oberon0RuntimeException
 	{
-		// Leeg
+		environment.addFunction(getName(), this);
 		return null;
 	}
 	@Override
-	public OValue runTypeDeclarations(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
+	public OValue runTypeDeclarations(RuntimeEnvironment environment) throws Oberon0RuntimeException
 	{
-		assert(vars != null);
+		assert(environment != null);
 		assert(bodyDeclarations != null);
 		assert(body != null);
 		// Run all the body declarations
 		for (OBodyDeclaration bd : bodyDeclarations)
 		{
 			if (bd instanceof ORecordDeclaration || bd instanceof OPointerToDeclaration)
-				bd.run(vars, typeRegistry);
+				bd.run(environment);
 		}
 		return null;
 	}
-	public OValue invoke(Oberon0VariableStack callerVars, Queue<OValue> parameterValues, TypeRegistry typeRegistry) throws Oberon0RuntimeException
+	public OValue invoke(RuntimeEnvironment environment, Queue<OValue> parameterValues) throws Oberon0RuntimeException
 	{
-		assert(callerVars != null);
 		assert(parameterValues != null);
 		assert(parameters != null);
 		assert(bodyDeclarations != null);
 		assert(body != null);
-		// Create a new variable scope for the invoked function
-		Oberon0VariableStack functionVars = new Oberon0VariableStack(callerVars);
 		// Loop through all parameters and declare them in the invoked functions variable scope
 		for (OVarDeclaration p : parameters)
 		{
-			p.runForParameter(functionVars, parameterValues, typeRegistry);
+			p.runForParameter(environment, parameterValues);
 		}
 		// If parameterValues has any values left, the number of arguments don't match
 		if (parameterValues.size() > 0)
@@ -66,10 +62,10 @@ public class OProcedureDeclaration extends OBodyDeclaration implements OInvokabl
 		// Loop through all body declarations
 		for (OBodyDeclaration bodyDecl : bodyDeclarations)
 		{
-			bodyDecl.run(functionVars, typeRegistry);
+			bodyDecl.run(environment);
 		}
 		// Run the body of the function
-		body.run(functionVars, typeRegistry);
+		body.run(environment);
 		return null;
 	}
 	@Override

@@ -16,9 +16,9 @@ public class OPointerToValue extends OValue
 	{
 		return (pointsTo == null);
 	}
-	public void invokeNew(TypeRegistry _typeRegistry) throws Oberon0RuntimeException
+	public void invokeNew(RuntimeEnvironment environment) throws Oberon0RuntimeException
 	{
-		pointsTo = variableCreator.instantiate(_typeRegistry);
+		pointsTo = variableCreator.instantiate(environment);
 	}
 	@Override
 	public OValue dereference()

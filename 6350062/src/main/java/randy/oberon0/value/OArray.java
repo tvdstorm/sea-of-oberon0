@@ -7,12 +7,12 @@ public class OArray extends OValue
 {
 	private OValue values[];
 	
-	public OArray(int _size, OInstantiateableVariable _childType, TypeRegistry _typeRegistry) throws Oberon0RuntimeException
+	public OArray(int _size, OInstantiateableVariable _childType, RuntimeEnvironment environment) throws Oberon0RuntimeException
 	{
 		values = new OValue[_size];
 		for (int i=0;i<_size;i++)
 		{
-			values[i] = _childType.instantiate(_typeRegistry);
+			values[i] = _childType.instantiate(environment);
 		}
 	}
 	public OArray(OArray _value) throws Oberon0RuntimeException

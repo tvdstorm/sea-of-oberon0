@@ -3,8 +3,7 @@ package randy.oberon0.ast;
 import java.util.*;
 import randy.oberon0.ast.visitor.OASTNodeVisitor;
 import randy.oberon0.exception.*;
-import randy.oberon0.interpreter.runtime.Oberon0VariableStack;
-import randy.oberon0.interpreter.runtime.TypeRegistry;
+import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
 import randy.oberon0.value.*;
 
 public class OVarDeclaration extends OBodyDeclaration
@@ -24,19 +23,19 @@ public class OVarDeclaration extends OBodyDeclaration
 		names = _names;
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
+	public OValue run(RuntimeEnvironment environment) throws Oberon0RuntimeException
 	{
-		assert(vars != null);
+		assert(environment != null);
 		for (String name : names)
 		{
 			assert(name.length() >= 1);
-			vars.addVariable(name, typeRegistry.resolve(type).instantiate(typeRegistry));
+			environment.addVariable(name, environment.resolveType(type).instantiate(environment));
 		}
 		return null;
 	}
-	public void runForParameter(Oberon0VariableStack vars, Queue<OValue> parameters, TypeRegistry typeRegistry) throws Oberon0RuntimeException
+	public void runForParameter(RuntimeEnvironment environment, Queue<OValue> parameters) throws Oberon0RuntimeException
 	{
-		assert(vars != null);
+		assert(environment != null);
 		assert(parameters != null);
 		assert(names != null);
 		if (parameters.size() < names.size())
@@ -51,10 +50,10 @@ public class OVarDeclaration extends OBodyDeclaration
 				val = param;
 			else
 			{	
-				val = typeRegistry.resolve(type).instantiate(typeRegistry);
+				val = environment.resolveType(type).instantiate(environment);
 				val.setValue(param);
 			}
-			vars.addVariable(name, val);
+			environment.addVariable(name, val);
 		}
 	}
 	public String getType()

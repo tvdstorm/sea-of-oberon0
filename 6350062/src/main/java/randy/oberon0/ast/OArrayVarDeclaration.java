@@ -20,28 +20,28 @@ public class OArrayVarDeclaration extends OVarDeclaration
 		arrayLength = _arrayLength;
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
+	public OValue run(RuntimeEnvironment environment) throws Oberon0RuntimeException
 	{
-		assert(vars != null);
+		assert(environment != null);
 		// Evaluate the length of the array and convert it to an integer
-		OValue len = arrayLength.run(vars, typeRegistry).dereference();
+		OValue len = arrayLength.run(environment).dereference();
 		if (len.getType() != Type.INTEGER)
 			throw new Oberon0SelectorException("Cannot cast the length of an array from " + len.getType() + " to " + Type.INTEGER + ".");
 		OInteger length = (OInteger)len;
 		// Add all variable instances to the variable scope
 		for (String name : names)
 		{
-			OInstantiateableVariable arrayType = typeRegistry.resolve(type);
+			OInstantiateableVariable arrayType = environment.resolveType(type);
 			OArrayVariableInstantiation arrayCreator = new OArrayVariableInstantiation(arrayType);
 			arrayCreator.setLength(length.getIntValue());
-			vars.addVariable(name, arrayCreator.instantiate(typeRegistry));
+			environment.addVariable(name, arrayCreator.instantiate(environment));
 		}
 		return null;
 	}
 	@Override
-	public void runForParameter(Oberon0VariableStack vars, Queue<OValue> parameters, TypeRegistry typeRegistry) throws Oberon0RuntimeException
+	public void runForParameter(RuntimeEnvironment environment, Queue<OValue> parameters) throws Oberon0RuntimeException
 	{
-		assert(vars != null);
+		assert(environment != null);
 		assert(parameters != null);
 		assert(names != null);
 		assert(arrayLength != null);
@@ -51,16 +51,16 @@ public class OArrayVarDeclaration extends OVarDeclaration
 		{
 			OArray param = parameters.poll().castToArray();
 			if (isReference)
-				vars.addVariable(name, param);
+				environment.addVariable(name, param);
 			else
 			{
-				OInteger length = arrayLength.run(vars, typeRegistry).castToInteger();
+				OInteger length = arrayLength.run(environment).castToInteger();
 				if (length.getIntValue() != param.getLength())
 					throw new Oberon0ArrayLengthMismatch();
-				OInstantiateableVariable arrayType = typeRegistry.resolve(type);
+				OInstantiateableVariable arrayType = environment.resolveType(type);
 				OArrayVariableInstantiation arrayCreator = new OArrayVariableInstantiation(arrayType);
 				arrayCreator.setLength(length.getIntValue());
-				OArray val = (OArray)arrayCreator.instantiate(typeRegistry);
+				OArray val = (OArray)arrayCreator.instantiate(environment);
 				for (int i=0;i<length.getIntValue();i++)
 				{
 					val.getIndexValue(i).setValue(param.getIndexValue(i));

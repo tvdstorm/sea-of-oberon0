@@ -3,9 +3,8 @@ package randy.oberon0.test;
 import java.util.*;
 import org.junit.Ignore;
 import randy.oberon0.exception.*;
-import randy.oberon0.interpreter.buildinfunctions.IOberon0BuildinFunctions;
-import randy.oberon0.interpreter.buildinfunctions.Oberon0DefaultNEWFunction;
-import randy.oberon0.interpreter.preprocess.FunctionTreeBuilder;
+import randy.oberon0.interpreter.buildinfunctions.*;
+import randy.oberon0.interpreter.runtime.FunctionRegistry;
 
 @Ignore
 public class TestBuildinFunctions implements IOberon0BuildinFunctions
@@ -26,13 +25,6 @@ public class TestBuildinFunctions implements IOberon0BuildinFunctions
 		writeLn = new TestWriteLnFunction(output);
 		newFunction = new Oberon0DefaultNEWFunction();
 	}
-	public void register(FunctionTreeBuilder ftb) throws Oberon0Exception
-	{
-		ftb.register(read);
-		ftb.register(write);
-		ftb.register(writeLn);
-		ftb.register(newFunction);
-	}
 	public void addInput(String value)
 	{
 		input.add(value);
@@ -44,5 +36,13 @@ public class TestBuildinFunctions implements IOberon0BuildinFunctions
 	public boolean outputIsEmpty()
 	{
 		return output.isEmpty();
+	}
+	@Override
+	public void register(FunctionRegistry functionRegistry) throws Oberon0Exception
+	{
+		functionRegistry.addFunction(read.getName(), read, 0);
+		functionRegistry.addFunction(write.getName(), write, 0);
+		functionRegistry.addFunction(writeLn.getName(), writeLn, 0);
+		functionRegistry.addFunction(newFunction.getName(), newFunction, 0);
 	}
 }
