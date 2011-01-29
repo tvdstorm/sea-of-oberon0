@@ -23,13 +23,22 @@ public class system {
   public static void read( Vector<ParamContainer> params )
   {
     Scanner x = new Scanner( System.in );
-    ParamContainer input = null;
+    ParamContainer inputTo = null;
     int intInput = 0;
+    String checkType;
     for( int i = 0; i < params.size(); i++ )
     {
-      input = params.get( i );
-      intInput = x.nextInt();
-      MemoryManager.set( input.varname, intInput );
+      inputTo = params.get( i );
+      checkType = x.next();
+      try
+      { // check for integer input
+        intInput = Integer.parseInt( checkType );
+      } 
+      catch( Exception e )
+      { // if not set value to 0
+    	intInput = 0;
+      }
+      MemoryManager.set( inputTo.varname, intInput );
     }
   }
   
