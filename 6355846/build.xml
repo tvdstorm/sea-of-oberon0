@@ -7,9 +7,18 @@
 
 	<path id="classpath">
 		<pathelement location="${lib.dir}/antlr3_3.jar" />
+		<pathelement location="${lib.dir}/ant-antlr3.jar" />
+		<pathelement location="${lib.dir}/javancss.jar" />
+		<pathelement location="${lib.dir}/javancc.jar" />
+		<pathelement location="${lib.dir}/jhbasic.jar" />
+		<pathelement location="${lib.dir}/ccl.jar" />
 	</path>
 
 	<target name="grammarCreator">
+		<taskdef name="antlr3"
+				classname="org.apache.tools.ant.antlr.ANTLR3"
+				classpathref="classpath" />
+		
 		<antlr3 target="${grammar.dir}/Oberon.g" outputdirectory="${parser.dir}">
 			<classpath refid="classpath" />
 		</antlr3>
@@ -28,5 +37,17 @@
 	
 	<target name="executeApp" depends="compile" >
 		<java classname="nl.bve.uva.oberon.App" classpath="${build.dir}" classpathref="classpath" />
+	</target>
+	
+	<target name="javancss" >
+		<taskdef name="javancss"
+				classname="javancss.JavancssAntTask"
+				classpathref="classpath" />
+		
+		<javancss srcdir="${src.dir}/main/java"
+				generateReport="true"
+				excludes="/nl/bve/uva/oberon/parser/**.*"
+				outputfile="javancss_metrics.txt"
+				format="plain"/>
 	</target>
 </project>

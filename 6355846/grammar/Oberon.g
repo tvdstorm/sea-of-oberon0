@@ -2,6 +2,7 @@ grammar Oberon;
 
 options {
 	output = AST;
+	/* ASTLabelType = OberonRootNode; */
 }
 
 @header {
@@ -121,5 +122,5 @@ declarations
 	:	constantDeclarations typeDeclarations varDeclarations procedureDeclarations;
 
 module	:	'MODULE' ident ';' declarations ('BEGIN' statementSequence)? 'END' ident '.' 
-	-> 	^(ident ^(DECL declarations) statementSequence);
+	-> 	^('MODULE' ^(DECL declarations) statementSequence);
 
