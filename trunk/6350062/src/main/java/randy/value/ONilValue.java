@@ -16,12 +16,17 @@ public class ONilValue extends OValue
 	@Override
 	public void setValue(OValue _val) throws Oberon0RuntimeException
 	{
-		// TODO Auto-generated method stub
+		// Resolve CONST
+		_val.castToNil();
 	}
 	@Override
 	public Type getType()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return Type.NIL;
+	}
+	@Override
+	public String toString()
+	{
+		return Type.NIL.getTypeText();
 	}
 }

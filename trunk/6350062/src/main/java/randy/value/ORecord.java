@@ -40,9 +40,8 @@ public class ORecord extends OValue
 		members = new HashMap<String, OValue>();
 		for (String key : v.members.keySet())
 		{
-			members.put(key, v.members.get(key));
+			members.put(key, v.members.get(key)); // TODO: copy van maken
 		}
-		// TODO: bij alle setValue's een COPY maken!
 	}
 	@Override
 	public Type getType()

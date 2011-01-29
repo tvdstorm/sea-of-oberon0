@@ -40,7 +40,11 @@ public class OPointerToValue extends OValue
 	@Override
 	public Type getType()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return Type.POINTERTO;
+	}
+	@Override
+	public String toString()
+	{
+		return Type.POINTERTO.getTypeText();
 	}
 }
