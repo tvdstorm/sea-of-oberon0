@@ -20,11 +20,25 @@ public class SelectorArrayNode implements ASTnode {
   
   public int eval( String scope )
   {
-	if( this.expression != null )
-	{
-	  return this.expression.eval( scope );
-	}
 	return 0;
+  }
+  
+  public String getString( String scope )
+  {
+    String returnValue = "";
+    returnValue = "[" + this.expression.eval( scope ) + "]";
+    if( this.selector != null )
+    {
+      if( this.selector instanceof SelectorArrayNode )
+      {
+        returnValue = returnValue + ( ((SelectorArrayNode) this.selector ).getString( scope ) );
+      }
+      else if( this.selector instanceof SelectorRecordNode )
+      {
+        returnValue = returnValue + ( ((SelectorRecordNode) this.selector ).getString( scope ) );
+      }
+    }
+    return returnValue;
   }
 
   private ExpressionNode expression = null;

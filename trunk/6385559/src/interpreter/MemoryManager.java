@@ -7,7 +7,7 @@ import java.util.Vector;
  */
 
 public class MemoryManager {
-  public static void allocate( String varName, String scope, int value, String refName )
+  public static void allocate( String varName, String scope, int value, String refName, boolean isConst )
   {
 	// Check wheter var does not already exist in the scope
 	int oldLocation = getLocationOf( varName, scope );
@@ -25,7 +25,7 @@ public class MemoryManager {
       {
         location = Memory.put( value );
       }
-	  list.add( new MemoryMap( varName, scope, location, refName ) );
+	  list.add( new MemoryMap( varName, scope, location, refName, isConst ) );
 	}
   }
   
@@ -43,7 +43,8 @@ public class MemoryManager {
   public static void set( String varName, int value )
   {
     int location = varLocation( varName );
-    if( location != -1 )
+    boolean isWriteable = isWriteable( varName );
+    if( location != -1 && isWriteable )
     {
       MemoryMap var = list.get( location );
       Memory.set( var.location, value );
@@ -72,13 +73,29 @@ public class MemoryManager {
 	System.out.println( "\n\n#\n" +
 			"#\tMemoryManager dump\n" +
 			"#\n" +
-			"Varname:       Scope:              Location:   Is reference:    Value:\n" );
+			"Varname:       Scope:              Location:   Is reference:    Read as:   Value:\n" );
     MemoryMap printBuffer = null;
     for( int i = 0; i < list.size(); i++ )
     {
       printBuffer = list.get( i );
       printBuffer.print();
     }
+  }
+  
+  private static boolean isWriteable( String varName )
+  {
+	MemoryMap varContainer = null;
+	boolean isWriteable = true;
+    for( int i = list.size()-1; i >= 0; i-- )
+    {
+      varContainer = list.get( i );
+      if( varContainer.varName.contentEquals( varName ) )
+      {
+        isWriteable = !varContainer.readOnly;
+        break;
+      }
+    }
+    return isWriteable;
   }
   
   private static int varLocation( String varName )
@@ -134,12 +151,13 @@ public class MemoryManager {
   
   private static class MemoryMap
   {
-	public MemoryMap( String varName, String scope, int location, String refName )
+	public MemoryMap( String varName, String scope, int location, String refName, boolean readOnly )
 	{
       this.varName = varName;
       this.scope = scope;
       this.location = location;
       this.isRef = ( refName != null ) ? true : false;
+      this.readOnly = readOnly;
 	}
 	
 	public void print()
@@ -148,6 +166,7 @@ public class MemoryManager {
       this.printXWide( this.scope, 20 );
       this.printXWide( "" + this.location, 12 );
       this.printXWide( (this.isRef) ? "Yes" : "No", 17 );
+      this.printXWide( (this.readOnly) ? "Const" : "Var", 11 );
       this.printXWide( "" + Memory.get( this.location ), 20);
       System.out.println();
 	}
@@ -166,5 +185,6 @@ public class MemoryManager {
     public String scope;
     public int location;
     public boolean isRef;
+    public boolean readOnly;
   }
 }

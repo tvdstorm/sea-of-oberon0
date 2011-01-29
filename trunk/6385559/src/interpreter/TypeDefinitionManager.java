@@ -3,9 +3,9 @@ import java.util.Vector;
 import ASTnodes.*;
 
 public class TypeDefinitionManager {
-  public static void addTypeDefinition( String name, ASTnode x )
+  public static void addTypeDefinition( String name, ASTnode x, String scope )
   {
-    DefinitionContainer addition = new DefinitionContainer( name, x );
+    DefinitionContainer addition = new DefinitionContainer( name, x, scope );
     definitions.add( addition );
   }
   
@@ -38,17 +38,31 @@ public class TypeDefinitionManager {
 	{
       container = definitions.get( i );
       astContainer = container.getDefinition();
-      System.out.println( "\nType: " + container.getName() );
+      System.out.println( "\nType: " + container.getName() + "\tScope: " + container.getScope() );
       astContainer.printNode( 0 );
 	}
+  }
+
+  public static void deleteScope( String scope )
+  {
+    DefinitionContainer container = null;
+    for( int i = definitions.size()-1; i >= 0; i-- )
+    {
+      container = definitions.get( i );
+      if( container.getScope().contentEquals( scope ) )
+      {
+        definitions.removeElementAt( i );
+      }
+    }
   }
   
   private static class DefinitionContainer
   {
-    public DefinitionContainer( String name, ASTnode definition )
+    public DefinitionContainer( String name, ASTnode definition, String scope )
     {
       this.name = name;
       this.definition = definition;
+      this.scope = scope;
     }
     
     public String getName( )
@@ -61,8 +75,14 @@ public class TypeDefinitionManager {
       return this.definition;
     }
     
+    public String getScope()
+    {
+      return this.scope;
+    }
+    
     private String name = null;
     private ASTnode definition = null;
+    private String scope = null;
   }
 	
   private static Vector<DefinitionContainer> definitions = new Vector<DefinitionContainer>(0);

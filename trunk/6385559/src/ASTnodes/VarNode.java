@@ -26,7 +26,14 @@ public class VarNode implements ASTnode {
     String varnameWithSelector = this.varname;
     if( select != null )
     {
-      varnameWithSelector = varname + "[" + this.select.eval( scope ) + "]";
+      if( this.select instanceof SelectorArrayNode )
+      {
+        varnameWithSelector = varname + ( (SelectorArrayNode) this.select ).getString( scope );
+      }
+      else if( this.select instanceof SelectorRecordNode )
+      {
+        varnameWithSelector = varname + ( (SelectorRecordNode) this.select).getString( scope );
+      }
     }
     return varnameWithSelector;
   }

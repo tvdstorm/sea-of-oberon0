@@ -50,6 +50,11 @@ public class DeclarationsNode implements ASTnode {
   
   public int eval( String scope )
   {
+	if( this.constant != null )
+	{
+      this.constant.eval( scope );
+	}
+	
 	if( this.typeDefs != null )
 	{
       this.typeDefs.eval( scope );

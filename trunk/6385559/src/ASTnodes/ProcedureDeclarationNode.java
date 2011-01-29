@@ -1,10 +1,19 @@
 package ASTnodes;
 
+import parseErrorLog.*;
+
 public class ProcedureDeclarationNode implements ASTnode {
   public ProcedureDeclarationNode( ProcedureHeadingNode heading, ProcedureBodyNode body )
   {
 	this.heading = heading;
 	this.body = body;
+	
+	String headerName = this.heading.getIdentifier( );
+	String bodyName = this.body.getIdentifier( );
+	if( !headerName.contentEquals( bodyName ) )
+	{
+	  parseErrorLog.addMessage( "Procedure declarations for procedure " + headerName + " ended with " + bodyName );
+	}
   }
 	
   public void printNode(int depth) {
@@ -16,12 +25,6 @@ public class ProcedureDeclarationNode implements ASTnode {
     {
       this.body.printNode( depth );
     }
-  }
-
-  public void addWhitespace( int depth )
-  {
-	for( int i = 0; i < depth; i++ )
-	  System.out.print( " " );
   }
   
   public int eval( String scope )
