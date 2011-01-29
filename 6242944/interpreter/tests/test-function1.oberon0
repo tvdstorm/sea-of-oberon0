@@ -1,0 +1,18 @@
+MODULE test;
+VAR x : INTEGER;
+
+PROCEDURE add(VAR res : INTEGER; a, b, c, d, e : INTEGER);
+VAR
+    z : INTEGER;
+BEGIN
+    z := a + b + c;
+    res := z + d + e
+END add;
+
+BEGIN
+
+x := 0;
+add(x, 1, 2, 3, 4, 5);
+AssertEq(x, 15)
+
+END test.

@@ -1,0 +1,22 @@
+MODULE test;
+VAR 
+    i : INTEGER;
+BEGIN
+
+i := 0;
+
+WHILE i < 10 DO
+    i := i + 1
+END;
+
+AssertEq(i, 10);
+
+i := 0;
+
+WHILE i > 0 DO
+    AssertEq(0, 1)
+END;
+
+AssertEq(i, 0)
+
+END test.

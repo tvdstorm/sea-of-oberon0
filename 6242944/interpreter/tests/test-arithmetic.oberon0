@@ -1,0 +1,19 @@
+MODULE test;
+BEGIN
+    AssertEq(0 * 0, 0);
+    AssertEq(10 * 2, 20);
+    AssertEq((10 * 1) * (3 * 2)*5, 300);
+
+    AssertEq(4 DIV 2, 2);
+    AssertEq(9 DIV 2, 4);
+    AssertEq(0 DIV 222, 0);
+    
+    AssertEq(10 * 3 + 5, 35);
+    AssertEq(5 + 10 * 3, 35);
+    AssertEq((5 + 10) * 3, 45);
+    AssertEq(3 * (5+10), 45);
+
+    AssertEq((15 - 10) * (3 - 2), 5);
+    AssertEq(15 - 10 * 3 + 57, 42);
+    AssertEq(100 DIV 10 DIV 2, 5)
+END test.
