@@ -41,6 +41,17 @@ public class Oberon0ASTTreeGenerator
 		
 		return buildASTTree((Tree)parserOutput.getTree());
 	}
+	public static OAbstractTypeDeclaration buildAbstractTypeDeclaration(Tree tree) throws Oberon0Exception
+	{
+		assert(tree.getType() == Oberon0Parser.TYPE);
+		switch (tree.getChild(1).getType())
+		{
+			case Oberon0Parser.RECORD:
+				return buildRecordDeclaration(tree);
+			default:
+				throw new Oberon0ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + ".");
+		}
+	}
 	public static OArraySelector buildArraySelector(Tree tree) throws Oberon0Exception
 	{
 		assert(tree.getType() == Oberon0Parser.ARRAYSELECTOR);
@@ -84,6 +95,8 @@ public class Oberon0ASTTreeGenerator
 				return buildConstDeclaration(tree);
 			case Oberon0Parser.PROCEDURE:
 				return buildProcedureDeclaration(tree);
+			case Oberon0Parser.TYPE:
+				return buildAbstractTypeDeclaration(tree);
 			default:
 				throw new Oberon0ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + "."); 
 		}
@@ -101,6 +114,15 @@ public class Oberon0ASTTreeGenerator
 		String name = tree.getChild(0).getText();
 		OExpression value = buildExpression(tree.getChild(1));
 		return new OConstDeclaration(name, value);
+	}
+	public static ODotSelector buildDotSelector(Tree tree) throws Oberon0Exception
+	{
+		assert(tree.getType() == Oberon0Parser.DOTSELECTOR);
+		assert(tree.getChildCount() == 2);
+		assert(tree.getChild(1).getType() == Oberon0Parser.IDENT);
+		OSelector lhs = buildSelector(tree.getChild(0));
+		String selector = tree.getChild(1).getText();
+		return new ODotSelector(lhs, selector);
 	}
 	public static OExpression buildExpression(Tree tree) throws Oberon0Exception
 	{
@@ -134,7 +156,8 @@ public class Oberon0ASTTreeGenerator
 			case Oberon0Parser.IDENT:
 				return buildVariable(tree);
 			case Oberon0Parser.ARRAYSELECTOR:
-				return buildArraySelector(tree);
+			case Oberon0Parser.DOTSELECTOR:
+				return buildSelector(tree);
 			default:
 				throw new Oberon0ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + ".");
 		}
@@ -205,6 +228,7 @@ public class Oberon0ASTTreeGenerator
 				case Oberon0Parser.VAR:
 				case Oberon0Parser.CONST:
 				case Oberon0Parser.PROCEDURE:
+				case Oberon0Parser.TYPE:
 					bodyDeclarations.add(buildBodyDeclaration(child));
 					break;
 				default:
@@ -258,6 +282,7 @@ public class Oberon0ASTTreeGenerator
 					}
 					break;
 				case Oberon0Parser.VAR:
+				case Oberon0Parser.TYPE:
 				case Oberon0Parser.PROCEDURE:
 					bodyDeclarations.add(buildBodyDeclaration(child));
 					break;
@@ -269,10 +294,23 @@ public class Oberon0ASTTreeGenerator
 		
 		return new OProcedureDeclaration(name, parameters, bodyDeclarations, body);
 	}
+	public static ORecordDeclaration buildRecordDeclaration(Tree tree) throws Oberon0Exception
+	{
+		String name = tree.getChild(0).getText();
+		HashMap<String, String> members = new HashMap<String, String>();
+		Tree vars = tree.getChild(1);
+		for (int i=0;i<vars.getChildCount();i++)
+		{
+			members.put(vars.getChild(i).getChild(1).getText(), vars.getChild(i).getChild(0).getText());
+		}
+		return new ORecordDeclaration(name, members);
+	}
 	public static OSelector buildSelector(Tree tree) throws Oberon0Exception
 	{
 		switch (tree.getType())
 		{
+			case Oberon0Parser.DOTSELECTOR:
+				return buildDotSelector(tree);
 			case Oberon0Parser.ARRAYSELECTOR:
 				return buildArraySelector(tree);
 			case Oberon0Parser.IDENT:
@@ -305,15 +343,15 @@ public class Oberon0ASTTreeGenerator
 		boolean isReference = false;
 		if (tree.getType() == Oberon0Parser.REFVAR)
 			isReference = true;
-		Type type = Type.get(tree.getChild(0).getText());
+		String type = tree.getChild(0).getText();
 		List<String> names = new Vector<String>();
 		for (int i=1;i<tree.getChildCount();i++)
 		{
 			names.add(tree.getChild(i).getText());
 		}
-		if (type == Type.ARRAY)
+		if (type.equals(Type.ARRAY.getTypeText()))
 		{
-			type = Type.get(tree.getChild(0).getChild(0).getChild(0).getText());
+			type = tree.getChild(0).getChild(0).getChild(0).getText();
 			OExpression arrayLength = buildExpression(tree.getChild(0).getChild(1).getChild(0));
 			return new OArrayVarDeclaration(type, isReference, names, arrayLength);
 		}

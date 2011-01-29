@@ -3,6 +3,7 @@ package randy.ast;
 import java.util.*;
 import randy.ast.visitor.OASTNodeVisitor;
 import randy.exception.*;
+import randy.interpreter.runtime.Oberon0Program;
 import randy.interpreter.runtime.Oberon0VariableStack;
 import randy.value.*;
 
@@ -10,7 +11,7 @@ public class OArrayVarDeclaration extends OVarDeclaration
 {
 	protected OExpression arrayLength;
 	
-	public OArrayVarDeclaration(Type _type, boolean _bIsReference, List<String> _names, OExpression _arrayLength)
+	public OArrayVarDeclaration(String _type, boolean _bIsReference, List<String> _names, OExpression _arrayLength)
 	{
 		super(_type, _bIsReference, _names);
 		assert(_type != null);
@@ -31,8 +32,10 @@ public class OArrayVarDeclaration extends OVarDeclaration
 		// Add all variable instances to the variable scope
 		for (String name : names)
 		{
-			OArray val = new OArray(length.getIntValue(), type);
-			vars.addVariable(name, val);
+			OInstantiateableVariable arrayType = Oberon0Program.t.resolve(type);
+			OArrayVariableInstantiation arrayCreator = new OArrayVariableInstantiation(arrayType);
+			arrayCreator.setLength(length.getIntValue());
+			vars.addVariable(name, arrayCreator.instantiate());
 		}
 		return null;
 	}
@@ -54,6 +57,7 @@ public class OArrayVarDeclaration extends OVarDeclaration
 			{
 				if (arrayLength.run(vars).castToInteger().getIntValue() != param.getLength())
 					throw new Oberon0ArrayLengthMismatch();
+				// TODO: Vervangen door nieuwe methode
 				OArray val = new OArray(param);
 				vars.addVariable(name, val);
 			}

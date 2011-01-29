@@ -1,0 +1,24 @@
+MODULE Record;
+
+TYPE ObjDesc = RECORD
+name: INTEGER;
+type: INTEGER;
+active: BOOLEAN
+END;
+VAR o: ObjDesc;
+BEGIN
+
+Read(o.name);
+Read(o.type);
+o.active := o.name = o.type;
+
+Write(o.name);
+Write(o.type);
+IF o.active THEN
+	Write(1);
+ELSE
+	Write(0);
+END;
+
+END Record.
+

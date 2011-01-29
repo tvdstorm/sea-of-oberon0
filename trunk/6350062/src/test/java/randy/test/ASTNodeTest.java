@@ -2,6 +2,7 @@ package randy.test;
 
 import java.util.Random;
 import org.junit.*;
+import randy.ast.OPrimitiveVariableInstantiation;
 import randy.exception.*;
 import randy.interpreter.runtime.Oberon0Program;
 import randy.value.*;
@@ -544,7 +545,7 @@ public class ASTNodeTest
 				Assert.assertTrue(cBool.toString().equals(bool.toString()));
 				
 				int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
-				OArray array = new OArray(3, Type.INTEGER);
+				OArray array = new OArray(3, new OPrimitiveVariableInstantiation(Type.INTEGER));
 				array.getIndexValue(0).setValue(new OInteger(a));
 				array.getIndexValue(1).setValue(new OInteger(b));
 				array.getIndexValue(2).setValue(new OInteger(c));
@@ -669,6 +670,21 @@ public class ASTNodeTest
 			Assert.assertTrue(functions.popOutput().equals("" + a));
 			Assert.assertTrue(functions.popOutput().equals("" + a));
 			Assert.assertTrue(functions.popOutput().equals("" + a));
+			Assert.assertTrue(functions.outputIsEmpty());
+		}
+	}
+	@Test
+	public void test_Record()
+	{
+		prepareTest("record");
+		for (int i=0;i<numTests;i++)
+		{
+			int a = random.nextInt(), b = random.nextInt();
+			runTest(""+a, ""+b);
+			
+			Assert.assertTrue(functions.popOutput().equals("" + a));
+			Assert.assertTrue(functions.popOutput().equals("" + b));
+			Assert.assertTrue(functions.popOutput().equals(a == b?"1":"0"));
 			Assert.assertTrue(functions.outputIsEmpty());
 		}
 	}

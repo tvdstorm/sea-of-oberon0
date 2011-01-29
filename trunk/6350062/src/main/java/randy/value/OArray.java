@@ -1,17 +1,18 @@
 package randy.value;
 
+import randy.ast.OInstantiateableVariable;
 import randy.exception.*;
 
 public class OArray extends OValue
 {
 	private OValue values[];
 	
-	public OArray(int _size, Type _type) throws Oberon0RuntimeException
+	public OArray(int _size, OInstantiateableVariable _childType) throws Oberon0RuntimeException
 	{
 		values = new OValue[_size];
 		for (int i=0;i<_size;i++)
 		{
-			values[i] = OValue.makeNew(_type);
+			values[i] = _childType.instantiate();
 		}
 	}
 	public OArray(OArray _value) throws Oberon0RuntimeException
