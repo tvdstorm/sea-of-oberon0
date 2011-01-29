@@ -3,8 +3,8 @@ package randy.interpreter.buildinfunctions;
 import java.util.Queue;
 import randy.ast.OInvokableFunction;
 import randy.exception.*;
-import randy.interpreter.preprocess.TypeRegistry;
 import randy.interpreter.runtime.Oberon0VariableStack;
+import randy.interpreter.runtime.TypeRegistry;
 import randy.value.*;
 
 public class Oberon0DefaultNEWFunction implements OInvokableFunction
@@ -21,6 +21,12 @@ public class Oberon0DefaultNEWFunction implements OInvokableFunction
 			throw new Oberon0IncorrectNumberOfArgumentsException();
 		OPointerToValue param = parameterValues.poll().castToPointerTo();
 		param.invokeNew(typeRegistry);
+		return null;
+	}
+	@Override
+	public OValue runTypeDeclarations(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
+	{
+		// Leeg
 		return null;
 	}
 }

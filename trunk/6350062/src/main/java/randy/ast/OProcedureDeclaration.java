@@ -3,8 +3,8 @@ package randy.ast;
 import java.util.*;
 import randy.ast.visitor.OASTNodeVisitor;
 import randy.exception.*;
-import randy.interpreter.preprocess.TypeRegistry;
 import randy.interpreter.runtime.Oberon0VariableStack;
+import randy.interpreter.runtime.TypeRegistry;
 import randy.value.OValue;
 
 public class OProcedureDeclaration extends OBodyDeclaration implements OInvokableFunction
@@ -29,7 +29,21 @@ public class OProcedureDeclaration extends OBodyDeclaration implements OInvokabl
 	@Override
 	public OValue run(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
 	{
-		// Nothing to run in procedure declarations, they are taken care of during preprocessing...
+		// Leeg
+		return null;
+	}
+	@Override
+	public OValue runTypeDeclarations(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
+	{
+		assert(vars != null);
+		assert(bodyDeclarations != null);
+		assert(body != null);
+		// Run all the body declarations
+		for (OBodyDeclaration bd : bodyDeclarations)
+		{
+			if (bd instanceof ORecordDeclaration || bd instanceof OPointerToDeclaration)
+				bd.run(vars, typeRegistry);
+		}
 		return null;
 	}
 	public OValue invoke(Oberon0VariableStack callerVars, Queue<OValue> parameterValues, TypeRegistry typeRegistry) throws Oberon0RuntimeException

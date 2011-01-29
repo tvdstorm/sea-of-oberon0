@@ -3,8 +3,8 @@ package randy.ast;
 import java.util.*;
 import randy.ast.visitor.OASTNodeVisitor;
 import randy.exception.*;
-import randy.interpreter.preprocess.TypeRegistry;
 import randy.interpreter.runtime.Oberon0VariableStack;
+import randy.interpreter.runtime.TypeRegistry;
 import randy.value.*;
 
 public class OProcedureCall extends OExpression
@@ -43,8 +43,10 @@ public class OProcedureCall extends OExpression
 			OValue v = p.run(vars, typeRegistry);
 			params.add(v);
 		}
+		TypeRegistry newTypeRegistry = new TypeRegistry(typeRegistry);
+		functionDeclaration.runTypeDeclarations(vars, newTypeRegistry);
 		// Invoke the function
-		return functionDeclaration.invoke(vars, params, typeRegistry);
+		return functionDeclaration.invoke(vars, params, newTypeRegistry);
 	}
 	@Override
 	public void accept(OASTNodeVisitor visitor) throws Oberon0Exception

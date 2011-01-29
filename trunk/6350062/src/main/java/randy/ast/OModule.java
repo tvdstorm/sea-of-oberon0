@@ -3,8 +3,8 @@ package randy.ast;
 import java.util.*;
 import randy.ast.visitor.OASTNodeVisitor;
 import randy.exception.*;
-import randy.interpreter.preprocess.TypeRegistry;
 import randy.interpreter.runtime.Oberon0VariableStack;
+import randy.interpreter.runtime.TypeRegistry;
 import randy.value.OValue;
 
 public class OModule extends OASTNode
@@ -25,13 +25,14 @@ public class OModule extends OASTNode
 		assert(vars != null);
 		assert(bodyDeclarations != null);
 		assert(body != null);
+		TypeRegistry newTypeRegistry = new TypeRegistry(typeRegistry);
 		// Run all the body declarations
 		for (OBodyDeclaration bd : bodyDeclarations)
 		{
-			bd.run(vars, typeRegistry);
+			bd.run(vars, newTypeRegistry);
 		}
 		// Run the body of the module
-		return body.run(vars, typeRegistry);
+		return body.run(vars, newTypeRegistry);
 	}
 	@Override
 	public void accept(OASTNodeVisitor visitor) throws Oberon0Exception

@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.util.Queue;
 import randy.ast.OInvokableFunction;
 import randy.exception.*;
-import randy.interpreter.preprocess.TypeRegistry;
 import randy.interpreter.runtime.Oberon0VariableStack;
+import randy.interpreter.runtime.TypeRegistry;
 import randy.value.*;
 
 public class Oberon0DefaultReadFunction implements OInvokableFunction
@@ -34,5 +34,11 @@ public class Oberon0DefaultReadFunction implements OInvokableFunction
 		{
 			throw new Oberon0IOErrorException("Error reading from stdin...");
 		}
+	}
+	@Override
+	public OValue runTypeDeclarations(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
+	{
+		// Leeg
+		return null;
 	}
 }

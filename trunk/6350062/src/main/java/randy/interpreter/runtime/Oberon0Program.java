@@ -28,13 +28,10 @@ public class Oberon0Program
 		astTree.accept(ftb);
 		ftb.resolveAllFunctionCalls();
 		
-		typeRegistry = new TypeRegistry();
+		typeRegistry = new TypeRegistry(null);
 		// Registrate buildin primitive types
 		typeRegistry.addType(Type.INTEGER.getTypeText(), new OPrimitiveVariableInstantiation(Type.INTEGER));
 		typeRegistry.addType(Type.BOOLEAN.getTypeText(), new OPrimitiveVariableInstantiation(Type.BOOLEAN));
-		
-		TypeRegistryRegistrator registrator = new TypeRegistryRegistrator(typeRegistry);
-		astTree.accept(registrator);
 		
 		return true;
 	}

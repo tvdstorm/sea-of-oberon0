@@ -3,7 +3,7 @@ package randy.value;
 import java.util.*;
 import randy.ast.OInstantiateableVariable;
 import randy.exception.Oberon0RuntimeException;
-import randy.interpreter.preprocess.TypeRegistry;
+import randy.interpreter.runtime.TypeRegistry;
 
 public class ORecord extends OValue
 {
