@@ -4,7 +4,7 @@ import java.util.Vector;
 import interpreter.ParamContainer;
 
 public class ParamNode implements ASTnode {
-  public ParamNode( ASTnode param, ParamNode nextParam )
+  public ParamNode( ExpressionNode param, ParamNode nextParam )
   {
 	this.param = param;
 	this.nextParam = nextParam;
@@ -35,14 +35,12 @@ public class ParamNode implements ASTnode {
     }
     
     buffer.value = this.param.eval( scope );
-	if( this.param instanceof VarNode )
-	{
-      buffer.varname = ((VarNode) this.param).getVarname( scope );
-	}
+    buffer.varname = this.param.getVariableName();
+
 	container.add( buffer );
     return container;
   }
 
-  private ASTnode param = null;
+  private ExpressionNode param = null;
   private ParamNode nextParam = null;
 }

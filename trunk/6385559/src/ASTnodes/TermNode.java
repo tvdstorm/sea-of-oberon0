@@ -48,6 +48,15 @@ public class TermNode implements ASTnode {
     }
     return 0;
   }
+
+  public String getVariableName( )
+  {
+    if( this.factor instanceof VarNode && this.operator == null && this.follow == null )
+    { // detect whether its only a variable node needed for call by reference
+      return ( (VarNode) this.factor).getVarname( "" );
+    }
+    return null;
+  }  
   
   private ASTnode factor = null;
   private String operator = null; // '*'|'DIV'|'MOD'|'&'

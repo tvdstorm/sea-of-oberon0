@@ -225,22 +225,14 @@ procedurecall returns [ StatementNode e ]
 	;
 	
 actualparameters returns [ ParamNode e ]
-	: '(' ( variable ( followsecond=actualparametersfollowup)? )? ')'
-  {
-    $e = new ParamNode( $variable.e, $followsecond.e );
-  }
-  | '(' ( expression ( follow=actualparametersfollowup)? )? ')'
+	: '(' ( expression ( follow=actualparametersfollowup)? )? ')'
 	{
 	  $e = new ParamNode( $expression.e, $follow.e );
 	}
 	;
 	
 actualparametersfollowup returns [ ParamNode e]
-  :  ',' variable ( followsecond=actualparametersfollowup)?
-  {
-    $e = new ParamNode( $variable.e, $followsecond.e );
-  }
-  | ',' expression ( follow=actualparametersfollowup)?
+  : ',' expression ( follow=actualparametersfollowup)?
   {
     $e = new ParamNode( $expression.e, $follow.e );
   }

@@ -59,6 +59,15 @@ public class ExpressionNode implements ASTnode {
     return 5;
   }
   
+  public String getVariableName()
+  { // detect whether it is only a variable not and not an complete expression needed for call be reference
+    if( this.operator != null && this.right != null )
+    {
+      return null;
+    }
+    return left.getVariableName();
+  }
+  
   private String operator = null;
   private SimpleExpression left = null;
   private SimpleExpression right = null;

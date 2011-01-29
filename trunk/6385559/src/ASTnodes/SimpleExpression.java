@@ -45,6 +45,16 @@ public class SimpleExpression implements ASTnode {
     return 0;
   }
   
+  public String getVariableName()
+  { // detect whether it is only a variable node complete simple expression needed for call be reference
+    if( this.operator != null && this.followup != null && !( this.term instanceof TermNode ) )
+    {
+      return null;
+    }
+    
+    return ((TermNode) this.term).getVariableName();
+  }
+  
   private String operator = null;
   private ASTnode term = null;
   private SimpleExpression followup = null;

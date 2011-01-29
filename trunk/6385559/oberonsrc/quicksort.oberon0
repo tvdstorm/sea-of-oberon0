@@ -44,8 +44,8 @@ BEGIN
         pivot := leftIdx
       END
     END;
-    QuickSort(array, left, (pivot - 1) );
-    QuickSort(array, (pivot + 1), right)
+    QuickSort(array, left, pivot - 1);
+    QuickSort(array, pivot + 1, right)
   END
 END QuickSort;
 
@@ -55,7 +55,7 @@ BEGIN
    Read(input[i]);
    i := i + 1
  END;
- QuickSort(input, 0, ( INPUTLENGTH - 1 ));
+ QuickSort(input, 0, INPUTLENGTH - 1);
  i := 0;
  WHILE i < INPUTLENGTH DO
    Write(input[i]);
