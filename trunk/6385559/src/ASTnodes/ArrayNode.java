@@ -71,10 +71,10 @@ public class ArrayNode implements ASTnode {
   private void correctType( )
   {
     String identName = "";
-    while( this.type != null && this.type instanceof TypeNode && !identName.contentEquals( "INTEGER" ))
+    while( this.type != null && this.type instanceof TypeNode && !identName.contentEquals( "INTEGER" ) && !identName.contentEquals( "BOOLEAN" ) )
     {
       identName = ((TypeNode) this.type ).getIdentName();
-      if( !identName.contentEquals( "INTEGER" ) )
+      if( !identName.contentEquals( "INTEGER" ) && !identName.contentEquals( "BOOLEAN" ) )
       {
         this.type = TypeDefinitionManager.getTypeDefinition( identName );
       }

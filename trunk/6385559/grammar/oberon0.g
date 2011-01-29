@@ -10,12 +10,24 @@ options
   package parser;
   
   import ASTnodes.*;
+  import parseErrorLog.*;
 }
 
 @lexer::header
 {
   package parser;
 }
+
+@members {
+    public void displayRecognitionError(String[] tokenNames,
+                                        RecognitionException e) {
+        String hdr = getErrorHeader(e);
+        String msg = getErrorMessage(e, tokenNames);
+        
+        parseErrorLog.addMessage( hdr + " -> " + msg );
+    }
+}
+
 
 module returns [ ModuleNode e ]
 	: 'MODULE' ind1=IDENT ';' declarations ('BEGIN' statementsequence)? 'END' ind2=IDENT '.' 
@@ -213,18 +225,26 @@ procedurecall returns [ StatementNode e ]
 	;
 	
 actualparameters returns [ ParamNode e ]
-	: '(' ( expression ( follow=actualparametersfollowup)? )? ')'
+	: '(' ( variable ( followsecond=actualparametersfollowup)? )? ')'
+  {
+    $e = new ParamNode( $variable.e, $followsecond.e );
+  }
+  | '(' ( expression ( follow=actualparametersfollowup)? )? ')'
 	{
 	  $e = new ParamNode( $expression.e, $follow.e );
 	}
 	;
 	
 actualparametersfollowup returns [ ParamNode e]
-	: ',' expression (follow=actualparametersfollowup)?
-	{
-	  $e = new ParamNode( $expression.e, $follow.e );
-	}
-	;
+  :  ',' variable ( followsecond=actualparametersfollowup)?
+  {
+    $e = new ParamNode( $variable.e, $followsecond.e );
+  }
+  | ',' expression ( follow=actualparametersfollowup)?
+  {
+    $e = new ParamNode( $expression.e, $follow.e );
+  }
+  ;
 	
 ifstatement returns [ StatementNode e ]
 	: 'IF' expression 'THEN' statementsequence elsestatement? 'END'

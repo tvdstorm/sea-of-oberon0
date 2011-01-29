@@ -35,8 +35,29 @@ public class MemoryManager {
 	if( location != -1 )
 	{
 	  MemoryMap varcontainer = list.get( location );
+	  while( varcontainer.isRef )
+      {
+        location = varcontainer.location;
+        varcontainer = list.get( location );
+      }
       return Memory.get( varcontainer.location );
 	}
+    return 0;
+  }
+  
+  public static int getFromOtherScope( String varName, String scope )
+  {
+    int location = getLocationNotInScope( varName, scope );
+    if( location != -1 )
+    {
+      MemoryMap varcontainer = list.get( location );
+      while( varcontainer.isRef )
+      {
+        location = varcontainer.location;
+        varcontainer = list.get( location );
+      }
+      return Memory.get( varcontainer.location );
+    }
     return 0;
   }
  
@@ -47,6 +68,11 @@ public class MemoryManager {
     if( location != -1 && isWriteable )
     {
       MemoryMap var = list.get( location );
+      while( var.isRef )
+      {
+        location = var.location;
+        var = list.get( location );
+      }
       Memory.set( var.location, value );
     }
   }
@@ -114,6 +140,22 @@ public class MemoryManager {
     return location;
   }
   
+  private static int getLocationNotInScope( String varName, String scope )
+  {
+    MemoryMap var;
+    int location = -1;
+    for( int i = list.size()-1; i >= 0; i-- )
+    {
+      var = list.get( i );
+      if( var.varName.contentEquals( varName ) && !var.scope.contentEquals( scope ) )
+      {
+        location = i;
+        break;
+      }
+    }
+    return location;
+  }
+  
   private static int getLocationOf( String varName, String scope )
   {
     MemoryMap var;
@@ -167,7 +209,7 @@ public class MemoryManager {
       this.printXWide( "" + this.location, 12 );
       this.printXWide( (this.isRef) ? "Yes" : "No", 17 );
       this.printXWide( (this.readOnly) ? "Const" : "Var", 11 );
-      this.printXWide( "" + Memory.get( this.location ), 20);
+      this.printXWide( "" + get( this.varName ), 20);
       System.out.println();
 	}
 	

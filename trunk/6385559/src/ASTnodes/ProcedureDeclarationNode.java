@@ -1,6 +1,9 @@
 package ASTnodes;
 
 import parseErrorLog.*;
+import java.util.Vector;
+import interpreter.ProcedureManager;
+import interpreter.ParamContainer;
 
 public class ProcedureDeclarationNode implements ASTnode {
   public ProcedureDeclarationNode( ProcedureHeadingNode heading, ProcedureBodyNode body )
@@ -29,7 +32,21 @@ public class ProcedureDeclarationNode implements ASTnode {
   
   public int eval( String scope )
   {
+	ProcedureManager.addProcedure( this.heading.getIdentifier(), scope, this);
     return 0;
+  }
+  
+  public void eval( String scope, Vector<ParamContainer> variables )
+  {
+	if( this.heading != null )
+	{
+      heading.eval( scope, variables );
+	}
+	
+    if( this.body != null )
+    {
+      this.body.eval( scope );
+    }
   }
   
   private ProcedureHeadingNode heading = null;

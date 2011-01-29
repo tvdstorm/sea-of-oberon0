@@ -1,6 +1,7 @@
 package oberon0;
 import oberon0.ParserOutput;
 import interpreter.MemoryManager;
+import interpreter.ProcedureManager;
 import interpreter.TypeDefinitionManager;
 import oberon0.ParserInput;
 import parseErrorLog.*;
@@ -26,7 +27,7 @@ public class oberon0
     else
     {
       AST.eval( null );
-    	
+      
       if( CommandLine.doPrint( ) )
       { // if printrequest print the sourcefile to the screen
     	AST.printNode( 0 );
@@ -40,6 +41,11 @@ public class oberon0
       if( CommandLine.doPrintTypeDefinitions( ) )
       {
         TypeDefinitionManager.printDefinitions();
+      }
+      
+      if( CommandLine.doPrintProcedureDefinitions( ) )
+      {
+        ProcedureManager.printProcedures();
       }
     }
     
