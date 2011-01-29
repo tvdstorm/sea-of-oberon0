@@ -1,7 +1,6 @@
 package randy.oberon0.ast;
 
 import java.util.*;
-import randy.oberon0.ast.visitor.OASTNodeVisitor;
 import randy.oberon0.exception.*;
 import randy.oberon0.interpreter.runtime.*;
 import randy.oberon0.value.OValue;
@@ -67,22 +66,6 @@ public class OProcedureDeclaration extends OBodyDeclaration implements OInvokabl
 		// Run the body of the function
 		body.run(environment);
 		return null;
-	}
-	@Override
-	public void accept(OASTNodeVisitor visitor) throws Oberon0Exception
-	{
-		visitor.visitBefore(this);
-		visitor.visit(this);
-		for (OVarDeclaration p : parameters)
-		{
-			p.accept(visitor);
-		}
-		for (OBodyDeclaration bodyDecl : bodyDeclarations)
-		{
-			bodyDecl.accept(visitor);
-		}
-		body.accept(visitor);
-		visitor.visitAfter(this);
 	}
 	@Override
 	public String getName()
