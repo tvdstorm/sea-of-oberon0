@@ -6,12 +6,7 @@
 	<property name="src.dir"	 location="src" />
 
 	<path id="classpath">
-		<pathelement location="${lib.dir}/antlr3_3.jar" />
-		<pathelement location="${lib.dir}/ant-antlr3.jar" />
-		<pathelement location="${lib.dir}/javancss.jar" />
-		<pathelement location="${lib.dir}/javancc.jar" />
-		<pathelement location="${lib.dir}/jhbasic.jar" />
-		<pathelement location="${lib.dir}/ccl.jar" />
+		<fileset dir="${lib.dir}" />
 	</path>
 
 	<target name="grammarCreator">
@@ -47,7 +42,26 @@
 		<javancss srcdir="${src.dir}/main/java"
 				generateReport="true"
 				excludes="/nl/bve/uva/oberon/parser/**.*"
-				outputfile="javancss_metrics.txt"
-				format="plain"/>
+				outputfile="docs/javancss_metrics.xml"
+				format="xml"/>
 	</target>
+
+	<target name="jdepend" >
+		<taskdef name="jdepend"
+				classname="org.apache.tools.ant.taskdefs.optional.jdepend.JDependTask"
+				classpathref="classpath" />
+		
+		  <jdepend format="xml" outputfile="docs/jdepend-report.xml">
+				<exclude name="java.*"/>
+				<exclude name="javax.*"/>
+				<classespath>
+					<pathelement location="${build.dir}" />
+				</classespath>
+				<classpath location="classes" />
+		  </jdepend>
+			
+		  <style basedir="docs" destdir="docs"
+		         includes="jdepend-report.xml" 
+		         style="${ant.home}/etc/jdepend.xsl" />
+		</target>
 </project>
