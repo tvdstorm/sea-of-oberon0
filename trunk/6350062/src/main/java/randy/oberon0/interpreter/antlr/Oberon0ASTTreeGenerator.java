@@ -5,6 +5,8 @@ import java.util.*;
 import org.antlr.runtime.*;
 import org.antlr.runtime.tree.Tree;
 import randy.oberon0.ast.*;
+import randy.oberon0.ast.enums.Operator;
+import randy.oberon0.ast.datastructures.Tuple;
 import randy.oberon0.exception.*;
 import randy.oberon0.generated.antlr.*;
 import randy.oberon0.generated.antlr.Oberon0Parser.module_return;

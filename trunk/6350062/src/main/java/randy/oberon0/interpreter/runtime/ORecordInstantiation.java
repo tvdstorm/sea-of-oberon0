@@ -1,8 +1,7 @@
-package randy.oberon0.ast;
+package randy.oberon0.interpreter.runtime;
 
 import java.util.*;
 import randy.oberon0.exception.Oberon0RuntimeException;
-import randy.oberon0.interpreter.runtime.TypeRegistry;
 import randy.oberon0.value.*;
 
 public class ORecordInstantiation implements OInstantiateableVariable
