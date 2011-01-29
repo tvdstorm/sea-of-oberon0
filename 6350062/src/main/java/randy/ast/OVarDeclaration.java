@@ -3,7 +3,7 @@ package randy.ast;
 import java.util.*;
 import randy.ast.visitor.OASTNodeVisitor;
 import randy.exception.*;
-import randy.interpreter.runtime.Oberon0Program;
+import randy.interpreter.preprocess.TypeRegistry;
 import randy.interpreter.runtime.Oberon0VariableStack;
 import randy.value.*;
 
@@ -24,17 +24,17 @@ public class OVarDeclaration extends OBodyDeclaration
 		names = _names;
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
+	public OValue run(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
 	{
 		assert(vars != null);
 		for (String name : names)
 		{
 			assert(name.length() >= 1);
-			vars.addVariable(name, Oberon0Program.t.resolve(type).instantiate());
+			vars.addVariable(name, typeRegistry.resolve(type).instantiate(typeRegistry));
 		}
 		return null;
 	}
-	public void runForParameter(Oberon0VariableStack vars, Queue<OValue> parameters) throws Oberon0RuntimeException
+	public void runForParameter(Oberon0VariableStack vars, Queue<OValue> parameters, TypeRegistry typeRegistry) throws Oberon0RuntimeException
 	{
 		assert(vars != null);
 		assert(parameters != null);
@@ -51,7 +51,7 @@ public class OVarDeclaration extends OBodyDeclaration
 				val = param;
 			else
 			{	
-				val = Oberon0Program.t.resolve(type).instantiate();
+				val = typeRegistry.resolve(type).instantiate(typeRegistry);
 				val.setValue(param);
 			}
 			vars.addVariable(name, val);

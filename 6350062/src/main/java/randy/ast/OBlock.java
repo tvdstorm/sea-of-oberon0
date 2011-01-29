@@ -3,6 +3,7 @@ package randy.ast;
 import java.util.*;
 import randy.ast.visitor.OASTNodeVisitor;
 import randy.exception.*;
+import randy.interpreter.preprocess.TypeRegistry;
 import randy.interpreter.runtime.Oberon0VariableStack;
 import randy.value.OValue;
 
@@ -16,13 +17,13 @@ public class OBlock extends OStatement
 		statements = _statements;
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
+	public OValue run(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
 	{
 		assert(vars != null);
 		// Loop through all statements and run them
 		for (OStatement st : statements)
 		{
-			st.run(vars);
+			st.run(vars, typeRegistry);
 		}
 		return null;
 	}

@@ -4,6 +4,7 @@ import java.util.Random;
 import org.junit.*;
 import randy.ast.OPrimitiveVariableInstantiation;
 import randy.exception.*;
+import randy.interpreter.preprocess.TypeRegistry;
 import randy.interpreter.runtime.Oberon0Program;
 import randy.value.*;
 import java.util.*;
@@ -545,7 +546,9 @@ public class ASTNodeTest
 				Assert.assertTrue(cBool.toString().equals(bool.toString()));
 				
 				int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
-				OArray array = new OArray(3, new OPrimitiveVariableInstantiation(Type.INTEGER));
+				TypeRegistry typeRegistry = new TypeRegistry();
+				typeRegistry.addType(Type.INTEGER.getTypeText(), new OPrimitiveVariableInstantiation(Type.INTEGER));
+				OArray array = new OArray(3, new OPrimitiveVariableInstantiation(Type.INTEGER), typeRegistry);
 				array.getIndexValue(0).setValue(new OInteger(a));
 				array.getIndexValue(1).setValue(new OInteger(b));
 				array.getIndexValue(2).setValue(new OInteger(c));

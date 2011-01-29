@@ -2,6 +2,7 @@ package randy.ast;
 
 import randy.ast.visitor.OASTNodeVisitor;
 import randy.exception.*;
+import randy.interpreter.preprocess.TypeRegistry;
 import randy.interpreter.runtime.Oberon0VariableStack;
 import randy.value.OValue;
 
@@ -16,7 +17,7 @@ public class OVariable extends OExpression
 		name = _name;
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
+	public OValue run(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
 	{
 		assert(vars != null);
 		// Resolve the variable with the variable stack

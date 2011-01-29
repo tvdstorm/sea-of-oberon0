@@ -3,6 +3,7 @@ package randy.ast;
 import randy.value.*;
 import randy.ast.visitor.OASTNodeVisitor;
 import randy.exception.*;
+import randy.interpreter.preprocess.TypeRegistry;
 import randy.interpreter.runtime.Oberon0VariableStack;
 
 public class OIntegerLiteral extends OExpression
@@ -15,7 +16,7 @@ public class OIntegerLiteral extends OExpression
 		value = _value;
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
+	public OValue run(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
 	{
 		assert(vars != null);
 		// Return the integer value

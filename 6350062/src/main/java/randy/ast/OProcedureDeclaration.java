@@ -3,6 +3,7 @@ package randy.ast;
 import java.util.*;
 import randy.ast.visitor.OASTNodeVisitor;
 import randy.exception.*;
+import randy.interpreter.preprocess.TypeRegistry;
 import randy.interpreter.runtime.Oberon0VariableStack;
 import randy.value.OValue;
 
@@ -26,12 +27,12 @@ public class OProcedureDeclaration extends OBodyDeclaration implements OInvokabl
 		body = _body;
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
+	public OValue run(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
 	{
 		// Nothing to run in procedure declarations, they are taken care of during preprocessing...
 		return null;
 	}
-	public OValue invoke(Oberon0VariableStack callerVars, Queue<OValue> parameterValues) throws Oberon0RuntimeException
+	public OValue invoke(Oberon0VariableStack callerVars, Queue<OValue> parameterValues, TypeRegistry typeRegistry) throws Oberon0RuntimeException
 	{
 		assert(callerVars != null);
 		assert(parameterValues != null);
@@ -43,7 +44,7 @@ public class OProcedureDeclaration extends OBodyDeclaration implements OInvokabl
 		// Loop through all parameters and declare them in the invoked functions variable scope
 		for (OVarDeclaration p : parameters)
 		{
-			p.runForParameter(functionVars, parameterValues);
+			p.runForParameter(functionVars, parameterValues, typeRegistry);
 		}
 		// If parameterValues has any values left, the number of arguments don't match
 		if (parameterValues.size() > 0)
@@ -51,10 +52,10 @@ public class OProcedureDeclaration extends OBodyDeclaration implements OInvokabl
 		// Loop through all body declarations
 		for (OBodyDeclaration bodyDecl : bodyDeclarations)
 		{
-			bodyDecl.run(functionVars);
+			bodyDecl.run(functionVars, typeRegistry);
 		}
 		// Run the body of the function
-		body.run(functionVars);
+		body.run(functionVars, typeRegistry);
 		return null;
 	}
 	@Override

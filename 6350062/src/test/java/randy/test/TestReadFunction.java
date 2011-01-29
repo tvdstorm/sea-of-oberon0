@@ -3,6 +3,7 @@ package randy.test;
 import java.util.Queue;
 import randy.ast.OInvokableFunction;
 import randy.exception.*;
+import randy.interpreter.preprocess.TypeRegistry;
 import randy.interpreter.runtime.Oberon0VariableStack;
 import randy.value.*;
 
@@ -15,7 +16,7 @@ public class TestReadFunction implements OInvokableFunction
 		input = _input;
 	}
 	@Override
-	public OValue invoke(Oberon0VariableStack callerVars, Queue<OValue> parameterValues) throws Oberon0RuntimeException
+	public OValue invoke(Oberon0VariableStack callerVars, Queue<OValue> parameterValues, TypeRegistry typeRegistry) throws Oberon0RuntimeException
 	{
 		if (parameterValues.size() != 1)
 			throw new Oberon0IncorrectNumberOfArgumentsException();

@@ -2,6 +2,7 @@ package randy.ast;
 
 import randy.ast.visitor.OASTNodeVisitor;
 import randy.exception.*;
+import randy.interpreter.preprocess.TypeRegistry;
 import randy.interpreter.runtime.Oberon0VariableStack;
 import randy.value.*;
 
@@ -18,10 +19,10 @@ public class OPrefixExpression extends OExpression
 		rhs = _rhs;
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
+	public OValue run(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
 	{
 		assert(vars != null);
-		OValue rhsVal = rhs.run(vars).dereference();
+		OValue rhsVal = rhs.run(vars, typeRegistry).dereference();
 		assert(rhsVal != null);
 		if (rhsVal instanceof OInteger)
 			return processIntegerExpression((OInteger)rhsVal);
