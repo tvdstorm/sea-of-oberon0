@@ -1,0 +1,18 @@
+MODULE test;
+	CONST N = 10;
+	VAR arr : ARRAY N OF INTEGER;
+		i : INTEGER;
+BEGIN
+	AssertEq(arr[0], 0);
+	
+	i := 1;
+	WHILE i < N DO
+		arr[i] := arr[i-1] + i;
+		i := i + 1
+	END;
+	
+	AssertEq(arr[0], 0);
+	AssertEq(arr[1], 1);
+	AssertEq(arr[2], 3);
+	AssertEq(arr[9], 45)
+END test.

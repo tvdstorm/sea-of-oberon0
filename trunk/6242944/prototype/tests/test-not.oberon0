@@ -1,0 +1,14 @@
+MODULE test;
+BEGIN
+    AssertEq(~TRUE, FALSE);
+    AssertEq(~FALSE, TRUE);
+
+    AssertEq(~(1 # 1), TRUE);   	
+    AssertEq(~(1 = 1), FALSE);
+    AssertEq(~~(1 = 1), TRUE);
+    AssertEq(~~~(1 = 1), FALSE);
+    AssertEq(~(~(~(1 = 1))), FALSE);
+    
+    AssertEq( ~ ~ ~ TRUE, FALSE);
+    AssertEq( ~ ( 2 > 3 ), TRUE)
+END test.
