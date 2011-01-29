@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Queue;
 import randy.ast.OInvokableFunction;
 import randy.exception.*;
+import randy.interpreter.preprocess.TypeRegistry;
 import randy.interpreter.runtime.Oberon0VariableStack;
 import randy.value.*;
 
@@ -15,7 +16,7 @@ public class Oberon0DefaultReadFunction implements OInvokableFunction
 		return "Read";
 	}
 	@Override
-	public OValue invoke(Oberon0VariableStack callerVars, Queue<OValue> parameterValues) throws Oberon0RuntimeException
+	public OValue invoke(Oberon0VariableStack callerVars, Queue<OValue> parameterValues, TypeRegistry typeRegistry) throws Oberon0RuntimeException
 	{
 		try
 		{

@@ -1,6 +1,7 @@
 package randy.ast;
 
 import randy.exception.Oberon0RuntimeException;
+import randy.interpreter.preprocess.TypeRegistry;
 import randy.value.OValue;
 import randy.value.Type;
 
@@ -13,7 +14,7 @@ public class OPrimitiveVariableInstantiation implements OInstantiateableVariable
 		type = _type;
 	}
 	@Override
-	public OValue instantiate() throws Oberon0RuntimeException
+	public OValue instantiate(TypeRegistry _typeRegistry) throws Oberon0RuntimeException
 	{
 		return OValue.makeNew(type);
 	}

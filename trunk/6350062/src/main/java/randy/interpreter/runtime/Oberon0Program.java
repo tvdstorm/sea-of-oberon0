@@ -11,7 +11,7 @@ public class Oberon0Program
 {
 	private OASTNode astTree;
 	private IOberon0BuildinFunctions buildinFunctions;
-	public static TypeRegistry t;
+	private TypeRegistry typeRegistry;
 	
 	public Oberon0Program()
 	{
@@ -28,8 +28,7 @@ public class Oberon0Program
 		astTree.accept(ftb);
 		ftb.resolveAllFunctionCalls();
 		
-		TypeRegistry typeRegistry = new TypeRegistry();
-		t = typeRegistry;
+		typeRegistry = new TypeRegistry();
 		// Registrate buildin primitive types
 		typeRegistry.addType(Type.INTEGER.getTypeText(), new OPrimitiveVariableInstantiation(Type.INTEGER));
 		typeRegistry.addType(Type.BOOLEAN.getTypeText(), new OPrimitiveVariableInstantiation(Type.BOOLEAN));
@@ -42,7 +41,7 @@ public class Oberon0Program
 	public void run() throws Oberon0RuntimeException
 	{
 		Oberon0VariableStack vars = new Oberon0VariableStack(null);
-		astTree.run(vars);
+		astTree.run(vars, typeRegistry);
 	}
 	public void setBuildinFunctions(IOberon0BuildinFunctions _buildinFunctions)
 	{

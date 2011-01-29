@@ -2,6 +2,7 @@ package randy.ast;
 
 import randy.ast.visitor.OASTNodeVisitor;
 import randy.exception.*;
+import randy.interpreter.preprocess.TypeRegistry;
 import randy.interpreter.runtime.Oberon0VariableStack;
 import randy.value.OValue;
 
@@ -19,11 +20,11 @@ public class OConstDeclaration extends OBodyDeclaration
 		value = _value;
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
+	public OValue run(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
 	{
 		assert(vars != null);
 		// Add the constant to the variable scope
-		vars.addConstant(name, value.run(vars));
+		vars.addConstant(name, value.run(vars, typeRegistry));
 		return null;
 	}
 	@Override

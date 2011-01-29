@@ -3,6 +3,7 @@ package randy.ast;
 import java.util.*;
 import randy.ast.visitor.OASTNodeVisitor;
 import randy.exception.*;
+import randy.interpreter.preprocess.TypeRegistry;
 import randy.interpreter.runtime.Oberon0VariableStack;
 import randy.value.*;
 
@@ -18,24 +19,24 @@ public class OIfStatement extends OStatement
 		elseBody = _elseBody;
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
+	public OValue run(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
 	{
 		assert(vars != null);
 		// Loop through all if expressions until one is true
 		for (Tuple<OExpression, OBlock> curIf : ifStatements)
 		{
 			// Run the expression and convert it to an boolean
-			OBoolean bExpression = curIf.getFirst().run(vars).castToBoolean();
+			OBoolean bExpression = curIf.getFirst().run(vars, typeRegistry).castToBoolean();
 			// If the expression is true, run the body
 			if (bExpression.getBoolValue())
 			{
-				curIf.getSecond().run(vars);
+				curIf.getSecond().run(vars, typeRegistry);
 				return null;
 			}
 		}
 		// If there is an else body, run it
 		if (elseBody != null)
-			elseBody.run(vars);
+			elseBody.run(vars, typeRegistry);
 		return null;
 	}
 	@Override

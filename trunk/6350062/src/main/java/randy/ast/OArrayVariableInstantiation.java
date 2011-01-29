@@ -1,6 +1,7 @@
 package randy.ast;
 
 import randy.exception.Oberon0RuntimeException;
+import randy.interpreter.preprocess.TypeRegistry;
 import randy.value.*;
 
 public class OArrayVariableInstantiation implements OInstantiateableVariable
@@ -18,8 +19,8 @@ public class OArrayVariableInstantiation implements OInstantiateableVariable
 		length = _length;
 	}
 	@Override
-	public OValue instantiate() throws Oberon0RuntimeException
+	public OValue instantiate(TypeRegistry _typeRegistry) throws Oberon0RuntimeException
 	{
-		return new OArray(length, childType);
+		return new OArray(length, childType, _typeRegistry);
 	}
 }

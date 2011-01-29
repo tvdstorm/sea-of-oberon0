@@ -2,6 +2,7 @@ package randy.ast;
 
 import randy.ast.visitor.OASTNodeVisitor;
 import randy.exception.*;
+import randy.interpreter.preprocess.TypeRegistry;
 import randy.interpreter.runtime.Oberon0VariableStack;
 import randy.value.OValue;
 
@@ -18,7 +19,7 @@ public class OTypeDeclaration extends OAbstractTypeDeclaration
 		isPointerTo = _isPointerTo;
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
+	public OValue run(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
 	{
 		// TODO Auto-generated method stub
 		return null;

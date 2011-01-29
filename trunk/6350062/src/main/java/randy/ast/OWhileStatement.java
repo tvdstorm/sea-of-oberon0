@@ -2,6 +2,7 @@ package randy.ast;
 
 import randy.ast.visitor.OASTNodeVisitor;
 import randy.exception.*;
+import randy.interpreter.preprocess.TypeRegistry;
 import randy.interpreter.runtime.Oberon0VariableStack;
 import randy.value.*;
 
@@ -18,18 +19,18 @@ public class OWhileStatement extends OStatement
 		body = _body;
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
+	public OValue run(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
 	{
 		assert(vars != null);
 		while (true)
 		{
 			// Evaluate the expression and convert it to a boolean
-			OBoolean bExpression = expression.run(vars).castToBoolean();
+			OBoolean bExpression = expression.run(vars, typeRegistry).castToBoolean();
 			// If the expression is false, skip the body
 			if (!bExpression.getBoolValue())
 				return null;
 			// Evaluate the body
-			body.run(vars);
+			body.run(vars, typeRegistry);
 		}
 	}
 	@Override

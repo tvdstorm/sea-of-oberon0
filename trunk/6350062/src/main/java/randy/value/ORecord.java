@@ -3,17 +3,18 @@ package randy.value;
 import java.util.*;
 import randy.ast.OInstantiateableVariable;
 import randy.exception.Oberon0RuntimeException;
+import randy.interpreter.preprocess.TypeRegistry;
 
 public class ORecord extends OValue
 {
 	private Map<String, OValue> members;
 	
-	public ORecord(Map<String, OInstantiateableVariable> _members) throws Oberon0RuntimeException
+	public ORecord(Map<String, OInstantiateableVariable> _members, TypeRegistry _typeRegistry) throws Oberon0RuntimeException
 	{
 		members = new HashMap<String, OValue>();
 		for (String name : _members.keySet())
 		{
-			members.put(name, _members.get(name).instantiate());
+			members.put(name, _members.get(name).instantiate(_typeRegistry));
 		}
 	}
 	public ORecord(ORecord _value) throws Oberon0RuntimeException

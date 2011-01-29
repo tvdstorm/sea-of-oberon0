@@ -2,6 +2,7 @@ package randy.ast;
 
 import randy.ast.visitor.OASTNodeVisitor;
 import randy.exception.*;
+import randy.interpreter.preprocess.TypeRegistry;
 import randy.interpreter.runtime.Oberon0VariableStack;
 import randy.value.OValue;
 
@@ -15,10 +16,10 @@ public class OExpressionStatement extends OStatement
 		expression = _expression;
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
+	public OValue run(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
 	{
 		// Run the expression and return null since statements don't return values (expressions do)
-		expression.run(vars);
+		expression.run(vars, typeRegistry);
 		return null;
 	}
 	@Override

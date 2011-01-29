@@ -2,6 +2,7 @@ package randy.ast;
 
 import randy.ast.visitor.OASTNodeVisitor;
 import randy.exception.*;
+import randy.interpreter.preprocess.TypeRegistry;
 import randy.interpreter.runtime.Oberon0VariableStack;
 import randy.value.*;
 
@@ -18,11 +19,11 @@ public class ODotSelector extends OSelector
 		member = _member;
 	}
 	@Override
-	public OValue run(Oberon0VariableStack vars) throws Oberon0RuntimeException
+	public OValue run(Oberon0VariableStack vars, TypeRegistry typeRegistry) throws Oberon0RuntimeException
 	{
 		assert(vars != null);
 		// Evaluate the left hand side and convert it to a record
-		OValue valLhs = lhs.run(vars);
+		OValue valLhs = lhs.run(vars, typeRegistry);
 		if (valLhs.getType() != Type.RECORD)
 			throw new Oberon0SelectorException("Trying to access a member of a '" + valLhs.getType() + "' variable, which is not a record.");
 		ORecord record = (ORecord)valLhs.dereference();

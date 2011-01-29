@@ -2,7 +2,7 @@ package randy.ast;
 
 import java.util.*;
 import randy.exception.Oberon0RuntimeException;
-import randy.interpreter.runtime.Oberon0Program;
+import randy.interpreter.preprocess.TypeRegistry;
 import randy.value.*;
 
 public class ORecordInstantiation implements OInstantiateableVariable
@@ -14,13 +14,13 @@ public class ORecordInstantiation implements OInstantiateableVariable
 		members = _members;
 	}
 	@Override
-	public OValue instantiate() throws Oberon0RuntimeException
+	public OValue instantiate(TypeRegistry _typeRegistry) throws Oberon0RuntimeException
 	{
 		HashMap<String, OInstantiateableVariable> vars = new HashMap<String, OInstantiateableVariable>();
 		for (String name : members.keySet())
 		{
-			vars.put(name, Oberon0Program.t.resolve(members.get(name)));
+			vars.put(name, _typeRegistry.resolve(members.get(name)));
 		}
-		return new ORecord(vars);
+		return new ORecord(vars, _typeRegistry);
 	}
 }
