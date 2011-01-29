@@ -6,7 +6,7 @@ BEGIN
 
     AssertEq(4 DIV 2, 2);
     AssertEq(9 DIV 2, 4);
-    AssertEq(0 DIV 222, 1);
+    AssertEq(0 DIV 222, 0);
     
     AssertEq(10 * 3 + 5, 35);
     AssertEq(5 + 10 * 3, 35);
