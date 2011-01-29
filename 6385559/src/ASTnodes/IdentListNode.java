@@ -32,12 +32,12 @@ public class IdentListNode implements ASTnode {
 	{
 	  for( int i = 0; i < elements.size(); i++ )
 	  {
-        MemoryManager.allocate( this.identifier + elements.get( i ), scope, 0, null );
+        MemoryManager.allocate( this.identifier + elements.get( i ), scope, 0, null, false );
 	  }
 	}
 	else
 	{
-      MemoryManager.allocate( this.identifier, scope, 0, null );
+      MemoryManager.allocate( this.identifier, scope, 0, null, false );
 	}
 	if( this.followup != null )
 	{

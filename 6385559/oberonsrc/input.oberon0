@@ -1,10 +1,17 @@
 MODULE Sample;
+CONST bla = 5; lala = 5+1;
 TYPE bla = ARRAY 2 OF INTEGER; sa = bla;
 VAR x, y, z, counter : sa; b : RECORD a, b, c ,d : INTEGER; e : ARRAY 2 OF RECORD f : RECORD f : INTEGER; END; END; END;
 
+PROCEDURE x();
 BEGIN
-  x := 3;
-  y := 2;
+
+END x;
+
+BEGIN
+  bla := 545;
+  b.d := 3;
+  b.e[0].f.f := 2;
   z := 0;
   counter := 0;
-END Sample.
+END Sample

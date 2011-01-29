@@ -1,5 +1,7 @@
 package ASTnodes;
 
+import interpreter.MemoryManager;
+
 public class ConstantNode implements ASTnode {
   public ConstantNode( String identifier, ExpressionNode expression, ConstantNode constant )
   {
@@ -20,6 +22,12 @@ public class ConstantNode implements ASTnode {
   
   public int eval( String scope )
   {
+    // put the constant in the memory as a variable for now
+	MemoryManager.allocate( this.identifier, scope, this.expression.eval(scope), null, true );
+	if( this.constant != null )
+	{
+      this.constant.eval( scope );
+	}
     return 0;
   }
 

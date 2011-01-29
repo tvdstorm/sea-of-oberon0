@@ -1,5 +1,8 @@
 package ASTnodes;
 
+import interpreter.MemoryManager;
+import interpreter.TypeDefinitionManager;
+
 import org.antlr.runtime.*;
 import parseErrorLog.*;
 
@@ -8,7 +11,7 @@ public class ModuleNode implements ASTnode{
   {
 	if( idn1.compareTo( idn2 ) != 0 ) // validate end and start symbols of the module
 	{
-	  parseErrorLog.addMessage( "Module has no end." );
+	  parseErrorLog.addMessage( "Module " + idn1 + " has ended with " + idn2 + "." );
 	}
 	
 	this.ModuleName = idn1;
@@ -37,6 +40,7 @@ public class ModuleNode implements ASTnode{
 	{
       this.statementSequence.eval( this.ModuleName );
 	}
+    
     return 0;
   }
   

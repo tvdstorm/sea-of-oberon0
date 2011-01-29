@@ -32,6 +32,11 @@ public class ProcedureBodyNode implements ASTnode {
   {
     return 0;
   }
+  
+  public String getIdentifier()
+  {
+    return this.identifier;
+  }
 
   private DeclarationsNode declarations = null;
   private StatementSequenceNode statements = null;

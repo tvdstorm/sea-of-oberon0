@@ -38,13 +38,13 @@ public class ParserOutput {
       
       parserOutput = parser.module(); 
     }
-    catch( IOException e )
-    {
-      System.out.println( "Error on filereading:\n" + e.getMessage() );
-    }
     catch( RecognitionException e )
     {
   	  System.out.println( "Parse error: " + e.getMessage() );
+    }
+    catch( IOException e )
+    {
+      System.out.println( "Error on filereading:\n" + e.getMessage() );
     }
     
     return parserOutput; // if output null error on execution, stop

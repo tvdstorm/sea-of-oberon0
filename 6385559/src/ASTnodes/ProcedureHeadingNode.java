@@ -29,6 +29,11 @@ public class ProcedureHeadingNode implements ASTnode {
   {
     return 0;
   }
+  
+  public String getIdentifier()
+  {
+    return this.identifier;
+  }
 
   private String identifier = null;
   private FormalParameterNode formalParams = null;

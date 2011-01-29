@@ -18,6 +18,23 @@ public class SelectorRecordNode implements ASTnode {
   {
     return 0;
   }
+  
+  public String getString( String scope )
+  {
+	String returnValue = "." + this.ident;
+	if( this.selector != null )
+	{
+      if( this.selector instanceof SelectorArrayNode )
+      {
+    	  returnValue = returnValue + ( ((SelectorArrayNode) this.selector ).getString( scope ) );
+      }
+      else if( this.selector instanceof SelectorRecordNode )
+      {
+        returnValue = returnValue + ( ((SelectorRecordNode) this.selector ).getString( scope ) );
+      }
+	}
+	return returnValue;
+  }
 
   private String ident = null;
   private ASTnode selector = null;

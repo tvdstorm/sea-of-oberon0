@@ -26,7 +26,7 @@ public class TypeDefNode implements ASTnode {
   {
     if( this.identifier != null && this.type != null )
     {
-      TypeDefinitionManager.addTypeDefinition( this.identifier, type );
+      TypeDefinitionManager.addTypeDefinition( this.identifier, type, scope );
     }
     if( this.followup != null )
     {
