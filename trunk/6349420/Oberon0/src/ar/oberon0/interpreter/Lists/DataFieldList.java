@@ -2,40 +2,50 @@ package ar.oberon0.interpreter.Lists;
 
 import java.util.Map.Entry;
 
-import ar.oberon0.interpreter.DataTypes.DataType;
 import ar.oberon0.interpreter.DataTypes.CreatableType;
-import ar.oberon0.interpreter.Memory.*;
+import ar.oberon0.interpreter.Memory.DataField;
 
-public class DataFieldList extends BaseMap<DataField> 
-{	
+/*
+ * A list that is used to store name DataField data. DataFields can be looked up by their name. For example used in the context to store the variables.
+ */
+public class DataFieldList extends BaseMap<DataField>
+{
+	/*
+	 * Create a new empty DataFieldList.
+	 */
 	public DataFieldList()
 	{
 		super();
 	}
-	
+
 	/*
-	 * This function makes a clone of every item in the list that is passed as a parameter and add it to the list.
+	 * Clone this list. For each DataField in the list a new DataField is
+	 * created. This is used when a procedure with call by value parameters is
+	 * invoked. If this isn't done the parameters are semantically passed by
+	 * reference.
 	 */
-	public void CloneAndAdd(DataFieldList variables)
-	{	
-		for(Entry<String, DataField> item : variables)
+	public DataFieldList Clone()
+	{
+		DataFieldList clone = new DataFieldList();
+		for (Entry<String, DataField> item : this)
 		{
 			DataField tempField = item.getValue().Clone();
-			this.AddItem(item.getKey(), tempField);
+			clone.AddItem(item.getKey(), tempField);
 		}
-		
+		return clone;
 	}
-	
+
 	/*
-	 * Add a item to the list for each identifier in the list. 
-	 * The type specified is used to create the instance. For example a variable named i of type IntegerNode.
+	 * Add a item to the list for each identifier in the list. The type
+	 * specified is used to create the instance. For example a variable named i
+	 * of type IntegerNode.
 	 */
-	public void AddVariables(IdentList identifiers, CreatableType type) 
+	public void AddVariables(IdentList identifiers, CreatableType type)
 	{
-		for(String identifier : identifiers)
+		for (String identifier : identifiers)
 		{
 			AddItem(identifier, new DataField(type));
 		}
 	}
-		
+
 }

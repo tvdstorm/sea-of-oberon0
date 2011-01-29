@@ -1,29 +1,31 @@
 package ar.oberon0.interpreter.Operators;
 
-import ar.oberon0.interpreter.DataTypes.DataType;
-import ar.oberon0.interpreter.Memory.*;
 import ar.oberon0.interpreter.Helper;
 import ar.oberon0.interpreter.Interpretable;
-import ar.oberon0.interpreter.Memory.Selector;
+import ar.oberon0.interpreter.DataTypes.DataType;
+import ar.oberon0.interpreter.Memory.Context;
+import ar.oberon0.interpreter.Memory.DataField;
+import ar.oberon0.interpreter.Memory.IdentSelector;
 
-public class AssignmentNode implements Interpretable {
+public class AssignmentNode implements Interpretable
+{
 
 	private IdentSelector _variable;
 	private Interpretable _value;
 
 	@Override
-	public Object Interpret(Context context) throws Exception {
-		DataField variable = (DataField)_variable.Interpret(context);
+	public Object Interpret(Context context) throws Exception
+	{
+		DataField variable = (DataField) _variable.Interpret(context);
 		DataType value = Helper.getDataType(_value, context);
-		variable.setValue(value,context);
+		variable.setValue(value, context);
 		return "Ok";
 	}
-	
+
 	public AssignmentNode(IdentSelector variable, Interpretable value)
 	{
 		_variable = variable;
 		_value = value;
 	}
-
 
 }
