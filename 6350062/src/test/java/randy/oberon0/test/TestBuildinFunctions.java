@@ -2,19 +2,19 @@ package randy.oberon0.test;
 
 import java.util.*;
 import org.junit.Ignore;
-import randy.oberon0.exception.*;
+import randy.oberon0.exception.Exception;
 import randy.oberon0.interpreter.buildinfunctions.*;
 import randy.oberon0.interpreter.runtime.FunctionRegistry;
 
 @Ignore
-public class TestBuildinFunctions implements IOberon0BuildinFunctions
+public class TestBuildinFunctions implements IBuildinFunctions
 {
 	private Queue<String> input;
 	private Queue<String> output;
 	private TestReadFunction read;
 	private TestWriteFunction write;
 	private TestWriteLnFunction writeLn;
-	private Oberon0DefaultNEWFunction newFunction;
+	private DefaultNEWFunction newFunction;
 	
 	public TestBuildinFunctions()
 	{
@@ -23,7 +23,7 @@ public class TestBuildinFunctions implements IOberon0BuildinFunctions
 		read = new TestReadFunction(input);
 		write = new TestWriteFunction(output);
 		writeLn = new TestWriteLnFunction(output);
-		newFunction = new Oberon0DefaultNEWFunction();
+		newFunction = new DefaultNEWFunction();
 	}
 	public void addInput(String value)
 	{
@@ -38,7 +38,7 @@ public class TestBuildinFunctions implements IOberon0BuildinFunctions
 		return output.isEmpty();
 	}
 	@Override
-	public void register(FunctionRegistry functionRegistry) throws Oberon0Exception
+	public void register(FunctionRegistry functionRegistry) throws Exception
 	{
 		functionRegistry.addFunction(read.getName(), read, 0);
 		functionRegistry.addFunction(write.getName(), write, 0);

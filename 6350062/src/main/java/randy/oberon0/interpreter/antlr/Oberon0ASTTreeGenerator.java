@@ -7,14 +7,17 @@ import org.antlr.runtime.tree.Tree;
 import randy.oberon0.ast.*;
 import randy.oberon0.ast.enums.Operator;
 import randy.oberon0.ast.datastructures.Tuple;
+import randy.oberon0.exception.Exception;
 import randy.oberon0.exception.*;
 import randy.oberon0.generated.antlr.*;
 import randy.oberon0.generated.antlr.Oberon0Parser.module_return;
-import randy.oberon0.value.*;
+import randy.oberon0.value.Integer;
+import randy.oberon0.value.Boolean;
+import randy.oberon0.value.Type;
 
 public class Oberon0ASTTreeGenerator
 {
-	public OASTNode generate(String filename) throws Oberon0Exception
+	public ASTNode generate(String filename) throws Exception
 	{
 		Oberon0Lexer lexer = null;
 		try
@@ -24,7 +27,7 @@ public class Oberon0ASTTreeGenerator
 		}
 		catch (IOException e)
 		{
-			throw new Oberon0ASTTreeBuildException("Problem reading or lexing file: " + e.getMessage());
+			throw new ASTTreeBuildException("Problem reading or lexing file: " + e.getMessage());
 		}
 		CommonTokenStream tokens = new CommonTokenStream();
 		tokens.setTokenSource(lexer);
@@ -38,12 +41,12 @@ public class Oberon0ASTTreeGenerator
 		}
 		catch (RecognitionException e)
 		{
-			throw new Oberon0ASTTreeBuildException("Problem parsing file: " + e.getMessage());
+			throw new ASTTreeBuildException("Problem parsing file: " + e.getMessage());
 		}
 		
 		return buildASTTree((Tree)parserOutput.getTree());
 	}
-	public static OAbstractTypeDeclaration buildAbstractTypeDeclaration(Tree tree) throws Oberon0Exception
+	public static AbstractTypeDeclaration buildAbstractTypeDeclaration(Tree tree) throws Exception
 	{
 		assert(tree.getType() == Oberon0Parser.TYPE);
 		switch (tree.getChild(1).getType())
@@ -53,43 +56,43 @@ public class Oberon0ASTTreeGenerator
 			case Oberon0Parser.POINTERTO:
 				return buildPointerToDeclaration(tree);
 			default:
-				throw new Oberon0ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' in AbstractTypeDeclaration on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + ".");
+				throw new ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' in AbstractTypeDeclaration on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + ".");
 		}
 	}
-	public static OArraySelector buildArraySelector(Tree tree) throws Oberon0Exception
+	public static ArraySelector buildArraySelector(Tree tree) throws Exception
 	{
 		assert(tree.getType() == Oberon0Parser.ARRAYSELECTOR);
 		assert(tree.getChildCount() == 2);
-		OSelector lhs = buildSelector(tree.getChild(0));
-		OExpression arrayIndex = buildExpression(tree.getChild(1));
-		return new OArraySelector(lhs, arrayIndex);
+		Selector lhs = buildSelector(tree.getChild(0));
+		Expression arrayIndex = buildExpression(tree.getChild(1));
+		return new ArraySelector(lhs, arrayIndex);
 	}
-	public static OAssignmentStatement buildAssignmentStatement(Tree tree) throws Oberon0Exception
+	public static AssignmentStatement buildAssignmentStatement(Tree tree) throws Exception
 	{
 		assert(tree.getType() == Oberon0Parser.ASSIGNMENT);
 		assert(tree.getChildCount() == 2);
 		assert(tree.getChild(0).getType() == Oberon0Parser.LH && tree.getChild(1).getType() == Oberon0Parser.RH);
-		OSelector lhs = buildSelector(tree.getChild(0).getChild(0));
-		OExpression rhs = buildExpression(tree.getChild(1).getChild(0));
-		return new OAssignmentStatement(lhs, rhs);
+		Selector lhs = buildSelector(tree.getChild(0).getChild(0));
+		Expression rhs = buildExpression(tree.getChild(1).getChild(0));
+		return new AssignmentStatement(lhs, rhs);
 	}
-	public static OASTNode buildASTTree(Tree tree) throws Oberon0Exception
+	public static ASTNode buildASTTree(Tree tree) throws Exception
 	{
 		assert(tree != null);
 		assert(tree.getType() == Oberon0Parser.MODULE);
 		return buildModule(tree);
 	}
-	public static OBlock buildBlock(Tree tree) throws Oberon0Exception
+	public static Block buildBlock(Tree tree) throws Exception
 	{
-		List<OStatement> statements = new Vector<OStatement>();
+		List<Statement> statements = new Vector<Statement>();
 		for (int i=0;i<tree.getChildCount();i++)
 		{
 			Tree child = tree.getChild(i);
 			statements.add(buildStatement(child));
 		}
-		return new OBlock(statements);
+		return new Block(statements);
 	}
-	public static OBodyDeclaration buildBodyDeclaration(Tree tree) throws Oberon0Exception
+	public static BodyDeclaration buildBodyDeclaration(Tree tree) throws Exception
 	{
 		switch (tree.getType())
 		{
@@ -103,33 +106,33 @@ public class Oberon0ASTTreeGenerator
 			case Oberon0Parser.POINTERTO:
 				return buildAbstractTypeDeclaration(tree);
 			default:
-				throw new Oberon0ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' in BodyDeclaration on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + "."); 
+				throw new ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' in BodyDeclaration on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + "."); 
 		}
 	}
-	public static OBooleanLiteral buildBooleanLiteral(Tree tree) throws Oberon0Exception
+	public static BooleanLiteral buildBooleanLiteral(Tree tree) throws Exception
 	{
 		assert(tree.getType() == Oberon0Parser.TRUE || tree.getType() == Oberon0Parser.FALSE);
-		return new OBooleanLiteral(new OBoolean(Boolean.parseBoolean(tree.getText())));
+		return new BooleanLiteral(new Boolean(java.lang.Boolean.parseBoolean(tree.getText())));
 	}
-	public static OConstDeclaration buildConstDeclaration(Tree tree) throws Oberon0Exception
+	public static ConstDeclaration buildConstDeclaration(Tree tree) throws Exception
 	{
 		assert(tree.getType() == Oberon0Parser.CONST);
 		assert(tree.getChildCount() == 2);
 		assert(tree.getChild(0).getType() == Oberon0Parser.IDENT);
 		String name = tree.getChild(0).getText();
-		OExpression value = buildExpression(tree.getChild(1));
-		return new OConstDeclaration(name, value);
+		Expression value = buildExpression(tree.getChild(1));
+		return new ConstDeclaration(name, value);
 	}
-	public static ODotSelector buildDotSelector(Tree tree) throws Oberon0Exception
+	public static DotSelector buildDotSelector(Tree tree) throws Exception
 	{
 		assert(tree.getType() == Oberon0Parser.DOTSELECTOR);
 		assert(tree.getChildCount() == 2);
 		assert(tree.getChild(1).getType() == Oberon0Parser.IDENT);
-		OSelector lhs = buildSelector(tree.getChild(0));
+		Selector lhs = buildSelector(tree.getChild(0));
 		String selector = tree.getChild(1).getText();
-		return new ODotSelector(lhs, selector);
+		return new DotSelector(lhs, selector);
 	}
-	public static OExpression buildExpression(Tree tree) throws Oberon0Exception
+	public static Expression buildExpression(Tree tree) throws Exception
 	{
 		switch (tree.getType())
 		{
@@ -166,30 +169,30 @@ public class Oberon0ASTTreeGenerator
 			case Oberon0Parser.DOTSELECTOR:
 				return buildSelector(tree);
 			default:
-				throw new Oberon0ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' in Expression on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + ".");
+				throw new ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' in Expression on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + ".");
 		}
 	}
-	public static OExpressionStatement buildExpressionStatement(Tree tree) throws Oberon0Exception
+	public static ExpressionStatement buildExpressionStatement(Tree tree) throws Exception
 	{
 		assert(tree.getType() == Oberon0Parser.EXPRESSION);
 		assert(tree.getChildCount() == 1);
-		return new OExpressionStatement(buildExpression(tree.getChild(0)));
+		return new ExpressionStatement(buildExpression(tree.getChild(0)));
 	}
-	public static OIfStatement buildIfStatement(Tree tree) throws Oberon0Exception
+	public static IfStatement buildIfStatement(Tree tree) throws Exception
 	{
 		assert(tree.getType() == Oberon0Parser.IF);
 		assert(tree.getChildCount() >= 2);
 		assert(tree.getChild(1).getType() == Oberon0Parser.BODY); 
-		List<Tuple<OExpression, OBlock>> ifStatements = new Vector<Tuple<OExpression, OBlock>>();
-		ifStatements.add(new Tuple<OExpression, OBlock>(buildExpression(tree.getChild(0).getChild(0)), buildBlock(tree.getChild(1))));
-		OBlock elseBody = null;
+		List<Tuple<Expression, Block>> ifStatements = new Vector<Tuple<Expression, Block>>();
+		ifStatements.add(new Tuple<Expression, Block>(buildExpression(tree.getChild(0).getChild(0)), buildBlock(tree.getChild(1))));
+		Block elseBody = null;
 		for (int i=2;i<tree.getChildCount();i++)
 		{
 			Tree child = tree.getChild(i);
 			switch (child.getType())
 			{
 				case Oberon0Parser.ELSIF:
-					ifStatements.add(new Tuple<OExpression, OBlock>(
+					ifStatements.add(new Tuple<Expression, Block>(
 							buildExpression(child.getChild(0).getChild(0)),
 							buildBlock(child.getChild(1))));
 					break;
@@ -197,33 +200,33 @@ public class Oberon0ASTTreeGenerator
 					elseBody = buildBlock(child.getChild(0));
 					break;
 				default:
-					throw new Oberon0ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' in IfStatement on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + ".");
+					throw new ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' in IfStatement on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + ".");
 			}
 		}
-		return new OIfStatement(ifStatements, elseBody);
+		return new IfStatement(ifStatements, elseBody);
 	}
-	public static OInfixExpression buildInfixExpression(Tree tree) throws Oberon0Exception
+	public static InfixExpression buildInfixExpression(Tree tree) throws Exception
 	{
 		assert(tree.getChildCount() == 2);
-		OExpression left = buildExpression(tree.getChild(0));
-		OExpression right = buildExpression(tree.getChild(1));
+		Expression left = buildExpression(tree.getChild(0));
+		Expression right = buildExpression(tree.getChild(1));
 		Operator operator = Operator.get(tree.getText());
 		if (operator == null)
-			throw new Oberon0UnknownOperatorException(tree.getText());
-		return new OInfixExpression(left, operator, right);
+			throw new UnknownOperatorException(tree.getText());
+		return new InfixExpression(left, operator, right);
 	}
-	public static OIntegerLiteral buildIntegerLiteral(Tree tree) throws Oberon0Exception
+	public static IntegerLiteral buildIntegerLiteral(Tree tree) throws Exception
 	{
 		assert(tree.getType() == Oberon0Parser.INTEGER);
-		return new OIntegerLiteral(new OInteger(Integer.parseInt(tree.getText())));
+		return new IntegerLiteral(new Integer(java.lang.Integer.parseInt(tree.getText())));
 	}
-	public static OModule buildModule(Tree tree) throws Oberon0Exception
+	public static Module buildModule(Tree tree) throws Exception
 	{
 		assert(tree.getType() == Oberon0Parser.MODULE);
 		assert(tree.getChildCount() >= 1);
 		assert(tree.getChild(0).getType() == Oberon0Parser.IDENT);
-		OASTNode body = null;
-		List<OBodyDeclaration> bodyDeclarations = new Vector<OBodyDeclaration>();
+		ASTNode body = null;
+		List<BodyDeclaration> bodyDeclarations = new Vector<BodyDeclaration>();
 		for (int i=1;i<tree.getChildCount();i++)
 		{
 			Tree child = tree.getChild(i);
@@ -239,38 +242,38 @@ public class Oberon0ASTTreeGenerator
 					bodyDeclarations.add(buildBodyDeclaration(child));
 					break;
 				default:
-					throw new Oberon0ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' in Module on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + ".");
+					throw new ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' in Module on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + ".");
 			}
 		}
-		return new OModule(bodyDeclarations, body);
+		return new Module(bodyDeclarations, body);
 	}
-	public static ONilLiteral buildNilLiteral(Tree tree) throws Oberon0Exception
+	public static NilLiteral buildNilLiteral(Tree tree) throws Exception
 	{
 		assert(tree.getType() == Oberon0Parser.NIL);
-		return new ONilLiteral();
+		return new NilLiteral();
 	}
-	public static OPointerToDeclaration buildPointerToDeclaration(Tree tree) throws Oberon0Exception
+	public static PointerToDeclaration buildPointerToDeclaration(Tree tree) throws Exception
 	{
 		assert(tree.getChildCount() == 2);
 		String name = tree.getChild(0).getText();
 		String pointsTo = tree.getChild(1).getChild(0).getText();
-		return new OPointerToDeclaration(name, pointsTo);
+		return new PointerToDeclaration(name, pointsTo);
 	}
-	public static OPrefixExpression buildPrefixExpression(Tree tree) throws Oberon0Exception
+	public static PrefixExpression buildPrefixExpression(Tree tree) throws Exception
 	{
 		assert(tree.getChildCount() == 1);
-		OExpression right = buildExpression(tree.getChild(0));
+		Expression right = buildExpression(tree.getChild(0));
 		Operator operator = Operator.get(tree.getText());
 		if (operator == null)
-			throw new Oberon0UnknownOperatorException(tree.getText());
-		return new OPrefixExpression(operator, right);
+			throw new UnknownOperatorException(tree.getText());
+		return new PrefixExpression(operator, right);
 	}
-	public static OProcedureCall buildProcedureCall(Tree tree) throws Oberon0Exception
+	public static ProcedureCall buildProcedureCall(Tree tree) throws Exception
 	{
 		assert(tree.getType() == Oberon0Parser.PROCEDURECALL);
 		assert(tree.getChildCount() >= 2);
 		String name = tree.getChild(0).getText();
-		List<OExpression> parameters = new Vector<OExpression>();
+		List<Expression> parameters = new Vector<Expression>();
 		if (tree.getChildCount() >= 2)
 		{
 			for (int i=1;i<tree.getChildCount();i++)
@@ -278,17 +281,17 @@ public class Oberon0ASTTreeGenerator
 				parameters.add(buildExpression(tree.getChild(i)));
 			}
 		}
-		return new OProcedureCall(name, parameters);
+		return new ProcedureCall(name, parameters);
 	}
-	public static OProcedureDeclaration buildProcedureDeclaration(Tree tree) throws Oberon0Exception
+	public static ProcedureDeclaration buildProcedureDeclaration(Tree tree) throws Exception
 	{
 		assert(tree.getType() == Oberon0Parser.PROCEDURE);
 		assert(tree.getChildCount() >= 1);
 		assert(tree.getChild(0).getType() == Oberon0Parser.IDENT);
 		String name = tree.getChild(0).getText();
-		List<OVarDeclaration> parameters = new Vector<OVarDeclaration>();
-		List<OBodyDeclaration> bodyDeclarations = new Vector<OBodyDeclaration>();
-		OBlock body = null;
+		List<VarDeclaration> parameters = new Vector<VarDeclaration>();
+		List<BodyDeclaration> bodyDeclarations = new Vector<BodyDeclaration>();
+		Block body = null;
 		for (int i=1;i<tree.getChildCount();i++)
 		{
 			Tree child = tree.getChild(i);
@@ -311,9 +314,9 @@ public class Oberon0ASTTreeGenerator
 			}
 		}
 		
-		return new OProcedureDeclaration(name, parameters, bodyDeclarations, body);
+		return new ProcedureDeclaration(name, parameters, bodyDeclarations, body);
 	}
-	public static ORecordDeclaration buildRecordDeclaration(Tree tree) throws Oberon0Exception
+	public static RecordDeclaration buildRecordDeclaration(Tree tree) throws Exception
 	{
 		String name = tree.getChild(0).getText();
 		HashMap<String, String> members = new HashMap<String, String>();
@@ -322,9 +325,9 @@ public class Oberon0ASTTreeGenerator
 		{
 			members.put(vars.getChild(i).getChild(1).getText(), vars.getChild(i).getChild(0).getText());
 		}
-		return new ORecordDeclaration(name, members);
+		return new RecordDeclaration(name, members);
 	}
-	public static OSelector buildSelector(Tree tree) throws Oberon0Exception
+	public static Selector buildSelector(Tree tree) throws Exception
 	{
 		switch (tree.getType())
 		{
@@ -335,10 +338,10 @@ public class Oberon0ASTTreeGenerator
 			case Oberon0Parser.IDENT:
 				return buildVariableSelector(tree);
 			default:
-					throw new Oberon0ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' in Selector on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + ".");
+					throw new ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' in Selector on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + ".");
 		}
 	}
-	public static OStatement buildStatement(Tree tree) throws Oberon0Exception
+	public static Statement buildStatement(Tree tree) throws Exception
 	{
 		switch (tree.getType())
 		{
@@ -351,10 +354,10 @@ public class Oberon0ASTTreeGenerator
 			case Oberon0Parser.IF:
 				return buildIfStatement(tree);
 			default:
-				throw new Oberon0ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' in Statement on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + ".");
+				throw new ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' in Statement on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + ".");
 		}
 	}
-	public static OVarDeclaration buildVarDeclaration(Tree tree) throws Oberon0Exception
+	public static VarDeclaration buildVarDeclaration(Tree tree) throws Exception
 	{
 		assert(tree.getType() == Oberon0Parser.VAR || tree.getType() == Oberon0Parser.REFVAR);
 		assert(tree.getChildCount() >= 1);
@@ -371,31 +374,31 @@ public class Oberon0ASTTreeGenerator
 		if (type.equals(Type.ARRAY.getTypeText()))
 		{
 			type = tree.getChild(0).getChild(0).getChild(0).getText();
-			OExpression arrayLength = buildExpression(tree.getChild(0).getChild(1).getChild(0));
-			return new OArrayVarDeclaration(type, isReference, names, arrayLength);
+			Expression arrayLength = buildExpression(tree.getChild(0).getChild(1).getChild(0));
+			return new ArrayVarDeclaration(type, isReference, names, arrayLength);
 		}
 		else
-			return new OVarDeclaration(type, isReference, names);
+			return new VarDeclaration(type, isReference, names);
 	}
-	public static OVariable buildVariable(Tree tree) throws Oberon0Exception
+	public static Variable buildVariable(Tree tree) throws Exception
 	{
 		assert(tree.getType() == Oberon0Parser.IDENT);
 		String name = tree.getText();
-		return new OVariable(name);
+		return new Variable(name);
 	}
-	public static OVariableSelector buildVariableSelector(Tree tree) throws Oberon0Exception
+	public static VariableSelector buildVariableSelector(Tree tree) throws Exception
 	{
 		assert(tree.getType() == Oberon0Parser.IDENT);
 		String name = tree.getText();
-		return new OVariableSelector(name);
+		return new VariableSelector(name);
 	}
-	public static OWhileStatement buildWhileStatement(Tree tree) throws Oberon0Exception
+	public static WhileStatement buildWhileStatement(Tree tree) throws Exception
 	{
 		assert(tree.getType() == Oberon0Parser.WHILE);
 		assert(tree.getChildCount() == 2);
 		assert(tree.getChild(0).getType() == Oberon0Parser.EXPRESSION);
-		OExpression expression = buildExpression(tree.getChild(0).getChild(0));
-		OBlock statement = buildBlock(tree.getChild(1));
-		return new OWhileStatement(expression, statement);
+		Expression expression = buildExpression(tree.getChild(0).getChild(0));
+		Block statement = buildBlock(tree.getChild(1));
+		return new WhileStatement(expression, statement);
 	}
 }

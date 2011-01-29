@@ -6,16 +6,16 @@ import org.antlr.runtime.tree.*;
 import org.antlr.stringtemplate.StringTemplate;
 import randy.oberon0.generated.antlr.*;
 import randy.oberon0.generated.antlr.Oberon0Parser.module_return;
-import randy.oberon0.interpreter.buildinfunctions.Oberon0BuildinFunctions;
-import randy.oberon0.interpreter.runtime.Oberon0Program;
+import randy.oberon0.interpreter.buildinfunctions.BuildinFunctions;
+import randy.oberon0.interpreter.runtime.Program;
 
 public class Main
 {
 	public static void main(String args[]) throws Exception
 	{
-		Oberon0Program p = new Oberon0Program();
+		Program p = new Program();
 		//p.loadProgram("test/simpletest.oberon0");
-		p.loadProgram("test/quicksort.oberon0", new Oberon0BuildinFunctions());
+		p.loadProgram("test/quicksort.oberon0", new BuildinFunctions());
 		p.run();
 		
 		//processAndRender("test/sample.oberon0", "test/sample.dot", "test/sample.png");
