@@ -56,8 +56,4 @@ public class VarDeclaration extends BodyDeclaration
 			environment.addVariable(name, val);
 		}
 	}
-	public String getType()
-	{
-		return type;
-	}
 }

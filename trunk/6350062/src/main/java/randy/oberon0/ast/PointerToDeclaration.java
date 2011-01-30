@@ -17,15 +17,7 @@ public class PointerToDeclaration extends AbstractTypeDeclaration
 	@Override
 	public Value run(RuntimeEnvironment environment) throws RuntimeException
 	{
-		environment.addType(getName(), new PointerToInstantiation(getPointsTo()));
+		environment.addType(name, new PointerToInstantiation(pointsTo));
 		return null;
-	}
-	public String getName()
-	{
-		return name;
-	}
-	public String getPointsTo()
-	{
-		return pointsTo;
 	}
 }
