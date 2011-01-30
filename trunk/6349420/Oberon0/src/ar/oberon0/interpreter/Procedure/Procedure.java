@@ -4,6 +4,11 @@ import ar.oberon0.interpreter.Interpretable;
 import ar.oberon0.interpreter.ControlFlow.StatementSequence;
 import ar.oberon0.interpreter.Memory.Context;
 
+/*
+ * A procedure can be invoked by an procedure call node. 
+ * This class contains the logic to execute a procedure.
+ * A procedure is created by a procedure declaration. 
+ */
 class Procedure implements Interpretable
 {
 	private StatementSequence _statementsToExecute;

@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g 2011-01-28 20:11:23
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g 2011-01-30 17:27:33
 
   package ar.oberon0.parser;
   import ar.oberon0.interpreter.*;
@@ -816,7 +816,7 @@ public class Oberon0Parser extends Parser {
                     state._fsp--;
 
                     adaptor.addChild(root_0, rightExpression.getTree());
-                     retval.result = new CompareNode(retval.result, (rightExpression!=null?rightExpression.result:null), CompareOperator.EQUAL); 
+                     retval.result = new EqualNode(retval.result, (rightExpression!=null?rightExpression.result:null)); 
 
                     }
                     break;
@@ -833,7 +833,7 @@ public class Oberon0Parser extends Parser {
                     state._fsp--;
 
                     adaptor.addChild(root_0, rightExpression.getTree());
-                     retval.result = new CompareNode(retval.result, (rightExpression!=null?rightExpression.result:null), CompareOperator.NOT_EQUAL); 
+                     retval.result = new NotEqualNode(retval.result, (rightExpression!=null?rightExpression.result:null)); 
 
                     }
                     break;
@@ -850,7 +850,7 @@ public class Oberon0Parser extends Parser {
                     state._fsp--;
 
                     adaptor.addChild(root_0, rightExpression.getTree());
-                     retval.result = new CompareNode(retval.result, (rightExpression!=null?rightExpression.result:null), CompareOperator.SMALLER); 
+                     retval.result = new SmallerNode(retval.result, (rightExpression!=null?rightExpression.result:null)); 
 
                     }
                     break;
@@ -867,7 +867,7 @@ public class Oberon0Parser extends Parser {
                     state._fsp--;
 
                     adaptor.addChild(root_0, rightExpression.getTree());
-                     retval.result = new CompareNode(retval.result, (rightExpression!=null?rightExpression.result:null), CompareOperator.SMALLER_OR_EQUAL); 
+                     retval.result = new SmallerOrEqualNode(retval.result, (rightExpression!=null?rightExpression.result:null)); 
 
                     }
                     break;
@@ -884,7 +884,7 @@ public class Oberon0Parser extends Parser {
                     state._fsp--;
 
                     adaptor.addChild(root_0, rightExpression.getTree());
-                     retval.result = new CompareNode(retval.result, (rightExpression!=null?rightExpression.result:null), CompareOperator.GREATER); 
+                     retval.result = new GreaterNode(retval.result, (rightExpression!=null?rightExpression.result:null)); 
 
                     }
                     break;
@@ -901,7 +901,7 @@ public class Oberon0Parser extends Parser {
                     state._fsp--;
 
                     adaptor.addChild(root_0, rightExpression.getTree());
-                     retval.result = new CompareNode(retval.result, (rightExpression!=null?rightExpression.result:null), CompareOperator.GREATER_OR_EQUAL); 
+                     retval.result = new GreaterOrEqualNode(retval.result, (rightExpression!=null?rightExpression.result:null)); 
 
                     }
                     break;

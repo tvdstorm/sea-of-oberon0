@@ -6,7 +6,6 @@ import ar.oberon0.interpreter.Memory.Context;
 
 public class NegationNode implements Interpretable
 {
-
 	private Interpretable _nodeToNegate;
 
 	public NegationNode(Interpretable nodeToNegate)

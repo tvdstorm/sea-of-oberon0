@@ -11,11 +11,20 @@ import ar.oberon0.interpreter.Lists.TypeIdentifierList;
 import ar.oberon0.interpreter.Memory.Context;
 import ar.oberon0.interpreter.Memory.DataField;
 
+/*
+ * This class contains all the data of a procedure. It contains data about the parameters, 
+ * the direction of the parameters, the statements to execute, the child procedures, etc.
+ * A procedure decleration can create a procedure instance that is executable.
+ */
 public class ProcedureDeclaration
 {
 	private String _name;
 	private Context _context;
 	private StatementSequence _statementSequence;
+	/*
+	 * The formal parameters descripe the parameters of the procedure (direction
+	 * and type).
+	 */
 	private FormalParameterList _formalParameters;
 
 	public void setFormalParameters(FormalParameterList formalParameters)
@@ -55,7 +64,11 @@ public class ProcedureDeclaration
 		_name = name;
 	}
 
-	private void AddActualParametersToContext(List<DataField> actualParameters, Context context) throws Exception
+	/*
+	 * This function checks if the actual parameters are of the expected type
+	 * and if so it adds the parameters to the context.
+	 */
+	private void CheckAndAddActualParametersToContext(List<DataField> actualParameters, Context context) throws Exception
 	{
 		if (CountainsFormalParameters())
 		{
@@ -89,11 +102,14 @@ public class ProcedureDeclaration
 		return (_formalParameters != null && _formalParameters.getCount() > 0);
 	}
 
+	/*
+	 * Create a procedure that can be interpreted (executed).
+	 */
 	protected Procedure CreateProcedure(Context context, List<DataField> actualParameters) throws Exception
 	{
 		Context procedureContext = _context.Clone();
 		procedureContext.setParentContext(context);
-		AddActualParametersToContext(actualParameters, procedureContext);
+		CheckAndAddActualParametersToContext(actualParameters, procedureContext);
 		Procedure procedure = new Procedure(_statementSequence, procedureContext);
 		return procedure;
 	}

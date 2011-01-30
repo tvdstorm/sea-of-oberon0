@@ -65,12 +65,12 @@ simpleExpression returns [Interpretable result]
 
 expression returns [Interpretable result] 
 	:	leftExpression=simpleExpression 						{ $result = $leftExpression.result; } 
-		(	'=' rightExpression=simpleExpression 				{ $result = new CompareNode($result, $rightExpression.result, CompareOperator.EQUAL); }
-		| 	'#' rightExpression=simpleExpression 				{ $result = new CompareNode($result, $rightExpression.result, CompareOperator.NOT_EQUAL); }
-		| 	'<' rightExpression=simpleExpression 				{ $result = new CompareNode($result, $rightExpression.result, CompareOperator.SMALLER); }
-		| 	'<=' rightExpression=simpleExpression 				{ $result = new CompareNode($result, $rightExpression.result, CompareOperator.SMALLER_OR_EQUAL); }
-		| 	'>' rightExpression=simpleExpression 				{ $result = new CompareNode($result, $rightExpression.result, CompareOperator.GREATER); }
-		| 	'>=' rightExpression=simpleExpression 				{ $result = new CompareNode($result, $rightExpression.result, CompareOperator.GREATER_OR_EQUAL); } 
+		(	'=' rightExpression=simpleExpression 				{ $result = new EqualNode($result, $rightExpression.result); }
+		| 	'#' rightExpression=simpleExpression 				{ $result = new NotEqualNode($result, $rightExpression.result); }
+		| 	'<' rightExpression=simpleExpression 				{ $result = new SmallerNode($result, $rightExpression.result); }
+		| 	'<=' rightExpression=simpleExpression 				{ $result = new SmallerOrEqualNode($result, $rightExpression.result); }
+		| 	'>' rightExpression=simpleExpression 				{ $result = new GreaterNode($result, $rightExpression.result); }
+		| 	'>=' rightExpression=simpleExpression 				{ $result = new GreaterOrEqualNode($result, $rightExpression.result); } 
 		)?
 	; 
 
