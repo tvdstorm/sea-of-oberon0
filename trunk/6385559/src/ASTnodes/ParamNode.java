@@ -1,18 +1,22 @@
 package ASTnodes;
 
 import java.util.Vector;
-import interpreter.ParamContainer;
+
+import management.ParamContainer;
 
 public class ParamNode implements ASTnode {
   public ParamNode( ExpressionNode param, ParamNode nextParam )
   {
-	this.param = param;
-	this.nextParam = nextParam;
+    this.param = param;
+    this.nextParam = nextParam;
   }
-	
+  
   public void printNode(int depth) {
     if( this.param != null )
+    {
       param.printNode( 0 );
+    }
+    
     if( this.nextParam != null )
     {
       System.out.print( ", " );
@@ -26,7 +30,8 @@ public class ParamNode implements ASTnode {
   }
   
   public Vector<ParamContainer> getVarValueList( String scope )
-  {
+  { // use a different name here because we cannot overload eval if parameters are the same
+    // this function gets all the parameters given and puts them in a Vector of ParamContainers
     Vector<ParamContainer> container = new Vector<ParamContainer>(0);
     ParamContainer buffer = new ParamContainer();
     if( this.nextParam != null )
@@ -37,7 +42,7 @@ public class ParamNode implements ASTnode {
     buffer.value = this.param.eval( scope );
     buffer.varname = this.param.getVariableName();
 
-	container.add( buffer );
+    container.add( buffer );
     return container;
   }
 

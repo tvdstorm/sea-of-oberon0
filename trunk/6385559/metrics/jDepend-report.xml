@@ -1,0 +1,367 @@
+<?xml version="1.0"?>
+<JDepend>
+    <Packages>
+
+        <Package name="ASTnodes">
+            <Stats>
+                <TotalClasses>35</TotalClasses>
+                <ConcreteClasses>33</ConcreteClasses>
+                <AbstractClasses>2</AbstractClasses>
+                <Ca>3</Ca>
+                <Ce>6</Ce>
+                <A>0.06</A>
+                <I>0.67</I>
+                <D>0.28</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="ASTnode.java">
+                    ASTnodes.ASTnode
+                </Class>
+                <Class sourceFile="StatementNode.java">
+                    ASTnodes.StatementNode
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="ArrayNode.java">
+                    ASTnodes.ArrayNode
+                </Class>
+                <Class sourceFile="AssignmentNode.java">
+                    ASTnodes.AssignmentNode
+                </Class>
+                <Class sourceFile="ConstantNode.java">
+                    ASTnodes.ConstantNode
+                </Class>
+                <Class sourceFile="DeclarationsNode.java">
+                    ASTnodes.DeclarationsNode
+                </Class>
+                <Class sourceFile="ElseStatementNode.java">
+                    ASTnodes.ElseStatementNode
+                </Class>
+                <Class sourceFile="ExpressionNode.java">
+                    ASTnodes.ExpressionNode
+                </Class>
+                <Class sourceFile="FieldlistNode.java">
+                    ASTnodes.FieldlistNode
+                </Class>
+                <Class sourceFile="FieldsNode.java">
+                    ASTnodes.FieldsNode
+                </Class>
+                <Class sourceFile="FormalParameterNode.java">
+                    ASTnodes.FormalParameterNode
+                </Class>
+                <Class sourceFile="FpSectionNode.java">
+                    ASTnodes.FpSectionNode
+                </Class>
+                <Class sourceFile="IdentListNode.java">
+                    ASTnodes.IdentListNode
+                </Class>
+                <Class sourceFile="IfStatementNode.java">
+                    ASTnodes.IfStatementNode
+                </Class>
+                <Class sourceFile="IntegerNode.java">
+                    ASTnodes.IntegerNode
+                </Class>
+                <Class sourceFile="MinusNode.java">
+                    ASTnodes.MinusNode
+                </Class>
+                <Class sourceFile="ModuleNode.java">
+                    ASTnodes.ModuleNode
+                </Class>
+                <Class sourceFile="NotNode.java">
+                    ASTnodes.NotNode
+                </Class>
+                <Class sourceFile="ParamNode.java">
+                    ASTnodes.ParamNode
+                </Class>
+                <Class sourceFile="ProcedureBodyNode.java">
+                    ASTnodes.ProcedureBodyNode
+                </Class>
+                <Class sourceFile="ProcedureCallNode.java">
+                    ASTnodes.ProcedureCallNode
+                </Class>
+                <Class sourceFile="ProcedureDeclarationNode.java">
+                    ASTnodes.ProcedureDeclarationNode
+                </Class>
+                <Class sourceFile="ProcedureHeadingNode.java">
+                    ASTnodes.ProcedureHeadingNode
+                </Class>
+                <Class sourceFile="ProcedureListNode.java">
+                    ASTnodes.ProcedureListNode
+                </Class>
+                <Class sourceFile="RecordNode.java">
+                    ASTnodes.RecordNode
+                </Class>
+                <Class sourceFile="SelectorArrayNode.java">
+                    ASTnodes.SelectorArrayNode
+                </Class>
+                <Class sourceFile="SelectorNode.java">
+                    ASTnodes.SelectorNode
+                </Class>
+                <Class sourceFile="SelectorRecordNode.java">
+                    ASTnodes.SelectorRecordNode
+                </Class>
+                <Class sourceFile="SimpleExpression.java">
+                    ASTnodes.SimpleExpression
+                </Class>
+                <Class sourceFile="StatementSequenceNode.java">
+                    ASTnodes.StatementSequenceNode
+                </Class>
+                <Class sourceFile="TermNode.java">
+                    ASTnodes.TermNode
+                </Class>
+                <Class sourceFile="TypeDefNode.java">
+                    ASTnodes.TypeDefNode
+                </Class>
+                <Class sourceFile="TypeNode.java">
+                    ASTnodes.TypeNode
+                </Class>
+                <Class sourceFile="VarNode.java">
+                    ASTnodes.VarNode
+                </Class>
+                <Class sourceFile="WhileStatementNode.java">
+                    ASTnodes.WhileStatementNode
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.io</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+                <Package>management</Package>
+                <Package>org.antlr.runtime</Package>
+                <Package>parseErrorLog</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>management</Package>
+                <Package>oberon0</Package>
+                <Package>parser</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="java.io">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="java.lang">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="java.util">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="management">
+            <Stats>
+                <TotalClasses>9</TotalClasses>
+                <ConcreteClasses>9</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>2</Ca>
+                <Ce>4</Ce>
+                <A>0</A>
+                <I>0.67</I>
+                <D>0.33</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="Memory.java">
+                    management.Memory
+                </Class>
+                <Class sourceFile="MemoryManager.java">
+                    management.MemoryManager
+                </Class>
+                <Class sourceFile="MemoryManager.java">
+                    management.MemoryManager$MemoryMap
+                </Class>
+                <Class sourceFile="ParamContainer.java">
+                    management.ParamContainer
+                </Class>
+                <Class sourceFile="ProcedureManager.java">
+                    management.ProcedureManager
+                </Class>
+                <Class sourceFile="ProcedureManager.java">
+                    management.ProcedureManager$ProcedureContainer
+                </Class>
+                <Class sourceFile="TypeDefinitionManager.java">
+                    management.TypeDefinitionManager
+                </Class>
+                <Class sourceFile="TypeDefinitionManager.java">
+                    management.TypeDefinitionManager$DefinitionContainer
+                </Class>
+                <Class sourceFile="system.java">
+                    management.system
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>ASTnodes</Package>
+                <Package>java.io</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>ASTnodes</Package>
+                <Package>oberon0</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="oberon0">
+            <Stats>
+                <TotalClasses>4</TotalClasses>
+                <ConcreteClasses>4</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>0</Ca>
+                <Ce>8</Ce>
+                <A>0</A>
+                <I>1</I>
+                <D>0</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="CommandLineOptions.java">
+                    oberon0.CommandLineOptions
+                </Class>
+                <Class sourceFile="ParserInput.java">
+                    oberon0.ParserInput
+                </Class>
+                <Class sourceFile="ParserOutput.java">
+                    oberon0.ParserOutput
+                </Class>
+                <Class sourceFile="oberon0.java">
+                    oberon0.oberon0
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>ASTnodes</Package>
+                <Package>java.io</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+                <Package>management</Package>
+                <Package>org.antlr.runtime</Package>
+                <Package>parseErrorLog</Package>
+                <Package>parser</Package>
+            </DependsUpon>
+
+            <UsedBy>
+            </UsedBy>
+        </Package>
+
+        <Package name="org.antlr.runtime">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="parseErrorLog">
+            <Stats>
+                <TotalClasses>1</TotalClasses>
+                <ConcreteClasses>1</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>3</Ca>
+                <Ce>3</Ce>
+                <A>0</A>
+                <I>0.5</I>
+                <D>0.5</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="parseErrorLog.java">
+                    parseErrorLog.parseErrorLog
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.io</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>ASTnodes</Package>
+                <Package>oberon0</Package>
+                <Package>parser</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="parser">
+            <Stats>
+                <TotalClasses>3</TotalClasses>
+                <ConcreteClasses>3</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>1</Ca>
+                <Ce>5</Ce>
+                <A>0</A>
+                <I>0.83</I>
+                <D>0.17</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="oberon0Lexer.java">
+                    parser.oberon0Lexer
+                </Class>
+                <Class sourceFile="oberon0Lexer.java">
+                    parser.oberon0Lexer$DFA4
+                </Class>
+                <Class sourceFile="oberon0Parser.java">
+                    parser.oberon0Parser
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>ASTnodes</Package>
+                <Package>java.io</Package>
+                <Package>java.lang</Package>
+                <Package>org.antlr.runtime</Package>
+                <Package>parseErrorLog</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>oberon0</Package>
+            </UsedBy>
+        </Package>
+    </Packages>
+
+    <Cycles>
+        <Package Name="ASTnodes">
+            <Package>management</Package>
+            <Package>ASTnodes</Package>
+        </Package>
+
+        <Package Name="management">
+            <Package>ASTnodes</Package>
+            <Package>management</Package>
+        </Package>
+
+        <Package Name="oberon0">
+            <Package>ASTnodes</Package>
+            <Package>management</Package>
+            <Package>ASTnodes</Package>
+        </Package>
+
+        <Package Name="parser">
+            <Package>ASTnodes</Package>
+            <Package>management</Package>
+            <Package>ASTnodes</Package>
+        </Package>
+
+    </Cycles>
+</JDepend>

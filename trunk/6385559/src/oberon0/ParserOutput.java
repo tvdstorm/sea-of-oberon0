@@ -39,7 +39,7 @@ public class ParserOutput {
     }
     catch( RecognitionException e )
     {
-  	  System.out.println( "Parse error: " + e.getMessage() );
+      System.out.println( "Parse error: " + e.getMessage() );
     }
     catch( IOException e )
     {

@@ -1,6 +1,6 @@
 package ASTnodes;
-import interpreter.TypeDefinitionManager;
 import java.util.Vector;
+import management.TypeDefinitionManager;
 
 public class ArrayNode implements ASTnode {
   public ArrayNode( ExpressionNode expression, ASTnode type )
@@ -29,21 +29,22 @@ public class ArrayNode implements ASTnode {
   
   public Vector<String> getArrayElementList()
   { // fetch the list of all array elements
-    if( this.type != null )
-    { // to remove type definitions
-      this.correctType( );
+    ASTnode correctedType = this.type;
+    if( correctedType != null )
+    { // get the correct type definition
+      correctedType = TypeDefinitionManager.correctType( correctedType );
     }
   
     int numberOfElements = this.eval( null ); // get the number of current elements to add
     Vector<String> nextList = null;
     Vector<String> returnList = new Vector<String>(0);
-    if( this.type != null && this.type instanceof ArrayNode )
+    if( correctedType != null && correctedType instanceof ArrayNode )
     { // get the netList from the array list
-      nextList = ((ArrayNode) this.type).getArrayElementList();
+      nextList = ((ArrayNode)correctedType).getArrayElementList();
     }
-    else if( this.type != null && this.type instanceof RecordNode )
+    else if( correctedType != null && correctedType instanceof RecordNode )
     { // get the nextList from the record list
-      nextList = ((RecordNode) this.type).getRecordElementList();
+      nextList = ((RecordNode) correctedType).getRecordElementList();
     }
     
     if( nextList != null )
@@ -64,19 +65,6 @@ public class ArrayNode implements ASTnode {
       }
     }
     return returnList;
-  }
-  
-  private void correctType( )
-  { // this function gets the correct type from the typedefinition list, this to correct the type in the code
-    String identName = "";
-    while( this.type != null && this.type instanceof TypeNode && !identName.contentEquals( "INTEGER" ) && !identName.contentEquals( "BOOLEAN" ) )
-    {
-      identName = ((TypeNode) this.type ).getIdentName();
-      if( !identName.contentEquals( "INTEGER" ) && !identName.contentEquals( "BOOLEAN" ) )
-      {
-        this.type = TypeDefinitionManager.getTypeDefinition( identName );
-      }
-    }
   }
 
   private ExpressionNode expression = null;

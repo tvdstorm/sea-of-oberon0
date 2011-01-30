@@ -3,19 +3,27 @@ package ASTnodes;
 public class TermNode implements ASTnode {
   public TermNode( ASTnode factor, String operator, TermNode follow )
   {
-	this.factor = factor;
-	this.operator = operator;
-	this.follow = follow;
+    this.factor = factor;
+    this.operator = operator;
+    this.follow = follow;
   }
   
   public void printNode( int depth )
   {
-	if( this.factor != null )
-	  this.factor.printNode( depth );
-	if( this.operator != null )
-	  System.out.print( " " + this.operator + " " );
+    if( this.factor != null )
+    {
+      this.factor.printNode( depth );
+    }
+    
+    if( this.operator != null )
+    {
+      System.out.print( " " + this.operator + " " );
+    }
+    
     if( this.follow != null )
+    {
       this.follow.printNode( depth );
+    }
   }
   
   public int eval( String scope )
@@ -53,7 +61,7 @@ public class TermNode implements ASTnode {
   {
     if( this.factor instanceof VarNode && this.operator == null && this.follow == null )
     { // detect whether its only a variable node needed for call by reference
-      return ( (VarNode) this.factor).getVarname( "" );
+      return ( (VarNode) this.factor).getVarname( "" ); // no scope needed
     }
     return null;
   }  

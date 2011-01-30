@@ -1,7 +1,8 @@
 package ASTnodes;
 
-import interpreter.MemoryManager;
 import java.util.Vector;
+
+import management.MemoryManager;
 
 public class IdentListNode implements ASTnode {
   public IdentListNode( String identifier, IdentListNode followup )
@@ -9,11 +10,14 @@ public class IdentListNode implements ASTnode {
     this.identifier = identifier;
     this.followup = followup;
   }
-	
+  
   public void printNode(int depth) 
   {
     if( this.identifier != null )
+    {
       System.out.print( this.identifier );
+    }
+    
     if( this.followup != null )
     {
       System.out.print( ", " );
@@ -27,27 +31,27 @@ public class IdentListNode implements ASTnode {
   }
   
   public void allocateIdentifiers( String scope, Vector<String> elements )
-  {
-	if( elements != null )
-	{
-	  for( int i = 0; i < elements.size(); i++ )
-	  {
+  { // allocate the variables that we find
+    if( elements != null )
+    {
+      for( int i = 0; i < elements.size(); i++ )
+      {
         MemoryManager.allocate( this.identifier + elements.get( i ), scope, 0, null, false );
-	  }
-	}
-	else
-	{
+      }
+    }
+    else
+    {
       MemoryManager.allocate( this.identifier, scope, 0, null, false );
-	}
-	if( this.followup != null )
-	{
-	  this.followup.allocateIdentifiers( scope, elements );
-	}
+    }
+    if( this.followup != null )
+    {
+      this.followup.allocateIdentifiers( scope, elements );
+    }
   }
   
   public Vector<String> getIdentList()
-  {
-	Vector<String> elements;
+  { // get the identifier list if its not a direct variable but part of the RECORD type
+    Vector<String> elements;
     if( this.followup == null )
     {
       elements = new Vector<String>(0);
@@ -61,8 +65,8 @@ public class IdentListNode implements ASTnode {
   }
   
   public Vector<String> getFormalIdentList()
-  {
-	Vector<String> elements;
+  { // if they are part of the formal parameters get a list of all formal parameters
+    Vector<String> elements;
     if( this.followup == null )
     {
       elements = new Vector<String>(0);

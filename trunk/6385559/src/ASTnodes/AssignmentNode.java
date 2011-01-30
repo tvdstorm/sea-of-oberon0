@@ -1,6 +1,6 @@
 package ASTnodes;
 
-import interpreter.MemoryManager;
+import management.MemoryManager;
 
 public class AssignmentNode implements StatementNode {
   public AssignmentNode( VarNode var, ExpressionNode expression )

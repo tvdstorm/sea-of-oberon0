@@ -1,8 +1,8 @@
 package oberon0;
+import management.MemoryManager;
+import management.ProcedureManager;
+import management.TypeDefinitionManager;
 import oberon0.ParserOutput;
-import interpreter.MemoryManager;
-import interpreter.ProcedureManager;
-import interpreter.TypeDefinitionManager;
 import oberon0.ParserInput;
 import parseErrorLog.*;
 import ASTnodes.*;
@@ -26,25 +26,25 @@ public class oberon0
     }
     else
     {
-      AST.eval( null );
+      AST.eval( null ); // interpret the Abstract Syntax Tree
       
       if( CommandLine.doPrint( ) )
-      { // if printrequest print the sourcefile to the screen
-    	AST.printNode( 0 );
+      { // if print request print the source to the screen
+        AST.printNode( 0 );
       }
       
       if( CommandLine.doMemoryDump( ) )
-      { // if memorydump request drump memorymanager to the screen
+      { // if memory dump request dump memory manager to the screen
         MemoryManager.print();
       }
       
       if( CommandLine.doPrintTypeDefinitions( ) )
-      {
+      { // if type definitions dump requested dump the type definitions to the screen
         TypeDefinitionManager.printDefinitions();
       }
       
       if( CommandLine.doPrintProcedureDefinitions( ) )
-      {
+      { // if the procedure dump requested dump the procedures to the screen
         ProcedureManager.printProcedures();
       }
     }

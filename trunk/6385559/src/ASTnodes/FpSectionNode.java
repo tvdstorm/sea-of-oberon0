@@ -2,9 +2,10 @@ package ASTnodes;
 
 import java.util.Vector;
 
-import interpreter.MemoryManager;
-import interpreter.ParamContainer;
-import interpreter.TypeDefinitionManager;
+import management.MemoryManager;
+import management.ParamContainer;
+import management.TypeDefinitionManager;
+
 
 public class FpSectionNode implements ASTnode {
   public FpSectionNode( String identifier, IdentListNode variables, ASTnode type )
@@ -16,13 +17,17 @@ public class FpSectionNode implements ASTnode {
 
   public void printNode(int depth) {
     if( this.callByRef == true )
+    {
       System.out.print( "VAR " );
+    }
     if( this.variables != null )
     {
       this.variables.printNode( 0 );
       System.out.print( " : " );
       if( this.type != null )
+      {
         this.type.printNode( 0 );
+      }
     }
   }
   
@@ -31,8 +36,8 @@ public class FpSectionNode implements ASTnode {
     return 0;
   }
   
-  public Vector<ParamContainer> declare( String scope, Vector<ParamContainer> params )
-  {
+  public Vector<ParamContainer> eval( String scope, Vector<ParamContainer> params )
+  { // overload because of the need of the Vector with ParamContainers
     if( this.variables != null )
     {
       // the additions are needed for the array and record type
@@ -46,9 +51,9 @@ public class FpSectionNode implements ASTnode {
       // loop through all the formal parameters and declare then by reference of value
       for( int i = toDeclare.size( )-1; i >= 0; i-- )
       {
-    	container = params.get( params.size()-1 );
-    	formal = toDeclare.get( i );
-    	given = container.varname;
+        container = params.get( params.size()-1 );
+        formal = toDeclare.get( i );
+        given = container.varname;
         if( this.callByRef )
         { // create call by reference
           if( additions == null )
@@ -88,14 +93,14 @@ public class FpSectionNode implements ASTnode {
   }
   
   public Vector<String> getAdditions( )
-  {
+  { // get the additions to be able to support other data types then INTEGER AND BOOLEAN
     ASTnode currentType = this.type;
     if( currentType instanceof TypeNode )
     { // If the type is a custom type get the needed type definition from the type definition manager
       String currentTypeName = ((TypeNode) currentType).getIdentName();
       currentType = TypeDefinitionManager.getTypeDefinition( currentTypeName );
     }
-	
+  
     // next create all the possibilities that exist in this datatype
     Vector<String> additions = null;
     if( currentType instanceof ArrayNode )
