@@ -28,12 +28,10 @@ public class Tester
 	 */
 	public static void main(String[] args) throws IOException
 	{
-
 		Tester tester = new Tester();
-		tester.TestIntegerDivision();
 		tester.SmokeTest();
 		/*
-		 * tester.TestProcedureWithParamters();
+		 * tester.TestIntegerDivision(); tester.TestProcedureWithParamters();
 		 * tester.TestProcedureWithoutVars(); tester.TestConstantImmutability();
 		 * tester.TestArray(); tester.TestConstants(); tester.TestIf();
 		 * tester.TestIfElse(); tester.TestIfElseIf(); tester.TestWhileLoop();
@@ -46,6 +44,7 @@ public class Tester
 		 * tester.TestExpressionWithGreater(); tester.TestSimpleExpressionBIG();
 		 * tester.TestAssignmentNode();
 		 */
+
 		System.out.println("Finished");
 	}
 
@@ -465,7 +464,7 @@ public class Tester
 			varList.AddItem("a", variable);
 			context.AddVariables(varList);
 			Object result = interpreter.Interpret(context);
-			System.out.println(getResultString("assignment", result.toString().compareTo("Ok") == 0));
+			System.out.println(getResultString("assignment", result.toString().compareTo("0") == 0));
 		} catch (Exception e)
 		{
 			e.printStackTrace();
