@@ -4,6 +4,7 @@ import randy.oberon0.interpreter.antlr.Oberon0ASTTreeGenerator;
 import randy.oberon0.interpreter.buildinfunctions.*;
 import randy.oberon0.value.Type;
 import randy.oberon0.ast.*;
+import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.exception.Exception;
 
 public class Program
@@ -25,7 +26,7 @@ public class Program
 		
 		return true;
 	}
-	public void run() throws Exception // TODO: moet runtime exception worden
+	public void run() throws RuntimeException
 	{
 		TypeRegistry typeRegistry = new TypeRegistry(null);
 		// Registrate buildin primitive types

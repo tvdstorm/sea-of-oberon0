@@ -1,6 +1,5 @@
 package randy.oberon0.interpreter.buildinfunctions;
 
-import randy.oberon0.exception.Exception;
 import randy.oberon0.interpreter.runtime.FunctionRegistry;
 
 public class BuildinFunctions implements IBuildinFunctions
@@ -18,7 +17,7 @@ public class BuildinFunctions implements IBuildinFunctions
 		newFunction = new DefaultNEWFunction();
 	}
 	@Override
-	public void register(FunctionRegistry functionRegistry) throws Exception
+	public void register(FunctionRegistry functionRegistry)
 	{
 		functionRegistry.addFunction(read.getName(), read, 0);
 		functionRegistry.addFunction(write.getName(), write, 0);

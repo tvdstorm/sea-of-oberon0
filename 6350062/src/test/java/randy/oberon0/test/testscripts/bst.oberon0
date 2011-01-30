@@ -1,0 +1,50 @@
+MODULE Bst;
+
+TYPE BST = POINTER TO BSTStruct;
+BSTStruct = RECORD
+left: BST;
+right: BST;
+content: INTEGER
+END;
+VAR tree: BST;
+input: INTEGER;
+
+PROCEDURE add(VAR bst: BST; in: INTEGER);
+VAR temp: BST;
+BEGIN
+	IF bst = NIL THEN
+		NEW(bst);
+		bst.content := in;
+	ELSE
+		IF in < bst.content THEN
+			add(bst.left, in);
+		ELSE
+			add(bst.right, in);
+		END
+	END
+END add;
+
+PROCEDURE output(VAR bst: BST);
+BEGIN
+	IF bst.left # NIL THEN
+		output(bst.left);
+	END;
+	Write(bst.content);
+	IF bst.right # NIL THEN
+		output(bst.right);
+	END;
+END output;
+
+BEGIN
+
+Read(input);
+WHILE input # 0 DO
+	add(tree, input);
+	Read(input);
+END;
+
+IF tree # NIL THEN
+	output(tree);
+END
+
+END Bst.

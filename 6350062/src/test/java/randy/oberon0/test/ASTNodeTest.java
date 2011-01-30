@@ -719,6 +719,39 @@ public class ASTNodeTest
 			Assert.assertTrue(functions.outputIsEmpty());
 		}
 	}
+	@SuppressWarnings("unchecked")
+	@Test
+	public void test_Bst()
+	{
+		prepareTest("bst");
+		for (int i=0;i<numTests;i++)
+		{
+			List<String> list = new LinkedList<String>();
+			@SuppressWarnings("rawtypes")
+			List integers = new LinkedList();
+			while (true)
+			{
+				int number = random.nextInt(100);
+				list.add("" + number);
+				if (number == 0)
+					break;
+				integers.add(number);
+			}
+			String input[] = new String[list.size()];
+			input = list.toArray(input);
+			runTest(input);
+			
+			Collections.sort(integers);
+			
+			// Controleer of de gesorteerde input overeenkomt met de output.
+			for (int j=0;j<integers.size();j++)
+			{
+				String o = functions.popOutput();
+				Assert.assertTrue(o.equals("" + integers.get(j)));
+			}
+			Assert.assertTrue(functions.outputIsEmpty());
+		}
+	}
 	// TODO: test to check if an const array can be modified and check if const variable can be assigned as non const parameters
 	// TODO: types support
 	// TODO: JavaDoc, meer comments, asserts, finals?
