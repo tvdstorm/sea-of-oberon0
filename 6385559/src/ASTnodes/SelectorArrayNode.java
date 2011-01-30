@@ -3,10 +3,10 @@ package ASTnodes;
 public class SelectorArrayNode implements ASTnode {
   public SelectorArrayNode( ExpressionNode expression, ASTnode selector )
   {
-	this.expression = expression;
-	this.selector = selector;
+    this.expression = expression;
+    this.selector = selector;
   }
-	
+  
   public void printNode(int depth) {
     if( this.expression != null )
     {
@@ -15,12 +15,14 @@ public class SelectorArrayNode implements ASTnode {
       System.out.print( "]" );
     }
     if( this.selector != null )
+    {
       this.selector.printNode( 0 );
+    }
   }
   
   public int eval( String scope )
   {
-	return 0;
+    return 0;
   }
   
   public String getString( String scope )

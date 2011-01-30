@@ -3,21 +3,23 @@ package ASTnodes;
 public class ElseStatementNode implements StatementNode {
   public ElseStatementNode( StatementSequenceNode sequence )
   {
-	this.sequence = sequence;
+    this.sequence = sequence;
   }
   
   public void printNode( int depth )
   {
-	if( this.sequence != null )
-	  this.sequence.printNode( depth );
+    if( this.sequence != null )
+    {
+      this.sequence.printNode( depth );
+    }
   }
   
   public int eval( String scope )
   {
-	if( this.sequence != null )
-	{
-	  this.sequence.eval( scope );
-	}
+    if( this.sequence != null )
+    {
+      this.sequence.eval( scope );
+    }
     return 0;
   }
   

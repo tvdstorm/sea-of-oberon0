@@ -16,11 +16,11 @@ public class CommandLineOptions {
     {
       if( args[i].contentEquals( "-print" ) )
       {
-    	this.print = true;
+        this.print = true;
       }
       else if( args[i].contentEquals( "-memory" ) )
       {
-    	this.memoryDump = true;
+        this.memoryDump = true;
       }
       else if( args[i].contentEquals( "-type" ) )
       {
@@ -61,7 +61,7 @@ public class CommandLineOptions {
   {
     return this.procedure;
   }
-	
+  
   private boolean print = false;
   private boolean memoryDump = false;
   private boolean type = false;

@@ -1,19 +1,25 @@
 package ASTnodes;
 
-import interpreter.MemoryManager;
+import management.MemoryManager;
 
 public class VarNode implements ASTnode {
   public VarNode( String varname, ASTnode select )
   {
-	this.varname = varname;
-	this.select = select;
+    this.varname = varname;
+    this.select = select;
   }
-	
-  public void printNode(int depth) {
-	if( this.varname != null )
+  
+  public void printNode(int depth) 
+  {
+    if( this.varname != null )
+    {
       System.out.print( this.varname );
-	if( this.select != null )
-	  this.select.printNode( 0 );
+    }
+    
+    if( this.select != null )
+    {
+      this.select.printNode( 0 );
+    }
   }
   
   public int eval( String scope )

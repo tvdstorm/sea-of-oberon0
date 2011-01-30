@@ -3,18 +3,22 @@ package ASTnodes;
 public class NotNode implements ASTnode {
   public NotNode( ASTnode expression )
   {
-	this.expression = expression;
+    this.expression = expression;
   }
   
   public void printNode( int depth )
   {
-	System.out.print( "(-" );
-	this.expression.printNode( 0 );
-	System.out.print( ")" );
+    System.out.print( "(-" );
+    this.expression.printNode( 0 );
+    System.out.print( ")" );
   }
   
   public int eval( String scope )
   {
+    if( this.expression != null )
+    {
+      return ~(this.expression.eval( scope ));
+    }
     return 0;
   }
   

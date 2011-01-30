@@ -1,7 +1,8 @@
 package ASTnodes;
 
 import java.util.Vector;
-import interpreter.ParamContainer;
+
+import management.ParamContainer;
 
 public class ProcedureHeadingNode implements ASTnode {
   public ProcedureHeadingNode( String identifier, FormalParameterNode formalParams )
@@ -9,7 +10,7 @@ public class ProcedureHeadingNode implements ASTnode {
     this.identifier = identifier;
     this.formalParams = formalParams;
   }
-	
+  
   public void printNode(int depth) {
     if( this.identifier != null )
     {
@@ -37,10 +38,10 @@ public class ProcedureHeadingNode implements ASTnode {
   {
     // we will loop through the FormalParameterNodes and map every variable to the correstponding variable
     // in the function
-	if( this.formalParams != null )
-	{
-      this.formalParams.declare( scope, params );
-	}
+    if( this.formalParams != null )
+    {
+      this.formalParams.eval( scope, params );
+    }
     return 0;
   }
   
