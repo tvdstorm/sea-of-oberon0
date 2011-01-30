@@ -9,6 +9,9 @@ import java.util.List;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
+import com.arievanderveek.soo.ast.variables.CallByRefParameterNode;
+import com.arievanderveek.soo.ast.variables.CallByValParameterNode;
+import com.arievanderveek.soo.symboltable.Scope;
 
 /**
  * @author arieveek
@@ -36,7 +39,7 @@ public class ReadLineCallNode extends AbstractCallNode {
 	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
 	 */
 	@Override
-	public int interpret() throws SeaOfOberonException {
+	public Integer interpret(Scope scope) throws SeaOfOberonException {
 		try {
 			System.out.println("Enter a number and press enter");
 			int consoleInput = 0;
@@ -44,6 +47,15 @@ public class ReadLineCallNode extends AbstractCallNode {
 			BufferedReader in = new BufferedReader(converter);
 			consoleInput = Integer.parseInt(in.readLine());
 			System.out.println(consoleInput);
+			for (ASTNode node : parameters){
+				if ( node instanceof CallByRefParameterNode){
+					
+				}else if ( node instanceof CallByValParameterNode){
+					
+				}else{
+					throw new SeaOfOberonException("Wrong argument type class.");
+				}
+			}
 			return consoleInput;
 		} catch (Exception e) {
 			throw new SeaOfOberonException(

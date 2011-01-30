@@ -5,6 +5,7 @@ package com.arievanderveek.soo.ast.unaryoperators;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
+import com.arievanderveek.soo.symboltable.Scope;
 
 /**
  * @author arieveek
@@ -34,7 +35,8 @@ public class NegationOperatorNode extends UnaryOperatorNode {
 	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
 	 */
 	@Override
-	public int interpret() throws SeaOfOberonException {
-		return - getNode().interpret();
+	public Integer interpret(Scope scope) throws SeaOfOberonException {
+		return - getNode().interpret(scope);
 	}
+
 }

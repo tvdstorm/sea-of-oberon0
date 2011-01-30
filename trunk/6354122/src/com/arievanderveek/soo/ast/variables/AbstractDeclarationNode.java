@@ -33,4 +33,8 @@ public abstract class AbstractDeclarationNode implements ASTNode {
 	public String toTreeString(String ident) throws SeaOfOberonException {
 		return expression.toTreeString(ident);
 	}
+	
+	public ASTNode getExpression(){
+		return this.expression;
+	}
 }

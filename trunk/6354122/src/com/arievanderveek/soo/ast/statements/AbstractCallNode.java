@@ -16,8 +16,8 @@ import com.arievanderveek.soo.visitors.ASTVisitor;
  */
 public abstract class AbstractCallNode implements ASTNode {
 	
-	ASTNode identifier;
-	List<ASTNode> parameterBlocks;
+	protected final ASTNode identifier;
+	protected final List<ASTNode> parameters;
 	
 	/**
 	 * Constructor with all fields
@@ -27,7 +27,7 @@ public abstract class AbstractCallNode implements ASTNode {
 	 */
 	public AbstractCallNode(ASTNode identifier, List<ASTNode> parameters) {
 		this.identifier = identifier;
-		this.parameterBlocks = parameters;
+		this.parameters = parameters;
 	}
 
 	/**
@@ -38,7 +38,7 @@ public abstract class AbstractCallNode implements ASTNode {
 	public AbstractCallNode(ASTNode identifier) {
 		this.identifier = identifier;
 		// Create an empty list, so it does not return null and can be used in loops.
-		this.parameterBlocks = new LinkedList();
+		this.parameters = new LinkedList();
 	}
 
 	/* (non-Javadoc)
@@ -50,7 +50,7 @@ public abstract class AbstractCallNode implements ASTNode {
 		sb.append("Procedure" + ident);
 		sb.append(identifier.toTreeString(ident));
 		sb.append(ident + "(" + ident); 
-		for (ASTNode node : parameterBlocks ){
+		for (ASTNode node : parameters ){
 			sb.append(node.toTreeString(ident));
 			sb.append(",");
 		}

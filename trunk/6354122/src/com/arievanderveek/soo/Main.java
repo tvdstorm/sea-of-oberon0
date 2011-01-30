@@ -14,6 +14,10 @@ import com.arievanderveek.soo.util.SeaOfOberonConfiguration;
  */
 public class Main {
 	
+	// TODO: Implement logging everywhere
+	// TODO: Write unit tests	
+	// TODO: Write javadoc for every class
+	
 	private final static Logger LOGGER = Logger
 	.getLogger(Main.class.getName());
 	

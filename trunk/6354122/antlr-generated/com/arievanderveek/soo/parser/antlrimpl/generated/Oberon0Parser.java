@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g 2011-01-29 00:13:51
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g 2011-01-30 17:12:22
 
   package com.arievanderveek.soo.parser.antlrimpl.generated;
   import com.arievanderveek.soo.ast.*;

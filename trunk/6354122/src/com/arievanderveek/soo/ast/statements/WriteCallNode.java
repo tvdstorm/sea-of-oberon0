@@ -7,6 +7,8 @@ import java.util.List;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
+import com.arievanderveek.soo.symboltable.Scope;
+import com.arievanderveek.soo.util.Constants;
 
 /**
  * @author arieveek
@@ -32,9 +34,18 @@ public class WriteCallNode extends AbstractCallNode {
 	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
 	 */
 	@Override
-	public int interpret() throws SeaOfOberonException {
-		// TODO Auto-generated method stub
-		return 0;
+	public Integer interpret(Scope scope) throws SeaOfOberonException {
+		//TODO: Write and WriteLN are almoste the same, try to consolidate
+		StringBuilder sb = new StringBuilder();
+		sb.append(Constants.OUTPUT_TEXT);
+		// For all parameters
+		for (ASTNode node : super.parameters){
+			// Add the interpreted value and a indentation to the string
+			sb.append(node.interpret(scope));
+			sb.append(Constants.INDENT);
+		}
+		System.out.println(sb.toString());
+		return null;
 	}
 
 }

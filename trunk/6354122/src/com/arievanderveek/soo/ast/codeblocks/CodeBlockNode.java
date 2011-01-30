@@ -8,6 +8,7 @@ import java.util.Map;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
+import com.arievanderveek.soo.util.Constants;
 
 /**
  * @author arieveek
@@ -15,12 +16,12 @@ import com.arievanderveek.soo.ast.ASTNode;
  */
 public abstract class CodeBlockNode implements ASTNode {
 
-	private final String codeBlockName;
-	private final Map<String, ASTNode> constants;
-	private final Map<String, ASTNode> types;
-	private final Map<String, ASTNode> variables;
-	private final Map<String, ASTNode> procedures;
-	private final List<ASTNode> statementSequence;
+	protected final String codeBlockName;
+	protected final Map<String, ASTNode> constants;
+	protected final Map<String, ASTNode> types;
+	protected final Map<String, ASTNode> variables;
+	protected final Map<String, ASTNode> procedures;
+	protected final List<ASTNode> statementSequence;
 
 	/**
 	 * Constructor for {@link ModuleNode} with required fields.
@@ -67,55 +68,55 @@ public abstract class CodeBlockNode implements ASTNode {
 	@Override
 	public String toTreeString(String ident) throws SeaOfOberonException {
 		StringBuilder sb = new StringBuilder();
-		sb.append(LINE_SEPARATOR);
+		sb.append(Constants.LINE_SEPARATOR);
 		sb.append("CODEBLOCK" + ident + codeBlockName + ident + ";");
-		sb.append(LINE_SEPARATOR);
+		sb.append(Constants.LINE_SEPARATOR);
 		sb.append("CONST");
-		sb.append(LINE_SEPARATOR);
+		sb.append(Constants.LINE_SEPARATOR);
 		for (String nodeKey : constants.keySet()) {
 			ASTNode node = constants.get(nodeKey);
 			sb.append(nodeKey + ident + " = ");
 			sb.append(node.toTreeString(ident));
-			sb.append(LINE_SEPARATOR);
+			sb.append(Constants.LINE_SEPARATOR);
 		}
-		sb.append(LINE_SEPARATOR + LINE_SEPARATOR);
-		sb.append(LINE_SEPARATOR);
+		sb.append(Constants.LINE_SEPARATOR + Constants.LINE_SEPARATOR);
+		sb.append(Constants.LINE_SEPARATOR);
 		sb.append("TYPES");
-		sb.append(LINE_SEPARATOR);
+		sb.append(Constants.LINE_SEPARATOR);
 		for (String nodeKey : types.keySet()) {
 			ASTNode node = types.get(nodeKey);
 			sb.append(nodeKey + ident + " = ");
 			sb.append(node.toTreeString(ident));
-			sb.append(LINE_SEPARATOR);
+			sb.append(Constants.LINE_SEPARATOR);
 		}
 		sb.append("END TYPES");
-		sb.append(LINE_SEPARATOR + LINE_SEPARATOR);
+		sb.append(Constants.LINE_SEPARATOR + Constants.LINE_SEPARATOR);
 		sb.append("VAR");
-		sb.append(LINE_SEPARATOR);
+		sb.append(Constants.LINE_SEPARATOR);
 		for (String nodeKey : variables.keySet()) {
 			ASTNode node = variables.get(nodeKey);
 			sb.append(nodeKey + ident + " = ");
 			sb.append(node.toTreeString(ident));
-			sb.append(LINE_SEPARATOR);
+			sb.append(Constants.LINE_SEPARATOR);
 		}
 		sb.append("END VAR");
-		sb.append(LINE_SEPARATOR + LINE_SEPARATOR);
+		sb.append(Constants.LINE_SEPARATOR + Constants.LINE_SEPARATOR);
 		sb.append("PROCS");
-		sb.append(LINE_SEPARATOR);
+		sb.append(Constants.LINE_SEPARATOR);
 		for (String nodeKey : procedures.keySet()) {
 			ASTNode node = procedures.get(nodeKey);
 			sb.append(node.toTreeString(ident + ident));
-			sb.append(LINE_SEPARATOR);
+			sb.append(Constants.LINE_SEPARATOR);
 		}
 		sb.append("END PROCS");
-		sb.append(LINE_SEPARATOR + LINE_SEPARATOR);
+		sb.append(Constants.LINE_SEPARATOR + Constants.LINE_SEPARATOR);
 		sb.append("Statements:");
-		sb.append(LINE_SEPARATOR);
+		sb.append(Constants.LINE_SEPARATOR);
 		for (ASTNode node : statementSequence) {
 			sb.append(node.toTreeString(ident));
-			sb.append(LINE_SEPARATOR);
+			sb.append(Constants.LINE_SEPARATOR);
 		}
-		sb.append(LINE_SEPARATOR);
+		sb.append(Constants.LINE_SEPARATOR);
 		sb.append("END" + ident + ";");
 		return sb.toString();
 	}
