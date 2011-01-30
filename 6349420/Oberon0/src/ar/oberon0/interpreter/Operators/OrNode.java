@@ -14,6 +14,6 @@ public class OrNode extends BinaryNode
 	@Override
 	public Object Interpret(Context context) throws TechnicalException
 	{
-		return null;
+		return (Boolean) this.getLeftExpression().Interpret(context) || (Boolean) this.getRightExpression().Interpret(context);
 	}
 }
