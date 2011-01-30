@@ -1,6 +1,5 @@
 package oberon0;
 import org.antlr.runtime.*;
-import org.antlr.runtime.tree.*;
 import org.antlr.runtime.TokenRewriteStream;
 
 import parser.oberon0Lexer;

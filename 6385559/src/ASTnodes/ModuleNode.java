@@ -1,8 +1,5 @@
 package ASTnodes;
 
-import interpreter.MemoryManager;
-import interpreter.TypeDefinitionManager;
-
 import org.antlr.runtime.*;
 import parseErrorLog.*;
 

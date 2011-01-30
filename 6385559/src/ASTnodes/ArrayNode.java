@@ -1,15 +1,14 @@
 package ASTnodes;
 import interpreter.TypeDefinitionManager;
-
 import java.util.Vector;
 
 public class ArrayNode implements ASTnode {
   public ArrayNode( ExpressionNode expression, ASTnode type )
   {
-	this.expression = expression;
-	this.type = type;
+    this.expression = expression;
+    this.type = type; // can contain an TypeNode/ArrayTypeNode/RecordTypeNode
   }
-	
+  
   public void printNode(int depth) {
     if( this.expression != null )
     {
@@ -18,7 +17,9 @@ public class ArrayNode implements ASTnode {
       System.out.print( " OF " );
     }
     if( this.type != null )
+    {
       this.type.printNode( 0 );
+    }
   }
   
   public int eval( String scope )
@@ -28,28 +29,25 @@ public class ArrayNode implements ASTnode {
   
   public Vector<String> getArrayElementList()
   { // fetch the list of all array elements
-	if( this.type != null )
-	{ // to remove type definitions
+    if( this.type != null )
+    { // to remove type definitions
       this.correctType( );
-	}
-	
+    }
+  
     int numberOfElements = this.eval( null ); // get the number of current elements to add
-    Vector<String> nextList;
+    Vector<String> nextList = null;
     Vector<String> returnList = new Vector<String>(0);
     if( this.type != null && this.type instanceof ArrayNode )
-    { // add the next dimension to the record
+    { // get the netList from the array list
       nextList = ((ArrayNode) this.type).getArrayElementList();
-      for( int i = 0; i< numberOfElements; i++ )
-      {
-        for( int j = 0; j < nextList.size(); j++ )
-        {
-          returnList.add( "[" + i + "]" + nextList.get(j) );
-        }
-      }
     }
     else if( this.type != null && this.type instanceof RecordNode )
-    { // add the record types to the list
+    { // get the nextList from the record list
       nextList = ((RecordNode) this.type).getRecordElementList();
+    }
+    
+    if( nextList != null )
+    {
       for( int i = 0; i< numberOfElements; i++ )
       {
         for( int j = 0; j < nextList.size(); j++ )
@@ -69,7 +67,7 @@ public class ArrayNode implements ASTnode {
   }
   
   private void correctType( )
-  {
+  { // this function gets the correct type from the typedefinition list, this to correct the type in the code
     String identName = "";
     while( this.type != null && this.type instanceof TypeNode && !identName.contentEquals( "INTEGER" ) && !identName.contentEquals( "BOOLEAN" ) )
     {
