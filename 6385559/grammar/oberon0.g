@@ -88,7 +88,7 @@ fieldsFollowup returns [ FieldsNode e ]
 	: ';' fieldlist (followup=fieldsFollowup)?
 	{
 	  $e = new FieldsNode( $fieldlist.e, $followup.e );
-        }
+  }
 	;
 	
 expression returns [ ExpressionNode e ] 
