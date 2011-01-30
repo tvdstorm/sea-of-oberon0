@@ -45,8 +45,4 @@ public class Program
 	{
 		buildinFunctions = _buildinFunctions;
 	}
-	public IBuildinFunctions getBuildinFunctions()
-	{
-		return buildinFunctions;
-	}
 }
