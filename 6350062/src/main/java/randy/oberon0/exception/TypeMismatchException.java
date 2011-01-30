@@ -10,8 +10,4 @@ public class TypeMismatchException extends RuntimeException
 	{
 		super("Type mismatch: cannot convert from " + fromType + " to " + toType + ".");
 	}
-	public TypeMismatchException(Type fromType, String toType)
-	{
-		super("Type mismatch: cannot convert from " + fromType + " to " + toType + ".");
-	}
 }

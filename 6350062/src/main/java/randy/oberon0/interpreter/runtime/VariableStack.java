@@ -34,11 +34,4 @@ public class VariableStack
 		else
 			throw new UndefinedVariableException(name);
 	}
-	public VariableStack getParentScope()
-	{
-		if (parentScope != null)
-			return parentScope;
-		else
-			return this;
-	}
 }
