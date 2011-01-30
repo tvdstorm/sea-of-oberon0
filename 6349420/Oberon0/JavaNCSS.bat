@@ -1,0 +1,1 @@
+java javancss.Main -all -xml -recursive "d:\DropBox\My Dropbox\UVA\SC\Workspac\Oberon0\src" > "Metrieken\%date:~10,4%-%date:~4,2%-%date:~7,2%_JavaNCSS.xml"
