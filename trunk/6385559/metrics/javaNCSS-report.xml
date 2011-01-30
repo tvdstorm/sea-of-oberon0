@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-01-30</date>
-  <time>15:40:11</time>
+  <time>15:54:27</time>
   <packages>
     <package>
       <name>ASTnodes</name>
       <classes>35</classes>
-      <functions>125</functions>
-      <ncss>918</ncss>
+      <functions>124</functions>
+      <ncss>912</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>65</single_comment_lines>
@@ -45,8 +45,8 @@
     </package>
     <total>
       <classes>49</classes>
-      <functions>179</functions>
-      <ncss>1332</ncss>
+      <functions>178</functions>
+      <ncss>1326</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>88</single_comment_lines>
@@ -54,10 +54,10 @@
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>4.00</td><td>49.00</td><td>179.00</td><td>1,332.00</td><td>0.00</td><td>Project</td></tr>
-      <tr><td></td><td>12.25</td><td>44.75</td><td>333.00</td><td>0.00</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.65</td><td>27.18</td><td>0.00</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>7.44</td><td>0.00</td><td>Function</td></tr>
+      <tr><td>4.00</td><td>49.00</td><td>178.00</td><td>1,326.00</td><td>0.00</td><td>Project</td></tr>
+      <tr><td></td><td>12.25</td><td>44.50</td><td>331.50</td><td>0.00</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.63</td><td>27.06</td><td>0.00</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>7.45</td><td>0.00</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -113,8 +113,8 @@
     </object>
     <object>
       <name>ASTnodes.FieldlistNode</name>
-      <ncss>51</ncss>
-      <functions>5</functions>
+      <ncss>45</ncss>
+      <functions>4</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -406,12 +406,12 @@
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>26.14</ncss>
-      <functions>3.65</functions>
+      <ncss>26.02</ncss>
+      <functions>3.63</functions>
       <classes>0.06</classes>
       <javadocs>0.00</javadocs>
     </averages>
-    <ncss>1,332.00</ncss>
+    <ncss>1,326.00</ncss>
   </objects>
 
   <functions>
@@ -575,12 +575,6 @@
       <name>ASTnodes.FieldlistNode.getVariableList()</name>
       <ncss>19</ncss>
       <ccn>10</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ASTnodes.FieldlistNode.correctType()</name>
-      <ncss>6</ncss>
-      <ccn>7</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -1491,9 +1485,9 @@
     </function>
     <function_averages>
       <ncss>6.06</ncss>
-      <ccn>2.73</ccn>
+      <ccn>2.70</ccn>
       <javadocs>0.00</javadocs>
     </function_averages>
-    <ncss>1,332.00</ncss>
+    <ncss>1,326.00</ncss>
   </functions>
 </javancss>

@@ -162,11 +162,11 @@ selector returns [ ASTnode e ]
 	;
 	
 variable returns [ VarNode e ]
-        : IDENT selector
-        {
-          $e = new VarNode( $IDENT.text, $selector.e );
-        }
-        ;
+  : IDENT selector
+  {
+    $e = new VarNode( $IDENT.text, $selector.e );
+  }
+  ;
 	
 fieldlist returns [ FieldlistNode e ]
 	: (identlist ':' type)?
@@ -287,7 +287,7 @@ procedureheading returns [ ProcedureHeadingNode e ]
 	  $e = new ProcedureHeadingNode( $IDENT.text, $formalparameters.e );
 	}
 	;
-	
+
 procedurebody returns [ ProcedureBodyNode e ]
 	: declarations ('BEGIN' statementsequence)? 'END' IDENT
 	{
