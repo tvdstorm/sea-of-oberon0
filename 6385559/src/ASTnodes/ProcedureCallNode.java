@@ -6,7 +6,7 @@ import management.MemoryManager;
 import management.ParamContainer;
 import management.ProcedureManager;
 import management.TypeDefinitionManager;
-import management.system;
+import management.OberonSystemcalls;
 
 public class ProcedureCallNode implements StatementNode {
   public ProcedureCallNode( String identifier, ParamNode params )
@@ -55,7 +55,7 @@ public class ProcedureCallNode implements StatementNode {
     }
     else
     { // not an declaration done by yourself... check for system declarations
-      system.doSystemCall( this.identifier, params );
+      OberonSystemcalls.doSystemCall( this.identifier, params );
     }
   
     ProcedureManager.deleteScope( newScope );
