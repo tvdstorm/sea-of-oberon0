@@ -1,0 +1,30 @@
+MODULE testmodule;
+
+CONST
+  INPUTLENGTH = 5;
+
+VAR
+  x, y: INTEGER;
+
+PROCEDURE testproc(VAR xx, yy INTEGER; plus: INTEGER);
+ 
+	 PROCEDURE Swap(VAR xxx, yyy: INTEGER);
+	  VAR
+	    swaptemp: INTEGER;
+	  BEGIN
+	    swaptemp := xxx;
+	    xxx := yyy;
+	    yyy := swaptemp
+	  END Swap;
+
+ BEGIN
+	 xx := xx + plus;
+	 yy := yy + plus;
+	 Swap(xx, yy);
+ END testproc;
+
+BEGIN
+ x := 4;
+ y := 5;
+ testproc(x, y, INPUTLENGTH)
+END testmodule.
