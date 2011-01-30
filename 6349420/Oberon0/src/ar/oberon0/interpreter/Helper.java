@@ -44,7 +44,7 @@ public class Helper
 				try
 				{
 					tempNode = ((Interpretable) tempNode).Interpret(context);
-				} catch (Exception e)
+				} catch (TechnicalException e)
 				{
 					// unreachable code.
 					e.printStackTrace();
@@ -62,7 +62,7 @@ public class Helper
 	 * DataField. This function can be used to create the parameter list for a
 	 * procedure call.
 	 */
-	public static DataField ConvertToDataField(Interpretable node, Context context) throws IllegalArgumentException, Exception
+	public static DataField ConvertToDataField(Interpretable node, Context context) throws IllegalArgumentException, TechnicalException
 	{
 		if (node == null)
 		{

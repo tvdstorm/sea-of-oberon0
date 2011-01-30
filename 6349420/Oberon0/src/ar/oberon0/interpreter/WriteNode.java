@@ -25,7 +25,7 @@ public class WriteNode implements Interpretable
 	 * .Memory.Context)
 	 */
 	@Override
-	public Object Interpret(Context context) throws Exception
+	public Object Interpret(Context context) throws TechnicalException
 	{
 		if (_message != null)
 			System.out.println(Helper.getDataType((Interpretable) _message.Interpret(context), context).toString());

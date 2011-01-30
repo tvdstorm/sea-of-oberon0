@@ -13,5 +13,5 @@ public interface Interpretable
 	 * methods and data (constants, variables, etc.) that are reachable from the
 	 * interpreting node.
 	 */
-	public Object Interpret(Context context) throws Exception;
+	public Object Interpret(Context context) throws TechnicalException;
 }

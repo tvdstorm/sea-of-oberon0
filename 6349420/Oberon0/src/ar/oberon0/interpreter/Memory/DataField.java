@@ -1,6 +1,7 @@
 package ar.oberon0.interpreter.Memory;
 
 import ar.oberon0.interpreter.Interpretable;
+import ar.oberon0.interpreter.TechnicalException;
 import ar.oberon0.interpreter.DataTypes.CreatableType;
 import ar.oberon0.interpreter.DataTypes.DataType;
 
@@ -42,7 +43,7 @@ public class DataField implements Interpretable
 	/*
 	 * Get the value of this DataField.
 	 */
-	public DataType getValue(Context context) throws Exception
+	public DataType getValue(Context context) throws TechnicalException
 	{
 		IfNotInitInit(context);
 		return _value;
@@ -51,7 +52,7 @@ public class DataField implements Interpretable
 	/*
 	 * Set the value of the DataField.
 	 */
-	public void setValue(DataType value, Context context) throws Exception
+	public void setValue(DataType value, Context context) throws TechnicalException
 	{
 		if (value.getType().getClass() != _type.getClass())
 		{
@@ -69,7 +70,7 @@ public class DataField implements Interpretable
 	 * .Memory.Context)
 	 */
 	@Override
-	public Object Interpret(Context context) throws Exception
+	public Object Interpret(Context context) throws TechnicalException
 	{
 		IfNotInitInit(context);
 		return getValue(context);
@@ -80,7 +81,7 @@ public class DataField implements Interpretable
 	 * needed else a null pointer exception will be thrown when an assignment is
 	 * done.
 	 */
-	private void IfNotInitInit(Context context) throws Exception
+	private void IfNotInitInit(Context context) throws TechnicalException
 	{
 		if (_value == null)
 		{

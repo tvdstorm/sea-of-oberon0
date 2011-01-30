@@ -2,6 +2,7 @@ package ar.oberon0.interpreter.Operators;
 
 import ar.oberon0.interpreter.Helper;
 import ar.oberon0.interpreter.Interpretable;
+import ar.oberon0.interpreter.TechnicalException;
 import ar.oberon0.interpreter.DataTypes.DataType;
 import ar.oberon0.interpreter.Memory.Context;
 import ar.oberon0.interpreter.Memory.DataField;
@@ -17,7 +18,7 @@ public class AssignmentNode implements Interpretable
 	private Interpretable _value;
 
 	@Override
-	public Object Interpret(Context context) throws Exception
+	public Object Interpret(Context context) throws TechnicalException
 	{
 		if (_variable == null)
 		{
@@ -28,7 +29,7 @@ public class AssignmentNode implements Interpretable
 		Object rawVariable = _variable.Interpret(context);
 		if (!(rawVariable instanceof DataField))
 		{
-			throw new Exception("The object returned by the ident selector was not of the type DataField.");
+			throw new TechnicalException("The object returned by the ident selector was not of the type DataField.");
 		}
 
 		DataField variable = (DataField) rawVariable;

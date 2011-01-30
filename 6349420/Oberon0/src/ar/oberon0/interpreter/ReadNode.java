@@ -31,7 +31,7 @@ public class ReadNode implements Interpretable
 	 * .Memory.Context)
 	 */
 	@Override
-	public Object Interpret(Context context) throws Exception
+	public Object Interpret(Context context) throws TechnicalException
 	{
 		DataField variable = getDataFieldToSet(context);
 		int inputFromConsole = GetInputAsInteger();
@@ -42,7 +42,7 @@ public class ReadNode implements Interpretable
 	/*
 	 * Set the value of the datafield with the read value.
 	 */
-	private void setValueOfDataField(Context context, DataField variable, int inputFromConsole) throws Exception
+	private void setValueOfDataField(Context context, DataField variable, int inputFromConsole) throws TechnicalException
 	{
 		variable.setValue(new IntegerNode(inputFromConsole), context);
 	}
@@ -50,7 +50,7 @@ public class ReadNode implements Interpretable
 	/*
 	 * Get the datafield to store the read value.
 	 */
-	private DataField getDataFieldToSet(Context context) throws Exception
+	private DataField getDataFieldToSet(Context context) throws TechnicalException
 	{
 		return (DataField) _selector.Interpret(context);
 	}

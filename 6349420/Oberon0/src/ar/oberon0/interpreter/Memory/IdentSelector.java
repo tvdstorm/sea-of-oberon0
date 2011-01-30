@@ -1,6 +1,7 @@
 package ar.oberon0.interpreter.Memory;
 
 import ar.oberon0.interpreter.Interpretable;
+import ar.oberon0.interpreter.TechnicalException;
 
 /*
  * The ident selector is used to select a variable, constant, etc. form the context (memory).
@@ -29,7 +30,7 @@ public class IdentSelector extends Selector implements Interpretable
 	 * .Memory.Context)
 	 */
 	@Override
-	public Object Interpret(Context context) throws Exception
+	public Object Interpret(Context context) throws TechnicalException
 	{
 		return getItem(null, context);
 	}
@@ -42,7 +43,7 @@ public class IdentSelector extends Selector implements Interpretable
 	 * .Memory.DataField, ar.oberon0.interpreter.Memory.Context)
 	 */
 	@Override
-	protected DataField getItem(DataField parent, Context context) throws Exception
+	protected DataField getItem(DataField parent, Context context) throws TechnicalException
 	{
 		if (parent == null)
 		{
@@ -53,7 +54,7 @@ public class IdentSelector extends Selector implements Interpretable
 				return getNextNode().getItem(currentVar, context);
 		} else
 		{
-			throw new Exception("this feature is yet supported.");
+			throw new TechnicalException("this feature is yet supported.");
 		}
 	}
 }

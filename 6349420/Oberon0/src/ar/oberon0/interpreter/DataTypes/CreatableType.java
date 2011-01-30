@@ -1,5 +1,6 @@
 package ar.oberon0.interpreter.DataTypes;
 
+import ar.oberon0.interpreter.TechnicalException;
 import ar.oberon0.interpreter.Memory.Context;
 
 /*
@@ -11,5 +12,5 @@ public interface CreatableType
 	/*
 	 * Create the specified DataType object.
 	 */
-	public DataType createInstance(Context context) throws Exception;
+	public DataType createInstance(Context context) throws TechnicalException;
 }

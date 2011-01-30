@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ar.oberon0.interpreter.Interpretable;
+import ar.oberon0.interpreter.TechnicalException;
 import ar.oberon0.interpreter.Memory.Context;
 
 /*
@@ -34,7 +35,7 @@ public class StatementSequence implements Interpretable
 	 * .Memory.Context)
 	 */
 	@Override
-	public Object Interpret(Context context) throws Exception
+	public Object Interpret(Context context) throws TechnicalException
 	{
 		for (Interpretable statement : _statements)
 		{

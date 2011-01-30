@@ -1,5 +1,7 @@
 package ar.oberon0.interpreter.Memory;
 
+import ar.oberon0.interpreter.TechnicalException;
+
 /*
  * With a selector a variable, constant, array, etc can be selected.
  */
@@ -31,5 +33,5 @@ public abstract class Selector
 	/*
 	 * Get the DataField that is at the end of the chain.
 	 */
-	protected abstract DataField getItem(DataField parent, Context context) throws Exception;
+	protected abstract DataField getItem(DataField parent, Context context) throws TechnicalException;
 }

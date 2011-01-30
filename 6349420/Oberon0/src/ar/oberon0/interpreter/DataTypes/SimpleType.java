@@ -1,5 +1,6 @@
 package ar.oberon0.interpreter.DataTypes;
 
+import ar.oberon0.interpreter.TechnicalException;
 import ar.oberon0.interpreter.Memory.Context;
 
 /*
@@ -28,10 +29,10 @@ public class SimpleType implements CreatableType
 	 * .interpreter.Memory.Context)
 	 */
 	@Override
-	public DataType createInstance(Context context) throws Exception
+	public DataType createInstance(Context context) throws TechnicalException
 	{
 		if (_typeName.equals("INTEGER"))
 			return new IntegerNode();
-		throw new Exception("Simple type " + _typeName + " is not supported");
+		throw new TechnicalException("Simple type " + _typeName + " is not supported");
 	}
 }

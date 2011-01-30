@@ -1,6 +1,7 @@
 package ar.oberon0.interpreter.Procedure;
 
 import ar.oberon0.interpreter.Interpretable;
+import ar.oberon0.interpreter.TechnicalException;
 import ar.oberon0.interpreter.ControlFlow.StatementSequence;
 import ar.oberon0.interpreter.Memory.Context;
 
@@ -21,7 +22,7 @@ class Procedure implements Interpretable
 	}
 
 	@Override
-	public Object Interpret(Context context) throws Exception
+	public Object Interpret(Context context) throws TechnicalException
 	{
 		_statementsToExecute.Interpret(_procedureContext);
 		return 0;

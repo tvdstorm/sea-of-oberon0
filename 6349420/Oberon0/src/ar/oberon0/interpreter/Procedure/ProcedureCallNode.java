@@ -5,6 +5,7 @@ import java.util.List;
 
 import ar.oberon0.interpreter.Helper;
 import ar.oberon0.interpreter.Interpretable;
+import ar.oberon0.interpreter.TechnicalException;
 import ar.oberon0.interpreter.Memory.Context;
 import ar.oberon0.interpreter.Memory.DataField;
 
@@ -26,7 +27,7 @@ public class ProcedureCallNode implements Interpretable
 	}
 
 	@Override
-	public Object Interpret(Context context) throws Exception
+	public Object Interpret(Context context) throws TechnicalException
 	{
 		// Get the procedure declaration to create a new procedure.
 		ProcedureDeclaration procedureDeclaration = context.getProcedure(_procedureName);
@@ -41,7 +42,7 @@ public class ProcedureCallNode implements Interpretable
 	 * Create a actual parameter list. This function converts all the parameters
 	 * that are not of the DataField type into DataField types.
 	 */
-	private List<DataField> CreateParameterList(List<Interpretable> rawParameters, Context context) throws Exception
+	private List<DataField> CreateParameterList(List<Interpretable> rawParameters, Context context) throws TechnicalException
 	{
 		List<DataField> resultParameters = new ArrayList<DataField>();
 		if (rawParameters != null)

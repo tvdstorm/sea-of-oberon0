@@ -1,6 +1,7 @@
 package ar.oberon0.interpreter.Operators;
 
 import ar.oberon0.interpreter.Interpretable;
+import ar.oberon0.interpreter.TechnicalException;
 import ar.oberon0.interpreter.DataTypes.DataType;
 import ar.oberon0.interpreter.Memory.Context;
 
@@ -14,7 +15,7 @@ public class NegationNode implements Interpretable
 	}
 
 	@Override
-	public Object Interpret(Context context) throws Exception
+	public Object Interpret(Context context) throws TechnicalException
 	{
 		return ((DataType) _nodeToNegate.Interpret(context)).Negate();
 	}
