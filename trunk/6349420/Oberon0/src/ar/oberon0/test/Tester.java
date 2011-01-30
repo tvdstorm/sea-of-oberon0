@@ -62,7 +62,7 @@ public class Tester
 	{
 		try
 		{
-			CharStream stream = new ANTLRFileStream("D:\\DropBox\\My Dropbox\\UVA\\SC\\smoke.txt");
+			CharStream stream = new ANTLRFileStream("ExtRef\\smoke.txt");
 			Oberon0Lexer lexer = new Oberon0Lexer(stream);
 			TokenStream tokenStream = new CommonTokenStream(lexer);
 			Oberon0Parser parser = new Oberon0Parser(tokenStream);
