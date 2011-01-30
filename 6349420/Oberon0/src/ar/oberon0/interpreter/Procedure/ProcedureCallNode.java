@@ -8,10 +8,15 @@ import ar.oberon0.interpreter.Interpretable;
 import ar.oberon0.interpreter.Memory.Context;
 import ar.oberon0.interpreter.Memory.DataField;
 
+/*
+ * This node is used to call a procedure. 
+ */
 public class ProcedureCallNode implements Interpretable
 {
-
 	private String _procedureName;
+	/*
+	 * The parameters that get passed to the procedure.
+	 */
 	private List<Interpretable> _parameters;
 
 	public ProcedureCallNode(String procedureName, List<Interpretable> parameters)
@@ -23,12 +28,19 @@ public class ProcedureCallNode implements Interpretable
 	@Override
 	public Object Interpret(Context context) throws Exception
 	{
+		// Get the procedure declaration to create a new procedure.
 		ProcedureDeclaration procedureDeclaration = context.getProcedure(_procedureName);
+		// Create a list with parameters to pass to the procedure.
 		List<DataField> actualParameters = CreateParameterList(_parameters, context);
+		// Create the procedure instance.
 		Procedure procedureToInvoke = procedureDeclaration.CreateProcedure(context, actualParameters);
 		return procedureToInvoke.Interpret(context);
 	}
 
+	/*
+	 * Create a actual parameter list. This function converts all the parameters
+	 * that are not of the DataField type into DataField types.
+	 */
 	private List<DataField> CreateParameterList(List<Interpretable> rawParameters, Context context) throws Exception
 	{
 		List<DataField> resultParameters = new ArrayList<DataField>();
@@ -36,6 +48,7 @@ public class ProcedureCallNode implements Interpretable
 		{
 			for (Interpretable rawParameter : rawParameters)
 			{
+				// Ensure that the parameter is of the DataField type.
 				resultParameters.add(Helper.ConvertToDataField(rawParameter, context));
 			}
 		}

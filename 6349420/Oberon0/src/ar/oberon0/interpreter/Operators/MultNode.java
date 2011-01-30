@@ -5,7 +5,6 @@ import ar.oberon0.interpreter.Memory.Context;
 
 public class MultNode extends BinaryNode
 {
-
 	public MultNode(Interpretable leftExpression, Interpretable rightExpression)
 	{
 		super(leftExpression, rightExpression);

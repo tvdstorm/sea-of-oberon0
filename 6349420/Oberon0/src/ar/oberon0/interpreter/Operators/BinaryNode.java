@@ -5,6 +5,9 @@ import ar.oberon0.interpreter.Interpretable;
 import ar.oberon0.interpreter.DataTypes.DataType;
 import ar.oberon0.interpreter.Memory.Context;
 
+/*
+ * The base class for binary nodes. Nodes that contain a right and left node. For example an add node.
+ */
 abstract class BinaryNode implements Interpretable
 {
 	private Interpretable _leftNode;

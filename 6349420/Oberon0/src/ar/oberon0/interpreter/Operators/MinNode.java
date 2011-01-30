@@ -5,7 +5,6 @@ import ar.oberon0.interpreter.Memory.Context;
 
 public class MinNode extends BinaryNode
 {
-
 	public MinNode(Interpretable leftNode, Interpretable rightNode)
 	{
 		super(leftNode, rightNode);

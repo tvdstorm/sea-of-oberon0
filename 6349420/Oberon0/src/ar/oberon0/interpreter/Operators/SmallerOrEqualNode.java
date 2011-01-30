@@ -3,9 +3,9 @@ package ar.oberon0.interpreter.Operators;
 import ar.oberon0.interpreter.Interpretable;
 import ar.oberon0.interpreter.Memory.Context;
 
-public class ModNode extends BinaryNode
+public class SmallerOrEqualNode extends BinaryNode
 {
-	public ModNode(Interpretable leftNode, Interpretable rightNode)
+	public SmallerOrEqualNode(Interpretable leftNode, Interpretable rightNode)
 	{
 		super(leftNode, rightNode);
 	}
@@ -13,7 +13,8 @@ public class ModNode extends BinaryNode
 	@Override
 	public Object Interpret(Context context) throws Exception
 	{
-		return getLeftValue(context).Modulo(getRightValue(context));
+		int compareResult = getLeftValue(context).compareTo(getRightValue(context));
+		return compareResult <= 0;
 	}
 
 }
