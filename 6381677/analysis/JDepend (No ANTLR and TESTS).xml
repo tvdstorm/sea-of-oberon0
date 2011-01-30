@@ -1,0 +1,576 @@
+<?xml version="1.0"?>
+<JDepend>
+    <Packages>
+
+        <Package name="ANTLR">
+            <Stats>
+                <TotalClasses>34</TotalClasses>
+                <ConcreteClasses>34</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>1</Ca>
+                <Ce>6</Ce>
+                <A>0</A>
+                <I>0.86</I>
+                <D>0.14</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="Helper.java">
+                    ANTLR.Helper
+                </Class>
+                <Class sourceFile="OberonLexer.java">
+                    ANTLR.OberonLexer
+                </Class>
+                <Class sourceFile="OberonLexer.java">
+                    ANTLR.OberonLexer$DFA4
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$DFA21
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$arrayType_return
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$assignment_return
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$base_return
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$constDeclaration_return
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$declaration_return
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$declarations_return
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$expression_return
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$factor_return
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$idList_return
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$idSelector_return
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$id_return
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$ifElsIf_return
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$ifElse_return
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$ifStatement_return
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$ifThen_return
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$module_return
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$number_return
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$procedureCall_return
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$procedureVarNonRef_return
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$procedureVarRef_return
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$procedureVar_return
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$procedureVars_return
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$procedure_return
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$statement_return
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$statements_return
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$term_return
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$type_return
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$varDeclaration_return
+                </Class>
+                <Class sourceFile="OberonParser.java">
+                    ANTLR.OberonParser$whileStatement_return
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>AbstractSyntax</Package>
+                <Package>AbstractSyntax.Structure</Package>
+                <Package>java.io</Package>
+                <Package>java.lang</Package>
+                <Package>org.antlr.runtime</Package>
+                <Package>org.antlr.runtime.tree</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>Default</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="AbstractSyntax">
+            <Stats>
+                <TotalClasses>3</TotalClasses>
+                <ConcreteClasses>1</ConcreteClasses>
+                <AbstractClasses>2</AbstractClasses>
+                <Ca>6</Ca>
+                <Ce>7</Ce>
+                <A>0.67</A>
+                <I>0.54</I>
+                <D>0.21</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="BaseNode.java">
+                    AbstractSyntax.BaseNode
+                </Class>
+                <Class sourceFile="BaseNodeWithID.java">
+                    AbstractSyntax.BaseNodeWithID
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="ID.java">
+                    AbstractSyntax.ID
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>AbstractSyntax.Declarations</Package>
+                <Package>AbstractSyntax.Statements</Package>
+                <Package>AbstractSyntax.Structure</Package>
+                <Package>AbstractSyntax.Types</Package>
+                <Package>Execution</Package>
+                <Package>java.lang</Package>
+                <Package>org.antlr.runtime.tree</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>ANTLR</Package>
+                <Package>AbstractSyntax.Declarations</Package>
+                <Package>AbstractSyntax.Statements</Package>
+                <Package>AbstractSyntax.Structure</Package>
+                <Package>AbstractSyntax.Types</Package>
+                <Package>Execution</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="AbstractSyntax.Declarations">
+            <Stats>
+                <TotalClasses>5</TotalClasses>
+                <ConcreteClasses>4</ConcreteClasses>
+                <AbstractClasses>1</AbstractClasses>
+                <Ca>3</Ca>
+                <Ce>6</Ce>
+                <A>0.2</A>
+                <I>0.67</I>
+                <D>0.13</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="BaseDeclaration.java">
+                    AbstractSyntax.Declarations.BaseDeclaration
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="BaseDeclarationList.java">
+                    AbstractSyntax.Declarations.BaseDeclarationList
+                </Class>
+                <Class sourceFile="Const.java">
+                    AbstractSyntax.Declarations.Const
+                </Class>
+                <Class sourceFile="Var.java">
+                    AbstractSyntax.Declarations.Var
+                </Class>
+                <Class sourceFile="VarRef.java">
+                    AbstractSyntax.Declarations.VarRef
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>AbstractSyntax</Package>
+                <Package>AbstractSyntax.Types</Package>
+                <Package>Execution</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+                <Package>org.antlr.runtime.tree</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>AbstractSyntax</Package>
+                <Package>AbstractSyntax.Structure</Package>
+                <Package>Execution</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="AbstractSyntax.Statements">
+            <Stats>
+                <TotalClasses>20</TotalClasses>
+                <ConcreteClasses>16</ConcreteClasses>
+                <AbstractClasses>4</AbstractClasses>
+                <Ca>3</Ca>
+                <Ce>6</Ce>
+                <A>0.2</A>
+                <I>0.67</I>
+                <D>0.13</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="BaseStatement.java">
+                    AbstractSyntax.Statements.BaseStatement
+                </Class>
+                <Class sourceFile="BaseWithCondition.java">
+                    AbstractSyntax.Statements.BaseWithCondition
+                </Class>
+                <Class sourceFile="BaseWithList.java">
+                    AbstractSyntax.Statements.BaseWithList
+                </Class>
+                <Class sourceFile="CallConcrete.java">
+                    AbstractSyntax.Statements.CallConcrete
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="Assign.java">
+                    AbstractSyntax.Statements.Assign
+                </Class>
+                <Class sourceFile="BaseStatementList.java">
+                    AbstractSyntax.Statements.BaseStatementList
+                </Class>
+                <Class sourceFile="Call.java">
+                    AbstractSyntax.Statements.Call
+                </Class>
+                <Class sourceFile="CallConcreteAssert.java">
+                    AbstractSyntax.Statements.CallConcreteAssert
+                </Class>
+                <Class sourceFile="CallConcreteDefault.java">
+                    AbstractSyntax.Statements.CallConcreteDefault
+                </Class>
+                <Class sourceFile="CallConcreteRead.java">
+                    AbstractSyntax.Statements.CallConcreteRead
+                </Class>
+                <Class sourceFile="CallConcreteWrite.java">
+                    AbstractSyntax.Statements.CallConcreteWrite
+                </Class>
+                <Class sourceFile="CallConcreteWriteLn.java">
+                    AbstractSyntax.Statements.CallConcreteWriteLn
+                </Class>
+                <Class sourceFile="CallVars.java">
+                    AbstractSyntax.Statements.CallVars
+                </Class>
+                <Class sourceFile="Expression.java">
+                    AbstractSyntax.Statements.Expression
+                </Class>
+                <Class sourceFile="Expression.java">
+                    AbstractSyntax.Statements.Expression$Operators
+                </Class>
+                <Class sourceFile="If.java">
+                    AbstractSyntax.Statements.If
+                </Class>
+                <Class sourceFile="IfPartForElsIf.java">
+                    AbstractSyntax.Statements.IfPartForElsIf
+                </Class>
+                <Class sourceFile="IfPartForElse.java">
+                    AbstractSyntax.Statements.IfPartForElse
+                </Class>
+                <Class sourceFile="IfPartForThen.java">
+                    AbstractSyntax.Statements.IfPartForThen
+                </Class>
+                <Class sourceFile="While.java">
+                    AbstractSyntax.Statements.While
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>AbstractSyntax</Package>
+                <Package>Execution</Package>
+                <Package>java.io</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+                <Package>org.antlr.runtime.tree</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>AbstractSyntax</Package>
+                <Package>AbstractSyntax.Structure</Package>
+                <Package>Execution</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="AbstractSyntax.Structure">
+            <Stats>
+                <TotalClasses>3</TotalClasses>
+                <ConcreteClasses>3</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>4</Ca>
+                <Ce>5</Ce>
+                <A>0</A>
+                <I>0.56</I>
+                <D>0.44</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="Body.java">
+                    AbstractSyntax.Structure.Body
+                </Class>
+                <Class sourceFile="Module.java">
+                    AbstractSyntax.Structure.Module
+                </Class>
+                <Class sourceFile="Procedure.java">
+                    AbstractSyntax.Structure.Procedure
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>AbstractSyntax</Package>
+                <Package>AbstractSyntax.Declarations</Package>
+                <Package>AbstractSyntax.Statements</Package>
+                <Package>Execution</Package>
+                <Package>org.antlr.runtime.tree</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>ANTLR</Package>
+                <Package>AbstractSyntax</Package>
+                <Package>Default</Package>
+                <Package>Execution</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="AbstractSyntax.Types">
+            <Stats>
+                <TotalClasses>2</TotalClasses>
+                <ConcreteClasses>2</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>2</Ca>
+                <Ce>4</Ce>
+                <A>0</A>
+                <I>0.67</I>
+                <D>0.33</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="Int.java">
+                    AbstractSyntax.Types.Int
+                </Class>
+                <Class sourceFile="IntValue.java">
+                    AbstractSyntax.Types.IntValue
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>AbstractSyntax</Package>
+                <Package>Execution</Package>
+                <Package>java.lang</Package>
+                <Package>org.antlr.runtime.tree</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>AbstractSyntax</Package>
+                <Package>AbstractSyntax.Declarations</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="Default">
+            <Stats>
+                <TotalClasses>2</TotalClasses>
+                <ConcreteClasses>2</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>0</Ca>
+                <Ce>4</Ce>
+                <A>0</A>
+                <I>1</I>
+                <D>0</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="Program.java">
+                    Program
+                </Class>
+                <Class sourceFile="Test.java">
+                    Test
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>ANTLR</Package>
+                <Package>AbstractSyntax.Structure</Package>
+                <Package>java.io</Package>
+                <Package>java.lang</Package>
+            </DependsUpon>
+
+            <UsedBy>
+            </UsedBy>
+        </Package>
+
+        <Package name="Execution">
+            <Stats>
+                <TotalClasses>4</TotalClasses>
+                <ConcreteClasses>3</ConcreteClasses>
+                <AbstractClasses>1</AbstractClasses>
+                <Ca>5</Ca>
+                <Ce>6</Ce>
+                <A>0.25</A>
+                <I>0.55</I>
+                <D>0.2</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="ScopeValueBase.java">
+                    Execution.ScopeValueBase
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="Scope.java">
+                    Execution.Scope
+                </Class>
+                <Class sourceFile="ScopeValueInt.java">
+                    Execution.ScopeValueInt
+                </Class>
+                <Class sourceFile="ScopeValueIntArray.java">
+                    Execution.ScopeValueIntArray
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>AbstractSyntax</Package>
+                <Package>AbstractSyntax.Declarations</Package>
+                <Package>AbstractSyntax.Statements</Package>
+                <Package>AbstractSyntax.Structure</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>AbstractSyntax</Package>
+                <Package>AbstractSyntax.Declarations</Package>
+                <Package>AbstractSyntax.Statements</Package>
+                <Package>AbstractSyntax.Structure</Package>
+                <Package>AbstractSyntax.Types</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="java.io">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="java.lang">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="java.util">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="org.antlr.runtime">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="org.antlr.runtime.tree">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+    </Packages>
+
+    <Cycles>
+        <Package Name="ANTLR">
+            <Package>AbstractSyntax.Structure</Package>
+            <Package>AbstractSyntax</Package>
+            <Package>Execution</Package>
+            <Package>AbstractSyntax.Structure</Package>
+        </Package>
+
+        <Package Name="AbstractSyntax">
+            <Package>Execution</Package>
+            <Package>AbstractSyntax.Structure</Package>
+            <Package>AbstractSyntax</Package>
+        </Package>
+
+        <Package Name="AbstractSyntax.Declarations">
+            <Package>AbstractSyntax</Package>
+            <Package>Execution</Package>
+            <Package>AbstractSyntax.Structure</Package>
+            <Package>AbstractSyntax</Package>
+        </Package>
+
+        <Package Name="AbstractSyntax.Statements">
+            <Package>Execution</Package>
+            <Package>AbstractSyntax.Structure</Package>
+            <Package>AbstractSyntax</Package>
+            <Package>Execution</Package>
+        </Package>
+
+        <Package Name="AbstractSyntax.Structure">
+            <Package>AbstractSyntax</Package>
+            <Package>Execution</Package>
+            <Package>AbstractSyntax.Structure</Package>
+        </Package>
+
+        <Package Name="AbstractSyntax.Types">
+            <Package>Execution</Package>
+            <Package>AbstractSyntax.Structure</Package>
+            <Package>AbstractSyntax</Package>
+            <Package>Execution</Package>
+        </Package>
+
+        <Package Name="Default">
+            <Package>AbstractSyntax.Structure</Package>
+            <Package>AbstractSyntax</Package>
+            <Package>Execution</Package>
+            <Package>AbstractSyntax.Structure</Package>
+        </Package>
+
+        <Package Name="Execution">
+            <Package>AbstractSyntax.Structure</Package>
+            <Package>AbstractSyntax</Package>
+            <Package>Execution</Package>
+        </Package>
+
+    </Cycles>
+</JDepend>
