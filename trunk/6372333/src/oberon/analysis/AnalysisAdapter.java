@@ -269,7 +269,7 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseAStatwhiStatement(AStatwhiStatement node)
+    public void caseAStatwithStatement(AStatwithStatement node)
     {
         defaultCase(node);
     }

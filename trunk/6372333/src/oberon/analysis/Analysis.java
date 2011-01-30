@@ -52,7 +52,7 @@ public interface Analysis extends Switch
     void caseAStatassStatement(AStatassStatement node);
     void caseAStatprocStatement(AStatprocStatement node);
     void caseAStatifStatement(AStatifStatement node);
-    void caseAStatwhiStatement(AStatwhiStatement node);
+    void caseAStatwithStatement(AStatwithStatement node);
 
     void caseTDot(TDot node);
     void caseTLBkt(TLBkt node);
