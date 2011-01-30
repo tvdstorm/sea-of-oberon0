@@ -1,0 +1,44 @@
+array
+	you can change any value of an array only by using a selector
+Base<Classname>
+	Abstract class
+block
+	consists of a body and (depending on the type of block) a Condition / Definition part
+	i.e. Ifblock or an procedureblock
+body
+	Part of a block with statements 
+const / constant
+	readonly integer
+expression
+	a calculation {+ / - + etc} or comparison {< > >= <= = etc} or logical operation
+I<Classname>
+	Interface	 
+lhs
+	Left Hand Side, the left child of the mainnode
+rhs
+	Right Hand Side, the right child of the mainnode
+param
+	Parameters
+routine
+	program, module or procedure
+source
+	where the variable originates from and should be returned to (outside of the current routine)
+var / variable
+	an integer/boolean/constant/array that must be readable (IReadableVar) 
+	
+	
+	
+reflectie:
+goed:	lines of code
+        ervaring goed oberon0-code te debuggen (juiste messages als er een ';' ontbreekt, of variabele onbekend is)
+		wordt bijgehouden waar een variabele vandaan komt
+		consistentie        
+        modulaire datatypes + variablespace
+        procedures + modules worden als hetzelfde type beschouwd, ontwerp maakt 'imports' implementeerbaar
+
+slecht: rountine-file grootte
+        het teruggeven van variabelen aan functies onoverzichtelijk (daarom gaan arrays fout :( )
+        builtinroutines moeten ergens mooier worden neergezet
+        extra complexiteit door eigen variabeltypes
+        incompleet - zie todolijst in OberonInterpreter.java
+     
