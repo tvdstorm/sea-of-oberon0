@@ -92,19 +92,6 @@ public class FieldlistNode implements ASTnode {
     return returnList;
   }
   
-  private void correctType( )
-  {
-    String identName = "";
-    while( this.type != null && this.type instanceof TypeNode && !identName.contentEquals( "INTEGER" ) && !identName.contentEquals( "BOOLEAN" ) )
-    {
-      identName = ((TypeNode) this.type ).getIdentName();
-      if( !identName.contentEquals( "INTEGER" ) && !identName.contentEquals( "BOOLEAN" ) )
-      {
-        this.type = TypeDefinitionManager.getTypeDefinition( identName );
-      }
-    }
-  }
-  
   private IdentListNode identlist = null;
   private ASTnode type = null;
 }
