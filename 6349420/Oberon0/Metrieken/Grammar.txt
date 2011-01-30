@@ -1,0 +1,4 @@
+Aantal parser Rules: 26
+Aantal Lexer Rules: 5
+
+Aantal Terminals: 44
