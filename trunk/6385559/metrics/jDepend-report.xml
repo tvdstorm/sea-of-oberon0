@@ -180,6 +180,9 @@
                 <Class sourceFile="MemoryManager.java">
                     management.MemoryManager$MemoryMap
                 </Class>
+                <Class sourceFile="OberonSystemcalls.java">
+                    management.OberonSystemcalls
+                </Class>
                 <Class sourceFile="ParamContainer.java">
                     management.ParamContainer
                 </Class>
@@ -194,9 +197,6 @@
                 </Class>
                 <Class sourceFile="TypeDefinitionManager.java">
                     management.TypeDefinitionManager$DefinitionContainer
-                </Class>
-                <Class sourceFile="system.java">
-                    management.system
                 </Class>
             </ConcreteClasses>
 

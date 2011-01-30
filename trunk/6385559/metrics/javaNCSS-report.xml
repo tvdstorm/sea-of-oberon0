@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-01-30</date>
-  <time>15:54:27</time>
+  <time>19:57:05</time>
   <packages>
     <package>
       <name>ASTnodes</name>
@@ -17,7 +17,7 @@
       <name>management</name>
       <classes>9</classes>
       <functions>40</functions>
-      <ncss>292</ncss>
+      <ncss>293</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>8</single_comment_lines>
@@ -46,7 +46,7 @@
     <total>
       <classes>49</classes>
       <functions>178</functions>
-      <ncss>1326</ncss>
+      <ncss>1327</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>88</single_comment_lines>
@@ -54,10 +54,10 @@
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>4.00</td><td>49.00</td><td>178.00</td><td>1,326.00</td><td>0.00</td><td>Project</td></tr>
-      <tr><td></td><td>12.25</td><td>44.50</td><td>331.50</td><td>0.00</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.63</td><td>27.06</td><td>0.00</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>7.45</td><td>0.00</td><td>Function</td></tr>
+      <tr><td>4.00</td><td>49.00</td><td>178.00</td><td>1,327.00</td><td>0.00</td><td>Project</td></tr>
+      <tr><td></td><td>12.25</td><td>44.50</td><td>331.75</td><td>0.00</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.63</td><td>27.08</td><td>0.00</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>7.46</td><td>0.00</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -329,6 +329,13 @@
       <javadocs>0</javadocs>
     </object>
     <object>
+      <name>management.OberonSystemcalls</name>
+      <ncss>31</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
       <name>management.ParamContainer</name>
       <ncss>3</ncss>
       <functions>0</functions>
@@ -360,13 +367,6 @@
       <name>management.TypeDefinitionManager.DefinitionContainer</name>
       <ncss>14</ncss>
       <functions>4</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>management.system</name>
-      <ncss>30</ncss>
-      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -406,12 +406,12 @@
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>26.02</ncss>
+      <ncss>26.04</ncss>
       <functions>3.63</functions>
       <classes>0.06</classes>
       <javadocs>0.00</javadocs>
     </averages>
-    <ncss>1,326.00</ncss>
+    <ncss>1,327.00</ncss>
   </objects>
 
   <functions>
@@ -1274,6 +1274,24 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>management.OberonSystemcalls.doSystemCall(String,ParamContainer)</name>
+      <ncss>9</ncss>
+      <ccn>4</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>management.OberonSystemcalls.read(ParamContainer)</name>
+      <ncss>13</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>management.OberonSystemcalls.write(ParamContainer,boolean)</name>
+      <ncss>8</ncss>
+      <ccn>4</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>management.ProcedureManager.addProcedure(String,String,ProcedureDeclarationNode)</name>
       <ncss>3</ncss>
       <ccn>2</ccn>
@@ -1382,24 +1400,6 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>management.system.doSystemCall(String,ParamContainer)</name>
-      <ncss>9</ncss>
-      <ccn>4</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>management.system.read(ParamContainer)</name>
-      <ncss>12</ncss>
-      <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>management.system.write(ParamContainer,boolean)</name>
-      <ncss>8</ncss>
-      <ccn>4</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
       <name>oberon0.CommandLineOptions.CommandLineOptions(String[])</name>
       <ncss>16</ncss>
       <ccn>6</ccn>
@@ -1488,6 +1488,6 @@
       <ccn>2.70</ccn>
       <javadocs>0.00</javadocs>
     </function_averages>
-    <ncss>1,326.00</ncss>
+    <ncss>1,327.00</ncss>
   </functions>
 </javancss>
