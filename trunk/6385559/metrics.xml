@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     30 jan. 2011 11:59:17                                                        
+
+     project    
+     description
+                   
+     Ben Kwint                                                                
+     ====================================================================== -->
+<project name="softwareConstruction" default="default">
+	<property name="src.dir" value="src"/>
+	<property name="java.dir" value="${src.dir}"/>
+	<property name="metric.dir" value="metrics"/>
+	<property name="javancss.dir" value="tools/javancss"/>
+	
+	<path id="javancss.ant.task">
+	  <pathelement location="${javancss.dir}/ccl.jar" />
+	  <pathelement location="${javancss.dir}/javancss.jar" />
+	  <pathelement location="${javancss.dir}/javancss2ant.jar" />
+	  <pathelement location="${javancss.dir}/javancss/jhbasic.jar" />
+  </path>
+	
+	<taskdef name="javancss"
+	           classname="javancss.JavancssAntTask"
+	           classpathref="javancss.ant.task"/>
+	
+  <description>
+            description
+  </description>
+  <!-- ================================= 
+        target: default              
+       ================================= -->
+  <target name="default" description="description">
+    <delete dir="${metric.dir}" failonerror="true"/>
+  	<mkdir dir="${metric.dir}"/>
+  	<javancss srcdir="${java.dir}"
+  	                   generatereport="true"
+  	                   outputfile="${metric.dir}/javancss-report.xml"
+  	                   format="xml"/>
+  </target>
+	
+</project>
