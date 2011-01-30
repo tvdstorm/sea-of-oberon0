@@ -7,7 +7,7 @@ import java.util.Queue;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
-import com.arievanderveek.soo.visitors.ASTVisitor;
+import com.arievanderveek.soo.symboltable.Scope;
 
 /**
  * ASTNode representing a Selector
@@ -28,7 +28,7 @@ public class SelectorNode implements ASTNode {
 	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
 	 */
 	@Override
-	public int interpret() throws SeaOfOberonException {
+	public Integer interpret(Scope scope) throws SeaOfOberonException {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -43,5 +43,12 @@ public class SelectorNode implements ASTNode {
 			sb.append(((ASTNode) node).toTreeString(ident));
 		}
 		return sb.toString();
+	}
+
+	/**
+	 * @return the selectors
+	 */
+	public Queue<ASTNode> getSelectors() {
+		return selectors;
 	}
 }

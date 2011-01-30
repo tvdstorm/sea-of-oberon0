@@ -5,6 +5,7 @@ package com.arievanderveek.soo.ast.binaryoperators;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
+import com.arievanderveek.soo.symboltable.Scope;
 
 /**
  * @author arieveek
@@ -41,9 +42,9 @@ public class OrOperatorNode extends AbstractBinaryOperatorNode {
 	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
 	 */
 	@Override
-	public int interpret() throws SeaOfOberonException {
-		if ((super.leftHandNode.interpret() == 1)
-				|| (super.rightHandNode.interpret() == 1)) {
+	public Integer interpret(Scope scope) throws SeaOfOberonException {
+		if ((super.leftHandNode.interpret(scope) == 1)
+				|| (super.rightHandNode.interpret(scope) == 1)) {
 			return 1;
 		} else {
 			return 0;

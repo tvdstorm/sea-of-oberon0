@@ -28,8 +28,9 @@ public interface ASTVisitor {
 	 * 	 exposes internal structure and compromises information hiding.
 	 * 
 	 * In the end i've chosen for the interpreter pattern as i think is easier to implement
-	 * and more flexible for executing code. Down side is that AST is not clean anymore and
-	 * contains execution logic.
+	 * and more flexible for executing code.
+	 * Down side is that AST is not "clean" anymore and contains execution logic. The
+	 * AST cannot be packaged as a separate module and be reused by other application
 	 * 
 	 * Also at first glance the interpreter pattern looks easier to write unit tests for,
 	 * but did not validate it.

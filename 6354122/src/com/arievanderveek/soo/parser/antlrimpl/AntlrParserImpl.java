@@ -51,16 +51,17 @@ public class AntlrParserImpl implements Parser {
 			Oberon0Parser parser = new Oberon0Parser(tokenStream);
 			module_return parseTree = parser.module();
 			// Return the AST node from the parsing result
+			// TODO: no regocnitionexception is thrown by the parser tree
 			return parseTree.node;
-		} catch (FileNotFoundException e) {
+		} catch (FileNotFoundException fnfe) {
 			throw new SeaOfOberonException("Input file " + fileName
-					+ " is not found", e);
-		} catch (IOException e) {
+					+ " is not found", fnfe);
+		} catch (IOException ioe) {
 			throw new SeaOfOberonException("IO error while accessing "
-					+ fileName, e);
-		} catch (RecognitionException e) {
+					+ fileName, ioe);
+		} catch (RecognitionException re) {
 			throw new SeaOfOberonException("Recognition Error while parsing "
-					+ fileName, e);
+					+ fileName, re);
 		}
 	}
 }

@@ -44,6 +44,7 @@ public class SeaOfOberonController {
 			ASTNode ast = oberon0Parser.parseFile(configuration.getSourceCodeFileName());
 			// Print it to string
 			System.out.println(ast.toTreeString(" "));
+			ast.interpret(null);
 		} catch (InstantiationException e) {
 			throw new SeaOfOberonException(
 					"Class could not be instantiated" + "for class "

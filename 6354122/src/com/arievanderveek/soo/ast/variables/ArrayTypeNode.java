@@ -5,7 +5,7 @@ package com.arievanderveek.soo.ast.variables;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
-import com.arievanderveek.soo.visitors.ASTVisitor;
+import com.arievanderveek.soo.symboltable.Scope;
 
 /**
  * @author arieveek
@@ -13,9 +13,8 @@ import com.arievanderveek.soo.visitors.ASTVisitor;
  */
 public class ArrayTypeNode implements ASTNode {
 	
-	private ASTNode sizeExpression;
-	private ASTNode[] arrayContent;
-	private ASTNode type;
+	private final ASTNode sizeExpression;
+	private final ASTNode type;
 	
 	/**
 	 * Constructor with all required fields
@@ -33,9 +32,8 @@ public class ArrayTypeNode implements ASTNode {
 	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
 	 */
 	@Override
-	public int interpret() throws SeaOfOberonException {
-		// TODO Auto-generated method stub
-		return 0;
+	public Integer interpret(Scope scope) throws SeaOfOberonException {
+		return null;
 	}
 
 	/* (non-Javadoc)
@@ -49,6 +47,20 @@ public class ArrayTypeNode implements ASTNode {
 		sb.append(ident + "OF" + ident);
 		sb.append(type.toTreeString(ident));
 		return sb.toString();
+	}
+
+	/**
+	 * @return the sizeExpression
+	 */
+	public ASTNode getSizeExpression() {
+		return sizeExpression;
+	}
+
+	/**
+	 * @return the type
+	 */
+	public ASTNode getType() {
+		return type;
 	}
 
 }

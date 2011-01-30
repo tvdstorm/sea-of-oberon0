@@ -4,6 +4,7 @@
 package com.arievanderveek.soo.ast;
 
 import com.arievanderveek.soo.SeaOfOberonException;
+import com.arievanderveek.soo.symboltable.Scope;
 import com.arievanderveek.soo.visitors.ASTVisitor;
 
 /**
@@ -14,15 +15,14 @@ import com.arievanderveek.soo.visitors.ASTVisitor;
  */
 public interface ASTNode {
 	
-	static final String LINE_SEPARATOR = System.getProperty ( "line.separator" );  
-	
 	// TODO: All nodes should throw a SeaOfOberonException, but haven't figured
-	// out yet how it should work. For now all subclasses throw runtime
-	// exceptions
-	// which is not pretty.
+	// out yet how it should work with antlr. For now all subclasses throw runtime
+	// exceptions which is not pretty.
 
 	/**
 	 * Walks the node and all its children to interpret the nodes
+	 * 
+	 * @param scope A scope object containing context for the node 
 	 *  
 	 * @return An integer as result the interpretation. Boolean values are represented as
 	 *  0 = false and 1 = true.
@@ -32,7 +32,7 @@ public interface ASTNode {
 	 */
 	// TODO: Not happy with the 1 and 0 for booleans, need to discuss what a good solution
 	// 		 could be
-	public int interpret() throws SeaOfOberonException;
+	public Integer interpret(Scope scope) throws SeaOfOberonException;
 
 	/**
 	 * Walks the node and all its children to print it as a tree. 
