@@ -51,7 +51,7 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     {
         inAModule(node);
         {
-            List<PStatement> copy = new ArrayList<PStatement>(node.getStatement());
+            List<PStatement> copy = new ArrayList<PStatement>(node.getStatements());
             Collections.reverse(copy);
             for(PStatement e : copy)
             {
@@ -404,7 +404,7 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     {
         inAProcedureheading(node);
         {
-            List<PFpsection> copy = new ArrayList<PFpsection>(node.getFpsection());
+            List<PFpsection> copy = new ArrayList<PFpsection>(node.getFormalparams());
             Collections.reverse(copy);
             for(PFpsection e : copy)
             {
@@ -1064,24 +1064,24 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outAStatifStatement(node);
     }
 
-    public void inAStatwhiStatement(AStatwhiStatement node)
+    public void inAStatwithStatement(AStatwithStatement node)
     {
         defaultIn(node);
     }
 
-    public void outAStatwhiStatement(AStatwhiStatement node)
+    public void outAStatwithStatement(AStatwithStatement node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAStatwhiStatement(AStatwhiStatement node)
+    public void caseAStatwithStatement(AStatwithStatement node)
     {
-        inAStatwhiStatement(node);
+        inAStatwithStatement(node);
         if(node.getWhilestatement() != null)
         {
             node.getWhilestatement().apply(this);
         }
-        outAStatwhiStatement(node);
+        outAStatwithStatement(node);
     }
 }
