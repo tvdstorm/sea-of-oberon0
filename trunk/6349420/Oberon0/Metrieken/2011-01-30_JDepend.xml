@@ -1,0 +1,445 @@
+<?xml version="1.0"?>
+<JDepend>
+    <Packages>
+
+        <Package name="ar.oberon0.interpreter">
+            <Stats>
+                <TotalClasses>5</TotalClasses>
+                <ConcreteClasses>4</ConcreteClasses>
+                <AbstractClasses>1</AbstractClasses>
+                <Ca>5</Ca>
+                <Ce>5</Ce>
+                <A>0.2</A>
+                <I>0.5</I>
+                <D>0.3</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="Interpretable.java">
+                    ar.oberon0.interpreter.Interpretable
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="Helper.java">
+                    ar.oberon0.interpreter.Helper
+                </Class>
+                <Class sourceFile="ReadNode.java">
+                    ar.oberon0.interpreter.ReadNode
+                </Class>
+                <Class sourceFile="TechnicalException.java">
+                    ar.oberon0.interpreter.TechnicalException
+                </Class>
+                <Class sourceFile="WriteNode.java">
+                    ar.oberon0.interpreter.WriteNode
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>ar.oberon0.interpreter.DataTypes</Package>
+                <Package>ar.oberon0.interpreter.Memory</Package>
+                <Package>java.io</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>ar.oberon0.interpreter.ControlFlow</Package>
+                <Package>ar.oberon0.interpreter.DataTypes</Package>
+                <Package>ar.oberon0.interpreter.Memory</Package>
+                <Package>ar.oberon0.interpreter.Operators</Package>
+                <Package>ar.oberon0.interpreter.Procedure</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="ar.oberon0.interpreter.ControlFlow">
+            <Stats>
+                <TotalClasses>5</TotalClasses>
+                <ConcreteClasses>5</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>1</Ca>
+                <Ce>5</Ce>
+                <A>0</A>
+                <I>0.83</I>
+                <D>0.17</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="IfNode.java">
+                    ar.oberon0.interpreter.ControlFlow.IfNode
+                </Class>
+                <Class sourceFile="IfNode.java">
+                    ar.oberon0.interpreter.ControlFlow.IfNode$IfStatement
+                </Class>
+                <Class sourceFile="ModuleNode.java">
+                    ar.oberon0.interpreter.ControlFlow.ModuleNode
+                </Class>
+                <Class sourceFile="StatementSequence.java">
+                    ar.oberon0.interpreter.ControlFlow.StatementSequence
+                </Class>
+                <Class sourceFile="WhileNode.java">
+                    ar.oberon0.interpreter.ControlFlow.WhileNode
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>ar.oberon0.interpreter</Package>
+                <Package>ar.oberon0.interpreter.Lists</Package>
+                <Package>ar.oberon0.interpreter.Memory</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>ar.oberon0.interpreter.Procedure</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="ar.oberon0.interpreter.DataTypes">
+            <Stats>
+                <TotalClasses>7</TotalClasses>
+                <ConcreteClasses>5</ConcreteClasses>
+                <AbstractClasses>2</AbstractClasses>
+                <Ca>5</Ca>
+                <Ce>4</Ce>
+                <A>0.29</A>
+                <I>0.44</I>
+                <D>0.27</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="CreatableType.java">
+                    ar.oberon0.interpreter.DataTypes.CreatableType
+                </Class>
+                <Class sourceFile="DataType.java">
+                    ar.oberon0.interpreter.DataTypes.DataType
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="Array.java">
+                    ar.oberon0.interpreter.DataTypes.Array
+                </Class>
+                <Class sourceFile="ArrayType.java">
+                    ar.oberon0.interpreter.DataTypes.ArrayType
+                </Class>
+                <Class sourceFile="IntegerNode.java">
+                    ar.oberon0.interpreter.DataTypes.IntegerNode
+                </Class>
+                <Class sourceFile="RecordType.java">
+                    ar.oberon0.interpreter.DataTypes.RecordType
+                </Class>
+                <Class sourceFile="SimpleType.java">
+                    ar.oberon0.interpreter.DataTypes.SimpleType
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>ar.oberon0.interpreter</Package>
+                <Package>ar.oberon0.interpreter.Lists</Package>
+                <Package>ar.oberon0.interpreter.Memory</Package>
+                <Package>java.lang</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>ar.oberon0.interpreter</Package>
+                <Package>ar.oberon0.interpreter.Lists</Package>
+                <Package>ar.oberon0.interpreter.Memory</Package>
+                <Package>ar.oberon0.interpreter.Operators</Package>
+                <Package>ar.oberon0.interpreter.Procedure</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="ar.oberon0.interpreter.Lists">
+            <Stats>
+                <TotalClasses>9</TotalClasses>
+                <ConcreteClasses>8</ConcreteClasses>
+                <AbstractClasses>1</AbstractClasses>
+                <Ca>4</Ca>
+                <Ce>5</Ce>
+                <A>0.11</A>
+                <I>0.56</I>
+                <D>0.33</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="BaseMap.java">
+                    ar.oberon0.interpreter.Lists.BaseMap
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="ConstantList.java">
+                    ar.oberon0.interpreter.Lists.ConstantList
+                </Class>
+                <Class sourceFile="DataFieldList.java">
+                    ar.oberon0.interpreter.Lists.DataFieldList
+                </Class>
+                <Class sourceFile="FieldList.java">
+                    ar.oberon0.interpreter.Lists.FieldList
+                </Class>
+                <Class sourceFile="FormalParameterList.java">
+                    ar.oberon0.interpreter.Lists.FormalParameterList
+                </Class>
+                <Class sourceFile="FormalParameterList.java">
+                    ar.oberon0.interpreter.Lists.FormalParameterList$FormalParameterWithName
+                </Class>
+                <Class sourceFile="IdentList.java">
+                    ar.oberon0.interpreter.Lists.IdentList
+                </Class>
+                <Class sourceFile="ProcedureList.java">
+                    ar.oberon0.interpreter.Lists.ProcedureList
+                </Class>
+                <Class sourceFile="TypeIdentifierList.java">
+                    ar.oberon0.interpreter.Lists.TypeIdentifierList
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>ar.oberon0.interpreter.DataTypes</Package>
+                <Package>ar.oberon0.interpreter.Memory</Package>
+                <Package>ar.oberon0.interpreter.Procedure</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>ar.oberon0.interpreter.ControlFlow</Package>
+                <Package>ar.oberon0.interpreter.DataTypes</Package>
+                <Package>ar.oberon0.interpreter.Memory</Package>
+                <Package>ar.oberon0.interpreter.Procedure</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="ar.oberon0.interpreter.Memory">
+            <Stats>
+                <TotalClasses>5</TotalClasses>
+                <ConcreteClasses>4</ConcreteClasses>
+                <AbstractClasses>1</AbstractClasses>
+                <Ca>6</Ca>
+                <Ce>6</Ce>
+                <A>0.2</A>
+                <I>0.5</I>
+                <D>0.3</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="Selector.java">
+                    ar.oberon0.interpreter.Memory.Selector
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="ArrayItemSelector.java">
+                    ar.oberon0.interpreter.Memory.ArrayItemSelector
+                </Class>
+                <Class sourceFile="Context.java">
+                    ar.oberon0.interpreter.Memory.Context
+                </Class>
+                <Class sourceFile="DataField.java">
+                    ar.oberon0.interpreter.Memory.DataField
+                </Class>
+                <Class sourceFile="IdentSelector.java">
+                    ar.oberon0.interpreter.Memory.IdentSelector
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>ar.oberon0.interpreter</Package>
+                <Package>ar.oberon0.interpreter.DataTypes</Package>
+                <Package>ar.oberon0.interpreter.Lists</Package>
+                <Package>ar.oberon0.interpreter.Procedure</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>ar.oberon0.interpreter</Package>
+                <Package>ar.oberon0.interpreter.ControlFlow</Package>
+                <Package>ar.oberon0.interpreter.DataTypes</Package>
+                <Package>ar.oberon0.interpreter.Lists</Package>
+                <Package>ar.oberon0.interpreter.Operators</Package>
+                <Package>ar.oberon0.interpreter.Procedure</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="ar.oberon0.interpreter.Operators">
+            <Stats>
+                <TotalClasses>16</TotalClasses>
+                <ConcreteClasses>15</ConcreteClasses>
+                <AbstractClasses>1</AbstractClasses>
+                <Ca>0</Ca>
+                <Ce>4</Ce>
+                <A>0.06</A>
+                <I>1</I>
+                <D>0.06</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="BinaryNode.java">
+                    ar.oberon0.interpreter.Operators.BinaryNode
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="AddNode.java">
+                    ar.oberon0.interpreter.Operators.AddNode
+                </Class>
+                <Class sourceFile="AndNode.java">
+                    ar.oberon0.interpreter.Operators.AndNode
+                </Class>
+                <Class sourceFile="AssignmentNode.java">
+                    ar.oberon0.interpreter.Operators.AssignmentNode
+                </Class>
+                <Class sourceFile="DivNode.java">
+                    ar.oberon0.interpreter.Operators.DivNode
+                </Class>
+                <Class sourceFile="EqualNode.java">
+                    ar.oberon0.interpreter.Operators.EqualNode
+                </Class>
+                <Class sourceFile="GreaterNode.java">
+                    ar.oberon0.interpreter.Operators.GreaterNode
+                </Class>
+                <Class sourceFile="GreaterOrEqualNode.java">
+                    ar.oberon0.interpreter.Operators.GreaterOrEqualNode
+                </Class>
+                <Class sourceFile="MinNode.java">
+                    ar.oberon0.interpreter.Operators.MinNode
+                </Class>
+                <Class sourceFile="ModNode.java">
+                    ar.oberon0.interpreter.Operators.ModNode
+                </Class>
+                <Class sourceFile="MultNode.java">
+                    ar.oberon0.interpreter.Operators.MultNode
+                </Class>
+                <Class sourceFile="NegationNode.java">
+                    ar.oberon0.interpreter.Operators.NegationNode
+                </Class>
+                <Class sourceFile="NotEqualNode.java">
+                    ar.oberon0.interpreter.Operators.NotEqualNode
+                </Class>
+                <Class sourceFile="OrNode.java">
+                    ar.oberon0.interpreter.Operators.OrNode
+                </Class>
+                <Class sourceFile="SmallerNode.java">
+                    ar.oberon0.interpreter.Operators.SmallerNode
+                </Class>
+                <Class sourceFile="SmallerOrEqualNode.java">
+                    ar.oberon0.interpreter.Operators.SmallerOrEqualNode
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>ar.oberon0.interpreter</Package>
+                <Package>ar.oberon0.interpreter.DataTypes</Package>
+                <Package>ar.oberon0.interpreter.Memory</Package>
+                <Package>java.lang</Package>
+            </DependsUpon>
+
+            <UsedBy>
+            </UsedBy>
+        </Package>
+
+        <Package name="ar.oberon0.interpreter.Procedure">
+            <Stats>
+                <TotalClasses>5</TotalClasses>
+                <ConcreteClasses>5</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>2</Ca>
+                <Ce>7</Ce>
+                <A>0</A>
+                <I>0.78</I>
+                <D>0.22</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="FormalParameter.java">
+                    ar.oberon0.interpreter.Procedure.FormalParameter
+                </Class>
+                <Class sourceFile="FormalParameter.java">
+                    ar.oberon0.interpreter.Procedure.FormalParameter$Direction
+                </Class>
+                <Class sourceFile="Procedure.java">
+                    ar.oberon0.interpreter.Procedure.Procedure
+                </Class>
+                <Class sourceFile="ProcedureCallNode.java">
+                    ar.oberon0.interpreter.Procedure.ProcedureCallNode
+                </Class>
+                <Class sourceFile="ProcedureDeclaration.java">
+                    ar.oberon0.interpreter.Procedure.ProcedureDeclaration
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>ar.oberon0.interpreter</Package>
+                <Package>ar.oberon0.interpreter.ControlFlow</Package>
+                <Package>ar.oberon0.interpreter.DataTypes</Package>
+                <Package>ar.oberon0.interpreter.Lists</Package>
+                <Package>ar.oberon0.interpreter.Memory</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>ar.oberon0.interpreter.Lists</Package>
+                <Package>ar.oberon0.interpreter.Memory</Package>
+            </UsedBy>
+        </Package>
+    </Packages>
+
+    <Cycles>
+        <Package Name="ar.oberon0.interpreter">
+            <Package>ar.oberon0.interpreter.DataTypes</Package>
+            <Package>ar.oberon0.interpreter</Package>
+        </Package>
+
+        <Package Name="ar.oberon0.interpreter.ControlFlow">
+            <Package>ar.oberon0.interpreter</Package>
+            <Package>ar.oberon0.interpreter.DataTypes</Package>
+            <Package>ar.oberon0.interpreter</Package>
+        </Package>
+
+        <Package Name="ar.oberon0.interpreter.DataTypes">
+            <Package>ar.oberon0.interpreter</Package>
+            <Package>ar.oberon0.interpreter.DataTypes</Package>
+        </Package>
+
+        <Package Name="ar.oberon0.interpreter.Lists">
+            <Package>ar.oberon0.interpreter.DataTypes</Package>
+            <Package>ar.oberon0.interpreter</Package>
+            <Package>ar.oberon0.interpreter.DataTypes</Package>
+        </Package>
+
+        <Package Name="ar.oberon0.interpreter.Memory">
+            <Package>ar.oberon0.interpreter.DataTypes</Package>
+            <Package>ar.oberon0.interpreter</Package>
+            <Package>ar.oberon0.interpreter.DataTypes</Package>
+        </Package>
+
+        <Package Name="ar.oberon0.interpreter.Operators">
+            <Package>ar.oberon0.interpreter.DataTypes</Package>
+            <Package>ar.oberon0.interpreter</Package>
+            <Package>ar.oberon0.interpreter.DataTypes</Package>
+        </Package>
+
+        <Package Name="ar.oberon0.interpreter.Procedure">
+            <Package>ar.oberon0.interpreter.DataTypes</Package>
+            <Package>ar.oberon0.interpreter</Package>
+            <Package>ar.oberon0.interpreter.DataTypes</Package>
+        </Package>
+
+    </Cycles>
+</JDepend>
