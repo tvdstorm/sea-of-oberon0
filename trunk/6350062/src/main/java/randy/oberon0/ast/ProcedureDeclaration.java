@@ -15,11 +15,11 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 	
 	public ProcedureDeclaration(String _name, List<VarDeclaration> _parameters, List<BodyDeclaration> _bodyDeclarations, Block _body)
 	{
-		assert(name != null);
-		assert(name.length() >= 1);
-		assert(parameters != null);
-		assert(bodyDeclarations != null);
-		assert(body != null);
+		assert(_name != null);
+		assert(_name.length() >= 1);
+		assert(_parameters != null);
+		assert(_bodyDeclarations != null);
+		assert(_body != null);
 		name = _name;
 		parameters = _parameters;
 		bodyDeclarations = _bodyDeclarations;

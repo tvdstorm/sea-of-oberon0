@@ -271,7 +271,7 @@ public class Oberon0ASTTreeGenerator
 	public static ProcedureCall buildProcedureCall(Tree tree) throws Exception
 	{
 		assert(tree.getType() == Oberon0Parser.PROCEDURECALL);
-		assert(tree.getChildCount() >= 2);
+		assert(tree.getChildCount() >= 1);
 		String name = tree.getChild(0).getText();
 		List<Expression> parameters = new Vector<Expression>();
 		if (tree.getChildCount() >= 2)
@@ -361,7 +361,7 @@ public class Oberon0ASTTreeGenerator
 	{
 		assert(tree.getType() == Oberon0Parser.VAR || tree.getType() == Oberon0Parser.REFVAR);
 		assert(tree.getChildCount() >= 1);
-		assert(tree.getChild(0).getType() == Oberon0Parser.IDENT);
+		assert(tree.getChild(0).getType() == Oberon0Parser.IDENT || tree.getChild(0).getType() == Oberon0Parser.ARRAY);
 		boolean isReference = false;
 		if (tree.getType() == Oberon0Parser.REFVAR)
 			isReference = true;
