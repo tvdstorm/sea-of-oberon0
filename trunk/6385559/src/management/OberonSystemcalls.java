@@ -3,7 +3,7 @@ package management;
 import java.util.Vector;
 import java.util.Scanner;
 
-public class system {
+public class OberonSystemcalls {
   public static void doSystemCall( String systemcall, Vector<ParamContainer> params )
   {
     if( systemcall.contentEquals( "Read" ) )
@@ -29,6 +29,7 @@ public class system {
     for( int i = 0; i < params.size(); i++ )
     {
       inputTo = params.get( i );
+      System.out.print( ": " );
       checkType = x.next();
       try
       { // check for integer input
