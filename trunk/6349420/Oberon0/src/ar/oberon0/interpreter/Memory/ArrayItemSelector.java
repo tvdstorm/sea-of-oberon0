@@ -2,6 +2,7 @@ package ar.oberon0.interpreter.Memory;
 
 import ar.oberon0.interpreter.Helper;
 import ar.oberon0.interpreter.Interpretable;
+import ar.oberon0.interpreter.TechnicalException;
 import ar.oberon0.interpreter.DataTypes.Array;
 import ar.oberon0.interpreter.DataTypes.DataType;
 import ar.oberon0.interpreter.DataTypes.IntegerNode;
@@ -34,7 +35,7 @@ public class ArrayItemSelector extends Selector
 	 * Memory.DataField, ar.oberon0.interpreter.Memory.Context)
 	 */
 	@Override
-	protected DataField getItem(DataField parent, Context context) throws Exception
+	protected DataField getItem(DataField parent, Context context) throws TechnicalException
 	{
 		if (parent == null)
 		{
@@ -48,7 +49,7 @@ public class ArrayItemSelector extends Selector
 		DataType expressionResult = Helper.getDataType(_locationExpression, context);
 		if (!(expressionResult instanceof IntegerNode))
 		{
-			throw new Exception("The array indexer is not a valid integer datatype.");
+			throw new TechnicalException("The array indexer is not a valid integer datatype.");
 		}
 		return ((Array) parent.getValue(context)).getDataFieldAt((IntegerNode) expressionResult);
 	}

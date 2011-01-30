@@ -1,5 +1,6 @@
 package ar.oberon0.interpreter.DataTypes;
 
+import ar.oberon0.interpreter.TechnicalException;
 import ar.oberon0.interpreter.Lists.FieldList;
 import ar.oberon0.interpreter.Memory.Context;
 
@@ -17,7 +18,7 @@ public class RecordType implements CreatableType
 	}
 
 	@Override
-	public DataType createInstance(Context context) throws Exception
+	public DataType createInstance(Context context) throws TechnicalException
 	{
 		// TODO Auto-generated method stub
 		return null;

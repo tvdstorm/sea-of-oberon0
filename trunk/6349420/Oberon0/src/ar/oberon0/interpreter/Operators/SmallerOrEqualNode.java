@@ -1,6 +1,7 @@
 package ar.oberon0.interpreter.Operators;
 
 import ar.oberon0.interpreter.Interpretable;
+import ar.oberon0.interpreter.TechnicalException;
 import ar.oberon0.interpreter.Memory.Context;
 
 public class SmallerOrEqualNode extends BinaryNode
@@ -11,7 +12,7 @@ public class SmallerOrEqualNode extends BinaryNode
 	}
 
 	@Override
-	public Object Interpret(Context context) throws Exception
+	public Object Interpret(Context context) throws TechnicalException
 	{
 		int compareResult = getLeftValue(context).compareTo(getRightValue(context));
 		return compareResult <= 0;

@@ -1,5 +1,6 @@
 package ar.oberon0.interpreter.DataTypes;
 
+import ar.oberon0.interpreter.TechnicalException;
 import ar.oberon0.interpreter.Memory.Context;
 import ar.oberon0.interpreter.Memory.DataField;
 
@@ -62,7 +63,7 @@ public class Array implements DataType
 	 * .Memory.Context)
 	 */
 	@Override
-	public Object Interpret(Context context) throws Exception
+	public Object Interpret(Context context) throws TechnicalException
 	{
 		return this;
 	}
@@ -86,7 +87,7 @@ public class Array implements DataType
 	 * .DataTypes.DataType)
 	 */
 	@Override
-	public DataType MultiplyBy(DataType value) throws Exception
+	public DataType MultiplyBy(DataType value) throws TechnicalException
 	{
 		// TODO Auto-generated method stub
 		return null;
@@ -100,7 +101,7 @@ public class Array implements DataType
 	 * DataTypes.DataType)
 	 */
 	@Override
-	public DataType Add(DataType value) throws Exception
+	public DataType Add(DataType value) throws TechnicalException
 	{
 		// TODO Auto-generated method stub
 		return null;
@@ -126,7 +127,7 @@ public class Array implements DataType
 	 * .DataTypes.DataType)
 	 */
 	@Override
-	public DataType Subtract(DataType value) throws Exception
+	public DataType Subtract(DataType value) throws TechnicalException
 	{
 		// TODO Auto-generated method stub
 		return null;
@@ -140,7 +141,7 @@ public class Array implements DataType
 	 * .DataTypes.DataType)
 	 */
 	@Override
-	public DataType Divide(DataType value) throws Exception
+	public DataType Divide(DataType value) throws TechnicalException
 	{
 		// TODO Auto-generated method stub
 		return null;
@@ -154,7 +155,7 @@ public class Array implements DataType
 	 * .DataTypes.DataType)
 	 */
 	@Override
-	public DataType Modulo(DataType value) throws Exception
+	public DataType Modulo(DataType value) throws TechnicalException
 	{
 		// TODO Auto-generated method stub
 		return null;

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ar.oberon0.interpreter.Interpretable;
+import ar.oberon0.interpreter.TechnicalException;
 import ar.oberon0.interpreter.Memory.Context;
 
 /*
@@ -60,7 +61,7 @@ public class IfNode implements Interpretable
 	 * .Memory.Context)
 	 */
 	@Override
-	public Object Interpret(Context context) throws Exception
+	public Object Interpret(Context context) throws TechnicalException
 	{
 		if (_mainIf.IsExpressionTrue(context))
 		{
@@ -110,7 +111,7 @@ public class IfNode implements Interpretable
 		/*
 		 * check if the expression evaluates to true.
 		 */
-		public boolean IsExpressionTrue(Context context) throws Exception
+		public boolean IsExpressionTrue(Context context) throws TechnicalException
 		{
 			return (Boolean) _ifExpression.Interpret(context) == true;
 		}
@@ -118,7 +119,7 @@ public class IfNode implements Interpretable
 		/*
 		 * Execute the statements of this IfStatement.
 		 */
-		public void Execute(Context context) throws Exception
+		public void Execute(Context context) throws TechnicalException
 		{
 			_statements.Interpret(context);
 		}

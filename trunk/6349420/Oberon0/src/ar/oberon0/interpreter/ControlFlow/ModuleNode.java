@@ -1,6 +1,7 @@
 package ar.oberon0.interpreter.ControlFlow;
 
 import ar.oberon0.interpreter.Interpretable;
+import ar.oberon0.interpreter.TechnicalException;
 import ar.oberon0.interpreter.Lists.ConstantList;
 import ar.oberon0.interpreter.Lists.DataFieldList;
 import ar.oberon0.interpreter.Lists.ProcedureList;
@@ -84,7 +85,7 @@ public class ModuleNode implements Interpretable
 	 * .Memory.Context)
 	 */
 	@Override
-	public Object Interpret(Context context) throws Exception
+	public Object Interpret(Context context) throws TechnicalException
 	{
 		_statements.Interpret(_context);
 		return 0;

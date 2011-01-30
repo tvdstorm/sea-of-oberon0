@@ -2,6 +2,7 @@ package ar.oberon0.interpreter.Procedure;
 
 import java.util.List;
 
+import ar.oberon0.interpreter.TechnicalException;
 import ar.oberon0.interpreter.ControlFlow.StatementSequence;
 import ar.oberon0.interpreter.Lists.ConstantList;
 import ar.oberon0.interpreter.Lists.DataFieldList;
@@ -68,13 +69,13 @@ public class ProcedureDeclaration
 	 * This function checks if the actual parameters are of the expected type
 	 * and if so it adds the parameters to the context.
 	 */
-	private void CheckAndAddActualParametersToContext(List<DataField> actualParameters, Context context) throws Exception
+	private void CheckAndAddActualParametersToContext(List<DataField> actualParameters, Context context) throws TechnicalException
 	{
 		if (CountainsFormalParameters())
 		{
 			if (!IsFormalAndActualParamaterCountSame(_formalParameters, actualParameters))
 			{
-				throw new Exception("The number of actual parameters did not match the number of formal parameters.");
+				throw new TechnicalException("The number of actual parameters did not match the number of formal parameters.");
 			}
 			for (int i = 0; i < _formalParameters.getCount(); i++)
 			{
@@ -105,7 +106,7 @@ public class ProcedureDeclaration
 	/*
 	 * Create a procedure that can be interpreted (executed).
 	 */
-	protected Procedure CreateProcedure(Context context, List<DataField> actualParameters) throws Exception
+	protected Procedure CreateProcedure(Context context, List<DataField> actualParameters) throws TechnicalException
 	{
 		Context procedureContext = _context.Clone();
 		procedureContext.setParentContext(context);

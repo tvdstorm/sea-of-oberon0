@@ -2,6 +2,7 @@ package ar.oberon0.interpreter.Memory;
 
 import java.util.Map.Entry;
 
+import ar.oberon0.interpreter.TechnicalException;
 import ar.oberon0.interpreter.DataTypes.CreatableType;
 import ar.oberon0.interpreter.Lists.BaseMap;
 import ar.oberon0.interpreter.Lists.ConstantList;
@@ -67,11 +68,11 @@ public final class Context
 	/*
 	 * Get the procedure with the specified name.
 	 */
-	public ProcedureDeclaration getProcedure(String name) throws Exception
+	public ProcedureDeclaration getProcedure(String name) throws TechnicalException
 	{
 		if (!itemExist(name, _procedures))
 		{
-			throw new Exception("There was no procedure named " + name + " in the context.");
+			throw new TechnicalException("There was no procedure named " + name + " in the context.");
 		}
 		return _procedures.getItem(name);
 	}
@@ -162,11 +163,11 @@ public final class Context
 	/*
 	 * Get the type identifier for the specified name.
 	 */
-	private CreatableType getTypeIdentifier(String name) throws Exception
+	private CreatableType getTypeIdentifier(String name) throws TechnicalException
 	{
 		if (!itemExist(name, _typeIdentifiers))
 		{
-			throw new Exception("There was no type named " + name + " in the context.");
+			throw new TechnicalException("There was no type named " + name + " in the context.");
 		}
 		return _typeIdentifiers.getItem(name);
 	}
@@ -185,7 +186,7 @@ public final class Context
 	/*
 	 * Get the datafield of the constant or variable with the specified name.
 	 */
-	protected DataField getVarOrConstantAsDataField(String name) throws Exception
+	protected DataField getVarOrConstantAsDataField(String name) throws TechnicalException
 	{
 		if (itemExist(name, _variables))
 		{
@@ -195,7 +196,7 @@ public final class Context
 			return _constants.getItem(name).Clone();
 		} else
 		{
-			throw new Exception("There was no variable or constant named " + name + " in the context.");
+			throw new TechnicalException("There was no variable or constant named " + name + " in the context.");
 		}
 	}
 

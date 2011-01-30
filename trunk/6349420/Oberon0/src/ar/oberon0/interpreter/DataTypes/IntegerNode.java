@@ -1,6 +1,7 @@
 package ar.oberon0.interpreter.DataTypes;
 
 import ar.oberon0.interpreter.Helper;
+import ar.oberon0.interpreter.TechnicalException;
 import ar.oberon0.interpreter.Memory.Context;
 
 /*
@@ -61,7 +62,7 @@ public class IntegerNode implements DataType
 	 * .Memory.Context)
 	 */
 	@Override
-	public Object Interpret(Context context) throws Exception
+	public Object Interpret(Context context) throws TechnicalException
 	{
 		return this;
 	}
@@ -73,10 +74,10 @@ public class IntegerNode implements DataType
 	 * ar.oberon0.interpreter.DataTypes.DataType#MultiplyBy(ar.oberon0.interpreter
 	 * .DataTypes.DataType)
 	 */
-	public DataType MultiplyBy(DataType value) throws Exception
+	public DataType MultiplyBy(DataType value) throws TechnicalException
 	{
 		if (!Helper.AreSameType(this, value))
-			throw new Exception("Could not multiply the type " + IntegerNode.class + " with a object of type " + value.getClass() + ".");
+			throw new TechnicalException("Could not multiply the type " + IntegerNode.class + " with a object of type " + value.getClass() + ".");
 
 		return new IntegerNode(_value * ((IntegerNode) value)._value);
 	}
@@ -100,10 +101,10 @@ public class IntegerNode implements DataType
 	 * DataTypes.DataType)
 	 */
 	@Override
-	public DataType Add(DataType value) throws Exception
+	public DataType Add(DataType value) throws TechnicalException
 	{
 		if (!Helper.AreSameType(this, value))
-			throw new Exception("Could not add the value of type " + IntegerNode.class + " with the value of type " + value.getClass() + ".");
+			throw new TechnicalException("Could not add the value of type " + IntegerNode.class + " with the value of type " + value.getClass() + ".");
 
 		return new IntegerNode(_value + ((IntegerNode) value)._value);
 	}
@@ -127,10 +128,10 @@ public class IntegerNode implements DataType
 	 * .DataTypes.DataType)
 	 */
 	@Override
-	public DataType Subtract(DataType value) throws Exception
+	public DataType Subtract(DataType value) throws TechnicalException
 	{
 		if (!Helper.AreSameType(this, value))
-			throw new Exception("Could not subtract the value of type " + IntegerNode.class + " from the value of type " + value.getClass() + ".");
+			throw new TechnicalException("Could not subtract the value of type " + IntegerNode.class + " from the value of type " + value.getClass() + ".");
 
 		return new IntegerNode(_value - ((IntegerNode) value)._value);
 	}
@@ -157,10 +158,10 @@ public class IntegerNode implements DataType
 	 * .DataTypes.DataType)
 	 */
 	@Override
-	public DataType Divide(DataType value) throws Exception
+	public DataType Divide(DataType value) throws TechnicalException
 	{
 		if (!Helper.AreSameType(this, value))
-			throw new Exception("Could not divide the value of type " + IntegerNode.class + " from the value of type " + value.getClass() + ".");
+			throw new TechnicalException("Could not divide the value of type " + IntegerNode.class + " from the value of type " + value.getClass() + ".");
 
 		return new IntegerNode(_value / ((IntegerNode) value)._value);
 	}
@@ -173,10 +174,10 @@ public class IntegerNode implements DataType
 	 * .DataTypes.DataType)
 	 */
 	@Override
-	public DataType Modulo(DataType value) throws Exception
+	public DataType Modulo(DataType value) throws TechnicalException
 	{
 		if (!Helper.AreSameType(this, value))
-			throw new Exception("Could not modulo the value of type " + IntegerNode.class + " from the value of type " + value.getClass() + ".");
+			throw new TechnicalException("Could not modulo the value of type " + IntegerNode.class + " from the value of type " + value.getClass() + ".");
 
 		return new IntegerNode(_value % ((IntegerNode) value)._value);
 	}
