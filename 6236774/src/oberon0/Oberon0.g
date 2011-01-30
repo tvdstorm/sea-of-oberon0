@@ -2,6 +2,7 @@ grammar Oberon0;
 
 options {
   language = Java;
+  backtrack = true;
 }
 @header {
   package oberon0;
@@ -9,75 +10,129 @@ options {
 @lexer::header {
   package oberon0;
 }
-
-/* Production rules */ 
-module:
-  'MODULE' IDENTIFIER ';'
-    ( constant | variable )*
-    'BEGIN'
-    'END' IDENTIFIER '.'
-;
-
-constant:
-  'CONST' IDENTIFIER '=' expression ';'
-;
-
-variable:
-  'VAR' IDENTIFIER ':' type ';'
-;
-
-type:
-  'INTEGER'
-;
-
-expression
-  : INTEGER
-;
   
+identifier
+  : LETTER ( LETTER | DIGIT )*
+  ;  
+  
+integer
+  : DIGIT*
+  ;
+  
+selector
+  : ('.' identifier | '[' expression ']')*
+  ; 
 
+factor 
+  : identifier selector
+  | integer
+  | '(' expression ')'
+  | '~' factor
+  ;
+  
+term
+  : factor (('*' | 'DIV' | 'MOD' | '&' ) factor)*
+  ;
+  
+simpleExpression
+  : ('+'|'-')? term (('+' | '-' | 'OR' ) term)*
+  ;
+  
+expression
+  : simpleExpression (('=' | '#' | '<' | '<=' | '>=' | '>') actualParameters)?
+  ;
+  
+assignment
+  : identifier selector ':=' expression
+  ;
+
+actualParameters
+  : '(' (expression (',' expression)*)? ')'
+  ;  
+
+procedureCall
+  : identifier actualParameters?
+  ;
+  
+ifStatement
+  : 'IF' expression 'THEN' statementSequence
+    ( 'ELSIF' expression 'THEN' statementSequence)*
+    ( 'ELSE' statementSequence )?
+    'END' 
+  ;
+
+whileStatement
+  : 'WHILE' expression 'DO' statementSequence 'END'
+  ;
+  
+statement
+  : assignment
+  | procedureCall
+  | ifStatement
+  | whileStatement
+  ;
+  
+statementSequence
+  : statement (';' statement)*
+  ;
+  
+identifierList
+  : identifier (',' identifier)*
+  ;
+  
+arrayType
+  : 'ARRAY' expression 'OF' type
+  ;
+
+fieldList
+  : (identifierList ':' type)?
+  ;
+  
+recordType
+  : 'RECORD' fieldList (';' fieldList)* 'END'
+  ;
+
+type
+  : identifier
+  | arrayType
+  | recordType
+  ;  
+  
+fpSection
+  : 'VAR'? identifierList ':' type
+  ;
+  
+formalParameters
+  : '(' (fpSection (';' fpSection)*)? ')'
+  ;
+  
+procedureHeading
+  : 'PROCEDURE' identifier formalParameters?
+  ;
+  
+procedureBody
+  : 'PROCEDURE' declarations ('BEGIN' statementSequence)? 'END'
+  ;
+  
+procedureDeclarations
+  : procedureHeading ';' procedureBody identifier
+  ;
+  
+declarations
+  : ('CONST' (identifier '=' expression ';')*)?
+    ('TYPE' (identifier '=' type ';')*)?
+    ('VAR' (identifierList ':' type ';')*)?
+    (procedureDeclarations ';')*
+  ;
+
+module
+  : 'MODULE' identifier ';' declarations
+    ('BEGIN' statementSequence)? 'END' identifier '.'
+  ;
+    
  /* Tokens */   
-INTEGER : '0'..'9'+;  
+DIGIT: '0'..'9';  
 
-IDENTIFIER:
-  ('a'..'z' | 'A'..'Z')('a'..'z' | 'A'..'Z' | '0'..'9')*
-;
+LETTER: ('a'..'z' | 'A'..'Z');
 
-WHITESPACE:
-  (' ' | '\t' | '\n' | '\r' | '\f')+ {$channel = HIDDEN;}
-;
-
-/*
-ident = letter {letter | digit};
-integer = digit {digit};
-selector = {"." ident | "[" expression "]"};
-factor = ident selector | integer | "(" expression ")" | "~" factor;
-term = factor {("*" | "DIV" | "MOD" | "&") factor};
-SimpleExpression = ["+"|"-"] term {("+"|"-" | "OR") term};
-expression = SimpleExpression
-[("=" | "#" | "<" | "<=" | ">" | ">=") SimpleExpression];
-assignment = ident selector ":=" expression;
-ActualParameters = "(" [expression {"," expression}] ")" .
-ProcedureCall = ident [ActualParameters].
-IfStatement = "IF" expression "THEN" StatementSequence
-{"ELSIF" expression "THEN" StatementSequence}
-["ELSE" StatementSequence] "END".
-WhileStatement = "WHILE" expression "DO" StatementSequence "END".
-statement = [assignment | ProcedureCall | IfStatement | WhileStatement].
-StatementSequence = statement {";" statement}.
-IdentList = ident {"," ident}.
-ArrayType = "ARRAY" expression "OF" type.
-FieldList = [IdentList ":" type].
-RecordType = "RECORD" FieldList {";" FieldList} "END".
-type = ident | ArrayType | RecordType.
-FPSection = ["VAR"] IdentList ":" type.
-FormalParameters = "(" [FPSection {";" FPSection}] ")".
-ProcedureHeading = "PROCEDURE" ident [FormalParameters].
-ProcedureBody = declarations ["BEGIN" StatementSequence] "END".
-ProcedureDeclaration = ProcedureHeading ";" ProcedureBody ident.
-declarations = ["CONST" {ident "=" expression ";"}]
-["TYPE" {ident "=" type ";"}]
-["VAR" {IdentList ":" type ";"}]
-{ProcedureDeclaration ";"}.
-module = "MODULE" ident ";" declarations
-["BEGIN" StatementSequence] "END" ident "." .
-*/
+WHITESPACE: (' ' | '\t' | '\n' | '\r' | '\f')+ {$channel = HIDDEN;};
