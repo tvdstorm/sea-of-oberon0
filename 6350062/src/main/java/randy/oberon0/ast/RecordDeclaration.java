@@ -18,15 +18,7 @@ public class RecordDeclaration extends AbstractTypeDeclaration
 	@Override
 	public Value run(RuntimeEnvironment environment) throws RuntimeException
 	{
-		environment.addType(getName(), new RecordInstantiation(getMembers()));
+		environment.addType(name, new RecordInstantiation(members));
 		return null;
-	}
-	public String getName()
-	{
-		return name;
-	}
-	public Map<String, String> getMembers()
-	{
-		return members;
 	}
 }
