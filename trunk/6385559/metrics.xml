@@ -2,41 +2,69 @@
 <!-- ====================================================================== 
      30 jan. 2011 11:59:17                                                        
 
-     project    
-     description
+     Metrics for the oberon parser generator    
+     This ant build will call both javancss and jdepend to generate 
+     statistics on the project
                    
      Ben Kwint                                                                
      ====================================================================== -->
 <project name="softwareConstruction" default="default">
+	<!-- location definitions -->
 	<property name="src.dir" value="src"/>
 	<property name="java.dir" value="${src.dir}"/>
 	<property name="metric.dir" value="metrics"/>
 	<property name="javancss.dir" value="tools/javancss"/>
+	<property name="jDepend.dir" value="tools/jDepend"/>
+	<property name="jDepend.buildFolder" value="bin"/>
+	
+	<!-- file name definitions for the metric files -->
+	<property name="jDepend.outputfile" value="jDepend-report.xml"/>
+	<property name="javancss.outputfile" value="javaNCSS-report.xml"/>
 	
 	<path id="javancss.ant.task">
 	  <pathelement location="${javancss.dir}/ccl.jar" />
 	  <pathelement location="${javancss.dir}/javancss.jar" />
 	  <pathelement location="${javancss.dir}/javancss2ant.jar" />
-	  <pathelement location="${javancss.dir}/javancss/jhbasic.jar" />
+	  <pathelement location="${javancss.dir}/jhbasic.jar" />
   </path>
+	
+	<path id="jdepend.ant.task">
+	  <pathelement location="${jDepend.dir}/jDepend.jar"/>
+	</path>
 	
 	<taskdef name="javancss"
 	           classname="javancss.JavancssAntTask"
 	           classpathref="javancss.ant.task"/>
 	
-  <description>
-            description
-  </description>
-  <!-- ================================= 
-        target: default              
-       ================================= -->
-  <target name="default" description="description">
-    <delete dir="${metric.dir}" failonerror="true"/>
-  	<mkdir dir="${metric.dir}"/>
+  <target name="default" description="This build file will delete the metrics folder and recreate it">
+  	<!-- Delete the files to ensure clean building -->
+    <delete file="${metric.dir}/${javancss.outputfile}" failonerror="true"/>
+  	<delete file="${metric.dir}/${jDepend.outputfile}" failonerror="true"/>
+  	
+  	<!-- Generate the javancss output -->
   	<javancss srcdir="${java.dir}"
   	                   generatereport="true"
-  	                   outputfile="${metric.dir}/javancss-report.xml"
+  	                   outputfile="${metric.dir}/${javancss.outputfile}"
   	                   format="xml"/>
+  	<!-- 
+  	  next generate the jDepend metrics
+  	  Pay special attention to the fact that jDepend doesn't use the source folder
+  	  but the build folder. In my case that is the bin folder 
+  	  
+  	  You also need to add the jar file to the ant global entries which can be found
+  	  at
+  	  Window -> preferences -> ant -> Runtime
+  	    Add it to the global entries in the classpath tab using add external jar
+  	-->
+  	<jdepend outputfile="${metric.dir}/${jDepend.outputfile}" fork="yes" format="xml">
+  	    <classespath>
+  	        <pathelement location="${jDepend.buildFolder}"/>
+  	    </classespath>
+  	    <classpath>
+  	        <pathelement location="${jDepend.buildFolder}"/>
+  	        <pathelement location="${jDepend.dir}/jDepend.jar"/>
+  	    </classpath>
+  	</jdepend>
   </target>
 	
 </project>
