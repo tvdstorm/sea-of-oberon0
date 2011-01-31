@@ -2,7 +2,7 @@ package oberon0.variables;
 /**
 * A variable that can be called by a selector (i.e. an array)
 */
-public interface ISelectorableVar extends IVariable{
+public interface ISelectorableVar extends IReadableVar{
 
 	public IReadableVar getValueAtSelector(IntegerVar selector);
 	public IReadableVar getValueAtSelector(int selector);
