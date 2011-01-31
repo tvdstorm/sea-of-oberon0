@@ -82,7 +82,7 @@ public class oberon0Parser extends Parser {
             String hdr = getErrorHeader(e);
             String msg = getErrorMessage(e, tokenNames);
             
-            parseErrorLog.addMessage( hdr + " -> " + msg );
+            Errorlog.addMessage( hdr + " -> " + msg );
         }
 
 

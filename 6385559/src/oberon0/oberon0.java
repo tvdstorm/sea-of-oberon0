@@ -4,7 +4,6 @@
  * - Create new classes for all operations
  * - memory datatypes change
  * - PrintNode moet ToString worden
- * - Rename ASTnodes to ast
  * 
  */
 package oberon0;
@@ -31,9 +30,9 @@ public class oberon0
     Pout.setFile( pIn.getInputFile( CommandLine.sourceFile() ) );
     AST = Pout.getAST( );
     
-    if( parseErrorLog.hasErrors() > 0 )
+    if( Errorlog.hasErrors() > 0 )
     {
-      parseErrorLog.printMessages();
+      Errorlog.printMessages();
     }
     else
     {
@@ -68,8 +67,8 @@ public class oberon0
       }
       catch( OberonException e )
       {
-        parseErrorLog.addMessage( e.getMessage() );
-        parseErrorLog.printMessages( );
+        Errorlog.addMessage( e.getMessage() );
+        Errorlog.printMessages( );
       }
     }
     

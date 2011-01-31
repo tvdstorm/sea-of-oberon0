@@ -13,7 +13,7 @@ public class ModuleNode implements ASTnode{
   {
     if( idn1.compareTo( idn2 ) != 0 ) 
     { // validate end and start symbols of the module to force correct code
-      parseErrorLog.addMessage( "Module " + idn1 + " has ended with " + idn2 + "." );
+      Errorlog.addMessage( "Module " + idn1 + " has ended with " + idn2 + "." );
     }
   
     this.ModuleName = idn1;
