@@ -1,12 +1,12 @@
 package oberon0;
 import org.antlr.runtime.*;
-import org.antlr.runtime.TokenRewriteStream;
+
+import ast.*;
 
 import parser.oberon0Lexer;
 import parser.oberon0Parser;
 
 import java.io.IOException;
-import ASTnodes.*;
 
 /*
  * Reads the input file and returns a abstraction of the given

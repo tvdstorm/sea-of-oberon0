@@ -2,11 +2,13 @@
 
   package parser;
   
-  import ASTnodes.*;
-  import errorhandler.*;
+    import errorhandler.*;
 
 
 import org.antlr.runtime.*;
+
+import ast.*;
+
 import java.util.Stack;
 import java.util.List;
 import java.util.ArrayList;

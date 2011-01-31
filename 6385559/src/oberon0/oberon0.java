@@ -9,13 +9,13 @@
  */
 package oberon0;
 
+import ast.*;
 import errorhandler.*;
 import management.MemoryManager;
 import management.ProcedureManager;
 import management.TypeDefinitionManager;
 import oberon0.ParserOutput;
 import oberon0.ParserInput;
-import ASTnodes.*;
 import systemcalls.*;
 
 public class oberon0 
