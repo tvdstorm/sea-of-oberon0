@@ -21,7 +21,7 @@ public class ArraySymbol extends Symbol{
 		this.mutable = mutable;
 		this.addressList = addressList;
 	}
-	
+
 	public void addOrUpdateAddress(Integer position, MemoryAddress adress){
 		addressList[position] = adress;
 	}
@@ -53,6 +53,8 @@ public class ArraySymbol extends Symbol{
 		sb.append(Constants.LINE_SEPARATOR);
 		sb.append("IsMutable: " + mutable);
 		sb.append(Constants.LINE_SEPARATOR);
+		sb.append(Constants.LINE_SEPARATOR);
+		sb.append("IsReference: " + referencedSymbol);		
 		for (MemoryAddress address : addressList){
 			sb.append("memoryAdress: " + address.toString());
 			sb.append(Constants.LINE_SEPARATOR);

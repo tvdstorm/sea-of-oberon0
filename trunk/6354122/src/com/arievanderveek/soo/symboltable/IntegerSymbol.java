@@ -68,6 +68,8 @@ public class IntegerSymbol extends Symbol {
 		sb.append(Constants.LINE_SEPARATOR);
 		sb.append("IsMutable: " + mutable);
 		sb.append(Constants.LINE_SEPARATOR);
+		sb.append("IsReference: " + referencedSymbol);
+		sb.append(Constants.LINE_SEPARATOR);
 		sb.append("memoryAdress: " + memoryAdress.toString());
 		sb.append(Constants.LINE_SEPARATOR);
 		return sb.toString();

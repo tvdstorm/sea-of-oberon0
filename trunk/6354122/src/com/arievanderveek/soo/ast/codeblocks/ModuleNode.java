@@ -33,6 +33,14 @@ public class ModuleNode extends CodeBlockNode {
 			List<ASTNode> statementSequence) {
 		super(startName, endName, constants, types, variables, procedures,
 				statementSequence);
+		// add the system procedures to this node
+		ReadLineCallNode rlcNode = new ReadLineCallNode();
+		this.procedures.put(rlcNode.getCodeBlockName(), rlcNode);
+		WriteLnCallNode wclNode = new WriteLnCallNode();
+		this.procedures.put(wclNode.getCodeBlockName(), wclNode);
+		WriteCallNode wcNode = new WriteCallNode();
+		this.procedures.put(wcNode.getCodeBlockName(), wcNode);
+
 	}
 	
 	/* (non-Javadoc)
@@ -40,12 +48,12 @@ public class ModuleNode extends CodeBlockNode {
 	 */
 	public Integer interpret(Scope scope) throws SeaOfOberonException {
 		// Create a new Scope
+		System.out.println("Amount of procedures:" + procedures.size());
 		Scope localScope = new Scope(constants, types, variables, procedures);
 		// loop over statements and call interpret method with the Scope Variable
 		for (ASTNode statementNode : statementSequence){
 			statementNode.interpret(localScope);
 		}
-		System.out.println(localScope.toString());
 		return null;
 	}
 	

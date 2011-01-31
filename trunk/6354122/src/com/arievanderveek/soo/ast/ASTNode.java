@@ -5,7 +5,6 @@ package com.arievanderveek.soo.ast;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.symboltable.Scope;
-import com.arievanderveek.soo.visitors.ASTVisitor;
 
 /**
  * Interface for AST nodes.

@@ -20,7 +20,10 @@ public class ConfigurationTest {
 
 	private static final String correctAllArguments[] = { "-sourcefile",
 			"oberon.0", "-parser", "arie.test.parser.iscorrect", 
-			"-visitor", "arie.test.visitor.iscorrect" };
+			"-printtree"};
+	
+	private static final boolean printTheTree = true;
+	
 	private static final String correctRequiredArguments[] = { "-sourcefile",
 			"oberon.0" };
 	private static final String faultyArguments[] = { "-sourcefile",
@@ -44,7 +47,7 @@ public class ConfigurationTest {
 		SeaOfOberonConfiguration refConfig = new SeaOfOberonConfiguration();
 		refConfig.setSourceCodeFileName(correctAllArguments[1]);
 		refConfig.setParserImplClass(correctAllArguments[3]);
-		refConfig.setVisitorImplClass(correctAllArguments[5]);
+		refConfig.setPrintTree(printTheTree);
 		// Create the configuration using the factory
 		SeaOfOberonConfiguration config = ConfigurationFactory
 				.createConfiguration(correctAllArguments);
@@ -53,8 +56,8 @@ public class ConfigurationTest {
 				refConfig.getSourceCodeFileName());
 		assertEquals(config.getParserImplClass(),
 				refConfig.getParserImplClass());
-		assertEquals(config.getVisitorImplClass(),
-				refConfig.getVisitorImplClass());
+		assertEquals(config.printTree(),
+				refConfig.printTree());
 	}
 
 	/**

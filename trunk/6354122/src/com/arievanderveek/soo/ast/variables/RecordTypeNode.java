@@ -3,7 +3,7 @@
  */
 package com.arievanderveek.soo.ast.variables;
 
-import java.util.Map;
+import java.util.List;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
@@ -15,14 +15,14 @@ import com.arievanderveek.soo.symboltable.Scope;
  */
 public class RecordTypeNode implements ASTNode {
 	
-	Map<String, ASTNode> recordElements;
+	List< ASTNode> recordElements;
 
 	/**
 	 * Constructor with all required fields
 	 * 
 	 * @param recordElements the elements of the record
 	 */
-	public RecordTypeNode(Map<String, ASTNode> recordElements) {
+	public RecordTypeNode(List<ASTNode> recordElements) {
 		this.recordElements = recordElements;
 	}
 
@@ -40,7 +40,9 @@ public class RecordTypeNode implements ASTNode {
 	 */
 	@Override
 	public String toTreeString(String ident) throws SeaOfOberonException {
-		StringBuilder sb = new StringBuilder();
+		return "Not Implemented";
+	}
+		/*	StringBuilder sb = new StringBuilder();
 		sb.append("RECORD" + ident);
 		for (Object key : recordElements.keySet().toArray()){
 			sb.append(ident);
@@ -49,5 +51,5 @@ public class RecordTypeNode implements ASTNode {
 			sb.append(ident);
 		}
 		return sb.toString();
-	}
+	}*/
 }

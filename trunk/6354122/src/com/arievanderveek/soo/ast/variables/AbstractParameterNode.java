@@ -3,6 +3,7 @@
  */
 package com.arievanderveek.soo.ast.variables;
 
+import java.util.List;
 import java.util.Map;
 
 import com.arievanderveek.soo.SeaOfOberonException;
@@ -15,23 +16,31 @@ import com.arievanderveek.soo.util.Constants;
  */
 public abstract class AbstractParameterNode implements ASTNode {
 	
-	Map<String,ASTNode> formalParameter;
+	final List<ASTNode> formalParameter;
 
 	/**
 	 * @param formalParameter 
 	 */
-	public AbstractParameterNode(Map<String,ASTNode> formalParameter) {
+	public AbstractParameterNode(List<ASTNode> formalParameter) {
 		this.formalParameter = formalParameter;
 	}
 	
 	public String toTreeString(String ident) throws SeaOfOberonException {
 		StringBuilder sb = new StringBuilder();
-		for (String key : formalParameter.keySet()){
-			sb.append(key + ident);
+		for (ASTNode key : formalParameter){
+			MethodCallParamNode node = (MethodCallParamNode)key;
+			sb.append(node.getName() + ident);
 			sb.append(ident + "=" + ident);
-			sb.append(formalParameter.get(key).toTreeString(ident));
+			sb.append(node.getType().toTreeString(ident));
 			sb.append(Constants.LINE_SEPARATOR);
 		}
 		return sb.toString();
-	}	
+	}
+
+	/**
+	 * @return the formalParameter
+	 */
+	public List<ASTNode> getFormalParameter() {
+		return formalParameter;
+	}
 }

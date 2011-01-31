@@ -3,6 +3,9 @@
  */
 package com.arievanderveek.soo.ast.variables;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
 import com.arievanderveek.soo.symboltable.Scope;
@@ -23,7 +26,9 @@ public class IdentifierNode implements ASTNode {
 	{	
 		assert name!=null;
 		this.name = name;
-		this.selectors = null;
+		// Create a Queue of 0 selectors
+		Queue<ASTNode> emptyQueue = new LinkedList<ASTNode>();
+		this.selectors = new SelectorNode(emptyQueue);
 	}
 	
 	public IdentifierNode(String name, ASTNode selectors)

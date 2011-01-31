@@ -282,18 +282,18 @@ arrayType returns[ASTNode node] // done
 	{ $node = new ArrayTypeNode($expression.node,$type.node);}
 	;
 	
-fieldList returns[Map<String,ASTNode> return_fieldlist]
+fieldList returns[List<ASTNode> return_fieldlist]
 scope{
-	Map<String,ASTNode> fields
+	List<ASTNode> fields
 }
 @init{
-	$fieldList::fields = new Hashtable();
+	$fieldList::fields = new LinkedList();
 }
 	:	(identList ':' type)?
 	{
 			for (Object token : $identList.idents)
 			{
-				$fieldList::fields.put( ((CommonToken) token).getText(), $type.node);
+				$fieldList::fields.add(new MethodCallParamNode( ((CommonToken) token).getText(), $type.node));
 			}
 			$return_fieldlist = $fieldList::fields; 
 	}
@@ -301,19 +301,22 @@ scope{
 
 recordTypeFollowUp
 	: ';' fieldList
-	{ $recordType::fields.putAll($fieldList.return_fieldlist);}
+	{ $recordType::fields.addAll($fieldList.return_fieldlist);}
 	;
 
 recordType returns[ASTNode node]
 scope{
-	Map<String,ASTNode> fields
+	List<ASTNode> fields
 }
 @init{
-	$recordType::fields = new Hashtable();	
+	$recordType::fields = new LinkedList();	
 }
 	:	
 	'RECORD'
-	fieldList { $recordType::fields.putAll($fieldList.return_fieldlist);}
+	fieldList 
+	{
+	// $recordType::fields.putAll($fieldList.return_fieldlist);
+	}
 	recordTypeFollowUp*
 	'END'
 	{$node = new RecordTypeNode($recordType::fields);}
