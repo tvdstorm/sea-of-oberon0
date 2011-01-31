@@ -30,6 +30,7 @@ public class Tester
 	{
 		Tester tester = new Tester();
 		tester.SmokeTest();
+
 		/*
 		 * tester.TestIntegerDivision(); tester.TestProcedureWithParamters();
 		 * tester.TestProcedureWithoutVars(); tester.TestConstantImmutability();
@@ -44,7 +45,6 @@ public class Tester
 		 * tester.TestExpressionWithGreater(); tester.TestSimpleExpressionBIG();
 		 * tester.TestAssignmentNode();
 		 */
-
 		System.out.println("Finished");
 	}
 
@@ -65,7 +65,7 @@ public class Tester
 			Oberon0Lexer lexer = new Oberon0Lexer(stream);
 			TokenStream tokenStream = new CommonTokenStream(lexer);
 			Oberon0Parser parser = new Oberon0Parser(tokenStream);
-			Interpretable interpreter = parser.module().result;
+			Interpretable interpreter = parser.module().module;
 			interpreter.Interpret(null);
 
 		} catch (IOException e)
@@ -84,13 +84,13 @@ public class Tester
 
 	}
 
-	public void TestIntegerDivision()
+	private void TestIntegerDivision()
 	{
 		Oberon0Parser parser = GetParser("MODULE module; BEGIN Write( 7 DIV 2 ) END module");
 		Interpretable interpreter = null;
 		try
 		{
-			interpreter = parser.module().result;
+			interpreter = parser.module().module;
 		} catch (RecognitionException e)
 		{
 			e.printStackTrace();
@@ -105,13 +105,13 @@ public class Tester
 		}
 	}
 
-	public void TestProcedureWithParamters()
+	private void TestProcedureWithParamters()
 	{
 		Oberon0Parser parser = GetParser("MODULE module; VAR i: INTEGER; PROCEDURE PrintHallo(VAR message: INTEGER); BEGIN Write(\"hallo\"); Write(message); message := 3; Write(message) END PrintHallo; BEGIN i := 1; PrintHallo(i); Write(i) END module");
 		Interpretable interpreter = null;
 		try
 		{
-			interpreter = parser.module().result;
+			interpreter = parser.module().module;
 		} catch (RecognitionException e)
 		{
 			e.printStackTrace();
@@ -126,13 +126,13 @@ public class Tester
 		}
 	}
 
-	public void TestProcedureWithoutVars()
+	private void TestProcedureWithoutVars()
 	{
 		Oberon0Parser parser = GetParser("MODULE module; PROCEDURE PrintHallo; BEGIN Write(\"hallo\") END PrintHallo; BEGIN PrintHallo END module");
 		Interpretable interpreter = null;
 		try
 		{
-			interpreter = parser.module().result;
+			interpreter = parser.module().module;
 		} catch (RecognitionException e)
 		{
 			e.printStackTrace();
@@ -147,13 +147,13 @@ public class Tester
 		}
 	}
 
-	public void TestArray()
+	private void TestArray()
 	{
 		Oberon0Parser parser = GetParser("MODULE module;CONST length = 5; VAR input: ARRAY length OF INTEGER; BEGIN input[2] := 5; Write(input[2]); input[2] := 9; Write(input[2]) END module");
 		Interpretable interpreter = null;
 		try
 		{
-			interpreter = parser.module().result;
+			interpreter = parser.module().module;
 		} catch (RecognitionException e)
 		{
 			e.printStackTrace();
@@ -168,13 +168,13 @@ public class Tester
 		}
 	}
 
-	public void TestConstants()
+	private void TestConstants()
 	{
 		Oberon0Parser parser = GetParser("MODULE module;CONST const = 9; BEGIN Write(const) END module");
 		Interpretable interpreter = null;
 		try
 		{
-			interpreter = parser.module().result;
+			interpreter = parser.module().module;
 		} catch (RecognitionException e)
 		{
 			e.printStackTrace();
@@ -189,13 +189,13 @@ public class Tester
 		}
 	}
 
-	public void TestConstantImmutability()
+	private void TestConstantImmutability()
 	{
 		Oberon0Parser parser = GetParser("MODULE module;CONST const = 9; BEGIN Write(const); const := 10; Write(const) END module");
 		Interpretable interpreter = null;
 		try
 		{
-			interpreter = parser.module().result;
+			interpreter = parser.module().module;
 		} catch (RecognitionException e)
 		{
 			e.printStackTrace();
@@ -210,13 +210,13 @@ public class Tester
 		}
 	}
 
-	public void TestIf()
+	private void TestIf()
 	{
 		Oberon0Parser parser = GetParser("IF 2 = 2 THEN Write(\"in if\") ELSE Write(\"in else\") END");
 		Interpretable interpreter = null;
 		try
 		{
-			interpreter = parser.ifStatement().result;
+			interpreter = parser.ifStatement().ifStatement;
 		} catch (RecognitionException e)
 		{
 			e.printStackTrace();
@@ -231,13 +231,13 @@ public class Tester
 		}
 	}
 
-	public void TestIfElse()
+	private void TestIfElse()
 	{
 		Oberon0Parser parser = GetParser("IF 2 = 3 THEN Write(\"in if\") ELSE Write(\"in else\") END");
 		Interpretable interpreter = null;
 		try
 		{
-			interpreter = parser.ifStatement().result;
+			interpreter = parser.ifStatement().ifStatement;
 		} catch (RecognitionException e)
 		{
 			e.printStackTrace();
@@ -252,13 +252,13 @@ public class Tester
 		}
 	}
 
-	public void TestIfElseIf()
+	private void TestIfElseIf()
 	{
 		Oberon0Parser parser = GetParser("IF 2 = 3 THEN Write(\"in if\") ELSIF 3 = 3 THEN Write(\"in else if\") ELSE Write(\"in else\") END");
 		Interpretable interpreter = null;
 		try
 		{
-			interpreter = parser.ifStatement().result;
+			interpreter = parser.ifStatement().ifStatement;
 		} catch (RecognitionException e)
 		{
 			e.printStackTrace();
@@ -273,13 +273,13 @@ public class Tester
 		}
 	}
 
-	public void TestSimpleModule()
+	private void TestSimpleModule()
 	{
 		Oberon0Parser parser = GetParser("MODULE module;CONST const1 = 9; TYPE type1 = INTEGER; VAR var1 : INTEGER; BEGIN var1 := 1+1; Write(\"testtt\") END module");
 		Interpretable interpreter = null;
 		try
 		{
-			interpreter = parser.module().result;
+			interpreter = parser.module().module;
 		} catch (RecognitionException e)
 		{
 			e.printStackTrace();
@@ -294,13 +294,13 @@ public class Tester
 		}
 	}
 
-	public void TestWhileLoop()
+	private void TestWhileLoop()
 	{
 		Oberon0Parser parser = GetParser("MODULE module;VAR iterations, i : INTEGER; BEGIN iterations := 5; i := 0; WHILE i < iterations DO Write(\"a\"); i := i + 1 END END module");
 		Interpretable interpreter = null;
 		try
 		{
-			interpreter = parser.module().result;
+			interpreter = parser.module().module;
 		} catch (RecognitionException e)
 		{
 			e.printStackTrace();
@@ -315,13 +315,13 @@ public class Tester
 		}
 	}
 
-	public void TestSimpleExpressionWithNegation()
+	private void TestSimpleExpressionWithNegation()
 	{
 		Oberon0Parser parser = GetParser("-22");
 		Interpretable interpreter = null;
 		try
 		{
-			interpreter = parser.simpleExpression().result;
+			interpreter = parser.simpleExpression().simpleExpression;
 		} catch (RecognitionException e)
 		{
 			e.printStackTrace();
@@ -336,13 +336,13 @@ public class Tester
 		}
 	}
 
-	public void TestSimpleExpressionWithAdd()
+	private void TestSimpleExpressionWithAdd()
 	{
 		Oberon0Parser parser = GetParser("22+2");
 		Interpretable interpreter = null;
 		try
 		{
-			interpreter = parser.simpleExpression().result;
+			interpreter = parser.simpleExpression().simpleExpression;
 		} catch (RecognitionException e)
 		{
 			e.printStackTrace();
@@ -357,13 +357,13 @@ public class Tester
 		}
 	}
 
-	public void TestSimpleExpressionWithMin()
+	private void TestSimpleExpressionWithMin()
 	{
 		Oberon0Parser parser = GetParser("22-2");
 		Interpretable interpreter = null;
 		try
 		{
-			interpreter = parser.simpleExpression().result;
+			interpreter = parser.simpleExpression().simpleExpression;
 		} catch (RecognitionException e)
 		{
 			e.printStackTrace();
@@ -378,13 +378,13 @@ public class Tester
 		}
 	}
 
-	public void TestTerm()
+	private void TestTerm()
 	{
 		Oberon0Parser parser = GetParser("22*2");
 		Interpretable interpreter = null;
 		try
 		{
-			interpreter = parser.term().result;
+			interpreter = parser.term().term;
 		} catch (RecognitionException e)
 		{
 			e.printStackTrace();
@@ -399,13 +399,13 @@ public class Tester
 		}
 	}
 
-	public void TestFactorWithInteger()
+	private void TestFactorWithInteger()
 	{
 		Oberon0Parser parser = GetParser("22");
 		Interpretable interpreter = null;
 		try
 		{
-			interpreter = parser.factor().result;
+			interpreter = parser.factor().factor;
 		} catch (RecognitionException e)
 		{
 			e.printStackTrace();
@@ -420,13 +420,13 @@ public class Tester
 		}
 	}
 
-	public void TestFactorWithSelector()
+	private void TestFactorWithSelector()
 	{
 		Oberon0Parser parser = GetParser("a");
 		Interpretable interpreter = null;
 		try
 		{
-			interpreter = parser.factor().result;
+			interpreter = parser.factor().factor;
 		} catch (RecognitionException e)
 		{
 			e.printStackTrace();
@@ -445,13 +445,13 @@ public class Tester
 		}
 	}
 
-	public void TestAssignmentNode()
+	private void TestAssignmentNode()
 	{
 		Oberon0Parser parser = GetParser("a := 3");
 		Interpretable interpreter = null;
 		try
 		{
-			interpreter = parser.assignment().result;
+			interpreter = parser.assignment().assignment;
 		} catch (RecognitionException e)
 		{
 			e.printStackTrace();
@@ -471,13 +471,13 @@ public class Tester
 		}
 	}
 
-	public void TestExpressionWithEquals()
+	private void TestExpressionWithEquals()
 	{
 		Oberon0Parser parser = GetParser("2 = 2");
 		Interpretable interpreter = null;
 		try
 		{
-			interpreter = parser.expression().result;
+			interpreter = parser.expression().expression;
 		} catch (RecognitionException e)
 		{
 			e.printStackTrace();
@@ -492,13 +492,13 @@ public class Tester
 		}
 	}
 
-	public void TestExpressionWithGreater()
+	private void TestExpressionWithGreater()
 	{
 		Oberon0Parser parser = GetParser("3 > 2");
 		Interpretable interpreter = null;
 		try
 		{
-			interpreter = parser.expression().result;
+			interpreter = parser.expression().expression;
 		} catch (RecognitionException e)
 		{
 			e.printStackTrace();
@@ -513,13 +513,13 @@ public class Tester
 		}
 	}
 
-	public void TestSimpleExpressionBIG()
+	private void TestSimpleExpressionBIG()
 	{
 		Oberon0Parser parser = GetParser("2+4*5 DIV 2 MOD 5");
 		Interpretable interpreter = null;
 		try
 		{
-			interpreter = parser.simpleExpression().result;
+			interpreter = parser.simpleExpression().simpleExpression;
 		} catch (RecognitionException e)
 		{
 			e.printStackTrace();

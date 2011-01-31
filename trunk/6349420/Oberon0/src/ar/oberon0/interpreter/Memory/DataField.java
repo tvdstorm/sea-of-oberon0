@@ -22,6 +22,11 @@ public class DataField implements Interpretable
 	 */
 	private DataType _value;
 
+	public CreatableType getType()
+	{
+		return _type;
+	}
+
 	/*
 	 * Create a new DataField of the specified type.
 	 */
