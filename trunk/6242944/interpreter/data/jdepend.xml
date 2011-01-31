@@ -1,0 +1,537 @@
+<?xml version="1.0"?>
+<JDepend>
+    <Packages>
+
+        <Package name="java.io">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="java.lang">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="java.util">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="jdm.oberon0.ast">
+            <Stats>
+                <TotalClasses>43</TotalClasses>
+                <ConcreteClasses>35</ConcreteClasses>
+                <AbstractClasses>8</AbstractClasses>
+                <Ca>2</Ca>
+                <Ce>2</Ce>
+                <A>0.19</A>
+                <I>0.5</I>
+                <D>0.31</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="AbstractType.java">
+                    jdm.oberon0.ast.AbstractType
+                </Class>
+                <Class sourceFile="BinaryExpression.java">
+                    jdm.oberon0.ast.BinaryExpression
+                </Class>
+                <Class sourceFile="Declaration.java">
+                    jdm.oberon0.ast.Declaration
+                </Class>
+                <Class sourceFile="Expression.java">
+                    jdm.oberon0.ast.Expression
+                </Class>
+                <Class sourceFile="Node.java">
+                    jdm.oberon0.ast.Node
+                </Class>
+                <Class sourceFile="Statement.java">
+                    jdm.oberon0.ast.Statement
+                </Class>
+                <Class sourceFile="UnaryExpression.java">
+                    jdm.oberon0.ast.UnaryExpression
+                </Class>
+                <Class sourceFile="Visitor.java">
+                    jdm.oberon0.ast.Visitor
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="AddExpression.java">
+                    jdm.oberon0.ast.AddExpression
+                </Class>
+                <Class sourceFile="AndExpression.java">
+                    jdm.oberon0.ast.AndExpression
+                </Class>
+                <Class sourceFile="Array.java">
+                    jdm.oberon0.ast.Array
+                </Class>
+                <Class sourceFile="ArraySelector.java">
+                    jdm.oberon0.ast.ArraySelector
+                </Class>
+                <Class sourceFile="Assignment.java">
+                    jdm.oberon0.ast.Assignment
+                </Class>
+                <Class sourceFile="ConstDeclaration.java">
+                    jdm.oberon0.ast.ConstDeclaration
+                </Class>
+                <Class sourceFile="Declarations.java">
+                    jdm.oberon0.ast.Declarations
+                </Class>
+                <Class sourceFile="DivExpression.java">
+                    jdm.oberon0.ast.DivExpression
+                </Class>
+                <Class sourceFile="EqExpression.java">
+                    jdm.oberon0.ast.EqExpression
+                </Class>
+                <Class sourceFile="GeExpression.java">
+                    jdm.oberon0.ast.GeExpression
+                </Class>
+                <Class sourceFile="GtExpression.java">
+                    jdm.oberon0.ast.GtExpression
+                </Class>
+                <Class sourceFile="Identifier.java">
+                    jdm.oberon0.ast.Identifier
+                </Class>
+                <Class sourceFile="IdentifierType.java">
+                    jdm.oberon0.ast.IdentifierType
+                </Class>
+                <Class sourceFile="IfStatement.java">
+                    jdm.oberon0.ast.IfStatement
+                </Class>
+                <Class sourceFile="IntegerLiteral.java">
+                    jdm.oberon0.ast.IntegerLiteral
+                </Class>
+                <Class sourceFile="LeExpression.java">
+                    jdm.oberon0.ast.LeExpression
+                </Class>
+                <Class sourceFile="LtExpression.java">
+                    jdm.oberon0.ast.LtExpression
+                </Class>
+                <Class sourceFile="ModExpression.java">
+                    jdm.oberon0.ast.ModExpression
+                </Class>
+                <Class sourceFile="Module.java">
+                    jdm.oberon0.ast.Module
+                </Class>
+                <Class sourceFile="MulExpression.java">
+                    jdm.oberon0.ast.MulExpression
+                </Class>
+                <Class sourceFile="NeExpression.java">
+                    jdm.oberon0.ast.NeExpression
+                </Class>
+                <Class sourceFile="NegExpression.java">
+                    jdm.oberon0.ast.NegExpression
+                </Class>
+                <Class sourceFile="NotExpression.java">
+                    jdm.oberon0.ast.NotExpression
+                </Class>
+                <Class sourceFile="OrExpression.java">
+                    jdm.oberon0.ast.OrExpression
+                </Class>
+                <Class sourceFile="Parameter.java">
+                    jdm.oberon0.ast.Parameter
+                </Class>
+                <Class sourceFile="PosExpression.java">
+                    jdm.oberon0.ast.PosExpression
+                </Class>
+                <Class sourceFile="Procedure.java">
+                    jdm.oberon0.ast.Procedure
+                </Class>
+                <Class sourceFile="ProcedureCall.java">
+                    jdm.oberon0.ast.ProcedureCall
+                </Class>
+                <Class sourceFile="Record.java">
+                    jdm.oberon0.ast.Record
+                </Class>
+                <Class sourceFile="RecordSelector.java">
+                    jdm.oberon0.ast.RecordSelector
+                </Class>
+                <Class sourceFile="StatementSequence.java">
+                    jdm.oberon0.ast.StatementSequence
+                </Class>
+                <Class sourceFile="SubExpression.java">
+                    jdm.oberon0.ast.SubExpression
+                </Class>
+                <Class sourceFile="TypeDeclaration.java">
+                    jdm.oberon0.ast.TypeDeclaration
+                </Class>
+                <Class sourceFile="VarDeclaration.java">
+                    jdm.oberon0.ast.VarDeclaration
+                </Class>
+                <Class sourceFile="WhileStatement.java">
+                    jdm.oberon0.ast.WhileStatement
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>jdm.oberon0.interpreter</Package>
+                <Package>jdm.oberon0.main</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="jdm.oberon0.builtins">
+            <Stats>
+                <TotalClasses>2</TotalClasses>
+                <ConcreteClasses>0</ConcreteClasses>
+                <AbstractClasses>2</AbstractClasses>
+                <Ca>3</Ca>
+                <Ce>4</Ce>
+                <A>1</A>
+                <I>0.57</I>
+                <D>0.57</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="BuiltinProcedure.java">
+                    jdm.oberon0.builtins.BuiltinProcedure
+                </Class>
+                <Class sourceFile="Builtins.java">
+                    jdm.oberon0.builtins.Builtins
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.lang</Package>
+                <Package>jdm.oberon0.builtins.procedures</Package>
+                <Package>jdm.oberon0.interpreter</Package>
+                <Package>jdm.oberon0.types</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>jdm.oberon0.builtins.procedures</Package>
+                <Package>jdm.oberon0.interpreter</Package>
+                <Package>jdm.oberon0.main</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="jdm.oberon0.builtins.procedures">
+            <Stats>
+                <TotalClasses>4</TotalClasses>
+                <ConcreteClasses>4</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>1</Ca>
+                <Ce>6</Ce>
+                <A>0</A>
+                <I>0.86</I>
+                <D>0.14</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="AssertEqProcedure.java">
+                    jdm.oberon0.builtins.procedures.AssertEqProcedure
+                </Class>
+                <Class sourceFile="ReadProcedure.java">
+                    jdm.oberon0.builtins.procedures.ReadProcedure
+                </Class>
+                <Class sourceFile="WriteLnProcedure.java">
+                    jdm.oberon0.builtins.procedures.WriteLnProcedure
+                </Class>
+                <Class sourceFile="WriteProcedure.java">
+                    jdm.oberon0.builtins.procedures.WriteProcedure
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.io</Package>
+                <Package>java.lang</Package>
+                <Package>jdm.oberon0.builtins</Package>
+                <Package>jdm.oberon0.exceptions</Package>
+                <Package>jdm.oberon0.interpreter</Package>
+                <Package>jdm.oberon0.values</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>jdm.oberon0.builtins</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="jdm.oberon0.exceptions">
+            <Stats>
+                <TotalClasses>11</TotalClasses>
+                <ConcreteClasses>11</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>3</Ca>
+                <Ce>2</Ce>
+                <A>0</A>
+                <I>0.4</I>
+                <D>0.6</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="AssertionFailureException.java">
+                    jdm.oberon0.exceptions.AssertionFailureException
+                </Class>
+                <Class sourceFile="DivisionByZeroException.java">
+                    jdm.oberon0.exceptions.DivisionByZeroException
+                </Class>
+                <Class sourceFile="InputException.java">
+                    jdm.oberon0.exceptions.InputException
+                </Class>
+                <Class sourceFile="InvalidArgumentCountException.java">
+                    jdm.oberon0.exceptions.InvalidArgumentCountException
+                </Class>
+                <Class sourceFile="InvalidArgumentTypeException.java">
+                    jdm.oberon0.exceptions.InvalidArgumentTypeException
+                </Class>
+                <Class sourceFile="InvalidIndexException.java">
+                    jdm.oberon0.exceptions.InvalidIndexException
+                </Class>
+                <Class sourceFile="InvalidInputException.java">
+                    jdm.oberon0.exceptions.InvalidInputException
+                </Class>
+                <Class sourceFile="InvalidTypeException.java">
+                    jdm.oberon0.exceptions.InvalidTypeException
+                </Class>
+                <Class sourceFile="RuntimeException.java">
+                    jdm.oberon0.exceptions.RuntimeException
+                </Class>
+                <Class sourceFile="UndefinedTypeException.java">
+                    jdm.oberon0.exceptions.UndefinedTypeException
+                </Class>
+                <Class sourceFile="UndefinedVariableException.java">
+                    jdm.oberon0.exceptions.UndefinedVariableException
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.io</Package>
+                <Package>java.lang</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>jdm.oberon0.builtins.procedures</Package>
+                <Package>jdm.oberon0.interpreter</Package>
+                <Package>jdm.oberon0.values</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="jdm.oberon0.interpreter">
+            <Stats>
+                <TotalClasses>5</TotalClasses>
+                <ConcreteClasses>4</ConcreteClasses>
+                <AbstractClasses>1</AbstractClasses>
+                <Ca>3</Ca>
+                <Ce>7</Ce>
+                <A>0.2</A>
+                <I>0.7</I>
+                <D>0.1</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="Callable.java">
+                    jdm.oberon0.interpreter.Callable
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="Context.java">
+                    jdm.oberon0.interpreter.Context
+                </Class>
+                <Class sourceFile="Interpreter.java">
+                    jdm.oberon0.interpreter.Interpreter
+                </Class>
+                <Class sourceFile="Scope.java">
+                    jdm.oberon0.interpreter.Scope
+                </Class>
+                <Class sourceFile="ScriptedProcedure.java">
+                    jdm.oberon0.interpreter.ScriptedProcedure
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+                <Package>jdm.oberon0.ast</Package>
+                <Package>jdm.oberon0.builtins</Package>
+                <Package>jdm.oberon0.exceptions</Package>
+                <Package>jdm.oberon0.types</Package>
+                <Package>jdm.oberon0.values</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>jdm.oberon0.builtins</Package>
+                <Package>jdm.oberon0.builtins.procedures</Package>
+                <Package>jdm.oberon0.main</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="jdm.oberon0.main">
+            <Stats>
+                <TotalClasses>1</TotalClasses>
+                <ConcreteClasses>1</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>0</Ca>
+                <Ce>7</Ce>
+                <A>0</A>
+                <I>1</I>
+                <D>0</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="Main.java">
+                    jdm.oberon0.main.Main
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.io</Package>
+                <Package>java.lang</Package>
+                <Package>jdm.oberon0.ast</Package>
+                <Package>jdm.oberon0.builtins</Package>
+                <Package>jdm.oberon0.interpreter</Package>
+                <Package>jdm.oberon0.parser</Package>
+                <Package>xtc.parser</Package>
+            </DependsUpon>
+
+            <UsedBy>
+            </UsedBy>
+        </Package>
+
+        <Package name="jdm.oberon0.parser">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="jdm.oberon0.types">
+            <Stats>
+                <TotalClasses>4</TotalClasses>
+                <ConcreteClasses>3</ConcreteClasses>
+                <AbstractClasses>1</AbstractClasses>
+                <Ca>3</Ca>
+                <Ce>2</Ce>
+                <A>0.25</A>
+                <I>0.4</I>
+                <D>0.35</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="Type.java">
+                    jdm.oberon0.types.Type
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="ArrayType.java">
+                    jdm.oberon0.types.ArrayType
+                </Class>
+                <Class sourceFile="PrimitiveType.java">
+                    jdm.oberon0.types.PrimitiveType
+                </Class>
+                <Class sourceFile="RecordType.java">
+                    jdm.oberon0.types.RecordType
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>jdm.oberon0.builtins</Package>
+                <Package>jdm.oberon0.interpreter</Package>
+                <Package>jdm.oberon0.values</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="jdm.oberon0.values">
+            <Stats>
+                <TotalClasses>6</TotalClasses>
+                <ConcreteClasses>5</ConcreteClasses>
+                <AbstractClasses>1</AbstractClasses>
+                <Ca>2</Ca>
+                <Ce>4</Ce>
+                <A>0.17</A>
+                <I>0.67</I>
+                <D>0.17</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="Value.java">
+                    jdm.oberon0.values.Value
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="ArrayValue.java">
+                    jdm.oberon0.values.ArrayValue
+                </Class>
+                <Class sourceFile="BooleanValue.java">
+                    jdm.oberon0.values.BooleanValue
+                </Class>
+                <Class sourceFile="IntegerValue.java">
+                    jdm.oberon0.values.IntegerValue
+                </Class>
+                <Class sourceFile="RecordValue.java">
+                    jdm.oberon0.values.RecordValue
+                </Class>
+                <Class sourceFile="ReferenceValue.java">
+                    jdm.oberon0.values.ReferenceValue
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+                <Package>jdm.oberon0.exceptions</Package>
+                <Package>jdm.oberon0.types</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>jdm.oberon0.builtins.procedures</Package>
+                <Package>jdm.oberon0.interpreter</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="xtc.parser">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+    </Packages>
+
+    <Cycles>
+        <Package Name="jdm.oberon0.builtins">
+            <Package>jdm.oberon0.interpreter</Package>
+            <Package>jdm.oberon0.builtins</Package>
+        </Package>
+
+        <Package Name="jdm.oberon0.builtins.procedures">
+            <Package>jdm.oberon0.interpreter</Package>
+            <Package>jdm.oberon0.builtins</Package>
+            <Package>jdm.oberon0.interpreter</Package>
+        </Package>
+
+        <Package Name="jdm.oberon0.interpreter">
+            <Package>jdm.oberon0.builtins</Package>
+            <Package>jdm.oberon0.interpreter</Package>
+        </Package>
+
+        <Package Name="jdm.oberon0.main">
+            <Package>jdm.oberon0.interpreter</Package>
+            <Package>jdm.oberon0.builtins</Package>
+            <Package>jdm.oberon0.interpreter</Package>
+        </Package>
+
+    </Cycles>
+</JDepend>
