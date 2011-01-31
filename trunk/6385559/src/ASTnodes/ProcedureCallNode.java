@@ -2,12 +2,12 @@ package ASTnodes;
 
 import java.util.Vector;
 
+import errorhandler.OberonException;
+
 import management.MemoryManager;
 import management.ParamContainer;
 import management.ProcedureManager;
 import management.TypeDefinitionManager;
-import management.OberonSystemcalls;
-import parseErrorLog.OberonException;
 
 public class ProcedureCallNode implements StatementNode {
   private final String identifier;
@@ -56,10 +56,6 @@ public class ProcedureCallNode implements StatementNode {
     if( declaration != null )
     {
       declaration.eval( newScope, params );
-    }
-    else
-    { // not an declaration done by yourself... check for system declarations
-      OberonSystemcalls.doSystemCall( this.identifier, params );
     }
   
     ProcedureManager.deleteScope( newScope );

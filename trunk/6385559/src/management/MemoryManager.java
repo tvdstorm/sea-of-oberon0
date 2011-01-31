@@ -1,6 +1,7 @@
 package management;
 import java.util.Vector;
-import parseErrorLog.OberonException;
+
+import errorhandler.OberonException;
 
 /*
  * The memory manager has a list of variables that belong to a certain scope

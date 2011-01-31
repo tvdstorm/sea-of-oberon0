@@ -1,6 +1,6 @@
 package ASTnodes;
 
-import parseErrorLog.OberonException;
+import errorhandler.OberonException;
 
 public class WhileStatementNode implements StatementNode {
   private final ExpressionNode cond;

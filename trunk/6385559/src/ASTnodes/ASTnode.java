@@ -1,6 +1,6 @@
 package ASTnodes;
 
-import parseErrorLog.OberonException;
+import errorhandler.OberonException;
 
 // interface for the entire Abstract Syntax tree, nothing special
 public interface ASTnode {

@@ -1,5 +1,5 @@
 package ASTnodes;
-import parseErrorLog.OberonException;
+import errorhandler.OberonException;
 
 public class SelectorArrayNode implements ASTnode {
   private final ExpressionNode expression;

@@ -1,5 +1,5 @@
 package ASTnodes;
-import parseErrorLog.OberonException;
+import errorhandler.OberonException;
 
 public class IfStatementNode implements StatementNode {
   private final ExpressionNode expression;

@@ -2,7 +2,8 @@ package management;
 
 import ASTnodes.*;
 import java.util.Vector;
-import parseErrorLog.OberonException;
+
+import errorhandler.OberonException;
 
 public class ProcedureManager {
   public static void addProcedure( String name, String scope, ProcedureDeclarationNode proc ) throws OberonException
