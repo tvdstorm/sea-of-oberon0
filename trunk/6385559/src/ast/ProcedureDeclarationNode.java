@@ -21,7 +21,7 @@ public class ProcedureDeclarationNode implements ASTnode {
     if( !headerName.contentEquals( bodyName ) )
     { // make sure that the identifier in the header and the body are the same if not no execution because
       // removing the scope would be difficult
-      parseErrorLog.addMessage( "Procedure declarations for procedure " + headerName + " ended with " + bodyName );
+      Errorlog.addMessage( "Procedure declarations for procedure " + headerName + " ended with " + bodyName );
     }
   }
   

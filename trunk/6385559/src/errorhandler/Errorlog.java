@@ -2,7 +2,7 @@ package errorhandler;
 
 import java.util.ArrayList;
 
-public class parseErrorLog {
+public class Errorlog {
   public static void addMessage( String Message )
   {
     log.add( Message );
