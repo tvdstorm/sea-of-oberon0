@@ -2,7 +2,6 @@ grammar Oberon0;
 
 options {
   language = Java;
-  backtrack = true;
 }
 @header {
   package oberon0;
@@ -10,17 +9,23 @@ options {
 @lexer::header {
   package oberon0;
 }
-  
+
+module
+  : 'MODULE' identifier ';' declarations
+    ('BEGIN' statementSequence)? 'END' identifier '.'
+  ;
+    
 identifier
-  : LETTER ( LETTER | DIGIT )*
-  ;  
+  : IDENTIFIER
+  ;
   
 integer
-  : DIGIT*
+  : INTEGER
   ;
   
 selector
   : ('.' identifier | '[' expression ']')*
+  | identifier
   ; 
 
 factor 
@@ -39,7 +44,7 @@ simpleExpression
   ;
   
 expression
-  : simpleExpression (('=' | '#' | '<' | '<=' | '>=' | '>') actualParameters)?
+  : simpleExpression (('=' | '#' | '<' | '<=' | '>=' | '>') simpleExpression)?
   ;
   
 assignment
@@ -105,17 +110,17 @@ fpSection
 formalParameters
   : '(' (fpSection (';' fpSection)*)? ')'
   ;
-  
+
 procedureHeading
-  : 'PROCEDURE' identifier formalParameters?
+  :  'PROCEDURE' identifier formalParameters? 
   ;
-  
+    
 procedureBody
-  : 'PROCEDURE' declarations ('BEGIN' statementSequence)? 'END'
-  ;
-  
+  :   declarations ('BEGIN' statementSequence)? 'END'
+  ; 
+    
 procedureDeclarations
-  : procedureHeading ';' procedureBody identifier
+  : procedureHeading ';' procedureBody
   ;
   
 declarations
@@ -124,15 +129,9 @@ declarations
     ('VAR' (identifierList ':' type ';')*)?
     (procedureDeclarations ';')*
   ;
-
-module
-  : 'MODULE' identifier ';' declarations
-    ('BEGIN' statementSequence)? 'END' identifier '.'
-  ;
-    
+  
  /* Tokens */   
-DIGIT: '0'..'9';  
-
-LETTER: ('a'..'z' | 'A'..'Z');
-
+INTEGER: ('0'..'9')+;
+IDENTIFIER : ('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'0'..'9')* ;  
 WHITESPACE: (' ' | '\t' | '\n' | '\r' | '\f')+ {$channel = HIDDEN;};
+  
