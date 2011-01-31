@@ -10,7 +10,7 @@ options
   package parser;
   
   import ASTnodes.*;
-  import parseErrorLog.*;
+  import errorhandler.*;
 }
 
 @lexer::header

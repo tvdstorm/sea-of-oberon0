@@ -1,14 +1,12 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 oberon0.g 2011-01-29 17:38:46
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g 2011-01-31 21:07:33
 
   package parser;
   
   import ASTnodes.*;
+  import errorhandler.*;
 
 
 import org.antlr.runtime.*;
-
-import errorhandler.*;
-
 import java.util.Stack;
 import java.util.List;
 import java.util.ArrayList;
@@ -76,7 +74,7 @@ public class oberon0Parser extends Parser {
         
 
     public String[] getTokenNames() { return oberon0Parser.tokenNames; }
-    public String getGrammarFileName() { return "oberon0.g"; }
+    public String getGrammarFileName() { return "/Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g"; }
 
 
         public void displayRecognitionError(String[] tokenNames,
@@ -90,7 +88,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "module"
-    // oberon0.g:32:1: module returns [ ModuleNode e ] : 'MODULE' ind1= IDENT ';' declarations ( 'BEGIN' statementsequence )? 'END' ind2= IDENT '.' ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:32:1: module returns [ ModuleNode e ] : 'MODULE' ind1= IDENT ';' declarations ( 'BEGIN' statementsequence )? 'END' ind2= IDENT '.' ;
     public final ModuleNode module() throws RecognitionException {
         ModuleNode e = null;
 
@@ -102,8 +100,8 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:33:2: ( 'MODULE' ind1= IDENT ';' declarations ( 'BEGIN' statementsequence )? 'END' ind2= IDENT '.' )
-            // oberon0.g:33:4: 'MODULE' ind1= IDENT ';' declarations ( 'BEGIN' statementsequence )? 'END' ind2= IDENT '.'
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:33:2: ( 'MODULE' ind1= IDENT ';' declarations ( 'BEGIN' statementsequence )? 'END' ind2= IDENT '.' )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:33:4: 'MODULE' ind1= IDENT ';' declarations ( 'BEGIN' statementsequence )? 'END' ind2= IDENT '.'
             {
             match(input,7,FOLLOW_7_in_module59); if (state.failed) return e;
             ind1=(Token)match(input,IDENT,FOLLOW_IDENT_in_module63); if (state.failed) return e;
@@ -113,7 +111,7 @@ public class oberon0Parser extends Parser {
 
             state._fsp--;
             if (state.failed) return e;
-            // oberon0.g:33:41: ( 'BEGIN' statementsequence )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:33:41: ( 'BEGIN' statementsequence )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -122,7 +120,7 @@ public class oberon0Parser extends Parser {
             }
             switch (alt1) {
                 case 1 :
-                    // oberon0.g:33:42: 'BEGIN' statementsequence
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:33:42: 'BEGIN' statementsequence
                     {
                     match(input,9,FOLLOW_9_in_module70); if (state.failed) return e;
                     pushFollow(FOLLOW_statementsequence_in_module72);
@@ -160,7 +158,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "declarations"
-    // oberon0.g:39:1: declarations returns [ DeclarationsNode e ] : ( 'CONST' constants )? ( 'TYPE' typeDefs )? ( 'VAR' fields )? ( procedureList )? ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:39:1: declarations returns [ DeclarationsNode e ] : ( 'CONST' constants )? ( 'TYPE' typeDefs )? ( 'VAR' fields )? ( procedureList )? ;
     public final DeclarationsNode declarations() throws RecognitionException {
         DeclarationsNode e = null;
 
@@ -174,10 +172,10 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:40:2: ( ( 'CONST' constants )? ( 'TYPE' typeDefs )? ( 'VAR' fields )? ( procedureList )? )
-            // oberon0.g:40:4: ( 'CONST' constants )? ( 'TYPE' typeDefs )? ( 'VAR' fields )? ( procedureList )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:40:2: ( ( 'CONST' constants )? ( 'TYPE' typeDefs )? ( 'VAR' fields )? ( procedureList )? )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:40:4: ( 'CONST' constants )? ( 'TYPE' typeDefs )? ( 'VAR' fields )? ( procedureList )?
             {
-            // oberon0.g:40:4: ( 'CONST' constants )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:40:4: ( 'CONST' constants )?
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -186,7 +184,7 @@ public class oberon0Parser extends Parser {
             }
             switch (alt2) {
                 case 1 :
-                    // oberon0.g:40:5: 'CONST' constants
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:40:5: 'CONST' constants
                     {
                     match(input,12,FOLLOW_12_in_declarations102); if (state.failed) return e;
                     pushFollow(FOLLOW_constants_in_declarations104);
@@ -200,7 +198,7 @@ public class oberon0Parser extends Parser {
 
             }
 
-            // oberon0.g:40:25: ( 'TYPE' typeDefs )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:40:25: ( 'TYPE' typeDefs )?
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -209,7 +207,7 @@ public class oberon0Parser extends Parser {
             }
             switch (alt3) {
                 case 1 :
-                    // oberon0.g:40:26: 'TYPE' typeDefs
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:40:26: 'TYPE' typeDefs
                     {
                     match(input,13,FOLLOW_13_in_declarations109); if (state.failed) return e;
                     pushFollow(FOLLOW_typeDefs_in_declarations111);
@@ -223,7 +221,7 @@ public class oberon0Parser extends Parser {
 
             }
 
-            // oberon0.g:40:44: ( 'VAR' fields )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:40:44: ( 'VAR' fields )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -232,7 +230,7 @@ public class oberon0Parser extends Parser {
             }
             switch (alt4) {
                 case 1 :
-                    // oberon0.g:40:45: 'VAR' fields
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:40:45: 'VAR' fields
                     {
                     match(input,14,FOLLOW_14_in_declarations116); if (state.failed) return e;
                     pushFollow(FOLLOW_fields_in_declarations118);
@@ -246,7 +244,7 @@ public class oberon0Parser extends Parser {
 
             }
 
-            // oberon0.g:40:61: ( procedureList )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:40:61: ( procedureList )?
             int alt5=2;
             switch ( input.LA(1) ) {
                 case 45:
@@ -276,7 +274,7 @@ public class oberon0Parser extends Parser {
 
             switch (alt5) {
                 case 1 :
-                    // oberon0.g:40:62: procedureList
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:40:62: procedureList
                     {
                     pushFollow(FOLLOW_procedureList_in_declarations124);
                     procedureList6=procedureList();
@@ -310,7 +308,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "constants"
-    // oberon0.g:46:1: constants returns [ ConstantNode e ] : ( IDENT '=' expression ';' ) (constantFollowUp= constants )? ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:46:1: constants returns [ ConstantNode e ] : ( IDENT '=' expression ';' ) (constantFollowUp= constants )? ;
     public final ConstantNode constants() throws RecognitionException {
         ConstantNode e = null;
 
@@ -321,11 +319,11 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:47:2: ( ( IDENT '=' expression ';' ) (constantFollowUp= constants )? )
-            // oberon0.g:47:4: ( IDENT '=' expression ';' ) (constantFollowUp= constants )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:47:2: ( ( IDENT '=' expression ';' ) (constantFollowUp= constants )? )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:47:4: ( IDENT '=' expression ';' ) (constantFollowUp= constants )?
             {
-            // oberon0.g:47:4: ( IDENT '=' expression ';' )
-            // oberon0.g:47:5: IDENT '=' expression ';'
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:47:4: ( IDENT '=' expression ';' )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:47:5: IDENT '=' expression ';'
             {
             IDENT7=(Token)match(input,IDENT,FOLLOW_IDENT_in_constants146); if (state.failed) return e;
             match(input,15,FOLLOW_15_in_constants148); if (state.failed) return e;
@@ -338,7 +336,7 @@ public class oberon0Parser extends Parser {
 
             }
 
-            // oberon0.g:47:47: (constantFollowUp= constants )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:47:47: (constantFollowUp= constants )?
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -347,7 +345,7 @@ public class oberon0Parser extends Parser {
             }
             switch (alt6) {
                 case 1 :
-                    // oberon0.g:0:0: constantFollowUp= constants
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:0:0: constantFollowUp= constants
                     {
                     pushFollow(FOLLOW_constants_in_constants157);
                     constantFollowUp=constants();
@@ -381,7 +379,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "typeDefs"
-    // oberon0.g:53:1: typeDefs returns [ TypeDefNode e ] : ( IDENT '=' type ';' ) (typeDefsFollowUp= typeDefs )? ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:53:1: typeDefs returns [ TypeDefNode e ] : ( IDENT '=' type ';' ) (typeDefsFollowUp= typeDefs )? ;
     public final TypeDefNode typeDefs() throws RecognitionException {
         TypeDefNode e = null;
 
@@ -392,11 +390,11 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:54:2: ( ( IDENT '=' type ';' ) (typeDefsFollowUp= typeDefs )? )
-            // oberon0.g:54:4: ( IDENT '=' type ';' ) (typeDefsFollowUp= typeDefs )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:54:2: ( ( IDENT '=' type ';' ) (typeDefsFollowUp= typeDefs )? )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:54:4: ( IDENT '=' type ';' ) (typeDefsFollowUp= typeDefs )?
             {
-            // oberon0.g:54:4: ( IDENT '=' type ';' )
-            // oberon0.g:54:5: IDENT '=' type ';'
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:54:4: ( IDENT '=' type ';' )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:54:5: IDENT '=' type ';'
             {
             IDENT9=(Token)match(input,IDENT,FOLLOW_IDENT_in_typeDefs177); if (state.failed) return e;
             match(input,15,FOLLOW_15_in_typeDefs179); if (state.failed) return e;
@@ -409,7 +407,7 @@ public class oberon0Parser extends Parser {
 
             }
 
-            // oberon0.g:54:41: (typeDefsFollowUp= typeDefs )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:54:41: (typeDefsFollowUp= typeDefs )?
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -418,7 +416,7 @@ public class oberon0Parser extends Parser {
             }
             switch (alt7) {
                 case 1 :
-                    // oberon0.g:0:0: typeDefsFollowUp= typeDefs
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:0:0: typeDefsFollowUp= typeDefs
                     {
                     pushFollow(FOLLOW_typeDefs_in_typeDefs188);
                     typeDefsFollowUp=typeDefs();
@@ -452,7 +450,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "type"
-    // oberon0.g:60:1: type returns [ ASTnode e ] : ( IDENT | arraytype | recordtype );
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:60:1: type returns [ ASTnode e ] : ( IDENT | arraytype | recordtype );
     public final ASTnode type() throws RecognitionException {
         ASTnode e = null;
 
@@ -463,7 +461,7 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:61:2: ( IDENT | arraytype | recordtype )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:61:2: ( IDENT | arraytype | recordtype )
             int alt8=3;
             switch ( input.LA(1) ) {
             case IDENT:
@@ -491,7 +489,7 @@ public class oberon0Parser extends Parser {
 
             switch (alt8) {
                 case 1 :
-                    // oberon0.g:61:4: IDENT
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:61:4: IDENT
                     {
                     IDENT11=(Token)match(input,IDENT,FOLLOW_IDENT_in_type207); if (state.failed) return e;
                     if ( state.backtracking==0 ) {
@@ -501,7 +499,7 @@ public class oberon0Parser extends Parser {
                     }
                     break;
                 case 2 :
-                    // oberon0.g:62:4: arraytype
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:62:4: arraytype
                     {
                     pushFollow(FOLLOW_arraytype_in_type214);
                     arraytype12=arraytype();
@@ -515,7 +513,7 @@ public class oberon0Parser extends Parser {
                     }
                     break;
                 case 3 :
-                    // oberon0.g:63:4: recordtype
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:63:4: recordtype
                     {
                     pushFollow(FOLLOW_recordtype_in_type221);
                     recordtype13=recordtype();
@@ -543,7 +541,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "arraytype"
-    // oberon0.g:66:1: arraytype returns [ ArrayNode e ] : 'ARRAY' expression 'OF' type ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:66:1: arraytype returns [ ArrayNode e ] : 'ARRAY' expression 'OF' type ;
     public final ArrayNode arraytype() throws RecognitionException {
         ArrayNode e = null;
 
@@ -553,8 +551,8 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:67:2: ( 'ARRAY' expression 'OF' type )
-            // oberon0.g:67:4: 'ARRAY' expression 'OF' type
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:67:2: ( 'ARRAY' expression 'OF' type )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:67:4: 'ARRAY' expression 'OF' type
             {
             match(input,16,FOLLOW_16_in_arraytype238); if (state.failed) return e;
             pushFollow(FOLLOW_expression_in_arraytype240);
@@ -589,7 +587,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "recordtype"
-    // oberon0.g:73:1: recordtype returns [ RecordNode e ] : 'RECORD' fields 'END' ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:73:1: recordtype returns [ RecordNode e ] : 'RECORD' fields 'END' ;
     public final RecordNode recordtype() throws RecognitionException {
         RecordNode e = null;
 
@@ -597,8 +595,8 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:74:2: ( 'RECORD' fields 'END' )
-            // oberon0.g:74:4: 'RECORD' fields 'END'
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:74:2: ( 'RECORD' fields 'END' )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:74:4: 'RECORD' fields 'END'
             {
             match(input,18,FOLLOW_18_in_recordtype263); if (state.failed) return e;
             pushFollow(FOLLOW_fields_in_recordtype265);
@@ -628,7 +626,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "fields"
-    // oberon0.g:80:1: fields returns [ FieldsNode e ] : fieldlist ( fieldsFollowup )? ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:80:1: fields returns [ FieldsNode e ] : fieldlist ( fieldsFollowup )? ;
     public final FieldsNode fields() throws RecognitionException {
         FieldsNode e = null;
 
@@ -638,15 +636,15 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:81:2: ( fieldlist ( fieldsFollowup )? )
-            // oberon0.g:81:4: fieldlist ( fieldsFollowup )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:81:2: ( fieldlist ( fieldsFollowup )? )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:81:4: fieldlist ( fieldsFollowup )?
             {
             pushFollow(FOLLOW_fieldlist_in_fields286);
             fieldlist17=fieldlist();
 
             state._fsp--;
             if (state.failed) return e;
-            // oberon0.g:81:14: ( fieldsFollowup )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:81:14: ( fieldsFollowup )?
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -655,7 +653,7 @@ public class oberon0Parser extends Parser {
             }
             switch (alt9) {
                 case 1 :
-                    // oberon0.g:81:15: fieldsFollowup
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:81:15: fieldsFollowup
                     {
                     pushFollow(FOLLOW_fieldsFollowup_in_fields289);
                     fieldsFollowup18=fieldsFollowup();
@@ -689,7 +687,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "fieldsFollowup"
-    // oberon0.g:87:1: fieldsFollowup returns [ FieldsNode e ] : ';' fieldlist (followup= fieldsFollowup )? ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:87:1: fieldsFollowup returns [ FieldsNode e ] : ';' fieldlist (followup= fieldsFollowup )? ;
     public final FieldsNode fieldsFollowup() throws RecognitionException {
         FieldsNode e = null;
 
@@ -699,8 +697,8 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:88:2: ( ';' fieldlist (followup= fieldsFollowup )? )
-            // oberon0.g:88:4: ';' fieldlist (followup= fieldsFollowup )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:88:2: ( ';' fieldlist (followup= fieldsFollowup )? )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:88:4: ';' fieldlist (followup= fieldsFollowup )?
             {
             match(input,8,FOLLOW_8_in_fieldsFollowup309); if (state.failed) return e;
             pushFollow(FOLLOW_fieldlist_in_fieldsFollowup311);
@@ -708,7 +706,7 @@ public class oberon0Parser extends Parser {
 
             state._fsp--;
             if (state.failed) return e;
-            // oberon0.g:88:18: (followup= fieldsFollowup )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:88:18: (followup= fieldsFollowup )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -717,7 +715,7 @@ public class oberon0Parser extends Parser {
             }
             switch (alt10) {
                 case 1 :
-                    // oberon0.g:88:19: followup= fieldsFollowup
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:88:19: followup= fieldsFollowup
                     {
                     pushFollow(FOLLOW_fieldsFollowup_in_fieldsFollowup316);
                     followup=fieldsFollowup();
@@ -733,7 +731,7 @@ public class oberon0Parser extends Parser {
             if ( state.backtracking==0 ) {
 
               	  e = new FieldsNode( fieldlist19, followup );
-                      
+                
             }
 
             }
@@ -751,7 +749,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "expression"
-    // oberon0.g:94:1: expression returns [ ExpressionNode e ] : simpleLeft= simpleexpression (operator= ( '=' | '#' | '<' | '<=' | '>' | '>=' ) simpleRight= simpleexpression )? ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:94:1: expression returns [ ExpressionNode e ] : simpleLeft= simpleexpression (operator= ( '=' | '#' | '<' | '<=' | '>' | '>=' ) simpleRight= simpleexpression )? ;
     public final ExpressionNode expression() throws RecognitionException {
         ExpressionNode e = null;
 
@@ -762,15 +760,15 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:95:2: (simpleLeft= simpleexpression (operator= ( '=' | '#' | '<' | '<=' | '>' | '>=' ) simpleRight= simpleexpression )? )
-            // oberon0.g:95:4: simpleLeft= simpleexpression (operator= ( '=' | '#' | '<' | '<=' | '>' | '>=' ) simpleRight= simpleexpression )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:95:2: (simpleLeft= simpleexpression (operator= ( '=' | '#' | '<' | '<=' | '>' | '>=' ) simpleRight= simpleexpression )? )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:95:4: simpleLeft= simpleexpression (operator= ( '=' | '#' | '<' | '<=' | '>' | '>=' ) simpleRight= simpleexpression )?
             {
             pushFollow(FOLLOW_simpleexpression_in_expression340);
             simpleLeft=simpleexpression();
 
             state._fsp--;
             if (state.failed) return e;
-            // oberon0.g:95:32: (operator= ( '=' | '#' | '<' | '<=' | '>' | '>=' ) simpleRight= simpleexpression )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:95:32: (operator= ( '=' | '#' | '<' | '<=' | '>' | '>=' ) simpleRight= simpleexpression )?
             int alt11=2;
             int LA11_0 = input.LA(1);
 
@@ -779,7 +777,7 @@ public class oberon0Parser extends Parser {
             }
             switch (alt11) {
                 case 1 :
-                    // oberon0.g:95:33: operator= ( '=' | '#' | '<' | '<=' | '>' | '>=' ) simpleRight= simpleexpression
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:95:33: operator= ( '=' | '#' | '<' | '<=' | '>' | '>=' ) simpleRight= simpleexpression
                     {
                     operator=(Token)input.LT(1);
                     if ( input.LA(1)==15||(input.LA(1)>=19 && input.LA(1)<=23) ) {
@@ -824,7 +822,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "simpleexpression"
-    // oberon0.g:101:1: simpleexpression returns [ SimpleExpression e ] : specialTerm (operator= ( '+' | '-' | 'OR' ) simpleExpressionFollowup )? ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:101:1: simpleexpression returns [ SimpleExpression e ] : specialTerm (operator= ( '+' | '-' | 'OR' ) simpleExpressionFollowup )? ;
     public final SimpleExpression simpleexpression() throws RecognitionException {
         SimpleExpression e = null;
 
@@ -835,15 +833,15 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:102:2: ( specialTerm (operator= ( '+' | '-' | 'OR' ) simpleExpressionFollowup )? )
-            // oberon0.g:102:4: specialTerm (operator= ( '+' | '-' | 'OR' ) simpleExpressionFollowup )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:102:2: ( specialTerm (operator= ( '+' | '-' | 'OR' ) simpleExpressionFollowup )? )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:102:4: specialTerm (operator= ( '+' | '-' | 'OR' ) simpleExpressionFollowup )?
             {
             pushFollow(FOLLOW_specialTerm_in_simpleexpression382);
             specialTerm20=specialTerm();
 
             state._fsp--;
             if (state.failed) return e;
-            // oberon0.g:102:16: (operator= ( '+' | '-' | 'OR' ) simpleExpressionFollowup )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:102:16: (operator= ( '+' | '-' | 'OR' ) simpleExpressionFollowup )?
             int alt12=2;
             int LA12_0 = input.LA(1);
 
@@ -852,7 +850,7 @@ public class oberon0Parser extends Parser {
             }
             switch (alt12) {
                 case 1 :
-                    // oberon0.g:102:18: operator= ( '+' | '-' | 'OR' ) simpleExpressionFollowup
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:102:18: operator= ( '+' | '-' | 'OR' ) simpleExpressionFollowup
                     {
                     operator=(Token)input.LT(1);
                     if ( (input.LA(1)>=24 && input.LA(1)<=26) ) {
@@ -897,7 +895,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "specialTerm"
-    // oberon0.g:108:1: specialTerm returns [ ASTnode e ] : (operator= ( '+' ) term | operator= ( '-' ) term | term );
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:108:1: specialTerm returns [ ASTnode e ] : (operator= ( '+' ) term | operator= ( '-' ) term | term );
     public final ASTnode specialTerm() throws RecognitionException {
         ASTnode e = null;
 
@@ -910,7 +908,7 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:109:3: (operator= ( '+' ) term | operator= ( '-' ) term | term )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:109:3: (operator= ( '+' ) term | operator= ( '-' ) term | term )
             int alt13=3;
             switch ( input.LA(1) ) {
             case 24:
@@ -941,10 +939,10 @@ public class oberon0Parser extends Parser {
 
             switch (alt13) {
                 case 1 :
-                    // oberon0.g:109:5: operator= ( '+' ) term
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:109:5: operator= ( '+' ) term
                     {
-                    // oberon0.g:109:14: ( '+' )
-                    // oberon0.g:109:15: '+'
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:109:14: ( '+' )
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:109:15: '+'
                     {
                     match(input,24,FOLLOW_24_in_specialTerm421); if (state.failed) return e;
 
@@ -962,10 +960,10 @@ public class oberon0Parser extends Parser {
                     }
                     break;
                 case 2 :
-                    // oberon0.g:110:5: operator= ( '-' ) term
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:110:5: operator= ( '-' ) term
                     {
-                    // oberon0.g:110:14: ( '-' )
-                    // oberon0.g:110:15: '-'
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:110:14: ( '-' )
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:110:15: '-'
                     {
                     match(input,25,FOLLOW_25_in_specialTerm435); if (state.failed) return e;
 
@@ -983,7 +981,7 @@ public class oberon0Parser extends Parser {
                     }
                     break;
                 case 3 :
-                    // oberon0.g:111:5: term
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:111:5: term
                     {
                     pushFollow(FOLLOW_term_in_specialTerm446);
                     term24=term();
@@ -1011,7 +1009,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "simpleExpressionFollowup"
-    // oberon0.g:114:1: simpleExpressionFollowup returns [ SimpleExpression e ] : term (operator= ( '+' | '-' | 'OR' ) follow2= simpleExpressionFollowup )? ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:114:1: simpleExpressionFollowup returns [ SimpleExpression e ] : term (operator= ( '+' | '-' | 'OR' ) follow2= simpleExpressionFollowup )? ;
     public final SimpleExpression simpleExpressionFollowup() throws RecognitionException {
         SimpleExpression e = null;
 
@@ -1022,15 +1020,15 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:115:2: ( term (operator= ( '+' | '-' | 'OR' ) follow2= simpleExpressionFollowup )? )
-            // oberon0.g:115:5: term (operator= ( '+' | '-' | 'OR' ) follow2= simpleExpressionFollowup )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:115:2: ( term (operator= ( '+' | '-' | 'OR' ) follow2= simpleExpressionFollowup )? )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:115:5: term (operator= ( '+' | '-' | 'OR' ) follow2= simpleExpressionFollowup )?
             {
             pushFollow(FOLLOW_term_in_simpleExpressionFollowup466);
             term25=term();
 
             state._fsp--;
             if (state.failed) return e;
-            // oberon0.g:115:10: (operator= ( '+' | '-' | 'OR' ) follow2= simpleExpressionFollowup )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:115:10: (operator= ( '+' | '-' | 'OR' ) follow2= simpleExpressionFollowup )?
             int alt14=2;
             int LA14_0 = input.LA(1);
 
@@ -1039,7 +1037,7 @@ public class oberon0Parser extends Parser {
             }
             switch (alt14) {
                 case 1 :
-                    // oberon0.g:115:11: operator= ( '+' | '-' | 'OR' ) follow2= simpleExpressionFollowup
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:115:11: operator= ( '+' | '-' | 'OR' ) follow2= simpleExpressionFollowup
                     {
                     operator=(Token)input.LT(1);
                     if ( (input.LA(1)>=24 && input.LA(1)<=26) ) {
@@ -1084,7 +1082,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "term"
-    // oberon0.g:121:1: term returns [ TermNode e ] : factor (operator= ( '*' | 'DIV' | 'MOD' | '&' ) termFollowUp )? ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:121:1: term returns [ TermNode e ] : factor (operator= ( '*' | 'DIV' | 'MOD' | '&' ) termFollowUp )? ;
     public final TermNode term() throws RecognitionException {
         TermNode e = null;
 
@@ -1095,15 +1093,15 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:122:2: ( factor (operator= ( '*' | 'DIV' | 'MOD' | '&' ) termFollowUp )? )
-            // oberon0.g:122:4: factor (operator= ( '*' | 'DIV' | 'MOD' | '&' ) termFollowUp )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:122:2: ( factor (operator= ( '*' | 'DIV' | 'MOD' | '&' ) termFollowUp )? )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:122:4: factor (operator= ( '*' | 'DIV' | 'MOD' | '&' ) termFollowUp )?
             {
             pushFollow(FOLLOW_factor_in_term502);
             factor26=factor();
 
             state._fsp--;
             if (state.failed) return e;
-            // oberon0.g:122:11: (operator= ( '*' | 'DIV' | 'MOD' | '&' ) termFollowUp )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:122:11: (operator= ( '*' | 'DIV' | 'MOD' | '&' ) termFollowUp )?
             int alt15=2;
             int LA15_0 = input.LA(1);
 
@@ -1112,7 +1110,7 @@ public class oberon0Parser extends Parser {
             }
             switch (alt15) {
                 case 1 :
-                    // oberon0.g:122:12: operator= ( '*' | 'DIV' | 'MOD' | '&' ) termFollowUp
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:122:12: operator= ( '*' | 'DIV' | 'MOD' | '&' ) termFollowUp
                     {
                     operator=(Token)input.LT(1);
                     if ( (input.LA(1)>=27 && input.LA(1)<=30) ) {
@@ -1157,7 +1155,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "termFollowUp"
-    // oberon0.g:128:1: termFollowUp returns [ TermNode e ] : factor (operator= ( '*' | 'DIV' | 'MOD' | '&' ) follow2= termFollowUp )? ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:128:1: termFollowUp returns [ TermNode e ] : factor (operator= ( '*' | 'DIV' | 'MOD' | '&' ) follow2= termFollowUp )? ;
     public final TermNode termFollowUp() throws RecognitionException {
         TermNode e = null;
 
@@ -1168,15 +1166,15 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:129:3: ( factor (operator= ( '*' | 'DIV' | 'MOD' | '&' ) follow2= termFollowUp )? )
-            // oberon0.g:129:5: factor (operator= ( '*' | 'DIV' | 'MOD' | '&' ) follow2= termFollowUp )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:129:3: ( factor (operator= ( '*' | 'DIV' | 'MOD' | '&' ) follow2= termFollowUp )? )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:129:5: factor (operator= ( '*' | 'DIV' | 'MOD' | '&' ) follow2= termFollowUp )?
             {
             pushFollow(FOLLOW_factor_in_termFollowUp539);
             factor28=factor();
 
             state._fsp--;
             if (state.failed) return e;
-            // oberon0.g:129:12: (operator= ( '*' | 'DIV' | 'MOD' | '&' ) follow2= termFollowUp )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:129:12: (operator= ( '*' | 'DIV' | 'MOD' | '&' ) follow2= termFollowUp )?
             int alt16=2;
             int LA16_0 = input.LA(1);
 
@@ -1185,7 +1183,7 @@ public class oberon0Parser extends Parser {
             }
             switch (alt16) {
                 case 1 :
-                    // oberon0.g:129:13: operator= ( '*' | 'DIV' | 'MOD' | '&' ) follow2= termFollowUp
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:129:13: operator= ( '*' | 'DIV' | 'MOD' | '&' ) follow2= termFollowUp
                     {
                     operator=(Token)input.LT(1);
                     if ( (input.LA(1)>=27 && input.LA(1)<=30) ) {
@@ -1230,7 +1228,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "factor"
-    // oberon0.g:135:1: factor returns [ ASTnode e ] : ( variable | number | '(' expression ')' | '~' factorOperand= factor );
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:135:1: factor returns [ ASTnode e ] : ( variable | number | '(' expression ')' | '~' factorOperand= factor );
     public final ASTnode factor() throws RecognitionException {
         ASTnode e = null;
 
@@ -1244,7 +1242,7 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:136:2: ( variable | number | '(' expression ')' | '~' factorOperand= factor )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:136:2: ( variable | number | '(' expression ')' | '~' factorOperand= factor )
             int alt17=4;
             switch ( input.LA(1) ) {
             case IDENT:
@@ -1277,7 +1275,7 @@ public class oberon0Parser extends Parser {
 
             switch (alt17) {
                 case 1 :
-                    // oberon0.g:136:4: variable
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:136:4: variable
                     {
                     pushFollow(FOLLOW_variable_in_factor578);
                     variable29=variable();
@@ -1291,7 +1289,7 @@ public class oberon0Parser extends Parser {
                     }
                     break;
                 case 2 :
-                    // oberon0.g:137:4: number
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:137:4: number
                     {
                     pushFollow(FOLLOW_number_in_factor585);
                     number30=number();
@@ -1305,7 +1303,7 @@ public class oberon0Parser extends Parser {
                     }
                     break;
                 case 3 :
-                    // oberon0.g:138:4: '(' expression ')'
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:138:4: '(' expression ')'
                     {
                     match(input,31,FOLLOW_31_in_factor592); if (state.failed) return e;
                     pushFollow(FOLLOW_expression_in_factor594);
@@ -1321,7 +1319,7 @@ public class oberon0Parser extends Parser {
                     }
                     break;
                 case 4 :
-                    // oberon0.g:139:4: '~' factorOperand= factor
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:139:4: '~' factorOperand= factor
                     {
                     match(input,33,FOLLOW_33_in_factor603); if (state.failed) return e;
                     pushFollow(FOLLOW_factor_in_factor607);
@@ -1350,15 +1348,15 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "number"
-    // oberon0.g:142:1: number returns [ IntegerNode e ] : INTEGER ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:142:1: number returns [ IntegerNode e ] : INTEGER ;
     public final IntegerNode number() throws RecognitionException {
         IntegerNode e = null;
 
         Token INTEGER32=null;
 
         try {
-            // oberon0.g:143:2: ( INTEGER )
-            // oberon0.g:143:4: INTEGER
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:143:2: ( INTEGER )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:143:4: INTEGER
             {
             INTEGER32=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_number624); if (state.failed) return e;
             if ( state.backtracking==0 ) {
@@ -1382,7 +1380,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "selector"
-    // oberon0.g:149:1: selector returns [ ASTnode e ] : ( '.' var= IDENT selectorFollowup= selector | '[' exp= expression ']' selectorFollowup= selector )? ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:149:1: selector returns [ ASTnode e ] : ( '.' var= IDENT selectorFollowup= selector | '[' exp= expression ']' selectorFollowup= selector )? ;
     public final ASTnode selector() throws RecognitionException {
         ASTnode e = null;
 
@@ -1393,10 +1391,10 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:150:2: ( ( '.' var= IDENT selectorFollowup= selector | '[' exp= expression ']' selectorFollowup= selector )? )
-            // oberon0.g:151:2: ( '.' var= IDENT selectorFollowup= selector | '[' exp= expression ']' selectorFollowup= selector )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:150:2: ( ( '.' var= IDENT selectorFollowup= selector | '[' exp= expression ']' selectorFollowup= selector )? )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:151:2: ( '.' var= IDENT selectorFollowup= selector | '[' exp= expression ']' selectorFollowup= selector )?
             {
-            // oberon0.g:151:2: ( '.' var= IDENT selectorFollowup= selector | '[' exp= expression ']' selectorFollowup= selector )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:151:2: ( '.' var= IDENT selectorFollowup= selector | '[' exp= expression ']' selectorFollowup= selector )?
             int alt18=3;
             int LA18_0 = input.LA(1);
 
@@ -1408,7 +1406,7 @@ public class oberon0Parser extends Parser {
             }
             switch (alt18) {
                 case 1 :
-                    // oberon0.g:152:2: '.' var= IDENT selectorFollowup= selector
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:152:2: '.' var= IDENT selectorFollowup= selector
                     {
                     match(input,11,FOLLOW_11_in_selector650); if (state.failed) return e;
                     var=(Token)match(input,IDENT,FOLLOW_IDENT_in_selector654); if (state.failed) return e;
@@ -1426,7 +1424,7 @@ public class oberon0Parser extends Parser {
                     }
                     break;
                 case 2 :
-                    // oberon0.g:157:2: '[' exp= expression ']' selectorFollowup= selector
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:157:2: '[' exp= expression ']' selectorFollowup= selector
                     {
                     match(input,34,FOLLOW_34_in_selector669); if (state.failed) return e;
                     pushFollow(FOLLOW_expression_in_selector673);
@@ -1467,7 +1465,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "variable"
-    // oberon0.g:164:1: variable returns [ VarNode e ] : IDENT selector ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:164:1: variable returns [ VarNode e ] : IDENT selector ;
     public final VarNode variable() throws RecognitionException {
         VarNode e = null;
 
@@ -1476,19 +1474,19 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:165:9: ( IDENT selector )
-            // oberon0.g:165:11: IDENT selector
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:165:3: ( IDENT selector )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:165:5: IDENT selector
             {
-            IDENT33=(Token)match(input,IDENT,FOLLOW_IDENT_in_variable710); if (state.failed) return e;
-            pushFollow(FOLLOW_selector_in_variable712);
+            IDENT33=(Token)match(input,IDENT,FOLLOW_IDENT_in_variable704); if (state.failed) return e;
+            pushFollow(FOLLOW_selector_in_variable706);
             selector34=selector();
 
             state._fsp--;
             if (state.failed) return e;
             if ( state.backtracking==0 ) {
 
-                        e = new VarNode( (IDENT33!=null?IDENT33.getText():null), selector34 );
-                      
+                  e = new VarNode( (IDENT33!=null?IDENT33.getText():null), selector34 );
+                
             }
 
             }
@@ -1506,7 +1504,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "fieldlist"
-    // oberon0.g:171:1: fieldlist returns [ FieldlistNode e ] : ( identlist ':' type )? ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:171:1: fieldlist returns [ FieldlistNode e ] : ( identlist ':' type )? ;
     public final FieldlistNode fieldlist() throws RecognitionException {
         FieldlistNode e = null;
 
@@ -1516,10 +1514,10 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:172:2: ( ( identlist ':' type )? )
-            // oberon0.g:172:4: ( identlist ':' type )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:172:2: ( ( identlist ':' type )? )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:172:4: ( identlist ':' type )?
             {
-            // oberon0.g:172:4: ( identlist ':' type )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:172:4: ( identlist ':' type )?
             int alt19=2;
             int LA19_0 = input.LA(1);
 
@@ -1528,15 +1526,15 @@ public class oberon0Parser extends Parser {
             }
             switch (alt19) {
                 case 1 :
-                    // oberon0.g:172:5: identlist ':' type
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:172:5: identlist ':' type
                     {
-                    pushFollow(FOLLOW_identlist_in_fieldlist746);
+                    pushFollow(FOLLOW_identlist_in_fieldlist728);
                     identlist35=identlist();
 
                     state._fsp--;
                     if (state.failed) return e;
-                    match(input,36,FOLLOW_36_in_fieldlist748); if (state.failed) return e;
-                    pushFollow(FOLLOW_type_in_fieldlist750);
+                    match(input,36,FOLLOW_36_in_fieldlist730); if (state.failed) return e;
+                    pushFollow(FOLLOW_type_in_fieldlist732);
                     type36=type();
 
                     state._fsp--;
@@ -1568,7 +1566,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "identlist"
-    // oberon0.g:178:1: identlist returns [ IdentListNode e ] : IDENT ( identlistFollowUp )? ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:178:1: identlist returns [ IdentListNode e ] : IDENT ( identlistFollowUp )? ;
     public final IdentListNode identlist() throws RecognitionException {
         IdentListNode e = null;
 
@@ -1577,11 +1575,11 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:179:2: ( IDENT ( identlistFollowUp )? )
-            // oberon0.g:179:4: IDENT ( identlistFollowUp )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:179:2: ( IDENT ( identlistFollowUp )? )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:179:4: IDENT ( identlistFollowUp )?
             {
-            IDENT37=(Token)match(input,IDENT,FOLLOW_IDENT_in_identlist771); if (state.failed) return e;
-            // oberon0.g:179:10: ( identlistFollowUp )?
+            IDENT37=(Token)match(input,IDENT,FOLLOW_IDENT_in_identlist753); if (state.failed) return e;
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:179:10: ( identlistFollowUp )?
             int alt20=2;
             int LA20_0 = input.LA(1);
 
@@ -1590,9 +1588,9 @@ public class oberon0Parser extends Parser {
             }
             switch (alt20) {
                 case 1 :
-                    // oberon0.g:179:12: identlistFollowUp
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:179:12: identlistFollowUp
                     {
-                    pushFollow(FOLLOW_identlistFollowUp_in_identlist775);
+                    pushFollow(FOLLOW_identlistFollowUp_in_identlist757);
                     identlistFollowUp38=identlistFollowUp();
 
                     state._fsp--;
@@ -1624,7 +1622,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "identlistFollowUp"
-    // oberon0.g:185:1: identlistFollowUp returns [ IdentListNode e ] : ',' IDENT (followup= identlistFollowUp )? ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:185:1: identlistFollowUp returns [ IdentListNode e ] : ',' IDENT (followup= identlistFollowUp )? ;
     public final IdentListNode identlistFollowUp() throws RecognitionException {
         IdentListNode e = null;
 
@@ -1633,12 +1631,12 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:186:2: ( ',' IDENT (followup= identlistFollowUp )? )
-            // oberon0.g:186:4: ',' IDENT (followup= identlistFollowUp )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:186:2: ( ',' IDENT (followup= identlistFollowUp )? )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:186:4: ',' IDENT (followup= identlistFollowUp )?
             {
-            match(input,37,FOLLOW_37_in_identlistFollowUp797); if (state.failed) return e;
-            IDENT39=(Token)match(input,IDENT,FOLLOW_IDENT_in_identlistFollowUp799); if (state.failed) return e;
-            // oberon0.g:186:14: (followup= identlistFollowUp )?
+            match(input,37,FOLLOW_37_in_identlistFollowUp779); if (state.failed) return e;
+            IDENT39=(Token)match(input,IDENT,FOLLOW_IDENT_in_identlistFollowUp781); if (state.failed) return e;
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:186:14: (followup= identlistFollowUp )?
             int alt21=2;
             int LA21_0 = input.LA(1);
 
@@ -1647,9 +1645,9 @@ public class oberon0Parser extends Parser {
             }
             switch (alt21) {
                 case 1 :
-                    // oberon0.g:186:16: followup= identlistFollowUp
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:186:16: followup= identlistFollowUp
                     {
-                    pushFollow(FOLLOW_identlistFollowUp_in_identlistFollowUp805);
+                    pushFollow(FOLLOW_identlistFollowUp_in_identlistFollowUp787);
                     followup=identlistFollowUp();
 
                     state._fsp--;
@@ -1681,7 +1679,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "statementsequence"
-    // oberon0.g:192:1: statementsequence returns [ StatementSequenceNode e ] : statement (followOne= followupStatementSequence )? ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:192:1: statementsequence returns [ StatementSequenceNode e ] : statement (followOne= followupStatementSequence )? ;
     public final StatementSequenceNode statementsequence() throws RecognitionException {
         StatementSequenceNode e = null;
 
@@ -1691,15 +1689,15 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:193:2: ( statement (followOne= followupStatementSequence )? )
-            // oberon0.g:193:4: statement (followOne= followupStatementSequence )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:193:2: ( statement (followOne= followupStatementSequence )? )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:193:4: statement (followOne= followupStatementSequence )?
             {
-            pushFollow(FOLLOW_statement_in_statementsequence825);
+            pushFollow(FOLLOW_statement_in_statementsequence807);
             statement40=statement();
 
             state._fsp--;
             if (state.failed) return e;
-            // oberon0.g:193:14: (followOne= followupStatementSequence )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:193:14: (followOne= followupStatementSequence )?
             int alt22=2;
             int LA22_0 = input.LA(1);
 
@@ -1708,9 +1706,9 @@ public class oberon0Parser extends Parser {
             }
             switch (alt22) {
                 case 1 :
-                    // oberon0.g:193:16: followOne= followupStatementSequence
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:193:16: followOne= followupStatementSequence
                     {
-                    pushFollow(FOLLOW_followupStatementSequence_in_statementsequence831);
+                    pushFollow(FOLLOW_followupStatementSequence_in_statementsequence813);
                     followOne=followupStatementSequence();
 
                     state._fsp--;
@@ -1742,7 +1740,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "followupStatementSequence"
-    // oberon0.g:199:1: followupStatementSequence returns [ StatementSequenceNode e ] : ';' statement (followTwo= followupStatementSequence )? ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:199:1: followupStatementSequence returns [ StatementSequenceNode e ] : ';' statement (followTwo= followupStatementSequence )? ;
     public final StatementSequenceNode followupStatementSequence() throws RecognitionException {
         StatementSequenceNode e = null;
 
@@ -1752,16 +1750,16 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:200:2: ( ';' statement (followTwo= followupStatementSequence )? )
-            // oberon0.g:200:4: ';' statement (followTwo= followupStatementSequence )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:200:2: ( ';' statement (followTwo= followupStatementSequence )? )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:200:4: ';' statement (followTwo= followupStatementSequence )?
             {
-            match(input,8,FOLLOW_8_in_followupStatementSequence852); if (state.failed) return e;
-            pushFollow(FOLLOW_statement_in_followupStatementSequence854);
+            match(input,8,FOLLOW_8_in_followupStatementSequence834); if (state.failed) return e;
+            pushFollow(FOLLOW_statement_in_followupStatementSequence836);
             statement41=statement();
 
             state._fsp--;
             if (state.failed) return e;
-            // oberon0.g:200:18: (followTwo= followupStatementSequence )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:200:18: (followTwo= followupStatementSequence )?
             int alt23=2;
             int LA23_0 = input.LA(1);
 
@@ -1770,9 +1768,9 @@ public class oberon0Parser extends Parser {
             }
             switch (alt23) {
                 case 1 :
-                    // oberon0.g:200:20: followTwo= followupStatementSequence
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:200:20: followTwo= followupStatementSequence
                     {
-                    pushFollow(FOLLOW_followupStatementSequence_in_followupStatementSequence860);
+                    pushFollow(FOLLOW_followupStatementSequence_in_followupStatementSequence842);
                     followTwo=followupStatementSequence();
 
                     state._fsp--;
@@ -1804,7 +1802,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "statement"
-    // oberon0.g:206:1: statement returns [ StatementNode e ] : (statementRv= assignment | statementRv= procedurecall | statementRv= ifstatement | statementRv= whilestatement )? ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:206:1: statement returns [ StatementNode e ] : (statementRv= assignment | statementRv= procedurecall | statementRv= ifstatement | statementRv= whilestatement )? ;
     public final StatementNode statement() throws RecognitionException {
         StatementNode e = null;
 
@@ -1812,10 +1810,10 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:207:2: ( (statementRv= assignment | statementRv= procedurecall | statementRv= ifstatement | statementRv= whilestatement )? )
-            // oberon0.g:207:4: (statementRv= assignment | statementRv= procedurecall | statementRv= ifstatement | statementRv= whilestatement )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:207:2: ( (statementRv= assignment | statementRv= procedurecall | statementRv= ifstatement | statementRv= whilestatement )? )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:207:4: (statementRv= assignment | statementRv= procedurecall | statementRv= ifstatement | statementRv= whilestatement )?
             {
-            // oberon0.g:207:4: (statementRv= assignment | statementRv= procedurecall | statementRv= ifstatement | statementRv= whilestatement )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:207:4: (statementRv= assignment | statementRv= procedurecall | statementRv= ifstatement | statementRv= whilestatement )?
             int alt24=5;
             switch ( input.LA(1) ) {
                 case IDENT:
@@ -1844,9 +1842,9 @@ public class oberon0Parser extends Parser {
 
             switch (alt24) {
                 case 1 :
-                    // oberon0.g:207:6: statementRv= assignment
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:207:6: statementRv= assignment
                     {
-                    pushFollow(FOLLOW_assignment_in_statement884);
+                    pushFollow(FOLLOW_assignment_in_statement866);
                     statementRv=assignment();
 
                     state._fsp--;
@@ -1855,9 +1853,9 @@ public class oberon0Parser extends Parser {
                     }
                     break;
                 case 2 :
-                    // oberon0.g:207:31: statementRv= procedurecall
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:207:31: statementRv= procedurecall
                     {
-                    pushFollow(FOLLOW_procedurecall_in_statement890);
+                    pushFollow(FOLLOW_procedurecall_in_statement872);
                     statementRv=procedurecall();
 
                     state._fsp--;
@@ -1866,9 +1864,9 @@ public class oberon0Parser extends Parser {
                     }
                     break;
                 case 3 :
-                    // oberon0.g:207:59: statementRv= ifstatement
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:207:59: statementRv= ifstatement
                     {
-                    pushFollow(FOLLOW_ifstatement_in_statement896);
+                    pushFollow(FOLLOW_ifstatement_in_statement878);
                     statementRv=ifstatement();
 
                     state._fsp--;
@@ -1877,9 +1875,9 @@ public class oberon0Parser extends Parser {
                     }
                     break;
                 case 4 :
-                    // oberon0.g:207:85: statementRv= whilestatement
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:207:85: statementRv= whilestatement
                     {
-                    pushFollow(FOLLOW_whilestatement_in_statement902);
+                    pushFollow(FOLLOW_whilestatement_in_statement884);
                     statementRv=whilestatement();
 
                     state._fsp--;
@@ -1911,7 +1909,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "assignment"
-    // oberon0.g:213:1: assignment returns [ StatementNode e ] : variable ':=' expression ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:213:1: assignment returns [ StatementNode e ] : variable ':=' expression ;
     public final StatementNode assignment() throws RecognitionException {
         StatementNode e = null;
 
@@ -1921,16 +1919,16 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:214:2: ( variable ':=' expression )
-            // oberon0.g:214:4: variable ':=' expression
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:214:2: ( variable ':=' expression )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:214:4: variable ':=' expression
             {
-            pushFollow(FOLLOW_variable_in_assignment924);
+            pushFollow(FOLLOW_variable_in_assignment906);
             variable42=variable();
 
             state._fsp--;
             if (state.failed) return e;
-            match(input,38,FOLLOW_38_in_assignment926); if (state.failed) return e;
-            pushFollow(FOLLOW_expression_in_assignment928);
+            match(input,38,FOLLOW_38_in_assignment908); if (state.failed) return e;
+            pushFollow(FOLLOW_expression_in_assignment910);
             expression43=expression();
 
             state._fsp--;
@@ -1956,7 +1954,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "procedurecall"
-    // oberon0.g:220:1: procedurecall returns [ StatementNode e ] : IDENT ( actualparameters )? ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:220:1: procedurecall returns [ StatementNode e ] : IDENT ( actualparameters )? ;
     public final StatementNode procedurecall() throws RecognitionException {
         StatementNode e = null;
 
@@ -1965,11 +1963,11 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:221:2: ( IDENT ( actualparameters )? )
-            // oberon0.g:221:4: IDENT ( actualparameters )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:221:2: ( IDENT ( actualparameters )? )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:221:4: IDENT ( actualparameters )?
             {
-            IDENT44=(Token)match(input,IDENT,FOLLOW_IDENT_in_procedurecall947); if (state.failed) return e;
-            // oberon0.g:221:10: ( actualparameters )?
+            IDENT44=(Token)match(input,IDENT,FOLLOW_IDENT_in_procedurecall929); if (state.failed) return e;
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:221:10: ( actualparameters )?
             int alt25=2;
             int LA25_0 = input.LA(1);
 
@@ -1978,9 +1976,9 @@ public class oberon0Parser extends Parser {
             }
             switch (alt25) {
                 case 1 :
-                    // oberon0.g:221:11: actualparameters
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:221:11: actualparameters
                     {
-                    pushFollow(FOLLOW_actualparameters_in_procedurecall950);
+                    pushFollow(FOLLOW_actualparameters_in_procedurecall932);
                     actualparameters45=actualparameters();
 
                     state._fsp--;
@@ -2012,7 +2010,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "actualparameters"
-    // oberon0.g:227:1: actualparameters returns [ ParamNode e ] : '(' ( expression (follow= actualparametersfollowup )? )? ')' ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:227:1: actualparameters returns [ ParamNode e ] : '(' ( expression (follow= actualparametersfollowup )? )? ')' ;
     public final ParamNode actualparameters() throws RecognitionException {
         ParamNode e = null;
 
@@ -2022,11 +2020,11 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:228:2: ( '(' ( expression (follow= actualparametersfollowup )? )? ')' )
-            // oberon0.g:228:4: '(' ( expression (follow= actualparametersfollowup )? )? ')'
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:228:2: ( '(' ( expression (follow= actualparametersfollowup )? )? ')' )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:228:4: '(' ( expression (follow= actualparametersfollowup )? )? ')'
             {
-            match(input,31,FOLLOW_31_in_actualparameters971); if (state.failed) return e;
-            // oberon0.g:228:8: ( expression (follow= actualparametersfollowup )? )?
+            match(input,31,FOLLOW_31_in_actualparameters953); if (state.failed) return e;
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:228:8: ( expression (follow= actualparametersfollowup )? )?
             int alt27=2;
             int LA27_0 = input.LA(1);
 
@@ -2035,14 +2033,14 @@ public class oberon0Parser extends Parser {
             }
             switch (alt27) {
                 case 1 :
-                    // oberon0.g:228:10: expression (follow= actualparametersfollowup )?
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:228:10: expression (follow= actualparametersfollowup )?
                     {
-                    pushFollow(FOLLOW_expression_in_actualparameters975);
+                    pushFollow(FOLLOW_expression_in_actualparameters957);
                     expression46=expression();
 
                     state._fsp--;
                     if (state.failed) return e;
-                    // oberon0.g:228:21: (follow= actualparametersfollowup )?
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:228:21: (follow= actualparametersfollowup )?
                     int alt26=2;
                     int LA26_0 = input.LA(1);
 
@@ -2051,9 +2049,9 @@ public class oberon0Parser extends Parser {
                     }
                     switch (alt26) {
                         case 1 :
-                            // oberon0.g:228:23: follow= actualparametersfollowup
+                            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:228:23: follow= actualparametersfollowup
                             {
-                            pushFollow(FOLLOW_actualparametersfollowup_in_actualparameters981);
+                            pushFollow(FOLLOW_actualparametersfollowup_in_actualparameters963);
                             follow=actualparametersfollowup();
 
                             state._fsp--;
@@ -2070,7 +2068,7 @@ public class oberon0Parser extends Parser {
 
             }
 
-            match(input,32,FOLLOW_32_in_actualparameters988); if (state.failed) return e;
+            match(input,32,FOLLOW_32_in_actualparameters970); if (state.failed) return e;
             if ( state.backtracking==0 ) {
 
               	  e = new ParamNode( expression46, follow );
@@ -2092,7 +2090,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "actualparametersfollowup"
-    // oberon0.g:234:1: actualparametersfollowup returns [ ParamNode e] : ',' expression (follow= actualparametersfollowup )? ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:234:1: actualparametersfollowup returns [ ParamNode e] : ',' expression (follow= actualparametersfollowup )? ;
     public final ParamNode actualparametersfollowup() throws RecognitionException {
         ParamNode e = null;
 
@@ -2102,16 +2100,16 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:235:3: ( ',' expression (follow= actualparametersfollowup )? )
-            // oberon0.g:235:5: ',' expression (follow= actualparametersfollowup )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:235:3: ( ',' expression (follow= actualparametersfollowup )? )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:235:5: ',' expression (follow= actualparametersfollowup )?
             {
-            match(input,37,FOLLOW_37_in_actualparametersfollowup1008); if (state.failed) return e;
-            pushFollow(FOLLOW_expression_in_actualparametersfollowup1010);
+            match(input,37,FOLLOW_37_in_actualparametersfollowup990); if (state.failed) return e;
+            pushFollow(FOLLOW_expression_in_actualparametersfollowup992);
             expression47=expression();
 
             state._fsp--;
             if (state.failed) return e;
-            // oberon0.g:235:20: (follow= actualparametersfollowup )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:235:20: (follow= actualparametersfollowup )?
             int alt28=2;
             int LA28_0 = input.LA(1);
 
@@ -2120,9 +2118,9 @@ public class oberon0Parser extends Parser {
             }
             switch (alt28) {
                 case 1 :
-                    // oberon0.g:235:22: follow= actualparametersfollowup
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:235:22: follow= actualparametersfollowup
                     {
-                    pushFollow(FOLLOW_actualparametersfollowup_in_actualparametersfollowup1016);
+                    pushFollow(FOLLOW_actualparametersfollowup_in_actualparametersfollowup998);
                     follow=actualparametersfollowup();
 
                     state._fsp--;
@@ -2154,7 +2152,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "ifstatement"
-    // oberon0.g:241:1: ifstatement returns [ StatementNode e ] : 'IF' expression 'THEN' statementsequence ( elsestatement )? 'END' ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:241:1: ifstatement returns [ StatementNode e ] : 'IF' expression 'THEN' statementsequence ( elsestatement )? 'END' ;
     public final StatementNode ifstatement() throws RecognitionException {
         StatementNode e = null;
 
@@ -2166,22 +2164,22 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:242:2: ( 'IF' expression 'THEN' statementsequence ( elsestatement )? 'END' )
-            // oberon0.g:242:4: 'IF' expression 'THEN' statementsequence ( elsestatement )? 'END'
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:242:2: ( 'IF' expression 'THEN' statementsequence ( elsestatement )? 'END' )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:242:4: 'IF' expression 'THEN' statementsequence ( elsestatement )? 'END'
             {
-            match(input,39,FOLLOW_39_in_ifstatement1039); if (state.failed) return e;
-            pushFollow(FOLLOW_expression_in_ifstatement1041);
+            match(input,39,FOLLOW_39_in_ifstatement1021); if (state.failed) return e;
+            pushFollow(FOLLOW_expression_in_ifstatement1023);
             expression48=expression();
 
             state._fsp--;
             if (state.failed) return e;
-            match(input,40,FOLLOW_40_in_ifstatement1043); if (state.failed) return e;
-            pushFollow(FOLLOW_statementsequence_in_ifstatement1045);
+            match(input,40,FOLLOW_40_in_ifstatement1025); if (state.failed) return e;
+            pushFollow(FOLLOW_statementsequence_in_ifstatement1027);
             statementsequence49=statementsequence();
 
             state._fsp--;
             if (state.failed) return e;
-            // oberon0.g:242:45: ( elsestatement )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:242:45: ( elsestatement )?
             int alt29=2;
             int LA29_0 = input.LA(1);
 
@@ -2197,9 +2195,9 @@ public class oberon0Parser extends Parser {
             }
             switch (alt29) {
                 case 1 :
-                    // oberon0.g:0:0: elsestatement
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:0:0: elsestatement
                     {
-                    pushFollow(FOLLOW_elsestatement_in_ifstatement1047);
+                    pushFollow(FOLLOW_elsestatement_in_ifstatement1029);
                     elsestatement50=elsestatement();
 
                     state._fsp--;
@@ -2210,7 +2208,7 @@ public class oberon0Parser extends Parser {
 
             }
 
-            match(input,10,FOLLOW_10_in_ifstatement1050); if (state.failed) return e;
+            match(input,10,FOLLOW_10_in_ifstatement1032); if (state.failed) return e;
             if ( state.backtracking==0 ) {
 
               	  e = new IfStatementNode( expression48, statementsequence49, elsestatement50 );
@@ -2232,7 +2230,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "elsestatement"
-    // oberon0.g:248:1: elsestatement returns [ StatementNode e ] : ( 'ELSIF' expression 'THEN' statementsequence elseNode= elsestatement | 'ELSE' statementsequence | );
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:248:1: elsestatement returns [ StatementNode e ] : ( 'ELSIF' expression 'THEN' statementsequence elseNode= elsestatement | 'ELSE' statementsequence | );
     public final StatementNode elsestatement() throws RecognitionException {
         StatementNode e = null;
 
@@ -2246,7 +2244,7 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:249:3: ( 'ELSIF' expression 'THEN' statementsequence elseNode= elsestatement | 'ELSE' statementsequence | )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:249:3: ( 'ELSIF' expression 'THEN' statementsequence elseNode= elsestatement | 'ELSE' statementsequence | )
             int alt30=3;
             switch ( input.LA(1) ) {
             case 41:
@@ -2275,21 +2273,21 @@ public class oberon0Parser extends Parser {
 
             switch (alt30) {
                 case 1 :
-                    // oberon0.g:249:5: 'ELSIF' expression 'THEN' statementsequence elseNode= elsestatement
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:249:5: 'ELSIF' expression 'THEN' statementsequence elseNode= elsestatement
                     {
-                    match(input,41,FOLLOW_41_in_elsestatement1070); if (state.failed) return e;
-                    pushFollow(FOLLOW_expression_in_elsestatement1072);
+                    match(input,41,FOLLOW_41_in_elsestatement1052); if (state.failed) return e;
+                    pushFollow(FOLLOW_expression_in_elsestatement1054);
                     expression51=expression();
 
                     state._fsp--;
                     if (state.failed) return e;
-                    match(input,40,FOLLOW_40_in_elsestatement1074); if (state.failed) return e;
-                    pushFollow(FOLLOW_statementsequence_in_elsestatement1076);
+                    match(input,40,FOLLOW_40_in_elsestatement1056); if (state.failed) return e;
+                    pushFollow(FOLLOW_statementsequence_in_elsestatement1058);
                     statementsequence52=statementsequence();
 
                     state._fsp--;
                     if (state.failed) return e;
-                    pushFollow(FOLLOW_elsestatement_in_elsestatement1080);
+                    pushFollow(FOLLOW_elsestatement_in_elsestatement1062);
                     elseNode=elsestatement();
 
                     state._fsp--;
@@ -2303,10 +2301,10 @@ public class oberon0Parser extends Parser {
                     }
                     break;
                 case 2 :
-                    // oberon0.g:253:5: 'ELSE' statementsequence
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:253:5: 'ELSE' statementsequence
                     {
-                    match(input,42,FOLLOW_42_in_elsestatement1091); if (state.failed) return e;
-                    pushFollow(FOLLOW_statementsequence_in_elsestatement1093);
+                    match(input,42,FOLLOW_42_in_elsestatement1073); if (state.failed) return e;
+                    pushFollow(FOLLOW_statementsequence_in_elsestatement1075);
                     statementsequence53=statementsequence();
 
                     state._fsp--;
@@ -2320,7 +2318,7 @@ public class oberon0Parser extends Parser {
                     }
                     break;
                 case 3 :
-                    // oberon0.g:258:3: 
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:258:3: 
                     {
                     if ( state.backtracking==0 ) {
 
@@ -2345,7 +2343,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "whilestatement"
-    // oberon0.g:263:1: whilestatement returns [ StatementNode e ] : 'WHILE' cond= expression 'DO' ifTrueDo= statementsequence 'END' ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:263:1: whilestatement returns [ StatementNode e ] : 'WHILE' cond= expression 'DO' ifTrueDo= statementsequence 'END' ;
     public final StatementNode whilestatement() throws RecognitionException {
         StatementNode e = null;
 
@@ -2355,22 +2353,22 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:264:2: ( 'WHILE' cond= expression 'DO' ifTrueDo= statementsequence 'END' )
-            // oberon0.g:264:4: 'WHILE' cond= expression 'DO' ifTrueDo= statementsequence 'END'
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:264:2: ( 'WHILE' cond= expression 'DO' ifTrueDo= statementsequence 'END' )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:264:4: 'WHILE' cond= expression 'DO' ifTrueDo= statementsequence 'END'
             {
-            match(input,43,FOLLOW_43_in_whilestatement1123); if (state.failed) return e;
-            pushFollow(FOLLOW_expression_in_whilestatement1127);
+            match(input,43,FOLLOW_43_in_whilestatement1105); if (state.failed) return e;
+            pushFollow(FOLLOW_expression_in_whilestatement1109);
             cond=expression();
 
             state._fsp--;
             if (state.failed) return e;
-            match(input,44,FOLLOW_44_in_whilestatement1129); if (state.failed) return e;
-            pushFollow(FOLLOW_statementsequence_in_whilestatement1133);
+            match(input,44,FOLLOW_44_in_whilestatement1111); if (state.failed) return e;
+            pushFollow(FOLLOW_statementsequence_in_whilestatement1115);
             ifTrueDo=statementsequence();
 
             state._fsp--;
             if (state.failed) return e;
-            match(input,10,FOLLOW_10_in_whilestatement1135); if (state.failed) return e;
+            match(input,10,FOLLOW_10_in_whilestatement1117); if (state.failed) return e;
             if ( state.backtracking==0 ) {
 
               	  e = new WhileStatementNode( cond, ifTrueDo );
@@ -2392,7 +2390,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "procedureList"
-    // oberon0.g:270:1: procedureList returns [ ProcedureListNode e ] : ( proceduredeclaration ';' (followup= procedureList )? )? ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:270:1: procedureList returns [ ProcedureListNode e ] : ( proceduredeclaration ';' (followup= procedureList )? )? ;
     public final ProcedureListNode procedureList() throws RecognitionException {
         ProcedureListNode e = null;
 
@@ -2402,10 +2400,10 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:271:2: ( ( proceduredeclaration ';' (followup= procedureList )? )? )
-            // oberon0.g:271:4: ( proceduredeclaration ';' (followup= procedureList )? )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:271:2: ( ( proceduredeclaration ';' (followup= procedureList )? )? )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:271:4: ( proceduredeclaration ';' (followup= procedureList )? )?
             {
-            // oberon0.g:271:4: ( proceduredeclaration ';' (followup= procedureList )? )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:271:4: ( proceduredeclaration ';' (followup= procedureList )? )?
             int alt32=2;
             int LA32_0 = input.LA(1);
 
@@ -2414,15 +2412,15 @@ public class oberon0Parser extends Parser {
             }
             switch (alt32) {
                 case 1 :
-                    // oberon0.g:271:5: proceduredeclaration ';' (followup= procedureList )?
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:271:5: proceduredeclaration ';' (followup= procedureList )?
                     {
-                    pushFollow(FOLLOW_proceduredeclaration_in_procedureList1155);
+                    pushFollow(FOLLOW_proceduredeclaration_in_procedureList1137);
                     proceduredeclaration54=proceduredeclaration();
 
                     state._fsp--;
                     if (state.failed) return e;
-                    match(input,8,FOLLOW_8_in_procedureList1157); if (state.failed) return e;
-                    // oberon0.g:271:30: (followup= procedureList )?
+                    match(input,8,FOLLOW_8_in_procedureList1139); if (state.failed) return e;
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:271:30: (followup= procedureList )?
                     int alt31=2;
                     switch ( input.LA(1) ) {
                         case 45:
@@ -2461,9 +2459,9 @@ public class oberon0Parser extends Parser {
 
                     switch (alt31) {
                         case 1 :
-                            // oberon0.g:271:32: followup= procedureList
+                            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:271:32: followup= procedureList
                             {
-                            pushFollow(FOLLOW_procedureList_in_procedureList1163);
+                            pushFollow(FOLLOW_procedureList_in_procedureList1145);
                             followup=procedureList();
 
                             state._fsp--;
@@ -2501,7 +2499,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "proceduredeclaration"
-    // oberon0.g:277:1: proceduredeclaration returns [ ProcedureDeclarationNode e ] : procedureheading ';' procedurebody ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:277:1: proceduredeclaration returns [ ProcedureDeclarationNode e ] : procedureheading ';' procedurebody ;
     public final ProcedureDeclarationNode proceduredeclaration() throws RecognitionException {
         ProcedureDeclarationNode e = null;
 
@@ -2511,16 +2509,16 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:278:2: ( procedureheading ';' procedurebody )
-            // oberon0.g:278:4: procedureheading ';' procedurebody
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:278:2: ( procedureheading ';' procedurebody )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:278:4: procedureheading ';' procedurebody
             {
-            pushFollow(FOLLOW_procedureheading_in_proceduredeclaration1188);
+            pushFollow(FOLLOW_procedureheading_in_proceduredeclaration1170);
             procedureheading55=procedureheading();
 
             state._fsp--;
             if (state.failed) return e;
-            match(input,8,FOLLOW_8_in_proceduredeclaration1190); if (state.failed) return e;
-            pushFollow(FOLLOW_procedurebody_in_proceduredeclaration1192);
+            match(input,8,FOLLOW_8_in_proceduredeclaration1172); if (state.failed) return e;
+            pushFollow(FOLLOW_procedurebody_in_proceduredeclaration1174);
             procedurebody56=procedurebody();
 
             state._fsp--;
@@ -2546,7 +2544,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "procedureheading"
-    // oberon0.g:284:1: procedureheading returns [ ProcedureHeadingNode e ] : 'PROCEDURE' IDENT ( '(' ( formalparameters )? ')' )? ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:284:1: procedureheading returns [ ProcedureHeadingNode e ] : 'PROCEDURE' IDENT ( '(' ( formalparameters )? ')' )? ;
     public final ProcedureHeadingNode procedureheading() throws RecognitionException {
         ProcedureHeadingNode e = null;
 
@@ -2555,12 +2553,12 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:285:2: ( 'PROCEDURE' IDENT ( '(' ( formalparameters )? ')' )? )
-            // oberon0.g:285:4: 'PROCEDURE' IDENT ( '(' ( formalparameters )? ')' )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:285:2: ( 'PROCEDURE' IDENT ( '(' ( formalparameters )? ')' )? )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:285:4: 'PROCEDURE' IDENT ( '(' ( formalparameters )? ')' )?
             {
-            match(input,45,FOLLOW_45_in_procedureheading1211); if (state.failed) return e;
-            IDENT57=(Token)match(input,IDENT,FOLLOW_IDENT_in_procedureheading1213); if (state.failed) return e;
-            // oberon0.g:285:22: ( '(' ( formalparameters )? ')' )?
+            match(input,45,FOLLOW_45_in_procedureheading1193); if (state.failed) return e;
+            IDENT57=(Token)match(input,IDENT,FOLLOW_IDENT_in_procedureheading1195); if (state.failed) return e;
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:285:22: ( '(' ( formalparameters )? ')' )?
             int alt34=2;
             int LA34_0 = input.LA(1);
 
@@ -2569,10 +2567,10 @@ public class oberon0Parser extends Parser {
             }
             switch (alt34) {
                 case 1 :
-                    // oberon0.g:285:24: '(' ( formalparameters )? ')'
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:285:24: '(' ( formalparameters )? ')'
                     {
-                    match(input,31,FOLLOW_31_in_procedureheading1217); if (state.failed) return e;
-                    // oberon0.g:285:28: ( formalparameters )?
+                    match(input,31,FOLLOW_31_in_procedureheading1199); if (state.failed) return e;
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:285:28: ( formalparameters )?
                     int alt33=2;
                     int LA33_0 = input.LA(1);
 
@@ -2581,9 +2579,9 @@ public class oberon0Parser extends Parser {
                     }
                     switch (alt33) {
                         case 1 :
-                            // oberon0.g:0:0: formalparameters
+                            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:0:0: formalparameters
                             {
-                            pushFollow(FOLLOW_formalparameters_in_procedureheading1219);
+                            pushFollow(FOLLOW_formalparameters_in_procedureheading1201);
                             formalparameters58=formalparameters();
 
                             state._fsp--;
@@ -2594,7 +2592,7 @@ public class oberon0Parser extends Parser {
 
                     }
 
-                    match(input,32,FOLLOW_32_in_procedureheading1222); if (state.failed) return e;
+                    match(input,32,FOLLOW_32_in_procedureheading1204); if (state.failed) return e;
 
                     }
                     break;
@@ -2622,7 +2620,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "procedurebody"
-    // oberon0.g:291:1: procedurebody returns [ ProcedureBodyNode e ] : declarations ( 'BEGIN' statementsequence )? 'END' IDENT ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:291:1: procedurebody returns [ ProcedureBodyNode e ] : declarations ( 'BEGIN' statementsequence )? 'END' IDENT ;
     public final ProcedureBodyNode procedurebody() throws RecognitionException {
         ProcedureBodyNode e = null;
 
@@ -2633,15 +2631,15 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:292:2: ( declarations ( 'BEGIN' statementsequence )? 'END' IDENT )
-            // oberon0.g:292:4: declarations ( 'BEGIN' statementsequence )? 'END' IDENT
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:292:2: ( declarations ( 'BEGIN' statementsequence )? 'END' IDENT )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:292:4: declarations ( 'BEGIN' statementsequence )? 'END' IDENT
             {
-            pushFollow(FOLLOW_declarations_in_procedurebody1244);
+            pushFollow(FOLLOW_declarations_in_procedurebody1225);
             declarations59=declarations();
 
             state._fsp--;
             if (state.failed) return e;
-            // oberon0.g:292:17: ( 'BEGIN' statementsequence )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:292:17: ( 'BEGIN' statementsequence )?
             int alt35=2;
             int LA35_0 = input.LA(1);
 
@@ -2650,10 +2648,10 @@ public class oberon0Parser extends Parser {
             }
             switch (alt35) {
                 case 1 :
-                    // oberon0.g:292:18: 'BEGIN' statementsequence
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:292:18: 'BEGIN' statementsequence
                     {
-                    match(input,9,FOLLOW_9_in_procedurebody1247); if (state.failed) return e;
-                    pushFollow(FOLLOW_statementsequence_in_procedurebody1249);
+                    match(input,9,FOLLOW_9_in_procedurebody1228); if (state.failed) return e;
+                    pushFollow(FOLLOW_statementsequence_in_procedurebody1230);
                     statementsequence60=statementsequence();
 
                     state._fsp--;
@@ -2664,8 +2662,8 @@ public class oberon0Parser extends Parser {
 
             }
 
-            match(input,10,FOLLOW_10_in_procedurebody1253); if (state.failed) return e;
-            IDENT61=(Token)match(input,IDENT,FOLLOW_IDENT_in_procedurebody1255); if (state.failed) return e;
+            match(input,10,FOLLOW_10_in_procedurebody1234); if (state.failed) return e;
+            IDENT61=(Token)match(input,IDENT,FOLLOW_IDENT_in_procedurebody1236); if (state.failed) return e;
             if ( state.backtracking==0 ) {
 
               	  e = new ProcedureBodyNode( declarations59, statementsequence60, (IDENT61!=null?IDENT61.getText():null));
@@ -2687,7 +2685,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "formalparameters"
-    // oberon0.g:298:1: formalparameters returns [ FormalParameterNode e ] : fpsection ( ';' followup= formalparameters )? ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:298:1: formalparameters returns [ FormalParameterNode e ] : fpsection ( ';' followup= formalparameters )? ;
     public final FormalParameterNode formalparameters() throws RecognitionException {
         FormalParameterNode e = null;
 
@@ -2697,15 +2695,15 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:299:2: ( fpsection ( ';' followup= formalparameters )? )
-            // oberon0.g:299:4: fpsection ( ';' followup= formalparameters )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:299:2: ( fpsection ( ';' followup= formalparameters )? )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:299:4: fpsection ( ';' followup= formalparameters )?
             {
-            pushFollow(FOLLOW_fpsection_in_formalparameters1274);
+            pushFollow(FOLLOW_fpsection_in_formalparameters1255);
             fpsection62=fpsection();
 
             state._fsp--;
             if (state.failed) return e;
-            // oberon0.g:299:14: ( ';' followup= formalparameters )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:299:14: ( ';' followup= formalparameters )?
             int alt36=2;
             int LA36_0 = input.LA(1);
 
@@ -2714,10 +2712,10 @@ public class oberon0Parser extends Parser {
             }
             switch (alt36) {
                 case 1 :
-                    // oberon0.g:299:16: ';' followup= formalparameters
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:299:16: ';' followup= formalparameters
                     {
-                    match(input,8,FOLLOW_8_in_formalparameters1278); if (state.failed) return e;
-                    pushFollow(FOLLOW_formalparameters_in_formalparameters1282);
+                    match(input,8,FOLLOW_8_in_formalparameters1259); if (state.failed) return e;
+                    pushFollow(FOLLOW_formalparameters_in_formalparameters1263);
                     followup=formalparameters();
 
                     state._fsp--;
@@ -2749,7 +2747,7 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "fpsection"
-    // oberon0.g:305:1: fpsection returns [ FpSectionNode e ] : (ident= 'VAR' )? identlist ':' type ;
+    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:305:1: fpsection returns [ FpSectionNode e ] : (ident= 'VAR' )? identlist ':' type ;
     public final FpSectionNode fpsection() throws RecognitionException {
         FpSectionNode e = null;
 
@@ -2760,10 +2758,10 @@ public class oberon0Parser extends Parser {
 
 
         try {
-            // oberon0.g:306:2: ( (ident= 'VAR' )? identlist ':' type )
-            // oberon0.g:306:4: (ident= 'VAR' )? identlist ':' type
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:306:2: ( (ident= 'VAR' )? identlist ':' type )
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:306:4: (ident= 'VAR' )? identlist ':' type
             {
-            // oberon0.g:306:4: (ident= 'VAR' )?
+            // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:306:4: (ident= 'VAR' )?
             int alt37=2;
             int LA37_0 = input.LA(1);
 
@@ -2772,22 +2770,22 @@ public class oberon0Parser extends Parser {
             }
             switch (alt37) {
                 case 1 :
-                    // oberon0.g:306:5: ident= 'VAR'
+                    // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:306:5: ident= 'VAR'
                     {
-                    ident=(Token)match(input,14,FOLLOW_14_in_fpsection1306); if (state.failed) return e;
+                    ident=(Token)match(input,14,FOLLOW_14_in_fpsection1287); if (state.failed) return e;
 
                     }
                     break;
 
             }
 
-            pushFollow(FOLLOW_identlist_in_fpsection1310);
+            pushFollow(FOLLOW_identlist_in_fpsection1291);
             identlist63=identlist();
 
             state._fsp--;
             if (state.failed) return e;
-            match(input,36,FOLLOW_36_in_fpsection1312); if (state.failed) return e;
-            pushFollow(FOLLOW_type_in_fpsection1314);
+            match(input,36,FOLLOW_36_in_fpsection1293); if (state.failed) return e;
+            pushFollow(FOLLOW_type_in_fpsection1295);
             type64=type();
 
             state._fsp--;
@@ -2813,8 +2811,8 @@ public class oberon0Parser extends Parser {
 
     // $ANTLR start synpred5_oberon0
     public final void synpred5_oberon0_fragment() throws RecognitionException {   
-        // oberon0.g:40:62: ( procedureList )
-        // oberon0.g:40:62: procedureList
+        // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:40:62: ( procedureList )
+        // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:40:62: procedureList
         {
         pushFollow(FOLLOW_procedureList_in_synpred5_oberon0124);
         procedureList();
@@ -2828,10 +2826,10 @@ public class oberon0Parser extends Parser {
 
     // $ANTLR start synpred52_oberon0
     public final void synpred52_oberon0_fragment() throws RecognitionException {   
-        // oberon0.g:242:45: ( elsestatement )
-        // oberon0.g:242:45: elsestatement
+        // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:242:45: ( elsestatement )
+        // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:242:45: elsestatement
         {
-        pushFollow(FOLLOW_elsestatement_in_synpred52_oberon01047);
+        pushFollow(FOLLOW_elsestatement_in_synpred52_oberon01029);
         elsestatement();
 
         state._fsp--;
@@ -2846,10 +2844,10 @@ public class oberon0Parser extends Parser {
         ProcedureListNode followup = null;
 
 
-        // oberon0.g:271:32: (followup= procedureList )
-        // oberon0.g:271:32: followup= procedureList
+        // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:271:32: (followup= procedureList )
+        // /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g:271:32: followup= procedureList
         {
-        pushFollow(FOLLOW_procedureList_in_synpred55_oberon01163);
+        pushFollow(FOLLOW_procedureList_in_synpred55_oberon01145);
         followup=procedureList();
 
         state._fsp--;
@@ -2861,11 +2859,11 @@ public class oberon0Parser extends Parser {
 
     // Delegated rules
 
-    public final boolean synpred5_oberon0() {
+    public final boolean synpred55_oberon0() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred5_oberon0_fragment(); // can never throw exception
+            synpred55_oberon0_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -2875,11 +2873,11 @@ public class oberon0Parser extends Parser {
         state.failed=false;
         return success;
     }
-    public final boolean synpred55_oberon0() {
+    public final boolean synpred5_oberon0() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred55_oberon0_fragment(); // can never throw exception
+            synpred5_oberon0_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -2983,80 +2981,80 @@ public class oberon0Parser extends Parser {
     public static final BitSet FOLLOW_expression_in_selector673 = new BitSet(new long[]{0x0000000800000000L});
     public static final BitSet FOLLOW_35_in_selector675 = new BitSet(new long[]{0x0000000400000800L});
     public static final BitSet FOLLOW_selector_in_selector679 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENT_in_variable710 = new BitSet(new long[]{0x0000000400000800L});
-    public static final BitSet FOLLOW_selector_in_variable712 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_identlist_in_fieldlist746 = new BitSet(new long[]{0x0000001000000000L});
-    public static final BitSet FOLLOW_36_in_fieldlist748 = new BitSet(new long[]{0x0000000000050010L});
-    public static final BitSet FOLLOW_type_in_fieldlist750 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENT_in_identlist771 = new BitSet(new long[]{0x0000002000000002L});
-    public static final BitSet FOLLOW_identlistFollowUp_in_identlist775 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_37_in_identlistFollowUp797 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENT_in_identlistFollowUp799 = new BitSet(new long[]{0x0000002000000002L});
-    public static final BitSet FOLLOW_identlistFollowUp_in_identlistFollowUp805 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_statement_in_statementsequence825 = new BitSet(new long[]{0x0000000000000102L});
-    public static final BitSet FOLLOW_followupStatementSequence_in_statementsequence831 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_8_in_followupStatementSequence852 = new BitSet(new long[]{0x0000088000000110L});
-    public static final BitSet FOLLOW_statement_in_followupStatementSequence854 = new BitSet(new long[]{0x0000000000000102L});
-    public static final BitSet FOLLOW_followupStatementSequence_in_followupStatementSequence860 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_assignment_in_statement884 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_procedurecall_in_statement890 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ifstatement_in_statement896 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_whilestatement_in_statement902 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_variable_in_assignment924 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_38_in_assignment926 = new BitSet(new long[]{0x0000000283000030L});
-    public static final BitSet FOLLOW_expression_in_assignment928 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENT_in_procedurecall947 = new BitSet(new long[]{0x0000000080000002L});
-    public static final BitSet FOLLOW_actualparameters_in_procedurecall950 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_31_in_actualparameters971 = new BitSet(new long[]{0x0000000383000030L});
-    public static final BitSet FOLLOW_expression_in_actualparameters975 = new BitSet(new long[]{0x0000002100000000L});
-    public static final BitSet FOLLOW_actualparametersfollowup_in_actualparameters981 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_32_in_actualparameters988 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_37_in_actualparametersfollowup1008 = new BitSet(new long[]{0x0000000283000030L});
-    public static final BitSet FOLLOW_expression_in_actualparametersfollowup1010 = new BitSet(new long[]{0x0000002000000002L});
-    public static final BitSet FOLLOW_actualparametersfollowup_in_actualparametersfollowup1016 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_39_in_ifstatement1039 = new BitSet(new long[]{0x0000000283000030L});
-    public static final BitSet FOLLOW_expression_in_ifstatement1041 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_40_in_ifstatement1043 = new BitSet(new long[]{0x0000088000000110L});
-    public static final BitSet FOLLOW_statementsequence_in_ifstatement1045 = new BitSet(new long[]{0x0000060000000400L});
-    public static final BitSet FOLLOW_elsestatement_in_ifstatement1047 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_10_in_ifstatement1050 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_41_in_elsestatement1070 = new BitSet(new long[]{0x0000000283000030L});
-    public static final BitSet FOLLOW_expression_in_elsestatement1072 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_40_in_elsestatement1074 = new BitSet(new long[]{0x0000088000000110L});
-    public static final BitSet FOLLOW_statementsequence_in_elsestatement1076 = new BitSet(new long[]{0x0000060000000000L});
-    public static final BitSet FOLLOW_elsestatement_in_elsestatement1080 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_42_in_elsestatement1091 = new BitSet(new long[]{0x0000088000000110L});
-    public static final BitSet FOLLOW_statementsequence_in_elsestatement1093 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_43_in_whilestatement1123 = new BitSet(new long[]{0x0000000283000030L});
-    public static final BitSet FOLLOW_expression_in_whilestatement1127 = new BitSet(new long[]{0x0000100000000000L});
-    public static final BitSet FOLLOW_44_in_whilestatement1129 = new BitSet(new long[]{0x0000088000000110L});
-    public static final BitSet FOLLOW_statementsequence_in_whilestatement1133 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_10_in_whilestatement1135 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_proceduredeclaration_in_procedureList1155 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_8_in_procedureList1157 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_procedureList_in_procedureList1163 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_procedureheading_in_proceduredeclaration1188 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_8_in_proceduredeclaration1190 = new BitSet(new long[]{0x0000200000007000L});
-    public static final BitSet FOLLOW_procedurebody_in_proceduredeclaration1192 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_45_in_procedureheading1211 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENT_in_procedureheading1213 = new BitSet(new long[]{0x0000000080000002L});
-    public static final BitSet FOLLOW_31_in_procedureheading1217 = new BitSet(new long[]{0x0000000100004010L});
-    public static final BitSet FOLLOW_formalparameters_in_procedureheading1219 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_32_in_procedureheading1222 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_declarations_in_procedurebody1244 = new BitSet(new long[]{0x0000000000000600L});
-    public static final BitSet FOLLOW_9_in_procedurebody1247 = new BitSet(new long[]{0x0000088000000110L});
-    public static final BitSet FOLLOW_statementsequence_in_procedurebody1249 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_10_in_procedurebody1253 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENT_in_procedurebody1255 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_fpsection_in_formalparameters1274 = new BitSet(new long[]{0x0000000000000102L});
-    public static final BitSet FOLLOW_8_in_formalparameters1278 = new BitSet(new long[]{0x0000000000004010L});
-    public static final BitSet FOLLOW_formalparameters_in_formalparameters1282 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_fpsection1306 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_identlist_in_fpsection1310 = new BitSet(new long[]{0x0000001000000000L});
-    public static final BitSet FOLLOW_36_in_fpsection1312 = new BitSet(new long[]{0x0000000000050010L});
-    public static final BitSet FOLLOW_type_in_fpsection1314 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENT_in_variable704 = new BitSet(new long[]{0x0000000400000800L});
+    public static final BitSet FOLLOW_selector_in_variable706 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_identlist_in_fieldlist728 = new BitSet(new long[]{0x0000001000000000L});
+    public static final BitSet FOLLOW_36_in_fieldlist730 = new BitSet(new long[]{0x0000000000050010L});
+    public static final BitSet FOLLOW_type_in_fieldlist732 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENT_in_identlist753 = new BitSet(new long[]{0x0000002000000002L});
+    public static final BitSet FOLLOW_identlistFollowUp_in_identlist757 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_37_in_identlistFollowUp779 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_IDENT_in_identlistFollowUp781 = new BitSet(new long[]{0x0000002000000002L});
+    public static final BitSet FOLLOW_identlistFollowUp_in_identlistFollowUp787 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_statement_in_statementsequence807 = new BitSet(new long[]{0x0000000000000102L});
+    public static final BitSet FOLLOW_followupStatementSequence_in_statementsequence813 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_8_in_followupStatementSequence834 = new BitSet(new long[]{0x0000088000000110L});
+    public static final BitSet FOLLOW_statement_in_followupStatementSequence836 = new BitSet(new long[]{0x0000000000000102L});
+    public static final BitSet FOLLOW_followupStatementSequence_in_followupStatementSequence842 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_assignment_in_statement866 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_procedurecall_in_statement872 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ifstatement_in_statement878 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_whilestatement_in_statement884 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_variable_in_assignment906 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_38_in_assignment908 = new BitSet(new long[]{0x0000000283000030L});
+    public static final BitSet FOLLOW_expression_in_assignment910 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENT_in_procedurecall929 = new BitSet(new long[]{0x0000000080000002L});
+    public static final BitSet FOLLOW_actualparameters_in_procedurecall932 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_31_in_actualparameters953 = new BitSet(new long[]{0x0000000383000030L});
+    public static final BitSet FOLLOW_expression_in_actualparameters957 = new BitSet(new long[]{0x0000002100000000L});
+    public static final BitSet FOLLOW_actualparametersfollowup_in_actualparameters963 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_32_in_actualparameters970 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_37_in_actualparametersfollowup990 = new BitSet(new long[]{0x0000000283000030L});
+    public static final BitSet FOLLOW_expression_in_actualparametersfollowup992 = new BitSet(new long[]{0x0000002000000002L});
+    public static final BitSet FOLLOW_actualparametersfollowup_in_actualparametersfollowup998 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_39_in_ifstatement1021 = new BitSet(new long[]{0x0000000283000030L});
+    public static final BitSet FOLLOW_expression_in_ifstatement1023 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_40_in_ifstatement1025 = new BitSet(new long[]{0x0000088000000110L});
+    public static final BitSet FOLLOW_statementsequence_in_ifstatement1027 = new BitSet(new long[]{0x0000060000000400L});
+    public static final BitSet FOLLOW_elsestatement_in_ifstatement1029 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_10_in_ifstatement1032 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_41_in_elsestatement1052 = new BitSet(new long[]{0x0000000283000030L});
+    public static final BitSet FOLLOW_expression_in_elsestatement1054 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_40_in_elsestatement1056 = new BitSet(new long[]{0x0000088000000110L});
+    public static final BitSet FOLLOW_statementsequence_in_elsestatement1058 = new BitSet(new long[]{0x0000060000000000L});
+    public static final BitSet FOLLOW_elsestatement_in_elsestatement1062 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_42_in_elsestatement1073 = new BitSet(new long[]{0x0000088000000110L});
+    public static final BitSet FOLLOW_statementsequence_in_elsestatement1075 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_43_in_whilestatement1105 = new BitSet(new long[]{0x0000000283000030L});
+    public static final BitSet FOLLOW_expression_in_whilestatement1109 = new BitSet(new long[]{0x0000100000000000L});
+    public static final BitSet FOLLOW_44_in_whilestatement1111 = new BitSet(new long[]{0x0000088000000110L});
+    public static final BitSet FOLLOW_statementsequence_in_whilestatement1115 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_10_in_whilestatement1117 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_proceduredeclaration_in_procedureList1137 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_8_in_procedureList1139 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_procedureList_in_procedureList1145 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_procedureheading_in_proceduredeclaration1170 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_8_in_proceduredeclaration1172 = new BitSet(new long[]{0x0000200000007000L});
+    public static final BitSet FOLLOW_procedurebody_in_proceduredeclaration1174 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_45_in_procedureheading1193 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_IDENT_in_procedureheading1195 = new BitSet(new long[]{0x0000000080000002L});
+    public static final BitSet FOLLOW_31_in_procedureheading1199 = new BitSet(new long[]{0x0000000100004010L});
+    public static final BitSet FOLLOW_formalparameters_in_procedureheading1201 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_32_in_procedureheading1204 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_declarations_in_procedurebody1225 = new BitSet(new long[]{0x0000000000000600L});
+    public static final BitSet FOLLOW_9_in_procedurebody1228 = new BitSet(new long[]{0x0000088000000110L});
+    public static final BitSet FOLLOW_statementsequence_in_procedurebody1230 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_10_in_procedurebody1234 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_IDENT_in_procedurebody1236 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_fpsection_in_formalparameters1255 = new BitSet(new long[]{0x0000000000000102L});
+    public static final BitSet FOLLOW_8_in_formalparameters1259 = new BitSet(new long[]{0x0000000000004010L});
+    public static final BitSet FOLLOW_formalparameters_in_formalparameters1263 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_14_in_fpsection1287 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_identlist_in_fpsection1291 = new BitSet(new long[]{0x0000001000000000L});
+    public static final BitSet FOLLOW_36_in_fpsection1293 = new BitSet(new long[]{0x0000000000050010L});
+    public static final BitSet FOLLOW_type_in_fpsection1295 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_procedureList_in_synpred5_oberon0124 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_elsestatement_in_synpred52_oberon01047 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_procedureList_in_synpred55_oberon01163 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_elsestatement_in_synpred52_oberon01029 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_procedureList_in_synpred55_oberon01145 = new BitSet(new long[]{0x0000000000000002L});
 
 }
