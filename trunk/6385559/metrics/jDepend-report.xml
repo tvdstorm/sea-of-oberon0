@@ -2,7 +2,7 @@
 <JDepend>
     <Packages>
 
-        <Package name="ASTnodes">
+        <Package name="ast">
             <Stats>
                 <TotalClasses>35</TotalClasses>
                 <ConcreteClasses>33</ConcreteClasses>
@@ -17,112 +17,112 @@
 
             <AbstractClasses>
                 <Class sourceFile="ASTnode.java">
-                    ASTnodes.ASTnode
+                    ast.ASTnode
                 </Class>
                 <Class sourceFile="StatementNode.java">
-                    ASTnodes.StatementNode
+                    ast.StatementNode
                 </Class>
             </AbstractClasses>
 
             <ConcreteClasses>
                 <Class sourceFile="ArrayNode.java">
-                    ASTnodes.ArrayNode
+                    ast.ArrayNode
                 </Class>
                 <Class sourceFile="AssignmentNode.java">
-                    ASTnodes.AssignmentNode
+                    ast.AssignmentNode
                 </Class>
                 <Class sourceFile="ConstantNode.java">
-                    ASTnodes.ConstantNode
+                    ast.ConstantNode
                 </Class>
                 <Class sourceFile="DeclarationsNode.java">
-                    ASTnodes.DeclarationsNode
+                    ast.DeclarationsNode
                 </Class>
                 <Class sourceFile="ElseStatementNode.java">
-                    ASTnodes.ElseStatementNode
+                    ast.ElseStatementNode
                 </Class>
                 <Class sourceFile="ExpressionNode.java">
-                    ASTnodes.ExpressionNode
+                    ast.ExpressionNode
                 </Class>
                 <Class sourceFile="FieldlistNode.java">
-                    ASTnodes.FieldlistNode
+                    ast.FieldlistNode
                 </Class>
                 <Class sourceFile="FieldsNode.java">
-                    ASTnodes.FieldsNode
+                    ast.FieldsNode
                 </Class>
                 <Class sourceFile="FormalParameterNode.java">
-                    ASTnodes.FormalParameterNode
+                    ast.FormalParameterNode
                 </Class>
                 <Class sourceFile="FpSectionNode.java">
-                    ASTnodes.FpSectionNode
+                    ast.FpSectionNode
                 </Class>
                 <Class sourceFile="IdentListNode.java">
-                    ASTnodes.IdentListNode
+                    ast.IdentListNode
                 </Class>
                 <Class sourceFile="IfStatementNode.java">
-                    ASTnodes.IfStatementNode
+                    ast.IfStatementNode
                 </Class>
                 <Class sourceFile="IntegerNode.java">
-                    ASTnodes.IntegerNode
+                    ast.IntegerNode
                 </Class>
                 <Class sourceFile="MinusNode.java">
-                    ASTnodes.MinusNode
+                    ast.MinusNode
                 </Class>
                 <Class sourceFile="ModuleNode.java">
-                    ASTnodes.ModuleNode
+                    ast.ModuleNode
                 </Class>
                 <Class sourceFile="NotNode.java">
-                    ASTnodes.NotNode
+                    ast.NotNode
                 </Class>
                 <Class sourceFile="ParamNode.java">
-                    ASTnodes.ParamNode
+                    ast.ParamNode
                 </Class>
                 <Class sourceFile="ProcedureBodyNode.java">
-                    ASTnodes.ProcedureBodyNode
+                    ast.ProcedureBodyNode
                 </Class>
                 <Class sourceFile="ProcedureCallNode.java">
-                    ASTnodes.ProcedureCallNode
+                    ast.ProcedureCallNode
                 </Class>
                 <Class sourceFile="ProcedureDeclarationNode.java">
-                    ASTnodes.ProcedureDeclarationNode
+                    ast.ProcedureDeclarationNode
                 </Class>
                 <Class sourceFile="ProcedureHeadingNode.java">
-                    ASTnodes.ProcedureHeadingNode
+                    ast.ProcedureHeadingNode
                 </Class>
                 <Class sourceFile="ProcedureListNode.java">
-                    ASTnodes.ProcedureListNode
+                    ast.ProcedureListNode
                 </Class>
                 <Class sourceFile="RecordNode.java">
-                    ASTnodes.RecordNode
+                    ast.RecordNode
                 </Class>
                 <Class sourceFile="SelectorArrayNode.java">
-                    ASTnodes.SelectorArrayNode
+                    ast.SelectorArrayNode
                 </Class>
                 <Class sourceFile="SelectorNode.java">
-                    ASTnodes.SelectorNode
+                    ast.SelectorNode
                 </Class>
                 <Class sourceFile="SelectorRecordNode.java">
-                    ASTnodes.SelectorRecordNode
+                    ast.SelectorRecordNode
                 </Class>
                 <Class sourceFile="SimpleExpression.java">
-                    ASTnodes.SimpleExpression
+                    ast.SimpleExpression
                 </Class>
                 <Class sourceFile="StatementSequenceNode.java">
-                    ASTnodes.StatementSequenceNode
+                    ast.StatementSequenceNode
                 </Class>
                 <Class sourceFile="TermNode.java">
-                    ASTnodes.TermNode
+                    ast.TermNode
                 </Class>
                 <Class sourceFile="TypeDefNode.java">
-                    ASTnodes.TypeDefNode
+                    ast.TypeDefNode
                 </Class>
                 <Class sourceFile="TypeNode.java">
-                    ASTnodes.TypeNode
+                    ast.TypeNode
                 </Class>
                 <Class sourceFile="VarNode.java">
-                    ASTnodes.VarNode
+                    ast.VarNode
                 </Class>
                 <Class sourceFile="WhileStatementNode.java">
-                    ASTnodes.WhileStatementNode
+                    ast.WhileStatementNode
                 </Class>
             </ConcreteClasses>
 
@@ -175,7 +175,7 @@
             </DependsUpon>
 
             <UsedBy>
-                <Package>ASTnodes</Package>
+                <Package>ast</Package>
                 <Package>management</Package>
                 <Package>oberon0</Package>
                 <Package>parser</Package>
@@ -239,7 +239,7 @@
             </ConcreteClasses>
 
             <DependsUpon>
-                <Package>ASTnodes</Package>
+                <Package>ast</Package>
                 <Package>errorhandler</Package>
                 <Package>java.io</Package>
                 <Package>java.lang</Package>
@@ -247,7 +247,7 @@
             </DependsUpon>
 
             <UsedBy>
-                <Package>ASTnodes</Package>
+                <Package>ast</Package>
                 <Package>oberon0</Package>
                 <Package>systemcalls</Package>
             </UsedBy>
@@ -285,7 +285,7 @@
             </ConcreteClasses>
 
             <DependsUpon>
-                <Package>ASTnodes</Package>
+                <Package>ast</Package>
                 <Package>errorhandler</Package>
                 <Package>java.io</Package>
                 <Package>java.lang</Package>
@@ -333,7 +333,7 @@
             </ConcreteClasses>
 
             <DependsUpon>
-                <Package>ASTnodes</Package>
+                <Package>ast</Package>
                 <Package>errorhandler</Package>
                 <Package>java.io</Package>
                 <Package>java.lang</Package>
@@ -374,7 +374,7 @@
             </ConcreteClasses>
 
             <DependsUpon>
-                <Package>ASTnodes</Package>
+                <Package>ast</Package>
                 <Package>errorhandler</Package>
                 <Package>java.io</Package>
                 <Package>java.lang</Package>
@@ -389,32 +389,33 @@
     </Packages>
 
     <Cycles>
-        <Package Name="ASTnodes">
+        <Package Name="ast">
             <Package>management</Package>
-            <Package>ASTnodes</Package>
+            <Package>ast</Package>
         </Package>
 
         <Package Name="management">
-            <Package>ASTnodes</Package>
+            <Package>ast</Package>
             <Package>management</Package>
         </Package>
 
         <Package Name="oberon0">
-            <Package>ASTnodes</Package>
+            <Package>systemcalls</Package>
+            <Package>ast</Package>
             <Package>management</Package>
-            <Package>ASTnodes</Package>
+            <Package>ast</Package>
         </Package>
 
         <Package Name="parser">
-            <Package>ASTnodes</Package>
+            <Package>ast</Package>
             <Package>management</Package>
-            <Package>ASTnodes</Package>
+            <Package>ast</Package>
         </Package>
 
         <Package Name="systemcalls">
-            <Package>ASTnodes</Package>
+            <Package>ast</Package>
             <Package>management</Package>
-            <Package>ASTnodes</Package>
+            <Package>ast</Package>
         </Package>
 
     </Cycles>

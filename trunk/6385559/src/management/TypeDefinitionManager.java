@@ -30,7 +30,11 @@ public class TypeDefinitionManager {
         return container.getDefinition();
       }
     }
-    throw new OberonException( "Type definition: " + name + " does not exist." );
+    if( !( name.contentEquals( "INTEGER" ) || name.contentEquals( "BOOLEAN" ) ) )
+    {
+      throw new OberonException( "Type definition: " + name + " does not exist." );
+    }
+    return null;
   }
   
   public static void printDefinitions()

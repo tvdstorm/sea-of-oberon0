@@ -1,14 +1,12 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g 2011-01-31 21:07:33
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g 2011-01-31 21:14:51
 
   package parser;
   
-    import errorhandler.*;
+  import ast.*;
+  import errorhandler.*;
 
 
 import org.antlr.runtime.*;
-
-import ast.*;
-
 import java.util.Stack;
 import java.util.List;
 import java.util.ArrayList;
