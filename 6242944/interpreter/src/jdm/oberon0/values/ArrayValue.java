@@ -8,7 +8,7 @@ public class ArrayValue extends Value {
 	private ReferenceValue[] _values;
 	private ArrayType _type;
 	
-	public ArrayValue(jdm.oberon0.types.ArrayType type) {
+	public ArrayValue(ArrayType type) {
 		int size = type.getSize();
 		_values = new ReferenceValue[size];
 		

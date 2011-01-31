@@ -9,7 +9,7 @@ public class RecordType implements Type {
 		_fields = fields;
 	}
 
-	public HashMap<String, jdm.oberon0.types.Type> getFields() {
+	public HashMap<String, Type> getFields() {
 		return _fields;
 	}
 
