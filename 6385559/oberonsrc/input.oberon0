@@ -1,6 +1,13 @@
 MODULE Sample;
-VAR b : BOOLEAN;
+VAR b : ARRAY 2 OF INTEGER;
+
+PROCEDURE x( c : ARRAY 2 OF INTEGER );
+VAR b : ARRAY 2 OF INTEGER;
+BEGIN
+
+END x;
 
 BEGIN
-  b := 1;
+  b[0] := 1;
+  x( b );
 END Sample.
