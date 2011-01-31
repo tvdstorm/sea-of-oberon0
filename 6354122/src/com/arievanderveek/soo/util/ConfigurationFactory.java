@@ -31,7 +31,7 @@ public class ConfigurationFactory {
 
 	private final static String OPTION_SOURCE_FILE = "sourcefile"; 
 	private final static String OPTION_PARSER = "parser"; 
-	private final static String OPTION_VISITOR = "visitor"; 
+	private final static String OPTION_PRINTTREE = "printtree"; 
 
 	private final static String DEFAULT_PARSER_IMPL = 
 		"com.arievanderveek.soo.parser.antlrimpl.AntlrParserImpl";
@@ -87,16 +87,10 @@ public class ConfigurationFactory {
 						+ " {}", new Object[] { parserImplClass });
 				configuration.setParserImplClass(parserImplClass);
 			}
-			String visitorImplClass = cmd.getOptionValue("visitor");
-			if (visitorImplClass == null) {
-				LOGGER.log(Level.FINEST,
-						"Using default parser. Class:" + " {}",
-						new Object[] { DEFAULT_PARSER_IMPL });
-				configuration.setVisitorImplClass(DEFAULT_VISITOR_IMPL);
+			if (cmd.hasOption(OPTION_PRINTTREE)) {
+				configuration.setPrintTree(true);
 			} else {
-				LOGGER.log(Level.FINEST, "Using alternative parser. Class:"
-						+ " {}", new Object[] { visitorImplClass });
-				configuration.setVisitorImplClass(visitorImplClass);
+				configuration.setPrintTree(false);
 			}			
 			String sourceFileName = cmd.getOptionValue(OPTION_SOURCE_FILE);
 			if (sourceFileName == null) {
@@ -147,17 +141,16 @@ public class ConfigurationFactory {
 						"The parser implementation fully qualified class name. " +
 						"ANTLR is used by default.")
 				.create(OPTION_PARSER);
-		Option visitorImpl = OptionBuilder
-		.withArgName(OPTION_VISITOR)
-		.hasArg()
+		Option printTree = OptionBuilder
+		.withArgName(OPTION_PRINTTREE)
 		.withDescription(
 				"The visitor implementation class fully qualified class name. " +
 				"PrettyPrintVisitor is used by default.")
-		.create(OPTION_VISITOR);		
+		.create(OPTION_PRINTTREE);		
 		// Create an options object to add 0 or more options to.
 		Options options = new Options();
 		options.addOption(parserImpl);
-		options.addOption(visitorImpl);
+		options.addOption(printTree);
 		options.addOption(sourceFile);
 		return options;
 	}

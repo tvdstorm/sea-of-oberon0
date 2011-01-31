@@ -3,7 +3,7 @@
  */
 package com.arievanderveek.soo.ast.variables;
 
-import java.util.Map;
+import java.util.List;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
@@ -19,7 +19,7 @@ public class CallByRefParameterNode extends AbstractParameterNode {
 	/**
 	 * @param formalParameter
 	 */
-	public CallByRefParameterNode(Map<String,ASTNode> formalParameter) {
+	public CallByRefParameterNode(List<ASTNode> formalParameter) {
 		super(formalParameter);
 	}
 
@@ -28,8 +28,7 @@ public class CallByRefParameterNode extends AbstractParameterNode {
 	 */
 	@Override
 	public Integer interpret(Scope scope) throws SeaOfOberonException {
-		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 
 	/* (non-Javadoc)

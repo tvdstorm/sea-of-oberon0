@@ -8,7 +8,6 @@ import java.util.List;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
-import com.arievanderveek.soo.visitors.ASTVisitor;
 
 /**
  * @author arieveek

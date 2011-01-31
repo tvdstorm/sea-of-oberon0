@@ -50,12 +50,14 @@ public class MemoryMap {
 		return address;
 	}
 	
-	public MemoryAddress copyAddressAndValue(MemoryAddress oldAddress) throws SeaOfOberonException{
+	public MemoryAddress copyValueToNewAdress(MemoryAddress oldAddress) throws SeaOfOberonException{
 		assert oldAddress != null;
 		Integer value = getValue(oldAddress);
 		MemoryAddress newAdress = addValue(value);
 		return newAdress;
 	}
+	
+
 	
 	private MemoryAddress generateMemoryAdress() throws SeaOfOberonException{
 		Random generator = new Random();

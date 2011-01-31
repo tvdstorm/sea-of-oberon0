@@ -90,8 +90,8 @@ public class MemoryMapTest {
 	
 	public void testCopyAddressAndValue() {
 		try {
-		copyOfThree  = memory.copyAddressAndValue(memoryThree);
-		copyOfFour  = memory.copyAddressAndValue(memoryFour);
+		copyOfThree  = memory.copyValueToNewAdress(memoryThree);
+		copyOfFour  = memory.copyValueToNewAdress(memoryFour);
 		assertEquals("Comparing three and its copy" ,memory.getValue(memoryThree).intValue(), memory.getValue(copyOfThree).intValue());
 		assertEquals("Comparing four and its copy"  ,memory.getValue(memoryFour).intValue(), memory.getValue(copyOfFour).intValue());
 		} catch(Exception e) {

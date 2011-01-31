@@ -13,8 +13,9 @@ package com.arievanderveek.soo.util;
 public class SeaOfOberonConfiguration {
 	
 	
-	
+	// TODO: Visitor is obsolete, but kept for future usage?!? 
 	private String parserImplClass, visitorImplClass, sourceCodeFileName; 
+	private boolean printTree = false;
 
 	/**
 	 * Setter for Oberon Parser Implementation class. Default value is: 
@@ -69,5 +70,19 @@ public class SeaOfOberonConfiguration {
 	 */
 	public void setVisitorImplClass(String visitorImplClass) {
 		this.visitorImplClass = visitorImplClass;
+	}
+
+	/**
+	 * @return the printtree
+	 */
+	public boolean printTree() {
+		return printTree;
+	}
+
+	/**
+	 * @param printtree the printtree to set
+	 */
+	public void setPrintTree(boolean printTree) {
+		this.printTree = printTree;
 	}
 }

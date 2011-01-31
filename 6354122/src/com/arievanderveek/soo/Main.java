@@ -15,8 +15,12 @@ import com.arievanderveek.soo.util.SeaOfOberonConfiguration;
 public class Main {
 	
 	// TODO: Implement logging everywhere
-	// TODO: Write unit tests	
+	// TODO: Scope class is to fat, so refactor it!!
+	// TODO: Write ALOT OF unit tests, with refactoring of scope in mind.	
 	// TODO: Write javadoc for every class
+	// TODO: Migrate some lists to a Queue/LinkedList interface so FIFO is guaranteed.
+	// TODO: Check all classes for variable (final) consistency
+	// TODO: Implement record types
 	
 	private final static Logger LOGGER = Logger
 	.getLogger(Main.class.getName());

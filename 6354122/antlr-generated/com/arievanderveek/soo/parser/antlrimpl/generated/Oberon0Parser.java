@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g 2011-01-30 17:12:22
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g 2011-01-31 02:14:23
 
   package com.arievanderveek.soo.parser.antlrimpl.generated;
   import com.arievanderveek.soo.ast.*;
@@ -2344,18 +2344,18 @@ public class Oberon0Parser extends Parser {
     // $ANTLR end "arrayType"
 
     protected static class fieldList_scope {
-        Map<String,ASTNode> fields;
+        List<ASTNode> fields;
     }
     protected Stack fieldList_stack = new Stack();
 
     public static class fieldList_return extends ParserRuleReturnScope {
-        public Map<String,ASTNode> return_fieldlist;
+        public List<ASTNode> return_fieldlist;
         CommonTree tree;
         public Object getTree() { return tree; }
     };
 
     // $ANTLR start "fieldList"
-    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:285:1: fieldList returns [Map<String,ASTNode> return_fieldlist] : ( identList ':' type )? ;
+    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:285:1: fieldList returns [List<ASTNode> return_fieldlist] : ( identList ':' type )? ;
     public final Oberon0Parser.fieldList_return fieldList() throws RecognitionException {
         fieldList_stack.push(new fieldList_scope());
         Oberon0Parser.fieldList_return retval = new Oberon0Parser.fieldList_return();
@@ -2372,7 +2372,7 @@ public class Oberon0Parser extends Parser {
         CommonTree char_literal61_tree=null;
 
 
-        	((fieldList_scope)fieldList_stack.peek()).fields = new Hashtable();
+        	((fieldList_scope)fieldList_stack.peek()).fields = new LinkedList();
 
         try {
             // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:292:2: ( ( identList ':' type )? )
@@ -2416,7 +2416,7 @@ public class Oberon0Parser extends Parser {
 
             			for (Object token : (identList60!=null?identList60.idents:null))
             			{
-            				((fieldList_scope)fieldList_stack.peek()).fields.put( ((CommonToken) token).getText(), (type62!=null?type62.node:null));
+            				((fieldList_scope)fieldList_stack.peek()).fields.add(new MethodCallParamNode( ((CommonToken) token).getText(), (type62!=null?type62.node:null)));
             			}
             			retval.return_fieldlist = ((fieldList_scope)fieldList_stack.peek()).fields; 
             	
@@ -2477,7 +2477,7 @@ public class Oberon0Parser extends Parser {
             state._fsp--;
 
             adaptor.addChild(root_0, fieldList64.getTree());
-             ((recordType_scope)recordType_stack.peek()).fields.putAll((fieldList64!=null?fieldList64.return_fieldlist:null));
+             ((recordType_scope)recordType_stack.peek()).fields.addAll((fieldList64!=null?fieldList64.return_fieldlist:null));
 
             }
 
@@ -2500,7 +2500,7 @@ public class Oberon0Parser extends Parser {
     // $ANTLR end "recordTypeFollowUp"
 
     protected static class recordType_scope {
-        Map<String,ASTNode> fields;
+        List<ASTNode> fields;
     }
     protected Stack recordType_stack = new Stack();
 
@@ -2530,7 +2530,7 @@ public class Oberon0Parser extends Parser {
         CommonTree string_literal68_tree=null;
 
 
-        	((recordType_scope)recordType_stack.peek()).fields = new Hashtable();	
+        	((recordType_scope)recordType_stack.peek()).fields = new LinkedList();	
 
         try {
             // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:314:2: ( 'RECORD' fieldList ( recordTypeFollowUp )* 'END' )
@@ -2548,8 +2548,10 @@ public class Oberon0Parser extends Parser {
             state._fsp--;
 
             adaptor.addChild(root_0, fieldList66.getTree());
-             ((recordType_scope)recordType_stack.peek()).fields.putAll((fieldList66!=null?fieldList66.return_fieldlist:null));
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:317:2: ( recordTypeFollowUp )*
+
+            	// ((recordType_scope)recordType_stack.peek()).fields.putAll((fieldList66!=null?fieldList66.return_fieldlist:null));
+            	
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:320:2: ( recordTypeFollowUp )*
             loop19:
             do {
                 int alt19=2;
@@ -2562,9 +2564,9 @@ public class Oberon0Parser extends Parser {
 
                 switch (alt19) {
             	case 1 :
-            	    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:317:2: recordTypeFollowUp
+            	    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:320:2: recordTypeFollowUp
             	    {
-            	    pushFollow(FOLLOW_recordTypeFollowUp_in_recordType851);
+            	    pushFollow(FOLLOW_recordTypeFollowUp_in_recordType853);
             	    recordTypeFollowUp67=recordTypeFollowUp();
 
             	    state._fsp--;
@@ -2579,7 +2581,7 @@ public class Oberon0Parser extends Parser {
                 }
             } while (true);
 
-            string_literal68=(Token)match(input,35,FOLLOW_35_in_recordType855); 
+            string_literal68=(Token)match(input,35,FOLLOW_35_in_recordType857); 
             string_literal68_tree = (CommonTree)adaptor.create(string_literal68);
             adaptor.addChild(root_0, string_literal68_tree);
 
@@ -2613,7 +2615,7 @@ public class Oberon0Parser extends Parser {
     };
 
     // $ANTLR start "type"
-    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:322:1: type returns [ASTNode node] : ( IDENT | arrayType | recordType );
+    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:325:1: type returns [ASTNode node] : ( IDENT | arrayType | recordType );
     public final Oberon0Parser.type_return type() throws RecognitionException {
         Oberon0Parser.type_return retval = new Oberon0Parser.type_return();
         retval.start = input.LT(1);
@@ -2629,7 +2631,7 @@ public class Oberon0Parser extends Parser {
         CommonTree IDENT69_tree=null;
 
         try {
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:323:2: ( IDENT | arrayType | recordType )
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:326:2: ( IDENT | arrayType | recordType )
             int alt20=3;
             switch ( input.LA(1) ) {
             case IDENT:
@@ -2656,11 +2658,11 @@ public class Oberon0Parser extends Parser {
 
             switch (alt20) {
                 case 1 :
-                    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:323:4: IDENT
+                    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:326:4: IDENT
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    IDENT69=(Token)match(input,IDENT,FOLLOW_IDENT_in_type872); 
+                    IDENT69=(Token)match(input,IDENT,FOLLOW_IDENT_in_type874); 
                     IDENT69_tree = (CommonTree)adaptor.create(IDENT69);
                     adaptor.addChild(root_0, IDENT69_tree);
 
@@ -2669,11 +2671,11 @@ public class Oberon0Parser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:324:4: arrayType
+                    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:327:4: arrayType
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    pushFollow(FOLLOW_arrayType_in_type880);
+                    pushFollow(FOLLOW_arrayType_in_type882);
                     arrayType70=arrayType();
 
                     state._fsp--;
@@ -2684,11 +2686,11 @@ public class Oberon0Parser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:325:4: recordType
+                    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:328:4: recordType
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    pushFollow(FOLLOW_recordType_in_type888);
+                    pushFollow(FOLLOW_recordType_in_type890);
                     recordType71=recordType();
 
                     state._fsp--;
@@ -2725,7 +2727,7 @@ public class Oberon0Parser extends Parser {
     };
 
     // $ANTLR start "fpSection"
-    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:328:1: fpSection returns [ASTNode node] : (var= 'VAR' )? fieldList ;
+    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:331:1: fpSection returns [ASTNode node] : (var= 'VAR' )? fieldList ;
     public final Oberon0Parser.fpSection_return fpSection() throws RecognitionException {
         Oberon0Parser.fpSection_return retval = new Oberon0Parser.fpSection_return();
         retval.start = input.LT(1);
@@ -2739,12 +2741,12 @@ public class Oberon0Parser extends Parser {
         CommonTree var_tree=null;
 
         try {
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:329:2: ( (var= 'VAR' )? fieldList )
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:329:4: (var= 'VAR' )? fieldList
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:332:2: ( (var= 'VAR' )? fieldList )
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:332:4: (var= 'VAR' )? fieldList
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:329:4: (var= 'VAR' )?
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:332:4: (var= 'VAR' )?
             int alt21=2;
             int LA21_0 = input.LA(1);
 
@@ -2753,9 +2755,9 @@ public class Oberon0Parser extends Parser {
             }
             switch (alt21) {
                 case 1 :
-                    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:329:5: var= 'VAR'
+                    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:332:5: var= 'VAR'
                     {
-                    var=(Token)match(input,43,FOLLOW_43_in_fpSection908); 
+                    var=(Token)match(input,43,FOLLOW_43_in_fpSection910); 
                     var_tree = (CommonTree)adaptor.create(var);
                     adaptor.addChild(root_0, var_tree);
 
@@ -2765,7 +2767,7 @@ public class Oberon0Parser extends Parser {
 
             }
 
-            pushFollow(FOLLOW_fieldList_in_fpSection912);
+            pushFollow(FOLLOW_fieldList_in_fpSection914);
             fieldList72=fieldList();
 
             state._fsp--;
@@ -2805,7 +2807,7 @@ public class Oberon0Parser extends Parser {
     };
 
     // $ANTLR start "formalParametersFollowUp"
-    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:339:1: formalParametersFollowUp : ';' fpSection ;
+    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:342:1: formalParametersFollowUp : ';' fpSection ;
     public final Oberon0Parser.formalParametersFollowUp_return formalParametersFollowUp() throws RecognitionException {
         Oberon0Parser.formalParametersFollowUp_return retval = new Oberon0Parser.formalParametersFollowUp_return();
         retval.start = input.LT(1);
@@ -2819,16 +2821,16 @@ public class Oberon0Parser extends Parser {
         CommonTree char_literal73_tree=null;
 
         try {
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:340:2: ( ';' fpSection )
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:340:4: ';' fpSection
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:343:2: ( ';' fpSection )
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:343:4: ';' fpSection
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            char_literal73=(Token)match(input,38,FOLLOW_38_in_formalParametersFollowUp927); 
+            char_literal73=(Token)match(input,38,FOLLOW_38_in_formalParametersFollowUp929); 
             char_literal73_tree = (CommonTree)adaptor.create(char_literal73);
             adaptor.addChild(root_0, char_literal73_tree);
 
-            pushFollow(FOLLOW_fpSection_in_formalParametersFollowUp929);
+            pushFollow(FOLLOW_fpSection_in_formalParametersFollowUp931);
             fpSection74=fpSection();
 
             state._fsp--;
@@ -2868,7 +2870,7 @@ public class Oberon0Parser extends Parser {
     };
 
     // $ANTLR start "formalParameters"
-    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:344:1: formalParameters returns [List<ASTNode> formalParams] : '(' fpSection ( formalParametersFollowUp )* ')' ;
+    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:347:1: formalParameters returns [List<ASTNode> formalParams] : '(' fpSection ( formalParametersFollowUp )* ')' ;
     public final Oberon0Parser.formalParameters_return formalParameters() throws RecognitionException {
         formalParameters_stack.push(new formalParameters_scope());
         Oberon0Parser.formalParameters_return retval = new Oberon0Parser.formalParameters_return();
@@ -2890,23 +2892,23 @@ public class Oberon0Parser extends Parser {
         	((formalParameters_scope)formalParameters_stack.peek()).fields = new LinkedList();	
 
         try {
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:351:2: ( '(' fpSection ( formalParametersFollowUp )* ')' )
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:352:2: '(' fpSection ( formalParametersFollowUp )* ')'
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:354:2: ( '(' fpSection ( formalParametersFollowUp )* ')' )
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:355:2: '(' fpSection ( formalParametersFollowUp )* ')'
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            char_literal75=(Token)match(input,13,FOLLOW_13_in_formalParameters954); 
+            char_literal75=(Token)match(input,13,FOLLOW_13_in_formalParameters956); 
             char_literal75_tree = (CommonTree)adaptor.create(char_literal75);
             adaptor.addChild(root_0, char_literal75_tree);
 
-            pushFollow(FOLLOW_fpSection_in_formalParameters958);
+            pushFollow(FOLLOW_fpSection_in_formalParameters960);
             fpSection76=fpSection();
 
             state._fsp--;
 
             adaptor.addChild(root_0, fpSection76.getTree());
              ((formalParameters_scope)formalParameters_stack.peek()).fields.add((fpSection76!=null?fpSection76.node:null));
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:354:2: ( formalParametersFollowUp )*
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:357:2: ( formalParametersFollowUp )*
             loop22:
             do {
                 int alt22=2;
@@ -2919,9 +2921,9 @@ public class Oberon0Parser extends Parser {
 
                 switch (alt22) {
             	case 1 :
-            	    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:354:2: formalParametersFollowUp
+            	    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:357:2: formalParametersFollowUp
             	    {
-            	    pushFollow(FOLLOW_formalParametersFollowUp_in_formalParameters963);
+            	    pushFollow(FOLLOW_formalParametersFollowUp_in_formalParameters965);
             	    formalParametersFollowUp77=formalParametersFollowUp();
 
             	    state._fsp--;
@@ -2936,7 +2938,7 @@ public class Oberon0Parser extends Parser {
                 }
             } while (true);
 
-            char_literal78=(Token)match(input,14,FOLLOW_14_in_formalParameters968); 
+            char_literal78=(Token)match(input,14,FOLLOW_14_in_formalParameters970); 
             char_literal78_tree = (CommonTree)adaptor.create(char_literal78);
             adaptor.addChild(root_0, char_literal78_tree);
 
@@ -2974,7 +2976,7 @@ public class Oberon0Parser extends Parser {
     };
 
     // $ANTLR start "procedureBody"
-    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:359:1: procedureBody returns [Map<String, ASTNode> return_constants, Map<String, ASTNode> return_types,\n\t\t\t\t\t\t\t\t\t\t\tMap<String, ASTNode> return_variables, Map<String, ASTNode> return_procs,\n\t\t\t\t\t\t\t\t\t\t\tList<ASTNode> return_stats] : declarations ( 'BEGIN' statementSequence )? 'END' ;
+    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:362:1: procedureBody returns [Map<String, ASTNode> return_constants, Map<String, ASTNode> return_types,\n\t\t\t\t\t\t\t\t\t\t\tMap<String, ASTNode> return_variables, Map<String, ASTNode> return_procs,\n\t\t\t\t\t\t\t\t\t\t\tList<ASTNode> return_stats] : declarations ( 'BEGIN' statementSequence )? 'END' ;
     public final Oberon0Parser.procedureBody_return procedureBody() throws RecognitionException {
         Oberon0Parser.procedureBody_return retval = new Oberon0Parser.procedureBody_return();
         retval.start = input.LT(1);
@@ -2992,18 +2994,18 @@ public class Oberon0Parser extends Parser {
         CommonTree string_literal82_tree=null;
 
         try {
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:362:2: ( declarations ( 'BEGIN' statementSequence )? 'END' )
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:362:4: declarations ( 'BEGIN' statementSequence )? 'END'
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:365:2: ( declarations ( 'BEGIN' statementSequence )? 'END' )
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:365:4: declarations ( 'BEGIN' statementSequence )? 'END'
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            pushFollow(FOLLOW_declarations_in_procedureBody986);
+            pushFollow(FOLLOW_declarations_in_procedureBody988);
             declarations79=declarations();
 
             state._fsp--;
 
             adaptor.addChild(root_0, declarations79.getTree());
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:362:17: ( 'BEGIN' statementSequence )?
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:365:17: ( 'BEGIN' statementSequence )?
             int alt23=2;
             int LA23_0 = input.LA(1);
 
@@ -3012,13 +3014,13 @@ public class Oberon0Parser extends Parser {
             }
             switch (alt23) {
                 case 1 :
-                    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:362:18: 'BEGIN' statementSequence
+                    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:365:18: 'BEGIN' statementSequence
                     {
-                    string_literal80=(Token)match(input,44,FOLLOW_44_in_procedureBody989); 
+                    string_literal80=(Token)match(input,44,FOLLOW_44_in_procedureBody991); 
                     string_literal80_tree = (CommonTree)adaptor.create(string_literal80);
                     adaptor.addChild(root_0, string_literal80_tree);
 
-                    pushFollow(FOLLOW_statementSequence_in_procedureBody991);
+                    pushFollow(FOLLOW_statementSequence_in_procedureBody993);
                     statementSequence81=statementSequence();
 
                     state._fsp--;
@@ -3030,7 +3032,7 @@ public class Oberon0Parser extends Parser {
 
             }
 
-            string_literal82=(Token)match(input,35,FOLLOW_35_in_procedureBody995); 
+            string_literal82=(Token)match(input,35,FOLLOW_35_in_procedureBody997); 
             string_literal82_tree = (CommonTree)adaptor.create(string_literal82);
             adaptor.addChild(root_0, string_literal82_tree);
 
@@ -3076,7 +3078,7 @@ public class Oberon0Parser extends Parser {
     };
 
     // $ANTLR start "procedureDeclaration"
-    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:380:1: procedureDeclaration : 'PROCEDURE' start= IDENT ( formalParameters )? ';' procedureBody end= IDENT ;
+    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:383:1: procedureDeclaration : 'PROCEDURE' start= IDENT ( formalParameters )? ';' procedureBody end= IDENT ;
     public final Oberon0Parser.procedureDeclaration_return procedureDeclaration() throws RecognitionException {
         Oberon0Parser.procedureDeclaration_return retval = new Oberon0Parser.procedureDeclaration_return();
         retval.start = input.LT(1);
@@ -3098,20 +3100,20 @@ public class Oberon0Parser extends Parser {
         CommonTree char_literal85_tree=null;
 
         try {
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:381:2: ( 'PROCEDURE' start= IDENT ( formalParameters )? ';' procedureBody end= IDENT )
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:381:4: 'PROCEDURE' start= IDENT ( formalParameters )? ';' procedureBody end= IDENT
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:384:2: ( 'PROCEDURE' start= IDENT ( formalParameters )? ';' procedureBody end= IDENT )
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:384:4: 'PROCEDURE' start= IDENT ( formalParameters )? ';' procedureBody end= IDENT
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            string_literal83=(Token)match(input,45,FOLLOW_45_in_procedureDeclaration1010); 
+            string_literal83=(Token)match(input,45,FOLLOW_45_in_procedureDeclaration1012); 
             string_literal83_tree = (CommonTree)adaptor.create(string_literal83);
             adaptor.addChild(root_0, string_literal83_tree);
 
-            start=(Token)match(input,IDENT,FOLLOW_IDENT_in_procedureDeclaration1014); 
+            start=(Token)match(input,IDENT,FOLLOW_IDENT_in_procedureDeclaration1016); 
             start_tree = (CommonTree)adaptor.create(start);
             adaptor.addChild(root_0, start_tree);
 
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:381:28: ( formalParameters )?
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:384:28: ( formalParameters )?
             int alt24=2;
             int LA24_0 = input.LA(1);
 
@@ -3120,9 +3122,9 @@ public class Oberon0Parser extends Parser {
             }
             switch (alt24) {
                 case 1 :
-                    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:381:28: formalParameters
+                    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:384:28: formalParameters
                     {
-                    pushFollow(FOLLOW_formalParameters_in_procedureDeclaration1016);
+                    pushFollow(FOLLOW_formalParameters_in_procedureDeclaration1018);
                     formalParameters84=formalParameters();
 
                     state._fsp--;
@@ -3134,17 +3136,17 @@ public class Oberon0Parser extends Parser {
 
             }
 
-            char_literal85=(Token)match(input,38,FOLLOW_38_in_procedureDeclaration1019); 
+            char_literal85=(Token)match(input,38,FOLLOW_38_in_procedureDeclaration1021); 
             char_literal85_tree = (CommonTree)adaptor.create(char_literal85);
             adaptor.addChild(root_0, char_literal85_tree);
 
-            pushFollow(FOLLOW_procedureBody_in_procedureDeclaration1021);
+            pushFollow(FOLLOW_procedureBody_in_procedureDeclaration1023);
             procedureBody86=procedureBody();
 
             state._fsp--;
 
             adaptor.addChild(root_0, procedureBody86.getTree());
-            end=(Token)match(input,IDENT,FOLLOW_IDENT_in_procedureDeclaration1025); 
+            end=(Token)match(input,IDENT,FOLLOW_IDENT_in_procedureDeclaration1027); 
             end_tree = (CommonTree)adaptor.create(end);
             adaptor.addChild(root_0, end_tree);
 
@@ -3188,7 +3190,7 @@ public class Oberon0Parser extends Parser {
     };
 
     // $ANTLR start "constDecl"
-    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:397:1: constDecl : ( IDENT '=' expression ';' ) ;
+    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:400:1: constDecl : ( IDENT '=' expression ';' ) ;
     public final Oberon0Parser.constDecl_return constDecl() throws RecognitionException {
         Oberon0Parser.constDecl_return retval = new Oberon0Parser.constDecl_return();
         retval.start = input.LT(1);
@@ -3206,29 +3208,29 @@ public class Oberon0Parser extends Parser {
         CommonTree char_literal90_tree=null;
 
         try {
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:398:2: ( ( IDENT '=' expression ';' ) )
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:398:4: ( IDENT '=' expression ';' )
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:401:2: ( ( IDENT '=' expression ';' ) )
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:401:4: ( IDENT '=' expression ';' )
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:398:4: ( IDENT '=' expression ';' )
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:398:5: IDENT '=' expression ';'
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:401:4: ( IDENT '=' expression ';' )
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:401:5: IDENT '=' expression ';'
             {
-            IDENT87=(Token)match(input,IDENT,FOLLOW_IDENT_in_constDecl1040); 
+            IDENT87=(Token)match(input,IDENT,FOLLOW_IDENT_in_constDecl1042); 
             IDENT87_tree = (CommonTree)adaptor.create(IDENT87);
             adaptor.addChild(root_0, IDENT87_tree);
 
-            char_literal88=(Token)match(input,23,FOLLOW_23_in_constDecl1042); 
+            char_literal88=(Token)match(input,23,FOLLOW_23_in_constDecl1044); 
             char_literal88_tree = (CommonTree)adaptor.create(char_literal88);
             adaptor.addChild(root_0, char_literal88_tree);
 
-            pushFollow(FOLLOW_expression_in_constDecl1044);
+            pushFollow(FOLLOW_expression_in_constDecl1046);
             expression89=expression();
 
             state._fsp--;
 
             adaptor.addChild(root_0, expression89.getTree());
-            char_literal90=(Token)match(input,38,FOLLOW_38_in_constDecl1046); 
+            char_literal90=(Token)match(input,38,FOLLOW_38_in_constDecl1048); 
             char_literal90_tree = (CommonTree)adaptor.create(char_literal90);
             adaptor.addChild(root_0, char_literal90_tree);
 
@@ -3265,7 +3267,7 @@ public class Oberon0Parser extends Parser {
     };
 
     // $ANTLR start "typeDecl"
-    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:404:1: typeDecl : ( IDENT '=' type ';' ) ;
+    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:407:1: typeDecl : ( IDENT '=' type ';' ) ;
     public final Oberon0Parser.typeDecl_return typeDecl() throws RecognitionException {
         Oberon0Parser.typeDecl_return retval = new Oberon0Parser.typeDecl_return();
         retval.start = input.LT(1);
@@ -3283,29 +3285,29 @@ public class Oberon0Parser extends Parser {
         CommonTree char_literal94_tree=null;
 
         try {
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:405:2: ( ( IDENT '=' type ';' ) )
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:405:4: ( IDENT '=' type ';' )
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:408:2: ( ( IDENT '=' type ';' ) )
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:408:4: ( IDENT '=' type ';' )
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:405:4: ( IDENT '=' type ';' )
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:405:6: IDENT '=' type ';'
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:408:4: ( IDENT '=' type ';' )
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:408:6: IDENT '=' type ';'
             {
-            IDENT91=(Token)match(input,IDENT,FOLLOW_IDENT_in_typeDecl1065); 
+            IDENT91=(Token)match(input,IDENT,FOLLOW_IDENT_in_typeDecl1067); 
             IDENT91_tree = (CommonTree)adaptor.create(IDENT91);
             adaptor.addChild(root_0, IDENT91_tree);
 
-            char_literal92=(Token)match(input,23,FOLLOW_23_in_typeDecl1067); 
+            char_literal92=(Token)match(input,23,FOLLOW_23_in_typeDecl1069); 
             char_literal92_tree = (CommonTree)adaptor.create(char_literal92);
             adaptor.addChild(root_0, char_literal92_tree);
 
-            pushFollow(FOLLOW_type_in_typeDecl1069);
+            pushFollow(FOLLOW_type_in_typeDecl1071);
             type93=type();
 
             state._fsp--;
 
             adaptor.addChild(root_0, type93.getTree());
-            char_literal94=(Token)match(input,38,FOLLOW_38_in_typeDecl1071); 
+            char_literal94=(Token)match(input,38,FOLLOW_38_in_typeDecl1073); 
             char_literal94_tree = (CommonTree)adaptor.create(char_literal94);
             adaptor.addChild(root_0, char_literal94_tree);
 
@@ -3342,7 +3344,7 @@ public class Oberon0Parser extends Parser {
     };
 
     // $ANTLR start "varDecl"
-    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:411:1: varDecl : ( identList ':' type ';' ) ;
+    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:414:1: varDecl : ( identList ':' type ';' ) ;
     public final Oberon0Parser.varDecl_return varDecl() throws RecognitionException {
         Oberon0Parser.varDecl_return retval = new Oberon0Parser.varDecl_return();
         retval.start = input.LT(1);
@@ -3360,31 +3362,31 @@ public class Oberon0Parser extends Parser {
         CommonTree char_literal98_tree=null;
 
         try {
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:412:2: ( ( identList ':' type ';' ) )
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:412:4: ( identList ':' type ';' )
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:415:2: ( ( identList ':' type ';' ) )
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:415:4: ( identList ':' type ';' )
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:412:4: ( identList ':' type ';' )
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:412:5: identList ':' type ';'
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:415:4: ( identList ':' type ';' )
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:415:5: identList ':' type ';'
             {
-            pushFollow(FOLLOW_identList_in_varDecl1089);
+            pushFollow(FOLLOW_identList_in_varDecl1091);
             identList95=identList();
 
             state._fsp--;
 
             adaptor.addChild(root_0, identList95.getTree());
-            char_literal96=(Token)match(input,41,FOLLOW_41_in_varDecl1091); 
+            char_literal96=(Token)match(input,41,FOLLOW_41_in_varDecl1093); 
             char_literal96_tree = (CommonTree)adaptor.create(char_literal96);
             adaptor.addChild(root_0, char_literal96_tree);
 
-            pushFollow(FOLLOW_type_in_varDecl1093);
+            pushFollow(FOLLOW_type_in_varDecl1095);
             type97=type();
 
             state._fsp--;
 
             adaptor.addChild(root_0, type97.getTree());
-            char_literal98=(Token)match(input,38,FOLLOW_38_in_varDecl1095); 
+            char_literal98=(Token)match(input,38,FOLLOW_38_in_varDecl1097); 
             char_literal98_tree = (CommonTree)adaptor.create(char_literal98);
             adaptor.addChild(root_0, char_literal98_tree);
 
@@ -3423,7 +3425,7 @@ public class Oberon0Parser extends Parser {
     };
 
     // $ANTLR start "constsDecl"
-    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:420:1: constsDecl : 'CONST' ( constDecl )* ;
+    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:423:1: constsDecl : 'CONST' ( constDecl )* ;
     public final Oberon0Parser.constsDecl_return constsDecl() throws RecognitionException {
         Oberon0Parser.constsDecl_return retval = new Oberon0Parser.constsDecl_return();
         retval.start = input.LT(1);
@@ -3437,16 +3439,16 @@ public class Oberon0Parser extends Parser {
         CommonTree string_literal99_tree=null;
 
         try {
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:421:2: ( 'CONST' ( constDecl )* )
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:421:4: 'CONST' ( constDecl )*
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:424:2: ( 'CONST' ( constDecl )* )
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:424:4: 'CONST' ( constDecl )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            string_literal99=(Token)match(input,46,FOLLOW_46_in_constsDecl1112); 
+            string_literal99=(Token)match(input,46,FOLLOW_46_in_constsDecl1114); 
             string_literal99_tree = (CommonTree)adaptor.create(string_literal99);
             adaptor.addChild(root_0, string_literal99_tree);
 
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:421:12: ( constDecl )*
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:424:12: ( constDecl )*
             loop25:
             do {
                 int alt25=2;
@@ -3459,9 +3461,9 @@ public class Oberon0Parser extends Parser {
 
                 switch (alt25) {
             	case 1 :
-            	    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:421:12: constDecl
+            	    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:424:12: constDecl
             	    {
-            	    pushFollow(FOLLOW_constDecl_in_constsDecl1114);
+            	    pushFollow(FOLLOW_constDecl_in_constsDecl1116);
             	    constDecl100=constDecl();
 
             	    state._fsp--;
@@ -3503,7 +3505,7 @@ public class Oberon0Parser extends Parser {
     };
 
     // $ANTLR start "typesDecl"
-    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:424:1: typesDecl : 'TYPE' ( typeDecl )* ;
+    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:427:1: typesDecl : 'TYPE' ( typeDecl )* ;
     public final Oberon0Parser.typesDecl_return typesDecl() throws RecognitionException {
         Oberon0Parser.typesDecl_return retval = new Oberon0Parser.typesDecl_return();
         retval.start = input.LT(1);
@@ -3517,16 +3519,16 @@ public class Oberon0Parser extends Parser {
         CommonTree string_literal101_tree=null;
 
         try {
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:425:2: ( 'TYPE' ( typeDecl )* )
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:425:4: 'TYPE' ( typeDecl )*
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:428:2: ( 'TYPE' ( typeDecl )* )
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:428:4: 'TYPE' ( typeDecl )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            string_literal101=(Token)match(input,47,FOLLOW_47_in_typesDecl1128); 
+            string_literal101=(Token)match(input,47,FOLLOW_47_in_typesDecl1130); 
             string_literal101_tree = (CommonTree)adaptor.create(string_literal101);
             adaptor.addChild(root_0, string_literal101_tree);
 
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:425:11: ( typeDecl )*
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:428:11: ( typeDecl )*
             loop26:
             do {
                 int alt26=2;
@@ -3539,9 +3541,9 @@ public class Oberon0Parser extends Parser {
 
                 switch (alt26) {
             	case 1 :
-            	    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:425:11: typeDecl
+            	    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:428:11: typeDecl
             	    {
-            	    pushFollow(FOLLOW_typeDecl_in_typesDecl1130);
+            	    pushFollow(FOLLOW_typeDecl_in_typesDecl1132);
             	    typeDecl102=typeDecl();
 
             	    state._fsp--;
@@ -3583,7 +3585,7 @@ public class Oberon0Parser extends Parser {
     };
 
     // $ANTLR start "varsDecl"
-    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:427:1: varsDecl : 'VAR' ( varDecl )* ;
+    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:430:1: varsDecl : 'VAR' ( varDecl )* ;
     public final Oberon0Parser.varsDecl_return varsDecl() throws RecognitionException {
         Oberon0Parser.varsDecl_return retval = new Oberon0Parser.varsDecl_return();
         retval.start = input.LT(1);
@@ -3597,16 +3599,16 @@ public class Oberon0Parser extends Parser {
         CommonTree string_literal103_tree=null;
 
         try {
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:428:2: ( 'VAR' ( varDecl )* )
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:428:4: 'VAR' ( varDecl )*
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:431:2: ( 'VAR' ( varDecl )* )
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:431:4: 'VAR' ( varDecl )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            string_literal103=(Token)match(input,43,FOLLOW_43_in_varsDecl1141); 
+            string_literal103=(Token)match(input,43,FOLLOW_43_in_varsDecl1143); 
             string_literal103_tree = (CommonTree)adaptor.create(string_literal103);
             adaptor.addChild(root_0, string_literal103_tree);
 
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:428:10: ( varDecl )*
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:431:10: ( varDecl )*
             loop27:
             do {
                 int alt27=2;
@@ -3619,9 +3621,9 @@ public class Oberon0Parser extends Parser {
 
                 switch (alt27) {
             	case 1 :
-            	    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:428:10: varDecl
+            	    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:431:10: varDecl
             	    {
-            	    pushFollow(FOLLOW_varDecl_in_varsDecl1143);
+            	    pushFollow(FOLLOW_varDecl_in_varsDecl1145);
             	    varDecl104=varDecl();
 
             	    state._fsp--;
@@ -3675,7 +3677,7 @@ public class Oberon0Parser extends Parser {
     };
 
     // $ANTLR start "declarations"
-    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:431:1: declarations returns [Map<String, ASTNode> return_constants, Map<String, ASTNode> return_types, \n\t\t\t\t\t\t\t\t\t\t Map<String, ASTNode> return_variables, Map<String, ASTNode> return_procs] : ( constsDecl )? ( typesDecl )? ( varsDecl )? ( procedureDeclaration ';' )* ;
+    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:434:1: declarations returns [Map<String, ASTNode> return_constants, Map<String, ASTNode> return_types, \n\t\t\t\t\t\t\t\t\t\t Map<String, ASTNode> return_variables, Map<String, ASTNode> return_procs] : ( constsDecl )? ( typesDecl )? ( varsDecl )? ( procedureDeclaration ';' )* ;
     public final Oberon0Parser.declarations_return declarations() throws RecognitionException {
         declarations_stack.push(new declarations_scope());
         Oberon0Parser.declarations_return retval = new Oberon0Parser.declarations_return();
@@ -3702,12 +3704,12 @@ public class Oberon0Parser extends Parser {
         					((declarations_scope)declarations_stack.peek()).procedures = new Hashtable();
 
         try {
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:446:2: ( ( constsDecl )? ( typesDecl )? ( varsDecl )? ( procedureDeclaration ';' )* )
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:446:4: ( constsDecl )? ( typesDecl )? ( varsDecl )? ( procedureDeclaration ';' )*
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:449:2: ( ( constsDecl )? ( typesDecl )? ( varsDecl )? ( procedureDeclaration ';' )* )
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:449:4: ( constsDecl )? ( typesDecl )? ( varsDecl )? ( procedureDeclaration ';' )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:446:4: ( constsDecl )?
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:449:4: ( constsDecl )?
             int alt28=2;
             int LA28_0 = input.LA(1);
 
@@ -3716,9 +3718,9 @@ public class Oberon0Parser extends Parser {
             }
             switch (alt28) {
                 case 1 :
-                    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:446:4: constsDecl
+                    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:449:4: constsDecl
                     {
-                    pushFollow(FOLLOW_constsDecl_in_declarations1167);
+                    pushFollow(FOLLOW_constsDecl_in_declarations1169);
                     constsDecl105=constsDecl();
 
                     state._fsp--;
@@ -3730,7 +3732,7 @@ public class Oberon0Parser extends Parser {
 
             }
 
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:446:16: ( typesDecl )?
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:449:16: ( typesDecl )?
             int alt29=2;
             int LA29_0 = input.LA(1);
 
@@ -3739,9 +3741,9 @@ public class Oberon0Parser extends Parser {
             }
             switch (alt29) {
                 case 1 :
-                    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:446:16: typesDecl
+                    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:449:16: typesDecl
                     {
-                    pushFollow(FOLLOW_typesDecl_in_declarations1170);
+                    pushFollow(FOLLOW_typesDecl_in_declarations1172);
                     typesDecl106=typesDecl();
 
                     state._fsp--;
@@ -3753,7 +3755,7 @@ public class Oberon0Parser extends Parser {
 
             }
 
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:446:27: ( varsDecl )?
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:449:27: ( varsDecl )?
             int alt30=2;
             int LA30_0 = input.LA(1);
 
@@ -3762,9 +3764,9 @@ public class Oberon0Parser extends Parser {
             }
             switch (alt30) {
                 case 1 :
-                    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:446:27: varsDecl
+                    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:449:27: varsDecl
                     {
-                    pushFollow(FOLLOW_varsDecl_in_declarations1173);
+                    pushFollow(FOLLOW_varsDecl_in_declarations1175);
                     varsDecl107=varsDecl();
 
                     state._fsp--;
@@ -3776,7 +3778,7 @@ public class Oberon0Parser extends Parser {
 
             }
 
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:446:37: ( procedureDeclaration ';' )*
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:449:37: ( procedureDeclaration ';' )*
             loop31:
             do {
                 int alt31=2;
@@ -3789,15 +3791,15 @@ public class Oberon0Parser extends Parser {
 
                 switch (alt31) {
             	case 1 :
-            	    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:446:38: procedureDeclaration ';'
+            	    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:449:38: procedureDeclaration ';'
             	    {
-            	    pushFollow(FOLLOW_procedureDeclaration_in_declarations1177);
+            	    pushFollow(FOLLOW_procedureDeclaration_in_declarations1179);
             	    procedureDeclaration108=procedureDeclaration();
 
             	    state._fsp--;
 
             	    adaptor.addChild(root_0, procedureDeclaration108.getTree());
-            	    char_literal109=(Token)match(input,38,FOLLOW_38_in_declarations1179); 
+            	    char_literal109=(Token)match(input,38,FOLLOW_38_in_declarations1181); 
             	    char_literal109_tree = (CommonTree)adaptor.create(char_literal109);
             	    adaptor.addChild(root_0, char_literal109_tree);
 
@@ -3852,7 +3854,7 @@ public class Oberon0Parser extends Parser {
     };
 
     // $ANTLR start "module"
-    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:456:1: module returns [ASTNode node] : 'MODULE' start= IDENT ';' declarations ( 'BEGIN' statementSequence )? 'END' end= IDENT '.' ;
+    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:459:1: module returns [ASTNode node] : 'MODULE' start= IDENT ';' declarations ( 'BEGIN' statementSequence )? 'END' end= IDENT '.' ;
     public final Oberon0Parser.module_return module() throws RecognitionException {
         module_stack.push(new module_scope());
         Oberon0Parser.module_return retval = new Oberon0Parser.module_return();
@@ -3881,30 +3883,30 @@ public class Oberon0Parser extends Parser {
         CommonTree char_literal116_tree=null;
 
         try {
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:461:2: ( 'MODULE' start= IDENT ';' declarations ( 'BEGIN' statementSequence )? 'END' end= IDENT '.' )
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:461:4: 'MODULE' start= IDENT ';' declarations ( 'BEGIN' statementSequence )? 'END' end= IDENT '.'
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:464:2: ( 'MODULE' start= IDENT ';' declarations ( 'BEGIN' statementSequence )? 'END' end= IDENT '.' )
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:464:4: 'MODULE' start= IDENT ';' declarations ( 'BEGIN' statementSequence )? 'END' end= IDENT '.'
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            string_literal110=(Token)match(input,48,FOLLOW_48_in_module1203); 
+            string_literal110=(Token)match(input,48,FOLLOW_48_in_module1205); 
             string_literal110_tree = (CommonTree)adaptor.create(string_literal110);
             adaptor.addChild(root_0, string_literal110_tree);
 
-            start=(Token)match(input,IDENT,FOLLOW_IDENT_in_module1207); 
+            start=(Token)match(input,IDENT,FOLLOW_IDENT_in_module1209); 
             start_tree = (CommonTree)adaptor.create(start);
             adaptor.addChild(root_0, start_tree);
 
-            char_literal111=(Token)match(input,38,FOLLOW_38_in_module1209); 
+            char_literal111=(Token)match(input,38,FOLLOW_38_in_module1211); 
             char_literal111_tree = (CommonTree)adaptor.create(char_literal111);
             adaptor.addChild(root_0, char_literal111_tree);
 
-            pushFollow(FOLLOW_declarations_in_module1211);
+            pushFollow(FOLLOW_declarations_in_module1213);
             declarations112=declarations();
 
             state._fsp--;
 
             adaptor.addChild(root_0, declarations112.getTree());
-            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:461:42: ( 'BEGIN' statementSequence )?
+            // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:464:42: ( 'BEGIN' statementSequence )?
             int alt32=2;
             int LA32_0 = input.LA(1);
 
@@ -3913,13 +3915,13 @@ public class Oberon0Parser extends Parser {
             }
             switch (alt32) {
                 case 1 :
-                    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:461:43: 'BEGIN' statementSequence
+                    // /school/construction/labassignment1/6354122/src/com/arievanderveek/soo/parser/antlrimpl/Oberon0.g:464:43: 'BEGIN' statementSequence
                     {
-                    string_literal113=(Token)match(input,44,FOLLOW_44_in_module1214); 
+                    string_literal113=(Token)match(input,44,FOLLOW_44_in_module1216); 
                     string_literal113_tree = (CommonTree)adaptor.create(string_literal113);
                     adaptor.addChild(root_0, string_literal113_tree);
 
-                    pushFollow(FOLLOW_statementSequence_in_module1216);
+                    pushFollow(FOLLOW_statementSequence_in_module1218);
                     statementSequence114=statementSequence();
 
                     state._fsp--;
@@ -3931,15 +3933,15 @@ public class Oberon0Parser extends Parser {
 
             }
 
-            string_literal115=(Token)match(input,35,FOLLOW_35_in_module1220); 
+            string_literal115=(Token)match(input,35,FOLLOW_35_in_module1222); 
             string_literal115_tree = (CommonTree)adaptor.create(string_literal115);
             adaptor.addChild(root_0, string_literal115_tree);
 
-            end=(Token)match(input,IDENT,FOLLOW_IDENT_in_module1224); 
+            end=(Token)match(input,IDENT,FOLLOW_IDENT_in_module1226); 
             end_tree = (CommonTree)adaptor.create(end);
             adaptor.addChild(root_0, end_tree);
 
-            char_literal116=(Token)match(input,10,FOLLOW_10_in_module1226); 
+            char_literal116=(Token)match(input,10,FOLLOW_10_in_module1228); 
             char_literal116_tree = (CommonTree)adaptor.create(char_literal116);
             adaptor.addChild(root_0, char_literal116_tree);
 
@@ -4077,60 +4079,60 @@ public class Oberon0Parser extends Parser {
     public static final BitSet FOLLOW_fieldList_in_recordTypeFollowUp817 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_42_in_recordType843 = new BitSet(new long[]{0x0000004800000020L});
     public static final BitSet FOLLOW_fieldList_in_recordType846 = new BitSet(new long[]{0x0000004800000000L});
-    public static final BitSet FOLLOW_recordTypeFollowUp_in_recordType851 = new BitSet(new long[]{0x0000004800000000L});
-    public static final BitSet FOLLOW_35_in_recordType855 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENT_in_type872 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_arrayType_in_type880 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_recordType_in_type888 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_43_in_fpSection908 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_fieldList_in_fpSection912 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_38_in_formalParametersFollowUp927 = new BitSet(new long[]{0x0000080000000020L});
-    public static final BitSet FOLLOW_fpSection_in_formalParametersFollowUp929 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_13_in_formalParameters954 = new BitSet(new long[]{0x0000080000000020L});
-    public static final BitSet FOLLOW_fpSection_in_formalParameters958 = new BitSet(new long[]{0x0000004000004000L});
-    public static final BitSet FOLLOW_formalParametersFollowUp_in_formalParameters963 = new BitSet(new long[]{0x0000004000004000L});
-    public static final BitSet FOLLOW_14_in_formalParameters968 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_declarations_in_procedureBody986 = new BitSet(new long[]{0x0000100800000000L});
-    public static final BitSet FOLLOW_44_in_procedureBody989 = new BitSet(new long[]{0x0000005400000020L});
-    public static final BitSet FOLLOW_statementSequence_in_procedureBody991 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_35_in_procedureBody995 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_45_in_procedureDeclaration1010 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_IDENT_in_procedureDeclaration1014 = new BitSet(new long[]{0x0000004000002000L});
-    public static final BitSet FOLLOW_formalParameters_in_procedureDeclaration1016 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_38_in_procedureDeclaration1019 = new BitSet(new long[]{0x0000F80800000000L});
-    public static final BitSet FOLLOW_procedureBody_in_procedureDeclaration1021 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_IDENT_in_procedureDeclaration1025 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENT_in_constDecl1040 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_23_in_constDecl1042 = new BitSet(new long[]{0x000000000030A060L});
-    public static final BitSet FOLLOW_expression_in_constDecl1044 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_38_in_constDecl1046 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENT_in_typeDecl1065 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_23_in_typeDecl1067 = new BitSet(new long[]{0x0000048000000020L});
-    public static final BitSet FOLLOW_type_in_typeDecl1069 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_38_in_typeDecl1071 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_identList_in_varDecl1089 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_41_in_varDecl1091 = new BitSet(new long[]{0x0000048000000020L});
-    public static final BitSet FOLLOW_type_in_varDecl1093 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_38_in_varDecl1095 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_46_in_constsDecl1112 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_constDecl_in_constsDecl1114 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_47_in_typesDecl1128 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_typeDecl_in_typesDecl1130 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_43_in_varsDecl1141 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_varDecl_in_varsDecl1143 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_constsDecl_in_declarations1167 = new BitSet(new long[]{0x0000A80000000002L});
-    public static final BitSet FOLLOW_typesDecl_in_declarations1170 = new BitSet(new long[]{0x0000280000000002L});
-    public static final BitSet FOLLOW_varsDecl_in_declarations1173 = new BitSet(new long[]{0x0000200000000002L});
-    public static final BitSet FOLLOW_procedureDeclaration_in_declarations1177 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_38_in_declarations1179 = new BitSet(new long[]{0x0000200000000002L});
-    public static final BitSet FOLLOW_48_in_module1203 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_IDENT_in_module1207 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_38_in_module1209 = new BitSet(new long[]{0x0000F80800000000L});
-    public static final BitSet FOLLOW_declarations_in_module1211 = new BitSet(new long[]{0x0000100800000000L});
-    public static final BitSet FOLLOW_44_in_module1214 = new BitSet(new long[]{0x0000005400000020L});
-    public static final BitSet FOLLOW_statementSequence_in_module1216 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_35_in_module1220 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_IDENT_in_module1224 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_10_in_module1226 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_recordTypeFollowUp_in_recordType853 = new BitSet(new long[]{0x0000004800000000L});
+    public static final BitSet FOLLOW_35_in_recordType857 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENT_in_type874 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_arrayType_in_type882 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_recordType_in_type890 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_43_in_fpSection910 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_fieldList_in_fpSection914 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_38_in_formalParametersFollowUp929 = new BitSet(new long[]{0x0000080000000020L});
+    public static final BitSet FOLLOW_fpSection_in_formalParametersFollowUp931 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_13_in_formalParameters956 = new BitSet(new long[]{0x0000080000000020L});
+    public static final BitSet FOLLOW_fpSection_in_formalParameters960 = new BitSet(new long[]{0x0000004000004000L});
+    public static final BitSet FOLLOW_formalParametersFollowUp_in_formalParameters965 = new BitSet(new long[]{0x0000004000004000L});
+    public static final BitSet FOLLOW_14_in_formalParameters970 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_declarations_in_procedureBody988 = new BitSet(new long[]{0x0000100800000000L});
+    public static final BitSet FOLLOW_44_in_procedureBody991 = new BitSet(new long[]{0x0000005400000020L});
+    public static final BitSet FOLLOW_statementSequence_in_procedureBody993 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_35_in_procedureBody997 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_45_in_procedureDeclaration1012 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENT_in_procedureDeclaration1016 = new BitSet(new long[]{0x0000004000002000L});
+    public static final BitSet FOLLOW_formalParameters_in_procedureDeclaration1018 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_38_in_procedureDeclaration1021 = new BitSet(new long[]{0x0000F80800000000L});
+    public static final BitSet FOLLOW_procedureBody_in_procedureDeclaration1023 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENT_in_procedureDeclaration1027 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENT_in_constDecl1042 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_23_in_constDecl1044 = new BitSet(new long[]{0x000000000030A060L});
+    public static final BitSet FOLLOW_expression_in_constDecl1046 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_38_in_constDecl1048 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENT_in_typeDecl1067 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_23_in_typeDecl1069 = new BitSet(new long[]{0x0000048000000020L});
+    public static final BitSet FOLLOW_type_in_typeDecl1071 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_38_in_typeDecl1073 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_identList_in_varDecl1091 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_41_in_varDecl1093 = new BitSet(new long[]{0x0000048000000020L});
+    public static final BitSet FOLLOW_type_in_varDecl1095 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_38_in_varDecl1097 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_46_in_constsDecl1114 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_constDecl_in_constsDecl1116 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_47_in_typesDecl1130 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_typeDecl_in_typesDecl1132 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_43_in_varsDecl1143 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_varDecl_in_varsDecl1145 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_constsDecl_in_declarations1169 = new BitSet(new long[]{0x0000A80000000002L});
+    public static final BitSet FOLLOW_typesDecl_in_declarations1172 = new BitSet(new long[]{0x0000280000000002L});
+    public static final BitSet FOLLOW_varsDecl_in_declarations1175 = new BitSet(new long[]{0x0000200000000002L});
+    public static final BitSet FOLLOW_procedureDeclaration_in_declarations1179 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_38_in_declarations1181 = new BitSet(new long[]{0x0000200000000002L});
+    public static final BitSet FOLLOW_48_in_module1205 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENT_in_module1209 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_38_in_module1211 = new BitSet(new long[]{0x0000F80800000000L});
+    public static final BitSet FOLLOW_declarations_in_module1213 = new BitSet(new long[]{0x0000100800000000L});
+    public static final BitSet FOLLOW_44_in_module1216 = new BitSet(new long[]{0x0000005400000020L});
+    public static final BitSet FOLLOW_statementSequence_in_module1218 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_35_in_module1222 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_IDENT_in_module1226 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_10_in_module1228 = new BitSet(new long[]{0x0000000000000002L});
 
 }

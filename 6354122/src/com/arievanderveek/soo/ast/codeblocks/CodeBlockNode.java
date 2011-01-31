@@ -121,4 +121,46 @@ public abstract class CodeBlockNode implements ASTNode {
 		return sb.toString();
 	}
 
+	/**
+	 * @return the codeBlockName
+	 */
+	public String getCodeBlockName() {
+		return codeBlockName;
+	}
+
+	/**
+	 * @return the constants
+	 */
+	public Map<String, ASTNode> getConstants() {
+		return constants;
+	}
+
+	/**
+	 * @return the types
+	 */
+	public Map<String, ASTNode> getTypes() {
+		return types;
+	}
+
+	/**
+	 * @return the variables
+	 */
+	public Map<String, ASTNode> getVariables() {
+		return variables;
+	}
+
+	/**
+	 * @return the procedures
+	 */
+	public Map<String, ASTNode> getProcedures() {
+		return procedures;
+	}
+
+	/**
+	 * @return the statementSequence
+	 */
+	public List<ASTNode> getStatementSequence() {
+		return statementSequence;
+	}
+
 }

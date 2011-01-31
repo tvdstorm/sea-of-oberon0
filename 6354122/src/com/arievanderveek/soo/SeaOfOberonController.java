@@ -5,7 +5,6 @@ import java.util.logging.Logger;
 import com.arievanderveek.soo.ast.ASTNode;
 import com.arievanderveek.soo.parser.Parser;
 import com.arievanderveek.soo.util.SeaOfOberonConfiguration;
-import com.arievanderveek.soo.visitors.ASTVisitor;
 
 /**
  * Responsible for calling the Oberon-0 parser and interpreter and coordinating
@@ -43,7 +42,10 @@ public class SeaOfOberonController {
 			// Parse the source file and create an AST from it.
 			ASTNode ast = oberon0Parser.parseFile(configuration.getSourceCodeFileName());
 			// Print it to string
-			System.out.println(ast.toTreeString(" "));
+			if(configuration.printTree()){
+			  System.out.println(ast.toTreeString(" "));
+			}
+			// Execute Code
 			ast.interpret(null);
 		} catch (InstantiationException e) {
 			throw new SeaOfOberonException(

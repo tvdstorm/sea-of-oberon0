@@ -9,6 +9,7 @@ import java.util.Map;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
+import com.arievanderveek.soo.ast.variables.AbstractParameterNode;
 import com.arievanderveek.soo.symboltable.Scope;
 import com.arievanderveek.soo.util.Constants;
 
@@ -19,8 +20,8 @@ import com.arievanderveek.soo.util.Constants;
  * 
  */
 public class ProcedureNode extends CodeBlockNode {
-
-	private final List<ASTNode> parameterBlocks;
+	// TODO: Might migrate system procedures to extend from this class
+	protected final List<ASTNode> parameterBlocks;
 	
 	/**
 	 * Constructor with all required fields
@@ -68,13 +69,11 @@ public class ProcedureNode extends CodeBlockNode {
 	 */
 	@Override
 	public Integer interpret(Scope scope) throws SeaOfOberonException {
-		// Create a new Scope and encapsulate current scope in it.
-		Scope localScope = new Scope(scope, constants, types, variables, procedures);
 		// loop over statements and call interpret method with the Scope Variable
 		for (ASTNode statementNode : statementSequence){
-			statementNode.interpret(localScope);
+			statementNode.interpret(scope);
 		}
-		return 0;
+		return null;
 	}
 
 	public String toTreeString(String ident) throws SeaOfOberonException {
@@ -90,6 +89,29 @@ public class ProcedureNode extends CodeBlockNode {
 		sb.append(Constants.LINE_SEPARATOR);
 		sb.append(super.toTreeString(ident));
 		return sb.toString();
+	}
+
+	/**
+	 * @return the parameterBlocks
+	 */
+	public List<ASTNode> getParameterBlocks() {
+		return parameterBlocks;
+	}
+	
+	public boolean isAmountOfParametersEqual(List<ASTNode> procedureCallParameters){
+		// Count all the parameters defined in this class.
+		int amountOfDefinedParameters = 0;
+		for (ASTNode node : parameterBlocks){
+			amountOfDefinedParameters += ((AbstractParameterNode)node).getFormalParameter().size();
+		}
+		// Count all the passed parameters
+		int amountOfPassedParameters = procedureCallParameters.size();
+		if (amountOfDefinedParameters == amountOfPassedParameters){
+			return true;
+		} else
+		{
+		return false;
+		}
 	}
 
 }

@@ -40,7 +40,6 @@ public class WhileLoopNode implements ASTNode {
 			for (ASTNode node : statementSequence){
 				node.interpret(scope);
 			}
-			System.out.println(scope.toString());
 		}
 		return null;
 	}
