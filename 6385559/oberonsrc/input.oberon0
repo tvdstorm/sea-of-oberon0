@@ -11,4 +11,5 @@ END x;
 BEGIN
   b[0] := 1;
   x( b );
+  Write( b[0] );
 END Sample.

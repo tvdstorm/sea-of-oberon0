@@ -1,7 +1,6 @@
 /*
  * 
  * TODO 
- * - Delete oberon0.1.g grammar file from the project
  * - Create new classes for all operations
  * - memory datatypes change
  * - PrintNode moet ToString worden

@@ -127,19 +127,59 @@
             </ConcreteClasses>
 
             <DependsUpon>
+                <Package>errorhandler</Package>
                 <Package>java.io</Package>
                 <Package>java.lang</Package>
                 <Package>java.util</Package>
                 <Package>management</Package>
                 <Package>org.antlr.runtime</Package>
-                <Package>parseErrorLog</Package>
             </DependsUpon>
 
             <UsedBy>
                 <Package>management</Package>
                 <Package>oberon0</Package>
                 <Package>parser</Package>
-                <Package>system</Package>
+                <Package>systemcalls</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="errorhandler">
+            <Stats>
+                <TotalClasses>2</TotalClasses>
+                <ConcreteClasses>2</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>5</Ca>
+                <Ce>3</Ce>
+                <A>0</A>
+                <I>0.38</I>
+                <D>0.62</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="OberonException.java">
+                    errorhandler.OberonException
+                </Class>
+                <Class sourceFile="parseErrorLog.java">
+                    errorhandler.parseErrorLog
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.io</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>ASTnodes</Package>
+                <Package>management</Package>
+                <Package>oberon0</Package>
+                <Package>parser</Package>
+                <Package>systemcalls</Package>
             </UsedBy>
         </Package>
 
@@ -157,8 +197,8 @@
 
         <Package name="management">
             <Stats>
-                <TotalClasses>9</TotalClasses>
-                <ConcreteClasses>9</ConcreteClasses>
+                <TotalClasses>8</TotalClasses>
+                <ConcreteClasses>8</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
                 <Ca>3</Ca>
                 <Ce>5</Ce>
@@ -181,9 +221,6 @@
                 <Class sourceFile="MemoryManager.java">
                     management.MemoryManager$MemoryMap
                 </Class>
-                <Class sourceFile="OberonSystemcalls.java">
-                    management.OberonSystemcalls
-                </Class>
                 <Class sourceFile="ParamContainer.java">
                     management.ParamContainer
                 </Class>
@@ -203,16 +240,16 @@
 
             <DependsUpon>
                 <Package>ASTnodes</Package>
+                <Package>errorhandler</Package>
                 <Package>java.io</Package>
                 <Package>java.lang</Package>
                 <Package>java.util</Package>
-                <Package>parseErrorLog</Package>
             </DependsUpon>
 
             <UsedBy>
                 <Package>ASTnodes</Package>
                 <Package>oberon0</Package>
-                <Package>system</Package>
+                <Package>systemcalls</Package>
             </UsedBy>
         </Package>
 
@@ -249,14 +286,14 @@
 
             <DependsUpon>
                 <Package>ASTnodes</Package>
+                <Package>errorhandler</Package>
                 <Package>java.io</Package>
                 <Package>java.lang</Package>
                 <Package>java.util</Package>
                 <Package>management</Package>
                 <Package>org.antlr.runtime</Package>
-                <Package>parseErrorLog</Package>
                 <Package>parser</Package>
-                <Package>system</Package>
+                <Package>systemcalls</Package>
             </DependsUpon>
 
             <UsedBy>
@@ -265,46 +302,6 @@
 
         <Package name="org.antlr.runtime">
             <error>No stats available: package referenced, but not analyzed.</error>
-        </Package>
-
-        <Package name="parseErrorLog">
-            <Stats>
-                <TotalClasses>2</TotalClasses>
-                <ConcreteClasses>2</ConcreteClasses>
-                <AbstractClasses>0</AbstractClasses>
-                <Ca>5</Ca>
-                <Ce>3</Ce>
-                <A>0</A>
-                <I>0.38</I>
-                <D>0.62</D>
-                <V>1</V>
-            </Stats>
-
-            <AbstractClasses>
-            </AbstractClasses>
-
-            <ConcreteClasses>
-                <Class sourceFile="OberonException.java">
-                    parseErrorLog.OberonException
-                </Class>
-                <Class sourceFile="parseErrorLog.java">
-                    parseErrorLog.parseErrorLog
-                </Class>
-            </ConcreteClasses>
-
-            <DependsUpon>
-                <Package>java.io</Package>
-                <Package>java.lang</Package>
-                <Package>java.util</Package>
-            </DependsUpon>
-
-            <UsedBy>
-                <Package>ASTnodes</Package>
-                <Package>management</Package>
-                <Package>oberon0</Package>
-                <Package>parser</Package>
-                <Package>system</Package>
-            </UsedBy>
         </Package>
 
         <Package name="parser">
@@ -337,10 +334,10 @@
 
             <DependsUpon>
                 <Package>ASTnodes</Package>
+                <Package>errorhandler</Package>
                 <Package>java.io</Package>
                 <Package>java.lang</Package>
                 <Package>org.antlr.runtime</Package>
-                <Package>parseErrorLog</Package>
             </DependsUpon>
 
             <UsedBy>
@@ -348,7 +345,7 @@
             </UsedBy>
         </Package>
 
-        <Package name="system">
+        <Package name="systemcalls">
             <Stats>
                 <TotalClasses>3</TotalClasses>
                 <ConcreteClasses>3</ConcreteClasses>
@@ -366,23 +363,23 @@
 
             <ConcreteClasses>
                 <Class sourceFile="Read.java">
-                    system.Read
+                    systemcalls.Read
                 </Class>
                 <Class sourceFile="Write.java">
-                    system.Write
+                    systemcalls.Write
                 </Class>
                 <Class sourceFile="WriteLn.java">
-                    system.WriteLn
+                    systemcalls.WriteLn
                 </Class>
             </ConcreteClasses>
 
             <DependsUpon>
                 <Package>ASTnodes</Package>
+                <Package>errorhandler</Package>
                 <Package>java.io</Package>
                 <Package>java.lang</Package>
                 <Package>java.util</Package>
                 <Package>management</Package>
-                <Package>parseErrorLog</Package>
             </DependsUpon>
 
             <UsedBy>
@@ -414,7 +411,7 @@
             <Package>ASTnodes</Package>
         </Package>
 
-        <Package Name="system">
+        <Package Name="systemcalls">
             <Package>ASTnodes</Package>
             <Package>management</Package>
             <Package>ASTnodes</Package>

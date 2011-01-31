@@ -16,6 +16,7 @@
 	<property name="javancss.dir" value="tools/javancss"/>
 	<property name="jDepend.dir" value="tools/jDepend"/>
 	<property name="jDepend.buildFolder" value="bin"/>
+	<property name="antlr.dir" value="libs"/>
 	
 	<!-- file name definitions for the metric files -->
 	<property name="jDepend.outputfile" value="jDepend-report.xml"/>
@@ -26,7 +27,11 @@
 	  <pathelement location="${javancss.dir}/javancss.jar" />
 	  <pathelement location="${javancss.dir}/javancss2ant.jar" />
 	  <pathelement location="${javancss.dir}/jhbasic.jar" />
-  </path>
+    </path>
+	
+	<path id="org.antlr.Tool">
+	  <pathelement location="${antlr.dir}/antlr.jar" />
+    </path>
 	
 	<path id="jdepend.ant.task">
 	  <pathelement location="${jDepend.dir}/jDepend.jar"/>
@@ -37,6 +42,13 @@
 	           classpathref="javancss.ant.task"/>
 	
   <target name="default" description="This build file will delete the metrics folder and recreate it">
+  	<!-- Create the parser output -->
+  	<java classname="org.antlr.Tool" fork="true" failonerror="true"> 
+   	  <arg value="-verbose"/> 
+   	  <arg value="-o"/>  
+   	  <arg path="grammar/parser"/> 
+   	  <arg path="grammar/oberon0.g"/> 
+   	</java> 
   	<!-- Delete the files to ensure clean building -->
     <delete file="${metric.dir}/${javancss.outputfile}" failonerror="true"/>
   	<delete file="${metric.dir}/${jDepend.outputfile}" failonerror="true"/>
