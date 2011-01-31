@@ -21,7 +21,6 @@ public class TypeDefinitionManager {
   public static ASTnode getTypeDefinition( String name ) throws OberonException
   {
     DefinitionContainer container = null;
-    ASTnode returnASTnode = null;
     for( int i = 0; i < definitions.size(); i++ )
     {
       container = definitions.get( i );
