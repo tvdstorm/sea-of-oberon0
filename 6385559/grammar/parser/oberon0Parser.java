@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g 2011-01-31 21:14:51
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 /Users/benkwint/Documents/uni/softwareConstruction_new/grammar/oberon0.g 2011-01-31 22:06:26
 
   package parser;
   

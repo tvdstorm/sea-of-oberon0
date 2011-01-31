@@ -15,8 +15,9 @@
 	<property name="metric.dir" value="metrics"/>
 	<property name="javancss.dir" value="tools/javancss"/>
 	<property name="jDepend.dir" value="tools/jDepend"/>
-	<property name="jDepend.buildFolder" value="bin"/>
+	<property name="build.dir" value="bin"/>
 	<property name="antlr.dir" value="libs"/>
+	<property name="grammar.dir" value="grammar"/>
 	
 	<!-- file name definitions for the metric files -->
 	<property name="jDepend.outputfile" value="jDepend-report.xml"/>
@@ -49,6 +50,12 @@
    	  <arg path="grammar/parser"/> 
    	  <arg path="grammar/oberon0.g"/> 
    	</java> 
+  	<!-- compile the source code before generating the documentation to make sure the documentation is correct -->
+  	<javac srcdir="${src.dir}:${grammar.dir}"
+  	       destdir="${build.dir}"
+  	       classpath="${antlr.dir}}/antlr.jar"
+  	       debug="on"
+  	/>
   	<!-- Delete the files to ensure clean building -->
     <delete file="${metric.dir}/${javancss.outputfile}" failonerror="true"/>
   	<delete file="${metric.dir}/${jDepend.outputfile}" failonerror="true"/>
@@ -70,10 +77,10 @@
   	-->
   	<jdepend outputfile="${metric.dir}/${jDepend.outputfile}" fork="yes" format="xml">
   	    <classespath>
-  	        <pathelement location="${jDepend.buildFolder}"/>
+  	        <pathelement location="${build.dir}"/>
   	    </classespath>
   	    <classpath>
-  	        <pathelement location="${jDepend.buildFolder}"/>
+  	        <pathelement location="${build.dir}"/>
   	        <pathelement location="${jDepend.dir}/jDepend.jar"/>
   	    </classpath>
   	</jdepend>
