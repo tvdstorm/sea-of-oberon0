@@ -9,10 +9,6 @@ public class ArraySelector extends Expression {
 		_index = index;
 	}
 	
-	public <T> T accept(Visitor<T> visitor) {
-		return visitor.visit(this);
-	}
-
 	public Expression getBase() {
 		return _base;
 	}
@@ -21,4 +17,7 @@ public class ArraySelector extends Expression {
 		return _index;
 	}
 
+	public <T> T accept(Visitor<T> visitor) {
+		return visitor.visitArraySelector(this);
+	}
 }

@@ -25,6 +25,6 @@ public class IfStatement extends Statement {
 	
 	@Override
 	public <T> void accept(Visitor<T> visitor) {
-		visitor.visitIf(this);
+		visitor.visitIfStatement(this);
 	}
 }

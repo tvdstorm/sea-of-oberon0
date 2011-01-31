@@ -99,12 +99,12 @@ public class Interpreter extends Visitor<Value> {
 	}
 	
 	@Override
-	protected Value visitInteger(IntegerLiteral e) {
+	protected Value visitIntegerLiteral(IntegerLiteral e) {
 		return wrapInteger(e.getValue());
 	}
 
 	@Override
-	protected void visitCall(ProcedureCall procedureCall) {		
+	protected void visitProcedureCall(ProcedureCall procedureCall) {		
 		// get callable
 		String name = procedureCall.getName();
 		Callable callable = _context.getScope().lookupProcedure(name);
@@ -129,14 +129,14 @@ public class Interpreter extends Visitor<Value> {
 	}
 
 	@Override
-	protected void visitStatements(StatementSequence sequence) {
+	protected void visitStatementSequence(StatementSequence sequence) {
 		for (Statement s : sequence.getStatements()) {
 			execute(s);
 		}
 	}
 	
 	@Override
-	protected void visitIf(IfStatement statement) {
+	protected void visitIfStatement(IfStatement statement) {
 		if (evalBoolean(statement.getTest())) {
 			execute(statement.getThen());
 		} else if (statement.getElse() != null) {
@@ -145,7 +145,7 @@ public class Interpreter extends Visitor<Value> {
 	}
 
 	@Override
-	protected void visitWhile(WhileStatement statement) {
+	protected void visitWhileStatement(WhileStatement statement) {
 		while(evalBoolean(statement.getTest())) {
 			execute(statement.getBody());
 		}
@@ -159,21 +159,21 @@ public class Interpreter extends Visitor<Value> {
 	}
 
 	@Override
-	protected void visitConst(ConstDeclaration declaration) {
+	protected void visitConstDeclaration(ConstDeclaration declaration) {
 		String name = declaration.getName();
 		Value value = declaration.getValue().accept(this);
 		_context.getScope().defineConstant(name, value);
 	}
 
 	@Override
-	protected void visitType(TypeDeclaration declaration) {
+	protected void visitTypeDeclaration(TypeDeclaration declaration) {
 		String name = declaration.getName();
 		Type t = getRuntimeType(declaration.getType());
 		_context.getScope().defineType(name, t);
 	}
 
 	@Override
-	protected void visitVar(VarDeclaration declaration) {
+	protected void visitVarDeclaration(VarDeclaration declaration) {
 		for(String name : declaration.getNames()) {
 			Type type = getRuntimeType(declaration.getType());
 			_context.getScope().defineVar(name, Value.fromType(type));
@@ -220,14 +220,14 @@ public class Interpreter extends Visitor<Value> {
 	}
 
 	@Override
-	protected Value visit(ArraySelector selector) {
+	protected Value visitArraySelector(ArraySelector selector) {
 		ArrayValue base = evalArray(selector.getBase());
 		int index = evalInteger(selector.getIndex());
 		return base.getValueAt(index);
 	}
 	
 	@Override
-	protected Value visit(RecordSelector selector) {
+	protected Value visitRecordSelector(RecordSelector selector) {
 		RecordValue base = evalRecord(selector.getBase());
 		return base.getFieldValue(selector.getName());
 	}
@@ -286,52 +286,52 @@ public class Interpreter extends Visitor<Value> {
 	}
 	
 	@Override
-	protected Value visit(GtExpression e) {
+	protected Value visitGtExpression(GtExpression e) {
 		return wrapBoolean(evalInteger(e.getLhs()) > evalInteger(e.getRhs()));
 	}
 	
 	@Override
-	protected Value visit(GeExpression e) {
+	protected Value visitGeExpression(GeExpression e) {
 		return wrapBoolean(evalInteger(e.getLhs()) >= evalInteger(e.getRhs()));
 	}
 
 	@Override
-	protected Value visit(LtExpression e) {
+	protected Value visitLtExpression(LtExpression e) {
 		return wrapBoolean(evalInteger(e.getLhs()) < evalInteger(e.getRhs()));
 	}
 
 	@Override
-	protected Value visit(LeExpression e) {
+	protected Value visitLeExpression(LeExpression e) {
 		return wrapBoolean(evalInteger(e.getLhs()) <= evalInteger(e.getRhs()));
 	}
 
 	@Override
-	protected Value visit(EqExpression e) {
+	protected Value visitEqExpression(EqExpression e) {
 		return wrapBoolean(evalInteger(e.getLhs()) == evalInteger(e.getRhs()));
 	}
 
 	@Override
-	protected Value visit(NeExpression e) {
+	protected Value visitNeExpression(NeExpression e) {
 		return wrapBoolean(evalInteger(e.getLhs()) != evalInteger(e.getRhs()));
 	}
 	
 	@Override
-	protected Value visit(AddExpression e) {
+	protected Value visitAddExpression(AddExpression e) {
 		return wrapInteger(evalInteger(e.getLhs()) + evalInteger(e.getRhs()));
 	}
 
 	@Override
-	protected Value visit(SubExpression e) {
+	protected Value visitSubExpression(SubExpression e) {
 		return wrapInteger(evalInteger(e.getLhs()) - evalInteger(e.getRhs()));
 	}
 	
 	@Override
-	protected Value visit(MulExpression e) {
+	protected Value visitMulExpression(MulExpression e) {
 		return wrapInteger(evalInteger(e.getLhs()) * evalInteger(e.getRhs()));
 	}
 
 	@Override
-	protected Value visit(DivExpression e) {
+	protected Value visitDivExpression(DivExpression e) {
 		int lhs = evalInteger(e.getLhs());
 		int rhs = evalInteger(e.getRhs());
 		
@@ -342,7 +342,7 @@ public class Interpreter extends Visitor<Value> {
 	}
 
 	@Override
-	protected Value visit(ModExpression e) {
+	protected Value visitModExpression(ModExpression e) {
 		int lhs = evalInteger(e.getLhs());
 		int rhs = evalInteger(e.getRhs());
 		
@@ -353,27 +353,27 @@ public class Interpreter extends Visitor<Value> {
 	}
 
 	@Override
-	protected Value visit(AndExpression e) {
+	protected Value visitAndExpression(AndExpression e) {
 		return wrapBoolean(evalBoolean(e.getLhs()) && evalBoolean(e.getRhs()));
 	}
 
 	@Override
-	protected Value visit(OrExpression e) {
+	protected Value visitOrExpression(OrExpression e) {
 		return wrapBoolean(evalBoolean(e.getLhs()) || evalBoolean(e.getRhs()));
 	}
 		
 	@Override
-	protected Value visit(NegExpression e) {
+	protected Value visitNegExpression(NegExpression e) {
 		return wrapInteger(-evalInteger(e.getArgument()));
 	}
 
 	@Override
-	protected Value visit(PosExpression e) {
+	protected Value visitPosExpression(PosExpression e) {
 		return wrapInteger(+evalInteger(e.getArgument()));
 	}
 
 	@Override
-	protected Value visit(NotExpression e) {
+	protected Value visitNotExpression(NotExpression e) {
 		return wrapBoolean(!evalBoolean(e.getArgument()));
 	}
 }

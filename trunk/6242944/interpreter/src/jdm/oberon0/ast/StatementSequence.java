@@ -15,6 +15,6 @@ public class StatementSequence extends Statement {
 
 	@Override
 	public <T> void accept(Visitor<T> visitor) {
-		visitor.visitStatements(this);
+		visitor.visitStatementSequence(this);
 	}
 }

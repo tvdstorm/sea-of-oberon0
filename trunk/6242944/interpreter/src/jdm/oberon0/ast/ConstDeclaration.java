@@ -18,6 +18,6 @@ public class ConstDeclaration extends Declaration {
 	}
 
 	public <T> void accept(Visitor<T> visitor) {
-		visitor.visitConst(this);
+		visitor.visitConstDeclaration(this);
 	}
 }

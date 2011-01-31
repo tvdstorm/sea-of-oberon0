@@ -9,11 +9,6 @@ public class RecordSelector extends Expression {
 		_name = name;
 	}
 	
-	@Override
-	public <T> T accept(Visitor<T> visitor) {
-		return visitor.visit(this);
-	}
-
 	public Expression getBase() {
 		return _base;
 	}
@@ -22,4 +17,8 @@ public class RecordSelector extends Expression {
 		return _name;
 	}
 
+	@Override
+	public <T> T accept(Visitor<T> visitor) {
+		return visitor.visitRecordSelector(this);
+	}
 }

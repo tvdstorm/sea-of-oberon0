@@ -21,7 +21,7 @@ public class VarDeclaration extends Declaration {
 	
 	@Override
 	public <T> void accept(Visitor<T> visitor) {
-		visitor.visitVar(this);
+		visitor.visitVarDeclaration(this);
 	}
 
 }

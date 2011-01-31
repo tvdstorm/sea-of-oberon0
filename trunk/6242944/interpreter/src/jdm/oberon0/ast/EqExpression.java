@@ -9,7 +9,7 @@ public class EqExpression extends BinaryExpression {
 
 	@Override
 	public <T> T accept(Visitor<T> visitor) {
-		return visitor.visit(this);
+		return visitor.visitEqExpression(this);
 	}
 
 }
