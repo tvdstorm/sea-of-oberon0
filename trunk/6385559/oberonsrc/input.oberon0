@@ -8,7 +8,7 @@ BEGIN
 END x;
 
 BEGIN
-  b := 1;
+  b := 5;
   x( c );
   Write( b );
 END Sample.

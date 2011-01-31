@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-01-31</date>
-  <time>21:14:53</time>
+  <time>22:06:28</time>
   <packages>
     <package>
       <name>ast</name>
@@ -27,7 +27,7 @@
       <name>management</name>
       <classes>8</classes>
       <functions>39</functions>
-      <ncss>288</ncss>
+      <ncss>290</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>8</single_comment_lines>
@@ -56,7 +56,7 @@
     <total>
       <classes>52</classes>
       <functions>187</functions>
-      <ncss>1414</ncss>
+      <ncss>1416</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>90</single_comment_lines>
@@ -64,10 +64,10 @@
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>5.00</td><td>52.00</td><td>187.00</td><td>1,414.00</td><td>0.00</td><td>Project</td></tr>
-      <tr><td></td><td>10.40</td><td>37.40</td><td>282.80</td><td>0.00</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.60</td><td>27.19</td><td>0.00</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>7.56</td><td>0.00</td><td>Function</td></tr>
+      <tr><td>5.00</td><td>52.00</td><td>187.00</td><td>1,416.00</td><td>0.00</td><td>Project</td></tr>
+      <tr><td></td><td>10.40</td><td>37.40</td><td>283.20</td><td>0.00</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.60</td><td>27.23</td><td>0.00</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>7.57</td><td>0.00</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -375,7 +375,7 @@
     </object>
     <object>
       <name>management.TypeDefinitionManager</name>
-      <ncss>62</ncss>
+      <ncss>64</ncss>
       <functions>6</functions>
       <classes>1</classes>
       <javadocs>0</javadocs>
@@ -437,12 +437,12 @@
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>25.27</ncss>
+      <ncss>25.31</ncss>
       <functions>3.60</functions>
       <classes>0.06</classes>
       <javadocs>0.00</javadocs>
     </averages>
-    <ncss>1,414.00</ncss>
+    <ncss>1,416.00</ncss>
   </objects>
 
   <functions>
@@ -1396,8 +1396,8 @@
     </function>
     <function>
       <name>management.TypeDefinitionManager.getTypeDefinition(String)</name>
-      <ncss>7</ncss>
-      <ccn>5</ccn>
+      <ncss>9</ncss>
+      <ccn>7</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -1569,10 +1569,10 @@
       <javadocs>0</javadocs>
     </function>
     <function_averages>
-      <ncss>5.95</ncss>
-      <ccn>2.70</ccn>
+      <ncss>5.96</ncss>
+      <ccn>2.71</ccn>
       <javadocs>0.00</javadocs>
     </function_averages>
-    <ncss>1,414.00</ncss>
+    <ncss>1,416.00</ncss>
   </functions>
 </javancss>
