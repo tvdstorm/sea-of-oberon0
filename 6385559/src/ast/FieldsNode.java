@@ -26,15 +26,15 @@ public class FieldsNode implements ASTnode {
     }
   }
   
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   {
     if( this.fieldlist != null )
     {
-      this.fieldlist.eval( scope );
+      this.fieldlist.eval( );
     }
     if( this.fieldsnode != null )
     {
-      this.fieldsnode.eval( scope );
+      this.fieldsnode.eval( );
     }
     return 0;
   }

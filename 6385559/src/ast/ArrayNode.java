@@ -27,9 +27,9 @@ public class ArrayNode implements ASTnode {
     }
   }
   
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   {
-    return this.expression.eval( scope );
+    return this.expression.eval( );
   }
   
   public Vector<String> getArrayElementList() throws OberonException
@@ -40,7 +40,7 @@ public class ArrayNode implements ASTnode {
       correctedType = TypeDefinitionManager.correctType( correctedType );
     }
   
-    int numberOfElements = this.eval( null ); // get the number of current elements to add
+    int numberOfElements = this.eval( ); // get the number of current elements to add
     Vector<String> nextList = null;
     Vector<String> returnList = new Vector<String>(0);
     if( correctedType != null && correctedType instanceof ArrayNode )

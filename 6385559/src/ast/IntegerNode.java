@@ -14,7 +14,7 @@ public class IntegerNode implements ASTnode {
     System.out.print( this.intValue );
   }
   
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   {
     return this.intValue;
   }

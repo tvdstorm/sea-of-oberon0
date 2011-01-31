@@ -1,5 +1,7 @@
 package ast;
 
+import management.ScopeManager;
+
 import org.antlr.runtime.*;
 
 import errorhandler.*;
@@ -38,16 +40,17 @@ public class ModuleNode implements ASTnode{
     System.out.println( "END " + this.ModuleName + ".");
   }
   
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   {
+    ScopeManager.setScope( this.ModuleName );
     if( this.declarations != null )
     {
-      declarations.eval( this.ModuleName );
+      declarations.eval( );
     }
     
     if( this.statementSequence != null )
     {
-      this.statementSequence.eval( this.ModuleName );
+      this.statementSequence.eval( );
     }
     
     return 0;

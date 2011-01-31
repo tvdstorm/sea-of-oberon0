@@ -26,23 +26,23 @@ public class VarNode implements ASTnode {
     }
   }
   
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   {
-    return MemoryManager.get( this.getVarname( scope ) );
+    return MemoryManager.get( this.getVarname( ) );
   }
   
-  public String getVarname( String scope ) throws OberonException
+  public String getVarname( ) throws OberonException
   {
     String varnameWithSelector = this.varname;
     if( select != null )
     {
       if( this.select instanceof SelectorArrayNode )
       {
-        varnameWithSelector = varname + ( (SelectorArrayNode) this.select ).getString( scope );
+        varnameWithSelector = varname + ( (SelectorArrayNode) this.select ).getString( );
       }
       else if( this.select instanceof SelectorRecordNode )
       {
-        varnameWithSelector = varname + ( (SelectorRecordNode) this.select).getString( scope );
+        varnameWithSelector = varname + ( (SelectorRecordNode) this.select).getString( );
       }
     }
     return varnameWithSelector;

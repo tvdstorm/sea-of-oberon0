@@ -29,7 +29,7 @@ public class FieldlistNode implements ASTnode {
     } 
   }
   
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   {
     ASTnode correctedType = this.type;
     if( this.type != null )
@@ -50,7 +50,7 @@ public class FieldlistNode implements ASTnode {
         elements = ((RecordNode) correctedType).getRecordElementList();
       }
     
-      this.identlist.allocateIdentifiers( scope, elements );
+      this.identlist.allocateIdentifiers( elements );
     }
     return 0;
   }

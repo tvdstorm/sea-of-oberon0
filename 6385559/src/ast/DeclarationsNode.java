@@ -56,26 +56,26 @@ public class DeclarationsNode implements ASTnode {
     }
   }
   
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   {
     if( this.constant != null )
     {
-      this.constant.eval( scope );
+      this.constant.eval( );
     }
   
     if( this.typeDefs != null )
     {
-      this.typeDefs.eval( scope );
+      this.typeDefs.eval( );
     }
   
     if( this.vars != null )
     {
-      this.vars.eval( scope );
+      this.vars.eval( );
     }
     
     if( this.procedureList != null )
     {
-      this.procedureList.eval( scope );
+      this.procedureList.eval( );
     }
     return 0;
   }

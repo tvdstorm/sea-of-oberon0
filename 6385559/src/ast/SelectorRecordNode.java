@@ -22,23 +22,23 @@ public class SelectorRecordNode implements ASTnode {
     }
   }
   
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   {
     return 0;
   }
   
-  public String getString( String scope ) throws OberonException
+  public String getString( ) throws OberonException
   {
     String returnValue = "." + this.ident;
     if( this.selector != null )
     {
       if( this.selector instanceof SelectorArrayNode )
       {
-        returnValue = returnValue + ( ((SelectorArrayNode) this.selector ).getString( scope ) );
+        returnValue = returnValue + ( ((SelectorArrayNode) this.selector ).getString( ) );
       }
       else if( this.selector instanceof SelectorRecordNode )
       {
-        returnValue = returnValue + ( ((SelectorRecordNode) this.selector ).getString( scope ) );
+        returnValue = returnValue + ( ((SelectorRecordNode) this.selector ).getString( ) );
       }
     }
     

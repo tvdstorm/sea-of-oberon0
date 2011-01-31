@@ -19,7 +19,7 @@ public class WriteLn extends ProcedureDeclarationNode {
     System.out.println( "Systemcall" );
   }
   
-  public void eval( String scope, Vector<ParamContainer> variables ) throws OberonException
+  public void eval( Vector<ParamContainer> variables ) throws OberonException
   {
     System.out.println();
   } 

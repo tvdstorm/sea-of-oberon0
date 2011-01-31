@@ -24,15 +24,15 @@ public class ProcedureListNode implements ASTnode {
     }
   }
   
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   {
     if( this.procedureDeclaration != null )
     {
-      this.procedureDeclaration.eval( scope );
+      this.procedureDeclaration.eval( );
     }
     if( this.procedureList != null )
     {
-      this.procedureList.eval( scope );
+      this.procedureList.eval( );
     }
     return 0;
   }

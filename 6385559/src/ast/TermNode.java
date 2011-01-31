@@ -31,16 +31,16 @@ public class TermNode implements ASTnode {
     }
   }
   
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   {
     if( this.operator == null && this.follow == null )
     {
-      return this.factor.eval( scope );
+      return this.factor.eval( );
     }
     else if( this.operator != null && this.follow != null )
     {
-      int leftValue = factor.eval( scope );
-      int rightValue = follow.eval( scope );
+      int leftValue = factor.eval( );
+      int rightValue = follow.eval( );
       
       if( this.operator.contentEquals( "*" ) )
       {
@@ -66,7 +66,7 @@ public class TermNode implements ASTnode {
   {
     if( this.factor instanceof VarNode && this.operator == null && this.follow == null )
     { // detect whether its only a variable node needed for call by reference
-      return ( (VarNode) this.factor).getVarname( "" ); // no scope needed
+      return ( (VarNode) this.factor).getVarname( ); // no scope needed
     }
     return null;
   }  

@@ -6,6 +6,7 @@ import errorhandler.*;
 
 import management.ParamContainer;
 import management.ProcedureManager;
+import management.ScopeManager;
 
 public class ProcedureDeclarationNode implements ASTnode {
   private final ProcedureHeadingNode heading;
@@ -36,22 +37,22 @@ public class ProcedureDeclarationNode implements ASTnode {
     }
   }
   
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   {
-    ProcedureManager.addProcedure( this.heading.getIdentifier(), scope, this);
+    ProcedureManager.addProcedure( this.heading.getIdentifier(), ScopeManager.currentScope( ), this);
     return 0;
   }
   
-  public void eval( String scope, Vector<ParamContainer> variables ) throws OberonException
+  public void eval( Vector<ParamContainer> variables ) throws OberonException
   {
     if( this.heading != null )
     {
-      heading.eval( scope, variables );
+      heading.eval( variables );
     }
   
     if( this.body != null )
     {
-      this.body.eval( scope );
+      this.body.eval( );
     }
   }
 }

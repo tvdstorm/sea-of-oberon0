@@ -27,21 +27,21 @@ public class FormalParameterNode implements ASTnode {
     }
   }
   
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   {
     return 0;
   }
   
-  public Vector<ParamContainer> eval( String scope, Vector<ParamContainer> params ) throws OberonException
+  public Vector<ParamContainer> eval( Vector<ParamContainer> params ) throws OberonException
   { // overload the standard eval function because we need a Vector with the ParamContainer
     if( this.fpSection != null )
     {
-      params = fpSection.eval( scope, params );
+      params = fpSection.eval( params );
     }
     
     if( followup != null )
     {
-      params = this.followup.eval( scope, params );
+      params = this.followup.eval( params );
     }
     
     return params;

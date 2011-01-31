@@ -21,7 +21,7 @@ public class RecordNode implements ASTnode {
     System.out.print( " END" );
   }
   
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   {
     return 0;
   }

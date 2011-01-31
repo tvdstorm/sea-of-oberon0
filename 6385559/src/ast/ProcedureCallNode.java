@@ -4,10 +4,9 @@ import java.util.Vector;
 
 import errorhandler.OberonException;
 
-import management.MemoryManager;
 import management.ParamContainer;
 import management.ProcedureManager;
-import management.TypeDefinitionManager;
+import management.ScopeManager;
 
 public class ProcedureCallNode implements StatementNode {
   private final String identifier;
@@ -41,26 +40,24 @@ public class ProcedureCallNode implements StatementNode {
     System.out.println( ";" );
   }
   
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   {
-    String newScope = this.identifier + "_" + scope;
     ProcedureDeclarationNode declaration = ProcedureManager.getProcedure( this.identifier );
     // build the parameter list
     Vector<ParamContainer> params = null;
     if( this.params != null )
     {
-      params = this.params.getVarValueList( scope );
+      params = this.params.getVarValueList( );
       // first parameter is the last in the vector list
     }
     
     if( declaration != null )
     {
-      declaration.eval( newScope, params );
+      String newScope = this.identifier + "_" + ScopeManager.currentScope( );
+      ScopeManager.setScope( newScope );
+      declaration.eval( params );
+      ScopeManager.removeLastScope( );
     }
-  
-    ProcedureManager.deleteScope( newScope );
-    TypeDefinitionManager.deleteScope( newScope );
-    MemoryManager.deallocateScope( newScope );
     return 0;
   }
 }

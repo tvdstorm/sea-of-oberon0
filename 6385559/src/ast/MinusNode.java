@@ -16,8 +16,8 @@ public class MinusNode implements ASTnode {
     System.out.print( ')' );
   }
   
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   {
-    return -1 * this.child.eval( scope );
+    return -1 * this.child.eval( );
   }
 }

@@ -1,14 +1,16 @@
 MODULE Sample;
-VAR b : INTEGER;
+CONST a = 5;
+TYPE bla = INTEGER;
+VAR b : bla;
 
-PROCEDURE x( c : INTEGER );
-VAR b : ARRAY 2 OF INTEGER;
+PROCEDURE x( VAR c : bla );
+VAR b : ARRAY 2 OF bla;
 BEGIN
-
+  c := 6;
 END x;
 
 BEGIN
   b := 5;
-  x( c );
+  x( b );
   Write( b );
 END Sample.

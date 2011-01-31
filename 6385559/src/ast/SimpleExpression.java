@@ -31,16 +31,16 @@ public class SimpleExpression implements ASTnode {
     }
   }
 
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   {
     if( this.operator == null && this.followup == null )
     {
-      return this.term.eval( scope );
+      return this.term.eval( );
     }
     else if( this.operator != null && this.followup != null )
     {
-      int leftValue = this.term.eval( scope );
-      int rightValue = this.followup.eval( scope );
+      int leftValue = this.term.eval( );
+      int rightValue = this.followup.eval( );
       
       if( this.operator.contentEquals( "+" ) )
       {

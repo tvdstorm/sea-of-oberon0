@@ -31,11 +31,11 @@ public class AssignmentNode implements StatementNode {
     System.out.println( ";" );
   }
   
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   {
     if( this.expression != null && this.var != null )
     { // only set the value if the expression is an valid expression
-      MemoryManager.set( this.var.getVarname( scope ), this.expression.eval( scope ) );      
+      MemoryManager.set( this.var.getVarname( ), this.expression.eval( ) );      
     }
     return 0;
   }

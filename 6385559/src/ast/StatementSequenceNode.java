@@ -24,15 +24,15 @@ public class StatementSequenceNode implements ASTnode {
     }
   }
 
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   {
     if( this.statement != null )
     {
-      this.statement.eval( scope );
+      this.statement.eval( );
     }
     if( this.statementSequence != null )
     {
-      this.statementSequence.eval( scope );
+      this.statementSequence.eval( );
     }
     return 0;
   }
