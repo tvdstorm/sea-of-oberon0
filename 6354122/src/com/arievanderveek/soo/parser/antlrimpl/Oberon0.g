@@ -13,6 +13,7 @@ tokens {
 
 @header {
   package com.arievanderveek.soo.parser.antlrimpl.generated;
+  import com.arievanderveek.soo.SeaOfOberonException;
   import com.arievanderveek.soo.ast.*;
   import com.arievanderveek.soo.ast.statements.*;
   import com.arievanderveek.soo.ast.variables.*;
@@ -27,6 +28,14 @@ tokens {
 
 @lexer::header {
   package com.arievanderveek.soo.parser.antlrimpl.generated;
+}
+
+// Changed the rulecatch to throw the exception and halt the program.
+@rulecatch {
+	catch (RecognitionException re) {
+			reportError(re);
+  	  throw re;
+	}
 }
 
 selectorPart
