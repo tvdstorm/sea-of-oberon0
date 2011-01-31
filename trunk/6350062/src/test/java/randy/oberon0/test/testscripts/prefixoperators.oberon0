@@ -2,6 +2,8 @@ MODULE Prefixoperators;
 VAR a, b: INTEGER;
 BEGIN
 
+a:= -2 * 4;
+
 Read(a);
 Read(b);
 

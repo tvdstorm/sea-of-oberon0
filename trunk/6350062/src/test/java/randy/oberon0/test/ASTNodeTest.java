@@ -637,7 +637,11 @@ public class ASTNodeTest
 		prepareTest("prefixoperators");
 		for (int i=0;i<numTests;i++)
 		{
-			int a = random.nextInt(), b = random.nextInt();
+			int a = random.nextInt(), b = 0;
+			while (b == 0)
+			{
+				b = random.nextInt();
+			}
 			runTest(""+a, ""+b);
 			
 			Assert.assertTrue(functions.popOutput().equals("" + (a + b)));
@@ -645,20 +649,20 @@ public class ASTNodeTest
 			Assert.assertTrue(functions.popOutput().equals("" + (a * b)));
 			Assert.assertTrue(functions.popOutput().equals("" + (a / b)));
 			
-			Assert.assertTrue(functions.popOutput().equals("" + (-a + b)));
-			Assert.assertTrue(functions.popOutput().equals("" + (-a - b)));
-			Assert.assertTrue(functions.popOutput().equals("" + (-a * b)));
-			Assert.assertTrue(functions.popOutput().equals("" + (-a / b)));
+			Assert.assertTrue(functions.popOutput().equals("" + ((-a) + b)));
+			Assert.assertTrue(functions.popOutput().equals("" + ((-a) - b)));
+			Assert.assertTrue(functions.popOutput().equals("" + -(a * b)));
+			Assert.assertTrue(functions.popOutput().equals("" + -(a / b)));
 			
-			Assert.assertTrue(functions.popOutput().equals("" + (a + -b)));
-			Assert.assertTrue(functions.popOutput().equals("" + (a - -b)));
-			Assert.assertTrue(functions.popOutput().equals("" + (a * -b)));
-			Assert.assertTrue(functions.popOutput().equals("" + (a / -b)));
+			Assert.assertTrue(functions.popOutput().equals("" + (a + (-b))));
+			Assert.assertTrue(functions.popOutput().equals("" + (a - (-b))));
+			Assert.assertTrue(functions.popOutput().equals("" + (a * (-b))));
+			Assert.assertTrue(functions.popOutput().equals("" + (a / (-b))));
 			
-			Assert.assertTrue(functions.popOutput().equals("" + (-a + -b)));
-			Assert.assertTrue(functions.popOutput().equals("" + (-a - -b)));
-			Assert.assertTrue(functions.popOutput().equals("" + (-a * -b)));
-			Assert.assertTrue(functions.popOutput().equals("" + (-a / -b)));
+			Assert.assertTrue(functions.popOutput().equals("" + ((-a) + (-b))));
+			Assert.assertTrue(functions.popOutput().equals("" + ((-a) - (-b))));
+			Assert.assertTrue(functions.popOutput().equals("" + -(a * (-b))));
+			Assert.assertTrue(functions.popOutput().equals("" + -(a / (-b))));
 			
 			Assert.assertTrue(functions.outputIsEmpty());
 		}
