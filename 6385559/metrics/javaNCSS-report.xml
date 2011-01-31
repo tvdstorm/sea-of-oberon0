@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-01-31</date>
-  <time>22:06:28</time>
+  <time>23:05:11</time>
   <packages>
     <package>
       <name>ast</name>
       <classes>35</classes>
       <functions>124</functions>
-      <ncss>941</ncss>
+      <ncss>946</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>64</single_comment_lines>
@@ -25,9 +25,9 @@
     </package>
     <package>
       <name>management</name>
-      <classes>8</classes>
-      <functions>39</functions>
-      <ncss>290</ncss>
+      <classes>9</classes>
+      <functions>42</functions>
+      <ncss>304</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>8</single_comment_lines>
@@ -41,7 +41,7 @@
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>15</single_comment_lines>
-      <multi_comment_lines>30</multi_comment_lines>
+      <multi_comment_lines>29</multi_comment_lines>
     </package>
     <package>
       <name>systemcalls</name>
@@ -54,20 +54,20 @@
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <total>
-      <classes>52</classes>
-      <functions>187</functions>
-      <ncss>1416</ncss>
+      <classes>53</classes>
+      <functions>190</functions>
+      <ncss>1435</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>90</single_comment_lines>
-      <multi_comment_lines>47</multi_comment_lines>
+      <multi_comment_lines>46</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>5.00</td><td>52.00</td><td>187.00</td><td>1,416.00</td><td>0.00</td><td>Project</td></tr>
-      <tr><td></td><td>10.40</td><td>37.40</td><td>283.20</td><td>0.00</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.60</td><td>27.23</td><td>0.00</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>7.57</td><td>0.00</td><td>Function</td></tr>
+      <tr><td>5.00</td><td>53.00</td><td>190.00</td><td>1,435.00</td><td>0.00</td><td>Project</td></tr>
+      <tr><td></td><td>10.60</td><td>38.00</td><td>287.00</td><td>0.00</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.58</td><td>27.08</td><td>0.00</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>7.55</td><td>0.00</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -179,7 +179,7 @@
     </object>
     <object>
       <name>ast.ModuleNode</name>
-      <ncss>24</ncss>
+      <ncss>25</ncss>
       <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
@@ -207,7 +207,7 @@
     </object>
     <object>
       <name>ast.ProcedureCallNode</name>
-      <ncss>28</ncss>
+      <ncss>27</ncss>
       <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
@@ -318,16 +318,16 @@
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>errorhandler.OberonException</name>
-      <ncss>4</ncss>
-      <functions>1</functions>
+      <name>errorhandler.Errorlog</name>
+      <ncss>19</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>errorhandler.parseErrorLog</name>
-      <ncss>19</ncss>
-      <functions>3</functions>
+      <name>errorhandler.OberonException</name>
+      <ncss>4</ncss>
+      <functions>1</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -370,6 +370,13 @@
       <name>management.ProcedureManager.ProcedureContainer</name>
       <ncss>14</ncss>
       <functions>4</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>management.ScopeManager</name>
+      <ncss>11</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -437,12 +444,12 @@
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>25.31</ncss>
-      <functions>3.60</functions>
+      <ncss>25.04</ncss>
+      <functions>3.58</functions>
       <classes>0.06</classes>
       <javadocs>0.00</javadocs>
     </averages>
-    <ncss>1,416.00</ncss>
+    <ncss>1,435.00</ncss>
   </objects>
 
   <functions>
@@ -453,7 +460,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.ASTnode.eval(String)</name>
+      <name>ast.ASTnode.eval()</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -471,7 +478,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.ArrayNode.eval(String)</name>
+      <name>ast.ArrayNode.eval()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -495,7 +502,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.AssignmentNode.eval(String)</name>
+      <name>ast.AssignmentNode.eval()</name>
       <ncss>4</ncss>
       <ccn>3</ccn>
       <javadocs>0</javadocs>
@@ -513,7 +520,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.ConstantNode.eval(String)</name>
+      <name>ast.ConstantNode.eval()</name>
       <ncss>5</ncss>
       <ccn>2</ccn>
       <javadocs>0</javadocs>
@@ -537,7 +544,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.DeclarationsNode.eval(String)</name>
+      <name>ast.DeclarationsNode.eval()</name>
       <ncss>10</ncss>
       <ccn>5</ccn>
       <javadocs>0</javadocs>
@@ -555,7 +562,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.ElseStatementNode.eval(String)</name>
+      <name>ast.ElseStatementNode.eval()</name>
       <ncss>4</ncss>
       <ccn>2</ccn>
       <javadocs>0</javadocs>
@@ -573,7 +580,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.ExpressionNode.eval(String)</name>
+      <name>ast.ExpressionNode.eval()</name>
       <ncss>27</ncss>
       <ccn>14</ccn>
       <javadocs>0</javadocs>
@@ -597,7 +604,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.FieldlistNode.eval(String)</name>
+      <name>ast.FieldlistNode.eval()</name>
       <ncss>13</ncss>
       <ccn>7</ccn>
       <javadocs>0</javadocs>
@@ -621,7 +628,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.FieldsNode.eval(String)</name>
+      <name>ast.FieldsNode.eval()</name>
       <ncss>6</ncss>
       <ccn>3</ccn>
       <javadocs>0</javadocs>
@@ -645,13 +652,13 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.FormalParameterNode.eval(String)</name>
+      <name>ast.FormalParameterNode.eval()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.FormalParameterNode.eval(String,ParamContainer)</name>
+      <name>ast.FormalParameterNode.eval(ParamContainer)</name>
       <ncss>6</ncss>
       <ccn>3</ccn>
       <javadocs>0</javadocs>
@@ -669,13 +676,13 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.FpSectionNode.eval(String)</name>
+      <name>ast.FpSectionNode.eval()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.FpSectionNode.eval(String,ParamContainer)</name>
+      <name>ast.FpSectionNode.eval(ParamContainer)</name>
       <ncss>27</ncss>
       <ccn>8</ccn>
       <javadocs>0</javadocs>
@@ -699,13 +706,13 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.IdentListNode.eval(String)</name>
+      <name>ast.IdentListNode.eval()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.IdentListNode.allocateIdentifiers(String,String)</name>
+      <name>ast.IdentListNode.allocateIdentifiers(String)</name>
       <ncss>8</ncss>
       <ccn>4</ccn>
       <javadocs>0</javadocs>
@@ -735,7 +742,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.IfStatementNode.eval(String)</name>
+      <name>ast.IfStatementNode.eval()</name>
       <ncss>8</ncss>
       <ccn>4</ccn>
       <javadocs>0</javadocs>
@@ -753,7 +760,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.IntegerNode.eval(String)</name>
+      <name>ast.IntegerNode.eval()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -771,7 +778,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.MinusNode.eval(String)</name>
+      <name>ast.MinusNode.eval()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -789,8 +796,8 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.ModuleNode.eval(String)</name>
-      <ncss>6</ncss>
+      <name>ast.ModuleNode.eval()</name>
+      <ncss>7</ncss>
       <ccn>3</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -807,7 +814,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.NotNode.eval(String)</name>
+      <name>ast.NotNode.eval()</name>
       <ncss>4</ncss>
       <ccn>3</ccn>
       <javadocs>0</javadocs>
@@ -825,13 +832,13 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.ParamNode.eval(String)</name>
+      <name>ast.ParamNode.eval()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.ParamNode.getVarValueList(String)</name>
+      <name>ast.ParamNode.getVarValueList()</name>
       <ncss>9</ncss>
       <ccn>2</ccn>
       <javadocs>0</javadocs>
@@ -849,7 +856,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.ProcedureBodyNode.eval(String)</name>
+      <name>ast.ProcedureBodyNode.eval()</name>
       <ncss>6</ncss>
       <ccn>3</ccn>
       <javadocs>0</javadocs>
@@ -873,8 +880,8 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.ProcedureCallNode.eval(String)</name>
-      <ncss>12</ncss>
+      <name>ast.ProcedureCallNode.eval()</name>
+      <ncss>11</ncss>
       <ccn>3</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -891,13 +898,13 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.ProcedureDeclarationNode.eval(String)</name>
+      <name>ast.ProcedureDeclarationNode.eval()</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.ProcedureDeclarationNode.eval(String,ParamContainer)</name>
+      <name>ast.ProcedureDeclarationNode.eval(ParamContainer)</name>
       <ncss>5</ncss>
       <ccn>3</ccn>
       <javadocs>0</javadocs>
@@ -915,13 +922,13 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.ProcedureHeadingNode.eval(String)</name>
+      <name>ast.ProcedureHeadingNode.eval()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.ProcedureHeadingNode.eval(String,ParamContainer)</name>
+      <name>ast.ProcedureHeadingNode.eval(ParamContainer)</name>
       <ncss>4</ncss>
       <ccn>2</ccn>
       <javadocs>0</javadocs>
@@ -945,7 +952,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.ProcedureListNode.eval(String)</name>
+      <name>ast.ProcedureListNode.eval()</name>
       <ncss>6</ncss>
       <ccn>3</ccn>
       <javadocs>0</javadocs>
@@ -963,7 +970,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.RecordNode.eval(String)</name>
+      <name>ast.RecordNode.eval()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -987,13 +994,13 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.SelectorArrayNode.eval(String)</name>
+      <name>ast.SelectorArrayNode.eval()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.SelectorArrayNode.getString(String)</name>
+      <name>ast.SelectorArrayNode.getString()</name>
       <ncss>10</ncss>
       <ccn>4</ccn>
       <javadocs>0</javadocs>
@@ -1011,7 +1018,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.SelectorNode.eval(String)</name>
+      <name>ast.SelectorNode.eval()</name>
       <ncss>4</ncss>
       <ccn>3</ccn>
       <javadocs>0</javadocs>
@@ -1029,13 +1036,13 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.SelectorRecordNode.eval(String)</name>
+      <name>ast.SelectorRecordNode.eval()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.SelectorRecordNode.getString(String)</name>
+      <name>ast.SelectorRecordNode.getString()</name>
       <ncss>9</ncss>
       <ccn>4</ccn>
       <javadocs>0</javadocs>
@@ -1053,7 +1060,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.SimpleExpression.eval(String)</name>
+      <name>ast.SimpleExpression.eval()</name>
       <ncss>16</ncss>
       <ccn>12</ccn>
       <javadocs>0</javadocs>
@@ -1077,7 +1084,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.StatementSequenceNode.eval(String)</name>
+      <name>ast.StatementSequenceNode.eval()</name>
       <ncss>6</ncss>
       <ccn>3</ccn>
       <javadocs>0</javadocs>
@@ -1095,7 +1102,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.TermNode.eval(String)</name>
+      <name>ast.TermNode.eval()</name>
       <ncss>19</ncss>
       <ccn>14</ccn>
       <javadocs>0</javadocs>
@@ -1119,7 +1126,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.TypeDefNode.eval(String)</name>
+      <name>ast.TypeDefNode.eval()</name>
       <ncss>6</ncss>
       <ccn>4</ccn>
       <javadocs>0</javadocs>
@@ -1137,7 +1144,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.TypeNode.eval(String)</name>
+      <name>ast.TypeNode.eval()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -1161,13 +1168,13 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.VarNode.eval(String)</name>
+      <name>ast.VarNode.eval()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.VarNode.getVarname(String)</name>
+      <name>ast.VarNode.getVarname()</name>
       <ncss>9</ncss>
       <ccn>4</ccn>
       <javadocs>0</javadocs>
@@ -1185,8 +1192,26 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.WhileStatementNode.eval(String)</name>
+      <name>ast.WhileStatementNode.eval()</name>
       <ncss>5</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>errorhandler.Errorlog.addMessage(String)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>errorhandler.Errorlog.hasErrors()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>errorhandler.Errorlog.printMessages()</name>
+      <ncss>13</ncss>
       <ccn>3</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -1194,24 +1219,6 @@
       <name>errorhandler.OberonException.OberonException(String)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>errorhandler.parseErrorLog.addMessage(String)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>errorhandler.parseErrorLog.hasErrors()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>errorhandler.parseErrorLog.printMessages()</name>
-      <ncss>13</ncss>
-      <ccn>3</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -1389,6 +1396,24 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>management.ScopeManager.setScope(String)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>management.ScopeManager.currentScope()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>management.ScopeManager.removeLastScope()</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>management.TypeDefinitionManager.addTypeDefinition(String,ASTnode,String)</name>
       <ncss>6</ncss>
       <ccn>3</ccn>
@@ -1527,7 +1552,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>systemcalls.Read.eval(String,ParamContainer)</name>
+      <name>systemcalls.Read.eval(ParamContainer)</name>
       <ncss>13</ncss>
       <ccn>3</ccn>
       <javadocs>0</javadocs>
@@ -1545,7 +1570,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>systemcalls.Write.eval(String,ParamContainer)</name>
+      <name>systemcalls.Write.eval(ParamContainer)</name>
       <ncss>5</ncss>
       <ccn>2</ccn>
       <javadocs>0</javadocs>
@@ -1563,16 +1588,16 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>systemcalls.WriteLn.eval(String,ParamContainer)</name>
+      <name>systemcalls.WriteLn.eval(ParamContainer)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function_averages>
-      <ncss>5.96</ncss>
-      <ccn>2.71</ccn>
+      <ncss>5.92</ncss>
+      <ccn>2.68</ccn>
       <javadocs>0.00</javadocs>
     </function_averages>
-    <ncss>1,416.00</ncss>
+    <ncss>1,435.00</ncss>
   </functions>
 </javancss>

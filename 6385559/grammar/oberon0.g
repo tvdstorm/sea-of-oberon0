@@ -24,7 +24,7 @@ options
         String hdr = getErrorHeader(e);
         String msg = getErrorMessage(e, tokenNames);
         
-        parseErrorLog.addMessage( hdr + " -> " + msg );
+        Errorlog.addMessage( hdr + " -> " + msg );
     }
 }
 

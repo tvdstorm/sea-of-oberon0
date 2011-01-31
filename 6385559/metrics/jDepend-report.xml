@@ -160,11 +160,11 @@
             </AbstractClasses>
 
             <ConcreteClasses>
+                <Class sourceFile="Errorlog.java">
+                    errorhandler.Errorlog
+                </Class>
                 <Class sourceFile="OberonException.java">
                     errorhandler.OberonException
-                </Class>
-                <Class sourceFile="parseErrorLog.java">
-                    errorhandler.parseErrorLog
                 </Class>
             </ConcreteClasses>
 
@@ -197,8 +197,8 @@
 
         <Package name="management">
             <Stats>
-                <TotalClasses>8</TotalClasses>
-                <ConcreteClasses>8</ConcreteClasses>
+                <TotalClasses>9</TotalClasses>
+                <ConcreteClasses>9</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
                 <Ca>3</Ca>
                 <Ce>5</Ce>
@@ -229,6 +229,9 @@
                 </Class>
                 <Class sourceFile="ProcedureManager.java">
                     management.ProcedureManager$ProcedureContainer
+                </Class>
+                <Class sourceFile="ScopeManager.java">
+                    management.ScopeManager
                 </Class>
                 <Class sourceFile="TypeDefinitionManager.java">
                     management.TypeDefinitionManager
