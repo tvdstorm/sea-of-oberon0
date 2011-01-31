@@ -7,6 +7,7 @@ import management.ParamContainer;
 import management.ProcedureManager;
 import management.TypeDefinitionManager;
 import management.OberonSystemcalls;
+import parseErrorLog.OberonException;
 
 public class ProcedureCallNode implements StatementNode {
   public ProcedureCallNode( String identifier, ParamNode params )
@@ -37,7 +38,7 @@ public class ProcedureCallNode implements StatementNode {
     System.out.println( ";" );
   }
   
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     String newScope = this.identifier + "_" + scope;
     ProcedureDeclarationNode declaration = ProcedureManager.getProcedure( this.identifier );

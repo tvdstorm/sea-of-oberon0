@@ -1,4 +1,5 @@
 package ASTnodes;
+import parseErrorLog.OberonException;
 
 public class IfStatementNode implements StatementNode {
   public IfStatementNode( ExpressionNode expression, StatementSequenceNode sequence, StatementNode elseStatement )
@@ -44,7 +45,7 @@ public class IfStatementNode implements StatementNode {
     System.out.println( "END;" );
   }
   
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     if( this.expression.eval( scope ) == 1 )
     {

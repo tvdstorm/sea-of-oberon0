@@ -1,6 +1,7 @@
 package ASTnodes;
 
 import management.TypeDefinitionManager;
+import parseErrorLog.OberonException;
 
 public class TypeDefNode implements ASTnode {
   public TypeDefNode( String identifier, ASTnode type, TypeDefNode followup )
@@ -29,7 +30,7 @@ public class TypeDefNode implements ASTnode {
     }
   }
 
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     if( this.identifier != null && this.type != null )
     {

@@ -1,6 +1,7 @@
 package ASTnodes;
 
 import java.util.Vector;
+import parseErrorLog.OberonException;
 
 public class RecordNode implements ASTnode {
   public RecordNode( FieldsNode fields )
@@ -17,12 +18,12 @@ public class RecordNode implements ASTnode {
     System.out.print( " END" );
   }
   
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     return 0;
   }
   
-  public Vector<String> getRecordElementList()
+  public Vector<String> getRecordElementList() throws OberonException
   { // fetches the variables of which the RECORD is based
     Vector<String> returnList = null;
     returnList = this.fields.getVariableList();

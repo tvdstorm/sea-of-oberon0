@@ -1,7 +1,7 @@
 package ASTnodes;
 
 import java.util.Vector;
-
+import parseErrorLog.OberonException;
 import management.TypeDefinitionManager;
 
 public class FieldlistNode implements ASTnode {
@@ -25,7 +25,7 @@ public class FieldlistNode implements ASTnode {
     } 
   }
   
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     ASTnode correctedType = this.type;
     if( this.type != null )
@@ -51,7 +51,7 @@ public class FieldlistNode implements ASTnode {
     return 0;
   }
   
-  public Vector<String> getVariableList()
+  public Vector<String> getVariableList() throws OberonException
   {
     ASTnode correctedType = this.type;
     if( correctedType != null )

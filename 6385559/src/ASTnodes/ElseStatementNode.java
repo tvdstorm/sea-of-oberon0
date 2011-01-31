@@ -1,4 +1,5 @@
 package ASTnodes;
+import parseErrorLog.OberonException;
 
 public class ElseStatementNode implements StatementNode {
   public ElseStatementNode( StatementSequenceNode sequence )
@@ -14,7 +15,7 @@ public class ElseStatementNode implements StatementNode {
     }
   }
   
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     if( this.sequence != null )
     {

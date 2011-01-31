@@ -1,4 +1,5 @@
 package ASTnodes;
+import parseErrorLog.OberonException;
 
 public class SelectorRecordNode implements ASTnode {
   public SelectorRecordNode( String ident, ASTnode selector )
@@ -18,12 +19,12 @@ public class SelectorRecordNode implements ASTnode {
     }
   }
   
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     return 0;
   }
   
-  public String getString( String scope )
+  public String getString( String scope ) throws OberonException
   {
     String returnValue = "." + this.ident;
     if( this.selector != null )

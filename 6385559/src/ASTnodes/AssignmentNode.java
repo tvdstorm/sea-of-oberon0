@@ -1,6 +1,7 @@
 package ASTnodes;
 
 import management.MemoryManager;
+import parseErrorLog.OberonException;
 
 public class AssignmentNode implements StatementNode {
   public AssignmentNode( VarNode var, ExpressionNode expression )
@@ -27,7 +28,7 @@ public class AssignmentNode implements StatementNode {
     System.out.println( ";" );
   }
   
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     if( this.expression != null && this.var != null )
     { // only set the value if the expression is an valid expression

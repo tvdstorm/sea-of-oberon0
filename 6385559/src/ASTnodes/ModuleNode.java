@@ -33,7 +33,7 @@ public class ModuleNode implements ASTnode{
     System.out.println( "END " + this.ModuleName + ".");
   }
   
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     if( this.declarations != null )
     {

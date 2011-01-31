@@ -1,4 +1,5 @@
 package ASTnodes;
+import parseErrorLog.OberonException;
 
 public class NotNode implements ASTnode {
   public NotNode( ASTnode expression )
@@ -13,7 +14,7 @@ public class NotNode implements ASTnode {
     System.out.print( ")" );
   }
   
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     if( this.expression != null )
     {

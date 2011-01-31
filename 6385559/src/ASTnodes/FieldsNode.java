@@ -1,6 +1,7 @@
 package ASTnodes;
 
 import java.util.Vector;
+import parseErrorLog.OberonException;
 
 public class FieldsNode implements ASTnode {
   public FieldsNode( FieldlistNode fieldlist, FieldsNode fieldsnode )
@@ -21,7 +22,7 @@ public class FieldsNode implements ASTnode {
     }
   }
   
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     if( this.fieldlist != null )
     {
@@ -34,7 +35,7 @@ public class FieldsNode implements ASTnode {
     return 0;
   }
   
-  public Vector<String> getVariableList()
+  public Vector<String> getVariableList() throws OberonException
   { // fetches the variable list from the Fieldsnode, needed for other types then INTEGER & BOOLEAN
     Vector<String> returnList = null;
     Vector<String> additionList = null;

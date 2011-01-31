@@ -1,5 +1,6 @@
 package management;
 import java.util.Vector;
+import parseErrorLog.OberonException;
 
 /*
  * The memory manager has a list of variables that belong to a certain scope
@@ -7,29 +8,32 @@ import java.util.Vector;
  */
 
 public class MemoryManager {
-  public static void allocate( String varName, String scope, int value, String refName, boolean isConst )
+  public static void allocate( String varName, String scope, int value, String refName, boolean isConst ) throws OberonException
   {
     // Check wheter var does not already exist in the scope
     int oldLocation = getLocationOf( varName, scope );
-  
     if( oldLocation == -1 )
     {
       int location;
-        if( refName != null )
-        { // call by ref dus location moet niet zijn waar je hem put maar waar de oude staat
-          String previousScope = previousScope( scope );
-          // next get the location of the var location in previousScope
-          location = getLocationOf( refName, previousScope );
-        }
-        else
-        {
-          location = Memory.put( value );
-        }
+      if( refName != null )
+      { // call by ref dus location moet niet zijn waar je hem put maar waar de oude staat
+        String previousScope = previousScope( scope );
+        // next get the location of the var location in previousScope
+        location = getLocationOf( refName, previousScope );
+      }
+      else
+      {
+        location = Memory.put( value );
+      }
       list.add( new MemoryMap( varName, scope, location, refName, isConst ) );
+    }
+    else
+    {
+      throw new OberonException( "Tried to redeclare the already declared variable: " + varName );
     }
   }
   
-  public static int get( String varName )
+  public static int get( String varName ) throws OberonException
   {
     int location = varLocation( varName );
     if( location != -1 )
@@ -42,10 +46,13 @@ public class MemoryManager {
         }
         return Memory.get( varcontainer.location );
     }
-    return 0;
+    else
+    {
+      throw new OberonException( "Trying to get the value of the undefined variable: " + varName );
+    }
   }
   
-  public static int getFromOtherScope( String varName, String scope )
+  public static int getFromOtherScope( String varName, String scope ) throws OberonException
   {
     int location = getLocationNotInScope( varName, scope );
     if( location != -1 )
@@ -58,10 +65,13 @@ public class MemoryManager {
       }
       return Memory.get( varcontainer.location );
     }
-    return 0;
+    else
+    {
+      throw new OberonException( "Trying to get the value of the undefined variable: " + varName );
+    }
   }
  
-  public static void set( String varName, int value )
+  public static void set( String varName, int value ) throws OberonException
   {
     int location = varLocation( varName );
     boolean isWriteable = isWriteable( varName );
@@ -75,9 +85,13 @@ public class MemoryManager {
       }
       Memory.set( var.location, value );
     }
+    else
+    {
+      throw new OberonException( "Trying to set the undefined variable : " + varName );
+    }
   }
   
-  public static void deallocateScope( String scope )
+  public static void deallocateScope( String scope ) throws OberonException
   {
     MemoryMap var = null;
     for( int i = list.size()-1; i >= 0; i-- )
@@ -94,7 +108,7 @@ public class MemoryManager {
     }
   }
   
-  public static void print()
+  public static void print() throws OberonException
   {
     System.out.println( "\n\n#\n" +
       "#\tMemoryManager dump\n" +
@@ -202,7 +216,7 @@ public class MemoryManager {
       this.readOnly = readOnly;
     }
     
-    public void print()
+    public void print() throws OberonException
     {
       this.printXWide( this.varName, 15 );
       this.printXWide( this.scope, 20 );

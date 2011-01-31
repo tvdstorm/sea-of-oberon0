@@ -1,24 +1,6 @@
 MODULE Sample;
-CONST x = 5;
-TYPE bla = RECORD a, b, c ,d : INTEGER; e : ARRAY 2 OF RECORD f : RECORD f : INTEGER; END; END; END;
-VAR b : ARRAY x OF INTEGER; c : BOOLEAN;
-
-PROCEDURE x ( VAR a : ARRAY x OF INTEGER );
-  PROCEDURE WriteLn( VAR a : INTEGER );
-  BEGIN
-    a := 7;
-  END WriteLn;
-BEGIN
-  a[1] := 1010;
-  z[0] := 6;
-  WriteLn( a[1] );
-END x;
+VAR b : BOOLEAN;
 
 BEGIN
-  b[0] := 1;
-  b[1] := 2;
-  Read( b[0] );
-  x( b );
-  WriteLn( b[1] );
-  WriteLn;
+  b := 1;
 END Sample.

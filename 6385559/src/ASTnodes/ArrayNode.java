@@ -1,6 +1,7 @@
 package ASTnodes;
 import java.util.Vector;
 import management.TypeDefinitionManager;
+import parseErrorLog.OberonException;
 
 public class ArrayNode implements ASTnode {
   public ArrayNode( ExpressionNode expression, ASTnode type )
@@ -22,12 +23,12 @@ public class ArrayNode implements ASTnode {
     }
   }
   
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     return this.expression.eval( scope );
   }
   
-  public Vector<String> getArrayElementList()
+  public Vector<String> getArrayElementList() throws OberonException
   { // fetch the list of all array elements
     ASTnode correctedType = this.type;
     if( correctedType != null )

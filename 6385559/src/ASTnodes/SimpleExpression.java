@@ -1,4 +1,5 @@
 package ASTnodes;
+import parseErrorLog.OberonException;
 
 public class SimpleExpression implements ASTnode {
   public SimpleExpression( String operator, ASTnode term, SimpleExpression followup )
@@ -26,7 +27,7 @@ public class SimpleExpression implements ASTnode {
     }
   }
 
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     if( this.operator == null && this.followup == null )
     {
@@ -53,7 +54,7 @@ public class SimpleExpression implements ASTnode {
     return 0;
   }
   
-  public String getVariableName()
+  public String getVariableName() throws OberonException
   { // detect whether it is only a variable node complete simple expression needed for call be reference
     if( this.operator != null && this.followup != null && !( this.term instanceof TermNode ) )
     {

@@ -1,4 +1,5 @@
 package ASTnodes;
+import parseErrorLog.OberonException;
 
 public class SelectorArrayNode implements ASTnode {
   public SelectorArrayNode( ExpressionNode expression, ASTnode selector )
@@ -20,12 +21,12 @@ public class SelectorArrayNode implements ASTnode {
     }
   }
   
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     return 0;
   }
   
-  public String getString( String scope )
+  public String getString( String scope ) throws OberonException
   {
     String returnValue = "";
     returnValue = "[" + this.expression.eval( scope ) + "]";
