@@ -8,6 +8,6 @@ public class AddExpression extends BinaryExpression {
 
 	@Override
 	public <T> T accept(Visitor<T> visitor) {
-		return visitor.visit(this);
+		return visitor.visitAddExpression(this);
 	}
 }

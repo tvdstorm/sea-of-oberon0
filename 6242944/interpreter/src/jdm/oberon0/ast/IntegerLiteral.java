@@ -13,6 +13,6 @@ public class IntegerLiteral extends Expression {
 
 	@Override
 	public <T> T accept(Visitor<T> visitor) {
-		return visitor.visitInteger(this);
+		return visitor.visitIntegerLiteral(this);
 	}
 }

@@ -20,6 +20,6 @@ public class WhileStatement extends Statement {
 	
 	@Override
 	public <T> void accept(Visitor<T> visitor) {
-		visitor.visitWhile(this);
+		visitor.visitWhileStatement(this);
 	}
 }

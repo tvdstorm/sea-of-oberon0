@@ -1,7 +1,6 @@
 package jdm.oberon0.ast;
 
 public class LtExpression extends BinaryExpression {
-
 	
 	public LtExpression(Expression lhs, Expression rhs) {
 		super(lhs, rhs);
@@ -9,7 +8,7 @@ public class LtExpression extends BinaryExpression {
 
 	@Override
 	public <T> T accept(Visitor<T> visitor) {
-		return visitor.visit(this);
+		return visitor.visitLtExpression(this);
 	}
 
 }

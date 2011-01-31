@@ -19,6 +19,6 @@ public class TypeDeclaration extends Declaration {
 	
 	@Override
 	public <T> void accept(Visitor<T> visitor) {
-		visitor.visitType(this);
+		visitor.visitTypeDeclaration(this);
 	}
 }
