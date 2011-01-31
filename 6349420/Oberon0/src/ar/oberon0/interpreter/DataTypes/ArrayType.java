@@ -5,22 +5,20 @@ import ar.oberon0.interpreter.Interpretable;
 import ar.oberon0.interpreter.TechnicalException;
 import ar.oberon0.interpreter.Memory.Context;
 
-public class ArrayType implements CreatableType
-{
-	private Interpretable _length;
-	private CreatableType _type;
+public class ArrayType implements CreatableType {
+	private Interpretable length;
+	private CreatableType type;
 
-	public ArrayType(Interpretable length, CreatableType type)
-	{
-		_length = length;
-		_type = type;
+	public ArrayType(Interpretable length, CreatableType type) {
+		this.length = length;
+		this.type = type;
 	}
 
 	@Override
-	public DataType createInstance(Context context) throws TechnicalException
-	{
-		IntegerNode length = (IntegerNode) Helper.getDataType((Interpretable) _length.Interpret(context), context);
-		return new Array(length, _type);
+	public Value createInstance(Context context) throws TechnicalException {
+		IntegerNode length = (IntegerNode) Helper.getValue(
+				(Interpretable) this.length.interpret(context), context);
+		return new Array(length, this.type);
 	}
 
 }

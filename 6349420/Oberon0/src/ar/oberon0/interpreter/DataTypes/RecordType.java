@@ -18,7 +18,7 @@ public class RecordType implements CreatableType
 	}
 
 	@Override
-	public DataType createInstance(Context context) throws TechnicalException
+	public Value createInstance(Context context) throws TechnicalException
 	{
 		// TODO Auto-generated method stub
 		return null;

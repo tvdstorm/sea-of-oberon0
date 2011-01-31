@@ -3,7 +3,7 @@ package ar.oberon0.interpreter.Memory;
 import ar.oberon0.interpreter.Interpretable;
 import ar.oberon0.interpreter.TechnicalException;
 import ar.oberon0.interpreter.DataTypes.CreatableType;
-import ar.oberon0.interpreter.DataTypes.DataType;
+import ar.oberon0.interpreter.DataTypes.Value;
 
 /*
  * A DataField is used to store data. Using a DataField it becomes easy to pass parameters by reference or by value.
@@ -11,27 +11,47 @@ import ar.oberon0.interpreter.DataTypes.DataType;
  * If the procedure eddits the value of the DataField it won't be eddited in the calling procedure. 
  * If a clone isn't made the DataField is passed by reference.
  */
-public class DataField implements Interpretable
-{
+public class DataField implements Interpretable {
 	/*
 	 * The type of the item stored in the DataField.
 	 */
-	private CreatableType _type;
+	private CreatableType type;
 	/*
 	 * The actual value.
 	 */
-	private DataType _value;
+	private Value value;
 
-	public CreatableType getType()
-	{
-		return _type;
+	public final CreatableType getType() {
+		return this.type;
+	}
+
+	/*
+	 * Get the value of this DataField.
+	 */
+	public final Value getValue(final Context context)
+			throws TechnicalException {
+		ifNotInitInit(context);
+		return this.value;
+	}
+
+	/*
+	 * Set the value of the DataField.
+	 */
+	public final void setValue(final Value value, final Context context)
+			throws TechnicalException {
+		if (value.getType().getClass() != this.type.getClass()) {
+			throw new IllegalArgumentException("The value was of type "
+					+ value.getType().getClass() + " while "
+					+ this.type.getClass() + " was expected.");
+		}
+		ifNotInitInit(context);
+		this.value = value;
 	}
 
 	/*
 	 * Create a new DataField of the specified type.
 	 */
-	public DataField(CreatableType type)
-	{
+	public DataField(final CreatableType type) {
 		this(type, null);
 	}
 
@@ -39,32 +59,9 @@ public class DataField implements Interpretable
 	 * Create a new DataField of the specified type and with the specified
 	 * value.
 	 */
-	public DataField(CreatableType type, DataType value)
-	{
-		_type = type;
-		_value = value;
-	}
-
-	/*
-	 * Get the value of this DataField.
-	 */
-	public DataType getValue(Context context) throws TechnicalException
-	{
-		IfNotInitInit(context);
-		return _value;
-	}
-
-	/*
-	 * Set the value of the DataField.
-	 */
-	public void setValue(DataType value, Context context) throws TechnicalException
-	{
-		if (value.getType().getClass() != _type.getClass())
-		{
-			throw new IllegalArgumentException("The value was of type " + value.getType().getClass() + " while " + _type.getClass() + " was expected.");
-		}
-		IfNotInitInit(context);
-		_value = value;
+	public DataField(final CreatableType type, final Value value) {
+		this.type = type;
+		this.value = value;
 	}
 
 	/*
@@ -75,9 +72,9 @@ public class DataField implements Interpretable
 	 * .Memory.Context)
 	 */
 	@Override
-	public Object Interpret(Context context) throws TechnicalException
-	{
-		IfNotInitInit(context);
+	public final Object interpret(final Context context)
+			throws TechnicalException {
+		ifNotInitInit(context);
 		return getValue(context);
 	}
 
@@ -86,20 +83,17 @@ public class DataField implements Interpretable
 	 * needed else a null pointer exception will be thrown when an assignment is
 	 * done.
 	 */
-	private void IfNotInitInit(Context context) throws TechnicalException
-	{
-		if (_value == null)
-		{
-			_value = _type.createInstance(context);
+	private void ifNotInitInit(final Context context) throws TechnicalException {
+		if (this.value == null) {
+			this.value = type.createInstance(context);
 		}
 	}
 
 	/*
 	 * Create a new DataField with the same value.
 	 */
-	public DataField Clone()
-	{
-		return new DataField(_type, _value);
+	public final DataField clone() {
+		return new DataField(this.type, this.value);
 	}
 
 }

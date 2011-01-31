@@ -14,7 +14,7 @@ options {
   import ar.oberon0.interpreter.Memory.*;
   import ar.oberon0.interpreter.Procedure.*; 
 }
-
+ 
 @lexer::header {
   package ar.oberon0.parser;
 }
@@ -131,9 +131,9 @@ statementSequence returns [Interpretable statementSequence]
 
 identList returns [IdentList identList]
 	:															{$identList = new IdentList();}
-		firstIdent=IDENT 										{$identList.AddIdent($firstIdent.getText());}
+		firstIdent=IDENT 										{$identList.addIdent($firstIdent.getText());}
 		(	',' 
-			otherIdent=IDENT									{$identList.AddIdent($otherIdent.getText());}
+			otherIdent=IDENT									{$identList.addIdent($otherIdent.getText());}
 		)* 
 	;
 
@@ -173,8 +173,8 @@ fPSection returns [IdentList identList, CreatableType type, FormalParameter.Dire
 
 formalParameters returns [FormalParameterList formalParameters]
 	:	'(' 													{$formalParameters = new FormalParameterList();}
-			(	firstFPSection=fPSection 						{$formalParameters.AddParameters($firstFPSection.identList, $firstFPSection.type, $firstFPSection.direction);}
-				(	';' otherFPSection=fPSection				{$formalParameters.AddParameters($otherFPSection.identList, $otherFPSection.type, $otherFPSection.direction);}
+			(	firstFPSection=fPSection 						{$formalParameters.addParameters($firstFPSection.identList, $firstFPSection.type, $firstFPSection.direction);}
+				(	';' otherFPSection=fPSection				{$formalParameters.addParameters($otherFPSection.identList, $otherFPSection.type, $otherFPSection.direction);}
 				)* 
 			)? 
 		')'
@@ -207,18 +207,18 @@ procedureDeclaration returns [ProcedureDeclaration procedureDeclaration, String 
 	
 declarations returns [ConstantList constants, TypeIdentifierList types, DataFieldList vars, ProcedureList procedures]
 	:	(	'CONST' 											{$constants = new ConstantList();}
-			(constIDENT=IDENT '=' expression ';'				{$constants.AddItem($constIDENT.getText(),new DataField(new SimpleType("INTEGER"),(DataType)$expression.expression));}
+			(constIDENT=IDENT '=' expression ';'				{$constants.addItem($constIDENT.getText(),new DataField(new SimpleType("INTEGER"),(Value)$expression.expression));}
 			)*
 		)?
 		(	'TYPE' 												{$types = new TypeIdentifierList();}
-			(	typeIDENT=IDENT '=' typeType=type ';' 			{$types.AddItem($typeIDENT.getText(),$typeType.type);}
+			(	typeIDENT=IDENT '=' typeType=type ';' 			{$types.addItem($typeIDENT.getText(),$typeType.type);}
 			)*
 		)?
 		(	'VAR' 												{$vars = new DataFieldList();}
-			(	identList ':' varType=type ';'					{$vars.AddVariables($identList.identList, $varType.type);}
+			(	identList ':' varType=type ';'					{$vars.addVariables($identList.identList, $varType.type);}
 			)*
 		)?														{$procedures = new ProcedureList();}
-		(	procedureDeclaration ';'							{$procedures.AddItem( $procedureDeclaration.procedureName, $procedureDeclaration.procedureDeclaration);}
+		(	procedureDeclaration ';'							{$procedures.addItem( $procedureDeclaration.procedureName, $procedureDeclaration.procedureDeclaration);}
 		)*
 	;
 	
@@ -242,11 +242,11 @@ write returns [Interpretable write]
 		('Write' 
 			(	'(' expression ')'									{$write = new WriteNode($expression.expression);}
 			|														{WriteNode writeNode = new WriteNode();}
-				'("'(	IDENT										{writeNode.AddToMessage($IDENT.getText() + " ");}
+				'("'(	IDENT										{writeNode.addToMessage($IDENT.getText() + " ");}
 				)*'")'												{$write = writeNode;}
 			)
 		)
-	|	('WriteLn')													{$write = new WriteNode(); ((WriteNode)$write).AddToMessage("\n");}	
+	|	('WriteLn')													{$write = new WriteNode(); ((WriteNode)$write).addToMessage("\n");}	
 	;	
 	
 read returns [Interpretable read]

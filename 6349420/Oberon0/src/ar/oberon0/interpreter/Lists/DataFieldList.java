@@ -8,13 +8,11 @@ import ar.oberon0.interpreter.Memory.DataField;
 /*
  * A list that is used to store name DataField data. DataFields can be looked up by their name. For example used in the context to store the variables.
  */
-public class DataFieldList extends BaseMap<DataField>
-{
+public class DataFieldList extends BaseMap<DataField> {
 	/*
 	 * Create a new empty DataFieldList.
 	 */
-	public DataFieldList()
-	{
+	public DataFieldList() {
 		super();
 	}
 
@@ -24,13 +22,11 @@ public class DataFieldList extends BaseMap<DataField>
 	 * invoked. If this isn't done the parameters are semantically passed by
 	 * reference.
 	 */
-	public DataFieldList Clone()
-	{
+	public final DataFieldList clone() {
 		DataFieldList clone = new DataFieldList();
-		for (Entry<String, DataField> item : this)
-		{
-			DataField tempField = item.getValue().Clone();
-			clone.AddItem(item.getKey(), tempField);
+		for (Entry<String, DataField> item : this) {
+			DataField tempField = item.getValue().clone();
+			clone.addItem(item.getKey(), tempField);
 		}
 		return clone;
 	}
@@ -40,11 +36,10 @@ public class DataFieldList extends BaseMap<DataField>
 	 * specified is used to create the instance. For example a variable named i
 	 * of type IntegerNode.
 	 */
-	public void AddVariables(IdentList identifiers, CreatableType type)
-	{
-		for (String identifier : identifiers)
-		{
-			AddItem(identifier, new DataField(type));
+	public final void addVariables(final IdentList identifiers,
+			final CreatableType type) {
+		for (String identifier : identifiers) {
+			addItem(identifier, new DataField(type));
 		}
 	}
 

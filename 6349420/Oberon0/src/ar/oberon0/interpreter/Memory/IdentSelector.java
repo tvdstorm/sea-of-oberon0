@@ -6,20 +6,18 @@ import ar.oberon0.interpreter.TechnicalException;
 /*
  * The ident selector is used to select a variable, constant, etc. form the context (memory).
  */
-public class IdentSelector extends Selector implements Interpretable
-{
+public class IdentSelector extends Selector implements Interpretable {
 	/*
 	 * The name to look for in the context (memory).
 	 */
-	private String _identName;
+	private String identName;
 
 	/*
 	 * Create a new IdentSelector that is going to look for the variable,
 	 * constant, etc. with the specified name.
 	 */
-	public IdentSelector(String identName)
-	{
-		_identName = identName;
+	public IdentSelector(final String identName) {
+		this.identName = identName;
 	}
 
 	/*
@@ -30,8 +28,8 @@ public class IdentSelector extends Selector implements Interpretable
 	 * .Memory.Context)
 	 */
 	@Override
-	public Object Interpret(Context context) throws TechnicalException
-	{
+	public final Object interpret(final Context context)
+			throws TechnicalException {
 		return getItem(null, context);
 	}
 
@@ -43,17 +41,17 @@ public class IdentSelector extends Selector implements Interpretable
 	 * .Memory.DataField, ar.oberon0.interpreter.Memory.Context)
 	 */
 	@Override
-	protected DataField getItem(DataField parent, Context context) throws TechnicalException
-	{
-		if (parent == null)
-		{
-			DataField currentVar = context.getVarOrConstantAsDataField(_identName);
-			if (getNextNode() == null)
+	protected final DataField getItem(final DataField parent,
+			final Context context) throws TechnicalException {
+		if (parent == null) {
+			DataField currentVar = context
+					.getVarOrConstantAsDataField(this.identName);
+			if (getNextNode() == null) {
 				return currentVar;
-			else
+			} else {
 				return getNextNode().getItem(currentVar, context);
-		} else
-		{
+			}
+		} else {
 			throw new TechnicalException("this feature is yet supported.");
 		}
 	}

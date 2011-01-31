@@ -5,13 +5,9 @@ import ar.oberon0.interpreter.DataTypes.CreatableType;
 /*
  * Not yet implemented.
  */
-public class FieldList
-{
+public class FieldList {
 
-	public void setIdentList(IdentList identList, CreatableType type)
-	{
-		// TODO Auto-generated method stub
-
+	public void setIdentList(final IdentList identList, final CreatableType type) {
 	}
 
 }

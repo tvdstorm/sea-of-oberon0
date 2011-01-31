@@ -7,51 +7,24 @@ import ar.oberon0.interpreter.Memory.Context;
 /*
  * This class is used to store oberon 0 integers.
  */
-public class IntegerNode implements DataType
-{
+public class IntegerNode implements ArithmeticValue, ComparableValue {
 	/*
 	 * The value of this node.
 	 */
-	private int _value;
+	private int value;
 
 	/*
 	 * Create and init a new node. default value is 0;
 	 */
-	public IntegerNode()
-	{
+	public IntegerNode() {
 		this(0);
 	}
 
 	/*
 	 * Create a new node with the value of the parameter.
 	 */
-	public IntegerNode(int value)
-	{
-		_value = value;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode()
-	{
-		return Integer.valueOf(_value).hashCode();
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object obj)
-	{
-		if (obj.getClass() != IntegerNode.class)
-			return false;
-		return _value == ((IntegerNode) obj)._value;
+	public IntegerNode(final int value) {
+		this.value = value;
 	}
 
 	/*
@@ -62,9 +35,26 @@ public class IntegerNode implements DataType
 	 * .Memory.Context)
 	 */
 	@Override
-	public Object Interpret(Context context) throws TechnicalException
-	{
+	public final Object interpret(final Context context)
+			throws TechnicalException {
 		return this;
+	}
+
+	/*
+	 * Return the java int value of this node.
+	 */
+	public final int getValueAsInt() {
+		return this.value;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see ar.oberon0.interpreter.DataTypes.DataType#getType()
+	 */
+	@Override
+	public final CreatableType getType() {
+		return new SimpleType(PrimitiveType.INTEGER);
 	}
 
 	/*
@@ -74,23 +64,14 @@ public class IntegerNode implements DataType
 	 * ar.oberon0.interpreter.DataTypes.DataType#MultiplyBy(ar.oberon0.interpreter
 	 * .DataTypes.DataType)
 	 */
-	public DataType MultiplyBy(DataType value) throws TechnicalException
-	{
-		if (!Helper.AreSameType(this, value))
-			throw new TechnicalException("Could not multiply the type " + IntegerNode.class + " with a object of type " + value.getClass() + ".");
+	public final Value multiplyBy(final Value value) throws TechnicalException {
+		if (!Helper.areSameType(this, value)) {
+			throw new TechnicalException("Could not multiply the type "
+					+ IntegerNode.class + " with a object of type "
+					+ value.getClass() + ".");
+		}
 
-		return new IntegerNode(_value * ((IntegerNode) value)._value);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString()
-	{
-		return "" + _value;
+		return new IntegerNode(this.value * ((IntegerNode) value).value);
 	}
 
 	/*
@@ -101,12 +82,14 @@ public class IntegerNode implements DataType
 	 * DataTypes.DataType)
 	 */
 	@Override
-	public DataType Add(DataType value) throws TechnicalException
-	{
-		if (!Helper.AreSameType(this, value))
-			throw new TechnicalException("Could not add the value of type " + IntegerNode.class + " with the value of type " + value.getClass() + ".");
+	public final Value add(final Value value) throws TechnicalException {
+		if (!Helper.areSameType(this, value)) {
+			throw new TechnicalException("Could not add the value of type "
+					+ IntegerNode.class + " with the value of type "
+					+ value.getClass() + ".");
+		}
 
-		return new IntegerNode(_value + ((IntegerNode) value)._value);
+		return new IntegerNode(this.value + ((IntegerNode) value).value);
 	}
 
 	/*
@@ -115,9 +98,8 @@ public class IntegerNode implements DataType
 	 * @see ar.oberon0.interpreter.DataTypes.DataType#Negate()
 	 */
 	@Override
-	public DataType Negate()
-	{
-		return new IntegerNode(-_value);
+	public final Value negate() {
+		return new IntegerNode(-this.value);
 	}
 
 	/*
@@ -128,12 +110,15 @@ public class IntegerNode implements DataType
 	 * .DataTypes.DataType)
 	 */
 	@Override
-	public DataType Subtract(DataType value) throws TechnicalException
-	{
-		if (!Helper.AreSameType(this, value))
-			throw new TechnicalException("Could not subtract the value of type " + IntegerNode.class + " from the value of type " + value.getClass() + ".");
+	public final Value subtract(final Value value) throws TechnicalException {
+		if (!Helper.areSameType(this, value)) {
+			throw new TechnicalException(
+					"Could not subtract the value of type " + IntegerNode.class
+							+ " from the value of type " + value.getClass()
+							+ ".");
+		}
 
-		return new IntegerNode(_value - ((IntegerNode) value)._value);
+		return new IntegerNode(this.value - ((IntegerNode) value).value);
 	}
 
 	/*
@@ -142,12 +127,13 @@ public class IntegerNode implements DataType
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
 	 */
 	@Override
-	public int compareTo(DataType value)
-	{
-		if (!Helper.AreSameType(this, value))
+	public final int compareTo(final ComparableValue value) {
+		if (!Helper.areSameType(this, value)) {
 			return -1;
-		else
-			return Integer.valueOf(_value).compareTo(((IntegerNode) value)._value);
+		} else {
+			return Integer.valueOf(this.value).compareTo(
+					((IntegerNode) value).value);
+		}
 	}
 
 	/*
@@ -158,12 +144,14 @@ public class IntegerNode implements DataType
 	 * .DataTypes.DataType)
 	 */
 	@Override
-	public DataType Divide(DataType value) throws TechnicalException
-	{
-		if (!Helper.AreSameType(this, value))
-			throw new TechnicalException("Could not divide the value of type " + IntegerNode.class + " from the value of type " + value.getClass() + ".");
+	public final Value divide(final Value value) throws TechnicalException {
+		if (!Helper.areSameType(this, value)) {
+			throw new TechnicalException("Could not divide the value of type "
+					+ IntegerNode.class + " from the value of type "
+					+ value.getClass() + ".");
+		}
 
-		return new IntegerNode(_value / ((IntegerNode) value)._value);
+		return new IntegerNode(this.value / ((IntegerNode) value).value);
 	}
 
 	/*
@@ -174,30 +162,46 @@ public class IntegerNode implements DataType
 	 * .DataTypes.DataType)
 	 */
 	@Override
-	public DataType Modulo(DataType value) throws TechnicalException
-	{
-		if (!Helper.AreSameType(this, value))
-			throw new TechnicalException("Could not modulo the value of type " + IntegerNode.class + " from the value of type " + value.getClass() + ".");
+	public final Value modulo(final Value value) throws TechnicalException {
+		if (!Helper.areSameType(this, value)) {
+			throw new TechnicalException("Could not modulo the value of type "
+					+ IntegerNode.class + " from the value of type "
+					+ value.getClass() + ".");
+		}
 
-		return new IntegerNode(_value % ((IntegerNode) value)._value);
-	}
-
-	/*
-	 * Return the java int value of this node.
-	 */
-	public int getValueAsInt()
-	{
-		return _value;
+		return new IntegerNode(this.value % ((IntegerNode) value).value);
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see ar.oberon0.interpreter.DataTypes.DataType#getType()
+	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public CreatableType getType()
-	{
-		return new SimpleType("INTEGER");
+	public final String toString() {
+		return "" + this.value;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public final int hashCode() {
+		return Integer.valueOf(this.value).hashCode();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public final boolean equals(final Object obj) {
+		if (obj.getClass() != IntegerNode.class) {
+			return false;
+		}
+		return this.value == ((IntegerNode) obj).value;
 	}
 }

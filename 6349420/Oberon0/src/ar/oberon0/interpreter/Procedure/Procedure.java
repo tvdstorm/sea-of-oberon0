@@ -10,21 +10,19 @@ import ar.oberon0.interpreter.Memory.Context;
  * This class contains the logic to execute a procedure.
  * A procedure is created by a procedure declaration. 
  */
-class Procedure implements Interpretable
-{
-	private StatementSequence _statementsToExecute;
-	private Context _procedureContext;
+class Procedure implements Interpretable {
+	private StatementSequence statementsToExecute;
+	private Context procedureContext;
 
-	protected Procedure(StatementSequence statementsToExecute, Context procedureContext)
-	{
-		_procedureContext = procedureContext;
-		_statementsToExecute = statementsToExecute;
+	protected Procedure(final StatementSequence statementsToExecute,
+			final Context procedureContext) {
+		this.procedureContext = procedureContext;
+		this.statementsToExecute = statementsToExecute;
 	}
 
 	@Override
-	public Object Interpret(Context context) throws TechnicalException
-	{
-		_statementsToExecute.Interpret(_procedureContext);
+	public Object interpret(final Context context) throws TechnicalException {
+		this.statementsToExecute.interpret(this.procedureContext);
 		return 0;
 	}
 
