@@ -4,6 +4,10 @@ import management.MemoryManager;
 import parseErrorLog.OberonException;
 
 public class ConstantNode implements ASTnode {
+  private final String identifier;
+  private final ExpressionNode expression;
+  private final ConstantNode constant;
+  
   public ConstantNode( String identifier, ExpressionNode expression, ConstantNode constant )
   {
     this.identifier = identifier;
@@ -37,8 +41,4 @@ public class ConstantNode implements ASTnode {
     }
     return 0;
   }
-
-  private String identifier = null;
-  private ExpressionNode expression = null;
-  private ConstantNode constant = null;
 }

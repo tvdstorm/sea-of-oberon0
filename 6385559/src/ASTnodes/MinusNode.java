@@ -2,6 +2,8 @@ package ASTnodes;
 import parseErrorLog.OberonException;
 
 public class MinusNode implements ASTnode {
+  private final TermNode child;
+  
   public MinusNode( TermNode child )
   {
     this.child = child;
@@ -18,6 +20,4 @@ public class MinusNode implements ASTnode {
   {
     return -1 * this.child.eval( scope );
   }
-  
-  private TermNode child = null;
 }

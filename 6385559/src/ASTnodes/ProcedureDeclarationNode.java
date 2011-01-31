@@ -7,6 +7,9 @@ import management.ParamContainer;
 import management.ProcedureManager;
 
 public class ProcedureDeclarationNode implements ASTnode {
+  private final ProcedureHeadingNode heading;
+  private final ProcedureBodyNode body;
+  
   public ProcedureDeclarationNode( ProcedureHeadingNode heading, ProcedureBodyNode body )
   {
     this.heading = heading;
@@ -50,7 +53,4 @@ public class ProcedureDeclarationNode implements ASTnode {
       this.body.eval( scope );
     }
   }
-  
-  private ProcedureHeadingNode heading = null;
-  private ProcedureBodyNode body = null;
 }

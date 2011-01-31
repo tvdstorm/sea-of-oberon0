@@ -5,6 +5,9 @@ import parseErrorLog.OberonException;
 import management.ParamContainer;
 
 public class FormalParameterNode implements ASTnode {
+  private final FpSectionNode fpSection;
+  private final FormalParameterNode followup;
+  
   public FormalParameterNode( FpSectionNode fpSection, FormalParameterNode followup )
   {
     this.fpSection = fpSection;
@@ -42,7 +45,4 @@ public class FormalParameterNode implements ASTnode {
     
     return params;
   }
-
-  private FpSectionNode fpSection = null;
-  private FormalParameterNode followup = null;
 }

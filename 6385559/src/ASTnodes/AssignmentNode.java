@@ -4,6 +4,9 @@ import management.MemoryManager;
 import parseErrorLog.OberonException;
 
 public class AssignmentNode implements StatementNode {
+  private final VarNode var;
+  private final ExpressionNode expression;
+  
   public AssignmentNode( VarNode var, ExpressionNode expression )
   {
     this.var = var;
@@ -36,7 +39,4 @@ public class AssignmentNode implements StatementNode {
     }
     return 0;
   }
-  
-  private VarNode var = null;
-  private ExpressionNode expression = null;
 }

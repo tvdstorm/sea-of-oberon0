@@ -4,6 +4,9 @@ import java.util.Vector;
 import parseErrorLog.OberonException;
 
 public class FieldsNode implements ASTnode {
+  private final FieldlistNode fieldlist;
+  private final FieldsNode fieldsnode;
+  
   public FieldsNode( FieldlistNode fieldlist, FieldsNode fieldsnode )
   {
     this.fieldlist = fieldlist;
@@ -53,7 +56,4 @@ public class FieldsNode implements ASTnode {
     }
     return returnList;
   }
-
-  private FieldlistNode fieldlist = null;
-  private FieldsNode fieldsnode = null;
 }

@@ -2,6 +2,10 @@ package ASTnodes;
 import parseErrorLog.OberonException;
 
 public class IfStatementNode implements StatementNode {
+  private final ExpressionNode expression;
+  private final StatementSequenceNode sequence;
+  private final StatementNode elseStatement;
+  
   public IfStatementNode( ExpressionNode expression, StatementSequenceNode sequence, StatementNode elseStatement )
   {
     this.expression = expression;
@@ -60,8 +64,4 @@ public class IfStatementNode implements StatementNode {
     }
     return 0;
   }
-  
-  private ExpressionNode expression = null;
-  private StatementSequenceNode sequence = null;
-  private StatementNode elseStatement = null;
 }

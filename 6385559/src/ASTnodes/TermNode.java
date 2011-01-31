@@ -2,6 +2,10 @@ package ASTnodes;
 import parseErrorLog.OberonException;
 
 public class TermNode implements ASTnode {
+  private final ASTnode factor;
+  private final String operator; // '*'|'DIV'|'MOD'|'&'
+  private final TermNode follow;
+  
   public TermNode( ASTnode factor, String operator, TermNode follow )
   {
     this.factor = factor;
@@ -66,8 +70,4 @@ public class TermNode implements ASTnode {
     }
     return null;
   }  
-  
-  private ASTnode factor = null;
-  private String operator = null; // '*'|'DIV'|'MOD'|'&'
-  private TermNode follow = null;
 }

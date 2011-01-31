@@ -2,6 +2,9 @@ package ASTnodes;
 import parseErrorLog.OberonException;
 
 public class ProcedureListNode implements ASTnode {
+  private final ProcedureDeclarationNode procedureDeclaration;
+  private final ProcedureListNode procedureList;
+  
   public ProcedureListNode( ProcedureDeclarationNode procedureDeclaration, ProcedureListNode procedureList )
   {
     this.procedureDeclaration = procedureDeclaration;
@@ -33,7 +36,4 @@ public class ProcedureListNode implements ASTnode {
     }
     return 0;
   }
-
-  private ProcedureDeclarationNode procedureDeclaration = null;
-  private ProcedureListNode procedureList = null;
 }

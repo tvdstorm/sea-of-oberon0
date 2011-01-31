@@ -2,6 +2,11 @@ package ASTnodes;
 import parseErrorLog.OberonException;
 
 public class DeclarationsNode implements ASTnode {
+  private final ConstantNode constant;
+  private final TypeDefNode typeDefs; 
+  private final FieldsNode vars;
+  private final ProcedureListNode procedureList;
+  
   public DeclarationsNode( ConstantNode constant, TypeDefNode typeDefs, FieldsNode vars, ProcedureListNode procedureList )
   {
     this.constant = constant;
@@ -74,9 +79,4 @@ public class DeclarationsNode implements ASTnode {
     }
     return 0;
   }
-  
-  private ConstantNode constant = null;
-  private TypeDefNode typeDefs = null; 
-  private FieldsNode vars = null;
-  private ProcedureListNode procedureList = null;
 }
