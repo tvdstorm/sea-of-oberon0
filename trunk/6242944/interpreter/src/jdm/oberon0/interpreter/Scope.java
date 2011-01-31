@@ -1,11 +1,11 @@
 package jdm.oberon0.interpreter;
 
-
 import java.util.HashMap;
 import java.util.Map;
 
 import jdm.oberon0.exceptions.UndefinedTypeException;
 import jdm.oberon0.exceptions.UndefinedVariableException;
+import jdm.oberon0.types.Type;
 import jdm.oberon0.values.Value;
 import jdm.oberon0.values.ReferenceValue;
 
@@ -18,13 +18,13 @@ public class Scope {
 	private Map<String, Value> _constants;
 	private Map<String, ReferenceValue> _variables;
 	private Map<String, Callable> _procedures;
-	private Map<String, jdm.oberon0.types.Type> _types;
+	private Map<String, Type> _types;
 
 	public Scope() {
 		_constants = new HashMap<String, Value>();
 		_variables = new HashMap<String, ReferenceValue>();
 		_procedures = new HashMap<String, Callable>();
-		_types = new HashMap<String, jdm.oberon0.types.Type>();
+		_types = new HashMap<String, Type>();
 	}
 	
 	public Scope(Scope parentScope) {
@@ -32,14 +32,14 @@ public class Scope {
 		_constants = new HashMap<String, Value>(parentScope._constants);
 		_variables = new HashMap<String, ReferenceValue>(parentScope._variables);
 		_procedures = new HashMap<String, Callable>(parentScope._procedures);
-		_types = new HashMap<String, jdm.oberon0.types.Type>(parentScope._types);
+		_types = new HashMap<String, Type>(parentScope._types);
 	}
 	
 	public void defineConstant(String name, Value value) {
 		_constants.put(name, value);
 	}
 	
-	public void defineType(String name, jdm.oberon0.types.Type type) {
+	public void defineType(String name, Type type) {
 		_types.put(name, type);
 	}
 	
@@ -70,7 +70,7 @@ public class Scope {
 		return _parentScope;
 	}
 
-	public jdm.oberon0.types.Type lookupType(String name) {
+	public Type lookupType(String name) {
 		if (!_types.containsKey(name)) {
 			throw new UndefinedTypeException(name);
 		}

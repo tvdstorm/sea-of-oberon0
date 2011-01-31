@@ -11,7 +11,7 @@ public class RecordValue extends Value {
 	private HashMap<String, ReferenceValue> _values;
 	
 	public RecordValue(RecordType type) {
-		HashMap<String, jdm.oberon0.types.Type> fields = type.getFields();
+		HashMap<String, Type> fields = type.getFields();
 		HashMap<String, ReferenceValue> values = new HashMap<String, ReferenceValue>();
 		
 		for (String name : fields.keySet()) {
