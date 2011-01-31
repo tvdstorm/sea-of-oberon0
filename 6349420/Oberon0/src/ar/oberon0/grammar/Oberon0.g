@@ -20,147 +20,147 @@ options {
 }
 
 	
-selector [Selector selector] returns [Selector result]
-@init															{Selector tempSelector = $selector;}
+selector [Selector selectorIn] returns [Selector selector]
+@init															{Selector tempSelector = $selectorIn;}
 	:
 		(	'.' IDENT 											{tempSelector.setNextNode(new IdentSelector($IDENT.getText())); tempSelector = tempSelector.getNextNode();}
-		| 	'[' expression ']' 									{tempSelector.setNextNode(new ArrayItemSelector($expression.result)); tempSelector = tempSelector.getNextNode();}
+		| 	'[' expression ']' 									{tempSelector.setNextNode(new ArrayItemSelector($expression.expression)); tempSelector = tempSelector.getNextNode();}
 		)*
-																{$result = selector;}
+																{$selector = selectorIn;}
 	; 
 
-factor returns [Interpretable result]
+factor returns [Interpretable factor]
 	:	IDENT 													{IdentSelector sel = new IdentSelector($IDENT.getText());}
-		selector[sel]											{$result = sel;}
-	| 	INTEGER 												{$result = new IntegerNode(Integer.parseInt($INTEGER.getText()));}
-	| 	'(' expression ')' 										{$result = $expression.result;} 
-	| 	'~' factor												{$result = null;}
+		selector[sel]											{$factor = sel;}
+	| 	INTEGER 												{$factor = new IntegerNode(Integer.parseInt($INTEGER.getText()));}
+	| 	'(' expression ')' 										{$factor = $expression.expression;} 
+	| 	'~' negatedFactor=factor								{$factor = new NegationNode($negatedFactor.factor);}
 	; 
 	
 
 
-term returns [Interpretable result]
-	:	left=factor												{$result = $left.result;} 
+term returns [Interpretable term]
+	:	left=factor												{$term = $left.factor;} 
 		(
-			(	'*' 	right=factor							{$result = new MultNode($result, $right.result);}
-			| 	'DIV' right=factor								{$result = new DivNode($result, $right.result);}
-			| 	'MOD' right=factor 								{$result = new ModNode($result, $right.result);}
-			| 	'&' 	right=factor							{$result = new AndNode($result, $right.result);}
+			(	'*' 	right=factor							{$term = new MultNode($term, $right.factor);}
+			| 	'DIV' right=factor								{$term = new DivNode($term, $right.factor);}
+			| 	'MOD' right=factor 								{$term = new ModNode($term, $right.factor);}
+			| 	'&' 	right=factor							{$term = new AndNode($term, $right.factor);}
 			)*
 		)		
 	; 
 
-simpleExpression returns [Interpretable result]  
+simpleExpression returns [Interpretable simpleExpression]  
 	:															{ boolean positive = true; }	
 		(	'+'
 		|	'-' 												{positive = !positive;}
 		)? 
-		left=term 												{$result = $left.result;}
-		(	'+' right=term										{$result = new AddNode($result, $right.result);}
-		|	'-' right=term										{$result = new MinNode($result, $right.result);}
-		| 	'OR' right=term										{$result = new OrNode($result, $right.result);}
+		left=term 												{$simpleExpression = $left.term;}
+		(	'+' right=term										{$simpleExpression = new AddNode($simpleExpression, $right.term);}
+		|	'-' right=term										{$simpleExpression = new MinNode($simpleExpression, $right.term);}
+		| 	'OR' right=term										{$simpleExpression = new OrNode($simpleExpression, $right.term);}
 		)*
-																{if(!positive) { $result = new NegationNode($result);}}
+																{if(!positive) { $simpleExpression = new NegationNode($simpleExpression);}}
 	; 
 
-expression returns [Interpretable result] 
-	:	leftExpression=simpleExpression 						{ $result = $leftExpression.result; } 
-		(	'=' rightExpression=simpleExpression 				{ $result = new EqualNode($result, $rightExpression.result); }
-		| 	'#' rightExpression=simpleExpression 				{ $result = new NotEqualNode($result, $rightExpression.result); }
-		| 	'<' rightExpression=simpleExpression 				{ $result = new SmallerNode($result, $rightExpression.result); }
-		| 	'<=' rightExpression=simpleExpression 				{ $result = new SmallerOrEqualNode($result, $rightExpression.result); }
-		| 	'>' rightExpression=simpleExpression 				{ $result = new GreaterNode($result, $rightExpression.result); }
-		| 	'>=' rightExpression=simpleExpression 				{ $result = new GreaterOrEqualNode($result, $rightExpression.result); } 
+expression returns [Interpretable expression] 
+	:	leftExpression=simpleExpression 						{ $expression = $leftExpression.simpleExpression; } 
+		(	'=' rightExpression=simpleExpression 				{ $expression = new EqualNode($expression, $rightExpression.simpleExpression); }
+		| 	'#' rightExpression=simpleExpression 				{ $expression = new NotEqualNode($expression, $rightExpression.simpleExpression); }
+		| 	'<' rightExpression=simpleExpression 				{ $expression = new SmallerNode($expression, $rightExpression.simpleExpression); }
+		| 	'<=' rightExpression=simpleExpression 				{ $expression = new SmallerOrEqualNode($expression, $rightExpression.simpleExpression); }
+		| 	'>' rightExpression=simpleExpression 				{ $expression = new GreaterNode($expression, $rightExpression.simpleExpression); }
+		| 	'>=' rightExpression=simpleExpression 				{ $expression = new GreaterOrEqualNode($expression, $rightExpression.simpleExpression); } 
 		)?
 	; 
 
-assignment returns [Interpretable result]
+assignment returns [Interpretable assignment]
 	:	IDENT 
 																{IdentSelector sel = new IdentSelector($IDENT.getText());} 
-		selector[sel] ':=' expression 							{$result = new AssignmentNode(sel,$expression.result);}
+		selector[sel] ':=' expression 							{$assignment = new AssignmentNode(sel,$expression.expression);}
 	; 
 
-actualParameters returns [List<Interpretable> result]
-	:															{$result = new ArrayList<Interpretable>();}	
+actualParameters returns [List<Interpretable> actualParameters]
+	:															{$actualParameters = new ArrayList<Interpretable>();}	
 		'(' 
-		(	firstParameter=expression							{$result.add($firstParameter.result);} 
+		(	firstParameter=expression							{$actualParameters.add($firstParameter.expression);} 
 			(	',' 
-				otherParameter=expression						{$result.add($otherParameter.result);}
+				otherParameter=expression						{$actualParameters.add($otherParameter.expression);}
 			)*
 		)? 
 		')' 
 	; 
 
-procedureCall returns [Interpretable result]
-	:	IDENT (actualParameters)? 								{$result = new ProcedureCallNode($IDENT.getText(),$actualParameters.result); }
+procedureCall returns [Interpretable procedureCall]
+	:	IDENT (actualParameters)? 								{$procedureCall = new ProcedureCallNode($IDENT.getText(),$actualParameters.actualParameters); }
 	;
 	
-ifStatement returns [Interpretable result]
+ifStatement returns [Interpretable ifStatement]
 	:	'IF' ifExpression=expression 
-		'THEN' ifStatementSequence=statementSequence			{IfNode ifNode = new IfNode($ifExpression.result,$ifStatementSequence.result);} 
+		'THEN' ifStatementSequence=statementSequence			{IfNode ifNode = new IfNode($ifExpression.expression,$ifStatementSequence.statementSequence);} 
 		(	'ELSIF' elseIfExpression=expression 
-			'THEN' elseIfStatementSequence=statementSequence	{ifNode.addElseIf($elseIfExpression.result,$elseIfStatementSequence.result);}
+			'THEN' elseIfStatementSequence=statementSequence	{ifNode.addElseIf($elseIfExpression.expression,$elseIfStatementSequence.statementSequence);}
 		)* 
-		(	'ELSE' elseStatementSequence=statementSequence		{ifNode.setElse($elseStatementSequence.result);}
+		(	'ELSE' elseStatementSequence=statementSequence		{ifNode.setElse($elseStatementSequence.statementSequence);}
 		)? 
-		'END'													{$result = ifNode;}
+		'END'													{$ifStatement = ifNode;}
 	;
 
-whileStatement returns [Interpretable result]
+whileStatement returns [Interpretable whileStatement]
 	:	'WHILE' expression 										
-		'DO' statementSequence 									{$result = new WhileNode($expression.result, $statementSequence.result);}
+		'DO' statementSequence 									{$whileStatement = new WhileNode($expression.expression, $statementSequence.statementSequence);}
 		'END'
 	;
 
-statement returns [Interpretable result]
-	:	(assignment												{$result = $assignment.result;} 
-		| procedureCall 										{$result = $procedureCall.result;}
-		| ifStatement 											{$result = $ifStatement.result;}
-		| whileStatement										{$result = $whileStatement.result;}
-		| write													{$result = $write.result;}
-		| read													{$result = $read.result;}
+statement returns [Interpretable statement]
+	:	(assignment												{$statement = $assignment.assignment;} 
+		| procedureCall 										{$statement = $procedureCall.procedureCall;}
+		| ifStatement 											{$statement = $ifStatement.ifStatement;}
+		| whileStatement										{$statement = $whileStatement.whileStatement;}
+		| write													{$statement = $write.write;}
+		| read													{$statement = $read.read;}
 		)? 
 	;
 
-statementSequence returns [Interpretable result]
-	:	firstStatement=statement								{StatementSequence statementSequence = new StatementSequence($firstStatement.result);} 
+statementSequence returns [Interpretable statementSequence]
+	:	firstStatement=statement								{StatementSequence statementSequence = new StatementSequence($firstStatement.statement);} 
 		(	';' 
-			otherStatement=statement							{statementSequence.addStatement($otherStatement.result);}
-		)* 														{$result = statementSequence;}
+			otherStatement=statement							{statementSequence.addStatement($otherStatement.statement);}
+		)* 														{$statementSequence = statementSequence;}
 	;
 
-identList returns [IdentList result]
-	:															{$result = new IdentList();}
-		firstIdent=IDENT 										{$result.AddIdent($firstIdent.getText());}
+identList returns [IdentList identList]
+	:															{$identList = new IdentList();}
+		firstIdent=IDENT 										{$identList.AddIdent($firstIdent.getText());}
 		(	',' 
-			otherIdent=IDENT									{$result.AddIdent($otherIdent.getText());}
+			otherIdent=IDENT									{$identList.AddIdent($otherIdent.getText());}
 		)* 
 	;
 
-arrayType returns [ArrayType result]
-	:	'ARRAY' expression 'OF' type							{$result = new ArrayType($expression.result, $type.result);}
+arrayType returns [ArrayType arrayType]
+	:	'ARRAY' expression 'OF' type							{$arrayType = new ArrayType($expression.expression, $type.type);}
 	; 
 
-fieldList returns [FieldList result]
-	:															{$result = new FieldList();}
+fieldList returns [FieldList fieldList]
+	:															{$fieldList = new FieldList();}
 		(	identList 											
 			':' 
-			type												{$result.setIdentList($identList.result, $type.result);}
+			type												{$fieldList.setIdentList($identList.identList, $type.type);}
 		)?
 	; 
 
-recordType returns [RecordType result]
-	:															{$result = new RecordType();}
-		'RECORD' firstFieldList=fieldList						{$result.addFieldList($firstFieldList.result);}
-		(	';' otherFieldList=fieldList						{$result.addFieldList($otherFieldList.result);}
+recordType returns [RecordType recordType]
+	:															{$recordType = new RecordType();}
+		'RECORD' firstFieldList=fieldList						{$recordType.addFieldList($firstFieldList.fieldList);}
+		(	';' otherFieldList=fieldList						{$recordType.addFieldList($otherFieldList.fieldList);}
 		)* 
 		'END'
 	; 
 
-type returns [CreatableType result]
-	:	IDENT 													{$result = new SimpleType($IDENT.getText());}
-	| 	arrayType 												{$result = $arrayType.result;}
-	| 	recordType												{$result = $recordType.result;}
+type returns [CreatableType type]
+	:	IDENT 													{$type = new SimpleType($IDENT.getText());}
+	| 	arrayType 												{$type = $arrayType.arrayType;}
+	| 	recordType												{$type = $recordType.recordType;}
 	; 
 
 
@@ -168,68 +168,68 @@ fPSection returns [IdentList identList, CreatableType type, FormalParameter.Dire
 	:															{$direction = FormalParameter.Direction.IN;}
 		(	'VAR'												{$direction = FormalParameter.Direction.IN_OUT;}
 		)?														 
-		identList ':' type 										{$identList = $identList.result; $type = $type.result;}
+		identList ':' type 										{$identList = $identList.identList; $type = $type.type;}
 	;
 
-formalParameters returns [FormalParameterList result]
-	:	'(' 													{$result = new FormalParameterList();}
-			(	firstFPSection=fPSection 						{$result.AddParameters($firstFPSection.identList, $firstFPSection.type, $firstFPSection.direction);}
-				(	';' otherFPSection=fPSection				{$result.AddParameters($otherFPSection.identList, $otherFPSection.type, $otherFPSection.direction);}
+formalParameters returns [FormalParameterList formalParameters]
+	:	'(' 													{$formalParameters = new FormalParameterList();}
+			(	firstFPSection=fPSection 						{$formalParameters.AddParameters($firstFPSection.identList, $firstFPSection.type, $firstFPSection.direction);}
+				(	';' otherFPSection=fPSection				{$formalParameters.AddParameters($otherFPSection.identList, $otherFPSection.type, $otherFPSection.direction);}
 				)* 
 			)? 
 		')'
 	; 
 
-procedureHeading returns [FormalParameterList result, String procedureName]
+procedureHeading returns [FormalParameterList formalParameters, String procedureName]
 	:	'PROCEDURE' IDENT 										{$procedureName = $IDENT.getText();}
-		(	formalParameters									{$result = $formalParameters.result;}
+		(	formalParameters									{$formalParameters = $formalParameters.formalParameters;}
 		)?
 	; 
 
 procedureBody returns [ConstantList constants, TypeIdentifierList types, DataFieldList vars, ProcedureList childProcedures, StatementSequence statementSequence]  
 	:	declarations 											{$constants = $declarations.constants; $types = $declarations.types; $vars = $declarations.vars;$childProcedures = $declarations.procedures;}
-		(	'BEGIN' firstStatementSequence=statementSequence	{$statementSequence = (StatementSequence)$firstStatementSequence.result;}
+		(	'BEGIN' firstStatementSequence=statementSequence	{$statementSequence = (StatementSequence)$firstStatementSequence.statementSequence;}
 		)? 
 		'END' 
 	;
 
 
-procedureDeclaration returns [ProcedureDeclaration result, String procedureName]
+procedureDeclaration returns [ProcedureDeclaration procedureDeclaration, String procedureName]
 	:	procedureHeading ';' procedureBody IDENT				{$procedureName = $IDENT.getText();}
-																{$result = new ProcedureDeclaration($procedureHeading.procedureName);}
-																{$result.setFormalParameters($procedureHeading.result);}
-																{$result.setConstants($procedureBody.constants);}
-																{$result.setTypes($procedureBody.types);}
-																{$result.setVars($procedureBody.vars);}
-																{$result.setChildProcedures($procedureBody.childProcedures);}
-																{$result.setStatementSequence($procedureBody.statementSequence);}
+																{$procedureDeclaration = new ProcedureDeclaration($procedureHeading.procedureName);}
+																{$procedureDeclaration.setFormalParameters($procedureHeading.formalParameters);}
+																{$procedureDeclaration.setConstants($procedureBody.constants);}
+																{$procedureDeclaration.setTypes($procedureBody.types);}
+																{$procedureDeclaration.setVars($procedureBody.vars);}
+																{$procedureDeclaration.setChildProcedures($procedureBody.childProcedures);}
+																{$procedureDeclaration.setStatementSequence($procedureBody.statementSequence);}
 	;	
 	
 declarations returns [ConstantList constants, TypeIdentifierList types, DataFieldList vars, ProcedureList procedures]
 	:	(	'CONST' 											{$constants = new ConstantList();}
-			(constIDENT=IDENT '=' expression ';'				{$constants.AddItem($constIDENT.getText(),new DataField(new SimpleType("INTEGER"),(DataType)$expression.result));}
+			(constIDENT=IDENT '=' expression ';'				{$constants.AddItem($constIDENT.getText(),new DataField(new SimpleType("INTEGER"),(DataType)$expression.expression));}
 			)*
 		)?
 		(	'TYPE' 												{$types = new TypeIdentifierList();}
-			(	typeIDENT=IDENT '=' typeType=type ';' 			{$types.AddItem($typeIDENT.getText(),$typeType.result);}
+			(	typeIDENT=IDENT '=' typeType=type ';' 			{$types.AddItem($typeIDENT.getText(),$typeType.type);}
 			)*
 		)?
 		(	'VAR' 												{$vars = new DataFieldList();}
-			(	identList ':' varType=type ';'					{$vars.AddVariables($identList.result, $varType.result);}
+			(	identList ':' varType=type ';'					{$vars.AddVariables($identList.identList, $varType.type);}
 			)*
 		)?														{$procedures = new ProcedureList();}
-		(	procedureDeclaration ';'							{$procedures.AddItem( $procedureDeclaration.procedureName, $procedureDeclaration.result);}
+		(	procedureDeclaration ';'							{$procedures.AddItem( $procedureDeclaration.procedureName, $procedureDeclaration.procedureDeclaration);}
 		)*
 	;
 	
-module	returns [ModuleNode result] 
-	:	'MODULE' name=IDENT ';' declarations					{$result = new ModuleNode($name.getText());} 
-																{$result.setConstants($declarations.constants);}
-																{$result.setTypeIdentifiers($declarations.types);}
-																{$result.setVars($declarations.vars);}
-																{$result.setChildProcedures($declarations.procedures);}
+module	returns [ModuleNode module] 
+	:	'MODULE' name=IDENT ';' declarations					{$module = new ModuleNode($name.getText());} 
+																{$module.setConstants($declarations.constants);}
+																{$module.setTypeIdentifiers($declarations.types);}
+																{$module.setVars($declarations.vars);}
+																{$module.setChildProcedures($declarations.procedures);}
 																
-		(	'BEGIN' statementSequence							{$result.setStatements((StatementSequence)$statementSequence.result);}
+		(	'BEGIN' statementSequence							{$module.setStatements((StatementSequence)$statementSequence.statementSequence);}
 		)? 
 		'END'! IDENT
 	;
@@ -237,21 +237,21 @@ module	returns [ModuleNode result]
 
 
 
-write returns [Interpretable result]
+write returns [Interpretable write]
 	:	
 		('Write' 
-			(	'(' expression ')'									{$result = new WriteNode($expression.result);}
+			(	'(' expression ')'									{$write = new WriteNode($expression.expression);}
 			|														{WriteNode writeNode = new WriteNode();}
 				'("'(	IDENT										{writeNode.AddToMessage($IDENT.getText() + " ");}
-				)*'")'												{$result = writeNode;}
+				)*'")'												{$write = writeNode;}
 			)
 		)
-	|	('WriteLn')													{$result = new WriteNode(); ((WriteNode)$result).AddToMessage("\n");}	
+	|	('WriteLn')													{$write = new WriteNode(); ((WriteNode)$write).AddToMessage("\n");}	
 	;	
 	
-read returns [Interpretable result]
+read returns [Interpretable read]
 	:	'Read''(' IDENT  										{IdentSelector sel = new IdentSelector($IDENT.getText());}
-		selector[sel] ')'										{$result = new ReadNode(sel);}
+		selector[sel] ')'										{$read = new ReadNode(sel);}
 	;
 
 

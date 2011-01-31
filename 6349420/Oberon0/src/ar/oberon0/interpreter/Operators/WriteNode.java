@@ -1,5 +1,8 @@
-package ar.oberon0.interpreter;
+package ar.oberon0.interpreter.Operators;
 
+import ar.oberon0.interpreter.Helper;
+import ar.oberon0.interpreter.Interpretable;
+import ar.oberon0.interpreter.TechnicalException;
 import ar.oberon0.interpreter.Memory.Context;
 
 /*

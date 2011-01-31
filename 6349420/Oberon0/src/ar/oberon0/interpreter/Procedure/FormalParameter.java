@@ -16,6 +16,11 @@ public class FormalParameter
 		return _direction;
 	}
 
+	public CreatableType getType()
+	{
+		return _type;
+	}
+
 	public FormalParameter(CreatableType type, Direction direction)
 	{
 		_type = type;

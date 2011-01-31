@@ -1,7 +1,9 @@
-package ar.oberon0.interpreter;
+package ar.oberon0.interpreter.Operators;
 
 import java.util.Scanner;
 
+import ar.oberon0.interpreter.Interpretable;
+import ar.oberon0.interpreter.TechnicalException;
 import ar.oberon0.interpreter.DataTypes.IntegerNode;
 import ar.oberon0.interpreter.Memory.Context;
 import ar.oberon0.interpreter.Memory.DataField;

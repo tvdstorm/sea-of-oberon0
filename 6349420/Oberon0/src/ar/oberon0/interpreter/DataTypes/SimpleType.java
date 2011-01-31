@@ -35,4 +35,5 @@ public class SimpleType implements CreatableType
 			return new IntegerNode();
 		throw new TechnicalException("Simple type " + _typeName + " is not supported");
 	}
+
 }
