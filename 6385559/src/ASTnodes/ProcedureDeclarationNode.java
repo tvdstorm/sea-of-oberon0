@@ -1,7 +1,8 @@
 package ASTnodes;
 
-import parseErrorLog.*;
 import java.util.Vector;
+
+import errorhandler.*;
 
 import management.ParamContainer;
 import management.ProcedureManager;

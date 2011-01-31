@@ -1,5 +1,5 @@
 package ASTnodes;
-import parseErrorLog.OberonException;
+import errorhandler.OberonException;
 
 public class TypeNode implements ASTnode {
   private final String ident;

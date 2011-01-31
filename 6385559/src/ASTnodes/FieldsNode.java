@@ -1,7 +1,8 @@
 package ASTnodes;
 
 import java.util.Vector;
-import parseErrorLog.OberonException;
+
+import errorhandler.OberonException;
 
 public class FieldsNode implements ASTnode {
   private final FieldlistNode fieldlist;

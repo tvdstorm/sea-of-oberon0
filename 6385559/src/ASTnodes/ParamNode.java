@@ -1,7 +1,8 @@
 package ASTnodes;
 
 import java.util.Vector;
-import parseErrorLog.OberonException;
+
+import errorhandler.OberonException;
 import management.ParamContainer;
 
 public class ParamNode implements ASTnode {

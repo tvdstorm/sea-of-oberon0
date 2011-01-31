@@ -1,7 +1,7 @@
 package ASTnodes;
 
+import errorhandler.OberonException;
 import management.MemoryManager;
-import parseErrorLog.OberonException;
 
 public class ConstantNode implements ASTnode {
   private final String identifier;

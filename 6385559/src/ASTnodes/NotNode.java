@@ -1,5 +1,5 @@
 package ASTnodes;
-import parseErrorLog.OberonException;
+import errorhandler.OberonException;
 
 public class NotNode implements ASTnode {
   private final ASTnode expression;

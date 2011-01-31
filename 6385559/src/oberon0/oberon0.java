@@ -11,12 +11,12 @@
  */
 package oberon0;
 
+import errorhandler.*;
 import management.MemoryManager;
 import management.ProcedureManager;
 import management.TypeDefinitionManager;
 import oberon0.ParserOutput;
 import oberon0.ParserInput;
-import parseErrorLog.*;
 import ASTnodes.*;
 import systemcalls.*;
 

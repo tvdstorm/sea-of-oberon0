@@ -1,7 +1,8 @@
 package management;
 import java.util.Vector;
+
+import errorhandler.OberonException;
 import ASTnodes.*;
-import parseErrorLog.OberonException;
 
 public class TypeDefinitionManager {
   public static void addTypeDefinition( String name, ASTnode x, String scope ) throws OberonException

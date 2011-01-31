@@ -1,5 +1,5 @@
 package ASTnodes;
-import parseErrorLog.OberonException;
+import errorhandler.OberonException;
 
 public class IntegerNode implements ASTnode {
   private final int intValue;

@@ -1,7 +1,8 @@
 package ASTnodes;
 import java.util.Vector;
+
+import errorhandler.OberonException;
 import management.TypeDefinitionManager;
-import parseErrorLog.OberonException;
 
 public class ArrayNode implements ASTnode {
   private final ExpressionNode expression;

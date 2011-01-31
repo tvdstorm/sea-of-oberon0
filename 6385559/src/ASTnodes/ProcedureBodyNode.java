@@ -1,6 +1,6 @@
 package ASTnodes;
 
-import parseErrorLog.OberonException;
+import errorhandler.OberonException;
 
 public class ProcedureBodyNode implements ASTnode {
   private final DeclarationsNode declarations;

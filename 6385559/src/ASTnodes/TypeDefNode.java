@@ -1,7 +1,7 @@
 package ASTnodes;
 
+import errorhandler.OberonException;
 import management.TypeDefinitionManager;
-import parseErrorLog.OberonException;
 
 public class TypeDefNode implements ASTnode {
   private final String identifier;

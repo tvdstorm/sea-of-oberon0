@@ -1,7 +1,8 @@
 package ASTnodes;
 
 import org.antlr.runtime.*;
-import parseErrorLog.*;
+
+import errorhandler.*;
 
 public class ModuleNode implements ASTnode{
   private final DeclarationsNode declarations;
