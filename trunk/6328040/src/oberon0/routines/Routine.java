@@ -343,7 +343,9 @@ public class Routine{
 
     private IReadableVar evaluateExpressionFromAST(OberonAST tree) {
     	int expressionType = tree.getType();
+    	//TODO change exec in getVarWithOptionalSelector
         IReadableVar lhsVar = (IReadableVar) exec( tree.getLeftmostChild()  );
+        //TODO Expression with one child (tilde or plus/minus before an integer)
         IReadableVar rhsVar = (IReadableVar) exec( tree.getRightmostChild() );
         return Evaluator.evaluateExpression(expressionType, lhsVar, rhsVar);
     }
