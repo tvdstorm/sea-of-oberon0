@@ -12,7 +12,7 @@ public class MemoryManager {
   {
     // Check wheter var does not already exist in the scope
     int oldLocation = getLocationOf( varName, scope );
-    if( oldLocation == -1 )
+    if( oldLocation == -1 && !isArrayOrRecord( varName ) )
     {
       int location;
       if( refName != null )
@@ -48,8 +48,9 @@ public class MemoryManager {
     }
     else
     {
-      throw new OberonException( "Trying to get the value of the undefined variable: " + varName );
+      //throw new OberonException( "Trying to get the value of the undefined variable: " + varName );
     }
+    return 0;
   }
   
   public static int getFromOtherScope( String varName, String scope ) throws OberonException
@@ -67,8 +68,12 @@ public class MemoryManager {
     }
     else
     {
-      throw new OberonException( "Trying to get the value of the undefined variable: " + varName );
+      if( !isArrayOrRecord( varName ) )
+      {
+        throw new OberonException( "Trying to get the value of the undefined variable: " + varName );
+      }
     }
+    return 0;
   }
  
   public static void set( String varName, int value ) throws OberonException
@@ -120,6 +125,21 @@ public class MemoryManager {
       printBuffer = list.get( i );
       printBuffer.print();
     }
+  }
+  
+  private static boolean isArrayOrRecord( String varname )
+  {
+    // findout whether the variable is a record or array
+    MemoryMap container = null;
+    for( int i = list.size()-1; i >= 0; i-- )
+    {
+      container = list.get( i );
+      if( container.varName.startsWith( varname + "." ) || container.varName.startsWith( varname + "[" ) )
+      {
+        return true;
+      }
+    }
+    return false;
   }
   
   private static boolean isWriteable( String varName )
