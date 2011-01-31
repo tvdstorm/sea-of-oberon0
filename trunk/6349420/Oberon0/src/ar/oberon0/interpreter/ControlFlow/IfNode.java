@@ -10,47 +10,36 @@ import ar.oberon0.interpreter.Memory.Context;
 /*
  * Node for a if statement. Supported is if, else, else if.
  */
-public class IfNode implements Interpretable
-{
+public class IfNode implements Interpretable {
 	/*
 	 * The IfStatement object for the main if. Contains the expression to
 	 * evaluate and the statements to execute if the evolution is true.
 	 */
-	private IfStatement _mainIf;
+	private IfStatement mainIfStatements;
 	/*
 	 * The IfStatement objects for the else ifs. Contains the expressions to
 	 * evaluate and the statements to execute if a evolution is true.
 	 */
-	private List<IfStatement> _elseIfs;
+	private List<IfStatement> elseIfStatementsList;
 	/*
 	 * The action to execute if none of the ifs where true.
 	 */
-	private Interpretable _else;
-
-	/*
-	 * Add a new else if statement.
-	 */
-	public void addElseIf(Interpretable expression, Interpretable statementsToExecute)
-	{
-		_elseIfs.add(new IfStatement(expression, statementsToExecute));
-	}
+	private Interpretable elseStatements;
 
 	/*
 	 * Set the else statement.
 	 */
-	public void setElse(Interpretable statementsToExecute)
-	{
-		_else = statementsToExecute;
+	public void setElse(Interpretable statementsToExecute) {
+		this.elseStatements = statementsToExecute;
 	}
 
 	/*
 	 * Create a new IfNode, the expression is used to evaluate if the statements
 	 * have to be executed.
 	 */
-	public IfNode(Interpretable expression, Interpretable statementsToExecute)
-	{
-		_mainIf = new IfStatement(expression, statementsToExecute);
-		_elseIfs = new ArrayList<IfStatement>();
+	public IfNode(Interpretable expression, Interpretable statementsToExecute) {
+		this.mainIfStatements = new IfStatement(expression, statementsToExecute);
+		this.elseIfStatementsList = new ArrayList<IfStatement>();
 	}
 
 	/*
@@ -61,67 +50,68 @@ public class IfNode implements Interpretable
 	 * .Memory.Context)
 	 */
 	@Override
-	public Object Interpret(Context context) throws TechnicalException
-	{
-		if (_mainIf.IsExpressionTrue(context))
-		{
-			_mainIf.Execute(context);
+	public Object interpret(Context context) throws TechnicalException {
+		if (this.mainIfStatements.isExpressionTrue(context)) {
+			this.mainIfStatements.execute(context);
 			return 0;
 		}
-		for (IfStatement elseIfStatement : _elseIfs)
-		{
-			if (elseIfStatement.IsExpressionTrue(context))
-			{
-				elseIfStatement.Execute(context);
+		for (IfStatement elseIfStatement : this.elseIfStatementsList) {
+			if (elseIfStatement.isExpressionTrue(context)) {
+				elseIfStatement.execute(context);
 				return 0;
 			}
 		}
-		if (_else != null)
-		{
-			_else.Interpret(context);
+		if (this.elseStatements != null) {
+			this.elseStatements.interpret(context);
 			return 0;
 		}
 		return 0; // nothing to execute
 	}
 
 	/*
+	 * Add a new else if statement.
+	 */
+	public void addElseIf(Interpretable expression,
+			Interpretable statementsToExecute) {
+		this.elseIfStatementsList.add(new IfStatement(expression,
+				statementsToExecute));
+	}
+
+	/*
 	 * Internal class to capture the data for a if statement.
 	 */
-	private class IfStatement
-	{
+	private class IfStatement {
 		/*
 		 * Expression to evaluate.
 		 */
-		private Interpretable _ifExpression;
+		private Interpretable ifExpression;
 		/*
 		 * Statements to execute if the expression is true.
 		 */
-		private Interpretable _statements;
+		private Interpretable statements;
 
 		/*
 		 * Create a new IfStatement. expression is used to evaluate if the
 		 * statements have to be executed.
 		 */
-		public IfStatement(Interpretable expression, Interpretable statements)
-		{
-			_ifExpression = expression;
-			_statements = statements;
+		public IfStatement(Interpretable expression, Interpretable statements) {
+			this.ifExpression = expression;
+			this.statements = statements;
 		}
 
 		/*
 		 * check if the expression evaluates to true.
 		 */
-		public boolean IsExpressionTrue(Context context) throws TechnicalException
-		{
-			return (Boolean) _ifExpression.Interpret(context) == true;
+		public boolean isExpressionTrue(Context context)
+				throws TechnicalException {
+			return (Boolean) this.ifExpression.interpret(context) == true;
 		}
 
 		/*
 		 * Execute the statements of this IfStatement.
 		 */
-		public void Execute(Context context) throws TechnicalException
-		{
-			_statements.Interpret(context);
+		public void execute(Context context) throws TechnicalException {
+			statements.interpret(context);
 		}
 
 	}

@@ -66,7 +66,7 @@ public class Tester
 			TokenStream tokenStream = new CommonTokenStream(lexer);
 			Oberon0Parser parser = new Oberon0Parser(tokenStream);
 			Interpretable interpreter = parser.module().module;
-			interpreter.Interpret(null);
+			interpreter.interpret(null);
 
 		} catch (IOException e)
 		{
@@ -97,7 +97,7 @@ public class Tester
 		}
 		try
 		{
-			Integer result = (Integer) interpreter.Interpret(null);
+			Integer result = (Integer) interpreter.interpret(null);
 			System.out.println(getResultString("Procedure with parameters", result.equals(0)));
 		} catch (Exception e)
 		{
@@ -118,7 +118,7 @@ public class Tester
 		}
 		try
 		{
-			Integer result = (Integer) interpreter.Interpret(null);
+			Integer result = (Integer) interpreter.interpret(null);
 			System.out.println(getResultString("Procedure with parameters", result.equals(0)));
 		} catch (Exception e)
 		{
@@ -139,7 +139,7 @@ public class Tester
 		}
 		try
 		{
-			Integer result = (Integer) interpreter.Interpret(null);
+			Integer result = (Integer) interpreter.interpret(null);
 			System.out.println(getResultString("Procedure without vars", result.equals(0)));
 		} catch (Exception e)
 		{
@@ -160,7 +160,7 @@ public class Tester
 		}
 		try
 		{
-			Integer result = (Integer) interpreter.Interpret(null);
+			Integer result = (Integer) interpreter.interpret(null);
 			System.out.println(getResultString("constant", result.equals(0)));
 		} catch (Exception e)
 		{
@@ -181,7 +181,7 @@ public class Tester
 		}
 		try
 		{
-			Integer result = (Integer) interpreter.Interpret(null);
+			Integer result = (Integer) interpreter.interpret(null);
 			System.out.println(getResultString("constant", result.equals(0)));
 		} catch (Exception e)
 		{
@@ -202,7 +202,7 @@ public class Tester
 		}
 		try
 		{
-			Integer result = (Integer) interpreter.Interpret(null);
+			Integer result = (Integer) interpreter.interpret(null);
 			System.out.println(getResultString("constant", result.equals(0)));
 		} catch (Exception e)
 		{
@@ -223,7 +223,7 @@ public class Tester
 		}
 		try
 		{
-			Integer result = (Integer) interpreter.Interpret(new Context());
+			Integer result = (Integer) interpreter.interpret(new Context());
 			System.out.println(getResultString("if statement", result.equals(0)));
 		} catch (Exception e)
 		{
@@ -244,7 +244,7 @@ public class Tester
 		}
 		try
 		{
-			Integer result = (Integer) interpreter.Interpret(new Context());
+			Integer result = (Integer) interpreter.interpret(new Context());
 			System.out.println(getResultString("if else statement", result.equals(0)));
 		} catch (Exception e)
 		{
@@ -265,7 +265,7 @@ public class Tester
 		}
 		try
 		{
-			Integer result = (Integer) interpreter.Interpret(new Context());
+			Integer result = (Integer) interpreter.interpret(new Context());
 			System.out.println(getResultString("if else if statement", result.equals(0)));
 		} catch (Exception e)
 		{
@@ -286,7 +286,7 @@ public class Tester
 		}
 		try
 		{
-			Integer result = (Integer) interpreter.Interpret(new Context());
+			Integer result = (Integer) interpreter.interpret(new Context());
 			System.out.println(getResultString("simple module", result.equals(0)));
 		} catch (Exception e)
 		{
@@ -307,7 +307,7 @@ public class Tester
 		}
 		try
 		{
-			Integer result = (Integer) interpreter.Interpret(new Context());
+			Integer result = (Integer) interpreter.interpret(new Context());
 			System.out.println(getResultString("while loop", result.equals(0)));
 		} catch (Exception e)
 		{
@@ -328,7 +328,7 @@ public class Tester
 		}
 		try
 		{
-			IntegerNode result = (IntegerNode) interpreter.Interpret(new Context());
+			IntegerNode result = (IntegerNode) interpreter.interpret(new Context());
 			System.out.println(getResultString("simpleExpression with negation", result.equals(new IntegerNode(-22))));
 		} catch (Exception e)
 		{
@@ -349,7 +349,7 @@ public class Tester
 		}
 		try
 		{
-			IntegerNode result = (IntegerNode) interpreter.Interpret(new Context());
+			IntegerNode result = (IntegerNode) interpreter.interpret(new Context());
 			System.out.println(getResultString("simpleExpression with add", result.equals(new IntegerNode(24))));
 		} catch (Exception e)
 		{
@@ -370,7 +370,7 @@ public class Tester
 		}
 		try
 		{
-			IntegerNode result = (IntegerNode) interpreter.Interpret(new Context());
+			IntegerNode result = (IntegerNode) interpreter.interpret(new Context());
 			System.out.println(getResultString("simpleExpression with min", result.equals(new IntegerNode(20))));
 		} catch (Exception e)
 		{
@@ -391,7 +391,7 @@ public class Tester
 		}
 		try
 		{
-			IntegerNode result = (IntegerNode) interpreter.Interpret(new Context());
+			IntegerNode result = (IntegerNode) interpreter.interpret(new Context());
 			System.out.println(getResultString("term", result.equals(new IntegerNode(44))));
 		} catch (Exception e)
 		{
@@ -412,7 +412,7 @@ public class Tester
 		}
 		try
 		{
-			IntegerNode result = (IntegerNode) interpreter.Interpret(new Context());
+			IntegerNode result = (IntegerNode) interpreter.interpret(new Context());
 			System.out.println(getResultString("factor with integer", result.equals(new IntegerNode(22))));
 		} catch (Exception e)
 		{
@@ -435,9 +435,9 @@ public class Tester
 		{
 			Context context = new Context();
 			ConstantList constants = new ConstantList();
-			constants.AddItem("a", new DataField(new SimpleType("INTEGER"), new IntegerNode(9)));
-			context.AddConstants(constants);
-			Object result = interpreter.Interpret(context);
+			constants.addItem("a", new DataField(new SimpleType("INTEGER"), new IntegerNode(9)));
+			context.addConstants(constants);
+			Object result = interpreter.interpret(context);
 			System.out.println(getResultString("factor with ident", ((DataField) result).getValue(context).toString().compareTo("9") == 0));
 		} catch (Exception e)
 		{
@@ -461,9 +461,9 @@ public class Tester
 			Context context = new Context();
 			DataFieldList varList = new DataFieldList();
 			DataField variable = new DataField(new SimpleType("INTEGER"));
-			varList.AddItem("a", variable);
-			context.AddVariables(varList);
-			Object result = interpreter.Interpret(context);
+			varList.addItem("a", variable);
+			context.addVariables(varList);
+			Object result = interpreter.interpret(context);
 			System.out.println(getResultString("assignment", result.toString().compareTo("0") == 0));
 		} catch (Exception e)
 		{
@@ -484,7 +484,7 @@ public class Tester
 		}
 		try
 		{
-			Object result = interpreter.Interpret(new Context());
+			Object result = interpreter.interpret(new Context());
 			System.out.println(getResultString("expression with Equals", (Boolean) result));
 		} catch (Exception e)
 		{
@@ -505,7 +505,7 @@ public class Tester
 		}
 		try
 		{
-			Object result = interpreter.Interpret(new Context());
+			Object result = interpreter.interpret(new Context());
 			System.out.println(getResultString("expression with Equals", (Boolean) result));
 		} catch (Exception e)
 		{
@@ -526,7 +526,7 @@ public class Tester
 		}
 		try
 		{
-			Object result = interpreter.Interpret(new Context());
+			Object result = interpreter.interpret(new Context());
 			System.out.println(getResultString("BIG TEST", ((IntegerNode) result).equals(new IntegerNode(2))));
 		} catch (Exception e)
 		{

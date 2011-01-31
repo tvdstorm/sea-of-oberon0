@@ -16,81 +16,73 @@ import ar.oberon0.interpreter.Procedure.ProcedureDeclaration;
  * It stores the procedures that can be called form within a node,
  * the variables that can be read and set, constants, etc.
  */
-public final class Context
-{
+public final class Context {
 	/*
 	 * The parent context can be used to lookup data from the calling procedure
 	 * or module.
 	 */
-	private Context _parentContext;
+	private Context parentContext;
 	/*
 	 * The variables that of the scope the node is interpreted in. Procedure
 	 * parameters are also stored in the variables list.
 	 */
-	private DataFieldList _variables;
+	private DataFieldList variables;
 	/*
 	 * The type identifiers that are defined in the scope the node is
 	 * interpreted in.
 	 */
-	private TypeIdentifierList _typeIdentifiers;
-	private ConstantList _constants;
-	private ProcedureList _procedures;
+	private TypeIdentifierList typeIdentifiers;
+	private ConstantList constants;
+	private ProcedureList procedures;
 
 	/*
 	 * The parent context is used to get variables of the parent construct, for
 	 * example a procedure has an own context and a parent context of the parent
 	 * procedure or module.
 	 */
-	public void setParentContext(Context context)
-	{
-		_parentContext = context;
-	}
-
-	/*
-	 * Create a new context.
-	 */
-	public Context()
-	{
-		_parentContext = null;
-		_variables = new DataFieldList();
-		_typeIdentifiers = new TypeIdentifierList();
-		_constants = new ConstantList();
+	public void setParentContext(final Context context) {
+		this.parentContext = context;
 	}
 
 	/*
 	 * Set the procedure's list.
 	 */
-	public void setProcedures(ProcedureList procedures)
-	{
-		_procedures = procedures;
+	public void setProcedures(final ProcedureList procedures) {
+		this.procedures = procedures;
+	}
+
+	/*
+	 * Create a new context.
+	 */
+	public Context() {
+		this.parentContext = null;
+		this.variables = new DataFieldList();
+		this.typeIdentifiers = new TypeIdentifierList();
+		this.constants = new ConstantList();
 	}
 
 	/*
 	 * Get the procedure with the specified name.
 	 */
-	public ProcedureDeclaration getProcedure(String name) throws TechnicalException
-	{
-		if (!itemExist(name, _procedures))
-		{
-			throw new TechnicalException("There was no procedure named " + name + " in the context.");
+	public ProcedureDeclaration getProcedure(final String name)
+			throws TechnicalException {
+		if (!itemExist(name, this.procedures)) {
+			throw new TechnicalException("There was no procedure named " + name
+					+ " in the context.");
 		}
-		return _procedures.getItem(name);
+		return this.procedures.getItem(name);
 	}
 
 	/*
 	 * Add a new constant to the list of constants.
 	 */
-	public void AddConstants(ConstantList constants)
-	{
-		if (constants != null)
-		{
-			if (_constants.getCount() <= 0)
-				_constants = constants;
-			else
-			{
-				for (Entry<String, DataField> item : constants)
-				{
-					_constants.AddItem(item.getKey(), item.getValue());
+	public void addConstants(final ConstantList constants) {
+		if (constants != null) {
+			if (this.constants.getCount() <= 0) {
+				this.constants = constants;
+			} else {
+				for (Entry<String, DataField> item : constants) {
+					this.constants.addItem(item.getKey(), item.getValue());
 				}
 			}
 		}
@@ -99,44 +91,44 @@ public final class Context
 	/*
 	 * Add a new procedure to the list of procedures.
 	 */
-	public void AddProcedure(String name, ProcedureDeclaration procedure)
-	{
-		_procedures.AddItem(name, procedure);
+	public void addProcedure(final String name,
+			final ProcedureDeclaration procedure) {
+		this.procedures.addItem(name, procedure);
 	}
 
 	/*
 	 * Add the type identifiers.
 	 */
-	public void AddTypeIdentifiers(TypeIdentifierList typeIdentifiers)
-	{
-		if (typeIdentifiers != null)
-		{
-			if (_typeIdentifiers.getCount() <= 0)
-				_typeIdentifiers = typeIdentifiers;
-			else
-			{
-				for (Entry<String, CreatableType> item : typeIdentifiers)
-				{
-					_typeIdentifiers.AddItem(item.getKey(), item.getValue());
+	public void addTypeIdentifiers(final TypeIdentifierList typeIdentifiers) {
+		if (typeIdentifiers != null) {
+			if (this.typeIdentifiers.getCount() <= 0) {
+				this.typeIdentifiers = typeIdentifiers;
+			} else {
+				for (Entry<String, CreatableType> item : typeIdentifiers) {
+					this.typeIdentifiers
+							.addItem(item.getKey(), item.getValue());
 				}
 			}
 		}
 	}
 
 	/*
+	 * Add a new variable to the list of variables.
+	 */
+	public void addVariable(final String name, final DataField value) {
+		this.variables.addItem(name, value);
+	}
+
+	/*
 	 * Add the variables.
 	 */
-	public void AddVariables(DataFieldList variables)
-	{
-		if (variables != null)
-		{
-			if (_variables.getCount() <= 0)
-				_variables = variables;
-			else
-			{
-				for (Entry<String, DataField> item : variables)
-				{
-					_variables.AddItem(item.getKey(), item.getValue());
+	public void addVariables(final DataFieldList variables) {
+		if (variables != null) {
+			if (this.variables.getCount() <= 0) {
+				this.variables = variables;
+			} else {
+				for (Entry<String, DataField> item : variables) {
+					this.variables.addItem(item.getKey(), item.getValue());
 				}
 			}
 		}
@@ -149,62 +141,52 @@ public final class Context
 	 * multiple times and if the variables where not cloned all the procedure
 	 * instances would share the same variable.
 	 */
-	public Context Clone()
-	{
+	public Context clone() {
 		Context clone = new Context();
-		clone._constants = _constants;
-		clone._parentContext = _parentContext;
-		clone._procedures = _procedures;
-		clone._typeIdentifiers = _typeIdentifiers;
-		clone._variables = _variables.Clone();
+		clone.constants = this.constants;
+		clone.parentContext = this.parentContext;
+		clone.procedures = this.procedures;
+		clone.typeIdentifiers = this.typeIdentifiers;
+		clone.variables = this.variables.clone();
 		return clone;
 	}
 
 	/*
 	 * Get the type identifier for the specified name.
 	 */
-	private CreatableType getTypeIdentifier(String name) throws TechnicalException
-	{
-		if (!itemExist(name, _typeIdentifiers))
-		{
-			throw new TechnicalException("There was no type named " + name + " in the context.");
+	private CreatableType getTypeIdentifier(final String name)
+			throws TechnicalException {
+		if (!itemExist(name, this.typeIdentifiers)) {
+			throw new TechnicalException("There was no type named " + name
+					+ " in the context.");
 		}
-		return _typeIdentifiers.getItem(name);
+		return this.typeIdentifiers.getItem(name);
 	}
 
 	/*
 	 * Check if there is an item with the specified name in the specified list.
 	 */
-	private boolean itemExist(String name, BaseMap list)
-	{
-		if (list.getItem(name) == null)
+	private boolean itemExist(final String name, final BaseMap list) {
+		if (list.getItem(name) == null) {
 			return false;
-		else
+		} else {
 			return true;
+		}
 	}
 
 	/*
 	 * Get the datafield of the constant or variable with the specified name.
 	 */
-	protected DataField getVarOrConstantAsDataField(String name) throws TechnicalException
-	{
-		if (itemExist(name, _variables))
-		{
-			return _variables.getItem(name);
-		} else if (itemExist(name, _constants))
-		{
-			return _constants.getItem(name).Clone();
-		} else
-		{
-			throw new TechnicalException("There was no variable or constant named " + name + " in the context.");
+	protected DataField getVarOrConstantAsDataField(final String name)
+			throws TechnicalException {
+		if (itemExist(name, this.variables)) {
+			return this.variables.getItem(name);
+		} else if (itemExist(name, this.constants)) {
+			return this.constants.getItem(name).clone();
+		} else {
+			throw new TechnicalException(
+					"There was no variable or constant named " + name
+							+ " in the context.");
 		}
-	}
-
-	/*
-	 * Add a new variable to the list of variables.
-	 */
-	public void AddVariable(String name, DataField value)
-	{
-		_variables.AddItem(name, value);
 	}
 }

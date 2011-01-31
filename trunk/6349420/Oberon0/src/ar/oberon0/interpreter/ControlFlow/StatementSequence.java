@@ -10,20 +10,18 @@ import ar.oberon0.interpreter.Memory.Context;
 /*
  * This class contains a list of statements that need to be executed sequentially.
  */
-public class StatementSequence implements Interpretable
-{
+public class StatementSequence implements Interpretable {
 	/*
 	 * The statements to execute.
 	 */
-	private List<Interpretable> _statements;
+	private List<Interpretable> statements;
 
 	/*
 	 * Create a statement sequence, statement becomes the first statement to
 	 * execute.
 	 */
-	public StatementSequence(Interpretable statement)
-	{
-		_statements = new ArrayList<Interpretable>();
+	public StatementSequence(Interpretable statement) {
+		this.statements = new ArrayList<Interpretable>();
 		addStatement(statement);
 	}
 
@@ -35,11 +33,9 @@ public class StatementSequence implements Interpretable
 	 * .Memory.Context)
 	 */
 	@Override
-	public Object Interpret(Context context) throws TechnicalException
-	{
-		for (Interpretable statement : _statements)
-		{
-			statement.Interpret(context);
+	public Object interpret(Context context) throws TechnicalException {
+		for (Interpretable statement : this.statements) {
+			statement.interpret(context);
 		}
 		return 0;
 	}
@@ -47,9 +43,8 @@ public class StatementSequence implements Interpretable
 	/*
 	 * Add a statement to the end of the statement sequence.
 	 */
-	public void addStatement(Interpretable statement)
-	{
-		_statements.add(statement);
+	public void addStatement(Interpretable statement) {
+		this.statements.add(statement);
 	}
 
 }
