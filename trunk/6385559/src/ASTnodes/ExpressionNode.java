@@ -1,4 +1,5 @@
 package ASTnodes;
+import parseErrorLog.OberonException;
 
 public class ExpressionNode implements ASTnode {
   public ExpressionNode( SimpleExpression left, String operator, SimpleExpression right )
@@ -26,7 +27,7 @@ public class ExpressionNode implements ASTnode {
     }
   }
   
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     if( this.operator == null && this.right == null )
     {
@@ -68,7 +69,7 @@ public class ExpressionNode implements ASTnode {
     return 1; // exceptional condition, should not be possible
   }
   
-  public String getVariableName()
+  public String getVariableName() throws OberonException
   { // detect whether it is only a variable not and not an complete expression needed for call be reference
     // ugly but efficient, go into depth to see whether it is only a variable node and return its name
     // if no name given return null

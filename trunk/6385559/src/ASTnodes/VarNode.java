@@ -1,6 +1,7 @@
 package ASTnodes;
 
 import management.MemoryManager;
+import parseErrorLog.OberonException;
 
 public class VarNode implements ASTnode {
   public VarNode( String varname, ASTnode select )
@@ -22,12 +23,12 @@ public class VarNode implements ASTnode {
     }
   }
   
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     return MemoryManager.get( this.getVarname( scope ) );
   }
   
-  public String getVarname( String scope )
+  public String getVarname( String scope ) throws OberonException
   {
     String varnameWithSelector = this.varname;
     if( select != null )

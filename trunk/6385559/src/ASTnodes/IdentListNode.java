@@ -1,7 +1,7 @@
 package ASTnodes;
 
 import java.util.Vector;
-
+import parseErrorLog.OberonException;
 import management.MemoryManager;
 
 public class IdentListNode implements ASTnode {
@@ -25,12 +25,12 @@ public class IdentListNode implements ASTnode {
     }
   }
   
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     return 0;
   }
   
-  public void allocateIdentifiers( String scope, Vector<String> elements )
+  public void allocateIdentifiers( String scope, Vector<String> elements ) throws OberonException
   { // allocate the variables that we find
     if( elements != null )
     {

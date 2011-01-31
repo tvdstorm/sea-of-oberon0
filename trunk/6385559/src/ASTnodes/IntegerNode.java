@@ -1,4 +1,5 @@
 package ASTnodes;
+import parseErrorLog.OberonException;
 
 public class IntegerNode implements ASTnode {
   public IntegerNode( int x )
@@ -11,7 +12,7 @@ public class IntegerNode implements ASTnode {
     System.out.print( this.intValue );
   }
   
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     return this.intValue;
   }

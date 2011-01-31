@@ -1,4 +1,5 @@
 package ASTnodes;
+import parseErrorLog.OberonException;
 
 public class DeclarationsNode implements ASTnode {
   public DeclarationsNode( ConstantNode constant, TypeDefNode typeDefs, FieldsNode vars, ProcedureListNode procedureList )
@@ -50,7 +51,7 @@ public class DeclarationsNode implements ASTnode {
     }
   }
   
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     if( this.constant != null )
     {

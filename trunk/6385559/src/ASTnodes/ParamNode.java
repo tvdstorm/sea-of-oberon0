@@ -1,7 +1,7 @@
 package ASTnodes;
 
 import java.util.Vector;
-
+import parseErrorLog.OberonException;
 import management.ParamContainer;
 
 public class ParamNode implements ASTnode {
@@ -24,12 +24,12 @@ public class ParamNode implements ASTnode {
     }
   }
   
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     return 0;
   }
   
-  public Vector<ParamContainer> getVarValueList( String scope )
+  public Vector<ParamContainer> getVarValueList( String scope ) throws OberonException
   { // use a different name here because we cannot overload eval if parameters are the same
     // this function gets all the parameters given and puts them in a Vector of ParamContainers
     Vector<ParamContainer> container = new Vector<ParamContainer>(0);

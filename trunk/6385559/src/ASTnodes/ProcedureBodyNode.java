@@ -1,5 +1,7 @@
 package ASTnodes;
 
+import parseErrorLog.OberonException;
+
 public class ProcedureBodyNode implements ASTnode {
   public ProcedureBodyNode( DeclarationsNode declarations, StatementSequenceNode statements, String identifier )
   {
@@ -33,7 +35,7 @@ public class ProcedureBodyNode implements ASTnode {
     }
   }
   
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     if( this.declarations != null )
     {

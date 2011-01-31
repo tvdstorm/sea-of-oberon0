@@ -2,9 +2,10 @@ package management;
 
 import java.util.Vector;
 import java.util.Scanner;
+import parseErrorLog.OberonException;
 
 public class OberonSystemcalls {
-  public static void doSystemCall( String systemcall, Vector<ParamContainer> params )
+  public static void doSystemCall( String systemcall, Vector<ParamContainer> params ) throws OberonException
   {
     if( systemcall.contentEquals( "Read" ) )
     {
@@ -20,7 +21,7 @@ public class OberonSystemcalls {
     }
   }
   
-  public static void read( Vector<ParamContainer> params )
+  public static void read( Vector<ParamContainer> params ) throws OberonException
   {
     Scanner x = new Scanner( System.in );
     ParamContainer inputTo = null;

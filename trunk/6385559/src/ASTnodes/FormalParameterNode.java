@@ -1,7 +1,7 @@
 package ASTnodes;
 
 import java.util.Vector;
-
+import parseErrorLog.OberonException;
 import management.ParamContainer;
 
 public class FormalParameterNode implements ASTnode {
@@ -23,12 +23,12 @@ public class FormalParameterNode implements ASTnode {
     }
   }
   
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     return 0;
   }
   
-  public Vector<ParamContainer> eval( String scope, Vector<ParamContainer> params )
+  public Vector<ParamContainer> eval( String scope, Vector<ParamContainer> params ) throws OberonException
   { // overload the standard eval function because we need a Vector with the ParamContainer
     if( this.fpSection != null )
     {

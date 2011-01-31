@@ -1,7 +1,7 @@
 package ASTnodes;
 
 import java.util.Vector;
-
+import parseErrorLog.OberonException;
 import management.ParamContainer;
 
 public class ProcedureHeadingNode implements ASTnode {
@@ -29,12 +29,12 @@ public class ProcedureHeadingNode implements ASTnode {
     }
   }
   
-  public int eval( String scope ) 
+  public int eval( String scope )  throws OberonException
   { 
     return 0; 
   }
   
-  public int eval( String scope, Vector<ParamContainer> params )
+  public int eval( String scope, Vector<ParamContainer> params ) throws OberonException
   {
     // we will loop through the FormalParameterNodes and map every variable to the correstponding variable
     // in the function

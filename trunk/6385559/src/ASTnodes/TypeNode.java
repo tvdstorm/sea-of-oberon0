@@ -1,4 +1,5 @@
 package ASTnodes;
+import parseErrorLog.OberonException;
 
 public class TypeNode implements ASTnode {
   public TypeNode( String ident )
@@ -13,7 +14,7 @@ public class TypeNode implements ASTnode {
     }
   }
   
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   { // eval not needed because this will only contain an identifier name
     return 0;
   }

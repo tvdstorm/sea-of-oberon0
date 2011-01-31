@@ -1,4 +1,5 @@
 package ASTnodes;
+import parseErrorLog.OberonException;
 
 public class SelectorNode implements ASTnode {
   public SelectorNode( ASTnode value, ASTnode next )
@@ -20,7 +21,7 @@ public class SelectorNode implements ASTnode {
     }
   }
   
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     if( this.value != null )
     {

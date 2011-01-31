@@ -1,5 +1,7 @@
 package ASTnodes;
 
+import parseErrorLog.OberonException;
+
 public class WhileStatementNode implements StatementNode {
   public WhileStatementNode( ExpressionNode cond, StatementSequenceNode statements )
   {
@@ -33,7 +35,7 @@ public class WhileStatementNode implements StatementNode {
     System.out.println( "END;");
   }
   
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     while( cond.eval( scope ) == 1 )
     {

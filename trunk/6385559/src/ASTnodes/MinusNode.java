@@ -1,4 +1,5 @@
 package ASTnodes;
+import parseErrorLog.OberonException;
 
 public class MinusNode implements ASTnode {
   public MinusNode( TermNode child )
@@ -13,7 +14,7 @@ public class MinusNode implements ASTnode {
     System.out.print( ')' );
   }
   
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     return -1 * this.child.eval( scope );
   }

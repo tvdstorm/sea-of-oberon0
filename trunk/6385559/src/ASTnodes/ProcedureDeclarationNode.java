@@ -32,13 +32,13 @@ public class ProcedureDeclarationNode implements ASTnode {
     }
   }
   
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     ProcedureManager.addProcedure( this.heading.getIdentifier(), scope, this);
     return 0;
   }
   
-  public void eval( String scope, Vector<ParamContainer> variables )
+  public void eval( String scope, Vector<ParamContainer> variables ) throws OberonException
   {
     if( this.heading != null )
     {

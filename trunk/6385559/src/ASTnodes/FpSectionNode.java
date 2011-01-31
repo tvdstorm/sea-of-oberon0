@@ -1,7 +1,7 @@
 package ASTnodes;
 
 import java.util.Vector;
-
+import parseErrorLog.OberonException;
 import management.MemoryManager;
 import management.ParamContainer;
 import management.TypeDefinitionManager;
@@ -31,12 +31,12 @@ public class FpSectionNode implements ASTnode {
     }
   }
   
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     return 0;
   }
   
-  public Vector<ParamContainer> eval( String scope, Vector<ParamContainer> params )
+  public Vector<ParamContainer> eval( String scope, Vector<ParamContainer> params ) throws OberonException
   { // overload because of the need of the Vector with ParamContainers
     if( this.variables != null )
     {
@@ -92,7 +92,7 @@ public class FpSectionNode implements ASTnode {
     return params;
   }
   
-  public Vector<String> getAdditions( )
+  public Vector<String> getAdditions( ) throws OberonException
   { // get the additions to be able to support other data types then INTEGER AND BOOLEAN
     ASTnode currentType = this.type;
     if( currentType instanceof TypeNode )

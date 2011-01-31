@@ -1,4 +1,5 @@
 package ASTnodes;
+import parseErrorLog.OberonException;
 
 public class TermNode implements ASTnode {
   public TermNode( ASTnode factor, String operator, TermNode follow )
@@ -26,7 +27,7 @@ public class TermNode implements ASTnode {
     }
   }
   
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     if( this.operator == null && this.follow == null )
     {
@@ -57,7 +58,7 @@ public class TermNode implements ASTnode {
     return 0;
   }
 
-  public String getVariableName( )
+  public String getVariableName( ) throws OberonException
   {
     if( this.factor instanceof VarNode && this.operator == null && this.follow == null )
     { // detect whether its only a variable node needed for call by reference

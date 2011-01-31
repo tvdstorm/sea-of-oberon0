@@ -1,6 +1,7 @@
 package ASTnodes;
 
 import management.MemoryManager;
+import parseErrorLog.OberonException;
 
 public class ConstantNode implements ASTnode {
   public ConstantNode( String identifier, ExpressionNode expression, ConstantNode constant )
@@ -26,7 +27,7 @@ public class ConstantNode implements ASTnode {
     }
   }
   
-  public int eval( String scope )
+  public int eval( String scope ) throws OberonException
   {
     // put the Constant in the memory, give the isConstant true, makes the element not changable
     MemoryManager.allocate( this.identifier, scope, this.expression.eval(scope), null, true );
