@@ -145,37 +145,37 @@ IdentifierType IdentifierType =
 	{ yyValue = new IdentifierType(ident); }
 	;
 
-ArrayType ArrayType = 
+Array ArrayType = 
 	"ARRAY" Spacing 
 	length:Expression Spacing 
 	"OF" Spacing 
 	type:Type
-	{ yyValue = new ArrayType(length, type); }
+	{ yyValue = new Array(length, type); }
 	;
 
-HashMap<String, Type> FieldList = 
+HashMap<String, AbstractType> FieldList = 
 	idents:IdentList ":" Spacing t:Type Spacing
 	{
-		yyValue = new HashMap<String, Type>();
+		yyValue = new HashMap<String, AbstractType>();
 		for(String s : idents) {
 			yyValue.put(s, t);
 		}
 	}
 	;
 
-RecordType RecordType =
+Record RecordType =
 	"RECORD" Spacing 
 	l1:FieldList l2:(void:";" Spacing FieldList)* Spacing 
 	"END" Spacing
 	{ 
-		for(HashMap<String, Type> map : l2.list()) {
+		for(HashMap<String, AbstractType> map : l2.list()) {
 			l1.putAll(map);
 		}
-		yyValue = new RecordType(l1); 
+		yyValue = new Record(l1); 
 	}
 	;
 
-Type Type = ArrayType / RecordType / IdentifierType;
+AbstractType Type = ArrayType / RecordType / IdentifierType;
 
 Pair<String> IdentList = 
 	ident1:Ident Spacing 
