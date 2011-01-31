@@ -1,15 +1,14 @@
 MODULE Sample;
-TYPE la = INTEGER;
-VAR b : ARRAY 2 OF la;
+VAR b : INTEGER;
 
-PROCEDURE x( c : ARRAY 2 OF INTEGER );
+PROCEDURE x( c : INTEGER );
 VAR b : ARRAY 2 OF INTEGER;
 BEGIN
 
 END x;
 
 BEGIN
-  b[0] := 1;
-  x( b );
-  Write( b[0] );
+  b := 1;
+  x( c );
+  Write( b );
 END Sample.
