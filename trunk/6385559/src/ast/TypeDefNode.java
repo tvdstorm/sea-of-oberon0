@@ -1,6 +1,7 @@
 package ast;
 
 import errorhandler.OberonException;
+import management.ScopeManager;
 import management.TypeDefinitionManager;
 
 public class TypeDefNode implements ASTnode {
@@ -34,15 +35,15 @@ public class TypeDefNode implements ASTnode {
     }
   }
 
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   {
     if( this.identifier != null && this.type != null )
     {
-      TypeDefinitionManager.addTypeDefinition( this.identifier, type, scope );
+      TypeDefinitionManager.addTypeDefinition( this.identifier, type, ScopeManager.currentScope( ) );
     }
     if( this.followup != null )
     {
-      this.followup.eval( scope );
+      this.followup.eval( );
     }
     return 0;
   }

@@ -38,13 +38,13 @@ public class WhileStatementNode implements StatementNode {
     System.out.println( "END;");
   }
   
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   {
-    while( cond.eval( scope ) == 1 )
+    while( cond.eval( ) == 1 )
     {
       if( this.executionSequence != null )
       {
-        this.executionSequence.eval( scope );
+        this.executionSequence.eval( );
       }
     }
     return 0;

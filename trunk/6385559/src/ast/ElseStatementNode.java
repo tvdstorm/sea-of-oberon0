@@ -17,11 +17,11 @@ public class ElseStatementNode implements StatementNode {
     }
   }
   
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   {
     if( this.sequence != null )
     {
-      this.sequence.eval( scope );
+      this.sequence.eval( );
     }
     return 0;
   }

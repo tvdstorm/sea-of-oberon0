@@ -4,6 +4,7 @@ import java.util.Vector;
 
 import errorhandler.OberonException;
 import management.MemoryManager;
+import management.ScopeManager;
 
 public class IdentListNode implements ASTnode {
   private final String identifier;
@@ -29,27 +30,27 @@ public class IdentListNode implements ASTnode {
     }
   }
   
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   {
     return 0;
   }
   
-  public void allocateIdentifiers( String scope, Vector<String> elements ) throws OberonException
+  public void allocateIdentifiers( Vector<String> elements ) throws OberonException
   { // allocate the variables that we find
     if( elements != null )
     {
       for( int i = 0; i < elements.size(); i++ )
       {
-        MemoryManager.allocate( this.identifier + elements.get( i ), scope, 0, null, false );
+        MemoryManager.allocate( this.identifier + elements.get( i ), ScopeManager.currentScope( ), 0, null, false );
       }
     }
     else
     {
-      MemoryManager.allocate( this.identifier, scope, 0, null, false );
+      MemoryManager.allocate( this.identifier, ScopeManager.currentScope( ), 0, null, false );
     }
     if( this.followup != null )
     {
-      this.followup.allocateIdentifiers( scope, elements );
+      this.followup.allocateIdentifiers( elements );
     }
   }
   

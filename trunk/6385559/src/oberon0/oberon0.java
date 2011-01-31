@@ -43,7 +43,7 @@ public class oberon0
         ProcedureManager.addProcedure( "WriteLn", "System", new WriteLn() );
         ProcedureManager.addProcedure( "Read", "System", new Read() );
         
-        AST.eval( null ); // interpret the Abstract Syntax Tree
+        AST.eval( ); // interpret the Abstract Syntax Tree
         
         if( CommandLine.doPrint( ) )
         { // if print request print the source to the screen

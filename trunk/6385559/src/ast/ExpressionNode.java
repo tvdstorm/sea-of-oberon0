@@ -31,16 +31,16 @@ public class ExpressionNode implements ASTnode {
     }
   }
   
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   {
     if( this.operator == null && this.right == null )
     {
-      return left.eval( scope );
+      return left.eval( );
     }
     else if( this.operator != null && this.right != null )
     {
-      int leftValue = this.left.eval( scope );
-      int rightValue = this.right.eval( scope );
+      int leftValue = this.left.eval( );
+      int rightValue = this.right.eval( );
       boolean x = false;
       // might be ugly but is efficient. Do a task depending on the operator
       if( this.operator.contentEquals( "=" ) )

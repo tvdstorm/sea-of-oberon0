@@ -2,6 +2,7 @@ package ast;
 
 import errorhandler.OberonException;
 import management.MemoryManager;
+import management.ScopeManager;
 
 public class ConstantNode implements ASTnode {
   private final String identifier;
@@ -31,13 +32,13 @@ public class ConstantNode implements ASTnode {
     }
   }
   
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   {
     // put the Constant in the memory, give the isConstant true, makes the element not changable
-    MemoryManager.allocate( this.identifier, scope, this.expression.eval(scope), null, true );
+    MemoryManager.allocate( this.identifier, ScopeManager.currentScope( ), this.expression.eval( ), null, true );
     if( this.constant != null )
     {
-      this.constant.eval( scope );
+      this.constant.eval( );
     }
     return 0;
   }

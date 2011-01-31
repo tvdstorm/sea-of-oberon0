@@ -16,7 +16,7 @@ public class TypeNode implements ASTnode {
     }
   }
   
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   { // eval not needed because this will only contain an identifier name
     return 0;
   }

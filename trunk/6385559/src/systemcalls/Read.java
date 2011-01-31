@@ -21,7 +21,7 @@ public class Read extends ProcedureDeclarationNode {
     System.out.println( "Systemcall" );
   }
   
-  public void eval( String scope, Vector<ParamContainer> variables ) throws OberonException
+  public void eval( Vector<ParamContainer> variables ) throws OberonException
   {
     Scanner x = new Scanner( System.in );
     ParamContainer inputTo = null;

@@ -24,11 +24,11 @@ public class SelectorNode implements ASTnode {
     }
   }
   
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   {
     if( this.value != null )
     {
-      return this.value.eval( scope );
+      return this.value.eval( );
     }
     return 0;
   }

@@ -5,6 +5,7 @@ import java.util.Vector;
 import errorhandler.OberonException;
 import management.MemoryManager;
 import management.ParamContainer;
+import management.ScopeManager;
 import management.TypeDefinitionManager;
 
 
@@ -36,12 +37,12 @@ public class FpSectionNode implements ASTnode {
     }
   }
   
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   {
     return 0;
   }
   
-  public Vector<ParamContainer> eval( String scope, Vector<ParamContainer> params ) throws OberonException
+  public Vector<ParamContainer> eval( Vector<ParamContainer> params ) throws OberonException
   { // overload because of the need of the Vector with ParamContainers
     if( this.variables != null )
     {
@@ -63,13 +64,13 @@ public class FpSectionNode implements ASTnode {
         { // create call by reference
           if( additions == null )
           { // if no additions than INTEGER OF BOOLEAN
-            MemoryManager.allocate( formal, scope, 0, container.varname, false );
+            MemoryManager.allocate( formal, ScopeManager.currentScope( ), 0, container.varname, false );
           }
           else
           { // if there are additions define all the different variables in the range of the data type
             for( int j = 0; j < additions.size(); j++ )
             {
-              MemoryManager.allocate( formal + additions.get( j ), scope, 0, given + additions.get( j ), false );
+              MemoryManager.allocate( formal + additions.get( j ), ScopeManager.currentScope( ), 0, given + additions.get( j ), false );
             }
           }
         }
@@ -77,15 +78,15 @@ public class FpSectionNode implements ASTnode {
         { // create call by value
           if( additions == null )
           {
-            MemoryManager.allocate( formal, scope, container.value, null, false );
+            MemoryManager.allocate( formal, ScopeManager.currentScope( ), container.value, null, false );
           }
           else
           {
             int correctValue = 0;
             for( int j = 0; j < additions.size(); j++ )
             {
-              correctValue = MemoryManager.getFromOtherScope( container.varname + additions.get( j ), scope );
-              MemoryManager.allocate( formal + additions.get( j ), scope, correctValue, null, false );
+              correctValue = MemoryManager.getFromOtherScope( container.varname + additions.get( j ), ScopeManager.currentScope( ) );
+              MemoryManager.allocate( formal + additions.get( j ), ScopeManager.currentScope( ), correctValue, null, false );
             }
           }
         }

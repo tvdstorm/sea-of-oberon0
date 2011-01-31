@@ -39,16 +39,16 @@ public class ProcedureBodyNode implements ASTnode {
     }
   }
   
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   {
     if( this.declarations != null )
     {
-      declarations.eval( scope );
+      declarations.eval( );
     }
     
     if( this.statements != null )
     {
-      this.statements.eval( scope );
+      this.statements.eval( );
     }
     return 0;
   }

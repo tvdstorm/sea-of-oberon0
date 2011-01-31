@@ -49,18 +49,18 @@ public class IfStatementNode implements StatementNode {
     System.out.println( "END;" );
   }
   
-  public int eval( String scope ) throws OberonException
+  public int eval( ) throws OberonException
   {
-    if( this.expression.eval( scope ) == 1 )
+    if( this.expression.eval( ) == 1 )
     {
       if( this.sequence != null )
       {
-        this.sequence.eval( scope );
+        this.sequence.eval( );
       }
     }
     else if( this.elseStatement != null )
     {
-      this.elseStatement.eval( scope );
+      this.elseStatement.eval( );
     }
     return 0;
   }
