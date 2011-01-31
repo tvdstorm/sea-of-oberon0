@@ -4,6 +4,9 @@ import management.TypeDefinitionManager;
 import parseErrorLog.OberonException;
 
 public class ArrayNode implements ASTnode {
+  private final ExpressionNode expression;
+  private final ASTnode type;
+  
   public ArrayNode( ExpressionNode expression, ASTnode type )
   {
     this.expression = expression;
@@ -67,7 +70,4 @@ public class ArrayNode implements ASTnode {
     }
     return returnList;
   }
-
-  private ExpressionNode expression = null;
-  private ASTnode type = null;
 }

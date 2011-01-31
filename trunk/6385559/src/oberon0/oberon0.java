@@ -1,4 +1,16 @@
+/*
+ * 
+ * TODO 
+ * - Delete management.OberonSystemCalls from the project
+ * - Delete oberon0.1.g grammar file from the project
+ * - Create new classes for all operations
+ * - memory datatypes change
+ * - PrintNode moet ToString worden
+ * - Rename ASTnodes to ast
+ * 
+ */
 package oberon0;
+
 import management.MemoryManager;
 import management.ProcedureManager;
 import management.TypeDefinitionManager;
@@ -6,6 +18,7 @@ import oberon0.ParserOutput;
 import oberon0.ParserInput;
 import parseErrorLog.*;
 import ASTnodes.*;
+import systemcalls.*;
 
 public class oberon0 
 {
@@ -28,6 +41,11 @@ public class oberon0
     {
       try
       {
+        // first add the system calls to the Procedurelist
+        ProcedureManager.addProcedure( "Write", "System", new Write() );
+        ProcedureManager.addProcedure( "WriteLn", "System", new WriteLn() );
+        ProcedureManager.addProcedure( "Read", "System", new Read() );
+        
         AST.eval( null ); // interpret the Abstract Syntax Tree
         
         if( CommandLine.doPrint( ) )

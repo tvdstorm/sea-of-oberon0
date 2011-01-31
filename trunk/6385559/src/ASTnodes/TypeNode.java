@@ -2,6 +2,8 @@ package ASTnodes;
 import parseErrorLog.OberonException;
 
 public class TypeNode implements ASTnode {
+  private final String ident;
+  
   public TypeNode( String ident )
   {
     this.ident = ident;
@@ -23,6 +25,4 @@ public class TypeNode implements ASTnode {
   {
     return this.ident;
   }
-
-  private String ident = null;
 }

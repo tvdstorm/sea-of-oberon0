@@ -2,6 +2,9 @@ package ASTnodes;
 import parseErrorLog.OberonException;
 
 public class SelectorArrayNode implements ASTnode {
+  private final ExpressionNode expression;
+  private final ASTnode selector;
+  
   public SelectorArrayNode( ExpressionNode expression, ASTnode selector )
   {
     this.expression = expression;
@@ -43,7 +46,4 @@ public class SelectorArrayNode implements ASTnode {
     }
     return returnValue;
   }
-
-  private ExpressionNode expression = null;
-  private ASTnode selector = null;
 }

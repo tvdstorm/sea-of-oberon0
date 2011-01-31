@@ -10,6 +10,9 @@ import management.OberonSystemcalls;
 import parseErrorLog.OberonException;
 
 public class ProcedureCallNode implements StatementNode {
+  private final String identifier;
+  private final ParamNode params;
+  
   public ProcedureCallNode( String identifier, ParamNode params )
   {
     this.identifier = identifier;
@@ -64,7 +67,4 @@ public class ProcedureCallNode implements StatementNode {
     MemoryManager.deallocateScope( newScope );
     return 0;
   }
-  
-  private String identifier = null;
-  private ParamNode params = null;
 }

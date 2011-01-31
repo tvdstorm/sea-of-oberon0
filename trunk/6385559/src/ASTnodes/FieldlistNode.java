@@ -5,6 +5,9 @@ import parseErrorLog.OberonException;
 import management.TypeDefinitionManager;
 
 public class FieldlistNode implements ASTnode {
+  private final IdentListNode identlist;
+  private final ASTnode type;
+  
   public FieldlistNode( IdentListNode identlist, ASTnode type )
   {
     this.identlist = identlist;
@@ -91,7 +94,4 @@ public class FieldlistNode implements ASTnode {
     }
     return returnList;
   }
-  
-  private IdentListNode identlist = null;
-  private ASTnode type = null;
 }

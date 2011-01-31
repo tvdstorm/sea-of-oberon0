@@ -5,6 +5,9 @@ import parseErrorLog.OberonException;
 import management.ParamContainer;
 
 public class ProcedureHeadingNode implements ASTnode {
+  private final String identifier;
+  private final FormalParameterNode formalParams;
+  
   public ProcedureHeadingNode( String identifier, FormalParameterNode formalParams )
   {
     this.identifier = identifier;
@@ -49,7 +52,4 @@ public class ProcedureHeadingNode implements ASTnode {
   {
     return this.identifier;
   }
-
-  private String identifier = null;
-  private FormalParameterNode formalParams = null;
 }

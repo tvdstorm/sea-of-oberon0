@@ -1,15 +1,23 @@
 package management;
 import java.util.Vector;
 import ASTnodes.*;
+import parseErrorLog.OberonException;
 
 public class TypeDefinitionManager {
-  public static void addTypeDefinition( String name, ASTnode x, String scope )
+  public static void addTypeDefinition( String name, ASTnode x, String scope ) throws OberonException
   {
-    DefinitionContainer addition = new DefinitionContainer( name, x, scope );
-    definitions.add( addition );
+    if( !typeExists( name, scope ) )
+    {
+      DefinitionContainer addition = new DefinitionContainer( name, x, scope );
+      definitions.add( addition );
+    }
+    else
+    {
+      throw new OberonException( "Type " + name + " has already been defined in the current scope." );
+    }
   }
   
-  public static ASTnode getTypeDefinition( String name )
+  public static ASTnode getTypeDefinition( String name ) throws OberonException
   {
     DefinitionContainer container = null;
     ASTnode returnASTnode = null;
@@ -18,10 +26,10 @@ public class TypeDefinitionManager {
       container = definitions.get( i );
       if( container.getName().contentEquals( name ) )
       {
-        returnASTnode = container.getDefinition();
+        return container.getDefinition();
       }
     }
-    return returnASTnode;
+    throw new OberonException( "Type definition: " + name + " does not exist." );
   }
   
   public static void printDefinitions()
@@ -56,6 +64,20 @@ public class TypeDefinitionManager {
     }
   }
   
+  private static boolean typeExists( String name, String Scope )
+  {
+    DefinitionContainer container = null;
+    for( int i = definitions.size()-1; i >= 0; i-- )
+    {
+      container = definitions.get( i );
+      if( container.getName( ).contentEquals( name ) && container.getScope( ).contentEquals( Scope ) )
+      {
+        return true;
+      }
+    }
+    return false;
+  }
+  
   private static class DefinitionContainer
   {
     public DefinitionContainer( String name, ASTnode definition, String scope )
@@ -85,7 +107,7 @@ public class TypeDefinitionManager {
     private String scope = null;
   }
   
-  public static ASTnode correctType( ASTnode type )
+  public static ASTnode correctType( ASTnode type ) throws OberonException
   {
     String identName = "";
     while( type != null && type instanceof TypeNode && !identName.contentEquals( "INTEGER" ) && !identName.contentEquals( "BOOLEAN" ) )

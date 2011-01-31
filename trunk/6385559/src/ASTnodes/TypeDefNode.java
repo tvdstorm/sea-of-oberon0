@@ -4,6 +4,10 @@ import management.TypeDefinitionManager;
 import parseErrorLog.OberonException;
 
 public class TypeDefNode implements ASTnode {
+  private final String identifier;
+  private final ASTnode type;
+  private final TypeDefNode followup;
+  
   public TypeDefNode( String identifier, ASTnode type, TypeDefNode followup )
   {
     this.identifier = identifier;
@@ -42,8 +46,4 @@ public class TypeDefNode implements ASTnode {
     }
     return 0;
   }
-  
-  private String identifier = null;
-  private ASTnode type = null;
-  private TypeDefNode followup = null;
 }

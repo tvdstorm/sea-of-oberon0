@@ -8,6 +8,10 @@ import management.TypeDefinitionManager;
 
 
 public class FpSectionNode implements ASTnode {
+  private final boolean callByRef;
+  private final IdentListNode variables;
+  private final ASTnode type;
+  
   public FpSectionNode( String identifier, IdentListNode variables, ASTnode type )
   {
     this.type = type;
@@ -113,8 +117,4 @@ public class FpSectionNode implements ASTnode {
     }
     return additions;
   }
-
-  private boolean callByRef = false;
-  private IdentListNode variables = null;
-  private ASTnode type = null;
 }

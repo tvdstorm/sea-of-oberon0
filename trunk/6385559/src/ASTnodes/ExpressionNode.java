@@ -2,6 +2,10 @@ package ASTnodes;
 import parseErrorLog.OberonException;
 
 public class ExpressionNode implements ASTnode {
+  private final String operator;
+  private final SimpleExpression left;
+  private final SimpleExpression right;
+  
   public ExpressionNode( SimpleExpression left, String operator, SimpleExpression right )
   {
     this.left = left;
@@ -79,8 +83,4 @@ public class ExpressionNode implements ASTnode {
     }
     return left.getVariableName();
   }
-  
-  private String operator = null;
-  private SimpleExpression left = null;
-  private SimpleExpression right = null;
 }

@@ -5,6 +5,9 @@ import parseErrorLog.OberonException;
 import management.ParamContainer;
 
 public class ParamNode implements ASTnode {
+  private final ExpressionNode param;
+  private final ParamNode nextParam;
+  
   public ParamNode( ExpressionNode param, ParamNode nextParam )
   {
     this.param = param;
@@ -45,7 +48,4 @@ public class ParamNode implements ASTnode {
     container.add( buffer );
     return container;
   }
-
-  private ExpressionNode param = null;
-  private ParamNode nextParam = null;
 }

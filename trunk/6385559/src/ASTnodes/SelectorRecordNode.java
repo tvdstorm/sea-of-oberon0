@@ -2,6 +2,9 @@ package ASTnodes;
 import parseErrorLog.OberonException;
 
 public class SelectorRecordNode implements ASTnode {
+  private final String ident;
+  private final ASTnode selector;
+  
   public SelectorRecordNode( String ident, ASTnode selector )
   {
     this.ident = ident;
@@ -41,7 +44,4 @@ public class SelectorRecordNode implements ASTnode {
     
     return returnValue;
   }
-
-  private String ident = null;
-  private ASTnode selector = null;
 }

@@ -4,6 +4,9 @@ import management.MemoryManager;
 import parseErrorLog.OberonException;
 
 public class VarNode implements ASTnode {
+  private final String varname;
+  private final ASTnode select;
+  
   public VarNode( String varname, ASTnode select )
   {
     this.varname = varname;
@@ -44,7 +47,4 @@ public class VarNode implements ASTnode {
     }
     return varnameWithSelector;
   }
-
-  private String varname = null;
-  private ASTnode select = null;
 }

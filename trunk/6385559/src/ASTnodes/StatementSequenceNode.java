@@ -2,6 +2,9 @@ package ASTnodes;
 import parseErrorLog.OberonException;
 
 public class StatementSequenceNode implements ASTnode {
+  private final StatementNode statement;
+  private final StatementSequenceNode statementSequence;
+  
   public StatementSequenceNode( StatementNode statement, StatementSequenceNode statementSequence )
   {
     this.statement = statement;
@@ -33,7 +36,4 @@ public class StatementSequenceNode implements ASTnode {
     }
     return 0;
   }
-  
-  private StatementNode statement;
-  private StatementSequenceNode statementSequence;
 }

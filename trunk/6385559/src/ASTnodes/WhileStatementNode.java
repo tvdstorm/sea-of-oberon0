@@ -3,6 +3,9 @@ package ASTnodes;
 import parseErrorLog.OberonException;
 
 public class WhileStatementNode implements StatementNode {
+  private final ExpressionNode cond;
+  private final StatementSequenceNode executionSequence;
+  
   public WhileStatementNode( ExpressionNode cond, StatementSequenceNode statements )
   {
     this.cond = cond;
@@ -46,7 +49,4 @@ public class WhileStatementNode implements StatementNode {
     }
     return 0;
   }
-  
-  private ExpressionNode cond = null;
-  private StatementSequenceNode executionSequence = null;
 }

@@ -5,6 +5,9 @@ import parseErrorLog.OberonException;
 import management.MemoryManager;
 
 public class IdentListNode implements ASTnode {
+  private final String identifier;
+  private final IdentListNode followup;
+  
   public IdentListNode( String identifier, IdentListNode followup )
   {
     this.identifier = identifier;
@@ -78,7 +81,4 @@ public class IdentListNode implements ASTnode {
     elements.add( this.identifier ); // this will only be called for the record type
     return elements;
   }
-
-  private String identifier = null;
-  private IdentListNode followup = null;
 }

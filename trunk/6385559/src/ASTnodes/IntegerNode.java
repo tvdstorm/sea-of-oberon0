@@ -2,6 +2,8 @@ package ASTnodes;
 import parseErrorLog.OberonException;
 
 public class IntegerNode implements ASTnode {
+  private final int intValue;
+  
   public IntegerNode( int x )
   {
     this.intValue = x;
@@ -16,6 +18,4 @@ public class IntegerNode implements ASTnode {
   {
     return this.intValue;
   }
-  
-  private int intValue = 0;
 }

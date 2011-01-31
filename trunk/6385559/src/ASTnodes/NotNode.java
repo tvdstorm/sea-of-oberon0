@@ -2,6 +2,8 @@ package ASTnodes;
 import parseErrorLog.OberonException;
 
 public class NotNode implements ASTnode {
+  private final ASTnode expression;
+  
   public NotNode( ASTnode expression )
   {
     this.expression = expression;
@@ -22,6 +24,4 @@ public class NotNode implements ASTnode {
     }
     return 0;
   }
-  
-  private ASTnode expression;
 }

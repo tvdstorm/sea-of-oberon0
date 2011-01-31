@@ -3,6 +3,10 @@ package ASTnodes;
 import parseErrorLog.OberonException;
 
 public class ProcedureBodyNode implements ASTnode {
+  private final DeclarationsNode declarations;
+  private final StatementSequenceNode statements;
+  private final String identifier;
+  
   public ProcedureBodyNode( DeclarationsNode declarations, StatementSequenceNode statements, String identifier )
   {
     this.declarations = declarations;
@@ -53,8 +57,4 @@ public class ProcedureBodyNode implements ASTnode {
   { // return the identifier to be able to get it from the procedureManager
     return this.identifier;
   }
-
-  private DeclarationsNode declarations = null;
-  private StatementSequenceNode statements = null;
-  private String identifier = null;
 }

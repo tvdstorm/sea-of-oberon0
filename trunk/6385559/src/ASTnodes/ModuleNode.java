@@ -4,6 +4,10 @@ import org.antlr.runtime.*;
 import parseErrorLog.*;
 
 public class ModuleNode implements ASTnode{
+  private final DeclarationsNode declarations;
+  private final StatementSequenceNode statementSequence;
+  private final String ModuleName;
+  
   public ModuleNode( String idn1, String idn2, DeclarationsNode declarations, StatementSequenceNode statementSequence ) throws RecognitionException
   {
     if( idn1.compareTo( idn2 ) != 0 ) 
@@ -47,8 +51,4 @@ public class ModuleNode implements ASTnode{
     
     return 0;
   }
-  
-  private DeclarationsNode declarations = null;
-  private StatementSequenceNode statementSequence = null;
-  private String ModuleName = null;
 }

@@ -2,17 +2,22 @@ package management;
 
 import ASTnodes.*;
 import java.util.Vector;
+import parseErrorLog.OberonException;
 
 public class ProcedureManager {
-  public static void addProcedure( String name, String scope, ProcedureDeclarationNode proc )
+  public static void addProcedure( String name, String scope, ProcedureDeclarationNode proc ) throws OberonException
   {
     if( !procedureDoesNotExistInScope( name, scope ) )
     { // if not exist add the procedure to the scope
       procedures.add( new ProcedureContainer( name, scope, proc ) );
     }
+    else
+    {
+      throw new OberonException( "You cannot redeclare procedure: " + name + " in scope: " + scope );
+    }
   }
   
-  public static ProcedureDeclarationNode getProcedure( String name )
+  public static ProcedureDeclarationNode getProcedure( String name ) throws OberonException
   {
     ProcedureContainer container = null;
     for( int i = procedures.size( )-1; i >= 0; i-- )
@@ -23,7 +28,7 @@ public class ProcedureManager {
         return container.getProcedure();
       }
     }
-    return null;
+    throw new OberonException( "The called procedure: " + name + " does not exist" );
   }
   
   public static void deleteScope( String scope )

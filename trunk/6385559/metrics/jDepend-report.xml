@@ -7,11 +7,11 @@
                 <TotalClasses>35</TotalClasses>
                 <ConcreteClasses>33</ConcreteClasses>
                 <AbstractClasses>2</AbstractClasses>
-                <Ca>3</Ca>
+                <Ca>4</Ca>
                 <Ce>6</Ce>
                 <A>0.06</A>
-                <I>0.67</I>
-                <D>0.28</D>
+                <I>0.6</I>
+                <D>0.34</D>
                 <V>1</V>
             </Stats>
 
@@ -139,6 +139,7 @@
                 <Package>management</Package>
                 <Package>oberon0</Package>
                 <Package>parser</Package>
+                <Package>system</Package>
             </UsedBy>
         </Package>
 
@@ -159,11 +160,11 @@
                 <TotalClasses>9</TotalClasses>
                 <ConcreteClasses>9</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
-                <Ca>2</Ca>
-                <Ce>4</Ce>
+                <Ca>3</Ca>
+                <Ce>5</Ce>
                 <A>0</A>
-                <I>0.67</I>
-                <D>0.33</D>
+                <I>0.62</I>
+                <D>0.38</D>
                 <V>1</V>
             </Stats>
 
@@ -205,11 +206,13 @@
                 <Package>java.io</Package>
                 <Package>java.lang</Package>
                 <Package>java.util</Package>
+                <Package>parseErrorLog</Package>
             </DependsUpon>
 
             <UsedBy>
                 <Package>ASTnodes</Package>
                 <Package>oberon0</Package>
+                <Package>system</Package>
             </UsedBy>
         </Package>
 
@@ -219,7 +222,7 @@
                 <ConcreteClasses>4</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
                 <Ca>0</Ca>
-                <Ce>8</Ce>
+                <Ce>9</Ce>
                 <A>0</A>
                 <I>1</I>
                 <D>0</D>
@@ -253,6 +256,7 @@
                 <Package>org.antlr.runtime</Package>
                 <Package>parseErrorLog</Package>
                 <Package>parser</Package>
+                <Package>system</Package>
             </DependsUpon>
 
             <UsedBy>
@@ -265,14 +269,14 @@
 
         <Package name="parseErrorLog">
             <Stats>
-                <TotalClasses>1</TotalClasses>
-                <ConcreteClasses>1</ConcreteClasses>
+                <TotalClasses>2</TotalClasses>
+                <ConcreteClasses>2</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
-                <Ca>3</Ca>
+                <Ca>5</Ca>
                 <Ce>3</Ce>
                 <A>0</A>
-                <I>0.5</I>
-                <D>0.5</D>
+                <I>0.38</I>
+                <D>0.62</D>
                 <V>1</V>
             </Stats>
 
@@ -280,6 +284,9 @@
             </AbstractClasses>
 
             <ConcreteClasses>
+                <Class sourceFile="OberonException.java">
+                    parseErrorLog.OberonException
+                </Class>
                 <Class sourceFile="parseErrorLog.java">
                     parseErrorLog.parseErrorLog
                 </Class>
@@ -293,8 +300,10 @@
 
             <UsedBy>
                 <Package>ASTnodes</Package>
+                <Package>management</Package>
                 <Package>oberon0</Package>
                 <Package>parser</Package>
+                <Package>system</Package>
             </UsedBy>
         </Package>
 
@@ -338,6 +347,48 @@
                 <Package>oberon0</Package>
             </UsedBy>
         </Package>
+
+        <Package name="system">
+            <Stats>
+                <TotalClasses>3</TotalClasses>
+                <ConcreteClasses>3</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>1</Ca>
+                <Ce>6</Ce>
+                <A>0</A>
+                <I>0.86</I>
+                <D>0.14</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="Read.java">
+                    system.Read
+                </Class>
+                <Class sourceFile="Write.java">
+                    system.Write
+                </Class>
+                <Class sourceFile="WriteLn.java">
+                    system.WriteLn
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>ASTnodes</Package>
+                <Package>java.io</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+                <Package>management</Package>
+                <Package>parseErrorLog</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>oberon0</Package>
+            </UsedBy>
+        </Package>
     </Packages>
 
     <Cycles>
@@ -358,6 +409,12 @@
         </Package>
 
         <Package Name="parser">
+            <Package>ASTnodes</Package>
+            <Package>management</Package>
+            <Package>ASTnodes</Package>
+        </Package>
+
+        <Package Name="system">
             <Package>ASTnodes</Package>
             <Package>management</Package>
             <Package>ASTnodes</Package>

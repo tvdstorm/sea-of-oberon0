@@ -7,18 +7,6 @@ import parseErrorLog.OberonException;
 public class OberonSystemcalls {
   public static void doSystemCall( String systemcall, Vector<ParamContainer> params ) throws OberonException
   {
-    if( systemcall.contentEquals( "Read" ) )
-    {
-      read( params );
-    }
-    else if( systemcall.contentEquals( "Write" ) )
-    {
-      write( params, false );
-    }
-    else if( systemcall.contentEquals( "WriteLn" ) )
-    {
-      write( params, true );
-    }
   }
   
   public static void read( Vector<ParamContainer> params ) throws OberonException
