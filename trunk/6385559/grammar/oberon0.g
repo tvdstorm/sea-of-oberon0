@@ -9,7 +9,7 @@ options
 @header{
   package parser;
   
-  import ASTnodes.*;
+  import ast.*;
   import errorhandler.*;
 }
 

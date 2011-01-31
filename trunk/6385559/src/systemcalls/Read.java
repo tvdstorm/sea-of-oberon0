@@ -3,11 +3,12 @@ package systemcalls;
 import java.util.Scanner;
 import java.util.Vector;
 
+import ast.*;
+
 import errorhandler.OberonException;
 
 import management.MemoryManager;
 import management.ParamContainer;
-import ASTnodes.*;
 
 public class Read extends ProcedureDeclarationNode {
   public Read( )

@@ -2,10 +2,11 @@ package systemcalls;
 
 import java.util.Vector;
 
+import ast.*;
+
 import errorhandler.OberonException;
 
 import management.ParamContainer;
-import ASTnodes.*;
 
 public class Write extends ProcedureDeclarationNode {
   public Write( )

@@ -1,7 +1,8 @@
 package management;
 
-import ASTnodes.*;
 import java.util.Vector;
+
+import ast.*;
 
 import errorhandler.OberonException;
 
