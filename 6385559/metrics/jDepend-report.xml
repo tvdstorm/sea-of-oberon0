@@ -4,14 +4,14 @@
 
         <Package name="ast">
             <Stats>
-                <TotalClasses>35</TotalClasses>
-                <ConcreteClasses>33</ConcreteClasses>
+                <TotalClasses>41</TotalClasses>
+                <ConcreteClasses>39</ConcreteClasses>
                 <AbstractClasses>2</AbstractClasses>
                 <Ca>4</Ca>
                 <Ce>5</Ce>
-                <A>0.06</A>
+                <A>0.05</A>
                 <I>0.56</I>
-                <D>0.39</D>
+                <D>0.4</D>
                 <V>1</V>
             </Stats>
 
@@ -40,8 +40,26 @@
                 <Class sourceFile="ElseStatementNode.java">
                     ast.ElseStatementNode
                 </Class>
+                <Class sourceFile="ExpressionBiggerEqualNode.java">
+                    ast.ExpressionBiggerEqualNode
+                </Class>
+                <Class sourceFile="ExpressionBiggerNode.java">
+                    ast.ExpressionBiggerNode
+                </Class>
+                <Class sourceFile="ExpressionEqualNode.java">
+                    ast.ExpressionEqualNode
+                </Class>
                 <Class sourceFile="ExpressionNode.java">
                     ast.ExpressionNode
+                </Class>
+                <Class sourceFile="ExpressionNotEqualNode.java">
+                    ast.ExpressionNotEqualNode
+                </Class>
+                <Class sourceFile="ExpressionSmallerEqualNode.java">
+                    ast.ExpressionSmallerEqualNode
+                </Class>
+                <Class sourceFile="ExpressionSmallerNode.java">
+                    ast.ExpressionSmallerNode
                 </Class>
                 <Class sourceFile="FieldlistNode.java">
                     ast.FieldlistNode
@@ -402,7 +420,6 @@
         </Package>
 
         <Package Name="oberon0">
-            <Package>systemcalls</Package>
             <Package>ast</Package>
             <Package>management</Package>
             <Package>ast</Package>
