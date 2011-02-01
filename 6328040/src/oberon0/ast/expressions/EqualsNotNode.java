@@ -1,10 +1,10 @@
-package oberon0.ast;
+package oberon0.ast.expressions;
 
 import oberon0.environment.Context;
 
-public class EqualsNode extends BaseBiliteralExpressionNode {
+public class EqualsNotNode extends BaseBiliteralExpressionNode {
 
-	public EqualsNode(IEvaluable lhsExpression, 
+	public EqualsNotNode(IEvaluable lhsExpression,
 			IEvaluable rhsExpression) {
 		super(lhsExpression, rhsExpression);
 	}
@@ -13,7 +13,7 @@ public class EqualsNode extends BaseBiliteralExpressionNode {
 	public Object eval(Context context) {
 		Object lhs = evalLhsExpression(context);
 		Object rhs = evalRhsExpression(context);
-		return lhs == rhs;
+		return lhs != rhs;
 	}
 
 }

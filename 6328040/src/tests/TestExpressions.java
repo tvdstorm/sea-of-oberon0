@@ -1,6 +1,22 @@
 package tests;
 
 import oberon0.ast.*;
+import oberon0.ast.expressions.AddNode;
+import oberon0.ast.expressions.BooleanNode;
+import oberon0.ast.expressions.ConjunctionNode;
+import oberon0.ast.expressions.DisjunctionNode;
+import oberon0.ast.expressions.DivideNode;
+import oberon0.ast.expressions.EqualsNode;
+import oberon0.ast.expressions.EqualsNotNode;
+import oberon0.ast.expressions.GreaterEqualNode;
+import oberon0.ast.expressions.GreaterThenNode;
+import oberon0.ast.expressions.IntegerNode;
+import oberon0.ast.expressions.ModuloNode;
+import oberon0.ast.expressions.MultiplyNode;
+import oberon0.ast.expressions.NegativeNode;
+import oberon0.ast.expressions.SmallerEqualNode;
+import oberon0.ast.expressions.SmallerThenNode;
+import oberon0.ast.expressions.SubtractNode;
 import oberon0.environment.Context;
 
 public class TestExpressions {
@@ -28,7 +44,11 @@ public class TestExpressions {
 	    System.out.print("Arithmetic operations passed\n");
 	    
 	    assert (!(Boolean) new EqualsNode(int4, int3).eval(context));
-	    assert (!(Boolean) new EqualsNotNode(int4, int4).eval(context));
+	    assert ((Boolean) new EqualsNotNode(int3, int4).eval(context));
+	    assert (!(Boolean) new GreaterThenNode(int3, int4).eval(context));
+	    assert (!(Boolean) new GreaterEqualNode(int3, int4).eval(context));
+	    assert ((Boolean) new SmallerThenNode(int3, int4).eval(context));
+	    assert ((Boolean) new SmallerEqualNode(int3, int4).eval(context));
 	    
 	    System.out.print("Relation operations passed\n");
 	    

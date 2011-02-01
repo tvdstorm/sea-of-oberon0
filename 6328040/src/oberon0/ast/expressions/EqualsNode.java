@@ -1,20 +1,19 @@
-package oberon0.ast;
+package oberon0.ast.expressions;
 
 import oberon0.environment.Context;
 
-public class EqualsNotNode extends BaseBiliteralExpressionNode {
+public class EqualsNode extends BaseBiliteralExpressionNode {
 
-	public EqualsNotNode(IEvaluable lhsExpression,
+	public EqualsNode(IEvaluable lhsExpression, 
 			IEvaluable rhsExpression) {
 		super(lhsExpression, rhsExpression);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public Object eval(Context context) {
 		Object lhs = evalLhsExpression(context);
 		Object rhs = evalRhsExpression(context);
-		return lhs != rhs;
+		return lhs == rhs;
 	}
 
 }

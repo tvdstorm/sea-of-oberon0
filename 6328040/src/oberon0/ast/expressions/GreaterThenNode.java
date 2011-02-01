@@ -1,10 +1,10 @@
-package oberon0.ast;
+package oberon0.ast.expressions;
 
 import oberon0.environment.Context;
 
-public class AddNode extends BaseBiliteralExpressionNode {
+public class GreaterThenNode extends BaseBiliteralExpressionNode {
 
-	public AddNode(IEvaluable lhsExpression,
+	public GreaterThenNode(IEvaluable lhsExpression,
 			IEvaluable rhsExpression) {
 		super(lhsExpression, rhsExpression);
 	}
@@ -13,6 +13,7 @@ public class AddNode extends BaseBiliteralExpressionNode {
 	public Object eval(Context context) {
 		int lhs = (Integer) evalLhsExpression(context);
 		int rhs = (Integer) evalRhsExpression(context);
-		return lhs + rhs;
+		return lhs > rhs;
 	}
+
 }

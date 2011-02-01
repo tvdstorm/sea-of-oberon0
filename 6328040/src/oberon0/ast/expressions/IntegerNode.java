@@ -1,4 +1,4 @@
-package oberon0.ast;
+package oberon0.ast.expressions;
 
 import oberon0.environment.Context;
 
@@ -11,6 +11,7 @@ public class IntegerNode implements IEvaluable {
 
 	@Override
 	public Object eval(Context context) {
+		System.out.print(_value);
 		return _value;
 	}
 }

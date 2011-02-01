@@ -1,6 +1,27 @@
 // $ANTLR 3.3 Nov 30, 2010 12:45:30 C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g 2011-02-01 12:00:28
 package generated; 
 import oberon0.ast.*;
+import oberon0.ast.expressions.AddNode;
+import oberon0.ast.expressions.BooleanNode;
+import oberon0.ast.expressions.ConjunctionNode;
+import oberon0.ast.expressions.DisjunctionNode;
+import oberon0.ast.expressions.DivideNode;
+import oberon0.ast.expressions.EqualsNode;
+import oberon0.ast.expressions.EqualsNotNode;
+import oberon0.ast.expressions.GreaterEqualNode;
+import oberon0.ast.expressions.GreaterThenNode;
+import oberon0.ast.expressions.IEvaluable;
+import oberon0.ast.expressions.IntegerNode;
+import oberon0.ast.expressions.ModuloNode;
+import oberon0.ast.expressions.MultiplyNode;
+import oberon0.ast.expressions.NegationNode;
+import oberon0.ast.expressions.NegativeNode;
+import oberon0.ast.expressions.SelectorArrayNode;
+import oberon0.ast.expressions.SelectorRecordNode;
+import oberon0.ast.expressions.SmallerEqualNode;
+import oberon0.ast.expressions.SmallerThenNode;
+import oberon0.ast.expressions.SubtractNode;
+import oberon0.ast.expressions.VariableNode;
 
 
 import org.antlr.runtime.*;
