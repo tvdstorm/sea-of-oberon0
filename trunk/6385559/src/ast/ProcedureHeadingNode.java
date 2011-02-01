@@ -5,7 +5,8 @@ import java.util.Vector;
 import errorhandler.OberonException;
 import management.ParamContainer;
 
-public class ProcedureHeadingNode implements ASTnode {
+public class ProcedureHeadingNode implements ASTnode 
+{
   private final String identifier;
   private final FormalParameterNode formalParams;
   
@@ -15,22 +16,23 @@ public class ProcedureHeadingNode implements ASTnode {
     this.formalParams = formalParams;
   }
   
-  public void printNode(int depth) {
+  public String ToString( int depth ) 
+  {
+    String code = "";
     if( this.identifier != null )
     {
       for( int i = 0; i < depth; i++ )
       {
-        System.out.print( " " );
+        code += " ";
       }
-      System.out.print( "PROCEDURE " + this.identifier );
+      code += "PROCEDURE " + this.identifier;
       if( this.formalParams != null )
       {
-        System.out.print( "( " );
-        this.formalParams.printNode( 0 ); 
-        System.out.print( " )" );
+        code += "( " + this.formalParams.ToString( 0 ) + " )";
       }
-      System.out.println( ";" );
+      code += ";\n";
     }
+    return code;
   }
   
   public int eval( )  throws OberonException

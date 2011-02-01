@@ -4,7 +4,8 @@ import errorhandler.OberonException;
 import management.ScopeManager;
 import management.TypeDefinitionManager;
 
-public class TypeDefNode implements ASTnode {
+public class TypeDefNode implements ASTnode 
+{
   private final String identifier;
   private final ASTnode type;
   private final TypeDefNode followup;
@@ -16,23 +17,24 @@ public class TypeDefNode implements ASTnode {
     this.followup = followup;
   }
   
-  public void printNode(int depth) 
+  public String ToString( int depth ) 
   {
+    String code = "";
     if( this.identifier != null )
     {
-      System.out.print( this.identifier + " = " );
+      code += this.identifier + " = ";
     }
     
     if( this.type != null )
     {
-      this.type.printNode( 0 );
-      System.out.print( "; " );
+      code += this.type.ToString( 0 ) + "; ";
     }
     
     if( this.followup != null )
     {
-      this.followup.printNode( 0 );
+      code += this.followup.ToString( 0 );
     }
+    return code;
   }
 
   public int eval( ) throws OberonException

@@ -1,7 +1,8 @@
 package ast;
 import errorhandler.OberonException;
 
-public class ExpressionNode implements ASTnode {
+public class ExpressionNode implements ASTnode 
+{
   private final String operator;
   private final SimpleExpression left;
   private final SimpleExpression right;
@@ -13,22 +14,24 @@ public class ExpressionNode implements ASTnode {
     this.right = right;
   }
   
-  public void printNode( int depth )
+  public String ToString( int depth )
   {
+    String code = "";
     if( this.left != null )
     {
-      this.left.printNode( depth );
+      code += this.left.ToString( depth );
     }
     
     if( this.operator != null )
     {
-      System.out.print( " " + this.operator + " " );
+      code += " " + this.operator + " ";
     }
     
     if( this.right != null )
     {
-      this.right.printNode( depth );
+      code += this.right.ToString( depth );
     }
+    return code;
   }
   
   public int eval( ) throws OberonException

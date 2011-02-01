@@ -11,17 +11,19 @@ public class StatementSequenceNode implements ASTnode {
     this.statementSequence = statementSequence;
   }
   
-  public void printNode( int depth )
+  public String ToString( int depth )
   {
+    String code = "";
     if( this.statement != null )
     {
-      this.statement.printNode( depth );
+      code += this.statement.ToString( depth );
     }
     
     if( this.statementSequence != null )
     {
-      this.statementSequence.printNode( depth );
+      code += this.statementSequence.ToString( depth );
     }
+    return code;
   }
 
   public int eval( ) throws OberonException

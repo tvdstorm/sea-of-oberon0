@@ -47,7 +47,7 @@ public class oberon0
         
         if( CommandLine.doPrint( ) )
         { // if print request print the source to the screen
-          AST.printNode( 0 );
+          System.out.println( AST.ToString( 0 ) );
         }
         
         if( CommandLine.doMemoryDump( ) )

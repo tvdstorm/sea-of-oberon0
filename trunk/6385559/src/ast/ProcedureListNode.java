@@ -1,7 +1,8 @@
 package ast;
 import errorhandler.OberonException;
 
-public class ProcedureListNode implements ASTnode {
+public class ProcedureListNode implements ASTnode 
+{
   private final ProcedureDeclarationNode procedureDeclaration;
   private final ProcedureListNode procedureList;
   
@@ -11,17 +12,19 @@ public class ProcedureListNode implements ASTnode {
     this.procedureList = procedureList;
   }
   
-  public void printNode(int depth) {
+  public String ToString( int depth ) 
+  {
+    String code = "";
     if( procedureDeclaration != null )
     {
-      this.procedureDeclaration.printNode( depth );
-      System.out.println();
+      code += this.procedureDeclaration.ToString( depth ) + "\n";
     }
     
     if( this.procedureList != null )
     {
-      this.procedureList.printNode( depth );
+      code += this.procedureList.ToString( depth );
     }
+    return code;
   }
   
   public int eval( ) throws OberonException

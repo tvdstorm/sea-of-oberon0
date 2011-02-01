@@ -8,7 +8,8 @@ import management.ParamContainer;
 import management.ProcedureManager;
 import management.ScopeManager;
 
-public class ProcedureCallNode implements StatementNode {
+public class ProcedureCallNode implements StatementNode 
+{
   private final String identifier;
   private final ParamNode params;
   
@@ -18,26 +19,25 @@ public class ProcedureCallNode implements StatementNode {
     this.params = params;
   }
   
-  public void printNode( int depth )
+  public String ToString( int depth )
   {
+    String code = "";
     for( int i = 0; i < depth; i++ )
     { // print the correct depth
-      System.out.print( " " );
+      code += " ";
     }
   
     if( this.identifier != null )
     {
-      System.out.print( this.identifier );
+      code += this.identifier;
     }
   
     if( this.params != null )
     {
-      System.out.print( "( " );
-      params.printNode( 0 );
-      System.out.print( " )" );
+      code += "( " + params.ToString( 0 ) + " )";
     }
   
-    System.out.println( ";" );
+    return code + ";\n";
   }
   
   public int eval( ) throws OberonException

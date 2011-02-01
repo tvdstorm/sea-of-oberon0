@@ -1,7 +1,8 @@
 package ast;
 import errorhandler.OberonException;
 
-public class IfStatementNode implements StatementNode {
+public class IfStatementNode implements StatementNode 
+{
   private final ExpressionNode expression;
   private final StatementSequenceNode sequence;
   private final StatementNode elseStatement;
@@ -13,40 +14,40 @@ public class IfStatementNode implements StatementNode {
     this.elseStatement = elseStatement;
   }
   
-  public void printNode( int depth )
+  public String ToString( int depth )
   {
+    String code = "";
     for( int i = 0; i < depth; i++ )
     { // print the depth
-      System.out.print( " " );
+      code += " ";
     }
   
-    System.out.print( "IF " );
+    code += "IF ";
     if( this.expression != null )
     {
-      expression.printNode( depth );
+      code += expression.ToString( depth );
     }
   
-    System.out.println( " THEN" );
+    code += " THEN\n";
     if( this.sequence != null )
     {
-      this.sequence.printNode( depth+2 );
+      code += this.sequence.ToString( depth+2 );
     }
   
     if( this.elseStatement != null )
     {
       for( int i = 0; i < depth; i++ )
       { // print the needed depth
-        System.out.print( " " );
+        code += " ";
       }
-      System.out.println( "ELSE" );
-      this.elseStatement.printNode(depth+2);
+      code += "ELSE\n" + this.elseStatement.ToString(depth+2);
     }
   
     for( int i = 0; i < depth; i++ )
     {
-      System.out.print( " " );
+      code += " ";
     }
-    System.out.println( "END;" );
+    return code + "END;\n";
   }
   
   public int eval( ) throws OberonException

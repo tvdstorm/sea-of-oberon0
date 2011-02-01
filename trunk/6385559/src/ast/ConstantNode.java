@@ -4,7 +4,8 @@ import errorhandler.OberonException;
 import management.MemoryManager;
 import management.ScopeManager;
 
-public class ConstantNode implements ASTnode {
+public class ConstantNode implements ASTnode 
+{
   private final String identifier;
   private final ExpressionNode expression;
   private final ConstantNode constant;
@@ -16,20 +17,23 @@ public class ConstantNode implements ASTnode {
     this.constant = constant;
   }
   
-  public void printNode(int depth) {
+  public String ToString( int depth ) 
+  {
+    String code = "";
     if( this.identifier != null )
     {
-      System.out.print( this.identifier + " = " );
+      code += this.identifier + " = ";
     }
     if( this.expression != null )
     {
-      this.expression.printNode( 0 );
+      code += this.expression.ToString( 0 );
     }
-    System.out.print( "; " );
+    code += "; ";
     if( this.constant != null )
     {
-      this.constant.printNode( 0 );
+      code += this.constant.ToString( 0 );
     }
+    return code;
   }
   
   public int eval( ) throws OberonException

@@ -1,7 +1,8 @@
 package ast;
 import errorhandler.OberonException;
 
-public class SelectorArrayNode implements ASTnode {
+public class SelectorArrayNode implements ASTnode 
+{
   private final ExpressionNode expression;
   private final ASTnode selector;
   
@@ -11,17 +12,19 @@ public class SelectorArrayNode implements ASTnode {
     this.selector = selector;
   }
   
-  public void printNode(int depth) {
+  public String ToString( int depth ) 
+  {
+    String code = "";
     if( this.expression != null )
     {
-      System.out.print( "[" );
-      this.expression.printNode( 0 );
-      System.out.print( "]" );
+      code += "[" + this.expression.ToString( 0 ) + "]";
     }
+    
     if( this.selector != null )
     {
-      this.selector.printNode( 0 );
+      code += this.selector.ToString( 0 );
     }
+    return code;
   }
   
   public int eval( ) throws OberonException

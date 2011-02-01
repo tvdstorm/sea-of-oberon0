@@ -1,7 +1,8 @@
 package ast;
 import errorhandler.OberonException;
 
-public class DeclarationsNode implements ASTnode {
+public class DeclarationsNode implements ASTnode 
+{
   private final ConstantNode constant;
   private final TypeDefNode typeDefs; 
   private final FieldsNode vars;
@@ -15,45 +16,39 @@ public class DeclarationsNode implements ASTnode {
     this.procedureList = procedureList;
   }
   
-  public void printNode( int depth )
+  public String ToString( int depth )
   {
+    String code = "";
     if( this.constant != null )
     {
-      this.addWhitespace( depth );
-      System.out.print( "CONST " );
-      this.constant.printNode( depth );
-      System.out.println();
+      code += this.addWhitespace( depth ) + "CONST " + this.constant.ToString( depth ) + "\n";
     }
   
     if( this.typeDefs != null )
     {
-      this.addWhitespace( depth );
-      System.out.print( "TYPE ");
-      this.typeDefs.printNode( depth );
-      System.out.println();
+      code += this.addWhitespace( depth ) + "TYPE " + this.typeDefs.ToString( depth ) + "\n";
     }
   
     if( this.vars != null )
     {
-      this.addWhitespace( depth );
-      System.out.print( "VAR ");
-      this.vars.printNode( depth );
-      System.out.println();
+      code += this.addWhitespace( depth ) + "VAR " + this.vars.ToString( depth ) + "\n";
     }
   
     if( this.procedureList != null )
     {
-      System.out.println();
-      this.procedureList.printNode( depth );
+      code += "\n" + this.procedureList.ToString( depth );
     }
+    return code;
   }
   
-  private void addWhitespace( int depth )
+  private String addWhitespace( int depth )
   { // used for the print function to make sure that the correct idention is used
+    String code = "";
     for( int i = 0; i < depth; i++ )
     {
-      System.out.print( " " );
+      code += " ";
     }
+    return code;
   }
   
   public int eval( ) throws OberonException

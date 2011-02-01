@@ -6,7 +6,8 @@ import errorhandler.OberonException;
 import management.MemoryManager;
 import management.ScopeManager;
 
-public class IdentListNode implements ASTnode {
+public class IdentListNode implements ASTnode 
+{
   private final String identifier;
   private final IdentListNode followup;
   
@@ -16,18 +17,19 @@ public class IdentListNode implements ASTnode {
     this.followup = followup;
   }
   
-  public void printNode(int depth) 
+  public String ToString( int depth ) 
   {
+    String code = "";
     if( this.identifier != null )
     {
-      System.out.print( this.identifier );
+      code += this.identifier;
     }
     
     if( this.followup != null )
     {
-      System.out.print( ", " );
-      this.followup.printNode( 0 );
+      code += ", " + this.followup.ToString( 0 );
     }
+    return code;
   }
   
   public int eval( ) throws OberonException
