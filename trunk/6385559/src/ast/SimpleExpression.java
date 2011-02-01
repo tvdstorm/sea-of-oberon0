@@ -1,7 +1,7 @@
 package ast;
 import errorhandler.OberonException;
 
-public class SimpleExpression implements ASTnode 
+public class SimpleExpression extends ExpressionNode
 {
   private final String operator;
   private final ASTnode term;
@@ -9,6 +9,7 @@ public class SimpleExpression implements ASTnode
   
   public SimpleExpression( String operator, ASTnode term, SimpleExpression followup )
   {
+    super( null, null );
     this.operator = operator;
     this.term = term;
     this.followup = followup;

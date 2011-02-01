@@ -92,10 +92,16 @@ fieldsFollowup returns [ FieldsNode e ]
 	;
 	
 expression returns [ ExpressionNode e ] 
-	: simpleLeft=simpleexpression (operator=('='|'#'|'<'|'<='|'>'|'>=') simpleRight=simpleexpression)?
-	{
-	  $e = new ExpressionNode( $simpleLeft.e, $operator.text, $simpleRight.e );
-	}
+	: simpleLeft=simpleexpression { $e = $simpleLeft.e; } 
+	  (operator=(
+	    '=' { $e = new ExpressionEqualNode( $simpleLeft.e, null ); }
+	  | '#' { $e = new ExpressionNotEqualNode( $simpleLeft.e, null ); }
+	  | '<' { $e = new ExpressionSmallerNode( $simpleLeft.e, null ); }
+	  | '<=' { $e = new ExpressionSmallerEqualNode( $simpleLeft.e, null ); }
+	  | '>' { $e = new ExpressionBiggerNode( $simpleLeft.e, null ); }
+	  | '>=' { $e = new ExpressionBiggerEqualNode( $simpleLeft.e, null ); }
+	  ) 
+	  simpleRight=simpleexpression { $e.setRight( $simpleRight.e ); } )?
 	;
 	
 simpleexpression returns [ SimpleExpression e ]
