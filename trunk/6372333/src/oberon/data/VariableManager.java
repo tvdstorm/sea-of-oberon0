@@ -77,6 +77,7 @@ public class VariableManager {
 		Scope(HashMap<String, DataType> variables, HashMap<String, ProcedureHeading> systemProcedures){
 			_variables = variables;
 			_systemProcedures = systemProcedures;
+			_procedures = new HashMap<String, ProcedureHeading>();
 		}
 
 		private Scope createNewScope(
@@ -98,10 +99,8 @@ public class VariableManager {
 		
 		public void AddNewDeclaration(Declaration declaration)
 		{
-			_variables = new HashMap<String, DataType>();
 			addVariablesToCollection(declaration.getVariables(), _variables);
 			
-			_procedures = new HashMap<String, ProcedureHeading>();
 			for (ProcedureHeading heading : declaration.getProcedures()){
 				AddProcedure(heading);
 			}

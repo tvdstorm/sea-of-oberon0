@@ -7,6 +7,8 @@ import java.io.PushbackReader;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import oberon.data.IdentifierSelector;
+import oberon.data.Selector;
 import oberon.interpret.ModuleInterpreter;
 import oberon.lexer.Lexer;
 import oberon.lexer.LexerException;
@@ -50,8 +52,8 @@ public class Main {
 	            
 	            ProcedureHeading mainProc = interpreter.BuildInterpreterResult();
 	            Queue<Expression> paramList = new LinkedList<Expression>();
-	            	 
-				try {
+	            	            
+	            try {
 					mainProc.Call(paramList);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block

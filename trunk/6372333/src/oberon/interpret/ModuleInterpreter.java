@@ -30,7 +30,7 @@ public class ModuleInterpreter extends BaseInterpreter<ProcedureHeading> {
 		List<FormalParamSection> params = new ArrayList<FormalParamSection>();
 		List<String> paramNames = new ArrayList<String>();
 		paramNames.add("i");
-		params.add(new FormalParamSection(paramNames, FormalParamType.Identifier));
+		params.add(new FormalParamSection(paramNames, FormalParamType.Identifier, false));
 		
 		ProcedureBody body = new ProcedureBody(_declaration, _statements);
 		return new ProcedureHeading("Main", params, body);

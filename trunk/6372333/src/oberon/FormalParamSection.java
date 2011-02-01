@@ -6,20 +6,23 @@ import java.util.List;
 public class FormalParamSection {
 	private List<String> _names;
 	private FormalParamType _type;
+	private Boolean _callByRef;
 	
-	public FormalParamSection(List<String> names, FormalParamType type)
-	{
+	public FormalParamSection(List<String> names, FormalParamType type, Boolean callByRef){
 		_type = type;
 		_names = names;
+		_callByRef = callByRef;
 	}
 	
-	public List<String> getNames()
-	{
+	public Boolean shouldBeCalledByRef(){
+		return _callByRef;
+	}
+	
+	public List<String> getNames(){
 		return Collections.unmodifiableList(_names);
 	}
 	
-	public FormalParamType getType()
-	{
+	public FormalParamType getType(){
 		return _type;
 	}
 }

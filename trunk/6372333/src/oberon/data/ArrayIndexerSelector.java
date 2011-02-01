@@ -13,6 +13,12 @@ public class ArrayIndexerSelector extends Selector {
 
 	@Override
 	public int getSelectorValue() {
+		IntegerArrayType array = getDataTypeAsArrayType();
+		array.setIndex(_expression.EvalAsInt());
+		return array.getValue();
+	}
+
+	private IntegerArrayType getDataTypeAsArrayType() {
 		DataType type = _selector.getDataTypeValue();
 		if (!(type instanceof IntegerArrayType))
 		{
@@ -20,14 +26,12 @@ public class ArrayIndexerSelector extends Selector {
 		}
 		
 		IntegerArrayType array = ((IntegerArrayType)type);
-		array.setIndex(_expression.EvalAsInt());
-		return array.getValue();
+		return array;
 	}
 
 	@Override
 	public DataType getDataTypeValue() {
-		// TODO Auto-generated method stub
-		return null;
+		return new IntegerArrayIndexerType(getDataTypeAsArrayType(), _expression.EvalAsInt());
 	}
 
 }

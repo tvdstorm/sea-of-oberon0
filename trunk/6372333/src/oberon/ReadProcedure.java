@@ -38,7 +38,7 @@ class ReadProcedure extends Statement {
 		List<FormalParamSection> params = new ArrayList<FormalParamSection>();
 		List<String> paramNames = new ArrayList<String>();
 		paramNames.add("i");
-		params.add(new FormalParamSection(paramNames, FormalParamType.Identifier));
+		params.add(new FormalParamSection(paramNames, FormalParamType.Identifier, false));
 		
 		LinkedList<Statement> statements = new LinkedList<Statement>();
 		statements.add(new ReadProcedure());

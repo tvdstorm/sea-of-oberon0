@@ -1,5 +1,6 @@
 package oberon;
 
+import oberon.data.DataType;
 import oberon.data.Selector;
 
 public class SelectorExpression extends Expression {
@@ -9,15 +10,17 @@ public class SelectorExpression extends Expression {
 		_selector = selector;
 	}
 	
-	public Selector getSelector(){
-		return _selector;
+	public DataType performDeepCopyOfValue(String newName){
+		return _selector.getDataTypeValue().DeepCopy(newName);
+	}
+	
+	public DataType performShallowCopyOfValue(String newName){
+		return _selector.getDataTypeValue().ShallowCopy(newName);
 	}
 	
 	@Override
 	public int EvalAsInt() {
-		//TODO throw
-		System.out.println("EvalAsInt called on selector");
-		return 0;
+		return _selector.getSelectorValue();
 	}
 
 }

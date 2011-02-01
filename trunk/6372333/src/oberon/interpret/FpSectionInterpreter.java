@@ -38,13 +38,15 @@ class FpSectionInterpreter extends BaseInterpreter<List<FormalParamSection>> {
 			fpType = FormalParamType.Identifier;
 		}
 		
+		Boolean callByRef = node.getCallbyref() != null;
+		
 		List<String> nameList = new ArrayList<String>();
 		for (TIdentifier paramName : node.getParamnames())
 		{
 			nameList.add(paramName.toString().trim());
 		}
 		
-		_list.add(new FormalParamSection(nameList, fpType));
+		_list.add(new FormalParamSection(nameList, fpType, callByRef));
 	}
 
 	@Override
