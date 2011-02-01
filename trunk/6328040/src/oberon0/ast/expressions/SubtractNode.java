@@ -1,19 +1,19 @@
-package oberon0.ast;
+package oberon0.ast.expressions;
 
 import oberon0.environment.Context;
 
-public class DivideNode extends BaseBiliteralExpressionNode {
+public class SubtractNode extends BaseBiliteralExpressionNode {
 
-	public DivideNode(IEvaluable lhsExpression, IEvaluable rhsExpression) {
+	public SubtractNode(IEvaluable lhsExpression,
+			IEvaluable rhsExpression) {
 		super(lhsExpression, rhsExpression);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public Object eval(Context context) {
 		int lhs = (Integer) evalLhsExpression(context);
 		int rhs = (Integer) evalRhsExpression(context);
-		return lhs / rhs;
+		return lhs - rhs;
 	}
 
 }

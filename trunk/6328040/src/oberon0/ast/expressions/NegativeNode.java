@@ -1,4 +1,4 @@
-package oberon0.ast;
+package oberon0.ast.expressions;
 
 import oberon0.environment.Context;
 

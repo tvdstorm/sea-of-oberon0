@@ -1,4 +1,4 @@
-package oberon0.ast;
+package oberon0.ast.expressions;
 
 import oberon0.environment.Context;
 
@@ -7,13 +7,13 @@ public class DisjunctionNode extends BaseBiliteralExpressionNode {
 	public DisjunctionNode(IEvaluable lhsExpression,
 			IEvaluable rhsExpression) {
 		super(lhsExpression, rhsExpression);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public Object eval(Context context) {
-		// TODO Auto-generated method stub
-		return null;
+		Boolean lhs = (Boolean) evalLhsExpression(context);
+		Boolean rhs = (Boolean) evalRhsExpression(context);
+		return lhs || rhs;
 	}
 
 }

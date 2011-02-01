@@ -1,11 +1,12 @@
-package oberon0.ast;
+package oberon0.ast.expressions;
 
+import oberon0.ast.IASTNode;
 import oberon0.environment.Context;
 
 
 public class VariableNode implements IEvaluable {
 
-	public VariableNode(String name, IVisitable selector) {
+	public VariableNode(String name, IASTNode selector) {
 		// TODO Auto-generated constructor stub
 	}
 
