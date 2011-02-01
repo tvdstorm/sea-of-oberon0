@@ -1,23 +1,5 @@
 package oberon.test;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
-import oberon.AssignmentStatement;
-import oberon.ComparisonExpression;
-import oberon.ComparisonType;
-import oberon.ConstVariable;
-import oberon.Declaration;
-import oberon.IntegerExpression;
-import oberon.MathematicalExpression;
-import oberon.MathematicalExpressionType;
-import oberon.ProcedureHeading;
-import oberon.Statement;
-import oberon.StatementSequence;
-import oberon.WhileStatement;
-import oberon.data.VariableManager;
 import junit.framework.TestCase;
 
 public class WhileTest extends TestCase {
