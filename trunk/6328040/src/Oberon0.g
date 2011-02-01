@@ -1,9 +1,5 @@
 grammar Oberon0;
 
-options { 	
-	output=AST; 
-}
-
 tokens
 {
 	//Operators
@@ -48,27 +44,17 @@ tokens
 	PROCEDURE	=	'PROCEDURE';
 	BEGIN		=	'BEGIN';
 	MODULE		=	'MODULE';
-	
-	FORMALPARAMETERS;
-	ACTUALPARAMETERS;
-	REFVAR;
-	BODY;
-	CONDITION;
-	PROCEDURECALL;
-	SELECTOR;
-	OBERONPROGRAM;
-	DECLARATIONS;
-	IFBLOCK;
-	IDENTLIST;
-	ROUTINENAME;
+	TRUE		=	'TRUE';
+	FALSE		=	'FALSE';
 	}
 
 @header {package generated; 
+import oberon0.ast.*;
 }
 
 @lexer::header {package generated;
 }
-
+/*
 oberonprogram
 	:	module 
 			-> ^(OBERONPROGRAM module);
@@ -98,13 +84,13 @@ procedureBody
 	:	BEGIN statementSequence END
 			-> ^(BODY statementSequence);
 assignment
-	:	vairable ASSIGNMENT^ expression;
+	:	variable ASSIGNMENT^ expression;
 actualParameters
 	:	RNDOPEN (expression (COMMA expression)*)? RNDCLOSE
 			-> ^(ACTUALPARAMETERS expression+);
 procedureCall
-	:	vairable (actualParameters)? 
-			-> ^(PROCEDURECALL vairable (actualParameters)?)  ;
+	:	variable (actualParameters)? 
+			-> ^(PROCEDURECALL variable (actualParameters)?)  ;
 
 elseStatementPart
 	:	ELSE statementSequence 
@@ -157,51 +143,68 @@ formalParameters
 	:	RNDOPEN (fpSection (SEMICOLON fpSection)*)? RNDCLOSE 
 			-> ^(FORMALPARAMETERS (fpSection+)?);
 		
-
-expression returns [ ExpressionNode node ]
-	: lhsExp = simpleExpression { $expression = $lhsExp.simpleExpression; } 
-	(( EQUALS 	) rhsExp =simpleExpression	
-	| HASH		
-		| SMALLERTHEN
-	| SMALLEREQUAL
-	| GREATERTHEN
-	| GREATEREQUAL
-	) rhsExp =simpleExpression
+*/
+expression returns [ IEvaluable node ]
+	: lhsExp = simpleExpression 			{$node = $lhsExp.node; 					} 
+	( EQUALS 	rhsExp =simpleExpression	{$node = new EqualsNode($node, $rhsExp.node);		}
+	| HASH		rhsExp =simpleExpression	{$node = new EqualsNotNode($node, $rhsExp.node);	}
+	| SMALLERTHEN	rhsExp =simpleExpression	{$node = new SmallerThenNode($node, $rhsExp.node);	}
+	| SMALLEREQUAL	rhsExp =simpleExpression	{$node = new SmallerEqualNode($node, $rhsExp.node);	}
+	| GREATERTHEN	rhsExp =simpleExpression	{$node = new GreaterThenNode($node, $rhsExp.node);	}
+	| GREATEREQUAL	rhsExp =simpleExpression	{$node = new GreaterEqualNode($node, $rhsExp.node);	}
 	)?;
 
-simpleExpression 
-	:	(ADD | SUBTRACT)? term ((ADD | SUBTRACT | OR)^ term)*;
+simpleExpression returns [ IEvaluable node ]
+	: 				{ Boolean minus = false; }
+	(ADD 
+	| SUBTRACT			{ minus = true; }
+	)? 		
+	lhsTerm = term 			{$node = $lhsTerm.node;					}
+	(ADD 		rhsTerm = term 	{$node = new AddNode($node, $rhsTerm.node);		}
+	| SUBTRACT 	rhsTerm = term 	{$node = new SubtractNode($node, $rhsTerm.node);	}
+	| OR term 	rhsTerm = term 	{$node = new DisjunctionNode($node, $rhsTerm.node);	}
+	)*				{if(minus) { $node = new NegativeNode($node);}		}
+	;
 
 
-term 	returns [ TermNode node ]
-	: factor ((MULTIPLY | DIVIDE | MOD | AMPERSAND) factor)*;
+term 	returns [ IEvaluable node ]
+	: lhsFactor = factor			{$node = $lhsFactor.node;				} 
+	( MULTIPLY 	rhsFactor = factor	{$node = new MultiplyNode($node, $rhsFactor.node);	}
+	| DIVIDE 	rhsFactor = factor	{$node = new DivideNode($node, $rhsFactor.node);	}
+	| MOD 		rhsFactor = factor	{$node = new ModuloNode($node, $rhsFactor.node);	}
+	| AMPERSAND 	rhsFactor = factor	{$node = new ConjunctionNode($node, $rhsFactor.node);	}
+	)*;
 
-factor 	returns [ INode node ]
-	: vairable 			{ $node = $vairable.node; 		 }
-	| number 			{ $node = $number.node;			 }
-	| RNDOPEN expression RNDCLOSE 	{ $node = $expression.node;		 }
-	| TILDE factor			{ $node = new NegationNode($factor.node);}
+factor 	returns [ IEvaluable node ]
+	: var=variable 				{ $node = $var.node; 		 	 	}
+	| num=number 				{ $node = $num.node;			 	}
+	| RNDOPEN exp=expression RNDCLOSE 	{ $node = $exp.node;		 	 	}
+	| TILDE nFactor=factor			{ $node = new NegationNode($nFactor.node);	}
 	;
 
 number	returns [ IntegerNode node ]
 	: INTEGER			{ $node = new IntegerNode( Integer.parseInt( $INTEGER.text ) ); }
 	;
 
-vairable returns [VariableNode node]
+booleann returns [ BooleanNode node ]
+	: FALSE 			{ $node = new BooleanNode ( false); }
+	| TRUE				{ $node = new BooleanNode ( true); }
+	;
+
+variable returns [VariableNode node]
 	: IDENT selector 		{ $node = new VariableNode ( $IDENT.text, $selector.node); }
 	;
 
-selector returns [ INode node ]
+selector returns [ IEvaluable node ]
 	: 
 	(DOT IDENT 			{ new SelectorRecordNode ( $IDENT.text );	}
 	| SQROPEN expression SQRCLOSE	{ new SelectorArrayNode  ( $expression.node );	}
 	)*;
 	
 
-routinename
-	:	IDENT	-> ^(ROUTINENAME IDENT);
-
-BOOLEAN	:	'FALSE' | 'TRUE';				//not directly specified, unimplemented
+/*routinename
+	:	IDENT	-> ^(ROUTINENAME IDENT);*/
+	
 IDENT  	:	('a'..'z'|'A'..'Z'|'_') 
 		('a'..'z'|'A'..'Z'|'0'..'9'|'_')* ;
 INTEGER :	'0'..'9'+;
