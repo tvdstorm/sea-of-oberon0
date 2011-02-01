@@ -45,10 +45,10 @@ public interface Analysis extends Switch
     void caseAExgeExp(AExgeExp node);
     void caseAParenExp(AParenExp node);
     void caseAIntegerExp(AIntegerExp node);
-    void caseAIdentselExp(AIdentselExp node);
+    void caseASelectorExp(ASelectorExp node);
+    void caseAAdditionalselectorSelector(AAdditionalselectorSelector node);
     void caseAIdentifierSelector(AIdentifierSelector node);
-    void caseAExpressionSelector(AExpressionSelector node);
-    void caseANoneSelector(ANoneSelector node);
+    void caseAArrayexpressionSelector(AArrayexpressionSelector node);
     void caseAStatassStatement(AStatassStatement node);
     void caseAStatprocStatement(AStatprocStatement node);
     void caseAStatifStatement(AStatifStatement node);

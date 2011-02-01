@@ -2,6 +2,8 @@ package oberon;
 
 import java.io.IOException;
 
+import oberon.data.VariableManager;
+
 public abstract class Statement {
 	protected VariableManager getVariableManager()
 	{

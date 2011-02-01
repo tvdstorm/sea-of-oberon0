@@ -5,17 +5,17 @@ package oberon.node;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AAssignment extends PAssignment
+public final class AArrayexpressionSelector extends PSelector
 {
     private PSelector _selector_;
     private PExp _exp_;
 
-    public AAssignment()
+    public AArrayexpressionSelector()
     {
         // Constructor
     }
 
-    public AAssignment(
+    public AArrayexpressionSelector(
         @SuppressWarnings("hiding") PSelector _selector_,
         @SuppressWarnings("hiding") PExp _exp_)
     {
@@ -29,14 +29,14 @@ public final class AAssignment extends PAssignment
     @Override
     public Object clone()
     {
-        return new AAssignment(
+        return new AArrayexpressionSelector(
             cloneNode(this._selector_),
             cloneNode(this._exp_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAAssignment(this);
+        ((Analysis) sw).caseAArrayexpressionSelector(this);
     }
 
     public PSelector getSelector()

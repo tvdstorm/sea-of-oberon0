@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PushbackReader;
 import java.util.LinkedList;
+import java.util.Queue;
 
 import oberon.interpret.ModuleInterpreter;
 import oberon.lexer.Lexer;
@@ -48,10 +49,9 @@ public class Main {
 	            ReadProcedure.Initialize();
 	            
 	            ProcedureHeading mainProc = interpreter.BuildInterpreterResult();
-	            LinkedList<Expression> paramList = new LinkedList<Expression>();
-	            paramList.add(new IdentifierExpression("i"));
-	            	            
-	            try {
+	            Queue<Expression> paramList = new LinkedList<Expression>();
+	            	 
+				try {
 					mainProc.Call(paramList);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block

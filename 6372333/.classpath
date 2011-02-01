@@ -7,5 +7,6 @@
 	<classpathentry kind="lib" path="D:/Users/thekip/workspace/Oberon-compiler/External refs/JavaNCSS/javancss.jar"/>
 	<classpathentry kind="lib" path="D:/Users/thekip/workspace/Oberon-compiler/External refs/JavaNCSS/jhbasic.jar"/>
 	<classpathentry kind="lib" path="External refs/SableCC/sablecc.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

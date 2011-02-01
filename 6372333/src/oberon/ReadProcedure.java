@@ -7,16 +7,18 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import oberon.data.DataType;
+import oberon.data.VariableManager;
+
 class ReadProcedure extends Statement {
-	private static String NAME = "Read";
-	
 	@Override
 	public void Eval() throws IOException {
 		VariableManager instance = VariableManager.getInstance();
-		int index = instance.getVariableValue("i");
+		int index = instance.getVariable("i").getValue();
 		
 		int input = ReadInput(index);
-		instance.setArrayValue("input", index, input);
+		DataType inputArray = instance.getVariable("input");
+		inputArray.setValue(index, input);
 	}
 	
 	private int ReadInput(int index) throws IOException {
@@ -41,13 +43,12 @@ class ReadProcedure extends Statement {
 		LinkedList<Statement> statements = new LinkedList<Statement>();
 		statements.add(new ReadProcedure());
 		
-		List<ConstVariable> constVariables = new ArrayList<ConstVariable>();
-		List<VarDeclaration> varVariables = new ArrayList<VarDeclaration>();
+		List<DataType> variables = new ArrayList<DataType>();
 		List<ProcedureHeading> procedures = new ArrayList<ProcedureHeading>();
-		Declaration declaration = new Declaration(constVariables, varVariables, procedures);
+		Declaration declaration = new Declaration(variables, procedures);
 		
 		ProcedureBody body = new ProcedureBody(declaration, new StatementSequence(statements));
-		ProcedureHeading procedure = new ProcedureHeading(NAME, params, body);
-		VariableManager.getInstance().AddProcedure(NAME, procedure);
+		ProcedureHeading procedure = new ProcedureHeading("Read", params, body);
+		VariableManager.getInstance().AddSystemProcedure(procedure);
 	}
 }

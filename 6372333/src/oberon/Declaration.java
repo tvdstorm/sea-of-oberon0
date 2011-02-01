@@ -4,34 +4,25 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import oberon.data.DataType;
+
 public class Declaration {
-	private List<ConstVariable> _constVariables;
-	private List<VarDeclaration> _varVariables;
+	private List<DataType> _variables;
 	private List<ProcedureHeading> _procedures;
 
-	public Declaration(List<ConstVariable> constVariables, List<VarDeclaration> varVariables, 
-			List<ProcedureHeading> procedures)
+	public Declaration(List<DataType> variables, List<ProcedureHeading> procedures)
 	{
-		_constVariables = constVariables;
-		_varVariables = varVariables;
+		_variables = variables;
 		_procedures = procedures;
 	}
 	
-	public List<ConstVariable> getConstVariables()
+	public List<DataType> getVariables()
 	{
-		return Collections.unmodifiableList(_constVariables);
-	}
-	
-	public List<VarVariable> getVarVariables()
-	{
-		List<VarVariable> list = new ArrayList<VarVariable>();
+		List<DataType> list = new ArrayList<DataType>();
 		
-		for (VarDeclaration declaration : _varVariables)
+		for (DataType declaration : _variables)
 		{
-			if (declaration.isIdentifierType())
-			{
-				list.add(new VarVariable(declaration.getName(), new IntegerExpression(0)));
-			}
+			list.add(declaration);
 		}
 		
 		return Collections.unmodifiableList(list);
@@ -39,19 +30,5 @@ public class Declaration {
 
 	public List<ProcedureHeading> getProcedures() {
 		return Collections.unmodifiableList(_procedures);
-	}
-
-	public List<ArrayVariable> getArrayVariables() {
-		List<ArrayVariable> list = new ArrayList<ArrayVariable>();
-		
-		for (VarDeclaration declaration : _varVariables)
-		{
-			if (declaration.isArrayType())
-			{
-				list.add(new ArrayVariable(declaration.getName()));
-			}
-		}
-		
-		return Collections.unmodifiableList(list);		
 	}
 }

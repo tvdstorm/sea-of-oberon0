@@ -15,7 +15,7 @@ class ProcedureBodyInterpreter extends BaseInterpreter<ProcedureBody> {
 		node.apply(declarationsInterpreter);
 		_declaration = declarationsInterpreter.BuildInterpreterResult();
 		
-		_body = StatementSequenceInterpreter.getStatementList(node.getStatement());
+		_body = StatementSequenceInterpreter.getStatementList(node.getBody());
 	}
 
 	@Override

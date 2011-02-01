@@ -1,6 +1,5 @@
 package oberon.interpret;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -13,7 +12,7 @@ import oberon.node.PExp;
 
 public class StatprocStatementInterpreter extends BaseInterpreter<Statement> {
 	private String _name;
-	private Queue<Expression> _expressions;
+	private Queue<Expression> _expressions = new LinkedList<Expression>();
 
 	public void caseAStatprocStatement(AStatprocStatement node)
 	{
@@ -23,10 +22,10 @@ public class StatprocStatementInterpreter extends BaseInterpreter<Statement> {
 	public void caseAProcedurecall(AProcedurecall node)
 	{
 		_name = node.getIdentifier().toString().trim();
-		_expressions = new LinkedList<Expression>();
-		for (PExp expression : node.getExp())
+		
+		for (PExp exp : node.getExp())
 		{
-			_expressions.add(ExpInterpreterFactory.getExpression(expression));
+			_expressions.add(ExpInterpreterFactory.getExpression(exp));
 		}
 	}
 

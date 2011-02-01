@@ -8,7 +8,8 @@ import oberon.analysis.*;
 @SuppressWarnings("nls")
 public final class AFpsection extends PFpsection
 {
-    private final LinkedList<TIdentifier> _identifier_ = new LinkedList<TIdentifier>();
+    private TVartxt _callbyref_;
+    private final LinkedList<TIdentifier> _paramnames_ = new LinkedList<TIdentifier>();
     private PType _type_;
 
     public AFpsection()
@@ -17,11 +18,14 @@ public final class AFpsection extends PFpsection
     }
 
     public AFpsection(
-        @SuppressWarnings("hiding") List<TIdentifier> _identifier_,
+        @SuppressWarnings("hiding") TVartxt _callbyref_,
+        @SuppressWarnings("hiding") List<TIdentifier> _paramnames_,
         @SuppressWarnings("hiding") PType _type_)
     {
         // Constructor
-        setIdentifier(_identifier_);
+        setCallbyref(_callbyref_);
+
+        setParamnames(_paramnames_);
 
         setType(_type_);
 
@@ -31,7 +35,8 @@ public final class AFpsection extends PFpsection
     public Object clone()
     {
         return new AFpsection(
-            cloneList(this._identifier_),
+            cloneNode(this._callbyref_),
+            cloneList(this._paramnames_),
             cloneNode(this._type_));
     }
 
@@ -40,15 +45,40 @@ public final class AFpsection extends PFpsection
         ((Analysis) sw).caseAFpsection(this);
     }
 
-    public LinkedList<TIdentifier> getIdentifier()
+    public TVartxt getCallbyref()
     {
-        return this._identifier_;
+        return this._callbyref_;
     }
 
-    public void setIdentifier(List<TIdentifier> list)
+    public void setCallbyref(TVartxt node)
     {
-        this._identifier_.clear();
-        this._identifier_.addAll(list);
+        if(this._callbyref_ != null)
+        {
+            this._callbyref_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._callbyref_ = node;
+    }
+
+    public LinkedList<TIdentifier> getParamnames()
+    {
+        return this._paramnames_;
+    }
+
+    public void setParamnames(List<TIdentifier> list)
+    {
+        this._paramnames_.clear();
+        this._paramnames_.addAll(list);
         for(TIdentifier e : list)
         {
             if(e.parent() != null)
@@ -89,7 +119,8 @@ public final class AFpsection extends PFpsection
     public String toString()
     {
         return ""
-            + toString(this._identifier_)
+            + toString(this._callbyref_)
+            + toString(this._paramnames_)
             + toString(this._type_);
     }
 
@@ -97,7 +128,13 @@ public final class AFpsection extends PFpsection
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._identifier_.remove(child))
+        if(this._callbyref_ == child)
+        {
+            this._callbyref_ = null;
+            return;
+        }
+
+        if(this._paramnames_.remove(child))
         {
             return;
         }
@@ -115,7 +152,13 @@ public final class AFpsection extends PFpsection
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        for(ListIterator<TIdentifier> i = this._identifier_.listIterator(); i.hasNext();)
+        if(this._callbyref_ == oldChild)
+        {
+            setCallbyref((TVartxt) newChild);
+            return;
+        }
+
+        for(ListIterator<TIdentifier> i = this._paramnames_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)
             {
