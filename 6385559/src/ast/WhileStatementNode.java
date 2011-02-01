@@ -2,7 +2,8 @@ package ast;
 
 import errorhandler.OberonException;
 
-public class WhileStatementNode implements StatementNode {
+public class WhileStatementNode implements StatementNode 
+{
   private final ExpressionNode cond;
   private final StatementSequenceNode executionSequence;
   
@@ -12,30 +13,35 @@ public class WhileStatementNode implements StatementNode {
     this.executionSequence = statements;
   }
   
-  public void printNode( int depth )
+  public String ToString( int depth )
   {
-    for( int i = 0; i < depth; i++ )
-    { // print the needed depth
-      System.out.print( " " );
-    }
+    String code = "";
+    code += this.addWhitespace( depth );
     
-    System.out.print( "WHILE " );
+    code += "WHILE ";
     if( this.cond != null )
     {
-      this.cond.printNode( 0 );
+      code += this.cond.ToString( 0 );
     }
     
-    System.out.println( " DO" );
+    code += " DO\n" ;
     if( this.executionSequence != null )
     {
-      this.executionSequence.printNode( depth+2 );
+      code += this.executionSequence.ToString( depth+2 );
     }
     
+    code += this.addWhitespace( depth ) + "END;\n";
+    return code;
+  }
+  
+  private String addWhitespace( int depth )
+  {
+    String whitespace = "";
     for( int i = 0; i < depth; i++ )
     {
-      System.out.print( " " );
+      whitespace = whitespace + " ";
     }
-    System.out.println( "END;");
+    return whitespace;
   }
   
   public int eval( ) throws OberonException

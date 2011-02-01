@@ -5,7 +5,8 @@ import java.util.Vector;
 import errorhandler.OberonException;
 import management.ParamContainer;
 
-public class ParamNode implements ASTnode {
+public class ParamNode implements ASTnode 
+{
   private final ExpressionNode param;
   private final ParamNode nextParam;
   
@@ -15,17 +16,19 @@ public class ParamNode implements ASTnode {
     this.nextParam = nextParam;
   }
   
-  public void printNode(int depth) {
+  public String ToString( int depth ) 
+  {
+    String code = "";
     if( this.param != null )
     {
-      param.printNode( 0 );
+      code += param.ToString( 0 );
     }
     
     if( this.nextParam != null )
     {
-      System.out.print( ", " );
-      nextParam.printNode( 0 );
+      code += ", " + nextParam.ToString( 0 );
     }
+    return code;
   }
   
   public int eval( ) throws OberonException

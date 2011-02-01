@@ -8,7 +8,8 @@ import management.ParamContainer;
 import management.ProcedureManager;
 import management.ScopeManager;
 
-public class ProcedureDeclarationNode implements ASTnode {
+public class ProcedureDeclarationNode implements ASTnode 
+{
   private final ProcedureHeadingNode heading;
   private final ProcedureBodyNode body;
   
@@ -26,15 +27,18 @@ public class ProcedureDeclarationNode implements ASTnode {
     }
   }
   
-  public void printNode(int depth) {
+  public String ToString( int depth ) 
+  {
+    String code = "";
     if( this.heading != null )
     {
-      this.heading.printNode( depth );
+      code += this.heading.ToString( depth );
     }
     if( this.body != null )
     {
-      this.body.printNode( depth );
+      code += this.body.ToString( depth );
     }
+    return code;
   }
   
   public int eval( ) throws OberonException

@@ -3,7 +3,8 @@ package ast;
 import errorhandler.OberonException;
 import management.MemoryManager;
 
-public class AssignmentNode implements StatementNode {
+public class AssignmentNode implements StatementNode 
+{
   private final VarNode var;
   private final ExpressionNode expression;
   
@@ -13,22 +14,23 @@ public class AssignmentNode implements StatementNode {
     this.expression = expression;
   }
   
-  public void printNode( int depth )
+  public String ToString( int depth )
   {
+    String code = "";
     for( int i = 0; i < depth; i++ )
     {
-      System.out.print( " " );
+      code += " ";
     }
     if( this.var != null )
     {
-      this.var.printNode( 0 );
+      code += this.var.ToString( 0 );
     }
-    System.out.print( " := " );
+    code += " := ";
     if( this.expression != null )
     {
-      this.expression.printNode( depth );
+      code += this.expression.ToString( depth );
     }
-    System.out.println( ";" );
+    return code + ";\n";
   }
   
   public int eval( ) throws OberonException

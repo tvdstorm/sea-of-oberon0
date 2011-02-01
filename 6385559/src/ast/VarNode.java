@@ -3,7 +3,8 @@ package ast;
 import errorhandler.OberonException;
 import management.MemoryManager;
 
-public class VarNode implements ASTnode {
+public class VarNode implements ASTnode 
+{
   private final String varname;
   private final ASTnode select;
   
@@ -13,17 +14,19 @@ public class VarNode implements ASTnode {
     this.select = select;
   }
   
-  public void printNode(int depth) 
+  public String ToString( int depth ) 
   {
+    String code = "";
     if( this.varname != null )
     {
-      System.out.print( this.varname );
+      code += this.varname;
     }
     
     if( this.select != null )
     {
-      this.select.printNode( 0 );
+      code += this.select.ToString( 0 );
     }
+    return code;
   }
   
   public int eval( ) throws OberonException

@@ -4,7 +4,8 @@ import java.util.Vector;
 import errorhandler.OberonException;
 import management.TypeDefinitionManager;
 
-public class ArrayNode implements ASTnode {
+public class ArrayNode implements ASTnode 
+{
   private final ExpressionNode expression;
   private final ASTnode type;
   
@@ -14,17 +15,18 @@ public class ArrayNode implements ASTnode {
     this.type = type; // can contain an TypeNode/ArrayTypeNode/RecordTypeNode
   }
   
-  public void printNode(int depth) {
+  public String ToString( int depth ) 
+  {
+    String code = "";
     if( this.expression != null )
     {
-      System.out.print( "ARRAY " );
-      this.expression.printNode( 0 );
-      System.out.print( " OF " );
+      code += "ARRAY " + this.expression.ToString( 0 ) + " OF ";
     }
     if( this.type != null )
     {
-      this.type.printNode( 0 );
+      code += this.type.ToString( 0 );
     }
+    return code;
   }
   
   public int eval( ) throws OberonException

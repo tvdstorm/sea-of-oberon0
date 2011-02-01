@@ -1,7 +1,8 @@
 package ast;
 import errorhandler.OberonException;
 
-public class TypeNode implements ASTnode {
+public class TypeNode implements ASTnode 
+{
   private final String ident;
   
   public TypeNode( String ident )
@@ -9,11 +10,13 @@ public class TypeNode implements ASTnode {
     this.ident = ident;
   }
   
-  public void printNode(int depth) {
+  public String ToString( int depth ) 
+  {
     if( this.ident != null )
     {
-      System.out.print( this.ident );
+      return this.ident;
     }
+    return "";
   }
   
   public int eval( ) throws OberonException

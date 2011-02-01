@@ -4,7 +4,8 @@ import java.util.Vector;
 
 import errorhandler.OberonException;
 
-public class RecordNode implements ASTnode {
+public class RecordNode implements ASTnode 
+{
   private final FieldsNode fields;
   
   public RecordNode( FieldsNode fields )
@@ -12,13 +13,14 @@ public class RecordNode implements ASTnode {
     this.fields = fields;
   }
   
-  public void printNode(int depth) {
-    System.out.print( "RECORD " );
+  public String ToString( int depth ) 
+  {
+    String code = "RECORD ";
     if( this.fields != null )
     {
-      this.fields.printNode( 0 );
+      code += this.fields.ToString( 0 );
     }
-    System.out.print( " END" );
+    return code + " END";
   }
   
   public int eval( ) throws OberonException

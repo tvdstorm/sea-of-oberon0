@@ -6,7 +6,8 @@ import org.antlr.runtime.*;
 
 import errorhandler.*;
 
-public class ModuleNode implements ASTnode{
+public class ModuleNode implements ASTnode
+{
   private final DeclarationsNode declarations;
   private final StatementSequenceNode statementSequence;
   private final String ModuleName;
@@ -23,21 +24,21 @@ public class ModuleNode implements ASTnode{
     this.statementSequence = statementSequence;
   }
 
-  public void printNode( int depth )
+  public String ToString( int depth )
   {
-    System.out.println( "MODULE " + this.ModuleName + ";");
+    String code = "MODULE " + this.ModuleName + ";";
     if( this.declarations != null )
     {
-      this.declarations.printNode( depth+2 );
+      code += this.declarations.ToString( depth+2 );
     }
   
-    System.out.println( "BEGIN" );
+    code += "BEGIN";
     if( this.statementSequence != null )
     {
-      this.statementSequence.printNode( depth+2 );
+      code += this.statementSequence.ToString( depth+2 );
     }
   
-    System.out.println( "END " + this.ModuleName + ".");
+    return code + "END " + this.ModuleName + ".";
   }
   
   public int eval( ) throws OberonException

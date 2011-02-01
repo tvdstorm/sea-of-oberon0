@@ -2,7 +2,8 @@ package ast;
 
 import errorhandler.OberonException;
 
-public class ProcedureBodyNode implements ASTnode {
+public class ProcedureBodyNode implements ASTnode 
+{
   private final DeclarationsNode declarations;
   private final StatementSequenceNode statements;
   private final String identifier;
@@ -14,29 +15,32 @@ public class ProcedureBodyNode implements ASTnode {
     this.identifier = identifier;
   }
 
-  public void printNode(int depth) 
+  public String ToString( int depth ) 
   {
+    String code = "";
     if( this.declarations != null )
     {
-      this.declarations.printNode( depth+2 );
+      code += this.declarations.ToString( depth+2 );
     }
     
     if( this.statements != null )
     {
       for( int i = 0; i < depth; i++ )
       {
-        System.out.print( " " );
+        code += " ";
       }
-      System.out.println( "BEGIN" );
-      this.statements.printNode( depth+2 );
+      code += "BEGIN\n" + this.statements.ToString( depth+2 );
     }
     
     if( this.identifier != null )
     {
       for( int i = 0; i < depth; i++ )
-      System.out.print( " " );
-      System.out.println( "END " + this.identifier + ";" );
+      {
+        code += " ";
+      }
+      code += "END " + this.identifier + ";\n";
     }
+    return code;
   }
   
   public int eval( ) throws OberonException

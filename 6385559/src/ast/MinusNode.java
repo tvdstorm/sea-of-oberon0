@@ -1,7 +1,8 @@
 package ast;
 import errorhandler.OberonException;
 
-public class MinusNode implements ASTnode {
+public class MinusNode implements ASTnode 
+{
   private final TermNode child;
   
   public MinusNode( TermNode child )
@@ -9,11 +10,9 @@ public class MinusNode implements ASTnode {
     this.child = child;
   }
   
-  public void printNode( int depth )
+  public String ToString( int depth )
   {
-    System.out.print( "(-" );
-    this.child.printNode( 0 );
-    System.out.print( ')' );
+    return "(-" + this.child.ToString( 0 ) + ")";
   }
   
   public int eval( ) throws OberonException

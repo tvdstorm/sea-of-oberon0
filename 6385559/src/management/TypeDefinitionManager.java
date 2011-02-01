@@ -52,7 +52,7 @@ public class TypeDefinitionManager {
       container = definitions.get( i );
       astContainer = container.getDefinition();
       System.out.println( "\nType: " + container.getName() + "\tScope: " + container.getScope() );
-      astContainer.printNode( 0 );
+      System.out.println( astContainer.ToString( 0 ) );
     }
   }
 

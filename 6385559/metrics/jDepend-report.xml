@@ -8,10 +8,10 @@
                 <ConcreteClasses>33</ConcreteClasses>
                 <AbstractClasses>2</AbstractClasses>
                 <Ca>4</Ca>
-                <Ce>6</Ce>
+                <Ce>5</Ce>
                 <A>0.06</A>
-                <I>0.6</I>
-                <D>0.34</D>
+                <I>0.56</I>
+                <D>0.39</D>
                 <V>1</V>
             </Stats>
 
@@ -128,7 +128,6 @@
 
             <DependsUpon>
                 <Package>errorhandler</Package>
-                <Package>java.io</Package>
                 <Package>java.lang</Package>
                 <Package>java.util</Package>
                 <Package>management</Package>

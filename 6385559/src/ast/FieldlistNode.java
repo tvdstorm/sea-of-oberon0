@@ -5,7 +5,8 @@ import java.util.Vector;
 import errorhandler.OberonException;
 import management.TypeDefinitionManager;
 
-public class FieldlistNode implements ASTnode {
+public class FieldlistNode implements ASTnode 
+{
   private final IdentListNode identlist;
   private final ASTnode type;
   
@@ -15,18 +16,19 @@ public class FieldlistNode implements ASTnode {
     this.type = type;
   }
   
-  public void printNode(int depth) 
+  public String ToString( int depth ) 
   {
+    String code = "";
     if( this.identlist != null )
     {
-      this.identlist.printNode( 0 );
-      System.out.print( " : " );
+      code += this.identlist.ToString( 0 ) + " : ";
     }
+    
     if( this.type != null )
     {
-      this.type.printNode( 0 );
-      System.out.print( "; " );
+      code += this.type.ToString( 0 ) + "; ";
     } 
+    return code;
   }
   
   public int eval( ) throws OberonException

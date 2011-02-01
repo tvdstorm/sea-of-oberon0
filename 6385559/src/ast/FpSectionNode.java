@@ -9,7 +9,8 @@ import management.ScopeManager;
 import management.TypeDefinitionManager;
 
 
-public class FpSectionNode implements ASTnode {
+public class FpSectionNode implements ASTnode 
+{
   private final boolean callByRef;
   private final IdentListNode variables;
   private final ASTnode type;
@@ -21,20 +22,22 @@ public class FpSectionNode implements ASTnode {
     this.callByRef = ( identifier != null && identifier.contentEquals("VAR") ) ? true : false ;
   }
 
-  public void printNode(int depth) {
+  public String ToString( int depth ) 
+  {
+    String code = "";
     if( this.callByRef == true )
     {
-      System.out.print( "VAR " );
+      code += "VAR ";
     }
     if( this.variables != null )
     {
-      this.variables.printNode( 0 );
-      System.out.print( " : " );
+      code += this.variables.ToString( 0 ) + " : ";
       if( this.type != null )
       {
-        this.type.printNode( 0 );
+        code += this.type.ToString( 0 );
       }
     }
+    return code;
   }
   
   public int eval( ) throws OberonException

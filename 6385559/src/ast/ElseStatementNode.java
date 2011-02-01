@@ -1,7 +1,8 @@
 package ast;
 import errorhandler.OberonException;
 
-public class ElseStatementNode implements StatementNode {
+public class ElseStatementNode implements StatementNode 
+{
   private final StatementSequenceNode sequence;
   
   public ElseStatementNode( StatementSequenceNode sequence )
@@ -9,12 +10,13 @@ public class ElseStatementNode implements StatementNode {
     this.sequence = sequence;
   }
   
-  public void printNode( int depth )
+  public String ToString( int depth )
   {
     if( this.sequence != null )
     {
-      this.sequence.printNode( depth );
+      return this.sequence.ToString( depth );
     }
+    return "";
   }
   
   public int eval( ) throws OberonException

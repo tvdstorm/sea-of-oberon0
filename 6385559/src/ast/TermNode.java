@@ -1,7 +1,8 @@
 package ast;
 import errorhandler.OberonException;
 
-public class TermNode implements ASTnode {
+public class TermNode implements ASTnode 
+{
   private final ASTnode factor;
   private final String operator; // '*'|'DIV'|'MOD'|'&'
   private final TermNode follow;
@@ -13,22 +14,24 @@ public class TermNode implements ASTnode {
     this.follow = follow;
   }
   
-  public void printNode( int depth )
+  public String ToString( int depth )
   {
+    String code = "";
     if( this.factor != null )
     {
-      this.factor.printNode( depth );
+      code += this.factor.ToString( depth );
     }
     
     if( this.operator != null )
     {
-      System.out.print( " " + this.operator + " " );
+      code += " " + this.operator + " ";
     }
     
     if( this.follow != null )
     {
-      this.follow.printNode( depth );
+      code += this.follow.ToString( depth );
     }
+    return code;
   }
   
   public int eval( ) throws OberonException
