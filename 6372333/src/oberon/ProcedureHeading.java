@@ -44,10 +44,10 @@ public class ProcedureHeading {
 						actualParam instanceof IntegerExpression){
 					actualParameterList.add(new IntegerType(name, actualParam.EvalAsInt(), false));
 				}
-				else if (actualParam instanceof SelectorExpression){
-					((SelectorExpression)actualParam).getSelector().getSelectorValue();
-					actualParameterList.add(new )
-				}
+//				else if (actualParam instanceof SelectorExpression){
+//					((SelectorExpression)actualParam).getSelector().getSelectorValue()
+//					actualParameterList.add(new )
+//				}
 			}
 		}
 		
