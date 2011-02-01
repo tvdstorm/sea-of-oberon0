@@ -208,14 +208,18 @@ Productions
 		
 	unary {-> exp}
 		= {integer}	integer									{-> New exp.integer(integer)}
-		| {identsel} identifier selector					{-> New exp.identsel(identifier, selector)}
+		| {selector} selector*								{-> New exp.selector([selector])}
 		| {paren}	l_par exp r_par							{-> New exp.paren(exp)}
 		;
 		
+	selectors {-> selector*} =
+      {selector}	selector 							{-> [selector] }
+    | {more}		selectors dot selector 				{-> [selectors.selector, selector] }
+  	;
 	selector {-> selector} 
-		= {identifier} dot identifier {-> New selector.identifier(identifier)}
-		| {expression} l_bkt exp r_bkt {-> New selector.expression(exp)}
-		| {none} {-> New selector.none()}
+		= {additionalidentifier} dot identifier 	{-> New selector.additionalidentifier(identifier)}
+		| {identifier} identifier 					{-> New selector.identifier(identifier)}
+		| {arrayexpression} l_bkt selector r_bkt 	{-> New selector.arrayexpression(selector)}
 		;
    		
 Abstract Syntax Tree
@@ -264,13 +268,14 @@ Abstract Syntax Tree
     	| {exge}		[left]:exp [right]:exp
 		| {paren}		exp
 		| {integer}		integer
-		| {identsel}	identifier selector
+		| {selector}	selector*
 		;
 	
-	selector 
-		= {identifier} identifier
-		| {expression} exp
-		| {none};
+	selector
+		= {additionalidentifier} identifier
+		| {identifier} identifier
+		| {arrayexpression} selector
+		;
     
     statement = 
     	{statass} assignment |
