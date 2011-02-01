@@ -9,7 +9,8 @@ public abstract class DataType {
 	}
 	
 	public abstract int getValue();
-	public abstract DataType DeepCopy();
+	public abstract DataType DeepCopy(String newName);
+	public abstract DataType ShallowCopy(String newName);
 	
 	public String getName()
 	{

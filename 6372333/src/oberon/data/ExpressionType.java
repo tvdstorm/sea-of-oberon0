@@ -17,8 +17,13 @@ public class ExpressionType extends DataType {
 	}
 
 	@Override
-	public DataType DeepCopy() {
-		return new ExpressionType(getName(), _expression);
+	public DataType DeepCopy(String newName) {
+		return new ExpressionType(newName, _expression);
+	}
+
+	@Override
+	public DataType ShallowCopy(String newName) {
+		return new ExpressionType(newName, _expression);
 	}
 
 }

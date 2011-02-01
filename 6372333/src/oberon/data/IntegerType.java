@@ -30,8 +30,13 @@ public class IntegerType extends DataType {
 	}
 
 	@Override
-	public DataType DeepCopy() {
-		return new IntegerType(getName(), _value, _isConst);
+	public DataType DeepCopy(String newName) {
+		return new IntegerType(newName, _value, _isConst);
+	}
+
+	@Override
+	public DataType ShallowCopy(String newName) {
+		return new IntegerType(newName, _value, _isConst);
 	}
 
 }

@@ -16,6 +16,7 @@ import oberon.node.AVardecl;
 import oberon.node.AVardeclaration;
 import oberon.node.PConstdeclaration;
 import oberon.node.PExp;
+import oberon.node.PType;
 import oberon.node.PVardeclaration;
 import oberon.node.TIdentifier;
 
@@ -32,13 +33,15 @@ class VarInterpreter extends BaseInterpreter<List<DataType>>{
 	
 	public void caseAVardeclaration(AVardeclaration node)
 	{		
-		Boolean isArray = node.getType() instanceof AArrayType;
+		PType nodeType = node.getType();
+		Boolean isArray = nodeType instanceof AArrayType;
 		
 		for (TIdentifier name : node.getIdentifier())
 		{
 			if (isArray)
 			{
-				_list.add(new IntegerArrayType(name.toString().trim()));
+				Expression lengthExpression = ExpInterpreterFactory.getExpression(((AArrayType)nodeType).getExp());
+				_list.add(new IntegerArrayType(name.toString().trim(), lengthExpression));
 			}
 			else
 			{

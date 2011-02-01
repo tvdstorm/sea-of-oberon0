@@ -43,6 +43,14 @@ public class ComparisonExpressionInterpreter extends BaseInterpreter<Expression>
 	}
 
 	@Override
+	public void caseAExgtExp(AExgtExp node)
+	{
+		_left = ExpInterpreterFactory.getExpression(node.getLeft());
+		_right = ExpInterpreterFactory.getExpression(node.getRight());
+		_type = ComparisonType.Exgt;
+	}
+
+	@Override
 	public void caseATilExp(ATilExp node)
 	{
 		_left = ExpInterpreterFactory.getExpression(node.getLeft());
