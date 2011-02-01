@@ -46,45 +46,89 @@ tokens
 	MODULE		=	'MODULE';
 	TRUE		=	'TRUE';
 	FALSE		=	'FALSE';
-	}
+	DECLARATIONS;
+	BODY;
+	FORMALPARAMETERS;
+	ACTUALPARAMETERS;
+	CONDITION;
+	IFBLOCK;
+	IDENTLIST;
+	NONREFVAR;
+	PROCEDURECALL;
+	OBERONPROGRAM;
+}
 
 @header {package generated; 
 import oberon0.ast.*;
+import oberon0.ast.expressions.*;
+import oberon0.ast.declarations.*;
+import oberon0.ast.routines.*;
+import oberon0.ast.statements.*;
 }
 
 @lexer::header {package generated;
 }
-/*
-oberonprogram
+
+/*oberonprogram
 	:	module 
-			-> ^(OBERONPROGRAM module);
-module	:	MODULE routinename SEMICOLON moduleBody IDENT DOT EOF
-			-> ^(MODULE routinename moduleBody);
-moduleBody
-	:	declarations (BEGIN statementSequence)? END
-			-> declarations? ^(BODY statementSequence)?;
-declarations
-	:		constDeclaration? typeDeclaration? varDeclarations? 
-			(procedureDeclaration SEMICOLON)*
-				-> ^(DECLARATIONS constDeclaration? typeDeclaration? varDeclarations? 
-				(procedureDeclaration)*);			
-constDeclaration
-	:	(CONST (IDENT EQUALS expression SEMICOLON)*)
-			-> ^(CONST (IDENT expression)*);		
-typeDeclaration
+			-> ^(OBERONPROGRAM module);*/
+			
+module	returns [ ModuleNode node ]:	
+	MODULE name = IDENT SEMICOLON decl = declarations mbody = body IDENT DOT EOF		{$node = new ModuleNode($name.text, $decl.node, $mbody.node);}
+	;
+
+body	returns [ IExecutable node ]
+	: BEGIN 			{ArrayList<IExecutable> list = 
+						new ArrayList<IExecutable>();	}
+	stat1 = statement 		{list.add($stat1.node);			}
+	(SEMICOLON 
+	statx = statement		{list.add($statx.node);			}
+	)*
+	END				{node = new BodyNode(list);		}
+	;
+	
+declarations returns [ IDeclarable node ]
+	: 				{ArrayList<IDeclarable> list = 
+						 new ArrayList<IDeclarable>();	}
+//	(constdecl = constDeclaration	{$node = $node.add($constdecl.node);	}
+//	)? 
+	//typeDeclaration? 
+	(vardecl = varDeclarations  	{list.add($vardecl.node);		}
+	)?
+	//(procedureDeclaration SEMICOLON)*
+					{node = new DeclarationsNode(list);	}
+	;
+				
+/*constDeclaration
+	: (CONST 
+	(name = IDENT EQUALS exp = expression SEMICOLON {$node = new ConstDeclarationNode($constdecl.node);}
+	)*);*/
+/*typeDeclaration
 	:	(TYPEDECL (IDENT EQUALS type SEMICOLON)*)
 			-> ^(TYPEDECL (IDENT type)*);		
-varDeclarations
+*/
+
+varDeclarations returns [ IDeclarable node]
+	: VAR (name = IDENT COLON type = IDENT SEMICOLON	{$node = new VarDeclarationNode($name.text, $type.text);}
+	)*
+	;
+
+/*varDeclarations
 	:	(VAR (identList COLON type SEMICOLON)*)
-			-> ^(VAR identList type)*;
+			-> ^(VAR identList type)*;*/
+/*		
 procedureDeclaration
-	:	PROCEDURE routinename (formalParameters)? SEMICOLON declarations (procedureBody)? IDENT 
-			-> ^(PROCEDURE routinename (formalParameters)? declarations (procedureBody)?);		
-procedureBody
-	:	BEGIN statementSequence END
-			-> ^(BODY statementSequence);
-assignment
-	:	variable ASSIGNMENT^ expression;
+	:	PROCEDURE IDENT (formalParameters)? SEMICOLON declarations (procedureBody)? IDENT 
+			-> ^(PROCEDURE IDENT (formalParameters)? declarations (procedureBody)?);		
+
+			*/
+assignment returns [ IExecutable node ]
+	: var = variable 
+	ASSIGNMENT 
+	exp = expression		{$node = new AssignmentNode($var.node, $exp.node);}
+	;
+	
+/*
 actualParameters
 	:	RNDOPEN (expression (COMMA expression)*)? RNDCLOSE
 			-> ^(ACTUALPARAMETERS expression+);
@@ -118,10 +162,14 @@ ifStatement:		ifStatementPart elseifStatementPart+
 
 whileStatement:		WHILE expression DO statementSequence END
 				-> ^(WHILE ^(CONDITION expression) ^(BODY statementSequence));
-statement
-	:	(assignment | procedureCall | ifStatement | whileStatement)?;
-statementSequence
-	:	statement (SEMICOLON statement)*;
+*/
+statement returns [ IExecutable node ]
+	:(ass = assignment 		{$node = $ass.node;	} 
+//	| procedureCall 
+//	| ifStatement 
+//	| whileStatement
+	)?;
+/*
 identList
 	:	IDENT (COLON IDENT)* 
 			->^(IDENTLIST IDENT+);
@@ -133,25 +181,26 @@ fieldList
 recordType 
 	:	RECORD fieldList (SEMICOLON fieldList)* END
 			-> ^(RECORD fieldList+);
-type	:	(IDENT | arrayType | recordType);	
+type	:	(IDENT | arrayType | recordType);
+	
 fpSection
 	:	identList COLON type
-			-> ^(REFVAR identList type)
+			-> ^(NONREFVAR identList type)
 		|VAR identList COLON type
 			-> ^(VAR identList type);
 formalParameters 
 	:	RNDOPEN (fpSection (SEMICOLON fpSection)*)? RNDCLOSE 
-			-> ^(FORMALPARAMETERS (fpSection+)?);
+			-> ^(FORMALPARAMETERS (fpSection+)?);*/
 		
-*/
+
 expression returns [ IEvaluable node ]
 	: lhsExp = simpleExpression 			{$node = $lhsExp.node; 					} 
-	( EQUALS 	rhsExp =simpleExpression	{$node = new EqualsNode($node, $rhsExp.node);		}
-	| HASH		rhsExp =simpleExpression	{$node = new EqualsNotNode($node, $rhsExp.node);	}
-	| SMALLERTHEN	rhsExp =simpleExpression	{$node = new SmallerThenNode($node, $rhsExp.node);	}
-	| SMALLEREQUAL	rhsExp =simpleExpression	{$node = new SmallerEqualNode($node, $rhsExp.node);	}
-	| GREATERTHEN	rhsExp =simpleExpression	{$node = new GreaterThenNode($node, $rhsExp.node);	}
-	| GREATEREQUAL	rhsExp =simpleExpression	{$node = new GreaterEqualNode($node, $rhsExp.node);	}
+	( EQUALS 	rhsExp = simpleExpression	{$node = new EqualsNode($node, $rhsExp.node);		}
+	| HASH		rhsExp = simpleExpression	{$node = new EqualsNotNode($node, $rhsExp.node);	}
+	| SMALLERTHEN	rhsExp = simpleExpression	{$node = new SmallerThenNode($node, $rhsExp.node);	}
+	| SMALLEREQUAL	rhsExp = simpleExpression	{$node = new SmallerEqualNode($node, $rhsExp.node);	}
+	| GREATERTHEN	rhsExp = simpleExpression	{$node = new GreaterThenNode($node, $rhsExp.node);	}
+	| GREATEREQUAL	rhsExp = simpleExpression	{$node = new GreaterEqualNode($node, $rhsExp.node);	}
 	)?;
 
 simpleExpression returns [ IEvaluable node ]
@@ -169,10 +218,10 @@ simpleExpression returns [ IEvaluable node ]
 
 term 	returns [ IEvaluable node ]
 	: lhsFactor = factor			{$node = $lhsFactor.node;				} 
-	( MULTIPLY 	rhsFactor = factor	{$node = new MultiplyNode($node, $rhsFactor.node);	}
-	| DIVIDE 	rhsFactor = factor	{$node = new DivideNode($node, $rhsFactor.node);	}
-	| MOD 		rhsFactor = factor	{$node = new ModuloNode($node, $rhsFactor.node);	}
-	| AMPERSAND 	rhsFactor = factor	{$node = new ConjunctionNode($node, $rhsFactor.node);	}
+	( (MULTIPLY 	rhsFactor = factor)	{$node = new MultiplyNode($node, $rhsFactor.node);	}
+	| (DIVIDE 	rhsFactor = factor)	{$node = new DivideNode($node, $rhsFactor.node);	}
+	| (MOD 		rhsFactor = factor)	{$node = new ModuloNode($node, $rhsFactor.node);	}
+	| (AMPERSAND 	rhsFactor = factor)	{$node = new ConjunctionNode($node, $rhsFactor.node);	}
 	)*;
 
 factor 	returns [ IEvaluable node ]
@@ -186,12 +235,12 @@ number	returns [ IntegerNode node ]
 	: INTEGER			{ $node = new IntegerNode( Integer.parseInt( $INTEGER.text ) ); }
 	;
 
-booleann returns [ BooleanNode node ]
+booleann returns [ IEvaluable node ]
 	: FALSE 			{ $node = new BooleanNode ( false); }
 	| TRUE				{ $node = new BooleanNode ( true); }
 	;
 
-variable returns [VariableNode node]
+variable returns [IEvaluable node]
 	: IDENT selector 		{ $node = new VariableNode ( $IDENT.text, $selector.node); }
 	;
 
@@ -200,10 +249,6 @@ selector returns [ IEvaluable node ]
 	(DOT IDENT 			{ new SelectorRecordNode ( $IDENT.text );	}
 	| SQROPEN expression SQRCLOSE	{ new SelectorArrayNode  ( $expression.node );	}
 	)*;
-	
-
-/*routinename
-	:	IDENT	-> ^(ROUTINENAME IDENT);*/
 	
 IDENT  	:	('a'..'z'|'A'..'Z'|'_') 
 		('a'..'z'|'A'..'Z'|'0'..'9'|'_')* ;

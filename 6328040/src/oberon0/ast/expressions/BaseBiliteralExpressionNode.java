@@ -9,6 +9,7 @@ public abstract class BaseBiliteralExpressionNode implements IEvaluable{
 	public BaseBiliteralExpressionNode(IEvaluable lhsExpression, IEvaluable rhsExpression) {
 		_lhsExpression = lhsExpression;
 		_rhsExpression = rhsExpression;
+		
 	}
 	
 	public Object evalLhsExpression(Context context){
