@@ -1,10 +1,13 @@
 package oberon;
 
+import oberon.data.DataType;
+import oberon.data.Selector;
+
 public class AssignmentStatement extends Statement {
-	private String _name;
+	private Selector _name;
 	private Expression _value;
 
-	public AssignmentStatement(String name, Expression value)
+	public AssignmentStatement(Selector name, Expression value)
 	{
 		_name = name;
 		_value = value;
@@ -12,8 +15,8 @@ public class AssignmentStatement extends Statement {
 	
 	@Override
 	public void Eval() {
-//		etVariableManager().setVariableValue(_name, _value);
-		getVariableManager().setVariableValue(_name, new IntegerExpression(_value.EvalAsInt()));
+		DataType type = _name.getDataTypeValue();
+		type.setValue(_value.EvalAsInt());
 	}
 
 }

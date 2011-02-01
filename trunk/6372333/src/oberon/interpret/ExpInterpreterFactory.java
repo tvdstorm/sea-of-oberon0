@@ -8,32 +8,31 @@ public class ExpInterpreterFactory {
 	private static <TNode extends PExp> BaseInterpreter<Expression> 
 		getInterpreter(TNode node)// throws NoInterpreterDefinedException
 	{	
-		if (node instanceof AExgtExp)
-			return new ExpExgtInterpreter();
-		else if (node instanceof ASubExp)
-			return new ExpSubInterpreter();
-		else if (node instanceof AIdentselExp)
-			return new ExpIdentselInterpreter();
-		else if (node instanceof AIntegerExp)
-			return new ExpIntegerInterpreter();
-		else if (node instanceof ADivExp)
-			return new DivExpInterpreter();
+		if (	node instanceof AExgtExp ||
+				node instanceof AExseExp ||
+				node instanceof AExgtExp ||
+				node instanceof AExstExp ||
+				node instanceof AExeqExp ||
+				node instanceof AExgeExp ||
+				node instanceof AExhaExp ||
+				node instanceof AAmpExp  ||
+				node instanceof ATilExp)
+			return new ComparisonExpressionInterpreter();
+		
+		else if(node instanceof ASubExp ||
+				node instanceof ADivExp ||
+				node instanceof AAddExp ||
+				node instanceof AMulExp ||
+				node instanceof AModExp ||
+				node instanceof AAddExp)
+			return new MathematicalExpressionInterpreter();
+		
 		else if (node instanceof AParenExp)
 			return new ParenExpInterpreter();
-		else if (node instanceof AAddExp)
-			return new AddExpInterpreter();
-		else if (node instanceof AAmpExp)
-			return new AmpExpInterpreter();
-		else if (node instanceof AExseExp)
-			return new ExseExpInterpreter();
-		else if (node instanceof AExgtExp)
-			return new ExgtExpInterpreter();
-		else if (node instanceof AExstExp)
-			return new ExstExpInterpreter();
-		else if (node instanceof AExeqExp)
-			return new ExeqExpInterpreter();
-		else if (node instanceof AExgeExp)
-			return new ExgeExpInterpreter();
+		else if (node instanceof ASelectorExp)
+			return new SelectorExpInterpreter();
+		else if (node instanceof AIntegerExp)
+			return new ExpIntegerInterpreter();
 		
 		System.out.println("No interpreter for type: " + node.getClass());
 		return null;

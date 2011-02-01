@@ -39,9 +39,9 @@ class FpSectionInterpreter extends BaseInterpreter<List<FormalParamSection>> {
 		}
 		
 		List<String> nameList = new ArrayList<String>();
-		for (TIdentifier name : node.getIdentifier())
+		for (TIdentifier paramName : node.getParamnames())
 		{
-			nameList.add(name.toString().trim());
+			nameList.add(paramName.toString().trim());
 		}
 		
 		_list.add(new FormalParamSection(nameList, fpType));

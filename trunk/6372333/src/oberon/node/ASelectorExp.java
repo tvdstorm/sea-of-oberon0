@@ -5,38 +5,33 @@ package oberon.node;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AAssignment extends PAssignment
+public final class ASelectorExp extends PExp
 {
     private PSelector _selector_;
-    private PExp _exp_;
 
-    public AAssignment()
+    public ASelectorExp()
     {
         // Constructor
     }
 
-    public AAssignment(
-        @SuppressWarnings("hiding") PSelector _selector_,
-        @SuppressWarnings("hiding") PExp _exp_)
+    public ASelectorExp(
+        @SuppressWarnings("hiding") PSelector _selector_)
     {
         // Constructor
         setSelector(_selector_);
-
-        setExp(_exp_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AAssignment(
-            cloneNode(this._selector_),
-            cloneNode(this._exp_));
+        return new ASelectorExp(
+            cloneNode(this._selector_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAAssignment(this);
+        ((Analysis) sw).caseASelectorExp(this);
     }
 
     public PSelector getSelector()
@@ -64,37 +59,11 @@ public final class AAssignment extends PAssignment
         this._selector_ = node;
     }
 
-    public PExp getExp()
-    {
-        return this._exp_;
-    }
-
-    public void setExp(PExp node)
-    {
-        if(this._exp_ != null)
-        {
-            this._exp_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._exp_ = node;
-    }
-
     @Override
     public String toString()
     {
         return ""
-            + toString(this._selector_)
-            + toString(this._exp_);
+            + toString(this._selector_);
     }
 
     @Override
@@ -104,12 +73,6 @@ public final class AAssignment extends PAssignment
         if(this._selector_ == child)
         {
             this._selector_ = null;
-            return;
-        }
-
-        if(this._exp_ == child)
-        {
-            this._exp_ = null;
             return;
         }
 
@@ -123,12 +86,6 @@ public final class AAssignment extends PAssignment
         if(this._selector_ == oldChild)
         {
             setSelector((PSelector) newChild);
-            return;
-        }
-
-        if(this._exp_ == oldChild)
-        {
-            setExp((PExp) newChild);
             return;
         }
 

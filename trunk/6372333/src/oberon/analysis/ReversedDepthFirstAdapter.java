@@ -278,9 +278,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getExp().apply(this);
         }
-        if(node.getIdentifier() != null)
+        if(node.getSelector() != null)
         {
-            node.getIdentifier().apply(this);
+            node.getSelector().apply(this);
         }
         outAAssignment(node);
     }
@@ -433,7 +433,7 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     {
         inAProcedurebody(node);
         {
-            List<PStatement> copy = new ArrayList<PStatement>(node.getStatement());
+            List<PStatement> copy = new ArrayList<PStatement>(node.getBody());
             Collections.reverse(copy);
             for(PStatement e : copy)
             {
@@ -466,12 +466,16 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
             node.getType().apply(this);
         }
         {
-            List<TIdentifier> copy = new ArrayList<TIdentifier>(node.getIdentifier());
+            List<TIdentifier> copy = new ArrayList<TIdentifier>(node.getParamnames());
             Collections.reverse(copy);
             for(TIdentifier e : copy)
             {
                 e.apply(this);
             }
+        }
+        if(node.getCallbyref() != null)
+        {
+            node.getCallbyref().apply(this);
         }
         outAFpsection(node);
     }
@@ -917,29 +921,46 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outAIntegerExp(node);
     }
 
-    public void inAIdentselExp(AIdentselExp node)
+    public void inASelectorExp(ASelectorExp node)
     {
         defaultIn(node);
     }
 
-    public void outAIdentselExp(AIdentselExp node)
+    public void outASelectorExp(ASelectorExp node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAIdentselExp(AIdentselExp node)
+    public void caseASelectorExp(ASelectorExp node)
     {
-        inAIdentselExp(node);
+        inASelectorExp(node);
         if(node.getSelector() != null)
         {
             node.getSelector().apply(this);
         }
+        outASelectorExp(node);
+    }
+
+    public void inAAdditionalselectorSelector(AAdditionalselectorSelector node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAAdditionalselectorSelector(AAdditionalselectorSelector node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAAdditionalselectorSelector(AAdditionalselectorSelector node)
+    {
+        inAAdditionalselectorSelector(node);
         if(node.getIdentifier() != null)
         {
             node.getIdentifier().apply(this);
         }
-        outAIdentselExp(node);
+        outAAdditionalselectorSelector(node);
     }
 
     public void inAIdentifierSelector(AIdentifierSelector node)
@@ -963,42 +984,29 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outAIdentifierSelector(node);
     }
 
-    public void inAExpressionSelector(AExpressionSelector node)
+    public void inAArrayexpressionSelector(AArrayexpressionSelector node)
     {
         defaultIn(node);
     }
 
-    public void outAExpressionSelector(AExpressionSelector node)
+    public void outAArrayexpressionSelector(AArrayexpressionSelector node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAExpressionSelector(AExpressionSelector node)
+    public void caseAArrayexpressionSelector(AArrayexpressionSelector node)
     {
-        inAExpressionSelector(node);
+        inAArrayexpressionSelector(node);
         if(node.getExp() != null)
         {
             node.getExp().apply(this);
         }
-        outAExpressionSelector(node);
-    }
-
-    public void inANoneSelector(ANoneSelector node)
-    {
-        defaultIn(node);
-    }
-
-    public void outANoneSelector(ANoneSelector node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseANoneSelector(ANoneSelector node)
-    {
-        inANoneSelector(node);
-        outANoneSelector(node);
+        if(node.getSelector() != null)
+        {
+            node.getSelector().apply(this);
+        }
+        outAArrayexpressionSelector(node);
     }
 
     public void inAStatassStatement(AStatassStatement node)

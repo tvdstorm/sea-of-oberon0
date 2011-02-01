@@ -234,7 +234,12 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseAIdentselExp(AIdentselExp node)
+    public void caseASelectorExp(ASelectorExp node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAAdditionalselectorSelector(AAdditionalselectorSelector node)
     {
         defaultCase(node);
     }
@@ -244,12 +249,7 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseAExpressionSelector(AExpressionSelector node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseANoneSelector(ANoneSelector node)
+    public void caseAArrayexpressionSelector(AArrayexpressionSelector node)
     {
         defaultCase(node);
     }

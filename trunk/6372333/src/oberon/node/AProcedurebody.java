@@ -9,7 +9,7 @@ import oberon.analysis.*;
 public final class AProcedurebody extends PProcedurebody
 {
     private PDeclarations _declarations_;
-    private final LinkedList<PStatement> _statement_ = new LinkedList<PStatement>();
+    private final LinkedList<PStatement> _body_ = new LinkedList<PStatement>();
 
     public AProcedurebody()
     {
@@ -18,12 +18,12 @@ public final class AProcedurebody extends PProcedurebody
 
     public AProcedurebody(
         @SuppressWarnings("hiding") PDeclarations _declarations_,
-        @SuppressWarnings("hiding") List<PStatement> _statement_)
+        @SuppressWarnings("hiding") List<PStatement> _body_)
     {
         // Constructor
         setDeclarations(_declarations_);
 
-        setStatement(_statement_);
+        setBody(_body_);
 
     }
 
@@ -32,7 +32,7 @@ public final class AProcedurebody extends PProcedurebody
     {
         return new AProcedurebody(
             cloneNode(this._declarations_),
-            cloneList(this._statement_));
+            cloneList(this._body_));
     }
 
     public void apply(Switch sw)
@@ -65,15 +65,15 @@ public final class AProcedurebody extends PProcedurebody
         this._declarations_ = node;
     }
 
-    public LinkedList<PStatement> getStatement()
+    public LinkedList<PStatement> getBody()
     {
-        return this._statement_;
+        return this._body_;
     }
 
-    public void setStatement(List<PStatement> list)
+    public void setBody(List<PStatement> list)
     {
-        this._statement_.clear();
-        this._statement_.addAll(list);
+        this._body_.clear();
+        this._body_.addAll(list);
         for(PStatement e : list)
         {
             if(e.parent() != null)
@@ -90,7 +90,7 @@ public final class AProcedurebody extends PProcedurebody
     {
         return ""
             + toString(this._declarations_)
-            + toString(this._statement_);
+            + toString(this._body_);
     }
 
     @Override
@@ -103,7 +103,7 @@ public final class AProcedurebody extends PProcedurebody
             return;
         }
 
-        if(this._statement_.remove(child))
+        if(this._body_.remove(child))
         {
             return;
         }
@@ -121,7 +121,7 @@ public final class AProcedurebody extends PProcedurebody
             return;
         }
 
-        for(ListIterator<PStatement> i = this._statement_.listIterator(); i.hasNext();)
+        for(ListIterator<PStatement> i = this._body_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)
             {

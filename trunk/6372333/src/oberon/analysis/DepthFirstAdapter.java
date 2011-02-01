@@ -268,9 +268,9 @@ public class DepthFirstAdapter extends AnalysisAdapter
     public void caseAAssignment(AAssignment node)
     {
         inAAssignment(node);
-        if(node.getIdentifier() != null)
+        if(node.getSelector() != null)
         {
-            node.getIdentifier().apply(this);
+            node.getSelector().apply(this);
         }
         if(node.getExp() != null)
         {
@@ -429,7 +429,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
             node.getDeclarations().apply(this);
         }
         {
-            List<PStatement> copy = new ArrayList<PStatement>(node.getStatement());
+            List<PStatement> copy = new ArrayList<PStatement>(node.getBody());
             for(PStatement e : copy)
             {
                 e.apply(this);
@@ -452,8 +452,12 @@ public class DepthFirstAdapter extends AnalysisAdapter
     public void caseAFpsection(AFpsection node)
     {
         inAFpsection(node);
+        if(node.getCallbyref() != null)
         {
-            List<TIdentifier> copy = new ArrayList<TIdentifier>(node.getIdentifier());
+            node.getCallbyref().apply(this);
+        }
+        {
+            List<TIdentifier> copy = new ArrayList<TIdentifier>(node.getParamnames());
             for(TIdentifier e : copy)
             {
                 e.apply(this);
@@ -903,29 +907,46 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outAIntegerExp(node);
     }
 
-    public void inAIdentselExp(AIdentselExp node)
+    public void inASelectorExp(ASelectorExp node)
     {
         defaultIn(node);
     }
 
-    public void outAIdentselExp(AIdentselExp node)
+    public void outASelectorExp(ASelectorExp node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAIdentselExp(AIdentselExp node)
+    public void caseASelectorExp(ASelectorExp node)
     {
-        inAIdentselExp(node);
-        if(node.getIdentifier() != null)
-        {
-            node.getIdentifier().apply(this);
-        }
+        inASelectorExp(node);
         if(node.getSelector() != null)
         {
             node.getSelector().apply(this);
         }
-        outAIdentselExp(node);
+        outASelectorExp(node);
+    }
+
+    public void inAAdditionalselectorSelector(AAdditionalselectorSelector node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAAdditionalselectorSelector(AAdditionalselectorSelector node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAAdditionalselectorSelector(AAdditionalselectorSelector node)
+    {
+        inAAdditionalselectorSelector(node);
+        if(node.getIdentifier() != null)
+        {
+            node.getIdentifier().apply(this);
+        }
+        outAAdditionalselectorSelector(node);
     }
 
     public void inAIdentifierSelector(AIdentifierSelector node)
@@ -949,42 +970,29 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outAIdentifierSelector(node);
     }
 
-    public void inAExpressionSelector(AExpressionSelector node)
+    public void inAArrayexpressionSelector(AArrayexpressionSelector node)
     {
         defaultIn(node);
     }
 
-    public void outAExpressionSelector(AExpressionSelector node)
+    public void outAArrayexpressionSelector(AArrayexpressionSelector node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAExpressionSelector(AExpressionSelector node)
+    public void caseAArrayexpressionSelector(AArrayexpressionSelector node)
     {
-        inAExpressionSelector(node);
+        inAArrayexpressionSelector(node);
+        if(node.getSelector() != null)
+        {
+            node.getSelector().apply(this);
+        }
         if(node.getExp() != null)
         {
             node.getExp().apply(this);
         }
-        outAExpressionSelector(node);
-    }
-
-    public void inANoneSelector(ANoneSelector node)
-    {
-        defaultIn(node);
-    }
-
-    public void outANoneSelector(ANoneSelector node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseANoneSelector(ANoneSelector node)
-    {
-        inANoneSelector(node);
-        outANoneSelector(node);
+        outAArrayexpressionSelector(node);
     }
 
     public void inAStatassStatement(AStatassStatement node)
