@@ -2,13 +2,11 @@ grammar Oberon0;
 
 options { 	
 	output=AST; 
-	backtrack=true; 
-	memoize=true; 
-	//ASTLabelType = OberonAST;
 }
 
 tokens
 {
+	//Operators
 	MULTIPLY	= 	'*';
 	DIVIDE		=	'DIV';
 	MOD		=	'MOD';
@@ -22,6 +20,7 @@ tokens
 	SMALLEREQUAL	=	'<=';
 	GREATERTHEN	=	'>';
 	GREATEREQUAL	=	'>=';
+	
 	DOT		=	'.';
 	COMMA		=	',';
 	COLON		=	':';
@@ -29,6 +28,7 @@ tokens
 	RNDCLOSE	=	')';			//round bracket close
 	SQROPEN		=	'[';			//square bracket open
 	SQRCLOSE	=	']';			//square bracket close
+	
 	OF		=	'OF';
 	THEN		=	'THEN';
 	DO		=	'DO';
@@ -48,6 +48,7 @@ tokens
 	PROCEDURE	=	'PROCEDURE';
 	BEGIN		=	'BEGIN';
 	MODULE		=	'MODULE';
+	
 	FORMALPARAMETERS;
 	ACTUALPARAMETERS;
 	REFVAR;
@@ -65,31 +66,30 @@ tokens
 @header {package generated; 
 }
 
-@lexer::header {
-	package generated;
+@lexer::header {package generated;
 }
 
 oberonprogram
 	:	module 
 			-> ^(OBERONPROGRAM module);
-module	:	MODULE routinename semicolon moduleBody IDENT DOT EOF
+module	:	MODULE routinename SEMICOLON moduleBody IDENT DOT EOF
 			-> ^(MODULE routinename moduleBody);
 moduleBody
 	:	declarations (BEGIN statementSequence)? END
 			-> declarations? ^(BODY statementSequence)?;
 declarations
 	:		constDeclaration? typeDeclaration? varDeclarations? 
-			(procedureDeclaration semicolon)*
+			(procedureDeclaration SEMICOLON)*
 				-> ^(DECLARATIONS constDeclaration? typeDeclaration? varDeclarations? 
 				(procedureDeclaration)*);			
 constDeclaration
-	:	(CONST (IDENT EQUALS expression semicolon)*)
+	:	(CONST (IDENT EQUALS expression SEMICOLON)*)
 			-> ^(CONST (IDENT expression)*);		
 typeDeclaration
-	:	(TYPEDECL (IDENT EQUALS type semicolon)*)
+	:	(TYPEDECL (IDENT EQUALS type SEMICOLON)*)
 			-> ^(TYPEDECL (IDENT type)*);		
 varDeclarations
-	:	(VAR (identList COLON type semicolon)*)
+	:	(VAR (identList COLON type SEMICOLON)*)
 			-> ^(VAR identList type)*;
 procedureDeclaration
 	:	PROCEDURE routinename (formalParameters)? SEMICOLON declarations (procedureBody)? IDENT 
@@ -98,13 +98,13 @@ procedureBody
 	:	BEGIN statementSequence END
 			-> ^(BODY statementSequence);
 assignment
-	:	identselector ASSIGNMENT^ expression;
+	:	vairable ASSIGNMENT^ expression;
 actualParameters
 	:	RNDOPEN (expression (COMMA expression)*)? RNDCLOSE
 			-> ^(ACTUALPARAMETERS expression+);
 procedureCall
-	:	identselector (actualParameters)? 
-			-> ^(PROCEDURECALL identselector (actualParameters)?)  ;
+	:	vairable (actualParameters)? 
+			-> ^(PROCEDURECALL vairable (actualParameters)?)  ;
 
 elseStatementPart
 	:	ELSE statementSequence 
@@ -135,17 +135,17 @@ whileStatement:		WHILE expression DO statementSequence END
 statement
 	:	(assignment | procedureCall | ifStatement | whileStatement)?;
 statementSequence
-	:	statement (semicolon statement)*;
+	:	statement (SEMICOLON statement)*;
 identList
-	:	IDENT (comma IDENT)* 
+	:	IDENT (COLON IDENT)* 
 			->^(IDENTLIST IDENT+);
 arrayType 
 	:	ARRAY expression OF type 
 			-> ^(ARRAY expression type);	
 fieldList
-	:	(identList colon type)?;
+	:	(identList COLON type)?;
 recordType 
-	:	RECORD fieldList (semicolon fieldList)* END
+	:	RECORD fieldList (SEMICOLON fieldList)* END
 			-> ^(RECORD fieldList+);
 type	:	(IDENT | arrayType | recordType);	
 fpSection
@@ -156,30 +156,47 @@ fpSection
 formalParameters 
 	:	RNDOPEN (fpSection (SEMICOLON fpSection)*)? RNDCLOSE 
 			-> ^(FORMALPARAMETERS (fpSection+)?);
-selector: 	(DOT IDENT 
-			-> ^(SELECTOR IDENT) 
-		| sqrExpression
-			-> ^(SELECTOR sqrExpression)
-		)*;
-identselector
-	:	IDENT^ selector;
-factor 	:	(identselector | number | rndExpression | TILDE factor);
-term 	:	factor ((MULTIPLY | DIVIDE | MOD | AMPERSAND)^ factor)*;
+		
+
+expression returns [ ExpressionNode node ]
+	: lhsExp = simpleExpression { $expression = $lhsExp.simpleExpression; } 
+	(( EQUALS 	) rhsExp =simpleExpression	
+	| HASH		
+		| SMALLERTHEN
+	| SMALLEREQUAL
+	| GREATERTHEN
+	| GREATEREQUAL
+	) rhsExp =simpleExpression
+	)?;
+
 simpleExpression 
 	:	(ADD | SUBTRACT)? term ((ADD | SUBTRACT | OR)^ term)*;
-expression 
-	:	simpleExpression
-		((EQUALS|HASH|SMALLERTHEN|SMALLEREQUAL|GREATERTHEN|GREATEREQUAL)^ 
-		simpleExpression)?;
-sqrExpression
-	:	SQROPEN expression SQRCLOSE -> expression;
-rndExpression
-	:	RNDOPEN expression RNDCLOSE-> expression;
-number	:	INTEGER;
-semicolon 
-	:	SEMICOLON!;
-comma	:	COMMA!;
-colon	:	COLON!;
+
+
+term 	returns [ TermNode node ]
+	: factor ((MULTIPLY | DIVIDE | MOD | AMPERSAND) factor)*;
+
+factor 	returns [ INode node ]
+	: vairable 			{ $node = $vairable.node; 		 }
+	| number 			{ $node = $number.node;			 }
+	| RNDOPEN expression RNDCLOSE 	{ $node = $expression.node;		 }
+	| TILDE factor			{ $node = new NegationNode($factor.node);}
+	;
+
+number	returns [ IntegerNode node ]
+	: INTEGER			{ $node = new IntegerNode( Integer.parseInt( $INTEGER.text ) ); }
+	;
+
+vairable returns [VariableNode node]
+	: IDENT selector 		{ $node = new VariableNode ( $IDENT.text, $selector.node); }
+	;
+
+selector returns [ INode node ]
+	: 
+	(DOT IDENT 			{ new SelectorRecordNode ( $IDENT.text );	}
+	| SQROPEN expression SQRCLOSE	{ new SelectorArrayNode  ( $expression.node );	}
+	)*;
+	
 
 routinename
 	:	IDENT	-> ^(ROUTINENAME IDENT);
