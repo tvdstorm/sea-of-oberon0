@@ -1,0 +1,7 @@
+MODULE testmodule;
+
+VAR i:INTEGER;
+
+BEGIN
+ 3 + 4 * 5
+END testmodule.
