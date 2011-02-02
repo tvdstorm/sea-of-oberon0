@@ -5,11 +5,20 @@ CONST
   
 VAR
   array: ARRAY MAXLENGTH OF INTEGER; 
-  i,j: INTEGER;
+  i,j,k: INTEGER;
 
 BEGIN
- array[0] := 5;
- i := 2;
- array[i] := i;
- j := 10;
+ i := 0;
+ j := 1;
+ k := 25;
+WHILE i<5 DO
+ IF i < j THEN
+	array[i] := j;
+ ELSIF i = j THEN
+	array[i] := k;
+ ELSE
+	array[i] := i;
+ END;
+ i := i + 1;
+END
 END testmodule.

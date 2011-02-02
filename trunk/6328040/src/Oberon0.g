@@ -74,7 +74,9 @@ import oberon0.ast.statements.*;
 			-> ^(OBERONPROGRAM module);*/
 			
 module	returns [ ModuleNode node ]:	
-	MODULE name = IDENT SEMICOLON decl = declarations mbody = body IDENT DOT EOF		{$node = new ModuleNode($name.text, $decl.node, $mbody.node);}
+	MODULE name = IDENT SEMICOLON 
+	decl = declarations 
+	mbody = body IDENT DOT EOF	{$node = new ModuleNode($name.text, $decl.node, $mbody.node);}
 	;
 
 body	returns [ IExecutable node ]
@@ -134,7 +136,8 @@ identList returns [ ArrayList<String> list]
 	:				{list =	 new ArrayList<String>();	}
 	ident1 = IDENT 			{list.add($ident1.text);		}
 	(COMMA ident2 =IDENT		{list.add($ident2.text);		}
-	)*;
+	)*
+	;
 /*
 actualParameters
 	:	RNDOPEN (expression (COMMA expression)*)? RNDCLOSE
@@ -142,39 +145,46 @@ actualParameters
 procedureCall
 	:	variable (actualParameters)? 
 			-> ^(PROCEDURECALL variable (actualParameters)?)  ;
-
-elseStatementPart
-	:	ELSE statementSequence 
-			-> ^(ELSE ^(BODY statementSequence));
-elseifStatementPart
-	:	ELSIF expression THEN statementSequence
-			-> ^(ELSIF ^(CONDITION expression) 
-				^(BODY statementSequence));
-ifStatementPart
-	:	IF expression THEN statementSequence 
-			->^(IF ^(CONDITION expression) 
-				^(BODY statementSequence)) ;
-
-ifStatement:		ifStatementPart elseifStatementPart+ 
-				elseStatementPart END
-			-> ^(IFBLOCK ifStatementPart 
-				elseifStatementPart+ 
-				elseStatementPart)
-			| ifStatementPart elseifStatementPart+ END
-				-> ^(IFBLOCK ifStatementPart elseifStatementPart+)
-			| ifStatementPart elseStatementPart END
-				-> ^(IFBLOCK ifStatementPart elseStatementPart) 
-			| ifStatementPart END
-				-> ^(IFBLOCK ifStatementPart);
-
-whileStatement:		WHILE expression DO statementSequence END
-				-> ^(WHILE ^(CONDITION expression) ^(BODY statementSequence));
 */
+statementSequence returns [ IExecutable node ]
+	: 				{ ArrayList<IExecutable> list = 
+							new  ArrayList<IExecutable>();	}
+	stat1 = statement		{list.add($stat1.node);				}
+	(SEMICOLON 
+	statx = statement		{list.add($statx.node);				}
+	)*				{$node = new StatementsNode(list);		}
+	;
+
+ifStatement returns [ IExecutable node ]
+	:	  
+	IF 
+		ifcond = expression 
+		THEN 
+		ifbody = statementSequence 	{ArrayList<IEvaluable> condlist = new ArrayList<IEvaluable>();	}
+						{ArrayList<IExecutable> bodylist = new ArrayList<IExecutable>();}
+	(ELSIF 				
+		elsifcond = expression     	{condlist.add($elsifcond.node);					}
+		THEN 
+		elsifbody =statementSequence	{bodylist.add($elsifbody.node);					}
+	)* 
+	(ELSE 
+		elsebody = statementSequence
+	)? END					{$node = new IfNode($ifcond.node, $ifbody.node, 
+									condlist, bodylist, $elsebody.node);	}
+	;
+
+
+whileStatement returns [ IExecutable node ]
+	: WHILE cond = expression 
+	DO stats = statementSequence 
+	END				{$node = new WhileNode($cond.node, $stats.node);	}
+	;
+
 statement returns [ IExecutable node ]
 	:(ass = assignment 		{$node = $ass.node;	} 
 //	| procedureCall 
-//	| ifStatement 
-//	| whileStatement
+	| ifs = ifStatement 		{$node = $ifs.node;	} 
+	| whil = whileStatement		{$node = $whil.node;	}
 	)?;
 	
 assignment returns [ IExecutable node ]

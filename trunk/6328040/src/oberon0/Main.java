@@ -15,7 +15,7 @@ public class Main {
 	
 	/*TODO 5 * 7 / 4 (no priority?) some expressions get in infinite loop??!
 	 *TODO functions
-	 *TODO array
+	 *TODO Statements
 	 *TODO records
 	 */
 	
