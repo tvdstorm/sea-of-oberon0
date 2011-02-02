@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Stack;
 
 import oberon.Declaration;
+import oberon.Procedure;
 import oberon.ProcedureHeading;
 
 public class VariableManager {
@@ -28,12 +29,12 @@ public class VariableManager {
 		_currentScope.AddNewDeclaration(declaration);
 	}
 	
-	public void EnterNewScope(List<DataType> actualProcedureParameters){
+	public void EnterNewScope(List<DataType> actualProcedureParameters, ProcedureHeading currentProcedure){
 		//preserve the old scope, put it on the stack
 		_scopes.add(_currentScope);
 		
 		//create a new scope and store it in _currentscope
-		Scope newScope = _currentScope.createNewScope(actualProcedureParameters);
+		Scope newScope = _currentScope.createNewScope(actualProcedureParameters, currentProcedure);
 		_currentScope = newScope;
 	}
 	
@@ -51,55 +52,65 @@ public class VariableManager {
 		_currentScope.AddProcedure(procedure);
 	}
 	
-	public void AddSystemProcedure(ProcedureHeading procedure) {
+	public void AddSystemProcedure(Procedure procedure) {
 		_currentScope.AddSystemProcedure(procedure);
 	}
 
-	public ProcedureHeading getProcedure(String name) {
+	public Procedure getProcedure(String name) {
 		return _currentScope.getProcedure(name);
 	}
 	
 	class Scope {		
 		private HashMap<String, DataType> _variables;
 		private HashMap<String, ProcedureHeading> _procedures;
-		private HashMap<String, ProcedureHeading> _systemProcedures;
+		private HashMap<String, Procedure> _systemProcedures;
 		
 		Scope(){
 			_variables = new HashMap<String, DataType>();
 			_procedures = new HashMap<String, ProcedureHeading>();
-			_systemProcedures = new HashMap<String, ProcedureHeading>();
+			_systemProcedures = new HashMap<String, Procedure>();
 		}
 		
-		public void AddSystemProcedure(ProcedureHeading procedure) {
+		public void AddSystemProcedure(Procedure procedure) {
 			_systemProcedures.put(procedure.getName(), procedure);
 		}
 
-		Scope(HashMap<String, DataType> variables, HashMap<String, ProcedureHeading> systemProcedures){
+		Scope(HashMap<String, DataType> variables, HashMap<String,ProcedureHeading> procedures, HashMap<String, Procedure> systemProcedures){
 			_variables = variables;
 			_systemProcedures = systemProcedures;
-			_procedures = new HashMap<String, ProcedureHeading>();
+			_procedures = procedures;
 		}
 
 		private Scope createNewScope(
-				List<DataType> actualProcedureParameters) {
+				List<DataType> actualProcedureParameters, ProcedureHeading currentProcedure) {
 			HashMap<String, DataType> variables = new HashMap<String, DataType>();
 			
-			addVariablesToCollection(actualProcedureParameters, variables);
-			
-			return new Scope(variables, _systemProcedures);
-		}
-
-		private void addVariablesToCollection(
-				List<DataType> variablesToAdd,
-				HashMap<String, DataType> collectionToAddVariablesTo) {
-			for (DataType actualParam : variablesToAdd){
-				collectionToAddVariablesTo.put(actualParam.getName(), actualParam);	
+			for (DataType actualParam : actualProcedureParameters){
+				variables.put(actualParam.getName(), actualParam);
+				
+//				if (actualParam instanceof IntegerArrayIndexerType)
+//				{
+//					IntegerArrayIndexerType integerArrayIndexer = ((IntegerArrayIndexerType)actualParam);
+//					_variables.put(integerArrayIndexer.getName(), integerArrayIndexer.getArray());
+//				}
 			}
+			
+			HashMap<String, ProcedureHeading> procedures = new HashMap<String, ProcedureHeading>();
+			procedures.put(currentProcedure.getName(), currentProcedure);
+			
+			return new Scope(variables, procedures, _systemProcedures);
 		}
 		
 		public void AddNewDeclaration(Declaration declaration)
 		{
-			addVariablesToCollection(declaration.getVariables(), _variables);
+			for (DataType actualParam : declaration.getVariables()){
+				_variables.put(actualParam.getName(), actualParam);	
+				
+				if (actualParam instanceof IntegerArrayType)
+				{
+					((IntegerArrayType)actualParam).initializeArray();
+				}
+			}
 			
 			for (ProcedureHeading heading : declaration.getProcedures()){
 				AddProcedure(heading);
@@ -110,7 +121,7 @@ public class VariableManager {
 			_procedures.put(procedure.getName(), procedure);
 		}
 
-		public ProcedureHeading getProcedure(String name) {
+		public Procedure getProcedure(String name) {
 			if (_procedures.containsKey(name)){
 				return _procedures.get(name);
 			}

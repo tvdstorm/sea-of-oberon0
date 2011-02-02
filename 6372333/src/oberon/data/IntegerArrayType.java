@@ -4,9 +4,7 @@ import oberon.Expression;
 
 public class IntegerArrayType extends DataType {
 	
-	private int _index = -1;
 	private int[] _value;
-	private boolean _isInitialized;
 	private Expression _lengthExpression;
 
 	public IntegerArrayType(String name, Expression lengthExpression){
@@ -20,29 +18,23 @@ public class IntegerArrayType extends DataType {
 		_lengthExpression = lengthExpression;
 	}
 	
-	public void setIndex(int index)
-	{
-		_index = index;
+	public int getValueAtIndex(int index){
+		return _value[index];
 	}
 	
 	public void setValue(int index, int value)
 	{
-		initializeArrayIfNeeded();
 		_value[index] = value;
 	}
 
-	private void initializeArrayIfNeeded() {
-		if (!_isInitialized)
-		{
-			_isInitialized = true;
-			_value = new int[_lengthExpression.EvalAsInt()];			
-		}
+	public void initializeArray() {
+		_value = new int[_lengthExpression.EvalAsInt()];			
 	}
 
 	@Override
 	public int getValue() {
-		initializeArrayIfNeeded();
-		return _value[_index];
+		System.out.println("getValue() called on IntegerArrayType");
+		return 0;
 	}
 
 	public void setValueAtIndex(int index, int value) {
@@ -51,13 +43,11 @@ public class IntegerArrayType extends DataType {
 
 	@Override
 	public DataType DeepCopy(String newName) {
-		initializeArrayIfNeeded();
 		return new IntegerArrayType(newName, _value.clone(), _lengthExpression);
 	}
 
 	@Override
 	public DataType ShallowCopy(String newName) {
-		initializeArrayIfNeeded();
 		return new IntegerArrayType(newName, _value, _lengthExpression);
 	}
 

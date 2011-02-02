@@ -49,8 +49,10 @@ public class Main {
 	            ast.apply(interpreter);	     
 	            
 	            ReadProcedure.Initialize();
+	            WriteCall.Initialize();
+	            WriteLnCall.Initialize();
 	            
-	            ProcedureHeading mainProc = interpreter.BuildInterpreterResult();
+	            Procedure mainProc = interpreter.BuildInterpreterResult();
 	            Queue<Expression> paramList = new LinkedList<Expression>();
 	            	            
 	            try {

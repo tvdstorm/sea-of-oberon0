@@ -6,10 +6,11 @@ import java.util.List;
 import oberon.Declaration;
 import oberon.FormalParamSection;
 import oberon.FormalParamType;
+import oberon.Procedure;
 import oberon.ProcedureBody;
 import oberon.ProcedureHeading;
 import oberon.StatementSequence;
-import oberon.node.*;
+import oberon.node.AModule;
 
 public class ModuleInterpreter extends BaseInterpreter<ProcedureHeading> { 
 	  
@@ -29,7 +30,6 @@ public class ModuleInterpreter extends BaseInterpreter<ProcedureHeading> {
 	public ProcedureHeading BuildInterpreterResult() {
 		List<FormalParamSection> params = new ArrayList<FormalParamSection>();
 		List<String> paramNames = new ArrayList<String>();
-		paramNames.add("i");
 		params.add(new FormalParamSection(paramNames, FormalParamType.Identifier, false));
 		
 		ProcedureBody body = new ProcedureBody(_declaration, _statements);
