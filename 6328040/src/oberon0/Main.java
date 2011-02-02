@@ -2,7 +2,8 @@ package oberon0;
 
 import java.io.IOException;
 
-import oberon0.ast.routines.ModuleNode;
+import oberon0.ast.routines.ICallable;
+import oberon0.ast.routines.RoutineNode;
 import oberon0.environment.Context;
 
 import org.antlr.runtime.ANTLRFileStream;
@@ -28,7 +29,7 @@ public class Main {
 		TokenRewriteStream tokens = new TokenRewriteStream(lex);
 		Oberon0Parser parser = new Oberon0Parser(tokens);
         
-		ModuleNode module = null;
+		ICallable module = null;
 		try {
 			module = parser.module();
 		} catch (RecognitionException e) {
@@ -36,7 +37,7 @@ public class Main {
 			e.printStackTrace();
 		} 
         
-		module.call(Context.noParent);
+		module.call(Context.noParent, RoutineNode.noActualParameters);
 	}
 	
 }
