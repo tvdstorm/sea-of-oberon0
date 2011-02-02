@@ -21,16 +21,15 @@ public class InfixEqualsExpression extends InfixExpression
 		Value valLh = lhs.run(environment).dereference();
 		if (valLh instanceof Integer && valRh instanceof Integer)
 		{
-			return new Boolean(valLh.castToInteger().getIntValue() == valRh.castToInteger().getIntValue());
+			return new Boolean(valLh.equalsToValue(valRh));
 		}
 		else if (valLh instanceof Boolean && valRh instanceof Boolean)
 		{
-			return new Boolean(valLh.castToBoolean().getBoolValue() == valRh.castToBoolean().getBoolValue());
+			return new Boolean(valLh.equalsToValue(valRh));
 		}
 		else if (valLh instanceof Record && valRh instanceof Record)
 		{
-			// TODO: implement
-			return null;
+			return new Boolean(valLh.equalsToValue(valRh));
 		}
 		else
 		{

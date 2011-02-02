@@ -7,9 +7,7 @@ public enum Type
 	INTEGER("INTEGER"),
 	ARRAY("ARRAY"),
 	BOOLEAN("BOOLEAN"),
-	RECORD("RECORD"),
-	POINTERTO("POINTERTO"),
-	NIL("NIL"); // TODO: iets van instantieerbaar toevoegen
+	RECORD("RECORD");
 	
 	private static final Map<String, Type> lookup = new HashMap<String, Type>();
 	

@@ -38,4 +38,12 @@ public class Boolean extends Value
 	{
 		return "" + value;
 	}
+	@Override
+	public boolean equalsToValue(Value _value)
+	{
+		_value = _value.dereference();
+		if (!(_value instanceof Boolean))
+			return false;
+		return ((Boolean)_value).value == value;
+	}
 }

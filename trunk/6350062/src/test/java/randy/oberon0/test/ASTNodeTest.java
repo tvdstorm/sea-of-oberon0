@@ -698,7 +698,6 @@ public class ASTNodeTest
 		}
 	}
 	// TODO: test to check if an const array can be modified and check if const variable can be assigned as non const parameters
-	// TODO: types support
 	// TODO: JavaDoc, meer comments, asserts, finals?
 	@Ignore
 	private void prepareTestThrowException(String testName) throws Exception

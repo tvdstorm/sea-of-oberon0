@@ -53,4 +53,23 @@ public class Record extends Value
 		// TODO: implement
 		return "";
 	}
+	@Override
+	public boolean equalsToValue(Value _value)
+	{
+		_value = _value.dereference();
+		if (!(_value instanceof Record))
+			return false;
+		Record other = (Record)_value;
+		if (members.size() != other.members.size())
+			return false;
+		for (String name : members.keySet())
+		{
+			Value otherValue = other.members.get(name);
+			if (otherValue == null)
+				return false;
+			if (!members.get(name).equals(otherValue))
+				return false;
+		}
+		return true;
+	}
 }

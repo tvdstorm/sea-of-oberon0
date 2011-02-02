@@ -41,4 +41,5 @@ public abstract class Value
 			return (Record)this;
 		throw new TypeMismatchException(this.getType(), Type.RECORD);
 	}
+	public abstract boolean equalsToValue(Value _value);
 }

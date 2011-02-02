@@ -38,4 +38,12 @@ public class Integer extends Value
 	{
 		return "" + value;
 	}
+	@Override
+	public boolean equalsToValue(Value _value)
+	{
+		_value = _value.dereference();
+		if (!(_value instanceof Integer))
+			return false;
+		return ((Integer)_value).value == value;
+	}
 }
