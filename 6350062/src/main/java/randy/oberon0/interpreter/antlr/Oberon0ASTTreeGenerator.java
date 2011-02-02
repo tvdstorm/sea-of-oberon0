@@ -5,7 +5,6 @@ import java.util.*;
 import org.antlr.runtime.*;
 import org.antlr.runtime.tree.Tree;
 import randy.oberon0.ast.*;
-import randy.oberon0.ast.enums.Operator;
 import randy.oberon0.ast.datastructures.Tuple;
 import randy.oberon0.exception.Exception;
 import randy.oberon0.exception.*;
@@ -136,17 +135,18 @@ public class Oberon0ASTTreeGenerator
 	{
 		switch (tree.getType())
 		{
+			case Oberon0Parser.NOT:
+				return buildPrefixExpression(tree);
 			case Oberon0Parser.MINUS:
 			case Oberon0Parser.PLUS:
-			case Oberon0Parser.NOT:
 				if (tree.getChildCount() == 1)
 					return buildPrefixExpression(tree);
 				else
 					return buildInfixExpression(tree);
 			case Oberon0Parser.DIVIDE:
 			case Oberon0Parser.TIMES:
-			case Oberon0Parser.GREATERTHEN:
-			case Oberon0Parser.SMALLERTHEN:
+			case Oberon0Parser.GREATERTHAN:
+			case Oberon0Parser.SMALLERTHAN:
 			case Oberon0Parser.GREATEREQUALS:
 			case Oberon0Parser.SMALLEREQUALS:
 			case Oberon0Parser.EQUALS:
@@ -210,10 +210,35 @@ public class Oberon0ASTTreeGenerator
 		assert(tree.getChildCount() == 2);
 		Expression left = buildExpression(tree.getChild(0));
 		Expression right = buildExpression(tree.getChild(1));
-		Operator operator = Operator.get(tree.getText());
-		if (operator == null)
-			throw new UnknownOperatorException(tree.getText());
-		return new InfixExpression(left, operator, right);
+		switch (tree.getType())
+		{
+			case Oberon0Parser.PLUS:
+				return new InfixAdditionExpression(left, right);
+			case Oberon0Parser.MINUS:
+				return new InfixSubtractionExpression(left, right);
+			case Oberon0Parser.DIVIDE:
+				return new InfixDivisionExpression(left, right);
+			case Oberon0Parser.TIMES:
+				return new InfixMultiplicationExpression(left, right);
+			case Oberon0Parser.GREATERTHAN:
+				return new InfixGreaterThanExpression(left, right);
+			case Oberon0Parser.SMALLERTHAN:
+				return new InfixSmallerThanExpression(left, right);
+			case Oberon0Parser.GREATEREQUALS:
+				return new InfixGreaterEqualsExpression(left, right);
+			case Oberon0Parser.SMALLEREQUALS:
+				return new InfixSmallerEqualsExpression(left, right);
+			case Oberon0Parser.EQUALS:
+				return new InfixEqualsExpression(left, right);
+			case Oberon0Parser.NOTEQUALS:
+				return new InfixNotEqualsExpression(left, right);
+			case Oberon0Parser.AND:
+				return new InfixAndExpression(left, right);
+			case Oberon0Parser.OR:
+				return new InfixOrExpression(left, right);
+			default:
+				throw new UnknownOperatorException(tree.getText());		
+		}
 	}
 	public static IntegerLiteral buildIntegerLiteral(Tree tree) throws Exception
 	{
@@ -259,14 +284,21 @@ public class Oberon0ASTTreeGenerator
 		String pointsTo = tree.getChild(1).getChild(0).getText();
 		return new PointerToDeclaration(name, pointsTo);
 	}
-	public static PrefixExpression buildPrefixExpression(Tree tree) throws Exception
+	public static Expression buildPrefixExpression(Tree tree) throws Exception
 	{
 		assert(tree.getChildCount() == 1);
 		Expression right = buildExpression(tree.getChild(0));
-		Operator operator = Operator.get(tree.getText());
-		if (operator == null)
-			throw new UnknownOperatorException(tree.getText());
-		return new PrefixExpression(operator, right);
+		switch (tree.getType())
+		{
+			case Oberon0Parser.PLUS:
+				return right; // Effectief hetzelfde als de expressie
+			case Oberon0Parser.MINUS:
+				return new PrefixMinExpression(right);
+			case Oberon0Parser.NOT:
+				return new PrefixNotExpression(right);
+			default:
+				throw new UnknownOperatorException(tree.getText());		
+		}
 	}
 	public static ProcedureCall buildProcedureCall(Tree tree) throws Exception
 	{

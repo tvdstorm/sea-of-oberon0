@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g 2011-01-29 14:10:23
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g 2011-02-02 13:53:36
 
 package randy.oberon0.generated.antlr;
 
@@ -15,7 +15,7 @@ import org.antlr.runtime.tree.*;
 @SuppressWarnings("all")
 public class Oberon0Parser extends Parser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "TRUE", "FALSE", "NIL", "MINUS", "PLUS", "TIMES", "DIVIDE", "CONST", "VAR", "TYPE", "IF", "THEN", "ELSE", "ELSIF", "END", "MODULE", "DO", "WHILE", "BEGIN", "PROCEDURE", "ARRAY", "OF", "RECORD", "POINTERTO", "MOD", "AND", "OR", "ASSIGNMENT", "EQUALS", "NOTEQUALS", "SMALLERTHEN", "GREATERTHEN", "SMALLEREQUALS", "GREATEREQUALS", "NOT", "REFVAR", "PROCEDURECALL", "PARAMETERS", "EXPRESSION", "BODY", "LH", "RH", "DOTSELECTOR", "ARRAYSELECTOR", "IDENT", "WHITESPACE", "INTEGER", "']'", "'('", "')'", "','", "';'", "':'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "TRUE", "FALSE", "NIL", "MINUS", "PLUS", "TIMES", "DIVIDE", "CONST", "VAR", "TYPE", "IF", "THEN", "ELSE", "ELSIF", "END", "MODULE", "DO", "WHILE", "BEGIN", "PROCEDURE", "ARRAY", "OF", "RECORD", "POINTERTO", "MOD", "AND", "OR", "ASSIGNMENT", "EQUALS", "NOTEQUALS", "SMALLERTHAN", "GREATERTHAN", "SMALLEREQUALS", "GREATEREQUALS", "NOT", "REFVAR", "PROCEDURECALL", "PARAMETERS", "EXPRESSION", "BODY", "LH", "RH", "DOTSELECTOR", "ARRAYSELECTOR", "IDENT", "WHITESPACE", "INTEGER", "']'", "'('", "')'", "','", "';'", "':'"
     };
     public static final int EOF=-1;
     public static final int T__51=51;
@@ -54,8 +54,8 @@ public class Oberon0Parser extends Parser {
     public static final int ASSIGNMENT=31;
     public static final int EQUALS=32;
     public static final int NOTEQUALS=33;
-    public static final int SMALLERTHEN=34;
-    public static final int GREATERTHEN=35;
+    public static final int SMALLERTHAN=34;
+    public static final int GREATERTHAN=35;
     public static final int SMALLEREQUALS=36;
     public static final int GREATEREQUALS=37;
     public static final int NOT=38;
@@ -948,7 +948,7 @@ public class Oberon0Parser extends Parser {
     };
 
     // $ANTLR start "infixOperand"
-    // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:81:1: infixOperand : ( EQUALS | NOTEQUALS | SMALLERTHEN | SMALLEREQUALS | GREATERTHEN | GREATEREQUALS );
+    // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:81:1: infixOperand : ( EQUALS | NOTEQUALS | SMALLERTHAN | SMALLEREQUALS | GREATERTHAN | GREATEREQUALS );
     public final Oberon0Parser.infixOperand_return infixOperand() throws RecognitionException {
         Oberon0Parser.infixOperand_return retval = new Oberon0Parser.infixOperand_return();
         retval.start = input.LT(1);
@@ -960,7 +960,7 @@ public class Oberon0Parser extends Parser {
         CommonTree set29_tree=null;
 
         try {
-            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:81:13: ( EQUALS | NOTEQUALS | SMALLERTHEN | SMALLEREQUALS | GREATERTHEN | GREATEREQUALS )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:81:13: ( EQUALS | NOTEQUALS | SMALLERTHAN | SMALLEREQUALS | GREATERTHAN | GREATEREQUALS )
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:
             {
             root_0 = (CommonTree)adaptor.nil();
@@ -1053,7 +1053,7 @@ public class Oberon0Parser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: simpleExpression, simpleExpression, infixOperand
+                    // elements: infixOperand, simpleExpression, simpleExpression
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -1496,7 +1496,7 @@ public class Oberon0Parser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: statementSequence, expression, statementSequence, ELSIF, ELSE, statementSequence, IF, expression
+                    // elements: statementSequence, ELSIF, expression, ELSE, IF, statementSequence, statementSequence, expression
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -1532,10 +1532,10 @@ public class Oberon0Parser extends Parser {
 
                         adaptor.addChild(root_1, root_2);
                         }
-                        if ( !(stream_expression.hasNext()||stream_ELSIF.hasNext()||stream_statementSequence.hasNext()) ) {
+                        if ( !(stream_statementSequence.hasNext()||stream_ELSIF.hasNext()||stream_expression.hasNext()) ) {
                             throw new RewriteEarlyExitException();
                         }
-                        while ( stream_expression.hasNext()||stream_ELSIF.hasNext()||stream_statementSequence.hasNext() ) {
+                        while ( stream_statementSequence.hasNext()||stream_ELSIF.hasNext()||stream_expression.hasNext() ) {
                             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:89:64: ^( ELSIF ^( EXPRESSION expression ) ^( BODY statementSequence ) )
                             {
                             CommonTree root_2 = (CommonTree)adaptor.nil();
@@ -1564,9 +1564,9 @@ public class Oberon0Parser extends Parser {
                             }
 
                         }
-                        stream_expression.reset();
-                        stream_ELSIF.reset();
                         stream_statementSequence.reset();
+                        stream_ELSIF.reset();
+                        stream_expression.reset();
                         // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:89:125: ^( ELSE ^( BODY statementSequence ) )
                         {
                         CommonTree root_2 = (CommonTree)adaptor.nil();
@@ -1668,7 +1668,7 @@ public class Oberon0Parser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: statementSequence, statementSequence, expression, expression, ELSIF, IF
+                    // elements: expression, IF, expression, statementSequence, statementSequence, ELSIF
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -1704,10 +1704,10 @@ public class Oberon0Parser extends Parser {
 
                         adaptor.addChild(root_1, root_2);
                         }
-                        if ( !(stream_statementSequence.hasNext()||stream_expression.hasNext()||stream_ELSIF.hasNext()) ) {
+                        if ( !(stream_expression.hasNext()||stream_statementSequence.hasNext()||stream_ELSIF.hasNext()) ) {
                             throw new RewriteEarlyExitException();
                         }
-                        while ( stream_statementSequence.hasNext()||stream_expression.hasNext()||stream_ELSIF.hasNext() ) {
+                        while ( stream_expression.hasNext()||stream_statementSequence.hasNext()||stream_ELSIF.hasNext() ) {
                             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:91:64: ^( ELSIF ^( EXPRESSION expression ) ^( BODY statementSequence ) )
                             {
                             CommonTree root_2 = (CommonTree)adaptor.nil();
@@ -1736,8 +1736,8 @@ public class Oberon0Parser extends Parser {
                             }
 
                         }
-                        stream_statementSequence.reset();
                         stream_expression.reset();
+                        stream_statementSequence.reset();
                         stream_ELSIF.reset();
 
                         adaptor.addChild(root_0, root_1);
@@ -1790,7 +1790,7 @@ public class Oberon0Parser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: statementSequence, expression, IF, ELSE, statementSequence
+                    // elements: ELSE, statementSequence, IF, statementSequence, expression
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -1879,7 +1879,7 @@ public class Oberon0Parser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: expression, IF, statementSequence
+                    // elements: expression, statementSequence, IF
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -2003,7 +2003,7 @@ public class Oberon0Parser extends Parser {
 
 
             // AST REWRITE
-            // elements: expression, statementSequence, WHILE
+            // elements: statementSequence, expression, WHILE
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2113,7 +2113,7 @@ public class Oberon0Parser extends Parser {
 
 
             // AST REWRITE
-            // elements: selector, expression, ASSIGNMENT
+            // elements: ASSIGNMENT, expression, selector
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2234,7 +2234,7 @@ public class Oberon0Parser extends Parser {
 
 
             // AST REWRITE
-            // elements: actualParameters, selector
+            // elements: selector, actualParameters
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2682,7 +2682,7 @@ public class Oberon0Parser extends Parser {
 
 
             // AST REWRITE
-            // elements: type, ARRAY, expression
+            // elements: ARRAY, expression, type
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2809,7 +2809,7 @@ public class Oberon0Parser extends Parser {
 
 
             // AST REWRITE
-            // elements: type, identList
+            // elements: identList, type
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2948,7 +2948,7 @@ public class Oberon0Parser extends Parser {
 
 
             // AST REWRITE
-            // elements: RECORD, fieldList
+            // elements: fieldList, RECORD
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -3294,7 +3294,7 @@ public class Oberon0Parser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: identList, type
+                    // elements: type, identList
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -3753,7 +3753,7 @@ public class Oberon0Parser extends Parser {
 
 
             // AST REWRITE
-            // elements: procedureBody, declarations, formalParameters, PROCEDURE, ident
+            // elements: declarations, ident, procedureBody, formalParameters, PROCEDURE
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -3906,7 +3906,7 @@ public class Oberon0Parser extends Parser {
 
 
             // AST REWRITE
-            // elements: ident, CONST, expression
+            // elements: expression, ident, CONST
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -3920,7 +3920,7 @@ public class Oberon0Parser extends Parser {
             // 127:5: -> ( ^( CONST ident expression ) )*
             {
                 // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:127:8: ( ^( CONST ident expression ) )*
-                while ( stream_ident.hasNext()||stream_CONST.hasNext()||stream_expression.hasNext() ) {
+                while ( stream_expression.hasNext()||stream_ident.hasNext()||stream_CONST.hasNext() ) {
                     // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:127:8: ^( CONST ident expression )
                     {
                     CommonTree root_1 = (CommonTree)adaptor.nil();
@@ -3933,9 +3933,9 @@ public class Oberon0Parser extends Parser {
                     }
 
                 }
+                stream_expression.reset();
                 stream_ident.reset();
                 stream_CONST.reset();
-                stream_expression.reset();
 
             }
 
@@ -4049,7 +4049,7 @@ public class Oberon0Parser extends Parser {
 
 
             // AST REWRITE
-            // elements: TYPE, type, ident
+            // elements: ident, TYPE, type
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -4063,7 +4063,7 @@ public class Oberon0Parser extends Parser {
             // 129:5: -> ( ^( TYPE ident type ) )*
             {
                 // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:129:8: ( ^( TYPE ident type ) )*
-                while ( stream_TYPE.hasNext()||stream_type.hasNext()||stream_ident.hasNext() ) {
+                while ( stream_ident.hasNext()||stream_TYPE.hasNext()||stream_type.hasNext() ) {
                     // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:129:8: ^( TYPE ident type )
                     {
                     CommonTree root_1 = (CommonTree)adaptor.nil();
@@ -4076,9 +4076,9 @@ public class Oberon0Parser extends Parser {
                     }
 
                 }
+                stream_ident.reset();
                 stream_TYPE.reset();
                 stream_type.reset();
-                stream_ident.reset();
 
             }
 
@@ -4192,7 +4192,7 @@ public class Oberon0Parser extends Parser {
 
 
             // AST REWRITE
-            // elements: type, identList, VAR
+            // elements: VAR, type, identList
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -4206,7 +4206,7 @@ public class Oberon0Parser extends Parser {
             // 131:5: -> ( ^( VAR type identList ) )*
             {
                 // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:131:8: ( ^( VAR type identList ) )*
-                while ( stream_type.hasNext()||stream_identList.hasNext()||stream_VAR.hasNext() ) {
+                while ( stream_VAR.hasNext()||stream_type.hasNext()||stream_identList.hasNext() ) {
                     // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:131:8: ^( VAR type identList )
                     {
                     CommonTree root_1 = (CommonTree)adaptor.nil();
@@ -4219,9 +4219,9 @@ public class Oberon0Parser extends Parser {
                     }
 
                 }
+                stream_VAR.reset();
                 stream_type.reset();
                 stream_identList.reset();
-                stream_VAR.reset();
 
             }
 
@@ -4386,7 +4386,7 @@ public class Oberon0Parser extends Parser {
 
 
             // AST REWRITE
-            // elements: varDeclarations, procedureDeclaration, typeDeclaration, constDeclaration
+            // elements: constDeclaration, procedureDeclaration, varDeclarations, typeDeclaration
             // token labels: 
             // rule labels: retval
             // token list labels: 
