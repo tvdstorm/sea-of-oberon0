@@ -6,7 +6,6 @@ import java.util.List;
 import oberon.Declaration;
 import oberon.FormalParamSection;
 import oberon.FormalParamType;
-import oberon.Procedure;
 import oberon.ProcedureBody;
 import oberon.ProcedureHeading;
 import oberon.StatementSequence;
