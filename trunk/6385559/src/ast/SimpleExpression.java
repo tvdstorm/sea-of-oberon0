@@ -5,7 +5,7 @@ public class SimpleExpression extends ExpressionNode
 {
   private String operator;
   protected ASTnode term;
-  protected SimpleExpression followup;
+  protected ExpressionNode followup;
   
   public SimpleExpression( String operator, ASTnode term, SimpleExpression followup )
   {
@@ -62,7 +62,7 @@ public class SimpleExpression extends ExpressionNode
     return 0;
   }
   
-  public void setRight( SimpleExpression expr )
+  public void setRight( ExpressionNode expr )
   {
     this.followup = expr;
   }

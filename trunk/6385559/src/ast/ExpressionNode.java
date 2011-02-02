@@ -12,7 +12,7 @@ public class ExpressionNode implements ASTnode
     this.right = right;
   }
   
-  public void setRight( SimpleExpression right )
+  public void setRight( ExpressionNode right )
   { // used to set the right operator
     this.right = right;
   }
