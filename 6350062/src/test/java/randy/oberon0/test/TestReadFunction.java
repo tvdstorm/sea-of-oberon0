@@ -24,7 +24,7 @@ public class TestReadFunction implements IInvokableFunction
 			throw new IncorrectNumberOfArgumentsException();
 		Value param = parameterValues.poll();
 		if (!param.getType().equals(Type.INTEGER))
-			throw new TypeMismatchException(param.getType(), Type.INTEGER);
+			throw new TypeMismatchException(param.getType().toString(), Type.INTEGER.toString());
 		String v = input.poll();
 		if (v == null)
 			throw new IOErrorException("Input stack is empty...");

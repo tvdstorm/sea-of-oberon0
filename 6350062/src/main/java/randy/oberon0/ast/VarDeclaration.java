@@ -43,14 +43,15 @@ public class VarDeclaration extends BodyDeclaration
 		for (String name : names)
 		{
 			Value param = parameters.poll();
-			//if (param.getType() != type) // TODO: aanpassen
-			//	throw new Oberon0TypeMismatchException(param.getType(), type);
+			Value instantiatedType = environment.resolveType(type).instantiate(environment);
+			if (param.getType() != instantiatedType.getType())
+				throw new TypeMismatchException(param.getType().toString(), type);
 			Value val;
 			if (isReference)
 				val = param;
 			else
 			{	
-				val = environment.resolveType(type).instantiate(environment);
+				val = instantiatedType;
 				val.setValue(param);
 			}
 			environment.addVariable(name, val);

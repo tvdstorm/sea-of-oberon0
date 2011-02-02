@@ -22,7 +22,7 @@ public class TestWriteFunction implements IInvokableFunction
 			throw new IncorrectNumberOfArgumentsException();
 		Value param = parameterValues.poll();
 		if (!param.getType().equals(Type.INTEGER))
-			throw new TypeMismatchException(param.getType(), Type.INTEGER);
+			throw new TypeMismatchException(param.getType().toString(), Type.INTEGER.toString());
 		output.add(((Integer)param).toString());
 		return null;
 	}

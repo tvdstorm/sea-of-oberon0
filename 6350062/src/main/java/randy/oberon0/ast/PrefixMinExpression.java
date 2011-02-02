@@ -22,7 +22,7 @@ public class PrefixMinExpression extends PrefixExpression
 		}
 		else
 		{
-			throw new OperatorTypeUndefinedException("-", valRh.getType());
+			throw new OperatorTypeUndefinedException("-", valRh.getType().toString());
 		}
 	}
 }

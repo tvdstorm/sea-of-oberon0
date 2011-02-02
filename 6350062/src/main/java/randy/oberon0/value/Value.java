@@ -21,25 +21,25 @@ public abstract class Value
 	{
 		if (this instanceof Integer)
 			return (Integer)this;
-		throw new TypeMismatchException(this.getType(), Type.INTEGER);
+		throw new TypeMismatchException(this.getType().toString(), Type.INTEGER.toString());
 	}
 	public Boolean castToBoolean() throws TypeMismatchException
 	{
 		if (this instanceof Boolean)
 			return (Boolean)this;
-		throw new TypeMismatchException(this.getType(), Type.BOOLEAN);
+		throw new TypeMismatchException(this.getType().toString(), Type.BOOLEAN.toString());
 	}
 	public Array castToArray() throws TypeMismatchException
 	{
 		if (this instanceof Array)
 			return (Array)this;
-		throw new TypeMismatchException(this.getType(), Type.ARRAY);
+		throw new TypeMismatchException(this.getType().toString(), Type.ARRAY.toString());
 	}
 	public Record castToRecord() throws TypeMismatchException
 	{
 		if (this instanceof Record)
 			return (Record)this;
-		throw new TypeMismatchException(this.getType(), Type.RECORD);
+		throw new TypeMismatchException(this.getType().toString(), Type.RECORD.toString());
 	}
 	public abstract boolean equalsToValue(Value _value);
 }

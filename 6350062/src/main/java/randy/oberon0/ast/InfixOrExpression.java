@@ -23,7 +23,7 @@ public class InfixOrExpression extends InfixExpression
 		}
 		else
 		{
-			throw new OperatorTypeUndefinedException("OR", valLh.getType(), valRh.getType());
+			throw new OperatorTypeUndefinedException("OR", valLh.getType().toString(), valRh.getType().toString());
 		}
 	}
 }
