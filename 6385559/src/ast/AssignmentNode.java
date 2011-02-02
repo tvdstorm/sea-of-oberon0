@@ -5,10 +5,10 @@ import management.MemoryManager;
 
 public class AssignmentNode implements StatementNode 
 {
-  private final VarNode var;
+  private final ExpressionNode var;
   private final ExpressionNode expression;
   
-  public AssignmentNode( VarNode var, ExpressionNode expression )
+  public AssignmentNode( ExpressionNode var, ExpressionNode expression )
   {
     this.var = var;
     this.expression = expression;
@@ -37,7 +37,7 @@ public class AssignmentNode implements StatementNode
   {
     if( this.expression != null && this.var != null )
     { // only set the value if the expression is an valid expression
-      MemoryManager.set( this.var.getVarname( ), this.expression.eval( ) );      
+      MemoryManager.set( this.var.getVariableName( ), this.expression.eval( ) );      
     }
     return 0;
   }

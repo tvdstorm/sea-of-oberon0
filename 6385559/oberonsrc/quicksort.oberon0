@@ -62,6 +62,4 @@ BEGIN
    WriteLn;
    i := i + 1
  END;
- i := i * 2;
- Write( i );
 END QuickSort.

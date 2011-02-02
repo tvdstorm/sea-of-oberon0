@@ -2,20 +2,20 @@ package ast;
 
 import errorhandler.OberonException;
 
-public class ExpressionDivideNode extends ExpressionTermNode
+public class ExpressionDivideNode extends ExpressionNode
 {
-  public ExpressionDivideNode( ASTnode factor, ExpressionTermNode follow )
+  public ExpressionDivideNode( ExpressionNode left, ExpressionNode right )
   {
-    super( factor, "DIV", follow );
+    super( left, right );
   }
   
   public String ToString( int depth )
   {
-    return super.factor.ToString( depth ) + " DIV " + super.follow.ToString( depth );
+    return super.left.ToString( depth ) + " DIV " + super.right.ToString( depth );
   }
   
   public int eval( ) throws OberonException
   {
-    return super.factor.eval( ) / super.follow.eval( );
+    return super.left.eval( ) / super.right.eval( );
   }
 }

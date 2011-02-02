@@ -137,7 +137,7 @@ simpleExpressionFollowup returns [ ExpressionNode e ]
 	)?
 	;
 	
-term returns [ ExpressionTermNode e ]
+term returns [ ExpressionNode e ]
 	: factor { $e = new ExpressionTermNode( $factor.e, null, null ); }
 	(operator=
 	(
@@ -149,14 +149,14 @@ term returns [ ExpressionTermNode e ]
 	followup=term { $e.setRight( $followup.e ); } )?
 	;  
 
-factor returns [ ASTnode e ]
+factor returns [ ExpressionNode e ]
 	: variable { $e = $variable.e; }
 	| number { $e = $number.e; }
 	| '(' expression ')' { $e = $expression.e; }
-	| '~' factorOperand=factor { $e = new NotNode( $factorOperand.e ); }
+	| '~' factorOperand=factor { $e = new ExpressionNotNode( $factorOperand.e ); }
 	;
 
-number returns [ IntegerNode e ]
+number returns [ ExpressionNode e ]
 	: INTEGER
 	{
 	   $e = new IntegerNode( Integer.parseInt( $INTEGER.text ) );
@@ -178,7 +178,7 @@ selector returns [ ASTnode e ]
 	)?
 	;
 	
-variable returns [ VarNode e ]
+variable returns [ ExpressionNode e ]
   : IDENT selector
   {
     $e = new VarNode( $IDENT.text, $selector.e );

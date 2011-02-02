@@ -3,13 +3,14 @@ package ast;
 import errorhandler.OberonException;
 import management.MemoryManager;
 
-public class VarNode implements ASTnode 
+public class VarNode extends ExpressionNode
 {
   private final String varname;
   private final ASTnode select;
   
   public VarNode( String varname, ASTnode select )
   {
+    super( null, null );
     this.varname = varname;
     this.select = select;
   }
@@ -31,10 +32,10 @@ public class VarNode implements ASTnode
   
   public int eval( ) throws OberonException
   {
-    return MemoryManager.get( this.getVarname( ) );
+    return MemoryManager.get( this.getVariableName( ) );
   }
   
-  public String getVarname( ) throws OberonException
+  public String getVariableName( ) throws OberonException
   {
     String varnameWithSelector = this.varname;
     if( select != null )
