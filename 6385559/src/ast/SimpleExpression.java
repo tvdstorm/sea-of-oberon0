@@ -3,9 +3,9 @@ import errorhandler.OberonException;
 
 public class SimpleExpression extends ExpressionNode
 {
-  private final String operator;
-  private final ASTnode term;
-  private final SimpleExpression followup;
+  private String operator;
+  protected ASTnode term;
+  protected SimpleExpression followup;
   
   public SimpleExpression( String operator, ASTnode term, SimpleExpression followup )
   {
@@ -60,6 +60,11 @@ public class SimpleExpression extends ExpressionNode
       }
     }
     return 0;
+  }
+  
+  public void setRight( SimpleExpression expr )
+  {
+    this.followup = expr;
   }
   
   public String getVariableName() throws OberonException

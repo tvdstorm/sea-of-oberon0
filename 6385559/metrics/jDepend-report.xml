@@ -4,8 +4,8 @@
 
         <Package name="ast">
             <Stats>
-                <TotalClasses>41</TotalClasses>
-                <ConcreteClasses>39</ConcreteClasses>
+                <TotalClasses>44</TotalClasses>
+                <ConcreteClasses>42</ConcreteClasses>
                 <AbstractClasses>2</AbstractClasses>
                 <Ca>4</Ca>
                 <Ce>5</Ce>
@@ -49,11 +49,20 @@
                 <Class sourceFile="ExpressionEqualNode.java">
                     ast.ExpressionEqualNode
                 </Class>
+                <Class sourceFile="ExpressionMinNode.java">
+                    ast.ExpressionMinNode
+                </Class>
                 <Class sourceFile="ExpressionNode.java">
                     ast.ExpressionNode
                 </Class>
                 <Class sourceFile="ExpressionNotEqualNode.java">
                     ast.ExpressionNotEqualNode
+                </Class>
+                <Class sourceFile="ExpressionOrNode.java">
+                    ast.ExpressionOrNode
+                </Class>
+                <Class sourceFile="ExpressionPlusNode.java">
+                    ast.ExpressionPlusNode
                 </Class>
                 <Class sourceFile="ExpressionSmallerEqualNode.java">
                     ast.ExpressionSmallerEqualNode
