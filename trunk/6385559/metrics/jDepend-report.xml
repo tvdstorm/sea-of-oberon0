@@ -4,12 +4,12 @@
 
         <Package name="ast">
             <Stats>
-                <TotalClasses>44</TotalClasses>
-                <ConcreteClasses>42</ConcreteClasses>
+                <TotalClasses>47</TotalClasses>
+                <ConcreteClasses>45</ConcreteClasses>
                 <AbstractClasses>2</AbstractClasses>
                 <Ca>4</Ca>
                 <Ce>5</Ce>
-                <A>0.05</A>
+                <A>0.04</A>
                 <I>0.56</I>
                 <D>0.4</D>
                 <V>1</V>
@@ -40,11 +40,17 @@
                 <Class sourceFile="ElseStatementNode.java">
                     ast.ElseStatementNode
                 </Class>
+                <Class sourceFile="ExpressionAndNode.java">
+                    ast.ExpressionAndNode
+                </Class>
                 <Class sourceFile="ExpressionBiggerEqualNode.java">
                     ast.ExpressionBiggerEqualNode
                 </Class>
                 <Class sourceFile="ExpressionBiggerNode.java">
                     ast.ExpressionBiggerNode
+                </Class>
+                <Class sourceFile="ExpressionDivideNode.java">
+                    ast.ExpressionDivideNode
                 </Class>
                 <Class sourceFile="ExpressionEqualNode.java">
                     ast.ExpressionEqualNode
@@ -54,6 +60,12 @@
                 </Class>
                 <Class sourceFile="ExpressionMinusNode.java">
                     ast.ExpressionMinusNode
+                </Class>
+                <Class sourceFile="ExpressionModuloNode.java">
+                    ast.ExpressionModuloNode
+                </Class>
+                <Class sourceFile="ExpressionMultiplyNode.java">
+                    ast.ExpressionMultiplyNode
                 </Class>
                 <Class sourceFile="ExpressionNode.java">
                     ast.ExpressionNode
@@ -132,9 +144,6 @@
                 </Class>
                 <Class sourceFile="SelectorRecordNode.java">
                     ast.SelectorRecordNode
-                </Class>
-                <Class sourceFile="SimpleExpression.java">
-                    ast.SimpleExpression
                 </Class>
                 <Class sourceFile="StatementSequenceNode.java">
                     ast.StatementSequenceNode

@@ -3,9 +3,9 @@ import errorhandler.OberonException;
 
 public class ExpressionTermNode extends ExpressionNode
 {
-  private final ASTnode factor;
-  private final String operator; // '*'|'DIV'|'MOD'|'&'
-  private final ExpressionTermNode follow;
+  protected ASTnode factor;
+  protected String operator; // '*'|'DIV'|'MOD'|'&'
+  protected ExpressionTermNode follow;
   
   public ExpressionTermNode( ASTnode factor, String operator, ExpressionTermNode follow )
   {
@@ -64,6 +64,11 @@ public class ExpressionTermNode extends ExpressionNode
       }
     }
     return 0;
+  }
+  
+  public void setRight( ExpressionTermNode expression )
+  {
+    this.follow = expression;
   }
 
   public String getVariableName( ) throws OberonException
