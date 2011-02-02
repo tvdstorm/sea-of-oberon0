@@ -1,4 +1,4 @@
-package oberon0.ast.expressions.variables;
+package oberon0.ast.variables;
 
 import oberon0.ast.IASTNode;
 import oberon0.ast.expressions.IEvaluable;

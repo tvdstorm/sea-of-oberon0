@@ -60,7 +60,7 @@ tokens
 
 @header {package generated; 
 import oberon0.ast.expressions.*;
-import oberon0.ast.expressions.variables.*;
+import oberon0.ast.variables.*;
 import oberon0.ast.declarations.*;
 import oberon0.ast.routines.*;
 import oberon0.ast.statements.*;
@@ -218,9 +218,9 @@ expression returns [ IEvaluable node ]
 	)?;
 
 simpleExpression returns [ IEvaluable node ]
-	: 				{ Boolean minus = false; }
+	: 				{ Boolean minus = false; 				}
 	(ADD 
-	| SUBTRACT			{ minus = true; }
+	| SUBTRACT			{ minus = true;						}
 	)? 		
 	lhsTerm = term 			{$node = $lhsTerm.node;					}
 	(ADD 		rhsTerm = term 	{$node = new AddNode($node, $rhsTerm.node);		}
@@ -251,15 +251,17 @@ number	returns [ IntegerNode node ]
 	;
 
 booleann returns [ IEvaluable node ]
-	: FALSE 			{ $node = new BooleanNode ( false); }
-	| TRUE				{ $node = new BooleanNode ( true); }
+	: FALSE 			{ $node = new BooleanNode ( false); 	}
+	| TRUE				{ $node = new BooleanNode ( true); 	}
 	;
 
-selector returns [ IEvaluable node ]
-	: 
-	(DOT IDENT 			{ new SelectorRecordNode ( $IDENT.text );	}
-	| SQROPEN expression SQRCLOSE	{ new SelectorArrayNode  ( $expression.node );	}
-	)*;
+selector returns [ ISelector node ]
+	: 				{ArrayList<ISelector> list = 
+						 new ArrayList<ISelector>();			}
+	(DOT IDENT 			{list.add(new SelectorRecordNode ( $IDENT.text ) );	}
+	| SQROPEN expression SQRCLOSE	{list.add(new SelectorArrayNode ( $expression.node ) );	}
+	)*				{$node = new SelectorNode(list);			}
+	;
 	
 IDENT  	:	('a'..'z'|'A'..'Z'|'_') 
 		('a'..'z'|'A'..'Z'|'0'..'9'|'_')* ;
