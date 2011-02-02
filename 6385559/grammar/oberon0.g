@@ -138,18 +138,16 @@ simpleExpressionFollowup returns [ ExpressionNode e ]
 	;
 	
 term returns [ ExpressionTermNode e ]
-	: factor (operator=('*'|'DIV'|'MOD'|'&') termFollowUp)?
-	{
-	  $e = new ExpressionTermNode( $factor.e, $operator.text, $termFollowUp.e );
-	}
-	;
-	
-termFollowUp returns [ ExpressionTermNode e ]
-  : factor (operator=('*'|'DIV'|'MOD'|'&') follow2=termFollowUp)?
-  {
-    $e = new ExpressionTermNode( $factor.e, $operator.text, $follow2.e );
-  }
-  ;
+	: factor { $e = new ExpressionTermNode( $factor.e, null, null ); }
+	(operator=
+	(
+	  '*' { $e = new ExpressionMultiplyNode( $factor.e, null ); }
+	| 'DIV' { $e = new ExpressionDivideNode( $factor.e, null ); }
+	| 'MOD' { $e = new ExpressionModuloNode( $factor.e, null ); }
+	| '&' { $e = new ExpressionAndNode( $factor.e, null ); }
+	) 
+	followup=term { $e.setRight( $followup.e ); } )?
+	;  
 
 factor returns [ ASTnode e ]
 	: variable { $e = $variable.e; }
