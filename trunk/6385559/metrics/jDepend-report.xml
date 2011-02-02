@@ -4,8 +4,8 @@
 
         <Package name="ast">
             <Stats>
-                <TotalClasses>47</TotalClasses>
-                <ConcreteClasses>45</ConcreteClasses>
+                <TotalClasses>46</TotalClasses>
+                <ConcreteClasses>44</ConcreteClasses>
                 <AbstractClasses>2</AbstractClasses>
                 <Ca>4</Ca>
                 <Ce>5</Ce>
@@ -87,9 +87,6 @@
                 </Class>
                 <Class sourceFile="ExpressionSmallerNode.java">
                     ast.ExpressionSmallerNode
-                </Class>
-                <Class sourceFile="ExpressionTermNode.java">
-                    ast.ExpressionTermNode
                 </Class>
                 <Class sourceFile="FieldlistNode.java">
                     ast.FieldlistNode
