@@ -69,11 +69,6 @@ public class SimpleExpression extends ExpressionNode
   
   public String getVariableName() throws OberonException
   { // detect whether it is only a variable node complete simple expression needed for call be reference
-    if( this.operator != null && this.followup != null && !( this.term instanceof ExpressionTermNode ) )
-    {
-      return null;
-    }
-    
-    return ((ExpressionTermNode) this.term).getVariableName();
+    return "";
   }
 }

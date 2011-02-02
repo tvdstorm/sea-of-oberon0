@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-02-02</date>
-  <time>21:19:36</time>
+  <time>21:24:25</time>
   <packages>
     <package>
       <name>ast</name>
@@ -685,7 +685,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.ExpressionMinNode.ExpressionMinNode(ASTnode,SimpleExpression)</name>
+      <name>ast.ExpressionMinNode.ExpressionMinNode(ExpressionNode,ExpressionNode)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -769,7 +769,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.ExpressionOrNode.ExpressionOrNode(ASTnode,SimpleExpression)</name>
+      <name>ast.ExpressionOrNode.ExpressionOrNode(ExpressionNode,ExpressionNode)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -787,7 +787,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.ExpressionPlusNode.ExpressionPlusNode(ASTnode,SimpleExpression)</name>
+      <name>ast.ExpressionPlusNode.ExpressionPlusNode(ExpressionNode,ExpressionNode)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>

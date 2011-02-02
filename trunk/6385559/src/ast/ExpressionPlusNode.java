@@ -2,20 +2,20 @@ package ast;
 
 import errorhandler.OberonException;
 
-public class ExpressionPlusNode extends SimpleExpression
+public class ExpressionPlusNode extends ExpressionNode
 {
-  public ExpressionPlusNode( ASTnode left, SimpleExpression right )
+  public ExpressionPlusNode( ExpressionNode left, ExpressionNode right )
   {
-    super( "OR", left, right );
+    super( left, right );
   }
   
   public String ToString( int depth )
   {
-    return super.term.ToString( depth ) + " OR " + super.followup.toString();
+    return super.left.ToString( depth ) + " OR " + super.right.toString();
   }
   
   public int eval( ) throws OberonException
   {
-    return super.term.eval( ) + super.followup.eval( );
+    return super.left.eval( ) + super.right.eval( );
   }
 }
