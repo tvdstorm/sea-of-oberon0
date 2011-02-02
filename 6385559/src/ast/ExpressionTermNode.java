@@ -1,14 +1,15 @@
 package ast;
 import errorhandler.OberonException;
 
-public class TermNode implements ASTnode 
+public class ExpressionTermNode extends ExpressionNode
 {
   private final ASTnode factor;
   private final String operator; // '*'|'DIV'|'MOD'|'&'
-  private final TermNode follow;
+  private final ExpressionTermNode follow;
   
-  public TermNode( ASTnode factor, String operator, TermNode follow )
+  public ExpressionTermNode( ASTnode factor, String operator, ExpressionTermNode follow )
   {
+    super( null, null );
     this.factor = factor;
     this.operator = operator;
     this.follow = follow;

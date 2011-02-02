@@ -1,12 +1,13 @@
 package ast;
 import errorhandler.OberonException;
 
-public class MinusNode implements ASTnode 
+public class ExpressionMinusNode extends ExpressionNode 
 {
-  private final TermNode child;
+  private final ExpressionTermNode child;
   
-  public MinusNode( TermNode child )
+  public ExpressionMinusNode( ExpressionTermNode child )
   {
+    super( null, null );
     this.child = child;
   }
   

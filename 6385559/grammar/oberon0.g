@@ -105,7 +105,7 @@ expression returns [ ExpressionNode e ]
 	;
 	
 simpleexpression returns [ ExpressionNode e ]
-	: specialTerm { $e = new SimpleExpression( null, $specialTerm.e, null ); }
+	: specialTerm { $e = $specialTerm.e; }
 	( operator=(
 	  '+' { $e = new ExpressionPlusNode( $specialTerm.e, null ); }
 	| '-' { $e = new ExpressionMinNode( $specialTerm.e, null ); }
@@ -117,14 +117,14 @@ simpleexpression returns [ ExpressionNode e ]
 	)?
 	;
 	
-specialTerm returns [ ASTnode e ]
+specialTerm returns [ ExpressionNode e ]
   : operator=('+') term { $e = $term.e; }
-  | operator=('-') term { $e = new MinusNode( $term.e ); }
+  | operator=('-') term { $e = new ExpressionMinusNode( $term.e ); }
   | term { $e = $term.e; }
   ;
 	
 simpleExpressionFollowup returns [ ExpressionNode e ]
-	:  term { $e = new SimpleExpression( null, $term.e, null ); } 
+	:  term { $e = $term.e; } 
 	(operator=
 	(
 	  '+' { $e = new ExpressionPlusNode( $term.e, null ); }
@@ -137,17 +137,17 @@ simpleExpressionFollowup returns [ ExpressionNode e ]
 	)?
 	;
 	
-term returns [ TermNode e ]
+term returns [ ExpressionTermNode e ]
 	: factor (operator=('*'|'DIV'|'MOD'|'&') termFollowUp)?
 	{
-	  $e = new TermNode( $factor.e, $operator.text, $termFollowUp.e );
+	  $e = new ExpressionTermNode( $factor.e, $operator.text, $termFollowUp.e );
 	}
 	;
 	
-termFollowUp returns [ TermNode e ]
+termFollowUp returns [ ExpressionTermNode e ]
   : factor (operator=('*'|'DIV'|'MOD'|'&') follow2=termFollowUp)?
   {
-    $e = new TermNode( $factor.e, $operator.text, $follow2.e );
+    $e = new ExpressionTermNode( $factor.e, $operator.text, $follow2.e );
   }
   ;
 
