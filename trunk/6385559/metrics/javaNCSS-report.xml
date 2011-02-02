@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-02-02</date>
-  <time>20:27:59</time>
+  <time>21:19:36</time>
   <packages>
     <package>
       <name>ast</name>
       <classes>44</classes>
       <functions>154</functions>
-      <ncss>1033</ncss>
+      <ncss>1035</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>61</single_comment_lines>
@@ -56,7 +56,7 @@
     <total>
       <classes>62</classes>
       <functions>220</functions>
-      <ncss>1522</ncss>
+      <ncss>1524</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>87</single_comment_lines>
@@ -64,10 +64,10 @@
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>5.00</td><td>62.00</td><td>220.00</td><td>1,522.00</td><td>0.00</td><td>Project</td></tr>
-      <tr><td></td><td>12.40</td><td>44.00</td><td>304.40</td><td>0.00</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.55</td><td>24.55</td><td>0.00</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>6.92</td><td>0.00</td><td>Function</td></tr>
+      <tr><td>5.00</td><td>62.00</td><td>220.00</td><td>1,524.00</td><td>0.00</td><td>Project</td></tr>
+      <tr><td></td><td>12.40</td><td>44.00</td><td>304.80</td><td>0.00</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.55</td><td>24.58</td><td>0.00</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>6.93</td><td>0.00</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -143,6 +143,13 @@
       <javadocs>0</javadocs>
     </object>
     <object>
+      <name>ast.ExpressionMinusNode</name>
+      <ncss>9</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
       <name>ast.ExpressionNode</name>
       <ncss>14</ncss>
       <functions>5</functions>
@@ -181,6 +188,13 @@
       <name>ast.ExpressionSmallerNode</name>
       <ncss>9</ncss>
       <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>ast.ExpressionTermNode</name>
+      <ncss>41</ncss>
+      <functions>4</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -228,13 +242,6 @@
     </object>
     <object>
       <name>ast.IntegerNode</name>
-      <ncss>8</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>ast.MinusNode</name>
       <ncss>8</ncss>
       <functions>3</functions>
       <classes>0</classes>
@@ -342,13 +349,6 @@
       <name>ast.StatementSequenceNode</name>
       <ncss>19</ncss>
       <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>ast.TermNode</name>
-      <ncss>40</ncss>
-      <functions>4</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -507,12 +507,12 @@
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>22.52</ncss>
+      <ncss>22.55</ncss>
       <functions>3.55</functions>
       <classes>0.05</classes>
       <javadocs>0.00</javadocs>
     </averages>
-    <ncss>1,522.00</ncss>
+    <ncss>1,524.00</ncss>
   </objects>
 
   <functions>
@@ -631,7 +631,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.ExpressionBiggerEqualNode.ExpressionBiggerEqualNode(SimpleExpression,SimpleExpression)</name>
+      <name>ast.ExpressionBiggerEqualNode.ExpressionBiggerEqualNode(ExpressionNode,ExpressionNode)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -649,7 +649,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.ExpressionBiggerNode.ExpressionBiggerNode(SimpleExpression,SimpleExpression)</name>
+      <name>ast.ExpressionBiggerNode.ExpressionBiggerNode(ExpressionNode,ExpressionNode)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -667,7 +667,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.ExpressionEqualNode.ExpressionEqualNode(SimpleExpression,SimpleExpression)</name>
+      <name>ast.ExpressionEqualNode.ExpressionEqualNode(ExpressionNode,ExpressionNode)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -703,13 +703,31 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>ast.ExpressionMinusNode.ExpressionMinusNode(ExpressionTermNode)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.ExpressionMinusNode.ToString(int)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.ExpressionMinusNode.eval()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>ast.ExpressionNode.ExpressionNode(ExpressionNode,ExpressionNode)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.ExpressionNode.setRight(SimpleExpression)</name>
+      <name>ast.ExpressionNode.setRight(ExpressionNode)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -733,7 +751,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.ExpressionNotEqualNode.ExpressionNotEqualNode(SimpleExpression,SimpleExpression)</name>
+      <name>ast.ExpressionNotEqualNode.ExpressionNotEqualNode(ExpressionNode,ExpressionNode)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -787,7 +805,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.ExpressionSmallerEqualNode.ExpressionSmallerEqualNode(SimpleExpression,SimpleExpression)</name>
+      <name>ast.ExpressionSmallerEqualNode.ExpressionSmallerEqualNode(ExpressionNode,ExpressionNode)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -805,7 +823,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.ExpressionSmallerNode.ExpressionSmallerNode(SimpleExpression,SimpleExpression)</name>
+      <name>ast.ExpressionSmallerNode.ExpressionSmallerNode(ExpressionNode,ExpressionNode)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -818,6 +836,30 @@
     </function>
     <function>
       <name>ast.ExpressionSmallerNode.eval()</name>
+      <ncss>4</ncss>
+      <ccn>5</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.ExpressionTermNode.ExpressionTermNode(ASTnode,String,ExpressionTermNode)</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.ExpressionTermNode.ToString(int)</name>
+      <ncss>9</ncss>
+      <ccn>4</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.ExpressionTermNode.eval()</name>
+      <ncss>19</ncss>
+      <ccn>14</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.ExpressionTermNode.getVariableName()</name>
       <ncss>4</ncss>
       <ccn>5</ccn>
       <javadocs>0</javadocs>
@@ -992,24 +1034,6 @@
     </function>
     <function>
       <name>ast.IntegerNode.eval()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.MinusNode.MinusNode(TermNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.MinusNode.ToString(int)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.MinusNode.eval()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -1297,7 +1321,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.SimpleExpression.setRight(SimpleExpression)</name>
+      <name>ast.SimpleExpression.setRight(ExpressionNode)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -1324,30 +1348,6 @@
       <name>ast.StatementSequenceNode.eval()</name>
       <ncss>6</ncss>
       <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.TermNode.TermNode(ASTnode,String,TermNode)</name>
-      <ncss>4</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.TermNode.ToString(int)</name>
-      <ncss>9</ncss>
-      <ccn>4</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.TermNode.eval()</name>
-      <ncss>19</ncss>
-      <ccn>14</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.TermNode.getVariableName()</name>
-      <ncss>4</ncss>
-      <ccn>5</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -1837,10 +1837,10 @@
       <javadocs>0</javadocs>
     </function>
     <function_averages>
-      <ncss>5.39</ncss>
+      <ncss>5.40</ncss>
       <ccn>2.50</ccn>
       <javadocs>0.00</javadocs>
     </function_averages>
-    <ncss>1,522.00</ncss>
+    <ncss>1,524.00</ncss>
   </functions>
 </javancss>

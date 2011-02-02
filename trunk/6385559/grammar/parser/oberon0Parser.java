@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g 2011-02-02 20:27:59
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g 2011-02-02 21:19:36
 
   package parser;
   
@@ -922,7 +922,7 @@ public class oberon0Parser extends Parser {
         ExpressionNode e = null;
 
         Token operator=null;
-        ASTnode specialTerm20 = null;
+        ExpressionNode specialTerm20 = null;
 
         ExpressionNode simpleExpressionFollowup21 = null;
 
@@ -937,7 +937,7 @@ public class oberon0Parser extends Parser {
             state._fsp--;
             if (state.failed) return e;
             if ( state.backtracking==0 ) {
-               e = new SimpleExpression( null, specialTerm20, null ); 
+               e = specialTerm20; 
             }
             // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:109:2: (operator= ( '+' | '-' | 'OR' ) simpleExpressionFollowup )?
             int alt14=2;
@@ -1042,16 +1042,16 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "specialTerm"
-    // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:120:1: specialTerm returns [ ASTnode e ] : (operator= ( '+' ) term | operator= ( '-' ) term | term );
-    public final ASTnode specialTerm() throws RecognitionException {
-        ASTnode e = null;
+    // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:120:1: specialTerm returns [ ExpressionNode e ] : (operator= ( '+' ) term | operator= ( '-' ) term | term );
+    public final ExpressionNode specialTerm() throws RecognitionException {
+        ExpressionNode e = null;
 
         Token operator=null;
-        TermNode term22 = null;
+        ExpressionTermNode term22 = null;
 
-        TermNode term23 = null;
+        ExpressionTermNode term23 = null;
 
-        TermNode term24 = null;
+        ExpressionTermNode term24 = null;
 
 
         try {
@@ -1122,7 +1122,7 @@ public class oberon0Parser extends Parser {
                     state._fsp--;
                     if (state.failed) return e;
                     if ( state.backtracking==0 ) {
-                       e = new MinusNode( term23 ); 
+                       e = new ExpressionMinusNode( term23 ); 
                     }
 
                     }
@@ -1163,7 +1163,7 @@ public class oberon0Parser extends Parser {
         Token operator=null;
         ExpressionNode follow2 = null;
 
-        TermNode term25 = null;
+        ExpressionTermNode term25 = null;
 
 
         try {
@@ -1176,7 +1176,7 @@ public class oberon0Parser extends Parser {
             state._fsp--;
             if (state.failed) return e;
             if ( state.backtracking==0 ) {
-               e = new SimpleExpression( null, term25, null ); 
+               e = term25; 
             }
             // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:128:2: (operator= ( '+' | '-' | 'OR' ) follow2= simpleExpressionFollowup )?
             int alt17=2;
@@ -1281,14 +1281,14 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "term"
-    // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:140:1: term returns [ TermNode e ] : factor (operator= ( '*' | 'DIV' | 'MOD' | '&' ) termFollowUp )? ;
-    public final TermNode term() throws RecognitionException {
-        TermNode e = null;
+    // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:140:1: term returns [ ExpressionTermNode e ] : factor (operator= ( '*' | 'DIV' | 'MOD' | '&' ) termFollowUp )? ;
+    public final ExpressionTermNode term() throws RecognitionException {
+        ExpressionTermNode e = null;
 
         Token operator=null;
         ASTnode factor26 = null;
 
-        TermNode termFollowUp27 = null;
+        ExpressionTermNode termFollowUp27 = null;
 
 
         try {
@@ -1335,7 +1335,7 @@ public class oberon0Parser extends Parser {
 
             if ( state.backtracking==0 ) {
 
-              	  e = new TermNode( factor26, (operator!=null?operator.getText():null), termFollowUp27 );
+              	  e = new ExpressionTermNode( factor26, (operator!=null?operator.getText():null), termFollowUp27 );
               	
             }
 
@@ -1354,12 +1354,12 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "termFollowUp"
-    // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:147:1: termFollowUp returns [ TermNode e ] : factor (operator= ( '*' | 'DIV' | 'MOD' | '&' ) follow2= termFollowUp )? ;
-    public final TermNode termFollowUp() throws RecognitionException {
-        TermNode e = null;
+    // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:147:1: termFollowUp returns [ ExpressionTermNode e ] : factor (operator= ( '*' | 'DIV' | 'MOD' | '&' ) follow2= termFollowUp )? ;
+    public final ExpressionTermNode termFollowUp() throws RecognitionException {
+        ExpressionTermNode e = null;
 
         Token operator=null;
-        TermNode follow2 = null;
+        ExpressionTermNode follow2 = null;
 
         ASTnode factor28 = null;
 
@@ -1408,7 +1408,7 @@ public class oberon0Parser extends Parser {
 
             if ( state.backtracking==0 ) {
 
-                  e = new TermNode( factor28, (operator!=null?operator.getText():null), follow2 );
+                  e = new ExpressionTermNode( factor28, (operator!=null?operator.getText():null), follow2 );
                 
             }
 

@@ -52,6 +52,9 @@
                 <Class sourceFile="ExpressionMinNode.java">
                     ast.ExpressionMinNode
                 </Class>
+                <Class sourceFile="ExpressionMinusNode.java">
+                    ast.ExpressionMinusNode
+                </Class>
                 <Class sourceFile="ExpressionNode.java">
                     ast.ExpressionNode
                 </Class>
@@ -69,6 +72,9 @@
                 </Class>
                 <Class sourceFile="ExpressionSmallerNode.java">
                     ast.ExpressionSmallerNode
+                </Class>
+                <Class sourceFile="ExpressionTermNode.java">
+                    ast.ExpressionTermNode
                 </Class>
                 <Class sourceFile="FieldlistNode.java">
                     ast.FieldlistNode
@@ -90,9 +96,6 @@
                 </Class>
                 <Class sourceFile="IntegerNode.java">
                     ast.IntegerNode
-                </Class>
-                <Class sourceFile="MinusNode.java">
-                    ast.MinusNode
                 </Class>
                 <Class sourceFile="ModuleNode.java">
                     ast.ModuleNode
@@ -135,9 +138,6 @@
                 </Class>
                 <Class sourceFile="StatementSequenceNode.java">
                     ast.StatementSequenceNode
-                </Class>
-                <Class sourceFile="TermNode.java">
-                    ast.TermNode
                 </Class>
                 <Class sourceFile="TypeDefNode.java">
                     ast.TypeDefNode
