@@ -35,9 +35,9 @@ public class AssignmentNode implements StatementNode
   
   public int eval( ) throws OberonException
   {
-    if( this.expression != null && this.var != null )
+    if( this.expression != null && this.var != null && this.var instanceof VarNode )
     { // only set the value if the expression is an valid expression
-      MemoryManager.set( this.var.getVariableName( ), this.expression.eval( ) );      
+      MemoryManager.set( ((VarNode)this.var).getVariableName( ), this.expression.eval( ) );      
     }
     return 0;
   }

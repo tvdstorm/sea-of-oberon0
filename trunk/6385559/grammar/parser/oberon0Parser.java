@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g 2011-02-02 22:26:16
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g 2011-02-02 22:35:22
 
   package parser;
   
@@ -1301,7 +1301,7 @@ public class oberon0Parser extends Parser {
             state._fsp--;
             if (state.failed) return e;
             if ( state.backtracking==0 ) {
-               e = new ExpressionTermNode( factor26, null, null ); 
+               e = factor26; 
             }
             // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:142:2: (operator= ( '*' | 'DIV' | 'MOD' | '&' ) followup= term )?
             int alt19=2;

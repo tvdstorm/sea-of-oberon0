@@ -47,7 +47,10 @@ public class ParamNode implements ASTnode
     }
     
     buffer.value = this.param.eval( );
-    buffer.varname = this.param.getVariableName();
+    if( this.param instanceof VarNode )
+    {
+      buffer.varname = ((VarNode)this.param).getVariableName();
+    }
 
     container.add( buffer );
     return container;

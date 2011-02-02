@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-02-02</date>
-  <time>22:26:17</time>
+  <time>22:35:23</time>
   <packages>
     <package>
       <name>ast</name>
       <classes>47</classes>
-      <functions>162</functions>
-      <ncss>1032</ncss>
+      <functions>161</functions>
+      <ncss>1029</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>59</single_comment_lines>
+      <single_comment_lines>58</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <package>
@@ -55,19 +55,19 @@
     </package>
     <total>
       <classes>65</classes>
-      <functions>228</functions>
-      <ncss>1521</ncss>
+      <functions>227</functions>
+      <ncss>1518</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>85</single_comment_lines>
+      <single_comment_lines>84</single_comment_lines>
       <multi_comment_lines>46</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>5.00</td><td>65.00</td><td>228.00</td><td>1,521.00</td><td>0.00</td><td>Project</td></tr>
-      <tr><td></td><td>13.00</td><td>45.60</td><td>304.20</td><td>0.00</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.51</td><td>23.40</td><td>0.00</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>6.67</td><td>0.00</td><td>Function</td></tr>
+      <tr><td>5.00</td><td>65.00</td><td>227.00</td><td>1,518.00</td><td>0.00</td><td>Project</td></tr>
+      <tr><td></td><td>13.00</td><td>45.40</td><td>303.60</td><td>0.00</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.49</td><td>23.35</td><td>0.00</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>6.69</td><td>0.00</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -179,8 +179,8 @@
     </object>
     <object>
       <name>ast.ExpressionNode</name>
-      <ncss>16</ncss>
-      <functions>5</functions>
+      <ncss>12</ncss>
+      <functions>4</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -291,7 +291,7 @@
     </object>
     <object>
       <name>ast.ParamNode</name>
-      <ncss>24</ncss>
+      <ncss>25</ncss>
       <functions>4</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
@@ -528,12 +528,12 @@
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>21.37</ncss>
-      <functions>3.51</functions>
+      <ncss>21.32</ncss>
+      <functions>3.49</functions>
       <classes>0.05</classes>
       <javadocs>0.00</javadocs>
     </averages>
-    <ncss>1,521.00</ncss>
+    <ncss>1,518.00</ncss>
   </objects>
 
   <functions>
@@ -588,7 +588,7 @@
     <function>
       <name>ast.AssignmentNode.eval()</name>
       <ncss>4</ncss>
-      <ccn>3</ccn>
+      <ccn>4</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -835,12 +835,6 @@
       <name>ast.ExpressionNode.eval()</name>
       <ncss>2</ncss>
       <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionNode.getVariableName()</name>
-      <ncss>4</ncss>
-      <ccn>4</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -1193,8 +1187,8 @@
     </function>
     <function>
       <name>ast.ParamNode.getVarValueList()</name>
-      <ncss>9</ncss>
-      <ccn>2</ccn>
+      <ncss>10</ncss>
+      <ccn>3</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -1906,10 +1900,10 @@
       <javadocs>0</javadocs>
     </function>
     <function_averages>
-      <ncss>5.18</ncss>
+      <ncss>5.19</ncss>
       <ccn>2.38</ccn>
       <javadocs>0.00</javadocs>
     </function_averages>
-    <ncss>1,521.00</ncss>
+    <ncss>1,518.00</ncss>
   </functions>
 </javancss>

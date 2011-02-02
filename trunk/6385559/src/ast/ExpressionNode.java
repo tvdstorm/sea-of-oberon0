@@ -26,14 +26,4 @@ public class ExpressionNode implements ASTnode
   { // only used to reduce the number of type conversions that I need to do
     throw new OberonException( "Expression eval should never be called." );
   }
-  
-  public String getVariableName() throws OberonException
-  { // used only to ease the use of getVariableName, not type conversions needed
-    if( this.right != null && !( this.left instanceof VarNode ) )
-    {
-      return null;
-    }
-    
-    return ((VarNode) this.left).getVariableName();
-  }
 }

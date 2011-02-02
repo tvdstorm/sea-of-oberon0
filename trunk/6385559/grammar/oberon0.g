@@ -138,7 +138,7 @@ simpleExpressionFollowup returns [ ExpressionNode e ]
 	;
 	
 term returns [ ExpressionNode e ]
-	: factor { $e = new ExpressionTermNode( $factor.e, null, null ); }
+	: factor { $e = $factor.e; }
 	(operator=
 	(
 	  '*' { $e = new ExpressionMultiplyNode( $factor.e, null ); }
