@@ -5,6 +5,7 @@ import oberon0.ast.statements.IExecutable;
 import oberon0.environment.Context;
 
 public class ModuleNode implements ICallable{
+	
 	private String _name;
 	private IDeclarable _declarations;
 	private IExecutable _body;
@@ -17,9 +18,13 @@ public class ModuleNode implements ICallable{
 
 	public void run(Context context) {	
 		if (context == null){
-			context = new Context(_name, null);
+			context = new Context(_name, Context.noParent);
 		}
+		context.print();
+		
 		_declarations.declare(context);
 		_body.execute(context);
+		
+		context.print();
 	}
 }

@@ -1,6 +1,8 @@
 package oberon0.ast.expressions;
 
 import oberon0.environment.Context;
+import oberon0.environment.IValue;
+import oberon0.environment.IntegerValue;
 
 public class NegativeNode extends BaseUniliteralExpressionNode {
 
@@ -9,8 +11,9 @@ public class NegativeNode extends BaseUniliteralExpressionNode {
 	}
 
 	@Override
-	public Object eval(Context context) {
-		return - (Integer) evalChildExpression(context);
+	public IValue eval(Context context) {
+		int positive = ((IntegerValue) evalChildExpression(context)).getValue();
+		return new IntegerValue( 0 - positive);
 	}
 
 }

@@ -1,6 +1,8 @@
 package oberon0.ast.expressions;
 
+import oberon0.environment.BooleanValue;
 import oberon0.environment.Context;
+import oberon0.environment.IValue;
 
 public class EqualsNotNode extends BaseBiliteralExpressionNode {
 
@@ -10,10 +12,8 @@ public class EqualsNotNode extends BaseBiliteralExpressionNode {
 	}
 
 	@Override
-	public Object eval(Context context) {
-		Object lhs = evalLhsExpression(context);
-		Object rhs = evalRhsExpression(context);
-		return lhs != rhs;
+	public IValue eval(Context context) {
+		return new BooleanValue(evalLhsExpression(context) != evalRhsExpression(context));
 	}
 
 }

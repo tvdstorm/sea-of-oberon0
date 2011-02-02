@@ -17,7 +17,9 @@ import oberon0.ast.expressions.NegativeNode;
 import oberon0.ast.expressions.SmallerEqualNode;
 import oberon0.ast.expressions.SmallerThenNode;
 import oberon0.ast.expressions.SubtractNode;
+import oberon0.environment.BooleanValue;
 import oberon0.environment.Context;
+import oberon0.environment.IntegerValue;
 
 public class TestExpressions {
 	
@@ -25,7 +27,7 @@ public class TestExpressions {
 	 * Test all Integer Expressions
 	 */
 	public static void main(String[] args) {
-		Context context  = new Context("expressiontest");
+		Context context  = new Context("expressiontest", null);
 		IntegerNode int0 = new IntegerNode(0);
 		IntegerNode int1 = new IntegerNode(1);
 		IntegerNode int2 = new IntegerNode(2);
@@ -34,27 +36,27 @@ public class TestExpressions {
 		BooleanNode boolfalse 	= new BooleanNode(false);
 		BooleanNode booltrue 	= new BooleanNode(true);
 		
-	    assert ((Integer) new AddNode(int1, int3).eval(context)== 4);
-	    assert ((Integer) new SubtractNode(int0, int3).eval(context) == -3);
-	    assert ((Integer) new MultiplyNode(int4, int3).eval(context) == 12);
-	    assert ((Integer) new DivideNode(int4, int2).eval(context) == 2);
-	    assert ((Integer) new ModuloNode(int4, int3).eval(context) == 1);
-	    assert ((Integer) new NegativeNode(new AddNode(int4, int3)).eval(context)== -7);
+	    assert (4 ==  ((IntegerValue) new AddNode(int1, int3).eval(context)).getValue() );
+	    assert (-3 == ((IntegerValue) new SubtractNode(int0, int3).eval(context)).getValue() );
+	    assert (12 == ((IntegerValue) new MultiplyNode(int4, int3).eval(context)).getValue() );
+	    assert (2 ==  ((IntegerValue) new DivideNode(int4, int2).eval(context)).getValue() );
+	    assert (1 ==  ((IntegerValue) new ModuloNode(int4, int3).eval(context)).getValue() );
+	    assert (-7 == ((IntegerValue) new NegativeNode(new AddNode(int4, int3)).eval(context)).getValue() );
 	    
 	    System.out.print("Arithmetic operations passed\n");
 	    
-	    assert (!(Boolean) new EqualsNode(int4, int3).eval(context));
-	    assert ((Boolean) new EqualsNotNode(int3, int4).eval(context));
-	    assert (!(Boolean) new GreaterThenNode(int3, int4).eval(context));
-	    assert (!(Boolean) new GreaterEqualNode(int3, int4).eval(context));
-	    assert ((Boolean) new SmallerThenNode(int3, int4).eval(context));
-	    assert ((Boolean) new SmallerEqualNode(int3, int4).eval(context));
+	    assert (!((BooleanValue) new EqualsNode(int4, int3).eval(context)).getValue());
+	    assert (((BooleanValue) new EqualsNotNode(int3, int4).eval(context)).getValue());
+	    assert (!((BooleanValue) new GreaterThenNode(int3, int4).eval(context)).getValue());
+	    assert (!((BooleanValue) new GreaterEqualNode(int3, int4).eval(context)).getValue());
+	    assert (((BooleanValue) new SmallerThenNode(int3, int4).eval(context)).getValue());
+	    assert (((BooleanValue) new SmallerEqualNode(int3, int4).eval(context)).getValue());
 	    
 	    System.out.print("Relation operations passed\n");
 	    
-	    assert (false 	== (Boolean) new ConjunctionNode(boolfalse, booltrue).eval(context));
-	    assert (true 	== (Boolean) new DisjunctionNode(boolfalse, booltrue).eval(context));
-	    assert (true	== (Boolean) new NegationNode(boolfalse).eval(context));
+	    assert (false 	== ((BooleanValue) new ConjunctionNode(boolfalse, booltrue).eval(context)).getValue());
+	    assert (true 	== ((BooleanValue) new DisjunctionNode(boolfalse, booltrue).eval(context)).getValue());
+	    assert (true	== ((BooleanValue) new NegationNode(boolfalse).eval(context)).getValue());
 	  
 	    System.out.print("Logical operations passed\n");
 	}
