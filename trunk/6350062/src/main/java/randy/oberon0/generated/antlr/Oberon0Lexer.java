@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g 2011-01-29 14:10:23
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g 2011-02-02 13:53:36
 
 package randy.oberon0.generated.antlr;
 
@@ -47,8 +47,8 @@ public class Oberon0Lexer extends Lexer {
     public static final int ASSIGNMENT=31;
     public static final int EQUALS=32;
     public static final int NOTEQUALS=33;
-    public static final int SMALLERTHEN=34;
-    public static final int GREATERTHEN=35;
+    public static final int SMALLERTHAN=34;
+    public static final int GREATERTHAN=35;
     public static final int SMALLEREQUALS=36;
     public static final int GREATEREQUALS=37;
     public static final int NOT=38;
@@ -702,10 +702,10 @@ public class Oberon0Lexer extends Lexer {
     }
     // $ANTLR end "NOTEQUALS"
 
-    // $ANTLR start "SMALLERTHEN"
-    public final void mSMALLERTHEN() throws RecognitionException {
+    // $ANTLR start "SMALLERTHAN"
+    public final void mSMALLERTHAN() throws RecognitionException {
         try {
-            int _type = SMALLERTHEN;
+            int _type = SMALLERTHAN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:41:13: ( '<' )
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:41:15: '<'
@@ -720,12 +720,12 @@ public class Oberon0Lexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "SMALLERTHEN"
+    // $ANTLR end "SMALLERTHAN"
 
-    // $ANTLR start "GREATERTHEN"
-    public final void mGREATERTHEN() throws RecognitionException {
+    // $ANTLR start "GREATERTHAN"
+    public final void mGREATERTHAN() throws RecognitionException {
         try {
-            int _type = GREATERTHEN;
+            int _type = GREATERTHAN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:42:13: ( '>' )
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:42:15: '>'
@@ -740,7 +740,7 @@ public class Oberon0Lexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "GREATERTHEN"
+    // $ANTLR end "GREATERTHAN"
 
     // $ANTLR start "SMALLEREQUALS"
     public final void mSMALLEREQUALS() throws RecognitionException {
@@ -1104,7 +1104,7 @@ public class Oberon0Lexer extends Lexer {
     // $ANTLR end "INTEGER"
 
     public void mTokens() throws RecognitionException {
-        // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:8: ( TRUE | FALSE | NIL | MINUS | PLUS | TIMES | DIVIDE | CONST | VAR | TYPE | IF | THEN | ELSE | ELSIF | END | MODULE | DO | WHILE | BEGIN | PROCEDURE | ARRAY | OF | RECORD | POINTERTO | MOD | AND | OR | ASSIGNMENT | EQUALS | NOTEQUALS | SMALLERTHEN | GREATERTHEN | SMALLEREQUALS | GREATEREQUALS | NOT | DOTSELECTOR | ARRAYSELECTOR | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | IDENT | WHITESPACE | INTEGER )
+        // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:8: ( TRUE | FALSE | NIL | MINUS | PLUS | TIMES | DIVIDE | CONST | VAR | TYPE | IF | THEN | ELSE | ELSIF | END | MODULE | DO | WHILE | BEGIN | PROCEDURE | ARRAY | OF | RECORD | POINTERTO | MOD | AND | OR | ASSIGNMENT | EQUALS | NOTEQUALS | SMALLERTHAN | GREATERTHAN | SMALLEREQUALS | GREATEREQUALS | NOT | DOTSELECTOR | ARRAYSELECTOR | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | IDENT | WHITESPACE | INTEGER )
         int alt3=46;
         alt3 = dfa3.predict(input);
         switch (alt3) {
@@ -1319,16 +1319,16 @@ public class Oberon0Lexer extends Lexer {
                 }
                 break;
             case 31 :
-                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:184: SMALLERTHEN
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:184: SMALLERTHAN
                 {
-                mSMALLERTHEN(); 
+                mSMALLERTHAN(); 
 
                 }
                 break;
             case 32 :
-                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:196: GREATERTHEN
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:196: GREATERTHAN
                 {
-                mGREATERTHEN(); 
+                mGREATERTHAN(); 
 
                 }
                 break;
@@ -1651,7 +1651,7 @@ public class Oberon0Lexer extends Lexer {
             this.transition = DFA3_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( TRUE | FALSE | NIL | MINUS | PLUS | TIMES | DIVIDE | CONST | VAR | TYPE | IF | THEN | ELSE | ELSIF | END | MODULE | DO | WHILE | BEGIN | PROCEDURE | ARRAY | OF | RECORD | POINTERTO | MOD | AND | OR | ASSIGNMENT | EQUALS | NOTEQUALS | SMALLERTHEN | GREATERTHEN | SMALLEREQUALS | GREATEREQUALS | NOT | DOTSELECTOR | ARRAYSELECTOR | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | IDENT | WHITESPACE | INTEGER );";
+            return "1:1: Tokens : ( TRUE | FALSE | NIL | MINUS | PLUS | TIMES | DIVIDE | CONST | VAR | TYPE | IF | THEN | ELSE | ELSIF | END | MODULE | DO | WHILE | BEGIN | PROCEDURE | ARRAY | OF | RECORD | POINTERTO | MOD | AND | OR | ASSIGNMENT | EQUALS | NOTEQUALS | SMALLERTHAN | GREATERTHAN | SMALLEREQUALS | GREATEREQUALS | NOT | DOTSELECTOR | ARRAYSELECTOR | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | IDENT | WHITESPACE | INTEGER );";
         }
     }
  

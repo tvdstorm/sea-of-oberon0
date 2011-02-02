@@ -40,8 +40,8 @@ tokens
 	ASSIGNMENT=':=';
 	EQUALS='=';
 	NOTEQUALS='#';
-	SMALLERTHEN='<';
-	GREATERTHEN='>';
+	SMALLERTHAN='<';
+	GREATERTHAN='>';
 	SMALLEREQUALS='<=';
 	GREATEREQUALS='>=';
 	NOT='~';
@@ -59,12 +59,12 @@ tokens
 
 @parser::header
 {
-package randy.generated.antlr;
+package randy.oberon0.generated.antlr;
 }
 
 @lexer::header
 {
-package randy.generated.antlr;
+package randy.oberon0.generated.antlr;
 }
 
 IDENT:			('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'0'..'9')*; // TODO: moet LETTER (LETTER|DIGIT)* worden
@@ -78,7 +78,7 @@ booleanLiteral:		TRUE|FALSE;
 factor:			selector | NIL | booleanLiteral | numberLiteral | '('! expression ')'! | NOT^ factor;
 term:			factor ((TIMES|DIVIDE|MOD|AND)^ factor)*;
 simpleExpression:	(PLUS|MINUS^ )? term ((PLUS|MINUS |OR)^ term)*;
-infixOperand:		EQUALS | NOTEQUALS | SMALLERTHEN | SMALLEREQUALS | GREATERTHEN | GREATEREQUALS;
+infixOperand:		EQUALS | NOTEQUALS | SMALLERTHAN | SMALLEREQUALS | GREATERTHAN | GREATEREQUALS;
 expression:		simpleExpression infixOperand simpleExpression 
 				-> ^(infixOperand simpleExpression simpleExpression) |
 			simpleExpression

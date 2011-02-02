@@ -10,4 +10,8 @@ public class OperatorTypeUndefinedException extends RuntimeException
 	{
 		super("The operator '" + operator + "' is undefined for the argument type " + rhsType + ".");
 	}
+	public OperatorTypeUndefinedException(String operator, Type lhsType, Type rhsType)
+	{
+		super("The operator '" + operator + "' is undefined for the argument types " + lhsType + " and " + rhsType + ".");
+	}
 }
