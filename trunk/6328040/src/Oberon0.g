@@ -73,10 +73,10 @@ import oberon0.ast.statements.*;
 	:	module 
 			-> ^(OBERONPROGRAM module);*/
 			
-module	returns [ ModuleNode node ]:	
+module	returns [ ICallable node ]:	
 	MODULE name = IDENT SEMICOLON 
 	decl = declarations 
-	mbody = body IDENT DOT EOF	{$node = new ModuleNode($name.text, $decl.node, $mbody.node);}
+	mbody = body IDENT DOT EOF	{node = new RoutineNode($name.text, new ArrayList<IFormalParameter>(), $decl.node, $mbody.node);}
 	;
 
 body	returns [ IExecutable node ]
@@ -97,7 +97,8 @@ declarations returns [ IDeclarable node ]
 	//typeDeclaration? 
 	(vardecl = varDeclarations  	{list.add($vardecl.node);		}
 	)?
-	//(procedureDeclaration SEMICOLON)*
+	(proc = procedureDeclaration 	{list.add($proc.node);			}
+	SEMICOLON)*
 					{node = new DeclarationsNode(list);	}
 	;
 				
@@ -125,12 +126,6 @@ varDeclarations returns [ IDeclarable node ]
 	SEMICOLON			{node = new DeclarationsNode(list);				}
 	)*			
 	;
-/*		
-procedureDeclaration
-	:	PROCEDURE IDENT (formalParameters)? SEMICOLON declarations (procedureBody)? IDENT 
-			-> ^(PROCEDURE IDENT (formalParameters)? declarations (procedureBody)?);		
-
-			*/
 
 identList returns [ ArrayList<String> list]
 	:				{list =	 new ArrayList<String>();	}
@@ -138,21 +133,52 @@ identList returns [ ArrayList<String> list]
 	(COMMA ident2 =IDENT		{list.add($ident2.text);		}
 	)*
 	;
+	
+procedureDeclaration returns [ IDeclarable node ]
+	: PROCEDURE name = IDENT 
+	( fp = formalParameters
+	)? 
+	SEMICOLON 
+	decl = declarations 
+	( bod = body
+	)? IDENT		{node = new RoutineNode($name.text, $fp.list, $decl.node, $bod.node);	}
+	;
+	
+formalParameters returns [ ArrayList<IFormalParameter> list ]
+	:RNDOPEN 		{list = new ArrayList<IFormalParameter>();	}
+	(fp1 =fpSection 	{list.add($fp1.node);				}
+	(SEMICOLON 
+	fpx =fpSection		{list.add($fpx.node);				}
+	)*
+	)? RNDCLOSE 
+	;
+	
+fpSection returns [ IFormalParameter node ]
+	:l1 = identList 
+	COLON 
+	t1 = type		{node = new FPRefVarNode($l1.list, $t1.node);	}
+	|VAR 
+	l2 = identList
+	COLON 
+	t2 = type		{node = new FPVarNode($l2.list, $t2.node);	}
+	;
+
 /*
-actualParameters
-	:	RNDOPEN (expression (COMMA expression)*)? RNDCLOSE
-			-> ^(ACTUALPARAMETERS expression+);
 procedureCall
 	:	variable (actualParameters)? 
 			-> ^(PROCEDURECALL variable (actualParameters)?)  ;
+actualParameters
+	:	RNDOPEN (expression (COMMA expression)*)? RNDCLOSE
+			-> ^(ACTUALPARAMETERS expression+);
 */
+
 statementSequence returns [ IExecutable node ]
 	: 				{ ArrayList<IExecutable> list = 
 							new  ArrayList<IExecutable>();	}
 	stat1 = statement		{list.add($stat1.node);				}
 	(SEMICOLON 
 	statx = statement		{list.add($statx.node);				}
-	)*				{$node = new StatementsNode(list);		}
+	)*				{node = new StatementsNode(list);		}
 	;
 
 ifStatement returns [ IExecutable node ]
@@ -207,14 +233,7 @@ recordType
 	:	RECORD fieldList (SEMICOLON fieldList)* END
 			-> ^(RECORD fieldList+);
 	
-fpSection
-	:	identList COLON type
-			-> ^(NONREFVAR identList type)
-		|VAR identList COLON type
-			-> ^(VAR identList type);
-formalParameters 
-	:	RNDOPEN (fpSection (SEMICOLON fpSection)*)? RNDCLOSE 
-			-> ^(FORMALPARAMETERS (fpSection+)?);*/
+*/
 		
 
 expression returns [ IEvaluable node ]
