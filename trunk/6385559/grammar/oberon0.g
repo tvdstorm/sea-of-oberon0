@@ -105,10 +105,16 @@ expression returns [ ExpressionNode e ]
 	;
 	
 simpleexpression returns [ SimpleExpression e ]
-	: specialTerm ( operator=('+'|'-'|'OR') simpleExpressionFollowup)?
+	: specialTerm { $e = new SimpleExpression( null, $specialTerm.e, null ); }
+	( operator=(
+	  '+' { $e = new ExpressionPlusNode( $specialTerm.e, null ); }
+	| '-' { $e = new ExpressionMinNode( $specialTerm.e, null ); }
+	| 'OR' { $e = new ExpressionOrNode( $specialTerm.e, null ); }
+	) simpleExpressionFollowup 
 	{
-	  $e = new SimpleExpression( $operator.text, $specialTerm.e, $simpleExpressionFollowup.e );
-	}
+    $e.setRight( $simpleExpressionFollowup.e );
+  }
+	)?
 	;
 	
 specialTerm returns [ ASTnode e ]
@@ -118,10 +124,17 @@ specialTerm returns [ ASTnode e ]
   ;
 	
 simpleExpressionFollowup returns [ SimpleExpression e ]
-	:  term (operator=('+'|'-'|'OR') follow2=simpleExpressionFollowup)?
+	:  term { $e = new SimpleExpression( null, $term.e, null ); } 
+	(operator=
+	(
+	  '+' { $e = new ExpressionPlusNode( $term.e, null ); }
+	| '-' { $e = new ExpressionMinNode( $term.e, null ); }
+	| 'OR' { $e = new ExpressionOrNode( $term.e, null ); }
+	) follow2=simpleExpressionFollowup
 	{
-	  $e = new SimpleExpression( $operator.text, $term.e, $follow2.e );
-	}
+    $e.setRight( $follow2.e );
+  }
+	)?
 	;
 	
 term returns [ TermNode e ]
