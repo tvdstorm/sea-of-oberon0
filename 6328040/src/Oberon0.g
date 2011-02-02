@@ -90,8 +90,8 @@ body	returns [ IExecutable node ]
 declarations returns [ IDeclarable node ]
 	: 				{ArrayList<IDeclarable> list = 
 						 new ArrayList<IDeclarable>();	}
-//	(constdecl = constDeclaration	{$node = $node.add($constdecl.node);	}
-//	)? 
+	(constdecl = constDeclarations	{list.add($constdecl.node);		}
+	)? 
 	//typeDeclaration? 
 	(vardecl = varDeclarations  	{list.add($vardecl.node);		}
 	)?
@@ -99,35 +99,43 @@ declarations returns [ IDeclarable node ]
 					{node = new DeclarationsNode(list);	}
 	;
 				
-/*constDeclaration
-	: (CONST 
-	(name = IDENT EQUALS exp = expression SEMICOLON {$node = new ConstDeclarationNode($constdecl.node);}
-	)*);*/
+constDeclarations returns [ IDeclarable node]
+	: 				{ArrayList<IDeclarable> list = 
+						 new ArrayList<IDeclarable>();	}
+	(CONST 			
+	(constdec = constantDec 	{list.add($constdec.node);		}
+	)*)				{node = new ConstDeclarationsNode(list);}
+	;
+	
+constantDec returns [ IDeclarable node ]
+	:name = IDENT 
+	EQUALS 
+	exp = expression 				
+	SEMICOLON			{$node = new ConstDeclarationNode($name.text, $exp.node);	}
+	;
+
 /*typeDeclaration
 	:	(TYPEDECL (IDENT EQUALS type SEMICOLON)*)
 			-> ^(TYPEDECL (IDENT type)*);		
 */
 
-varDeclarations returns [ IDeclarable node]
-	: VAR (name = IDENT COLON type = IDENT SEMICOLON	{$node = new VarDeclarationNode($name.text, $type.text);}
+varDeclarations returns [ IDeclarable node ]
+	: VAR (names = identList 
+	COLON type = IDENT SEMICOLON	{$node = new VarDeclarationNode($names.list, $type.text);}
 	)*
 	;
-
-/*varDeclarations
-	:	(VAR (identList COLON type SEMICOLON)*)
-			-> ^(VAR identList type)*;*/
 /*		
 procedureDeclaration
 	:	PROCEDURE IDENT (formalParameters)? SEMICOLON declarations (procedureBody)? IDENT 
 			-> ^(PROCEDURE IDENT (formalParameters)? declarations (procedureBody)?);		
 
 			*/
-assignment returns [ IExecutable node ]
-	: var = variable 
-	ASSIGNMENT 
-	exp = expression		{$node = new AssignmentNode($var.node, $exp.node);}
-	;
-	
+
+identList returns [ ArrayList<String> list]
+	:				{list =	 new ArrayList<String>();	}
+	ident1 = IDENT 			{list.add($ident1.text);		}
+	(COMMA ident2 =IDENT		{list.add($ident2.text);		}
+	)*;
 /*
 actualParameters
 	:	RNDOPEN (expression (COMMA expression)*)? RNDCLOSE
@@ -169,10 +177,14 @@ statement returns [ IExecutable node ]
 //	| ifStatement 
 //	| whileStatement
 	)?;
+	
+assignment returns [ IExecutable node ]
+	:ident=IDENT selec=selector 
+	ASSIGNMENT 
+	exp = expression		{$node = new AssignmentNode($ident.text, $selec.node, $exp.node);}
+	;
 /*
-identList
-	:	IDENT (COLON IDENT)* 
-			->^(IDENTLIST IDENT+);
+
 arrayType 
 	:	ARRAY expression OF type 
 			-> ^(ARRAY expression type);	
@@ -225,10 +237,10 @@ term 	returns [ IEvaluable node ]
 	)*;
 
 factor 	returns [ IEvaluable node ]
-	: var=variable 				{ $node = $var.node; 		 	 	}
-	| num=number 				{ $node = $num.node;			 	}
-	| RNDOPEN exp=expression RNDCLOSE 	{ $node = $exp.node;		 	 	}
-	| TILDE nFactor=factor			{ $node = new NegationNode($nFactor.node);	}
+	: ident=IDENT selec=selector 		{ $node = new VariableNode($ident.text, $selec.node);	}
+	| num=number 				{ $node = $num.node;			 		}
+	| RNDOPEN exp=expression RNDCLOSE 	{ $node = $exp.node;		 	 		}
+	| TILDE nFactor=factor			{ $node = new NegationNode($nFactor.node);		}
 	;
 
 number	returns [ IntegerNode node ]
@@ -238,10 +250,6 @@ number	returns [ IntegerNode node ]
 booleann returns [ IEvaluable node ]
 	: FALSE 			{ $node = new BooleanNode ( false); }
 	| TRUE				{ $node = new BooleanNode ( true); }
-	;
-
-variable returns [IEvaluable node]
-	: IDENT selector 		{ $node = new VariableNode ( $IDENT.text, $selector.node); }
 	;
 
 selector returns [ IEvaluable node ]

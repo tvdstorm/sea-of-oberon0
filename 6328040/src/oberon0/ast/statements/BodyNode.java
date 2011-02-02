@@ -14,7 +14,9 @@ public class BodyNode implements IExecutable{
 	@Override
 	public void execute(Context context) {
 		for (IExecutable statement : _statements){
-			statement.execute(context);
+			if (statement != null){
+				statement.execute(context);
+			}
 		}
 	}
 

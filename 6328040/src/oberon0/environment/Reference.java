@@ -1,23 +1,21 @@
 package oberon0.environment;
 
 public class Reference {
-	String _name;
-	Reference _parent;
+	private IValue _value;
 	
-	public Reference(String name){
-		_name = name;
+	public Reference(IValue value){
+		_value = value;
 	}
 	
-	public Reference(String name, Reference parent){
-		_name = name;
-		_parent = parent;
+	public IValue getValue(){
+		return (IValue) _value;
 	}
 	
-	public String getName(){
-		return _name;
+	public void setValue(IValue value){
+		_value = value;
 	}
 	
-	public Reference getParent(){
-		return _parent;
+	public String toString(){
+		return _value.toString();
 	}
 }

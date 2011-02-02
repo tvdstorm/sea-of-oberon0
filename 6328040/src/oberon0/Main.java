@@ -12,6 +12,8 @@ import generated.*;
 
 public class Main {
 	
+	//TODO 5 * 7 / 4 (no priority?)
+	
 	public static void main(String [ ] args) throws IOException
 	{
 		ANTLRFileStream inputfile = new ANTLRFileStream("oberonfiles/temptest1.oberon0");

@@ -1,6 +1,8 @@
 package oberon0.ast.expressions;
 
+import oberon0.environment.BooleanValue;
 import oberon0.environment.Context;
+import oberon0.environment.IValue;
 
 public class BooleanNode implements IEvaluable {
 	private boolean _value;
@@ -10,9 +12,8 @@ public class BooleanNode implements IEvaluable {
 	}
 
 	@Override
-	public Object eval(Context context) {
-		System.out.print(_value);
-		return _value;
+	public IValue eval(Context context) {
+		return new BooleanValue(_value);
 	}
 
 }

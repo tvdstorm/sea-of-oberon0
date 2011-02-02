@@ -1,6 +1,7 @@
 package oberon0.ast.expressions;
 
 import oberon0.environment.Context;
+import oberon0.environment.IValue;
 
 public abstract class BaseUniliteralExpressionNode implements IEvaluable{
 	IEvaluable _lhsExpression;
@@ -9,10 +10,10 @@ public abstract class BaseUniliteralExpressionNode implements IEvaluable{
 		_lhsExpression = lhsExpression;
 	}
 	
-	public Object evalChildExpression(Context context){
+	public IValue evalChildExpression(Context context){
 		return _lhsExpression.eval(context);
 	}
 	
-	public abstract Object eval(Context context);
+	public abstract IValue eval(Context context);
 
 }

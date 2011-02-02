@@ -1,20 +1,30 @@
 package oberon0.ast.declarations;
 
+import java.util.ArrayList;
+
 import oberon0.environment.Context;
+import oberon0.environment.IntegerValue;
 
 public class VarDeclarationNode implements IDeclarable {
-	private String _name;
+	private ArrayList<String> _names;
 	private String _type;
 	
 
-	public VarDeclarationNode(String name, String type) {
-		_name = name;
+	public VarDeclarationNode(ArrayList<String> names, String type) {
+		_names = names;
 		_type = type;
 	}
 
 	@Override
 	public void declare(Context context) {
-		//TODO context.declareReference( _name, _type)
+		for (String name: _names)
+		{
+			if (_type.equals("INTEGER")){
+				context.declareVariable( name, new IntegerValue(0));
+			}
+			//TODO
+		}
+		
 	}
 
 }
