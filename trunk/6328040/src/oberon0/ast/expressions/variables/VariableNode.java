@@ -1,6 +1,7 @@
-package oberon0.ast.expressions;
+package oberon0.ast.expressions.variables;
 
 import oberon0.ast.IASTNode;
+import oberon0.ast.expressions.IEvaluable;
 import oberon0.environment.Context;
 import oberon0.environment.IValue;
 

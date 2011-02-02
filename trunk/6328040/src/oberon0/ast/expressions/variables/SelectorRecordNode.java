@@ -1,4 +1,4 @@
-package oberon0.ast.expressions;
+package oberon0.ast.expressions.variables;
 
 public class SelectorRecordNode {
 

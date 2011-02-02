@@ -3,6 +3,7 @@ package oberon0;
 import java.io.IOException;
 
 import oberon0.ast.routines.ModuleNode;
+import oberon0.environment.Context;
 
 import org.antlr.runtime.ANTLRFileStream;
 import org.antlr.runtime.RecognitionException;
@@ -12,7 +13,11 @@ import generated.*;
 
 public class Main {
 	
-	//TODO 5 * 7 / 4 (no priority?)
+	/*TODO 5 * 7 / 4 (no priority?) some expressions get in infinite loop??!
+	 *TODO functions
+	 *TODO array
+	 *TODO records
+	 */
 	
 	public static void main(String [ ] args) throws IOException
 	{
@@ -31,7 +36,7 @@ public class Main {
 			e.printStackTrace();
 		} 
         
-		module.run(null);
+		module.call(Context.noParent);
 	}
 	
 }
