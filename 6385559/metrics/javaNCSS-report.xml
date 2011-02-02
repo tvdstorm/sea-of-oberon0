@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-02-02</date>
-  <time>22:35:23</time>
+  <time>22:36:55</time>
   <packages>
     <package>
       <name>ast</name>
-      <classes>47</classes>
-      <functions>161</functions>
-      <ncss>1029</ncss>
+      <classes>46</classes>
+      <functions>156</functions>
+      <ncss>984</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>58</single_comment_lines>
+      <single_comment_lines>55</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <package>
@@ -54,20 +54,20 @@
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <total>
-      <classes>65</classes>
-      <functions>227</functions>
-      <ncss>1518</ncss>
+      <classes>64</classes>
+      <functions>222</functions>
+      <ncss>1473</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>84</single_comment_lines>
+      <single_comment_lines>81</single_comment_lines>
       <multi_comment_lines>46</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>5.00</td><td>65.00</td><td>227.00</td><td>1,518.00</td><td>0.00</td><td>Project</td></tr>
-      <tr><td></td><td>13.00</td><td>45.40</td><td>303.60</td><td>0.00</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.49</td><td>23.35</td><td>0.00</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>6.69</td><td>0.00</td><td>Function</td></tr>
+      <tr><td>5.00</td><td>64.00</td><td>222.00</td><td>1,473.00</td><td>0.00</td><td>Project</td></tr>
+      <tr><td></td><td>12.80</td><td>44.40</td><td>294.60</td><td>0.00</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.47</td><td>23.02</td><td>0.00</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>6.64</td><td>0.00</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -223,13 +223,6 @@
       <name>ast.ExpressionSmallerNode</name>
       <ncss>9</ncss>
       <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>ast.ExpressionTermNode</name>
-      <ncss>43</ncss>
-      <functions>5</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -528,12 +521,12 @@
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>21.32</ncss>
-      <functions>3.49</functions>
+      <ncss>20.98</ncss>
+      <functions>3.47</functions>
       <classes>0.05</classes>
       <javadocs>0.00</javadocs>
     </averages>
-    <ncss>1,518.00</ncss>
+    <ncss>1,473.00</ncss>
   </objects>
 
   <functions>
@@ -941,36 +934,6 @@
     </function>
     <function>
       <name>ast.ExpressionSmallerNode.eval()</name>
-      <ncss>4</ncss>
-      <ccn>5</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionTermNode.ExpressionTermNode(ASTnode,String,ExpressionTermNode)</name>
-      <ncss>5</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionTermNode.ToString(int)</name>
-      <ncss>9</ncss>
-      <ccn>4</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionTermNode.eval()</name>
-      <ncss>19</ncss>
-      <ccn>14</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionTermNode.setRight(ExpressionTermNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionTermNode.getVariableName()</name>
       <ncss>4</ncss>
       <ccn>5</ccn>
       <javadocs>0</javadocs>
@@ -1900,10 +1863,10 @@
       <javadocs>0</javadocs>
     </function>
     <function_averages>
-      <ncss>5.19</ncss>
-      <ccn>2.38</ccn>
+      <ncss>5.13</ncss>
+      <ccn>2.32</ccn>
       <javadocs>0.00</javadocs>
     </function_averages>
-    <ncss>1,518.00</ncss>
+    <ncss>1,473.00</ncss>
   </functions>
 </javancss>
