@@ -1,13 +1,14 @@
 MODULE testmodule;
 
 CONST
-  TEST		= 5;
-  TEST2 	= 10; 
+  MAXLENGTH	= 5;
   
-VAR i,j:INTEGER;
+VAR
+  array: ARRAY MAXLENGTH OF INTEGER; 
+  i,j: INTEGER;
 
 BEGIN
+ array[i] := 5;
  i := 5 + 3 * 4;
  j := 10;
- TEST := 15;
 END testmodule.

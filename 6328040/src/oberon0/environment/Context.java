@@ -18,6 +18,12 @@ public class Context {
 	}
 	
 	public Reference get(String name){
+		if (!contains(name)){
+			if (_parent != noParent){
+				return _parent.get(name);
+			}
+			throw new IllegalArgumentException("'"+ name + "' is not available in current scope");
+		}
 		return _variables.get(name);
 	}
 	

@@ -16,11 +16,8 @@ public class ModuleNode implements ICallable{
 		_body = body;
 	}
 
-	public void run(Context context) {	
-		if (context == null){
-			context = new Context(_name, Context.noParent);
-		}
-		context.print();
+	public void call(Context context) {	
+		context = new Context(_name, Context.noParent);
 		
 		_declarations.declare(context);
 		_body.execute(context);

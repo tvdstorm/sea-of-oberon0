@@ -8,7 +8,7 @@ public class ConstantReference extends Reference{
 	
 	@Override
 	public void setValue(IValue value){
-		//TODO throw exception
+		throw new IllegalArgumentException("Not allowed to change constant reference value");
 	}
 
 }

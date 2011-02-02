@@ -59,8 +59,8 @@ tokens
 }
 
 @header {package generated; 
-import oberon0.ast.*;
 import oberon0.ast.expressions.*;
+import oberon0.ast.expressions.variables.*;
 import oberon0.ast.declarations.*;
 import oberon0.ast.routines.*;
 import oberon0.ast.statements.*;
@@ -101,17 +101,13 @@ declarations returns [ IDeclarable node ]
 				
 constDeclarations returns [ IDeclarable node]
 	: 				{ArrayList<IDeclarable> list = 
-						 new ArrayList<IDeclarable>();	}
-	(CONST 			
-	(constdec = constantDec 	{list.add($constdec.node);		}
-	)*)				{node = new ConstDeclarationsNode(list);}
-	;
-	
-constantDec returns [ IDeclarable node ]
-	:name = IDENT 
-	EQUALS 
-	exp = expression 				
-	SEMICOLON			{$node = new ConstDeclarationNode($name.text, $exp.node);	}
+						 new ArrayList<IDeclarable>();				}
+	CONST 			
+	(name = IDENT 
+	 EQUALS 
+	 exp = expression 				
+	 SEMICOLON 			{list.add(new ConstDeclarationNode($name.text, $exp.node));	}
+	)*				{node = new DeclarationsNode(list);				}
 	;
 
 /*typeDeclaration
@@ -120,9 +116,12 @@ constantDec returns [ IDeclarable node ]
 */
 
 varDeclarations returns [ IDeclarable node ]
-	: VAR (names = identList 
-	COLON type = IDENT SEMICOLON	{$node = new VarDeclarationNode($names.list, $type.text);}
-	)*
+	: 				{ArrayList<IDeclarable> list = 
+						 new ArrayList<IDeclarable>();				}
+	VAR (names = identList 
+	COLON typ = type 		{list.add(new VarDeclarationNode($names.list, $typ.node));	}
+	SEMICOLON			{node = new DeclarationsNode(list);				}
+	)*			
 	;
 /*		
 procedureDeclaration
@@ -183,17 +182,20 @@ assignment returns [ IExecutable node ]
 	ASSIGNMENT 
 	exp = expression		{$node = new AssignmentNode($ident.text, $selec.node, $exp.node);}
 	;
-/*
 
-arrayType 
-	:	ARRAY expression OF type 
-			-> ^(ARRAY expression type);	
+	
+type	returns [ IEvaluable node ]
+	: ident = IDENT 			{$node = new TypeNode($ident.text);			}
+	|ARRAY exp = expression 
+		OF typ = type			{$node = new ArrayTypeNode($exp.node, $typ.node);	}
+//	| recordType
+	;
+/*
 fieldList
 	:	(identList COLON type)?;
 recordType 
 	:	RECORD fieldList (SEMICOLON fieldList)* END
 			-> ^(RECORD fieldList+);
-type	:	(IDENT | arrayType | recordType);
 	
 fpSection
 	:	identList COLON type
@@ -229,11 +231,12 @@ simpleExpression returns [ IEvaluable node ]
 
 
 term 	returns [ IEvaluable node ]
-	: lhsFactor = factor			{$node = $lhsFactor.node;				} 
-	( (MULTIPLY 	rhsFactor = factor)	{$node = new MultiplyNode($node, $rhsFactor.node);	}
-	| (DIVIDE 	rhsFactor = factor)	{$node = new DivideNode($node, $rhsFactor.node);	}
-	| (MOD 		rhsFactor = factor)	{$node = new ModuloNode($node, $rhsFactor.node);	}
-	| (AMPERSAND 	rhsFactor = factor)	{$node = new ConjunctionNode($node, $rhsFactor.node);	}
+	:					
+	lhsFactor = factor			{$node = $lhsFactor.node;				} 
+	( MULTIPLY 	rhsFactor = factor	{$node = new MultiplyNode($node, $rhsFactor.node);	}
+	| DIVIDE 	rhsFactor = factor	{$node = new DivideNode($node, $rhsFactor.node);	}
+	| MOD 		rhsFactor = factor	{$node = new ModuloNode($node, $rhsFactor.node);	}
+	| AMPERSAND 	rhsFactor = factor	{$node = new ConjunctionNode($node, $rhsFactor.node);	}
 	)*;
 
 factor 	returns [ IEvaluable node ]

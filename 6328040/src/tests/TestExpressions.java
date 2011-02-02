@@ -1,7 +1,6 @@
 package tests;
 
 import oberon0.ast.expressions.AddNode;
-import oberon0.ast.expressions.BooleanNode;
 import oberon0.ast.expressions.ConjunctionNode;
 import oberon0.ast.expressions.DisjunctionNode;
 import oberon0.ast.expressions.DivideNode;
@@ -9,7 +8,6 @@ import oberon0.ast.expressions.EqualsNode;
 import oberon0.ast.expressions.EqualsNotNode;
 import oberon0.ast.expressions.GreaterEqualNode;
 import oberon0.ast.expressions.GreaterThenNode;
-import oberon0.ast.expressions.IntegerNode;
 import oberon0.ast.expressions.ModuloNode;
 import oberon0.ast.expressions.MultiplyNode;
 import oberon0.ast.expressions.NegationNode;
@@ -17,6 +15,8 @@ import oberon0.ast.expressions.NegativeNode;
 import oberon0.ast.expressions.SmallerEqualNode;
 import oberon0.ast.expressions.SmallerThenNode;
 import oberon0.ast.expressions.SubtractNode;
+import oberon0.ast.expressions.variables.BooleanNode;
+import oberon0.ast.expressions.variables.IntegerNode;
 import oberon0.environment.BooleanValue;
 import oberon0.environment.Context;
 import oberon0.environment.IntegerValue;
