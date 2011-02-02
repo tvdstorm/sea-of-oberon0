@@ -8,21 +8,25 @@ import randy.oberon0.value.Boolean;
 
 public class InfixOrExpression extends InfixExpression
 {
-	public InfixOrExpression(Expression _lhs, Expression _rhs)
+	public InfixOrExpression(Expression _leftHandExpression, Expression _rightHandExpression)
 	{
-		super(_lhs, _rhs);
+		super(_leftHandExpression, _rightHandExpression);
 	}
 	@Override
 	public Value run(RuntimeEnvironment environment) throws RuntimeException
 	{
-		Value valRh = rhs.run(environment).dereference();
-		Value valLh = lhs.run(environment).dereference();
+		assert(environment != null);
+		// Evaluate the left and right hand side expressions
+		final Value valRh = rightHandExpression.run(environment).dereference();
+		final Value valLh = leftHandExpression.run(environment).dereference();
+		// Check if we support the operator
 		if (valLh instanceof Boolean && valRh instanceof Boolean)
 		{
 			return new Boolean(valLh.castToBoolean().getBoolValue() || valRh.castToBoolean().getBoolValue());
 		}
 		else
 		{
+			// No, throw an exception
 			throw new OperatorTypeUndefinedException("OR", valLh.getType().toString(), valRh.getType().toString());
 		}
 	}

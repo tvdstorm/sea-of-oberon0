@@ -7,32 +7,34 @@ import randy.oberon0.value.*;
 
 public class ProcedureCall extends Statement
 {
-	private String name;
-	private List<Expression> parameters;
+	private final String procedureName;
+	private final List<Expression> parameterExpressions;
 	
-	public ProcedureCall(String _name, List<Expression> _parameters)
+	public ProcedureCall(String _procedureName, List<Expression> _parameterExpressions)
 	{
-		assert(_name != null);
-		assert(_parameters != null);
-		name = _name;
-		parameters = _parameters;
+		assert(_procedureName != null);
+		assert(_parameterExpressions != null);
+		procedureName = _procedureName;
+		parameterExpressions = _parameterExpressions;
 	}
 	@Override
 	public Value run(RuntimeEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
-		assert(parameters != null);
-		// Evaluate all the parameters
-		Queue<Value> params = new LinkedList<Value>();
-		for (Expression p : parameters)
+		// Evaluate all the parameters and add them to a queue
+		Queue<Value> parameters = new LinkedList<Value>();
+		for (Expression parameter : parameterExpressions)
 		{
-			Value v = p.run(environment);
-			params.add(v);
+			Value v = parameter.run(environment);
+			parameters.add(v);
 		}
+		// Resolve the function name to a function
+		final IInvokableFunction functionDeclaration = environment.resolveFunction(procedureName).getSecond();
+		// Create a new environment for the to be invoked function
 		RuntimeEnvironment invokedEnvironment = environment.createRuntimeEnviroment(environment.getDepth()+1);
-		IInvokableFunction functionDeclaration = environment.resolveFunction(name).getSecond();
+		// Register all declarations of the to be invoked function to it's environment 
 		functionDeclaration.runTypeDeclarations(invokedEnvironment);
 		// Invoke the function
-		return functionDeclaration.invoke(invokedEnvironment, params);
+		return functionDeclaration.invoke(invokedEnvironment, parameters);
 	}
 }

@@ -8,26 +8,28 @@ import randy.oberon0.value.Value;
 
 public class ProcedureDeclaration extends BodyDeclaration implements IInvokableFunction
 {
-	private String name;
-	private List<VarDeclaration> parameters;
-	private List<BodyDeclaration> bodyDeclarations;
-	private Block body;
+	private final String procedureName;
+	private final List<VarDeclaration> parameterDeclarations;
+	private final List<BodyDeclaration> bodyDeclarations;
+	private final Block body;
 	
-	public ProcedureDeclaration(String _name, List<VarDeclaration> _parameters, List<BodyDeclaration> _bodyDeclarations, Block _body)
+	public ProcedureDeclaration(String _procedureName, List<VarDeclaration> _parameterDeclarations, List<BodyDeclaration> _bodyDeclarations, Block _body)
 	{
-		assert(_name != null);
-		assert(_name.length() >= 1);
-		assert(_parameters != null);
+		assert(_procedureName != null);
+		assert(_procedureName.length() >= 1);
+		assert(_parameterDeclarations != null);
 		assert(_bodyDeclarations != null);
 		assert(_body != null);
-		name = _name;
-		parameters = _parameters;
+		procedureName = _procedureName;
+		parameterDeclarations = _parameterDeclarations;
 		bodyDeclarations = _bodyDeclarations;
 		body = _body;
 	}
 	@Override
 	public Value run(RuntimeEnvironment environment) throws RuntimeException
 	{
+		assert(environment != null);
+		// Register the function in the environment
 		environment.addFunction(getName(), this);
 		return null;
 	}
@@ -35,9 +37,7 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 	public Value runTypeDeclarations(RuntimeEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
-		assert(bodyDeclarations != null);
-		assert(body != null);
-		// Run all the body declarations
+		// Register all the type declarations in the environment
 		for (BodyDeclaration bd : bodyDeclarations)
 		{
 			if (bd instanceof RecordDeclaration)
@@ -47,12 +47,10 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 	}
 	public Value invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
 	{
+		assert(environment != null);
 		assert(parameterValues != null);
-		assert(parameters != null);
-		assert(bodyDeclarations != null);
-		assert(body != null);
-		// Loop through all parameters and declare them in the invoked functions variable scope
-		for (VarDeclaration p : parameters)
+		// Loop through all parameters and declare them in the invoked functions environment
+		for (VarDeclaration p : parameterDeclarations)
 		{
 			p.runForParameter(environment, parameterValues);
 		}
@@ -71,7 +69,6 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 	@Override
 	public String getName()
 	{
-		assert(name != null);
-		return name;
+		return procedureName;
 	}
 }

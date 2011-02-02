@@ -6,15 +6,15 @@ import randy.oberon0.value.Value;
 
 public class ConstDeclaration extends BodyDeclaration
 {
-	private String name;
-	private Expression value;
+	private final String constantName;
+	private final Expression value;
 	
-	public ConstDeclaration(String _name, Expression _value)
+	public ConstDeclaration(String _constantName, Expression _value)
 	{
-		assert(_name != null);
-		assert(_name.length() >= 1);
+		assert(_constantName != null);
+		assert(_constantName.length() >= 1);
 		assert(_value != null);
-		name = _name;
+		constantName = _constantName;
 		value = _value;
 	}
 	@Override
@@ -22,7 +22,7 @@ public class ConstDeclaration extends BodyDeclaration
 	{
 		assert(environment != null);
 		// Add the constant to the variable scope
-		environment.addConstant(name, value.run(environment));
+		environment.addConstant(constantName, value.run(environment));
 		return null;
 	}
 }

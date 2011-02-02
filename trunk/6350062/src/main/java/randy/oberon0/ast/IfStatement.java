@@ -9,8 +9,8 @@ import randy.oberon0.value.Value;
 
 public class IfStatement extends Statement
 {
-	private List<Tuple<Expression, Block>> ifStatements;
-	private Block elseBody;
+	private final List<Tuple<Expression, Block>> ifStatements; // <condition, body>
+	private final Block elseBody; // Can be null if there isn't a else part
 	
 	public IfStatement(List<Tuple<Expression, Block>> _ifStatements, Block _elseBody)
 	{
@@ -25,16 +25,17 @@ public class IfStatement extends Statement
 		// Loop through all if expressions until one is true
 		for (Tuple<Expression, Block> curIf : ifStatements)
 		{
-			// Run the expression and convert it to an boolean
-			Boolean bExpression = curIf.getFirst().run(environment).castToBoolean();
-			// If the expression is true, run the body
-			if (bExpression.getBoolValue())
+			// Evaluate the condition and convert it to an boolean
+			final Boolean conditionResult = curIf.getFirst().run(environment).castToBoolean();
+			// Check if the condition is true
+			if (conditionResult.getBoolValue())
 			{
+				// Run the associated body
 				curIf.getSecond().run(environment);
 				return null;
 			}
 		}
-		// If there is an else body, run it
+		// No conditions evaluated to true, if there is an else body, run it
 		if (elseBody != null)
 			elseBody.run(environment);
 		return null;

@@ -6,18 +6,18 @@ import randy.oberon0.value.Value;
 
 public class VariableSelector extends Selector
 {
-	private String name;
+	private final String variableName;
 	
-	public VariableSelector(String _name)
+	public VariableSelector(String _variableName)
 	{
-		assert(_name != null);
-		name = _name;
+		assert(_variableName != null);
+		variableName = _variableName;
 	}
 	@Override
 	public Value run(RuntimeEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Retrieve the value of the variable and return it
-		return environment.getVariable(name);
+		return environment.getVariable(variableName);
 	}
 }

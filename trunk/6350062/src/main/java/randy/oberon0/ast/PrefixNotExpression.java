@@ -15,13 +15,17 @@ public class PrefixNotExpression extends PrefixExpression
 	@Override
 	public Value run(RuntimeEnvironment environment) throws RuntimeException
 	{
-		Value valRh = rhs.run(environment);
+		assert(environment != null);
+		// Evaluate the right hand side expression
+		final Value valRh = rightHandExpression.run(environment);
+		// Check if we support the operator
 		if (valRh instanceof Boolean)
 		{
 			return new Boolean(!valRh.castToBoolean().getBoolValue());
 		}
 		else
 		{
+			// No, throw an exception
 			throw new OperatorTypeUndefinedException("~", valRh.getType().toString());
 		}
 	}

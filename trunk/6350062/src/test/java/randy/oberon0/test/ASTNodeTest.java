@@ -446,7 +446,7 @@ public class ASTNodeTest
 			program.run();
 			Assert.fail("Should be throwing an Oberon0SelectorException...");
 		}
-		catch (SelectorException e)
+		catch (TypeMismatchException e)
 		{
 			// Success
 		}
@@ -464,7 +464,7 @@ public class ASTNodeTest
 			program.run();
 			Assert.fail("Should be throwing an Oberon0SelectorException...");
 		}
-		catch (SelectorException e)
+		catch (TypeMismatchException e)
 		{
 			// Success
 		}
@@ -694,6 +694,10 @@ public class ASTNodeTest
 	}
 	// TODO: test to check if an const array can be modified and check if const variable can be assigned as non const parameters
 	// TODO: JavaDoc, meer comments, asserts, finals?
+	// TODO: onnodige EXPRESSION's uit de tree halen
+	// TODO: scoping fixen
+	// TODO: statement run, expression evaluate, declarations register, etc.
+	// TODO: References terug brengen
 	@Ignore
 	private void prepareTestThrowException(String testName) throws Exception
 	{

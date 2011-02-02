@@ -9,7 +9,7 @@ import randy.oberon0.exception.Exception;
 
 public class Program
 {
-	private ASTNode astTree;
+	private Module astTree;
 	private IBuildinFunctions buildinFunctions;
 	
 	public Program()
@@ -22,7 +22,7 @@ public class Program
 		buildinFunctions = _buildinFunctions;
 		
 		Oberon0ASTTreeGenerator generator = new Oberon0ASTTreeGenerator();
-		astTree = generator.generate(filename);
+		astTree = generator.buildASTTreeFromFile(filename);
 		
 		return true;
 	}
