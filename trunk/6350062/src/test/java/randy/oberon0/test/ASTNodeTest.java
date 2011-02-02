@@ -525,8 +525,6 @@ public class ASTNodeTest
 				int iRand = random.nextInt();
 				Integer integer = new Integer(iRand);
 				Assert.assertTrue(iRand == integer.getIntValue());
-				Integer integer2 = new Integer(integer);
-				Assert.assertTrue(integer.getIntValue() == integer2.getIntValue());
 				Integer integer3 = new Integer(0);
 				integer3.setValue(integer);
 				Assert.assertTrue(integer.getIntValue() == integer3.getIntValue());
@@ -537,8 +535,6 @@ public class ASTNodeTest
 				boolean bRand = random.nextBoolean();
 				Boolean bool = new Boolean(bRand);
 				Assert.assertTrue(bRand == bool.getBoolValue());
-				Boolean bool2 = new Boolean(bool);
-				Assert.assertTrue(bool.getBoolValue() == bool2.getBoolValue());
 				Boolean bool3 = new Boolean(false);
 				bool3.setValue(bool);
 				Assert.assertTrue(bool.getBoolValue() == bool3.getBoolValue());
@@ -580,7 +576,7 @@ public class ASTNodeTest
 				
 				try
 				{
-					integer.setValue(bool2);
+					integer.setValue(bool3);
 					Assert.fail("Should be throwing an Oberon0TypeMismatchException...");
 				}
 				catch (TypeMismatchException e)
@@ -589,7 +585,7 @@ public class ASTNodeTest
 				}
 				try
 				{
-					bool.setValue(integer2);
+					bool.setValue(integer3);
 					Assert.fail("Should be throwing an Oberon0TypeMismatchException...");
 				}
 				catch (TypeMismatchException e)

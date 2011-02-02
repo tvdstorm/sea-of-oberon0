@@ -10,11 +10,6 @@ public class Boolean extends Value
 	{
 		value = _value;
 	}
-	public Boolean(Boolean _value) throws RuntimeException
-	{
-		// Copy constructor
-		setValue(_value);
-	}
 	public boolean getBoolValue()
 	{
 		return value;

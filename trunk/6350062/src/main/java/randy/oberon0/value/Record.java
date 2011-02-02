@@ -16,11 +16,6 @@ public class Record extends Value
 			members.put(name, _members.get(name).instantiate(environment));
 		}
 	}
-	public Record(Record _value) throws RuntimeException
-	{
-		// Copy constructor
-		setValue(_value);
-	}
 	public Value getMemberValue(String name)
 	{
 		assert(name != null);

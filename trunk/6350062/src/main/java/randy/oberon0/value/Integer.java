@@ -10,11 +10,6 @@ public class Integer extends Value
 	{
 		value = _value;
 	}
-	public Integer(Integer _value) throws RuntimeException
-	{
-		// Copy constructor
-		setValue(_value);
-	}
 	public int getIntValue()
 	{
 		return value;
