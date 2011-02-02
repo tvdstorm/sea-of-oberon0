@@ -65,7 +65,7 @@ package randy.oberon0.generated.antlr;
 package randy.oberon0.generated.antlr;
 }
 
-IDENT:			('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'0'..'9')*; // TODO: moet LETTER (LETTER|DIGIT)* worden
+IDENT:			('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'0'..'9')*;
 WHITESPACE:		(' '|'\t'|'\r'|'\n') { skip(); };
 ws:			(WHITESPACE)*;
 ident:			IDENT;

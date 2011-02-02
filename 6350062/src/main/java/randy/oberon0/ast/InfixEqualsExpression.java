@@ -10,15 +10,18 @@ import randy.oberon0.value.Boolean;
 
 public class InfixEqualsExpression extends InfixExpression
 {
-	public InfixEqualsExpression(Expression _lhs, Expression _rhs)
+	public InfixEqualsExpression(Expression _leftHandExpression, Expression _rightHandExpression)
 	{
-		super(_lhs, _rhs);
+		super(_leftHandExpression, _rightHandExpression);
 	}
 	@Override
 	public Value run(RuntimeEnvironment environment) throws RuntimeException
 	{
-		Value valRh = rhs.run(environment).dereference();
-		Value valLh = lhs.run(environment).dereference();
+		assert(environment != null);
+		// Evaluate the left and right hand side expressions
+		final Value valRh = rightHandExpression.run(environment).dereference();
+		final Value valLh = leftHandExpression.run(environment).dereference();
+		// Check if we support the operator
 		if (valLh instanceof Integer && valRh instanceof Integer)
 		{
 			return new Boolean(valLh.equalsToValue(valRh));
@@ -33,6 +36,7 @@ public class InfixEqualsExpression extends InfixExpression
 		}
 		else
 		{
+			// No, throw an exception
 			throw new OperatorTypeUndefinedException("=", valLh.getType().toString(), valRh.getType().toString());
 		}
 	}

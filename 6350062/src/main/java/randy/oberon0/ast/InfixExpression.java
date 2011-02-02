@@ -2,14 +2,14 @@ package randy.oberon0.ast;
 
 public abstract class InfixExpression extends Expression
 {
-	protected final Expression lhs;
-	protected final Expression rhs;
+	protected final Expression leftHandExpression;
+	protected final Expression rightHandExpression;
 	
-	public InfixExpression(Expression _lhs, Expression _rhs)
+	public InfixExpression(Expression _leftHandExpression, Expression _rightHandExpression)
 	{
-		assert(_lhs != null);
-		assert(_rhs != null);
-		lhs = _lhs;
-		rhs = _rhs;
+		assert(_leftHandExpression != null);
+		assert(_rightHandExpression != null);
+		leftHandExpression = _leftHandExpression;
+		rightHandExpression = _rightHandExpression;
 	}
 }

@@ -6,24 +6,25 @@ import randy.oberon0.value.Value;
 
 public class AssignmentStatement extends Statement
 {
-	private Selector lhs;
-	private Expression rhs;
+	private final Selector variable;
+	private final Expression expression;
 	
-	public AssignmentStatement(Selector _lhs, Expression _rhs)
+	public AssignmentStatement(Selector _variable, Expression _expression)
 	{
-		assert(_lhs != null);
-		assert(_rhs != null);
-		lhs = _lhs;
-		rhs = _rhs;
+		assert(_variable != null);
+		assert(_expression != null);
+		variable = _variable;
+		expression = _expression;
 	}
 	@Override
 	public Value run(RuntimeEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
-		// Evaluate the left hand side and right hand side and assign the value of the right hand side to the left hand side
-		Value var = lhs.run(environment);
+		// Evaluate the variable
+		Value var = variable.run(environment);
 		assert(var != null);
-		var.setValue(rhs.run(environment));
+		// Evaluate the expression and assign the result as the value of the variable
+		var.setValue(expression.run(environment));
 		return null;
 	}
 }

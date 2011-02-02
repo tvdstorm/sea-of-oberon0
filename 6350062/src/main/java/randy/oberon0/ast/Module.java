@@ -7,10 +7,10 @@ import randy.oberon0.value.Value;
 
 public class Module extends ASTNode
 {
-	private List<BodyDeclaration> bodyDeclarations;
-	private ASTNode body;
+	private final List<BodyDeclaration> bodyDeclarations;
+	private final Statement body;
 	
-	public Module(List<BodyDeclaration> _bodyDeclarations, ASTNode _body)
+	public Module(List<BodyDeclaration> _bodyDeclarations, Statement _body)
 	{
 		assert(_body != null);
 		assert(_bodyDeclarations != null);
@@ -21,10 +21,9 @@ public class Module extends ASTNode
 	public Value run(RuntimeEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
-		assert(bodyDeclarations != null);
-		assert(body != null);
+		// Create a runtime environment
 		RuntimeEnvironment moduleEnvironment = environment.createRuntimeEnviroment(0);
-		// Run all the body declarations
+		// Register all declarations in the module's environment
 		for (BodyDeclaration bd : bodyDeclarations)
 		{
 			bd.run(moduleEnvironment);

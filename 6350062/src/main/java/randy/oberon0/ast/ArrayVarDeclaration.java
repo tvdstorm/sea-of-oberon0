@@ -9,63 +9,67 @@ import randy.oberon0.value.Integer;
 
 public class ArrayVarDeclaration extends VarDeclaration
 {
-	protected Expression arrayLength;
+	protected final Expression arrayLength;
 	
-	public ArrayVarDeclaration(String _type, boolean _bIsReference, List<String> _names, Expression _arrayLength)
+	public ArrayVarDeclaration(String _typeName, boolean _isReference, List<String> _variableNames, Expression _arrayLength)
 	{
-		super(_type, _bIsReference, _names);
-		assert(_type != null);
-		assert(_names != null);
-		assert(_arrayLength != null);
-		bIsArray = true;
+		super(_typeName, _isReference, _variableNames, true);
 		arrayLength = _arrayLength;
 	}
 	@Override
-	public Value run(RuntimeEnvironment environment) throws RuntimeException
+	public Value run(RuntimeEnvironment environment) throws RuntimeException // Use for variable declarations IN methods or modules
 	{
 		assert(environment != null);
 		// Evaluate the length of the array and convert it to an integer
-		Value len = arrayLength.run(environment).dereference();
-		if (len.getType() != Type.INTEGER)
-			throw new SelectorException("Cannot cast the length of an array from " + len.getType() + " to " + Type.INTEGER + ".");
-		Integer length = (Integer)len;
-		// Add all variable instances to the variable scope
-		for (String name : names)
+		final Integer length = arrayLength.run(environment).dereference().castToInteger();
+		// Loop through all variable names
+		for (String name : variableNames)
 		{
-			IInstantiateableVariable arrayType = environment.resolveType(type);
+			// Resolve the type of the array members
+			final IInstantiateableVariable arrayType = environment.resolveType(typeName);
+			// Make an instantializer for the array
 			ArrayVariableInstantiation arrayCreator = new ArrayVariableInstantiation(arrayType);
 			arrayCreator.setLength(length.getIntValue());
+			// Create the array and add it in the environment
 			environment.addVariable(name, arrayCreator.instantiate(environment));
 		}
 		return null;
 	}
 	@Override
-	public void runForParameter(RuntimeEnvironment environment, Queue<Value> parameters) throws RuntimeException
+	public void runForParameter(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException // Use for registering parameters
 	{
 		assert(environment != null);
-		assert(parameters != null);
-		assert(names != null);
-		assert(arrayLength != null);
-		if (parameters.size() < names.size())
+		assert(parameterValues != null);
+		// Check if we have enough parameter values left for all our variables
+		if (parameterValues.size() < variableNames.size())
 			throw new IncorrectNumberOfArgumentsException();
-		for (String name : names)
+		// Evaluate the length of the array and convert it to an integer
+		final int length = arrayLength.run(environment).dereference().castToInteger().getIntValue();
+		// Loop through all variable names
+		for (String variableName : variableNames)
 		{
-			Array param = parameters.poll().castToArray();
+			// Fetch a parameter value from the parameter values
+			final Array parameterValue = parameterValues.poll().castToArray();
+			// Check if the array length of the parameter matches the definition
+			if (length != parameterValue.getLength())
+				throw new ArrayLengthMismatch();
+			// Check if the variable is a reference
 			if (isReference)
-				environment.addVariable(name, param);
+			{
+				// Yes, make a reference to the variable and add it to the environment
+				environment.addVariable(variableName, parameterValue);
+			}
 			else
 			{
-				Integer length = arrayLength.run(environment).castToInteger();
-				if (length.getIntValue() != param.getLength())
-					throw new ArrayLengthMismatch();
-				IInstantiateableVariable arrayType = environment.resolveType(type);
+				// No, create a new array of the required type and length
+				final IInstantiateableVariable arrayType = environment.resolveType(typeName);
 				ArrayVariableInstantiation arrayCreator = new ArrayVariableInstantiation(arrayType);
-				arrayCreator.setLength(length.getIntValue());
+				arrayCreator.setLength(length);
 				Array val = (Array)arrayCreator.instantiate(environment);
-				for (int i=0;i<length.getIntValue();i++)
-				{
-					val.getIndexValue(i).setValue(param.getIndexValue(i));
-				}
+				// Copy the array
+				val.setValue(parameterValue);
+				// Register the variable in the environment
+				environment.addVariable(variableName, val);
 			}
 		}
 	}

@@ -7,18 +7,22 @@ import randy.oberon0.value.Value;
 
 public class RecordDeclaration extends AbstractTypeDeclaration
 {
-	private String name;
-	private Map<String, String> members;
+	private final String recordName;
+	private final Map<String, String> memberVariables; // <variableName, variableType>
 	
-	public RecordDeclaration(String _name, Map<String, String> _members)
+	public RecordDeclaration(String _recordName, Map<String, String> _memberVariables)
 	{
-		name = _name;
-		members = _members;
+		assert(_recordName != null);
+		assert(_recordName.length() > 0);
+		assert(_memberVariables != null);
+		recordName = _recordName;
+		memberVariables = _memberVariables;
 	}
 	@Override
 	public Value run(RuntimeEnvironment environment) throws RuntimeException
 	{
-		environment.addType(name, new RecordInstantiation(members));
+		assert(environment != null);
+		environment.addType(recordName, new RecordInstantiation(memberVariables));
 		return null;
 	}
 }

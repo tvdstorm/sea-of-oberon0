@@ -7,7 +7,7 @@ import randy.oberon0.value.Value;
 
 public class Block extends Statement
 {
-	private List<Statement> statements;
+	private final List<Statement> statements;
 	
 	public Block(List<Statement> _statements)
 	{

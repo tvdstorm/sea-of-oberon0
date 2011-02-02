@@ -7,7 +7,7 @@ import randy.oberon0.value.Value;
 
 public class BooleanLiteral extends Expression
 {
-	private Boolean value;
+	private final Boolean value;
 	
 	public BooleanLiteral(Boolean _value)
 	{

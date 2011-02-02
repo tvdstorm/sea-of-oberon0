@@ -16,7 +16,7 @@ import randy.oberon0.value.Type;
 
 public class Oberon0ASTTreeGenerator
 {
-	public ASTNode generate(String filename) throws Exception
+	public Module buildASTTreeFromFile(String filename) throws Exception
 	{
 		Oberon0Lexer lexer = null;
 		try
@@ -73,7 +73,7 @@ public class Oberon0ASTTreeGenerator
 		Expression rhs = buildExpression(tree.getChild(1).getChild(0));
 		return new AssignmentStatement(lhs, rhs);
 	}
-	public static ASTNode buildASTTree(Tree tree) throws Exception
+	public static Module buildASTTree(Tree tree) throws Exception
 	{
 		assert(tree != null);
 		assert(tree.getType() == Oberon0Parser.MODULE);
@@ -157,7 +157,7 @@ public class Oberon0ASTTreeGenerator
 			case Oberon0Parser.INTEGER:
 				return buildIntegerLiteral(tree);
 			case Oberon0Parser.IDENT:
-				return buildVariable(tree);
+				return buildVariableSelector(tree);
 			case Oberon0Parser.ARRAYSELECTOR:
 			case Oberon0Parser.DOTSELECTOR:
 				return buildSelector(tree);
@@ -237,7 +237,7 @@ public class Oberon0ASTTreeGenerator
 		assert(tree.getType() == Oberon0Parser.MODULE);
 		assert(tree.getChildCount() >= 1);
 		assert(tree.getChild(0).getType() == Oberon0Parser.IDENT);
-		ASTNode body = null;
+		Statement body = null;
 		List<BodyDeclaration> bodyDeclarations = new Vector<BodyDeclaration>();
 		for (int i=1;i<tree.getChildCount();i++)
 		{
@@ -386,12 +386,6 @@ public class Oberon0ASTTreeGenerator
 		}
 		else
 			return new VarDeclaration(type, isReference, names);
-	}
-	public static Variable buildVariable(Tree tree) throws Exception
-	{
-		assert(tree.getType() == Oberon0Parser.IDENT);
-		String name = tree.getText();
-		return new Variable(name);
 	}
 	public static VariableSelector buildVariableSelector(Tree tree) throws Exception
 	{

@@ -7,7 +7,7 @@ import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
 
 public class IntegerLiteral extends Expression
 {
-	private Integer value;
+	private final Integer value;
 	
 	public IntegerLiteral(Integer _value)
 	{

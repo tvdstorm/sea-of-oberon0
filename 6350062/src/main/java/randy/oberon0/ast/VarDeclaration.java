@@ -8,53 +8,66 @@ import randy.oberon0.value.*;
 
 public class VarDeclaration extends BodyDeclaration
 {
-	protected String type;
-	protected boolean bIsArray;
-	protected boolean isReference;
-	protected List<String> names;
+	protected final String typeName;
+	protected final boolean isArray;
+	protected final boolean isReference;
+	protected final List<String> variableNames;
 	
-	public VarDeclaration(String _type, boolean _isReference, List<String> _names)
+	public VarDeclaration(String _typeName, boolean _isReference, List<String> _variableNames)
 	{
-		assert(_type != null);
-		assert(_names != null);
-		bIsArray = false;
-		type = _type;
+		this(_typeName, _isReference, _variableNames, false);
+	}
+	protected VarDeclaration(String _typeName, boolean _isReference, List<String> _variableNames, boolean _isArray)
+	{
+		assert(_typeName != null);
+		assert(_variableNames != null);
+		typeName = _typeName;
+		isArray = _isArray;
 		isReference = _isReference;
-		names = _names;
+		variableNames = _variableNames;
 	}
 	@Override
-	public Value run(RuntimeEnvironment environment) throws RuntimeException
+	public Value run(RuntimeEnvironment environment) throws RuntimeException // Use for variable declarations IN methods or modules
 	{
 		assert(environment != null);
-		for (String name : names)
+		// Loop through all variable names
+		for (String variableName : variableNames)
 		{
-			assert(name.length() >= 1);
-			environment.addVariable(name, environment.resolveType(type).instantiate(environment));
+			assert(variableName.length() >= 1);
+			// Add the variable to the environment
+			environment.addVariable(variableName, environment.resolveType(typeName).instantiate(environment));
 		}
 		return null;
 	}
-	public void runForParameter(RuntimeEnvironment environment, Queue<Value> parameters) throws RuntimeException
+	public void runForParameter(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException // Use for registering parameters
 	{
 		assert(environment != null);
-		assert(parameters != null);
-		assert(names != null);
-		if (parameters.size() < names.size())
+		assert(parameterValues != null);
+		// Check if we have enough parameter values left for all our variables
+		if (parameterValues.size() < variableNames.size())
 			throw new IncorrectNumberOfArgumentsException();
-		for (String name : names)
+		// Loop through all variable names
+		for (String variableName : variableNames)
 		{
-			Value param = parameters.poll();
-			Value instantiatedType = environment.resolveType(type).instantiate(environment);
-			if (param.getType() != instantiatedType.getType())
-				throw new TypeMismatchException(param.getType().toString(), type);
-			Value val;
+			// Fetch a parameter value from the parameter values
+			final Value parameterValue = parameterValues.poll();
+			// Resolve the variable type and check if they are compatible
+			if (parameterValue.getType() != environment.resolveType(typeName).instantiate(environment).getType())
+				throw new TypeMismatchException(parameterValue.getType().toString(), typeName);
+			// Check if the variable is a reference
 			if (isReference)
-				val = param;
+			{
+				// Yes, make a reference to the variable and add it to the environment
+				environment.addVariable(variableName, parameterValue);
+			}
 			else
 			{	
-				val = instantiatedType;
-				val.setValue(param);
+				// No, create a new variable of the required type and copy the value of the variable
+				Value val = environment.resolveType(typeName).instantiate(environment);
+				val.setValue(parameterValue);
+				// Register the variable in the environment
+				environment.addVariable(variableName, val);
 			}
-			environment.addVariable(name, val);
 		}
 	}
 }
