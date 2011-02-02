@@ -10,11 +10,13 @@
 	</path>
 
 	<target name="grammarCreator">
+		<delete dir="${parser.dir}" />
+		<mkdir dir="${parser.dir}"/>
 		<taskdef name="antlr3"
 				classname="org.apache.tools.ant.antlr.ANTLR3"
 				classpathref="classpath" />
 		
-		<antlr3 target="${grammar.dir}/Oberon.g" outputdirectory="${parser.dir}">
+		<antlr3 target="${grammar.dir}/Oberon0.g" outputdirectory="${parser.dir}">
 			<classpath refid="classpath" />
 		</antlr3>
 	</target>
@@ -35,6 +37,7 @@
 	</target>
 	
 	<target name="javancss" >
+		<mkdir dir="docs"/>
 		<taskdef name="javancss"
 				classname="javancss.JavancssAntTask"
 				classpathref="classpath" />
@@ -47,21 +50,19 @@
 	</target>
 
 	<target name="jdepend" >
-		<taskdef name="jdepend"
-				classname="org.apache.tools.ant.taskdefs.optional.jdepend.JDependTask"
-				classpathref="classpath" />
+		<mkdir dir="docs"/>
 		
-		  <jdepend format="xml" outputfile="docs/jdepend-report.xml">
-				<exclude name="java.*"/>
-				<exclude name="javax.*"/>
-				<classespath>
-					<pathelement location="${build.dir}" />
-				</classespath>
-				<classpath location="classes" />
-		  </jdepend>
+		<jdepend format="xml" outputfile="docs/jdepend-report.xml">
+			<exclude name="java.*"/>
+			<exclude name="javax.*"/>
+			<classespath>
+				<pathelement location="${build.dir}" />
+			</classespath>
+			<classpath location="classes" />
+		</jdepend>
 			
-		  <style basedir="docs" destdir="docs"
-		         includes="jdepend-report.xml" 
-		         style="${ant.home}/etc/jdepend.xsl" />
-		</target>
+		<xslt basedir="docs" destdir="docs"
+				includes="jdepend-report.xml" 
+				style="${ant.home}/etc/jdepend.xsl" />
+	</target>
 </project>
