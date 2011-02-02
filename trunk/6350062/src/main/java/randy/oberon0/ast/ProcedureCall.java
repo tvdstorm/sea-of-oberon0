@@ -5,7 +5,7 @@ import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
 import randy.oberon0.value.*;
 
-public class ProcedureCall extends Expression
+public class ProcedureCall extends Statement
 {
 	private String name;
 	private List<Expression> parameters;

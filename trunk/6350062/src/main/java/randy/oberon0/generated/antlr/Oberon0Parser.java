@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g 2011-02-02 14:19:53
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g 2011-02-02 14:27:20
 
 package randy.oberon0.generated.antlr;
 
@@ -1031,7 +1031,7 @@ public class Oberon0Parser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: infixOperand, simpleExpression, simpleExpression
+                    // elements: simpleExpression, infixOperand, simpleExpression
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -1474,7 +1474,7 @@ public class Oberon0Parser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: statementSequence, ELSIF, expression, statementSequence, ELSE, IF, statementSequence, expression
+                    // elements: expression, ELSIF, statementSequence, ELSE, statementSequence, statementSequence, expression, IF
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -1510,10 +1510,10 @@ public class Oberon0Parser extends Parser {
 
                         adaptor.addChild(root_1, root_2);
                         }
-                        if ( !(stream_ELSIF.hasNext()||stream_statementSequence.hasNext()||stream_expression.hasNext()) ) {
+                        if ( !(stream_expression.hasNext()||stream_ELSIF.hasNext()||stream_statementSequence.hasNext()) ) {
                             throw new RewriteEarlyExitException();
                         }
-                        while ( stream_ELSIF.hasNext()||stream_statementSequence.hasNext()||stream_expression.hasNext() ) {
+                        while ( stream_expression.hasNext()||stream_ELSIF.hasNext()||stream_statementSequence.hasNext() ) {
                             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:87:64: ^( ELSIF ^( EXPRESSION expression ) ^( BODY statementSequence ) )
                             {
                             CommonTree root_2 = (CommonTree)adaptor.nil();
@@ -1542,9 +1542,9 @@ public class Oberon0Parser extends Parser {
                             }
 
                         }
+                        stream_expression.reset();
                         stream_ELSIF.reset();
                         stream_statementSequence.reset();
-                        stream_expression.reset();
                         // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:87:125: ^( ELSE ^( BODY statementSequence ) )
                         {
                         CommonTree root_2 = (CommonTree)adaptor.nil();
@@ -1646,7 +1646,7 @@ public class Oberon0Parser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: ELSIF, statementSequence, IF, expression, statementSequence, expression
+                    // elements: expression, ELSIF, IF, statementSequence, statementSequence, expression
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -1682,10 +1682,10 @@ public class Oberon0Parser extends Parser {
 
                         adaptor.addChild(root_1, root_2);
                         }
-                        if ( !(stream_ELSIF.hasNext()||stream_statementSequence.hasNext()||stream_expression.hasNext()) ) {
+                        if ( !(stream_expression.hasNext()||stream_ELSIF.hasNext()||stream_statementSequence.hasNext()) ) {
                             throw new RewriteEarlyExitException();
                         }
-                        while ( stream_ELSIF.hasNext()||stream_statementSequence.hasNext()||stream_expression.hasNext() ) {
+                        while ( stream_expression.hasNext()||stream_ELSIF.hasNext()||stream_statementSequence.hasNext() ) {
                             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:89:64: ^( ELSIF ^( EXPRESSION expression ) ^( BODY statementSequence ) )
                             {
                             CommonTree root_2 = (CommonTree)adaptor.nil();
@@ -1714,9 +1714,9 @@ public class Oberon0Parser extends Parser {
                             }
 
                         }
+                        stream_expression.reset();
                         stream_ELSIF.reset();
                         stream_statementSequence.reset();
-                        stream_expression.reset();
 
                         adaptor.addChild(root_0, root_1);
                         }
@@ -1768,7 +1768,7 @@ public class Oberon0Parser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: expression, statementSequence, ELSE, statementSequence, IF
+                    // elements: statementSequence, statementSequence, IF, expression, ELSE
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -1857,7 +1857,7 @@ public class Oberon0Parser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: expression, IF, statementSequence
+                    // elements: IF, statementSequence, expression
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -1981,7 +1981,7 @@ public class Oberon0Parser extends Parser {
 
 
             // AST REWRITE
-            // elements: statementSequence, WHILE, expression
+            // elements: expression, WHILE, statementSequence
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2091,7 +2091,7 @@ public class Oberon0Parser extends Parser {
 
 
             // AST REWRITE
-            // elements: ASSIGNMENT, selector, expression
+            // elements: expression, ASSIGNMENT, selector
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2162,7 +2162,7 @@ public class Oberon0Parser extends Parser {
     };
 
     // $ANTLR start "procedureCall"
-    // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:98:1: procedureCall : selector ( actualParameters )? -> ^( EXPRESSION ^( PROCEDURECALL selector ( actualParameters )? ) ) ;
+    // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:98:1: procedureCall : selector ( actualParameters )? -> ^( PROCEDURECALL selector ( actualParameters )? ) ;
     public final Oberon0Parser.procedureCall_return procedureCall() throws RecognitionException {
         Oberon0Parser.procedureCall_return retval = new Oberon0Parser.procedureCall_return();
         retval.start = input.LT(1);
@@ -2177,7 +2177,7 @@ public class Oberon0Parser extends Parser {
         RewriteRuleSubtreeStream stream_selector=new RewriteRuleSubtreeStream(adaptor,"rule selector");
         RewriteRuleSubtreeStream stream_actualParameters=new RewriteRuleSubtreeStream(adaptor,"rule actualParameters");
         try {
-            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:98:14: ( selector ( actualParameters )? -> ^( EXPRESSION ^( PROCEDURECALL selector ( actualParameters )? ) ) )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:98:14: ( selector ( actualParameters )? -> ^( PROCEDURECALL selector ( actualParameters )? ) )
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:98:17: selector ( actualParameters )?
             {
             pushFollow(FOLLOW_selector_in_procedureCall935);
@@ -2212,7 +2212,7 @@ public class Oberon0Parser extends Parser {
 
 
             // AST REWRITE
-            // elements: actualParameters, selector
+            // elements: selector, actualParameters
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2223,28 +2223,20 @@ public class Oberon0Parser extends Parser {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (CommonTree)adaptor.nil();
-            // 99:5: -> ^( EXPRESSION ^( PROCEDURECALL selector ( actualParameters )? ) )
+            // 99:5: -> ^( PROCEDURECALL selector ( actualParameters )? )
             {
-                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:99:8: ^( EXPRESSION ^( PROCEDURECALL selector ( actualParameters )? ) )
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:99:8: ^( PROCEDURECALL selector ( actualParameters )? )
                 {
                 CommonTree root_1 = (CommonTree)adaptor.nil();
-                root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(EXPRESSION, "EXPRESSION"), root_1);
+                root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(PROCEDURECALL, "PROCEDURECALL"), root_1);
 
-                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:99:21: ^( PROCEDURECALL selector ( actualParameters )? )
-                {
-                CommonTree root_2 = (CommonTree)adaptor.nil();
-                root_2 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(PROCEDURECALL, "PROCEDURECALL"), root_2);
-
-                adaptor.addChild(root_2, stream_selector.nextTree());
-                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:99:46: ( actualParameters )?
+                adaptor.addChild(root_1, stream_selector.nextTree());
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:99:33: ( actualParameters )?
                 if ( stream_actualParameters.hasNext() ) {
-                    adaptor.addChild(root_2, stream_actualParameters.nextTree());
+                    adaptor.addChild(root_1, stream_actualParameters.nextTree());
 
                 }
                 stream_actualParameters.reset();
-
-                adaptor.addChild(root_1, root_2);
-                }
 
                 adaptor.addChild(root_0, root_1);
                 }
@@ -2310,7 +2302,7 @@ public class Oberon0Parser extends Parser {
                 case 1 :
                     // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:100:14: assignment
                     {
-                    pushFollow(FOLLOW_assignment_in_statement967);
+                    pushFollow(FOLLOW_assignment_in_statement963);
                     assignment80=assignment();
 
                     state._fsp--;
@@ -2322,7 +2314,7 @@ public class Oberon0Parser extends Parser {
                 case 2 :
                     // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:100:27: procedureCall
                     {
-                    pushFollow(FOLLOW_procedureCall_in_statement971);
+                    pushFollow(FOLLOW_procedureCall_in_statement967);
                     procedureCall81=procedureCall();
 
                     state._fsp--;
@@ -2334,7 +2326,7 @@ public class Oberon0Parser extends Parser {
                 case 3 :
                     // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:100:42: ifStatement
                     {
-                    pushFollow(FOLLOW_ifStatement_in_statement974);
+                    pushFollow(FOLLOW_ifStatement_in_statement970);
                     ifStatement82=ifStatement();
 
                     state._fsp--;
@@ -2346,7 +2338,7 @@ public class Oberon0Parser extends Parser {
                 case 4 :
                     // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:100:56: whileStatement
                     {
-                    pushFollow(FOLLOW_whileStatement_in_statement978);
+                    pushFollow(FOLLOW_whileStatement_in_statement974);
                     whileStatement83=whileStatement();
 
                     state._fsp--;
@@ -2407,7 +2399,7 @@ public class Oberon0Parser extends Parser {
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:101:18: ( statement ( ';' statement )* -> statement ( statement )* )
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:101:20: statement ( ';' statement )*
             {
-            pushFollow(FOLLOW_statement_in_statementSequence986);
+            pushFollow(FOLLOW_statement_in_statementSequence982);
             statement84=statement();
 
             state._fsp--;
@@ -2428,10 +2420,10 @@ public class Oberon0Parser extends Parser {
             	case 1 :
             	    // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:101:31: ';' statement
             	    {
-            	    char_literal85=(Token)match(input,53,FOLLOW_53_in_statementSequence989); if (state.failed) return retval; 
+            	    char_literal85=(Token)match(input,53,FOLLOW_53_in_statementSequence985); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_53.add(char_literal85);
 
-            	    pushFollow(FOLLOW_statement_in_statementSequence991);
+            	    pushFollow(FOLLOW_statement_in_statementSequence987);
             	    statement86=statement();
 
             	    state._fsp--;
@@ -2521,7 +2513,7 @@ public class Oberon0Parser extends Parser {
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:103:10: ( ident ( ',' ident )* -> ident ( ident )* )
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:103:13: ident ( ',' ident )*
             {
-            pushFollow(FOLLOW_ident_in_identList1013);
+            pushFollow(FOLLOW_ident_in_identList1009);
             ident87=ident();
 
             state._fsp--;
@@ -2542,10 +2534,10 @@ public class Oberon0Parser extends Parser {
             	case 1 :
             	    // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:103:21: ',' ident
             	    {
-            	    char_literal88=(Token)match(input,52,FOLLOW_52_in_identList1017); if (state.failed) return retval; 
+            	    char_literal88=(Token)match(input,52,FOLLOW_52_in_identList1013); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_52.add(char_literal88);
 
-            	    pushFollow(FOLLOW_ident_in_identList1019);
+            	    pushFollow(FOLLOW_ident_in_identList1015);
             	    ident89=ident();
 
             	    state._fsp--;
@@ -2639,19 +2631,19 @@ public class Oberon0Parser extends Parser {
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:105:10: ( ARRAY expression OF type -> ^( ARRAY ^( TYPE type ) ^( EXPRESSION expression ) ) )
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:105:13: ARRAY expression OF type
             {
-            ARRAY90=(Token)match(input,ARRAY,FOLLOW_ARRAY_in_arrayType1041); if (state.failed) return retval; 
+            ARRAY90=(Token)match(input,ARRAY,FOLLOW_ARRAY_in_arrayType1037); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_ARRAY.add(ARRAY90);
 
-            pushFollow(FOLLOW_expression_in_arrayType1043);
+            pushFollow(FOLLOW_expression_in_arrayType1039);
             expression91=expression();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_expression.add(expression91.getTree());
-            OF92=(Token)match(input,OF,FOLLOW_OF_in_arrayType1045); if (state.failed) return retval; 
+            OF92=(Token)match(input,OF,FOLLOW_OF_in_arrayType1041); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_OF.add(OF92);
 
-            pushFollow(FOLLOW_type_in_arrayType1047);
+            pushFollow(FOLLOW_type_in_arrayType1043);
             type93=type();
 
             state._fsp--;
@@ -2763,16 +2755,16 @@ public class Oberon0Parser extends Parser {
                 case 1 :
                     // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:107:14: identList ':' type
                     {
-                    pushFollow(FOLLOW_identList_in_fieldList1077);
+                    pushFollow(FOLLOW_identList_in_fieldList1073);
                     identList94=identList();
 
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) stream_identList.add(identList94.getTree());
-                    char_literal95=(Token)match(input,54,FOLLOW_54_in_fieldList1079); if (state.failed) return retval; 
+                    char_literal95=(Token)match(input,54,FOLLOW_54_in_fieldList1075); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_54.add(char_literal95);
 
-                    pushFollow(FOLLOW_type_in_fieldList1081);
+                    pushFollow(FOLLOW_type_in_fieldList1077);
                     type96=type();
 
                     state._fsp--;
@@ -2787,7 +2779,7 @@ public class Oberon0Parser extends Parser {
 
 
             // AST REWRITE
-            // elements: type, identList
+            // elements: identList, type
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2878,10 +2870,10 @@ public class Oberon0Parser extends Parser {
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:109:11: ( RECORD fieldList ( ';' fieldList )* END -> ^( RECORD ( fieldList )* ) )
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:109:14: RECORD fieldList ( ';' fieldList )* END
             {
-            RECORD97=(Token)match(input,RECORD,FOLLOW_RECORD_in_recordType1107); if (state.failed) return retval; 
+            RECORD97=(Token)match(input,RECORD,FOLLOW_RECORD_in_recordType1103); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_RECORD.add(RECORD97);
 
-            pushFollow(FOLLOW_fieldList_in_recordType1109);
+            pushFollow(FOLLOW_fieldList_in_recordType1105);
             fieldList98=fieldList();
 
             state._fsp--;
@@ -2902,10 +2894,10 @@ public class Oberon0Parser extends Parser {
             	case 1 :
             	    // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:109:32: ';' fieldList
             	    {
-            	    char_literal99=(Token)match(input,53,FOLLOW_53_in_recordType1112); if (state.failed) return retval; 
+            	    char_literal99=(Token)match(input,53,FOLLOW_53_in_recordType1108); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_53.add(char_literal99);
 
-            	    pushFollow(FOLLOW_fieldList_in_recordType1114);
+            	    pushFollow(FOLLOW_fieldList_in_recordType1110);
             	    fieldList100=fieldList();
 
             	    state._fsp--;
@@ -2920,7 +2912,7 @@ public class Oberon0Parser extends Parser {
                 }
             } while (true);
 
-            END101=(Token)match(input,END,FOLLOW_END_in_recordType1118); if (state.failed) return retval; 
+            END101=(Token)match(input,END,FOLLOW_END_in_recordType1114); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_END.add(END101);
 
 
@@ -3033,7 +3025,7 @@ public class Oberon0Parser extends Parser {
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    pushFollow(FOLLOW_ident_in_type1139);
+                    pushFollow(FOLLOW_ident_in_type1135);
                     ident102=ident();
 
                     state._fsp--;
@@ -3047,7 +3039,7 @@ public class Oberon0Parser extends Parser {
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    pushFollow(FOLLOW_arrayType_in_type1143);
+                    pushFollow(FOLLOW_arrayType_in_type1139);
                     arrayType103=arrayType();
 
                     state._fsp--;
@@ -3061,7 +3053,7 @@ public class Oberon0Parser extends Parser {
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    pushFollow(FOLLOW_recordType_in_type1147);
+                    pushFollow(FOLLOW_recordType_in_type1143);
                     recordType104=recordType();
 
                     state._fsp--;
@@ -3146,19 +3138,19 @@ public class Oberon0Parser extends Parser {
                 case 1 :
                     // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:112:13: VAR identList ':' type
                     {
-                    VAR105=(Token)match(input,VAR,FOLLOW_VAR_in_fPSection1154); if (state.failed) return retval; 
+                    VAR105=(Token)match(input,VAR,FOLLOW_VAR_in_fPSection1150); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_VAR.add(VAR105);
 
-                    pushFollow(FOLLOW_identList_in_fPSection1156);
+                    pushFollow(FOLLOW_identList_in_fPSection1152);
                     identList106=identList();
 
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) stream_identList.add(identList106.getTree());
-                    char_literal107=(Token)match(input,54,FOLLOW_54_in_fPSection1158); if (state.failed) return retval; 
+                    char_literal107=(Token)match(input,54,FOLLOW_54_in_fPSection1154); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_54.add(char_literal107);
 
-                    pushFollow(FOLLOW_type_in_fPSection1160);
+                    pushFollow(FOLLOW_type_in_fPSection1156);
                     type108=type();
 
                     state._fsp--;
@@ -3199,16 +3191,16 @@ public class Oberon0Parser extends Parser {
                 case 2 :
                     // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:114:4: identList ':' type
                     {
-                    pushFollow(FOLLOW_identList_in_fPSection1181);
+                    pushFollow(FOLLOW_identList_in_fPSection1177);
                     identList109=identList();
 
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) stream_identList.add(identList109.getTree());
-                    char_literal110=(Token)match(input,54,FOLLOW_54_in_fPSection1183); if (state.failed) return retval; 
+                    char_literal110=(Token)match(input,54,FOLLOW_54_in_fPSection1179); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_54.add(char_literal110);
 
-                    pushFollow(FOLLOW_type_in_fPSection1185);
+                    pushFollow(FOLLOW_type_in_fPSection1181);
                     type111=type();
 
                     state._fsp--;
@@ -3217,7 +3209,7 @@ public class Oberon0Parser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: type, identList
+                    // elements: identList, type
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -3300,7 +3292,7 @@ public class Oberon0Parser extends Parser {
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:116:17: ( '(' ( fPSection ( ';' fPSection )* )? ')' -> ^( PARAMETERS ( fPSection ( fPSection )* )? ) )
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:116:19: '(' ( fPSection ( ';' fPSection )* )? ')'
             {
-            char_literal112=(Token)match(input,50,FOLLOW_50_in_formalParameters1205); if (state.failed) return retval; 
+            char_literal112=(Token)match(input,50,FOLLOW_50_in_formalParameters1201); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_50.add(char_literal112);
 
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:116:23: ( fPSection ( ';' fPSection )* )?
@@ -3314,7 +3306,7 @@ public class Oberon0Parser extends Parser {
                 case 1 :
                     // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:116:24: fPSection ( ';' fPSection )*
                     {
-                    pushFollow(FOLLOW_fPSection_in_formalParameters1208);
+                    pushFollow(FOLLOW_fPSection_in_formalParameters1204);
                     fPSection113=fPSection();
 
                     state._fsp--;
@@ -3335,10 +3327,10 @@ public class Oberon0Parser extends Parser {
                     	case 1 :
                     	    // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:116:35: ';' fPSection
                     	    {
-                    	    char_literal114=(Token)match(input,53,FOLLOW_53_in_formalParameters1211); if (state.failed) return retval; 
+                    	    char_literal114=(Token)match(input,53,FOLLOW_53_in_formalParameters1207); if (state.failed) return retval; 
                     	    if ( state.backtracking==0 ) stream_53.add(char_literal114);
 
-                    	    pushFollow(FOLLOW_fPSection_in_formalParameters1213);
+                    	    pushFollow(FOLLOW_fPSection_in_formalParameters1209);
                     	    fPSection115=fPSection();
 
                     	    state._fsp--;
@@ -3359,7 +3351,7 @@ public class Oberon0Parser extends Parser {
 
             }
 
-            char_literal116=(Token)match(input,51,FOLLOW_51_in_formalParameters1219); if (state.failed) return retval; 
+            char_literal116=(Token)match(input,51,FOLLOW_51_in_formalParameters1215); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_51.add(char_literal116);
 
 
@@ -3449,10 +3441,10 @@ public class Oberon0Parser extends Parser {
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:118:14: ( BEGIN statementSequence -> ^( BODY statementSequence ) )
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:118:17: BEGIN statementSequence
             {
-            BEGIN117=(Token)match(input,BEGIN,FOLLOW_BEGIN_in_procedureBody1246); if (state.failed) return retval; 
+            BEGIN117=(Token)match(input,BEGIN,FOLLOW_BEGIN_in_procedureBody1242); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_BEGIN.add(BEGIN117);
 
-            pushFollow(FOLLOW_statementSequence_in_procedureBody1248);
+            pushFollow(FOLLOW_statementSequence_in_procedureBody1244);
             statementSequence118=statementSequence();
 
             state._fsp--;
@@ -3550,10 +3542,10 @@ public class Oberon0Parser extends Parser {
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:120:21: ( PROCEDURE ident ( formalParameters )? ';' declarations ( procedureBody )? END ident -> ^( PROCEDURE ident ( formalParameters )? ( declarations )? ( procedureBody )? ) )
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:120:23: PROCEDURE ident ( formalParameters )? ';' declarations ( procedureBody )? END ident
             {
-            PROCEDURE119=(Token)match(input,PROCEDURE,FOLLOW_PROCEDURE_in_procedureDeclaration1266); if (state.failed) return retval; 
+            PROCEDURE119=(Token)match(input,PROCEDURE,FOLLOW_PROCEDURE_in_procedureDeclaration1262); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_PROCEDURE.add(PROCEDURE119);
 
-            pushFollow(FOLLOW_ident_in_procedureDeclaration1268);
+            pushFollow(FOLLOW_ident_in_procedureDeclaration1264);
             ident120=ident();
 
             state._fsp--;
@@ -3570,7 +3562,7 @@ public class Oberon0Parser extends Parser {
                 case 1 :
                     // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:120:41: formalParameters
                     {
-                    pushFollow(FOLLOW_formalParameters_in_procedureDeclaration1272);
+                    pushFollow(FOLLOW_formalParameters_in_procedureDeclaration1268);
                     formalParameters121=formalParameters();
 
                     state._fsp--;
@@ -3582,10 +3574,10 @@ public class Oberon0Parser extends Parser {
 
             }
 
-            char_literal122=(Token)match(input,53,FOLLOW_53_in_procedureDeclaration1276); if (state.failed) return retval; 
+            char_literal122=(Token)match(input,53,FOLLOW_53_in_procedureDeclaration1272); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_53.add(char_literal122);
 
-            pushFollow(FOLLOW_declarations_in_procedureDeclaration1278);
+            pushFollow(FOLLOW_declarations_in_procedureDeclaration1274);
             declarations123=declarations();
 
             state._fsp--;
@@ -3602,7 +3594,7 @@ public class Oberon0Parser extends Parser {
                 case 1 :
                     // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:120:78: procedureBody
                     {
-                    pushFollow(FOLLOW_procedureBody_in_procedureDeclaration1281);
+                    pushFollow(FOLLOW_procedureBody_in_procedureDeclaration1277);
                     procedureBody124=procedureBody();
 
                     state._fsp--;
@@ -3614,10 +3606,10 @@ public class Oberon0Parser extends Parser {
 
             }
 
-            END125=(Token)match(input,END,FOLLOW_END_in_procedureDeclaration1285); if (state.failed) return retval; 
+            END125=(Token)match(input,END,FOLLOW_END_in_procedureDeclaration1281); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_END.add(END125);
 
-            pushFollow(FOLLOW_ident_in_procedureDeclaration1287);
+            pushFollow(FOLLOW_ident_in_procedureDeclaration1283);
             ident126=ident();
 
             state._fsp--;
@@ -3626,7 +3618,7 @@ public class Oberon0Parser extends Parser {
 
 
             // AST REWRITE
-            // elements: PROCEDURE, procedureBody, formalParameters, ident, declarations
+            // elements: procedureBody, formalParameters, ident, PROCEDURE, declarations
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -3728,7 +3720,7 @@ public class Oberon0Parser extends Parser {
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:122:19: ( CONST ( ident '=' expression ';' )* )
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:122:20: CONST ( ident '=' expression ';' )*
             {
-            CONST127=(Token)match(input,CONST,FOLLOW_CONST_in_constDeclaration1320); if (state.failed) return retval; 
+            CONST127=(Token)match(input,CONST,FOLLOW_CONST_in_constDeclaration1316); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_CONST.add(CONST127);
 
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:122:26: ( ident '=' expression ';' )*
@@ -3746,22 +3738,22 @@ public class Oberon0Parser extends Parser {
             	case 1 :
             	    // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:122:27: ident '=' expression ';'
             	    {
-            	    pushFollow(FOLLOW_ident_in_constDeclaration1323);
+            	    pushFollow(FOLLOW_ident_in_constDeclaration1319);
             	    ident128=ident();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
             	    if ( state.backtracking==0 ) stream_ident.add(ident128.getTree());
-            	    char_literal129=(Token)match(input,EQUALS,FOLLOW_EQUALS_in_constDeclaration1325); if (state.failed) return retval; 
+            	    char_literal129=(Token)match(input,EQUALS,FOLLOW_EQUALS_in_constDeclaration1321); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_EQUALS.add(char_literal129);
 
-            	    pushFollow(FOLLOW_expression_in_constDeclaration1327);
+            	    pushFollow(FOLLOW_expression_in_constDeclaration1323);
             	    expression130=expression();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
             	    if ( state.backtracking==0 ) stream_expression.add(expression130.getTree());
-            	    char_literal131=(Token)match(input,53,FOLLOW_53_in_constDeclaration1329); if (state.failed) return retval; 
+            	    char_literal131=(Token)match(input,53,FOLLOW_53_in_constDeclaration1325); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_53.add(char_literal131);
 
 
@@ -3779,7 +3771,7 @@ public class Oberon0Parser extends Parser {
 
 
             // AST REWRITE
-            // elements: expression, ident, CONST
+            // elements: ident, CONST, expression
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -3793,7 +3785,7 @@ public class Oberon0Parser extends Parser {
             // 123:5: -> ( ^( CONST ident expression ) )*
             {
                 // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:123:8: ( ^( CONST ident expression ) )*
-                while ( stream_expression.hasNext()||stream_ident.hasNext()||stream_CONST.hasNext() ) {
+                while ( stream_ident.hasNext()||stream_CONST.hasNext()||stream_expression.hasNext() ) {
                     // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:123:8: ^( CONST ident expression )
                     {
                     CommonTree root_1 = (CommonTree)adaptor.nil();
@@ -3806,9 +3798,9 @@ public class Oberon0Parser extends Parser {
                     }
 
                 }
-                stream_expression.reset();
                 stream_ident.reset();
                 stream_CONST.reset();
+                stream_expression.reset();
 
             }
 
@@ -3871,7 +3863,7 @@ public class Oberon0Parser extends Parser {
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:124:18: ( TYPE ( ident '=' type ';' )* )
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:124:19: TYPE ( ident '=' type ';' )*
             {
-            TYPE132=(Token)match(input,TYPE,FOLLOW_TYPE_in_typeDeclaration1354); if (state.failed) return retval; 
+            TYPE132=(Token)match(input,TYPE,FOLLOW_TYPE_in_typeDeclaration1350); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_TYPE.add(TYPE132);
 
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:124:24: ( ident '=' type ';' )*
@@ -3889,22 +3881,22 @@ public class Oberon0Parser extends Parser {
             	case 1 :
             	    // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:124:25: ident '=' type ';'
             	    {
-            	    pushFollow(FOLLOW_ident_in_typeDeclaration1357);
+            	    pushFollow(FOLLOW_ident_in_typeDeclaration1353);
             	    ident133=ident();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
             	    if ( state.backtracking==0 ) stream_ident.add(ident133.getTree());
-            	    char_literal134=(Token)match(input,EQUALS,FOLLOW_EQUALS_in_typeDeclaration1359); if (state.failed) return retval; 
+            	    char_literal134=(Token)match(input,EQUALS,FOLLOW_EQUALS_in_typeDeclaration1355); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_EQUALS.add(char_literal134);
 
-            	    pushFollow(FOLLOW_type_in_typeDeclaration1361);
+            	    pushFollow(FOLLOW_type_in_typeDeclaration1357);
             	    type135=type();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
             	    if ( state.backtracking==0 ) stream_type.add(type135.getTree());
-            	    char_literal136=(Token)match(input,53,FOLLOW_53_in_typeDeclaration1363); if (state.failed) return retval; 
+            	    char_literal136=(Token)match(input,53,FOLLOW_53_in_typeDeclaration1359); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_53.add(char_literal136);
 
 
@@ -3922,7 +3914,7 @@ public class Oberon0Parser extends Parser {
 
 
             // AST REWRITE
-            // elements: TYPE, type, ident
+            // elements: TYPE, ident, type
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -3936,7 +3928,7 @@ public class Oberon0Parser extends Parser {
             // 125:5: -> ( ^( TYPE ident type ) )*
             {
                 // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:125:8: ( ^( TYPE ident type ) )*
-                while ( stream_TYPE.hasNext()||stream_type.hasNext()||stream_ident.hasNext() ) {
+                while ( stream_TYPE.hasNext()||stream_ident.hasNext()||stream_type.hasNext() ) {
                     // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:125:8: ^( TYPE ident type )
                     {
                     CommonTree root_1 = (CommonTree)adaptor.nil();
@@ -3950,8 +3942,8 @@ public class Oberon0Parser extends Parser {
 
                 }
                 stream_TYPE.reset();
-                stream_type.reset();
                 stream_ident.reset();
+                stream_type.reset();
 
             }
 
@@ -4014,7 +4006,7 @@ public class Oberon0Parser extends Parser {
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:126:18: ( VAR ( identList ':' type ';' )* )
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:126:19: VAR ( identList ':' type ';' )*
             {
-            VAR137=(Token)match(input,VAR,FOLLOW_VAR_in_varDeclarations1388); if (state.failed) return retval; 
+            VAR137=(Token)match(input,VAR,FOLLOW_VAR_in_varDeclarations1384); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_VAR.add(VAR137);
 
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:126:23: ( identList ':' type ';' )*
@@ -4032,22 +4024,22 @@ public class Oberon0Parser extends Parser {
             	case 1 :
             	    // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:126:24: identList ':' type ';'
             	    {
-            	    pushFollow(FOLLOW_identList_in_varDeclarations1391);
+            	    pushFollow(FOLLOW_identList_in_varDeclarations1387);
             	    identList138=identList();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
             	    if ( state.backtracking==0 ) stream_identList.add(identList138.getTree());
-            	    char_literal139=(Token)match(input,54,FOLLOW_54_in_varDeclarations1393); if (state.failed) return retval; 
+            	    char_literal139=(Token)match(input,54,FOLLOW_54_in_varDeclarations1389); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_54.add(char_literal139);
 
-            	    pushFollow(FOLLOW_type_in_varDeclarations1395);
+            	    pushFollow(FOLLOW_type_in_varDeclarations1391);
             	    type140=type();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
             	    if ( state.backtracking==0 ) stream_type.add(type140.getTree());
-            	    char_literal141=(Token)match(input,53,FOLLOW_53_in_varDeclarations1397); if (state.failed) return retval; 
+            	    char_literal141=(Token)match(input,53,FOLLOW_53_in_varDeclarations1393); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_53.add(char_literal141);
 
 
@@ -4065,7 +4057,7 @@ public class Oberon0Parser extends Parser {
 
 
             // AST REWRITE
-            // elements: VAR, identList, type
+            // elements: type, identList, VAR
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -4079,7 +4071,7 @@ public class Oberon0Parser extends Parser {
             // 127:5: -> ( ^( VAR type identList ) )*
             {
                 // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:127:8: ( ^( VAR type identList ) )*
-                while ( stream_VAR.hasNext()||stream_identList.hasNext()||stream_type.hasNext() ) {
+                while ( stream_type.hasNext()||stream_identList.hasNext()||stream_VAR.hasNext() ) {
                     // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:127:8: ^( VAR type identList )
                     {
                     CommonTree root_1 = (CommonTree)adaptor.nil();
@@ -4092,9 +4084,9 @@ public class Oberon0Parser extends Parser {
                     }
 
                 }
-                stream_VAR.reset();
-                stream_identList.reset();
                 stream_type.reset();
+                stream_identList.reset();
+                stream_VAR.reset();
 
             }
 
@@ -4165,7 +4157,7 @@ public class Oberon0Parser extends Parser {
                 case 1 :
                     // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:0:0: constDeclaration
                     {
-                    pushFollow(FOLLOW_constDeclaration_in_declarations1422);
+                    pushFollow(FOLLOW_constDeclaration_in_declarations1418);
                     constDeclaration142=constDeclaration();
 
                     state._fsp--;
@@ -4188,7 +4180,7 @@ public class Oberon0Parser extends Parser {
                 case 1 :
                     // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:0:0: typeDeclaration
                     {
-                    pushFollow(FOLLOW_typeDeclaration_in_declarations1425);
+                    pushFollow(FOLLOW_typeDeclaration_in_declarations1421);
                     typeDeclaration143=typeDeclaration();
 
                     state._fsp--;
@@ -4211,7 +4203,7 @@ public class Oberon0Parser extends Parser {
                 case 1 :
                     // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:0:0: varDeclarations
                     {
-                    pushFollow(FOLLOW_varDeclarations_in_declarations1428);
+                    pushFollow(FOLLOW_varDeclarations_in_declarations1424);
                     varDeclarations144=varDeclarations();
 
                     state._fsp--;
@@ -4238,13 +4230,13 @@ public class Oberon0Parser extends Parser {
             	case 1 :
             	    // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:128:69: procedureDeclaration ';'
             	    {
-            	    pushFollow(FOLLOW_procedureDeclaration_in_declarations1432);
+            	    pushFollow(FOLLOW_procedureDeclaration_in_declarations1428);
             	    procedureDeclaration145=procedureDeclaration();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
             	    if ( state.backtracking==0 ) stream_procedureDeclaration.add(procedureDeclaration145.getTree());
-            	    char_literal146=(Token)match(input,53,FOLLOW_53_in_declarations1434); if (state.failed) return retval; 
+            	    char_literal146=(Token)match(input,53,FOLLOW_53_in_declarations1430); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_53.add(char_literal146);
 
 
@@ -4259,7 +4251,7 @@ public class Oberon0Parser extends Parser {
 
 
             // AST REWRITE
-            // elements: procedureDeclaration, varDeclarations, typeDeclaration, constDeclaration
+            // elements: typeDeclaration, constDeclaration, procedureDeclaration, varDeclarations
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -4352,7 +4344,7 @@ public class Oberon0Parser extends Parser {
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:130:11: ( declarations ( BEGIN statementSequence )? END -> ( declarations )? ( ^( BODY statementSequence ) )? )
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:130:14: declarations ( BEGIN statementSequence )? END
             {
-            pushFollow(FOLLOW_declarations_in_moduleBody1463);
+            pushFollow(FOLLOW_declarations_in_moduleBody1459);
             declarations147=declarations();
 
             state._fsp--;
@@ -4369,10 +4361,10 @@ public class Oberon0Parser extends Parser {
                 case 1 :
                     // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:130:28: BEGIN statementSequence
                     {
-                    BEGIN148=(Token)match(input,BEGIN,FOLLOW_BEGIN_in_moduleBody1466); if (state.failed) return retval; 
+                    BEGIN148=(Token)match(input,BEGIN,FOLLOW_BEGIN_in_moduleBody1462); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_BEGIN.add(BEGIN148);
 
-                    pushFollow(FOLLOW_statementSequence_in_moduleBody1468);
+                    pushFollow(FOLLOW_statementSequence_in_moduleBody1464);
                     statementSequence149=statementSequence();
 
                     state._fsp--;
@@ -4384,7 +4376,7 @@ public class Oberon0Parser extends Parser {
 
             }
 
-            END150=(Token)match(input,END,FOLLOW_END_in_moduleBody1472); if (state.failed) return retval; 
+            END150=(Token)match(input,END,FOLLOW_END_in_moduleBody1468); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_END.add(END150);
 
 
@@ -4487,40 +4479,40 @@ public class Oberon0Parser extends Parser {
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:132:7: ( MODULE ident ';' moduleBody ident '.' EOF -> ^( MODULE ident moduleBody ) )
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:132:11: MODULE ident ';' moduleBody ident '.' EOF
             {
-            MODULE151=(Token)match(input,MODULE,FOLLOW_MODULE_in_module1496); if (state.failed) return retval; 
+            MODULE151=(Token)match(input,MODULE,FOLLOW_MODULE_in_module1492); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_MODULE.add(MODULE151);
 
-            pushFollow(FOLLOW_ident_in_module1498);
+            pushFollow(FOLLOW_ident_in_module1494);
             ident152=ident();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_ident.add(ident152.getTree());
-            char_literal153=(Token)match(input,53,FOLLOW_53_in_module1500); if (state.failed) return retval; 
+            char_literal153=(Token)match(input,53,FOLLOW_53_in_module1496); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_53.add(char_literal153);
 
-            pushFollow(FOLLOW_moduleBody_in_module1502);
+            pushFollow(FOLLOW_moduleBody_in_module1498);
             moduleBody154=moduleBody();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_moduleBody.add(moduleBody154.getTree());
-            pushFollow(FOLLOW_ident_in_module1504);
+            pushFollow(FOLLOW_ident_in_module1500);
             ident155=ident();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_ident.add(ident155.getTree());
-            char_literal156=(Token)match(input,DOTSELECTOR,FOLLOW_DOTSELECTOR_in_module1506); if (state.failed) return retval; 
+            char_literal156=(Token)match(input,DOTSELECTOR,FOLLOW_DOTSELECTOR_in_module1502); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_DOTSELECTOR.add(char_literal156);
 
-            EOF157=(Token)match(input,EOF,FOLLOW_EOF_in_module1508); if (state.failed) return retval; 
+            EOF157=(Token)match(input,EOF,FOLLOW_EOF_in_module1504); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_EOF.add(EOF157);
 
 
 
             // AST REWRITE
-            // elements: MODULE, moduleBody, ident
+            // elements: moduleBody, MODULE, ident
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -4776,7 +4768,7 @@ public class Oberon0Parser extends Parser {
         // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:100:14: ( assignment )
         // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:100:14: assignment
         {
-        pushFollow(FOLLOW_assignment_in_synpred33_Oberon0967);
+        pushFollow(FOLLOW_assignment_in_synpred33_Oberon0963);
         assignment();
 
         state._fsp--;
@@ -4791,7 +4783,7 @@ public class Oberon0Parser extends Parser {
         // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:100:27: ( procedureCall )
         // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:100:27: procedureCall
         {
-        pushFollow(FOLLOW_procedureCall_in_synpred34_Oberon0971);
+        pushFollow(FOLLOW_procedureCall_in_synpred34_Oberon0967);
         procedureCall();
 
         state._fsp--;
@@ -5232,84 +5224,84 @@ public class Oberon0Parser extends Parser {
     public static final BitSet FOLLOW_expression_in_assignment906 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_selector_in_procedureCall935 = new BitSet(new long[]{0x0004000000000002L});
     public static final BitSet FOLLOW_actualParameters_in_procedureCall938 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_assignment_in_statement967 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_procedureCall_in_statement971 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ifStatement_in_statement974 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_whileStatement_in_statement978 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_statement_in_statementSequence986 = new BitSet(new long[]{0x0020000000000002L});
-    public static final BitSet FOLLOW_53_in_statementSequence989 = new BitSet(new long[]{0x0020400000102000L});
-    public static final BitSet FOLLOW_statement_in_statementSequence991 = new BitSet(new long[]{0x0020000000000002L});
-    public static final BitSet FOLLOW_ident_in_identList1013 = new BitSet(new long[]{0x0010000000000002L});
-    public static final BitSet FOLLOW_52_in_identList1017 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_ident_in_identList1019 = new BitSet(new long[]{0x0010000000000002L});
-    public static final BitSet FOLLOW_ARRAY_in_arrayType1041 = new BitSet(new long[]{0x00054010000000F0L});
-    public static final BitSet FOLLOW_expression_in_arrayType1043 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_OF_in_arrayType1045 = new BitSet(new long[]{0x0000400002800000L});
-    public static final BitSet FOLLOW_type_in_arrayType1047 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_identList_in_fieldList1077 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_54_in_fieldList1079 = new BitSet(new long[]{0x0000400002800000L});
-    public static final BitSet FOLLOW_type_in_fieldList1081 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RECORD_in_recordType1107 = new BitSet(new long[]{0x0020400000020000L});
-    public static final BitSet FOLLOW_fieldList_in_recordType1109 = new BitSet(new long[]{0x0020000000020000L});
-    public static final BitSet FOLLOW_53_in_recordType1112 = new BitSet(new long[]{0x0020400000020000L});
-    public static final BitSet FOLLOW_fieldList_in_recordType1114 = new BitSet(new long[]{0x0020000000020000L});
-    public static final BitSet FOLLOW_END_in_recordType1118 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ident_in_type1139 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_arrayType_in_type1143 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_recordType_in_type1147 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_VAR_in_fPSection1154 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_identList_in_fPSection1156 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_54_in_fPSection1158 = new BitSet(new long[]{0x0000400002800000L});
-    public static final BitSet FOLLOW_type_in_fPSection1160 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_identList_in_fPSection1181 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_54_in_fPSection1183 = new BitSet(new long[]{0x0000400002800000L});
-    public static final BitSet FOLLOW_type_in_fPSection1185 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_50_in_formalParameters1205 = new BitSet(new long[]{0x0008400000000800L});
-    public static final BitSet FOLLOW_fPSection_in_formalParameters1208 = new BitSet(new long[]{0x0028000000000000L});
-    public static final BitSet FOLLOW_53_in_formalParameters1211 = new BitSet(new long[]{0x0000400000000800L});
-    public static final BitSet FOLLOW_fPSection_in_formalParameters1213 = new BitSet(new long[]{0x0028000000000000L});
-    public static final BitSet FOLLOW_51_in_formalParameters1219 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BEGIN_in_procedureBody1246 = new BitSet(new long[]{0x0020400000102000L});
-    public static final BitSet FOLLOW_statementSequence_in_procedureBody1248 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PROCEDURE_in_procedureDeclaration1266 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_ident_in_procedureDeclaration1268 = new BitSet(new long[]{0x0024000000000000L});
-    public static final BitSet FOLLOW_formalParameters_in_procedureDeclaration1272 = new BitSet(new long[]{0x0020000000000000L});
-    public static final BitSet FOLLOW_53_in_procedureDeclaration1276 = new BitSet(new long[]{0x0000000000621C00L});
-    public static final BitSet FOLLOW_declarations_in_procedureDeclaration1278 = new BitSet(new long[]{0x0000000000220000L});
-    public static final BitSet FOLLOW_procedureBody_in_procedureDeclaration1281 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_END_in_procedureDeclaration1285 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_ident_in_procedureDeclaration1287 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CONST_in_constDeclaration1320 = new BitSet(new long[]{0x0000400000000002L});
-    public static final BitSet FOLLOW_ident_in_constDeclaration1323 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_EQUALS_in_constDeclaration1325 = new BitSet(new long[]{0x00054010000000F0L});
-    public static final BitSet FOLLOW_expression_in_constDeclaration1327 = new BitSet(new long[]{0x0020000000000000L});
-    public static final BitSet FOLLOW_53_in_constDeclaration1329 = new BitSet(new long[]{0x0000400000000002L});
-    public static final BitSet FOLLOW_TYPE_in_typeDeclaration1354 = new BitSet(new long[]{0x0000400000000002L});
-    public static final BitSet FOLLOW_ident_in_typeDeclaration1357 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_EQUALS_in_typeDeclaration1359 = new BitSet(new long[]{0x0000400002800000L});
-    public static final BitSet FOLLOW_type_in_typeDeclaration1361 = new BitSet(new long[]{0x0020000000000000L});
-    public static final BitSet FOLLOW_53_in_typeDeclaration1363 = new BitSet(new long[]{0x0000400000000002L});
-    public static final BitSet FOLLOW_VAR_in_varDeclarations1388 = new BitSet(new long[]{0x0000400000000002L});
-    public static final BitSet FOLLOW_identList_in_varDeclarations1391 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_54_in_varDeclarations1393 = new BitSet(new long[]{0x0000400002800000L});
-    public static final BitSet FOLLOW_type_in_varDeclarations1395 = new BitSet(new long[]{0x0020000000000000L});
-    public static final BitSet FOLLOW_53_in_varDeclarations1397 = new BitSet(new long[]{0x0000400000000002L});
-    public static final BitSet FOLLOW_constDeclaration_in_declarations1422 = new BitSet(new long[]{0x0000000000401802L});
-    public static final BitSet FOLLOW_typeDeclaration_in_declarations1425 = new BitSet(new long[]{0x0000000000400802L});
-    public static final BitSet FOLLOW_varDeclarations_in_declarations1428 = new BitSet(new long[]{0x0000000000400002L});
-    public static final BitSet FOLLOW_procedureDeclaration_in_declarations1432 = new BitSet(new long[]{0x0020000000000000L});
-    public static final BitSet FOLLOW_53_in_declarations1434 = new BitSet(new long[]{0x0000000000400002L});
-    public static final BitSet FOLLOW_declarations_in_moduleBody1463 = new BitSet(new long[]{0x0000000000220000L});
-    public static final BitSet FOLLOW_BEGIN_in_moduleBody1466 = new BitSet(new long[]{0x0020400000102000L});
-    public static final BitSet FOLLOW_statementSequence_in_moduleBody1468 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_END_in_moduleBody1472 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_MODULE_in_module1496 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_ident_in_module1498 = new BitSet(new long[]{0x0020000000000000L});
-    public static final BitSet FOLLOW_53_in_module1500 = new BitSet(new long[]{0x0000000000621C00L});
-    public static final BitSet FOLLOW_moduleBody_in_module1502 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_ident_in_module1504 = new BitSet(new long[]{0x0000100000000000L});
-    public static final BitSet FOLLOW_DOTSELECTOR_in_module1506 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_module1508 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_assignment_in_statement963 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_procedureCall_in_statement967 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ifStatement_in_statement970 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_whileStatement_in_statement974 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_statement_in_statementSequence982 = new BitSet(new long[]{0x0020000000000002L});
+    public static final BitSet FOLLOW_53_in_statementSequence985 = new BitSet(new long[]{0x0020400000102000L});
+    public static final BitSet FOLLOW_statement_in_statementSequence987 = new BitSet(new long[]{0x0020000000000002L});
+    public static final BitSet FOLLOW_ident_in_identList1009 = new BitSet(new long[]{0x0010000000000002L});
+    public static final BitSet FOLLOW_52_in_identList1013 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_ident_in_identList1015 = new BitSet(new long[]{0x0010000000000002L});
+    public static final BitSet FOLLOW_ARRAY_in_arrayType1037 = new BitSet(new long[]{0x00054010000000F0L});
+    public static final BitSet FOLLOW_expression_in_arrayType1039 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_OF_in_arrayType1041 = new BitSet(new long[]{0x0000400002800000L});
+    public static final BitSet FOLLOW_type_in_arrayType1043 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_identList_in_fieldList1073 = new BitSet(new long[]{0x0040000000000000L});
+    public static final BitSet FOLLOW_54_in_fieldList1075 = new BitSet(new long[]{0x0000400002800000L});
+    public static final BitSet FOLLOW_type_in_fieldList1077 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RECORD_in_recordType1103 = new BitSet(new long[]{0x0020400000020000L});
+    public static final BitSet FOLLOW_fieldList_in_recordType1105 = new BitSet(new long[]{0x0020000000020000L});
+    public static final BitSet FOLLOW_53_in_recordType1108 = new BitSet(new long[]{0x0020400000020000L});
+    public static final BitSet FOLLOW_fieldList_in_recordType1110 = new BitSet(new long[]{0x0020000000020000L});
+    public static final BitSet FOLLOW_END_in_recordType1114 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ident_in_type1135 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_arrayType_in_type1139 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_recordType_in_type1143 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_VAR_in_fPSection1150 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_identList_in_fPSection1152 = new BitSet(new long[]{0x0040000000000000L});
+    public static final BitSet FOLLOW_54_in_fPSection1154 = new BitSet(new long[]{0x0000400002800000L});
+    public static final BitSet FOLLOW_type_in_fPSection1156 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_identList_in_fPSection1177 = new BitSet(new long[]{0x0040000000000000L});
+    public static final BitSet FOLLOW_54_in_fPSection1179 = new BitSet(new long[]{0x0000400002800000L});
+    public static final BitSet FOLLOW_type_in_fPSection1181 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_50_in_formalParameters1201 = new BitSet(new long[]{0x0008400000000800L});
+    public static final BitSet FOLLOW_fPSection_in_formalParameters1204 = new BitSet(new long[]{0x0028000000000000L});
+    public static final BitSet FOLLOW_53_in_formalParameters1207 = new BitSet(new long[]{0x0000400000000800L});
+    public static final BitSet FOLLOW_fPSection_in_formalParameters1209 = new BitSet(new long[]{0x0028000000000000L});
+    public static final BitSet FOLLOW_51_in_formalParameters1215 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_BEGIN_in_procedureBody1242 = new BitSet(new long[]{0x0020400000102000L});
+    public static final BitSet FOLLOW_statementSequence_in_procedureBody1244 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PROCEDURE_in_procedureDeclaration1262 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_ident_in_procedureDeclaration1264 = new BitSet(new long[]{0x0024000000000000L});
+    public static final BitSet FOLLOW_formalParameters_in_procedureDeclaration1268 = new BitSet(new long[]{0x0020000000000000L});
+    public static final BitSet FOLLOW_53_in_procedureDeclaration1272 = new BitSet(new long[]{0x0000000000621C00L});
+    public static final BitSet FOLLOW_declarations_in_procedureDeclaration1274 = new BitSet(new long[]{0x0000000000220000L});
+    public static final BitSet FOLLOW_procedureBody_in_procedureDeclaration1277 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_END_in_procedureDeclaration1281 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_ident_in_procedureDeclaration1283 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CONST_in_constDeclaration1316 = new BitSet(new long[]{0x0000400000000002L});
+    public static final BitSet FOLLOW_ident_in_constDeclaration1319 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_EQUALS_in_constDeclaration1321 = new BitSet(new long[]{0x00054010000000F0L});
+    public static final BitSet FOLLOW_expression_in_constDeclaration1323 = new BitSet(new long[]{0x0020000000000000L});
+    public static final BitSet FOLLOW_53_in_constDeclaration1325 = new BitSet(new long[]{0x0000400000000002L});
+    public static final BitSet FOLLOW_TYPE_in_typeDeclaration1350 = new BitSet(new long[]{0x0000400000000002L});
+    public static final BitSet FOLLOW_ident_in_typeDeclaration1353 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_EQUALS_in_typeDeclaration1355 = new BitSet(new long[]{0x0000400002800000L});
+    public static final BitSet FOLLOW_type_in_typeDeclaration1357 = new BitSet(new long[]{0x0020000000000000L});
+    public static final BitSet FOLLOW_53_in_typeDeclaration1359 = new BitSet(new long[]{0x0000400000000002L});
+    public static final BitSet FOLLOW_VAR_in_varDeclarations1384 = new BitSet(new long[]{0x0000400000000002L});
+    public static final BitSet FOLLOW_identList_in_varDeclarations1387 = new BitSet(new long[]{0x0040000000000000L});
+    public static final BitSet FOLLOW_54_in_varDeclarations1389 = new BitSet(new long[]{0x0000400002800000L});
+    public static final BitSet FOLLOW_type_in_varDeclarations1391 = new BitSet(new long[]{0x0020000000000000L});
+    public static final BitSet FOLLOW_53_in_varDeclarations1393 = new BitSet(new long[]{0x0000400000000002L});
+    public static final BitSet FOLLOW_constDeclaration_in_declarations1418 = new BitSet(new long[]{0x0000000000401802L});
+    public static final BitSet FOLLOW_typeDeclaration_in_declarations1421 = new BitSet(new long[]{0x0000000000400802L});
+    public static final BitSet FOLLOW_varDeclarations_in_declarations1424 = new BitSet(new long[]{0x0000000000400002L});
+    public static final BitSet FOLLOW_procedureDeclaration_in_declarations1428 = new BitSet(new long[]{0x0020000000000000L});
+    public static final BitSet FOLLOW_53_in_declarations1430 = new BitSet(new long[]{0x0000000000400002L});
+    public static final BitSet FOLLOW_declarations_in_moduleBody1459 = new BitSet(new long[]{0x0000000000220000L});
+    public static final BitSet FOLLOW_BEGIN_in_moduleBody1462 = new BitSet(new long[]{0x0020400000102000L});
+    public static final BitSet FOLLOW_statementSequence_in_moduleBody1464 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_END_in_moduleBody1468 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_MODULE_in_module1492 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_ident_in_module1494 = new BitSet(new long[]{0x0020000000000000L});
+    public static final BitSet FOLLOW_53_in_module1496 = new BitSet(new long[]{0x0000000000621C00L});
+    public static final BitSet FOLLOW_moduleBody_in_module1498 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_ident_in_module1500 = new BitSet(new long[]{0x0000100000000000L});
+    public static final BitSet FOLLOW_DOTSELECTOR_in_module1502 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_module1504 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_simpleExpression_in_synpred24_Oberon0553 = new BitSet(new long[]{0x0000000FC0000000L});
     public static final BitSet FOLLOW_infixOperand_in_synpred24_Oberon0555 = new BitSet(new long[]{0x00054010000000F0L});
     public static final BitSet FOLLOW_simpleExpression_in_synpred24_Oberon0557 = new BitSet(new long[]{0x0000000000000002L});
@@ -5340,7 +5332,7 @@ public class Oberon0Parser extends Parser {
     public static final BitSet FOLLOW_ELSE_in_synpred31_Oberon0785 = new BitSet(new long[]{0x0020400000102000L});
     public static final BitSet FOLLOW_statementSequence_in_synpred31_Oberon0787 = new BitSet(new long[]{0x0000000000020000L});
     public static final BitSet FOLLOW_END_in_synpred31_Oberon0790 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_assignment_in_synpred33_Oberon0967 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_procedureCall_in_synpred34_Oberon0971 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_assignment_in_synpred33_Oberon0963 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_procedureCall_in_synpred34_Oberon0967 = new BitSet(new long[]{0x0000000000000002L});
 
 }

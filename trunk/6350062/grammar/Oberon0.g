@@ -96,7 +96,7 @@ whileStatement:		WHILE expression DO statementSequence END
 assignment:		selector ASSIGNMENT expression
 				-> ^(ASSIGNMENT ^(LH selector) ^(RH expression));
 procedureCall:		selector (actualParameters)?
-				-> ^(EXPRESSION ^(PROCEDURECALL selector actualParameters?));
+				-> ^(PROCEDURECALL selector actualParameters?);
 statement:		(assignment | procedureCall| ifStatement | whileStatement)?;
 statementSequence:	statement (';' statement)*
 				-> statement (statement)*;
