@@ -16,11 +16,6 @@ public class Array extends Value
 			values[i] = _childType.instantiate(environment);
 		}
 	}
-	public Array(Array _value) throws RuntimeException
-	{
-		// Copy constructor
-		setValue(_value);
-	}
 	public Value getIndexValue(int _index) throws OutOfBoundsException
 	{
 		if (_index >= values.length)
