@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g 2011-02-02 22:03:59
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g 2011-02-02 22:26:16
 
   package parser;
   
@@ -1047,11 +1047,11 @@ public class oberon0Parser extends Parser {
         ExpressionNode e = null;
 
         Token operator=null;
-        ExpressionTermNode term22 = null;
+        ExpressionNode term22 = null;
 
-        ExpressionTermNode term23 = null;
+        ExpressionNode term23 = null;
 
-        ExpressionTermNode term24 = null;
+        ExpressionNode term24 = null;
 
 
         try {
@@ -1163,7 +1163,7 @@ public class oberon0Parser extends Parser {
         Token operator=null;
         ExpressionNode follow2 = null;
 
-        ExpressionTermNode term25 = null;
+        ExpressionNode term25 = null;
 
 
         try {
@@ -1281,14 +1281,14 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "term"
-    // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:140:1: term returns [ ExpressionTermNode e ] : factor (operator= ( '*' | 'DIV' | 'MOD' | '&' ) followup= term )? ;
-    public final ExpressionTermNode term() throws RecognitionException {
-        ExpressionTermNode e = null;
+    // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:140:1: term returns [ ExpressionNode e ] : factor (operator= ( '*' | 'DIV' | 'MOD' | '&' ) followup= term )? ;
+    public final ExpressionNode term() throws RecognitionException {
+        ExpressionNode e = null;
 
         Token operator=null;
-        ExpressionTermNode followup = null;
+        ExpressionNode followup = null;
 
-        ASTnode factor26 = null;
+        ExpressionNode factor26 = null;
 
 
         try {
@@ -1419,15 +1419,15 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "factor"
-    // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:152:1: factor returns [ ASTnode e ] : ( variable | number | '(' expression ')' | '~' factorOperand= factor );
-    public final ASTnode factor() throws RecognitionException {
-        ASTnode e = null;
+    // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:152:1: factor returns [ ExpressionNode e ] : ( variable | number | '(' expression ')' | '~' factorOperand= factor );
+    public final ExpressionNode factor() throws RecognitionException {
+        ExpressionNode e = null;
 
-        ASTnode factorOperand = null;
+        ExpressionNode factorOperand = null;
 
-        VarNode variable27 = null;
+        ExpressionNode variable27 = null;
 
-        IntegerNode number28 = null;
+        ExpressionNode number28 = null;
 
         ExpressionNode expression29 = null;
 
@@ -1519,7 +1519,7 @@ public class oberon0Parser extends Parser {
                     state._fsp--;
                     if (state.failed) return e;
                     if ( state.backtracking==0 ) {
-                       e = new NotNode( factorOperand ); 
+                       e = new ExpressionNotNode( factorOperand ); 
                     }
 
                     }
@@ -1539,9 +1539,9 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "number"
-    // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:159:1: number returns [ IntegerNode e ] : INTEGER ;
-    public final IntegerNode number() throws RecognitionException {
-        IntegerNode e = null;
+    // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:159:1: number returns [ ExpressionNode e ] : INTEGER ;
+    public final ExpressionNode number() throws RecognitionException {
+        ExpressionNode e = null;
 
         Token INTEGER30=null;
 
@@ -1656,9 +1656,9 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "variable"
-    // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:181:1: variable returns [ VarNode e ] : IDENT selector ;
-    public final VarNode variable() throws RecognitionException {
-        VarNode e = null;
+    // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:181:1: variable returns [ ExpressionNode e ] : IDENT selector ;
+    public final ExpressionNode variable() throws RecognitionException {
+        ExpressionNode e = null;
 
         Token IDENT31=null;
         ASTnode selector32 = null;
@@ -2104,7 +2104,7 @@ public class oberon0Parser extends Parser {
     public final StatementNode assignment() throws RecognitionException {
         StatementNode e = null;
 
-        VarNode variable40 = null;
+        ExpressionNode variable40 = null;
 
         ExpressionNode expression41 = null;
 

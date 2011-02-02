@@ -75,7 +75,7 @@ public class ExpressionTermNode extends ExpressionNode
   {
     if( this.factor instanceof VarNode && this.operator == null && this.follow == null )
     { // detect whether its only a variable node needed for call by reference
-      return ( (VarNode) this.factor).getVarname( ); // no scope needed
+      return ( (VarNode) this.factor).getVariableName( ); // no scope needed
     }
     return null;
   }  

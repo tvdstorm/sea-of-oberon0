@@ -73,6 +73,9 @@
                 <Class sourceFile="ExpressionNotEqualNode.java">
                     ast.ExpressionNotEqualNode
                 </Class>
+                <Class sourceFile="ExpressionNotNode.java">
+                    ast.ExpressionNotNode
+                </Class>
                 <Class sourceFile="ExpressionOrNode.java">
                     ast.ExpressionOrNode
                 </Class>
@@ -111,9 +114,6 @@
                 </Class>
                 <Class sourceFile="ModuleNode.java">
                     ast.ModuleNode
-                </Class>
-                <Class sourceFile="NotNode.java">
-                    ast.NotNode
                 </Class>
                 <Class sourceFile="ParamNode.java">
                     ast.ParamNode

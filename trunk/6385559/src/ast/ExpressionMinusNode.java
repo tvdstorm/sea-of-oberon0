@@ -3,21 +3,19 @@ import errorhandler.OberonException;
 
 public class ExpressionMinusNode extends ExpressionNode 
 {
-  private final ExpressionTermNode child;
   
-  public ExpressionMinusNode( ExpressionTermNode child )
+  public ExpressionMinusNode( ExpressionNode left )
   {
-    super( null, null );
-    this.child = child;
+    super( left, null );
   }
   
   public String ToString( int depth )
   {
-    return "(-" + this.child.ToString( 0 ) + ")";
+    return "(-" + this.left.ToString( 0 ) + ")";
   }
   
   public int eval( ) throws OberonException
   {
-    return -1 * this.child.eval( );
+    return -1 * this.left.eval( );
   }
 }

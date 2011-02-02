@@ -1,12 +1,13 @@
 package ast;
 import errorhandler.OberonException;
 
-public class IntegerNode implements ASTnode 
+public class IntegerNode extends ExpressionNode
 {
   private final int intValue;
   
   public IntegerNode( int x )
   {
+    super( null, null );
     this.intValue = x;
   }
   
