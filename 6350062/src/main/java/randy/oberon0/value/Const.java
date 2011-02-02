@@ -29,4 +29,9 @@ public class Const extends Value
 	{
 		return value.toString();
 	}
+	@Override
+	public boolean equalsToValue(Value _value)
+	{
+		return value.equalsToValue(_value);
+	}
 }

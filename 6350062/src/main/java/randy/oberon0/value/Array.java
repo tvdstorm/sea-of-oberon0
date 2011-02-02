@@ -38,7 +38,7 @@ public class Array extends Value
 		values = new Value[v.values.length];
 		for (int i=0;i<v.values.length;i++)
 		{
-			values[i] = Value.makeNew(v.values[i].getType()); // TODO: anders aanpakken i.v.m. RECORDS en POINTER TO
+			values[i] = Value.makeNew(v.values[i].getType());
 		}
 	}
 	public Type getType()
@@ -59,5 +59,21 @@ public class Array extends Value
 		}
 		ret += "]";
 		return ret;
+	}
+	@Override
+	public boolean equalsToValue(Value _value)
+	{
+		_value = _value.dereference();
+		if (!(_value instanceof Array))
+			return false;
+		Array other = (Array)_value;
+		if (values.length != other.values.length)
+			return false;
+		for (int i=0;i<values.length;i++)
+		{
+			if (!values[i].equalsToValue(other.values[i]))
+				return false;
+		}
+		return true;
 	}
 }
