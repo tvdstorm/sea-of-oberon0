@@ -4,7 +4,7 @@ import errorhandler.OberonException;
 
 public class ExpressionBiggerNode extends ExpressionNode
 {
-  public ExpressionBiggerNode( SimpleExpression left, SimpleExpression right )
+  public ExpressionBiggerNode( ExpressionNode left, ExpressionNode right )
   {
     super( left, right );
   }

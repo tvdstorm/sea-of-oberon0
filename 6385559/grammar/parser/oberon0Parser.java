@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g 2011-02-02 20:25:52
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g 2011-02-02 20:27:59
 
   package parser;
   
@@ -754,9 +754,9 @@ public class oberon0Parser extends Parser {
         ExpressionNode e = null;
 
         Token operator=null;
-        SimpleExpression simpleLeft = null;
+        ExpressionNode simpleLeft = null;
 
-        SimpleExpression simpleRight = null;
+        ExpressionNode simpleRight = null;
 
 
         try {
@@ -917,14 +917,14 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "simpleexpression"
-    // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:107:1: simpleexpression returns [ SimpleExpression e ] : specialTerm (operator= ( '+' | '-' | 'OR' ) simpleExpressionFollowup )? ;
-    public final SimpleExpression simpleexpression() throws RecognitionException {
-        SimpleExpression e = null;
+    // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:107:1: simpleexpression returns [ ExpressionNode e ] : specialTerm (operator= ( '+' | '-' | 'OR' ) simpleExpressionFollowup )? ;
+    public final ExpressionNode simpleexpression() throws RecognitionException {
+        ExpressionNode e = null;
 
         Token operator=null;
         ASTnode specialTerm20 = null;
 
-        SimpleExpression simpleExpressionFollowup21 = null;
+        ExpressionNode simpleExpressionFollowup21 = null;
 
 
         try {
@@ -1156,12 +1156,12 @@ public class oberon0Parser extends Parser {
 
 
     // $ANTLR start "simpleExpressionFollowup"
-    // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:126:1: simpleExpressionFollowup returns [ SimpleExpression e ] : term (operator= ( '+' | '-' | 'OR' ) follow2= simpleExpressionFollowup )? ;
-    public final SimpleExpression simpleExpressionFollowup() throws RecognitionException {
-        SimpleExpression e = null;
+    // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:126:1: simpleExpressionFollowup returns [ ExpressionNode e ] : term (operator= ( '+' | '-' | 'OR' ) follow2= simpleExpressionFollowup )? ;
+    public final ExpressionNode simpleExpressionFollowup() throws RecognitionException {
+        ExpressionNode e = null;
 
         Token operator=null;
-        SimpleExpression follow2 = null;
+        ExpressionNode follow2 = null;
 
         TermNode term25 = null;
 

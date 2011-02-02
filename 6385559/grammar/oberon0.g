@@ -104,7 +104,7 @@ expression returns [ ExpressionNode e ]
 	  simpleRight=simpleexpression { $e.setRight( $simpleRight.e ); } )?
 	;
 	
-simpleexpression returns [ SimpleExpression e ]
+simpleexpression returns [ ExpressionNode e ]
 	: specialTerm { $e = new SimpleExpression( null, $specialTerm.e, null ); }
 	( operator=(
 	  '+' { $e = new ExpressionPlusNode( $specialTerm.e, null ); }
@@ -123,7 +123,7 @@ specialTerm returns [ ASTnode e ]
   | term { $e = $term.e; }
   ;
 	
-simpleExpressionFollowup returns [ SimpleExpression e ]
+simpleExpressionFollowup returns [ ExpressionNode e ]
 	:  term { $e = new SimpleExpression( null, $term.e, null ); } 
 	(operator=
 	(
