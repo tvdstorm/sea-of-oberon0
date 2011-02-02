@@ -41,16 +41,4 @@ public abstract class Value
 			return (Record)this;
 		throw new TypeMismatchException(this.getType(), Type.RECORD);
 	}
-	public NilValue castToNil() throws TypeMismatchException
-	{
-		if (this instanceof NilValue)
-			return (NilValue)this;
-		throw new TypeMismatchException(this.getType(), Type.NIL);
-	}
-	public PointerToValue castToPointerTo() throws TypeMismatchException
-	{
-		if (this instanceof PointerToValue)
-			return (PointerToValue)this;
-		throw new TypeMismatchException(this.getType(), Type.POINTERTO);
-	}
 }

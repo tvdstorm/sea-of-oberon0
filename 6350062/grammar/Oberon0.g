@@ -12,7 +12,6 @@ tokens
 {
 	TRUE='TRUE';
 	FALSE='FALSE';
-	NIL='NIL';
 	MINUS='-';
 	PLUS='+';
 	TIMES='*';
@@ -33,7 +32,6 @@ tokens
 	ARRAY='ARRAY';
 	OF='OF';
 	RECORD='RECORD';
-	POINTERTO='POINTER TO';
 	MOD='MOD';
 	AND='&';
 	OR='OR';
@@ -75,7 +73,7 @@ INTEGER:		('0'..'9')+;
 selector:		ident ((DOTSELECTOR^ ident)|(ARRAYSELECTOR^ expression ']'!))+ | ident;
 numberLiteral:		INTEGER;
 booleanLiteral:		TRUE|FALSE;
-factor:			selector | NIL | booleanLiteral | numberLiteral | '('! expression ')'! | NOT^ factor;
+factor:			selector | booleanLiteral | numberLiteral | '('! expression ')'! | NOT^ factor;
 term:			factor ((TIMES|DIVIDE|MOD|AND)^ factor)*;
 simpleExpression:	(PLUS|MINUS^ )? term ((PLUS|MINUS |OR)^ term)*;
 infixOperand:		EQUALS | NOTEQUALS | SMALLERTHAN | SMALLEREQUALS | GREATERTHAN | GREATEREQUALS;
@@ -110,9 +108,7 @@ fieldList:		(identList ':' type )?
 				-> ^(VAR type? identList?);
 recordType:		RECORD fieldList (';' fieldList)* END
 				-> ^(RECORD fieldList*);
-pointerType:		POINTERTO ident
-				-> ^(POINTERTO ident);
-type:			ident | arrayType | recordType | pointerType;
+type:			ident | arrayType | recordType;
 fPSection:		VAR identList ':' type
 				-> ^(REFVAR type identList) |
 			identList ':' type
