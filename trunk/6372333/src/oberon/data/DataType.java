@@ -19,7 +19,12 @@ public abstract class DataType {
 	
 	public void setValue(int value)
 	{
+		if (this instanceof IntegerArrayIndexerType){
+			((IntegerArrayIndexerType)this).setValueAtIndex(value);
+		}
+		else{
 		setValue(-1, value);
+		}
 	}
 	
 	public void setValue(int index, int value)
@@ -29,6 +34,7 @@ public abstract class DataType {
 			if (index > -1)
 			{
 				//TODO throw
+				System.out.println("index == -1, IntegerType");
 			}
 			((IntegerType)this).setValueInternal(value);
 		}
@@ -37,6 +43,7 @@ public abstract class DataType {
 			if (index == -1)
 			{
 				//TODO throw
+				System.out.println("index == -1, IntegerArrayType");
 			}
 			((IntegerArrayType)this).setValueAtIndex(index, value);
 		}

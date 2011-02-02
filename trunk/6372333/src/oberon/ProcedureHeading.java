@@ -9,28 +9,18 @@ import oberon.data.DataType;
 import oberon.data.IntegerType;
 import oberon.data.VariableManager;
 
-public class ProcedureHeading {
-	private String _name;
-	private List<FormalParamSection> _paramSections;
-	private ProcedureBody _body;
-	
+
+public class ProcedureHeading extends Procedure {
 	public ProcedureHeading(String name, List<FormalParamSection> paramSections, ProcedureBody body)
 	{
-		_name = name;
-		_paramSections = paramSections;
-		_body = body;
+		super(name, paramSections, body);
 	}
-	
-	public String getName()
-	{
-		return _name;
-	}
-	
-	public void Call(Queue<Expression> localQueue) throws IOException
-	{
+
+	@Override
+	public void Call(Queue<Expression> localQueue) throws IOException {
 		List<DataType> actualParameterList = new ArrayList<DataType>();
 		
-		for (FormalParamSection section : _paramSections)
+		for (FormalParamSection section : getParamSections())
 		{
 			for (String name : section.getNames())
 			{
@@ -48,27 +38,23 @@ public class ProcedureHeading {
 					SelectorExpression selectorExpression = ((SelectorExpression)actualParam);
 					if (section.shouldBeCalledByRef())
 					{
-						//Pass by ref
-						actualParameterList.add(selectorExpression.performDeepCopyOfValue(name));
+						//Pass by value
+						actualParameterList.add(selectorExpression.performShallowCopyOfValue(name));
 					}
 					else
 					{
-						//Pass by value
-						actualParameterList.add(selectorExpression.performShallowCopyOfValue(name));
+						//Pass by ref
+						actualParameterList.add(selectorExpression.performDeepCopyOfValue(name));
 					}
 				}
 			}
 		}
 		
 		VariableManager variableManager = VariableManager.getInstance();
-		variableManager.EnterNewScope(actualParameterList);
+		variableManager.EnterNewScope(actualParameterList, this);
 		
-		_body.Eval();
+		getBody().Eval();
 		
 		variableManager.LeaveScope();
-	}
-
-	public ProcedureHeading DeepCopy() {
-		return new ProcedureHeading(_name, _paramSections, _body);
 	}
 }

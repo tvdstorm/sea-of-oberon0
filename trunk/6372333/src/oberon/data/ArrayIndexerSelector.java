@@ -14,8 +14,7 @@ public class ArrayIndexerSelector extends Selector {
 	@Override
 	public int getSelectorValue() {
 		IntegerArrayType array = getDataTypeAsArrayType();
-		array.setIndex(_expression.EvalAsInt());
-		return array.getValue();
+		return array.getValueAtIndex(_expression.EvalAsInt());
 	}
 
 	private IntegerArrayType getDataTypeAsArrayType() {
