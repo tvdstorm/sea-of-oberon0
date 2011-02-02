@@ -29,7 +29,11 @@ public class ExpressionNode implements ASTnode
   
   public String getVariableName() throws OberonException
   { // used only to ease the use of getVariableName, not type conversions needed
-    // if you get there something went terribly wrong
-    throw new OberonException( "Expression getVariableName() call should never happen." );
+    if( this.right != null && !( this.left instanceof ExpressionTermNode ) )
+    {
+      return null;
+    }
+    
+    return ((ExpressionTermNode) this.left).getVariableName();
   }
 }
