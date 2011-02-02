@@ -52,13 +52,13 @@ public class Array extends Value
 	@Override
 	public String toString()
 	{
-		String ret = "[";
+		StringBuilder ret = new StringBuilder("[");
 		for (Value val : values)
 		{
-			ret += val.toString() + ",";
+			ret.append(val.toString() + ",");
 		}
-		ret += "]";
-		return ret;
+		ret.append("]");
+		return ret.toString();
 	}
 	@Override
 	public boolean equalsToValue(Value _value)

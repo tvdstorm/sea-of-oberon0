@@ -546,7 +546,6 @@ public class ASTNodeTest
 				Assert.assertTrue(cBool.getType() == bool.getType());
 				Assert.assertTrue(cBool.toString().equals(bool.toString()));
 				
-				// TODO: fixen
 				/*int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
 				TypeRegistry typeRegistry = new TypeRegistry(null);
 				typeRegistry.addType(Type.INTEGER.getTypeText(), new OPrimitiveVariableInstantiation(Type.INTEGER));

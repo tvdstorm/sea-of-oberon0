@@ -50,8 +50,13 @@ public class Record extends Value
 	@Override
 	public String toString()
 	{
-		// TODO: implement
-		return "";
+		StringBuilder ret = new StringBuilder("[");
+		for (String name : members.keySet())
+		{
+			ret.append(name + "=" + members.get(name).toString() + ",");
+		}
+		ret.append("]");
+		return ret.toString();
 	}
 	@Override
 	public boolean equalsToValue(Value _value)

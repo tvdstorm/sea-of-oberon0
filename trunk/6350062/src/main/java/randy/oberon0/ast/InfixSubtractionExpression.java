@@ -23,7 +23,7 @@ public class InfixSubtractionExpression extends InfixExpression
 		}
 		else
 		{
-			throw new OperatorTypeUndefinedException("-", valLh.getType(), valRh.getType());
+			throw new OperatorTypeUndefinedException("-", valLh.getType().toString(), valRh.getType().toString());
 		}
 	}
 }

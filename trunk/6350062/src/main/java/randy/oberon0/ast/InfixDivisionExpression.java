@@ -27,7 +27,7 @@ public class InfixDivisionExpression extends InfixExpression
 		}
 		else
 		{
-			throw new OperatorTypeUndefinedException("DIV", valLh.getType(), valRh.getType());
+			throw new OperatorTypeUndefinedException("DIV", valLh.getType().toString(), valRh.getType().toString());
 		}
 	}
 }
