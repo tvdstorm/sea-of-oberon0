@@ -7,14 +7,12 @@ public class BuildinFunctions implements IBuildinFunctions
 	private DefaultReadFunction read;
 	private DefaultWriteFunction write;
 	private DefaultWriteLnFunction writeLn;
-	private DefaultNEWFunction newFunction;
 	
 	public BuildinFunctions()
 	{
 		read = new DefaultReadFunction();
 		write = new DefaultWriteFunction();
 		writeLn = new DefaultWriteLnFunction();
-		newFunction = new DefaultNEWFunction();
 	}
 	@Override
 	public void register(FunctionRegistry functionRegistry)
@@ -22,6 +20,5 @@ public class BuildinFunctions implements IBuildinFunctions
 		functionRegistry.addFunction(read.getName(), read, 0);
 		functionRegistry.addFunction(write.getName(), write, 0);
 		functionRegistry.addFunction(writeLn.getName(), writeLn, 0);
-		functionRegistry.addFunction(newFunction.getName(), newFunction, 0);
 	}
 }

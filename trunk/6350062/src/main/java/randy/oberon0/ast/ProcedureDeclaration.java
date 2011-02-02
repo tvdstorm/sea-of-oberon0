@@ -40,7 +40,7 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 		// Run all the body declarations
 		for (BodyDeclaration bd : bodyDeclarations)
 		{
-			if (bd instanceof RecordDeclaration || bd instanceof PointerToDeclaration)
+			if (bd instanceof RecordDeclaration)
 				bd.run(environment);
 		}
 		return null;

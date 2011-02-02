@@ -52,8 +52,6 @@ public class Oberon0ASTTreeGenerator
 		{
 			case Oberon0Parser.RECORD:
 				return buildRecordDeclaration(tree);
-			case Oberon0Parser.POINTERTO:
-				return buildPointerToDeclaration(tree);
 			default:
 				throw new ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' in AbstractTypeDeclaration on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + ".");
 		}
@@ -102,7 +100,6 @@ public class Oberon0ASTTreeGenerator
 			case Oberon0Parser.PROCEDURE:
 				return buildProcedureDeclaration(tree);
 			case Oberon0Parser.TYPE:
-			case Oberon0Parser.POINTERTO:
 				return buildAbstractTypeDeclaration(tree);
 			default:
 				throw new ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' in BodyDeclaration on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + "."); 
@@ -154,8 +151,6 @@ public class Oberon0ASTTreeGenerator
 			case Oberon0Parser.AND:
 			case Oberon0Parser.OR:
 				return buildInfixExpression(tree);
-			case Oberon0Parser.NIL:
-				return buildNilLiteral(tree);
 			case Oberon0Parser.TRUE:
 			case Oberon0Parser.FALSE:
 				return buildBooleanLiteral(tree);
@@ -271,18 +266,6 @@ public class Oberon0ASTTreeGenerator
 			}
 		}
 		return new Module(bodyDeclarations, body);
-	}
-	public static NilLiteral buildNilLiteral(Tree tree) throws Exception
-	{
-		assert(tree.getType() == Oberon0Parser.NIL);
-		return new NilLiteral();
-	}
-	public static PointerToDeclaration buildPointerToDeclaration(Tree tree) throws Exception
-	{
-		assert(tree.getChildCount() == 2);
-		String name = tree.getChild(0).getText();
-		String pointsTo = tree.getChild(1).getChild(0).getText();
-		return new PointerToDeclaration(name, pointsTo);
 	}
 	public static Expression buildPrefixExpression(Tree tree) throws Exception
 	{
