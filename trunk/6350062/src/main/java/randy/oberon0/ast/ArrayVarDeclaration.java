@@ -35,8 +35,8 @@ public class ArrayVarDeclaration extends VarDeclaration
 		}
 	}
 	@Override
-	public void runForParameter(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException // Use for registering parameters
-	{ // TODO: check
+	public void registerAsParameter(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException // Use for registering parameters
+	{
 		assert(environment != null);
 		assert(parameterValues != null);
 		// Check if we have enough parameter values left for all our variables

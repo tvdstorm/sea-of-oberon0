@@ -50,7 +50,7 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 		// Loop through all parameters and declare them in the invoked functions environment
 		for (VarDeclaration p : parameterDeclarations)
 		{
-			p.runForParameter(environment, parameterValues);
+			p.registerAsParameter(environment, parameterValues);
 		}
 		// If parameterValues has any values left, the number of arguments don't match
 		if (parameterValues.size() > 0)

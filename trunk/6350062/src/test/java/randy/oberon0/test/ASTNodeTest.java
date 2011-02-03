@@ -703,7 +703,6 @@ public class ASTNodeTest
 	// TODO: JavaDoc, meer comments, asserts, finals?
 	// TODO: onnodige EXPRESSION's uit de tree halen
 	// TODO: scoping fixen
-	// TODO: statement run, expression evaluate, declarations register, etc.
 	// TODO: References terug brengen
 	@Ignore
 	private void prepareTestThrowException(String testName) throws Exception
