@@ -71,7 +71,7 @@ public class Record extends Value
 			Value otherValue = other.members.get(name);
 			if (otherValue == null)
 				return false;
-			if (!members.get(name).equals(otherValue))
+			if (!members.get(name).equalsToValue(otherValue))
 				return false;
 		}
 		return true;
