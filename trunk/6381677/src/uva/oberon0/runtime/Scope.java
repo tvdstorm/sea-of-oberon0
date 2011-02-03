@@ -7,11 +7,11 @@ import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.abstractsyntax.ID;
 import uva.oberon0.abstractsyntax.declarations.BaseDeclaration;
 import uva.oberon0.abstractsyntax.declarations.BaseDeclarationList;
-import uva.oberon0.abstractsyntax.declarations.Const;
+import uva.oberon0.abstractsyntax.declarations.Constant;
 import uva.oberon0.abstractsyntax.declarations.Procedure;
 import uva.oberon0.abstractsyntax.declarations.Type;
-import uva.oberon0.abstractsyntax.declarations.ProcedureParameter;
-import uva.oberon0.abstractsyntax.declarations.ProcedureParameterByReference;
+import uva.oberon0.abstractsyntax.declarations.Variable;
+import uva.oberon0.abstractsyntax.declarations.VariableByRef;
 import uva.oberon0.abstractsyntax.statements.CallActualParameterList;
 
 
@@ -48,12 +48,12 @@ public class Scope
 				addType((Type)declaration);
 
 			//Create and Add an Execution Scope Value to the Value hash.
-			else if (declaration instanceof ProcedureParameter)
-				addValue(declaration.getID(), ((ProcedureParameter)declaration).instantiate(this));
+			else if (declaration instanceof Variable)
+				addValue(declaration.getID(), ((Variable)declaration).instantiate(this));
 
 			//Create and Add an Execution Scope Value to the Value hash.
-			else if (declaration instanceof Const)
-				addValue(declaration.getID(), ((Const)declaration).instantiate(this));
+			else if (declaration instanceof Constant)
+				addValue(declaration.getID(), ((Constant)declaration).instantiate(this));
 
 			else
 				assert false : "Declaration Type not implemented!";
@@ -71,13 +71,13 @@ public class Scope
 		for (int i = 0; i < procedure.getParameterCount(); i++)
 		{
 			//Determine the Formal Procedure Parameter.
-			ProcedureParameter formal = (ProcedureParameter)procedure.getParameter(i);
+			Variable formal = (Variable)procedure.getParameter(i);
 			
 			//Determine the Actual Method Call.
 			BaseNode actual = actualParameters.get(i);
 			
 			//Determine if the declaration should be passed by Reference.
-			if (formal instanceof ProcedureParameterByReference)
+			if (formal instanceof VariableByRef)
 			{
 				//Get and Add the existing Execution Scope Value. 
 				addValue(formal.getID(), parent.getValueReference(ID.getID(actual)));

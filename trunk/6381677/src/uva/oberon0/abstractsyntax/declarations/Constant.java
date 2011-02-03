@@ -11,11 +11,11 @@ import uva.oberon0.runtime.ScopeValueInt;
  * @author Chiel Labee
  * This class represents a Constanct Declaration.
 */
-public class Const extends BaseDeclaration
+public class Constant extends BaseDeclaration
 {
 	private final BaseExpression _expression;
 
-	public Const(ID id, BaseExpression expression)
+	public Constant(ID id, BaseExpression expression)
 	{
 		super(id);
 
