@@ -1,7 +1,6 @@
 package oberon.interpret;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import oberon.FormalParamSection;
@@ -13,11 +12,11 @@ import oberon.node.PFpsection;
 import oberon.node.PType;
 import oberon.node.TIdentifier;
 
-class FpSectionInterpreter extends BaseInterpreter<List<FormalParamSection>> {
-	private ArrayList<FormalParamSection> _list;
+class FpSectionInterpreter extends AbstractBaseInterpreter<List<FormalParamSection>> {
+	private final List<FormalParamSection> paramSectionList;
 
-	public FpSectionInterpreter(LinkedList<PFpsection> formalparams) {
-		_list = new ArrayList<FormalParamSection>();
+	public FpSectionInterpreter(final List<PFpsection> formalparams) {
+		paramSectionList = new ArrayList<FormalParamSection>();
 		
 		for (PFpsection section : formalparams)
 		{
@@ -25,33 +24,30 @@ class FpSectionInterpreter extends BaseInterpreter<List<FormalParamSection>> {
 		}
 	}
 
-	public void caseAFpsection(AFpsection node)
+	public void caseAFpsection(final AFpsection node)
 	{
-		PType type = node.getType();
+		final PType type = node.getType();
 		FormalParamType fpType = FormalParamType.Identifier;
-		if (type instanceof AArrayType)
-		{
+		if (type instanceof AArrayType){
 			fpType = FormalParamType.Array;
 		}
-		else if (type instanceof AIdentifierType)
-		{
+		else if (type instanceof AIdentifierType) {
 			fpType = FormalParamType.Identifier;
 		}
 		
-		Boolean callByRef = node.getCallbyref() != null;
+		final Boolean callByRef = node.getCallbyref() != null;
 		
-		List<String> nameList = new ArrayList<String>();
-		for (TIdentifier paramName : node.getParamnames())
-		{
+		final List<String> nameList = new ArrayList<String>();
+		for (TIdentifier paramName : node.getParamnames()) {
 			nameList.add(paramName.toString().trim());
 		}
 		
-		_list.add(new FormalParamSection(nameList, fpType, callByRef));
+		paramSectionList.add(new FormalParamSection(nameList, fpType, callByRef));
 	}
 
 	@Override
-	public List<FormalParamSection> BuildInterpreterResult() {
-		return _list;
+	public List<FormalParamSection> buildInterpreterResult() {
+		return paramSectionList;
 	}
 
 }

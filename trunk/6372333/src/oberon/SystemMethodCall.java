@@ -4,17 +4,17 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Queue;
 
-public class SystemMethodCall extends Procedure {
+public class SystemMethodCall extends AbstractProcedure {
 
-	public SystemMethodCall(String name,
-			List<FormalParamSection> paramSections, ProcedureBody body) {
+	public SystemMethodCall(final String name, 
+			final List<FormalParamSection> paramSections, 
+			final ProcedureBody body) {
 		super(name, paramSections, body);
 	}
 
 	@Override
-	public void Call(Queue<Expression> localQueue) throws IOException {
-		getBody().Eval();
-
+	public void call(final Queue<AbstractExpression> localQueue) throws IOException {
+		getBody().eval();
 	}
 
 }

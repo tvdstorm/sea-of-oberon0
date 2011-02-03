@@ -5,20 +5,18 @@ import java.io.IOException;
 import oberon.data.VariableManager;
 
 public class ProcedureBody {
-	private StatementSequence _statements;
-	private Declaration _declaration;
+	private final StatementSequence body;
+	private final Declaration variableDeclaration;
 
-	public ProcedureBody(Declaration declaration, StatementSequence statements)
-	{
-		_declaration = declaration;
-		_statements = statements;
+	public ProcedureBody(final Declaration declaration, final StatementSequence statements) {
+		variableDeclaration = declaration;
+		body = statements;
 	}
 	
-	public void Eval() throws IOException
-	{
-		VariableManager variableManager = VariableManager.getInstance();
-		variableManager.AddNewDeclaration(_declaration);
+	public void eval() throws IOException {
+		final VariableManager variableManager = VariableManager.getInstance();
+		variableManager.addNewDeclaration(variableDeclaration);
 		
-		_statements.Eval();
+		body.eval();
 	}
 }

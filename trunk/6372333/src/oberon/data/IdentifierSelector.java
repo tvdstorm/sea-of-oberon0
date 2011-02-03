@@ -1,21 +1,21 @@
 package oberon.data;
 
-public class IdentifierSelector extends Selector {
-	private String _name;
+public class IdentifierSelector extends AbstractSelector {
+	private final String name;
 
-	public IdentifierSelector(String name){
-		_name = name;
+	public IdentifierSelector(final String inputName){
+		name = inputName;
 	}
 	
 	@Override
 	public int getSelectorValue() {
-		DataType datatype = VariableManager.getInstance().getVariable(_name);
+		final AbstractDataType datatype = VariableManager.getInstance().getVariable(name);
 		return datatype.getValue();
 	}
 
 	@Override
-	public DataType getDataTypeValue() {
-		return VariableManager.getInstance().getVariable(_name);
+	public AbstractDataType getDataTypeValue() {
+		return VariableManager.getInstance().getVariable(name);
 	}
 
 }

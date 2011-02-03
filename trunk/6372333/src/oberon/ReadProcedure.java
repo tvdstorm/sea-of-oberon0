@@ -7,35 +7,35 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import oberon.data.DataType;
+import oberon.data.AbstractDataType;
+import oberon.data.IntegerArrayType;
 import oberon.data.VariableManager;
 
-class ReadProcedure extends Statement {
+class ReadProcedure extends AbstractStatement {
 	@Override
-	public void Eval() throws IOException {
-		VariableManager instance = VariableManager.getInstance();
-		int index = instance.getVariable("i").getValue();
+	public void eval() throws IOException {
+		final VariableManager instance = VariableManager.getInstance();
+		final int index = instance.getVariable("i").getValue();
 		
-		int input = ReadInput(index);
-		DataType inputArray = instance.getVariable("input");
-		inputArray.setValue(index, input);
+		final int input = readInput(index);
+		final IntegerArrayType inputArray = (IntegerArrayType)instance.getVariable("input");
+		inputArray.setValueAtIndex(index, input);
 	}
 	
-	private int ReadInput(int index) throws IOException {
-		BufferedReader stdin = new BufferedReader (new InputStreamReader(System.in));
+	private int readInput(final int index) throws IOException {
+		final BufferedReader stdin = new BufferedReader (new InputStreamReader(System.in));
 		
 	    System.out.print ("Type number "+ index +" you want to sort: ");
 	    System.out.flush(); 
 	    
 	    
-	    String input = stdin.readLine();
+	    final String input = stdin.readLine();
 	    
 	    return Integer.parseInt(input);
 	}
 
-	public static void Initialize()
-	{
-		List<FormalParamSection> params = new ArrayList<FormalParamSection>();
+	public static void initialize() {
+		final List<FormalParamSection> params = new ArrayList<FormalParamSection>();
 		List<String> paramNames = new ArrayList<String>();
 		paramNames.add("i");
 		params.add(new FormalParamSection(paramNames, FormalParamType.Identifier, false));
@@ -43,15 +43,15 @@ class ReadProcedure extends Statement {
 		paramNames.add("input");
 		params.add(new FormalParamSection(paramNames, FormalParamType.Array, false));
 		
-		LinkedList<Statement> statements = new LinkedList<Statement>();
+		final LinkedList<AbstractStatement> statements = new LinkedList<AbstractStatement>();
 		statements.add(new ReadProcedure());
 		
-		List<DataType> variables = new ArrayList<DataType>();
-		List<ProcedureHeading> procedures = new ArrayList<ProcedureHeading>();
-		Declaration declaration = new Declaration(variables, procedures);
+		final List<AbstractDataType> variables = new ArrayList<AbstractDataType>();
+		final List<ProcedureHeading> procedures = new ArrayList<ProcedureHeading>();
+		final Declaration declaration = new Declaration(variables, procedures);
 		
-		ProcedureBody body = new ProcedureBody(declaration, new StatementSequence(statements));
-		SystemMethodCall procedure = new SystemMethodCall("Read", params, body);
-		VariableManager.getInstance().AddSystemProcedure(procedure);
+		final ProcedureBody body = new ProcedureBody(declaration, new StatementSequence(statements));
+		final SystemMethodCall procedure = new SystemMethodCall("Read", params, body);
+		VariableManager.getInstance().addSystemProcedure(procedure);
 	}
 }

@@ -1,34 +1,34 @@
 package oberon.interpret;
 
 import oberon.AssignmentStatement;
-import oberon.Expression;
-import oberon.Statement;
-import oberon.data.Selector;
+import oberon.AbstractExpression;
+import oberon.AbstractStatement;
+import oberon.data.AbstractSelector;
 import oberon.node.AAssignment;
 import oberon.node.AStatassStatement;
 
-class AssignmentInterpreter extends BaseInterpreter<Statement> {
-	private Expression _value;
-	private Selector _selectorToAssignTo;
+class AssignmentInterpreter extends AbstractBaseInterpreter<AbstractStatement> {
+	private AbstractExpression expression;
+	private AbstractSelector selectorToAssignTo;
 
 
-	public void caseAStatassStatement(AStatassStatement node)
+	public void caseAStatassStatement(final AStatassStatement node)
 	{
 		node.getAssignment().apply(this);
 	}
 	
-	public void caseAAssignment(AAssignment node)
+	public void caseAAssignment(final AAssignment node)
 	{
-		_value = ExpInterpreterFactory.getExpression(node.getExp());
+		expression = ExpInterpreterFactory.getExpression(node.getExp());
 		
-		SelectorInterpreter interpreter = new SelectorInterpreter();
+		final SelectorInterpreter interpreter = new SelectorInterpreter();
 		node.getSelector().apply(interpreter);
-		_selectorToAssignTo = interpreter.BuildInterpreterResult();
+		selectorToAssignTo = interpreter.buildInterpreterResult();
 	}	
 	
 	@Override
-	public Statement BuildInterpreterResult() {
-		return new AssignmentStatement(_selectorToAssignTo, _value);
+	public AbstractStatement buildInterpreterResult() {
+		return new AssignmentStatement(selectorToAssignTo, expression);
 	}
 
 }

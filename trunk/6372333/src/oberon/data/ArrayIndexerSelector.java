@@ -1,36 +1,35 @@
 package oberon.data;
 
-import oberon.Expression;
+import oberon.AbstractExpression;
 
-public class ArrayIndexerSelector extends Selector {
-	private Expression _expression;
-	private Selector _selector;
+public class ArrayIndexerSelector extends AbstractSelector {
+	private final AbstractExpression indexExpression;
+	private final AbstractSelector selector;
 
-	public ArrayIndexerSelector(Selector selector, Expression expression){
-		_expression = expression;
-		_selector = selector;
+	public ArrayIndexerSelector(final AbstractSelector indexSelector, 
+			final AbstractExpression expression){
+		indexExpression = expression;
+		selector = indexSelector;
 	}
 
 	@Override
 	public int getSelectorValue() {
-		IntegerArrayType array = getDataTypeAsArrayType();
-		return array.getValueAtIndex(_expression.EvalAsInt());
+		final IntegerArrayType array = getDataTypeAsArrayType();
+		return array.getValueAtIndex(indexExpression.evalAsInt());
 	}
 
 	private IntegerArrayType getDataTypeAsArrayType() {
-		DataType type = _selector.getDataTypeValue();
-		if (!(type instanceof IntegerArrayType))
-		{
+		final AbstractDataType type = selector.getDataTypeValue();
+		if (!(type instanceof IntegerArrayType)) {
 			//TODO: throw exception
 		}
 		
-		IntegerArrayType array = ((IntegerArrayType)type);
-		return array;
+		return ((IntegerArrayType)type);
 	}
 
 	@Override
-	public DataType getDataTypeValue() {
-		return new IntegerArrayIndexerType(getDataTypeAsArrayType(), _expression.EvalAsInt());
+	public AbstractDataType getDataTypeValue() {
+		return new IntegerArrayIndexerType(getDataTypeAsArrayType(), indexExpression.evalAsInt());
 	}
 
 }

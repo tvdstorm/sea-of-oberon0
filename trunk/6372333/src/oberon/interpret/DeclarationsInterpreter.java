@@ -5,49 +5,43 @@ import java.util.List;
 
 import oberon.Declaration;
 import oberon.ProcedureHeading;
-import oberon.data.DataType;
+import oberon.data.AbstractDataType;
 import oberon.node.ADeclarations;
 import oberon.node.PConstdecl;
 import oberon.node.PProceduredeclaration;
 import oberon.node.PVardecl;
 
-class DeclarationsInterpreter extends BaseInterpreter<Declaration> {
-	private List<DataType> _variables;
-	private List<ProcedureHeading> _procedures;
+class DeclarationsInterpreter extends AbstractBaseInterpreter<Declaration> {
+	private final List<AbstractDataType> variables = new ArrayList<AbstractDataType>();
+	private final List<ProcedureHeading> procedures = new ArrayList<ProcedureHeading>();
 	
-	public DeclarationsInterpreter()
-	{
-		_procedures = new ArrayList<ProcedureHeading>();
-		_variables = new ArrayList<DataType>();
-	}
-	
-	public void caseADeclarations(ADeclarations node)
-	{
-		VarInterpreter varDeclInterpreter = new VarInterpreter();
-		PConstdecl constDecl = node.getConstdecl();
+	public void caseADeclarations(final ADeclarations node)
+	{	
+		final VarInterpreter varDeclInterpreter = new VarInterpreter();
+		final PConstdecl constDecl = node.getConstdecl();
 		if (constDecl != null)
 		{
 			node.getConstdecl().apply(varDeclInterpreter);
 		}
 		
-		PVardecl varDecl = node.getVardecl();
+		final PVardecl varDecl = node.getVardecl();
 		if (varDecl != null)
 		{
 			varDecl.apply(varDeclInterpreter);
 		}
 
-		_variables.addAll(varDeclInterpreter.BuildInterpreterResult());
+		variables.addAll(varDeclInterpreter.buildInterpreterResult());
 		
-		ProcedureHeadingInterpreter procInterpreter = new ProcedureHeadingInterpreter();
+		final ProcedureHeadingInterpreter procInterpreter = new ProcedureHeadingInterpreter();
 		for (PProceduredeclaration procDeclaration : node.getProceduredeclaration())
 		{
 			procDeclaration.apply(procInterpreter);
-			_procedures.add(procInterpreter.BuildInterpreterResult());
+			procedures.add(procInterpreter.buildInterpreterResult());
 		}
 	}
 
 	@Override
-	public Declaration BuildInterpreterResult() {
-		return new Declaration(_variables, _procedures);
+	public Declaration buildInterpreterResult() {
+		return new Declaration(variables, procedures);
 	}
 }

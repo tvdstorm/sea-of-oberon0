@@ -1,26 +1,26 @@
 package oberon;
 
-import oberon.data.DataType;
-import oberon.data.Selector;
+import oberon.data.AbstractDataType;
+import oberon.data.AbstractSelector;
 
-public class SelectorExpression extends Expression {
-	private Selector _selector;
+public class SelectorExpression extends AbstractExpression {
+	private final AbstractSelector selector;
 
-	public SelectorExpression(Selector selector){
-		_selector = selector;
+	public SelectorExpression(final AbstractSelector selectorExp) {
+		selector = selectorExp;
 	}
 	
-	public DataType performDeepCopyOfValue(String newName){
-		return _selector.getDataTypeValue().DeepCopy(newName);
+	public AbstractDataType performDeepCopyOfValue(final String newName) {
+		return selector.getDataTypeValue().deepCopy(newName);
 	}
 	
-	public DataType performShallowCopyOfValue(String newName){
-		return _selector.getDataTypeValue().ShallowCopy(newName);
+	public AbstractDataType performShallowCopyOfValue(final String newName) {
+		return selector.getDataTypeValue().shallowCopy(newName);
 	}
 	
 	@Override
-	public int EvalAsInt() {
-		return _selector.getSelectorValue();
+	public int evalAsInt() {
+		return selector.getSelectorValue();
 	}
 
 }

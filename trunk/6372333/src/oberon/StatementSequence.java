@@ -1,23 +1,19 @@
 package oberon;
 
 import java.io.IOException;
-import java.util.LinkedList;
+import java.util.List;
 
 public class StatementSequence{
-	private LinkedList<Statement> _statementList;
+	private final List<AbstractStatement> body;
 
-	public StatementSequence(LinkedList<Statement> statementList)
-	{
-		_statementList = statementList;
+	public StatementSequence(final List<AbstractStatement> statementList) {
+		body = statementList;
 	}
 
-	public void Eval() throws IOException
-	{
-		if (_statementList != null)
-		{
-			for(Statement statement : _statementList)
-			{
-				statement.Eval();
+	public void eval() throws IOException {
+		if (body != null) {
+			for(AbstractStatement statement : body) {
+				statement.eval();
 			}
 		}
 	}

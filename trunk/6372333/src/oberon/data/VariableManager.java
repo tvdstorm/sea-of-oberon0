@@ -1,141 +1,141 @@
 package oberon.data;
 
+import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Stack;
 
 import oberon.Declaration;
-import oberon.Procedure;
+import oberon.AbstractProcedure;
 import oberon.ProcedureHeading;
 
 public class VariableManager {
-	private static VariableManager _instance;
-	private Stack<Scope> _scopes;
-	private Scope _currentScope;
+	private static VariableManager instance;
+	private final Stack<Scope> scopes;
+	private Scope currentScope;
 	
 	private VariableManager(){
-		_scopes = new Stack<Scope>();
-		_currentScope = new Scope();
+		scopes = new Stack<Scope>();
+		currentScope = new Scope();
 	}
 
 	public static VariableManager getInstance(){
-		if (_instance == null){
-			_instance = new VariableManager();
+		if (instance == null){
+			instance = new VariableManager();
 		}
-		return _instance;
+		return instance;
 	}
 	
-	public void AddNewDeclaration(Declaration declaration){
-		_currentScope.AddNewDeclaration(declaration);
+	public void addNewDeclaration(final Declaration declaration){
+		currentScope.addNewDeclaration(declaration);
 	}
 	
-	public void EnterNewScope(List<DataType> actualProcedureParameters, ProcedureHeading currentProcedure){
+	public void enterNewScope(final List<AbstractDataType> actualProcedureParameters, 
+			final ProcedureHeading currentProcedure){
 		//preserve the old scope, put it on the stack
-		_scopes.add(_currentScope);
+		scopes.add(currentScope);
 		
 		//create a new scope and store it in _currentscope
-		Scope newScope = _currentScope.createNewScope(actualProcedureParameters, currentProcedure);
-		_currentScope = newScope;
+		final Scope newScope = currentScope.createNewScope(actualProcedureParameters, currentProcedure);
+		currentScope = newScope;
 	}
 	
-	public void LeaveScope(){
-		if (!_scopes.empty()){
-			_currentScope = _scopes.pop();
+	public void leaveScope(){
+		if (!scopes.empty()){
+			currentScope = scopes.pop();
 		}
 	}
 
-	public DataType getVariable(String name) {
-		return _currentScope.getVariable(name);
+	public AbstractDataType getVariable(final String name) {
+		return currentScope.getVariable(name);
 	}
 	
-	public void AddProcedure(ProcedureHeading procedure) {
-		_currentScope.AddProcedure(procedure);
+	public void addProcedure(final ProcedureHeading procedure) {
+		currentScope.addProcedure(procedure);
 	}
 	
-	public void AddSystemProcedure(Procedure procedure) {
-		_currentScope.AddSystemProcedure(procedure);
+	public void addSystemProcedure(final AbstractProcedure procedure) {
+		currentScope.addSystemProcedure(procedure);
 	}
 
-	public Procedure getProcedure(String name) {
-		return _currentScope.getProcedure(name);
+	public AbstractProcedure getProcedure(final String name) {
+		return currentScope.getProcedure(name);
 	}
 	
 	class Scope {		
-		private HashMap<String, DataType> _variables;
-		private HashMap<String, ProcedureHeading> _procedures;
-		private HashMap<String, Procedure> _systemProcedures;
+		private final AbstractMap<String, AbstractDataType> variables;
+		private final AbstractMap<String, ProcedureHeading> procedures;
+		private final AbstractMap<String, AbstractProcedure> systemProcedures;
 		
 		Scope(){
-			_variables = new HashMap<String, DataType>();
-			_procedures = new HashMap<String, ProcedureHeading>();
-			_systemProcedures = new HashMap<String, Procedure>();
+			variables = new HashMap<String, AbstractDataType>();
+			procedures = new HashMap<String, ProcedureHeading>();
+			systemProcedures = new HashMap<String, AbstractProcedure>();
 		}
 		
-		public void AddSystemProcedure(Procedure procedure) {
-			_systemProcedures.put(procedure.getName(), procedure);
+		public void addSystemProcedure(final AbstractProcedure procedure) {
+			systemProcedures.put(procedure.getName(), procedure);
 		}
 
-		Scope(HashMap<String, DataType> variables, HashMap<String,ProcedureHeading> procedures, HashMap<String, Procedure> systemProcedures){
-			_variables = variables;
-			_systemProcedures = systemProcedures;
-			_procedures = procedures;
+		Scope(final AbstractMap<String, AbstractDataType> inputVariables, 
+				final AbstractMap<String,ProcedureHeading> inputPprocedures, 
+				final AbstractMap<String, AbstractProcedure> inputSysProcedures){
+			variables = inputVariables;
+			systemProcedures = inputSysProcedures;
+			procedures = inputPprocedures;
 		}
 
-		private Scope createNewScope(
-				List<DataType> actualProcedureParameters, ProcedureHeading currentProcedure) {
-			HashMap<String, DataType> variables = new HashMap<String, DataType>();
+		private Scope createNewScope(final List<AbstractDataType> actualProcedureParameters, 
+				final ProcedureHeading currentProcedure) {
+			final HashMap<String, AbstractDataType> variables = new HashMap<String, AbstractDataType>();
 			
-			for (DataType actualParam : actualProcedureParameters){
+			for (AbstractDataType actualParam : actualProcedureParameters){
 				variables.put(actualParam.getName(), actualParam);
-				
-//				if (actualParam instanceof IntegerArrayIndexerType)
-//				{
-//					IntegerArrayIndexerType integerArrayIndexer = ((IntegerArrayIndexerType)actualParam);
-//					_variables.put(integerArrayIndexer.getName(), integerArrayIndexer.getArray());
-//				}
 			}
 			
-			HashMap<String, ProcedureHeading> procedures = new HashMap<String, ProcedureHeading>();
+			final HashMap<String, ProcedureHeading> procedures = new HashMap<String, ProcedureHeading>();
 			procedures.put(currentProcedure.getName(), currentProcedure);
 			
-			return new Scope(variables, procedures, _systemProcedures);
+			return new Scope(variables, procedures, systemProcedures);
 		}
 		
-		public void AddNewDeclaration(Declaration declaration)
+		public void addNewDeclaration(final Declaration declaration)
 		{
-			for (DataType actualParam : declaration.getVariables()){
-				_variables.put(actualParam.getName(), actualParam);	
+			for (AbstractDataType actualParam : declaration.getVariables()){
+				variables.put(actualParam.getName(), actualParam);	
 				
-				if (actualParam instanceof IntegerArrayType)
-				{
+				if (actualParam instanceof IntegerArrayType){
 					((IntegerArrayType)actualParam).initializeArray();
 				}
 			}
 			
 			for (ProcedureHeading heading : declaration.getProcedures()){
-				AddProcedure(heading);
+				addProcedure(heading);
 			}
 		}
 		
-		void AddProcedure(ProcedureHeading procedure) {
-			_procedures.put(procedure.getName(), procedure);
+		protected void addProcedure(final ProcedureHeading procedure) {
+			procedures.put(procedure.getName(), procedure);
 		}
 
-		public Procedure getProcedure(String name) {
-			if (_procedures.containsKey(name)){
-				return _procedures.get(name);
+		public AbstractProcedure getProcedure(final String name) {
+			AbstractProcedure procedure = null;
+			if (procedures.containsKey(name)){
+				procedure = procedures.get(name);
 			}
-			if (_systemProcedures.containsKey(name)){
-				return _systemProcedures.get(name);
+			if (systemProcedures.containsKey(name)){
+				procedure = systemProcedures.get(name);
 			}
 			
-			System.out.println("Procedure not found in scope: "+ name);
-			return null;
+			if (procedure == null) {
+				System.out.println("Procedure not found in scope: "+ name);
+			}
+			return procedure;
 		}
 
-		public DataType getVariable(String variableName) {
-			if (_variables.containsKey(variableName)){
-					return _variables.get(variableName);
+		public AbstractDataType getVariable(final String variableName) {
+			if (variables.containsKey(variableName)){
+					return variables.get(variableName);
 			}
 			
 			System.out.println("Variable not found in scope: "+ variableName);

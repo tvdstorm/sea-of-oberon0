@@ -2,21 +2,19 @@ package oberon;
 
 import java.io.IOException;
 
-public class WhileStatement extends Statement {
-	private StatementSequence _statements;
-	private Expression _condition;
+public class WhileStatement extends AbstractStatement {
+	private final StatementSequence body;
+	private final AbstractExpression condition;
 
-	public WhileStatement(Expression condition, StatementSequence statements)
-	{
-		_condition = condition;
-		_statements = statements;
+	public WhileStatement(final AbstractExpression whileCondition, final StatementSequence whileBody) {
+		condition = whileCondition;
+		body = whileBody;
 	}
 
 	@Override
-	public void Eval() throws IOException {
-		while (_condition.EvalAsBoolean())
-		{
-			_statements.Eval();
+	public void eval() throws IOException {
+		while (condition.evalAsBoolean()){
+			body.eval();
 		}
 	}
 

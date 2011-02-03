@@ -7,25 +7,23 @@ import java.util.Queue;
 
 import oberon.data.VariableManager;
 
-public class ProcedurecallStatement extends Statement {
+public class ProcedurecallStatement extends AbstractStatement {
+	final private List<AbstractExpression> procParameters;
+	final private String procNameToCall;
 
-	private List<Expression> _parameters;
-	private String _name;
-
-	public ProcedurecallStatement(String name,
-			List<Expression> _expressions) {
-		_name = name;
-		_parameters = _expressions;
+	public ProcedurecallStatement(final String name, final List<AbstractExpression> params) {
+		procNameToCall = name;
+		procParameters = params;
 	}
 
 	@Override
-	public void Eval() throws IOException {
-		Procedure procedure = VariableManager.getInstance().getProcedure(_name);
+	public void eval() throws IOException {
+		final AbstractProcedure procedure = VariableManager.getInstance().getProcedure(procNameToCall);
 		
-		Queue<Expression> localQueue = new LinkedList<Expression>();
-		localQueue.addAll(_parameters);
+		final Queue<AbstractExpression> localQueue = new LinkedList<AbstractExpression>();
+		localQueue.addAll(procParameters);
 		
-		procedure.Call(localQueue);
+		procedure.call(localQueue);
 	}
 
 }

@@ -4,24 +4,21 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import oberon.data.DataType;
+import oberon.data.AbstractDataType;
 
 public class Declaration {
-	private List<DataType> _variables;
-	private List<ProcedureHeading> _procedures;
+	private final List<AbstractDataType> constAndVarDeclarations;
+	private final List<ProcedureHeading> procDeclarations;
 
-	public Declaration(List<DataType> variables, List<ProcedureHeading> procedures)
-	{
-		_variables = variables;
-		_procedures = procedures;
+	public Declaration(final List<AbstractDataType> variables, final List<ProcedureHeading> procedures) {
+		constAndVarDeclarations = variables;
+		procDeclarations = procedures;
 	}
 	
-	public List<DataType> getVariables()
-	{
-		List<DataType> list = new ArrayList<DataType>();
+	public List<AbstractDataType> getVariables() {
+		final List<AbstractDataType> list = new ArrayList<AbstractDataType>();
 		
-		for (DataType declaration : _variables)
-		{
+		for (AbstractDataType declaration : constAndVarDeclarations) {
 			list.add(declaration);
 		}
 		
@@ -29,6 +26,6 @@ public class Declaration {
 	}
 
 	public List<ProcedureHeading> getProcedures() {
-		return Collections.unmodifiableList(_procedures);
+		return Collections.unmodifiableList(procDeclarations);
 	}
 }

@@ -1,5 +1,6 @@
 package oberon.interpret;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import oberon.FormalParamSection;
@@ -8,31 +9,29 @@ import oberon.ProcedureHeading;
 import oberon.node.AProceduredeclaration;
 import oberon.node.AProcedureheading;
 
-class ProcedureHeadingInterpreter extends BaseInterpreter<ProcedureHeading> {
-	private ProcedureBody _body;
-	private String _name;
-	private List<FormalParamSection> _paramSections;
+class ProcedureHeadingInterpreter extends AbstractBaseInterpreter<ProcedureHeading> {
+	private ProcedureBody body;
+	private String name;
+	private final List<FormalParamSection> paramSections = new ArrayList<FormalParamSection>();
 	
-	public void caseAProceduredeclaration(AProceduredeclaration node)
-	{
-		ProcedureBodyInterpreter bodyInterpreter = new ProcedureBodyInterpreter();
+	public void caseAProceduredeclaration(final AProceduredeclaration node){
+		final ProcedureBodyInterpreter bodyInterpreter = new ProcedureBodyInterpreter();
 		node.getProcedurebody().apply(bodyInterpreter);
-		_body = bodyInterpreter.BuildInterpreterResult();
+		body = bodyInterpreter.buildInterpreterResult();
 		
 		node.getProcedureheading().apply(this);
 	}
 
-	public void caseAProcedureheading(AProcedureheading node)
-	{
-		_name = node.getIdentifier().toString().trim();
+	public void caseAProcedureheading(final AProcedureheading node)	{
+		name = node.getIdentifier().toString().trim();
 		
-		FpSectionInterpreter interpreter = new FpSectionInterpreter(node.getFormalparams());
-		_paramSections = interpreter.BuildInterpreterResult();		
+		final FpSectionInterpreter interpreter = new FpSectionInterpreter(node.getFormalparams());
+		paramSections.addAll(interpreter.buildInterpreterResult());		
 	}
 	
 	@Override
-	public ProcedureHeading BuildInterpreterResult() {
-		return new ProcedureHeading(_name, _paramSections, _body);
+	public ProcedureHeading buildInterpreterResult() {
+		return new ProcedureHeading(name, paramSections, body);
 	}
 
 }

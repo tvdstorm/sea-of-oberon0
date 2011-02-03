@@ -1,42 +1,37 @@
 package oberon.data;
 
-public class IntegerType extends DataType {
-	private int _value;
-	private Boolean _isConst;
+public class IntegerType extends AbstractDataType {
+	private int value;
+	private final Boolean isConstant;
 
-	public IntegerType(String name, Boolean isConst) {
+	public IntegerType(final String name, final Boolean isConst) {
 		super(name);
-		_isConst = isConst;
+		isConstant = isConst;
 	}
 
-	public IntegerType(String name, int value, Boolean isConst) {
+	public IntegerType(final String name, final int inputValue, 
+			final Boolean isConst) {
 		this (name, isConst);
-		_value = value;
+		value = inputValue;
 	}
 
 	@Override
 	public int getValue() {
-		return _value;
-	}
-	
-	void setValueInternal(int value)
-	{
-		if (_isConst)
-		{
-			//TODO throw
-			System.out.println("Const variabelen mogen niet gezet worden!!!");
-		}
-		_value = value;
+		return value;
 	}
 
 	@Override
-	public DataType DeepCopy(String newName) {
-		return new IntegerType(newName, _value, _isConst);
+	public AbstractDataType deepCopy(final String newName) {
+		return new IntegerType(newName, value, isConstant);
 	}
 
 	@Override
-	public DataType ShallowCopy(String newName) {
-		return new IntegerType(newName, _value, _isConst);
+	public AbstractDataType shallowCopy(final String newName) {
+		return new IntegerType(newName, value, isConstant);
 	}
 
+	@Override
+	public void setValue(final int inputValue){
+		value = inputValue;
+	}
 }

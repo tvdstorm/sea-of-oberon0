@@ -4,25 +4,26 @@ import java.util.Collections;
 import java.util.List;
 
 public class FormalParamSection {
-	private List<String> _names;
-	private FormalParamType _type;
-	private Boolean _callByRef;
+	private final List<String> paramNames;
+	private final FormalParamType paramType;
+	private final Boolean hasVarTxtSpecified;
 	
-	public FormalParamSection(List<String> names, FormalParamType type, Boolean callByRef){
-		_type = type;
-		_names = names;
-		_callByRef = callByRef;
+	public FormalParamSection(final List<String> names, final FormalParamType type, 
+			final Boolean callByRef) {
+		paramType = type;
+		paramNames = names;
+		hasVarTxtSpecified = callByRef;
 	}
 	
-	public Boolean shouldBeCalledByRef(){
-		return _callByRef;
+	public Boolean shouldBeCalledByRef() {
+		return hasVarTxtSpecified;
 	}
 	
-	public List<String> getNames(){
-		return Collections.unmodifiableList(_names);
+	public List<String> getNames() {
+		return Collections.unmodifiableList(paramNames);
 	}
 	
-	public FormalParamType getType(){
-		return _type;
+	public FormalParamType getType() {
+		return paramType;
 	}
 }

@@ -1,35 +1,44 @@
 package oberon.interpret;
 
-import oberon.Statement;
+import oberon.AbstractStatement;
 import oberon.node.AStatassStatement;
 import oberon.node.AStatifStatement;
 import oberon.node.AStatprocStatement;
 import oberon.node.AStatwhileStatement;
 import oberon.node.PStatement;
 
-class StatementInterpreterFactory {
+final class StatementInterpreterFactory {
 	
-	private static <TNode extends PStatement> BaseInterpreter<Statement> 
-		getInterpreter(TNode node)// throws NoInterpreterDefinedException
-	{	
-		if (node instanceof AStatifStatement)
-			return new IfStatementInterpreter();
-		else if (node instanceof AStatassStatement)
-			return new AssignmentInterpreter();
-		else if (node instanceof AStatwhileStatement)
-			return new StatwithStatementInterpreter();
-		else if (node instanceof AStatprocStatement)
-			return new StatprocStatementInterpreter();
-		return null;
-		
-		//throw new NoInterpreterDefinedException("No interpreter for type: " + node.getClass());
+	//private constructor to prevent this type from being constructed
+	private StatementInterpreterFactory(){
 	}
 	
-	public static <TNode extends PStatement> Statement getStatement(TNode node)
+	private static <TNode extends PStatement> AbstractBaseInterpreter<AbstractStatement> 
+		getInterpreter(final TNode node)
+	{	
+		AbstractBaseInterpreter<AbstractStatement> returnStatement = null;
+		if (node instanceof AStatifStatement) {
+			returnStatement = new IfStatementInterpreter();
+		}
+		else if (node instanceof AStatassStatement) {
+			returnStatement = new AssignmentInterpreter();
+		}
+		else if (node instanceof AStatwhileStatement) {
+			returnStatement = new StatwithStatementInterpreter();
+		}
+		else if (node instanceof AStatprocStatement) {
+			returnStatement = new StatprocStatementInterpreter();
+		}
+		
+		return returnStatement;
+	}
+	
+	public static <TNode extends PStatement> AbstractStatement getStatement(final TNode node)
 	{
-		BaseInterpreter<Statement> interpreter = StatementInterpreterFactory.getInterpreter(node);
+		final AbstractBaseInterpreter<AbstractStatement> interpreter = 
+			StatementInterpreterFactory.getInterpreter(node);
 		node.apply(interpreter);
-		return interpreter.BuildInterpreterResult();
+		return interpreter.buildInterpreterResult();
 	}
 
 }
