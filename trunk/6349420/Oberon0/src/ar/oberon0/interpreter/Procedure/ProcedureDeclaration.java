@@ -27,8 +27,7 @@ public class ProcedureDeclaration {
 	 */
 	private FormalParameterList formalParameters;
 
-	public final void setFormalParameters(
-			final FormalParameterList formalParameters) {
+	public final void setFormalParameters(final FormalParameterList formalParameters) {
 		this.formalParameters = formalParameters;
 	}
 
@@ -62,14 +61,10 @@ public class ProcedureDeclaration {
 	 * This function checks if the actual parameters are of the expected type
 	 * and if so it adds the parameters to the context.
 	 */
-	private void checkAndAddActualParametersToContext(
-			final List<DataField> actualParameters, final Context context)
-			throws TechnicalException {
+	private void checkAndAddActualParametersToContext(final List<DataField> actualParameters, final Context context) throws TechnicalException {
 		if (containsFormalParameters()) {
-			if (!isFormalAndActualParamaterCountSame(this.formalParameters,
-					actualParameters)) {
-				throw new TechnicalException(
-						"The number of actual parameters did not match the number of formal parameters.");
+			if (!isFormalAndActualParamaterCountSame(this.formalParameters, actualParameters)) {
+				throw new TechnicalException("The number of actual parameters did not match the number of formal parameters.");
 			}
 			for (int i = 0; i < this.formalParameters.getCount(); i++) {
 				DataField rawParameter = actualParameters.get(i);
@@ -79,16 +74,12 @@ public class ProcedureDeclaration {
 				} else {
 					parameterForContext = rawParameter;
 				}
-				context.addVariable(
-						this.formalParameters.getNameOfParameter(i),
-						parameterForContext);
+				context.addVariable(this.formalParameters.getNameOfParameter(i), parameterForContext);
 			}
 		}
 	}
 
-	private boolean isFormalAndActualParamaterCountSame(
-			final FormalParameterList formalParameters,
-			final List<DataField> actualParameters) {
+	private boolean isFormalAndActualParamaterCountSame(final FormalParameterList formalParameters, final List<DataField> actualParameters) {
 		return formalParameters.getCount() == actualParameters.size();
 	}
 
@@ -99,13 +90,11 @@ public class ProcedureDeclaration {
 	/*
 	 * Create a procedure that can be interpreted (executed).
 	 */
-	protected final Procedure createProcedure(final Context context,
-			final List<DataField> actualParameters) throws TechnicalException {
+	protected final Procedure createProcedure(final Context context, final List<DataField> actualParameters) throws TechnicalException {
 		Context procedureContext = this.context.clone();
 		procedureContext.setParentContext(context);
 		checkAndAddActualParametersToContext(actualParameters, procedureContext);
-		Procedure procedure = new Procedure(this.statementSequence,
-				procedureContext);
+		Procedure procedure = new Procedure(this.statementSequence, procedureContext);
 		return procedure;
 	}
 

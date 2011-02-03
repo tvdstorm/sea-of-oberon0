@@ -20,8 +20,7 @@ abstract class BinaryNode implements Interpretable {
 		return this.rightNode;
 	}
 
-	protected BinaryNode(final Interpretable leftNode,
-			final Interpretable rightNode) {
+	protected BinaryNode(final Interpretable leftNode, final Interpretable rightNode) {
 		this.leftNode = leftNode;
 		this.rightNode = rightNode;
 	}

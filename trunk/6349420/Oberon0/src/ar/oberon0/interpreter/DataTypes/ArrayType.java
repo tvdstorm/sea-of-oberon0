@@ -16,8 +16,7 @@ public class ArrayType implements CreatableType {
 
 	@Override
 	public Value createInstance(Context context) throws TechnicalException {
-		IntegerNode length = (IntegerNode) Helper.getValue(
-				(Interpretable) this.length.interpret(context), context);
+		IntegerNode length = (IntegerNode) Helper.getValue((Interpretable) this.length.interpret(context), context);
 		return new Array(length, this.type);
 	}
 

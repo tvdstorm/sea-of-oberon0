@@ -14,8 +14,7 @@ class Procedure implements Interpretable {
 	private StatementSequence statementsToExecute;
 	private Context procedureContext;
 
-	protected Procedure(final StatementSequence statementsToExecute,
-			final Context procedureContext) {
+	protected Procedure(final StatementSequence statementsToExecute, final Context procedureContext) {
 		this.procedureContext = procedureContext;
 		this.statementsToExecute = statementsToExecute;
 	}

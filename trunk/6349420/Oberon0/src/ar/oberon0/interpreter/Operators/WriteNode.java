@@ -42,12 +42,9 @@ public class WriteNode implements Interpretable {
 	 * .Memory.Context)
 	 */
 	@Override
-	public final Object interpret(final Context context)
-			throws TechnicalException {
+	public final Object interpret(final Context context) throws TechnicalException {
 		if (this.message != null) {
-			System.out.println(Helper.getValue(
-					(Interpretable) this.message.interpret(context), context)
-					.toString());
+			System.out.println(Helper.getValue((Interpretable) this.message.interpret(context), context).toString());
 		} else {
 			System.out.println(this.stringMessage);
 		}

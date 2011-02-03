@@ -11,10 +11,8 @@ public class AndNode extends BinaryNode {
 	}
 
 	@Override
-	public final Object interpret(final Context context)
-			throws TechnicalException {
-		return (Boolean) this.getLeftExpression().interpret(context)
-				&& (Boolean) this.getRightExpression().interpret(context);
+	public final Value interpret(final Context context) throws TechnicalException {
+		return (Boolean) this.getLeftExpression().interpret(context) && (Boolean) this.getRightExpression().interpret(context);
 	}
 
 }

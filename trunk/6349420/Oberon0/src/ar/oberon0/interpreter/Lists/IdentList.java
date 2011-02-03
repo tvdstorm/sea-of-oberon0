@@ -15,6 +15,10 @@ public class IdentList implements Iterable<String> {
 	 */
 	private List<String> identifiers;
 
+	public List<String> getIdentifiers() {
+		return this.identifiers;
+	}
+
 	/*
 	 * Create a new IdentList and initialize the List with identifiers.
 	 */

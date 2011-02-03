@@ -31,8 +31,7 @@ public class ReadNode implements Interpretable {
 	 * .Memory.Context)
 	 */
 	@Override
-	public final Object interpret(final Context context)
-			throws TechnicalException {
+	public final Object interpret(final Context context) throws TechnicalException {
 		DataField variable = getDataFieldToSet(context);
 		int inputFromConsole = getInputAsInteger();
 		setValueOfDataField(context, variable, inputFromConsole);
@@ -42,17 +41,14 @@ public class ReadNode implements Interpretable {
 	/*
 	 * Set the value of the datafield with the read value.
 	 */
-	private void setValueOfDataField(final Context context,
-			final DataField variable, final int inputFromConsole)
-			throws TechnicalException {
+	private void setValueOfDataField(final Context context, final DataField variable, final int inputFromConsole) throws TechnicalException {
 		variable.setValue(new IntegerNode(inputFromConsole), context);
 	}
 
 	/*
 	 * Get the datafield to store the read value.
 	 */
-	private DataField getDataFieldToSet(final Context context)
-			throws TechnicalException {
+	private DataField getDataFieldToSet(final Context context) throws TechnicalException {
 		return (DataField) this.selector.interpret(context);
 	}
 
@@ -66,8 +62,7 @@ public class ReadNode implements Interpretable {
 			try {
 				return Integer.parseInt(rawConsoleValue);
 			} catch (NumberFormatException e) {
-				System.out
-						.println("The input could not be converted into an integer.");
+				System.out.println("The input could not be converted into an integer.");
 			}
 		}
 	}

@@ -71,10 +71,8 @@ public class IfNode implements Interpretable {
 	/*
 	 * Add a new else if statement.
 	 */
-	public void addElseIf(Interpretable expression,
-			Interpretable statementsToExecute) {
-		this.elseIfStatementsList.add(new IfStatement(expression,
-				statementsToExecute));
+	public void addElseIf(Interpretable expression, Interpretable statementsToExecute) {
+		this.elseIfStatementsList.add(new IfStatement(expression, statementsToExecute));
 	}
 
 	/*
@@ -102,8 +100,7 @@ public class IfNode implements Interpretable {
 		/*
 		 * check if the expression evaluates to true.
 		 */
-		public boolean isExpressionTrue(Context context)
-				throws TechnicalException {
+		public boolean isExpressionTrue(Context context) throws TechnicalException {
 			return (Boolean) this.ifExpression.interpret(context) == true;
 		}
 

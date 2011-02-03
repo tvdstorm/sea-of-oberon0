@@ -36,8 +36,7 @@ public class DataFieldList extends BaseMap<DataField> {
 	 * specified is used to create the instance. For example a variable named i
 	 * of type IntegerNode.
 	 */
-	public final void addVariables(final IdentList identifiers,
-			final CreatableType type) {
+	public final void addVariables(final IdentList identifiers, final CreatableType type) {
 		for (String identifier : identifiers) {
 			addItem(identifier, new DataField(type));
 		}

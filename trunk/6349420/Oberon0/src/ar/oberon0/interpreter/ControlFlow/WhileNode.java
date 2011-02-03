@@ -23,8 +23,7 @@ public class WhileNode implements Interpretable {
 	 * loop has to stop. the statementToExecute parameter contains the
 	 * statements that are executed every time the while loop is processed.
 	 */
-	public WhileNode(Interpretable controlExpression,
-			Interpretable statementsToExecute) {
+	public WhileNode(Interpretable controlExpression, Interpretable statementsToExecute) {
 		this.controlExpression = controlExpression;
 		this.statementsToExecute = statementsToExecute;
 	}

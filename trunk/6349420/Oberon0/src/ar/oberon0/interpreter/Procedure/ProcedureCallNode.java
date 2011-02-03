@@ -19,24 +19,19 @@ public class ProcedureCallNode implements Interpretable {
 	 */
 	private List<Interpretable> parameters;
 
-	public ProcedureCallNode(final String procedureName,
-			final List<Interpretable> parameters) {
+	public ProcedureCallNode(final String procedureName, final List<Interpretable> parameters) {
 		this.procedureName = procedureName;
 		this.parameters = parameters;
 	}
 
 	@Override
-	public final Object interpret(final Context context)
-			throws TechnicalException {
+	public final Object interpret(final Context context) throws TechnicalException {
 		// Get the procedure declaration to create a new procedure.
-		ProcedureDeclaration procedureDeclaration = context
-				.getProcedure(this.procedureName);
+		ProcedureDeclaration procedureDeclaration = context.getProcedure(this.procedureName);
 		// Create a list with parameters to pass to the procedure.
-		List<DataField> actualParameters = createParameterList(this.parameters,
-				context);
+		List<DataField> actualParameters = createParameterList(this.parameters, context);
 		// Create the procedure instance.
-		Procedure procedureToInvoke = procedureDeclaration.createProcedure(
-				context, actualParameters);
+		Procedure procedureToInvoke = procedureDeclaration.createProcedure(context, actualParameters);
 		return procedureToInvoke.interpret(context);
 	}
 
@@ -44,15 +39,12 @@ public class ProcedureCallNode implements Interpretable {
 	 * Create a actual parameter list. This function converts all the parameters
 	 * that are not of the DataField type into DataField types.
 	 */
-	private List<DataField> createParameterList(
-			final List<Interpretable> rawParameters, final Context context)
-			throws TechnicalException {
+	private List<DataField> createParameterList(final List<Interpretable> rawParameters, final Context context) throws TechnicalException {
 		List<DataField> resultParameters = new ArrayList<DataField>();
 		if (rawParameters != null) {
 			for (Interpretable rawParameter : rawParameters) {
 				// Ensure that the parameter is of the DataField type.
-				resultParameters.add(Helper.convertToDataField(rawParameter,
-						context));
+				resultParameters.add(Helper.convertToDataField(rawParameter, context));
 			}
 		}
 		return resultParameters;

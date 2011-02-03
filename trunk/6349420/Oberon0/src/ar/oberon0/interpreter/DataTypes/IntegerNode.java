@@ -35,8 +35,7 @@ public class IntegerNode implements ArithmeticValue, ComparableValue {
 	 * .Memory.Context)
 	 */
 	@Override
-	public final Object interpret(final Context context)
-			throws TechnicalException {
+	public final Object interpret(final Context context) throws TechnicalException {
 		return this;
 	}
 
@@ -66,9 +65,7 @@ public class IntegerNode implements ArithmeticValue, ComparableValue {
 	 */
 	public final Value multiplyBy(final Value value) throws TechnicalException {
 		if (!Helper.areSameType(this, value)) {
-			throw new TechnicalException("Could not multiply the type "
-					+ IntegerNode.class + " with a object of type "
-					+ value.getClass() + ".");
+			throw new TechnicalException("Could not multiply the type " + IntegerNode.class + " with a object of type " + value.getClass() + ".");
 		}
 
 		return new IntegerNode(this.value * ((IntegerNode) value).value);
@@ -84,9 +81,7 @@ public class IntegerNode implements ArithmeticValue, ComparableValue {
 	@Override
 	public final Value add(final Value value) throws TechnicalException {
 		if (!Helper.areSameType(this, value)) {
-			throw new TechnicalException("Could not add the value of type "
-					+ IntegerNode.class + " with the value of type "
-					+ value.getClass() + ".");
+			throw new TechnicalException("Could not add the value of type " + IntegerNode.class + " with the value of type " + value.getClass() + ".");
 		}
 
 		return new IntegerNode(this.value + ((IntegerNode) value).value);
@@ -112,10 +107,7 @@ public class IntegerNode implements ArithmeticValue, ComparableValue {
 	@Override
 	public final Value subtract(final Value value) throws TechnicalException {
 		if (!Helper.areSameType(this, value)) {
-			throw new TechnicalException(
-					"Could not subtract the value of type " + IntegerNode.class
-							+ " from the value of type " + value.getClass()
-							+ ".");
+			throw new TechnicalException("Could not subtract the value of type " + IntegerNode.class + " from the value of type " + value.getClass() + ".");
 		}
 
 		return new IntegerNode(this.value - ((IntegerNode) value).value);
@@ -130,10 +122,8 @@ public class IntegerNode implements ArithmeticValue, ComparableValue {
 	public final int compareTo(final ComparableValue value) {
 		if (!Helper.areSameType(this, value)) {
 			return -1;
-		} else {
-			return Integer.valueOf(this.value).compareTo(
-					((IntegerNode) value).value);
 		}
+		return Integer.valueOf(this.value).compareTo(((IntegerNode) value).value);
 	}
 
 	/*
@@ -146,9 +136,7 @@ public class IntegerNode implements ArithmeticValue, ComparableValue {
 	@Override
 	public final Value divide(final Value value) throws TechnicalException {
 		if (!Helper.areSameType(this, value)) {
-			throw new TechnicalException("Could not divide the value of type "
-					+ IntegerNode.class + " from the value of type "
-					+ value.getClass() + ".");
+			throw new TechnicalException("Could not divide the value of type " + IntegerNode.class + " from the value of type " + value.getClass() + ".");
 		}
 
 		return new IntegerNode(this.value / ((IntegerNode) value).value);
@@ -164,9 +152,7 @@ public class IntegerNode implements ArithmeticValue, ComparableValue {
 	@Override
 	public final Value modulo(final Value value) throws TechnicalException {
 		if (!Helper.areSameType(this, value)) {
-			throw new TechnicalException("Could not modulo the value of type "
-					+ IntegerNode.class + " from the value of type "
-					+ value.getClass() + ".");
+			throw new TechnicalException("Could not modulo the value of type " + IntegerNode.class + " from the value of type " + value.getClass() + ".");
 		}
 
 		return new IntegerNode(this.value % ((IntegerNode) value).value);

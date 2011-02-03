@@ -11,10 +11,8 @@ public class ModNode extends BinaryNode {
 	}
 
 	@Override
-	public final Object interpret(final Context context)
-			throws TechnicalException {
-		return this.<ArithmeticValue> getLeftValue(context).modulo(
-				this.<ArithmeticValue> getRightValue(context));
+	public final Object interpret(final Context context) throws TechnicalException {
+		return this.<ArithmeticValue> getLeftValue(context).modulo(this.<ArithmeticValue> getRightValue(context));
 	}
 
 }

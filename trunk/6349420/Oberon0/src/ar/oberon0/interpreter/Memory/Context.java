@@ -61,14 +61,16 @@ public final class Context {
 		this.constants = new ConstantList();
 	}
 
+	public CreatableType getType(String name) {
+		return this.typeIdentifiers.getItem(name);
+	}
+
 	/*
 	 * Get the procedure with the specified name.
 	 */
-	public ProcedureDeclaration getProcedure(final String name)
-			throws TechnicalException {
+	public ProcedureDeclaration getProcedure(final String name) throws TechnicalException {
 		if (!itemExist(name, this.procedures)) {
-			throw new TechnicalException("There was no procedure named " + name
-					+ " in the context.");
+			throw new TechnicalException("There was no procedure named " + name + " in the context.");
 		}
 		return this.procedures.getItem(name);
 	}
@@ -91,8 +93,7 @@ public final class Context {
 	/*
 	 * Add a new procedure to the list of procedures.
 	 */
-	public void addProcedure(final String name,
-			final ProcedureDeclaration procedure) {
+	public void addProcedure(final String name, final ProcedureDeclaration procedure) {
 		this.procedures.addItem(name, procedure);
 	}
 
@@ -101,14 +102,11 @@ public final class Context {
 	 */
 	public void addTypeIdentifiers(final TypeIdentifierList typeIdentifiers) {
 		if (typeIdentifiers != null) {
-			if (this.typeIdentifiers.getCount() <= 0) {
-				this.typeIdentifiers = typeIdentifiers;
-			} else {
-				for (Entry<String, CreatableType> item : typeIdentifiers) {
-					this.typeIdentifiers
-							.addItem(item.getKey(), item.getValue());
-				}
+
+			for (Entry<String, CreatableType> item : typeIdentifiers) {
+				this.typeIdentifiers.addItem(item.getKey(), item.getValue());
 			}
+
 		}
 	}
 
@@ -154,11 +152,9 @@ public final class Context {
 	/*
 	 * Get the type identifier for the specified name.
 	 */
-	private CreatableType getTypeIdentifier(final String name)
-			throws TechnicalException {
+	private CreatableType getTypeIdentifier(final String name) throws TechnicalException {
 		if (!itemExist(name, this.typeIdentifiers)) {
-			throw new TechnicalException("There was no type named " + name
-					+ " in the context.");
+			throw new TechnicalException("There was no type named " + name + " in the context.");
 		}
 		return this.typeIdentifiers.getItem(name);
 	}
@@ -177,16 +173,13 @@ public final class Context {
 	/*
 	 * Get the datafield of the constant or variable with the specified name.
 	 */
-	protected DataField getVarOrConstantAsDataField(final String name)
-			throws TechnicalException {
+	protected DataField getVarOrConstantAsDataField(final String name) throws TechnicalException {
 		if (itemExist(name, this.variables)) {
 			return this.variables.getItem(name);
 		} else if (itemExist(name, this.constants)) {
 			return this.constants.getItem(name).clone();
 		} else {
-			throw new TechnicalException(
-					"There was no variable or constant named " + name
-							+ " in the context.");
+			throw new TechnicalException("There was no variable or constant named " + name + " in the context.");
 		}
 	}
 }
