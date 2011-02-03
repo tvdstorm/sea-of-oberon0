@@ -6,19 +6,19 @@ import randy.oberon0.value.*;
 
 public class RecordInstantiation implements IInstantiateableVariable
 {
-	private Map<String, String> members;
+	private Map<String, String> recordMembers; // <variableName, variableType>
 	
-	public RecordInstantiation(Map<String, String> _members)
+	public RecordInstantiation(Map<String, String> _recordMembers)
 	{
-		members = _members;
+		recordMembers = _recordMembers;
 	}
 	@Override
 	public Value instantiate(RuntimeEnvironment environment) throws RuntimeException
 	{
 		HashMap<String, IInstantiateableVariable> vars = new HashMap<String, IInstantiateableVariable>();
-		for (String name : members.keySet())
+		for (String name : recordMembers.keySet())
 		{
-			vars.put(name, environment.resolveType(members.get(name)));
+			vars.put(name, environment.resolveType(recordMembers.get(name)));
 		}
 		return new Record(vars, environment);
 	}

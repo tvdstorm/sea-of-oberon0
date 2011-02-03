@@ -5,15 +5,15 @@ import randy.oberon0.value.*;
 
 public class PrimitiveVariableInstantiation implements IInstantiateableVariable
 {
-	private Type type;
+	private Type primitiveType;
 	
-	public PrimitiveVariableInstantiation(Type _type)
+	public PrimitiveVariableInstantiation(Type _primitiveType)
 	{
-		type = _type;
+		primitiveType = _primitiveType;
 	}
 	@Override
 	public Value instantiate(RuntimeEnvironment environment) throws RuntimeException
 	{
-		return Value.makeNew(type);
+		return Value.makeNew(primitiveType);
 	}
 }

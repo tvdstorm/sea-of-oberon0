@@ -5,21 +5,21 @@ import randy.oberon0.value.*;
 
 public class ArrayVariableInstantiation implements IInstantiateableVariable
 {
-	private IInstantiateableVariable childType;
-	private int length;
+	private IInstantiateableVariable childTypeCreator;
+	private int arrayLength;
 	
-	public ArrayVariableInstantiation(IInstantiateableVariable _childType)
+	public ArrayVariableInstantiation(IInstantiateableVariable _childTypeCreator)
 	{
-		childType = _childType;
-		length = 0;
+		childTypeCreator = _childTypeCreator;
+		arrayLength = 0;
 	}
-	public void setLength(int _length)
+	public void setLength(int _arrayLength)
 	{
-		length = _length;
+		arrayLength = _arrayLength;
 	}
 	@Override
 	public Value instantiate(RuntimeEnvironment environment) throws RuntimeException
 	{
-		return new Array(length, childType, environment);
+		return new Array(arrayLength, childTypeCreator, environment);
 	}
 }

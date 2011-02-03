@@ -35,7 +35,7 @@ public class VarDeclaration extends BodyDeclaration
 		{
 			assert(variableName.length() >= 1);
 			// Add the variable to the environment
-			newEnvironment.addVariable(variableName, newEnvironment.resolveType(typeName).instantiate(newEnvironment));
+			newEnvironment.registerVariable(variableName, newEnvironment.resolveType(typeName).instantiate(newEnvironment));
 		}
 	}
 	public void registerAsParameter(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException // Use for registering parameters
@@ -57,12 +57,12 @@ public class VarDeclaration extends BodyDeclaration
 			if (isReference)
 			{
 				// Yes, make a reference to the variable and add it to the environment
-				environment.addVariable(variableName, new Reference(parameterValue));
+				environment.registerVariable(variableName, new Reference(parameterValue));
 			}
 			else
 			{	
 				// No, create a copy of the parameter and register it in the environment
-				environment.addVariable(variableName, parameterValue.clone());
+				environment.registerVariable(variableName, parameterValue.clone());
 			}
 		}
 	}

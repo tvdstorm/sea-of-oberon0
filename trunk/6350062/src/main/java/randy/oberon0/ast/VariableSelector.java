@@ -18,6 +18,6 @@ public class VariableSelector extends Selector
 	{
 		assert(environment != null);
 		// Retrieve the value of the variable and return it
-		return environment.getVariable(variableName);
+		return environment.getVariableValue(variableName);
 	}
 }

@@ -21,6 +21,6 @@ public class ConstDeclaration extends BodyDeclaration
 	{
 		assert(newEnvironment != null);
 		// Add the constant to the variable scope
-		newEnvironment.addConstant(constantName, value.evaluate(newEnvironment));
+		newEnvironment.registerConstant(constantName, value.evaluate(newEnvironment));
 	}
 }

@@ -21,6 +21,6 @@ public class RecordDeclaration extends AbstractTypeDeclaration
 	public void register(RuntimeEnvironment newEnvironment) throws RuntimeException
 	{
 		assert(newEnvironment != null);
-		newEnvironment.addType(recordName, new RecordInstantiation(memberVariables));
+		newEnvironment.registerType(recordName, new RecordInstantiation(memberVariables));
 	}
 }
