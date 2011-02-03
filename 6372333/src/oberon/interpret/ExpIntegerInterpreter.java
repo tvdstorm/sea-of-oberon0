@@ -1,20 +1,20 @@
 package oberon.interpret;
 
-import oberon.Expression;
-import oberon.IntegerExpression;
+import oberon.AbstractExpression;
+import oberon.AbstractIntegerExpression;
 import oberon.node.AIntegerExp;
 
-public class ExpIntegerInterpreter extends BaseInterpreter<Expression> {
-	private int _value;
+public class ExpIntegerInterpreter extends AbstractBaseInterpreter<AbstractExpression> {
+	private int value;
 
-	public void caseAIntegerExp(AIntegerExp node)
+	public void caseAIntegerExp(final AIntegerExp node)
 	{
-		_value = Integer.parseInt(node.getInteger().toString().trim());
+		value = Integer.parseInt(node.getInteger().toString().trim());
 	}
 
 	@Override
-	public Expression BuildInterpreterResult() {
-		return new IntegerExpression(_value);
+	public AbstractExpression buildInterpreterResult() {
+		return new AbstractIntegerExpression(value);
 	}
 
 }

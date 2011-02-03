@@ -5,22 +5,21 @@ import oberon.ProcedureBody;
 import oberon.StatementSequence;
 import oberon.node.AProcedurebody;
 
-class ProcedureBodyInterpreter extends BaseInterpreter<ProcedureBody> {
-	private Declaration _declaration;
-	private StatementSequence _body;
+class ProcedureBodyInterpreter extends AbstractBaseInterpreter<ProcedureBody> {
+	private Declaration variableDeclaration;
+	private StatementSequence body;
 
-	public void caseAProcedurebody(AProcedurebody node)
-	{
-		DeclarationsInterpreter declarationsInterpreter = new DeclarationsInterpreter();
+	public void caseAProcedurebody(final AProcedurebody node) {
+		final DeclarationsInterpreter declarationsInterpreter = new DeclarationsInterpreter();
 		node.apply(declarationsInterpreter);
-		_declaration = declarationsInterpreter.BuildInterpreterResult();
+		variableDeclaration = declarationsInterpreter.buildInterpreterResult();
 		
-		_body = StatementSequenceInterpreter.getStatementList(node.getBody());
+		body = StatementSequenceInterpreter.getStatementList(node.getBody());
 	}
 
 	@Override
-	public ProcedureBody BuildInterpreterResult() {
-		return new ProcedureBody(_declaration, _body);
+	public ProcedureBody buildInterpreterResult() {
+		return new ProcedureBody(variableDeclaration, body);
 	}
 
 }

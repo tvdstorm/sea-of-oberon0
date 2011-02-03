@@ -2,80 +2,80 @@ package oberon.interpret;
 
 import oberon.ComparisonExpression;
 import oberon.ComparisonType;
-import oberon.Expression;
+import oberon.AbstractExpression;
 import oberon.node.*;
 
-public class ComparisonExpressionInterpreter extends BaseInterpreter<Expression> {
-	private Expression _left;
-	private Expression _right;
-	private ComparisonType _type;
+public class ComparisonExpressionInterpreter extends AbstractBaseInterpreter<AbstractExpression> {
+	private AbstractExpression left;
+	private AbstractExpression right;
+	private ComparisonType type;
 
 	@Override
-	public void caseAExeqExp(AExeqExp node)
+	public void caseAExeqExp(final AExeqExp node)
 	{
-		_left = ExpInterpreterFactory.getExpression(node.getLeft());
-		_right = ExpInterpreterFactory.getExpression(node.getRight());
-		_type = ComparisonType.Exeq;
+		left = ExpInterpreterFactory.getExpression(node.getLeft());
+		right = ExpInterpreterFactory.getExpression(node.getRight());
+		type = ComparisonType.Exeq;
 	}
 
 	@Override
-	public void caseAExhaExp(AExhaExp node)
+	public void caseAExhaExp(final AExhaExp node)
 	{
-		_left = ExpInterpreterFactory.getExpression(node.getLeft());
-		_right = ExpInterpreterFactory.getExpression(node.getRight());
-		_type = ComparisonType.Exha;
+		left = ExpInterpreterFactory.getExpression(node.getLeft());
+		right = ExpInterpreterFactory.getExpression(node.getRight());
+		type = ComparisonType.Exha;
 	}
 
 	@Override
-	public void caseAAmpExp(AAmpExp node)
+	public void caseAAmpExp(final AAmpExp node)
 	{
-		_left = ExpInterpreterFactory.getExpression(node.getLeft());
-		_right = ExpInterpreterFactory.getExpression(node.getRight());
-		_type = ComparisonType.Amp;
+		left = ExpInterpreterFactory.getExpression(node.getLeft());
+		right = ExpInterpreterFactory.getExpression(node.getRight());
+		type = ComparisonType.Amp;
 	}
 
 	@Override
-	public void caseAExgeExp(AExgeExp node)
+	public void caseAExgeExp(final AExgeExp node)
 	{
-		_left = ExpInterpreterFactory.getExpression(node.getLeft());
-		_right = ExpInterpreterFactory.getExpression(node.getRight());
-		_type = ComparisonType.Exge;
+		left = ExpInterpreterFactory.getExpression(node.getLeft());
+		right = ExpInterpreterFactory.getExpression(node.getRight());
+		type = ComparisonType.Exge;
 	}
 
 	@Override
-	public void caseAExgtExp(AExgtExp node)
+	public void caseAExgtExp(final AExgtExp node)
 	{
-		_left = ExpInterpreterFactory.getExpression(node.getLeft());
-		_right = ExpInterpreterFactory.getExpression(node.getRight());
-		_type = ComparisonType.Exgt;
+		left = ExpInterpreterFactory.getExpression(node.getLeft());
+		right = ExpInterpreterFactory.getExpression(node.getRight());
+		type = ComparisonType.Exgt;
 	}
 
 	@Override
-	public void caseATilExp(ATilExp node)
+	public void caseATilExp(final ATilExp node)
 	{
-		_left = ExpInterpreterFactory.getExpression(node.getLeft());
-		_right = ExpInterpreterFactory.getExpression(node.getRight());
-		_type = ComparisonType.Til;
+		left = ExpInterpreterFactory.getExpression(node.getLeft());
+		right = ExpInterpreterFactory.getExpression(node.getRight());
+		type = ComparisonType.Til;
 	}
 	
 	@Override
-	public void caseAExstExp(AExstExp node)
+	public void caseAExstExp(final AExstExp node)
 	{
-		_left = ExpInterpreterFactory.getExpression(node.getLeft());
-		_right = ExpInterpreterFactory.getExpression(node.getRight());
-		_type = ComparisonType.Exst;
+		left = ExpInterpreterFactory.getExpression(node.getLeft());
+		right = ExpInterpreterFactory.getExpression(node.getRight());
+		type = ComparisonType.Exst;
 	}
 	
-	public void caseAExseExp(AExseExp node)
+	public void caseAExseExp(final AExseExp node)
 	{
-		_left = ExpInterpreterFactory.getExpression(node.getLeft());
-		_right = ExpInterpreterFactory.getExpression(node.getRight());
-		_type = ComparisonType.Exse;
+		left = ExpInterpreterFactory.getExpression(node.getLeft());
+		right = ExpInterpreterFactory.getExpression(node.getRight());
+		type = ComparisonType.Exse;
 	}
 
 	@Override
-	public Expression BuildInterpreterResult() {
-		return new ComparisonExpression(_left, _right, _type);
+	public AbstractExpression buildInterpreterResult() {
+		return new ComparisonExpression(left, right, type);
 	}
 
 }

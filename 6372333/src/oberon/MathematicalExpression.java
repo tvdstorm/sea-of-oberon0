@@ -1,22 +1,21 @@
 package oberon;
 
-public class MathematicalExpression extends LeftAndRightExpression {
-	
-	private MathematicalExpressionType _type;
+public class MathematicalExpression extends AbstractLeftAndRightExpression {
+	private final MathematicalExpressionType expressionType;
 
-	public MathematicalExpression(Expression lefthandSide,
-			Expression righthandSide, MathematicalExpressionType type) {
+	public MathematicalExpression(final AbstractExpression lefthandSide,
+			final AbstractExpression righthandSide, final MathematicalExpressionType type) {
 		super(lefthandSide, righthandSide);
-		_type = type;
+		expressionType = type;
 	}
 
 	@Override
-	public int EvalAsInt() {
+	public int evalAsInt() {
 		int result = 0;
-		int left = get_lefthandSide().EvalAsInt();
-		int right = get_righthandSide().EvalAsInt();
+		final int left = getLefthandSide().evalAsInt();
+		final int right = getRighthandSide().evalAsInt();
 		
-		switch (_type) {
+		switch (expressionType) {
 		case Add:
 			result = left + right;
 			break;
@@ -33,7 +32,7 @@ public class MathematicalExpression extends LeftAndRightExpression {
 			result = left - right;
 			break;
 		default:
-			//TODO
+			//TODO: throw
 			break;
 		}
 		

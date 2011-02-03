@@ -1,19 +1,18 @@
 package oberon.interpret;
 
-import oberon.Expression;
+import oberon.AbstractExpression;
 import oberon.node.AParenExp;
 
-public class ParenExpInterpreter extends BaseInterpreter<Expression> {
-	private Expression _exp;
+public class ParenExpInterpreter extends AbstractBaseInterpreter<AbstractExpression> {
+	private AbstractExpression parenExp;
 
-	public void caseAParenExp(AParenExp node)
-	{
-		_exp = ExpInterpreterFactory.getExpression(node.getExp());
+	public void caseAParenExp(final AParenExp node){
+		parenExp = ExpInterpreterFactory.getExpression(node.getExp());
 	}
 
 	@Override
-	public Expression BuildInterpreterResult() {
-		return _exp;
+	public AbstractExpression buildInterpreterResult() {
+		return parenExp;
 	}
 
 }

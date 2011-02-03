@@ -5,29 +5,28 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import oberon.data.DataType;
+import oberon.data.AbstractDataType;
 import oberon.data.VariableManager;
 
-class WriteLnCall extends Statement {
+class WriteLnCall extends AbstractStatement {
 
 	@Override
-	public void Eval() throws IOException {
+	public void eval() throws IOException {
 		System.out.println();
 	}
 
-	public static void Initialize()
-	{
-		List<FormalParamSection> params = new ArrayList<FormalParamSection>();
+	public static void initialize(){
+		final List<FormalParamSection> params = new ArrayList<FormalParamSection>();
 		
-		LinkedList<Statement> statements = new LinkedList<Statement>();
+		final LinkedList<AbstractStatement> statements = new LinkedList<AbstractStatement>();
 		statements.add(new WriteLnCall());
 		
-		List<DataType> variables = new ArrayList<DataType>();
-		List<ProcedureHeading> procedures = new ArrayList<ProcedureHeading>();
-		Declaration declaration = new Declaration(variables, procedures);
+		final List<AbstractDataType> variables = new ArrayList<AbstractDataType>();
+		final List<ProcedureHeading> procedures = new ArrayList<ProcedureHeading>();
+		final Declaration declaration = new Declaration(variables, procedures);
 		
-		ProcedureBody body = new ProcedureBody(declaration, new StatementSequence(statements));
-		SystemMethodCall procedure = new SystemMethodCall("WriteLn", params, body);
-		VariableManager.getInstance().AddSystemProcedure(procedure);
+		final ProcedureBody body = new ProcedureBody(declaration, new StatementSequence(statements));
+		final SystemMethodCall procedure = new SystemMethodCall("WriteLn", params, body);
+		VariableManager.getInstance().addSystemProcedure(procedure);
 	}
 }

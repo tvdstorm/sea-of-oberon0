@@ -11,27 +11,27 @@ import oberon.ProcedureHeading;
 import oberon.StatementSequence;
 import oberon.node.AModule;
 
-public class ModuleInterpreter extends BaseInterpreter<ProcedureHeading> { 
+public class ModuleInterpreter extends AbstractBaseInterpreter<ProcedureHeading> { 
 	  
-	private Declaration _declaration;
-	private StatementSequence _statements;
+	private Declaration declaration;
+	private StatementSequence moduleBody;
 
-	public void caseAModule(AModule node) {
-		DeclarationsInterpreter declInterpreter = new DeclarationsInterpreter();
+	public void caseAModule(final AModule node) {
+		final DeclarationsInterpreter declInterpreter = new DeclarationsInterpreter();
 		node.getDecl().apply(declInterpreter);
-		_declaration = declInterpreter.BuildInterpreterResult();
+		declaration = declInterpreter.buildInterpreterResult();
 		
 		
-		_statements = StatementSequenceInterpreter.getStatementList(node.getStatements());
+		moduleBody = StatementSequenceInterpreter.getStatementList(node.getStatements());
 	}
 
 	@Override
-	public ProcedureHeading BuildInterpreterResult() {
-		List<FormalParamSection> params = new ArrayList<FormalParamSection>();
-		List<String> paramNames = new ArrayList<String>();
+	public ProcedureHeading buildInterpreterResult() {
+		final List<FormalParamSection> params = new ArrayList<FormalParamSection>();
+		final List<String> paramNames = new ArrayList<String>();
 		params.add(new FormalParamSection(paramNames, FormalParamType.Identifier, false));
 		
-		ProcedureBody body = new ProcedureBody(_declaration, _statements);
+		final ProcedureBody body = new ProcedureBody(declaration, moduleBody);
 		return new ProcedureHeading("Main", params, body);
 	}
 }

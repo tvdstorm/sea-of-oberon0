@@ -1,32 +1,32 @@
 package oberon.interpret;
 
-import oberon.Expression;
-import oberon.Statement;
+import oberon.AbstractExpression;
+import oberon.AbstractStatement;
 import oberon.StatementSequence;
 import oberon.WhileStatement;
 import oberon.node.AStatwhileStatement;
 import oberon.node.AWhilestatement;
 
-class StatwithStatementInterpreter extends BaseInterpreter<Statement>{
-	private Expression _condition;
-	private StatementSequence _body;
+class StatwithStatementInterpreter extends AbstractBaseInterpreter<AbstractStatement>{
+	private AbstractExpression condition;
+	private StatementSequence body;
 
 	@Override
-	public void caseAStatwhileStatement(AStatwhileStatement node)
+	public void caseAStatwhileStatement(final AStatwhileStatement node)
 	{
 		node.getWhilestatement().apply(this);		
 	}
 	
-	public void caseAWhilestatement(AWhilestatement node)
+	public void caseAWhilestatement(final AWhilestatement node)
 	{
-		_condition = ExpInterpreterFactory.getExpression(node.getCondition());
+		condition = ExpInterpreterFactory.getExpression(node.getCondition());
 		
-		_body = StatementSequenceInterpreter.getStatementList(node.getBody());
+		body = StatementSequenceInterpreter.getStatementList(node.getBody());
 	}
 	
 	@Override
-	public Statement BuildInterpreterResult() {
-		return new WhileStatement(_condition, _body);
+	public AbstractStatement buildInterpreterResult() {
+		return new WhileStatement(condition, body);
 	}
 
 }

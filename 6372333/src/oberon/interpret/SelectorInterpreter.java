@@ -1,43 +1,40 @@
 package oberon.interpret;
 
-import oberon.Expression;
+import oberon.AbstractExpression;
 import oberon.data.ArrayIndexerSelector;
 import oberon.data.IdentifierSelector;
-import oberon.data.Selector;
+import oberon.data.AbstractSelector;
 import oberon.node.AAdditionalselectorSelector;
 import oberon.node.AArrayexpressionSelector;
 import oberon.node.AIdentifierSelector;
 
-public class SelectorInterpreter extends BaseInterpreter<Selector> {
-	private Selector _selector;
+public class SelectorInterpreter extends AbstractBaseInterpreter<AbstractSelector> {
+	private AbstractSelector selector;
 	
 	@Override
-	public void caseAIdentifierSelector(AIdentifierSelector node)
-	{
-		_selector = new IdentifierSelector(node.getIdentifier().toString().trim());
+	public void caseAIdentifierSelector(final AIdentifierSelector node) {
+		selector = new IdentifierSelector(node.getIdentifier().toString().trim());
 	}
 	
 	@Override
-	public void caseAAdditionalselectorSelector(AAdditionalselectorSelector node)
-	{
-		_selector = new IdentifierSelector(node.getIdentifier().toString().trim());
+	public void caseAAdditionalselectorSelector(final AAdditionalselectorSelector node) {
+		selector = new IdentifierSelector(node.getIdentifier().toString().trim());
 	}
 	
 	@Override
-	public void caseAArrayexpressionSelector(AArrayexpressionSelector node)
-	{
-		Expression expression = ExpInterpreterFactory.getExpression(node.getExp());
+	public void caseAArrayexpressionSelector(final AArrayexpressionSelector node) {
+		final AbstractExpression expression = ExpInterpreterFactory.getExpression(node.getExp());
 		
-		SelectorInterpreter interpreter = new SelectorInterpreter();
+		final SelectorInterpreter interpreter = new SelectorInterpreter();
 		node.getSelector().apply(interpreter);
-		Selector selector = interpreter.BuildInterpreterResult();
+		final AbstractSelector arraySelector = interpreter.buildInterpreterResult();
 		
-		_selector = new ArrayIndexerSelector(selector, expression);
+		selector = new ArrayIndexerSelector(arraySelector, expression);
 	}
 	
 	@Override
-	public Selector BuildInterpreterResult() {
-		return _selector;
+	public AbstractSelector buildInterpreterResult() {
+		return selector;
 	}
 
 }

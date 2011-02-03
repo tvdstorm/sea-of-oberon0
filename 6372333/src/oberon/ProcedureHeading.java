@@ -5,44 +5,39 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
-import oberon.data.DataType;
+import oberon.data.AbstractDataType;
 import oberon.data.IntegerType;
 import oberon.data.VariableManager;
 
 
-public class ProcedureHeading extends Procedure {
-	public ProcedureHeading(String name, List<FormalParamSection> paramSections, ProcedureBody body)
-	{
+public class ProcedureHeading extends AbstractProcedure {
+	public ProcedureHeading(final String name, final List<FormalParamSection> paramSections, 
+			final ProcedureBody body) {
 		super(name, paramSections, body);
 	}
 
 	@Override
-	public void Call(Queue<Expression> localQueue) throws IOException {
-		List<DataType> actualParameterList = new ArrayList<DataType>();
+	public void call(final Queue<AbstractExpression> localQueue) throws IOException {
+		final List<AbstractDataType> actualParameterList = new ArrayList<AbstractDataType>();
 		
-		for (FormalParamSection section : getParamSections())
-		{
-			for (String name : section.getNames())
-			{
+		for (FormalParamSection section : getParamSections()) {
+			for (String name : section.getNames()) {
 				if (localQueue.peek() == null){
 					//TODO throw, less actualparams than formalparams are supplied
-					System.out.println("less actualparams than formalparams are supplied");
 				}
 						
-				Expression actualParam = localQueue.poll();
+				final AbstractExpression actualParam = localQueue.poll();
 				if (	actualParam instanceof MathematicalExpression ||
-						actualParam instanceof IntegerExpression){
-					actualParameterList.add(new IntegerType(name, actualParam.EvalAsInt(), false));
+						actualParam instanceof AbstractIntegerExpression){
+					actualParameterList.add(new IntegerType(name, actualParam.evalAsInt(), false));
 				}
 				else if (actualParam instanceof SelectorExpression){
-					SelectorExpression selectorExpression = ((SelectorExpression)actualParam);
-					if (section.shouldBeCalledByRef())
-					{
+					final SelectorExpression selectorExpression = ((SelectorExpression)actualParam);
+					if (section.shouldBeCalledByRef()) {
 						//Pass by value
 						actualParameterList.add(selectorExpression.performShallowCopyOfValue(name));
 					}
-					else
-					{
+					else {
 						//Pass by ref
 						actualParameterList.add(selectorExpression.performDeepCopyOfValue(name));
 					}
@@ -50,11 +45,11 @@ public class ProcedureHeading extends Procedure {
 			}
 		}
 		
-		VariableManager variableManager = VariableManager.getInstance();
-		variableManager.EnterNewScope(actualParameterList, this);
+		final VariableManager variableManager = VariableManager.getInstance();
+		variableManager.enterNewScope(actualParameterList, this);
 		
-		getBody().Eval();
+		getBody().eval();
 		
-		variableManager.LeaveScope();
+		variableManager.leaveScope();
 	}
 }

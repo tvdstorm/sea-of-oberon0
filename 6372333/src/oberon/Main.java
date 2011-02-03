@@ -15,18 +15,18 @@ import oberon.parser.Parser;
 import oberon.parser.ParserException;
 
 public class Main { 
-	   public static void main(String[] args) { 
+	   public static void main(final String[] args) { 
 	      if (args.length > 0) { 
 			/* Form our AST */ 
 			Lexer lexer = null;
 			try {
-				lexer = new PrintLexer (new PushbackReader( 
+				lexer = new Lexer (new PushbackReader( 
 				   new FileReader(args[0]), 1024));
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} 
-			Parser parser = new Parser(lexer); 
+			final Parser parser = new Parser(lexer); 
 			Start ast = null;
 			try {
 				ast = parser.parse();
@@ -42,18 +42,18 @@ public class Main {
 			} 
 			
 			/* Get our Interpreter going. */ 
-			ModuleInterpreter interpreter = new ModuleInterpreter();
+			final ModuleInterpreter interpreter = new ModuleInterpreter();
 			ast.apply(interpreter);	     
 			
-			ReadProcedure.Initialize();
-			WriteCall.Initialize();
-			WriteLnCall.Initialize();
+			ReadProcedure.initialize();
+			WriteCall.initialize();
+			WriteLnCall.initialize();
 			
-			Procedure mainProc = interpreter.BuildInterpreterResult();
-			Queue<Expression> paramList = new LinkedList<Expression>();
+			final AbstractProcedure mainProc = interpreter.buildInterpreterResult();
+			final Queue<AbstractExpression> paramList = new LinkedList<AbstractExpression>();
 				 
 			try {
-				mainProc.Call(paramList);
+				mainProc.call(paramList);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

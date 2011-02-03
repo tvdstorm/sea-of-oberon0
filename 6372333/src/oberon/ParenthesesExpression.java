@@ -1,16 +1,15 @@
 package oberon;
 
-public class ParenthesesExpression extends Expression {
-	private Expression _expression;
+public class ParenthesesExpression extends AbstractExpression {
+	private final AbstractExpression _expression;
 
-	public ParenthesesExpression(Expression expression)
-	{
+	public ParenthesesExpression(final AbstractExpression expression) {
 		_expression = expression;
 	}
 	
 	@Override
-	public int EvalAsInt() {
-		return _expression.EvalAsInt();
+	public int evalAsInt() {
+		return _expression.evalAsInt();
 	}
 
 }

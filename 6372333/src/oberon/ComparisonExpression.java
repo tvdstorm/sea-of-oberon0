@@ -1,39 +1,44 @@
 package oberon;
 
-public class ComparisonExpression extends LeftAndRightExpression {
+public class ComparisonExpression extends AbstractLeftAndRightExpression {
 
-	private ComparisonType _type;
+	private final ComparisonType comparisonType;
 
-	public ComparisonExpression(Expression lefthandSide,
-			Expression righthandSide, ComparisonType type) {
+	public ComparisonExpression(final AbstractExpression lefthandSide,
+			final AbstractExpression righthandSide, final ComparisonType type) {
 		super(lefthandSide, righthandSide);
 		
-		_type = type;
+		comparisonType = type;
 	}
 
 	@Override
-	public int EvalAsInt() {
-		Expression leftHandSide = get_lefthandSide();
-		Expression rightHandSide = get_righthandSide();
+	public int evalAsInt() {
+		final AbstractExpression leftHandSide = getLefthandSide();
+		final AbstractExpression rightHandSide = getRighthandSide();
 		
-		switch(_type)
-		{
+		int result = 0;
+		switch(comparisonType) {
 		case Exeq:
-			return BooleanAsInt(leftHandSide.EvalAsInt() == rightHandSide.EvalAsInt());
+			result = booleanAsInt(leftHandSide.evalAsInt() == rightHandSide.evalAsInt());
+			break;
 		case Exge:
-			return BooleanAsInt(leftHandSide.EvalAsInt() >= rightHandSide.EvalAsInt());
+			result = booleanAsInt(leftHandSide.evalAsInt() >= rightHandSide.evalAsInt());
+			break;
 		case Exgt:
-			return BooleanAsInt(leftHandSide.EvalAsInt() > rightHandSide.EvalAsInt());
+			result = booleanAsInt(leftHandSide.evalAsInt() > rightHandSide.evalAsInt());
+			break;
 		case Exse:
-			return BooleanAsInt(leftHandSide.EvalAsInt() <= rightHandSide.EvalAsInt());
+			result = booleanAsInt(leftHandSide.evalAsInt() <= rightHandSide.evalAsInt());
+			break;
 		case Exst:
-			return BooleanAsInt(leftHandSide.EvalAsInt() < rightHandSide.EvalAsInt());
+			result = booleanAsInt(leftHandSide.evalAsInt() < rightHandSide.evalAsInt());
+			break;
 		case Amp:
-			return BooleanAsInt(leftHandSide.EvalAsBoolean() && rightHandSide.EvalAsBoolean());
+			result = booleanAsInt(leftHandSide.evalAsBoolean() && rightHandSide.evalAsBoolean());
+			break;
 		default:
-			System.out.println("Unsupported comparison: "+ _type.toString());
+			//TODO: throw
 		}
-		return 0;
+		return result;
 	}
-
 }

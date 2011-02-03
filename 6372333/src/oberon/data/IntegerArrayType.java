@@ -1,34 +1,29 @@
 package oberon.data;
 
-import oberon.Expression;
+import oberon.AbstractExpression;
 
-public class IntegerArrayType extends DataType {
-	
-	private int[] _value;
-	private Expression _lengthExpression;
+public class IntegerArrayType extends AbstractDataType {
+	private int[] array;
+	private final AbstractExpression lengthExpression;
 
-	public IntegerArrayType(String name, Expression lengthExpression){
+	public IntegerArrayType(final String name, final AbstractExpression lengthExp){
 		super(name);
-		_lengthExpression = lengthExpression;
+		lengthExpression = lengthExp;
 	}
 	
-	IntegerArrayType(String name, int[] value, Expression lengthExpression) {
+	IntegerArrayType(final String name, final int[] inputArray, 
+			final AbstractExpression lengthExp) {
 		super(name);
-		_value = value;
-		_lengthExpression = lengthExpression;
+		array = inputArray;
+		lengthExpression = lengthExp;
 	}
 	
-	public int getValueAtIndex(int index){
-		return _value[index];
-	}
-	
-	public void setValue(int index, int value)
-	{
-		_value[index] = value;
+	public int getValueAtIndex(final int index){
+		return array[index];
 	}
 
 	public void initializeArray() {
-		_value = new int[_lengthExpression.EvalAsInt()];			
+		array = new int[lengthExpression.evalAsInt()];			
 	}
 
 	@Override
@@ -37,18 +32,18 @@ public class IntegerArrayType extends DataType {
 		return 0;
 	}
 
-	public void setValueAtIndex(int index, int value) {
-		_value[index] = value;
+	public void setValueAtIndex(final int index, final int value) {
+		array[index] = value;
 	}
 
 	@Override
-	public DataType DeepCopy(String newName) {
-		return new IntegerArrayType(newName, _value.clone(), _lengthExpression);
+	public AbstractDataType deepCopy(final String newName) {
+		return new IntegerArrayType(newName, array.clone(), lengthExpression);
 	}
 
 	@Override
-	public DataType ShallowCopy(String newName) {
-		return new IntegerArrayType(newName, _value, _lengthExpression);
+	public AbstractDataType shallowCopy(final String newName) {
+		return new IntegerArrayType(newName, array, lengthExpression);
 	}
 
 }

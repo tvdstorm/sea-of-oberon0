@@ -1,39 +1,41 @@
 package oberon.data;
 
-public class IntegerArrayIndexerType extends DataType {
+public class IntegerArrayIndexerType extends AbstractDataType {
 
-	private IntegerArrayType _array;
-	private int _index;
+	private final IntegerArrayType array;
+	private final int index;
 
-	public IntegerArrayIndexerType(IntegerArrayType array, int index) {
-		super(array.getName());
-		_array = array;
-		_index = index;
+	public IntegerArrayIndexerType(final IntegerArrayType inputArray, 
+			final int inputIndex) {
+		super(inputArray.getName());
+		array = inputArray;
+		index = inputIndex;
 	}
 	
-	IntegerArrayIndexerType(String name, IntegerArrayType array, int index) {
+	IntegerArrayIndexerType(final String name, final IntegerArrayType inputArray, 
+			final int inputIndex) {
 		super(name);
-		_array = array;
-		_index = index;
+		array = inputArray;
+		index = inputIndex;
 	}
 
 	@Override
 	public int getValue() {
-		return _array.getValueAtIndex(_index);
+		return array.getValueAtIndex(index);
 	}
 
 	@Override
-	public DataType DeepCopy(String newName) {
-		return new IntegerArrayIndexerType(newName, _array, _index);
+	public AbstractDataType deepCopy(final String newName) {
+		return new IntegerArrayIndexerType(newName, array, index);
 	}
 
 	@Override
-	public DataType ShallowCopy(String newName) {
-		return new IntegerArrayIndexerType(newName, _array, _index);
+	public AbstractDataType shallowCopy(final String newName) {
+		return new IntegerArrayIndexerType(newName, array, index);
 	}
-
-	public void setValueAtIndex(int value) {
-		_array.setValueAtIndex(_index, value);		
+	
+	@Override
+	public void setValue(final int value){
+		array.setValueAtIndex(index, value);
 	}
-
 }

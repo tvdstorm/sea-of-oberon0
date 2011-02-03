@@ -1,23 +1,22 @@
 package oberon.interpret;
 
-import oberon.Expression;
+import oberon.AbstractExpression;
 import oberon.SelectorExpression;
 import oberon.node.ASelectorExp;
 
-public class SelectorExpInterpreter extends BaseInterpreter<Expression> {
-	private SelectorExpression _value;
+public class SelectorExpInterpreter extends AbstractBaseInterpreter<AbstractExpression> {
+	private SelectorExpression value;
 	
 	@Override
-	public void caseASelectorExp(ASelectorExp node)
-	{
-		SelectorInterpreter interpreter = new SelectorInterpreter();
+	public void caseASelectorExp(final ASelectorExp node) {
+		final SelectorInterpreter interpreter = new SelectorInterpreter();
 		node.getSelector().apply(interpreter);
-		_value = new SelectorExpression(interpreter.BuildInterpreterResult());
+		value = new SelectorExpression(interpreter.buildInterpreterResult());
 	}
 
 	@Override
-	public Expression BuildInterpreterResult() {
-		return _value;
+	public AbstractExpression buildInterpreterResult() {
+		return value;
 	}
 
 }

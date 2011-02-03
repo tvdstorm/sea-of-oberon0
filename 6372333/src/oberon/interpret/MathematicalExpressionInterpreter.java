@@ -1,58 +1,58 @@
 package oberon.interpret;
 
-import oberon.Expression;
+import oberon.AbstractExpression;
 import oberon.MathematicalExpression;
 import oberon.MathematicalExpressionType;
 import oberon.node.*;
 
-public class MathematicalExpressionInterpreter extends BaseInterpreter<Expression>{
-	private Expression _left;
-	private Expression _right;
-	private MathematicalExpressionType _type;
+public class MathematicalExpressionInterpreter extends AbstractBaseInterpreter<AbstractExpression>{
+	private AbstractExpression left;
+	private AbstractExpression right;
+	private MathematicalExpressionType type;
 	
 	@Override
-	public void caseASubExp(ASubExp node)
+	public void caseASubExp(final ASubExp node)
 	{
-		_left = ExpInterpreterFactory.getExpression(node.getLeft());
-		_right = ExpInterpreterFactory.getExpression(node.getRight());
-		_type = MathematicalExpressionType.Sub;
+		left = ExpInterpreterFactory.getExpression(node.getLeft());
+		right = ExpInterpreterFactory.getExpression(node.getRight());
+		type = MathematicalExpressionType.Sub;
 	}
 
 	@Override
-	public void caseAAddExp(AAddExp node)
+	public void caseAAddExp(final AAddExp node)
 	{
-		_left = ExpInterpreterFactory.getExpression(node.getLeft());
-		_right = ExpInterpreterFactory.getExpression(node.getRight());
-		_type = MathematicalExpressionType.Add;
+		left = ExpInterpreterFactory.getExpression(node.getLeft());
+		right = ExpInterpreterFactory.getExpression(node.getRight());
+		type = MathematicalExpressionType.Add;
 	}
 
 	@Override
-	public void caseADivExp(ADivExp node)
+	public void caseADivExp(final ADivExp node)
 	{
-		_left = ExpInterpreterFactory.getExpression(node.getLeft());
-		_right = ExpInterpreterFactory.getExpression(node.getRight());
-		_type = MathematicalExpressionType.Div;
+		left = ExpInterpreterFactory.getExpression(node.getLeft());
+		right = ExpInterpreterFactory.getExpression(node.getRight());
+		type = MathematicalExpressionType.Div;
 	}	
 
 	@Override
-	public void caseAModExp(AModExp node)
+	public void caseAModExp(final AModExp node)
 	{
-		_left = ExpInterpreterFactory.getExpression(node.getLeft());
-		_right = ExpInterpreterFactory.getExpression(node.getRight());
-		_type = MathematicalExpressionType.Mod;
+		left = ExpInterpreterFactory.getExpression(node.getLeft());
+		right = ExpInterpreterFactory.getExpression(node.getRight());
+		type = MathematicalExpressionType.Mod;
 	}
 
 	@Override
-	public void caseAMulExp(AMulExp node)
+	public void caseAMulExp(final AMulExp node)
 	{
-		_left = ExpInterpreterFactory.getExpression(node.getLeft());
-		_right = ExpInterpreterFactory.getExpression(node.getRight());
-		_type = MathematicalExpressionType.Mul;
+		left = ExpInterpreterFactory.getExpression(node.getLeft());
+		right = ExpInterpreterFactory.getExpression(node.getRight());
+		type = MathematicalExpressionType.Mul;
 	}
 	
 	@Override
-	public Expression BuildInterpreterResult() {
-		return new MathematicalExpression(_left, _right, _type);
+	public AbstractExpression buildInterpreterResult() {
+		return new MathematicalExpression(left, right, type);
 	}
 
 }

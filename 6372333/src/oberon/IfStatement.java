@@ -3,40 +3,49 @@ package oberon;
 import java.io.IOException;
 import java.util.Queue;
 
-public class IfStatement extends Statement {
-	private StatementSequence _elseBlock;
-	private Queue<IfStatement> _elseIfs;
-	private Expression _condition;
-	private StatementSequence _ifBlock;
+public class IfStatement extends AbstractStatement {
+	private final StatementSequence elseBody;
+	private final Queue<IfStatement> elseIfBlocks;
+	private final AbstractExpression ifCondition;
+	private final StatementSequence ifBody;
 
-	public IfStatement (Expression condition, StatementSequence ifBlock, Queue<IfStatement> elseIfs, StatementSequence elseBlock)
+	public IfStatement (final AbstractExpression condition, final StatementSequence ifBlock, 
+			final Queue<IfStatement> elseIfs, final StatementSequence elseBlock)
 	{
-		_condition = condition;
-		_ifBlock = ifBlock;
-		_elseIfs = elseIfs;
-		_elseBlock = elseBlock;
+		ifCondition = condition;
+		ifBody = ifBlock;
+		elseIfBlocks = elseIfs;
+		elseBody = elseBlock;
 	}
 	
 	@Override
-	public void Eval() throws IOException {
-		Expression condition = _condition;
-		if (condition.EvalAsBoolean())
-		{
-			_ifBlock.Eval();
-			return;
+	public void eval() throws IOException {
+		Boolean bodyIsExecuted = false;
+		if (conditionIsTrue()) {
+			evalStatements();
+			bodyIsExecuted = true;
 		}
-		
-		while (!_elseIfs.isEmpty())
-		{
-			IfStatement nextElseIf = _elseIfs.poll();
-			if (nextElseIf._condition.EvalAsBoolean())
-			{
-				nextElseIf._ifBlock.Eval();
-				return;
+		else {
+			while (!elseIfBlocks.isEmpty()) {
+				final IfStatement nextElseIf = elseIfBlocks.poll();
+				if (nextElseIf.conditionIsTrue()) {
+					nextElseIf.evalStatements();
+					bodyIsExecuted = true;
+				}
 			}
 		}
 		
-		_elseBlock.Eval();
+		if (!bodyIsExecuted) {
+			elseBody.eval();
+		}
+	}
+
+	protected void evalStatements() throws IOException {
+		ifBody.eval();
+	}
+
+	protected Boolean conditionIsTrue() {
+		return ifCondition.evalAsBoolean();
 	}
 
 }

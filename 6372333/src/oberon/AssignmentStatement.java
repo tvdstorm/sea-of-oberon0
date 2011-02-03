@@ -1,22 +1,21 @@
 package oberon;
 
-import oberon.data.DataType;
-import oberon.data.Selector;
+import oberon.data.AbstractDataType;
+import oberon.data.AbstractSelector;
 
-public class AssignmentStatement extends Statement {
-	private Selector _name;
-	private Expression _value;
+public class AssignmentStatement extends AbstractStatement {
+	private final AbstractSelector selectorToAssignTo;
+	private final AbstractExpression assignmentExpression;
 
-	public AssignmentStatement(Selector name, Expression value)
-	{
-		_name = name;
-		_value = value;
+	public AssignmentStatement(final AbstractSelector name, final AbstractExpression value){		
+		selectorToAssignTo = name;
+		assignmentExpression = value;
 	}
 	
 	@Override
-	public void Eval() {
-		DataType type = _name.getDataTypeValue();
-		type.setValue(_value.EvalAsInt());
+	public void eval() {
+		final AbstractDataType type = selectorToAssignTo.getDataTypeValue();
+		type.setValue(assignmentExpression.evalAsInt());
 	}
 
 }
