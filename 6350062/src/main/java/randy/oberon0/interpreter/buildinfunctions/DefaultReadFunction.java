@@ -21,8 +21,10 @@ public class DefaultReadFunction implements IInvokableFunction
 	{
 		try
 		{
+			// Accept one parameter
 			if (parameterValues.size() != 1)
 				throw new IncorrectNumberOfArgumentsException();
+			// TODO: check with reference
 			Integer param = parameterValues.poll().castToInteger();
 			byte input[] = new byte[1024];
 			int length = System.in.read(input);

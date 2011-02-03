@@ -18,9 +18,12 @@ public class DefaultWriteFunction implements IInvokableFunction
 	@Override
 	public void invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
 	{
+		// Accept one parameter
 		if (parameterValues.size() != 1)
 			throw new IncorrectNumberOfArgumentsException();
-		Integer param = parameterValues.poll().castToInteger();
+		// Accept only an integer
+		Integer param = parameterValues.poll().dereference().castToInteger();
+		// Print the integer
 		System.out.print(((Integer)param).toString());
 	}
 	@Override

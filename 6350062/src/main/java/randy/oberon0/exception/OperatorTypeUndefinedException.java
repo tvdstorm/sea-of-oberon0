@@ -4,12 +4,12 @@ public class OperatorTypeUndefinedException extends RuntimeException
 {
 	private static final long serialVersionUID = -4452312422101125649L;
 
-	public OperatorTypeUndefinedException(String operator, String rhsType)
+	public OperatorTypeUndefinedException(String operator, String rightHandType)
 	{
-		super("The operator '" + operator + "' is undefined for the argument type " + rhsType + ".");
+		super("The operator '" + operator + "' is undefined for the argument type " + rightHandType + ".");
 	}
-	public OperatorTypeUndefinedException(String operator, String lhsType, String rhsType)
+	public OperatorTypeUndefinedException(String operator, String leftHandType, String rightHandType)
 	{
-		super("The operator '" + operator + "' is undefined for the argument types " + lhsType + " and " + rhsType + ".");
+		super("The operator '" + operator + "' is undefined for the argument types " + leftHandType + " and " + rightHandType + ".");
 	}
 }

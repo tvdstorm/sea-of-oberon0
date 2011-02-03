@@ -30,7 +30,7 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 	{
 		assert(newEnvironment != null);
 		// Register the function in the environment
-		newEnvironment.addFunction(getName(), this);
+		newEnvironment.registerFunction(getName(), this);
 	}
 	@Override
 	public void registerTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException

@@ -31,7 +31,7 @@ public class ArrayVarDeclaration extends VarDeclaration
 			ArrayVariableInstantiation arrayCreator = new ArrayVariableInstantiation(arrayType);
 			arrayCreator.setLength(length.getIntValue());
 			// Create the array and add it in the environment
-			newEnvironment.addVariable(name, arrayCreator.instantiate(newEnvironment));
+			newEnvironment.registerVariable(name, arrayCreator.instantiate(newEnvironment));
 		}
 	}
 	@Override
@@ -56,12 +56,12 @@ public class ArrayVarDeclaration extends VarDeclaration
 			if (isReference)
 			{
 				// Yes, make a reference to the variable and add it to the environment
-				environment.addVariable(variableName, new Reference(parameterValue));
+				environment.registerVariable(variableName, new Reference(parameterValue));
 			}
 			else
 			{
 				// No, create a copy of the array and register it in the environment
-				environment.addVariable(variableName, parameterValue.clone());
+				environment.registerVariable(variableName, parameterValue.clone());
 			}
 		}
 	}

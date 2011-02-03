@@ -1,8 +1,9 @@
 package randy.oberon0.interpreter.buildinfunctions;
 
+import randy.oberon0.exception.DuplicateFunctionException;
 import randy.oberon0.interpreter.runtime.FunctionRegistry;
 
 public interface IBuildinFunctions
 {
-	public void register(FunctionRegistry functionRegistry);
+	public void register(FunctionRegistry functionRegistry) throws DuplicateFunctionException;
 }

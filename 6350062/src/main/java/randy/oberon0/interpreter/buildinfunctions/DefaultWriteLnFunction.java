@@ -17,8 +17,10 @@ public class DefaultWriteLnFunction implements IInvokableFunction
 	@Override
 	public void invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
 	{
+		// Don't accept any parameters
 		if (parameterValues.size() != 0)
 			throw new IncorrectNumberOfArgumentsException();
+		// Write a new line
 		System.out.println("");
 	}
 	@Override

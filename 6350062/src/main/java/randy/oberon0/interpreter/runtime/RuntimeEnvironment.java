@@ -8,76 +8,75 @@ import randy.oberon0.value.Value;
 
 public class RuntimeEnvironment
 {
-	private VariableStack variableStack;
-	private FunctionRegistry functionRegistry;
-	private TypeRegistry typeRegistry;
-	private RuntimeEnvironment parent;
-	private int depth;
+	private final VariableStack variableStack;
+	private final FunctionRegistry functionRegistry;
+	private final TypeRegistry typeRegistry;
+	private final RuntimeEnvironment parent;
+	private final int depth;
 	
 	public RuntimeEnvironment(VariableStack _variableStack, FunctionRegistry _functionRegistry, TypeRegistry _typeRegistry, RuntimeEnvironment _parent)
+	{
+		this(_variableStack, _functionRegistry, _typeRegistry, _parent, 
+				(_parent == null ?
+						0 :
+						_parent.depth + 1
+				));
+	}
+	private RuntimeEnvironment(VariableStack _variableStack, FunctionRegistry _functionRegistry, TypeRegistry _typeRegistry, RuntimeEnvironment _parent, int _depth)
 	{
 		variableStack = _variableStack;
 		functionRegistry = _functionRegistry;
 		typeRegistry = _typeRegistry;
 		parent = _parent;
-		if (parent == null)
-			depth = 0;
-		else
-			depth = parent.getDepth() + 1;
-	}
-	private RuntimeEnvironment(VariableStack _variableStack, FunctionRegistry _functionRegistry, TypeRegistry _typeRegistry, RuntimeEnvironment _parent, int _depth)
-	{
-		this(_variableStack, _functionRegistry, _typeRegistry, _parent);
 		depth = _depth;
 	}
-	public RuntimeEnvironment createRuntimeEnviroment(int parentDepth)
+	public RuntimeEnvironment createRuntimeEnviroment(int _depth)
 	{
-		// Creates a new RuntimeEnvironment with parentDepth as highest environment depth
+		// Find the highest RuntimeEnvironment with a depth that is equal to _depth
 		RuntimeEnvironment parentEnvironment = this;
-		while (parentEnvironment != null && parentEnvironment.getDepth() > parentDepth)
+		while (parentEnvironment != null && parentEnvironment.depth > _depth)
 		{
-			parentEnvironment = parentEnvironment.getParent();
+			parentEnvironment = parentEnvironment.parent;
 		}
 		assert(parentEnvironment != null);
-		return new RuntimeEnvironment(new VariableStack(parentEnvironment.variableStack), new FunctionRegistry(parentEnvironment.functionRegistry), new TypeRegistry(parentEnvironment.typeRegistry), parentEnvironment, parentDepth+1);
+		// Create a new environment on top of the one found
+		return new RuntimeEnvironment(new VariableStack(parentEnvironment.variableStack), new FunctionRegistry(parentEnvironment.functionRegistry), new TypeRegistry(parentEnvironment.typeRegistry), parentEnvironment, _depth+1);
 	}
-	public RuntimeEnvironment getParent()
+	/**************************************************************************
+	 * Variable functions                                                     *
+	 **************************************************************************/
+	public void registerVariable(String variableName, Value value) throws RuntimeException
 	{
-		return parent;
+		variableStack.registerVariable(variableName, value);
 	}
-	public int getDepth()
+	public void registerConstant(String constantName, Value value) throws RuntimeException
 	{
-		return depth;
+		variableStack.registerConstant(constantName, value);
 	}
-	// Variable functions
-	public void addVariable(String name, Value var) throws RuntimeException
+	public Value getVariableValue(String variableName) throws RuntimeException
 	{
-		variableStack.addVariable(name, var);
+		return variableStack.getVariableValue(variableName);
 	}
-	public void addConstant(String name, Value value) throws RuntimeException
+	/**************************************************************************
+	 * Function functions                                                     *
+	 **************************************************************************/
+	public void registerFunction(String functionName, IInvokableFunction functionPointer) throws DuplicateFunctionException
 	{
-		variableStack.addConstant(name, value);
+		functionRegistry.registerFunction(functionName, functionPointer, depth);
 	}
-	public Value getVariable(String name) throws RuntimeException
+	public Tuple<Integer, IInvokableFunction> resolveFunction(String functionName) throws UndefinedMethodException
 	{
-		return variableStack.getVariable(name);
+		return functionRegistry.resolveFunction(functionName);
 	}
-	// Function functions
-	public void addFunction(String name, IInvokableFunction function)
+	/**************************************************************************
+	 * Type functions                                                         *
+	 **************************************************************************/
+	public void registerType(String typeName, IInstantiateableVariable typeCreator) throws DuplicateTypeException
 	{
-		functionRegistry.addFunction(name, function, depth);
+		typeRegistry.registerType(typeName, typeCreator);
 	}
-	public Tuple<Integer, IInvokableFunction> resolveFunction(String name) throws UndefinedMethodException
+	public IInstantiateableVariable resolveType(String typeName) throws UnknownTypeException
 	{
-		return functionRegistry.resolve(name);
-	}
-	// Type functions
-	public void addType(String name, IInstantiateableVariable creator)
-	{
-		typeRegistry.addType(name, creator);
-	}
-	public IInstantiateableVariable resolveType(String name) throws UnknownTypeException
-	{
-		return typeRegistry.resolve(name);
+		return typeRegistry.resolveType(typeName);
 	}
 }

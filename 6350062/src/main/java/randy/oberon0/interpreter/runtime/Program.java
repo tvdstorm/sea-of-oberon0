@@ -19,30 +19,33 @@ public class Program
 		module = null;
 		buildinFunctions = new BuildinFunctions();
 	}
-	public boolean loadProgram(String filename, IBuildinFunctions _buildinFunctions) throws Exception
+	public void loadProgram(String filename, IBuildinFunctions _buildinFunctions) throws Exception
 	{
 		buildinFunctions = _buildinFunctions;
-		
+
+		// Build the AST tree from a oberon 0 script
 		Oberon0ASTTreeGenerator generator = new Oberon0ASTTreeGenerator();
 		module = generator.buildASTTreeFromFile(filename);
-		
-		return true;
 	}
 	public void run() throws RuntimeException
 	{
-		TypeRegistry typeRegistry = new TypeRegistry(null);
 		// Registrate buildin primitive types
-		typeRegistry.addType(Type.INTEGER.getTypeText(), new PrimitiveVariableInstantiation(Type.INTEGER));
-		typeRegistry.addType(Type.BOOLEAN.getTypeText(), new PrimitiveVariableInstantiation(Type.BOOLEAN));
+		TypeRegistry typeRegistry = new TypeRegistry(null);
+		typeRegistry.registerType(Type.INTEGER.getTypeText(), new PrimitiveVariableInstantiation(Type.INTEGER));
+		typeRegistry.registerType(Type.BOOLEAN.getTypeText(), new PrimitiveVariableInstantiation(Type.BOOLEAN));
 		
-		FunctionRegistry functionRegistry = new FunctionRegistry(null);
 		// Registrate buildin functions
+		FunctionRegistry functionRegistry = new FunctionRegistry(null);
 		buildinFunctions.register(functionRegistry);
 		
-		RuntimeEnvironment environment = new RuntimeEnvironment(new VariableStack(null), functionRegistry, typeRegistry, null);
-		RuntimeEnvironment moduleEnvironment = environment.createRuntimeEnviroment(0);
-		
+		// Create a global environment
+		RuntimeEnvironment globalEnvironment = new RuntimeEnvironment(new VariableStack(null), functionRegistry, typeRegistry, null);
+		// Create a module environment on top of the global environment
+		RuntimeEnvironment moduleEnvironment = globalEnvironment.createRuntimeEnviroment(0);
+	
+		// Registrate the modules type declarations in the modole environment
 		module.registerTypeDeclarations(moduleEnvironment);
+		// Invoke the module
 		module.invoke(moduleEnvironment, new LinkedList<Value>());
 	}
 	public void setBuildinFunctions(IBuildinFunctions _buildinFunctions)
