@@ -7,8 +7,15 @@ public class Main
 {
 	public static void main(String args[]) throws Exception
 	{
-		Program p = new Program();
-		p.loadProgram("test/quicksort.oberon0", new BuildinFunctions());
-		p.run();
+		if (args.length == 1)
+		{
+			Program p = new Program();
+			p.loadProgram(args[0], new BuildinFunctions());
+			p.run();
+		}
+		else
+		{
+			System.out.println("Expecting one argument: scriptname.oberon0");
+		}
 	}
 }
