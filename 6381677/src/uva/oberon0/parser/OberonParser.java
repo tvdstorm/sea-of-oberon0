@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 D:\\Projects UVA\\Oberon.g 2011-02-03 14:59:37
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 D:\\Projects UVA\\Oberon.g 2011-02-03 15:50:04
 
 package uva.oberon0.parser;
 
@@ -323,7 +323,7 @@ public class OberonParser extends Parser {
             	    state._fsp--;
 
             	    match(input,46,FOLLOW_46_in_varDeclaration413); 
-            	    for (ID id : node_ids){ list.add(new Var(id, node_type));}
+            	    for (ID id : node_ids){ list.add(new ProcedureParameter(id, node_type));}
 
             	    }
             	    break;
@@ -547,7 +547,7 @@ public class OberonParser extends Parser {
 
             	    state._fsp--;
 
-            	    for (ID id : node_ids){ list.add(byRef ? new VarRef(id, node_type) : new Var(id, node_type));}
+            	    for (ID id : node_ids){ list.add(byRef ? new ProcedureParameterByReference(id, node_type) : new ProcedureParameter(id, node_type));}
 
             	    }
             	    break;

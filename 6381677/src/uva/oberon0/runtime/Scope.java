@@ -10,8 +10,8 @@ import uva.oberon0.abstractsyntax.declarations.BaseDeclarationList;
 import uva.oberon0.abstractsyntax.declarations.Const;
 import uva.oberon0.abstractsyntax.declarations.Procedure;
 import uva.oberon0.abstractsyntax.declarations.Type;
-import uva.oberon0.abstractsyntax.declarations.Var;
-import uva.oberon0.abstractsyntax.declarations.VarRef;
+import uva.oberon0.abstractsyntax.declarations.ProcedureParameter;
+import uva.oberon0.abstractsyntax.declarations.ProcedureParameterByReference;
 import uva.oberon0.abstractsyntax.statements.CallActualParameterList;
 
 
@@ -48,8 +48,8 @@ public class Scope
 				addType((Type)declaration);
 
 			//Create and Add an Execution Scope Value to the Value hash.
-			else if (declaration instanceof Var)
-				addValue(declaration.getID(), ((Var)declaration).instantiate(this));
+			else if (declaration instanceof ProcedureParameter)
+				addValue(declaration.getID(), ((ProcedureParameter)declaration).instantiate(this));
 
 			//Create and Add an Execution Scope Value to the Value hash.
 			else if (declaration instanceof Const)
@@ -70,13 +70,14 @@ public class Scope
 		//Loop all Method Call Variables.
 		for (int i = 0; i < procedure.getParameterCount(); i++)
 		{
-			//Determine the Method Declaration.
-			Var formal = (Var)procedure.getParameter(i);
-			//Determine the Call Variable.
+			//Determine the Formal Procedure Parameter.
+			ProcedureParameter formal = (ProcedureParameter)procedure.getParameter(i);
+			
+			//Determine the Actual Method Call.
 			BaseNode actual = actualParameters.get(i);
 			
 			//Determine if the declaration should be passed by Reference.
-			if (formal instanceof VarRef)
+			if (formal instanceof ProcedureParameterByReference)
 			{
 				//Get and Add the existing Execution Scope Value. 
 				addValue(formal.getID(), parent.getValueReference(ID.getID(actual)));
@@ -86,7 +87,7 @@ public class Scope
 			else
 			{
 				ScopeValueBase value = formal.instantiate(this);
-				value.setValue(this, null, actual.eval(parent));
+				value.setValue(this, actual.eval(parent));
 				
 				//Create and Add an Execution Scope Value to the Value hash.
 				addValue(formal.getID(), value);
@@ -121,9 +122,9 @@ public class Scope
 			return 0;
 		}
 		
-		return scopeValue.getValue(this, id);
+		return scopeValue.getValue(this);
 	}
-	public ScopeValueBase getValueReference(ID id)
+	private ScopeValueBase getValueReference(ID id)
 	{
 		assert id != null : "ID cannot be Null!";
 		
@@ -150,7 +151,7 @@ public class Scope
 			return 0;
 		}
 		
-		scopeValue.setValue(this, id, valueNew);
+		scopeValue.setValue(this, valueNew);
 		
 		return 1;
 	}

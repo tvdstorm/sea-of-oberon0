@@ -10,11 +10,11 @@ import uva.oberon0.runtime.ScopeValueBase;
  * @author Chiel Labee
  * This class represents a Variable Declaration that is passed by Value.
 */
-public class Var extends BaseDeclaration
+public class ProcedureParameter extends BaseDeclaration
 {
 	private final BaseType _type;
 
-	public Var(ID id, BaseType type)
+	public ProcedureParameter(ID id, BaseType type)
 	{
 		super(id);
 
