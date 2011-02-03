@@ -6,32 +6,34 @@ options {
 
 @header {
   package ar.oberon0.parser;
-  import ar.oberon0.interpreter.*;
-  import ar.oberon0.interpreter.ControlFlow.*;
-  import ar.oberon0.interpreter.DataTypes.*;
-  import ar.oberon0.interpreter.Lists.*;
-  import ar.oberon0.interpreter.Operators.*;
-  import ar.oberon0.interpreter.Memory.*;
-  import ar.oberon0.interpreter.Procedure.*; 
-}
+  import ar.oberon0.ast.*;
+  import ar.oberon0.ast.dataTypes.*;
+  import ar.oberon0.ast.declarations.*;
+  import ar.oberon0.ast.expression.*;
+  import ar.oberon0.ast.statements.*;
+  import ar.oberon0.lists.*;
+  import ar.oberon0.runtime.*;
+  import ar.oberon0.shared.*;
+  import ar.oberon0.values.*;
+} 
  
 @lexer::header {
   package ar.oberon0.parser;
 }
 
 	
-selector [Selector selectorIn] returns [Selector selector]
-@init															{Selector tempSelector = $selectorIn;}
+selector [SelectorNode selectorIn] returns [SelectorNode selector]
+@init															{SelectorNode tempSelector = $selectorIn;}
 	:
-		(	'.' IDENT 											{tempSelector.setNextNode(new RecordSelector($IDENT.getText())); tempSelector = tempSelector.getNextNode();}
-		| 	'[' expression ']' 									{tempSelector.setNextNode(new ArrayItemSelector($expression.expression)); tempSelector = tempSelector.getNextNode();}
+		(	'.' IDENT 											{tempSelector.setNextNode(new RecordSelectorNode($IDENT.getText())); tempSelector = tempSelector.getNextNode();}
+		| 	'[' expression ']' 									{tempSelector.setNextNode(new ArrayItemSelectorNode($expression.expression)); tempSelector = tempSelector.getNextNode();}
 		)*
 																{$selector = selectorIn;}
 	; 
 
 factor returns [Interpretable factor]
-	:	IDENT 													{IdentSelector sel = new IdentSelector($IDENT.getText());}
-		selector[sel]											{$factor = sel;}
+	:	IDENT 													{VarSelectorNode selector = new VarSelectorNode($IDENT.getText());}
+		selector[selector]											{$factor = selector;}
 	| 	INTEGER 												{$factor = new IntegerNode(Integer.parseInt($INTEGER.getText()));}
 	| 	'(' expression ')' 										{$factor = $expression.expression;} 
 	| 	'~' negatedFactor=factor								{$factor = new NegationNode($negatedFactor.factor);}
@@ -50,7 +52,7 @@ term returns [Interpretable term]
 		)		
 	; 
 
-simpleExpression returns [Value simpleExpression]  
+simpleExpression returns [Interpretable simpleExpression]  
 	:															{ boolean positive = true; }	
 		(	'+'
 		|	'-' 												{positive = !positive;}
@@ -58,12 +60,12 @@ simpleExpression returns [Value simpleExpression]
 		left=term 												{$simpleExpression = $left.term;}
 		(	'+' right=term										{$simpleExpression = new AddNode($simpleExpression, $right.term);}
 		|	'-' right=term										{$simpleExpression = new MinNode($simpleExpression, $right.term);}
-		| 	'OR' right=term										{$simpleExpression = new OrNode($simpleExpression, $right.term);}
+		| 	'OR' right=term			 							{$simpleExpression = new OrNode($simpleExpression, $right.term);}
 		)*
 																{if(!positive) { $simpleExpression = new NegationNode($simpleExpression);}}
 	; 
 
-expression returns [Value expression] 
+expression returns [Interpretable expression] 
 	:	leftExpression=simpleExpression 						{ $expression = $leftExpression.simpleExpression; } 
 		(	'=' rightExpression=simpleExpression 				{ $expression = new EqualNode($expression, $rightExpression.simpleExpression); }
 		| 	'#' rightExpression=simpleExpression 				{ $expression = new NotEqualNode($expression, $rightExpression.simpleExpression); }
@@ -76,7 +78,7 @@ expression returns [Value expression]
 
 assignment returns [Interpretable assignment]
 	:	IDENT 
-																{IdentSelector sel = new IdentSelector($IDENT.getText());} 
+																{VarSelectorNode sel = new VarSelectorNode($IDENT.getText());} 
 		selector[sel] ':=' expression 							{$assignment = new AssignmentNode(sel,$expression.expression);}
 	; 
 
@@ -157,7 +159,7 @@ recordType returns [RecordType recordType]
 	; 
 
 type returns [CreatableType type]
-	:	IDENT 													{$type = new TypeFactory().getType($IDENT.getText());}
+	:	IDENT 													{$type = new SimpleTypeFactory().getType($IDENT.getText());}
 	| 	arrayType 												{$type = $arrayType.arrayType;}
 	| 	recordType												{$type = $recordType.recordType;}
 	; 
@@ -249,8 +251,8 @@ write returns [Interpretable write]
 	;	
 	
 read returns [Interpretable read]
-	:	'Read''(' IDENT  										{IdentSelector sel = new IdentSelector($IDENT.getText());}
-		selector[sel] ')'										{$read = new ReadNode(sel);}
+	:	'Read''(' IDENT  										{VarSelectorNode selector = new VarSelectorNode($IDENT.getText());}
+		selector[selector] ')'										{$read = new ReadNode(selector);}
 	;
 
 

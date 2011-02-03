@@ -11,15 +11,15 @@ import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.TokenStream;
 
-import ar.oberon0.interpreter.Interpretable;
-import ar.oberon0.interpreter.DataTypes.IntegerNode;
-import ar.oberon0.interpreter.DataTypes.SimpleType;
-import ar.oberon0.interpreter.Lists.ConstantList;
-import ar.oberon0.interpreter.Lists.DataFieldList;
-import ar.oberon0.interpreter.Memory.Context;
-import ar.oberon0.interpreter.Memory.DataField;
+import ar.oberon0.ast.dataTypes.SimpleType;
+import ar.oberon0.lists.ConstantList;
+import ar.oberon0.lists.DataFieldList;
 import ar.oberon0.parser.Oberon0Lexer;
 import ar.oberon0.parser.Oberon0Parser;
+import ar.oberon0.runtime.Context;
+import ar.oberon0.runtime.DataField;
+import ar.oberon0.shared.Interpretable;
+import ar.oberon0.values.IntegerNode;
 
 public class Tester extends TestCase {
 
