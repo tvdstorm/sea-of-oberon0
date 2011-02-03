@@ -739,7 +739,6 @@ public class ASTNodeTest
 			Assert.assertTrue(functions.outputIsEmpty());
 		}
 	}
-	// TODO: test to check if an const array can be modified and check if const variable can be assigned as non const parameters
 	// TODO: array in array, record in array, array in record.
 	@Ignore
 	private void prepareTestThrowException(String testName) throws Exception
