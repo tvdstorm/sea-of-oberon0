@@ -17,14 +17,13 @@ public class AssignmentStatement extends Statement
 		expression = _expression;
 	}
 	@Override
-	public Value run(RuntimeEnvironment environment) throws RuntimeException
+	public void run(RuntimeEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Evaluate the variable
-		Value var = variable.run(environment);
+		Value var = variable.evaluate(environment);
 		assert(var != null);
 		// Evaluate the expression and assign the result as the value of the variable
-		var.setValue(expression.run(environment));
-		return null;
+		var.setValue(expression.evaluate(environment));
 	}
 }

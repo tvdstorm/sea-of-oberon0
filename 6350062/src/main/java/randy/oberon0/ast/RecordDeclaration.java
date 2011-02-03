@@ -3,7 +3,6 @@ package randy.oberon0.ast;
 import java.util.*;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.*;
-import randy.oberon0.value.Value;
 
 public class RecordDeclaration extends AbstractTypeDeclaration
 {
@@ -19,10 +18,9 @@ public class RecordDeclaration extends AbstractTypeDeclaration
 		memberVariables = _memberVariables;
 	}
 	@Override
-	public Value run(RuntimeEnvironment environment) throws RuntimeException
+	public void register(RuntimeEnvironment newEnvironment) throws RuntimeException
 	{
-		assert(environment != null);
-		environment.addType(recordName, new RecordInstantiation(memberVariables));
-		return null;
+		assert(newEnvironment != null);
+		newEnvironment.addType(recordName, new RecordInstantiation(memberVariables));
 	}
 }

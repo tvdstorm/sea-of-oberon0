@@ -15,15 +15,14 @@ public class DefaultWriteLnFunction implements IInvokableFunction
 		return "WriteLn";
 	}
 	@Override
-	public Value invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
+	public void invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
 	{
 		if (parameterValues.size() != 0)
 			throw new IncorrectNumberOfArgumentsException();
 		System.out.println("");
-		return null;
 	}
 	@Override
-	public void runTypeDeclarations(RuntimeEnvironment environment) throws RuntimeException
+	public void registerTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException
 	{
 		// Leeg
 	}

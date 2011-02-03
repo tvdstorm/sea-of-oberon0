@@ -8,6 +8,6 @@ import randy.oberon0.value.Value;
 public interface IInvokableFunction
 {
 	public abstract String getName();
-	public abstract Value invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException;
-	public abstract void runTypeDeclarations(RuntimeEnvironment environment) throws RuntimeException;
+	public abstract void invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException;
+	public abstract void registerTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException;
 }

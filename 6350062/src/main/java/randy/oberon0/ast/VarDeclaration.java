@@ -27,20 +27,19 @@ public class VarDeclaration extends BodyDeclaration
 		variableNames = _variableNames;
 	}
 	@Override
-	public Value run(RuntimeEnvironment environment) throws RuntimeException // Use for variable declarations IN methods or modules
+	public void register(RuntimeEnvironment newEnvironment) throws RuntimeException // Use for variable declarations IN methods or modules
 	{
-		assert(environment != null);
+		assert(newEnvironment != null);
 		// Loop through all variable names
 		for (String variableName : variableNames)
 		{
 			assert(variableName.length() >= 1);
 			// Add the variable to the environment
-			environment.addVariable(variableName, environment.resolveType(typeName).instantiate(environment));
+			newEnvironment.addVariable(variableName, newEnvironment.resolveType(typeName).instantiate(newEnvironment));
 		}
-		return null;
 	}
 	public void runForParameter(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException // Use for registering parameters
-	{
+	{ // TODO: check
 		assert(environment != null);
 		assert(parameterValues != null);
 		// Check if we have enough parameter values left for all our variables

@@ -16,16 +16,15 @@ public class DefaultWriteFunction implements IInvokableFunction
 		return "Write";
 	}
 	@Override
-	public Value invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
+	public void invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
 	{
 		if (parameterValues.size() != 1)
 			throw new IncorrectNumberOfArgumentsException();
 		Integer param = parameterValues.poll().castToInteger();
 		System.out.print(((Integer)param).toString());
-		return null;
 	}
 	@Override
-	public void runTypeDeclarations(RuntimeEnvironment environment) throws RuntimeException
+	public void registerTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException
 	{
 		// Leeg
 	}

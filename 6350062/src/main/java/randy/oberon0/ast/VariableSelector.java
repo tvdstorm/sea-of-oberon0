@@ -14,7 +14,7 @@ public class VariableSelector extends Selector
 		variableName = _variableName;
 	}
 	@Override
-	public Value run(RuntimeEnvironment environment) throws RuntimeException
+	public Value evaluate(RuntimeEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Retrieve the value of the variable and return it

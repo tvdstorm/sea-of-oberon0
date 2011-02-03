@@ -3,7 +3,6 @@ package randy.oberon0.ast;
 import java.util.*;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
-import randy.oberon0.value.Value;
 
 public class Block extends Statement
 {
@@ -15,7 +14,7 @@ public class Block extends Statement
 		statements = _statements;
 	}
 	@Override
-	public Value run(RuntimeEnvironment environment) throws RuntimeException
+	public void run(RuntimeEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Loop through all statements and run them
@@ -23,6 +22,5 @@ public class Block extends Statement
 		{
 			st.run(environment);
 		}
-		return null;
 	}
 }

@@ -18,11 +18,11 @@ public class DotSelector extends Selector
 		recordMemberName = _recordMemberName;
 	}
 	@Override
-	public Value run(RuntimeEnvironment environment) throws RuntimeException
+	public Value evaluate(RuntimeEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Evaluate the selector and convert it to a record
-		final Record record = selector.run(environment).dereference().castToRecord();
+		final Record record = selector.evaluate(environment).dereference().castToRecord();
 		// Evaluate the member and return it
 		return record.getMemberValue(recordMemberName);
 	}

@@ -42,7 +42,7 @@ public class Program
 		RuntimeEnvironment environment = new RuntimeEnvironment(new VariableStack(null), functionRegistry, typeRegistry, null);
 		RuntimeEnvironment moduleEnvironment = environment.createRuntimeEnviroment(0);
 		
-		module.runTypeDeclarations(moduleEnvironment);
+		module.registerTypeDeclarations(moduleEnvironment);
 		module.invoke(moduleEnvironment, new LinkedList<Value>());
 	}
 	public void setBuildinFunctions(IBuildinFunctions _buildinFunctions)

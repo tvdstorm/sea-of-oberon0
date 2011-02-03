@@ -18,7 +18,7 @@ public class TestReadFunction implements IInvokableFunction
 		input = _input;
 	}
 	@Override
-	public Value invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
+	public void invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
 	{
 		if (parameterValues.size() != 1)
 			throw new IncorrectNumberOfArgumentsException();
@@ -29,14 +29,13 @@ public class TestReadFunction implements IInvokableFunction
 		if (v == null)
 			throw new IOErrorException("Input stack is empty...");
 		param.setValue(new Integer(java.lang.Integer.parseInt(v)));
-		return null;
 	}
 	public String getName()
 	{
 		return "Read";
 	}
 	@Override
-	public void runTypeDeclarations(RuntimeEnvironment environment) throws RuntimeException
+	public void registerTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException
 	{
 		// Leeg
 	}
