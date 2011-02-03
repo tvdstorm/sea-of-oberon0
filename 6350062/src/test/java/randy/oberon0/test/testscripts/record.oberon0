@@ -6,6 +6,26 @@ type: INTEGER;
 active: BOOLEAN
 END;
 VAR o: ObjDesc;
+
+PROCEDURE test(in: ObjDesc);
+  TYPE Tuple = RECORD
+    first: INTEGER;
+    second: INTEGER
+  END;
+  VAR t: Tuple;
+  BEGIN
+    Write(in.type);
+    Write(in.name);
+    IF in.active THEN
+		Write(1);
+	ELSE
+		Write(0);
+	END;
+    t.first := in.name;
+    t.second := in.type;
+    Write(t.first);
+    Write(t.second);
+  END test;
 BEGIN
 
 Read(o.name);
@@ -19,6 +39,8 @@ IF o.active THEN
 ELSE
 	Write(0);
 END;
+
+test(o);
 
 END Record.
 

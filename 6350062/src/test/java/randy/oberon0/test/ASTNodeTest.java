@@ -689,6 +689,13 @@ public class ASTNodeTest
 			Assert.assertTrue(functions.popOutput().equals("" + a));
 			Assert.assertTrue(functions.popOutput().equals("" + b));
 			Assert.assertTrue(functions.popOutput().equals(a == b?"1":"0"));
+			
+			Assert.assertTrue(functions.popOutput().equals("" + b));
+			Assert.assertTrue(functions.popOutput().equals("" + a));
+			Assert.assertTrue(functions.popOutput().equals(a == b?"1":"0"));
+			Assert.assertTrue(functions.popOutput().equals("" + a));
+			Assert.assertTrue(functions.popOutput().equals("" + b));
+			
 			Assert.assertTrue(functions.outputIsEmpty());
 		}
 	}

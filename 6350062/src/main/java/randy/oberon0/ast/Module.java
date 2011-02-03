@@ -22,10 +22,11 @@ public class Module extends ASTNode implements IInvokableFunction
 	public void registerTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException
 	{
 		assert(newEnvironment != null);
-		// Register all declarations in the module's environment
-		for (BodyDeclaration bd : bodyDeclarations)
+		// Register all the type declarations in the environment
+		for (BodyDeclaration bodyDecl : bodyDeclarations)
 		{
-			bd.register(newEnvironment);
+			if (bodyDecl instanceof AbstractTypeDeclaration)
+				bodyDecl.register(newEnvironment);
 		}
 	}
 	public void invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
@@ -35,6 +36,12 @@ public class Module extends ASTNode implements IInvokableFunction
 		// Modules don't have parameters
 		if (parameterValues.size() != 0)
 			throw new IncorrectNumberOfArgumentsException();
+		// Loop through all body declarations except type declarations
+		for (BodyDeclaration bodyDecl : bodyDeclarations)
+		{
+			if (!(bodyDecl instanceof AbstractTypeDeclaration))
+				bodyDecl.register(environment);
+		}
 		// Run the body of the module
 		body.run(environment);
 	}

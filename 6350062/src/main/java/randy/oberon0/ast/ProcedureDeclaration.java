@@ -37,10 +37,10 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 	{
 		assert(newEnvironment != null);
 		// Register all the type declarations in the environment
-		for (BodyDeclaration bd : bodyDeclarations)
+		for (BodyDeclaration bodyDecl : bodyDeclarations)
 		{
-			if (bd instanceof AbstractTypeDeclaration)
-				bd.register(newEnvironment);
+			if (bodyDecl instanceof AbstractTypeDeclaration)
+				bodyDecl.register(newEnvironment);
 		}
 	}
 	public void invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
@@ -55,11 +55,11 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 		// If parameterValues has any values left, the number of arguments don't match
 		if (parameterValues.size() > 0)
 			throw new IncorrectNumberOfArgumentsException();
-		// Loop through all body declarations
+		// Loop through all body declarations except type declarations
 		for (BodyDeclaration bodyDecl : bodyDeclarations)
 		{
-			// TODO: check
-			bodyDecl.register(environment);
+			if (!(bodyDecl instanceof AbstractTypeDeclaration))
+				bodyDecl.register(environment);
 		}
 		// Run the body of the function
 		body.run(environment);
