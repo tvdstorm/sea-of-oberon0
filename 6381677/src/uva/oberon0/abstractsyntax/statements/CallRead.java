@@ -34,6 +34,6 @@ public class CallRead extends Call
 			return 0;
 		}
 		
-		return scope.setValue((ID)getActualParameter(0), result);
+		return scope.setValue(ID.getID(getActualParameter(0)), result);
 	}
 }

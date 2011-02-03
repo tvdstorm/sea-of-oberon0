@@ -1,8 +1,10 @@
 package uva.oberon0.abstractsyntax.declarations;
 
-import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.abstractsyntax.ID;
+import uva.oberon0.abstractsyntax.expressions.BaseExpression;
 import uva.oberon0.runtime.Scope;
+import uva.oberon0.runtime.ScopeValueBase;
+import uva.oberon0.runtime.ScopeValueInt;
 
 
 /**
@@ -11,9 +13,9 @@ import uva.oberon0.runtime.Scope;
 */
 public class Const extends BaseDeclaration
 {
-	private final BaseNode _expression;
+	private final BaseExpression _expression;
 
-	public Const(ID id, BaseNode expression)
+	public Const(ID id, BaseExpression expression)
 	{
 		super(id);
 
@@ -22,21 +24,13 @@ public class Const extends BaseDeclaration
 		_expression = expression;
 	}
 
-	/**
-	 * Get the Expression for the current Constant Declaration.
-	 */
-	public uva.oberon0.abstractsyntax.BaseNode getExpression()
-	{
-		return _expression;
-	}
-
 	@Override
 	public int eval(Scope scope)
 	{
-		if (_expression instanceof uva.oberon0.abstractsyntax.types.IntValue)
-			return ((uva.oberon0.abstractsyntax.types.IntValue)_expression).getValue();
-		
-		assert false : "Unsupported Const Data Type!";
-		return 0;
+		return _expression.eval(scope);
+	}
+	
+	public ScopeValueBase instantiate(Scope scope) {
+		return new ScopeValueInt(scope, _expression.eval(scope));
 	}
 }

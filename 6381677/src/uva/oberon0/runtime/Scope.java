@@ -1,17 +1,18 @@
 package uva.oberon0.runtime;
 
-import java.util.Hashtable;
+import java.util.HashMap;
+import java.util.Map;
 
 import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.abstractsyntax.ID;
 import uva.oberon0.abstractsyntax.declarations.BaseDeclaration;
 import uva.oberon0.abstractsyntax.declarations.BaseDeclarationList;
+import uva.oberon0.abstractsyntax.declarations.Const;
 import uva.oberon0.abstractsyntax.declarations.Procedure;
+import uva.oberon0.abstractsyntax.declarations.Type;
 import uva.oberon0.abstractsyntax.declarations.Var;
 import uva.oberon0.abstractsyntax.declarations.VarRef;
 import uva.oberon0.abstractsyntax.statements.CallActualParameterList;
-import uva.oberon0.abstractsyntax.types.ArrayType;
-import uva.oberon0.abstractsyntax.types.BaseType;
 
 
 /**
@@ -20,24 +21,42 @@ import uva.oberon0.abstractsyntax.types.BaseType;
 */
 public class Scope 
 {
-	public Scope() {
+	private final Map<ID, Type> 			_mapTypes 		;
+	private final Map<ID, ScopeValueBase> 	_mapValues 		;
+	private final Map<ID, Procedure> 		_mapProcedures 	;
+
+	public Scope() 
+	{
+		_mapTypes 		= new HashMap<ID, Type>();
+		_mapValues 		= new HashMap<ID, ScopeValueBase>();
+		_mapProcedures 	= new HashMap<ID, Procedure>();
 	}
 	
 	public Scope(BaseDeclarationList declarations, Scope parent)
 	{
-		//Reference to Parent Execution Scope to create a Stack Hierarchy.
-		_parent = parent;
-
+		this();
+		
 		//Loop all Declarations.
 		for (BaseDeclaration declaration : declarations)
 		{
-			//Add item to Procedures hash.
+			//Add item to Procedures map.
 			if (declaration instanceof Procedure)
 				addProcedure((Procedure)declaration);
 
+			//Add  item to Type map.
+			else if (declaration instanceof Type)
+				addType((Type)declaration);
+
 			//Create and Add an Execution Scope Value to the Value hash.
+			else if (declaration instanceof Var)
+				addValue(declaration.getID(), ((Var)declaration).instantiate(this));
+
+			//Create and Add an Execution Scope Value to the Value hash.
+			else if (declaration instanceof Const)
+				addValue(declaration.getID(), ((Const)declaration).instantiate(this));
+
 			else
-				addValue(declaration.getID(), createValue(declaration, null));
+				assert false : "Declaration Type not implemented!";
 		}
 	}
 	public Scope(CallActualParameterList actualParameters, Procedure procedure, Scope parent)
@@ -45,11 +64,14 @@ public class Scope
 		//Process the Procedure Body declarations.
 		this(procedure.getDeclarations(), parent);
 		
+		//Register current Procedure for executing.
+		_mapProcedures.put(procedure.getID(), procedure);
+		
 		//Loop all Method Call Variables.
 		for (int i = 0; i < procedure.getParameterCount(); i++)
 		{
 			//Determine the Method Declaration.
-			BaseDeclaration formal = procedure.getParameter(i);
+			Var formal = (Var)procedure.getParameter(i);
 			//Determine the Call Variable.
 			BaseNode actual = actualParameters.get(i);
 			
@@ -57,52 +79,34 @@ public class Scope
 			if (formal instanceof VarRef)
 			{
 				//Get and Add the existing Execution Scope Value. 
-				addValue(formal.getID(), _parent.getValueReference((ID)actual));
+				addValue(formal.getID(), parent.getValueReference(ID.getID(actual)));
 			}
 			
-			//Determine if the declaration should be passed by Reference.
-			else if (formal instanceof Var)
-			{
-				//Create and Add an Execution Scope Value to the Value hash.
-				addValue(formal.getID(), createValue(actual, null));
-			}
-			
-			//Determine incomplete implementation.
+			//Determine if the declaration should be passed by Value.
 			else
 			{
-				assert false : "Procedure Call Declaration Type not implemented!";
+				ScopeValueBase value = formal.instantiate(this);
+				value.setValue(this, null, actual.eval(parent));
+				
+				//Create and Add an Execution Scope Value to the Value hash.
+				addValue(formal.getID(), value);
 			}
 		}
 	}
 	
 	private void addProcedure(Procedure procedure)
 	{
-		_hashProcedures.put(procedure.getID(), procedure);
+		_mapProcedures.put(procedure.getID(), procedure);
 	}
-	
+	private void addType(Type type)
+	{
+		_mapTypes.put(type.getID(), type);
+	}
 	public void addValue(ID id, ScopeValueBase value)
 	{
-		_hashValues.put(id, value);
+		_mapValues.put(id, value);
 	}
 	
-	private ScopeValueBase createValue(BaseNode declaration, ID callVarID)
-	{
-		if (declaration instanceof Var)
-		{
-			Var var = (Var)declaration;
-			BaseType varType = var.getType();
-			
-			if (varType instanceof ArrayType)
-				return new ScopeValueIntArray(this, (ArrayType)varType);
-		}
-		
-		return new ScopeValueInt(this, declaration.eval(_parent));
-	}
-	
-	private Scope _parent = null;
-	private Hashtable<ID, ScopeValueBase> _hashValues = new Hashtable<ID, ScopeValueBase>();
-	private Hashtable<ID, Procedure> _hashProcedures = new Hashtable<ID, Procedure>();
-
 	/**
 	 * Gets an Integer Value from the current Execution Scope.
 	 * @param id The Identifier of the Value that should be retrieved.
@@ -119,15 +123,14 @@ public class Scope
 		
 		return scopeValue.getValue(this, id);
 	}
-	protected ScopeValueBase getValueReference(ID id)
+	public ScopeValueBase getValueReference(ID id)
 	{
-		ScopeValueBase value = _hashValues.get(id);
+		assert id != null : "ID cannot be Null!";
+		
+		ScopeValueBase value = _mapValues.get(id);
 		
 		if (value != null)
 			return value.getValueReference(this, id);
-		
-		if (_parent != null)
-			return _parent.getValueReference(id);
 		
 		assert false : "Variable " + id + " not found!";
 		return null;
@@ -164,7 +167,7 @@ public class Scope
 	protected int callProcedure(ID id, CallActualParameterList callVars, Scope parentScope)
 	{
 		//Retrieve procedure from hash in current Execution Scope.
-		Procedure procedure = _hashProcedures.get(id);
+		Procedure procedure = _mapProcedures.get(id);
 		
 		//Determine procedure match in current Execution Scope.
 		if (procedure != null)
@@ -174,11 +177,6 @@ public class Scope
 			//Evaluate the Procedure Method Call.
 			return procedure.eval(scope);
 		}
-		
-		//Determine if a parent Execution Scope is available.
-		if (_parent != null)
-			//Perform the Procedure Method Call on the parent Execution Scope.
-			return _parent.callProcedure(id, callVars, parentScope);
 		
 		//Detect incorrect implementation!
 		assert false : "Procedure not implemented!";

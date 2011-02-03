@@ -1,6 +1,5 @@
 package uva.oberon0.abstractsyntax.expressions;
 
-import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.runtime.Scope;
 
 /**
@@ -9,7 +8,7 @@ import uva.oberon0.runtime.Scope;
  */
 public class Modulo extends BaseExpressionBinary {
 
-	public Modulo(BaseNode left, BaseNode right) {
+	public Modulo(BaseExpression left, BaseExpression right) {
 		super(left, right);
 	}
 

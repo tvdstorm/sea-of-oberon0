@@ -1,5 +1,6 @@
 package uva.oberon0.abstractsyntax;
 
+import uva.oberon0.abstractsyntax.expressions.Reference;
 import uva.oberon0.runtime.Scope;
 
 
@@ -69,5 +70,19 @@ public class ID extends BaseNode
 	@Override
 	public String toString() {
 		return _value;
+	}
+	
+	public static ID getID(BaseNode value)
+	{
+		if (value instanceof ID)
+			return (ID)value;
+		
+		if (value instanceof BaseNodeWithID)
+			return ((BaseNodeWithID)value).getID();
+		
+		if (value instanceof Reference)
+			return ((Reference)value).getID();
+		
+		return null;
 	}
 }

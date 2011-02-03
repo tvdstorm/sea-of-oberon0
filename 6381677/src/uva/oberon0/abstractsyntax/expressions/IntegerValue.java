@@ -1,4 +1,4 @@
-package uva.oberon0.abstractsyntax.types;
+package uva.oberon0.abstractsyntax.expressions;
 
 import uva.oberon0.runtime.Scope;
 
@@ -7,11 +7,11 @@ import uva.oberon0.runtime.Scope;
  * @author Chiel Labee
  * This class represents an Integer Value.
 */
-public class IntValue extends BaseType
+public class IntegerValue extends BaseExpression
 {
 	private int _value = 0;
 
-	public IntValue(String value)
+	public IntegerValue(String value)
 	{
 		//Set Value field.
 		setValue(value);
@@ -22,8 +22,9 @@ public class IntValue extends BaseType
 	{
 		return _value;
 	}
+
 	//Sets the stored Integer Value.
-	public void setValue(String value)
+	private void setValue(String value)
 	{
 		//Validate and process input value.
 		if (value != null)
@@ -36,7 +37,7 @@ public class IntValue extends BaseType
 	@Override
 	public int eval(Scope scope) 
 	{
-		return getValue();
+		return _value;
 	}
 	
 }

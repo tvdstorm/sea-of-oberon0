@@ -1,6 +1,5 @@
 package uva.oberon0.abstractsyntax.expressions;
 
-import uva.oberon0.abstractsyntax.BaseNode;
 
 /**
  * @author Chiel Labee
@@ -9,7 +8,7 @@ import uva.oberon0.abstractsyntax.BaseNode;
 */
 public abstract class BaseExpressionBinary extends BaseExpression {
 
-	public BaseExpressionBinary(BaseNode left, BaseNode right) 
+	public BaseExpressionBinary(BaseExpression left, BaseExpression right) 
 	{
 		assert left!= null 	: "No Left Expression is available for the current Binary Expression!";
 		assert right!= null : "No Right Expression is available for the current Binary Expressio!";
@@ -18,20 +17,20 @@ public abstract class BaseExpressionBinary extends BaseExpression {
 		_right = right;
 	}
 	
-	private BaseNode _left = null;
+	private BaseExpression _left = null;
 	/**
 	 * Gets the Left part of the Expression.
 	 */
-	public BaseNode getLeft()
+	public BaseExpression getLeft()
 	{
 		return _left;
 	}
 	
-	private BaseNode _right = null;
+	private BaseExpression _right = null;
 	/**
 	 * Gets the Right part of the Expression.
 	 */
-	public BaseNode getRight()
+	public BaseExpression getRight()
 	{
 		return _right;
 	}

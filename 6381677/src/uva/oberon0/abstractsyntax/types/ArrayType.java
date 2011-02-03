@@ -1,6 +1,9 @@
 package uva.oberon0.abstractsyntax.types;
 
 import uva.oberon0.abstractsyntax.BaseNode;
+import uva.oberon0.runtime.Scope;
+import uva.oberon0.runtime.ScopeValueArray;
+import uva.oberon0.runtime.ScopeValueBase;
 
 public class ArrayType extends BaseType {
 
@@ -30,5 +33,10 @@ public class ArrayType extends BaseType {
 	public BaseType getType()
 	{
 		return _type;
+	}
+
+	@Override
+	public ScopeValueBase instantiate(Scope scope) {
+		return new ScopeValueArray(scope, this);
 	}
 }

@@ -9,12 +9,16 @@ import uva.oberon0.abstractsyntax.ID;
 */
 public class ScopeValueInt extends ScopeValueBase 
 {
+	private int _value;
+	
+	public ScopeValueInt(Scope scope)
+	{
+		_value = 0;
+	}
 	public ScopeValueInt(Scope scope, int value)
 	{
 		_value = value;
 	}
-	
-	private int _value;
 	
 	@Override
 	public int getValue(Scope scope, BaseNode index) 

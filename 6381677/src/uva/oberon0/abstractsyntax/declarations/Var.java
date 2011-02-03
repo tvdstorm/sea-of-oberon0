@@ -3,6 +3,7 @@ package uva.oberon0.abstractsyntax.declarations;
 import uva.oberon0.abstractsyntax.ID;
 import uva.oberon0.abstractsyntax.types.BaseType;
 import uva.oberon0.runtime.Scope;
+import uva.oberon0.runtime.ScopeValueBase;
 
 
 /**
@@ -35,5 +36,10 @@ public class Var extends BaseDeclaration
 	public int eval(Scope scope) 
 	{
 		return 0;
+	}
+	
+	public ScopeValueBase instantiate(Scope scope) 
+	{
+		return _type.instantiate(scope);
 	}
 }

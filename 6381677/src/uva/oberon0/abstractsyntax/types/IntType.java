@@ -1,6 +1,8 @@
 package uva.oberon0.abstractsyntax.types;
 
 import uva.oberon0.runtime.Scope;
+import uva.oberon0.runtime.ScopeValueBase;
+import uva.oberon0.runtime.ScopeValueInt;
 
 
 /**
@@ -16,8 +18,12 @@ public class IntType  extends BaseType
 	@Override
 	public int eval(Scope scope) 
 	{
-		assert false : "Unsupported Eval!";
 		return 0;
+	}
+
+	@Override
+	public ScopeValueBase instantiate(Scope scope) {
+		return new ScopeValueInt(scope);
 	}
 
 }
