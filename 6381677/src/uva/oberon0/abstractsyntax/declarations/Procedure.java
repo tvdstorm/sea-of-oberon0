@@ -11,51 +11,41 @@ import uva.oberon0.runtime.Scope;
 */
 public class Procedure extends BaseDeclaration 
 {
+	private final BaseDeclarationList _parameters;
+	private final BaseDeclarationList _declarations;
+	private final BaseStatementList _statements;
+
 	public Procedure(ID id, BaseDeclarationList parameters, BaseDeclarationList declarations, BaseStatementList statements)
 	{
 		super(id);
+		
+		assert parameters 	!= null : "No Parameters are available for the current Procedure!";
+		assert declarations != null : "No Declarations are available for the current Procedure!";
+		assert statements 	!= null : "No Statements are available for the current Procedure!";
 		
 		_parameters = parameters;
 		_declarations = declarations;
 		_statements = statements;
 	}
-	private BaseDeclarationList _parameters = null;
-	public BaseDeclarationList getParameters()
-	{
-		return _parameters;
-	}
+
+	/**
+	 * Gets the number of formal Parameters.
+	 */
 	public int getParameterCount()
 	{
 		return _parameters.size();
 	}
 	
 	/**
-	 * Gets a specific Declaration from the Input Variables List based on the index number value.
+	 * Gets a specific formal Parameter based on the index number value.
 	 */
 	public BaseDeclaration getParameter(int index)
 	{
 		return _parameters.get(index);
 	}
-	private BaseDeclarationList _declarations = null;
 	public BaseDeclarationList getDeclarations()
 	{
 		return _declarations;
-	}
-	
-	private BaseStatementList _statements = null;
-	/**
-	 * Gets the Body Structure of the current Procedure.
-	 */
-	public BaseStatementList getBody()
-	{
-		return _statements;
-	}
-	
-	@Override
-	public boolean isValid()
-	{
-		return super.isValid()
-		&& _statements != null;
 	}
 	
 	@Override

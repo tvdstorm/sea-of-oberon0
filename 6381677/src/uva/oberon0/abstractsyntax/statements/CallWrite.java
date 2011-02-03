@@ -8,10 +8,15 @@ import uva.oberon0.runtime.Scope;
 */
 public class CallWrite extends Call 
 {
+	public CallWrite(CallActualParameterList actualParameterList)
+	{
+		super(actualParameterList);
+	}
+	
 	@Override
 	public int eval(Scope scope) 
 	{
-		System.out.print("Write:" + getCallVar(0).eval(scope));
+		System.out.print("Write:" + getActualParameter(0).eval(scope));
 		return 1;
 	}
 }

@@ -9,19 +9,23 @@ import uva.oberon0.runtime.Scope;
 
 /**
  * @author Chiel Labee
- * This class represents a List of Declaration Nodes.
+ * This class represents a Declaration List.
 */
 public class BaseDeclarationList extends BaseNode implements Iterable<BaseDeclaration> 
 {
+	private final ArrayList<BaseDeclaration> _list = new ArrayList<BaseDeclaration>();
+
 	public BaseDeclarationList()
 	{
 	}
-		
+
+	/**
+	 * Adds an Declaration item to the List.
+	 */	
 	public void add(BaseDeclaration item)
 	{
 		_list.add(item);
 	}
-	protected ArrayList<BaseDeclaration> _list = new ArrayList<BaseDeclaration>();
 	/**
 	 * Gets a specific Declaration from the List based on the index number value.
 	 */
@@ -33,11 +37,6 @@ public class BaseDeclarationList extends BaseNode implements Iterable<BaseDeclar
 	public int size()
 	{
 		return _list.size();
-	}
-	
-	@Override
-	public boolean isValid() {
-		return _list.size()>0;
 	}
 	
 	@Override

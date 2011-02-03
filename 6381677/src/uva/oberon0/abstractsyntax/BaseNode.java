@@ -9,12 +9,6 @@ package uva.oberon0.abstractsyntax;
 public abstract class BaseNode
 {	
 	/**
-	 * Determines if the current Abstract Syntax Tree Node is valid.
-	 */
-	public abstract boolean isValid();
-	
-	
-	/**
 	 * Performs interpreter evaluation for the current Abstract Syntax Tree Node structure.
 	 */
 	public abstract int eval(uva.oberon0.runtime.Scope scope);

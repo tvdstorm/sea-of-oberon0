@@ -3,6 +3,10 @@ package uva.oberon0.abstractsyntax.expressions;
 import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.runtime.Scope;
 
+/**
+ * This class represents a Greather Than Binary Expression (x > y).
+ * @author Chiel Labee
+ */
 public class GreatherThan extends BaseExpressionBinary {
 
 	public GreatherThan(BaseNode left, BaseNode right) {

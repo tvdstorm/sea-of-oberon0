@@ -5,11 +5,14 @@ import uva.oberon0.runtime.Scope;
 
 public class ArrayType extends BaseType {
 
-	private BaseNode _length;
-	private BaseType _type;
+	private final BaseNode _length;
+	private final BaseType _type;
 	
 	public ArrayType(BaseNode length, BaseType type)
 	{
+		assert length != null 		: "No Length is available for the current Array Type!";
+		assert type != null 		: "No Type is available for the current Array Type!";
+
 		_length = length;
 		_type = type;
 	}
@@ -29,18 +32,4 @@ public class ArrayType extends BaseType {
 	{
 		return _type;
 	}
-	
-	@Override
-	public int eval(Scope scope) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
-	@Override
-	public boolean isValid() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

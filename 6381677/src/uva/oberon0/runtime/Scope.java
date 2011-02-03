@@ -9,7 +9,7 @@ import uva.oberon0.abstractsyntax.declarations.BaseDeclarationList;
 import uva.oberon0.abstractsyntax.declarations.Procedure;
 import uva.oberon0.abstractsyntax.declarations.Var;
 import uva.oberon0.abstractsyntax.declarations.VarRef;
-import uva.oberon0.abstractsyntax.statements.CallActualParameters;
+import uva.oberon0.abstractsyntax.statements.CallActualParameterList;
 import uva.oberon0.abstractsyntax.types.ArrayType;
 import uva.oberon0.abstractsyntax.types.BaseType;
 
@@ -40,7 +40,7 @@ public class Scope
 				addValue(declaration.getID(), createValue(declaration, null));
 		}
 	}
-	public Scope(CallActualParameters actualParameters, Procedure procedure, Scope parent)
+	public Scope(CallActualParameterList actualParameters, Procedure procedure, Scope parent)
 	{
 		//Process the Procedure Body declarations.
 		this(procedure.getDeclarations(), parent);
@@ -51,7 +51,7 @@ public class Scope
 			//Determine the Method Declaration.
 			BaseDeclaration formal = procedure.getParameter(i);
 			//Determine the Call Variable.
-			BaseNode actual = actualParameters.getItem(i);
+			BaseNode actual = actualParameters.get(i);
 			
 			//Determine if the declaration should be passed by Reference.
 			if (formal instanceof VarRef)
@@ -113,7 +113,7 @@ public class Scope
 		
 		if (scopeValue == null)
 		{
-			assert false : "Variable " + id.getValue() + " not found!";
+			assert false : "Variable " + id + " not found!";
 			return 0;
 		}
 		
@@ -129,7 +129,7 @@ public class Scope
 		if (_parent != null)
 			return _parent.getValueReference(id);
 		
-		assert false : "Variable " + id.getValue() + " not found!";
+		assert false : "Variable " + id + " not found!";
 		return null;
 	}
 
@@ -143,7 +143,7 @@ public class Scope
 		
 		if (scopeValue == null)
 		{
-			assert false : "Variable " + id.getValue() + " not found!";
+			assert false : "Variable " + id + " not found!";
 			return 0;
 		}
 		
@@ -157,11 +157,11 @@ public class Scope
 	 * @param id The Identifier of the Procedure that should be executed.
 	 * @param callVars The Method Call Variables that should be passed to the Procedure.
 	 */
-	public int callProcedure(ID id, CallActualParameters callVars)
+	public int callProcedure(ID id, CallActualParameterList callVars)
 	{
 		return callProcedure(id, callVars, this);
 	}
-	protected int callProcedure(ID id, CallActualParameters callVars, Scope parentScope)
+	protected int callProcedure(ID id, CallActualParameterList callVars, Scope parentScope)
 	{
 		//Retrieve procedure from hash in current Execution Scope.
 		Procedure procedure = _hashProcedures.get(id);

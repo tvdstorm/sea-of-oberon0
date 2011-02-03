@@ -9,31 +9,26 @@ import uva.oberon0.abstractsyntax.BaseNode;
 */
 public abstract class Call extends BaseStatement
 {
-	private CallActualParameters _callVars = null;
-	/**
-	 * Gets all Method Call Variables.
-	 */
-	public CallActualParameters getCallVars()
+	private final CallActualParameterList _actualParameterList;
+	
+	protected Call(CallActualParameterList actualParameterList)
 	{
-		return _callVars;
-	}
-	public void setCallActualParameters(CallActualParameters value)
-	{
-		_callVars = value;
-	}
-	/**
-	 * Gets a specific Method Call Variable based on its list Index value.
-	 */
-	public BaseNode getCallVar(int index)
-	{
-		return _callVars.getItem(index);
+		_actualParameterList = actualParameterList;
 	}
 	
-	
-	@Override
-	public boolean isValid()
+	/**
+	 * Gets all Method Call Actual Parameters.
+	 */
+	public CallActualParameterList getCallVars()
 	{
-		return _callVars != null;
+		return _actualParameterList;
+	}
+	/**
+	 * Gets a specific Method Call Actual Parameter based on its list Index value.
+	 */
+	public BaseNode getActualParameter(int index)
+	{
+		return _actualParameterList.get(index);
 	}
 
 }

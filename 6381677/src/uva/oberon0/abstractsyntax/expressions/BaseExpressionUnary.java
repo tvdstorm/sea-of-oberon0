@@ -2,10 +2,17 @@ package uva.oberon0.abstractsyntax.expressions;
 
 import uva.oberon0.abstractsyntax.BaseNode;
 
+/**
+ * @author Chiel Labee
+ * This class represents a Unary Expression.
+ * This class is abstract.
+*/
 public abstract class BaseExpressionUnary extends BaseExpression {
 
 	protected BaseExpressionUnary(BaseNode argument)
 	{
+		assert argument != null : "No Argument is available for this Unary Expression!";
+		
 		_argument = argument;
 	}
 	
@@ -16,11 +23,5 @@ public abstract class BaseExpressionUnary extends BaseExpression {
 	public BaseNode getArgument()
 	{
 		return _argument;
-	}
-	
-
-	@Override
-	public boolean isValid() {
-		return _argument != null;
 	}
 }

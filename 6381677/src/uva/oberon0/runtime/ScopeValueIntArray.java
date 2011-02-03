@@ -24,7 +24,7 @@ public class ScopeValueIntArray extends ScopeValueBase
 	public int getValue(Scope scope, BaseNode index) 
 	{
 		if (index instanceof ID)
-			return _value[((ID)index).getIndex(scope)].getValue(scope, ((ID)index).getIndex());
+			return _value[((ID)index).getSub(scope)].getValue(scope, ((ID)index).getSub());
 		
 		else
 			return _value[index.eval(scope)].getValue(scope, null);
@@ -35,7 +35,7 @@ public class ScopeValueIntArray extends ScopeValueBase
 	public void setValue(Scope scope, BaseNode index, int valueNew)
 	{
 		if (index instanceof ID)
-			_value[((ID)index).getIndex(scope)].setValue(scope, ((ID)index).getIndex(), valueNew);
+			_value[((ID)index).getSub(scope)].setValue(scope, ((ID)index).getSub(), valueNew);
 		else
 			_value[index.eval(scope)].setValue(scope, null, valueNew);
 			
@@ -44,10 +44,10 @@ public class ScopeValueIntArray extends ScopeValueBase
 	@Override
 	public ScopeValueBase getValueReference(Scope scope, ID id)
 	{
-		if (id.getIndex() == null)
+		if (id.getSub() == null)
 			return this;
 		
-		return _value[id.getIndex(scope)];
+		return _value[id.getSub(scope)];
 	}
 
 }

@@ -7,24 +7,19 @@ package uva.oberon0.abstractsyntax.statements;
  * This class is abstract.
  */
 public abstract class BaseWithList extends BaseStatement {
+	private final BaseStatementList _statements;
 
 	protected BaseWithList(BaseStatementList statements) 
 	{
 		super();
+		
+		assert statements != null : "No Statement List is available for the current Node!";
+		
 		_statements = statements;
 	}
 
-	private BaseStatementList _statements = null;
 	protected BaseStatementList getStatements()
 	{
 		return _statements;
 	}
-	
-
-	@Override
-	public boolean isValid() 
-	{
-		return _statements != null;
-	}
-
 }

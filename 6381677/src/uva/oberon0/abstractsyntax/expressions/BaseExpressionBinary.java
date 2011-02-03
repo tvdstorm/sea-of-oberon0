@@ -2,10 +2,18 @@ package uva.oberon0.abstractsyntax.expressions;
 
 import uva.oberon0.abstractsyntax.BaseNode;
 
+/**
+ * @author Chiel Labee
+ * This class represents a Binary Expression.
+ * This class is abstract.
+*/
 public abstract class BaseExpressionBinary extends BaseExpression {
 
 	public BaseExpressionBinary(BaseNode left, BaseNode right) 
 	{
+		assert left!= null 	: "No Left Expression is available for the current Binary Expression!";
+		assert right!= null : "No Right Expression is available for the current Binary Expressio!";
+		
 		_left = left;
 		_right = right;
 	}
@@ -26,11 +34,5 @@ public abstract class BaseExpressionBinary extends BaseExpression {
 	public BaseNode getRight()
 	{
 		return _right;
-	}
-	
-
-	@Override
-	public boolean isValid() {
-		return _left != null && _right != null;
 	}
 }

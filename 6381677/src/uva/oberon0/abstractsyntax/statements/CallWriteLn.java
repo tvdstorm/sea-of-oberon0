@@ -8,6 +8,11 @@ import uva.oberon0.runtime.Scope;
 */
 public class CallWriteLn extends Call 
 {
+	public CallWriteLn(CallActualParameterList actualParameterList)
+	{
+		super(actualParameterList);
+	}
+	
 	@Override
 	public int eval(Scope scope) 
 	{

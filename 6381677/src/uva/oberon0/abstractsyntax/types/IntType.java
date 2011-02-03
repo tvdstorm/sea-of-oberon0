@@ -12,12 +12,6 @@ public class IntType  extends BaseType
 	public IntType()
 	{
 	}
-
-	@Override
-	public boolean isValid() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 	
 	@Override
 	public int eval(Scope scope) 
