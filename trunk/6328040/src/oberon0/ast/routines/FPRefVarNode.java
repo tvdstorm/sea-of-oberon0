@@ -18,7 +18,7 @@ public class FPRefVarNode implements IFormalParameter {
 
 	@Override
 	public void fillIn(Context context, ArrayList<IReferable> actualParams) {
-		ArrayList<String> names = (ArrayList<String>) _names.clone();
+		ArrayList<String> names = new ArrayList<String>(_names);
 		//TODO typechecking
 		while (names.size() > 0){
 			

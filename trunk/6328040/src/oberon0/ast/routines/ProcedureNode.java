@@ -26,7 +26,7 @@ public class ProcedureNode implements ICallable, IDeclarable{
 	public void call(Context context, ArrayList<IReferable> actualParams) {	
 		context = new Context(_name, context);
 
-		ArrayList<IReferable> actualParamsClone = (ArrayList<IReferable>) actualParams.clone();
+		ArrayList<IReferable> actualParamsClone = new ArrayList<IReferable>(actualParams);
 		for(int index = 0; index < _formalParameters.size(); index++){
 			IFormalParameter currentFP = _formalParameters.get(index);
 			currentFP.fillIn(context, actualParamsClone);
