@@ -30,6 +30,5 @@ public abstract class Selector {
 	/*
 	 * Get the DataField that is at the end of the chain.
 	 */
-	protected abstract DataField getItem(DataField parent, Context context)
-			throws TechnicalException;
+	protected abstract DataField getItem(DataField parent, Context context) throws TechnicalException;
 }

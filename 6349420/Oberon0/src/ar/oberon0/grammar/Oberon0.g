@@ -23,7 +23,7 @@ options {
 selector [Selector selectorIn] returns [Selector selector]
 @init															{Selector tempSelector = $selectorIn;}
 	:
-		(	'.' IDENT 											{tempSelector.setNextNode(new IdentSelector($IDENT.getText())); tempSelector = tempSelector.getNextNode();}
+		(	'.' IDENT 											{tempSelector.setNextNode(new RecordSelector($IDENT.getText())); tempSelector = tempSelector.getNextNode();}
 		| 	'[' expression ']' 									{tempSelector.setNextNode(new ArrayItemSelector($expression.expression)); tempSelector = tempSelector.getNextNode();}
 		)*
 																{$selector = selectorIn;}
@@ -50,7 +50,7 @@ term returns [Interpretable term]
 		)		
 	; 
 
-simpleExpression returns [Interpretable simpleExpression]  
+simpleExpression returns [Value simpleExpression]  
 	:															{ boolean positive = true; }	
 		(	'+'
 		|	'-' 												{positive = !positive;}
@@ -63,7 +63,7 @@ simpleExpression returns [Interpretable simpleExpression]
 																{if(!positive) { $simpleExpression = new NegationNode($simpleExpression);}}
 	; 
 
-expression returns [Interpretable expression] 
+expression returns [Value expression] 
 	:	leftExpression=simpleExpression 						{ $expression = $leftExpression.simpleExpression; } 
 		(	'=' rightExpression=simpleExpression 				{ $expression = new EqualNode($expression, $rightExpression.simpleExpression); }
 		| 	'#' rightExpression=simpleExpression 				{ $expression = new NotEqualNode($expression, $rightExpression.simpleExpression); }
@@ -142,10 +142,9 @@ arrayType returns [ArrayType arrayType]
 	; 
 
 fieldList returns [FieldList fieldList]
-	:															{$fieldList = new FieldList();}
-		(	identList 											
+	:	(	identList 											
 			':' 
-			type												{$fieldList.setIdentList($identList.identList, $type.type);}
+			type												{$fieldList = new FieldList($identList.identList, $type.type);}
 		)?
 	; 
 
@@ -158,7 +157,7 @@ recordType returns [RecordType recordType]
 	; 
 
 type returns [CreatableType type]
-	:	IDENT 													{$type = new SimpleType($IDENT.getText());}
+	:	IDENT 													{$type = new TypeFactory().getType($IDENT.getText());}
 	| 	arrayType 												{$type = $arrayType.arrayType;}
 	| 	recordType												{$type = $recordType.recordType;}
 	; 
@@ -207,7 +206,7 @@ procedureDeclaration returns [ProcedureDeclaration procedureDeclaration, String 
 	
 declarations returns [ConstantList constants, TypeIdentifierList types, DataFieldList vars, ProcedureList procedures]
 	:	(	'CONST' 											{$constants = new ConstantList();}
-			(constIDENT=IDENT '=' expression ';'				{$constants.addItem($constIDENT.getText(),new DataField(new SimpleType("INTEGER"),(Value)$expression.expression));}
+			(constIDENT=IDENT '=' expression ';'				{$constants.addItem($constIDENT.getText(),new DataField((Value)$expression.expression));}
 			)*
 		)?
 		(	'TYPE' 												{$types = new TypeIdentifierList();}

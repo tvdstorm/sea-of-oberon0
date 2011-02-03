@@ -16,25 +16,21 @@ public class AssignmentNode implements Interpretable {
 	private IdentSelector variable;
 	private Interpretable value;
 
-	public AssignmentNode(final IdentSelector variable,
-			final Interpretable value) {
+	public AssignmentNode(final IdentSelector variable, final Interpretable value) {
 		this.variable = variable;
 		this.value = value;
 	}
 
 	@Override
-	public final Object interpret(final Context context)
-			throws TechnicalException {
+	public final Object interpret(final Context context) throws TechnicalException {
 		if (this.variable == null) {
-			throw new NullPointerException(
-					"The variable in the assignment node can't be null.");
+			throw new NullPointerException("The variable in the assignment node can't be null.");
 		}
 
 		// Get the variable to set.
 		Object rawVariable = this.variable.interpret(context);
 		if (!(rawVariable instanceof DataField)) {
-			throw new TechnicalException(
-					"The object returned by the ident selector was not of the type DataField.");
+			throw new TechnicalException("The object returned by the ident selector was not of the type DataField.");
 		}
 
 		DataField variable = (DataField) rawVariable;

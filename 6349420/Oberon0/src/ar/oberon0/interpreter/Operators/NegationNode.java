@@ -14,11 +14,9 @@ public class NegationNode implements Interpretable {
 	}
 
 	@Override
-	public final Object interpret(final Context context)
-			throws TechnicalException {
+	public final Object interpret(final Context context) throws TechnicalException {
 
-		return Helper.<ArithmeticValue> getValue(_nodeToNegate, context)
-				.negate();
+		return Helper.<ArithmeticValue> getValue(_nodeToNegate, context).negate();
 	}
 
 }

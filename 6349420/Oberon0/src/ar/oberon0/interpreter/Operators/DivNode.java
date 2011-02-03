@@ -12,10 +12,8 @@ public class DivNode extends BinaryNode {
 	}
 
 	@Override
-	public final Object interpret(final Context context)
-			throws TechnicalException {
-		return this.<ArithmeticValue> getLeftValue(context).divide(
-				this.<ArithmeticValue> getRightValue(context));
+	public final Object interpret(final Context context) throws TechnicalException {
+		return this.<ArithmeticValue> getLeftValue(context).divide(this.<ArithmeticValue> getRightValue(context));
 	}
 
 }

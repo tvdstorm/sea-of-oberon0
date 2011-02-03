@@ -33,8 +33,7 @@ public final class Helper {
 	 * of a DataField or expression. If a node doesn't contain a descendant node
 	 * that contains a value it will returns null.
 	 */
-	public static <T extends Value> T getValue(final Interpretable node,
-			final Context context) {
+	public static <T extends Value> T getValue(final Interpretable node, final Context context) {
 		Object tempNode = node;
 		while (!(tempNode instanceof Value)) {
 			if (!(tempNode instanceof Interpretable)) {
@@ -64,8 +63,7 @@ public final class Helper {
 	 * DataField. This function can be used to create the parameter list for a
 	 * procedure call.
 	 */
-	public static DataField convertToDataField(final Interpretable node,
-			final Context context) throws TechnicalException {
+	public static DataField convertToDataField(final Interpretable node, final Context context) throws TechnicalException {
 		if (node == null) {
 			throw new IllegalArgumentException("The node value can't be null");
 		} else if (node instanceof DataField) {
@@ -76,8 +74,7 @@ public final class Helper {
 		} else {
 			Value interpretResult = Helper.getValue(node, context);
 			if (interpretResult == null) {
-				throw new IllegalArgumentException(
-						"the node or one of it's children could not be converted into a DataField object.");
+				throw new IllegalArgumentException("the node or one of it's children could not be converted into a DataField object.");
 			}
 			return new DataField(interpretResult.getType(), interpretResult);
 		}

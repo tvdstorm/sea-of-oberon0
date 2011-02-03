@@ -3,6 +3,7 @@ package ar.oberon0.interpreter.Memory;
 import ar.oberon0.interpreter.Interpretable;
 import ar.oberon0.interpreter.TechnicalException;
 import ar.oberon0.interpreter.DataTypes.CreatableType;
+import ar.oberon0.interpreter.DataTypes.LookupType;
 import ar.oberon0.interpreter.DataTypes.Value;
 
 /*
@@ -28,8 +29,7 @@ public class DataField implements Interpretable {
 	/*
 	 * Get the value of this DataField.
 	 */
-	public final Value getValue(final Context context)
-			throws TechnicalException {
+	public final Value getValue(final Context context) throws TechnicalException {
 		ifNotInitInit(context);
 		return this.value;
 	}
@@ -37,12 +37,9 @@ public class DataField implements Interpretable {
 	/*
 	 * Set the value of the DataField.
 	 */
-	public final void setValue(final Value value, final Context context)
-			throws TechnicalException {
-		if (value.getType().getClass() != this.type.getClass()) {
-			throw new IllegalArgumentException("The value was of type "
-					+ value.getType().getClass() + " while "
-					+ this.type.getClass() + " was expected.");
+	public final void setValue(final Value value, final Context context) throws TechnicalException {
+		if (value.getType().getClass() != this.type.getClass() && this.type.getClass() != LookupType.class) {
+			throw new IllegalArgumentException("The value was of type " + value.getType().getClass() + " while " + this.type.getClass() + " was expected.");
 		}
 		ifNotInitInit(context);
 		this.value = value;
@@ -64,6 +61,10 @@ public class DataField implements Interpretable {
 		this.value = value;
 	}
 
+	public DataField(final Value value) {
+		this(value.getType(), value);
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -72,8 +73,7 @@ public class DataField implements Interpretable {
 	 * .Memory.Context)
 	 */
 	@Override
-	public final Object interpret(final Context context)
-			throws TechnicalException {
+	public final Object interpret(final Context context) throws TechnicalException {
 		ifNotInitInit(context);
 		return getValue(context);
 	}

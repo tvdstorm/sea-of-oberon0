@@ -33,23 +33,22 @@ public class ArrayItemSelector extends Selector {
 	 * Memory.DataField, ar.oberon0.interpreter.Memory.Context)
 	 */
 	@Override
-	protected final DataField getItem(final DataField parent,
-			final Context context) throws TechnicalException {
+	protected final DataField getItem(final DataField parent, final Context context) throws TechnicalException {
 		if (parent == null) {
 			throw new IllegalArgumentException("Parent can't be null.");
 		}
 		if (!(parent.getValue(context) instanceof Array)) {
-			throw new IllegalArgumentException(
-					"The parent parameter doesn't contain an Array.");
+			throw new IllegalArgumentException("The parent parameter doesn't contain an Array.");
 		}
 
-		Value expressionResult = Helper.getValue(this.locationExpression,
-				context);
+		Value expressionResult = Helper.getValue(this.locationExpression, context);
 		if (!(expressionResult instanceof IntegerNode)) {
-			throw new TechnicalException(
-					"The array indexer is not a valid integer datatype.");
+			throw new TechnicalException("The array indexer is not a valid integer datatype.");
 		}
-		return ((Array) parent.getValue(context))
-				.getDataFieldAt((IntegerNode) expressionResult);
+		DataField currentField = ((Array) parent.getValue(context)).getDataFieldAt((IntegerNode) expressionResult);
+		if (this.getNextNode() == null) {
+			return currentField;
+		}
+		return this.getNextNode().getItem(currentField, context);
 	}
 }

@@ -10,17 +10,16 @@ public class SimpleType implements CreatableType {
 	/*
 	 * The name of the type.
 	 */
-	private PrimitiveType type;
+	private String type;
 
 	/*
 	 * Create a new simple type of the specified type.
 	 */
-	public SimpleType(PrimitiveType type) {
+	public SimpleType(String type) {
+		if (!PrimitiveType.doesPrimitiveTypeExist(type)) {
+			throw new TechnicalException("The type " + type + " does not exist.");
+		}
 		this.type = type;
-	}
-
-	public SimpleType(String typeName) {
-		this(Enum.valueOf(PrimitiveType.class, typeName));
 	}
 
 	/*
@@ -32,10 +31,10 @@ public class SimpleType implements CreatableType {
 	 */
 	@Override
 	public Value createInstance(Context context) throws TechnicalException {
-		if (this.type == PrimitiveType.INTEGER)
+		if (this.type.equals(PrimitiveType.INTEGER)) {
 			return new IntegerNode();
-		throw new TechnicalException("Simple type " + this.type.toString()
-				+ " is not supported");
+		}
+		throw new TechnicalException("Simple type " + this.type.toString() + " is not supported");
 	}
 
 }

@@ -28,8 +28,7 @@ public class IdentSelector extends Selector implements Interpretable {
 	 * .Memory.Context)
 	 */
 	@Override
-	public final Object interpret(final Context context)
-			throws TechnicalException {
+	public final Object interpret(final Context context) throws TechnicalException {
 		return getItem(null, context);
 	}
 
@@ -41,18 +40,17 @@ public class IdentSelector extends Selector implements Interpretable {
 	 * .Memory.DataField, ar.oberon0.interpreter.Memory.Context)
 	 */
 	@Override
-	protected final DataField getItem(final DataField parent,
-			final Context context) throws TechnicalException {
-		if (parent == null) {
-			DataField currentVar = context
-					.getVarOrConstantAsDataField(this.identName);
-			if (getNextNode() == null) {
-				return currentVar;
-			} else {
-				return getNextNode().getItem(currentVar, context);
-			}
-		} else {
+	protected final DataField getItem(final DataField parent, final Context context) throws TechnicalException {
+
+		if (parent != null) {
 			throw new TechnicalException("this feature is yet supported.");
 		}
+
+		DataField currentVar = context.getVarOrConstantAsDataField(this.identName);
+		if (getNextNode() == null) {
+			return currentVar;
+		}
+		return getNextNode().getItem(currentVar, context);
+
 	}
 }

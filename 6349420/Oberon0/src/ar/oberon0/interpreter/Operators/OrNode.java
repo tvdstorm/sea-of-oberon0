@@ -10,9 +10,7 @@ public class OrNode extends BinaryNode {
 	}
 
 	@Override
-	public final Object interpret(final Context context)
-			throws TechnicalException {
-		return (Boolean) this.getLeftExpression().interpret(context)
-				|| (Boolean) this.getRightExpression().interpret(context);
+	public final Object interpret(final Context context) throws TechnicalException {
+		return (Boolean) this.getLeftExpression().interpret(context) || (Boolean) this.getRightExpression().interpret(context);
 	}
 }

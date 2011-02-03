@@ -36,11 +36,9 @@ public class FormalParameterList {
 	 * Add a parameter to the list for each identifier in the list with the
 	 * specified type.
 	 */
-	public void addParameters(IdentList identifiers, CreatableType type,
-			FormalParameter.Direction direction) {
+	public void addParameters(IdentList identifiers, CreatableType type, FormalParameter.Direction direction) {
 		for (String identifier : identifiers) {
-			this._parameters.add(new FormalParameterWithName(identifier, type,
-					direction));
+			this._parameters.add(new FormalParameterWithName(identifier, type, direction));
 		}
 	}
 
@@ -68,8 +66,7 @@ public class FormalParameterList {
 			return this.name;
 		}
 
-		public FormalParameterWithName(String name, CreatableType type,
-				Direction direction) {
+		public FormalParameterWithName(String name, CreatableType type, Direction direction) {
 			super(type, direction);
 			this.name = name;
 		}

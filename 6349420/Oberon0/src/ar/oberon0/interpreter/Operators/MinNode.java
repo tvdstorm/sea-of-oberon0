@@ -11,10 +11,8 @@ public class MinNode extends BinaryNode {
 	}
 
 	@Override
-	public final Object interpret(final Context context)
-			throws TechnicalException {
-		return this.<ArithmeticValue> getLeftValue(context).subtract(
-				this.<ArithmeticValue> getRightValue(context));
+	public final Object interpret(final Context context) throws TechnicalException {
+		return this.<ArithmeticValue> getLeftValue(context).subtract(this.<ArithmeticValue> getRightValue(context));
 	}
 
 }
