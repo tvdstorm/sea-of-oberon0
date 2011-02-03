@@ -2,7 +2,6 @@ package randy.oberon0.ast;
 
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
-import randy.oberon0.value.Value;
 
 public class ConstDeclaration extends BodyDeclaration
 {
@@ -18,11 +17,10 @@ public class ConstDeclaration extends BodyDeclaration
 		value = _value;
 	}
 	@Override
-	public Value run(RuntimeEnvironment environment) throws RuntimeException
+	public void register(RuntimeEnvironment newEnvironment) throws RuntimeException
 	{
-		assert(environment != null);
+		assert(newEnvironment != null);
 		// Add the constant to the variable scope
-		environment.addConstant(constantName, value.run(environment));
-		return null;
+		newEnvironment.addConstant(constantName, value.evaluate(newEnvironment));
 	}
 }

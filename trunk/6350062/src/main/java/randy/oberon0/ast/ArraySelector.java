@@ -18,13 +18,13 @@ public class ArraySelector extends Selector
 		arrayIndex = _arrayIndex;
 	}
 	@Override
-	public Value run(RuntimeEnvironment environment) throws RuntimeException
+	public Value evaluate(RuntimeEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Evaluate the selector and convert it to an array
-		final Array array = selector.run(environment).dereference().castToArray();
+		final Array array = selector.evaluate(environment).dereference().castToArray();
 		// Evaluate the array index and convert it to an integer
-		final Integer index = arrayIndex.run(environment).castToInteger();
+		final Integer index = arrayIndex.evaluate(environment).castToInteger();
 		// Return the requested index of the array
 		return array.getIndexValue(index.getIntValue());
 	}

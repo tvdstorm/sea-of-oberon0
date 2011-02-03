@@ -2,7 +2,6 @@ package randy.oberon0.ast;
 
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
-import randy.oberon0.value.Value;
 
 public class WhileStatement extends Statement
 {
@@ -17,15 +16,14 @@ public class WhileStatement extends Statement
 		body = _body;
 	}
 	@Override
-	public Value run(RuntimeEnvironment environment) throws RuntimeException
+	public void run(RuntimeEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Run while the condition evaluates to true
-		while (condition.run(environment).castToBoolean().getBoolValue())
+		while (condition.evaluate(environment).castToBoolean().getBoolValue())
 		{
 			// Run the body
 			body.run(environment);
 		}
-		return null;
 	}
 }

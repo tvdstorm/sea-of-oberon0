@@ -13,11 +13,11 @@ public class PrefixMinExpression extends PrefixExpression
 		super(_rhs);
 	}
 	@Override
-	public Value run(RuntimeEnvironment environment) throws RuntimeException
+	public Value evaluate(RuntimeEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Evaluate the right hand side expression
-		final Value valRh = rightHandExpression.run(environment);
+		final Value valRh = rightHandExpression.evaluate(environment);
 		// Check if we support the operator
 		if (valRh instanceof Integer)
 		{

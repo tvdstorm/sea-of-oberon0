@@ -17,34 +17,33 @@ public class ArrayVarDeclaration extends VarDeclaration
 		arrayLength = _arrayLength;
 	}
 	@Override
-	public Value run(RuntimeEnvironment environment) throws RuntimeException // Use for variable declarations IN methods or modules
+	public void register(RuntimeEnvironment newEnvironment) throws RuntimeException // Use for variable declarations IN methods or modules
 	{
-		assert(environment != null);
+		assert(newEnvironment != null);
 		// Evaluate the length of the array and convert it to an integer
-		final Integer length = arrayLength.run(environment).dereference().castToInteger();
+		final Integer length = arrayLength.evaluate(newEnvironment).dereference().castToInteger();
 		// Loop through all variable names
 		for (String name : variableNames)
 		{
 			// Resolve the type of the array members
-			final IInstantiateableVariable arrayType = environment.resolveType(typeName);
+			final IInstantiateableVariable arrayType = newEnvironment.resolveType(typeName);
 			// Make an instantializer for the array
 			ArrayVariableInstantiation arrayCreator = new ArrayVariableInstantiation(arrayType);
 			arrayCreator.setLength(length.getIntValue());
 			// Create the array and add it in the environment
-			environment.addVariable(name, arrayCreator.instantiate(environment));
+			newEnvironment.addVariable(name, arrayCreator.instantiate(newEnvironment));
 		}
-		return null;
 	}
 	@Override
 	public void runForParameter(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException // Use for registering parameters
-	{
+	{ // TODO: check
 		assert(environment != null);
 		assert(parameterValues != null);
 		// Check if we have enough parameter values left for all our variables
 		if (parameterValues.size() < variableNames.size())
 			throw new IncorrectNumberOfArgumentsException();
 		// Evaluate the length of the array and convert it to an integer
-		final int length = arrayLength.run(environment).dereference().castToInteger().getIntValue();
+		final int length = arrayLength.evaluate(environment).dereference().castToInteger().getIntValue();
 		// Loop through all variable names
 		for (String variableName : variableNames)
 		{

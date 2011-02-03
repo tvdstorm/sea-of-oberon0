@@ -19,22 +19,16 @@ public class Module extends ASTNode implements IInvokableFunction
 		bodyDeclarations = _bodyDeclarations;
 	}
 	@Override
-	public Value run(RuntimeEnvironment environment) throws RuntimeException
+	public void registerTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException
 	{
-		assert(false);
-		return null;
-	}
-	@Override
-	public void runTypeDeclarations(RuntimeEnvironment environment) throws RuntimeException
-	{
-		assert(environment != null);
+		assert(newEnvironment != null);
 		// Register all declarations in the module's environment
 		for (BodyDeclaration bd : bodyDeclarations)
 		{
-			bd.run(environment);
+			bd.register(newEnvironment);
 		}
 	}
-	public Value invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
+	public void invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
 	{
 		assert(environment != null);
 		assert(parameterValues != null);
@@ -42,7 +36,7 @@ public class Module extends ASTNode implements IInvokableFunction
 		if (parameterValues.size() != 0)
 			throw new IncorrectNumberOfArgumentsException();
 		// Run the body of the module
-		return body.run(environment);
+		body.run(environment);
 	}
 	@Override
 	public String getName()

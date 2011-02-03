@@ -15,12 +15,12 @@ public class InfixEqualsExpression extends InfixExpression
 		super(_leftHandExpression, _rightHandExpression);
 	}
 	@Override
-	public Value run(RuntimeEnvironment environment) throws RuntimeException
+	public Value evaluate(RuntimeEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Evaluate the left and right hand side expressions
-		final Value valRh = rightHandExpression.run(environment).dereference();
-		final Value valLh = leftHandExpression.run(environment).dereference();
+		final Value valRh = rightHandExpression.evaluate(environment).dereference();
+		final Value valLh = leftHandExpression.evaluate(environment).dereference();
 		// Check if we support the operator
 		if (valLh instanceof Integer && valRh instanceof Integer)
 		{

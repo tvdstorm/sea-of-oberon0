@@ -18,14 +18,14 @@ public class ProcedureCall extends Statement
 		parameterExpressions = _parameterExpressions;
 	}
 	@Override
-	public Value run(RuntimeEnvironment environment) throws RuntimeException
+	public void run(RuntimeEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Evaluate all the parameters and add them to a queue
 		Queue<Value> parameters = new LinkedList<Value>();
 		for (Expression parameter : parameterExpressions)
 		{
-			Value v = parameter.run(environment);
+			Value v = parameter.evaluate(environment);
 			parameters.add(v);
 		}
 		// Resolve the function name to a function
@@ -33,8 +33,8 @@ public class ProcedureCall extends Statement
 		// Create a new environment for the to be invoked function
 		RuntimeEnvironment invokedEnvironment = environment.createRuntimeEnviroment(environment.getDepth()+1);
 		// Register all declarations of the to be invoked function to it's environment 
-		functionDeclaration.runTypeDeclarations(invokedEnvironment);
+		functionDeclaration.registerTypeDeclarations(invokedEnvironment);
 		// Invoke the function
-		return functionDeclaration.invoke(invokedEnvironment, parameters);
+		functionDeclaration.invoke(invokedEnvironment, parameters);
 	}
 }

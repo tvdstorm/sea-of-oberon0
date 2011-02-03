@@ -16,19 +16,18 @@ public class TestWriteLnFunction implements IInvokableFunction
 		output = _output;
 	}
 	@Override
-	public Value invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
+	public void invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
 	{
 		if (parameterValues.size() != 0)
 			throw new IncorrectNumberOfArgumentsException();
 		output.add(null);
-		return null;
 	}
 	public String getName()
 	{
 		return "WriteLn";
 	}
 	@Override
-	public void runTypeDeclarations(RuntimeEnvironment environment) throws RuntimeException
+	public void registerTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException
 	{
 		// Leeg
 	}

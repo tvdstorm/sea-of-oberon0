@@ -17,7 +17,7 @@ public class DefaultReadFunction implements IInvokableFunction
 		return "Read";
 	}
 	@Override
-	public Value invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
+	public void invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
 	{
 		try
 		{
@@ -29,7 +29,6 @@ public class DefaultReadFunction implements IInvokableFunction
 			String in = new String(input, 0, length);
 			in = in.trim();
 			param.setValue(new Integer(java.lang.Integer.parseInt(in)));
-			return null;
 		}
 		catch (IOException e)
 		{
@@ -37,7 +36,7 @@ public class DefaultReadFunction implements IInvokableFunction
 		}
 	}
 	@Override
-	public void runTypeDeclarations(RuntimeEnvironment environment) throws RuntimeException
+	public void registerTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException
 	{
 		// Leeg
 	}

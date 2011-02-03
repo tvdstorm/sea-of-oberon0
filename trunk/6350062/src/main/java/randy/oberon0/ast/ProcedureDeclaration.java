@@ -26,25 +26,24 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 		body = _body;
 	}
 	@Override
-	public Value run(RuntimeEnvironment environment) throws RuntimeException
+	public void register(RuntimeEnvironment newEnvironment) throws RuntimeException
 	{
-		assert(environment != null);
+		assert(newEnvironment != null);
 		// Register the function in the environment
-		environment.addFunction(getName(), this);
-		return null;
+		newEnvironment.addFunction(getName(), this);
 	}
 	@Override
-	public void runTypeDeclarations(RuntimeEnvironment environment) throws RuntimeException
+	public void registerTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException
 	{
-		assert(environment != null);
+		assert(newEnvironment != null);
 		// Register all the type declarations in the environment
 		for (BodyDeclaration bd : bodyDeclarations)
 		{
-			if (bd instanceof RecordDeclaration)
-				bd.run(environment);
+			if (bd instanceof AbstractTypeDeclaration)
+				bd.register(newEnvironment);
 		}
 	}
-	public Value invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
+	public void invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
 	{
 		assert(environment != null);
 		assert(parameterValues != null);
@@ -59,11 +58,11 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 		// Loop through all body declarations
 		for (BodyDeclaration bodyDecl : bodyDeclarations)
 		{
-			bodyDecl.run(environment);
+			// TODO: check
+			bodyDecl.register(environment);
 		}
 		// Run the body of the function
 		body.run(environment);
-		return null;
 	}
 	@Override
 	public String getName()

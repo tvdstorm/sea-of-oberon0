@@ -15,7 +15,7 @@ public class IntegerLiteral extends Expression
 		value = _value;
 	}
 	@Override
-	public Value run(RuntimeEnvironment environment) throws RuntimeException
+	public Value evaluate(RuntimeEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Return the integer value
