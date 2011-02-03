@@ -1,6 +1,5 @@
 package uva.oberon0.runtime;
 
-import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.abstractsyntax.ID;
 import uva.oberon0.abstractsyntax.types.ArrayType;
 
@@ -23,24 +22,14 @@ public class ScopeValueArray extends ScopeValueBase
 	private ScopeValueBase[] _value;
 
 	@Override
-	public int getValue(Scope scope, BaseNode index) 
+	public int getValue(Scope scope) 
 	{
-		if (index instanceof ID)
-			return _value[((ID)index).getSub(scope)].getValue(scope, ((ID)index).getSub());
-		
-		else
-			return _value[index.eval(scope)].getValue(scope, null);
-			
+		return 0;
 	}
 	
 	@Override
-	public void setValue(Scope scope, BaseNode index, int valueNew)
-	{
-		if (index instanceof ID)
-			_value[((ID)index).getSub(scope)].setValue(scope, ((ID)index).getSub(), valueNew);
-		else
-			_value[index.eval(scope)].setValue(scope, null, valueNew);
-			
+	public void setValue(Scope scope, int valueNew)
+	{		
 	}
 
 	@Override

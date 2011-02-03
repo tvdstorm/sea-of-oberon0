@@ -1,6 +1,5 @@
 package uva.oberon0.runtime;
 
-import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.abstractsyntax.ID;
 
 /**
@@ -21,13 +20,13 @@ public class ScopeValueInt extends ScopeValueBase
 	}
 	
 	@Override
-	public int getValue(Scope scope, BaseNode index) 
+	public int getValue(Scope scope) 
 	{
 		return _value;
 	}
 
 	@Override
-	public void setValue(Scope scope, BaseNode index, int valueNew) 
+	public void setValue(Scope scope, int valueNew) 
 	{
 		_value = valueNew;
 	}

@@ -1,6 +1,5 @@
 package uva.oberon0.runtime;
 
-import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.abstractsyntax.ID;
 
 /**
@@ -15,13 +14,13 @@ public abstract class ScopeValueBase
 	 * @param scope The Execution Scope to retrieve the Index Value from.
 	 * @param index The Index Value specification.
 	 */
-	public abstract int getValue(Scope scope, BaseNode index);
+	public abstract int getValue(Scope scope);
 	/**
 	 * Sets the Integer Value to the current Execution Scope Value.
 	 * @param scope The Execution Scope to retrieve the Index Value from.
 	 * @param index The Index Value specification.
 	 */
-	public abstract void setValue(Scope scope, BaseNode index, int valueNew);
+	public abstract void setValue(Scope scope, int valueNew);
 	
 	/**
 	 * Gets the current Execution Scope Value to be passed by Reference.
