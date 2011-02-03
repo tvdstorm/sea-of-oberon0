@@ -80,7 +80,7 @@ public class Scope
 			if (formal instanceof VariableByRef)
 			{
 				//Get and Add the existing Execution Scope Value. 
-				addValue(formal.getID(), parent.getValueReference(ID.getID(actual)));
+				addValue(formal.getID(), parent.getValueReference(ID.get(actual)));
 			}
 			
 			//Determine if the declaration should be passed by Value.
