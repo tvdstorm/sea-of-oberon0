@@ -16,6 +16,10 @@ public class Array extends Value
 			values[i] = _childType.instantiate(environment);
 		}
 	}
+	private Array(int _size)
+	{
+		values = new Value[_size];
+	}
 	public Value getIndexValue(int _index) throws OutOfBoundsException
 	{
 		if (_index >= values.length)
@@ -70,5 +74,15 @@ public class Array extends Value
 				return false;
 		}
 		return true;
+	}
+	@Override
+	public Value clone()
+	{
+		Array array = new Array(values.length);
+		for (int i=0;i<values.length;i++)
+		{
+			array.values[i] = values[i].clone();
+		}
+		return array;
 	}
 }
