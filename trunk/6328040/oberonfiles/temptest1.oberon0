@@ -7,18 +7,16 @@ VAR
   array: ARRAY MAXLENGTH OF INTEGER; 
   i,j,k: INTEGER;
 
+PROCEDURE testproc(VAR xx, yy: INTEGER; plus: INTEGER);
+
+ BEGIN
+	 xx := xx + plus;
+	 yy := yy + plus;
+END testproc;
+
 BEGIN
- i := 0;
- j := 1;
- k := 25;
-WHILE i<5 DO
- IF i < j THEN
-	array[i] := j;
- ELSIF i = j THEN
-	array[i] := k;
- ELSE
-	array[i] := i;
- END;
- i := i + 1;
-END
+ i := 1;
+ j := 2;
+ k := 6;
+ testproc(i, j, MAXLENGTH)
 END testmodule.

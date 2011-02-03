@@ -76,7 +76,7 @@ import oberon0.ast.statements.*;
 module	returns [ ICallable node ]:	
 	MODULE name = IDENT SEMICOLON 
 	decl = declarations 
-	mbody = body IDENT DOT EOF	{node = new RoutineNode($name.text, new ArrayList<IFormalParameter>(), $decl.node, $mbody.node);}
+	mbody = body IDENT DOT EOF	{node = new ModuleNode($name.text, $decl.node, $mbody.node);}
 	;
 
 body	returns [ IExecutable node ]
@@ -141,7 +141,7 @@ procedureDeclaration returns [ IDeclarable node ]
 	SEMICOLON 
 	decl = declarations 
 	( bod = body
-	)? IDENT		{node = new RoutineNode($name.text, $fp.list, $decl.node, $bod.node);	}
+	)? IDENT		{node = new ProcedureNode($name.text, $fp.list, $decl.node, $bod.node);	}
 	;
 	
 formalParameters returns [ ArrayList<IFormalParameter> list ]
@@ -156,21 +156,38 @@ formalParameters returns [ ArrayList<IFormalParameter> list ]
 fpSection returns [ IFormalParameter node ]
 	:l1 = identList 
 	COLON 
-	t1 = type		{node = new FPRefVarNode($l1.list, $t1.node);	}
+	t1 = type		{node = new FPVarNode($l1.list, $t1.node);	}
 	|VAR 
 	l2 = identList
 	COLON 
-	t2 = type		{node = new FPVarNode($l2.list, $t2.node);	}
+	t2 = type		{node = new FPRefVarNode($l2.list, $t2.node);	}
 	;
 
-/*
-procedureCall
-	:	variable (actualParameters)? 
-			-> ^(PROCEDURECALL variable (actualParameters)?)  ;
-actualParameters
-	:	RNDOPEN (expression (COMMA expression)*)? RNDCLOSE
-			-> ^(ACTUALPARAMETERS expression+);
-*/
+
+
+statement returns [ IExecutable node ]
+	:(ass = assignment 		{$node = $ass.node;	} 
+	| proc = procedureCall 		{$node = $proc.node;	}
+	| ifs = ifStatement 		{$node = $ifs.node;	} 
+	| whil = whileStatement		{$node = $whil.node;	}
+	)?;
+
+procedureCall returns [ IExecutable node ]
+	: name = IDENT (	
+	ap = actualParameters		{node = new ProcedureCallNode($name.text, $ap.list);	}
+	)? 
+	;
+	
+actualParameters returns [ ArrayList<IReferable> list]
+	: RNDOPEN 			{list = new ArrayList<IReferable>();		}
+	(exp1 = expression 		{list.add(new ActualParamNode($exp1.node));	}
+	(COMMA 
+	expx = expression		{list.add(new ActualParamNode($expx.node));	}
+	)*
+	)? 
+	RNDCLOSE
+	;
+
 
 statementSequence returns [ IExecutable node ]
 	: 				{ ArrayList<IExecutable> list = 
@@ -205,13 +222,6 @@ whileStatement returns [ IExecutable node ]
 	DO stats = statementSequence 
 	END				{$node = new WhileNode($cond.node, $stats.node);	}
 	;
-
-statement returns [ IExecutable node ]
-	:(ass = assignment 		{$node = $ass.node;	} 
-//	| procedureCall 
-	| ifs = ifStatement 		{$node = $ifs.node;	} 
-	| whil = whileStatement		{$node = $whil.node;	}
-	)?;
 	
 assignment returns [ IExecutable node ]
 	:ident=IDENT selec=selector 

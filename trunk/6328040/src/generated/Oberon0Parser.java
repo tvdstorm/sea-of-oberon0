@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g 2011-02-02 20:36:21
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g 2011-02-03 11:37:38
 package generated; 
 import oberon0.ast.expressions.*;
 import oberon0.ast.variables.*;
@@ -122,7 +122,7 @@ public class Oberon0Parser extends Parser {
             match(input,IDENT,FOLLOW_IDENT_in_module482); 
             match(input,DOT,FOLLOW_DOT_in_module484); 
             match(input,EOF,FOLLOW_EOF_in_module486); 
-            node = new RoutineNode((name!=null?name.getText():null), new ArrayList<IFormalParameter>(), decl, mbody);
+            node = new ModuleNode((name!=null?name.getText():null), decl, mbody);
 
             }
 
@@ -594,7 +594,7 @@ public class Oberon0Parser extends Parser {
             }
 
             match(input,IDENT,FOLLOW_IDENT_in_procedureDeclaration867); 
-            node = new RoutineNode((name!=null?name.getText():null), fp, decl, bod);	
+            node = new ProcedureNode((name!=null?name.getText():null), fp, decl, bod);	
 
             }
 
@@ -742,7 +742,7 @@ public class Oberon0Parser extends Parser {
 
                     state._fsp--;
 
-                    node = new FPRefVarNode(l1, t1);	
+                    node = new FPVarNode(l1, t1);	
 
                     }
                     break;
@@ -761,7 +761,7 @@ public class Oberon0Parser extends Parser {
 
                     state._fsp--;
 
-                    node = new FPVarNode(l2, t2);	
+                    node = new FPRefVarNode(l2, t2);	
 
                     }
                     break;
@@ -779,237 +779,14 @@ public class Oberon0Parser extends Parser {
     // $ANTLR end "fpSection"
 
 
-    // $ANTLR start "statementSequence"
-    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:175:1: statementSequence returns [ IExecutable node ] : stat1= statement ( SEMICOLON statx= statement )* ;
-    public final IExecutable statementSequence() throws RecognitionException {
-        IExecutable node = null;
-
-        IExecutable stat1 = null;
-
-        IExecutable statx = null;
-
-
-        try {
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:176:2: (stat1= statement ( SEMICOLON statx= statement )* )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:176:8: stat1= statement ( SEMICOLON statx= statement )*
-            {
-             ArrayList<IExecutable> list = 
-            							new  ArrayList<IExecutable>();	
-            pushFollow(FOLLOW_statement_in_statementSequence1013);
-            stat1=statement();
-
-            state._fsp--;
-
-            list.add(stat1);				
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:179:2: ( SEMICOLON statx= statement )*
-            loop13:
-            do {
-                int alt13=2;
-                int LA13_0 = input.LA(1);
-
-                if ( (LA13_0==SEMICOLON) ) {
-                    alt13=1;
-                }
-
-
-                switch (alt13) {
-            	case 1 :
-            	    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:179:3: SEMICOLON statx= statement
-            	    {
-            	    match(input,SEMICOLON,FOLLOW_SEMICOLON_in_statementSequence1020); 
-            	    pushFollow(FOLLOW_statement_in_statementSequence1028);
-            	    statx=statement();
-
-            	    state._fsp--;
-
-            	    list.add(statx);				
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop13;
-                }
-            } while (true);
-
-            node = new StatementsNode(list);		
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-        }
-        return node;
-    }
-    // $ANTLR end "statementSequence"
-
-
-    // $ANTLR start "ifStatement"
-    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:184:1: ifStatement returns [ IExecutable node ] : IF ifcond= expression THEN ifbody= statementSequence ( ELSIF elsifcond= expression THEN elsifbody= statementSequence )* ( ELSE elsebody= statementSequence )? END ;
-    public final IExecutable ifStatement() throws RecognitionException {
-        IExecutable node = null;
-
-        IEvaluable ifcond = null;
-
-        IExecutable ifbody = null;
-
-        IEvaluable elsifcond = null;
-
-        IExecutable elsifbody = null;
-
-        IExecutable elsebody = null;
-
-
-        try {
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:185:2: ( IF ifcond= expression THEN ifbody= statementSequence ( ELSIF elsifcond= expression THEN elsifbody= statementSequence )* ( ELSE elsebody= statementSequence )? END )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:186:2: IF ifcond= expression THEN ifbody= statementSequence ( ELSIF elsifcond= expression THEN elsifbody= statementSequence )* ( ELSE elsebody= statementSequence )? END
-            {
-            match(input,IF,FOLLOW_IF_in_ifStatement1059); 
-            pushFollow(FOLLOW_expression_in_ifStatement1068);
-            ifcond=expression();
-
-            state._fsp--;
-
-            match(input,THEN,FOLLOW_THEN_in_ifStatement1073); 
-            pushFollow(FOLLOW_statementSequence_in_ifStatement1082);
-            ifbody=statementSequence();
-
-            state._fsp--;
-
-            ArrayList<IEvaluable> condlist = new ArrayList<IEvaluable>();	
-            ArrayList<IExecutable> bodylist = new ArrayList<IExecutable>();
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:191:2: ( ELSIF elsifcond= expression THEN elsifbody= statementSequence )*
-            loop14:
-            do {
-                int alt14=2;
-                int LA14_0 = input.LA(1);
-
-                if ( (LA14_0==ELSIF) ) {
-                    alt14=1;
-                }
-
-
-                switch (alt14) {
-            	case 1 :
-            	    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:191:3: ELSIF elsifcond= expression THEN elsifbody= statementSequence
-            	    {
-            	    match(input,ELSIF,FOLLOW_ELSIF_in_ifStatement1097); 
-            	    pushFollow(FOLLOW_expression_in_ifStatement1110);
-            	    elsifcond=expression();
-
-            	    state._fsp--;
-
-            	    condlist.add(elsifcond);					
-            	    match(input,THEN,FOLLOW_THEN_in_ifStatement1121); 
-            	    pushFollow(FOLLOW_statementSequence_in_ifStatement1129);
-            	    elsifbody=statementSequence();
-
-            	    state._fsp--;
-
-            	    bodylist.add(elsifbody);					
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop14;
-                }
-            } while (true);
-
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:196:2: ( ELSE elsebody= statementSequence )?
-            int alt15=2;
-            int LA15_0 = input.LA(1);
-
-            if ( (LA15_0==ELSE) ) {
-                alt15=1;
-            }
-            switch (alt15) {
-                case 1 :
-                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:196:3: ELSE elsebody= statementSequence
-                    {
-                    match(input,ELSE,FOLLOW_ELSE_in_ifStatement1140); 
-                    pushFollow(FOLLOW_statementSequence_in_ifStatement1149);
-                    elsebody=statementSequence();
-
-                    state._fsp--;
-
-
-                    }
-                    break;
-
-            }
-
-            match(input,END,FOLLOW_END_in_ifStatement1155); 
-            node = new IfNode(ifcond, ifbody, 
-            									condlist, bodylist, elsebody);	
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-        }
-        return node;
-    }
-    // $ANTLR end "ifStatement"
-
-
-    // $ANTLR start "whileStatement"
-    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:203:1: whileStatement returns [ IExecutable node ] : WHILE cond= expression DO stats= statementSequence END ;
-    public final IExecutable whileStatement() throws RecognitionException {
-        IExecutable node = null;
-
-        IEvaluable cond = null;
-
-        IExecutable stats = null;
-
-
-        try {
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:204:2: ( WHILE cond= expression DO stats= statementSequence END )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:204:4: WHILE cond= expression DO stats= statementSequence END
-            {
-            match(input,WHILE,FOLLOW_WHILE_in_whileStatement1177); 
-            pushFollow(FOLLOW_expression_in_whileStatement1183);
-            cond=expression();
-
-            state._fsp--;
-
-            match(input,DO,FOLLOW_DO_in_whileStatement1187); 
-            pushFollow(FOLLOW_statementSequence_in_whileStatement1193);
-            stats=statementSequence();
-
-            state._fsp--;
-
-            match(input,END,FOLLOW_END_in_whileStatement1197); 
-            node = new WhileNode(cond, stats);	
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-        }
-        return node;
-    }
-    // $ANTLR end "whileStatement"
-
-
     // $ANTLR start "statement"
-    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:209:1: statement returns [ IExecutable node ] : (ass= assignment | ifs= ifStatement | whil= whileStatement )? ;
+    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:168:1: statement returns [ IExecutable node ] : (ass= assignment | proc= procedureCall | ifs= ifStatement | whil= whileStatement )? ;
     public final IExecutable statement() throws RecognitionException {
         IExecutable node = null;
 
         IExecutable ass = null;
+
+        IExecutable proc = null;
 
         IExecutable ifs = null;
 
@@ -1017,34 +794,41 @@ public class Oberon0Parser extends Parser {
 
 
         try {
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:210:2: ( (ass= assignment | ifs= ifStatement | whil= whileStatement )? )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:210:3: (ass= assignment | ifs= ifStatement | whil= whileStatement )?
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:169:2: ( (ass= assignment | proc= procedureCall | ifs= ifStatement | whil= whileStatement )? )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:169:3: (ass= assignment | proc= procedureCall | ifs= ifStatement | whil= whileStatement )?
             {
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:210:3: (ass= assignment | ifs= ifStatement | whil= whileStatement )?
-            int alt16=4;
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:169:3: (ass= assignment | proc= procedureCall | ifs= ifStatement | whil= whileStatement )?
+            int alt13=5;
             switch ( input.LA(1) ) {
                 case IDENT:
                     {
-                    alt16=1;
+                    int LA13_1 = input.LA(2);
+
+                    if ( (LA13_1==DOT||LA13_1==SQROPEN||LA13_1==ASSIGNMENT) ) {
+                        alt13=1;
+                    }
+                    else if ( (LA13_1==RNDOPEN||(LA13_1>=SEMICOLON && LA13_1<=ELSIF)) ) {
+                        alt13=2;
+                    }
                     }
                     break;
                 case IF:
                     {
-                    alt16=2;
+                    alt13=3;
                     }
                     break;
                 case WHILE:
                     {
-                    alt16=3;
+                    alt13=4;
                     }
                     break;
             }
 
-            switch (alt16) {
+            switch (alt13) {
                 case 1 :
-                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:210:4: ass= assignment
+                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:169:4: ass= assignment
                     {
-                    pushFollow(FOLLOW_assignment_in_statement1221);
+                    pushFollow(FOLLOW_assignment_in_statement1005);
                     ass=assignment();
 
                     state._fsp--;
@@ -1054,9 +838,21 @@ public class Oberon0Parser extends Parser {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:212:4: ifs= ifStatement
+                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:170:4: proc= procedureCall
                     {
-                    pushFollow(FOLLOW_ifStatement_in_statement1236);
+                    pushFollow(FOLLOW_procedureCall_in_statement1019);
+                    proc=procedureCall();
+
+                    state._fsp--;
+
+                    node = proc;	
+
+                    }
+                    break;
+                case 3 :
+                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:171:4: ifs= ifStatement
+                    {
+                    pushFollow(FOLLOW_ifStatement_in_statement1032);
                     ifs=ifStatement();
 
                     state._fsp--;
@@ -1065,10 +861,10 @@ public class Oberon0Parser extends Parser {
 
                     }
                     break;
-                case 3 :
-                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:213:4: whil= whileStatement
+                case 4 :
+                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:172:4: whil= whileStatement
                     {
-                    pushFollow(FOLLOW_whileStatement_in_statement1250);
+                    pushFollow(FOLLOW_whileStatement_in_statement1046);
                     whil=whileStatement();
 
                     state._fsp--;
@@ -1095,8 +891,371 @@ public class Oberon0Parser extends Parser {
     // $ANTLR end "statement"
 
 
+    // $ANTLR start "procedureCall"
+    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:175:1: procedureCall returns [ IExecutable node ] : name= IDENT (ap= actualParameters )? ;
+    public final IExecutable procedureCall() throws RecognitionException {
+        IExecutable node = null;
+
+        Token name=null;
+        ArrayList<IReferable> ap = null;
+
+
+        try {
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:176:2: (name= IDENT (ap= actualParameters )? )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:176:4: name= IDENT (ap= actualParameters )?
+            {
+            name=(Token)match(input,IDENT,FOLLOW_IDENT_in_procedureCall1070); 
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:176:17: (ap= actualParameters )?
+            int alt14=2;
+            int LA14_0 = input.LA(1);
+
+            if ( (LA14_0==RNDOPEN) ) {
+                alt14=1;
+            }
+            switch (alt14) {
+                case 1 :
+                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:177:2: ap= actualParameters
+                    {
+                    pushFollow(FOLLOW_actualParameters_in_procedureCall1080);
+                    ap=actualParameters();
+
+                    state._fsp--;
+
+                    node = new ProcedureCallNode((name!=null?name.getText():null), ap);	
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return node;
+    }
+    // $ANTLR end "procedureCall"
+
+
+    // $ANTLR start "actualParameters"
+    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:181:1: actualParameters returns [ ArrayList<IReferable> list] : RNDOPEN (exp1= expression ( COMMA expx= expression )* )? RNDCLOSE ;
+    public final ArrayList<IReferable> actualParameters() throws RecognitionException {
+        ArrayList<IReferable> list = null;
+
+        IEvaluable exp1 = null;
+
+        IEvaluable expx = null;
+
+
+        try {
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:182:2: ( RNDOPEN (exp1= expression ( COMMA expx= expression )* )? RNDCLOSE )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:182:4: RNDOPEN (exp1= expression ( COMMA expx= expression )* )? RNDCLOSE
+            {
+            match(input,RNDOPEN,FOLLOW_RNDOPEN_in_actualParameters1104); 
+            list = new ArrayList<IReferable>();		
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:183:2: (exp1= expression ( COMMA expx= expression )* )?
+            int alt16=2;
+            int LA16_0 = input.LA(1);
+
+            if ( ((LA16_0>=ADD && LA16_0<=SUBTRACT)||LA16_0==RNDOPEN||LA16_0==TILDE||(LA16_0>=IDENT && LA16_0<=INTEGER)) ) {
+                alt16=1;
+            }
+            switch (alt16) {
+                case 1 :
+                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:183:3: exp1= expression ( COMMA expx= expression )*
+                    {
+                    pushFollow(FOLLOW_expression_in_actualParameters1117);
+                    exp1=expression();
+
+                    state._fsp--;
+
+                    list.add(new ActualParamNode(exp1));	
+                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:184:2: ( COMMA expx= expression )*
+                    loop15:
+                    do {
+                        int alt15=2;
+                        int LA15_0 = input.LA(1);
+
+                        if ( (LA15_0==COMMA) ) {
+                            alt15=1;
+                        }
+
+
+                        switch (alt15) {
+                    	case 1 :
+                    	    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:184:3: COMMA expx= expression
+                    	    {
+                    	    match(input,COMMA,FOLLOW_COMMA_in_actualParameters1125); 
+                    	    pushFollow(FOLLOW_expression_in_actualParameters1133);
+                    	    expx=expression();
+
+                    	    state._fsp--;
+
+                    	    list.add(new ActualParamNode(expx));	
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    break loop15;
+                        }
+                    } while (true);
+
+
+                    }
+                    break;
+
+            }
+
+            match(input,RNDCLOSE,FOLLOW_RNDCLOSE_in_actualParameters1148); 
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return list;
+    }
+    // $ANTLR end "actualParameters"
+
+
+    // $ANTLR start "statementSequence"
+    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:192:1: statementSequence returns [ IExecutable node ] : stat1= statement ( SEMICOLON statx= statement )* ;
+    public final IExecutable statementSequence() throws RecognitionException {
+        IExecutable node = null;
+
+        IExecutable stat1 = null;
+
+        IExecutable statx = null;
+
+
+        try {
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:193:2: (stat1= statement ( SEMICOLON statx= statement )* )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:193:8: stat1= statement ( SEMICOLON statx= statement )*
+            {
+             ArrayList<IExecutable> list = 
+            							new  ArrayList<IExecutable>();	
+            pushFollow(FOLLOW_statement_in_statementSequence1175);
+            stat1=statement();
+
+            state._fsp--;
+
+            list.add(stat1);				
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:196:2: ( SEMICOLON statx= statement )*
+            loop17:
+            do {
+                int alt17=2;
+                int LA17_0 = input.LA(1);
+
+                if ( (LA17_0==SEMICOLON) ) {
+                    alt17=1;
+                }
+
+
+                switch (alt17) {
+            	case 1 :
+            	    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:196:3: SEMICOLON statx= statement
+            	    {
+            	    match(input,SEMICOLON,FOLLOW_SEMICOLON_in_statementSequence1182); 
+            	    pushFollow(FOLLOW_statement_in_statementSequence1190);
+            	    statx=statement();
+
+            	    state._fsp--;
+
+            	    list.add(statx);				
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop17;
+                }
+            } while (true);
+
+            node = new StatementsNode(list);		
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return node;
+    }
+    // $ANTLR end "statementSequence"
+
+
+    // $ANTLR start "ifStatement"
+    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:201:1: ifStatement returns [ IExecutable node ] : IF ifcond= expression THEN ifbody= statementSequence ( ELSIF elsifcond= expression THEN elsifbody= statementSequence )* ( ELSE elsebody= statementSequence )? END ;
+    public final IExecutable ifStatement() throws RecognitionException {
+        IExecutable node = null;
+
+        IEvaluable ifcond = null;
+
+        IExecutable ifbody = null;
+
+        IEvaluable elsifcond = null;
+
+        IExecutable elsifbody = null;
+
+        IExecutable elsebody = null;
+
+
+        try {
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:202:2: ( IF ifcond= expression THEN ifbody= statementSequence ( ELSIF elsifcond= expression THEN elsifbody= statementSequence )* ( ELSE elsebody= statementSequence )? END )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:203:2: IF ifcond= expression THEN ifbody= statementSequence ( ELSIF elsifcond= expression THEN elsifbody= statementSequence )* ( ELSE elsebody= statementSequence )? END
+            {
+            match(input,IF,FOLLOW_IF_in_ifStatement1221); 
+            pushFollow(FOLLOW_expression_in_ifStatement1230);
+            ifcond=expression();
+
+            state._fsp--;
+
+            match(input,THEN,FOLLOW_THEN_in_ifStatement1235); 
+            pushFollow(FOLLOW_statementSequence_in_ifStatement1244);
+            ifbody=statementSequence();
+
+            state._fsp--;
+
+            ArrayList<IEvaluable> condlist = new ArrayList<IEvaluable>();	
+            ArrayList<IExecutable> bodylist = new ArrayList<IExecutable>();
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:208:2: ( ELSIF elsifcond= expression THEN elsifbody= statementSequence )*
+            loop18:
+            do {
+                int alt18=2;
+                int LA18_0 = input.LA(1);
+
+                if ( (LA18_0==ELSIF) ) {
+                    alt18=1;
+                }
+
+
+                switch (alt18) {
+            	case 1 :
+            	    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:208:3: ELSIF elsifcond= expression THEN elsifbody= statementSequence
+            	    {
+            	    match(input,ELSIF,FOLLOW_ELSIF_in_ifStatement1259); 
+            	    pushFollow(FOLLOW_expression_in_ifStatement1272);
+            	    elsifcond=expression();
+
+            	    state._fsp--;
+
+            	    condlist.add(elsifcond);					
+            	    match(input,THEN,FOLLOW_THEN_in_ifStatement1283); 
+            	    pushFollow(FOLLOW_statementSequence_in_ifStatement1291);
+            	    elsifbody=statementSequence();
+
+            	    state._fsp--;
+
+            	    bodylist.add(elsifbody);					
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop18;
+                }
+            } while (true);
+
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:213:2: ( ELSE elsebody= statementSequence )?
+            int alt19=2;
+            int LA19_0 = input.LA(1);
+
+            if ( (LA19_0==ELSE) ) {
+                alt19=1;
+            }
+            switch (alt19) {
+                case 1 :
+                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:213:3: ELSE elsebody= statementSequence
+                    {
+                    match(input,ELSE,FOLLOW_ELSE_in_ifStatement1302); 
+                    pushFollow(FOLLOW_statementSequence_in_ifStatement1311);
+                    elsebody=statementSequence();
+
+                    state._fsp--;
+
+
+                    }
+                    break;
+
+            }
+
+            match(input,END,FOLLOW_END_in_ifStatement1317); 
+            node = new IfNode(ifcond, ifbody, 
+            									condlist, bodylist, elsebody);	
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return node;
+    }
+    // $ANTLR end "ifStatement"
+
+
+    // $ANTLR start "whileStatement"
+    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:220:1: whileStatement returns [ IExecutable node ] : WHILE cond= expression DO stats= statementSequence END ;
+    public final IExecutable whileStatement() throws RecognitionException {
+        IExecutable node = null;
+
+        IEvaluable cond = null;
+
+        IExecutable stats = null;
+
+
+        try {
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:221:2: ( WHILE cond= expression DO stats= statementSequence END )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:221:4: WHILE cond= expression DO stats= statementSequence END
+            {
+            match(input,WHILE,FOLLOW_WHILE_in_whileStatement1339); 
+            pushFollow(FOLLOW_expression_in_whileStatement1345);
+            cond=expression();
+
+            state._fsp--;
+
+            match(input,DO,FOLLOW_DO_in_whileStatement1349); 
+            pushFollow(FOLLOW_statementSequence_in_whileStatement1355);
+            stats=statementSequence();
+
+            state._fsp--;
+
+            match(input,END,FOLLOW_END_in_whileStatement1359); 
+            node = new WhileNode(cond, stats);	
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return node;
+    }
+    // $ANTLR end "whileStatement"
+
+
     // $ANTLR start "assignment"
-    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:216:1: assignment returns [ IExecutable node ] : ident= IDENT selec= selector ASSIGNMENT exp= expression ;
+    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:226:1: assignment returns [ IExecutable node ] : ident= IDENT selec= selector ASSIGNMENT exp= expression ;
     public final IExecutable assignment() throws RecognitionException {
         IExecutable node = null;
 
@@ -1107,17 +1266,17 @@ public class Oberon0Parser extends Parser {
 
 
         try {
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:217:2: (ident= IDENT selec= selector ASSIGNMENT exp= expression )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:217:3: ident= IDENT selec= selector ASSIGNMENT exp= expression
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:227:2: (ident= IDENT selec= selector ASSIGNMENT exp= expression )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:227:3: ident= IDENT selec= selector ASSIGNMENT exp= expression
             {
-            ident=(Token)match(input,IDENT,FOLLOW_IDENT_in_assignment1272); 
-            pushFollow(FOLLOW_selector_in_assignment1276);
+            ident=(Token)match(input,IDENT,FOLLOW_IDENT_in_assignment1381); 
+            pushFollow(FOLLOW_selector_in_assignment1385);
             selec=selector();
 
             state._fsp--;
 
-            match(input,ASSIGNMENT,FOLLOW_ASSIGNMENT_in_assignment1280); 
-            pushFollow(FOLLOW_expression_in_assignment1288);
+            match(input,ASSIGNMENT,FOLLOW_ASSIGNMENT_in_assignment1389); 
+            pushFollow(FOLLOW_expression_in_assignment1397);
             exp=expression();
 
             state._fsp--;
@@ -1139,7 +1298,7 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "type"
-    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:223:1: type returns [ IEvaluable node ] : (ident= IDENT | ARRAY exp= expression OF typ= type );
+    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:233:1: type returns [ IEvaluable node ] : (ident= IDENT | ARRAY exp= expression OF typ= type );
     public final IEvaluable type() throws RecognitionException {
         IEvaluable node = null;
 
@@ -1150,42 +1309,42 @@ public class Oberon0Parser extends Parser {
 
 
         try {
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:224:2: (ident= IDENT | ARRAY exp= expression OF typ= type )
-            int alt17=2;
-            int LA17_0 = input.LA(1);
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:234:2: (ident= IDENT | ARRAY exp= expression OF typ= type )
+            int alt20=2;
+            int LA20_0 = input.LA(1);
 
-            if ( (LA17_0==IDENT) ) {
-                alt17=1;
+            if ( (LA20_0==IDENT) ) {
+                alt20=1;
             }
-            else if ( (LA17_0==ARRAY) ) {
-                alt17=2;
+            else if ( (LA20_0==ARRAY) ) {
+                alt20=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 17, 0, input);
+                    new NoViableAltException("", 20, 0, input);
 
                 throw nvae;
             }
-            switch (alt17) {
+            switch (alt20) {
                 case 1 :
-                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:224:4: ident= IDENT
+                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:234:4: ident= IDENT
                     {
-                    ident=(Token)match(input,IDENT,FOLLOW_IDENT_in_type1312); 
+                    ident=(Token)match(input,IDENT,FOLLOW_IDENT_in_type1421); 
                     node = new TypeNode((ident!=null?ident.getText():null));			
 
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:225:3: ARRAY exp= expression OF typ= type
+                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:235:3: ARRAY exp= expression OF typ= type
                     {
-                    match(input,ARRAY,FOLLOW_ARRAY_in_type1321); 
-                    pushFollow(FOLLOW_expression_in_type1327);
+                    match(input,ARRAY,FOLLOW_ARRAY_in_type1430); 
+                    pushFollow(FOLLOW_expression_in_type1436);
                     exp=expression();
 
                     state._fsp--;
 
-                    match(input,OF,FOLLOW_OF_in_type1332); 
-                    pushFollow(FOLLOW_type_in_type1338);
+                    match(input,OF,FOLLOW_OF_in_type1441); 
+                    pushFollow(FOLLOW_type_in_type1447);
                     typ=type();
 
                     state._fsp--;
@@ -1209,7 +1368,7 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "expression"
-    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:239:1: expression returns [ IEvaluable node ] : lhsExp= simpleExpression ( EQUALS rhsExp= simpleExpression | HASH rhsExp= simpleExpression | SMALLERTHEN rhsExp= simpleExpression | SMALLEREQUAL rhsExp= simpleExpression | GREATERTHEN rhsExp= simpleExpression | GREATEREQUAL rhsExp= simpleExpression )? ;
+    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:249:1: expression returns [ IEvaluable node ] : lhsExp= simpleExpression ( EQUALS rhsExp= simpleExpression | HASH rhsExp= simpleExpression | SMALLERTHEN rhsExp= simpleExpression | SMALLEREQUAL rhsExp= simpleExpression | GREATERTHEN rhsExp= simpleExpression | GREATEREQUAL rhsExp= simpleExpression )? ;
     public final IEvaluable expression() throws RecognitionException {
         IEvaluable node = null;
 
@@ -1219,56 +1378,56 @@ public class Oberon0Parser extends Parser {
 
 
         try {
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:240:2: (lhsExp= simpleExpression ( EQUALS rhsExp= simpleExpression | HASH rhsExp= simpleExpression | SMALLERTHEN rhsExp= simpleExpression | SMALLEREQUAL rhsExp= simpleExpression | GREATERTHEN rhsExp= simpleExpression | GREATEREQUAL rhsExp= simpleExpression )? )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:240:4: lhsExp= simpleExpression ( EQUALS rhsExp= simpleExpression | HASH rhsExp= simpleExpression | SMALLERTHEN rhsExp= simpleExpression | SMALLEREQUAL rhsExp= simpleExpression | GREATERTHEN rhsExp= simpleExpression | GREATEREQUAL rhsExp= simpleExpression )?
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:250:2: (lhsExp= simpleExpression ( EQUALS rhsExp= simpleExpression | HASH rhsExp= simpleExpression | SMALLERTHEN rhsExp= simpleExpression | SMALLEREQUAL rhsExp= simpleExpression | GREATERTHEN rhsExp= simpleExpression | GREATEREQUAL rhsExp= simpleExpression )? )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:250:4: lhsExp= simpleExpression ( EQUALS rhsExp= simpleExpression | HASH rhsExp= simpleExpression | SMALLERTHEN rhsExp= simpleExpression | SMALLEREQUAL rhsExp= simpleExpression | GREATERTHEN rhsExp= simpleExpression | GREATEREQUAL rhsExp= simpleExpression )?
             {
-            pushFollow(FOLLOW_simpleExpression_in_expression1367);
+            pushFollow(FOLLOW_simpleExpression_in_expression1476);
             lhsExp=simpleExpression();
 
             state._fsp--;
 
             node = lhsExp; 					
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:241:2: ( EQUALS rhsExp= simpleExpression | HASH rhsExp= simpleExpression | SMALLERTHEN rhsExp= simpleExpression | SMALLEREQUAL rhsExp= simpleExpression | GREATERTHEN rhsExp= simpleExpression | GREATEREQUAL rhsExp= simpleExpression )?
-            int alt18=7;
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:251:2: ( EQUALS rhsExp= simpleExpression | HASH rhsExp= simpleExpression | SMALLERTHEN rhsExp= simpleExpression | SMALLEREQUAL rhsExp= simpleExpression | GREATERTHEN rhsExp= simpleExpression | GREATEREQUAL rhsExp= simpleExpression )?
+            int alt21=7;
             switch ( input.LA(1) ) {
                 case EQUALS:
                     {
-                    alt18=1;
+                    alt21=1;
                     }
                     break;
                 case HASH:
                     {
-                    alt18=2;
+                    alt21=2;
                     }
                     break;
                 case SMALLERTHEN:
                     {
-                    alt18=3;
+                    alt21=3;
                     }
                     break;
                 case SMALLEREQUAL:
                     {
-                    alt18=4;
+                    alt21=4;
                     }
                     break;
                 case GREATERTHEN:
                     {
-                    alt18=5;
+                    alt21=5;
                     }
                     break;
                 case GREATEREQUAL:
                     {
-                    alt18=6;
+                    alt21=6;
                     }
                     break;
             }
 
-            switch (alt18) {
+            switch (alt21) {
                 case 1 :
-                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:241:4: EQUALS rhsExp= simpleExpression
+                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:251:4: EQUALS rhsExp= simpleExpression
                     {
-                    match(input,EQUALS,FOLLOW_EQUALS_in_expression1378); 
-                    pushFollow(FOLLOW_simpleExpression_in_expression1385);
+                    match(input,EQUALS,FOLLOW_EQUALS_in_expression1487); 
+                    pushFollow(FOLLOW_simpleExpression_in_expression1494);
                     rhsExp=simpleExpression();
 
                     state._fsp--;
@@ -1278,10 +1437,10 @@ public class Oberon0Parser extends Parser {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:242:4: HASH rhsExp= simpleExpression
+                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:252:4: HASH rhsExp= simpleExpression
                     {
-                    match(input,HASH,FOLLOW_HASH_in_expression1392); 
-                    pushFollow(FOLLOW_simpleExpression_in_expression1399);
+                    match(input,HASH,FOLLOW_HASH_in_expression1501); 
+                    pushFollow(FOLLOW_simpleExpression_in_expression1508);
                     rhsExp=simpleExpression();
 
                     state._fsp--;
@@ -1291,10 +1450,10 @@ public class Oberon0Parser extends Parser {
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:243:4: SMALLERTHEN rhsExp= simpleExpression
+                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:253:4: SMALLERTHEN rhsExp= simpleExpression
                     {
-                    match(input,SMALLERTHEN,FOLLOW_SMALLERTHEN_in_expression1406); 
-                    pushFollow(FOLLOW_simpleExpression_in_expression1412);
+                    match(input,SMALLERTHEN,FOLLOW_SMALLERTHEN_in_expression1515); 
+                    pushFollow(FOLLOW_simpleExpression_in_expression1521);
                     rhsExp=simpleExpression();
 
                     state._fsp--;
@@ -1304,10 +1463,10 @@ public class Oberon0Parser extends Parser {
                     }
                     break;
                 case 4 :
-                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:244:4: SMALLEREQUAL rhsExp= simpleExpression
+                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:254:4: SMALLEREQUAL rhsExp= simpleExpression
                     {
-                    match(input,SMALLEREQUAL,FOLLOW_SMALLEREQUAL_in_expression1419); 
-                    pushFollow(FOLLOW_simpleExpression_in_expression1425);
+                    match(input,SMALLEREQUAL,FOLLOW_SMALLEREQUAL_in_expression1528); 
+                    pushFollow(FOLLOW_simpleExpression_in_expression1534);
                     rhsExp=simpleExpression();
 
                     state._fsp--;
@@ -1317,10 +1476,10 @@ public class Oberon0Parser extends Parser {
                     }
                     break;
                 case 5 :
-                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:245:4: GREATERTHEN rhsExp= simpleExpression
+                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:255:4: GREATERTHEN rhsExp= simpleExpression
                     {
-                    match(input,GREATERTHEN,FOLLOW_GREATERTHEN_in_expression1432); 
-                    pushFollow(FOLLOW_simpleExpression_in_expression1438);
+                    match(input,GREATERTHEN,FOLLOW_GREATERTHEN_in_expression1541); 
+                    pushFollow(FOLLOW_simpleExpression_in_expression1547);
                     rhsExp=simpleExpression();
 
                     state._fsp--;
@@ -1330,10 +1489,10 @@ public class Oberon0Parser extends Parser {
                     }
                     break;
                 case 6 :
-                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:246:4: GREATEREQUAL rhsExp= simpleExpression
+                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:256:4: GREATEREQUAL rhsExp= simpleExpression
                     {
-                    match(input,GREATEREQUAL,FOLLOW_GREATEREQUAL_in_expression1445); 
-                    pushFollow(FOLLOW_simpleExpression_in_expression1451);
+                    match(input,GREATEREQUAL,FOLLOW_GREATEREQUAL_in_expression1554); 
+                    pushFollow(FOLLOW_simpleExpression_in_expression1560);
                     rhsExp=simpleExpression();
 
                     state._fsp--;
@@ -1361,7 +1520,7 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "simpleExpression"
-    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:249:1: simpleExpression returns [ IEvaluable node ] : ( ADD | SUBTRACT )? lhsTerm= term ( ADD rhsTerm= term | SUBTRACT rhsTerm= term | OR term rhsTerm= term )* ;
+    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:259:1: simpleExpression returns [ IEvaluable node ] : ( ADD | SUBTRACT )? lhsTerm= term ( ADD rhsTerm= term | SUBTRACT rhsTerm= term | OR term rhsTerm= term )* ;
     public final IEvaluable simpleExpression() throws RecognitionException {
         IEvaluable node = null;
 
@@ -1371,32 +1530,32 @@ public class Oberon0Parser extends Parser {
 
 
         try {
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:250:2: ( ( ADD | SUBTRACT )? lhsTerm= term ( ADD rhsTerm= term | SUBTRACT rhsTerm= term | OR term rhsTerm= term )* )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:250:8: ( ADD | SUBTRACT )? lhsTerm= term ( ADD rhsTerm= term | SUBTRACT rhsTerm= term | OR term rhsTerm= term )*
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:260:2: ( ( ADD | SUBTRACT )? lhsTerm= term ( ADD rhsTerm= term | SUBTRACT rhsTerm= term | OR term rhsTerm= term )* )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:260:8: ( ADD | SUBTRACT )? lhsTerm= term ( ADD rhsTerm= term | SUBTRACT rhsTerm= term | OR term rhsTerm= term )*
             {
              Boolean minus = false; 				
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:251:2: ( ADD | SUBTRACT )?
-            int alt19=3;
-            int LA19_0 = input.LA(1);
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:261:2: ( ADD | SUBTRACT )?
+            int alt22=3;
+            int LA22_0 = input.LA(1);
 
-            if ( (LA19_0==ADD) ) {
-                alt19=1;
+            if ( (LA22_0==ADD) ) {
+                alt22=1;
             }
-            else if ( (LA19_0==SUBTRACT) ) {
-                alt19=2;
+            else if ( (LA22_0==SUBTRACT) ) {
+                alt22=2;
             }
-            switch (alt19) {
+            switch (alt22) {
                 case 1 :
-                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:251:3: ADD
+                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:261:3: ADD
                     {
-                    match(input,ADD,FOLLOW_ADD_in_simpleExpression1478); 
+                    match(input,ADD,FOLLOW_ADD_in_simpleExpression1587); 
 
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:252:4: SUBTRACT
+                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:262:4: SUBTRACT
                     {
-                    match(input,SUBTRACT,FOLLOW_SUBTRACT_in_simpleExpression1484); 
+                    match(input,SUBTRACT,FOLLOW_SUBTRACT_in_simpleExpression1593); 
                      minus = true;						
 
                     }
@@ -1404,41 +1563,41 @@ public class Oberon0Parser extends Parser {
 
             }
 
-            pushFollow(FOLLOW_term_in_simpleExpression1502);
+            pushFollow(FOLLOW_term_in_simpleExpression1611);
             lhsTerm=term();
 
             state._fsp--;
 
             node = lhsTerm;					
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:255:2: ( ADD rhsTerm= term | SUBTRACT rhsTerm= term | OR term rhsTerm= term )*
-            loop20:
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:265:2: ( ADD rhsTerm= term | SUBTRACT rhsTerm= term | OR term rhsTerm= term )*
+            loop23:
             do {
-                int alt20=4;
+                int alt23=4;
                 switch ( input.LA(1) ) {
                 case ADD:
                     {
-                    alt20=1;
+                    alt23=1;
                     }
                     break;
                 case SUBTRACT:
                     {
-                    alt20=2;
+                    alt23=2;
                     }
                     break;
                 case OR:
                     {
-                    alt20=3;
+                    alt23=3;
                     }
                     break;
 
                 }
 
-                switch (alt20) {
+                switch (alt23) {
             	case 1 :
-            	    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:255:3: ADD rhsTerm= term
+            	    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:265:3: ADD rhsTerm= term
             	    {
-            	    match(input,ADD,FOLLOW_ADD_in_simpleExpression1511); 
-            	    pushFollow(FOLLOW_term_in_simpleExpression1519);
+            	    match(input,ADD,FOLLOW_ADD_in_simpleExpression1620); 
+            	    pushFollow(FOLLOW_term_in_simpleExpression1628);
             	    rhsTerm=term();
 
             	    state._fsp--;
@@ -1448,10 +1607,10 @@ public class Oberon0Parser extends Parser {
             	    }
             	    break;
             	case 2 :
-            	    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:256:4: SUBTRACT rhsTerm= term
+            	    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:266:4: SUBTRACT rhsTerm= term
             	    {
-            	    match(input,SUBTRACT,FOLLOW_SUBTRACT_in_simpleExpression1527); 
-            	    pushFollow(FOLLOW_term_in_simpleExpression1534);
+            	    match(input,SUBTRACT,FOLLOW_SUBTRACT_in_simpleExpression1636); 
+            	    pushFollow(FOLLOW_term_in_simpleExpression1643);
             	    rhsTerm=term();
 
             	    state._fsp--;
@@ -1461,15 +1620,15 @@ public class Oberon0Parser extends Parser {
             	    }
             	    break;
             	case 3 :
-            	    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:257:4: OR term rhsTerm= term
+            	    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:267:4: OR term rhsTerm= term
             	    {
-            	    match(input,OR,FOLLOW_OR_in_simpleExpression1542); 
-            	    pushFollow(FOLLOW_term_in_simpleExpression1544);
+            	    match(input,OR,FOLLOW_OR_in_simpleExpression1651); 
+            	    pushFollow(FOLLOW_term_in_simpleExpression1653);
             	    term();
 
             	    state._fsp--;
 
-            	    pushFollow(FOLLOW_term_in_simpleExpression1551);
+            	    pushFollow(FOLLOW_term_in_simpleExpression1660);
             	    rhsTerm=term();
 
             	    state._fsp--;
@@ -1480,7 +1639,7 @@ public class Oberon0Parser extends Parser {
             	    break;
 
             	default :
-            	    break loop20;
+            	    break loop23;
                 }
             } while (true);
 
@@ -1501,7 +1660,7 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "term"
-    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:262:1: term returns [ IEvaluable node ] : lhsFactor= factor ( MULTIPLY rhsFactor= factor | DIVIDE rhsFactor= factor | MOD rhsFactor= factor | AMPERSAND rhsFactor= factor )* ;
+    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:272:1: term returns [ IEvaluable node ] : lhsFactor= factor ( MULTIPLY rhsFactor= factor | DIVIDE rhsFactor= factor | MOD rhsFactor= factor | AMPERSAND rhsFactor= factor )* ;
     public final IEvaluable term() throws RecognitionException {
         IEvaluable node = null;
 
@@ -1511,49 +1670,49 @@ public class Oberon0Parser extends Parser {
 
 
         try {
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:263:2: (lhsFactor= factor ( MULTIPLY rhsFactor= factor | DIVIDE rhsFactor= factor | MOD rhsFactor= factor | AMPERSAND rhsFactor= factor )* )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:264:2: lhsFactor= factor ( MULTIPLY rhsFactor= factor | DIVIDE rhsFactor= factor | MOD rhsFactor= factor | AMPERSAND rhsFactor= factor )*
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:273:2: (lhsFactor= factor ( MULTIPLY rhsFactor= factor | DIVIDE rhsFactor= factor | MOD rhsFactor= factor | AMPERSAND rhsFactor= factor )* )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:274:2: lhsFactor= factor ( MULTIPLY rhsFactor= factor | DIVIDE rhsFactor= factor | MOD rhsFactor= factor | AMPERSAND rhsFactor= factor )*
             {
-            pushFollow(FOLLOW_factor_in_term1590);
+            pushFollow(FOLLOW_factor_in_term1699);
             lhsFactor=factor();
 
             state._fsp--;
 
             node = lhsFactor;				
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:265:2: ( MULTIPLY rhsFactor= factor | DIVIDE rhsFactor= factor | MOD rhsFactor= factor | AMPERSAND rhsFactor= factor )*
-            loop21:
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:275:2: ( MULTIPLY rhsFactor= factor | DIVIDE rhsFactor= factor | MOD rhsFactor= factor | AMPERSAND rhsFactor= factor )*
+            loop24:
             do {
-                int alt21=5;
+                int alt24=5;
                 switch ( input.LA(1) ) {
                 case MULTIPLY:
                     {
-                    alt21=1;
+                    alt24=1;
                     }
                     break;
                 case DIVIDE:
                     {
-                    alt21=2;
+                    alt24=2;
                     }
                     break;
                 case MOD:
                     {
-                    alt21=3;
+                    alt24=3;
                     }
                     break;
                 case AMPERSAND:
                     {
-                    alt21=4;
+                    alt24=4;
                     }
                     break;
 
                 }
 
-                switch (alt21) {
+                switch (alt24) {
             	case 1 :
-            	    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:265:4: MULTIPLY rhsFactor= factor
+            	    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:275:4: MULTIPLY rhsFactor= factor
             	    {
-            	    match(input,MULTIPLY,FOLLOW_MULTIPLY_in_term1600); 
-            	    pushFollow(FOLLOW_factor_in_term1607);
+            	    match(input,MULTIPLY,FOLLOW_MULTIPLY_in_term1709); 
+            	    pushFollow(FOLLOW_factor_in_term1716);
             	    rhsFactor=factor();
 
             	    state._fsp--;
@@ -1563,10 +1722,10 @@ public class Oberon0Parser extends Parser {
             	    }
             	    break;
             	case 2 :
-            	    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:266:4: DIVIDE rhsFactor= factor
+            	    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:276:4: DIVIDE rhsFactor= factor
             	    {
-            	    match(input,DIVIDE,FOLLOW_DIVIDE_in_term1614); 
-            	    pushFollow(FOLLOW_factor_in_term1621);
+            	    match(input,DIVIDE,FOLLOW_DIVIDE_in_term1723); 
+            	    pushFollow(FOLLOW_factor_in_term1730);
             	    rhsFactor=factor();
 
             	    state._fsp--;
@@ -1576,10 +1735,10 @@ public class Oberon0Parser extends Parser {
             	    }
             	    break;
             	case 3 :
-            	    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:267:4: MOD rhsFactor= factor
+            	    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:277:4: MOD rhsFactor= factor
             	    {
-            	    match(input,MOD,FOLLOW_MOD_in_term1628); 
-            	    pushFollow(FOLLOW_factor_in_term1636);
+            	    match(input,MOD,FOLLOW_MOD_in_term1737); 
+            	    pushFollow(FOLLOW_factor_in_term1745);
             	    rhsFactor=factor();
 
             	    state._fsp--;
@@ -1589,10 +1748,10 @@ public class Oberon0Parser extends Parser {
             	    }
             	    break;
             	case 4 :
-            	    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:268:4: AMPERSAND rhsFactor= factor
+            	    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:278:4: AMPERSAND rhsFactor= factor
             	    {
-            	    match(input,AMPERSAND,FOLLOW_AMPERSAND_in_term1643); 
-            	    pushFollow(FOLLOW_factor_in_term1650);
+            	    match(input,AMPERSAND,FOLLOW_AMPERSAND_in_term1752); 
+            	    pushFollow(FOLLOW_factor_in_term1759);
             	    rhsFactor=factor();
 
             	    state._fsp--;
@@ -1603,7 +1762,7 @@ public class Oberon0Parser extends Parser {
             	    break;
 
             	default :
-            	    break loop21;
+            	    break loop24;
                 }
             } while (true);
 
@@ -1623,7 +1782,7 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "factor"
-    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:271:1: factor returns [ IEvaluable node ] : (ident= IDENT selec= selector | num= number | RNDOPEN exp= expression RNDCLOSE | TILDE nFactor= factor );
+    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:281:1: factor returns [ IEvaluable node ] : (ident= IDENT selec= selector | num= number | RNDOPEN exp= expression RNDCLOSE | TILDE nFactor= factor );
     public final IEvaluable factor() throws RecognitionException {
         IEvaluable node = null;
 
@@ -1638,42 +1797,42 @@ public class Oberon0Parser extends Parser {
 
 
         try {
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:272:2: (ident= IDENT selec= selector | num= number | RNDOPEN exp= expression RNDCLOSE | TILDE nFactor= factor )
-            int alt22=4;
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:282:2: (ident= IDENT selec= selector | num= number | RNDOPEN exp= expression RNDCLOSE | TILDE nFactor= factor )
+            int alt25=4;
             switch ( input.LA(1) ) {
             case IDENT:
                 {
-                alt22=1;
+                alt25=1;
                 }
                 break;
             case INTEGER:
                 {
-                alt22=2;
+                alt25=2;
                 }
                 break;
             case RNDOPEN:
                 {
-                alt22=3;
+                alt25=3;
                 }
                 break;
             case TILDE:
                 {
-                alt22=4;
+                alt25=4;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 22, 0, input);
+                    new NoViableAltException("", 25, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt22) {
+            switch (alt25) {
                 case 1 :
-                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:272:4: ident= IDENT selec= selector
+                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:282:4: ident= IDENT selec= selector
                     {
-                    ident=(Token)match(input,IDENT,FOLLOW_IDENT_in_factor1672); 
-                    pushFollow(FOLLOW_selector_in_factor1676);
+                    ident=(Token)match(input,IDENT,FOLLOW_IDENT_in_factor1781); 
+                    pushFollow(FOLLOW_selector_in_factor1785);
                     selec=selector();
 
                     state._fsp--;
@@ -1683,9 +1842,9 @@ public class Oberon0Parser extends Parser {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:273:4: num= number
+                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:283:4: num= number
                     {
-                    pushFollow(FOLLOW_number_in_factor1687);
+                    pushFollow(FOLLOW_number_in_factor1796);
                     num=number();
 
                     state._fsp--;
@@ -1695,24 +1854,24 @@ public class Oberon0Parser extends Parser {
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:274:4: RNDOPEN exp= expression RNDCLOSE
+                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:284:4: RNDOPEN exp= expression RNDCLOSE
                     {
-                    match(input,RNDOPEN,FOLLOW_RNDOPEN_in_factor1698); 
-                    pushFollow(FOLLOW_expression_in_factor1702);
+                    match(input,RNDOPEN,FOLLOW_RNDOPEN_in_factor1807); 
+                    pushFollow(FOLLOW_expression_in_factor1811);
                     exp=expression();
 
                     state._fsp--;
 
-                    match(input,RNDCLOSE,FOLLOW_RNDCLOSE_in_factor1704); 
+                    match(input,RNDCLOSE,FOLLOW_RNDCLOSE_in_factor1813); 
                      node = exp;		 	 		
 
                     }
                     break;
                 case 4 :
-                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:275:4: TILDE nFactor= factor
+                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:285:4: TILDE nFactor= factor
                     {
-                    match(input,TILDE,FOLLOW_TILDE_in_factor1712); 
-                    pushFollow(FOLLOW_factor_in_factor1716);
+                    match(input,TILDE,FOLLOW_TILDE_in_factor1821); 
+                    pushFollow(FOLLOW_factor_in_factor1825);
                     nFactor=factor();
 
                     state._fsp--;
@@ -1736,17 +1895,17 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "number"
-    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:278:1: number returns [ IntegerNode node ] : INTEGER ;
+    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:288:1: number returns [ IntegerNode node ] : INTEGER ;
     public final IntegerNode number() throws RecognitionException {
         IntegerNode node = null;
 
         Token INTEGER1=null;
 
         try {
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:279:2: ( INTEGER )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:279:4: INTEGER
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:289:2: ( INTEGER )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:289:4: INTEGER
             {
-            INTEGER1=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_number1735); 
+            INTEGER1=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_number1844); 
              node = new IntegerNode( Integer.parseInt( (INTEGER1!=null?INTEGER1.getText():null) ) ); 
 
             }
@@ -1764,40 +1923,40 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "booleann"
-    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:282:1: booleann returns [ IEvaluable node ] : ( FALSE | TRUE );
+    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:292:1: booleann returns [ IEvaluable node ] : ( FALSE | TRUE );
     public final IEvaluable booleann() throws RecognitionException {
         IEvaluable node = null;
 
         try {
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:283:2: ( FALSE | TRUE )
-            int alt23=2;
-            int LA23_0 = input.LA(1);
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:293:2: ( FALSE | TRUE )
+            int alt26=2;
+            int LA26_0 = input.LA(1);
 
-            if ( (LA23_0==FALSE) ) {
-                alt23=1;
+            if ( (LA26_0==FALSE) ) {
+                alt26=1;
             }
-            else if ( (LA23_0==TRUE) ) {
-                alt23=2;
+            else if ( (LA26_0==TRUE) ) {
+                alt26=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 23, 0, input);
+                    new NoViableAltException("", 26, 0, input);
 
                 throw nvae;
             }
-            switch (alt23) {
+            switch (alt26) {
                 case 1 :
-                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:283:4: FALSE
+                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:293:4: FALSE
                     {
-                    match(input,FALSE,FOLLOW_FALSE_in_booleann1754); 
+                    match(input,FALSE,FOLLOW_FALSE_in_booleann1863); 
                      node = new BooleanNode ( false); 	
 
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:284:4: TRUE
+                    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:294:4: TRUE
                     {
-                    match(input,TRUE,FOLLOW_TRUE_in_booleann1764); 
+                    match(input,TRUE,FOLLOW_TRUE_in_booleann1873); 
                      node = new BooleanNode ( true); 	
 
                     }
@@ -1817,7 +1976,7 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "selector"
-    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:287:1: selector returns [ ISelector node ] : ( DOT IDENT | SQROPEN expression SQRCLOSE )* ;
+    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:297:1: selector returns [ ISelector node ] : ( DOT IDENT | SQROPEN expression SQRCLOSE )* ;
     public final ISelector selector() throws RecognitionException {
         ISelector node = null;
 
@@ -1826,52 +1985,52 @@ public class Oberon0Parser extends Parser {
 
 
         try {
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:288:2: ( ( DOT IDENT | SQROPEN expression SQRCLOSE )* )
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:288:8: ( DOT IDENT | SQROPEN expression SQRCLOSE )*
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:298:2: ( ( DOT IDENT | SQROPEN expression SQRCLOSE )* )
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:298:8: ( DOT IDENT | SQROPEN expression SQRCLOSE )*
             {
             ArrayList<ISelector> list = 
             						 new ArrayList<ISelector>();			
-            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:290:2: ( DOT IDENT | SQROPEN expression SQRCLOSE )*
-            loop24:
+            // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:300:2: ( DOT IDENT | SQROPEN expression SQRCLOSE )*
+            loop27:
             do {
-                int alt24=3;
-                int LA24_0 = input.LA(1);
+                int alt27=3;
+                int LA27_0 = input.LA(1);
 
-                if ( (LA24_0==DOT) ) {
-                    alt24=1;
+                if ( (LA27_0==DOT) ) {
+                    alt27=1;
                 }
-                else if ( (LA24_0==SQROPEN) ) {
-                    alt24=2;
+                else if ( (LA27_0==SQROPEN) ) {
+                    alt27=2;
                 }
 
 
-                switch (alt24) {
+                switch (alt27) {
             	case 1 :
-            	    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:290:3: DOT IDENT
+            	    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:300:3: DOT IDENT
             	    {
-            	    match(input,DOT,FOLLOW_DOT_in_selector1792); 
-            	    IDENT2=(Token)match(input,IDENT,FOLLOW_IDENT_in_selector1794); 
+            	    match(input,DOT,FOLLOW_DOT_in_selector1901); 
+            	    IDENT2=(Token)match(input,IDENT,FOLLOW_IDENT_in_selector1903); 
             	    list.add(new SelectorRecordNode ( (IDENT2!=null?IDENT2.getText():null) ) );	
 
             	    }
             	    break;
             	case 2 :
-            	    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:291:4: SQROPEN expression SQRCLOSE
+            	    // C:\\Users\\Lennart\\SCHOOL\\Software Construction\\workspace\\Oberon0Interpreter\\src\\Oberon0.g:301:4: SQROPEN expression SQRCLOSE
             	    {
-            	    match(input,SQROPEN,FOLLOW_SQROPEN_in_selector1804); 
-            	    pushFollow(FOLLOW_expression_in_selector1806);
+            	    match(input,SQROPEN,FOLLOW_SQROPEN_in_selector1913); 
+            	    pushFollow(FOLLOW_expression_in_selector1915);
             	    expression3=expression();
 
             	    state._fsp--;
 
-            	    match(input,SQRCLOSE,FOLLOW_SQRCLOSE_in_selector1808); 
+            	    match(input,SQRCLOSE,FOLLOW_SQRCLOSE_in_selector1917); 
             	    list.add(new SelectorArrayNode ( expression3 ) );	
 
             	    }
             	    break;
 
             	default :
-            	    break loop24;
+            	    break loop27;
                 }
             } while (true);
 
@@ -1944,84 +2103,92 @@ public class Oberon0Parser extends Parser {
     public static final BitSet FOLLOW_identList_in_fpSection970 = new BitSet(new long[]{0x0000000000080000L});
     public static final BitSet FOLLOW_COLON_in_fpSection973 = new BitSet(new long[]{0x0080000800000000L});
     public static final BitSet FOLLOW_type_in_fpSection981 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_statement_in_statementSequence1013 = new BitSet(new long[]{0x0000000020000002L});
-    public static final BitSet FOLLOW_SEMICOLON_in_statementSequence1020 = new BitSet(new long[]{0x0080000620000000L});
-    public static final BitSet FOLLOW_statement_in_statementSequence1028 = new BitSet(new long[]{0x0000000020000002L});
-    public static final BitSet FOLLOW_IF_in_ifStatement1059 = new BitSet(new long[]{0x0180000008100300L});
-    public static final BitSet FOLLOW_expression_in_ifStatement1068 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_THEN_in_ifStatement1073 = new BitSet(new long[]{0x0080000620000000L});
-    public static final BitSet FOLLOW_statementSequence_in_ifStatement1082 = new BitSet(new long[]{0x00000001C0000000L});
-    public static final BitSet FOLLOW_ELSIF_in_ifStatement1097 = new BitSet(new long[]{0x0180000008100300L});
-    public static final BitSet FOLLOW_expression_in_ifStatement1110 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_THEN_in_ifStatement1121 = new BitSet(new long[]{0x0080000620000000L});
-    public static final BitSet FOLLOW_statementSequence_in_ifStatement1129 = new BitSet(new long[]{0x00000001C0000000L});
-    public static final BitSet FOLLOW_ELSE_in_ifStatement1140 = new BitSet(new long[]{0x0080000620000000L});
-    public static final BitSet FOLLOW_statementSequence_in_ifStatement1149 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_END_in_ifStatement1155 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_WHILE_in_whileStatement1177 = new BitSet(new long[]{0x0180000008100300L});
-    public static final BitSet FOLLOW_expression_in_whileStatement1183 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_DO_in_whileStatement1187 = new BitSet(new long[]{0x0080000620000000L});
-    public static final BitSet FOLLOW_statementSequence_in_whileStatement1193 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_END_in_whileStatement1197 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_assignment_in_statement1221 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ifStatement_in_statement1236 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_whileStatement_in_statement1250 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENT_in_assignment1272 = new BitSet(new long[]{0x0000000010420000L});
-    public static final BitSet FOLLOW_selector_in_assignment1276 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_ASSIGNMENT_in_assignment1280 = new BitSet(new long[]{0x0180000008100300L});
-    public static final BitSet FOLLOW_expression_in_assignment1288 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENT_in_type1312 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ARRAY_in_type1321 = new BitSet(new long[]{0x0180000008100300L});
-    public static final BitSet FOLLOW_expression_in_type1327 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_OF_in_type1332 = new BitSet(new long[]{0x0080000800000000L});
-    public static final BitSet FOLLOW_type_in_type1338 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_simpleExpression_in_expression1367 = new BitSet(new long[]{0x000000000001F802L});
-    public static final BitSet FOLLOW_EQUALS_in_expression1378 = new BitSet(new long[]{0x0180000008100300L});
-    public static final BitSet FOLLOW_simpleExpression_in_expression1385 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_HASH_in_expression1392 = new BitSet(new long[]{0x0180000008100300L});
-    public static final BitSet FOLLOW_simpleExpression_in_expression1399 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_SMALLERTHEN_in_expression1406 = new BitSet(new long[]{0x0180000008100300L});
-    public static final BitSet FOLLOW_simpleExpression_in_expression1412 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_SMALLEREQUAL_in_expression1419 = new BitSet(new long[]{0x0180000008100300L});
-    public static final BitSet FOLLOW_simpleExpression_in_expression1425 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_GREATERTHEN_in_expression1432 = new BitSet(new long[]{0x0180000008100300L});
-    public static final BitSet FOLLOW_simpleExpression_in_expression1438 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_GREATEREQUAL_in_expression1445 = new BitSet(new long[]{0x0180000008100300L});
-    public static final BitSet FOLLOW_simpleExpression_in_expression1451 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ADD_in_simpleExpression1478 = new BitSet(new long[]{0x0180000008100300L});
-    public static final BitSet FOLLOW_SUBTRACT_in_simpleExpression1484 = new BitSet(new long[]{0x0180000008100300L});
-    public static final BitSet FOLLOW_term_in_simpleExpression1502 = new BitSet(new long[]{0x0000000000000702L});
-    public static final BitSet FOLLOW_ADD_in_simpleExpression1511 = new BitSet(new long[]{0x0180000008100300L});
-    public static final BitSet FOLLOW_term_in_simpleExpression1519 = new BitSet(new long[]{0x0000000000000702L});
-    public static final BitSet FOLLOW_SUBTRACT_in_simpleExpression1527 = new BitSet(new long[]{0x0180000008100300L});
-    public static final BitSet FOLLOW_term_in_simpleExpression1534 = new BitSet(new long[]{0x0000000000000702L});
-    public static final BitSet FOLLOW_OR_in_simpleExpression1542 = new BitSet(new long[]{0x0180000008100300L});
-    public static final BitSet FOLLOW_term_in_simpleExpression1544 = new BitSet(new long[]{0x0180000008100300L});
-    public static final BitSet FOLLOW_term_in_simpleExpression1551 = new BitSet(new long[]{0x0000000000000702L});
-    public static final BitSet FOLLOW_factor_in_term1590 = new BitSet(new long[]{0x00000000000000F2L});
-    public static final BitSet FOLLOW_MULTIPLY_in_term1600 = new BitSet(new long[]{0x0180000008100300L});
-    public static final BitSet FOLLOW_factor_in_term1607 = new BitSet(new long[]{0x00000000000000F2L});
-    public static final BitSet FOLLOW_DIVIDE_in_term1614 = new BitSet(new long[]{0x0180000008100300L});
-    public static final BitSet FOLLOW_factor_in_term1621 = new BitSet(new long[]{0x00000000000000F2L});
-    public static final BitSet FOLLOW_MOD_in_term1628 = new BitSet(new long[]{0x0180000008100300L});
-    public static final BitSet FOLLOW_factor_in_term1636 = new BitSet(new long[]{0x00000000000000F2L});
-    public static final BitSet FOLLOW_AMPERSAND_in_term1643 = new BitSet(new long[]{0x0180000008100300L});
-    public static final BitSet FOLLOW_factor_in_term1650 = new BitSet(new long[]{0x00000000000000F2L});
-    public static final BitSet FOLLOW_IDENT_in_factor1672 = new BitSet(new long[]{0x0000000000420000L});
-    public static final BitSet FOLLOW_selector_in_factor1676 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_number_in_factor1687 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RNDOPEN_in_factor1698 = new BitSet(new long[]{0x0180000008100300L});
-    public static final BitSet FOLLOW_expression_in_factor1702 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_RNDCLOSE_in_factor1704 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_TILDE_in_factor1712 = new BitSet(new long[]{0x0180000008100300L});
-    public static final BitSet FOLLOW_factor_in_factor1716 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INTEGER_in_number1735 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FALSE_in_booleann1754 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_TRUE_in_booleann1764 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DOT_in_selector1792 = new BitSet(new long[]{0x0080000000000000L});
-    public static final BitSet FOLLOW_IDENT_in_selector1794 = new BitSet(new long[]{0x0000000000420002L});
-    public static final BitSet FOLLOW_SQROPEN_in_selector1804 = new BitSet(new long[]{0x0180000008100300L});
-    public static final BitSet FOLLOW_expression_in_selector1806 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_SQRCLOSE_in_selector1808 = new BitSet(new long[]{0x0000000000420002L});
+    public static final BitSet FOLLOW_assignment_in_statement1005 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_procedureCall_in_statement1019 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ifStatement_in_statement1032 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_whileStatement_in_statement1046 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENT_in_procedureCall1070 = new BitSet(new long[]{0x0000000000100002L});
+    public static final BitSet FOLLOW_actualParameters_in_procedureCall1080 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RNDOPEN_in_actualParameters1104 = new BitSet(new long[]{0x0180000008300300L});
+    public static final BitSet FOLLOW_expression_in_actualParameters1117 = new BitSet(new long[]{0x0000000000240000L});
+    public static final BitSet FOLLOW_COMMA_in_actualParameters1125 = new BitSet(new long[]{0x0180000008100300L});
+    public static final BitSet FOLLOW_expression_in_actualParameters1133 = new BitSet(new long[]{0x0000000000240000L});
+    public static final BitSet FOLLOW_RNDCLOSE_in_actualParameters1148 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_statement_in_statementSequence1175 = new BitSet(new long[]{0x0000000020000002L});
+    public static final BitSet FOLLOW_SEMICOLON_in_statementSequence1182 = new BitSet(new long[]{0x0080000620000000L});
+    public static final BitSet FOLLOW_statement_in_statementSequence1190 = new BitSet(new long[]{0x0000000020000002L});
+    public static final BitSet FOLLOW_IF_in_ifStatement1221 = new BitSet(new long[]{0x0180000008100300L});
+    public static final BitSet FOLLOW_expression_in_ifStatement1230 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_THEN_in_ifStatement1235 = new BitSet(new long[]{0x0080000620000000L});
+    public static final BitSet FOLLOW_statementSequence_in_ifStatement1244 = new BitSet(new long[]{0x00000001C0000000L});
+    public static final BitSet FOLLOW_ELSIF_in_ifStatement1259 = new BitSet(new long[]{0x0180000008100300L});
+    public static final BitSet FOLLOW_expression_in_ifStatement1272 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_THEN_in_ifStatement1283 = new BitSet(new long[]{0x0080000620000000L});
+    public static final BitSet FOLLOW_statementSequence_in_ifStatement1291 = new BitSet(new long[]{0x00000001C0000000L});
+    public static final BitSet FOLLOW_ELSE_in_ifStatement1302 = new BitSet(new long[]{0x0080000620000000L});
+    public static final BitSet FOLLOW_statementSequence_in_ifStatement1311 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_END_in_ifStatement1317 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_WHILE_in_whileStatement1339 = new BitSet(new long[]{0x0180000008100300L});
+    public static final BitSet FOLLOW_expression_in_whileStatement1345 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_DO_in_whileStatement1349 = new BitSet(new long[]{0x0080000620000000L});
+    public static final BitSet FOLLOW_statementSequence_in_whileStatement1355 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_END_in_whileStatement1359 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENT_in_assignment1381 = new BitSet(new long[]{0x0000000010420000L});
+    public static final BitSet FOLLOW_selector_in_assignment1385 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_ASSIGNMENT_in_assignment1389 = new BitSet(new long[]{0x0180000008100300L});
+    public static final BitSet FOLLOW_expression_in_assignment1397 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENT_in_type1421 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ARRAY_in_type1430 = new BitSet(new long[]{0x0180000008100300L});
+    public static final BitSet FOLLOW_expression_in_type1436 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_OF_in_type1441 = new BitSet(new long[]{0x0080000800000000L});
+    public static final BitSet FOLLOW_type_in_type1447 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_simpleExpression_in_expression1476 = new BitSet(new long[]{0x000000000001F802L});
+    public static final BitSet FOLLOW_EQUALS_in_expression1487 = new BitSet(new long[]{0x0180000008100300L});
+    public static final BitSet FOLLOW_simpleExpression_in_expression1494 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_HASH_in_expression1501 = new BitSet(new long[]{0x0180000008100300L});
+    public static final BitSet FOLLOW_simpleExpression_in_expression1508 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_SMALLERTHEN_in_expression1515 = new BitSet(new long[]{0x0180000008100300L});
+    public static final BitSet FOLLOW_simpleExpression_in_expression1521 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_SMALLEREQUAL_in_expression1528 = new BitSet(new long[]{0x0180000008100300L});
+    public static final BitSet FOLLOW_simpleExpression_in_expression1534 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_GREATERTHEN_in_expression1541 = new BitSet(new long[]{0x0180000008100300L});
+    public static final BitSet FOLLOW_simpleExpression_in_expression1547 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_GREATEREQUAL_in_expression1554 = new BitSet(new long[]{0x0180000008100300L});
+    public static final BitSet FOLLOW_simpleExpression_in_expression1560 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ADD_in_simpleExpression1587 = new BitSet(new long[]{0x0180000008100300L});
+    public static final BitSet FOLLOW_SUBTRACT_in_simpleExpression1593 = new BitSet(new long[]{0x0180000008100300L});
+    public static final BitSet FOLLOW_term_in_simpleExpression1611 = new BitSet(new long[]{0x0000000000000702L});
+    public static final BitSet FOLLOW_ADD_in_simpleExpression1620 = new BitSet(new long[]{0x0180000008100300L});
+    public static final BitSet FOLLOW_term_in_simpleExpression1628 = new BitSet(new long[]{0x0000000000000702L});
+    public static final BitSet FOLLOW_SUBTRACT_in_simpleExpression1636 = new BitSet(new long[]{0x0180000008100300L});
+    public static final BitSet FOLLOW_term_in_simpleExpression1643 = new BitSet(new long[]{0x0000000000000702L});
+    public static final BitSet FOLLOW_OR_in_simpleExpression1651 = new BitSet(new long[]{0x0180000008100300L});
+    public static final BitSet FOLLOW_term_in_simpleExpression1653 = new BitSet(new long[]{0x0180000008100300L});
+    public static final BitSet FOLLOW_term_in_simpleExpression1660 = new BitSet(new long[]{0x0000000000000702L});
+    public static final BitSet FOLLOW_factor_in_term1699 = new BitSet(new long[]{0x00000000000000F2L});
+    public static final BitSet FOLLOW_MULTIPLY_in_term1709 = new BitSet(new long[]{0x0180000008100300L});
+    public static final BitSet FOLLOW_factor_in_term1716 = new BitSet(new long[]{0x00000000000000F2L});
+    public static final BitSet FOLLOW_DIVIDE_in_term1723 = new BitSet(new long[]{0x0180000008100300L});
+    public static final BitSet FOLLOW_factor_in_term1730 = new BitSet(new long[]{0x00000000000000F2L});
+    public static final BitSet FOLLOW_MOD_in_term1737 = new BitSet(new long[]{0x0180000008100300L});
+    public static final BitSet FOLLOW_factor_in_term1745 = new BitSet(new long[]{0x00000000000000F2L});
+    public static final BitSet FOLLOW_AMPERSAND_in_term1752 = new BitSet(new long[]{0x0180000008100300L});
+    public static final BitSet FOLLOW_factor_in_term1759 = new BitSet(new long[]{0x00000000000000F2L});
+    public static final BitSet FOLLOW_IDENT_in_factor1781 = new BitSet(new long[]{0x0000000000420000L});
+    public static final BitSet FOLLOW_selector_in_factor1785 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_number_in_factor1796 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RNDOPEN_in_factor1807 = new BitSet(new long[]{0x0180000008100300L});
+    public static final BitSet FOLLOW_expression_in_factor1811 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_RNDCLOSE_in_factor1813 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_TILDE_in_factor1821 = new BitSet(new long[]{0x0180000008100300L});
+    public static final BitSet FOLLOW_factor_in_factor1825 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INTEGER_in_number1844 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FALSE_in_booleann1863 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_TRUE_in_booleann1873 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DOT_in_selector1901 = new BitSet(new long[]{0x0080000000000000L});
+    public static final BitSet FOLLOW_IDENT_in_selector1903 = new BitSet(new long[]{0x0000000000420002L});
+    public static final BitSet FOLLOW_SQROPEN_in_selector1913 = new BitSet(new long[]{0x0180000008100300L});
+    public static final BitSet FOLLOW_expression_in_selector1915 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_SQRCLOSE_in_selector1917 = new BitSet(new long[]{0x0000000000420002L});
 
 }
