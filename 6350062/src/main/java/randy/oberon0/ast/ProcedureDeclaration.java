@@ -34,7 +34,7 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 		return null;
 	}
 	@Override
-	public Value runTypeDeclarations(RuntimeEnvironment environment) throws RuntimeException
+	public void runTypeDeclarations(RuntimeEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Register all the type declarations in the environment
@@ -43,7 +43,6 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 			if (bd instanceof RecordDeclaration)
 				bd.run(environment);
 		}
-		return null;
 	}
 	public Value invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
 	{

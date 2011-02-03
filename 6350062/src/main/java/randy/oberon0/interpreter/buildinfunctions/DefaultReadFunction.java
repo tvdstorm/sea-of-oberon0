@@ -37,9 +37,8 @@ public class DefaultReadFunction implements IInvokableFunction
 		}
 	}
 	@Override
-	public Value runTypeDeclarations(RuntimeEnvironment environment) throws RuntimeException
+	public void runTypeDeclarations(RuntimeEnvironment environment) throws RuntimeException
 	{
 		// Leeg
-		return null;
 	}
 }

@@ -9,5 +9,5 @@ public interface IInvokableFunction
 {
 	public abstract String getName();
 	public abstract Value invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException;
-	public Value runTypeDeclarations(RuntimeEnvironment environment) throws RuntimeException;
+	public abstract void runTypeDeclarations(RuntimeEnvironment environment) throws RuntimeException;
 }
