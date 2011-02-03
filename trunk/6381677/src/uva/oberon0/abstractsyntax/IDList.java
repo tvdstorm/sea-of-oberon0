@@ -1,7 +1,8 @@
 package uva.oberon0.abstractsyntax;
 
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 
 /**
@@ -10,10 +11,11 @@ import java.util.Iterator;
  */
 public class IDList implements Iterable<ID> 
 {
-	private final ArrayList<ID> _list = new ArrayList<ID>();
+	private final List<ID> _list;
 
 	public IDList()
 	{
+		_list = new LinkedList<ID>();
 	}
 	
 	/**

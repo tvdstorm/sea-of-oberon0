@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 D:\\Projects UVA\\Oberon.g 2011-02-03 13:26:29
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 D:\\Projects UVA\\Oberon.g 2011-02-03 14:59:37
 
 package uva.oberon0.parser;
 
@@ -57,7 +57,7 @@ public class OberonLexer extends Lexer {
     public static final int CALL_WRITE=36;
     public static final int CALL_WRITELN=37;
     public static final int ASSIGN=38;
-    public static final int INT_TYPE=39;
+    public static final int INTEGER=39;
     public static final int ARRAY=40;
     public static final int OF=41;
     public static final int ID=42;
@@ -921,10 +921,10 @@ public class OberonLexer extends Lexer {
     }
     // $ANTLR end "ASSIGN"
 
-    // $ANTLR start "INT_TYPE"
-    public final void mINT_TYPE() throws RecognitionException {
+    // $ANTLR start "INTEGER"
+    public final void mINTEGER() throws RecognitionException {
         try {
-            int _type = INT_TYPE;
+            int _type = INTEGER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
             // D:\\Projects UVA\\Oberon.g:69:9: ( 'INTEGER' )
             // D:\\Projects UVA\\Oberon.g:69:11: 'INTEGER'
@@ -940,7 +940,7 @@ public class OberonLexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "INT_TYPE"
+    // $ANTLR end "INTEGER"
 
     // $ANTLR start "ARRAY"
     public final void mARRAY() throws RecognitionException {
@@ -989,8 +989,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:228:6: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
-            // D:\\Projects UVA\\Oberon.g:228:8: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // D:\\Projects UVA\\Oberon.g:218:6: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+            // D:\\Projects UVA\\Oberon.g:218:8: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -1001,7 +1001,7 @@ public class OberonLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // D:\\Projects UVA\\Oberon.g:228:32: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // D:\\Projects UVA\\Oberon.g:218:32: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             loop1:
             do {
                 int alt1=2;
@@ -1050,10 +1050,10 @@ public class OberonLexer extends Lexer {
         try {
             int _type = INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:229:7: ( ( '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' )+ )
-            // D:\\Projects UVA\\Oberon.g:229:9: ( '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' )+
+            // D:\\Projects UVA\\Oberon.g:219:7: ( ( '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' )+ )
+            // D:\\Projects UVA\\Oberon.g:219:9: ( '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' )+
             {
-            // D:\\Projects UVA\\Oberon.g:229:9: ( '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' )+
+            // D:\\Projects UVA\\Oberon.g:219:9: ( '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' )+
             int cnt2=0;
             loop2:
             do {
@@ -1107,10 +1107,10 @@ public class OberonLexer extends Lexer {
         try {
             int _type = WHITESPACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:231:8: ( ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+ )
-            // D:\\Projects UVA\\Oberon.g:231:16: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
+            // D:\\Projects UVA\\Oberon.g:221:8: ( ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+ )
+            // D:\\Projects UVA\\Oberon.g:221:16: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
             {
-            // D:\\Projects UVA\\Oberon.g:231:16: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
+            // D:\\Projects UVA\\Oberon.g:221:16: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
             int cnt3=0;
             loop3:
             do {
@@ -1161,7 +1161,7 @@ public class OberonLexer extends Lexer {
     // $ANTLR end "WHITESPACE"
 
     public void mTokens() throws RecognitionException {
-        // D:\\Projects UVA\\Oberon.g:1:8: ( T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | IF | THEN | ELSE | ELSIF | END | WHILE | EQUAL | UNEQUAL | LESS | LESS_EQUAL | GREAT | GREAT_EQUAL | MIN | PLUS | MUL | DIV | MOD | AND | OR | NOT | DECLARATIONS | INPUTVARS | CALL | CALL_READ | CALL_WRITE | CALL_WRITELN | CONST | VAR | ASSIGN | INT_TYPE | ARRAY | OF | ID | INT | WHITESPACE )
+        // D:\\Projects UVA\\Oberon.g:1:8: ( T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | IF | THEN | ELSE | ELSIF | END | WHILE | EQUAL | UNEQUAL | LESS | LESS_EQUAL | GREAT | GREAT_EQUAL | MIN | PLUS | MUL | DIV | MOD | AND | OR | NOT | DECLARATIONS | INPUTVARS | CALL | CALL_READ | CALL_WRITE | CALL_WRITELN | CONST | VAR | ASSIGN | INTEGER | ARRAY | OF | ID | INT | WHITESPACE )
         int alt4=47;
         alt4 = dfa4.predict(input);
         switch (alt4) {
@@ -1453,42 +1453,42 @@ public class OberonLexer extends Lexer {
                 }
                 break;
             case 42 :
-                // D:\\Projects UVA\\Oberon.g:1:270: INT_TYPE
+                // D:\\Projects UVA\\Oberon.g:1:270: INTEGER
                 {
-                mINT_TYPE(); 
+                mINTEGER(); 
 
                 }
                 break;
             case 43 :
-                // D:\\Projects UVA\\Oberon.g:1:279: ARRAY
+                // D:\\Projects UVA\\Oberon.g:1:278: ARRAY
                 {
                 mARRAY(); 
 
                 }
                 break;
             case 44 :
-                // D:\\Projects UVA\\Oberon.g:1:285: OF
+                // D:\\Projects UVA\\Oberon.g:1:284: OF
                 {
                 mOF(); 
 
                 }
                 break;
             case 45 :
-                // D:\\Projects UVA\\Oberon.g:1:288: ID
+                // D:\\Projects UVA\\Oberon.g:1:287: ID
                 {
                 mID(); 
 
                 }
                 break;
             case 46 :
-                // D:\\Projects UVA\\Oberon.g:1:291: INT
+                // D:\\Projects UVA\\Oberon.g:1:290: INT
                 {
                 mINT(); 
 
                 }
                 break;
             case 47 :
-                // D:\\Projects UVA\\Oberon.g:1:295: WHITESPACE
+                // D:\\Projects UVA\\Oberon.g:1:294: WHITESPACE
                 {
                 mWHITESPACE(); 
 
@@ -1733,7 +1733,7 @@ public class OberonLexer extends Lexer {
             this.transition = DFA4_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | IF | THEN | ELSE | ELSIF | END | WHILE | EQUAL | UNEQUAL | LESS | LESS_EQUAL | GREAT | GREAT_EQUAL | MIN | PLUS | MUL | DIV | MOD | AND | OR | NOT | DECLARATIONS | INPUTVARS | CALL | CALL_READ | CALL_WRITE | CALL_WRITELN | CONST | VAR | ASSIGN | INT_TYPE | ARRAY | OF | ID | INT | WHITESPACE );";
+            return "1:1: Tokens : ( T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | IF | THEN | ELSE | ELSIF | END | WHILE | EQUAL | UNEQUAL | LESS | LESS_EQUAL | GREAT | GREAT_EQUAL | MIN | PLUS | MUL | DIV | MOD | AND | OR | NOT | DECLARATIONS | INPUTVARS | CALL | CALL_READ | CALL_WRITE | CALL_WRITELN | CONST | VAR | ASSIGN | INTEGER | ARRAY | OF | ID | INT | WHITESPACE );";
         }
     }
  

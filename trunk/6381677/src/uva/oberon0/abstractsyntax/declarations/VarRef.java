@@ -2,6 +2,8 @@ package uva.oberon0.abstractsyntax.declarations;
 
 import uva.oberon0.abstractsyntax.ID;
 import uva.oberon0.abstractsyntax.types.BaseType;
+import uva.oberon0.runtime.Scope;
+import uva.oberon0.runtime.ScopeValueBase;
 
 /**
  * @author Chiel Labee
@@ -13,4 +15,10 @@ public class VarRef extends Var {
 	{
 		super(id, type);
 	}
+	
+	@Override
+	public ScopeValueBase instantiate(Scope scope) {
+		return scope.getValueReference(getID());
+	}
+
 }

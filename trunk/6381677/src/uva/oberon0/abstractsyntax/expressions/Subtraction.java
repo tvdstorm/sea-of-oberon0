@@ -1,6 +1,5 @@
 package uva.oberon0.abstractsyntax.expressions;
 
-import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.runtime.Scope;
 
 /**
@@ -9,7 +8,7 @@ import uva.oberon0.runtime.Scope;
  */
 public class Subtraction extends BaseExpressionBinary {
 
-	public Subtraction(BaseNode left, BaseNode right) {
+	public Subtraction(BaseExpression left, BaseExpression right) {
 		super(left, right);
 	}
 

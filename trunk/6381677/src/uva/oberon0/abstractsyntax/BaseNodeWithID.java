@@ -11,7 +11,7 @@ public abstract class BaseNodeWithID extends BaseNode
 
 	protected BaseNodeWithID(ID id)
 	{
-		assert id != null : "No ID available!";
+		assert id != null : "No ID available for current Node!";
 		
 		_id = id;
 	}

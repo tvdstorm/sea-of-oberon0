@@ -6,19 +6,21 @@ import uva.oberon0.abstractsyntax.types.ArrayType;
 
 /**
  * @author Chiel Labee
- * This class represents an Integer Array based Execution Scope Value.
+ * This class represents an Array based Execution Scope Value.
 */
-public class ScopeValueIntArray extends ScopeValueBase 
+public class ScopeValueArray extends ScopeValueBase 
 {
-	public ScopeValueIntArray(Scope scope, ArrayType type)
+	public ScopeValueArray(Scope scope, ArrayType type)
 	{
 		int arrayLength = type.getLength().eval(scope);
-		_value = new ScopeValueInt[arrayLength];
+		
+		_value = new ScopeValueBase[arrayLength];
+		
 		for (int i = 0; i<arrayLength; i++)
-			_value[i] = new ScopeValueInt(scope, 0);
+			_value[i] = type.getType().instantiate(scope);
 	}
 	
-	private ScopeValueInt[] _value;
+	private ScopeValueBase[] _value;
 
 	@Override
 	public int getValue(Scope scope, BaseNode index) 
