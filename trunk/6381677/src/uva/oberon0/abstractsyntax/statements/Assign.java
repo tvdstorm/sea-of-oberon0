@@ -12,9 +12,10 @@ import uva.oberon0.abstractsyntax.ID;
 */
 public class Assign extends BaseStatement {
 
-	public Assign(CommonTree parserTree) 
+	public Assign(ID id, BaseNode value)
 	{
-		super(parserTree);
+		_id = id;
+		_value = value;
 	}
 
 	//Represents the Identifier Node that needs to be assigned.
@@ -22,31 +23,11 @@ public class Assign extends BaseStatement {
 	//Represents the Value Node that needs to be set to the Identifier Node.
 	private BaseNode _value = null;
 	
-	@Override
-	protected boolean addChildNode(BaseNode child)
-	{
-		//Set ID field.
-		if (child instanceof ID && _id == null)
-		{
-			_id = (ID)child;
-			return true;
-		}	
-
-		//Determine if the Value Node is not yet set.
-		if (_value == null)
-		{
-			_value = child;
-			return true;
-		}
-		
-		return false;
-	}
 	
 	@Override
 	public boolean isValid()
 	{
-		return super.isValid()
-		&& _id != null
+		return _id != null
 		&& _value != null;
 	}
 	

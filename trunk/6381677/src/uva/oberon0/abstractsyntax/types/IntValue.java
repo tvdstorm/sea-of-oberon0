@@ -10,14 +10,12 @@ import uva.oberon0.runtime.Scope;
  * @author Chiel Labee
  * This class represents an Integer Value.
 */
-public class IntValue extends BaseNode
+public class IntValue extends BaseType
 {
-	public IntValue(CommonTree parserTree)
+	public IntValue(String value)
 	{
-		super(parserTree);
-
 		//Set Value field.
-		setValue(parserTree.getText());
+		setValue(value);
 	}
 
 	private int _value = 0;
@@ -36,10 +34,9 @@ public class IntValue extends BaseNode
 			_value = Integer.parseInt(value);
 		}
 	}
-	
 	@Override
-	protected boolean addChildNode(BaseNode child)
-	{
+	public boolean isValid() {
+		// TODO Auto-generated method stub
 		return false;
 	}
 	
@@ -48,4 +45,5 @@ public class IntValue extends BaseNode
 	{
 		return getValue();
 	}
+	
 }

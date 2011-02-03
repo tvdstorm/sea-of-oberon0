@@ -1,5 +1,6 @@
 package uva.oberon0.abstractsyntax;
 
+import org.antlr.runtime.Token;
 import org.antlr.runtime.tree.CommonTree;
 
 import uva.oberon0.abstractsyntax.types.IntValue;
@@ -12,12 +13,9 @@ import uva.oberon0.runtime.Scope;
  */
 public class ID extends BaseNode
 {
-	public ID(CommonTree parserTree)
+	public ID(String value)
 	{
-		super(parserTree);
-
-		//Set Value field.
-		_value = parserTree.getText();
+		_value = value;
 	}
 	
 	private String _value = null;
@@ -27,6 +25,18 @@ public class ID extends BaseNode
 	public String getValue()
 	{
 		return _value;
+	}
+	
+	private ID _subID = null;
+	public ID addID(String value)
+	{
+		_subID = new ID(value);
+		return _subID;
+	}
+	public ID addIndexID(BaseNode value)
+	{
+		_index = value;
+		return this;
 	}
 	
 	private BaseNode _index = null;
@@ -44,24 +54,11 @@ public class ID extends BaseNode
 	{
 		return _index.eval(scope);
 	}
-	
-	@Override
-	protected boolean addChildNode(uva.oberon0.abstractsyntax.BaseNode child)
-	{
-		if (child instanceof ID || child instanceof IntValue)
-		{
-			_index = child;
-			return true;
-		}
-		
-		return false;
-	}
 
 	@Override
 	public boolean isValid()
 	{
-		return super.isValid()
-		&& _value != null;
+		return _value != null;
 	}
 
 	@Override 

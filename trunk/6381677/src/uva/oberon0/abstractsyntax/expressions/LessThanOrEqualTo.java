@@ -2,12 +2,13 @@ package uva.oberon0.abstractsyntax.expressions;
 
 import org.antlr.runtime.tree.CommonTree;
 
+import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.runtime.Scope;
 
 public class LessThanOrEqualTo extends BaseExpressionBinary {
 
-	public LessThanOrEqualTo(CommonTree parserTree) {
-		super(parserTree);
+	public LessThanOrEqualTo(BaseNode left, BaseNode right) {
+		super(left, right);
 	}
 
 	@Override

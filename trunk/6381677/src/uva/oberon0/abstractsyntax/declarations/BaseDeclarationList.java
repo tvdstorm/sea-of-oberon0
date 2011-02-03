@@ -14,11 +14,17 @@ import uva.oberon0.runtime.Scope;
 */
 public class BaseDeclarationList extends BaseNode 
 {
-	public BaseDeclarationList(CommonTree parserTree)
+	public BaseDeclarationList()
 	{
-		super(parserTree);
 	}
-	
+		
+	public void add(BaseDeclaration item)
+	{
+		_items.add(item);
+		
+		while (item.canSplit())
+			_items.add((BaseDeclaration)item.split());
+	}
 	protected ArrayList<BaseDeclaration> _items = new ArrayList<BaseDeclaration>();
 	/**
 	 * Gets the List of Declarations.
@@ -36,15 +42,8 @@ public class BaseDeclarationList extends BaseNode
 	}
 
 	@Override
-	protected boolean addChildNode(BaseNode child)
-	{
-		if (child instanceof BaseDeclaration)
-		{
-			_items.add((BaseDeclaration)child);
-			return true;
-		}
-		
-		return false;
+	public boolean isValid() {
+		return _items.size()>0;
 	}
 	
 	@Override
@@ -53,4 +52,5 @@ public class BaseDeclarationList extends BaseNode
 		assert false : "Unsupported eval!";
 		return 0;
 	}
+
 }

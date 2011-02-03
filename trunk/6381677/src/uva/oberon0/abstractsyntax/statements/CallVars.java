@@ -14,9 +14,8 @@ import uva.oberon0.runtime.Scope;
 */
 public class CallVars extends BaseNode 
 {
-	public CallVars(CommonTree parserTree)
+	public CallVars()
 	{
-		super(parserTree);
 	}
 
 	private ArrayList<BaseNode> _items = new ArrayList<BaseNode>();
@@ -34,16 +33,16 @@ public class CallVars extends BaseNode
 	{
 		return _items.get(index);
 	}
-	@Override
-	protected boolean addChildNode(BaseNode child) 
-	{
-		_items.add(child);
-		return true;
-	}
+
 	@Override
 	public int eval(Scope scope) 
 	{
 		assert false : "Unsupported Eval!";
 		return 0;
+	}
+	
+	@Override
+	public boolean isValid() {
+		return true;
 	}
 }

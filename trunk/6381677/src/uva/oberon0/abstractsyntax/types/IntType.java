@@ -10,23 +10,23 @@ import uva.oberon0.runtime.Scope;
  * @author Chiel Labee
  * This class represents an Integer Value Type.
 */
-public class Int  extends BaseNode
+public class IntType  extends BaseType
 {
-	public Int(CommonTree parserTree)
+	public IntType()
 	{
-		super(parserTree);
 	}
 
 	@Override
-	protected boolean addChildNode(BaseNode child) 
-	{
+	public boolean isValid() {
+		// TODO Auto-generated method stub
 		return false;
 	}
-
+	
 	@Override
 	public int eval(Scope scope) 
 	{
 		assert false : "Unsupported Eval!";
 		return 0;
 	}
+
 }

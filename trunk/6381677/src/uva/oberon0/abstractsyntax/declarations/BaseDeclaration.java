@@ -3,6 +3,7 @@ package uva.oberon0.abstractsyntax.declarations;
 import org.antlr.runtime.tree.CommonTree;
 
 import uva.oberon0.abstractsyntax.BaseNodeWithID;
+import uva.oberon0.abstractsyntax.ID;
 
 
 /**
@@ -10,10 +11,10 @@ import uva.oberon0.abstractsyntax.BaseNodeWithID;
  * This class represents a Declaration Node.
  * This class is abstract.
 */
-public abstract class BaseDeclaration extends BaseNodeWithID 
+public abstract class BaseDeclaration extends BaseNodeWithID
 {
-	protected BaseDeclaration(CommonTree parserTree) 
+	protected BaseDeclaration(ID id) 
 	{
-		super(parserTree);
+		super(id);
 	}
 }

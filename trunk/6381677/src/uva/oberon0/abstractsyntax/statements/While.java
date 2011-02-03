@@ -11,9 +11,8 @@ import uva.oberon0.runtime.Scope;
 */
 public class While extends BaseWithCondition 
 {
-	public While(CommonTree parserTree)
+	public While()
 	{
-		super(parserTree);
 	}
 	
 	@Override

@@ -14,9 +14,8 @@ import uva.oberon0.runtime.Scope;
 */
 public class If extends BaseWithCondition
 {
-	public If(CommonTree parserTree)
+	public If()
 	{
-		super(parserTree);
 	}
 
 	private ArrayList<IfPartForElsIf> _elsIfs = new ArrayList<IfPartForElsIf>(0);
@@ -29,27 +28,6 @@ public class If extends BaseWithCondition
 	public IfPartForElse getElseStatement()
 	{
 		return _elseStatement;
-	}
-
-	@Override
-	protected boolean addChildNode(BaseNode child)
-	{
-		if (super.addChildNode(child))
-			return true;
-		
-		if (child instanceof IfPartForElsIf)
-		{
-			_elsIfs.add((IfPartForElsIf)child);
-			return true;
-		}
-		
-		if (child instanceof IfPartForElse)
-		{
-			_elseStatement = (IfPartForElse)child;
-			return true;
-		}
-		
-		return false;
 	}
 
 	@Override

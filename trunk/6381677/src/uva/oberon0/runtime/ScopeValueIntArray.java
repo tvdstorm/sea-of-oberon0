@@ -3,6 +3,7 @@ package uva.oberon0.runtime;
 import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.abstractsyntax.ID;
 import uva.oberon0.abstractsyntax.declarations.Var;
+import uva.oberon0.abstractsyntax.types.ArrayType;
 
 /**
  * @author Chiel Labee
@@ -10,9 +11,9 @@ import uva.oberon0.abstractsyntax.declarations.Var;
 */
 public class ScopeValueIntArray extends ScopeValueBase 
 {
-	public ScopeValueIntArray(Scope scope, Var var)
+	public ScopeValueIntArray(Scope scope, ArrayType type)
 	{
-		int arrayLength = var.getArrayLength(scope);
+		int arrayLength = type.getLength().eval(scope);
 		_value = new ScopeValueInt[arrayLength];
 		for (int i = 0; i<arrayLength; i++)
 			_value[i] = new ScopeValueInt(scope, 0);

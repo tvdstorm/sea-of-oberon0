@@ -3,7 +3,9 @@ package uva.oberon0.abstractsyntax.declarations;
 import org.antlr.runtime.tree.CommonTree;
 
 import uva.oberon0.abstractsyntax.BaseNode;
+import uva.oberon0.abstractsyntax.ID;
 import uva.oberon0.abstractsyntax.declarations.Body;
+import uva.oberon0.abstractsyntax.statements.BaseStatementList;
 import uva.oberon0.runtime.Scope;
 
 
@@ -13,58 +15,51 @@ import uva.oberon0.runtime.Scope;
 */
 public class Procedure extends BaseDeclaration 
 {
-	public Procedure(CommonTree parserTree)
+	public Procedure(ID id, BaseDeclarationList parameters, BaseDeclarationList declarations, BaseStatementList statements)
 	{
-		super(parserTree);
+		super(id);
+		
+		_parameters = parameters;
+		_declarations = declarations;
+		_statements = statements;
 	}
-	
-	private BaseDeclarationList _inputVars = null;
+	private BaseDeclarationList _parameters = null;
+	public BaseDeclarationList getParameters()
+	{
+		return _parameters;
+	}
 	/**
 	 * Gets a specific Declaration from the Input Variables List based on the index number value.
 	 */
-	public BaseDeclaration getInputVar(int index)
+	public BaseDeclaration getParameter(int index)
 	{
-		return _inputVars.getItem(index);
+		return _parameters.getItem(index);
 	}
-	private Body _body = null;
+	private BaseDeclarationList _declarations = null;
+	public BaseDeclarationList getDeclarations()
+	{
+		return _declarations;
+	}
+	
+	private BaseStatementList _statements = null;
 	/**
 	 * Gets the Body Structure of the current Procedure.
 	 */
-	public Body getBody()
+	public BaseStatementList getBody()
 	{
-		return _body;
-	}
-
-	@Override
-	protected boolean addChildNode(BaseNode child)
-	{
-		if (super.addChildNode(child))
-			return true;
-		
-		if (child instanceof BaseDeclarationList)
-		{
-			_inputVars = (BaseDeclarationList)child;
-			return true;
-		}
-		if (child instanceof Body)
-		{
-			_body = (Body)child;
-			return true;
-		}
-		
-		return false;
+		return _statements;
 	}
 	
 	@Override
 	public boolean isValid()
 	{
 		return super.isValid()
-		&& _body != null;
+		&& _statements != null;
 	}
 	
 	@Override
 	public int eval(Scope scope)
 	{
-		return _body.eval(scope);
+		return _statements.eval(scope);
 	}
 }

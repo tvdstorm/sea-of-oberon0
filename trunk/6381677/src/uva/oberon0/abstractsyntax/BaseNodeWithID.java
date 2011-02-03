@@ -1,5 +1,6 @@
 package uva.oberon0.abstractsyntax;
 
+import org.antlr.runtime.Token;
 import org.antlr.runtime.tree.CommonTree;
 
 /**
@@ -9,11 +10,11 @@ import org.antlr.runtime.tree.CommonTree;
  */
 public abstract class BaseNodeWithID extends BaseNode
 {
-	protected BaseNodeWithID(CommonTree parserTree)
+	protected BaseNodeWithID(ID id)
 	{
-		super(parserTree);
+		_id = id;
 	}
-
+	
 	private ID _id = null;
 	/**
 	 * Gets the ID of the current Abstract Syntax Tree Node.
@@ -29,24 +30,10 @@ public abstract class BaseNodeWithID extends BaseNode
 	{
 		_id = value;
 	}
-
-	@Override
-	protected boolean addChildNode(uva.oberon0.abstractsyntax.BaseNode child)
-	{
-		//Set ID field.
-		if (child instanceof ID && _id == null)
-		{
-			_id = (ID)child;
-			return true;
-		}
-		
-		return false;
-	}
 	
 	@Override
 	public boolean isValid()
 	{
-		return super.isValid()
-		&& _id != null;
+		return _id != null;
 	}
 }

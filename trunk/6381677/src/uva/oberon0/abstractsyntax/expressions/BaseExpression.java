@@ -10,9 +10,4 @@ import uva.oberon0.abstractsyntax.BaseNode;
 */
 public abstract class BaseExpression extends BaseNode 
 {	
-	public BaseExpression(CommonTree parserTree) 
-	{
-		super(parserTree);
-	}
-
 }

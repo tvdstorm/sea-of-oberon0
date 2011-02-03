@@ -10,7 +10,6 @@ public class IfPartForThen extends BaseStatementList
 {
 	public IfPartForThen(CommonTree parserTree)
 	{
-		super(parserTree);
 	}
 
 }

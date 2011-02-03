@@ -2,12 +2,13 @@ package uva.oberon0.abstractsyntax.expressions;
 
 import org.antlr.runtime.tree.CommonTree;
 
+import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.runtime.Scope;
 
 public class Division extends BaseExpressionBinary {
 
-	public Division(CommonTree parserTree) {
-		super(parserTree);
+	public Division(BaseNode left, BaseNode right) {
+		super(left, right);
 	}
 
 	@Override

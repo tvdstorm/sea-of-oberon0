@@ -11,9 +11,9 @@ import uva.oberon0.runtime.Scope;
 */
 public class IfPartForElsIf extends BaseWithCondition 
 {
-	public IfPartForElsIf(CommonTree parserTree)
+	public IfPartForElsIf()
 	{
-		super(parserTree);
+		super();
 	}
 
 	@Override
