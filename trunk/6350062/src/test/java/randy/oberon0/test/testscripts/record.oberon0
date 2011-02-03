@@ -25,7 +25,16 @@ PROCEDURE test(in: ObjDesc);
     t.second := in.type;
     Write(t.first);
     Write(t.second);
+    in.name := in.name + 1;
   END test;
+PROCEDURE test2(VAR in: ObjDesc);
+  BEGIN
+    Write(in.name);
+    Write(in.type);
+    
+    in.name := in.name + 4;
+    in.type := in.type - 3;
+  END test2;
 BEGIN
 
 Read(o.name);
@@ -41,6 +50,13 @@ ELSE
 END;
 
 test(o);
+
+Write(o.name);
+
+test2(o);
+
+Write(o.name);
+Write(o.type);
 
 END Record.
 

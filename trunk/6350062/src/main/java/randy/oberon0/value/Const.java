@@ -34,4 +34,9 @@ public class Const extends Value
 	{
 		return value.equalsToValue(_value);
 	}
+	@Override
+	public Value clone()
+	{
+		return new Const(value);
+	}
 }

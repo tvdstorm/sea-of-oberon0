@@ -41,4 +41,9 @@ public class Boolean extends Value
 			return false;
 		return ((Boolean)_value).value == value;
 	}
+	@Override
+	public Value clone()
+	{
+		return new Boolean(value);
+	}
 }

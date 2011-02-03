@@ -696,6 +696,14 @@ public class ASTNodeTest
 			Assert.assertTrue(functions.popOutput().equals("" + a));
 			Assert.assertTrue(functions.popOutput().equals("" + b));
 			
+			Assert.assertTrue(functions.popOutput().equals("" + a));
+			
+			Assert.assertTrue(functions.popOutput().equals("" + a));
+			Assert.assertTrue(functions.popOutput().equals("" + b));
+			
+			Assert.assertTrue(functions.popOutput().equals("" + (a + 4)));
+			Assert.assertTrue(functions.popOutput().equals("" + (b - 3)));
+			
 			Assert.assertTrue(functions.outputIsEmpty());
 		}
 	}
@@ -703,7 +711,6 @@ public class ASTNodeTest
 	// TODO: JavaDoc, meer comments, asserts, finals?
 	// TODO: onnodige EXPRESSION's uit de tree halen
 	// TODO: scoping fixen
-	// TODO: References terug brengen
 	@Ignore
 	private void prepareTestThrowException(String testName) throws Exception
 	{

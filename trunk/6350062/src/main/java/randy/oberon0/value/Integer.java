@@ -41,4 +41,9 @@ public class Integer extends Value
 			return false;
 		return ((Integer)_value).value == value;
 	}
+	@Override
+	public Value clone()
+	{
+		return new Integer(value);
+	}
 }

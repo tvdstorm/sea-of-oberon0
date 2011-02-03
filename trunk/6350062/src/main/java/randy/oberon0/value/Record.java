@@ -16,6 +16,10 @@ public class Record extends Value
 			members.put(name, _members.get(name).instantiate(environment));
 		}
 	}
+	private Record()
+	{
+		members = new HashMap<String, Value>();
+	}
 	public Value getMemberValue(String name)
 	{
 		assert(name != null);
@@ -34,7 +38,7 @@ public class Record extends Value
 		members = new HashMap<String, Value>();
 		for (String key : v.members.keySet())
 		{
-			members.put(key, v.members.get(key)); // TODO: copy van maken
+			members.put(key, v.members.get(key).clone());
 		}
 	}
 	@Override
@@ -71,5 +75,15 @@ public class Record extends Value
 				return false;
 		}
 		return true;
+	}
+	@Override
+	public Value clone()
+	{
+		Record record = new Record();
+		for (String name : members.keySet())
+		{
+			record.members.put(name, members.get(name).clone());
+		}
+		return record;
 	}
 }
