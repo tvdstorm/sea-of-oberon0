@@ -1,9 +1,5 @@
 package uva.oberon0.abstractsyntax;
 
-import org.antlr.runtime.Token;
-import org.antlr.runtime.tree.CommonTree;
-
-import uva.oberon0.abstractsyntax.types.IntValue;
 import uva.oberon0.runtime.Scope;
 
 

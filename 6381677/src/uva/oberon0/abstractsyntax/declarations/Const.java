@@ -1,7 +1,6 @@
 package uva.oberon0.abstractsyntax.declarations;
 
-import org.antlr.runtime.tree.CommonTree;
-
+import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.abstractsyntax.ID;
 import uva.oberon0.runtime.Scope;
 
@@ -12,9 +11,11 @@ import uva.oberon0.runtime.Scope;
 */
 public class Const extends BaseDeclaration
 {
-	public Const(ID id)
+	public Const(ID id, BaseNode expression)
 	{
 		super(id);
+		
+		_expression = expression;
 	}
 
 	private uva.oberon0.abstractsyntax.BaseNode _expression = null;

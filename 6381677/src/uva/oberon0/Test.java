@@ -43,7 +43,8 @@ public class Test
 		scope.addValue(new ID("r"), new ScopeValueInt(scope, 0));
 		module.eval(scope);
 		
-		if (scope.getValue(new ID("r")) != resultExpected)
+		int result = scope.getValue(new ID("r"));
+		if (result != resultExpected)
 		{
 			System.out.println("ERROR: Unable to evaluate [" + name + "].");
 			assert false;
@@ -131,8 +132,11 @@ public class Test
 	{
 		runTest("Statement Assign", "r:=1", 1);
 		runTest("Statement Assign with Expression", "r:=1+1", 2);
+		runTest("Statement Multiple Assign", "VAR i,i2,i3: INTEGER; BEGIN i:=1;i2:=2; i3:=3; r:=((i = 1) & (i2 = 2) & (i3 = 3)) END");
 		runTest("Statement Complex Assign", "VAR i,i2: INTEGER; BEGIN i2:=3; i:=i2; r:=((i = 3) & (i = i2)) END");
 		runTest("Statement Complex Assign", "VAR i,i2: INTEGER; BEGIN i2:=2; i:=i2+1; r:=((i = 3) & (i # i2) & (i = i2+1)) END");
+		runTest("Statement Array Assign", "VAR array: ARRAY 1 OF INTEGER; BEGIN array[0]:=1; r:=array[0] END");
+		runTest("Statement Array Assign", "VAR array: ARRAY 2 OF INTEGER; i: INTEGER; BEGIN i:=1; array[i]:=1; r:=array[i] END");
 		runTest("Statement ByValue Assign", "VAR i,i2: INTEGER; " +
 				"PROCEDURE SetValue(x, y :INTEGER); BEGIN x:=y END SetValue; " +
 				"BEGIN i:=2; i2:=3; SetValue(i,i2); r:=((i = 2) & (i # i2)) END");
@@ -168,6 +172,6 @@ public class Test
 				"x := y; " +
 				"y := temp " +
 				"END Swap;" +
-				"BEGIN i:=0; j:=1; Swap(i,j); Assert((i = 1) & (j = 0)) END");
+				"BEGIN i:=0; j:=1; Swap(i,j); r:=((i = 1) & (j = 0)) END");
 	}
 }

@@ -2,9 +2,6 @@ package uva.oberon0.abstractsyntax.statements;
 
 import java.util.ArrayList;
 
-import org.antlr.runtime.tree.CommonTree;
-
-import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.runtime.Scope;
 
 

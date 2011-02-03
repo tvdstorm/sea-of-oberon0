@@ -1,9 +1,5 @@
 package uva.oberon0.abstractsyntax.statements;
 
-import org.antlr.runtime.tree.CommonTree;
-
-import uva.oberon0.abstractsyntax.BaseNode;
-
 
 /**
  * @author Chiel Labee
@@ -12,10 +8,10 @@ import uva.oberon0.abstractsyntax.BaseNode;
  */
 public abstract class BaseWithList extends BaseStatement {
 
-	protected BaseWithList() 
+	protected BaseWithList(BaseStatementList statements) 
 	{
 		super();
-		
+		_statements = statements;
 	}
 
 	private BaseStatementList _statements = null;

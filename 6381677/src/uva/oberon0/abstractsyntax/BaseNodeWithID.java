@@ -1,8 +1,5 @@
 package uva.oberon0.abstractsyntax;
 
-import org.antlr.runtime.Token;
-import org.antlr.runtime.tree.CommonTree;
-
 /**
  * @author Chiel Labee
  * This class represents an Abstract Syntax Tree Node containing an Identifier Node.

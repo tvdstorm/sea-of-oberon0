@@ -2,8 +2,6 @@ package uva.oberon0.abstractsyntax.statements;
 
 import java.util.ArrayList;
 
-import org.antlr.runtime.tree.CommonTree;
-
 import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.runtime.Scope;
 
@@ -12,9 +10,9 @@ import uva.oberon0.runtime.Scope;
  * @author Chiel Labee
  * This class represents a Method Call Variable List.
 */
-public class CallVars extends BaseNode 
+public class CallActualParameters extends BaseNode 
 {
-	public CallVars()
+	public CallActualParameters()
 	{
 	}
 

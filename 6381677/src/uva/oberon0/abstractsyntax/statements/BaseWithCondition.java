@@ -1,9 +1,6 @@
 package uva.oberon0.abstractsyntax.statements;
 
-import org.antlr.runtime.tree.CommonTree;
-
 import uva.oberon0.abstractsyntax.BaseNode;
-import uva.oberon0.abstractsyntax.expressions.BaseExpression;
 
 
 /**
@@ -13,12 +10,15 @@ import uva.oberon0.abstractsyntax.expressions.BaseExpression;
  */
 public abstract class BaseWithCondition extends BaseWithList
 {
-	protected BaseWithCondition()
+	protected BaseWithCondition(BaseNode expression, BaseStatementList statements)
 	{
+		super(statements);
+		
+		_expression = expression;
 	}
 
-	private BaseExpression _expression = null;
-	protected BaseExpression getExpression()
+	private BaseNode _expression = null;
+	protected BaseNode getExpression()
 	{
 		return _expression;
 	}

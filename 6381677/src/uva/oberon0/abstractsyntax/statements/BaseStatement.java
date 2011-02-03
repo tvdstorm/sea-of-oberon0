@@ -1,7 +1,5 @@
 package uva.oberon0.abstractsyntax.statements;
 
-import org.antlr.runtime.tree.CommonTree;
-
 /**
  * @author Chiel Labee
  * This class represents a Statement Node.

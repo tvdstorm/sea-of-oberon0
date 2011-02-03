@@ -1,7 +1,5 @@
 package uva.oberon0.abstractsyntax.expressions;
 
-import org.antlr.runtime.tree.CommonTree;
-
 import uva.oberon0.abstractsyntax.BaseNode;
 
 public abstract class BaseExpressionBinary extends BaseExpression {

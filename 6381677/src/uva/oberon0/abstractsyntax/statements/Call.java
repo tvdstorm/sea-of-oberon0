@@ -1,10 +1,6 @@
 package uva.oberon0.abstractsyntax.statements;
 
-import org.antlr.runtime.tree.CommonTree;
-
 import uva.oberon0.abstractsyntax.BaseNode;
-import uva.oberon0.abstractsyntax.ID;
-import uva.oberon0.runtime.Scope;
 
 
 /**
@@ -13,15 +9,15 @@ import uva.oberon0.runtime.Scope;
 */
 public abstract class Call extends BaseStatement
 {
-	private CallVars _callVars = null;
+	private CallActualParameters _callVars = null;
 	/**
 	 * Gets all Method Call Variables.
 	 */
-	public CallVars getCallVars()
+	public CallActualParameters getCallVars()
 	{
 		return _callVars;
 	}
-	public void setCallVars(CallVars value)
+	public void setCallActualParameters(CallActualParameters value)
 	{
 		_callVars = value;
 	}
