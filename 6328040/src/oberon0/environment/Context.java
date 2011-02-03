@@ -2,10 +2,12 @@ package oberon0.environment;
 
 import java.util.HashMap;
 
+import oberon0.ast.routines.ProcedureNode;
+
 public class Context {	
 	private String _name;
 	private HashMap<String, Reference> _variables;
-//?	private HashMap<String, ProcedureNode> _procedures;
+	private HashMap<String, ProcedureNode> _procedures;
 	private Context _parent;
 	
 	//a better looking 'macro' when there is no parent context
@@ -14,25 +16,38 @@ public class Context {
 	public Context (String name, Context parent){
 		_name = name;
 		_variables = new HashMap<String, Reference>();
+		_procedures = new HashMap<String, ProcedureNode>();
 		_parent = parent;
 	}
 	
-	public Reference get(String name){
+	public Reference getReference(String name){
 		if (!contains(name)){
 			if (_parent != noParent){
-				return _parent.get(name);
+				return _parent.getReference(name);
 			}
 			throw new IllegalArgumentException("'"+ name + "' is not available in current scope");
 		}
 		return _variables.get(name);
 	}
 	
+	public ProcedureNode getProcedure(String name){
+		return _procedures.get(name);
+	}
+	
 	public void declareVariable(String name, IValue value) {
 		_variables.put(name, new Reference (value));
 	}
 	
+	public void declareReferenceVariable(String name, Reference reference){
+		_variables.put(name, reference);
+	}
+	
 	public void declareConstant(String name, IValue value) {
 		_variables.put(name, new ConstantReference (value));
+	}
+	
+	public void declareProcedure(String name, ProcedureNode procedure){
+		_procedures.put(name, procedure);
 	}
 	
 	public boolean contains(String name){
@@ -42,7 +57,11 @@ public class Context {
 	public void print(){
 		System.out.print("Known variables in current scope " + _name +":\n");
 		for(String key: _variables.keySet()){
-			System.out.print("\t* " + key  +"\t has value "+ _variables.get(key).toString() + "\n");
+			System.out.print("\t  * " + key  +"\t has value "+ _variables.get(key).toString() + "\n");
+		}
+		System.out.print("\tProcedures:\n");
+		for(String key: _procedures.keySet()){
+			System.out.print("\t  * " + key  +"\n");
 		}
 		if (_parent != noParent){
 			_parent.print();

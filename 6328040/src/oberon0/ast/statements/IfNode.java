@@ -38,7 +38,9 @@ public class IfNode implements IExecutable {
 				}
 			}
 		}
-		_elsebody.execute(context);
+		if (_elsebody!=null){
+			_elsebody.execute(context);
+		}
 	}
 
 }

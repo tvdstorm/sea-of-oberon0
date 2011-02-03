@@ -1,6 +1,6 @@
 package oberon0.environment;
 
-public class Reference {
+public class Reference {	
 	private IValue _value;
 	
 	public Reference(IValue value){

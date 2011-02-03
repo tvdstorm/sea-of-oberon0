@@ -21,7 +21,7 @@ public class AssignmentNode implements IExecutable {
 	@Override
 	public void execute(Context context) {
 		IValue value = _expression.eval(context);
-		Reference ref= context.get(_name);
+		Reference ref= context.getReference(_name);
 		ref = _selector.refer(context, ref);
 		ref.setValue(value);
 	}

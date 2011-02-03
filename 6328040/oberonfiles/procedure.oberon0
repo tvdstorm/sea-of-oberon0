@@ -6,7 +6,7 @@ CONST
 VAR
   x, y: INTEGER;
 
-PROCEDURE testproc(VAR xx, yy INTEGER; plus: INTEGER);
+PROCEDURE testproc(VAR xx, yy: INTEGER; plus: INTEGER);
  
 	 PROCEDURE Swap(VAR xxx, yyy: INTEGER);
 	  VAR

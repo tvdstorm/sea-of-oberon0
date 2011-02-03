@@ -3,7 +3,7 @@ package oberon0;
 import java.io.IOException;
 
 import oberon0.ast.routines.ICallable;
-import oberon0.ast.routines.RoutineNode;
+import oberon0.ast.routines.ProcedureNode;
 import oberon0.environment.Context;
 
 import org.antlr.runtime.ANTLRFileStream;
@@ -22,7 +22,7 @@ public class Main {
 	
 	public static void main(String [ ] args) throws IOException
 	{
-		ANTLRFileStream inputfile = new ANTLRFileStream("oberonfiles/temptest1.oberon0");
+		ANTLRFileStream inputfile = new ANTLRFileStream("oberonfiles/quicksorttest.oberon0");
 	    
 	    // let ANTLR-generated code do the job
 		Oberon0Lexer lex = new Oberon0Lexer(inputfile);			// lexer/parser are part of the processor
@@ -37,7 +37,7 @@ public class Main {
 			e.printStackTrace();
 		} 
         
-		module.call(Context.noParent, RoutineNode.noActualParameters);
+		module.call(Context.noParent, ICallable.noActualParameters);
 	}
 	
 }
