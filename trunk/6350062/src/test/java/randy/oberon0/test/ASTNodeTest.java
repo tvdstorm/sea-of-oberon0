@@ -186,7 +186,7 @@ public class ASTNodeTest
 		{
 			prepareTest("constassignment");
 			program.run();
-			Assert.fail("Should be throwing an Oberon0ConstAssignmentException...");
+			Assert.fail("Should be throwing an ConstAssignmentException...");
 		}
 		catch (ConstAssignmentException e)
 		{
@@ -194,7 +194,7 @@ public class ASTNodeTest
 		}
 		catch (Exception e)
 		{
-			Assert.fail("Should be throwing an Oberon0ConstAssignmentException instead of a general Oberon0Exception...");
+			Assert.fail("Should be throwing an ConstAssignmentException instead of a general Exception...");
 		}
 	}
 	@Test
@@ -204,7 +204,7 @@ public class ASTNodeTest
 		{
 			prepareTest("ifnumber");
 			program.run();
-			Assert.fail("Should be throwing an Oberon0TypeMismatchException...");
+			Assert.fail("Should be throwing an TypeMismatchException...");
 		}
 		catch (TypeMismatchException e)
 		{
@@ -212,7 +212,7 @@ public class ASTNodeTest
 		}
 		catch (Exception e)
 		{
-			Assert.fail("Should be throwing an Oberon0TypeMismatchException instead of a general Oberon0Exception...");
+			Assert.fail("Should be throwing an TypeMismatchException instead of a general Exception...");
 		}
 	}
 	@Test
@@ -222,7 +222,7 @@ public class ASTNodeTest
 		{
 			prepareTest("elseifnumber");
 			program.run();
-			Assert.fail("Should be throwing an Oberon0TypeMismatchException...");
+			Assert.fail("Should be throwing an TypeMismatchException...");
 		}
 		catch (TypeMismatchException e)
 		{
@@ -230,7 +230,7 @@ public class ASTNodeTest
 		}
 		catch (Exception e)
 		{
-			Assert.fail("Should be throwing an Oberon0TypeMismatchException instead of a general Oberon0Exception...");
+			Assert.fail("Should be throwing an TypeMismatchException instead of a general Exception...");
 		}
 	}
 	@Test
@@ -240,7 +240,7 @@ public class ASTNodeTest
 		{
 			prepareTest("infixintegerand");
 			program.run();
-			Assert.fail("Should be throwing an Oberon0OperatorTypeUndefinedException...");
+			Assert.fail("Should be throwing an OperatorTypeUndefinedException...");
 		}
 		catch (OperatorTypeUndefinedException e)
 		{
@@ -248,7 +248,7 @@ public class ASTNodeTest
 		}
 		catch (Exception e)
 		{
-			Assert.fail("Should be throwing an Oberon0OperatorTypeUndefinedException instead of a general Oberon0Exception...");
+			Assert.fail("Should be throwing an OperatorTypeUndefinedException instead of a general Exception...");
 		}
 	}
 	@Test
@@ -258,7 +258,7 @@ public class ASTNodeTest
 		{
 			prepareTest("infixbooleanadd");
 			program.run();
-			Assert.fail("Should be throwing an Oberon0OperatorTypeUndefinedException...");
+			Assert.fail("Should be throwing an OperatorTypeUndefinedException...");
 		}
 		catch (OperatorTypeUndefinedException e)
 		{
@@ -266,7 +266,7 @@ public class ASTNodeTest
 		}
 		catch (Exception e)
 		{
-			Assert.fail("Should be throwing an Oberon0OperatorTypeUndefinedException instead of a general Oberon0Exception...");
+			Assert.fail("Should be throwing an OperatorTypeUndefinedException instead of a general Exception...");
 		}
 	}
 	@Test
@@ -276,7 +276,7 @@ public class ASTNodeTest
 		{
 			prepareTestThrowException("unknownfunction");
 			program.run();
-			Assert.fail("Should be throwing an Oberon0UndefinedMethodException...");
+			Assert.fail("Should be throwing an UndefinedMethodException...");
 		}
 		catch (UndefinedMethodException e)
 		{
@@ -284,7 +284,7 @@ public class ASTNodeTest
 		}
 		catch (Exception e)
 		{
-			Assert.fail("Should be throwing an Oberon0UndefinedMethodException instead of a general Oberon0Exception...");
+			Assert.fail("Should be throwing an UndefinedMethodException instead of a general Exception...");
 		}
 	}
 	@Test
@@ -294,7 +294,7 @@ public class ASTNodeTest
 		{
 			prepareTest("functioncalltoomanyparameters");
 			program.run();
-			Assert.fail("Should be throwing an Oberon0IncorrectNumberOfArgumentsException...");
+			Assert.fail("Should be throwing an IncorrectNumberOfArgumentsException...");
 		}
 		catch (IncorrectNumberOfArgumentsException e)
 		{
@@ -302,7 +302,7 @@ public class ASTNodeTest
 		}
 		catch (Exception e)
 		{
-			Assert.fail("Should be throwing an Oberon0IncorrectNumberOfArgumentsException instead of a general Oberon0Exception...");
+			Assert.fail("Should be throwing an IncorrectNumberOfArgumentsException instead of a general Exception...");
 		}
 	}
 	@Test
@@ -312,7 +312,7 @@ public class ASTNodeTest
 		{
 			prepareTest("functioncalltoofewparameters");
 			program.run();
-			Assert.fail("Should be throwing an Oberon0IncorrectNumberOfArgumentsException...");
+			Assert.fail("Should be throwing an IncorrectNumberOfArgumentsException...");
 		}
 		catch (IncorrectNumberOfArgumentsException e)
 		{
@@ -320,7 +320,7 @@ public class ASTNodeTest
 		}
 		catch (Exception e)
 		{
-			Assert.fail("Should be throwing an Oberon0IncorrectNumberOfArgumentsException instead of a general Oberon0Exception...");
+			Assert.fail("Should be throwing an IncorrectNumberOfArgumentsException instead of a general Exception...");
 		}
 	}
 	@Test
@@ -330,7 +330,7 @@ public class ASTNodeTest
 		{
 			prepareTest("whileintegerexpression");
 			program.run();
-			Assert.fail("Should be throwing an Oberon0TypeMismatchException...");
+			Assert.fail("Should be throwing an TypeMismatchException...");
 		}
 		catch (TypeMismatchException e)
 		{
@@ -338,7 +338,7 @@ public class ASTNodeTest
 		}
 		catch (Exception e)
 		{
-			Assert.fail("Should be throwing an Oberon0TypeMismatchException instead of a general Oberon0Exception...");
+			Assert.fail("Should be throwing an TypeMismatchException instead of a general Exception...");
 		}
 	}
 	@Test
@@ -393,7 +393,7 @@ public class ASTNodeTest
 		{
 			prepareTest("duplicatevariablename");
 			program.run();
-			Assert.fail("Should be throwing an Oberon0DuplicateVariableException...");
+			Assert.fail("Should be throwing an DuplicateVariableException...");
 		}
 		catch (DuplicateVariableException e)
 		{
@@ -401,7 +401,7 @@ public class ASTNodeTest
 		}
 		catch (Exception e)
 		{
-			Assert.fail("Should be throwing an Oberon0DuplicateVariableException...");
+			Assert.fail("Should be throwing an DuplicateVariableException...");
 		}
 	}
 	@Test
@@ -411,7 +411,7 @@ public class ASTNodeTest
 		{
 			prepareTest("undefinedvariable");
 			program.run();
-			Assert.fail("Should be throwing an Oberon0UndefinedVariableException...");
+			Assert.fail("Should be throwing an UndefinedVariableException...");
 		}
 		catch (UndefinedVariableException e)
 		{
@@ -419,7 +419,7 @@ public class ASTNodeTest
 		}
 		catch (Exception e)
 		{
-			Assert.fail("Should be throwing an Oberon0UndefinedVariableException...");
+			Assert.fail("Should be throwing an UndefinedVariableException...");
 		}
 	}
 	@Test
@@ -444,7 +444,7 @@ public class ASTNodeTest
 		{
 			prepareTest("arrayindexboolean");
 			program.run();
-			Assert.fail("Should be throwing an Oberon0SelectorException...");
+			Assert.fail("Should be throwing an SelectorException...");
 		}
 		catch (TypeMismatchException e)
 		{
@@ -452,7 +452,7 @@ public class ASTNodeTest
 		}
 		catch (Exception e)
 		{
-			Assert.fail("Should be throwing an Oberon0SelectorException...");
+			Assert.fail("Should be throwing an SelectorException...");
 		}
 	}
 	@Test
@@ -462,7 +462,7 @@ public class ASTNodeTest
 		{
 			prepareTest("arrayaccessoroninteger");
 			program.run();
-			Assert.fail("Should be throwing an Oberon0SelectorException...");
+			Assert.fail("Should be throwing an SelectorException...");
 		}
 		catch (TypeMismatchException e)
 		{
@@ -470,7 +470,7 @@ public class ASTNodeTest
 		}
 		catch (Exception e)
 		{
-			Assert.fail("Should be throwing an Oberon0SelectorException...");
+			Assert.fail("Should be throwing an SelectorException...");
 		}
 	}
 	@Test
@@ -487,7 +487,7 @@ public class ASTNodeTest
 		{
 			prepareTest("incorrectparametertype");
 			program.run();
-			Assert.fail("Should be throwing an Oberon0TypeMismatchException...");
+			Assert.fail("Should be throwing an TypeMismatchException...");
 		}
 		catch (TypeMismatchException e)
 		{
@@ -495,7 +495,7 @@ public class ASTNodeTest
 		}
 		catch (Exception e)
 		{
-			Assert.fail("Should be throwing an Oberon0TypeMismatchException...");
+			Assert.fail("Should be throwing an TypeMismatchException...");
 		}
 	}
 	@Test
@@ -552,9 +552,9 @@ public class ASTNodeTest
 				try
 				{
 					array.getIndexValue(3);
-					Assert.fail("Should be throwing an Oberon0OutOfBoundsException...");
+					Assert.fail("Should be throwing an OutOfBoundsException...");
 				}
-				catch (Oberon0OutOfBoundsException e)
+				catch (OutOfBoundsException e)
 				{
 					// Success
 				}
@@ -567,7 +567,7 @@ public class ASTNodeTest
 				try
 				{
 					Value.makeNew(Type.ARRAY);
-					Assert.fail("Should be throwing an Oberon0UnknownTypeException...");
+					Assert.fail("Should be throwing an UnknownTypeException...");
 				}
 				catch (UnknownTypeException e)
 				{
@@ -577,7 +577,7 @@ public class ASTNodeTest
 				try
 				{
 					integer.setValue(bool3);
-					Assert.fail("Should be throwing an Oberon0TypeMismatchException...");
+					Assert.fail("Should be throwing an TypeMismatchException...");
 				}
 				catch (TypeMismatchException e)
 				{
@@ -586,7 +586,7 @@ public class ASTNodeTest
 				try
 				{
 					bool.setValue(integer3);
-					Assert.fail("Should be throwing an Oberon0TypeMismatchException...");
+					Assert.fail("Should be throwing an TypeMismatchException...");
 				}
 				catch (TypeMismatchException e)
 				{
@@ -595,9 +595,9 @@ public class ASTNodeTest
 				/*try
 				{
 					array.setValue(integer2);
-					Assert.fail("Should be throwing an Oberon0TypeMismatchException...");
+					Assert.fail("Should be throwing an TypeMismatchException...");
 				}
-				catch (Oberon0TypeMismatchException e)
+				catch (TypeMismatchException e)
 				{
 					// Success
 				}*/
@@ -605,7 +605,7 @@ public class ASTNodeTest
 		}
 		catch (Exception e)
 		{
-			Assert.fail("Shouldn't be throwing an Oberon0Exception...");
+			Assert.fail("Shouldn't be throwing an Exception...");
 		}
 	}
 	/*@Test
@@ -615,15 +615,15 @@ public class ASTNodeTest
 		{
 			prepareTest("arrayparameterlength");
 			program.run();
-			Assert.fail("Should be throwing an Oberon0Exception...");
+			Assert.fail("Should be throwing an Exception...");
 		}	
-		//catch (Oberon0OutOfBoundsException e)
+		//catch (OutOfBoundsException e)
 		{
 			// Success
 		}
-		catch (Oberon0Exception e)
+		catch (Exception e)
 		{
-			Assert.fail("Should be throwing an Oberon0OutOfBoundsException...");
+			Assert.fail("Should be throwing an OutOfBoundsException...");
 		}
 	}*/
 	@Test
@@ -668,13 +668,45 @@ public class ASTNodeTest
 		prepareTest("variablescoping");
 		for (int i=0;i<numTests;i++)
 		{
-			int a = random.nextInt();
-			runTest(""+a);
+			int vm = random.nextInt();
+			runTest(""+vm);
 			
-			Assert.assertTrue(functions.popOutput().equals("" + a));
-			Assert.assertTrue(functions.popOutput().equals("" + a));
-			Assert.assertTrue(functions.popOutput().equals("" + a));
+			int va = 12;
+			Assert.assertTrue(functions.popOutput().equals("" + va));
+			va += vm;
+			Assert.assertTrue(functions.popOutput().equals("" + vm));
+			
+			int vaa = 123;
+			Assert.assertTrue(functions.popOutput().equals("" + vaa));
+			vaa += va;
+			Assert.assertTrue(functions.popOutput().equals("" + va));
+			vaa += vm;
+			Assert.assertTrue(functions.popOutput().equals("" + vm));
+			Assert.assertTrue(functions.popOutput().equals("" + vaa));
+			
+			int vb = 1234;
+			Assert.assertTrue(functions.popOutput().equals("" + vb));
+			vb += vm;
+			Assert.assertTrue(functions.popOutput().equals("" + vb));
 			Assert.assertTrue(functions.outputIsEmpty());
+		}
+		for (int i=1;i<=5;i++)
+		{
+			try
+			{
+				prepareTest("variablescopingfout" + i);
+				functions.addInput("1");
+				program.run();
+				Assert.fail("Should be throwing an UndefinedVariableException...");
+			}
+			catch (UndefinedVariableException e)
+			{
+				// Success
+			}
+			catch (Exception e)
+			{
+				Assert.fail("Should be throwing an UndefinedVariableException...");
+			}
 		}
 	}
 	@Test
@@ -709,8 +741,7 @@ public class ASTNodeTest
 	}
 	// TODO: test to check if an const array can be modified and check if const variable can be assigned as non const parameters
 	// TODO: JavaDoc, meer comments, asserts, finals?
-	// TODO: onnodige EXPRESSION's uit de tree halen
-	// TODO: scoping fixen
+	// TODO: array in array, record in array, array in record.
 	@Ignore
 	private void prepareTestThrowException(String testName) throws Exception
 	{

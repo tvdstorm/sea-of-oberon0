@@ -30,8 +30,9 @@ public class ProcedureCall extends Statement
 		}
 		// Resolve the function name to a function
 		final IInvokableFunction functionDeclaration = environment.resolveFunction(procedureName).getSecond();
+		final int functionDepth = environment.resolveFunction(procedureName).getFirst();
 		// Create a new environment for the to be invoked function
-		RuntimeEnvironment invokedEnvironment = environment.createRuntimeEnviroment(environment.getDepth()+1);
+		RuntimeEnvironment invokedEnvironment = environment.createRuntimeEnviroment(functionDepth);
 		// Register all declarations of the to be invoked function to it's environment 
 		functionDeclaration.registerTypeDeclarations(invokedEnvironment);
 		// Invoke the function

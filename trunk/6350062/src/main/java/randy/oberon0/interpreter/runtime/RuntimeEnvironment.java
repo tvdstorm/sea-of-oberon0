@@ -25,6 +25,11 @@ public class RuntimeEnvironment
 		else
 			depth = parent.getDepth() + 1;
 	}
+	private RuntimeEnvironment(VariableStack _variableStack, FunctionRegistry _functionRegistry, TypeRegistry _typeRegistry, RuntimeEnvironment _parent, int _depth)
+	{
+		this(_variableStack, _functionRegistry, _typeRegistry, _parent);
+		depth = _depth;
+	}
 	public RuntimeEnvironment createRuntimeEnviroment(int parentDepth)
 	{
 		// Creates a new RuntimeEnvironment with parentDepth as highest environment depth
@@ -34,7 +39,7 @@ public class RuntimeEnvironment
 			parentEnvironment = parentEnvironment.getParent();
 		}
 		assert(parentEnvironment != null);
-		return new RuntimeEnvironment(new VariableStack(parentEnvironment.variableStack), new FunctionRegistry(parentEnvironment.functionRegistry), new TypeRegistry(parentEnvironment.typeRegistry), parentEnvironment);
+		return new RuntimeEnvironment(new VariableStack(parentEnvironment.variableStack), new FunctionRegistry(parentEnvironment.functionRegistry), new TypeRegistry(parentEnvironment.typeRegistry), parentEnvironment, parentDepth+1);
 	}
 	public RuntimeEnvironment getParent()
 	{
