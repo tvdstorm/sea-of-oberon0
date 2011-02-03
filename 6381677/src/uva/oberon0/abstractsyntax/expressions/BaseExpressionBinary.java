@@ -6,8 +6,10 @@ import uva.oberon0.abstractsyntax.BaseNode;
 
 public abstract class BaseExpressionBinary extends BaseExpression {
 
-	public BaseExpressionBinary(CommonTree parserTree) {
-		super(parserTree);
+	public BaseExpressionBinary(BaseNode left, BaseNode right) 
+	{
+		_left = left;
+		_right = right;
 	}
 	
 	private BaseNode _left = null;
@@ -28,22 +30,9 @@ public abstract class BaseExpressionBinary extends BaseExpression {
 		return _right;
 	}
 	
+
 	@Override
-	protected boolean addChildNode(BaseNode child)
-	{
-		if (_left == null)
-		{
-			_left = (BaseNode)child;
-			return true;
-		}
-
-		if (_right == null)
-		{
-			_right = (BaseNode)child;
-			return true;
-		}
-		
-		return false;
+	public boolean isValid() {
+		return _left != null && _right != null;
 	}
-
 }

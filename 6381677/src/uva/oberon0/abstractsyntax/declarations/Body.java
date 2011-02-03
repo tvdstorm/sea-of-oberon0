@@ -11,9 +11,8 @@ import uva.oberon0.abstractsyntax.BaseNode;
 */
 public class Body extends uva.oberon0.abstractsyntax.statements.BaseStatementList 
 {
-	public Body(CommonTree parserTree)
+	public Body()
 	{
-		super(parserTree);
 	}
 
 	private BaseDeclarationList _declarations = null;
@@ -23,20 +22,5 @@ public class Body extends uva.oberon0.abstractsyntax.statements.BaseStatementLis
 	public BaseDeclarationList getDeclarations()
 	{
 		return _declarations;
-	}
-
-	@Override
-	protected boolean addChildNode(BaseNode child)
-	{
-		if (super.addChildNode(child))
-			return true;
-		
-		if (child instanceof BaseDeclarationList)
-		{
-			_declarations = (BaseDeclarationList)child;
-			return true;
-		}
-		
-		return false;
 	}
 }

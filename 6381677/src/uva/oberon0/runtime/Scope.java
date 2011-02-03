@@ -10,6 +10,8 @@ import uva.oberon0.abstractsyntax.declarations.Procedure;
 import uva.oberon0.abstractsyntax.declarations.Var;
 import uva.oberon0.abstractsyntax.declarations.VarRef;
 import uva.oberon0.abstractsyntax.statements.CallVars;
+import uva.oberon0.abstractsyntax.types.ArrayType;
+import uva.oberon0.abstractsyntax.types.BaseType;
 
 
 /**
@@ -18,6 +20,9 @@ import uva.oberon0.abstractsyntax.statements.CallVars;
 */
 public class Scope 
 {
+	public Scope() {
+	}
+	
 	public Scope(BaseDeclarationList declarations, Scope parent)
 	{
 		//Reference to Parent Execution Scope to create a Stack Hierarchy.
@@ -38,13 +43,13 @@ public class Scope
 	public Scope(CallVars callVars, Procedure procedure, Scope parent)
 	{
 		//Process the Procedure Body declarations.
-		this(procedure.getBody().getDeclarations(), parent);
+		this(procedure.getDeclarations(), parent);
 		
 		//Loop all Method Call Variables.
 		for (int i = 0; i < callVars.getItems().size(); i++)
 		{
 			//Determine the Method Declaration.
-			BaseDeclaration declaration = procedure.getInputVar(i);
+			BaseDeclaration declaration = procedure.getParameter(i);
 			//Determine the Call Variable.
 			BaseNode callVar = callVars.getItem(i);
 			
@@ -75,16 +80,22 @@ public class Scope
 		_hashProcedures.put(procedure.getID(), procedure);
 	}
 	
-	private void addValue(ID id, ScopeValueBase value)
+	public void addValue(ID id, ScopeValueBase value)
 	{
 		_hashValues.put(id, value);
 	}
 	
 	private ScopeValueBase createValue(BaseNode declaration, ID callVarID)
 	{
-		if (declaration instanceof Var && ((Var)declaration).isArray())
-			return new ScopeValueIntArray(this, (Var)declaration);
-
+		if (declaration instanceof Var)
+		{
+			Var var = (Var)declaration;
+			BaseType varType = var.getType();
+			
+			if (varType instanceof ArrayType)
+				return new ScopeValueIntArray(this, (ArrayType)varType);
+		}
+		
 		return new ScopeValueInt(this, declaration.eval(_parent));
 	}
 	

@@ -13,30 +13,14 @@ import uva.oberon0.abstractsyntax.expressions.BaseExpression;
  */
 public abstract class BaseWithCondition extends BaseWithList
 {
-	protected BaseWithCondition(CommonTree parserTree)
+	protected BaseWithCondition()
 	{
-		super(parserTree);
 	}
 
 	private BaseExpression _expression = null;
 	protected BaseExpression getExpression()
 	{
 		return _expression;
-	}
-	
-	@Override
-	protected boolean addChildNode(BaseNode child)
-	{
-		if (super.addChildNode(child))
-			return true;
-		
-		if (child instanceof BaseExpression)
-		{
-			_expression = (BaseExpression)child;
-			return true;
-		}
-				
-		return false;
 	}
 	
 	@Override

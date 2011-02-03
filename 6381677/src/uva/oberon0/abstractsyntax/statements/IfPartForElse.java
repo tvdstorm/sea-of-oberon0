@@ -10,6 +10,5 @@ public class IfPartForElse extends BaseStatementList
 {
 	public IfPartForElse(CommonTree parserTree)
 	{
-		super(parserTree);
 	}
 }

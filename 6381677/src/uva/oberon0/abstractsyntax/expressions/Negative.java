@@ -1,19 +1,17 @@
 package uva.oberon0.abstractsyntax.expressions;
 
-import org.antlr.runtime.tree.CommonTree;
-
 import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.runtime.Scope;
 
-public class Not extends BaseExpressionUnary {
+public class Negative extends BaseExpressionUnary {
 
-	public Not(BaseNode argument) {
+	public Negative(BaseNode argument) {
 		super(argument);
 	}
 
 	@Override
 	public int eval(Scope scope) {
-		return getArgument().eval(scope) == 0 ? 1 : 0;
+		return -getArgument().eval(scope);
 	}
 
 }

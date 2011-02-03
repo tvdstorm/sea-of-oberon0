@@ -6,8 +6,9 @@ import uva.oberon0.abstractsyntax.BaseNode;
 
 public abstract class BaseExpressionUnary extends BaseExpression {
 
-	public BaseExpressionUnary(CommonTree parserTree) {
-		super(parserTree);
+	protected BaseExpressionUnary(BaseNode argument)
+	{
+		_argument = argument;
 	}
 	
 	private BaseNode _argument = null;
@@ -18,17 +19,10 @@ public abstract class BaseExpressionUnary extends BaseExpression {
 	{
 		return _argument;
 	}
+	
 
 	@Override
-	protected boolean addChildNode(BaseNode child)
-	{
-		if (_argument == null)
-		{
-			_argument = (BaseNode)child;
-			return true;
-		}
-		
-		return false;
+	public boolean isValid() {
+		return _argument != null;
 	}
-
 }

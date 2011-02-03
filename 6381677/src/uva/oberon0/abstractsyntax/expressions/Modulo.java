@@ -2,12 +2,13 @@ package uva.oberon0.abstractsyntax.expressions;
 
 import org.antlr.runtime.tree.CommonTree;
 
+import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.runtime.Scope;
 
 public class Modulo extends BaseExpressionBinary {
 
-	public Modulo(CommonTree parserTree) {
-		super(parserTree);
+	public Modulo(BaseNode left, BaseNode right) {
+		super(left, right);
 	}
 
 	@Override

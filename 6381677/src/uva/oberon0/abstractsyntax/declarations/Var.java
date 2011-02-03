@@ -6,6 +6,9 @@ import org.antlr.runtime.tree.CommonTree;
 
 import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.abstractsyntax.ID;
+import uva.oberon0.abstractsyntax.IDs;
+import uva.oberon0.abstractsyntax.types.ArrayType;
+import uva.oberon0.abstractsyntax.types.BaseType;
 import uva.oberon0.runtime.Scope;
 
 
@@ -15,93 +18,44 @@ import uva.oberon0.runtime.Scope;
 */
 public class Var extends BaseDeclaration
 {
-	public Var(CommonTree parserTree)
+	public Var(ID id, BaseType type)
 	{
-		super(parserTree);
+		super(id);
 
+		_type = type;
+	}
+	public Var(IDs id, BaseType type)
+	{
+		super(id.get(0));
+
+		_type = type;
+		
+		int alts = id.size() - 1;
+		
+		if (alts > 0)
+		{
+			_alternativeIDs = new ArrayList<ID>(alts);
+			for (int i = 0; i < alts; i++)
+			{
+				_alternativeIDs.add(id.get(i + 1));
+			}
+		}
 		//Determine and set IsArray field.
 		//True when the first node after the IDs (3th last node) should be of the type ARRAY.
-		_isArray = parserTree.getChildCount() >= 4 
-		&& parserTree.getChild(parserTree.getChildCount() - 3).getType() == uva.oberon0.parser.OberonParser.ARRAY;
+		//_isArray = parserTree.getChildCount() >= 4 && parserTree.getChild(parserTree.getChildCount() - 3).getType() == uva.oberon0.parser.OberonParser.ARRAY;
 	}
+	
+	private BaseType _type = null;
 	
 	//A list of alternative ID nodes to determine if this variable can be split into multiple variable nodes.
 	private ArrayList<ID> _alternativeIDs = null;
 	
-	private boolean _isArray = false;
 	/**
-	 * Determines if this Variable Declaration Node is an Array.
+	 * Gets data Type of this Variable Declaration Node.
 	 */
-	public boolean isArray()
+	public BaseType getType()
 	{
-		return _isArray;
-	}
-	
-	private BaseNode _arrayLength = null;
-	/**
-	 * Gets the Length Node of the Array.
-	 */
-	public BaseNode getArrayLength()
-	{
-		return _arrayLength;
-	}
-	/**
-	 * Gets the Length Execution Scope Value of the Array.
-	 */
-	public int getArrayLength(Scope scope)
-	{
-		return _arrayLength.eval(scope);
-	}
-	
-	private BaseNode _dataType = null;
-	/**
-	 * Gets the Data Type of this Variable Declaration Node.
-	 */
-	public BaseNode getDataType()
-	{
-		return _dataType;
-	}
-	
-	@Override
-	protected boolean addChildNode(BaseNode child)
-	{
-		if (super.addChildNode(child))
-			return true;
-
-		//Determine and set Array length.
-		if (_isArray && _arrayLength == null)
-		{
-			_arrayLength = child;
-			return true;
-		}
-		
-		//Determine alternative IDs allowing for split of this node.
-		if (child instanceof ID)
-		{
-			if (_alternativeIDs == null)
-				_alternativeIDs = new ArrayList<ID>(1);
-			
-			_alternativeIDs.add((ID)child);
-			return true;
-		}
-		
-		
-		//Determine and set DataType field.
-		if (_dataType == null)
-		{
-			_dataType = child;
-			return true;
-		}
-		
-		return false;
-	}
-
-	@Override
-	public boolean isValid()
-	{
-		return super.isValid()
-		&& _dataType != null
-		&& (!_isArray || _arrayLength != null);
+		return _type;
 	}
 	
 
@@ -118,22 +72,10 @@ public class Var extends BaseDeclaration
 		if (!canSplit())
 			return null;
 		
-		//Create clone as result node.
-		Var result = null;
-		
-		try
-		{
-			result = (Var)this.clone();
-		}
-		catch (CloneNotSupportedException ex)
-		{
-			assert false : "Unsupported Clone while Split!";
-			return null;
-		}
-		
-		//Set the first alternative ID to the result node.
 		ID resultID = _alternativeIDs.get(0);
-		result.setID(resultID);
+
+		//Create clone as result node.
+		Var result = new Var(resultID, _type);
 
 		//Remove the first alternative ID;
 		_alternativeIDs.remove(resultID);

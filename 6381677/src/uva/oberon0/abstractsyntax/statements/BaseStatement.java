@@ -9,8 +9,7 @@ import org.antlr.runtime.tree.CommonTree;
 */
 public abstract class BaseStatement extends uva.oberon0.abstractsyntax.BaseNode 
 {
-	protected BaseStatement(CommonTree parserTree) 
+	protected BaseStatement() 
 	{
-		super(parserTree);
 	}
 }

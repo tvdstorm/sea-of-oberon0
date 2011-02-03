@@ -14,30 +14,23 @@ import uva.oberon0.runtime.Scope;
 */
 public class BaseStatementList extends uva.oberon0.abstractsyntax.BaseNode 
 {
-	public BaseStatementList(CommonTree parserTree)
+	public BaseStatementList()
 	{
-		super(parserTree);
 	}
 	
+	public void add(BaseStatement item)
+	{
+		assert item != null : "Item is null!";
+		
+		_statements.add(item);
+	}
 	private ArrayList<BaseStatement> _statements = new ArrayList<BaseStatement>();
 
-	@Override
-	protected boolean addChildNode(BaseNode child)
-	{
-		if (child instanceof BaseStatement)
-		{
-			_statements.add((BaseStatement)child);
-			return true;
-		}
-		
-		return false;
-	}
 	
 	@Override
 	public boolean isValid()
 	{
-		return super.isValid()
-		&& _statements.size() > 0;
+		return _statements.size() > 0;
 	}
 
 	@Override

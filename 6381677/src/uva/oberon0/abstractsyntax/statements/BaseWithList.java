@@ -12,9 +12,9 @@ import uva.oberon0.abstractsyntax.BaseNode;
  */
 public abstract class BaseWithList extends BaseStatement {
 
-	protected BaseWithList(CommonTree parserTree) 
+	protected BaseWithList() 
 	{
-		super(parserTree);
+		super();
 		
 	}
 
@@ -24,23 +24,11 @@ public abstract class BaseWithList extends BaseStatement {
 		return _statements;
 	}
 	
-	@Override
-	protected boolean addChildNode(BaseNode child) 
-	{
-		if (_statements == null && child instanceof BaseStatementList)
-		{
-			_statements = (BaseStatementList)child;
-			return true;
-		}
-		
-		return false;
-	}
 
 	@Override
 	public boolean isValid() 
 	{
-		return super.isValid()
-		&& _statements != null;
+		return _statements != null;
 	}
 
 }

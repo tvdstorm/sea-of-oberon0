@@ -7,12 +7,11 @@ import java.io.InputStreamReader;
 import uva.oberon0.abstractsyntax.ID;
 import uva.oberon0.runtime.Scope;
 
-
 /**
  * @author Chiel Labee
  * This class represents the build-in Read Method Call.
 */
-public class CallConcreteRead extends CallConcrete 
+public class CallRead extends Call 
 {
 	@Override
 	public int eval(Scope scope)

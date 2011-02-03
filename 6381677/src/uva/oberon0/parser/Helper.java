@@ -43,10 +43,7 @@ public class Helper
 	    OberonParser oberonParser = new OberonParser(oberonTokens);
 	    
 	    try {
-	    	OberonParser.module_return r = oberonParser.module();
-	    	CommonTree parserTree = (CommonTree)r.getTree();
-	    	
-	    	return (Module)uva.oberon0.abstractsyntax.BaseNode.implodeParserTree(parserTree);
+	    	return oberonParser.module();
 	    } 
 	    catch (RecognitionException e) 
 	    {
@@ -54,5 +51,19 @@ public class Helper
 	    }
 	    
 	    return null;
+	}
+	
+	public static OberonParser createParserFromText(String text)
+	{
+		return createParserFromStream(new ANTLRStringStream(text));
+	}
+	
+	public static OberonParser createParserFromStream(CharStream stream)
+	{
+		OberonLexer oberonLexer = new OberonLexer(stream);
+		CommonTokenStream oberonTokens = new CommonTokenStream(oberonLexer);
+	    OberonParser oberonParser = new OberonParser(oberonTokens);
+	    
+	    return oberonParser;
 	}
 }
