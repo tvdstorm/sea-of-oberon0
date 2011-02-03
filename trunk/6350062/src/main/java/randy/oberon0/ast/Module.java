@@ -1,11 +1,12 @@
 package randy.oberon0.ast;
 
 import java.util.*;
+import randy.oberon0.exception.IncorrectNumberOfArgumentsException;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
 import randy.oberon0.value.Value;
 
-public class Module extends ASTNode
+public class Module extends ASTNode implements IInvokableFunction
 {
 	private final List<BodyDeclaration> bodyDeclarations;
 	private final Statement body;
@@ -20,15 +21,32 @@ public class Module extends ASTNode
 	@Override
 	public Value run(RuntimeEnvironment environment) throws RuntimeException
 	{
+		assert(false);
+		return null;
+	}
+	@Override
+	public void runTypeDeclarations(RuntimeEnvironment environment) throws RuntimeException
+	{
 		assert(environment != null);
-		// Create a runtime environment
-		RuntimeEnvironment moduleEnvironment = environment.createRuntimeEnviroment(0);
 		// Register all declarations in the module's environment
 		for (BodyDeclaration bd : bodyDeclarations)
 		{
-			bd.run(moduleEnvironment);
+			bd.run(environment);
 		}
+	}
+	public Value invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
+	{
+		assert(environment != null);
+		assert(parameterValues != null);
+		// Modules don't have parameters
+		if (parameterValues.size() != 0)
+			throw new IncorrectNumberOfArgumentsException();
 		// Run the body of the module
-		return body.run(moduleEnvironment);
+		return body.run(environment);
+	}
+	@Override
+	public String getName()
+	{
+		return "$MODULE";
 	}
 }

@@ -31,9 +31,8 @@ public class TestWriteFunction implements IInvokableFunction
 		return "Write";
 	}
 	@Override
-	public Value runTypeDeclarations(RuntimeEnvironment environment) throws RuntimeException
+	public void runTypeDeclarations(RuntimeEnvironment environment) throws RuntimeException
 	{
 		// Leeg
-		return null;
 	}
 }

@@ -25,9 +25,8 @@ public class DefaultWriteFunction implements IInvokableFunction
 		return null;
 	}
 	@Override
-	public Value runTypeDeclarations(RuntimeEnvironment environment) throws RuntimeException
+	public void runTypeDeclarations(RuntimeEnvironment environment) throws RuntimeException
 	{
 		// Leeg
-		return null;
 	}
 }
