@@ -60,15 +60,8 @@ public class ArrayVarDeclaration extends VarDeclaration
 			}
 			else
 			{
-				// No, create a new array of the required type and length
-				final IInstantiateableVariable arrayType = environment.resolveType(typeName);
-				ArrayVariableInstantiation arrayCreator = new ArrayVariableInstantiation(arrayType);
-				arrayCreator.setLength(length);
-				Array val = (Array)arrayCreator.instantiate(environment);
-				// Copy the array
-				val.setValue(parameterValue);
-				// Register the variable in the environment
-				environment.addVariable(variableName, val);
+				// No, create a copy of the array and register it in the environment
+				environment.addVariable(variableName, parameterValue.clone());
 			}
 		}
 	}

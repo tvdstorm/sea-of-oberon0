@@ -61,11 +61,8 @@ public class VarDeclaration extends BodyDeclaration
 			}
 			else
 			{	
-				// No, create a new variable of the required type and copy the value of the variable
-				Value val = environment.resolveType(typeName).instantiate(environment);
-				val.setValue(parameterValue);
-				// Register the variable in the environment
-				environment.addVariable(variableName, val);
+				// No, create a copy of the parameter and register it in the environment
+				environment.addVariable(variableName, parameterValue.clone());
 			}
 		}
 	}
