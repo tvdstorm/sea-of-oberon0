@@ -57,7 +57,7 @@ public class VarDeclaration extends BodyDeclaration
 			if (isReference)
 			{
 				// Yes, make a reference to the variable and add it to the environment
-				environment.addVariable(variableName, parameterValue);
+				environment.addVariable(variableName, new Reference(parameterValue));
 			}
 			else
 			{	
