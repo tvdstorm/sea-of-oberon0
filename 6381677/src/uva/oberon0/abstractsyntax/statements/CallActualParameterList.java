@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import uva.oberon0.abstractsyntax.BaseNode;
-import uva.oberon0.abstractsyntax.declarations.BaseDeclaration;
 import uva.oberon0.runtime.Scope;
 
 
