@@ -1,4 +1,4 @@
-MODULE Variablescoping;
+MODULE Variablescopingfout3;
 VAR vm: INTEGER;
 
 PROCEDURE a();
@@ -13,6 +13,7 @@ PROCEDURE a();
       vaa := vaa + vm;
       Write(vm);
       Write(vaa);
+      vb := 0;
       b
     END vaa;
  BEGIN
@@ -35,4 +36,4 @@ BEGIN
 Read(vm);
 a
 
-END Variablescoping.
+END Variablescopingfout3.
