@@ -9,7 +9,7 @@ Read(b);
 
 Write(a + b);
 Write(a - b);
-Write(a * b);
+Write(a * (+b));
 Write(a DIV b);
 
 Write(-a + b);

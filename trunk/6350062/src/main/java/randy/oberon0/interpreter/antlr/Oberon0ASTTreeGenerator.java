@@ -135,11 +135,11 @@ public class Oberon0ASTTreeGenerator
 			case Oberon0Parser.NOT:
 				return buildPrefixExpression(tree);
 			case Oberon0Parser.MINUS:
-			case Oberon0Parser.PLUS:
 				if (tree.getChildCount() == 1)
 					return buildPrefixExpression(tree);
 				else
 					return buildInfixExpression(tree);
+			case Oberon0Parser.PLUS:
 			case Oberon0Parser.DIVIDE:
 			case Oberon0Parser.TIMES:
 			case Oberon0Parser.GREATERTHAN:
@@ -265,8 +265,6 @@ public class Oberon0ASTTreeGenerator
 		Expression right = buildExpression(tree.getChild(0));
 		switch (tree.getType())
 		{
-			case Oberon0Parser.PLUS:
-				return right; // Effectief hetzelfde als de expressie
 			case Oberon0Parser.MINUS:
 				return new PrefixMinExpression(right);
 			case Oberon0Parser.NOT:
