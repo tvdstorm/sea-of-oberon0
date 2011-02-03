@@ -48,7 +48,7 @@ public class ArrayVarDeclaration extends VarDeclaration
 		for (String variableName : variableNames)
 		{
 			// Fetch a parameter value from the parameter values
-			final Array parameterValue = parameterValues.poll().castToArray();
+			final Array parameterValue = parameterValues.poll().dereference().castToArray();
 			// Check if the array length of the parameter matches the definition
 			if (length != parameterValue.getLength())
 				throw new ArrayLengthMismatch();
@@ -56,7 +56,7 @@ public class ArrayVarDeclaration extends VarDeclaration
 			if (isReference)
 			{
 				// Yes, make a reference to the variable and add it to the environment
-				environment.addVariable(variableName, parameterValue);
+				environment.addVariable(variableName, new Reference(parameterValue));
 			}
 			else
 			{
