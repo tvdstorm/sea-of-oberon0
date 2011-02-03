@@ -29,7 +29,7 @@ public class ASTNodeTest
 	public void test_Addition()
 	{
 		prepareTest("addition");
-		for (int i=0;i<numTests;i++)
+		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
 			runTest(""+a, ""+b, ""+c);
@@ -42,7 +42,7 @@ public class ASTNodeTest
 	public void test_Subtraction()
 	{
 		prepareTest("subtraction");
-		for (int i=0;i<numTests;i++)
+		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
 			runTest(""+a, ""+b, ""+c);
@@ -55,7 +55,7 @@ public class ASTNodeTest
 	public void test_Multiplication()
 	{
 		prepareTest("multiplication");
-		for (int i=0;i<numTests;i++)
+		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
 			runTest(""+a, ""+b, ""+c);
@@ -68,7 +68,7 @@ public class ASTNodeTest
 	public void test_Division()
 	{
 		prepareTest("division");
-		for (int i=0;i<numTests;i++)
+		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
 			runTest(""+a, ""+b, ""+c);
@@ -81,7 +81,7 @@ public class ASTNodeTest
 	public void test_VarRef()
 	{
 		prepareTest("refvar");
-		for (int i=0;i<numTests;i++)
+		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int getal = random.nextInt();
 			runTest(""+getal);
@@ -93,7 +93,7 @@ public class ASTNodeTest
 	public void test_VarRefArray()
 	{
 		prepareTest("refvararray");
-		for (int i=0;i<numTests;i++)
+		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
 			runTest(""+a, ""+b, ""+c);
@@ -107,7 +107,7 @@ public class ASTNodeTest
 	public void test_Swap()
 	{
 		prepareTest("swap");
-		for (int i=0;i<numTests;i++)
+		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int a = random.nextInt(), b = random.nextInt();
 			runTest(""+a, ""+b);
@@ -135,7 +135,7 @@ public class ASTNodeTest
 	public void test_GreaterSmallerThen()
 	{
 		prepareTest("greatersmallerthen");
-		for (int i=0;i<numTests;i++)
+		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int a = random.nextInt(10), b = random.nextInt(10);
 			runTest(""+a, ""+b);
@@ -368,7 +368,7 @@ public class ASTNodeTest
 	public void test_SmoketestQuicksort()
 	{
 		prepareTest("smoketest_quicksort");
-		for (int i=0;i<numTests;i++)
+		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int numbers[] = new int[5];
 			for (int n=0;n<5;n++)
@@ -426,7 +426,7 @@ public class ASTNodeTest
 	public void test_GlobalVariable()
 	{
 		prepareTest("globalvariable");
-		for (int i=0;i<numTests;i++)
+		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
 			runTest(""+a, ""+b, ""+c);
@@ -502,7 +502,7 @@ public class ASTNodeTest
 	public void test_ArrayParameter()
 	{
 		prepareTest("arrayparameter");
-		for (int i=0;i<numTests;i++)
+		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt(), d = random.nextInt(), e = random.nextInt();
 			runTest(""+a, ""+b, ""+c, ""+d, ""+e);
@@ -520,7 +520,7 @@ public class ASTNodeTest
 	{
 		try
 		{
-			for (int i=0;i<numTests;i++)
+			for (int curTest=0;curTest<numTests;curTest++)
 			{
 				int iRand = random.nextInt();
 				Integer integer = new Integer(iRand);
@@ -601,6 +601,41 @@ public class ASTNodeTest
 				{
 					// Success
 				}*/
+				
+				TypeRegistry typeRegistry = new TypeRegistry(null);
+				typeRegistry.registerType(Type.INTEGER.getTypeText(), new PrimitiveVariableInstantiation(Type.INTEGER));
+				RuntimeEnvironment environment = new RuntimeEnvironment(new VariableStack(null), new FunctionRegistry(null), typeRegistry, null);
+				
+				Value values[] = new Value[4];
+				values[0] = new Integer(random.nextInt(10)+1);
+				values[1] = new Boolean(bRand);
+				values[2] = new Array(random.nextInt(10)+1, environment.resolveType("INTEGER"), environment);
+				HashMap<String, IInstantiateableVariable> members = new HashMap<String, IInstantiateableVariable>();
+				members.put("a", environment.resolveType("INTEGER"));
+				members.put("b", environment.resolveType("INTEGER"));
+				values[3] = new Record(members, environment);
+				
+				for (int i=0;i<values.length;i++)
+				{
+					for (int j=0;j<values.length;j++)
+					{
+						Value val = values[i].clone();
+						Assert.assertTrue(val.toString().equals(values[j].toString()) == (i == j));
+						Assert.assertTrue(val.equalsToValue(values[j]) == (i == j));
+						Value ref = new Reference(val);
+						Assert.assertTrue(ref.toString().equals(values[j].toString()) == (i == j));
+						Assert.assertTrue(ref.equalsToValue(values[j]) == (i == j));
+						Value ref2 = ref.clone();
+						Assert.assertTrue(ref.toString().equals(ref2.toString()));
+						Assert.assertTrue(ref.equalsToValue(ref2));
+						Const con = new Const(val);
+						Assert.assertTrue(con.toString().equals(values[j].toString()) == (i == j));
+						Assert.assertTrue(con.equalsToValue(values[j]) == (i == j));
+						Value con2 = con.clone();
+						Assert.assertTrue(con.toString().equals(con2.toString()));
+						Assert.assertTrue(con.equalsToValue(con2));
+					}
+				}
 			}
 		}
 		catch (Exception e)
@@ -630,7 +665,7 @@ public class ASTNodeTest
 	public void test_Prefixoperators()
 	{
 		prepareTest("prefixoperators");
-		for (int i=0;i<numTests;i++)
+		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int a = random.nextInt(), b = 0;
 			while (b == 0)
@@ -666,7 +701,7 @@ public class ASTNodeTest
 	public void test_VariableScoping()
 	{
 		prepareTest("variablescoping");
-		for (int i=0;i<numTests;i++)
+		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int vm = random.nextInt();
 			runTest(""+vm);
@@ -713,7 +748,7 @@ public class ASTNodeTest
 	public void test_Record()
 	{
 		prepareTest("record");
-		for (int i=0;i<numTests;i++)
+		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int a = random.nextInt(), b = random.nextInt();
 			runTest(""+a, ""+b);
