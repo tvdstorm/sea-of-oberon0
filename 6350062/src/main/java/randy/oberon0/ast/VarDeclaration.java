@@ -38,8 +38,8 @@ public class VarDeclaration extends BodyDeclaration
 			newEnvironment.addVariable(variableName, newEnvironment.resolveType(typeName).instantiate(newEnvironment));
 		}
 	}
-	public void runForParameter(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException // Use for registering parameters
-	{ // TODO: check
+	public void registerAsParameter(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException // Use for registering parameters
+	{
 		assert(environment != null);
 		assert(parameterValues != null);
 		// Check if we have enough parameter values left for all our variables
