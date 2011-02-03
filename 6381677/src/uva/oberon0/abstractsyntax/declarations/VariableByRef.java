@@ -7,9 +7,9 @@ import uva.oberon0.abstractsyntax.types.BaseType;
  * @author Chiel Labee
  * This class represents a Variable Declaration that is passed by Reference.
 */
-public class ProcedureParameterByReference extends ProcedureParameter {
+public class VariableByRef extends Variable {
 
-	public ProcedureParameterByReference(ID id, BaseType type) 
+	public VariableByRef(ID id, BaseType type) 
 	{
 		super(id, type);
 	}
