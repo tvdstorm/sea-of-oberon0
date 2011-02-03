@@ -10,23 +10,19 @@ import uva.oberon0.abstractsyntax.BaseNode;
  */
 public abstract class BaseWithCondition extends BaseWithList
 {
+	private final BaseNode _expression;
+
 	protected BaseWithCondition(BaseNode expression, BaseStatementList statements)
 	{
 		super(statements);
 		
+		assert expression != null : "No Expression is available for the current Node!";
+		
 		_expression = expression;
 	}
 
-	private BaseNode _expression = null;
 	protected BaseNode getExpression()
 	{
 		return _expression;
-	}
-	
-	@Override
-	public boolean isValid()
-	{
-		return super.isValid()
-		&& _expression != null;
 	}
 }

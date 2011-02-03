@@ -6,7 +6,7 @@ import uva.oberon0.abstractsyntax.ID;
 
 /**
  * @author Chiel Labee
- * This class represents a Declaration Node.
+ * This class represents a Declaration.
  * This class is abstract.
 */
 public abstract class BaseDeclaration extends BaseNodeWithID

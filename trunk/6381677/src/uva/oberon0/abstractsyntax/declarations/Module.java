@@ -3,6 +3,7 @@ package uva.oberon0.abstractsyntax.declarations;
 import uva.oberon0.abstractsyntax.BaseNodeWithID;
 import uva.oberon0.abstractsyntax.ID;
 import uva.oberon0.abstractsyntax.statements.BaseStatementList;
+import uva.oberon0.runtime.Scope;
 
 
 /**
@@ -11,37 +12,34 @@ import uva.oberon0.abstractsyntax.statements.BaseStatementList;
 */
 public class Module extends BaseNodeWithID
 {
+	private final BaseDeclarationList _declarations;
+	private final BaseStatementList _statements;
+
 	public Module(ID id, BaseDeclarationList declarations, BaseStatementList statements)
 	{
 		super(id);
 		
+		assert declarations != null : "No Declarations are available for the current Module!";
+		assert statements 	!= null : "No Statements are available for the current Module!";
+
 		_declarations = declarations;
 		_statements = statements;
 	}
-
-	private BaseDeclarationList _declarations = null;
-	public BaseDeclarationList getDeclarations()
-	{
-		return _declarations;
-	}
 	
-	private BaseStatementList _statements = null;
-	public BaseStatementList getStatements()
+	/**
+	 * Creates a new Execution Scope for this Module.
+	 */
+	public Scope createScope()
 	{
-		return _statements;
+		return new Scope(_declarations, null);
 	}
-	
-	@Override
-	public boolean isValid()
-	{
-		return super.isValid()
-		&& _statements != null;
-	}
-	
+	/**
+	 * Performs interpreter evaluation for the current Module structure.
+	 * Creates a new Execution Scope for this Module.
+	 */
 	public int eval()
 	{
-		uva.oberon0.runtime.Scope scope = new uva.oberon0.runtime.Scope(_declarations, null);
-		return eval(scope);
+		return eval(createScope());
 	}
 	
 	@Override

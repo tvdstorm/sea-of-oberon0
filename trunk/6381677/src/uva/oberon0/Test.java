@@ -39,7 +39,7 @@ public class Test
 			return;
 		}
 		
-		Scope scope = new Scope(module.getDeclarations(), null);
+		Scope scope = module.createScope();
 		scope.addValue(new ID("r"), new ScopeValueInt(scope, 0));
 		module.eval(scope);
 		

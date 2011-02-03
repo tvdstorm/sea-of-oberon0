@@ -5,56 +5,39 @@ import uva.oberon0.runtime.Scope;
 
 /**
  * @author Chiel Labee
- * This class represents an Identifier Node.
+ * This class represents an Identifier.
  */
 public class ID extends BaseNode
 {
+	private final String _value;
+	private BaseNode _sub = null;
+
 	public ID(String value)
 	{
+		assert value != null : "Value cannot be Null!";
+		
 		_value = value;
 	}
 	
-	private String _value = null;
-	/**
-	 * Get the Identifier as a String value.
-	 */
-	public String getValue()
+	public BaseNode setSub(BaseNode value)
 	{
-		return _value;
+		_sub = value;
+		return _sub;
 	}
 	
-	private ID _subID = null;
-	public ID addID(String value)
-	{
-		_subID = new ID(value);
-		return _subID;
-	}
-	public ID addIndexID(BaseNode value)
-	{
-		_index = value;
-		return this;
-	}
-	
-	private BaseNode _index = null;
 	/**
 	 * Get the Identifier Index Abstract Syntax Tree Node.
 	 */
-	public BaseNode getIndex()
+	public BaseNode getSub()
 	{
-		return _index;
+		return _sub;
 	}
 	/**
 	 * Get the Identifier Index Value from the Execution Scope.
 	 */
-	public int getIndex(Scope scope)
+	public int getSub(Scope scope)
 	{
-		return _index.eval(scope);
-	}
-
-	@Override
-	public boolean isValid()
-	{
-		return _value != null;
+		return _sub.eval(scope);
 	}
 
 	@Override 
@@ -69,7 +52,7 @@ public class ID extends BaseNode
 			return false;
 		
 		//Determine match on text value.
-		return _value.equals(((ID)compareTo).getValue());
+		return _value.equals(((ID)compareTo).toString());
 	}
 	@Override 
 	public int hashCode()
@@ -83,4 +66,8 @@ public class ID extends BaseNode
 		return scope.getValue(this);
 	}
 	
+	@Override
+	public String toString() {
+		return _value;
+	}
 }

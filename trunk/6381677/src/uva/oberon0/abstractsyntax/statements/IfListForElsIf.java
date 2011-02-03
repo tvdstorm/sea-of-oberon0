@@ -1,22 +1,19 @@
 package uva.oberon0.abstractsyntax.statements;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class IfListForElsIf
+public class IfListForElsIf implements Iterable<IfPartForElsIf>
 {
-	private ArrayList<IfPartForElsIf> _items = new ArrayList<IfPartForElsIf>();
+	private final ArrayList<IfPartForElsIf> _items = new ArrayList<IfPartForElsIf>();
 	
 	public void add(IfPartForElsIf item)
 	{
 		_items.add(item);
 	}
-	
-	public IfPartForElsIf getItem(int index)
-	{
-		return _items.get(index);
-	}
-	public Iterable<IfPartForElsIf> getItems()
-	{
-		return _items;
+
+	@Override
+	public Iterator<IfPartForElsIf> iterator() {
+		return _items.iterator();
 	}
 }

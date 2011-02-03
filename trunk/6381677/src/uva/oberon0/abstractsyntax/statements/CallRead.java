@@ -13,6 +13,11 @@ import uva.oberon0.runtime.Scope;
 */
 public class CallRead extends Call 
 {
+	public CallRead(CallActualParameterList actualParameterList)
+	{
+		super(actualParameterList);
+	}
+	
 	@Override
 	public int eval(Scope scope)
 	{
@@ -29,6 +34,6 @@ public class CallRead extends Call
 			return 0;
 		}
 		
-		return scope.setValue((ID)getCallVar(0), result);
+		return scope.setValue((ID)getActualParameter(0), result);
 	}
 }

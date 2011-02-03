@@ -3,6 +3,10 @@ package uva.oberon0.abstractsyntax.expressions;
 import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.runtime.Scope;
 
+/**
+ * This class represents a Not Unary Expression (!x).
+ * @author Chiel Labee
+ */
 public class Not extends BaseExpressionUnary {
 
 	public Not(BaseNode argument) {

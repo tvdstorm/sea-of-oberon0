@@ -10,8 +10,12 @@ import uva.oberon0.runtime.Scope;
 */
 public class CallProcedure extends Call 
 {
-	public CallProcedure(ID procedureID)
+	public CallProcedure(CallActualParameterList actualParameterList, ID procedureID)
 	{
+		super(actualParameterList);
+		
+		assert procedureID != null 		: "No Identifier is available for the current Method Call Statement!";
+
 		_procedureID = procedureID;
 	}
 	

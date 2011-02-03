@@ -3,6 +3,10 @@ package uva.oberon0.abstractsyntax.expressions;
 import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.runtime.Scope;
 
+/**
+ * This class represents a Not Equals Binary Expression (x != y).
+ * @author Chiel Labee
+ */
 public class NotEqual extends BaseExpressionBinary {
 
 	public NotEqual(BaseNode left, BaseNode right) {

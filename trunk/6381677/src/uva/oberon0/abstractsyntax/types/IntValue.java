@@ -9,13 +9,14 @@ import uva.oberon0.runtime.Scope;
 */
 public class IntValue extends BaseType
 {
+	private int _value = 0;
+
 	public IntValue(String value)
 	{
 		//Set Value field.
 		setValue(value);
 	}
 
-	private int _value = 0;
 	//Gets the stored Integer Value.
 	public int getValue()
 	{
@@ -30,11 +31,6 @@ public class IntValue extends BaseType
 			//Parse input string value to integer.
 			_value = Integer.parseInt(value);
 		}
-	}
-	@Override
-	public boolean isValid() {
-		// TODO Auto-generated method stub
-		return false;
 	}
 	
 	@Override

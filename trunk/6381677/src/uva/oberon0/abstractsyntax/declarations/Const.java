@@ -7,31 +7,27 @@ import uva.oberon0.runtime.Scope;
 
 /**
  * @author Chiel Labee
- * This class represents a Constanct Declaration Node.
+ * This class represents a Constanct Declaration.
 */
 public class Const extends BaseDeclaration
 {
+	private final BaseNode _expression;
+
 	public Const(ID id, BaseNode expression)
 	{
 		super(id);
-		
+
+		assert expression != null : "No Expression is available for the current Constant Declaration.";
+
 		_expression = expression;
 	}
 
-	private uva.oberon0.abstractsyntax.BaseNode _expression = null;
 	/**
 	 * Get the Expression for the current Constant Declaration.
 	 */
 	public uva.oberon0.abstractsyntax.BaseNode getExpression()
 	{
 		return _expression;
-	}
-	
-	@Override
-	public boolean isValid()
-	{
-		return super.isValid() 
-		&& _expression != null;
 	}
 
 	@Override

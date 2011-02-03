@@ -3,6 +3,10 @@ package uva.oberon0.abstractsyntax.expressions;
 import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.runtime.Scope;
 
+/**
+ * This class represents a Logical And Binary Expression (x & y).
+ * @author Chiel Labee
+ */
 public class LogicalAnd extends BaseExpressionBinary {
 
 	public LogicalAnd(BaseNode left, BaseNode right) {

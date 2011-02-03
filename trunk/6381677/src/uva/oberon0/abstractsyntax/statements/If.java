@@ -10,15 +10,18 @@ import uva.oberon0.runtime.Scope;
 */
 public class If extends BaseWithCondition
 {
-	public If(BaseNode ifExpression, BaseStatementList ifStatements, IfListForElsIf elsIfs, BaseStatementList elseStatements)
+	private final IfListForElsIf _elsIfList;
+	private final BaseStatementList _elseStatementList;
+
+	public If(BaseNode ifExpression, BaseStatementList ifStatements, IfListForElsIf elsIfList, BaseStatementList elseStatementList)
 	{
 		super(ifExpression, ifStatements);
-		_elsIfs = elsIfs;
-		_elseStatements = elseStatements;
-	}
+		
+		assert elsIfList != null 			: "No ElsIf List is available for the current If Statement!";
 
-	private IfListForElsIf _elsIfs;
-	private BaseStatementList _elseStatements;
+		_elsIfList 			= elsIfList;
+		_elseStatementList 	= elseStatementList;
+	}
 
 	@Override
 	public int eval(Scope scope)
@@ -26,14 +29,14 @@ public class If extends BaseWithCondition
 		if (getExpression().eval(scope) == 1)
 			return getStatements().eval(scope);
 		
-		for (IfPartForElsIf elsIf : _elsIfs.getItems())
+		for (IfPartForElsIf elsIf : _elsIfList)
 		{
 			if (elsIf.getExpression().eval(scope) == 1)
 				return elsIf.getStatements().eval(scope);
 		}
 		
-		if (_elseStatements != null)
-			return _elseStatements.eval(scope);
+		if (_elseStatementList != null)
+			return _elseStatementList.eval(scope);
 		
 		return 1;
 	}

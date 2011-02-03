@@ -3,6 +3,10 @@ package uva.oberon0.abstractsyntax.expressions;
 import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.runtime.Scope;
 
+/**
+ * This class represents a Less Than Binary Expression (x < y).
+ * @author Chiel Labee
+ */
 public class LessThan extends BaseExpressionBinary {
 
 	public LessThan(BaseNode left, BaseNode right) {

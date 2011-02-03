@@ -7,20 +7,22 @@ import uva.oberon0.runtime.Scope;
 
 /**
  * @author Chiel Labee
- * This class represents a Variable Declaration Node that is passed by Value.
+ * This class represents a Variable Declaration that is passed by Value.
 */
 public class Var extends BaseDeclaration
 {
+	private final BaseType _type;
+
 	public Var(ID id, BaseType type)
 	{
 		super(id);
 
+		assert type != null : "No Type available for the current Declaration!";
+		
 		_type = type;
 	}
 	
-	
-	private BaseType _type = null;
-	
+		
 	/**
 	 * Gets data Type of this Variable Declaration Node.
 	 */
