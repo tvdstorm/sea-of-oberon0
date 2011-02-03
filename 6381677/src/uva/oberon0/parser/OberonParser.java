@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 D:\\Projects UVA\\Oberon.g 2011-02-03 11:28:53
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 D:\\Projects UVA\\Oberon.g 2011-02-03 12:08:16
 
 package uva.oberon0.parser;
 
@@ -287,7 +287,7 @@ public class OberonParser extends Parser {
     // $ANTLR start "varDeclaration"
     // D:\\Projects UVA\\Oberon.g:90:1: varDeclaration[BaseDeclarationList list] : 'VAR' (node_ids= idList ':' node_type= type ';' )* ;
     public final void varDeclaration(BaseDeclarationList list) throws RecognitionException {
-        IDs node_ids = null;
+        IDList node_ids = null;
 
         BaseType node_type = null;
 
@@ -493,7 +493,7 @@ public class OberonParser extends Parser {
     // $ANTLR start "procedureParam"
     // D:\\Projects UVA\\Oberon.g:106:1: procedureParam[BaseDeclarationList list] : ( ( 'VAR' )? node_ids= idList ':' node_type= type )* ;
     public final void procedureParam(BaseDeclarationList list) throws RecognitionException {
-        IDs node_ids = null;
+        IDList node_ids = null;
 
         BaseType node_type = null;
 
@@ -1933,9 +1933,9 @@ public class OberonParser extends Parser {
 
 
     // $ANTLR start "idList"
-    // D:\\Projects UVA\\Oberon.g:215:1: idList returns [IDs node] : node_id1= id1 ( ',' node_id2= id1 )* ;
-    public final IDs idList() throws RecognitionException {
-        IDs node = null;
+    // D:\\Projects UVA\\Oberon.g:215:1: idList returns [IDList node] : node_id1= id1 ( ',' node_id2= id1 )* ;
+    public final IDList idList() throws RecognitionException {
+        IDList node = null;
 
         ID node_id1 = null;
 
@@ -1946,7 +1946,7 @@ public class OberonParser extends Parser {
             // D:\\Projects UVA\\Oberon.g:216:2: (node_id1= id1 ( ',' node_id2= id1 )* )
             // D:\\Projects UVA\\Oberon.g:216:4: node_id1= id1 ( ',' node_id2= id1 )*
             {
-            node = new IDs();
+            node = new IDList();
             pushFollow(FOLLOW_id1_in_idList1527);
             node_id1=id1();
 

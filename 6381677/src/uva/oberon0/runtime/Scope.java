@@ -29,7 +29,7 @@ public class Scope
 		_parent = parent;
 
 		//Loop all Declarations.
-		for (BaseDeclaration declaration : declarations.getItems())
+		for (BaseDeclaration declaration : declarations)
 		{
 			//Add item to Procedures hash.
 			if (declaration instanceof Procedure)
@@ -46,7 +46,7 @@ public class Scope
 		this(procedure.getDeclarations(), parent);
 		
 		//Loop all Method Call Variables.
-		for (int i = 0; i < procedure.getParameters().getItems().size(); i++)
+		for (int i = 0; i < procedure.getParameterCount(); i++)
 		{
 			//Determine the Method Declaration.
 			BaseDeclaration formal = procedure.getParameter(i);

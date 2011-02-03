@@ -24,12 +24,17 @@ public class Procedure extends BaseDeclaration
 	{
 		return _parameters;
 	}
+	public int getParameterCount()
+	{
+		return _parameters.size();
+	}
+	
 	/**
 	 * Gets a specific Declaration from the Input Variables List based on the index number value.
 	 */
 	public BaseDeclaration getParameter(int index)
 	{
-		return _parameters.getItem(index);
+		return _parameters.get(index);
 	}
 	private BaseDeclarationList _declarations = null;
 	public BaseDeclarationList getDeclarations()
