@@ -9,7 +9,7 @@ import uva.oberon0.abstractsyntax.declarations.BaseDeclarationList;
 import uva.oberon0.abstractsyntax.declarations.Procedure;
 import uva.oberon0.abstractsyntax.declarations.Var;
 import uva.oberon0.abstractsyntax.declarations.VarRef;
-import uva.oberon0.abstractsyntax.statements.CallVars;
+import uva.oberon0.abstractsyntax.statements.CallActualParameters;
 import uva.oberon0.abstractsyntax.types.ArrayType;
 import uva.oberon0.abstractsyntax.types.BaseType;
 
@@ -40,31 +40,31 @@ public class Scope
 				addValue(declaration.getID(), createValue(declaration, null));
 		}
 	}
-	public Scope(CallVars callVars, Procedure procedure, Scope parent)
+	public Scope(CallActualParameters actualParameters, Procedure procedure, Scope parent)
 	{
 		//Process the Procedure Body declarations.
 		this(procedure.getDeclarations(), parent);
 		
 		//Loop all Method Call Variables.
-		for (int i = 0; i < callVars.getItems().size(); i++)
+		for (int i = 0; i < procedure.getParameters().getItems().size(); i++)
 		{
 			//Determine the Method Declaration.
-			BaseDeclaration declaration = procedure.getParameter(i);
+			BaseDeclaration formal = procedure.getParameter(i);
 			//Determine the Call Variable.
-			BaseNode callVar = callVars.getItem(i);
+			BaseNode actual = actualParameters.getItem(i);
 			
 			//Determine if the declaration should be passed by Reference.
-			if (declaration instanceof VarRef)
+			if (formal instanceof VarRef)
 			{
 				//Get and Add the existing Execution Scope Value. 
-				addValue(declaration.getID(), _parent.getValueReference((ID)callVar));
+				addValue(formal.getID(), _parent.getValueReference((ID)actual));
 			}
 			
 			//Determine if the declaration should be passed by Reference.
-			else if (declaration instanceof Var)
+			else if (formal instanceof Var)
 			{
 				//Create and Add an Execution Scope Value to the Value hash.
-				addValue(declaration.getID(), createValue(callVar, null));
+				addValue(formal.getID(), createValue(actual, null));
 			}
 			
 			//Determine incomplete implementation.
@@ -157,11 +157,11 @@ public class Scope
 	 * @param id The Identifier of the Procedure that should be executed.
 	 * @param callVars The Method Call Variables that should be passed to the Procedure.
 	 */
-	public int callProcedure(ID id, CallVars callVars)
+	public int callProcedure(ID id, CallActualParameters callVars)
 	{
 		return callProcedure(id, callVars, this);
 	}
-	protected int callProcedure(ID id, CallVars callVars, Scope parentScope)
+	protected int callProcedure(ID id, CallActualParameters callVars, Scope parentScope)
 	{
 		//Retrieve procedure from hash in current Execution Scope.
 		Procedure procedure = _hashProcedures.get(id);

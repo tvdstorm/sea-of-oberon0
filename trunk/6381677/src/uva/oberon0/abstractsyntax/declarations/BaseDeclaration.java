@@ -1,7 +1,5 @@
 package uva.oberon0.abstractsyntax.declarations;
 
-import org.antlr.runtime.tree.CommonTree;
-
 import uva.oberon0.abstractsyntax.BaseNodeWithID;
 import uva.oberon0.abstractsyntax.ID;
 

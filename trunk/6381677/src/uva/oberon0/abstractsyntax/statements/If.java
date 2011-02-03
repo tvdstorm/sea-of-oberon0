@@ -1,9 +1,5 @@
 package uva.oberon0.abstractsyntax.statements;
 
-import java.util.ArrayList;
-
-import org.antlr.runtime.tree.CommonTree;
-
 import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.runtime.Scope;
 
@@ -14,21 +10,15 @@ import uva.oberon0.runtime.Scope;
 */
 public class If extends BaseWithCondition
 {
-	public If()
+	public If(BaseNode ifExpression, BaseStatementList ifStatements, IfListForElsIf elsIfs, BaseStatementList elseStatements)
 	{
+		super(ifExpression, ifStatements);
+		_elsIfs = elsIfs;
+		_elseStatements = elseStatements;
 	}
 
-	private ArrayList<IfPartForElsIf> _elsIfs = new ArrayList<IfPartForElsIf>(0);
-	public ArrayList<IfPartForElsIf> getElsIfs()
-	{
-		return _elsIfs;
-	}
-	
-	private IfPartForElse _elseStatement = null;
-	public IfPartForElse getElseStatement()
-	{
-		return _elseStatement;
-	}
+	private IfListForElsIf _elsIfs;
+	private BaseStatementList _elseStatements;
 
 	@Override
 	public int eval(Scope scope)
@@ -36,14 +26,14 @@ public class If extends BaseWithCondition
 		if (getExpression().eval(scope) == 1)
 			return getStatements().eval(scope);
 		
-		for (IfPartForElsIf elsIf : _elsIfs)
+		for (IfPartForElsIf elsIf : _elsIfs.getItems())
 		{
 			if (elsIf.getExpression().eval(scope) == 1)
 				return elsIf.getStatements().eval(scope);
 		}
 		
-		if (_elseStatement != null)
-			return _elseStatement.eval(scope);
+		if (_elseStatements != null)
+			return _elseStatements.eval(scope);
 		
 		return 1;
 	}

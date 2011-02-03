@@ -1,9 +1,6 @@
 package uva.oberon0.abstractsyntax.declarations;
 
-import org.antlr.runtime.tree.CommonTree;
-
 import uva.oberon0.abstractsyntax.ID;
-import uva.oberon0.abstractsyntax.IDs;
 import uva.oberon0.abstractsyntax.types.BaseType;
 
 /**
@@ -13,10 +10,6 @@ import uva.oberon0.abstractsyntax.types.BaseType;
 public class VarRef extends Var {
 
 	public VarRef(ID id, BaseType type) 
-	{
-		super(id, type);
-	}
-	public VarRef(IDs id, BaseType type)
 	{
 		super(id, type);
 	}

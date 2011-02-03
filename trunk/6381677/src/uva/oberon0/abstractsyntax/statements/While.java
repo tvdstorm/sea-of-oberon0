@@ -1,7 +1,6 @@
 package uva.oberon0.abstractsyntax.statements;
 
-import org.antlr.runtime.tree.CommonTree;
-
+import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.runtime.Scope;
 
 
@@ -11,8 +10,9 @@ import uva.oberon0.runtime.Scope;
 */
 public class While extends BaseWithCondition 
 {
-	public While()
+	public While(BaseNode whileExpression, BaseStatementList whileStatements)
 	{
+		super(whileExpression, whileStatements);
 	}
 	
 	@Override

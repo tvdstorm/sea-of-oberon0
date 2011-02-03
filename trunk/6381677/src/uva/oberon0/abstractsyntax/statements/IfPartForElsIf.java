@@ -1,7 +1,6 @@
 package uva.oberon0.abstractsyntax.statements;
 
-import org.antlr.runtime.tree.CommonTree;
-
+import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.runtime.Scope;
 
 
@@ -11,9 +10,9 @@ import uva.oberon0.runtime.Scope;
 */
 public class IfPartForElsIf extends BaseWithCondition 
 {
-	public IfPartForElsIf()
+	public IfPartForElsIf(BaseNode elsifExpression, BaseStatementList elsIfStatements)
 	{
-		super();
+		super(elsifExpression, elsIfStatements);
 	}
 
 	@Override

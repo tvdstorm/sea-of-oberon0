@@ -2,7 +2,6 @@ package uva.oberon0.runtime;
 
 import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.abstractsyntax.ID;
-import uva.oberon0.abstractsyntax.declarations.Var;
 import uva.oberon0.abstractsyntax.types.ArrayType;
 
 /**

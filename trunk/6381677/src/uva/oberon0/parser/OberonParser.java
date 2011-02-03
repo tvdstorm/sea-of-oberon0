@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 D:\\Projects UVA\\Oberon.g 2011-02-02 02:50:50
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 D:\\Projects UVA\\Oberon.g 2011-02-03 11:28:53
 
 package uva.oberon0.parser;
 
@@ -14,9 +14,10 @@ import java.util.Stack;
 import java.util.List;
 import java.util.ArrayList;
 
+@SuppressWarnings("unused")
 public class OberonParser extends Parser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "MODULE", "CONST", "VAR", "VARREF", "PROCEDURE", "BODY", "EXIT", "RETURN", "IF", "THEN", "ELSE", "ELSIF", "END", "WHILE", "EQUAL", "UNEQUAL", "LESS", "LESS_EQUAL", "GREAT", "GREAT_EQUAL", "MIN", "PLUS", "MUL", "DIV", "MOD", "AND", "OR", "NOT", "DECLARATIONS", "INPUTVARS", "CALL", "CALL_READ", "CALL_WRITE", "CALL_WRITELN", "CALLVARS", "ASSIGN", "INT_TYPE", "ARRAY", "ID", "INT", "WHITESPACE", "'MODULE'", "';'", "'BEGIN'", "'.'", "':'", "'PROCEDURE'", "'('", "')'", "','", "'OF'", "'DO'", "'['", "']'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "MODULE", "CONST", "VAR", "VARREF", "PROCEDURE", "BODY", "EXIT", "RETURN", "IF", "THEN", "ELSE", "ELSIF", "END", "WHILE", "EQUAL", "UNEQUAL", "LESS", "LESS_EQUAL", "GREAT", "GREAT_EQUAL", "MIN", "PLUS", "MUL", "DIV", "MOD", "AND", "OR", "NOT", "DECLARATIONS", "INPUTVARS", "CALL", "CALL_READ", "CALL_WRITE", "CALL_WRITELN", "ASSIGN", "INT_TYPE", "ARRAY", "OF", "ID", "INT", "WHITESPACE", "'MODULE'", "';'", "'BEGIN'", "'.'", "':'", "'PROCEDURE'", "'('", "')'", "','", "'DO'", "'['", "']'"
     };
     public static final int EOF=-1;
     public static final int T__45=45;
@@ -31,7 +32,6 @@ public class OberonParser extends Parser {
     public static final int T__54=54;
     public static final int T__55=55;
     public static final int T__56=56;
-    public static final int T__57=57;
     public static final int MODULE=4;
     public static final int CONST=5;
     public static final int VAR=6;
@@ -66,10 +66,10 @@ public class OberonParser extends Parser {
     public static final int CALL_READ=35;
     public static final int CALL_WRITE=36;
     public static final int CALL_WRITELN=37;
-    public static final int CALLVARS=38;
-    public static final int ASSIGN=39;
-    public static final int INT_TYPE=40;
-    public static final int ARRAY=41;
+    public static final int ASSIGN=38;
+    public static final int INT_TYPE=39;
+    public static final int ARRAY=40;
+    public static final int OF=41;
     public static final int ID=42;
     public static final int INT=43;
     public static final int WHITESPACE=44;
@@ -93,7 +93,7 @@ public class OberonParser extends Parser {
 
 
     // $ANTLR start "module"
-    // D:\\Projects UVA\\Oberon.g:75:1: module returns [Module node] : 'MODULE' node_id= id1 ';' node_declarations= declarations 'BEGIN' node_statements= statements 'END' id1 '.' ;
+    // D:\\Projects UVA\\Oberon.g:73:1: module returns [Module node] : 'MODULE' node_id= id1 ';' node_declarations= declarations 'BEGIN' node_statements= statements 'END' id1 '.' ;
     public final Module module() throws RecognitionException {
         Module node = null;
 
@@ -105,34 +105,34 @@ public class OberonParser extends Parser {
 
 
         try {
-            // D:\\Projects UVA\\Oberon.g:76:2: ( 'MODULE' node_id= id1 ';' node_declarations= declarations 'BEGIN' node_statements= statements 'END' id1 '.' )
-            // D:\\Projects UVA\\Oberon.g:76:4: 'MODULE' node_id= id1 ';' node_declarations= declarations 'BEGIN' node_statements= statements 'END' id1 '.'
+            // D:\\Projects UVA\\Oberon.g:74:2: ( 'MODULE' node_id= id1 ';' node_declarations= declarations 'BEGIN' node_statements= statements 'END' id1 '.' )
+            // D:\\Projects UVA\\Oberon.g:74:4: 'MODULE' node_id= id1 ';' node_declarations= declarations 'BEGIN' node_statements= statements 'END' id1 '.'
             {
-            match(input,45,FOLLOW_45_in_module300); 
-            pushFollow(FOLLOW_id1_in_module304);
+            match(input,45,FOLLOW_45_in_module298); 
+            pushFollow(FOLLOW_id1_in_module302);
             node_id=id1();
 
             state._fsp--;
 
-            match(input,46,FOLLOW_46_in_module306); 
-            pushFollow(FOLLOW_declarations_in_module312);
+            match(input,46,FOLLOW_46_in_module304); 
+            pushFollow(FOLLOW_declarations_in_module310);
             node_declarations=declarations();
 
             state._fsp--;
 
-            match(input,47,FOLLOW_47_in_module316); 
-            pushFollow(FOLLOW_statements_in_module322);
+            match(input,47,FOLLOW_47_in_module314); 
+            pushFollow(FOLLOW_statements_in_module320);
             node_statements=statements();
 
             state._fsp--;
 
-            match(input,END,FOLLOW_END_in_module326); 
-            pushFollow(FOLLOW_id1_in_module328);
+            match(input,END,FOLLOW_END_in_module324); 
+            pushFollow(FOLLOW_id1_in_module326);
             id1();
 
             state._fsp--;
 
-            match(input,48,FOLLOW_48_in_module330); 
+            match(input,48,FOLLOW_48_in_module328); 
             node = new Module(node_id, node_declarations, node_statements);
 
             }
@@ -150,39 +150,69 @@ public class OberonParser extends Parser {
 
 
     // $ANTLR start "declarations"
-    // D:\\Projects UVA\\Oberon.g:83:1: declarations returns [BaseDeclarationList node] : (node_declaration= declaration )* ;
+    // D:\\Projects UVA\\Oberon.g:81:1: declarations returns [BaseDeclarationList node] : ( constDeclaration[node] | varDeclaration[node] | procedure[node] )* ;
     public final BaseDeclarationList declarations() throws RecognitionException {
         BaseDeclarationList node = null;
 
-        BaseDeclaration node_declaration = null;
-
-
         try {
-            // D:\\Projects UVA\\Oberon.g:84:2: ( (node_declaration= declaration )* )
-            // D:\\Projects UVA\\Oberon.g:84:4: (node_declaration= declaration )*
+            // D:\\Projects UVA\\Oberon.g:82:2: ( ( constDeclaration[node] | varDeclaration[node] | procedure[node] )* )
+            // D:\\Projects UVA\\Oberon.g:82:4: ( constDeclaration[node] | varDeclaration[node] | procedure[node] )*
             {
             node = new BaseDeclarationList();
-            // D:\\Projects UVA\\Oberon.g:85:3: (node_declaration= declaration )*
+            // D:\\Projects UVA\\Oberon.g:83:3: ( constDeclaration[node] | varDeclaration[node] | procedure[node] )*
             loop1:
             do {
-                int alt1=2;
-                int LA1_0 = input.LA(1);
-
-                if ( ((LA1_0>=CONST && LA1_0<=VAR)||LA1_0==50) ) {
+                int alt1=4;
+                switch ( input.LA(1) ) {
+                case CONST:
+                    {
                     alt1=1;
-                }
+                    }
+                    break;
+                case VAR:
+                    {
+                    alt1=2;
+                    }
+                    break;
+                case 50:
+                    {
+                    alt1=3;
+                    }
+                    break;
 
+                }
 
                 switch (alt1) {
             	case 1 :
-            	    // D:\\Projects UVA\\Oberon.g:85:4: node_declaration= declaration
+            	    // D:\\Projects UVA\\Oberon.g:83:4: constDeclaration[node]
             	    {
-            	    pushFollow(FOLLOW_declaration_in_declarations355);
-            	    node_declaration=declaration();
+            	    pushFollow(FOLLOW_constDeclaration_in_declarations349);
+            	    constDeclaration(node);
 
             	    state._fsp--;
 
-            	    node.add(node_declaration);
+
+            	    }
+            	    break;
+            	case 2 :
+            	    // D:\\Projects UVA\\Oberon.g:83:27: varDeclaration[node]
+            	    {
+            	    pushFollow(FOLLOW_varDeclaration_in_declarations352);
+            	    varDeclaration(node);
+
+            	    state._fsp--;
+
+
+            	    }
+            	    break;
+            	case 3 :
+            	    // D:\\Projects UVA\\Oberon.g:83:48: procedure[node]
+            	    {
+            	    pushFollow(FOLLOW_procedure_in_declarations355);
+            	    procedure(node);
+
+            	    state._fsp--;
+
 
             	    }
             	    break;
@@ -207,127 +237,38 @@ public class OberonParser extends Parser {
     // $ANTLR end "declarations"
 
 
-    // $ANTLR start "declaration"
-    // D:\\Projects UVA\\Oberon.g:88:1: declaration returns [BaseDeclaration node] : ( constDeclaration | varDeclaration | procedure );
-    public final BaseDeclaration declaration() throws RecognitionException {
-        BaseDeclaration node = null;
-
-        Const constDeclaration1 = null;
-
-        Var varDeclaration2 = null;
-
-        Procedure procedure3 = null;
-
-
-        try {
-            // D:\\Projects UVA\\Oberon.g:89:2: ( constDeclaration | varDeclaration | procedure )
-            int alt2=3;
-            switch ( input.LA(1) ) {
-            case CONST:
-                {
-                alt2=1;
-                }
-                break;
-            case VAR:
-                {
-                alt2=2;
-                }
-                break;
-            case 50:
-                {
-                alt2=3;
-                }
-                break;
-            default:
-                NoViableAltException nvae =
-                    new NoViableAltException("", 2, 0, input);
-
-                throw nvae;
-            }
-
-            switch (alt2) {
-                case 1 :
-                    // D:\\Projects UVA\\Oberon.g:89:4: constDeclaration
-                    {
-                    pushFollow(FOLLOW_constDeclaration_in_declaration378);
-                    constDeclaration1=constDeclaration();
-
-                    state._fsp--;
-
-                    node = constDeclaration1;
-
-                    }
-                    break;
-                case 2 :
-                    // D:\\Projects UVA\\Oberon.g:90:4: varDeclaration
-                    {
-                    pushFollow(FOLLOW_varDeclaration_in_declaration385);
-                    varDeclaration2=varDeclaration();
-
-                    state._fsp--;
-
-                    node = varDeclaration2;
-
-                    }
-                    break;
-                case 3 :
-                    // D:\\Projects UVA\\Oberon.g:91:4: procedure
-                    {
-                    pushFollow(FOLLOW_procedure_in_declaration393);
-                    procedure3=procedure();
-
-                    state._fsp--;
-
-                    node = procedure3;
-
-                    }
-                    break;
-
-            }
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-        }
-        return node;
-    }
-    // $ANTLR end "declaration"
-
-
     // $ANTLR start "constDeclaration"
-    // D:\\Projects UVA\\Oberon.g:94:1: constDeclaration returns [Const node] : 'CONST' (node_id= id1 '=' expression ';' ) ;
-    public final Const constDeclaration() throws RecognitionException {
-        Const node = null;
-
+    // D:\\Projects UVA\\Oberon.g:86:1: constDeclaration[BaseDeclarationList list] : 'CONST' (node_id= id1 '=' node_exp= expression ';' ) ;
+    public final void constDeclaration(BaseDeclarationList list) throws RecognitionException {
         ID node_id = null;
 
+        BaseNode node_exp = null;
+
 
         try {
-            // D:\\Projects UVA\\Oberon.g:95:2: ( 'CONST' (node_id= id1 '=' expression ';' ) )
-            // D:\\Projects UVA\\Oberon.g:95:4: 'CONST' (node_id= id1 '=' expression ';' )
+            // D:\\Projects UVA\\Oberon.g:87:2: ( 'CONST' (node_id= id1 '=' node_exp= expression ';' ) )
+            // D:\\Projects UVA\\Oberon.g:87:4: 'CONST' (node_id= id1 '=' node_exp= expression ';' )
             {
-            match(input,CONST,FOLLOW_CONST_in_constDeclaration413); 
-            // D:\\Projects UVA\\Oberon.g:95:12: (node_id= id1 '=' expression ';' )
-            // D:\\Projects UVA\\Oberon.g:95:13: node_id= id1 '=' expression ';'
+            match(input,CONST,FOLLOW_CONST_in_constDeclaration372); 
+            // D:\\Projects UVA\\Oberon.g:87:12: (node_id= id1 '=' node_exp= expression ';' )
+            // D:\\Projects UVA\\Oberon.g:87:13: node_id= id1 '=' node_exp= expression ';'
             {
-            pushFollow(FOLLOW_id1_in_constDeclaration418);
+            pushFollow(FOLLOW_id1_in_constDeclaration377);
             node_id=id1();
 
             state._fsp--;
 
-            match(input,EQUAL,FOLLOW_EQUAL_in_constDeclaration420); 
-            pushFollow(FOLLOW_expression_in_constDeclaration422);
-            expression();
+            match(input,EQUAL,FOLLOW_EQUAL_in_constDeclaration379); 
+            pushFollow(FOLLOW_expression_in_constDeclaration383);
+            node_exp=expression();
 
             state._fsp--;
 
-            match(input,46,FOLLOW_46_in_constDeclaration424); 
+            match(input,46,FOLLOW_46_in_constDeclaration385); 
 
             }
 
-            node = new Const(node_id);
+            list.add(new Const(node_id, node_exp));
 
             }
 
@@ -338,63 +279,61 @@ public class OberonParser extends Parser {
         }
         finally {
         }
-        return node;
+        return ;
     }
     // $ANTLR end "constDeclaration"
 
 
     // $ANTLR start "varDeclaration"
-    // D:\\Projects UVA\\Oberon.g:98:1: varDeclaration returns [Var node] : 'VAR' (node_ids= idList ':' node_type= type ';' )* ;
-    public final Var varDeclaration() throws RecognitionException {
-        Var node = null;
-
+    // D:\\Projects UVA\\Oberon.g:90:1: varDeclaration[BaseDeclarationList list] : 'VAR' (node_ids= idList ':' node_type= type ';' )* ;
+    public final void varDeclaration(BaseDeclarationList list) throws RecognitionException {
         IDs node_ids = null;
 
         BaseType node_type = null;
 
 
         try {
-            // D:\\Projects UVA\\Oberon.g:99:2: ( 'VAR' (node_ids= idList ':' node_type= type ';' )* )
-            // D:\\Projects UVA\\Oberon.g:99:4: 'VAR' (node_ids= idList ':' node_type= type ';' )*
+            // D:\\Projects UVA\\Oberon.g:91:2: ( 'VAR' (node_ids= idList ':' node_type= type ';' )* )
+            // D:\\Projects UVA\\Oberon.g:91:4: 'VAR' (node_ids= idList ':' node_type= type ';' )*
             {
-            match(input,VAR,FOLLOW_VAR_in_varDeclaration442); 
-            // D:\\Projects UVA\\Oberon.g:99:10: (node_ids= idList ':' node_type= type ';' )*
-            loop3:
+            match(input,VAR,FOLLOW_VAR_in_varDeclaration399); 
+            // D:\\Projects UVA\\Oberon.g:91:10: (node_ids= idList ':' node_type= type ';' )*
+            loop2:
             do {
-                int alt3=2;
-                int LA3_0 = input.LA(1);
+                int alt2=2;
+                int LA2_0 = input.LA(1);
 
-                if ( (LA3_0==ID) ) {
-                    alt3=1;
+                if ( (LA2_0==ID) ) {
+                    alt2=1;
                 }
 
 
-                switch (alt3) {
+                switch (alt2) {
             	case 1 :
-            	    // D:\\Projects UVA\\Oberon.g:99:11: node_ids= idList ':' node_type= type ';'
+            	    // D:\\Projects UVA\\Oberon.g:91:11: node_ids= idList ':' node_type= type ';'
             	    {
-            	    pushFollow(FOLLOW_idList_in_varDeclaration447);
+            	    pushFollow(FOLLOW_idList_in_varDeclaration404);
             	    node_ids=idList();
 
             	    state._fsp--;
 
-            	    match(input,49,FOLLOW_49_in_varDeclaration449); 
-            	    pushFollow(FOLLOW_type_in_varDeclaration453);
+            	    match(input,49,FOLLOW_49_in_varDeclaration406); 
+            	    pushFollow(FOLLOW_type_in_varDeclaration410);
             	    node_type=type();
 
             	    state._fsp--;
 
-            	    match(input,46,FOLLOW_46_in_varDeclaration455); 
+            	    match(input,46,FOLLOW_46_in_varDeclaration412); 
+            	    for (ID id : node_ids){ list.add(new Var(id, node_type));}
 
             	    }
             	    break;
 
             	default :
-            	    break loop3;
+            	    break loop2;
                 }
             } while (true);
 
-            node = new Var(node_ids, node_type);
 
             }
 
@@ -405,16 +344,14 @@ public class OberonParser extends Parser {
         }
         finally {
         }
-        return node;
+        return ;
     }
     // $ANTLR end "varDeclaration"
 
 
     // $ANTLR start "procedure"
-    // D:\\Projects UVA\\Oberon.g:102:1: procedure returns [Procedure node] : 'PROCEDURE' node_id= id1 (node_params= procedureParams )? ';' node_declarations= declarations 'BEGIN' node_statements= statements 'END' id1 ';' ;
-    public final Procedure procedure() throws RecognitionException {
-        Procedure node = null;
-
+    // D:\\Projects UVA\\Oberon.g:93:1: procedure[BaseDeclarationList list] : 'PROCEDURE' node_id= id1 ( '(' node_params= procedureParams ')' )? ';' node_declarations= declarations 'BEGIN' node_statements= statements 'END' id1 ';' ;
+    public final void procedure(BaseDeclarationList list) throws RecognitionException {
         ID node_id = null;
 
         BaseDeclarationList node_params = null;
@@ -425,57 +362,59 @@ public class OberonParser extends Parser {
 
 
         try {
-            // D:\\Projects UVA\\Oberon.g:103:2: ( 'PROCEDURE' node_id= id1 (node_params= procedureParams )? ';' node_declarations= declarations 'BEGIN' node_statements= statements 'END' id1 ';' )
-            // D:\\Projects UVA\\Oberon.g:103:4: 'PROCEDURE' node_id= id1 (node_params= procedureParams )? ';' node_declarations= declarations 'BEGIN' node_statements= statements 'END' id1 ';'
+            // D:\\Projects UVA\\Oberon.g:94:2: ( 'PROCEDURE' node_id= id1 ( '(' node_params= procedureParams ')' )? ';' node_declarations= declarations 'BEGIN' node_statements= statements 'END' id1 ';' )
+            // D:\\Projects UVA\\Oberon.g:94:4: 'PROCEDURE' node_id= id1 ( '(' node_params= procedureParams ')' )? ';' node_declarations= declarations 'BEGIN' node_statements= statements 'END' id1 ';'
             {
-            match(input,50,FOLLOW_50_in_procedure474); 
-            pushFollow(FOLLOW_id1_in_procedure478);
+            match(input,50,FOLLOW_50_in_procedure427); 
+            pushFollow(FOLLOW_id1_in_procedure431);
             node_id=id1();
 
             state._fsp--;
 
-            // D:\\Projects UVA\\Oberon.g:103:39: (node_params= procedureParams )?
-            int alt4=2;
-            int LA4_0 = input.LA(1);
+            // D:\\Projects UVA\\Oberon.g:94:28: ( '(' node_params= procedureParams ')' )?
+            int alt3=2;
+            int LA3_0 = input.LA(1);
 
-            if ( (LA4_0==51) ) {
-                alt4=1;
+            if ( (LA3_0==51) ) {
+                alt3=1;
             }
-            switch (alt4) {
+            switch (alt3) {
                 case 1 :
-                    // D:\\Projects UVA\\Oberon.g:103:39: node_params= procedureParams
+                    // D:\\Projects UVA\\Oberon.g:94:29: '(' node_params= procedureParams ')'
                     {
-                    pushFollow(FOLLOW_procedureParams_in_procedure482);
+                    match(input,51,FOLLOW_51_in_procedure434); 
+                    pushFollow(FOLLOW_procedureParams_in_procedure438);
                     node_params=procedureParams();
 
                     state._fsp--;
 
+                    match(input,52,FOLLOW_52_in_procedure440); 
 
                     }
                     break;
 
             }
 
-            match(input,46,FOLLOW_46_in_procedure485); 
-            pushFollow(FOLLOW_declarations_in_procedure491);
+            match(input,46,FOLLOW_46_in_procedure444); 
+            pushFollow(FOLLOW_declarations_in_procedure450);
             node_declarations=declarations();
 
             state._fsp--;
 
-            match(input,47,FOLLOW_47_in_procedure495); 
-            pushFollow(FOLLOW_statements_in_procedure501);
+            match(input,47,FOLLOW_47_in_procedure454); 
+            pushFollow(FOLLOW_statements_in_procedure460);
             node_statements=statements();
 
             state._fsp--;
 
-            match(input,END,FOLLOW_END_in_procedure505); 
-            pushFollow(FOLLOW_id1_in_procedure507);
+            match(input,END,FOLLOW_END_in_procedure464); 
+            pushFollow(FOLLOW_id1_in_procedure466);
             id1();
 
             state._fsp--;
 
-            match(input,46,FOLLOW_46_in_procedure509); 
-            node = new Procedure(node_id, node_params, node_declarations, node_statements);
+            match(input,46,FOLLOW_46_in_procedure468); 
+            list.add(new Procedure(node_id, node_params, node_declarations, node_statements));
 
             }
 
@@ -486,63 +425,56 @@ public class OberonParser extends Parser {
         }
         finally {
         }
-        return node;
+        return ;
     }
     // $ANTLR end "procedure"
 
 
     // $ANTLR start "procedureParams"
-    // D:\\Projects UVA\\Oberon.g:110:1: procedureParams returns [BaseDeclarationList node] : '(' node_declaration= procedureVar ( ';' node_declaration= procedureVar )* ')' ;
+    // D:\\Projects UVA\\Oberon.g:101:1: procedureParams returns [BaseDeclarationList node] : node_declaration= procedureParam[node] ( ';' node_declaration= procedureParam[node] )* ;
     public final BaseDeclarationList procedureParams() throws RecognitionException {
         BaseDeclarationList node = null;
 
-        Var node_declaration = null;
-
-
         try {
-            // D:\\Projects UVA\\Oberon.g:111:2: ( '(' node_declaration= procedureVar ( ';' node_declaration= procedureVar )* ')' )
-            // D:\\Projects UVA\\Oberon.g:111:4: '(' node_declaration= procedureVar ( ';' node_declaration= procedureVar )* ')'
+            // D:\\Projects UVA\\Oberon.g:102:2: (node_declaration= procedureParam[node] ( ';' node_declaration= procedureParam[node] )* )
+            // D:\\Projects UVA\\Oberon.g:102:4: node_declaration= procedureParam[node] ( ';' node_declaration= procedureParam[node] )*
             {
             node = new BaseDeclarationList();
-            match(input,51,FOLLOW_51_in_procedureParams529); 
-            pushFollow(FOLLOW_procedureVar_in_procedureParams535);
-            node_declaration=procedureVar();
+            pushFollow(FOLLOW_procedureParam_in_procedureParams492);
+            procedureParam(node);
 
             state._fsp--;
 
-            node.add(node_declaration);
-            // D:\\Projects UVA\\Oberon.g:113:3: ( ';' node_declaration= procedureVar )*
-            loop5:
+            // D:\\Projects UVA\\Oberon.g:103:43: ( ';' node_declaration= procedureParam[node] )*
+            loop4:
             do {
-                int alt5=2;
-                int LA5_0 = input.LA(1);
+                int alt4=2;
+                int LA4_0 = input.LA(1);
 
-                if ( (LA5_0==46) ) {
-                    alt5=1;
+                if ( (LA4_0==46) ) {
+                    alt4=1;
                 }
 
 
-                switch (alt5) {
+                switch (alt4) {
             	case 1 :
-            	    // D:\\Projects UVA\\Oberon.g:113:4: ';' node_declaration= procedureVar
+            	    // D:\\Projects UVA\\Oberon.g:103:44: ';' node_declaration= procedureParam[node]
             	    {
-            	    match(input,46,FOLLOW_46_in_procedureParams542); 
-            	    pushFollow(FOLLOW_procedureVar_in_procedureParams548);
-            	    node_declaration=procedureVar();
+            	    match(input,46,FOLLOW_46_in_procedureParams496); 
+            	    pushFollow(FOLLOW_procedureParam_in_procedureParams502);
+            	    procedureParam(node);
 
             	    state._fsp--;
 
-            	    node.add(node_declaration);
 
             	    }
             	    break;
 
             	default :
-            	    break loop5;
+            	    break loop4;
                 }
             } while (true);
 
-            match(input,52,FOLLOW_52_in_procedureParams554); 
 
             }
 
@@ -558,124 +490,74 @@ public class OberonParser extends Parser {
     // $ANTLR end "procedureParams"
 
 
-    // $ANTLR start "procedureVar"
-    // D:\\Projects UVA\\Oberon.g:116:1: procedureVar returns [Var node] : ( procedureVarRef | procedureVarNonRef );
-    public final Var procedureVar() throws RecognitionException {
-        Var node = null;
-
-        VarRef procedureVarRef4 = null;
-
-        Var procedureVarNonRef5 = null;
-
-
-        try {
-            // D:\\Projects UVA\\Oberon.g:117:2: ( procedureVarRef | procedureVarNonRef )
-            int alt6=2;
-            int LA6_0 = input.LA(1);
-
-            if ( (LA6_0==VAR) ) {
-                alt6=1;
-            }
-            else if ( (LA6_0==ID||LA6_0==46||LA6_0==52) ) {
-                alt6=2;
-            }
-            else {
-                NoViableAltException nvae =
-                    new NoViableAltException("", 6, 0, input);
-
-                throw nvae;
-            }
-            switch (alt6) {
-                case 1 :
-                    // D:\\Projects UVA\\Oberon.g:117:4: procedureVarRef
-                    {
-                    pushFollow(FOLLOW_procedureVarRef_in_procedureVar573);
-                    procedureVarRef4=procedureVarRef();
-
-                    state._fsp--;
-
-                    node =procedureVarRef4;
-
-                    }
-                    break;
-                case 2 :
-                    // D:\\Projects UVA\\Oberon.g:118:4: procedureVarNonRef
-                    {
-                    pushFollow(FOLLOW_procedureVarNonRef_in_procedureVar581);
-                    procedureVarNonRef5=procedureVarNonRef();
-
-                    state._fsp--;
-
-                    node =procedureVarNonRef5;
-
-                    }
-                    break;
-
-            }
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-        }
-        return node;
-    }
-    // $ANTLR end "procedureVar"
-
-
-    // $ANTLR start "procedureVarRef"
-    // D:\\Projects UVA\\Oberon.g:120:1: procedureVarRef returns [VarRef node] : 'VAR' (node_ids= idList ':' node_type= type ';' )* ;
-    public final VarRef procedureVarRef() throws RecognitionException {
-        VarRef node = null;
-
+    // $ANTLR start "procedureParam"
+    // D:\\Projects UVA\\Oberon.g:106:1: procedureParam[BaseDeclarationList list] : ( ( 'VAR' )? node_ids= idList ':' node_type= type )* ;
+    public final void procedureParam(BaseDeclarationList list) throws RecognitionException {
         IDs node_ids = null;
 
         BaseType node_type = null;
 
 
         try {
-            // D:\\Projects UVA\\Oberon.g:121:2: ( 'VAR' (node_ids= idList ':' node_type= type ';' )* )
-            // D:\\Projects UVA\\Oberon.g:121:4: 'VAR' (node_ids= idList ':' node_type= type ';' )*
+            // D:\\Projects UVA\\Oberon.g:107:2: ( ( ( 'VAR' )? node_ids= idList ':' node_type= type )* )
+            // D:\\Projects UVA\\Oberon.g:107:4: ( ( 'VAR' )? node_ids= idList ':' node_type= type )*
             {
-            match(input,VAR,FOLLOW_VAR_in_procedureVarRef598); 
-            // D:\\Projects UVA\\Oberon.g:121:10: (node_ids= idList ':' node_type= type ';' )*
-            loop7:
+            // D:\\Projects UVA\\Oberon.g:107:4: ( ( 'VAR' )? node_ids= idList ':' node_type= type )*
+            loop6:
             do {
-                int alt7=2;
-                int LA7_0 = input.LA(1);
+                int alt6=2;
+                int LA6_0 = input.LA(1);
 
-                if ( (LA7_0==ID) ) {
-                    alt7=1;
+                if ( (LA6_0==VAR||LA6_0==ID) ) {
+                    alt6=1;
                 }
 
 
-                switch (alt7) {
+                switch (alt6) {
             	case 1 :
-            	    // D:\\Projects UVA\\Oberon.g:121:11: node_ids= idList ':' node_type= type ';'
+            	    // D:\\Projects UVA\\Oberon.g:107:5: ( 'VAR' )? node_ids= idList ':' node_type= type
             	    {
-            	    pushFollow(FOLLOW_idList_in_procedureVarRef603);
+            	    boolean byRef=false;
+            	    // D:\\Projects UVA\\Oberon.g:107:28: ( 'VAR' )?
+            	    int alt5=2;
+            	    int LA5_0 = input.LA(1);
+
+            	    if ( (LA5_0==VAR) ) {
+            	        alt5=1;
+            	    }
+            	    switch (alt5) {
+            	        case 1 :
+            	            // D:\\Projects UVA\\Oberon.g:107:29: 'VAR'
+            	            {
+            	            match(input,VAR,FOLLOW_VAR_in_procedureParam525); 
+            	            byRef=true;
+
+            	            }
+            	            break;
+
+            	    }
+
+            	    pushFollow(FOLLOW_idList_in_procedureParam533);
             	    node_ids=idList();
 
             	    state._fsp--;
 
-            	    match(input,49,FOLLOW_49_in_procedureVarRef605); 
-            	    pushFollow(FOLLOW_type_in_procedureVarRef609);
+            	    match(input,49,FOLLOW_49_in_procedureParam535); 
+            	    pushFollow(FOLLOW_type_in_procedureParam539);
             	    node_type=type();
 
             	    state._fsp--;
 
-            	    match(input,46,FOLLOW_46_in_procedureVarRef611); 
+            	    for (ID id : node_ids){ list.add(byRef ? new VarRef(id, node_type) : new Var(id, node_type));}
 
             	    }
             	    break;
 
             	default :
-            	    break loop7;
+            	    break loop6;
                 }
             } while (true);
 
-            node = new VarRef(node_ids, node_type);
 
             }
 
@@ -686,173 +568,107 @@ public class OberonParser extends Parser {
         }
         finally {
         }
-        return node;
+        return ;
     }
-    // $ANTLR end "procedureVarRef"
-
-
-    // $ANTLR start "procedureVarNonRef"
-    // D:\\Projects UVA\\Oberon.g:124:1: procedureVarNonRef returns [Var node] : (node_ids= idList ':' node_type= type ';' )* ;
-    public final Var procedureVarNonRef() throws RecognitionException {
-        Var node = null;
-
-        IDs node_ids = null;
-
-        BaseType node_type = null;
-
-
-        try {
-            // D:\\Projects UVA\\Oberon.g:125:2: ( (node_ids= idList ':' node_type= type ';' )* )
-            // D:\\Projects UVA\\Oberon.g:125:4: (node_ids= idList ':' node_type= type ';' )*
-            {
-            // D:\\Projects UVA\\Oberon.g:125:4: (node_ids= idList ':' node_type= type ';' )*
-            loop8:
-            do {
-                int alt8=2;
-                int LA8_0 = input.LA(1);
-
-                if ( (LA8_0==ID) ) {
-                    alt8=1;
-                }
-
-
-                switch (alt8) {
-            	case 1 :
-            	    // D:\\Projects UVA\\Oberon.g:125:5: node_ids= idList ':' node_type= type ';'
-            	    {
-            	    pushFollow(FOLLOW_idList_in_procedureVarNonRef634);
-            	    node_ids=idList();
-
-            	    state._fsp--;
-
-            	    match(input,49,FOLLOW_49_in_procedureVarNonRef636); 
-            	    pushFollow(FOLLOW_type_in_procedureVarNonRef640);
-            	    node_type=type();
-
-            	    state._fsp--;
-
-            	    match(input,46,FOLLOW_46_in_procedureVarNonRef642); 
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop8;
-                }
-            } while (true);
-
-            node = new Var(node_ids, node_type);
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-        }
-        return node;
-    }
-    // $ANTLR end "procedureVarNonRef"
+    // $ANTLR end "procedureParam"
 
 
     // $ANTLR start "procedureCall"
-    // D:\\Projects UVA\\Oberon.g:128:1: procedureCall returns [Call node] : ( CALL_READ | CALL_WRITE | CALL_WRITELN | ID ) (call_vars= procedureActualParams )? ;
+    // D:\\Projects UVA\\Oberon.g:109:1: procedureCall returns [Call node] : ( CALL_READ | CALL_WRITE | CALL_WRITELN | ID ) (call_vars= procedureActualParams )? ;
     public final Call procedureCall() throws RecognitionException {
         Call node = null;
 
-        Token ID6=null;
-        CallVars call_vars = null;
+        Token ID1=null;
+        CallActualParameters call_vars = null;
 
 
         try {
-            // D:\\Projects UVA\\Oberon.g:129:6: ( ( CALL_READ | CALL_WRITE | CALL_WRITELN | ID ) (call_vars= procedureActualParams )? )
-            // D:\\Projects UVA\\Oberon.g:129:11: ( CALL_READ | CALL_WRITE | CALL_WRITELN | ID ) (call_vars= procedureActualParams )?
+            // D:\\Projects UVA\\Oberon.g:110:6: ( ( CALL_READ | CALL_WRITE | CALL_WRITELN | ID ) (call_vars= procedureActualParams )? )
+            // D:\\Projects UVA\\Oberon.g:110:11: ( CALL_READ | CALL_WRITE | CALL_WRITELN | ID ) (call_vars= procedureActualParams )?
             {
-            // D:\\Projects UVA\\Oberon.g:129:11: ( CALL_READ | CALL_WRITE | CALL_WRITELN | ID )
-            int alt9=4;
+            // D:\\Projects UVA\\Oberon.g:110:11: ( CALL_READ | CALL_WRITE | CALL_WRITELN | ID )
+            int alt7=4;
             switch ( input.LA(1) ) {
             case CALL_READ:
                 {
-                alt9=1;
+                alt7=1;
                 }
                 break;
             case CALL_WRITE:
                 {
-                alt9=2;
+                alt7=2;
                 }
                 break;
             case CALL_WRITELN:
                 {
-                alt9=3;
+                alt7=3;
                 }
                 break;
             case ID:
                 {
-                alt9=4;
+                alt7=4;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 9, 0, input);
+                    new NoViableAltException("", 7, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt9) {
+            switch (alt7) {
                 case 1 :
-                    // D:\\Projects UVA\\Oberon.g:130:8: CALL_READ
+                    // D:\\Projects UVA\\Oberon.g:111:8: CALL_READ
                     {
-                    match(input,CALL_READ,FOLLOW_CALL_READ_in_procedureCall676); 
+                    match(input,CALL_READ,FOLLOW_CALL_READ_in_procedureCall572); 
                     node = new CallRead();
 
                     }
                     break;
                 case 2 :
-                    // D:\\Projects UVA\\Oberon.g:131:9: CALL_WRITE
+                    // D:\\Projects UVA\\Oberon.g:112:9: CALL_WRITE
                     {
-                    match(input,CALL_WRITE,FOLLOW_CALL_WRITE_in_procedureCall688); 
+                    match(input,CALL_WRITE,FOLLOW_CALL_WRITE_in_procedureCall584); 
                     node = new CallWrite();
 
                     }
                     break;
                 case 3 :
-                    // D:\\Projects UVA\\Oberon.g:132:9: CALL_WRITELN
+                    // D:\\Projects UVA\\Oberon.g:113:9: CALL_WRITELN
                     {
-                    match(input,CALL_WRITELN,FOLLOW_CALL_WRITELN_in_procedureCall700); 
+                    match(input,CALL_WRITELN,FOLLOW_CALL_WRITELN_in_procedureCall596); 
                     node = new CallWriteLn();
 
                     }
                     break;
                 case 4 :
-                    // D:\\Projects UVA\\Oberon.g:133:9: ID
+                    // D:\\Projects UVA\\Oberon.g:114:9: ID
                     {
-                    ID6=(Token)match(input,ID,FOLLOW_ID_in_procedureCall712); 
-                    node = new CallProcedure(new ID((ID6!=null?ID6.getText():null)));
+                    ID1=(Token)match(input,ID,FOLLOW_ID_in_procedureCall608); 
+                    node = new CallProcedure(new ID((ID1!=null?ID1.getText():null)));
 
                     }
                     break;
 
             }
 
-            // D:\\Projects UVA\\Oberon.g:135:7: (call_vars= procedureActualParams )?
-            int alt10=2;
-            int LA10_0 = input.LA(1);
+            // D:\\Projects UVA\\Oberon.g:116:7: (call_vars= procedureActualParams )?
+            int alt8=2;
+            int LA8_0 = input.LA(1);
 
-            if ( (LA10_0==51) ) {
-                alt10=1;
+            if ( (LA8_0==51) ) {
+                alt8=1;
             }
-            switch (alt10) {
+            switch (alt8) {
                 case 1 :
-                    // D:\\Projects UVA\\Oberon.g:135:8: call_vars= procedureActualParams
+                    // D:\\Projects UVA\\Oberon.g:116:8: call_vars= procedureActualParams
                     {
-                    pushFollow(FOLLOW_procedureActualParams_in_procedureCall734);
+                    pushFollow(FOLLOW_procedureActualParams_in_procedureCall630);
                     call_vars=procedureActualParams();
 
                     state._fsp--;
 
-                    node.setCallVars(call_vars);
+                    node.setCallActualParameters(call_vars);
 
                     }
                     break;
@@ -875,52 +691,52 @@ public class OberonParser extends Parser {
 
 
     // $ANTLR start "procedureActualParams"
-    // D:\\Projects UVA\\Oberon.g:137:1: procedureActualParams returns [CallVars node] : '(' (node_exp= expression ( ',' node_exp= expression )* )? ')' ;
-    public final CallVars procedureActualParams() throws RecognitionException {
-        CallVars node = null;
+    // D:\\Projects UVA\\Oberon.g:118:1: procedureActualParams returns [CallActualParameters node] : '(' (node_exp= expression ( ',' node_exp= expression )* )? ')' ;
+    public final CallActualParameters procedureActualParams() throws RecognitionException {
+        CallActualParameters node = null;
 
         BaseNode node_exp = null;
 
 
         try {
-            // D:\\Projects UVA\\Oberon.g:138:2: ( '(' (node_exp= expression ( ',' node_exp= expression )* )? ')' )
-            // D:\\Projects UVA\\Oberon.g:138:3: '(' (node_exp= expression ( ',' node_exp= expression )* )? ')'
+            // D:\\Projects UVA\\Oberon.g:119:2: ( '(' (node_exp= expression ( ',' node_exp= expression )* )? ')' )
+            // D:\\Projects UVA\\Oberon.g:119:3: '(' (node_exp= expression ( ',' node_exp= expression )* )? ')'
             {
-            match(input,51,FOLLOW_51_in_procedureActualParams751); 
-            // D:\\Projects UVA\\Oberon.g:138:7: (node_exp= expression ( ',' node_exp= expression )* )?
-            int alt12=2;
-            int LA12_0 = input.LA(1);
+            match(input,51,FOLLOW_51_in_procedureActualParams647); 
+            // D:\\Projects UVA\\Oberon.g:119:7: (node_exp= expression ( ',' node_exp= expression )* )?
+            int alt10=2;
+            int LA10_0 = input.LA(1);
 
-            if ( ((LA12_0>=MIN && LA12_0<=PLUS)||LA12_0==NOT||(LA12_0>=ID && LA12_0<=INT)||LA12_0==51) ) {
-                alt12=1;
+            if ( ((LA10_0>=MIN && LA10_0<=PLUS)||LA10_0==NOT||(LA10_0>=ID && LA10_0<=INT)||LA10_0==51) ) {
+                alt10=1;
             }
-            switch (alt12) {
+            switch (alt10) {
                 case 1 :
-                    // D:\\Projects UVA\\Oberon.g:138:8: node_exp= expression ( ',' node_exp= expression )*
+                    // D:\\Projects UVA\\Oberon.g:119:8: node_exp= expression ( ',' node_exp= expression )*
                     {
-                    pushFollow(FOLLOW_expression_in_procedureActualParams756);
+                    pushFollow(FOLLOW_expression_in_procedureActualParams652);
                     node_exp=expression();
 
                     state._fsp--;
 
-                    node =new CallVars(); node.getItems().add(node_exp);
-                    // D:\\Projects UVA\\Oberon.g:139:3: ( ',' node_exp= expression )*
-                    loop11:
+                    node =new CallActualParameters(); node.getItems().add(node_exp);
+                    // D:\\Projects UVA\\Oberon.g:120:3: ( ',' node_exp= expression )*
+                    loop9:
                     do {
-                        int alt11=2;
-                        int LA11_0 = input.LA(1);
+                        int alt9=2;
+                        int LA9_0 = input.LA(1);
 
-                        if ( (LA11_0==53) ) {
-                            alt11=1;
+                        if ( (LA9_0==53) ) {
+                            alt9=1;
                         }
 
 
-                        switch (alt11) {
+                        switch (alt9) {
                     	case 1 :
-                    	    // D:\\Projects UVA\\Oberon.g:139:4: ',' node_exp= expression
+                    	    // D:\\Projects UVA\\Oberon.g:120:4: ',' node_exp= expression
                     	    {
-                    	    match(input,53,FOLLOW_53_in_procedureActualParams763); 
-                    	    pushFollow(FOLLOW_expression_in_procedureActualParams767);
+                    	    match(input,53,FOLLOW_53_in_procedureActualParams659); 
+                    	    pushFollow(FOLLOW_expression_in_procedureActualParams663);
                     	    node_exp=expression();
 
                     	    state._fsp--;
@@ -931,7 +747,7 @@ public class OberonParser extends Parser {
                     	    break;
 
                     	default :
-                    	    break loop11;
+                    	    break loop9;
                         }
                     } while (true);
 
@@ -941,7 +757,7 @@ public class OberonParser extends Parser {
 
             }
 
-            match(input,52,FOLLOW_52_in_procedureActualParams776); 
+            match(input,52,FOLLOW_52_in_procedureActualParams672); 
 
             }
 
@@ -958,47 +774,47 @@ public class OberonParser extends Parser {
 
 
     // $ANTLR start "type"
-    // D:\\Projects UVA\\Oberon.g:142:1: type returns [BaseType node] : ( arrayType | INT_TYPE );
+    // D:\\Projects UVA\\Oberon.g:123:1: type returns [BaseType node] : ( arrayType | INT_TYPE );
     public final BaseType type() throws RecognitionException {
         BaseType node = null;
 
-        ArrayType arrayType7 = null;
+        ArrayType arrayType2 = null;
 
 
         try {
-            // D:\\Projects UVA\\Oberon.g:143:2: ( arrayType | INT_TYPE )
-            int alt13=2;
-            int LA13_0 = input.LA(1);
+            // D:\\Projects UVA\\Oberon.g:124:2: ( arrayType | INT_TYPE )
+            int alt11=2;
+            int LA11_0 = input.LA(1);
 
-            if ( (LA13_0==ARRAY) ) {
-                alt13=1;
+            if ( (LA11_0==ARRAY) ) {
+                alt11=1;
             }
-            else if ( (LA13_0==INT_TYPE) ) {
-                alt13=2;
+            else if ( (LA11_0==INT_TYPE) ) {
+                alt11=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 13, 0, input);
+                    new NoViableAltException("", 11, 0, input);
 
                 throw nvae;
             }
-            switch (alt13) {
+            switch (alt11) {
                 case 1 :
-                    // D:\\Projects UVA\\Oberon.g:143:4: arrayType
+                    // D:\\Projects UVA\\Oberon.g:124:4: arrayType
                     {
-                    pushFollow(FOLLOW_arrayType_in_type792);
-                    arrayType7=arrayType();
+                    pushFollow(FOLLOW_arrayType_in_type688);
+                    arrayType2=arrayType();
 
                     state._fsp--;
 
-                    node = arrayType7;
+                    node = arrayType2;
 
                     }
                     break;
                 case 2 :
-                    // D:\\Projects UVA\\Oberon.g:144:4: INT_TYPE
+                    // D:\\Projects UVA\\Oberon.g:125:4: INT_TYPE
                     {
-                    match(input,INT_TYPE,FOLLOW_INT_TYPE_in_type799); 
+                    match(input,INT_TYPE,FOLLOW_INT_TYPE_in_type695); 
                     node = new IntType();
 
                     }
@@ -1018,7 +834,7 @@ public class OberonParser extends Parser {
 
 
     // $ANTLR start "arrayType"
-    // D:\\Projects UVA\\Oberon.g:147:1: arrayType returns [Array node] : ARRAY node_exp= expression 'OF' node_type= type ;
+    // D:\\Projects UVA\\Oberon.g:128:1: arrayType returns [ArrayType node] : ARRAY node_exp= expression OF node_type= type ;
     public final ArrayType arrayType() throws RecognitionException {
         ArrayType node = null;
 
@@ -1028,17 +844,17 @@ public class OberonParser extends Parser {
 
 
         try {
-            // D:\\Projects UVA\\Oberon.g:148:2: ( ARRAY node_exp= expression 'OF' node_type= type )
-            // D:\\Projects UVA\\Oberon.g:148:4: ARRAY node_exp= expression 'OF' node_type= type
+            // D:\\Projects UVA\\Oberon.g:129:2: ( ARRAY node_exp= expression OF node_type= type )
+            // D:\\Projects UVA\\Oberon.g:129:4: ARRAY node_exp= expression OF node_type= type
             {
-            match(input,ARRAY,FOLLOW_ARRAY_in_arrayType817); 
-            pushFollow(FOLLOW_expression_in_arrayType821);
+            match(input,ARRAY,FOLLOW_ARRAY_in_arrayType713); 
+            pushFollow(FOLLOW_expression_in_arrayType717);
             node_exp=expression();
 
             state._fsp--;
 
-            match(input,54,FOLLOW_54_in_arrayType823); 
-            pushFollow(FOLLOW_type_in_arrayType827);
+            match(input,OF,FOLLOW_OF_in_arrayType719); 
+            pushFollow(FOLLOW_type_in_arrayType723);
             node_type=type();
 
             state._fsp--;
@@ -1060,13 +876,13 @@ public class OberonParser extends Parser {
 
 
     // $ANTLR start "intType"
-    // D:\\Projects UVA\\Oberon.g:151:1: intType : INT_TYPE ;
+    // D:\\Projects UVA\\Oberon.g:132:1: intType : INT_TYPE ;
     public final void intType() throws RecognitionException {
         try {
-            // D:\\Projects UVA\\Oberon.g:151:9: ( INT_TYPE )
-            // D:\\Projects UVA\\Oberon.g:151:11: INT_TYPE
+            // D:\\Projects UVA\\Oberon.g:132:9: ( INT_TYPE )
+            // D:\\Projects UVA\\Oberon.g:132:11: INT_TYPE
             {
-            match(input,INT_TYPE,FOLLOW_INT_TYPE_in_intType839); 
+            match(input,INT_TYPE,FOLLOW_INT_TYPE_in_intType735); 
 
             }
 
@@ -1083,18 +899,18 @@ public class OberonParser extends Parser {
 
 
     // $ANTLR start "number"
-    // D:\\Projects UVA\\Oberon.g:153:1: number returns [IntValue node] : INT ;
+    // D:\\Projects UVA\\Oberon.g:134:1: number returns [IntValue node] : INT ;
     public final IntValue number() throws RecognitionException {
         IntValue node = null;
 
-        Token INT8=null;
+        Token INT3=null;
 
         try {
-            // D:\\Projects UVA\\Oberon.g:154:2: ( INT )
-            // D:\\Projects UVA\\Oberon.g:154:4: INT
+            // D:\\Projects UVA\\Oberon.g:135:2: ( INT )
+            // D:\\Projects UVA\\Oberon.g:135:4: INT
             {
-            INT8=(Token)match(input,INT,FOLLOW_INT_in_number852); 
-            node = new IntValue((INT8!=null?INT8.getText():null));
+            INT3=(Token)match(input,INT,FOLLOW_INT_in_number748); 
+            node = new IntValue((INT3!=null?INT3.getText():null));
 
             }
 
@@ -1111,55 +927,55 @@ public class OberonParser extends Parser {
 
 
     // $ANTLR start "factor"
-    // D:\\Projects UVA\\Oberon.g:157:1: factor returns [BaseNode node] : ( ID idSelector[node_id] | INT | ( '(' expression ')' ) | ( NOT unary= factor ) );
+    // D:\\Projects UVA\\Oberon.g:138:1: factor returns [BaseNode node] : ( ID idSelector[node_id] | INT | ( '(' expression ')' ) | ( NOT unary= factor ) );
     public final BaseNode factor() throws RecognitionException {
         BaseNode node = null;
 
-        Token ID9=null;
-        Token INT10=null;
+        Token ID4=null;
+        Token INT5=null;
         BaseNode unary = null;
 
-        BaseNode expression11 = null;
+        BaseNode expression6 = null;
 
 
         try {
-            // D:\\Projects UVA\\Oberon.g:158:2: ( ID idSelector[node_id] | INT | ( '(' expression ')' ) | ( NOT unary= factor ) )
-            int alt14=4;
+            // D:\\Projects UVA\\Oberon.g:139:2: ( ID idSelector[node_id] | INT | ( '(' expression ')' ) | ( NOT unary= factor ) )
+            int alt12=4;
             switch ( input.LA(1) ) {
             case ID:
                 {
-                alt14=1;
+                alt12=1;
                 }
                 break;
             case INT:
                 {
-                alt14=2;
+                alt12=2;
                 }
                 break;
             case 51:
                 {
-                alt14=3;
+                alt12=3;
                 }
                 break;
             case NOT:
                 {
-                alt14=4;
+                alt12=4;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 14, 0, input);
+                    new NoViableAltException("", 12, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt14) {
+            switch (alt12) {
                 case 1 :
-                    // D:\\Projects UVA\\Oberon.g:158:7: ID idSelector[node_id]
+                    // D:\\Projects UVA\\Oberon.g:139:7: ID idSelector[node_id]
                     {
-                    ID9=(Token)match(input,ID,FOLLOW_ID_in_factor876); 
-                    ID node_id = new ID((ID9!=null?ID9.getText():null));
-                    pushFollow(FOLLOW_idSelector_in_factor887);
+                    ID4=(Token)match(input,ID,FOLLOW_ID_in_factor772); 
+                    ID node_id = new ID((ID4!=null?ID4.getText():null));
+                    pushFollow(FOLLOW_idSelector_in_factor783);
                     idSelector(node_id);
 
                     state._fsp--;
@@ -1169,27 +985,27 @@ public class OberonParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // D:\\Projects UVA\\Oberon.g:160:5: INT
+                    // D:\\Projects UVA\\Oberon.g:141:5: INT
                     {
-                    INT10=(Token)match(input,INT,FOLLOW_INT_in_factor899); 
-                    node = new IntValue((INT10!=null?INT10.getText():null));
+                    INT5=(Token)match(input,INT,FOLLOW_INT_in_factor795); 
+                    node = new IntValue((INT5!=null?INT5.getText():null));
 
                     }
                     break;
                 case 3 :
-                    // D:\\Projects UVA\\Oberon.g:161:5: ( '(' expression ')' )
+                    // D:\\Projects UVA\\Oberon.g:142:5: ( '(' expression ')' )
                     {
-                    // D:\\Projects UVA\\Oberon.g:161:5: ( '(' expression ')' )
-                    // D:\\Projects UVA\\Oberon.g:161:6: '(' expression ')'
+                    // D:\\Projects UVA\\Oberon.g:142:5: ( '(' expression ')' )
+                    // D:\\Projects UVA\\Oberon.g:142:6: '(' expression ')'
                     {
-                    match(input,51,FOLLOW_51_in_factor912); 
-                    pushFollow(FOLLOW_expression_in_factor914);
-                    expression11=expression();
+                    match(input,51,FOLLOW_51_in_factor808); 
+                    pushFollow(FOLLOW_expression_in_factor810);
+                    expression6=expression();
 
                     state._fsp--;
 
-                    match(input,52,FOLLOW_52_in_factor916); 
-                    node =expression11;
+                    match(input,52,FOLLOW_52_in_factor812); 
+                    node =expression6;
 
                     }
 
@@ -1197,13 +1013,13 @@ public class OberonParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // D:\\Projects UVA\\Oberon.g:162:5: ( NOT unary= factor )
+                    // D:\\Projects UVA\\Oberon.g:143:5: ( NOT unary= factor )
                     {
-                    // D:\\Projects UVA\\Oberon.g:162:5: ( NOT unary= factor )
-                    // D:\\Projects UVA\\Oberon.g:162:6: NOT unary= factor
+                    // D:\\Projects UVA\\Oberon.g:143:5: ( NOT unary= factor )
+                    // D:\\Projects UVA\\Oberon.g:143:6: NOT unary= factor
                     {
-                    match(input,NOT,FOLLOW_NOT_in_factor928); 
-                    pushFollow(FOLLOW_factor_in_factor932);
+                    match(input,NOT,FOLLOW_NOT_in_factor824); 
+                    pushFollow(FOLLOW_factor_in_factor828);
                     unary=factor();
 
                     state._fsp--;
@@ -1230,7 +1046,7 @@ public class OberonParser extends Parser {
 
 
     // $ANTLR start "term"
-    // D:\\Projects UVA\\Oberon.g:165:1: term returns [BaseNode node] : left= factor ( MUL right= factor | DIV right= factor | MOD right= factor | AND right= factor )* ;
+    // D:\\Projects UVA\\Oberon.g:146:1: term returns [BaseNode node] : left= factor ( MUL right= factor | DIV right= factor | MOD right= factor | AND right= factor )* ;
     public final BaseNode term() throws RecognitionException {
         BaseNode node = null;
 
@@ -1240,49 +1056,49 @@ public class OberonParser extends Parser {
 
 
         try {
-            // D:\\Projects UVA\\Oberon.g:166:2: (left= factor ( MUL right= factor | DIV right= factor | MOD right= factor | AND right= factor )* )
-            // D:\\Projects UVA\\Oberon.g:166:7: left= factor ( MUL right= factor | DIV right= factor | MOD right= factor | AND right= factor )*
+            // D:\\Projects UVA\\Oberon.g:147:2: (left= factor ( MUL right= factor | DIV right= factor | MOD right= factor | AND right= factor )* )
+            // D:\\Projects UVA\\Oberon.g:147:7: left= factor ( MUL right= factor | DIV right= factor | MOD right= factor | AND right= factor )*
             {
-            pushFollow(FOLLOW_factor_in_term959);
+            pushFollow(FOLLOW_factor_in_term855);
             left=factor();
 
             state._fsp--;
 
             node =left;
-            // D:\\Projects UVA\\Oberon.g:167:2: ( MUL right= factor | DIV right= factor | MOD right= factor | AND right= factor )*
-            loop15:
+            // D:\\Projects UVA\\Oberon.g:148:2: ( MUL right= factor | DIV right= factor | MOD right= factor | AND right= factor )*
+            loop13:
             do {
-                int alt15=5;
+                int alt13=5;
                 switch ( input.LA(1) ) {
                 case MUL:
                     {
-                    alt15=1;
+                    alt13=1;
                     }
                     break;
                 case DIV:
                     {
-                    alt15=2;
+                    alt13=2;
                     }
                     break;
                 case MOD:
                     {
-                    alt15=3;
+                    alt13=3;
                     }
                     break;
                 case AND:
                     {
-                    alt15=4;
+                    alt13=4;
                     }
                     break;
 
                 }
 
-                switch (alt15) {
+                switch (alt13) {
             	case 1 :
-            	    // D:\\Projects UVA\\Oberon.g:168:3: MUL right= factor
+            	    // D:\\Projects UVA\\Oberon.g:149:3: MUL right= factor
             	    {
-            	    match(input,MUL,FOLLOW_MUL_in_term971); 
-            	    pushFollow(FOLLOW_factor_in_term975);
+            	    match(input,MUL,FOLLOW_MUL_in_term867); 
+            	    pushFollow(FOLLOW_factor_in_term871);
             	    right=factor();
 
             	    state._fsp--;
@@ -1292,10 +1108,10 @@ public class OberonParser extends Parser {
             	    }
             	    break;
             	case 2 :
-            	    // D:\\Projects UVA\\Oberon.g:169:4: DIV right= factor
+            	    // D:\\Projects UVA\\Oberon.g:150:4: DIV right= factor
             	    {
-            	    match(input,DIV,FOLLOW_DIV_in_term983); 
-            	    pushFollow(FOLLOW_factor_in_term987);
+            	    match(input,DIV,FOLLOW_DIV_in_term879); 
+            	    pushFollow(FOLLOW_factor_in_term883);
             	    right=factor();
 
             	    state._fsp--;
@@ -1305,10 +1121,10 @@ public class OberonParser extends Parser {
             	    }
             	    break;
             	case 3 :
-            	    // D:\\Projects UVA\\Oberon.g:170:4: MOD right= factor
+            	    // D:\\Projects UVA\\Oberon.g:151:4: MOD right= factor
             	    {
-            	    match(input,MOD,FOLLOW_MOD_in_term995); 
-            	    pushFollow(FOLLOW_factor_in_term999);
+            	    match(input,MOD,FOLLOW_MOD_in_term891); 
+            	    pushFollow(FOLLOW_factor_in_term895);
             	    right=factor();
 
             	    state._fsp--;
@@ -1318,15 +1134,183 @@ public class OberonParser extends Parser {
             	    }
             	    break;
             	case 4 :
-            	    // D:\\Projects UVA\\Oberon.g:171:4: AND right= factor
+            	    // D:\\Projects UVA\\Oberon.g:152:4: AND right= factor
             	    {
-            	    match(input,AND,FOLLOW_AND_in_term1007); 
-            	    pushFollow(FOLLOW_factor_in_term1011);
+            	    match(input,AND,FOLLOW_AND_in_term903); 
+            	    pushFollow(FOLLOW_factor_in_term907);
             	    right=factor();
 
             	    state._fsp--;
 
             	    node =new LogicalAnd(node, right);
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop13;
+                }
+            } while (true);
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return node;
+    }
+    // $ANTLR end "term"
+
+
+    // $ANTLR start "base"
+    // D:\\Projects UVA\\Oberon.g:155:1: base returns [BaseNode node] : ( MIN left= term | PLUS left= term | left= term ) ( MIN right= term | PLUS right= term | OR right= term )* ;
+    public final BaseNode base() throws RecognitionException {
+        BaseNode node = null;
+
+        BaseNode left = null;
+
+        BaseNode right = null;
+
+
+        try {
+            // D:\\Projects UVA\\Oberon.g:156:6: ( ( MIN left= term | PLUS left= term | left= term ) ( MIN right= term | PLUS right= term | OR right= term )* )
+            // D:\\Projects UVA\\Oberon.g:156:11: ( MIN left= term | PLUS left= term | left= term ) ( MIN right= term | PLUS right= term | OR right= term )*
+            {
+            // D:\\Projects UVA\\Oberon.g:156:11: ( MIN left= term | PLUS left= term | left= term )
+            int alt14=3;
+            switch ( input.LA(1) ) {
+            case MIN:
+                {
+                alt14=1;
+                }
+                break;
+            case PLUS:
+                {
+                alt14=2;
+                }
+                break;
+            case NOT:
+            case ID:
+            case INT:
+            case 51:
+                {
+                alt14=3;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 14, 0, input);
+
+                throw nvae;
+            }
+
+            switch (alt14) {
+                case 1 :
+                    // D:\\Projects UVA\\Oberon.g:157:7: MIN left= term
+                    {
+                    match(input,MIN,FOLLOW_MIN_in_base944); 
+                    pushFollow(FOLLOW_term_in_base948);
+                    left=term();
+
+                    state._fsp--;
+
+                    node =new Negative(left);
+
+                    }
+                    break;
+                case 2 :
+                    // D:\\Projects UVA\\Oberon.g:158:8: PLUS left= term
+                    {
+                    match(input,PLUS,FOLLOW_PLUS_in_base961); 
+                    pushFollow(FOLLOW_term_in_base965);
+                    left=term();
+
+                    state._fsp--;
+
+                    node =new Positive(left);
+
+                    }
+                    break;
+                case 3 :
+                    // D:\\Projects UVA\\Oberon.g:159:8: left= term
+                    {
+                    pushFollow(FOLLOW_term_in_base980);
+                    left=term();
+
+                    state._fsp--;
+
+                    node =left;
+
+                    }
+                    break;
+
+            }
+
+            // D:\\Projects UVA\\Oberon.g:161:8: ( MIN right= term | PLUS right= term | OR right= term )*
+            loop15:
+            do {
+                int alt15=4;
+                switch ( input.LA(1) ) {
+                case MIN:
+                    {
+                    alt15=1;
+                    }
+                    break;
+                case PLUS:
+                    {
+                    alt15=2;
+                    }
+                    break;
+                case OR:
+                    {
+                    alt15=3;
+                    }
+                    break;
+
+                }
+
+                switch (alt15) {
+            	case 1 :
+            	    // D:\\Projects UVA\\Oberon.g:162:7: MIN right= term
+            	    {
+            	    match(input,MIN,FOLLOW_MIN_in_base1009); 
+            	    pushFollow(FOLLOW_term_in_base1013);
+            	    right=term();
+
+            	    state._fsp--;
+
+            	    node =new Subtraction(node, right);
+
+            	    }
+            	    break;
+            	case 2 :
+            	    // D:\\Projects UVA\\Oberon.g:163:8: PLUS right= term
+            	    {
+            	    match(input,PLUS,FOLLOW_PLUS_in_base1026); 
+            	    pushFollow(FOLLOW_term_in_base1030);
+            	    right=term();
+
+            	    state._fsp--;
+
+            	    node =new Addition(node, right);
+
+            	    }
+            	    break;
+            	case 3 :
+            	    // D:\\Projects UVA\\Oberon.g:164:8: OR right= term
+            	    {
+            	    match(input,OR,FOLLOW_OR_in_base1043); 
+            	    pushFollow(FOLLOW_term_in_base1047);
+            	    right=term();
+
+            	    state._fsp--;
+
+            	    node =new LogicalOr(node, right);
 
             	    }
             	    break;
@@ -1348,179 +1332,11 @@ public class OberonParser extends Parser {
         }
         return node;
     }
-    // $ANTLR end "term"
-
-
-    // $ANTLR start "base"
-    // D:\\Projects UVA\\Oberon.g:174:1: base returns [BaseNode node] : ( MIN left= term | PLUS left= term | left= term ) ( MIN right= term | PLUS right= term | OR right= term )* ;
-    public final BaseNode base() throws RecognitionException {
-        BaseNode node = null;
-
-        BaseNode left = null;
-
-        BaseNode right = null;
-
-
-        try {
-            // D:\\Projects UVA\\Oberon.g:175:6: ( ( MIN left= term | PLUS left= term | left= term ) ( MIN right= term | PLUS right= term | OR right= term )* )
-            // D:\\Projects UVA\\Oberon.g:175:11: ( MIN left= term | PLUS left= term | left= term ) ( MIN right= term | PLUS right= term | OR right= term )*
-            {
-            // D:\\Projects UVA\\Oberon.g:175:11: ( MIN left= term | PLUS left= term | left= term )
-            int alt16=3;
-            switch ( input.LA(1) ) {
-            case MIN:
-                {
-                alt16=1;
-                }
-                break;
-            case PLUS:
-                {
-                alt16=2;
-                }
-                break;
-            case NOT:
-            case ID:
-            case INT:
-            case 51:
-                {
-                alt16=3;
-                }
-                break;
-            default:
-                NoViableAltException nvae =
-                    new NoViableAltException("", 16, 0, input);
-
-                throw nvae;
-            }
-
-            switch (alt16) {
-                case 1 :
-                    // D:\\Projects UVA\\Oberon.g:176:7: MIN left= term
-                    {
-                    match(input,MIN,FOLLOW_MIN_in_base1048); 
-                    pushFollow(FOLLOW_term_in_base1052);
-                    left=term();
-
-                    state._fsp--;
-
-                    node =new Negative(left);
-
-                    }
-                    break;
-                case 2 :
-                    // D:\\Projects UVA\\Oberon.g:177:8: PLUS left= term
-                    {
-                    match(input,PLUS,FOLLOW_PLUS_in_base1065); 
-                    pushFollow(FOLLOW_term_in_base1069);
-                    left=term();
-
-                    state._fsp--;
-
-                    node =new Positive(left);
-
-                    }
-                    break;
-                case 3 :
-                    // D:\\Projects UVA\\Oberon.g:178:8: left= term
-                    {
-                    pushFollow(FOLLOW_term_in_base1084);
-                    left=term();
-
-                    state._fsp--;
-
-                    node =left;
-
-                    }
-                    break;
-
-            }
-
-            // D:\\Projects UVA\\Oberon.g:180:8: ( MIN right= term | PLUS right= term | OR right= term )*
-            loop17:
-            do {
-                int alt17=4;
-                switch ( input.LA(1) ) {
-                case MIN:
-                    {
-                    alt17=1;
-                    }
-                    break;
-                case PLUS:
-                    {
-                    alt17=2;
-                    }
-                    break;
-                case OR:
-                    {
-                    alt17=3;
-                    }
-                    break;
-
-                }
-
-                switch (alt17) {
-            	case 1 :
-            	    // D:\\Projects UVA\\Oberon.g:181:7: MIN right= term
-            	    {
-            	    match(input,MIN,FOLLOW_MIN_in_base1113); 
-            	    pushFollow(FOLLOW_term_in_base1117);
-            	    right=term();
-
-            	    state._fsp--;
-
-            	    node =new Subtraction(node, right);
-
-            	    }
-            	    break;
-            	case 2 :
-            	    // D:\\Projects UVA\\Oberon.g:182:8: PLUS right= term
-            	    {
-            	    match(input,PLUS,FOLLOW_PLUS_in_base1130); 
-            	    pushFollow(FOLLOW_term_in_base1134);
-            	    right=term();
-
-            	    state._fsp--;
-
-            	    node =new Addition(node, right);
-
-            	    }
-            	    break;
-            	case 3 :
-            	    // D:\\Projects UVA\\Oberon.g:183:8: OR right= term
-            	    {
-            	    match(input,OR,FOLLOW_OR_in_base1147); 
-            	    pushFollow(FOLLOW_term_in_base1151);
-            	    right=term();
-
-            	    state._fsp--;
-
-            	    node =new LogicalOr(node, right);
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop17;
-                }
-            } while (true);
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-        }
-        return node;
-    }
     // $ANTLR end "base"
 
 
     // $ANTLR start "expression"
-    // D:\\Projects UVA\\Oberon.g:186:1: expression returns [BaseNode node] : left= base ( EQUAL right= base | UNEQUAL right= base | LESS right= base | LESS_EQUAL right= base | GREAT right= base | GREAT_EQUAL right= base )? ;
+    // D:\\Projects UVA\\Oberon.g:167:1: expression returns [BaseNode node] : left= base ( EQUAL right= base | UNEQUAL right= base | LESS right= base | LESS_EQUAL right= base | GREAT right= base | GREAT_EQUAL right= base )? ;
     public final BaseNode expression() throws RecognitionException {
         BaseNode node = null;
 
@@ -1530,56 +1346,56 @@ public class OberonParser extends Parser {
 
 
         try {
-            // D:\\Projects UVA\\Oberon.g:187:6: (left= base ( EQUAL right= base | UNEQUAL right= base | LESS right= base | LESS_EQUAL right= base | GREAT right= base | GREAT_EQUAL right= base )? )
-            // D:\\Projects UVA\\Oberon.g:187:10: left= base ( EQUAL right= base | UNEQUAL right= base | LESS right= base | LESS_EQUAL right= base | GREAT right= base | GREAT_EQUAL right= base )?
+            // D:\\Projects UVA\\Oberon.g:168:6: (left= base ( EQUAL right= base | UNEQUAL right= base | LESS right= base | LESS_EQUAL right= base | GREAT right= base | GREAT_EQUAL right= base )? )
+            // D:\\Projects UVA\\Oberon.g:168:10: left= base ( EQUAL right= base | UNEQUAL right= base | LESS right= base | LESS_EQUAL right= base | GREAT right= base | GREAT_EQUAL right= base )?
             {
-            pushFollow(FOLLOW_base_in_expression1187);
+            pushFollow(FOLLOW_base_in_expression1083);
             left=base();
 
             state._fsp--;
 
             node =left;
-            // D:\\Projects UVA\\Oberon.g:188:6: ( EQUAL right= base | UNEQUAL right= base | LESS right= base | LESS_EQUAL right= base | GREAT right= base | GREAT_EQUAL right= base )?
-            int alt18=7;
+            // D:\\Projects UVA\\Oberon.g:169:6: ( EQUAL right= base | UNEQUAL right= base | LESS right= base | LESS_EQUAL right= base | GREAT right= base | GREAT_EQUAL right= base )?
+            int alt16=7;
             switch ( input.LA(1) ) {
                 case EQUAL:
                     {
-                    alt18=1;
+                    alt16=1;
                     }
                     break;
                 case UNEQUAL:
                     {
-                    alt18=2;
+                    alt16=2;
                     }
                     break;
                 case LESS:
                     {
-                    alt18=3;
+                    alt16=3;
                     }
                     break;
                 case LESS_EQUAL:
                     {
-                    alt18=4;
+                    alt16=4;
                     }
                     break;
                 case GREAT:
                     {
-                    alt18=5;
+                    alt16=5;
                     }
                     break;
                 case GREAT_EQUAL:
                     {
-                    alt18=6;
+                    alt16=6;
                     }
                     break;
             }
 
-            switch (alt18) {
+            switch (alt16) {
                 case 1 :
-                    // D:\\Projects UVA\\Oberon.g:189:7: EQUAL right= base
+                    // D:\\Projects UVA\\Oberon.g:170:7: EQUAL right= base
                     {
-                    match(input,EQUAL,FOLLOW_EQUAL_in_expression1207); 
-                    pushFollow(FOLLOW_base_in_expression1211);
+                    match(input,EQUAL,FOLLOW_EQUAL_in_expression1103); 
+                    pushFollow(FOLLOW_base_in_expression1107);
                     right=base();
 
                     state._fsp--;
@@ -1589,10 +1405,10 @@ public class OberonParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // D:\\Projects UVA\\Oberon.g:190:8: UNEQUAL right= base
+                    // D:\\Projects UVA\\Oberon.g:171:8: UNEQUAL right= base
                     {
-                    match(input,UNEQUAL,FOLLOW_UNEQUAL_in_expression1223); 
-                    pushFollow(FOLLOW_base_in_expression1227);
+                    match(input,UNEQUAL,FOLLOW_UNEQUAL_in_expression1119); 
+                    pushFollow(FOLLOW_base_in_expression1123);
                     right=base();
 
                     state._fsp--;
@@ -1602,10 +1418,10 @@ public class OberonParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // D:\\Projects UVA\\Oberon.g:191:8: LESS right= base
+                    // D:\\Projects UVA\\Oberon.g:172:8: LESS right= base
                     {
-                    match(input,LESS,FOLLOW_LESS_in_expression1239); 
-                    pushFollow(FOLLOW_base_in_expression1243);
+                    match(input,LESS,FOLLOW_LESS_in_expression1135); 
+                    pushFollow(FOLLOW_base_in_expression1139);
                     right=base();
 
                     state._fsp--;
@@ -1615,10 +1431,10 @@ public class OberonParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // D:\\Projects UVA\\Oberon.g:192:8: LESS_EQUAL right= base
+                    // D:\\Projects UVA\\Oberon.g:173:8: LESS_EQUAL right= base
                     {
-                    match(input,LESS_EQUAL,FOLLOW_LESS_EQUAL_in_expression1256); 
-                    pushFollow(FOLLOW_base_in_expression1260);
+                    match(input,LESS_EQUAL,FOLLOW_LESS_EQUAL_in_expression1152); 
+                    pushFollow(FOLLOW_base_in_expression1156);
                     right=base();
 
                     state._fsp--;
@@ -1628,10 +1444,10 @@ public class OberonParser extends Parser {
                     }
                     break;
                 case 5 :
-                    // D:\\Projects UVA\\Oberon.g:193:8: GREAT right= base
+                    // D:\\Projects UVA\\Oberon.g:174:8: GREAT right= base
                     {
-                    match(input,GREAT,FOLLOW_GREAT_in_expression1272); 
-                    pushFollow(FOLLOW_base_in_expression1276);
+                    match(input,GREAT,FOLLOW_GREAT_in_expression1168); 
+                    pushFollow(FOLLOW_base_in_expression1172);
                     right=base();
 
                     state._fsp--;
@@ -1641,10 +1457,10 @@ public class OberonParser extends Parser {
                     }
                     break;
                 case 6 :
-                    // D:\\Projects UVA\\Oberon.g:194:8: GREAT_EQUAL right= base
+                    // D:\\Projects UVA\\Oberon.g:175:8: GREAT_EQUAL right= base
                     {
-                    match(input,GREAT_EQUAL,FOLLOW_GREAT_EQUAL_in_expression1288); 
-                    pushFollow(FOLLOW_base_in_expression1292);
+                    match(input,GREAT_EQUAL,FOLLOW_GREAT_EQUAL_in_expression1184); 
+                    pushFollow(FOLLOW_base_in_expression1188);
                     right=base();
 
                     state._fsp--;
@@ -1672,7 +1488,7 @@ public class OberonParser extends Parser {
 
 
     // $ANTLR start "statements"
-    // D:\\Projects UVA\\Oberon.g:197:1: statements returns [BaseStatementList node] : node_statement= statement ( ';' node_statement= statement )* ;
+    // D:\\Projects UVA\\Oberon.g:178:1: statements returns [BaseStatementList node] : node_statement= statement ( ';' node_statement= statement )* ;
     public final BaseStatementList statements() throws RecognitionException {
         BaseStatementList node = null;
 
@@ -1680,33 +1496,33 @@ public class OberonParser extends Parser {
 
 
         try {
-            // D:\\Projects UVA\\Oberon.g:198:2: (node_statement= statement ( ';' node_statement= statement )* )
-            // D:\\Projects UVA\\Oberon.g:198:4: node_statement= statement ( ';' node_statement= statement )*
+            // D:\\Projects UVA\\Oberon.g:179:2: (node_statement= statement ( ';' node_statement= statement )* )
+            // D:\\Projects UVA\\Oberon.g:179:4: node_statement= statement ( ';' node_statement= statement )*
             {
             node = new BaseStatementList();
-            pushFollow(FOLLOW_statement_in_statements1326);
+            pushFollow(FOLLOW_statement_in_statements1222);
             node_statement=statement();
 
             state._fsp--;
 
             node.add(node_statement);
-            // D:\\Projects UVA\\Oberon.g:200:3: ( ';' node_statement= statement )*
-            loop19:
+            // D:\\Projects UVA\\Oberon.g:181:3: ( ';' node_statement= statement )*
+            loop17:
             do {
-                int alt19=2;
-                int LA19_0 = input.LA(1);
+                int alt17=2;
+                int LA17_0 = input.LA(1);
 
-                if ( (LA19_0==46) ) {
-                    alt19=1;
+                if ( (LA17_0==46) ) {
+                    alt17=1;
                 }
 
 
-                switch (alt19) {
+                switch (alt17) {
             	case 1 :
-            	    // D:\\Projects UVA\\Oberon.g:200:4: ';' node_statement= statement
+            	    // D:\\Projects UVA\\Oberon.g:181:4: ';' node_statement= statement
             	    {
-            	    match(input,46,FOLLOW_46_in_statements1333); 
-            	    pushFollow(FOLLOW_statement_in_statements1337);
+            	    match(input,46,FOLLOW_46_in_statements1229); 
+            	    pushFollow(FOLLOW_statement_in_statements1233);
             	    node_statement=statement();
 
             	    state._fsp--;
@@ -1717,7 +1533,7 @@ public class OberonParser extends Parser {
             	    break;
 
             	default :
-            	    break loop19;
+            	    break loop17;
                 }
             } while (true);
 
@@ -1737,35 +1553,35 @@ public class OberonParser extends Parser {
 
 
     // $ANTLR start "statement"
-    // D:\\Projects UVA\\Oberon.g:203:1: statement returns [BaseStatement node] : ( assignment | procedureCall | ifStatement | whileStatement )? ;
+    // D:\\Projects UVA\\Oberon.g:184:1: statement returns [BaseStatement node] : ( assignment | procedureCall | ifStatement | whileStatement )? ;
     public final BaseStatement statement() throws RecognitionException {
         BaseStatement node = null;
 
-        Assign assignment12 = null;
+        Assign assignment7 = null;
 
-        Call procedureCall13 = null;
+        Call procedureCall8 = null;
 
-        If ifStatement14 = null;
+        If ifStatement9 = null;
 
-        While whileStatement15 = null;
+        While whileStatement10 = null;
 
 
         try {
-            // D:\\Projects UVA\\Oberon.g:204:5: ( ( assignment | procedureCall | ifStatement | whileStatement )? )
-            // D:\\Projects UVA\\Oberon.g:204:7: ( assignment | procedureCall | ifStatement | whileStatement )?
+            // D:\\Projects UVA\\Oberon.g:185:5: ( ( assignment | procedureCall | ifStatement | whileStatement )? )
+            // D:\\Projects UVA\\Oberon.g:185:7: ( assignment | procedureCall | ifStatement | whileStatement )?
             {
-            // D:\\Projects UVA\\Oberon.g:204:7: ( assignment | procedureCall | ifStatement | whileStatement )?
-            int alt20=5;
+            // D:\\Projects UVA\\Oberon.g:185:7: ( assignment | procedureCall | ifStatement | whileStatement )?
+            int alt18=5;
             switch ( input.LA(1) ) {
                 case ID:
                     {
-                    int LA20_1 = input.LA(2);
+                    int LA18_1 = input.LA(2);
 
-                    if ( (LA20_1==ASSIGN||LA20_1==48||LA20_1==56) ) {
-                        alt20=1;
+                    if ( (LA18_1==ASSIGN||LA18_1==48||LA18_1==55) ) {
+                        alt18=1;
                     }
-                    else if ( ((LA20_1>=ELSE && LA20_1<=END)||LA20_1==46||LA20_1==51) ) {
-                        alt20=2;
+                    else if ( ((LA18_1>=ELSE && LA18_1<=END)||LA18_1==46||LA18_1==51) ) {
+                        alt18=2;
                     }
                     }
                     break;
@@ -1773,67 +1589,67 @@ public class OberonParser extends Parser {
                 case CALL_WRITE:
                 case CALL_WRITELN:
                     {
-                    alt20=2;
+                    alt18=2;
                     }
                     break;
                 case IF:
                     {
-                    alt20=3;
+                    alt18=3;
                     }
                     break;
                 case WHILE:
                     {
-                    alt20=4;
+                    alt18=4;
                     }
                     break;
             }
 
-            switch (alt20) {
+            switch (alt18) {
                 case 1 :
-                    // D:\\Projects UVA\\Oberon.g:205:6: assignment
+                    // D:\\Projects UVA\\Oberon.g:186:6: assignment
                     {
-                    pushFollow(FOLLOW_assignment_in_statement1367);
-                    assignment12=assignment();
+                    pushFollow(FOLLOW_assignment_in_statement1263);
+                    assignment7=assignment();
 
                     state._fsp--;
 
-                    node = assignment12;
+                    node = assignment7;
 
                     }
                     break;
                 case 2 :
-                    // D:\\Projects UVA\\Oberon.g:206:8: procedureCall
+                    // D:\\Projects UVA\\Oberon.g:187:8: procedureCall
                     {
-                    pushFollow(FOLLOW_procedureCall_in_statement1383);
-                    procedureCall13=procedureCall();
+                    pushFollow(FOLLOW_procedureCall_in_statement1279);
+                    procedureCall8=procedureCall();
 
                     state._fsp--;
 
-                    node = procedureCall13;
+                    node = procedureCall8;
 
                     }
                     break;
                 case 3 :
-                    // D:\\Projects UVA\\Oberon.g:207:8: ifStatement
+                    // D:\\Projects UVA\\Oberon.g:188:8: ifStatement
                     {
-                    pushFollow(FOLLOW_ifStatement_in_statement1399);
-                    ifStatement14=ifStatement();
+                    pushFollow(FOLLOW_ifStatement_in_statement1295);
+                    ifStatement9=ifStatement();
 
                     state._fsp--;
 
-                    node = ifStatement14;
+                    node = ifStatement9;
 
                     }
                     break;
                 case 4 :
-                    // D:\\Projects UVA\\Oberon.g:208:8: whileStatement
+                    // D:\\Projects UVA\\Oberon.g:189:8: whileStatement
                     {
-                    pushFollow(FOLLOW_whileStatement_in_statement1415);
-                    whileStatement15=whileStatement();
+                    pushFollow(FOLLOW_whileStatement_in_statement1311);
+                    whileStatement10=whileStatement();
 
                     state._fsp--;
 
-                    node = whileStatement15;
+                    node = whileStatement10;
 
                     }
                     break;
@@ -1856,27 +1672,27 @@ public class OberonParser extends Parser {
 
 
     // $ANTLR start "assignment"
-    // D:\\Projects UVA\\Oberon.g:211:1: assignment returns [Assign node] : ID idSelector[node_id] ASSIGN node_expression= expression ;
+    // D:\\Projects UVA\\Oberon.g:192:1: assignment returns [Assign node] : ID idSelector[node_id] ASSIGN node_expression= expression ;
     public final Assign assignment() throws RecognitionException {
         Assign node = null;
 
-        Token ID16=null;
+        Token ID11=null;
         BaseNode node_expression = null;
 
 
         try {
-            // D:\\Projects UVA\\Oberon.g:212:2: ( ID idSelector[node_id] ASSIGN node_expression= expression )
-            // D:\\Projects UVA\\Oberon.g:212:4: ID idSelector[node_id] ASSIGN node_expression= expression
+            // D:\\Projects UVA\\Oberon.g:193:2: ( ID idSelector[node_id] ASSIGN node_expression= expression )
+            // D:\\Projects UVA\\Oberon.g:193:4: ID idSelector[node_id] ASSIGN node_expression= expression
             {
-            ID16=(Token)match(input,ID,FOLLOW_ID_in_assignment1453); 
-            ID node_id = new ID((ID16!=null?ID16.getText():null));
-            pushFollow(FOLLOW_idSelector_in_assignment1460);
+            ID11=(Token)match(input,ID,FOLLOW_ID_in_assignment1349); 
+            ID node_id = new ID((ID11!=null?ID11.getText():null));
+            pushFollow(FOLLOW_idSelector_in_assignment1356);
             idSelector(node_id);
 
             state._fsp--;
 
-            match(input,ASSIGN,FOLLOW_ASSIGN_in_assignment1463); 
-            pushFollow(FOLLOW_expression_in_assignment1467);
+            match(input,ASSIGN,FOLLOW_ASSIGN_in_assignment1359); 
+            pushFollow(FOLLOW_expression_in_assignment1363);
             node_expression=expression();
 
             state._fsp--;
@@ -1898,67 +1714,60 @@ public class OberonParser extends Parser {
 
 
     // $ANTLR start "ifStatement"
-    // D:\\Projects UVA\\Oberon.g:215:1: ifStatement returns [If node] : IF expression ifThen ( ifElsIf )* ( ifElse )? END ;
+    // D:\\Projects UVA\\Oberon.g:196:1: ifStatement returns [If node] : IF node_expression= expression THEN node_statements= statements (node_elsifs= ifElsIfList ) ( ELSE node_else= statements )? END ;
     public final If ifStatement() throws RecognitionException {
         If node = null;
 
+        BaseNode node_expression = null;
+
+        BaseStatementList node_statements = null;
+
+        IfListForElsIf node_elsifs = null;
+
+        BaseStatementList node_else = null;
+
+
         try {
-            // D:\\Projects UVA\\Oberon.g:216:6: ( IF expression ifThen ( ifElsIf )* ( ifElse )? END )
-            // D:\\Projects UVA\\Oberon.g:216:11: IF expression ifThen ( ifElsIf )* ( ifElse )? END
+            // D:\\Projects UVA\\Oberon.g:197:6: ( IF node_expression= expression THEN node_statements= statements (node_elsifs= ifElsIfList ) ( ELSE node_else= statements )? END )
+            // D:\\Projects UVA\\Oberon.g:197:11: IF node_expression= expression THEN node_statements= statements (node_elsifs= ifElsIfList ) ( ELSE node_else= statements )? END
             {
-            match(input,IF,FOLLOW_IF_in_ifStatement1489); 
-            pushFollow(FOLLOW_expression_in_ifStatement1491);
-            expression();
+            match(input,IF,FOLLOW_IF_in_ifStatement1385); 
+            pushFollow(FOLLOW_expression_in_ifStatement1389);
+            node_expression=expression();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_ifThen_in_ifStatement1493);
-            ifThen();
+            match(input,THEN,FOLLOW_THEN_in_ifStatement1391); 
+            pushFollow(FOLLOW_statements_in_ifStatement1395);
+            node_statements=statements();
 
             state._fsp--;
 
-            // D:\\Projects UVA\\Oberon.g:216:32: ( ifElsIf )*
-            loop21:
-            do {
-                int alt21=2;
-                int LA21_0 = input.LA(1);
+            // D:\\Projects UVA\\Oberon.g:197:73: (node_elsifs= ifElsIfList )
+            // D:\\Projects UVA\\Oberon.g:197:74: node_elsifs= ifElsIfList
+            {
+            pushFollow(FOLLOW_ifElsIfList_in_ifStatement1400);
+            node_elsifs=ifElsIfList();
 
-                if ( (LA21_0==ELSIF) ) {
-                    alt21=1;
-                }
+            state._fsp--;
 
 
-                switch (alt21) {
-            	case 1 :
-            	    // D:\\Projects UVA\\Oberon.g:216:33: ifElsIf
-            	    {
-            	    pushFollow(FOLLOW_ifElsIf_in_ifStatement1496);
-            	    ifElsIf();
-
-            	    state._fsp--;
-
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop21;
-                }
-            } while (true);
-
-            // D:\\Projects UVA\\Oberon.g:216:43: ( ifElse )?
-            int alt22=2;
-            int LA22_0 = input.LA(1);
-
-            if ( (LA22_0==ELSE) ) {
-                alt22=1;
             }
-            switch (alt22) {
+
+            // D:\\Projects UVA\\Oberon.g:197:99: ( ELSE node_else= statements )?
+            int alt19=2;
+            int LA19_0 = input.LA(1);
+
+            if ( (LA19_0==ELSE) ) {
+                alt19=1;
+            }
+            switch (alt19) {
                 case 1 :
-                    // D:\\Projects UVA\\Oberon.g:216:44: ifElse
+                    // D:\\Projects UVA\\Oberon.g:197:100: ELSE node_else= statements
                     {
-                    pushFollow(FOLLOW_ifElse_in_ifStatement1501);
-                    ifElse();
+                    match(input,ELSE,FOLLOW_ELSE_in_ifStatement1404); 
+                    pushFollow(FOLLOW_statements_in_ifStatement1408);
+                    node_else=statements();
 
                     state._fsp--;
 
@@ -1968,8 +1777,8 @@ public class OberonParser extends Parser {
 
             }
 
-            match(input,END,FOLLOW_END_in_ifStatement1505); 
-            node = new If();
+            match(input,END,FOLLOW_END_in_ifStatement1412); 
+            node = new If(node_expression, node_statements, node_elsifs, node_else);
 
             }
 
@@ -1985,18 +1794,57 @@ public class OberonParser extends Parser {
     // $ANTLR end "ifStatement"
 
 
-    // $ANTLR start "ifThen"
-    // D:\\Projects UVA\\Oberon.g:218:1: ifThen : 'THEN' statements ;
-    public final void ifThen() throws RecognitionException {
-        try {
-            // D:\\Projects UVA\\Oberon.g:218:8: ( 'THEN' statements )
-            // D:\\Projects UVA\\Oberon.g:218:10: 'THEN' statements
-            {
-            match(input,THEN,FOLLOW_THEN_in_ifThen1519); 
-            pushFollow(FOLLOW_statements_in_ifThen1521);
-            statements();
+    // $ANTLR start "ifElsIfList"
+    // D:\\Projects UVA\\Oberon.g:200:1: ifElsIfList returns [IfListForElsIf node] : ( ELSIF node_expression= expression THEN node_statements= statements )* ;
+    public final IfListForElsIf ifElsIfList() throws RecognitionException {
+        IfListForElsIf node = null;
 
-            state._fsp--;
+        BaseNode node_expression = null;
+
+        BaseStatementList node_statements = null;
+
+
+        try {
+            // D:\\Projects UVA\\Oberon.g:201:2: ( ( ELSIF node_expression= expression THEN node_statements= statements )* )
+            // D:\\Projects UVA\\Oberon.g:201:4: ( ELSIF node_expression= expression THEN node_statements= statements )*
+            {
+            node = new IfListForElsIf();
+            // D:\\Projects UVA\\Oberon.g:202:3: ( ELSIF node_expression= expression THEN node_statements= statements )*
+            loop20:
+            do {
+                int alt20=2;
+                int LA20_0 = input.LA(1);
+
+                if ( (LA20_0==ELSIF) ) {
+                    alt20=1;
+                }
+
+
+                switch (alt20) {
+            	case 1 :
+            	    // D:\\Projects UVA\\Oberon.g:203:3: ELSIF node_expression= expression THEN node_statements= statements
+            	    {
+            	    match(input,ELSIF,FOLLOW_ELSIF_in_ifElsIfList1440); 
+            	    pushFollow(FOLLOW_expression_in_ifElsIfList1444);
+            	    node_expression=expression();
+
+            	    state._fsp--;
+
+            	    match(input,THEN,FOLLOW_THEN_in_ifElsIfList1446); 
+            	    pushFollow(FOLLOW_statements_in_ifElsIfList1450);
+            	    node_statements=statements();
+
+            	    state._fsp--;
+
+            	    node.add(new IfPartForElsIf(node_expression, node_statements));
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop20;
+                }
+            } while (true);
 
 
             }
@@ -2008,95 +1856,39 @@ public class OberonParser extends Parser {
         }
         finally {
         }
-        return ;
+        return node;
     }
-    // $ANTLR end "ifThen"
-
-
-    // $ANTLR start "ifElsIf"
-    // D:\\Projects UVA\\Oberon.g:220:1: ifElsIf : 'ELSIF' expression ifThen ;
-    public final void ifElsIf() throws RecognitionException {
-        try {
-            // D:\\Projects UVA\\Oberon.g:220:9: ( 'ELSIF' expression ifThen )
-            // D:\\Projects UVA\\Oberon.g:220:11: 'ELSIF' expression ifThen
-            {
-            match(input,ELSIF,FOLLOW_ELSIF_in_ifElsIf1530); 
-            pushFollow(FOLLOW_expression_in_ifElsIf1532);
-            expression();
-
-            state._fsp--;
-
-            pushFollow(FOLLOW_ifThen_in_ifElsIf1534);
-            ifThen();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-        }
-        return ;
-    }
-    // $ANTLR end "ifElsIf"
-
-
-    // $ANTLR start "ifElse"
-    // D:\\Projects UVA\\Oberon.g:222:1: ifElse : 'ELSE' statements ;
-    public final void ifElse() throws RecognitionException {
-        try {
-            // D:\\Projects UVA\\Oberon.g:222:8: ( 'ELSE' statements )
-            // D:\\Projects UVA\\Oberon.g:222:10: 'ELSE' statements
-            {
-            match(input,ELSE,FOLLOW_ELSE_in_ifElse1543); 
-            pushFollow(FOLLOW_statements_in_ifElse1545);
-            statements();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-        }
-        return ;
-    }
-    // $ANTLR end "ifElse"
+    // $ANTLR end "ifElsIfList"
 
 
     // $ANTLR start "whileStatement"
-    // D:\\Projects UVA\\Oberon.g:225:1: whileStatement returns [While node] : 'WHILE' expression 'DO' statements 'END' ;
+    // D:\\Projects UVA\\Oberon.g:207:1: whileStatement returns [While node] : 'WHILE' node_expression= expression 'DO' node_statements= statements 'END' ;
     public final While whileStatement() throws RecognitionException {
         While node = null;
 
+        BaseNode node_expression = null;
+
+        BaseStatementList node_statements = null;
+
+
         try {
-            // D:\\Projects UVA\\Oberon.g:226:2: ( 'WHILE' expression 'DO' statements 'END' )
-            // D:\\Projects UVA\\Oberon.g:226:4: 'WHILE' expression 'DO' statements 'END'
+            // D:\\Projects UVA\\Oberon.g:208:2: ( 'WHILE' node_expression= expression 'DO' node_statements= statements 'END' )
+            // D:\\Projects UVA\\Oberon.g:208:4: 'WHILE' node_expression= expression 'DO' node_statements= statements 'END'
             {
-            match(input,WHILE,FOLLOW_WHILE_in_whileStatement1563); 
-            pushFollow(FOLLOW_expression_in_whileStatement1565);
-            expression();
+            match(input,WHILE,FOLLOW_WHILE_in_whileStatement1475); 
+            pushFollow(FOLLOW_expression_in_whileStatement1479);
+            node_expression=expression();
 
             state._fsp--;
 
-            match(input,55,FOLLOW_55_in_whileStatement1567); 
-            pushFollow(FOLLOW_statements_in_whileStatement1569);
-            statements();
+            match(input,54,FOLLOW_54_in_whileStatement1481); 
+            pushFollow(FOLLOW_statements_in_whileStatement1485);
+            node_statements=statements();
 
             state._fsp--;
 
-            match(input,END,FOLLOW_END_in_whileStatement1571); 
-            node = new While();
+            match(input,END,FOLLOW_END_in_whileStatement1487); 
+            node = new While(node_expression, node_statements);
 
             }
 
@@ -2113,18 +1905,18 @@ public class OberonParser extends Parser {
 
 
     // $ANTLR start "id1"
-    // D:\\Projects UVA\\Oberon.g:229:1: id1 returns [ID node] : ID ;
+    // D:\\Projects UVA\\Oberon.g:211:1: id1 returns [ID node] : ID ;
     public final ID id1() throws RecognitionException {
         ID node = null;
 
-        Token ID17=null;
+        Token ID12=null;
 
         try {
-            // D:\\Projects UVA\\Oberon.g:230:2: ( ID )
-            // D:\\Projects UVA\\Oberon.g:230:4: ID
+            // D:\\Projects UVA\\Oberon.g:212:2: ( ID )
+            // D:\\Projects UVA\\Oberon.g:212:4: ID
             {
-            ID17=(Token)match(input,ID,FOLLOW_ID_in_id11588); 
-            node = new ID((ID17!=null?ID17.getText():null));
+            ID12=(Token)match(input,ID,FOLLOW_ID_in_id11504); 
+            node = new ID((ID12!=null?ID12.getText():null));
 
             }
 
@@ -2141,7 +1933,7 @@ public class OberonParser extends Parser {
 
 
     // $ANTLR start "idList"
-    // D:\\Projects UVA\\Oberon.g:233:1: idList returns [IDs node] : node_id1= id1 ( ',' node_id2= id1 )* ;
+    // D:\\Projects UVA\\Oberon.g:215:1: idList returns [IDs node] : node_id1= id1 ( ',' node_id2= id1 )* ;
     public final IDs idList() throws RecognitionException {
         IDs node = null;
 
@@ -2151,33 +1943,33 @@ public class OberonParser extends Parser {
 
 
         try {
-            // D:\\Projects UVA\\Oberon.g:234:2: (node_id1= id1 ( ',' node_id2= id1 )* )
-            // D:\\Projects UVA\\Oberon.g:234:4: node_id1= id1 ( ',' node_id2= id1 )*
+            // D:\\Projects UVA\\Oberon.g:216:2: (node_id1= id1 ( ',' node_id2= id1 )* )
+            // D:\\Projects UVA\\Oberon.g:216:4: node_id1= id1 ( ',' node_id2= id1 )*
             {
             node = new IDs();
-            pushFollow(FOLLOW_id1_in_idList1611);
+            pushFollow(FOLLOW_id1_in_idList1527);
             node_id1=id1();
 
             state._fsp--;
 
             node.add(node_id1);
-            // D:\\Projects UVA\\Oberon.g:236:3: ( ',' node_id2= id1 )*
-            loop23:
+            // D:\\Projects UVA\\Oberon.g:218:3: ( ',' node_id2= id1 )*
+            loop21:
             do {
-                int alt23=2;
-                int LA23_0 = input.LA(1);
+                int alt21=2;
+                int LA21_0 = input.LA(1);
 
-                if ( (LA23_0==53) ) {
-                    alt23=1;
+                if ( (LA21_0==53) ) {
+                    alt21=1;
                 }
 
 
-                switch (alt23) {
+                switch (alt21) {
             	case 1 :
-            	    // D:\\Projects UVA\\Oberon.g:236:4: ',' node_id2= id1
+            	    // D:\\Projects UVA\\Oberon.g:218:4: ',' node_id2= id1
             	    {
-            	    match(input,53,FOLLOW_53_in_idList1618); 
-            	    pushFollow(FOLLOW_id1_in_idList1622);
+            	    match(input,53,FOLLOW_53_in_idList1534); 
+            	    pushFollow(FOLLOW_id1_in_idList1538);
             	    node_id2=id1();
 
             	    state._fsp--;
@@ -2188,7 +1980,7 @@ public class OberonParser extends Parser {
             	    break;
 
             	default :
-            	    break loop23;
+            	    break loop21;
                 }
             } while (true);
 
@@ -2208,21 +2000,21 @@ public class OberonParser extends Parser {
 
 
     // $ANTLR start "id"
-    // D:\\Projects UVA\\Oberon.g:238:1: id returns [ID node] : ID node_selector= idSelector[$node] ;
+    // D:\\Projects UVA\\Oberon.g:220:1: id returns [ID node] : ID node_selector= idSelector[$node] ;
     public final ID id() throws RecognitionException {
         ID node = null;
 
-        Token ID18=null;
+        Token ID13=null;
         ID node_selector = null;
 
 
         try {
-            // D:\\Projects UVA\\Oberon.g:239:2: ( ID node_selector= idSelector[$node] )
-            // D:\\Projects UVA\\Oberon.g:239:4: ID node_selector= idSelector[$node]
+            // D:\\Projects UVA\\Oberon.g:221:2: ( ID node_selector= idSelector[$node] )
+            // D:\\Projects UVA\\Oberon.g:221:4: ID node_selector= idSelector[$node]
             {
-            ID18=(Token)match(input,ID,FOLLOW_ID_in_id1639); 
-            node = new ID((ID18!=null?ID18.getText():null));
-            pushFollow(FOLLOW_idSelector_in_id1647);
+            ID13=(Token)match(input,ID,FOLLOW_ID_in_id1555); 
+            node = new ID((ID13!=null?ID13.getText():null));
+            pushFollow(FOLLOW_idSelector_in_id1563);
             node_selector=idSelector(node);
 
             state._fsp--;
@@ -2244,62 +2036,62 @@ public class OberonParser extends Parser {
 
 
     // $ANTLR start "idSelector"
-    // D:\\Projects UVA\\Oberon.g:242:1: idSelector[ID node_parent] returns [ID node] : ( ( '.' ID ) | ( '[' node_expression= expression ']' ) )* ;
+    // D:\\Projects UVA\\Oberon.g:224:1: idSelector[ID node_parent] returns [ID node] : ( ( '.' ID ) | ( '[' node_expression= expression ']' ) )* ;
     public final ID idSelector(ID node_parent) throws RecognitionException {
         ID node = null;
 
-        Token ID19=null;
+        Token ID14=null;
         BaseNode node_expression = null;
 
 
         ID node_current = node_parent;
         try {
-            // D:\\Projects UVA\\Oberon.g:244:6: ( ( ( '.' ID ) | ( '[' node_expression= expression ']' ) )* )
-            // D:\\Projects UVA\\Oberon.g:244:11: ( ( '.' ID ) | ( '[' node_expression= expression ']' ) )*
+            // D:\\Projects UVA\\Oberon.g:226:6: ( ( ( '.' ID ) | ( '[' node_expression= expression ']' ) )* )
+            // D:\\Projects UVA\\Oberon.g:226:11: ( ( '.' ID ) | ( '[' node_expression= expression ']' ) )*
             {
-            // D:\\Projects UVA\\Oberon.g:244:11: ( ( '.' ID ) | ( '[' node_expression= expression ']' ) )*
-            loop24:
+            // D:\\Projects UVA\\Oberon.g:226:11: ( ( '.' ID ) | ( '[' node_expression= expression ']' ) )*
+            loop22:
             do {
-                int alt24=3;
-                int LA24_0 = input.LA(1);
+                int alt22=3;
+                int LA22_0 = input.LA(1);
 
-                if ( (LA24_0==48) ) {
-                    alt24=1;
+                if ( (LA22_0==48) ) {
+                    alt22=1;
                 }
-                else if ( (LA24_0==56) ) {
-                    alt24=2;
+                else if ( (LA22_0==55) ) {
+                    alt22=2;
                 }
 
 
-                switch (alt24) {
+                switch (alt22) {
             	case 1 :
-            	    // D:\\Projects UVA\\Oberon.g:244:12: ( '.' ID )
+            	    // D:\\Projects UVA\\Oberon.g:226:12: ( '.' ID )
             	    {
-            	    // D:\\Projects UVA\\Oberon.g:244:12: ( '.' ID )
-            	    // D:\\Projects UVA\\Oberon.g:244:13: '.' ID
+            	    // D:\\Projects UVA\\Oberon.g:226:12: ( '.' ID )
+            	    // D:\\Projects UVA\\Oberon.g:226:13: '.' ID
             	    {
-            	    match(input,48,FOLLOW_48_in_idSelector1680); 
-            	    ID19=(Token)match(input,ID,FOLLOW_ID_in_idSelector1682); 
+            	    match(input,48,FOLLOW_48_in_idSelector1596); 
+            	    ID14=(Token)match(input,ID,FOLLOW_ID_in_idSelector1598); 
 
             	    }
 
-            	    node_current=node_current.addID((ID19!=null?ID19.getText():null));
+            	    node_current=node_current.addID((ID14!=null?ID14.getText():null));
 
             	    }
             	    break;
             	case 2 :
-            	    // D:\\Projects UVA\\Oberon.g:245:9: ( '[' node_expression= expression ']' )
+            	    // D:\\Projects UVA\\Oberon.g:227:9: ( '[' node_expression= expression ']' )
             	    {
-            	    // D:\\Projects UVA\\Oberon.g:245:9: ( '[' node_expression= expression ']' )
-            	    // D:\\Projects UVA\\Oberon.g:245:10: '[' node_expression= expression ']'
+            	    // D:\\Projects UVA\\Oberon.g:227:9: ( '[' node_expression= expression ']' )
+            	    // D:\\Projects UVA\\Oberon.g:227:10: '[' node_expression= expression ']'
             	    {
-            	    match(input,56,FOLLOW_56_in_idSelector1696); 
-            	    pushFollow(FOLLOW_expression_in_idSelector1700);
+            	    match(input,55,FOLLOW_55_in_idSelector1612); 
+            	    pushFollow(FOLLOW_expression_in_idSelector1616);
             	    node_expression=expression();
 
             	    state._fsp--;
 
-            	    match(input,57,FOLLOW_57_in_idSelector1702); 
+            	    match(input,56,FOLLOW_56_in_idSelector1618); 
             	    node_current=node_current.addIndexID(node_expression);
 
             	    }
@@ -2309,7 +2101,7 @@ public class OberonParser extends Parser {
             	    break;
 
             	default :
-            	    break loop24;
+            	    break loop22;
                 }
             } while (true);
 
@@ -2332,153 +2124,144 @@ public class OberonParser extends Parser {
 
  
 
-    public static final BitSet FOLLOW_45_in_module300 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_id1_in_module304 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_46_in_module306 = new BitSet(new long[]{0x0004800000000060L});
-    public static final BitSet FOLLOW_declarations_in_module312 = new BitSet(new long[]{0x0000800000000000L});
-    public static final BitSet FOLLOW_47_in_module316 = new BitSet(new long[]{0x0000443800021000L});
-    public static final BitSet FOLLOW_statements_in_module322 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_END_in_module326 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_id1_in_module328 = new BitSet(new long[]{0x0001000000000000L});
-    public static final BitSet FOLLOW_48_in_module330 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_declaration_in_declarations355 = new BitSet(new long[]{0x0004000000000062L});
-    public static final BitSet FOLLOW_constDeclaration_in_declaration378 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_varDeclaration_in_declaration385 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_procedure_in_declaration393 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CONST_in_constDeclaration413 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_id1_in_constDeclaration418 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_EQUAL_in_constDeclaration420 = new BitSet(new long[]{0x00080C0083000000L});
-    public static final BitSet FOLLOW_expression_in_constDeclaration422 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_46_in_constDeclaration424 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_VAR_in_varDeclaration442 = new BitSet(new long[]{0x0000040000000002L});
-    public static final BitSet FOLLOW_idList_in_varDeclaration447 = new BitSet(new long[]{0x0002000000000000L});
-    public static final BitSet FOLLOW_49_in_varDeclaration449 = new BitSet(new long[]{0x0000030000000000L});
-    public static final BitSet FOLLOW_type_in_varDeclaration453 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_46_in_varDeclaration455 = new BitSet(new long[]{0x0000040000000002L});
-    public static final BitSet FOLLOW_50_in_procedure474 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_id1_in_procedure478 = new BitSet(new long[]{0x0008400000000000L});
-    public static final BitSet FOLLOW_procedureParams_in_procedure482 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_46_in_procedure485 = new BitSet(new long[]{0x0004800000000060L});
-    public static final BitSet FOLLOW_declarations_in_procedure491 = new BitSet(new long[]{0x0000800000000000L});
-    public static final BitSet FOLLOW_47_in_procedure495 = new BitSet(new long[]{0x0000443800021000L});
-    public static final BitSet FOLLOW_statements_in_procedure501 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_END_in_procedure505 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_id1_in_procedure507 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_46_in_procedure509 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_51_in_procedureParams529 = new BitSet(new long[]{0x0000040000000040L});
-    public static final BitSet FOLLOW_procedureVar_in_procedureParams535 = new BitSet(new long[]{0x0010400000000000L});
-    public static final BitSet FOLLOW_46_in_procedureParams542 = new BitSet(new long[]{0x0000040000000040L});
-    public static final BitSet FOLLOW_procedureVar_in_procedureParams548 = new BitSet(new long[]{0x0010400000000000L});
-    public static final BitSet FOLLOW_52_in_procedureParams554 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_procedureVarRef_in_procedureVar573 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_procedureVarNonRef_in_procedureVar581 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_VAR_in_procedureVarRef598 = new BitSet(new long[]{0x0000040000000002L});
-    public static final BitSet FOLLOW_idList_in_procedureVarRef603 = new BitSet(new long[]{0x0002000000000000L});
-    public static final BitSet FOLLOW_49_in_procedureVarRef605 = new BitSet(new long[]{0x0000030000000000L});
-    public static final BitSet FOLLOW_type_in_procedureVarRef609 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_46_in_procedureVarRef611 = new BitSet(new long[]{0x0000040000000002L});
-    public static final BitSet FOLLOW_idList_in_procedureVarNonRef634 = new BitSet(new long[]{0x0002000000000000L});
-    public static final BitSet FOLLOW_49_in_procedureVarNonRef636 = new BitSet(new long[]{0x0000030000000000L});
-    public static final BitSet FOLLOW_type_in_procedureVarNonRef640 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_46_in_procedureVarNonRef642 = new BitSet(new long[]{0x0000040000000002L});
-    public static final BitSet FOLLOW_CALL_READ_in_procedureCall676 = new BitSet(new long[]{0x0008000000000002L});
-    public static final BitSet FOLLOW_CALL_WRITE_in_procedureCall688 = new BitSet(new long[]{0x0008000000000002L});
-    public static final BitSet FOLLOW_CALL_WRITELN_in_procedureCall700 = new BitSet(new long[]{0x0008000000000002L});
-    public static final BitSet FOLLOW_ID_in_procedureCall712 = new BitSet(new long[]{0x0008000000000002L});
-    public static final BitSet FOLLOW_procedureActualParams_in_procedureCall734 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_51_in_procedureActualParams751 = new BitSet(new long[]{0x00180C0083000000L});
-    public static final BitSet FOLLOW_expression_in_procedureActualParams756 = new BitSet(new long[]{0x0030000000000000L});
-    public static final BitSet FOLLOW_53_in_procedureActualParams763 = new BitSet(new long[]{0x00080C0083000000L});
-    public static final BitSet FOLLOW_expression_in_procedureActualParams767 = new BitSet(new long[]{0x0030000000000000L});
-    public static final BitSet FOLLOW_52_in_procedureActualParams776 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_arrayType_in_type792 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INT_TYPE_in_type799 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ARRAY_in_arrayType817 = new BitSet(new long[]{0x00080C0083000000L});
-    public static final BitSet FOLLOW_expression_in_arrayType821 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_54_in_arrayType823 = new BitSet(new long[]{0x0000030000000000L});
-    public static final BitSet FOLLOW_type_in_arrayType827 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INT_TYPE_in_intType839 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INT_in_number852 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_factor876 = new BitSet(new long[]{0x0101000000000000L});
-    public static final BitSet FOLLOW_idSelector_in_factor887 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INT_in_factor899 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_51_in_factor912 = new BitSet(new long[]{0x00080C0083000000L});
-    public static final BitSet FOLLOW_expression_in_factor914 = new BitSet(new long[]{0x0010000000000000L});
-    public static final BitSet FOLLOW_52_in_factor916 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NOT_in_factor928 = new BitSet(new long[]{0x00080C0083000000L});
-    public static final BitSet FOLLOW_factor_in_factor932 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_factor_in_term959 = new BitSet(new long[]{0x000000003C000002L});
-    public static final BitSet FOLLOW_MUL_in_term971 = new BitSet(new long[]{0x00080C0083000000L});
-    public static final BitSet FOLLOW_factor_in_term975 = new BitSet(new long[]{0x000000003C000002L});
-    public static final BitSet FOLLOW_DIV_in_term983 = new BitSet(new long[]{0x00080C0083000000L});
-    public static final BitSet FOLLOW_factor_in_term987 = new BitSet(new long[]{0x000000003C000002L});
-    public static final BitSet FOLLOW_MOD_in_term995 = new BitSet(new long[]{0x00080C0083000000L});
-    public static final BitSet FOLLOW_factor_in_term999 = new BitSet(new long[]{0x000000003C000002L});
-    public static final BitSet FOLLOW_AND_in_term1007 = new BitSet(new long[]{0x00080C0083000000L});
-    public static final BitSet FOLLOW_factor_in_term1011 = new BitSet(new long[]{0x000000003C000002L});
-    public static final BitSet FOLLOW_MIN_in_base1048 = new BitSet(new long[]{0x00080C0083000000L});
-    public static final BitSet FOLLOW_term_in_base1052 = new BitSet(new long[]{0x0000000043000002L});
-    public static final BitSet FOLLOW_PLUS_in_base1065 = new BitSet(new long[]{0x00080C0083000000L});
-    public static final BitSet FOLLOW_term_in_base1069 = new BitSet(new long[]{0x0000000043000002L});
-    public static final BitSet FOLLOW_term_in_base1084 = new BitSet(new long[]{0x0000000043000002L});
-    public static final BitSet FOLLOW_MIN_in_base1113 = new BitSet(new long[]{0x00080C0083000000L});
-    public static final BitSet FOLLOW_term_in_base1117 = new BitSet(new long[]{0x0000000043000002L});
-    public static final BitSet FOLLOW_PLUS_in_base1130 = new BitSet(new long[]{0x00080C0083000000L});
-    public static final BitSet FOLLOW_term_in_base1134 = new BitSet(new long[]{0x0000000043000002L});
-    public static final BitSet FOLLOW_OR_in_base1147 = new BitSet(new long[]{0x00080C0083000000L});
-    public static final BitSet FOLLOW_term_in_base1151 = new BitSet(new long[]{0x0000000043000002L});
-    public static final BitSet FOLLOW_base_in_expression1187 = new BitSet(new long[]{0x0000000000FC0002L});
-    public static final BitSet FOLLOW_EQUAL_in_expression1207 = new BitSet(new long[]{0x00080C0083000000L});
-    public static final BitSet FOLLOW_base_in_expression1211 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_UNEQUAL_in_expression1223 = new BitSet(new long[]{0x00080C0083000000L});
-    public static final BitSet FOLLOW_base_in_expression1227 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LESS_in_expression1239 = new BitSet(new long[]{0x00080C0083000000L});
-    public static final BitSet FOLLOW_base_in_expression1243 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LESS_EQUAL_in_expression1256 = new BitSet(new long[]{0x00080C0083000000L});
-    public static final BitSet FOLLOW_base_in_expression1260 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_GREAT_in_expression1272 = new BitSet(new long[]{0x00080C0083000000L});
-    public static final BitSet FOLLOW_base_in_expression1276 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_GREAT_EQUAL_in_expression1288 = new BitSet(new long[]{0x00080C0083000000L});
-    public static final BitSet FOLLOW_base_in_expression1292 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_statement_in_statements1326 = new BitSet(new long[]{0x0000400000000002L});
-    public static final BitSet FOLLOW_46_in_statements1333 = new BitSet(new long[]{0x0000443800021000L});
-    public static final BitSet FOLLOW_statement_in_statements1337 = new BitSet(new long[]{0x0000400000000002L});
-    public static final BitSet FOLLOW_assignment_in_statement1367 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_procedureCall_in_statement1383 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ifStatement_in_statement1399 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_whileStatement_in_statement1415 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_assignment1453 = new BitSet(new long[]{0x0101008000000000L});
-    public static final BitSet FOLLOW_idSelector_in_assignment1460 = new BitSet(new long[]{0x0000008000000000L});
-    public static final BitSet FOLLOW_ASSIGN_in_assignment1463 = new BitSet(new long[]{0x00080C0083000000L});
-    public static final BitSet FOLLOW_expression_in_assignment1467 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IF_in_ifStatement1489 = new BitSet(new long[]{0x00080C0083000000L});
-    public static final BitSet FOLLOW_expression_in_ifStatement1491 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_ifThen_in_ifStatement1493 = new BitSet(new long[]{0x000000000001C000L});
-    public static final BitSet FOLLOW_ifElsIf_in_ifStatement1496 = new BitSet(new long[]{0x000000000001C000L});
-    public static final BitSet FOLLOW_ifElse_in_ifStatement1501 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_END_in_ifStatement1505 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_THEN_in_ifThen1519 = new BitSet(new long[]{0x0000443800021000L});
-    public static final BitSet FOLLOW_statements_in_ifThen1521 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ELSIF_in_ifElsIf1530 = new BitSet(new long[]{0x00080C0083000000L});
-    public static final BitSet FOLLOW_expression_in_ifElsIf1532 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_ifThen_in_ifElsIf1534 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ELSE_in_ifElse1543 = new BitSet(new long[]{0x0000443800021000L});
-    public static final BitSet FOLLOW_statements_in_ifElse1545 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_WHILE_in_whileStatement1563 = new BitSet(new long[]{0x00080C0083000000L});
-    public static final BitSet FOLLOW_expression_in_whileStatement1565 = new BitSet(new long[]{0x0080000000000000L});
-    public static final BitSet FOLLOW_55_in_whileStatement1567 = new BitSet(new long[]{0x0000443800021000L});
-    public static final BitSet FOLLOW_statements_in_whileStatement1569 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_END_in_whileStatement1571 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_id11588 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_id1_in_idList1611 = new BitSet(new long[]{0x0020000000000002L});
-    public static final BitSet FOLLOW_53_in_idList1618 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_id1_in_idList1622 = new BitSet(new long[]{0x0020000000000002L});
-    public static final BitSet FOLLOW_ID_in_id1639 = new BitSet(new long[]{0x0101000000000000L});
-    public static final BitSet FOLLOW_idSelector_in_id1647 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_48_in_idSelector1680 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_ID_in_idSelector1682 = new BitSet(new long[]{0x0101000000000002L});
-    public static final BitSet FOLLOW_56_in_idSelector1696 = new BitSet(new long[]{0x00080C0083000000L});
-    public static final BitSet FOLLOW_expression_in_idSelector1700 = new BitSet(new long[]{0x0200000000000000L});
-    public static final BitSet FOLLOW_57_in_idSelector1702 = new BitSet(new long[]{0x0101000000000002L});
+    public static final BitSet FOLLOW_45_in_module298 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_id1_in_module302 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_46_in_module304 = new BitSet(new long[]{0x0004800000000060L});
+    public static final BitSet FOLLOW_declarations_in_module310 = new BitSet(new long[]{0x0000800000000000L});
+    public static final BitSet FOLLOW_47_in_module314 = new BitSet(new long[]{0x0000443800021000L});
+    public static final BitSet FOLLOW_statements_in_module320 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_END_in_module324 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_id1_in_module326 = new BitSet(new long[]{0x0001000000000000L});
+    public static final BitSet FOLLOW_48_in_module328 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_constDeclaration_in_declarations349 = new BitSet(new long[]{0x0004000000000062L});
+    public static final BitSet FOLLOW_varDeclaration_in_declarations352 = new BitSet(new long[]{0x0004000000000062L});
+    public static final BitSet FOLLOW_procedure_in_declarations355 = new BitSet(new long[]{0x0004000000000062L});
+    public static final BitSet FOLLOW_CONST_in_constDeclaration372 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_id1_in_constDeclaration377 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_EQUAL_in_constDeclaration379 = new BitSet(new long[]{0x00080C0083000000L});
+    public static final BitSet FOLLOW_expression_in_constDeclaration383 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_46_in_constDeclaration385 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_VAR_in_varDeclaration399 = new BitSet(new long[]{0x0000040000000002L});
+    public static final BitSet FOLLOW_idList_in_varDeclaration404 = new BitSet(new long[]{0x0002000000000000L});
+    public static final BitSet FOLLOW_49_in_varDeclaration406 = new BitSet(new long[]{0x0000018000000000L});
+    public static final BitSet FOLLOW_type_in_varDeclaration410 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_46_in_varDeclaration412 = new BitSet(new long[]{0x0000040000000002L});
+    public static final BitSet FOLLOW_50_in_procedure427 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_id1_in_procedure431 = new BitSet(new long[]{0x0008400000000000L});
+    public static final BitSet FOLLOW_51_in_procedure434 = new BitSet(new long[]{0x0000440000000040L});
+    public static final BitSet FOLLOW_procedureParams_in_procedure438 = new BitSet(new long[]{0x0010000000000000L});
+    public static final BitSet FOLLOW_52_in_procedure440 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_46_in_procedure444 = new BitSet(new long[]{0x0004800000000060L});
+    public static final BitSet FOLLOW_declarations_in_procedure450 = new BitSet(new long[]{0x0000800000000000L});
+    public static final BitSet FOLLOW_47_in_procedure454 = new BitSet(new long[]{0x0000443800021000L});
+    public static final BitSet FOLLOW_statements_in_procedure460 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_END_in_procedure464 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_id1_in_procedure466 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_46_in_procedure468 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_procedureParam_in_procedureParams492 = new BitSet(new long[]{0x0000400000000002L});
+    public static final BitSet FOLLOW_46_in_procedureParams496 = new BitSet(new long[]{0x0000440000000040L});
+    public static final BitSet FOLLOW_procedureParam_in_procedureParams502 = new BitSet(new long[]{0x0000400000000002L});
+    public static final BitSet FOLLOW_VAR_in_procedureParam525 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_idList_in_procedureParam533 = new BitSet(new long[]{0x0002000000000000L});
+    public static final BitSet FOLLOW_49_in_procedureParam535 = new BitSet(new long[]{0x0000018000000000L});
+    public static final BitSet FOLLOW_type_in_procedureParam539 = new BitSet(new long[]{0x0000040000000042L});
+    public static final BitSet FOLLOW_CALL_READ_in_procedureCall572 = new BitSet(new long[]{0x0008000000000002L});
+    public static final BitSet FOLLOW_CALL_WRITE_in_procedureCall584 = new BitSet(new long[]{0x0008000000000002L});
+    public static final BitSet FOLLOW_CALL_WRITELN_in_procedureCall596 = new BitSet(new long[]{0x0008000000000002L});
+    public static final BitSet FOLLOW_ID_in_procedureCall608 = new BitSet(new long[]{0x0008000000000002L});
+    public static final BitSet FOLLOW_procedureActualParams_in_procedureCall630 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_51_in_procedureActualParams647 = new BitSet(new long[]{0x00180C0083000000L});
+    public static final BitSet FOLLOW_expression_in_procedureActualParams652 = new BitSet(new long[]{0x0030000000000000L});
+    public static final BitSet FOLLOW_53_in_procedureActualParams659 = new BitSet(new long[]{0x00080C0083000000L});
+    public static final BitSet FOLLOW_expression_in_procedureActualParams663 = new BitSet(new long[]{0x0030000000000000L});
+    public static final BitSet FOLLOW_52_in_procedureActualParams672 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_arrayType_in_type688 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INT_TYPE_in_type695 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ARRAY_in_arrayType713 = new BitSet(new long[]{0x00080C0083000000L});
+    public static final BitSet FOLLOW_expression_in_arrayType717 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_OF_in_arrayType719 = new BitSet(new long[]{0x0000018000000000L});
+    public static final BitSet FOLLOW_type_in_arrayType723 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INT_TYPE_in_intType735 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INT_in_number748 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_factor772 = new BitSet(new long[]{0x0081000000000000L});
+    public static final BitSet FOLLOW_idSelector_in_factor783 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INT_in_factor795 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_51_in_factor808 = new BitSet(new long[]{0x00080C0083000000L});
+    public static final BitSet FOLLOW_expression_in_factor810 = new BitSet(new long[]{0x0010000000000000L});
+    public static final BitSet FOLLOW_52_in_factor812 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NOT_in_factor824 = new BitSet(new long[]{0x00080C0083000000L});
+    public static final BitSet FOLLOW_factor_in_factor828 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_factor_in_term855 = new BitSet(new long[]{0x000000003C000002L});
+    public static final BitSet FOLLOW_MUL_in_term867 = new BitSet(new long[]{0x00080C0083000000L});
+    public static final BitSet FOLLOW_factor_in_term871 = new BitSet(new long[]{0x000000003C000002L});
+    public static final BitSet FOLLOW_DIV_in_term879 = new BitSet(new long[]{0x00080C0083000000L});
+    public static final BitSet FOLLOW_factor_in_term883 = new BitSet(new long[]{0x000000003C000002L});
+    public static final BitSet FOLLOW_MOD_in_term891 = new BitSet(new long[]{0x00080C0083000000L});
+    public static final BitSet FOLLOW_factor_in_term895 = new BitSet(new long[]{0x000000003C000002L});
+    public static final BitSet FOLLOW_AND_in_term903 = new BitSet(new long[]{0x00080C0083000000L});
+    public static final BitSet FOLLOW_factor_in_term907 = new BitSet(new long[]{0x000000003C000002L});
+    public static final BitSet FOLLOW_MIN_in_base944 = new BitSet(new long[]{0x00080C0083000000L});
+    public static final BitSet FOLLOW_term_in_base948 = new BitSet(new long[]{0x0000000043000002L});
+    public static final BitSet FOLLOW_PLUS_in_base961 = new BitSet(new long[]{0x00080C0083000000L});
+    public static final BitSet FOLLOW_term_in_base965 = new BitSet(new long[]{0x0000000043000002L});
+    public static final BitSet FOLLOW_term_in_base980 = new BitSet(new long[]{0x0000000043000002L});
+    public static final BitSet FOLLOW_MIN_in_base1009 = new BitSet(new long[]{0x00080C0083000000L});
+    public static final BitSet FOLLOW_term_in_base1013 = new BitSet(new long[]{0x0000000043000002L});
+    public static final BitSet FOLLOW_PLUS_in_base1026 = new BitSet(new long[]{0x00080C0083000000L});
+    public static final BitSet FOLLOW_term_in_base1030 = new BitSet(new long[]{0x0000000043000002L});
+    public static final BitSet FOLLOW_OR_in_base1043 = new BitSet(new long[]{0x00080C0083000000L});
+    public static final BitSet FOLLOW_term_in_base1047 = new BitSet(new long[]{0x0000000043000002L});
+    public static final BitSet FOLLOW_base_in_expression1083 = new BitSet(new long[]{0x0000000000FC0002L});
+    public static final BitSet FOLLOW_EQUAL_in_expression1103 = new BitSet(new long[]{0x00080C0083000000L});
+    public static final BitSet FOLLOW_base_in_expression1107 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_UNEQUAL_in_expression1119 = new BitSet(new long[]{0x00080C0083000000L});
+    public static final BitSet FOLLOW_base_in_expression1123 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LESS_in_expression1135 = new BitSet(new long[]{0x00080C0083000000L});
+    public static final BitSet FOLLOW_base_in_expression1139 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LESS_EQUAL_in_expression1152 = new BitSet(new long[]{0x00080C0083000000L});
+    public static final BitSet FOLLOW_base_in_expression1156 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_GREAT_in_expression1168 = new BitSet(new long[]{0x00080C0083000000L});
+    public static final BitSet FOLLOW_base_in_expression1172 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_GREAT_EQUAL_in_expression1184 = new BitSet(new long[]{0x00080C0083000000L});
+    public static final BitSet FOLLOW_base_in_expression1188 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_statement_in_statements1222 = new BitSet(new long[]{0x0000400000000002L});
+    public static final BitSet FOLLOW_46_in_statements1229 = new BitSet(new long[]{0x0000443800021000L});
+    public static final BitSet FOLLOW_statement_in_statements1233 = new BitSet(new long[]{0x0000400000000002L});
+    public static final BitSet FOLLOW_assignment_in_statement1263 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_procedureCall_in_statement1279 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ifStatement_in_statement1295 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_whileStatement_in_statement1311 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_assignment1349 = new BitSet(new long[]{0x0081004000000000L});
+    public static final BitSet FOLLOW_idSelector_in_assignment1356 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_ASSIGN_in_assignment1359 = new BitSet(new long[]{0x00080C0083000000L});
+    public static final BitSet FOLLOW_expression_in_assignment1363 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IF_in_ifStatement1385 = new BitSet(new long[]{0x00080C0083000000L});
+    public static final BitSet FOLLOW_expression_in_ifStatement1389 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_THEN_in_ifStatement1391 = new BitSet(new long[]{0x0000443800021000L});
+    public static final BitSet FOLLOW_statements_in_ifStatement1395 = new BitSet(new long[]{0x000000000001C000L});
+    public static final BitSet FOLLOW_ifElsIfList_in_ifStatement1400 = new BitSet(new long[]{0x0000000000014000L});
+    public static final BitSet FOLLOW_ELSE_in_ifStatement1404 = new BitSet(new long[]{0x0000443800021000L});
+    public static final BitSet FOLLOW_statements_in_ifStatement1408 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_END_in_ifStatement1412 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ELSIF_in_ifElsIfList1440 = new BitSet(new long[]{0x00080C0083000000L});
+    public static final BitSet FOLLOW_expression_in_ifElsIfList1444 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_THEN_in_ifElsIfList1446 = new BitSet(new long[]{0x0000443800021000L});
+    public static final BitSet FOLLOW_statements_in_ifElsIfList1450 = new BitSet(new long[]{0x0000000000008002L});
+    public static final BitSet FOLLOW_WHILE_in_whileStatement1475 = new BitSet(new long[]{0x00080C0083000000L});
+    public static final BitSet FOLLOW_expression_in_whileStatement1479 = new BitSet(new long[]{0x0040000000000000L});
+    public static final BitSet FOLLOW_54_in_whileStatement1481 = new BitSet(new long[]{0x0000443800021000L});
+    public static final BitSet FOLLOW_statements_in_whileStatement1485 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_END_in_whileStatement1487 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_id11504 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_id1_in_idList1527 = new BitSet(new long[]{0x0020000000000002L});
+    public static final BitSet FOLLOW_53_in_idList1534 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_id1_in_idList1538 = new BitSet(new long[]{0x0020000000000002L});
+    public static final BitSet FOLLOW_ID_in_id1555 = new BitSet(new long[]{0x0081000000000000L});
+    public static final BitSet FOLLOW_idSelector_in_id1563 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_48_in_idSelector1596 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_ID_in_idSelector1598 = new BitSet(new long[]{0x0081000000000002L});
+    public static final BitSet FOLLOW_55_in_idSelector1612 = new BitSet(new long[]{0x00080C0083000000L});
+    public static final BitSet FOLLOW_expression_in_idSelector1616 = new BitSet(new long[]{0x0100000000000000L});
+    public static final BitSet FOLLOW_56_in_idSelector1618 = new BitSet(new long[]{0x0081000000000002L});
 
 }

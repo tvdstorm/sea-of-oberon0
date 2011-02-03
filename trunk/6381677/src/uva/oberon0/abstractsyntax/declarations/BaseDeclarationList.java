@@ -2,8 +2,6 @@ package uva.oberon0.abstractsyntax.declarations;
 
 import java.util.ArrayList;
 
-import org.antlr.runtime.tree.CommonTree;
-
 import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.runtime.Scope;
 
@@ -21,9 +19,6 @@ public class BaseDeclarationList extends BaseNode
 	public void add(BaseDeclaration item)
 	{
 		_items.add(item);
-		
-		while (item.canSplit())
-			_items.add((BaseDeclaration)item.split());
 	}
 	protected ArrayList<BaseDeclaration> _items = new ArrayList<BaseDeclaration>();
 	/**
