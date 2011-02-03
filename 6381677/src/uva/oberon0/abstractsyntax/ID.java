@@ -72,7 +72,10 @@ public class ID extends BaseNode
 		return _value;
 	}
 	
-	public static ID getID(BaseNode value)
+	/**
+	 * Gets the Identifier of different Node Types.
+	 */
+	public static ID get(BaseNode value)
 	{
 		if (value instanceof ID)
 			return (ID)value;
