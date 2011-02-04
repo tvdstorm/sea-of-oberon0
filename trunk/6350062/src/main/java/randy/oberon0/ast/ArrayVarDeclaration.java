@@ -9,27 +9,38 @@ import randy.oberon0.value.Integer;
 
 public class ArrayVarDeclaration extends VarDeclaration
 {
-	protected final Expression arrayLength;
+	protected final List<Expression> arrayLength;
 	
-	public ArrayVarDeclaration(String _typeName, boolean _isReference, List<String> _variableNames, Expression _arrayLength)
+	public ArrayVarDeclaration(String _typeName, boolean _isReference, List<String> _variableNames, List<Expression> _arrayLength)
 	{
 		super(_typeName, _isReference, _variableNames, true);
+		assert(_arrayLength.size() >= 1);
 		arrayLength = _arrayLength;
 	}
 	@Override
 	public void register(RuntimeEnvironment newEnvironment) throws RuntimeException // Use for variable declarations IN methods or modules
 	{
 		assert(newEnvironment != null);
-		// Evaluate the length of the array and convert it to an integer
-		final Integer length = arrayLength.evaluate(newEnvironment).dereference().castToInteger();
+		// Create a new instantializer for the base type
+		IInstantiateableVariable arrayCreator = newEnvironment.resolveType(typeName);
+		// Loop through all the length expressions in reverse order
+		ListIterator<Expression> iterator = arrayLength.listIterator(arrayLength.size());
+		while (iterator.hasPrevious())
+		{
+			// Get the previous length expressoin
+			Expression curExpression = iterator.previous();
+			// Evaluate the length expression
+			Integer thisLength = curExpression.evaluate(newEnvironment).dereference().castToInteger();
+			// Create a new array instantializer for the array and set the length of the array
+			ArrayVariableInstantiation thisCreator = new ArrayVariableInstantiation(arrayCreator);
+			thisCreator.setLength(thisLength.getIntValue());
+			// Set the array instantializer as the current instantializer
+			arrayCreator = thisCreator;
+		}
+		
 		// Loop through all variable names
 		for (String name : variableNames)
 		{
-			// Resolve the type of the array members
-			final IInstantiateableVariable arrayType = newEnvironment.resolveType(typeName);
-			// Make an instantializer for the array
-			ArrayVariableInstantiation arrayCreator = new ArrayVariableInstantiation(arrayType);
-			arrayCreator.setLength(length.getIntValue());
 			// Create the array and add it in the environment
 			newEnvironment.registerVariable(name, arrayCreator.instantiate(newEnvironment));
 		}
@@ -42,15 +53,38 @@ public class ArrayVarDeclaration extends VarDeclaration
 		// Check if we have enough parameter values left for all our variables
 		if (parameterValues.size() < variableNames.size())
 			throw new IncorrectNumberOfArgumentsException();
-		// Evaluate the length of the array and convert it to an integer
-		final int length = arrayLength.evaluate(environment).dereference().castToInteger().getIntValue();
+		
+		// Loop through all the length expressions in normal order to resolve them
+		Queue<Integer> lengths = new LinkedList<Integer>();
+		for (Expression curExpression : arrayLength)
+		{
+			// Evaluate the length expression and add it to the stack
+			lengths.add(curExpression.evaluate(environment).dereference().castToInteger());
+		}
+		
 		// Loop through all variable names
 		for (String variableName : variableNames)
 		{
 			// Fetch a parameter value from the parameter values
 			final Array parameterValue = parameterValues.poll().dereference().castToArray();
-			// Check if the array length of the parameter matches the definition
-			if (length != parameterValue.getLength())
+			// Check if the length of the parameter matches the definition
+			Array testArray = parameterValue;
+			boolean bFirst = true;
+			for (Integer length : lengths)
+			{
+				if (!bFirst)
+				{
+					// Grab the next nesting
+					testArray = testArray.getIndexValue(0).castToArray();
+				}
+				if (testArray.getLength() != length.getIntValue())
+				{
+					throw new ArrayLengthMismatch();
+				}
+				bFirst = false;
+			}
+			// The test array next nesting shouldn't be an array anymore, or else the nesting doesn't match
+			if (testArray.getIndexValue(0).getType() == Type.ARRAY)
 				throw new ArrayLengthMismatch();
 			// Check if the variable is a reference
 			if (isReference)

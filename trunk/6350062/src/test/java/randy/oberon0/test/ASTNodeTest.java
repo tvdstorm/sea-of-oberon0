@@ -777,7 +777,66 @@ public class ASTNodeTest
 			Assert.assertTrue(functions.outputIsEmpty());
 		}
 	}
-	// TODO: array in array, record in array, array in record.
+	@Test
+	public void test_ArrayRecordNesting()
+	{
+		prepareTest("arrayrecordnesting");
+		for (int curTest=0;curTest<numTests;curTest++)
+		{
+			final int lengthI = 5;
+			final int lengthJ = 10;
+			int array[][] = new int[lengthI][lengthJ];
+			List<String> input = new LinkedList<String>();
+			for (int i=0;i<lengthI;i++)
+			{
+				for (int j=0;j<lengthJ;j++)
+				{
+					array[i][j] = random.nextInt();
+					input.add("" + array[i][j]);
+				}
+			}
+			String objects[] = new String[lengthI*2];
+			for (int i=0;i<lengthI;i++)
+			{
+				int getal = random.nextInt();
+				int getal2 = random.nextInt();
+				objects[i*2] = ""+getal;
+				input.add(""+getal);
+				objects[i*2+1] = ""+getal2;
+				input.add(""+getal2);
+			}
+			String in[] = new String[input.size()];
+			in = input.toArray(in);
+			
+			runTest(in);
+			
+			for (int i=0;i<lengthI;i++)
+			{
+				for (int j=0;j<lengthJ;j++)
+				{
+					Assert.assertTrue(functions.popOutput().equals("" + array[i][j]));
+				}
+			}
+			
+			for (int i=0;i<lengthI;i++)
+			{
+				for (int j=0;j<lengthJ;j++)
+				{
+					Assert.assertTrue(functions.popOutput().equals("" + (array[i][j]+1)));
+				}
+			}
+			
+			for (int i=0;i<lengthI;i++)
+			{
+				String getal = functions.popOutput();
+				String getal2 = functions.popOutput();
+				Assert.assertTrue(getal2.equals(""+objects[i*2]));
+				Assert.assertTrue(getal.equals(""+objects[i*2+1]));
+			}
+			
+			Assert.assertTrue(functions.outputIsEmpty());
+		}
+	}
 	@Ignore
 	private void prepareTestThrowException(String testName) throws Exception
 	{

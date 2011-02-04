@@ -378,8 +378,15 @@ public class Oberon0ASTTreeGenerator
 		}
 		if (type.equals(Type.ARRAY.getTypeText()))
 		{
-			type = tree.getChild(0).getChild(0).getChild(0).getText();
-			Expression arrayLength = buildExpression(tree.getChild(0).getChild(1).getChild(0));
+			List<Expression> arrayLength = new LinkedList<Expression>();
+			Tree subTree = tree.getChild(0);
+			while (subTree.getText().equals(Type.ARRAY.getTypeText()))
+			{
+				assert(subTree.getType() == Oberon0Parser.ARRAY);
+				type = subTree.getChild(0).getChild(0).getText();
+				arrayLength.add(buildExpression(subTree.getChild(1).getChild(0)));
+				subTree = subTree.getChild(0).getChild(0);
+			}
 			return new ArrayVarDeclaration(type, isReference, names, arrayLength);
 		}
 		else
