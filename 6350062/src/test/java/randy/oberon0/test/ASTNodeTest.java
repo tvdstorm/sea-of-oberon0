@@ -542,17 +542,8 @@ public class ASTNodeTest
 				Assert.assertTrue(cBool.getType() == bool.getType());
 				Assert.assertTrue(cBool.toString().equals(bool.toString()));
 								
-				Assert.assertTrue(Value.makeNew(Type.INTEGER).getType() == Type.INTEGER);
-				Assert.assertTrue(Value.makeNew(Type.BOOLEAN).getType() == Type.BOOLEAN);
-				try
-				{
-					Value.makeNew(Type.ARRAY);
-					Assert.fail("Should be throwing an UnknownTypeException...");
-				}
-				catch (UnknownTypeException e)
-				{
-					// Success
-				}
+				Assert.assertTrue((new Integer(0)).getType() == Type.INTEGER);
+				Assert.assertTrue((new Boolean(false)).getType() == Type.BOOLEAN);
 				
 				try
 				{
