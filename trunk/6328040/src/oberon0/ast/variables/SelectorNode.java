@@ -3,20 +3,13 @@ package oberon0.ast.variables;
 import java.util.ArrayList;
 
 import oberon0.environment.Context;
-import oberon0.environment.IValue;
 import oberon0.environment.Reference;
 
 public class SelectorNode implements ISelector{
 	ArrayList<ISelector> _selectors;
 	
-	public SelectorNode(ArrayList<ISelector> selectors) {
-		_selectors = selectors;
-	}
-
-	@Override
-	public IValue eval(Context context) {
-		// TODO Auto-generated method stub
-		return null;
+	public SelectorNode(ArrayList<ISelector> list) {
+		_selectors = list;
 	}
 
 	@Override

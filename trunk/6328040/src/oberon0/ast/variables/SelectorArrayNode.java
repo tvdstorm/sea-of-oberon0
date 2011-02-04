@@ -14,14 +14,10 @@ public class SelectorArrayNode implements ISelector{
 		_selectorExpression = selector;
 	}
 
-	@Override
-	public IValue eval(Context context) {
-		return _selectorExpression.eval(context);
-	}
 
 	@Override
 	public Reference refer(Context context, Reference previousRef) {
-		IValue selectorValue = eval(context);
+		IValue selectorValue = _selectorExpression.eval(context);
 		int index = ((IntegerValue) selectorValue).getValue();
 		return ((ArrayValue)previousRef.getValue()).getReference(index);
 	}
