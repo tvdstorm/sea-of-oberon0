@@ -6,7 +6,7 @@ public abstract class ExpressionNode implements IInterpretableNode {
 	
 	public ExpressionNode(IInterpretableNode lhn, IInterpretableNode rhn) {
 		this.lhn = lhn;
-		this.rhn = lhn;
+		this.rhn = rhn;
 	}
 	
 	public IInterpretableNode getLeftHandNode() {

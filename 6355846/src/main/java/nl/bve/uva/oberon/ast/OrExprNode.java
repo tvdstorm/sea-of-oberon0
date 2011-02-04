@@ -9,11 +9,11 @@ public class OrExprNode extends ExpressionNode {
 	@Override
 	public Boolean interpret() {
 		Object lhn = getLeftHandNode().interpret();
-		Object rhn = getLeftHandNode().interpret();
+		Object rhn = getRightHandNode().interpret();
 
-		assert (lhn instanceof Boolean);
-		assert (rhn instanceof Boolean);
+		assert (lhn instanceof IInterpretableNode);
+		assert (rhn instanceof IInterpretableNode);
 		
-		return ((Boolean)lhn) || ((Boolean)rhn);
+		return ((Boolean)getLeftHandNode().interpret()) || ((Boolean)getRightHandNode().interpret());
 	}
 }

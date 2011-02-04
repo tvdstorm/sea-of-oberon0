@@ -9,11 +9,10 @@ public class EqualsExprNode extends ExpressionNode {
 	@Override
 	public Boolean interpret() {
 		Object lhn = getLeftHandNode().interpret();
-		Object rhn = getLeftHandNode().interpret();
+		Object rhn = getRightHandNode().interpret();
 
-		assert (lhn instanceof Boolean);
-		assert (rhn instanceof Boolean);
-		
-		return ((Boolean)lhn).equals((Boolean)rhn);
+		boolean result = lhn.equals(rhn);
+		System.out.println("Equals.interpret("+lhn+", "+rhn+"): " +result);
+		return result;
 	}
 }

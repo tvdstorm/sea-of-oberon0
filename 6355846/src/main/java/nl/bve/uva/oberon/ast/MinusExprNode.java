@@ -9,11 +9,18 @@ public class MinusExprNode extends ExpressionNode {
 	@Override
 	public Integer interpret() {
 		Object lhn = getLeftHandNode().interpret();
-		Object rhn = getLeftHandNode().interpret();
+		Object rhn = getRightHandNode().interpret();
 
 		assert (lhn instanceof Integer);
 		assert (rhn instanceof Integer);
 		
-		return (Integer)lhn - (Integer)rhn;
+		Integer result = (Integer)lhn - (Integer)rhn;
+		System.out.println("MinusExprNode.interpret(" +getLeftHandNode()+ ", " +getRightHandNode()+ "): " +result);
+		return result;
+	}
+	
+	@Override
+	public String toString() {
+		return getClass().getSimpleName() + "(" +getLeftHandNode()+ ", " +getRightHandNode()+ ")";
 	}
 }

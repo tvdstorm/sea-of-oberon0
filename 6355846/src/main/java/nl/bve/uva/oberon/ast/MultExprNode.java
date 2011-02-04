@@ -6,13 +6,21 @@ public class MultExprNode extends ExpressionNode {
 		System.out.println("MultExprNode(" +lhn+ ", " +rhn+ ")");
 	}
 	
-	public Double interpret() {
+	public Integer interpret() {
 		Object lhn = getLeftHandNode().interpret();
-		Object rhn = getLeftHandNode().interpret();
+		Object rhn = getRightHandNode().interpret();
 
 		assert (lhn instanceof Integer);
 		assert (rhn instanceof Integer);
 		
-		return ((Integer)lhn * 1.0) * ((Integer)rhn * 1.0);
+		
+		Integer result = ((Integer)lhn) * ((Integer)rhn);
+		System.out.println("MultExprNode.interpret(): " +result);
+		return result;
+	}
+	
+	@Override
+	public String toString() {
+		return getClass().getSimpleName() + "(" +getLeftHandNode()+ ", " +getRightHandNode()+ ")";
 	}
 }

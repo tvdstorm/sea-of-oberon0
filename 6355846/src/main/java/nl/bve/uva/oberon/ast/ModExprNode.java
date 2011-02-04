@@ -8,7 +8,7 @@ public class ModExprNode extends ExpressionNode {
 	
 	public Integer interpret() {
 		Object lhn = getLeftHandNode().interpret();
-		Object rhn = getLeftHandNode().interpret();
+		Object rhn = getRightHandNode().interpret();
 
 		assert (lhn instanceof Integer);
 		assert (rhn instanceof Integer);

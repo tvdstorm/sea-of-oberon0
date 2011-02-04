@@ -12,4 +12,9 @@ public class NumberNode implements IInterpretableNode {
 	public Object interpret() {
 		return number;
 	}
+	
+	@Override
+	public String toString() {
+		return getClass().getSimpleName() + "(" +number+ ")";
+	}
 }
