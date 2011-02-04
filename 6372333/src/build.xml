@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Oberon-compiler build" default="Oberon-compiler" basedir=".">
 	<taskdef name="javancss" classname="javancss.JavancssAntTask" />
+	<taskdef name="sablecc" classname="org.sablecc.ant.taskdef.Sablecc" />
 	<target name="Oberon-compiler">
 		<property name="classes" value="./oberon/test" />
+		<sablecc src="../grammar" OutputDirectory="." />		
 		<javancss
 			srcdir="."
 			includes="oberon/*.java, oberon/data/*.java, oberon/interpret/*.java, oberon/test/*.java"
