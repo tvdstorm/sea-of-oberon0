@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Oberon-compiler build" default="Oberon-compiler" basedir=".">
+	<taskdef name="javancss" classname="javancss.JavancssAntTask" />
+	<target name="Oberon-compiler">
+		<property name="classes" value="./oberon/test" />
+		<javancss
+			srcdir="."
+			includes="oberon/*.java, oberon/data/*.java, oberon/interpret/*.java, oberon/test/*.java"
+			generateReport="true"
+			outputfile="../build-output/javancss.xml"
+			format="xml"
+		/>
+		<junit fork="yes" printsummary="yes" haltonfailure="no">
+    		<batchtest fork="yes" todir="../build-output" >
+      			<fileset dir="${classes}">
+        			<include name="oberon/test/**" />
+      			</fileset>
+    		</batchtest>
+    		<formatter type="xml" />
+  		</junit>
+
+  		<junitreport todir="../build-output">
+    		<fileset dir="../build-output">
+      			<include name="TEST-*.xml" />
+			</fileset>
+			<report todir="../build-output" />
+  		</junitreport>
+	</target>
+</project>
