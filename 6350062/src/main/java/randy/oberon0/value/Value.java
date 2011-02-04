@@ -20,27 +20,31 @@ public abstract class Value
 	}
 	public Integer castToInteger() throws TypeMismatchException
 	{
-		if (this instanceof Integer)
-			return (Integer)this;
-		throw new TypeMismatchException(this.getType().toString(), Type.INTEGER.toString());
+		Value dereferenced = dereference();
+		if (dereferenced instanceof Integer)
+			return (Integer)dereferenced;
+		throw new TypeMismatchException(dereferenced.getType().toString(), Type.INTEGER.toString());
 	}
 	public Boolean castToBoolean() throws TypeMismatchException
 	{
-		if (this instanceof Boolean)
-			return (Boolean)this;
-		throw new TypeMismatchException(this.getType().toString(), Type.BOOLEAN.toString());
+		Value dereferenced = dereference();
+		if (dereferenced instanceof Boolean)
+			return (Boolean)dereferenced;
+		throw new TypeMismatchException(dereferenced.getType().toString(), Type.BOOLEAN.toString());
 	}
 	public Array castToArray() throws TypeMismatchException
 	{
-		if (this instanceof Array)
-			return (Array)this;
-		throw new TypeMismatchException(this.getType().toString(), Type.ARRAY.toString());
+		Value dereferenced = dereference();
+		if (dereferenced instanceof Array)
+			return (Array)dereferenced;
+		throw new TypeMismatchException(dereferenced.getType().toString(), Type.ARRAY.toString());
 	}
 	public Record castToRecord() throws TypeMismatchException
 	{
-		if (this instanceof Record)
-			return (Record)this;
-		throw new TypeMismatchException(this.getType().toString(), Type.RECORD.toString());
+		Value dereferenced = dereference();
+		if (dereferenced instanceof Record)
+			return (Record)dereferenced;
+		throw new TypeMismatchException(dereferenced.getType().toString(), Type.RECORD.toString());
 	}
 	public abstract boolean equalsToValue(Value _value);
 }

@@ -5,7 +5,6 @@ import randy.oberon0.ast.IInvokableFunction;
 import randy.oberon0.exception.*;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.*;
-import randy.oberon0.value.Integer;
 import randy.oberon0.value.*;
 
 public class TestWriteFunction implements IInvokableFunction
@@ -23,7 +22,7 @@ public class TestWriteFunction implements IInvokableFunction
 		Value param = parameterValues.poll();
 		if (!param.getType().equals(Type.INTEGER))
 			throw new TypeMismatchException(param.getType().toString(), Type.INTEGER.toString());
-		output.add(((Integer)param).toString());
+		output.add(param.toString());
 	}
 	public String getName()
 	{
