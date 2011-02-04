@@ -37,7 +37,7 @@ public class Array extends Value
 		values = new Value[v.values.length];
 		for (int i=0;i<v.values.length;i++)
 		{
-			values[i] = Value.makeNew(v.values[i].getType());
+			values[i] = v.values[i].clone();
 		}
 	}
 	public Type getType()

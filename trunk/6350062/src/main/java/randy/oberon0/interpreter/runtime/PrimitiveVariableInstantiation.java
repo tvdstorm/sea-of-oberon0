@@ -1,7 +1,10 @@
 package randy.oberon0.interpreter.runtime;
 
 import randy.oberon0.exception.RuntimeException;
+import randy.oberon0.exception.UnknownTypeException;
 import randy.oberon0.value.*;
+import randy.oberon0.value.Boolean;
+import randy.oberon0.value.Integer;
 
 public class PrimitiveVariableInstantiation implements IInstantiateableVariable
 {
@@ -14,6 +17,11 @@ public class PrimitiveVariableInstantiation implements IInstantiateableVariable
 	@Override
 	public Value instantiate(RuntimeEnvironment environment) throws RuntimeException
 	{
-		return Value.makeNew(primitiveType);
+		if (primitiveType == Type.INTEGER)
+			return new Integer(0);
+		else if (primitiveType == Type.BOOLEAN)
+			return new Boolean(false);
+		else
+			throw new UnknownTypeException(primitiveType.toString());
 	}
 }

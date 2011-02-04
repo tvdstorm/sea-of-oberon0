@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-02-04</date>
-  <time>15:44:29</time>
+  <time>16:07:42</time>
   <packages>
     <package>
       <name>randy.oberon0.ast</name>
@@ -57,7 +57,7 @@
       <name>randy.oberon0.interpreter.runtime</name>
       <classes>9</classes>
       <functions>31</functions>
-      <ncss>186</ncss>
+      <ncss>195</ncss>
       <javadocs>3</javadocs>
       <javadoc_lines>9</javadoc_lines>
       <single_comment_lines>29</single_comment_lines>
@@ -76,8 +76,8 @@
     <package>
       <name>randy.oberon0.value</name>
       <classes>8</classes>
-      <functions>62</functions>
-      <ncss>235</ncss>
+      <functions>61</functions>
+      <ncss>227</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>4</single_comment_lines>
@@ -85,8 +85,8 @@
     </package>
     <total>
       <classes>82</classes>
-      <functions>228</functions>
-      <ncss>1574</ncss>
+      <functions>227</functions>
+      <ncss>1575</ncss>
       <javadocs>3</javadocs>
       <javadoc_lines>9</javadoc_lines>
       <single_comment_lines>158</single_comment_lines>
@@ -94,10 +94,10 @@
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>8.00</td><td>82.00</td><td>228.00</td><td>1,574.00</td><td>3.00</td><td>Project</td></tr>
-      <tr><td></td><td>10.25</td><td>28.50</td><td>196.75</td><td>0.38</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>2.78</td><td>19.20</td><td>0.04</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>6.90</td><td>0.01</td><td>Function</td></tr>
+      <tr><td>8.00</td><td>82.00</td><td>227.00</td><td>1,575.00</td><td>3.00</td><td>Project</td></tr>
+      <tr><td></td><td>10.25</td><td>28.38</td><td>196.88</td><td>0.38</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>2.77</td><td>19.21</td><td>0.04</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>6.94</td><td>0.01</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -573,7 +573,7 @@
     </object>
     <object>
       <name>randy.oberon0.interpreter.runtime.PrimitiveVariableInstantiation</name>
-      <ncss>6</ncss>
+      <ncss>12</ncss>
       <functions>2</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
@@ -671,18 +671,18 @@
     </object>
     <object>
       <name>randy.oberon0.value.Value</name>
-      <ncss>34</ncss>
-      <functions>10</functions>
+      <ncss>26</ncss>
+      <functions>9</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>15.26</ncss>
-      <functions>2.78</functions>
+      <ncss>15.23</ncss>
+      <functions>2.77</functions>
       <classes>0.00</classes>
       <javadocs>0.04</javadocs>
     </averages>
-    <ncss>1,574.00</ncss>
+    <ncss>1,575.00</ncss>
   </objects>
 
   <functions>
@@ -1540,8 +1540,8 @@
     </function>
     <function>
       <name>randy.oberon0.interpreter.runtime.PrimitiveVariableInstantiation.instantiate(RuntimeEnvironment)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
+      <ncss>8</ncss>
+      <ccn>6</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -2019,12 +2019,6 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>randy.oberon0.value.Value.makeNew(Type)</name>
-      <ncss>8</ncss>
-      <ccn>6</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
       <name>randy.oberon0.value.Value.castToInteger()</name>
       <ncss>5</ncss>
       <ccn>4</ccn>
@@ -2055,10 +2049,10 @@
       <javadocs>0</javadocs>
     </function>
     <function_averages>
-      <ncss>4.77</ncss>
-      <ccn>2.37</ccn>
+      <ncss>4.78</ncss>
+      <ccn>2.38</ccn>
       <javadocs>0.01</javadocs>
     </function_averages>
-    <ncss>1,574.00</ncss>
+    <ncss>1,575.00</ncss>
   </functions>
 </javancss>
