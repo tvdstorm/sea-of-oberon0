@@ -1,0 +1,24 @@
+module eu.wietsevenema.lang.oberon.parser.Core(
+	Spacing, Symbol,Expression, Declaration, Identifier);
+
+import Spacing;
+import Symbol;
+import Expression;
+import Declaration;
+import Identifier;
+
+
+public Node Program = Spacing Module EndOfFile;
+
+//Used in testsuite
+public TestExpression Expression = 
+	Spacing exp:EqualityExpression EndOfFile
+	{
+		yyValue= new TestExpression(exp);
+	}
+	;
+
+
+
+
+

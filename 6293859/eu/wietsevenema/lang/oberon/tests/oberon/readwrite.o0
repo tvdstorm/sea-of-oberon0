@@ -1,0 +1,17 @@
+MODULE ReadWrite;
+
+VAR
+	count, x: INTEGER;
+
+BEGIN
+	count := 0;
+	
+	WHILE count < 10
+	DO 
+		count := count + 1;
+		Read(x);
+		Write(x); WriteLn()
+	END
+	
+
+END ReadWrite.

@@ -1,0 +1,2 @@
+/* Alle operators in Oberon-0 */
+~2 OR TRUE & 2 * 0 DIV 123 MOD 2 + 42 - 42 = ~-FALSE # -3 < 23 <= 43 > 12 >= 666

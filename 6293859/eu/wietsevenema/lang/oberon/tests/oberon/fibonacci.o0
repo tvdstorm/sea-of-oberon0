@@ -1,0 +1,25 @@
+MODULE Fibonacci;
+
+CONST
+	TOTAL=10;
+
+VAR
+	oldNr, currentNr, nextNr : INTEGER;
+
+BEGIN	
+	oldNr := 1;
+	currentNr := 1;
+	
+	Write(oldNr); 
+	WriteLn;
+	
+	WHILE currentNr<50 DO 
+		Write(CurrentNr); WriteLn;
+	
+	 	nextNr := currentNr + oldNr;
+    
+  		oldNr := currentNumber;
+		currentNr := nextNumber;
+	END
+
+END Fibonacci.

@@ -1,0 +1,12 @@
+module eu.wietsevenema.lang.oberon.parser.Symbol(Symbol);
+
+modify Symbol;
+
+String SymbolCharacters +=
+	<Divison>             "DIV"
+	/ <Modulus>             "MOD"
+	/ <Or> 	  	          "OR"
+	/ <Hash> 		          "#"
+	/ <Assign> 	          ":="
+	/ <GreaterGreater> ...
+	;

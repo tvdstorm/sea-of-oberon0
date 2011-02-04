@@ -1,0 +1,6 @@
+MODULE Procedure;
+BEGIN	
+	Procedure1;
+	Procedure2();
+	Procedure3(a, 1, a+2)
+END Procedure.
