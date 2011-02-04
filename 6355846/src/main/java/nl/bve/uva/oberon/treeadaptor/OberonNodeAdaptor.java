@@ -14,7 +14,7 @@ public class OberonNodeAdaptor extends CommonTreeAdaptor {
 	
     public Object create(Token t) {
     	if (t != null) {
-    		System.out.println("create(" +t.getType()+ ", " +t.getText()+ ", " +t.getTokenIndex()+ ")");
+    		System.out.println("create(" +t.getText()+ ", " +t.getTokenIndex()+ ")");
     		return new OberonRootNode(t);
     	}
 
