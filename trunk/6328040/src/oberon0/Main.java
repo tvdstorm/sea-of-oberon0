@@ -13,16 +13,15 @@ import generated.*;
 
 public class Main {
 	
-	/*TODO 5 * 7 / 4 (no priority?) some expressions get in infinite parse loop??!
-	 *TODO type declarations
+	/*TODO type declarations
 	 *TODO builtin functions
-	 *TODO tests
-	 *TODO FPVar en FPVarRef samengooien
+	 *TODO tests 
+	 *TODO quicksort kapot? 13111 -> 11131
 	 */
 	
 	public static void main(String [ ] args) throws IOException
 	{
-		ANTLRFileStream inputfile = new ANTLRFileStream("oberonfiles/quicksorttest.oberon0");
+		ANTLRFileStream inputfile = new ANTLRFileStream("oberonfiles/quicksort.oberon0");
 	    
 	    // let ANTLR-generated code do the job
 		Oberon0Lexer lex = new Oberon0Lexer(inputfile);			// lexer/parser are part of the processor

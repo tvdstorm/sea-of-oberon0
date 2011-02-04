@@ -2,7 +2,7 @@ package oberon0.ast.statements;
 
 import java.util.ArrayList;
 
-import oberon0.ast.routines.ProcedureNode;
+import oberon0.ast.routines.ICallable;
 import oberon0.ast.variables.IReferable;
 import oberon0.environment.Context;
 
@@ -18,10 +18,9 @@ public class ProcedureCallNode implements IExecutable {
 
 	@Override
 	public void execute(Context context) {
-
-		ProcedureNode procedure = context.getProcedure(_name);
-		procedure.call(context, _actualParams);
+		ICallable procedure = context.getProcedure(_name);
 		
+		procedure.call(context, _actualParams);
 	}
 
 }

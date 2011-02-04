@@ -7,6 +7,7 @@ import oberon0.ast.routines.parameters.IFormalParameter;
 import oberon0.ast.statements.IExecutable;
 import oberon0.ast.variables.IReferable;
 import oberon0.environment.Context;
+import oberon0.environment.builtinroutines.BuiltInRoutines;
 
 public class ProcedureNode implements ICallable, IDeclarable{	
 	private String _name;
@@ -33,12 +34,12 @@ public class ProcedureNode implements ICallable, IDeclarable{
 			currentFP.fillIn(context, actualParamsClone);
 		}
 		
-		//TODO declare builtins
+		BuiltInRoutines builtin = new BuiltInRoutines();
+		builtin.declare(context);
+		
 		declare(context);
 		_declarations.declare(context);
 		_body.execute(context);
-		
-		context.print();
 	}
 
 

@@ -12,6 +12,4 @@ public abstract class BaseFormalParameterNode implements IFormalParameter{
 		_names = names;
 		_type = type;
 	}
-	
-	
 }
