@@ -541,27 +541,7 @@ public class ASTNodeTest
 				Const cBool = new Const(bool);
 				Assert.assertTrue(cBool.getType() == bool.getType());
 				Assert.assertTrue(cBool.toString().equals(bool.toString()));
-				
-				/*int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
-				TypeRegistry typeRegistry = new TypeRegistry(null);
-				typeRegistry.addType(Type.INTEGER.getTypeText(), new OPrimitiveVariableInstantiation(Type.INTEGER));
-				OArray array = new OArray(3, new OPrimitiveVariableInstantiation(Type.INTEGER), environment);
-				array.getIndexValue(0).setValue(new OInteger(a));
-				array.getIndexValue(1).setValue(new OInteger(b));
-				array.getIndexValue(2).setValue(new OInteger(c));
-				try
-				{
-					array.getIndexValue(3);
-					Assert.fail("Should be throwing an OutOfBoundsException...");
-				}
-				catch (OutOfBoundsException e)
-				{
-					// Success
-				}
-				OConst cArray = new OConst(array);
-				Assert.assertTrue(cArray.getType() == array.getType());
-				Assert.assertTrue(cArray.toString().equals(array.toString()));*/
-				
+								
 				Assert.assertTrue(Value.makeNew(Type.INTEGER).getType() == Type.INTEGER);
 				Assert.assertTrue(Value.makeNew(Type.BOOLEAN).getType() == Type.BOOLEAN);
 				try
@@ -592,16 +572,7 @@ public class ASTNodeTest
 				{
 					// Success
 				}
-				/*try
-				{
-					array.setValue(integer2);
-					Assert.fail("Should be throwing an TypeMismatchException...");
-				}
-				catch (TypeMismatchException e)
-				{
-					// Success
-				}*/
-				
+								
 				TypeRegistry typeRegistry = new TypeRegistry(null);
 				typeRegistry.registerType(Type.INTEGER.getTypeText(), new PrimitiveVariableInstantiation(Type.INTEGER));
 				RuntimeEnvironment environment = new RuntimeEnvironment(new VariableStack(null), new FunctionRegistry(null), typeRegistry, null);
@@ -625,6 +596,7 @@ public class ASTNodeTest
 						Value ref = new Reference(val);
 						Assert.assertTrue(ref.toString().equals(values[j].toString()) == (i == j));
 						Assert.assertTrue(ref.equalsToValue(values[j]) == (i == j));
+						Assert.assertTrue(ref.getType() == val.getType());
 						Value ref2 = ref.clone();
 						Assert.assertTrue(ref.toString().equals(ref2.toString()));
 						Assert.assertTrue(ref.equalsToValue(ref2));
@@ -634,6 +606,37 @@ public class ASTNodeTest
 						Value con2 = con.clone();
 						Assert.assertTrue(con.toString().equals(con2.toString()));
 						Assert.assertTrue(con.equalsToValue(con2));
+						
+						Value copies[] = new Value[4];
+						copies[0] = new Integer(random.nextInt(10)+1);
+						copies[1] = new Boolean(bRand);
+						copies[2] = new Array(random.nextInt(10)+1, environment.resolveType("INTEGER"), environment);
+						HashMap<String, IInstantiateableVariable> copyMembers = new HashMap<String, IInstantiateableVariable>();
+						copyMembers.put("a", environment.resolveType("INTEGER"));
+						copyMembers.put("b", environment.resolveType("INTEGER"));
+						copies[3] = new Record(copyMembers, environment);
+						if (i == j)
+						{
+							copies[i].setValue(values[j]);
+							Assert.assertTrue(copies[i].toString().equals(values[j].toString()));
+							Assert.assertTrue(copies[i].equalsToValue(values[j]));
+						}
+						else
+						{
+							try
+							{
+								copies[i].setValue(values[j]);
+								Assert.fail("Should be throwing a TypeMismatchException...");
+							}
+							catch (TypeMismatchException e)
+							{
+								// Success
+							}
+							catch (Exception e)
+							{
+								Assert.fail("Should be throwing a TypeMismatchException...");
+							}
+						}
 					}
 				}
 			}
