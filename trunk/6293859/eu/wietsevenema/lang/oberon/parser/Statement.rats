@@ -1,0 +1,77 @@
+module eu.wietsevenema.lang.oberon.parser.Statement(
+	Symbol, Identifier, Expression);
+
+import Symbol;
+import Identifier;
+import Expression;
+
+List<Statement> StatementSequence = 
+	statement:Statement statements:( void:";":Symbol Statement)*
+       { 
+		yyValue = new Pair<Statement>(statement, statements).list(); 
+	}
+	;
+
+ProcedureCallStatement ProcedureCallStatement = 
+ 	id:Identifier params:( void:"(":Symbol (ActualParameters)? void:")":Symbol )?
+	{
+		yyValue = new ProcedureCallStatement(id, params);
+	}
+ 	;
+
+
+
+List<Node> ActualParameters = 
+	act:EqualityExpression acts:( void:",":Symbol EqualityExpression)*
+       { 
+		yyValue = new Pair<Node>(act, acts).list(); 
+	}
+	;
+
+ElseIfStatement ElseIfStatement =  
+	"ELSIF":Word
+	cond:EqualityExpression
+	"THEN":Word
+	truestats: StatementSequence
+	{
+		yyValue = new ElseIfStatement( cond, truestats );
+	}
+	;
+
+IfStatement IfStatement = 
+	"IF":Word 
+	cond:EqualityExpression
+	"THEN":Word
+	truestats:StatementSequence 
+	elseifs:(ElseIfStatement)*
+	falsestats:(void:"ELSE":Word StatementSequence)? 
+	"END":Word
+	{
+		yyValue = new IfStatement( cond, truestats, elseifs.list(), falsestats);
+	}
+	; 
+
+WhileStatement WhileStatement = 
+	"WHILE":Word 
+	cond:EqualityExpression
+	"DO":Word 
+	stats:StatementSequence 
+	"END":Word
+	{
+		yyValue = new WhileStatement( cond, stats );
+	}
+	;
+
+Statement Statement = 
+	yyValue:AssignmentStatement
+  / yyValue:WhileStatement
+  / yyValue:IfStatement
+  / yyValue:ProcedureCallStatement
+	; 
+
+AssignmentStatement AssignmentStatement = 
+	id:Selector ":=":Symbol exp:EqualityExpression
+		{
+			yyValue= new AssignmentStatement(id, exp);
+		}
+	;

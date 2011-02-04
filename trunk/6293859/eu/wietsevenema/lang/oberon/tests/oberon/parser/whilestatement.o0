@@ -1,0 +1,11 @@
+MODULE While;
+	VAR t1: INTEGER; t2 : BOOLEAN;
+	
+	BEGIN 
+		WHILE t1 <= 5
+		DO 
+			t  := t + 1;
+			t2 := TRUE
+		END
+		
+	END While.
