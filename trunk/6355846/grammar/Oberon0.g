@@ -6,18 +6,18 @@ options {
 }
 
 tokens {
-	PLUS 	= '+'  ;
-	MINUS	= '-'  ;
-	MULT	= '*'  ;
-	DIV		= 'DIV';
-	MOD		= 'MOD';
-	EQUALS	= '='  ;
-	OR		= 'OR' ;
-	AND		= '&'  ;
-	LT		= '<'  ;
-	LT_EQ   = '<=' ;
-	GT		= '>'  ;
-	GT_EQ   = '>=';
+	PLUS 	= '+'   ;
+	MINUS	= '-'   ;
+	MULT	= '*';
+	DIV		= 'DIV' ;
+	MOD		= 'MOD' ;
+	EQUALS	= '='   ;
+	OR		= 'OR'  ;
+	AND		= '&'   ;
+	LT		= '<'   ;
+	LT_EQ   = '<='  ;
+	GT		= '>'   ;
+	GT_EQ   = '>='  ;
 	
 }
 
@@ -37,7 +37,7 @@ package nl.bve.uva.oberon.parser;
  *------------------------------------------------------------------*/
 
 prog returns [IInterpretableNode prog]
-	: expression;
+	: expression						{$prog = $expression.expr; };
 
 expression returns [IInterpretableNode expr]
 	:	s1=simpleExpression 			{$expr = $s1.sexpr; }
