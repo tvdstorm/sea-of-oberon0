@@ -8,13 +8,10 @@ import oberon0.environment.Context;
 import oberon0.environment.IValue;
 import oberon0.environment.Reference;
 
-public class FPVarNode implements IFormalParameter {
-	ArrayList<String> _names;
-	IEvaluable _type;
+public class FPVarNode extends BaseFormalParameterNode {
 	
 	public FPVarNode(ArrayList<String> names, IEvaluable type) {
-		_names = names;
-		_type = type;
+		super(names, type);
 	}
 
 	@Override
@@ -23,9 +20,10 @@ public class FPVarNode implements IFormalParameter {
 		while (names.size() > 0){
 			IValue FormalParamType = _type.eval(context);
 			String currentName = names.get(0);
-			context.declareVariable(currentName, FormalParamType);
 			
+			context.declareVariable(currentName, FormalParamType);
 			Reference reference= context.getReference(currentName);
+			
 			IReferable currentActualParam = actualParams.get(0);
 			IValue currentAPValue = currentActualParam.eval(context);
 			reference.setValue(currentAPValue);

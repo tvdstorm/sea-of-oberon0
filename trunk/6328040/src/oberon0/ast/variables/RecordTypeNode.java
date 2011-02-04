@@ -1,26 +1,27 @@
 package oberon0.ast.variables;
 
+import java.util.HashMap;
+
 import oberon0.ast.expressions.IEvaluable;
-import oberon0.environment.ArrayValue;
 import oberon0.environment.Context;
 import oberon0.environment.IValue;
-import oberon0.environment.IntegerValue;
+import oberon0.environment.RecordValue;
+import oberon0.environment.Reference;
 
 public class RecordTypeNode implements IEvaluable{
-	//TODO RECORD IS NOW AN ARRAY!
+	private HashMap<String, IEvaluable> _fields;
 	
-	IEvaluable _sizeExpression;
-	IEvaluable _typeExpression; 
-	
-	public RecordTypeNode(IEvaluable size, IEvaluable type) {
-		_sizeExpression = size;
-		_typeExpression = type;
+	public RecordTypeNode(HashMap<String, IEvaluable> rec) {
+		_fields = rec;
 	}
 
 	@Override
 	public IValue eval(Context context) {
-		IntegerValue size = (IntegerValue) _sizeExpression.eval(context);
-		IValue protoType = _typeExpression.eval(context); 
-		return new ArrayValue(protoType, size.getValue());
+		HashMap<String, Reference> values = new HashMap<String, Reference>();
+		for (String currentName: _fields.keySet()){
+			IValue currentField = _fields.get(currentName).eval(context);
+			values.put(currentName, new Reference(currentField));
+		}
+		return new RecordValue(values);
 	}
 }

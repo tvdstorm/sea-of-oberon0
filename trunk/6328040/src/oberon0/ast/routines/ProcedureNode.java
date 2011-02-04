@@ -23,7 +23,7 @@ public class ProcedureNode implements ICallable, IDeclarable{
 	}
 
 	@Override
-	public void call(Context context, ArrayList<IReferable> actualParams) {	
+	public void call(Context context, ArrayList<IReferable> actualParams) {
 		context = new Context(_name, context);
 
 		ArrayList<IReferable> actualParamsClone = new ArrayList<IReferable>(actualParams);
