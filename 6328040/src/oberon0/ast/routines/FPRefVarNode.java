@@ -7,13 +7,10 @@ import oberon0.ast.variables.IReferable;
 import oberon0.environment.Context;
 import oberon0.environment.Reference;
 
-public class FPRefVarNode implements IFormalParameter {
-	ArrayList<String> _names;
-	IEvaluable _type;
+public class FPRefVarNode extends BaseFormalParameterNode {
 	
 	public FPRefVarNode(ArrayList<String> names, IEvaluable type) {
-		_names = names;
-		_type = type;
+		super(names, type);
 	}
 
 	@Override
@@ -21,12 +18,10 @@ public class FPRefVarNode implements IFormalParameter {
 		ArrayList<String> names = new ArrayList<String>(_names);
 		//TODO typechecking
 		while (names.size() > 0){
-			
-			String currentName = names.get(0);
-			
 			IReferable currentActualParam = actualParams.get(0);
 			Reference currentAPReference = currentActualParam.refer(context, IReferable.noPreviousReference);
 			
+			String currentName = names.get(0);
 			context.declareReferenceVariable(currentName, currentAPReference);
 			
 			actualParams.remove(0);

@@ -59,6 +59,9 @@ tokens
 }
 
 @header {package generated; 
+
+import java.util.HashMap;
+
 import oberon0.ast.expressions.*;
 import oberon0.ast.variables.*;
 import oberon0.ast.declarations.*;
@@ -231,20 +234,31 @@ assignment returns [ IExecutable node ]
 
 	
 type	returns [ IEvaluable node ]
-	: ident = IDENT 			{$node = new TypeNode($ident.text);			}
+	: ident = IDENT 		{$node = new TypeNode($ident.text);			}
 	|ARRAY exp = expression 
-		OF typ = type			{$node = new ArrayTypeNode($exp.node, $typ.node);	}
-//	| recordType
+		OF typ = type		{$node = new ArrayTypeNode($exp.node, $typ.node);	}
+	| rec = recordType		{$node = new RecordTypeNode($rec.fields);		}
 	;
-/*
-fieldList
-	:	(identList COLON type)?;
-recordType 
-	:	RECORD fieldList (SEMICOLON fieldList)* END
-			-> ^(RECORD fieldList+);
 	
-*/
-		
+
+
+recordType returns [ HashMap<String, IEvaluable> fields ]
+	: RECORD 			{fields = new HashMap<String, IEvaluable>();	}	
+	( ident1 = identList 
+	COLON 
+	typ1 = type			{for (String ident: $ident1.list) 
+						fields.put(ident, $typ1.node);}
+	)?
+	(SEMICOLON 
+	( identx = identList 
+	COLON 
+	typx = type			{for (String ident: $identx.list) 
+						fields.put(ident, $typx.node);}
+	)?
+	)* 
+	END
+	;
+	
 
 expression returns [ IEvaluable node ]
 	: lhsExp = simpleExpression 			{$node = $lhsExp.node; 					} 

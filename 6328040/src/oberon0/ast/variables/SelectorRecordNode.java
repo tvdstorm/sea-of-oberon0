@@ -2,24 +2,25 @@ package oberon0.ast.variables;
 
 import oberon0.environment.Context;
 import oberon0.environment.IValue;
+import oberon0.environment.RecordValue;
 import oberon0.environment.Reference;
 
 public class SelectorRecordNode implements ISelector{
+	private String _fieldName;
 
-	public SelectorRecordNode(String identifier){
-		// TODO Auto-generated constructor stub
+	public SelectorRecordNode(String fieldName){
+		_fieldName = fieldName;
 	}
 
 	@Override
 	public IValue eval(Context context) {
-		// TODO Auto-generated method stub
+		//shouldn't happen
 		return null;
 	}
 
 	@Override
-	public Reference refer(Context context, Reference firstRef) {
-		// TODO Auto-generated method stub
-		return null;
+	public Reference refer(Context context, Reference previousRef) {
+		RecordValue selectorValue = (RecordValue) previousRef.getValue();
+		return selectorValue.getReference(_fieldName);
 	}
-
 }
