@@ -1,4 +1,4 @@
-package oberon0.ast.variables;
+package oberon0.ast.variables.selectors;
 
 import oberon0.environment.Context;
 import oberon0.environment.RecordValue;

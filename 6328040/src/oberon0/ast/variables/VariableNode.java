@@ -1,5 +1,6 @@
 package oberon0.ast.variables;
 
+import oberon0.ast.variables.selectors.ISelector;
 import oberon0.environment.Context;
 import oberon0.environment.IValue;
 import oberon0.environment.Reference;
