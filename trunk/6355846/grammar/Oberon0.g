@@ -1,24 +1,18 @@
 grammar Oberon0;
 
-options {
-	output = AST;
-	/* ASTLabelType = OberonRootNode; */
-}
-
 tokens {
-	PLUS 	= '+'   ;
-	MINUS	= '-'   ;
-	MULT	= '*';
-	DIV		= 'DIV' ;
-	MOD		= 'MOD' ;
-	EQUALS	= '='   ;
-	OR		= 'OR'  ;
-	AND		= '&'   ;
-	LT		= '<'   ;
-	LT_EQ   = '<='  ;
-	GT		= '>'   ;
-	GT_EQ   = '>='  ;
-	
+	PLUS 	= '+'  ;
+	MINUS	= '-'  ;
+	MULT	= '*'  ;
+	DIV		= 'DIV';
+	MOD		= 'MOD';
+	EQUALS	= '='  ;
+	OR		= 'OR' ;
+	AND		= '&'  ;
+	LT		= '<'  ;
+	LT_EQ   = '<=' ;
+	GT		= '>'  ;
+	GT_EQ   = '>=' ;
 }
 
 @header {
@@ -37,60 +31,73 @@ package nl.bve.uva.oberon.parser;
  *------------------------------------------------------------------*/
 
 prog returns [IInterpretableNode prog]
-	: expression						{$prog = $expression.expr; };
+	: assignment								{$prog = $assignment.result; };
 
-expression returns [IInterpretableNode expr]
-	:	s1=simpleExpression 			{$expr = $s1.sexpr; }
-		( EQUALS s2=simpleExpression	{$expr = new EqualsExprNode($s1.sexpr, $s2.sexpr); }
-		/* | '#' s2=simpleExpression	{} */
-		| LT s2=simpleExpression		{$expr = new LTExprNode($s1.sexpr, $s2.sexpr); }
-		| LT_EQ s2=simpleExpression		{$expr = new LTEqualsExprNode($s1.sexpr, $s2.sexpr); }
-		| GT s2=simpleExpression		{$expr = new GTExprNode($s1.sexpr, $s2.sexpr); }
-		| GT_EQ s2=simpleExpression		{$expr = new GTEqualsExprNode($s1.sexpr, $s2.sexpr); }
+procedureCall
+	:	IDENT selector 
+		(actualParameters)?;					
+
+actualParameters returns [List<IInterpretableNode> result]
+	:	'(' (e1=expression 						{$result.add($e1.result); }
+				(
+					',' e2=expression			{$result.add($e2.result); }
+				)*
+			)? 
+		')'	;
+
+assignment returns [IInterpretableNode result]
+	:	IDENT selector 							{$result = new IdentChangerNode($IDENT.text, $selector.result); }
+		':=' expression							{$result = new AssignmentNode($result, $expression.result); };
+
+expression returns [IInterpretableNode result]
+	:	s1=simpleExpression 					{$result = $s1.result; }
+		( EQUALS s2=simpleExpression			{$result = new EqualsExprNode($s1.result, $s2.result); }
+		/* | '#' s2=simpleExpression			{} */
+		| LT s2=simpleExpression				{$result = new LTExprNode($result, $s2.result); }
+		| LT_EQ s2=simpleExpression				{$result = new LTEqualsExprNode($result, $s2.result); }
+		| GT s2=simpleExpression				{$result = new GTExprNode($result, $s2.result); }
+		| GT_EQ s2=simpleExpression				{$result = new GTEqualsExprNode($result, $s2.result); }
 		)?;
 
-simpleExpression returns [IInterpretableNode sexpr]
-	:	  PLUS t1=term 					{$sexpr = $t1.term; }
-		| MINUS	t1=term					{$sexpr = new NegativeNode($t1.term); }
-		| t1=term 						{$sexpr = $t1.term; }
-		( PLUS t2=term					{$sexpr = new PlusExprNode($sexpr, $t2.term); }
-		| MINUS t2=term					{$sexpr = new MinusExprNode($sexpr, $t2.term); }
-		| OR t2=term					{$sexpr = new OrExprNode($sexpr, $t2.term); }
+simpleExpression returns [IInterpretableNode result]
+	:	  PLUS t1=term 							{$result = $t1.result; }
+		| MINUS	t1=term							{$result = new NegativeNumberNode($t1.result); }
+		| t1=term 								{$result = $t1.result; }
+		( PLUS t2=term							{$result = new PlusExprNode($result, $t2.result); }
+		| MINUS t2=term							{$result = new MinusExprNode($result, $t2.result); }
+		| OR t2=term							{$result = new OrExprNode($result, $t2.result); }
 		)*;
 
-term returns [IInterpretableNode term]
-	: f1=factor							{$term = $f1.fact; }
-	(	( MULT f2=factor				{$term = new MultExprNode($f1.fact, $f2.fact); }
-		| DIV f2=factor					{$term = new DivExprNode($f1.fact, $f2.fact); }
-		| MOD f2=factor					{$term = new ModExprNode($f1.fact, $f2.fact); }
-		| AND f2=factor					{$term = new AndExprNode($f1.fact, $f2.fact); }
+term returns [IInterpretableNode result]
+	: f1=factor									{$result = $f1.result; }
+	(	( MULT f2=factor						{$result = new MultExprNode($result, $f2.result); }
+		| DIV f2=factor							{$result = new DivExprNode($result, $f2.result); }
+		| MOD f2=factor							{$result = new ModExprNode($result, $f2.result); }
+		| AND f2=factor							{$result = new AndExprNode($result, $f2.result); }
 		)
 	)*;
 
-factor returns [IInterpretableNode fact]
-	: IDENT selector					{$fact = new IdentNode($IDENT.text, $selector.select); } 
-	| number 							{$fact = $number.nr; }
-	| '(' expression ')' 				{$fact = $expression.expr; }
-/*	| '~' factor */
-	;				
+factor returns [IInterpretableNode result]
+	: 	IDENT selector							{$result = new IdentReaderNode($IDENT.text, $selector.result); } 
+		| NUMBER 								{$result = new NumberNode(Integer.parseInt($NUMBER.text)); }
+		| '(' expression ')' 					{$result = $expression.result; }
+/*		| '~' factor */
+		;
 
-selector returns [IInterpretableNode select]
-	: ('.' IDENT 						{$select = new DotSelectorNode($IDENT.text); }
-	  | '[' expression ']'				{$select = new ElementSelectorNode($expression.expr); }
-	  )*;
-
-number returns [IInterpretableNode nr]
-	: INTEGER							{$nr = new NumberNode(Integer.parseInt($INTEGER.text)); };
+selector returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()]
+	: 	('.' IDENT 								{$result.add(new DotSelectorNode($IDENT.text)); }
+	  	| '[' expression ']'					{$result.add(new ElementSelectorNode($expression.result)); }
+	  	)*;
 
 /*------------------------------------------------------------------
  * LEXER RULES
  *------------------------------------------------------------------*/
 
-
+NUMBER	: INTEGER;
 IDENT	: LETTER (LETTER | DIGIT)*;
-INTEGER	: (DIGIT)+ ;
 
+fragment INTEGER: (DIGIT)+ ;
 fragment LETTER	: ('a'..'z'|'A'..'Z')+;
 fragment DIGIT	:'0'..'9';
 
-WHITESPACE : ( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ 	{ $channel = HIDDEN; } ;
+WHITESPACE : ( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ 	{ $channel = HIDDEN; };
