@@ -1,7 +1,7 @@
 package oberon0.ast.statements;
 
 import oberon0.ast.expressions.IEvaluable;
-import oberon0.ast.variables.ISelector;
+import oberon0.ast.variables.selectors.ISelector;
 import oberon0.environment.Context;
 import oberon0.environment.IValue;
 import oberon0.environment.Reference;

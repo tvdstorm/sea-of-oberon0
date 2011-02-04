@@ -1,4 +1,4 @@
-package oberon0.ast.variables;
+package oberon0.ast.variables.selectors;
 
 import java.util.ArrayList;
 
