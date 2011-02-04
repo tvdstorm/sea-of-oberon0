@@ -11,36 +11,20 @@ public class RuntimeEnvironment
 	private final VariableStack variableStack;
 	private final FunctionRegistry functionRegistry;
 	private final TypeRegistry typeRegistry;
-	private final RuntimeEnvironment parent;
-	private final int depth;
 	
-	public RuntimeEnvironment(VariableStack _variableStack, FunctionRegistry _functionRegistry, TypeRegistry _typeRegistry, RuntimeEnvironment _parent)
+	public RuntimeEnvironment(VariableStack _variableStack, FunctionRegistry _functionRegistry, TypeRegistry _typeRegistry)
 	{
-		this(_variableStack, _functionRegistry, _typeRegistry, _parent, 
-				(_parent == null ?
-						0 :
-						_parent.depth + 1
-				));
-	}
-	private RuntimeEnvironment(VariableStack _variableStack, FunctionRegistry _functionRegistry, TypeRegistry _typeRegistry, RuntimeEnvironment _parent, int _depth)
-	{
+		assert(_variableStack != null);
+		assert(_functionRegistry != null);
+		assert(_typeRegistry != null);
 		variableStack = _variableStack;
 		functionRegistry = _functionRegistry;
 		typeRegistry = _typeRegistry;
-		parent = _parent;
-		depth = _depth;
 	}
-	public RuntimeEnvironment createRuntimeEnviroment(int _depth)
+	public RuntimeEnvironment(RuntimeEnvironment baseEnvironment)
 	{
-		// Find the highest RuntimeEnvironment with a depth that is equal to _depth
-		RuntimeEnvironment parentEnvironment = this;
-		while (parentEnvironment != null && parentEnvironment.depth > _depth)
-		{
-			parentEnvironment = parentEnvironment.parent;
-		}
-		assert(parentEnvironment != null);
-		// Create a new environment on top of the one found
-		return new RuntimeEnvironment(new VariableStack(parentEnvironment.variableStack), new FunctionRegistry(parentEnvironment.functionRegistry), new TypeRegistry(parentEnvironment.typeRegistry), parentEnvironment, _depth+1);
+		// Create a new environment on top of the base environment
+		this(new VariableStack(baseEnvironment.variableStack), new FunctionRegistry(baseEnvironment.functionRegistry), new TypeRegistry(baseEnvironment.typeRegistry));
 	}
 	/**************************************************************************
 	 * Variable functions                                                     *
@@ -62,9 +46,9 @@ public class RuntimeEnvironment
 	 **************************************************************************/
 	public void registerFunction(String functionName, IInvokableFunction functionPointer) throws DuplicateFunctionException
 	{
-		functionRegistry.registerFunction(functionName, functionPointer, depth);
+		functionRegistry.registerFunction(functionName, functionPointer, this);
 	}
-	public Tuple<Integer, IInvokableFunction> resolveFunction(String functionName) throws UndefinedMethodException
+	public Tuple<RuntimeEnvironment, IInvokableFunction> resolveFunction(String functionName) throws UndefinedMethodException
 	{
 		return functionRegistry.resolveFunction(functionName);
 	}

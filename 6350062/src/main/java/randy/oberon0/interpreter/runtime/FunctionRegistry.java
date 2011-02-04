@@ -8,27 +8,27 @@ import randy.oberon0.exception.UndefinedMethodException;
 
 public class FunctionRegistry
 {
-	private Map<String, Tuple<Integer, IInvokableFunction>> functions; // <functionName, <scope, functionPointer>>
+	private Map<String, Tuple<RuntimeEnvironment, IInvokableFunction>> functions; // <functionName, <environment, functionPointer>>
 	private FunctionRegistry parent;
 	
 	public FunctionRegistry(FunctionRegistry _parent)
 	{
-		functions = new HashMap<String, Tuple<Integer, IInvokableFunction>>();
+		functions = new HashMap<String, Tuple<RuntimeEnvironment, IInvokableFunction>>();
 		parent = _parent;
 	}
-	public void registerFunction(String functionName, IInvokableFunction functionPointer, int functionDepth) throws DuplicateFunctionException
+	public void registerFunction(String functionName, IInvokableFunction functionPointer, RuntimeEnvironment environment) throws DuplicateFunctionException
 	{
 		assert(functionName != null);
 		assert(functionName.length() > 0);
 		assert(functionPointer != null);
-		assert(functionDepth >= 0);
+		assert(environment != null);
 		// Check if the function has already been registered
 		if (functions.get(functionName) != null)
 			throw new DuplicateFunctionException(functionName);
 		// Register the function
-		functions.put(functionName, new Tuple<Integer, IInvokableFunction>(functionDepth, functionPointer));
+		functions.put(functionName, new Tuple<RuntimeEnvironment, IInvokableFunction>(environment, functionPointer));
 	}
-	public Tuple<Integer, IInvokableFunction> resolveFunction(String name) throws UndefinedMethodException // <scope, functionPointer>
+	public Tuple<RuntimeEnvironment, IInvokableFunction> resolveFunction(String name) throws UndefinedMethodException // <environment, functionPointer>
 	{
 		// Check if the function is register in this scope
 		if (functions.get(name) != null)
