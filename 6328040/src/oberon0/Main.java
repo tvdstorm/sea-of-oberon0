@@ -14,8 +14,7 @@ import generated.*;
 public class Main {
 	
 	/*TODO 5 * 7 / 4 (no priority?) some expressions get in infinite parse loop??!
-	 *TODO Statements
-	 *TODO records
+	 *TODO type declarations
 	 *TODO builtin functions
 	 *TODO tests
 	 *TODO FPVar en FPVarRef samengooien
