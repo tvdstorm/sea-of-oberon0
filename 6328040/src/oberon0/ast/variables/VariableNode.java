@@ -1,19 +1,18 @@
 package oberon0.ast.variables;
 
-import oberon0.ast.expressions.IEvaluable;
 import oberon0.environment.Context;
 import oberon0.environment.IValue;
 import oberon0.environment.Reference;
 
 
-public class VariableNode implements IEvaluable, IReferable{
+public class VariableNode implements IReferable{
 
 	String _name;
 	ISelector _selector;
 	
-	public VariableNode(String name, ISelector selector) {
+	public VariableNode(String name, ISelector selec) {
 		_name = name;
-		_selector = selector;
+		_selector = selec;
 	}
 
 	@Override
