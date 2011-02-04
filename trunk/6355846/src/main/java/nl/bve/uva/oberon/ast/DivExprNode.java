@@ -9,7 +9,7 @@ public class DivExprNode extends ExpressionNode {
 	@Override
 	public Integer interpret() {
 		Object lhn = getLeftHandNode().interpret();
-		Object rhn = getLeftHandNode().interpret();
+		Object rhn = getRightHandNode().interpret();
 
 		assert (lhn instanceof Integer);
 		assert (rhn instanceof Integer);

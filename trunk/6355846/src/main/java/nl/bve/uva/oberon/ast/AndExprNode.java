@@ -9,7 +9,7 @@ public class AndExprNode extends ExpressionNode {
 	@Override
 	public Boolean interpret() {
 		Object lhn = getLeftHandNode().interpret();
-		Object rhn = getLeftHandNode().interpret();
+		Object rhn = getRightHandNode().interpret();
 
 		assert (lhn instanceof Boolean);
 		assert (rhn instanceof Boolean);
