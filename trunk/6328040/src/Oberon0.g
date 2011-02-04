@@ -67,6 +67,7 @@ import oberon0.ast.variables.*;
 import oberon0.ast.variables.selectors.*;
 import oberon0.ast.declarations.*;
 import oberon0.ast.routines.*;
+import oberon0.ast.routines.parameters.*;
 import oberon0.ast.statements.*;
 }
 
