@@ -34,14 +34,15 @@ public class Program
 		typeRegistry.registerType(Type.INTEGER.getTypeText(), new PrimitiveVariableInstantiation(Type.INTEGER));
 		typeRegistry.registerType(Type.BOOLEAN.getTypeText(), new PrimitiveVariableInstantiation(Type.BOOLEAN));
 		
-		// Registrate buildin functions
 		FunctionRegistry functionRegistry = new FunctionRegistry(null);
-		buildinFunctions.register(functionRegistry);
 		
 		// Create a global environment
-		RuntimeEnvironment globalEnvironment = new RuntimeEnvironment(new VariableStack(null), functionRegistry, typeRegistry, null);
+		RuntimeEnvironment globalEnvironment = new RuntimeEnvironment(new VariableStack(null), functionRegistry, typeRegistry);
+		// Registrate buildin functions
+		buildinFunctions.register(functionRegistry, globalEnvironment);
+		
 		// Create a module environment on top of the global environment
-		RuntimeEnvironment moduleEnvironment = globalEnvironment.createRuntimeEnviroment(0);
+		RuntimeEnvironment moduleEnvironment = new RuntimeEnvironment(globalEnvironment);
 	
 		// Registrate the modules type declarations in the modole environment
 		module.registerTypeDeclarations(moduleEnvironment);

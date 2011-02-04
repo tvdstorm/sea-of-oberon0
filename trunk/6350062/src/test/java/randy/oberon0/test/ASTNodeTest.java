@@ -575,7 +575,7 @@ public class ASTNodeTest
 								
 				TypeRegistry typeRegistry = new TypeRegistry(null);
 				typeRegistry.registerType(Type.INTEGER.getTypeText(), new PrimitiveVariableInstantiation(Type.INTEGER));
-				RuntimeEnvironment environment = new RuntimeEnvironment(new VariableStack(null), new FunctionRegistry(null), typeRegistry, null);
+				RuntimeEnvironment environment = new RuntimeEnvironment(new VariableStack(null), new FunctionRegistry(null), typeRegistry);
 				
 				Value values[] = new Value[4];
 				values[0] = new Integer(random.nextInt(10)+1);
