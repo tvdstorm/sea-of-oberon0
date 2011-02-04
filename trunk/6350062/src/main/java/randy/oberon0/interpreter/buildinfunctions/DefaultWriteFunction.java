@@ -24,7 +24,7 @@ public class DefaultWriteFunction implements IInvokableFunction
 		// Accept only an integer
 		Integer param = parameterValues.poll().dereference().castToInteger();
 		// Print the integer
-		System.out.print(((Integer)param).toString());
+		System.out.print(param.toString());
 	}
 	@Override
 	public void registerTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException

@@ -24,6 +24,6 @@ public class DotSelector extends Selector
 		// Evaluate the selector and convert it to a record
 		final Record record = selector.evaluate(environment).dereference().castToRecord();
 		// Evaluate the member and return it
-		return record.getMemberValue(recordMemberName);
+		return new Reference(record.getMemberValue(recordMemberName));
 	}
 }

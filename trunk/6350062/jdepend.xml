@@ -58,7 +58,7 @@
                     randy.oberon0.ast.ArraySelector
                 </Class>
                 <Class sourceFile="ArraySelector.java">
-                    randy.oberon0.ast.ArraySelector$__CLR3_0_110q10qgjr77a77
+                    randy.oberon0.ast.ArraySelector$__CLR3_0_1145145gjr7cwcl
                 </Class>
                 <Class sourceFile="ArrayVarDeclaration.java">
                     randy.oberon0.ast.ArrayVarDeclaration
@@ -94,7 +94,7 @@
                     randy.oberon0.ast.DotSelector
                 </Class>
                 <Class sourceFile="DotSelector.java">
-                    randy.oberon0.ast.DotSelector$__CLR3_0_1xlxlgjr77a63
+                    randy.oberon0.ast.DotSelector$__CLR3_0_114i14igjr7d1ru
                 </Class>
                 <Class sourceFile="IfStatement.java">
                     randy.oberon0.ast.IfStatement
@@ -445,7 +445,7 @@
                     randy.oberon0.interpreter.buildinfunctions.DefaultWriteFunction
                 </Class>
                 <Class sourceFile="DefaultWriteFunction.java">
-                    randy.oberon0.interpreter.buildinfunctions.DefaultWriteFunction$__CLR3_0_1arargjr779vt
+                    randy.oberon0.interpreter.buildinfunctions.DefaultWriteFunction$__CLR3_0_1195195gjr7gyff
                 </Class>
                 <Class sourceFile="DefaultWriteLnFunction.java">
                     randy.oberon0.interpreter.buildinfunctions.DefaultWriteLnFunction
@@ -612,7 +612,7 @@
                     randy.oberon0.value.Type$__CLR3_0_1yygjr779sd
                 </Class>
                 <Class sourceFile="Value.java">
-                    randy.oberon0.value.Value$__CLR3_0_100gjr779s1
+                    randy.oberon0.value.Value$__CLR3_0_117t17tgjr7ewka
                 </Class>
             </ConcreteClasses>
 

@@ -26,6 +26,6 @@ public class ArraySelector extends Selector
 		// Evaluate the array index and convert it to an integer
 		final Integer index = arrayIndex.evaluate(environment).castToInteger();
 		// Return the requested index of the array
-		return array.getIndexValue(index.getIntValue());
+		return new Reference(array.getIndexValue(index.getIntValue()));
 	}
 }
