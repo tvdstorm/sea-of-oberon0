@@ -16,4 +16,9 @@ public class DivExprNode extends ExpressionNode {
 		
 		return (Integer)lhn / (Integer)rhn;
 	}
+	
+	@Override
+	public String toString() {
+		return getClass().getSimpleName() + "(" +getLeftHandNode()+ ", " +getRightHandNode()+ ")";
+	}
 }

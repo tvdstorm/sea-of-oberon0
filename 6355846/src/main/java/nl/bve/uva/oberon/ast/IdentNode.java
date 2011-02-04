@@ -1,17 +1,14 @@
 package nl.bve.uva.oberon.ast;
 
-public class IdentNode implements IInterpretableNode {
+import java.util.List;
+
+public abstract class IdentNode implements IInterpretableNode {
 	private String name;
-	private IInterpretableNode selector;
+	private List<IInterpretableNode> selectors;
 	
-	public IdentNode(String name, IInterpretableNode selector) {
+	public IdentNode(String name, List<IInterpretableNode> selectors) {
 		this.name = name;
-		this.selector = selector;
-		System.out.println("IdentNode(" +name+ ", " +selector+ ")");
-	}
-	
-	@Override
-	public Object interpret() {
-		return 14;
+		this.selectors = selectors;
+		System.out.println("IdentNode(" +name+ ", " +selectors+ ")");
 	}
 }
