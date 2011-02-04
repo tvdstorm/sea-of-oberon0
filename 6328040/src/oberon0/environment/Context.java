@@ -2,12 +2,12 @@ package oberon0.environment;
 
 import java.util.HashMap;
 
-import oberon0.ast.routines.ProcedureNode;
+import oberon0.ast.routines.ICallable;
 
 public class Context {	
 	private String _name;
 	private HashMap<String, Reference> _variables;
-	private HashMap<String, ProcedureNode> _procedures;
+	private HashMap<String, ICallable> _procedures;
 	private Context _parent;
 	
 	//a better looking 'macro' when there is no parent context
@@ -16,7 +16,7 @@ public class Context {
 	public Context (String name, Context parent){
 		_name = name;
 		_variables = new HashMap<String, Reference>();
-		_procedures = new HashMap<String, ProcedureNode>();
+		_procedures = new HashMap<String, ICallable>();
 		_parent = parent;
 	}
 	
@@ -25,12 +25,12 @@ public class Context {
 			if (_parent != noParent){
 				return _parent.getReference(name);
 			}
-			throw new IllegalArgumentException("'"+ name + "' is not available in current scope");
+			throw new IllegalArgumentException("'"+ name + "' is not in scope");
 		}
 		return _variables.get(name);
 	}
 	
-	public ProcedureNode getProcedure(String name){
+	public ICallable getProcedure(String name){
 		return _procedures.get(name);
 	}
 	
@@ -46,7 +46,7 @@ public class Context {
 		_variables.put(name, new ConstantReference (value));
 	}
 	
-	public void declareProcedure(String name, ProcedureNode procedure){
+	public void declareProcedure(String name, ICallable procedure){
 		_procedures.put(name, procedure);
 	}
 	
