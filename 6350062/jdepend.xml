@@ -1,0 +1,655 @@
+<?xml version="1.0"?>
+<JDepend>
+    <Packages>
+
+        <Package name="org.antlr.runtime">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="org.antlr.runtime.tree">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="randy.oberon0.ast">
+            <Stats>
+                <TotalClasses>73</TotalClasses>
+                <ConcreteClasses>64</ConcreteClasses>
+                <AbstractClasses>9</AbstractClasses>
+                <Ca>1</Ca>
+                <Ce>3</Ce>
+                <A>0.12</A>
+                <I>0.75</I>
+                <D>0.13</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="ASTNode.java">
+                    randy.oberon0.ast.ASTNode
+                </Class>
+                <Class sourceFile="AbstractTypeDeclaration.java">
+                    randy.oberon0.ast.AbstractTypeDeclaration
+                </Class>
+                <Class sourceFile="BodyDeclaration.java">
+                    randy.oberon0.ast.BodyDeclaration
+                </Class>
+                <Class sourceFile="Expression.java">
+                    randy.oberon0.ast.Expression
+                </Class>
+                <Class sourceFile="IInvokableFunction.java">
+                    randy.oberon0.ast.IInvokableFunction
+                </Class>
+                <Class sourceFile="InfixExpression.java">
+                    randy.oberon0.ast.InfixExpression
+                </Class>
+                <Class sourceFile="PrefixExpression.java">
+                    randy.oberon0.ast.PrefixExpression
+                </Class>
+                <Class sourceFile="Selector.java">
+                    randy.oberon0.ast.Selector
+                </Class>
+                <Class sourceFile="Statement.java">
+                    randy.oberon0.ast.Statement
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="ArraySelector.java">
+                    randy.oberon0.ast.ArraySelector
+                </Class>
+                <Class sourceFile="ArraySelector.java">
+                    randy.oberon0.ast.ArraySelector$__CLR3_0_1zezegjpq5fho
+                </Class>
+                <Class sourceFile="ArrayVarDeclaration.java">
+                    randy.oberon0.ast.ArrayVarDeclaration
+                </Class>
+                <Class sourceFile="ArrayVarDeclaration.java">
+                    randy.oberon0.ast.ArrayVarDeclaration$__CLR3_0_12yp2ypgjpq7xg6
+                </Class>
+                <Class sourceFile="AssignmentStatement.java">
+                    randy.oberon0.ast.AssignmentStatement
+                </Class>
+                <Class sourceFile="AssignmentStatement.java">
+                    randy.oberon0.ast.AssignmentStatement$__CLR3_0_1y3y3gjpq5fha
+                </Class>
+                <Class sourceFile="Block.java">
+                    randy.oberon0.ast.Block
+                </Class>
+                <Class sourceFile="Block.java">
+                    randy.oberon0.ast.Block$__CLR3_0_1xuxugjpq5ffu
+                </Class>
+                <Class sourceFile="BooleanLiteral.java">
+                    randy.oberon0.ast.BooleanLiteral
+                </Class>
+                <Class sourceFile="BooleanLiteral.java">
+                    randy.oberon0.ast.BooleanLiteral$__CLR3_0_1xmxmgjpq5ff1
+                </Class>
+                <Class sourceFile="ConstDeclaration.java">
+                    randy.oberon0.ast.ConstDeclaration
+                </Class>
+                <Class sourceFile="ConstDeclaration.java">
+                    randy.oberon0.ast.ConstDeclaration$__CLR3_0_12tg2tggjpq75gp
+                </Class>
+                <Class sourceFile="DotSelector.java">
+                    randy.oberon0.ast.DotSelector
+                </Class>
+                <Class sourceFile="DotSelector.java">
+                    randy.oberon0.ast.DotSelector$__CLR3_0_1wvwvgjpq5fdg
+                </Class>
+                <Class sourceFile="IfStatement.java">
+                    randy.oberon0.ast.IfStatement
+                </Class>
+                <Class sourceFile="IfStatement.java">
+                    randy.oberon0.ast.IfStatement$__CLR3_0_1wcwcgjpq5fgj
+                </Class>
+                <Class sourceFile="InfixAdditionExpression.java">
+                    randy.oberon0.ast.InfixAdditionExpression
+                </Class>
+                <Class sourceFile="InfixAdditionExpression.java">
+                    randy.oberon0.ast.InfixAdditionExpression$__CLR3_0_1w0w0gjpq5fdb
+                </Class>
+                <Class sourceFile="InfixAndExpression.java">
+                    randy.oberon0.ast.InfixAndExpression
+                </Class>
+                <Class sourceFile="InfixAndExpression.java">
+                    randy.oberon0.ast.InfixAndExpression$__CLR3_0_1vovogjpq5fge
+                </Class>
+                <Class sourceFile="InfixDivisionExpression.java">
+                    randy.oberon0.ast.InfixDivisionExpression
+                </Class>
+                <Class sourceFile="InfixDivisionExpression.java">
+                    randy.oberon0.ast.InfixDivisionExpression$__CLR3_0_1v7v7gjpq5few
+                </Class>
+                <Class sourceFile="InfixEqualsExpression.java">
+                    randy.oberon0.ast.InfixEqualsExpression
+                </Class>
+                <Class sourceFile="InfixEqualsExpression.java">
+                    randy.oberon0.ast.InfixEqualsExpression$__CLR3_0_1unungjpq5fgr
+                </Class>
+                <Class sourceFile="InfixExpression.java">
+                    randy.oberon0.ast.InfixExpression$__CLR3_0_1uguggjpois19
+                </Class>
+                <Class sourceFile="InfixGreaterEqualsExpression.java">
+                    randy.oberon0.ast.InfixGreaterEqualsExpression
+                </Class>
+                <Class sourceFile="InfixGreaterEqualsExpression.java">
+                    randy.oberon0.ast.InfixGreaterEqualsExpression$__CLR3_0_1u4u4gjpq5fhu
+                </Class>
+                <Class sourceFile="InfixGreaterThanExpression.java">
+                    randy.oberon0.ast.InfixGreaterThanExpression
+                </Class>
+                <Class sourceFile="InfixGreaterThanExpression.java">
+                    randy.oberon0.ast.InfixGreaterThanExpression$__CLR3_0_1tstsgjpq5fd5
+                </Class>
+                <Class sourceFile="InfixMultiplicationExpression.java">
+                    randy.oberon0.ast.InfixMultiplicationExpression
+                </Class>
+                <Class sourceFile="InfixMultiplicationExpression.java">
+                    randy.oberon0.ast.InfixMultiplicationExpression$__CLR3_0_1tgtggjpq5ff7
+                </Class>
+                <Class sourceFile="InfixNotEqualsExpression.java">
+                    randy.oberon0.ast.InfixNotEqualsExpression
+                </Class>
+                <Class sourceFile="InfixNotEqualsExpression.java">
+                    randy.oberon0.ast.InfixNotEqualsExpression$__CLR3_0_1swswgjpq5fdr
+                </Class>
+                <Class sourceFile="InfixOrExpression.java">
+                    randy.oberon0.ast.InfixOrExpression
+                </Class>
+                <Class sourceFile="InfixOrExpression.java">
+                    randy.oberon0.ast.InfixOrExpression$__CLR3_0_1skskgjpq5fh5
+                </Class>
+                <Class sourceFile="InfixSmallerEqualsExpression.java">
+                    randy.oberon0.ast.InfixSmallerEqualsExpression
+                </Class>
+                <Class sourceFile="InfixSmallerEqualsExpression.java">
+                    randy.oberon0.ast.InfixSmallerEqualsExpression$__CLR3_0_1s8s8gjpq5fe4
+                </Class>
+                <Class sourceFile="InfixSmallerThanExpression.java">
+                    randy.oberon0.ast.InfixSmallerThanExpression
+                </Class>
+                <Class sourceFile="InfixSmallerThanExpression.java">
+                    randy.oberon0.ast.InfixSmallerThanExpression$__CLR3_0_1rwrwgjpq5fbv
+                </Class>
+                <Class sourceFile="InfixSubtractionExpression.java">
+                    randy.oberon0.ast.InfixSubtractionExpression
+                </Class>
+                <Class sourceFile="InfixSubtractionExpression.java">
+                    randy.oberon0.ast.InfixSubtractionExpression$__CLR3_0_1rkrkgjpq5fg5
+                </Class>
+                <Class sourceFile="IntegerLiteral.java">
+                    randy.oberon0.ast.IntegerLiteral
+                </Class>
+                <Class sourceFile="IntegerLiteral.java">
+                    randy.oberon0.ast.IntegerLiteral$__CLR3_0_1rcrcgjpq5feb
+                </Class>
+                <Class sourceFile="Module.java">
+                    randy.oberon0.ast.Module
+                </Class>
+                <Class sourceFile="Module.java">
+                    randy.oberon0.ast.Module$__CLR3_0_1qgqggjpq5fcr
+                </Class>
+                <Class sourceFile="PrefixExpression.java">
+                    randy.oberon0.ast.PrefixExpression$__CLR3_0_1qcqcgjpoirz2
+                </Class>
+                <Class sourceFile="PrefixMinExpression.java">
+                    randy.oberon0.ast.PrefixMinExpression
+                </Class>
+                <Class sourceFile="PrefixMinExpression.java">
+                    randy.oberon0.ast.PrefixMinExpression$__CLR3_0_1q1q1gjpq5ffp
+                </Class>
+                <Class sourceFile="PrefixNotExpression.java">
+                    randy.oberon0.ast.PrefixNotExpression
+                </Class>
+                <Class sourceFile="PrefixNotExpression.java">
+                    randy.oberon0.ast.PrefixNotExpression$__CLR3_0_1pqpqgjpq5ffk
+                </Class>
+                <Class sourceFile="ProcedureCall.java">
+                    randy.oberon0.ast.ProcedureCall
+                </Class>
+                <Class sourceFile="ProcedureCall.java">
+                    randy.oberon0.ast.ProcedureCall$__CLR3_0_1p7p7gjpq5fiq
+                </Class>
+                <Class sourceFile="ProcedureDeclaration.java">
+                    randy.oberon0.ast.ProcedureDeclaration
+                </Class>
+                <Class sourceFile="ProcedureDeclaration.java">
+                    randy.oberon0.ast.ProcedureDeclaration$__CLR3_0_12tt2ttgjpq78zw
+                </Class>
+                <Class sourceFile="RecordDeclaration.java">
+                    randy.oberon0.ast.RecordDeclaration
+                </Class>
+                <Class sourceFile="RecordDeclaration.java">
+                    randy.oberon0.ast.RecordDeclaration$__CLR3_0_12v32v3gjpq7bv9
+                </Class>
+                <Class sourceFile="VarDeclaration.java">
+                    randy.oberon0.ast.VarDeclaration
+                </Class>
+                <Class sourceFile="VarDeclaration.java">
+                    randy.oberon0.ast.VarDeclaration$__CLR3_0_12xf2xfgjpq7qb2
+                </Class>
+                <Class sourceFile="VariableSelector.java">
+                    randy.oberon0.ast.VariableSelector
+                </Class>
+                <Class sourceFile="VariableSelector.java">
+                    randy.oberon0.ast.VariableSelector$__CLR3_0_12yh2yhgjpq7vns
+                </Class>
+                <Class sourceFile="WhileStatement.java">
+                    randy.oberon0.ast.WhileStatement
+                </Class>
+                <Class sourceFile="WhileStatement.java">
+                    randy.oberon0.ast.WhileStatement$__CLR3_0_1lwlwgjpq5fej
+                </Class>
+                <Class sourceFile="Tuple.java">
+                    randy.oberon0.ast.datastructures.Tuple
+                </Class>
+                <Class sourceFile="Tuple.java">
+                    randy.oberon0.ast.datastructures.Tuple$__CLR3_0_1lplpgjpoirx6
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>randy.oberon0.exception</Package>
+                <Package>randy.oberon0.interpreter</Package>
+                <Package>randy.oberon0.value</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>randy.oberon0.interpreter</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="randy.oberon0.exception">
+            <Stats>
+                <TotalClasses>36</TotalClasses>
+                <ConcreteClasses>34</ConcreteClasses>
+                <AbstractClasses>2</AbstractClasses>
+                <Ca>3</Ca>
+                <Ce>0</Ce>
+                <A>0.06</A>
+                <I>0</I>
+                <D>0.94</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="Exception.java">
+                    randy.oberon0.exception.Exception
+                </Class>
+                <Class sourceFile="RuntimeException.java">
+                    randy.oberon0.exception.RuntimeException
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="ASTTreeBuildException.java">
+                    randy.oberon0.exception.ASTTreeBuildException
+                </Class>
+                <Class sourceFile="ASTTreeBuildException.java">
+                    randy.oberon0.exception.ASTTreeBuildException$__CLR3_0_1lnlngjpoirx2
+                </Class>
+                <Class sourceFile="ArrayLengthMismatch.java">
+                    randy.oberon0.exception.ArrayLengthMismatch
+                </Class>
+                <Class sourceFile="ArrayLengthMismatch.java">
+                    randy.oberon0.exception.ArrayLengthMismatch$__CLR3_0_1llllgjpoirww
+                </Class>
+                <Class sourceFile="ConstAssignmentException.java">
+                    randy.oberon0.exception.ConstAssignmentException
+                </Class>
+                <Class sourceFile="ConstAssignmentException.java">
+                    randy.oberon0.exception.ConstAssignmentException$__CLR3_0_1ljljgjpoirws
+                </Class>
+                <Class sourceFile="DivideByZeroException.java">
+                    randy.oberon0.exception.DivideByZeroException
+                </Class>
+                <Class sourceFile="DivideByZeroException.java">
+                    randy.oberon0.exception.DivideByZeroException$__CLR3_0_1lhlhgjpoirwn
+                </Class>
+                <Class sourceFile="DuplicateFunctionException.java">
+                    randy.oberon0.exception.DuplicateFunctionException
+                </Class>
+                <Class sourceFile="DuplicateFunctionException.java">
+                    randy.oberon0.exception.DuplicateFunctionException$__CLR3_0_119k19kgjppcyhd
+                </Class>
+                <Class sourceFile="DuplicateTypeException.java">
+                    randy.oberon0.exception.DuplicateTypeException
+                </Class>
+                <Class sourceFile="DuplicateTypeException.java">
+                    randy.oberon0.exception.DuplicateTypeException$__CLR3_0_11q01q0gjppmfqr
+                </Class>
+                <Class sourceFile="DuplicateVariableException.java">
+                    randy.oberon0.exception.DuplicateVariableException
+                </Class>
+                <Class sourceFile="DuplicateVariableException.java">
+                    randy.oberon0.exception.DuplicateVariableException$__CLR3_0_1ldldgjpoirwf
+                </Class>
+                <Class sourceFile="Exception.java">
+                    randy.oberon0.exception.Exception$__CLR3_0_1lblbgjpoirwa
+                </Class>
+                <Class sourceFile="IOErrorException.java">
+                    randy.oberon0.exception.IOErrorException
+                </Class>
+                <Class sourceFile="IOErrorException.java">
+                    randy.oberon0.exception.IOErrorException$__CLR3_0_1l9l9gjpoirw5
+                </Class>
+                <Class sourceFile="IncorrectNumberOfArgumentsException.java">
+                    randy.oberon0.exception.IncorrectNumberOfArgumentsException
+                </Class>
+                <Class sourceFile="IncorrectNumberOfArgumentsException.java">
+                    randy.oberon0.exception.IncorrectNumberOfArgumentsException$__CLR3_0_1l7l7gjpoirw1
+                </Class>
+                <Class sourceFile="OperatorTypeUndefinedException.java">
+                    randy.oberon0.exception.OperatorTypeUndefinedException
+                </Class>
+                <Class sourceFile="OperatorTypeUndefinedException.java">
+                    randy.oberon0.exception.OperatorTypeUndefinedException$__CLR3_0_1zrzrgjpp343u
+                </Class>
+                <Class sourceFile="OutOfBoundsException.java">
+                    randy.oberon0.exception.OutOfBoundsException
+                </Class>
+                <Class sourceFile="OutOfBoundsException.java">
+                    randy.oberon0.exception.OutOfBoundsException$__CLR3_0_1l1l1gjpoirvr
+                </Class>
+                <Class sourceFile="RuntimeException.java">
+                    randy.oberon0.exception.RuntimeException$__CLR3_0_1kzkzgjpoirvn
+                </Class>
+                <Class sourceFile="TypeMismatchException.java">
+                    randy.oberon0.exception.TypeMismatchException
+                </Class>
+                <Class sourceFile="TypeMismatchException.java">
+                    randy.oberon0.exception.TypeMismatchException$__CLR3_0_1kxkxgjpoirvi
+                </Class>
+                <Class sourceFile="UndefinedMethodException.java">
+                    randy.oberon0.exception.UndefinedMethodException
+                </Class>
+                <Class sourceFile="UndefinedMethodException.java">
+                    randy.oberon0.exception.UndefinedMethodException$__CLR3_0_1kvkvgjpoirve
+                </Class>
+                <Class sourceFile="UndefinedVariableException.java">
+                    randy.oberon0.exception.UndefinedVariableException
+                </Class>
+                <Class sourceFile="UndefinedVariableException.java">
+                    randy.oberon0.exception.UndefinedVariableException$__CLR3_0_1ktktgjpoirul
+                </Class>
+                <Class sourceFile="UnknownOperatorException.java">
+                    randy.oberon0.exception.UnknownOperatorException
+                </Class>
+                <Class sourceFile="UnknownOperatorException.java">
+                    randy.oberon0.exception.UnknownOperatorException$__CLR3_0_1krkrgjpoiruh
+                </Class>
+                <Class sourceFile="UnknownTypeException.java">
+                    randy.oberon0.exception.UnknownTypeException
+                </Class>
+                <Class sourceFile="UnknownTypeException.java">
+                    randy.oberon0.exception.UnknownTypeException$__CLR3_0_1kpkpgjpoiru7
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>randy.oberon0.ast</Package>
+                <Package>randy.oberon0.interpreter</Package>
+                <Package>randy.oberon0.value</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="randy.oberon0.generated.antlr">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="randy.oberon0.interpreter">
+            <Stats>
+                <TotalClasses>28</TotalClasses>
+                <ConcreteClasses>26</ConcreteClasses>
+                <AbstractClasses>2</AbstractClasses>
+                <Ca>3</Ca>
+                <Ce>6</Ce>
+                <A>0.07</A>
+                <I>0.67</I>
+                <D>0.26</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="IBuildinFunctions.java">
+                    randy.oberon0.interpreter.buildinfunctions.IBuildinFunctions
+                </Class>
+                <Class sourceFile="IInstantiateableVariable.java">
+                    randy.oberon0.interpreter.runtime.IInstantiateableVariable
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="Oberon0ASTTreeGenerator.java">
+                    randy.oberon0.interpreter.antlr.Oberon0ASTTreeGenerator
+                </Class>
+                <Class sourceFile="Oberon0ASTTreeGenerator.java">
+                    randy.oberon0.interpreter.antlr.Oberon0ASTTreeGenerator$__CLR3_0_1bcbcgjpoirsu
+                </Class>
+                <Class sourceFile="BuildinFunctions.java">
+                    randy.oberon0.interpreter.buildinfunctions.BuildinFunctions
+                </Class>
+                <Class sourceFile="BuildinFunctions.java">
+                    randy.oberon0.interpreter.buildinfunctions.BuildinFunctions$__CLR3_0_11w81w8gjpps24t
+                </Class>
+                <Class sourceFile="DefaultReadFunction.java">
+                    randy.oberon0.interpreter.buildinfunctions.DefaultReadFunction
+                </Class>
+                <Class sourceFile="DefaultReadFunction.java">
+                    randy.oberon0.interpreter.buildinfunctions.DefaultReadFunction$__CLR3_0_131v31vgjpqizgs
+                </Class>
+                <Class sourceFile="DefaultWriteFunction.java">
+                    randy.oberon0.interpreter.buildinfunctions.DefaultWriteFunction
+                </Class>
+                <Class sourceFile="DefaultWriteFunction.java">
+                    randy.oberon0.interpreter.buildinfunctions.DefaultWriteFunction$__CLR3_0_11v21v2gjpq5fg0
+                </Class>
+                <Class sourceFile="DefaultWriteLnFunction.java">
+                    randy.oberon0.interpreter.buildinfunctions.DefaultWriteLnFunction
+                </Class>
+                <Class sourceFile="DefaultWriteLnFunction.java">
+                    randy.oberon0.interpreter.buildinfunctions.DefaultWriteLnFunction$__CLR3_0_11wg1wggjpq5fhf
+                </Class>
+                <Class sourceFile="ArrayVariableInstantiation.java">
+                    randy.oberon0.interpreter.runtime.ArrayVariableInstantiation
+                </Class>
+                <Class sourceFile="ArrayVariableInstantiation.java">
+                    randy.oberon0.interpreter.runtime.ArrayVariableInstantiation$__CLR3_0_11ww1wwgjpq5fdl
+                </Class>
+                <Class sourceFile="FunctionRegistry.java">
+                    randy.oberon0.interpreter.runtime.FunctionRegistry
+                </Class>
+                <Class sourceFile="FunctionRegistry.java">
+                    randy.oberon0.interpreter.runtime.FunctionRegistry$__CLR3_0_11hd1hdgjppgzub
+                </Class>
+                <Class sourceFile="PrimitiveVariableInstantiation.java">
+                    randy.oberon0.interpreter.runtime.PrimitiveVariableInstantiation
+                </Class>
+                <Class sourceFile="PrimitiveVariableInstantiation.java">
+                    randy.oberon0.interpreter.runtime.PrimitiveVariableInstantiation$__CLR3_0_11x31x3gjpq5fdw
+                </Class>
+                <Class sourceFile="Program.java">
+                    randy.oberon0.interpreter.runtime.Program
+                </Class>
+                <Class sourceFile="Program.java">
+                    randy.oberon0.interpreter.runtime.Program$__CLR3_0_121o21ogjpq5fij
+                </Class>
+                <Class sourceFile="RecordInstantiation.java">
+                    randy.oberon0.interpreter.runtime.RecordInstantiation
+                </Class>
+                <Class sourceFile="RecordInstantiation.java">
+                    randy.oberon0.interpreter.runtime.RecordInstantiation$__CLR3_0_11y91y9gjpq5fid
+                </Class>
+                <Class sourceFile="RuntimeEnvironment.java">
+                    randy.oberon0.interpreter.runtime.RuntimeEnvironment
+                </Class>
+                <Class sourceFile="RuntimeEnvironment.java">
+                    randy.oberon0.interpreter.runtime.RuntimeEnvironment$__CLR3_0_12sj2sjgjpq6wwu
+                </Class>
+                <Class sourceFile="TypeRegistry.java">
+                    randy.oberon0.interpreter.runtime.TypeRegistry
+                </Class>
+                <Class sourceFile="TypeRegistry.java">
+                    randy.oberon0.interpreter.runtime.TypeRegistry$__CLR3_0_12zm2zmgjpq9xtv
+                </Class>
+                <Class sourceFile="VariableStack.java">
+                    randy.oberon0.interpreter.runtime.VariableStack
+                </Class>
+                <Class sourceFile="VariableStack.java">
+                    randy.oberon0.interpreter.runtime.VariableStack$__CLR3_0_12l92l9gjpq4ccl
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>org.antlr.runtime</Package>
+                <Package>org.antlr.runtime.tree</Package>
+                <Package>randy.oberon0.ast</Package>
+                <Package>randy.oberon0.exception</Package>
+                <Package>randy.oberon0.generated.antlr</Package>
+                <Package>randy.oberon0.value</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>randy.oberon0.ast</Package>
+                <Package>randy.oberon0.main</Package>
+                <Package>randy.oberon0.value</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="randy.oberon0.main">
+            <Stats>
+                <TotalClasses>1</TotalClasses>
+                <ConcreteClasses>1</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>0</Ca>
+                <Ce>1</Ce>
+                <A>0</A>
+                <I>1</I>
+                <D>0</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="Main.java">
+                    randy.oberon0.main.Main
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>randy.oberon0.interpreter</Package>
+            </DependsUpon>
+
+            <UsedBy>
+            </UsedBy>
+        </Package>
+
+        <Package name="randy.oberon0.value">
+            <Stats>
+                <TotalClasses>16</TotalClasses>
+                <ConcreteClasses>15</ConcreteClasses>
+                <AbstractClasses>1</AbstractClasses>
+                <Ca>2</Ca>
+                <Ce>2</Ce>
+                <A>0.06</A>
+                <I>0.5</I>
+                <D>0.44</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="Value.java">
+                    randy.oberon0.value.Value
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="Array.java">
+                    randy.oberon0.value.Array
+                </Class>
+                <Class sourceFile="Array.java">
+                    randy.oberon0.value.Array$__CLR3_0_14t4tgjpq5fgy
+                </Class>
+                <Class sourceFile="Boolean.java">
+                    randy.oberon0.value.Boolean
+                </Class>
+                <Class sourceFile="Boolean.java">
+                    randy.oberon0.value.Boolean$__CLR3_0_14747gjpoirop
+                </Class>
+                <Class sourceFile="Const.java">
+                    randy.oberon0.value.Const
+                </Class>
+                <Class sourceFile="Const.java">
+                    randy.oberon0.value.Const$__CLR3_0_13t3tgjpoiroh
+                </Class>
+                <Class sourceFile="Integer.java">
+                    randy.oberon0.value.Integer
+                </Class>
+                <Class sourceFile="Integer.java">
+                    randy.oberon0.value.Integer$__CLR3_0_13737gjpoiroa
+                </Class>
+                <Class sourceFile="Record.java">
+                    randy.oberon0.value.Record
+                </Class>
+                <Class sourceFile="Record.java">
+                    randy.oberon0.value.Record$__CLR3_0_132f32fgjpr1snt
+                </Class>
+                <Class sourceFile="Reference.java">
+                    randy.oberon0.value.Reference
+                </Class>
+                <Class sourceFile="Reference.java">
+                    randy.oberon0.value.Reference$__CLR3_0_11717gjpoirni
+                </Class>
+                <Class sourceFile="Type.java">
+                    randy.oberon0.value.Type
+                </Class>
+                <Class sourceFile="Type.java">
+                    randy.oberon0.value.Type$__CLR3_0_1yygjpoirna
+                </Class>
+                <Class sourceFile="Value.java">
+                    randy.oberon0.value.Value$__CLR3_0_100gjpoirmw
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>randy.oberon0.exception</Package>
+                <Package>randy.oberon0.interpreter</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>randy.oberon0.ast</Package>
+                <Package>randy.oberon0.interpreter</Package>
+            </UsedBy>
+        </Package>
+    </Packages>
+
+    <Cycles>
+        <Package Name="randy.oberon0.ast">
+            <Package>randy.oberon0.interpreter</Package>
+            <Package>randy.oberon0.ast</Package>
+        </Package>
+
+        <Package Name="randy.oberon0.interpreter">
+            <Package>randy.oberon0.ast</Package>
+            <Package>randy.oberon0.interpreter</Package>
+        </Package>
+
+        <Package Name="randy.oberon0.main">
+            <Package>randy.oberon0.interpreter</Package>
+            <Package>randy.oberon0.ast</Package>
+            <Package>randy.oberon0.interpreter</Package>
+        </Package>
+
+        <Package Name="randy.oberon0.value">
+            <Package>randy.oberon0.interpreter</Package>
+            <Package>randy.oberon0.ast</Package>
+            <Package>randy.oberon0.interpreter</Package>
+        </Package>
+
+    </Cycles>
+</JDepend>
