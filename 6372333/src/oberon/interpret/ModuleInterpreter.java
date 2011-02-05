@@ -16,6 +16,7 @@ public class ModuleInterpreter extends AbstractBaseInterpreter<ProcedureHeading>
 	private Declaration declaration;
 	private StatementSequence moduleBody;
 
+	@Override
 	public void caseAModule(final AModule node) {
 		final DeclarationsInterpreter declInterpreter = new DeclarationsInterpreter();
 		node.getDecl().apply(declInterpreter);

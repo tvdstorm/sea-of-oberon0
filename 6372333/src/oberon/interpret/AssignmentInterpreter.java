@@ -11,12 +11,13 @@ class AssignmentInterpreter extends AbstractBaseInterpreter<IStatement> {
 	private IExpression expression;
 	private IIdentifier selectorToAssignTo;
 
-
+	@Override
 	public void caseAStatassStatement(final AStatassStatement node)
 	{
 		node.getAssignment().apply(this);
 	}
 	
+	@Override
 	public void caseAAssignment(final AAssignment node)
 	{
 		expression = ExpInterpreterFactory.getExpression(node.getExp());

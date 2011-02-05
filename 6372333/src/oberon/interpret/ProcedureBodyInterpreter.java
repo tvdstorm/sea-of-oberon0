@@ -9,6 +9,7 @@ class ProcedureBodyInterpreter extends AbstractBaseInterpreter<ProcedureBody> {
 	private Declaration variableDeclaration;
 	private StatementSequence body;
 
+	@Override
 	public void caseAProcedurebody(final AProcedurebody node) {
 		final DeclarationsInterpreter declarationsInterpreter = new DeclarationsInterpreter();
 		node.apply(declarationsInterpreter);

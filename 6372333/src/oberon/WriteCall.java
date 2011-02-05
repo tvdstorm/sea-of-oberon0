@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import oberon.data.IntegerArrayType;
+import oberon.data.IntegerArrayDataType;
 import oberon.procedures.Declaration;
 import oberon.procedures.FormalParamSection;
 import oberon.procedures.FormalParamType;
@@ -16,7 +16,7 @@ class WriteCall implements IStatement {
 	@Override
 	public void eval() throws IOException {
 		final VariableManager instance = VariableManager.getInstance();
-		final IntegerArrayType inputArray = (IntegerArrayType) instance.getVariable("input");
+		final IntegerArrayDataType inputArray = (IntegerArrayDataType) instance.getVariable("input");
 		final int index = instance.getVariable("i").getValue();
 		
 		System.out.println(inputArray.getValueAtIndex(index));

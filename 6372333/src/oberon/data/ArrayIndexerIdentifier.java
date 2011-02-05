@@ -14,19 +14,19 @@ public class ArrayIndexerIdentifier extends AbstractIdentifier {
 		selector = indexSelector;
 	}
 
-	@Override
-	public int getSelectorValue() {
-		final IntegerArrayType array = getDataTypeAsArrayType();
-		return array.getValueAtIndex(indexExpression.evalAsInt());
-	}
-
-	private IntegerArrayType getDataTypeAsArrayType() {
+	private IntegerArrayDataType getDataTypeAsArrayType() {
 		final IDataType type = selector.getDataTypeValue();
-		if (!(type instanceof IntegerArrayType)) {
+		if (!(type instanceof IntegerArrayDataType)) {
 			//TODO: throw exception
 		}
 		
-		return ((IntegerArrayType)type);
+		return ((IntegerArrayDataType)type);
+	}
+
+	@Override
+	public int getSelectorValue() {
+		final IntegerArrayDataType array = getDataTypeAsArrayType();
+		return array.getValueAtIndex(indexExpression.evalAsInt());
 	}
 
 	@Override

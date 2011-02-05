@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Stack;
 
-import oberon.data.IntegerArrayType;
+import oberon.data.IntegerArrayDataType;
 import oberon.procedures.AbstractProcedure;
 import oberon.procedures.Declaration;
 import oberon.procedures.ProcedureHeading;
@@ -105,8 +105,8 @@ public class VariableManager {
 			for (IDataType actualParam : declaration.getVariables()){
 				variables.put(actualParam.getName(), actualParam);	
 				
-				if (actualParam instanceof IntegerArrayType){
-					((IntegerArrayType)actualParam).initializeArray();
+				if (actualParam instanceof IntegerArrayDataType){
+					((IntegerArrayDataType)actualParam).initializeArray();
 				}
 			}
 			

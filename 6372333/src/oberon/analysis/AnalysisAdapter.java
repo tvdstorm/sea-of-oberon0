@@ -109,12 +109,27 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
+    public void caseAFieldlst(AFieldlst node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAFieldlist(AFieldlist node)
+    {
+        defaultCase(node);
+    }
+
     public void caseAAssignment(AAssignment node)
     {
         defaultCase(node);
     }
 
     public void caseAArrayType(AArrayType node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseARecordType(ARecordType node)
     {
         defaultCase(node);
     }
@@ -239,7 +254,7 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseAAdditionalselectorSelector(AAdditionalselectorSelector node)
+    public void caseARecordSelector(ARecordSelector node)
     {
         defaultCase(node);
     }

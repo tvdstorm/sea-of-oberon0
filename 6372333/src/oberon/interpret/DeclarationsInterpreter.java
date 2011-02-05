@@ -14,7 +14,8 @@ import oberon.procedures.Declaration;
 class DeclarationsInterpreter extends AbstractBaseInterpreter<Declaration> {
 	private final List<IDataType> variables = new ArrayList<IDataType>();
 	private final List<IProcedure> procedures = new ArrayList<IProcedure>();
-	
+
+	@Override
 	public void caseADeclarations(final ADeclarations node)
 	{	
 		final VarInterpreter varDeclInterpreter = new VarInterpreter();

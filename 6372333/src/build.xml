@@ -33,7 +33,7 @@
 			<report todir="${build}/JUnit" />
   		</junitreport>
 	</target>
-	<target name="dist" depends="compile" description="generate the distribution" >
+	<target name="dist" depends="compile" description="generate the distribution">
 	    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
 		<jar jarfile="${dist}/Oberon.jar" basedir="${src}"/>
 		

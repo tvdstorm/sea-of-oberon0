@@ -17,10 +17,12 @@ class IfStatementInterpreter extends AbstractBaseInterpreter<IStatement> {
 	private StatementSequence ifBody;
 	private StatementSequence elseBody;
 
+	@Override
 	public void caseAStatifStatement(final AStatifStatement node) {
 		node.getIfstatement().apply(this);
 	}
-	
+
+	@Override
 	public void caseAIfstatement(final AIfstatement node) {
 		condition = ExpInterpreterFactory.getExpression(node.getCondition());
 		

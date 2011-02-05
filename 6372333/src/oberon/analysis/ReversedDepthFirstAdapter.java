@@ -260,6 +260,60 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outAVardeclaration(node);
     }
 
+    public void inAFieldlst(AFieldlst node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAFieldlst(AFieldlst node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAFieldlst(AFieldlst node)
+    {
+        inAFieldlst(node);
+        {
+            List<PFieldlist> copy = new ArrayList<PFieldlist>(node.getFieldlist());
+            Collections.reverse(copy);
+            for(PFieldlist e : copy)
+            {
+                e.apply(this);
+            }
+        }
+        outAFieldlst(node);
+    }
+
+    public void inAFieldlist(AFieldlist node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAFieldlist(AFieldlist node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAFieldlist(AFieldlist node)
+    {
+        inAFieldlist(node);
+        if(node.getType() != null)
+        {
+            node.getType().apply(this);
+        }
+        {
+            List<TIdentifier> copy = new ArrayList<TIdentifier>(node.getIdentifier());
+            Collections.reverse(copy);
+            for(TIdentifier e : copy)
+            {
+                e.apply(this);
+            }
+        }
+        outAFieldlist(node);
+    }
+
     public void inAAssignment(AAssignment node)
     {
         defaultIn(node);
@@ -308,6 +362,31 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
             node.getExp().apply(this);
         }
         outAArrayType(node);
+    }
+
+    public void inARecordType(ARecordType node)
+    {
+        defaultIn(node);
+    }
+
+    public void outARecordType(ARecordType node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseARecordType(ARecordType node)
+    {
+        inARecordType(node);
+        {
+            List<PFieldlst> copy = new ArrayList<PFieldlst>(node.getFieldlst());
+            Collections.reverse(copy);
+            for(PFieldlst e : copy)
+            {
+                e.apply(this);
+            }
+        }
+        outARecordType(node);
     }
 
     public void inAIdentifierType(AIdentifierType node)
@@ -942,25 +1021,29 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outASelectorExp(node);
     }
 
-    public void inAAdditionalselectorSelector(AAdditionalselectorSelector node)
+    public void inARecordSelector(ARecordSelector node)
     {
         defaultIn(node);
     }
 
-    public void outAAdditionalselectorSelector(AAdditionalselectorSelector node)
+    public void outARecordSelector(ARecordSelector node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAAdditionalselectorSelector(AAdditionalselectorSelector node)
+    public void caseARecordSelector(ARecordSelector node)
     {
-        inAAdditionalselectorSelector(node);
+        inARecordSelector(node);
         if(node.getIdentifier() != null)
         {
             node.getIdentifier().apply(this);
         }
-        outAAdditionalselectorSelector(node);
+        if(node.getSelector() != null)
+        {
+            node.getSelector().apply(this);
+        }
+        outARecordSelector(node);
     }
 
     public void inAIdentifierSelector(AIdentifierSelector node)

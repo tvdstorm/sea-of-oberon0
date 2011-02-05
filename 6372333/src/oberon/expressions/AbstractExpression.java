@@ -2,7 +2,7 @@ package oberon.expressions;
 
 import oberon.IDataType;
 import oberon.IExpression;
-import oberon.data.IntegerType;
+import oberon.data.IntegerDataType;
 
 public abstract class AbstractExpression implements IExpression {
 	/* (non-Javadoc)
@@ -32,7 +32,7 @@ public abstract class AbstractExpression implements IExpression {
 	{
 		if (	this instanceof MathematicalExpression ||
 				this instanceof AbstractIntegerExpression){
-			return new IntegerType(newName, this.evalAsInt(), false);
+			return new IntegerDataType(newName, this.evalAsInt(), false);
 		}
 		else if (this instanceof SelectorExpression){
 			final SelectorExpression selectorExpression = ((SelectorExpression)this);

@@ -7,6 +7,7 @@ import oberon.node.AIntegerExp;
 public class ExpIntegerInterpreter extends AbstractBaseInterpreter<IExpression> {
 	private int value;
 
+	@Override
 	public void caseAIntegerExp(final AIntegerExp node)
 	{
 		value = Integer.parseInt(node.getInteger().toString().trim());

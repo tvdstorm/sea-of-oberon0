@@ -74,9 +74,9 @@
 
         <Package name="oberon.data">
             <Stats>
-                <TotalClasses>8</TotalClasses>
-                <ConcreteClasses>6</ConcreteClasses>
-                <AbstractClasses>2</AbstractClasses>
+                <TotalClasses>12</TotalClasses>
+                <ConcreteClasses>9</ConcreteClasses>
+                <AbstractClasses>3</AbstractClasses>
                 <Ca>3</Ca>
                 <Ce>1</Ce>
                 <A>0.25</A>
@@ -92,6 +92,9 @@
                 <Class sourceFile="AbstractIdentifier.java">
                     oberon.data.AbstractIdentifier
                 </Class>
+                <Class sourceFile="AbstractMapDataType.java">
+                    oberon.data.AbstractMapDataType
+                </Class>
             </AbstractClasses>
 
             <ConcreteClasses>
@@ -101,14 +104,23 @@
                 <Class sourceFile="ExpressionDataType.java">
                     oberon.data.ExpressionDataType
                 </Class>
+                <Class sourceFile="IntegerArrayDataType.java">
+                    oberon.data.IntegerArrayDataType
+                </Class>
                 <Class sourceFile="IntegerArrayIndexerDataType.java">
                     oberon.data.IntegerArrayIndexerDataType
                 </Class>
-                <Class sourceFile="IntegerArrayType.java">
-                    oberon.data.IntegerArrayType
+                <Class sourceFile="IntegerDataType.java">
+                    oberon.data.IntegerDataType
                 </Class>
-                <Class sourceFile="IntegerType.java">
-                    oberon.data.IntegerType
+                <Class sourceFile="RecordDataType.java">
+                    oberon.data.RecordDataType
+                </Class>
+                <Class sourceFile="RecordIndexerDataType.java">
+                    oberon.data.RecordIndexerDataType
+                </Class>
+                <Class sourceFile="RecordIndexerIdentifier.java">
+                    oberon.data.RecordIndexerIdentifier
                 </Class>
                 <Class sourceFile="VariableIdentifier.java">
                     oberon.data.VariableIdentifier

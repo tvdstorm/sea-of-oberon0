@@ -5,19 +5,23 @@ package oberon.node;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AAdditionalselectorSelector extends PSelector
+public final class ARecordSelector extends PSelector
 {
+    private PSelector _selector_;
     private TIdentifier _identifier_;
 
-    public AAdditionalselectorSelector()
+    public ARecordSelector()
     {
         // Constructor
     }
 
-    public AAdditionalselectorSelector(
+    public ARecordSelector(
+        @SuppressWarnings("hiding") PSelector _selector_,
         @SuppressWarnings("hiding") TIdentifier _identifier_)
     {
         // Constructor
+        setSelector(_selector_);
+
         setIdentifier(_identifier_);
 
     }
@@ -25,13 +29,39 @@ public final class AAdditionalselectorSelector extends PSelector
     @Override
     public Object clone()
     {
-        return new AAdditionalselectorSelector(
+        return new ARecordSelector(
+            cloneNode(this._selector_),
             cloneNode(this._identifier_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAAdditionalselectorSelector(this);
+        ((Analysis) sw).caseARecordSelector(this);
+    }
+
+    public PSelector getSelector()
+    {
+        return this._selector_;
+    }
+
+    public void setSelector(PSelector node)
+    {
+        if(this._selector_ != null)
+        {
+            this._selector_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._selector_ = node;
     }
 
     public TIdentifier getIdentifier()
@@ -63,6 +93,7 @@ public final class AAdditionalselectorSelector extends PSelector
     public String toString()
     {
         return ""
+            + toString(this._selector_)
             + toString(this._identifier_);
     }
 
@@ -70,6 +101,12 @@ public final class AAdditionalselectorSelector extends PSelector
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
+        if(this._selector_ == child)
+        {
+            this._selector_ = null;
+            return;
+        }
+
         if(this._identifier_ == child)
         {
             this._identifier_ = null;
@@ -83,6 +120,12 @@ public final class AAdditionalselectorSelector extends PSelector
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
+        if(this._selector_ == oldChild)
+        {
+            setSelector((PSelector) newChild);
+            return;
+        }
+
         if(this._identifier_ == oldChild)
         {
             setIdentifier((TIdentifier) newChild);
