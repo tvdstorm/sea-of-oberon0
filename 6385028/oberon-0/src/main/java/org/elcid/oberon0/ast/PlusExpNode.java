@@ -1,7 +1,8 @@
 package org.elcid.oberon0.ast;
 
 import org.elcid.oberon0.ast.util.NodeType;
-import org.elcid.oberon0.ast.visitor.NodeVisitor;
+import org.elcid.oberon0.ast.values.Environment;
+import org.elcid.oberon0.ast.visitor.BaseVisitor;
 import java.util.List;
 
 /**
@@ -9,27 +10,27 @@ import java.util.List;
  *
  * @author Pieter Brandwijk
  */
-public class PlusExpNode extends ExpressionNode {
+public class PlusExpNode extends IntExpNode {
 
-	private ExpressionNode leftExp;
-	private ExpressionNode rightExp;
+	private IntExpNode leftExp;
+	private IntExpNode rightExp;
 
-	public PlusExpNode(ExpressionNode leftExp, ExpressionNode rightExp) {
+	public PlusExpNode(IntExpNode leftExp, IntExpNode rightExp) {
 		this.leftExp = leftExp;
 		this.rightExp = rightExp;
 	}
 
-	public Node getLeftExp() {
+	public IntExpNode getLeftExp() {
 		return leftExp;
 	}
 
-	public Node getRightExp() {
+	public IntExpNode getRightExp() {
 		return rightExp;
 	}
 
 	@Override
-	public Object accept(NodeVisitor visitor) {
-		return visitor.visitPlusExpNode(this);
+	public Integer accept(BaseVisitor visitor, Environment localEnv) {
+		return visitor.visitPlusExpNode(this, localEnv);
 	}
 
 	@Override
