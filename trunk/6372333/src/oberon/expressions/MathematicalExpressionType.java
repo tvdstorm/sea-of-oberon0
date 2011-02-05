@@ -1,4 +1,4 @@
-package oberon;
+package oberon.expressions;
 
 public enum MathematicalExpressionType {
 	Add,

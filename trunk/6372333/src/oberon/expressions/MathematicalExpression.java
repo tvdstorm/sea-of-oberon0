@@ -1,4 +1,6 @@
-package oberon;
+package oberon.expressions;
+
+import oberon.IExpression;
 
 public class MathematicalExpression extends AbstractLeftAndRightExpression {
 	private final MathematicalExpressionType expressionType;

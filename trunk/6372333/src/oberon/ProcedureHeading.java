@@ -8,6 +8,9 @@ import java.util.Queue;
 import oberon.data.AbstractDataType;
 import oberon.data.IntegerType;
 import oberon.data.VariableManager;
+import oberon.expressions.AbstractIntegerExpression;
+import oberon.expressions.MathematicalExpression;
+import oberon.expressions.SelectorExpression;
 
 
 public class ProcedureHeading extends AbstractProcedure {

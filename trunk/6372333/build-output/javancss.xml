@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-02-05</date>
-  <time>15:30:11</time>
+  <time>15:32:39</time>
   <packages>
     <package>
       <name>oberon</name>
-      <classes>23</classes>
-      <functions>51</functions>
-      <ncss>374</ncss>
+      <classes>14</classes>
+      <functions>31</functions>
+      <ncss>261</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>10</single_comment_lines>
-      <multi_comment_lines>8</multi_comment_lines>
+      <single_comment_lines>8</single_comment_lines>
+      <multi_comment_lines>2</multi_comment_lines>
     </package>
     <package>
       <name>oberon.data</name>
@@ -44,63 +44,28 @@
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <total>
-      <classes>54</classes>
-      <functions>175</functions>
-      <ncss>1067</ncss>
+      <classes>45</classes>
+      <functions>155</functions>
+      <ncss>954</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>38</single_comment_lines>
-      <multi_comment_lines>8</multi_comment_lines>
+      <single_comment_lines>36</single_comment_lines>
+      <multi_comment_lines>2</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>4.00</td><td>54.00</td><td>175.00</td><td>1,067.00</td><td>0.00</td><td>Project</td></tr>
-      <tr><td></td><td>13.50</td><td>43.75</td><td>266.75</td><td>0.00</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.24</td><td>19.76</td><td>0.00</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>6.10</td><td>0.00</td><td>Function</td></tr>
+      <tr><td>4.00</td><td>45.00</td><td>155.00</td><td>954.00</td><td>0.00</td><td>Project</td></tr>
+      <tr><td></td><td>11.25</td><td>38.75</td><td>238.50</td><td>0.00</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.44</td><td>21.20</td><td>0.00</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>6.15</td><td>0.00</td><td>Function</td></tr>
     </table>
   </packages>
 
   <objects>
     <object>
-      <name>oberon.AbstractExpression</name>
-      <ncss>9</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon.AbstractIntegerExpression</name>
-      <ncss>6</ncss>
-      <functions>2</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon.AbstractLeftAndRightExpression</name>
-      <ncss>14</ncss>
-      <functions>5</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
       <name>oberon.AbstractProcedure</name>
       <ncss>15</ncss>
       <functions>5</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon.ComparisonExpression</name>
-      <ncss>30</ncss>
-      <functions>2</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon.ComparisonType</name>
-      <ncss>1</ncss>
-      <functions>0</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -147,27 +112,6 @@
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>oberon.MathematicalExpression</name>
-      <ncss>28</ncss>
-      <functions>2</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon.MathematicalExpressionType</name>
-      <ncss>1</ncss>
-      <functions>0</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon.ParenthesesExpression</name>
-      <ncss>6</ncss>
-      <functions>2</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
       <name>oberon.ProcedureBody</name>
       <ncss>10</ncss>
       <functions>2</functions>
@@ -185,13 +129,6 @@
       <name>oberon.ReadProcedure</name>
       <ncss>29</ncss>
       <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon.SelectorExpression</name>
-      <ncss>10</ncss>
-      <functions>4</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -441,75 +378,15 @@
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>15.50</ncss>
-      <functions>3.24</functions>
+      <ncss>16.27</ncss>
+      <functions>3.44</functions>
       <classes>0.02</classes>
       <javadocs>0.00</javadocs>
     </averages>
-    <ncss>1,067.00</ncss>
+    <ncss>954.00</ncss>
   </objects>
 
   <functions>
-    <function>
-      <name>oberon.AbstractExpression.evalAsInt()</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.AbstractExpression.evalAsBoolean()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.AbstractExpression.booleanAsInt(Boolean)</name>
-      <ncss>5</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.AbstractIntegerExpression.AbstractIntegerExpression(int)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.AbstractIntegerExpression.evalAsInt()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.AbstractLeftAndRightExpression.AbstractLeftAndRightExpression(IExpression,IExpression)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.AbstractLeftAndRightExpression.setRighthandSide(IExpression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.AbstractLeftAndRightExpression.getRighthandSide()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.AbstractLeftAndRightExpression.setLefthandSide(IExpression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.AbstractLeftAndRightExpression.getLefthandSide()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
     <function>
       <name>oberon.AbstractProcedure.AbstractProcedure(String,FormalParamSection,ProcedureBody)</name>
       <ncss>4</ncss>
@@ -538,18 +415,6 @@
       <name>oberon.AbstractProcedure.call(IExpression)</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.ComparisonExpression.ComparisonExpression(IExpression,IExpression,ComparisonType)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.ComparisonExpression.evalAsInt()</name>
-      <ncss>25</ncss>
-      <ccn>8</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -619,30 +484,6 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.MathematicalExpression.MathematicalExpression(IExpression,IExpression,MathematicalExpressionType)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.MathematicalExpression.evalAsInt()</name>
-      <ncss>23</ncss>
-      <ccn>6</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.ParenthesesExpression.ParenthesesExpression(IExpression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.ParenthesesExpression.evalAsInt()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
       <name>oberon.ProcedureBody.ProcedureBody(Declaration,StatementSequence)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
@@ -681,30 +522,6 @@
     <function>
       <name>oberon.ReadProcedure.initialize()</name>
       <ncss>16</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.SelectorExpression.SelectorExpression(AbstractSelector)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.SelectorExpression.performDeepCopyOfValue(String)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.SelectorExpression.performShallowCopyOfValue(String)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.SelectorExpression.evalAsInt()</name>
-      <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -1501,10 +1318,10 @@
       <javadocs>0</javadocs>
     </function>
     <function_averages>
-      <ncss>3.85</ncss>
-      <ccn>1.46</ccn>
+      <ncss>3.77</ncss>
+      <ccn>1.43</ccn>
       <javadocs>0.00</javadocs>
     </function_averages>
-    <ncss>1,067.00</ncss>
+    <ncss>954.00</ncss>
   </functions>
 </javancss>

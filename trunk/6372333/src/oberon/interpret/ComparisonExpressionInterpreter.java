@@ -1,8 +1,8 @@
 package oberon.interpret;
 
-import oberon.ComparisonExpression;
-import oberon.ComparisonType;
 import oberon.IExpression;
+import oberon.expressions.ComparisonExpression;
+import oberon.expressions.ComparisonType;
 import oberon.node.AAmpExp;
 import oberon.node.AExeqExp;
 import oberon.node.AExgeExp;

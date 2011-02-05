@@ -4,24 +4,18 @@
 
         <Package name="oberon">
             <Stats>
-                <TotalClasses>23</TotalClasses>
-                <ConcreteClasses>18</ConcreteClasses>
-                <AbstractClasses>5</AbstractClasses>
-                <Ca>3</Ca>
-                <Ce>2</Ce>
-                <A>0.22</A>
-                <I>0.4</I>
-                <D>0.38</D>
+                <TotalClasses>14</TotalClasses>
+                <ConcreteClasses>11</ConcreteClasses>
+                <AbstractClasses>3</AbstractClasses>
+                <Ca>4</Ca>
+                <Ce>3</Ce>
+                <A>0.21</A>
+                <I>0.43</I>
+                <D>0.36</D>
                 <V>1</V>
             </Stats>
 
             <AbstractClasses>
-                <Class sourceFile="AbstractExpression.java">
-                    oberon.AbstractExpression
-                </Class>
-                <Class sourceFile="AbstractLeftAndRightExpression.java">
-                    oberon.AbstractLeftAndRightExpression
-                </Class>
                 <Class sourceFile="AbstractProcedure.java">
                     oberon.AbstractProcedure
                 </Class>
@@ -34,15 +28,6 @@
             </AbstractClasses>
 
             <ConcreteClasses>
-                <Class sourceFile="AbstractIntegerExpression.java">
-                    oberon.AbstractIntegerExpression
-                </Class>
-                <Class sourceFile="ComparisonExpression.java">
-                    oberon.ComparisonExpression
-                </Class>
-                <Class sourceFile="ComparisonType.java">
-                    oberon.ComparisonType
-                </Class>
                 <Class sourceFile="Declaration.java">
                     oberon.Declaration
                 </Class>
@@ -55,15 +40,6 @@
                 <Class sourceFile="Main.java">
                     oberon.Main
                 </Class>
-                <Class sourceFile="MathematicalExpression.java">
-                    oberon.MathematicalExpression
-                </Class>
-                <Class sourceFile="MathematicalExpressionType.java">
-                    oberon.MathematicalExpressionType
-                </Class>
-                <Class sourceFile="ParenthesesExpression.java">
-                    oberon.ParenthesesExpression
-                </Class>
                 <Class sourceFile="ProcedureBody.java">
                     oberon.ProcedureBody
                 </Class>
@@ -72,9 +48,6 @@
                 </Class>
                 <Class sourceFile="ReadProcedure.java">
                     oberon.ReadProcedure
-                </Class>
-                <Class sourceFile="SelectorExpression.java">
-                    oberon.SelectorExpression
                 </Class>
                 <Class sourceFile="StatementSequence.java">
                     oberon.StatementSequence
@@ -92,11 +65,13 @@
 
             <DependsUpon>
                 <Package>oberon.data</Package>
+                <Package>oberon.expressions</Package>
                 <Package>oberon.interpret</Package>
             </DependsUpon>
 
             <UsedBy>
                 <Package>oberon.data</Package>
+                <Package>oberon.expressions</Package>
                 <Package>oberon.interpret</Package>
                 <Package>oberon.statement</Package>
             </UsedBy>
@@ -107,11 +82,11 @@
                 <TotalClasses>10</TotalClasses>
                 <ConcreteClasses>8</ConcreteClasses>
                 <AbstractClasses>2</AbstractClasses>
-                <Ca>3</Ca>
+                <Ca>4</Ca>
                 <Ce>1</Ce>
                 <A>0.2</A>
-                <I>0.25</I>
-                <D>0.55</D>
+                <I>0.2</I>
+                <D>0.6</D>
                 <V>1</V>
             </Stats>
 
@@ -157,8 +132,66 @@
 
             <UsedBy>
                 <Package>oberon</Package>
+                <Package>oberon.expressions</Package>
                 <Package>oberon.interpret</Package>
                 <Package>oberon.statement</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="oberon.expressions">
+            <Stats>
+                <TotalClasses>9</TotalClasses>
+                <ConcreteClasses>7</ConcreteClasses>
+                <AbstractClasses>2</AbstractClasses>
+                <Ca>2</Ca>
+                <Ce>2</Ce>
+                <A>0.22</A>
+                <I>0.5</I>
+                <D>0.28</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="AbstractExpression.java">
+                    oberon.expressions.AbstractExpression
+                </Class>
+                <Class sourceFile="AbstractLeftAndRightExpression.java">
+                    oberon.expressions.AbstractLeftAndRightExpression
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="AbstractIntegerExpression.java">
+                    oberon.expressions.AbstractIntegerExpression
+                </Class>
+                <Class sourceFile="ComparisonExpression.java">
+                    oberon.expressions.ComparisonExpression
+                </Class>
+                <Class sourceFile="ComparisonType.java">
+                    oberon.expressions.ComparisonType
+                </Class>
+                <Class sourceFile="MathematicalExpression.java">
+                    oberon.expressions.MathematicalExpression
+                </Class>
+                <Class sourceFile="MathematicalExpressionType.java">
+                    oberon.expressions.MathematicalExpressionType
+                </Class>
+                <Class sourceFile="ParenthesesExpression.java">
+                    oberon.expressions.ParenthesesExpression
+                </Class>
+                <Class sourceFile="SelectorExpression.java">
+                    oberon.expressions.SelectorExpression
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>oberon</Package>
+                <Package>oberon.data</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>oberon</Package>
+                <Package>oberon.interpret</Package>
             </UsedBy>
         </Package>
 
@@ -168,10 +201,10 @@
                 <ConcreteClasses>19</ConcreteClasses>
                 <AbstractClasses>1</AbstractClasses>
                 <Ca>1</Ca>
-                <Ce>3</Ce>
+                <Ce>4</Ce>
                 <A>0.05</A>
-                <I>0.75</I>
-                <D>0.2</D>
+                <I>0.8</I>
+                <D>0.15</D>
                 <V>1</V>
             </Stats>
 
@@ -244,6 +277,7 @@
             <DependsUpon>
                 <Package>oberon</Package>
                 <Package>oberon.data</Package>
+                <Package>oberon.expressions</Package>
                 <Package>oberon.statement</Package>
             </DependsUpon>
 
@@ -303,6 +337,12 @@
         <Package Name="oberon.data">
             <Package>oberon</Package>
             <Package>oberon.data</Package>
+        </Package>
+
+        <Package Name="oberon.expressions">
+            <Package>oberon</Package>
+            <Package>oberon.data</Package>
+            <Package>oberon</Package>
         </Package>
 
         <Package Name="oberon.interpret">
