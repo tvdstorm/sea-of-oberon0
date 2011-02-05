@@ -63,6 +63,9 @@ tokens
 import java.util.HashMap;
 
 import oberon0.ast.expressions.*;
+import oberon0.ast.expressions.logical.*;
+import oberon0.ast.expressions.arithmetic.*;
+import oberon0.ast.expressions.relational.*;
 import oberon0.ast.variables.*;
 import oberon0.ast.variables.selectors.*;
 import oberon0.ast.declarations.*;
@@ -178,19 +181,20 @@ statement returns [ IExecutable node ]
 	)?;
 
 procedureCall returns [ IExecutable node ]
-	: name = IDENT (	
+	: name = IDENT 	
 	ap = actualParameters		{node = new ProcedureCallNode($name.text, $ap.list);	}
-	)? 
+	
 	;
 	
 actualParameters returns [ ArrayList<IReferable> list]
-	: RNDOPEN 			{list = new ArrayList<IReferable>();		}
+	:				{list = new ArrayList<IReferable>();		} 
+	(RNDOPEN 			
 	(exp1 = expression 		{list.add(new ActualParamNode($exp1.node));	}
 	(COMMA 
 	expx = expression		{list.add(new ActualParamNode($expx.node));	}
 	)*
 	)? 
-	RNDCLOSE
+	RNDCLOSE)?
 	;
 
 
