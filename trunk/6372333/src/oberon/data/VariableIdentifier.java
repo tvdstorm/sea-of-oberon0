@@ -11,7 +11,7 @@ public class VariableIdentifier extends AbstractIdentifier {
 	}
 	
 	@Override
-	public int getSelectorValue() {
+	public int getValue() {
 		final IDataType datatype = VariableManager.getInstance().getVariable(name);
 		return datatype.getValue();
 	}

@@ -14,18 +14,32 @@ import oberon.procedures.FormalParamType;
 import oberon.procedures.ProcedureBody;
 import oberon.procedures.SystemMethodCall;
 
+/**
+ * The Class ReadProcedure, handles calls to system procedure Read.
+ */
 class ReadProcedure implements IStatement {
+	
+	/* (non-Javadoc)
+	 * @see oberon.IStatement#eval()
+	 */
 	@Override
 	public void eval() throws IOException {
 		final VariableManager instance = VariableManager.getInstance();
 		final int index = instance.getVariable("i").getValue();
 		
-		final int input = readInput(index);
+		final int input = readInputFromConsole(index);
 		final IntegerArrayDataType inputArray = (IntegerArrayDataType)instance.getVariable("input");
 		inputArray.setValueAtIndex(index, input);
 	}
 	
-	private int readInput(final int index) throws IOException {
+	/**
+	 * Reads a single input from the console.
+	 *
+	 * @param index of the number to be entered
+	 * @return the specified number
+	 * @throws IOException When reading from the command line fails
+	 */
+	private int readInputFromConsole(final int index) throws IOException {
 		final BufferedReader stdin = new BufferedReader (new InputStreamReader(System.in));
 		
 	    System.out.print ("Type number "+ index +" you want to sort: ");
@@ -37,6 +51,9 @@ class ReadProcedure implements IStatement {
 	    return Integer.parseInt(input);
 	}
 
+	/**
+	 * Initializes the read procedure.
+	 */
 	public static void initialize() {
 		final List<FormalParamSection> params = new ArrayList<FormalParamSection>();
 		List<String> paramNames = new ArrayList<String>();
@@ -55,6 +72,6 @@ class ReadProcedure implements IStatement {
 		
 		final ProcedureBody body = new ProcedureBody(declaration, new StatementSequence(statements));
 		final SystemMethodCall procedure = new SystemMethodCall("Read", params, body);
-		VariableManager.getInstance().addSystemProcedure(procedure);
+		VariableManager.getInstance().addSystemProcedureToCurrentScope(procedure);
 	}
 }

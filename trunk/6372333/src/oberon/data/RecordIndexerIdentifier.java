@@ -23,7 +23,7 @@ public class RecordIndexerIdentifier extends AbstractIdentifier {
 	}
 
 	@Override
-	public int getSelectorValue() {
+	public int getValue() {
 		final RecordDataType record = getDataTypeAsRecordDataType();
 		return record.getValueAtIndex(index);
 	}

@@ -13,5 +13,5 @@ public abstract class AbstractIdentifier implements IIdentifier {
 	 * @see oberon.data.IIdentifier#getSelectorValue()
 	 */
 	@Override
-	public abstract int getSelectorValue();
+	public abstract int getValue();
 }
