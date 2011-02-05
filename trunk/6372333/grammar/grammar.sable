@@ -136,6 +136,7 @@ Productions
 
 	type {-> type}
     	= {array}	arraytxt exp oftxt type {-> New type.array(exp, type)}
+    	| {record}	recordtxt fieldlsts endtxt {-> New type.record([fieldlsts.fieldlst])}
     	| {identifier} 	identifier
     	;	
     	
@@ -180,6 +181,15 @@ Productions
     
 	else {-> statement*} = 
 		elsetxt statements {-> [statements.statement]};
+		
+	fieldlst = fieldlist*;
+	fieldlsts {-> fieldlst*} =
+      {fieldlst}   	fieldlst {-> [fieldlst] }
+    | {more}		fieldlsts semi fieldlst {-> [fieldlsts.fieldlst, fieldlst] }
+  	;
+  		
+	fieldlist {-> fieldlist} = 
+		identifiers colon type {-> New fieldlist([identifiers.identifier], type)}; 
 	
 	exps {-> exp*} =
       {exp}   	exp {-> [exp] }
@@ -213,7 +223,7 @@ Productions
 		;
 	
 	selector {-> selector} 
-		= {additionalselector} dot identifier 			{-> New selector.additionalselector(identifier)}
+		= {recordselector} selector dot identifier		{-> New selector.record(selector, identifier)}
 		| {identifier} identifier 						{-> New selector.identifier(identifier)}
 		| {arrayexpression} selector l_bkt exp r_bkt 	{-> New selector.arrayexpression(selector, exp)}
 		;
@@ -232,10 +242,14 @@ Abstract Syntax Tree
     vardecl = vardeclaration*;
     vardeclaration = identifier* type;
     
+    fieldlst = fieldlist*;
+    fieldlist = identifier* type;
+    
     assignment = selector exp;
     
     type 
     	= {array} exp type
+    	| {record} fieldlst*
     	| {identifier} identifier;
     
     proceduredeclaration = procedureheading procedurebody identifier;
@@ -268,7 +282,7 @@ Abstract Syntax Tree
 		;
 	
 	selector
-		= {additionalselector} identifier
+		= {record} selector identifier
 		| {identifier} identifier
 		| {arrayexpression} selector exp
 		;

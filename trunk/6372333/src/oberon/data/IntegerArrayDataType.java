@@ -3,16 +3,16 @@ package oberon.data;
 import oberon.IDataType;
 import oberon.IExpression;
 
-public class IntegerArrayType extends AbstractDataType {
+public class IntegerArrayDataType extends AbstractDataType {
 	private int[] array;
 	private final IExpression lengthExpression;
 
-	public IntegerArrayType(final String name, final IExpression lengthExp){
+	public IntegerArrayDataType(final String name, final IExpression lengthExp){
 		super(name);
 		lengthExpression = lengthExp;
 	}
 	
-	IntegerArrayType(final String name, final int[] inputArray, 
+	IntegerArrayDataType(final String name, final int[] inputArray, 
 			final IExpression lengthExp) {
 		super(name);
 		array = inputArray;
@@ -39,6 +39,6 @@ public class IntegerArrayType extends AbstractDataType {
 
 	@Override
 	public IDataType copy(final String newName) {
-		return new IntegerArrayType(newName, array, lengthExpression);
+		return new IntegerArrayDataType(newName, array, lengthExpression);
 	}
 }

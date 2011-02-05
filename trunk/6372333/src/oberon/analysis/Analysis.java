@@ -20,8 +20,11 @@ public interface Analysis extends Switch
     void caseATypedeclaration(ATypedeclaration node);
     void caseAVardecl(AVardecl node);
     void caseAVardeclaration(AVardeclaration node);
+    void caseAFieldlst(AFieldlst node);
+    void caseAFieldlist(AFieldlist node);
     void caseAAssignment(AAssignment node);
     void caseAArrayType(AArrayType node);
+    void caseARecordType(ARecordType node);
     void caseAIdentifierType(AIdentifierType node);
     void caseAProceduredeclaration(AProceduredeclaration node);
     void caseAProcedurecall(AProcedurecall node);
@@ -46,7 +49,7 @@ public interface Analysis extends Switch
     void caseAParenExp(AParenExp node);
     void caseAIntegerExp(AIntegerExp node);
     void caseASelectorExp(ASelectorExp node);
-    void caseAAdditionalselectorSelector(AAdditionalselectorSelector node);
+    void caseARecordSelector(ARecordSelector node);
     void caseAIdentifierSelector(AIdentifierSelector node);
     void caseAArrayexpressionSelector(AArrayexpressionSelector node);
     void caseAStatassStatement(AStatassStatement node);

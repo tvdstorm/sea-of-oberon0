@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-02-05</date>
-  <time>16:33:13</time>
+  <time>17:56:46</time>
   <packages>
     <package>
       <name>oberon</name>
@@ -15,19 +15,19 @@
     </package>
     <package>
       <name>oberon.data</name>
-      <classes>8</classes>
-      <functions>34</functions>
-      <ncss>120</ncss>
+      <classes>12</classes>
+      <functions>51</functions>
+      <ncss>194</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>2</single_comment_lines>
+      <single_comment_lines>5</single_comment_lines>
       <multi_comment_lines>18</multi_comment_lines>
     </package>
     <package>
       <name>oberon.interpret</name>
       <classes>20</classes>
       <functions>67</functions>
-      <ncss>490</ncss>
+      <ncss>494</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>4</single_comment_lines>
@@ -44,20 +44,20 @@
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <total>
-      <classes>41</classes>
-      <functions>141</functions>
-      <ncss>870</ncss>
+      <classes>45</classes>
+      <functions>158</functions>
+      <ncss>948</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>33</single_comment_lines>
+      <single_comment_lines>36</single_comment_lines>
       <multi_comment_lines>20</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>4.00</td><td>41.00</td><td>141.00</td><td>870.00</td><td>0.00</td><td>Project</td></tr>
-      <tr><td></td><td>10.25</td><td>35.25</td><td>217.50</td><td>0.00</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.44</td><td>21.22</td><td>0.00</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>6.17</td><td>0.00</td><td>Function</td></tr>
+      <tr><td>4.00</td><td>45.00</td><td>158.00</td><td>948.00</td><td>0.00</td><td>Project</td></tr>
+      <tr><td></td><td>11.25</td><td>39.50</td><td>237.00</td><td>0.00</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.51</td><td>21.07</td><td>0.00</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>6.00</td><td>0.00</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -161,6 +161,13 @@
       <javadocs>0</javadocs>
     </object>
     <object>
+      <name>oberon.data.AbstractMapDataType</name>
+      <ncss>15</ncss>
+      <functions>5</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
       <name>oberon.data.ArrayIndexerIdentifier</name>
       <ncss>15</ncss>
       <functions>4</functions>
@@ -175,6 +182,13 @@
       <javadocs>0</javadocs>
     </object>
     <object>
+      <name>oberon.data.IntegerArrayDataType</name>
+      <ncss>21</ncss>
+      <functions>7</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
       <name>oberon.data.IntegerArrayIndexerDataType</name>
       <ncss>17</ncss>
       <functions>5</functions>
@@ -182,16 +196,30 @@
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>oberon.data.IntegerArrayType</name>
-      <ncss>21</ncss>
-      <functions>7</functions>
+      <name>oberon.data.IntegerDataType</name>
+      <ncss>15</ncss>
+      <functions>5</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>oberon.data.IntegerType</name>
+      <name>oberon.data.RecordDataType</name>
+      <ncss>14</ncss>
+      <functions>4</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon.data.RecordIndexerDataType</name>
       <ncss>15</ncss>
-      <functions>5</functions>
+      <functions>4</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon.data.RecordIndexerIdentifier</name>
+      <ncss>15</ncss>
+      <functions>4</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -302,7 +330,7 @@
     </object>
     <object>
       <name>oberon.interpret.SelectorInterpreter</name>
-      <ncss>14</ncss>
+      <ncss>17</ncss>
       <functions>4</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
@@ -350,12 +378,12 @@
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>15.95</ncss>
-      <functions>3.44</functions>
+      <ncss>15.91</ncss>
+      <functions>3.51</functions>
       <classes>0.02</classes>
       <javadocs>0.00</javadocs>
     </averages>
-    <ncss>870.00</ncss>
+    <ncss>948.00</ncss>
   </objects>
 
   <functions>
@@ -636,13 +664,37 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.data.ArrayIndexerIdentifier.ArrayIndexerIdentifier(IIdentifier,IExpression)</name>
+      <name>oberon.data.AbstractMapDataType.AbstractMapDataType(String,T)</name>
+      <ncss>5</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.data.AbstractMapDataType.getValueAtIndex(T)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.data.AbstractMapDataType.setValueAtIndex(T,int)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.data.AbstractMapDataType.getValue()</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.data.ArrayIndexerIdentifier.getSelectorValue()</name>
+      <name>oberon.data.AbstractMapDataType.copy(String)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.data.ArrayIndexerIdentifier.ArrayIndexerIdentifier(IIdentifier,IExpression)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -651,6 +703,12 @@
       <name>oberon.data.ArrayIndexerIdentifier.getDataTypeAsArrayType()</name>
       <ncss>4</ncss>
       <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.data.ArrayIndexerIdentifier.getSelectorValue()</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -678,13 +736,55 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.data.IntegerArrayIndexerDataType.IntegerArrayIndexerDataType(IntegerArrayType,int)</name>
+      <name>oberon.data.IntegerArrayDataType.IntegerArrayDataType(String,IExpression)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.data.IntegerArrayDataType.IntegerArrayDataType(String,String[],IExpression)</name>
       <ncss>4</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.data.IntegerArrayIndexerDataType.IntegerArrayIndexerDataType(String,IntegerArrayType,int)</name>
+      <name>oberon.data.IntegerArrayDataType.getValueAtIndex(int)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.data.IntegerArrayDataType.initializeArray()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.data.IntegerArrayDataType.getValue()</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.data.IntegerArrayDataType.setValueAtIndex(int,int)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.data.IntegerArrayDataType.copy(String)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.data.IntegerArrayIndexerDataType.IntegerArrayIndexerDataType(IntegerArrayDataType,int)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.data.IntegerArrayIndexerDataType.IntegerArrayIndexerDataType(String,IntegerArrayDataType,int)</name>
       <ncss>4</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -708,73 +808,103 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.data.IntegerArrayType.IntegerArrayType(String,IExpression)</name>
+      <name>oberon.data.IntegerDataType.IntegerDataType(String,Boolean)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.data.IntegerArrayType.IntegerArrayType(String,String[],IExpression)</name>
+      <name>oberon.data.IntegerDataType.IntegerDataType(String,int,Boolean)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.data.IntegerDataType.getValue()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.data.IntegerDataType.copy(String)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.data.IntegerDataType.setValue(int)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.data.RecordDataType.RecordDataType(String,String)</name>
+      <ncss>5</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.data.RecordDataType.getValueAtIndex(String)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.data.RecordDataType.getValue()</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.data.RecordDataType.copy(String)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.data.RecordIndexerDataType.RecordIndexerDataType(String,RecordDataType,String)</name>
       <ncss>4</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.data.IntegerArrayType.getValueAtIndex(int)</name>
+      <name>oberon.data.RecordIndexerDataType.RecordIndexerDataType(RecordDataType,String)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.data.RecordIndexerDataType.getValue()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.data.IntegerArrayType.initializeArray()</name>
+      <name>oberon.data.RecordIndexerDataType.copy(String)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.data.IntegerArrayType.getValue()</name>
+      <name>oberon.data.RecordIndexerIdentifier.RecordIndexerIdentifier(IIdentifier,String)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.data.IntegerArrayType.setValueAtIndex(int,int)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
+      <name>oberon.data.RecordIndexerIdentifier.getDataTypeAsRecordDataType()</name>
+      <ncss>4</ncss>
+      <ccn>2</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.data.IntegerArrayType.copy(String)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.IntegerType.IntegerType(String,Boolean)</name>
+      <name>oberon.data.RecordIndexerIdentifier.getSelectorValue()</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.data.IntegerType.IntegerType(String,int,Boolean)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.IntegerType.getValue()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.IntegerType.copy(String)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.IntegerType.setValue(int)</name>
+      <name>oberon.data.RecordIndexerIdentifier.getDataTypeValue()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -1086,8 +1216,8 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.interpret.SelectorInterpreter.caseAAdditionalselectorSelector(AAdditionalselectorSelector)</name>
-      <ncss>2</ncss>
+      <name>oberon.interpret.SelectorInterpreter.caseARecordSelector(ARecordSelector)</name>
+      <ncss>5</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -1182,7 +1312,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.interpret.VarInterpreter.caseAConstDecl(AConstdecl)</name>
+      <name>oberon.interpret.VarInterpreter.caseAConstdecl(AConstdecl)</name>
       <ncss>3</ncss>
       <ccn>2</ccn>
       <javadocs>0</javadocs>
@@ -1206,10 +1336,10 @@
       <javadocs>0</javadocs>
     </function>
     <function_averages>
-      <ncss>3.69</ncss>
-      <ccn>1.42</ccn>
+      <ncss>3.62</ncss>
+      <ccn>1.41</ccn>
       <javadocs>0.00</javadocs>
     </function_averages>
-    <ncss>870.00</ncss>
+    <ncss>948.00</ncss>
   </functions>
 </javancss>

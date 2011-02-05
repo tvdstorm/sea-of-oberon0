@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import oberon.data.IntegerArrayType;
+import oberon.data.IntegerArrayDataType;
 import oberon.procedures.Declaration;
 import oberon.procedures.FormalParamSection;
 import oberon.procedures.FormalParamType;
@@ -21,7 +21,7 @@ class ReadProcedure implements IStatement {
 		final int index = instance.getVariable("i").getValue();
 		
 		final int input = readInput(index);
-		final IntegerArrayType inputArray = (IntegerArrayType)instance.getVariable("input");
+		final IntegerArrayDataType inputArray = (IntegerArrayDataType)instance.getVariable("input");
 		inputArray.setValueAtIndex(index, input);
 	}
 	

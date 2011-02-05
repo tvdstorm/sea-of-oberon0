@@ -13,7 +13,8 @@ class ProcedureHeadingInterpreter extends AbstractBaseInterpreter<ProcedureHeadi
 	private ProcedureBody body;
 	private String name;
 	private final List<FormalParamSection> paramSections = new ArrayList<FormalParamSection>();
-	
+
+	@Override
 	public void caseAProceduredeclaration(final AProceduredeclaration node){
 		final ProcedureBodyInterpreter bodyInterpreter = new ProcedureBodyInterpreter();
 		node.getProcedurebody().apply(bodyInterpreter);
@@ -22,6 +23,7 @@ class ProcedureHeadingInterpreter extends AbstractBaseInterpreter<ProcedureHeadi
 		node.getProcedureheading().apply(this);
 	}
 
+	@Override
 	public void caseAProcedureheading(final AProcedureheading node)	{
 		name = node.getIdentifier().toString().trim();
 		
