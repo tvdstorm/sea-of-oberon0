@@ -6,8 +6,9 @@
 package org.elcid.oberon0.exceptions;
 
 /**
+ * Trown when a variable is not bound to any value.
  *
- * @author pieter
+ * @author Pieter Brandwijk
  */
 public class UnboundVariableException extends RuntimeException {
 
