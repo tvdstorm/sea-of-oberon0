@@ -8,10 +8,10 @@
                 <ConcreteClasses>7</ConcreteClasses>
                 <AbstractClasses>5</AbstractClasses>
                 <Ca>5</Ca>
-                <Ce>3</Ce>
+                <Ce>4</Ce>
                 <A>0.42</A>
-                <I>0.38</I>
-                <D>0.21</D>
+                <I>0.44</I>
+                <D>0.14</D>
                 <V>1</V>
             </Stats>
 
@@ -59,6 +59,7 @@
 
             <DependsUpon>
                 <Package>oberon.data</Package>
+                <Package>oberon.exceptions</Package>
                 <Package>oberon.interpret</Package>
                 <Package>oberon.procedures</Package>
             </DependsUpon>
@@ -78,10 +79,10 @@
                 <ConcreteClasses>9</ConcreteClasses>
                 <AbstractClasses>2</AbstractClasses>
                 <Ca>3</Ca>
-                <Ce>1</Ce>
+                <Ce>2</Ce>
                 <A>0.18</A>
-                <I>0.25</I>
-                <D>0.57</D>
+                <I>0.4</I>
+                <D>0.42</D>
                 <V>1</V>
             </Stats>
 
@@ -126,6 +127,7 @@
 
             <DependsUpon>
                 <Package>oberon</Package>
+                <Package>oberon.exceptions</Package>
             </DependsUpon>
 
             <UsedBy>
@@ -135,16 +137,50 @@
             </UsedBy>
         </Package>
 
+        <Package name="oberon.exceptions">
+            <Stats>
+                <TotalClasses>1</TotalClasses>
+                <ConcreteClasses>1</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>5</Ca>
+                <Ce>0</Ce>
+                <A>0</A>
+                <I>0</I>
+                <D>1</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="UnsupportedExpression.java">
+                    oberon.exceptions.UnsupportedExpression
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>oberon</Package>
+                <Package>oberon.data</Package>
+                <Package>oberon.expressions</Package>
+                <Package>oberon.procedures</Package>
+                <Package>oberon.statement</Package>
+            </UsedBy>
+        </Package>
+
         <Package name="oberon.expressions">
             <Stats>
                 <TotalClasses>10</TotalClasses>
                 <ConcreteClasses>8</ConcreteClasses>
                 <AbstractClasses>2</AbstractClasses>
                 <Ca>1</Ca>
-                <Ce>2</Ce>
+                <Ce>3</Ce>
                 <A>0.2</A>
-                <I>0.67</I>
-                <D>0.13</D>
+                <I>0.75</I>
+                <D>0.05</D>
                 <V>1</V>
             </Stats>
 
@@ -187,6 +223,7 @@
             <DependsUpon>
                 <Package>oberon</Package>
                 <Package>oberon.data</Package>
+                <Package>oberon.exceptions</Package>
             </DependsUpon>
 
             <UsedBy>
@@ -292,10 +329,10 @@
                 <ConcreteClasses>6</ConcreteClasses>
                 <AbstractClasses>1</AbstractClasses>
                 <Ca>2</Ca>
-                <Ce>1</Ce>
+                <Ce>2</Ce>
                 <A>0.14</A>
-                <I>0.33</I>
-                <D>0.52</D>
+                <I>0.5</I>
+                <D>0.36</D>
                 <V>1</V>
             </Stats>
 
@@ -328,6 +365,7 @@
 
             <DependsUpon>
                 <Package>oberon</Package>
+                <Package>oberon.exceptions</Package>
             </DependsUpon>
 
             <UsedBy>
@@ -342,10 +380,10 @@
                 <ConcreteClasses>4</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
                 <Ca>1</Ca>
-                <Ce>1</Ce>
+                <Ce>2</Ce>
                 <A>0</A>
-                <I>0.5</I>
-                <D>0.5</D>
+                <I>0.67</I>
+                <D>0.33</D>
                 <V>1</V>
             </Stats>
 
@@ -369,6 +407,7 @@
 
             <DependsUpon>
                 <Package>oberon</Package>
+                <Package>oberon.exceptions</Package>
             </DependsUpon>
 
             <UsedBy>

@@ -2,6 +2,7 @@ package oberon.data;
 
 import oberon.IDataType;
 import oberon.VariableManager;
+import oberon.exceptions.UnsupportedException;
 
 /**
  * The Class VariableIdentifier, a pointer to a variable value.
@@ -24,7 +25,7 @@ public class VariableIdentifier extends AbstractIdentifier {
 	 * @see oberon.data.AbstractIdentifier#getValue()
 	 */
 	@Override
-	public int getValue() {
+	public int getValue() throws UnsupportedException {
 		final IDataType datatype = VariableManager.getInstance().getVariable(name);
 		return datatype.getValue();
 	}

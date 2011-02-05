@@ -1,25 +1,25 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-02-05</date>
-  <time>20:06:52</time>
+  <time>22:27:22</time>
   <packages>
     <package>
       <name>oberon</name>
       <classes>12</classes>
       <functions>39</functions>
-      <ncss>256</ncss>
+      <ncss>258</ncss>
       <javadocs>48</javadocs>
-      <javadoc_lines>215</javadoc_lines>
-      <single_comment_lines>7</single_comment_lines>
-      <multi_comment_lines>21</multi_comment_lines>
+      <javadoc_lines>226</javadoc_lines>
+      <single_comment_lines>2</single_comment_lines>
+      <multi_comment_lines>22</multi_comment_lines>
     </package>
     <package>
       <name>oberon.data</name>
       <classes>11</classes>
       <functions>47</functions>
-      <ncss>178</ncss>
+      <ncss>185</ncss>
       <javadocs>32</javadocs>
-      <javadoc_lines>159</javadoc_lines>
+      <javadoc_lines>162</javadoc_lines>
       <single_comment_lines>3</single_comment_lines>
       <multi_comment_lines>91</multi_comment_lines>
     </package>
@@ -37,27 +37,27 @@
       <name>oberon.test</name>
       <classes>1</classes>
       <functions>1</functions>
-      <ncss>24</ncss>
+      <ncss>27</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>1</single_comment_lines>
+      <single_comment_lines>0</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <total>
       <classes>44</classes>
       <functions>154</functions>
-      <ncss>952</ncss>
+      <ncss>964</ncss>
       <javadocs>113</javadocs>
-      <javadoc_lines>534</javadoc_lines>
-      <single_comment_lines>15</single_comment_lines>
-      <multi_comment_lines>261</multi_comment_lines>
+      <javadoc_lines>548</javadoc_lines>
+      <single_comment_lines>9</single_comment_lines>
+      <multi_comment_lines>262</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>4.00</td><td>44.00</td><td>154.00</td><td>952.00</td><td>113.00</td><td>Project</td></tr>
-      <tr><td></td><td>11.00</td><td>38.50</td><td>238.00</td><td>28.25</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.50</td><td>21.64</td><td>2.57</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>6.18</td><td>0.73</td><td>Function</td></tr>
+      <tr><td>4.00</td><td>44.00</td><td>154.00</td><td>964.00</td><td>113.00</td><td>Project</td></tr>
+      <tr><td></td><td>11.00</td><td>38.50</td><td>241.00</td><td>28.25</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.50</td><td>21.91</td><td>2.57</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>6.26</td><td>0.73</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -99,7 +99,7 @@
     </object>
     <object>
       <name>oberon.Main</name>
-      <ncss>29</ncss>
+      <ncss>21</ncss>
       <functions>1</functions>
       <classes>0</classes>
       <javadocs>2</javadocs>
@@ -371,12 +371,12 @@
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>16.32</ncss>
+      <ncss>16.14</ncss>
       <functions>3.50</functions>
       <classes>0.02</classes>
       <javadocs>2.75</javadocs>
     </averages>
-    <ncss>952.00</ncss>
+    <ncss>964.00</ncss>
   </objects>
 
   <functions>
@@ -454,8 +454,8 @@
     </function>
     <function>
       <name>oberon.Main.main(String[])</name>
-      <ncss>28</ncss>
-      <ccn>7</ccn>
+      <ncss>20</ncss>
+      <ccn>3</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
@@ -665,7 +665,7 @@
     <function>
       <name>oberon.data.ArrayIndexerIdentifier.getDataTypeAsArrayType()</name>
       <ncss>4</ncss>
-      <ccn>2</ccn>
+      <ccn>1</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
@@ -833,7 +833,7 @@
     <function>
       <name>oberon.data.RecordIndexerIdentifier.getDataTypeAsRecordDataType()</name>
       <ncss>4</ncss>
-      <ccn>2</ccn>
+      <ccn>1</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
@@ -1301,14 +1301,14 @@
     <function>
       <name>oberon.test.WhileTest.test_case_WhileTest1()</name>
       <ncss>14</ncss>
-      <ccn>2</ccn>
+      <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function_averages>
-      <ncss>3.74</ncss>
-      <ccn>1.41</ccn>
+      <ncss>3.69</ncss>
+      <ccn>1.36</ccn>
       <javadocs>0.46</javadocs>
     </function_averages>
-    <ncss>952.00</ncss>
+    <ncss>964.00</ncss>
   </functions>
 </javancss>

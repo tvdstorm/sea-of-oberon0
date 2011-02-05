@@ -1,5 +1,7 @@
 package oberon;
 
+import oberon.exceptions.UnsupportedException;
+
 /**
  * The Interface IDataType, used for all data types.
  */
@@ -9,8 +11,9 @@ public interface IDataType {
 	 * Gets the value.
 	 *
 	 * @return the value
+	 * @throws UnsupportedException 
 	 */
-	public abstract int getValue();
+	public abstract int getValue() throws UnsupportedException;
 
 	/**
 	 * Copy.

@@ -8,6 +8,7 @@ import java.util.Queue;
 import oberon.IDataType;
 import oberon.IExpression;
 import oberon.VariableManager;
+import oberon.exceptions.UnsupportedException;
 
 /**
  * The Class ProcedureHeading, contains a concrete procedure.
@@ -30,15 +31,11 @@ public class ProcedureHeading extends AbstractProcedure {
 	 * @see oberon.procedures.AbstractProcedure#call(java.util.Queue)
 	 */
 	@Override
-	public void call(final Queue<IExpression> localQueue) throws IOException {
+	public void call(final Queue<IExpression> localQueue) throws IOException, UnsupportedException {
 		final List<IDataType> actualParameterList = new ArrayList<IDataType>();
 		
 		for (FormalParamSection section : getParamSections()) {
-			for (String name : section.getNames()) {
-				if (localQueue.peek() == null){
-					//TODO throw, less actualparams than formalparams are supplied
-				}
-						
+			for (String name : section.getNames()) {						
 				final IExpression actualParam = localQueue.poll();
 				actualParameterList.add(actualParam.copy(name));
 			}

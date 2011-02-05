@@ -5,6 +5,7 @@ import java.io.IOException;
 import oberon.IExpression;
 import oberon.IStatement;
 import oberon.StatementSequence;
+import oberon.exceptions.UnsupportedException;
 
 /**
  * The Class WhileStatement, contains a while statement.
@@ -32,7 +33,7 @@ public class WhileStatement implements IStatement {
 	 * @see oberon.IStatement#eval()
 	 */
 	@Override
-	public void eval() throws IOException {
+	public void eval() throws IOException, UnsupportedException {
 		while (condition.evalAsBoolean()){
 			body.eval();
 		}

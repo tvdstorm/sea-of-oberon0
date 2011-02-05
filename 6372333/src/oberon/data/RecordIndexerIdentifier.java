@@ -2,6 +2,7 @@ package oberon.data;
 
 import oberon.IDataType;
 import oberon.IIdentifier;
+import oberon.exceptions.UnsupportedException;
 
 /**
  * The Class RecordIndexerIdentifier, identifier containing a pointer to a specific field in a record.
@@ -30,12 +31,14 @@ public class RecordIndexerIdentifier extends AbstractIdentifier {
 	 * Gets the data type as record data type.
 	 *
 	 * @return the data type as record data type
+	 * @throws UnsupportedException 
 	 */
-	private RecordDataType getDataTypeAsRecordDataType() {
+	private RecordDataType getDataTypeAsRecordDataType() throws UnsupportedException {
 		final IDataType type = selector.getDataTypeValue();
-		if (!(type instanceof RecordDataType)) {
-			//TODO: throw exception
-		}
+		
+		//type should always be a recorddatatype
+		assert(type instanceof RecordDataType);
+		
 		
 		return ((RecordDataType)type);
 	}
@@ -44,7 +47,7 @@ public class RecordIndexerIdentifier extends AbstractIdentifier {
 	 * @see oberon.data.AbstractIdentifier#getValue()
 	 */
 	@Override
-	public int getValue() {
+	public int getValue() throws UnsupportedException {
 		final RecordDataType record = getDataTypeAsRecordDataType();
 		return record.getValueAtIndex(index);
 	}
@@ -53,7 +56,7 @@ public class RecordIndexerIdentifier extends AbstractIdentifier {
 	 * @see oberon.data.AbstractIdentifier#getDataTypeValue()
 	 */
 	@Override
-	public IDataType getDataTypeValue() {
+	public IDataType getDataTypeValue() throws UnsupportedException {
 		return new RecordIndexerDataType(getDataTypeAsRecordDataType(), index);
 	}
 }
