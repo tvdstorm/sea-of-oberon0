@@ -4,6 +4,9 @@ import oberon.IDataType;
 import oberon.IExpression;
 import oberon.data.IntegerDataType;
 
+/**
+ * The Class AbstractExpression, super class for all expressions.
+ */
 public abstract class AbstractExpression implements IExpression {
 	/* (non-Javadoc)
 	 * @see oberon.IExpression#evalAsInt()
@@ -19,6 +22,12 @@ public abstract class AbstractExpression implements IExpression {
 		return evalAsInt() == 1;
 	}
 	
+	/**
+	 * Returns the value of a boolean as a int.
+	 *
+	 * @param input the boolean input
+	 * @return the int value of the input bool
+	 */
 	protected int booleanAsInt(final Boolean input) {
 		int result = 0;
 		if (input) {
@@ -27,6 +36,9 @@ public abstract class AbstractExpression implements IExpression {
 		return result;
 	}
 	
+	/* (non-Javadoc)
+	 * @see oberon.IExpression#copy(java.lang.String)
+	 */
 	@Override
 	public IDataType copy(String newName)
 	{
@@ -35,8 +47,8 @@ public abstract class AbstractExpression implements IExpression {
 				this instanceof AbstractIntegerExpression){
 			resultType = new IntegerDataType(newName, this.evalAsInt(), false);
 		}
-		else if (this instanceof SelectorExpression){
-			final SelectorExpression selectorExpression = ((SelectorExpression)this);
+		else if (this instanceof IdentifierExpression){
+			final IdentifierExpression selectorExpression = ((IdentifierExpression)this);
 			resultType = selectorExpression.copy(newName);
 		}
 		

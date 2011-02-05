@@ -2,10 +2,21 @@ package oberon.expressions;
 
 import oberon.IExpression;
 
+/**
+ * The Class ComparisonExpression, compares to expressions.
+ */
 public class ComparisonExpression extends AbstractLeftAndRightExpression {
 
+	/** The comparison type. */
 	private final ComparisonType comparisonType;
 
+	/**
+	 * Instantiates a new comparison expression.
+	 *
+	 * @param lefthandSide the lefthand side of the expression
+	 * @param righthandSide the righthand side of the expression
+	 * @param type the type of the expression
+	 */
 	public ComparisonExpression(final IExpression lefthandSide,
 			final IExpression righthandSide, final ComparisonType type) {
 		super(lefthandSide, righthandSide);
@@ -13,6 +24,9 @@ public class ComparisonExpression extends AbstractLeftAndRightExpression {
 		comparisonType = type;
 	}
 
+	/* (non-Javadoc)
+	 * @see oberon.expressions.AbstractExpression#evalAsInt()
+	 */
 	@Override
 	public int evalAsInt() {
 		final IExpression leftHandSide = getLefthandSide();
