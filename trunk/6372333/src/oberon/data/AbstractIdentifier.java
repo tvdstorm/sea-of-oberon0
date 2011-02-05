@@ -3,6 +3,9 @@ package oberon.data;
 import oberon.IDataType;
 import oberon.IIdentifier;
 
+/**
+ * The Class AbstractIdentifier, super class for all identifiers
+ */
 public abstract class AbstractIdentifier implements IIdentifier {
 	/* (non-Javadoc)
 	 * @see oberon.data.IIdentifier#getDataTypeValue()

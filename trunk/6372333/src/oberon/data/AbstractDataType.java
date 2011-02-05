@@ -2,9 +2,19 @@ package oberon.data;
 
 import oberon.IDataType;
 
+/**
+ * The Class AbstractDataType.
+ */
 public abstract class AbstractDataType implements IDataType {
+	
+	/** The name. */
 	private final String name;
 	
+	/**
+	 * Instantiates a new abstract data type.
+	 *
+	 * @param inputName the name of the instance
+	 */
 	public AbstractDataType(final String inputName) {
 		name = inputName;
 	}
