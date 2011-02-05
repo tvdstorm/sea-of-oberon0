@@ -8,6 +8,7 @@ public class BuiltInRoutines implements IDeclarable{
 	@Override
 	public void declare(Context context) {
 		context.declareProcedure("Read", new Read());
+		context.declareProcedure("ReadRandom", new ReadRandom());
 		context.declareProcedure("Write", new Write());
 		context.declareProcedure("WriteLn", new WriteLn());
 		context.declareProcedure("WriteHex", new WriteHex());

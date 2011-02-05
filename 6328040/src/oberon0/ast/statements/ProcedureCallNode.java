@@ -22,5 +22,16 @@ public class ProcedureCallNode implements IExecutable {
 		
 		procedure.call(context, _actualParams);
 	}
+	
+	/*
+	 * prints function name and actual parameters, this can be used for debugging
+	 */
+	public void print(Context context){
+		System.out.print(_name);
+		for  (IReferable ref : _actualParams){
+			System.out.print(" "+ ref.eval(context));
+		}
+		System.out.print("\n");
+	}
 
 }

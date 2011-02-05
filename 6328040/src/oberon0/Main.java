@@ -14,16 +14,17 @@ import generated.*;
 public class Main {
 	
 	/*TODO type declarations
-	 *TODO builtin functions
-	 *TODO tests 
 	 *TODO quicksort kapot? 13111 -> 11131
 	 */
 	
 	public static void main(String [ ] args) throws IOException
 	{
 		ANTLRFileStream inputfile = new ANTLRFileStream("oberonfiles/quicksort.oberon0");
-	    
-	    // let ANTLR-generated code do the job
+	    runOberonFile(inputfile);
+	}
+	
+	public static void runOberonFile(ANTLRFileStream inputfile){
+		// let ANTLR-generated code do the job
 		Oberon0Lexer lex = new Oberon0Lexer(inputfile);			// lexer/parser are part of the processor
 		TokenRewriteStream tokens = new TokenRewriteStream(lex);
 		Oberon0Parser parser = new Oberon0Parser(tokens);

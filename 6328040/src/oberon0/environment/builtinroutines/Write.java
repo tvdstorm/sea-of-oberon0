@@ -12,7 +12,7 @@ public class Write implements ICallable {
 	public void call(Context context, ArrayList<IReferable> actualParameters) {
 		IReferable param = actualParameters.get(0);
 		IValue value = param.refer(context, IReferable.noPreviousReference).getValue();
-		System.out.print(value.toString());
+		System.out.print(value.toString() + " ");
 	}
 
 }

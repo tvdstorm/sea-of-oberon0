@@ -63,8 +63,9 @@ public class Context {
 		for(String key: _procedures.keySet()){
 			System.out.print("\t  * " + key  +"\n");
 		}
-		if (_parent != noParent){
-			_parent.print();
-		}
+	}
+	
+	public Context getParent(){
+		return _parent;
 	}
 }
