@@ -4,8 +4,8 @@ import oberon.IDataType;
 
 public class RecordIndexerDataType extends AbstractDataType {
 
-	private String index;
-	private RecordDataType record;
+	private final String index;
+	private final RecordDataType record;
 
 	public RecordIndexerDataType(final String inputName, final RecordDataType inputRecord, 
 			final String inputIndex) {
@@ -14,8 +14,8 @@ public class RecordIndexerDataType extends AbstractDataType {
 		record = inputRecord;
 	}
 
-	public RecordIndexerDataType(RecordDataType recordDataType,
-			String inputIndex) {
+	public RecordIndexerDataType(final RecordDataType recordDataType,
+			final String inputIndex) {
 		super(recordDataType.getName());
 		record = recordDataType;
 		index = inputIndex;
@@ -28,7 +28,7 @@ public class RecordIndexerDataType extends AbstractDataType {
 	}
 
 	@Override
-	public IDataType copy(String newName) {
+	public IDataType copy(final String newName) {
 		return new RecordIndexerDataType(newName, record, index);
 	}
 

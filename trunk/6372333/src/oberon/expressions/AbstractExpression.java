@@ -30,17 +30,18 @@ public abstract class AbstractExpression implements IExpression {
 	@Override
 	public IDataType copy(String newName)
 	{
+		IDataType resultType = null;
 		if (	this instanceof MathematicalExpression ||
 				this instanceof AbstractIntegerExpression){
-			return new IntegerDataType(newName, this.evalAsInt(), false);
+			resultType = new IntegerDataType(newName, this.evalAsInt(), false);
 		}
 		else if (this instanceof SelectorExpression){
 			final SelectorExpression selectorExpression = ((SelectorExpression)this);
-			return selectorExpression.copy(newName);
+			resultType = selectorExpression.copy(newName);
 		}
 		
 		//TODO: throw;
-		return null;
+		return resultType;
 	}
 
 }
