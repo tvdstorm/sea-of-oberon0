@@ -25,7 +25,9 @@ public class InfixDivisionExpression extends InfixExpression
 		{
 			int iRh = valRh.castToInteger().getIntValue();
 			if (iRh == 0)
+			{
 				throw new DivideByZeroException();
+			}
 			return new Integer(valLh.castToInteger().getIntValue() / iRh);
 		}
 		else

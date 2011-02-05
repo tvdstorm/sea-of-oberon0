@@ -36,6 +36,8 @@ public class IfStatement extends Statement
 		}
 		// No conditions evaluated to true, if there is an else body, run it
 		if (elseBody != null)
+		{
 			elseBody.run(environment);
+		}
 	}
 }

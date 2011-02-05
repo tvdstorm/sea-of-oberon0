@@ -19,7 +19,9 @@ public class DefaultWriteLnFunction implements IInvokableFunction
 	{
 		// Don't accept any parameters
 		if (parameterValues.size() != 0)
+		{
 			throw new IncorrectNumberOfArgumentsException();
+		}
 		// Write a new line
 		System.out.println("");
 	}

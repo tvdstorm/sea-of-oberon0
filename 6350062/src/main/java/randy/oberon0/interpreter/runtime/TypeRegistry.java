@@ -21,7 +21,9 @@ public class TypeRegistry
 		assert(typeCreator != null);
 		// Check if we already have a type with the same name registered
 		if (types.get(typeName) != null)
+		{
 			throw new DuplicateTypeException(typeName);
+		}
 		// No, register the type
 		types.put(typeName, typeCreator);
 	}
@@ -29,12 +31,18 @@ public class TypeRegistry
 	{
 		// Check if we have the type registered in this scope
 		if (types.get(name) != null)
+		{
 			return types.get(name);
+		}
 		// Check if we have a parent scope and check it for the type
 		else if (parent != null)
+		{
 			return parent.resolveType(name);
+		}
 		// We don't know the type and don't have a parent scope, return an exception
 		else
+		{
 			throw new UnknownTypeException(name);
+		}
 	}
 }

@@ -24,7 +24,9 @@ public class FunctionRegistry
 		assert(environment != null);
 		// Check if the function has already been registered
 		if (functions.get(functionName) != null)
+		{
 			throw new DuplicateFunctionException(functionName);
+		}
 		// Register the function
 		functions.put(functionName, new Tuple<RuntimeEnvironment, IInvokableFunction>(environment, functionPointer));
 	}
@@ -32,12 +34,18 @@ public class FunctionRegistry
 	{
 		// Check if the function is register in this scope
 		if (functions.get(name) != null)
+		{
 			return functions.get(name);
+		}
 		// Check if we have a parent scope and check if for the function
 		else if (parent != null)
+		{
 			return parent.resolveFunction(name);
+		}
 		// The function isn't registered in this scope and we don't have a parent scope, return an exception
 		else
+		{
 			throw new UndefinedMethodException(name);
+		}
 	}
 }

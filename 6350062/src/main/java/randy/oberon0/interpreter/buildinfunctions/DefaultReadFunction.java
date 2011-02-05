@@ -24,11 +24,15 @@ public class DefaultReadFunction implements IInvokableFunction
 		{
 			// Accept one parameter
 			if (parameterValues.size() != 1)
+			{
 				throw new IncorrectNumberOfArgumentsException();
+			}
 			// Check if the parameter is an integer
 			Value param = parameterValues.poll();
 			if (!param.getType().equals(Type.INTEGER))
+			{
 				throw new TypeMismatchException(param.getType().toString(), Type.INTEGER.toString());
+			}
 			// Read a line from the input
 			byte input[] = new byte[1024];
 			int length = System.in.read(input);

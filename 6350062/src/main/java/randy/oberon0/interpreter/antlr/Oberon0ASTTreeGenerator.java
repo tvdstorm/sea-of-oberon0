@@ -136,9 +136,13 @@ public class Oberon0ASTTreeGenerator
 				return buildPrefixExpression(tree);
 			case Oberon0Parser.MINUS:
 				if (tree.getChildCount() == 1)
+				{
 					return buildPrefixExpression(tree);
+				}
 				else
+				{
 					return buildInfixExpression(tree);
+				}
 			case Oberon0Parser.PLUS:
 			case Oberon0Parser.DIVIDE:
 			case Oberon0Parser.TIMES:
@@ -179,9 +183,7 @@ public class Oberon0ASTTreeGenerator
 			switch (child.getType())
 			{
 				case Oberon0Parser.ELSIF:
-					ifStatements.add(new Tuple<Expression, Block>(
-							buildExpression(child.getChild(0).getChild(0)),
-							buildBlock(child.getChild(1))));
+					ifStatements.add(new Tuple<Expression, Block>(buildExpression(child.getChild(0).getChild(0)), buildBlock(child.getChild(1))));
 					break;
 				case Oberon0Parser.ELSE:
 					elseBody = buildBlock(child.getChild(0));
@@ -343,7 +345,7 @@ public class Oberon0ASTTreeGenerator
 			case Oberon0Parser.IDENT:
 				return buildVariableSelector(tree);
 			default:
-					throw new ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' in Selector on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + ".");
+				throw new ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' in Selector on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + ".");
 		}
 	}
 	public static Statement buildStatement(Tree tree) throws Exception
@@ -369,7 +371,9 @@ public class Oberon0ASTTreeGenerator
 		assert(tree.getChild(0).getType() == Oberon0Parser.IDENT || tree.getChild(0).getType() == Oberon0Parser.ARRAY);
 		boolean isReference = false;
 		if (tree.getType() == Oberon0Parser.REFVAR)
+		{
 			isReference = true;
+		}
 		String type = tree.getChild(0).getText();
 		List<String> names = new Vector<String>();
 		for (int i=1;i<tree.getChildCount();i++)

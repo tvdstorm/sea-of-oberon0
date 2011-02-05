@@ -26,7 +26,9 @@ public class Module extends ASTNode implements IInvokableFunction
 		for (BodyDeclaration bodyDecl : bodyDeclarations)
 		{
 			if (bodyDecl instanceof AbstractTypeDeclaration)
+			{
 				bodyDecl.register(newEnvironment);
+			}
 		}
 	}
 	public void invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
@@ -35,12 +37,16 @@ public class Module extends ASTNode implements IInvokableFunction
 		assert(parameterValues != null);
 		// Modules don't have parameters
 		if (parameterValues.size() != 0)
+		{
 			throw new IncorrectNumberOfArgumentsException();
+		}
 		// Loop through all body declarations except type declarations
 		for (BodyDeclaration bodyDecl : bodyDeclarations)
 		{
 			if (!(bodyDecl instanceof AbstractTypeDeclaration))
+			{
 				bodyDecl.register(environment);
+			}
 		}
 		// Run the body of the module
 		body.run(environment);

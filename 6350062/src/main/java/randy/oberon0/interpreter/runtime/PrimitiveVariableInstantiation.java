@@ -18,10 +18,16 @@ public class PrimitiveVariableInstantiation implements IInstantiateableVariable
 	public Value instantiate(RuntimeEnvironment environment) throws RuntimeException
 	{
 		if (primitiveType == Type.INTEGER)
+		{
 			return new Integer(0);
+		}
 		else if (primitiveType == Type.BOOLEAN)
+		{
 			return new Boolean(false);
+		}
 		else
+		{
 			throw new UnknownTypeException(primitiveType.toString());
+		}
 	}
 }
