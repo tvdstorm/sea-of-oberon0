@@ -1,31 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Oberon-compiler build" default="Oberon-compiler" basedir=".">
+<project name="Oberon-compiler build" default="dist" basedir=".">
+	<!-- set global properties for this build -->
+	<property name="src" location="./src"/>
+	<property name="build" location="./build-output"/>
+	<property name="dist"  location="./build-output/dist"/>
+	
 	<taskdef name="javancss" classname="javancss.JavancssAntTask" />
 	<taskdef name="sablecc" classname="org.sablecc.ant.taskdef.Sablecc" />
-	<target name="Oberon-compiler">
-		<property name="classes" value="./oberon/test" />
-		<sablecc src="../grammar" OutputDirectory="." />		
+	
+	<target name="compile">
+		<sablecc src="${src}/../grammar" OutputDirectory="${src}" />		
 		<javancss
-			srcdir="."
+			srcdir="${src}"
 			includes="oberon/*.java, oberon/data/*.java, oberon/interpret/*.java, oberon/test/*.java"
 			generateReport="true"
-			outputfile="../build-output/javancss.xml"
+			outputfile="${build}/javancss.xml"
 			format="xml"
 		/>
 		<junit fork="yes" printsummary="yes" haltonfailure="no">
-    		<batchtest fork="yes" todir="../build-output" >
-      			<fileset dir="${classes}">
+    		<batchtest fork="yes" todir="${build}/JUnit/temp" >
+      			<fileset dir="${src}">
         			<include name="oberon/test/**" />
       			</fileset>
     		</batchtest>
     		<formatter type="xml" />
   		</junit>
 
-  		<junitreport todir="../build-output">
-    		<fileset dir="../build-output">
+  		<junitreport todir="${build}/JUnit">
+    		<fileset dir="${build}/JUnit/temp">
       			<include name="TEST-*.xml" />
 			</fileset>
-			<report todir="../build-output" />
+			<report todir="${build}/JUnit" />
   		</junitreport>
+	</target>
+	<target name="dist" depends="compile" description="generate the distribution" >
+	    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+		<jar jarfile="${dist}/Oberon.jar" basedir="${src}"/>
+		
+		<jdepend format="xml" outputfile="${build}/jdepend-report.xml">
+		    <exclude name="java.*"/>
+		    <exclude name="javax.*"/>
+			<exclude name="oberon.analysis"/>
+			<exclude name="oberon.lexer"/>
+			<exclude name="oberon.node"/>
+			<exclude name="oberon.parser"/>
+			<exclude name="oberon.test"/>
+		    <classespath>
+		    	<pathelement location=".\bin\oberon" />
+			</classespath>
+		</jdepend>
+		<xslt basedir="${build}" destdir="${build}"
+		         includes="jdepend-report.xml" 
+		         style="${ant.home}/etc/jdepend.xsl" />
 	</target>
 </project>
