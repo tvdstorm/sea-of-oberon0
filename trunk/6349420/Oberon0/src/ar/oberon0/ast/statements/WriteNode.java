@@ -1,5 +1,7 @@
 package ar.oberon0.ast.statements;
 
+import java.io.PrintStream;
+
 import junit.framework.Assert;
 import ar.oberon0.runtime.Context;
 import ar.oberon0.shared.Helper;
@@ -15,6 +17,18 @@ public class WriteNode implements Interpretable {
 	 */
 	private Interpretable message;
 	private String stringMessage;
+	private static PrintStream streamToWriteTo;
+
+	public static void setStreamToWriteTo(PrintStream stream) {
+		streamToWriteTo = stream;
+	}
+
+	private PrintStream getStreamToWriteTo() {
+		if (streamToWriteTo != null) {
+			return streamToWriteTo;
+		}
+		return System.out;
+	}
 
 	public WriteNode(final Interpretable message) {
 		Assert.assertNotNull("The message paramter can't be null.", message);
@@ -28,9 +42,9 @@ public class WriteNode implements Interpretable {
 	@Override
 	public final Object interpret(final Context context) throws TechnicalException {
 		if (this.message != null) {
-			System.out.println(Helper.getValue((Interpretable) this.message.interpret(context), context).toString());
+			getStreamToWriteTo().print(Helper.getValue((Interpretable) this.message.interpret(context), context).toString());
 		} else {
-			System.out.println(this.stringMessage);
+			getStreamToWriteTo().print(this.stringMessage);
 		}
 		return 0;
 	}

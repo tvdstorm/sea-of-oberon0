@@ -1,6 +1,15 @@
 package ar.oberon0.test;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import junit.framework.TestCase;
 
@@ -12,6 +21,8 @@ import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.TokenStream;
 
 import ar.oberon0.ast.dataTypes.SimpleType;
+import ar.oberon0.ast.statements.ReadNode;
+import ar.oberon0.ast.statements.WriteNode;
 import ar.oberon0.lists.ConstantList;
 import ar.oberon0.lists.DataFieldList;
 import ar.oberon0.parser.Oberon0Lexer;
@@ -29,14 +40,16 @@ public class Tester extends TestCase {
 	 * @throws IOException
 	 */
 	public static void main(String[] args) throws IOException {
+
 		Tester tester = new Tester();
-		tester.TestTypeIdentifier();
-		tester.TestRecordType();
+
 		tester.SmokeTest();
 
+		tester.TestTypeIdentifier();
+		tester.TestRecordType();
 		tester.TestIntegerDivision();
 		tester.TestProcedureWithParamters();
-		tester.TestProcedureWithoutVars();
+		tester.TestProcedureWithoutParameters();
 		tester.TestConstantImmutability();
 		tester.TestArray();
 		tester.TestConstants();
@@ -68,155 +81,144 @@ public class Tester extends TestCase {
 	}
 
 	private void SmokeTest() {
-		try {
-			CharStream stream = new ANTLRFileStream("ExtRef\\smoke.txt");
-			Oberon0Lexer lexer = new Oberon0Lexer(stream);
-			TokenStream tokenStream = new CommonTokenStream(lexer);
-			Oberon0Parser parser = new Oberon0Parser(tokenStream);
-			Interpretable interpreter = parser.module().module;
-			interpreter.interpret(null);
+		ByteArrayOutputStream resultStream = new ByteArrayOutputStream();
+		WriteNode.setStreamToWriteTo(new PrintStream(resultStream));
 
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (RecognitionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		ByteArrayOutputStream inputStream = new ByteArrayOutputStream();
+		PrintStream ps = new PrintStream(inputStream);
+		ps.println("1");
+		ps.println("4");
+		ps.println("3");
+		ps.println("5");
+		ps.println("2");
 
+		InputStream input = new ByteArrayInputStream(inputStream.toByteArray());
+		ReadNode.setStreamToReadFrom(input);
+
+		ExpectedResult expectedResult = new ExpectedResult();
+		expectedResult.addString("1");
+		expectedResult.addString("2");
+		expectedResult.addString("3");
+		expectedResult.addString("4");
+		expectedResult.addString("5");
+		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
+		ExecuteModule("ExtRef\\smoke.txt");
+
+		boolean passed = evaluator.evaluate(resultStream);
+		System.out.println(getResultString("Smoke test", passed));
 	}
 
 	private void TestTypeIdentifier() {
-		Oberon0Parser parser = GetParser("MODULE module; TYPE record = RECORD leeftijd : INTEGER; END;  t = leeftijd; leeftijd = INTEGER; VAR a : t; b : record; BEGIN b.leeftijd := 23; Write(b.leeftijd); a := 4; Write(a) END module");
-		Interpretable interpreter = null;
-		try {
-			interpreter = parser.module().module;
-		} catch (RecognitionException e) {
-			e.printStackTrace();
-		}
-		try {
-			Integer result = (Integer) interpreter.interpret(null);
-			System.out.println(getResultString("Type identifier", result.equals(0)));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		ByteArrayOutputStream resultStream = new ByteArrayOutputStream();
+		WriteNode.setStreamToWriteTo(new PrintStream(resultStream));
 
+		ExpectedResult expectedResult = new ExpectedResult();
+		expectedResult.addString("23");
+		expectedResult.addString("4");
+		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
+		ExecuteModule("ExtRef\\TypeIdentifierTest");
+
+		boolean passed = evaluator.evaluate(resultStream);
+		System.out.println(getResultString("Type identifier", passed));
 	}
 
 	private void TestRecordType() {
-		Oberon0Parser parser = GetParser("MODULE module; VAR persoon : RECORD leeftijd : INTEGER; getallen : ARRAY 10 OF INTEGER; adres : RECORD straat : INTEGER END; END; BEGIN persoon.leeftijd := 23; Write( persoon.leeftijd ); persoon.adres.straat := 2; Write(persoon.adres.straat); persoon.getallen[1] := 3; Write(persoon.getallen[1]) END module");
-		Interpretable interpreter = null;
-		try {
-			interpreter = parser.module().module;
-		} catch (RecognitionException e) {
-			e.printStackTrace();
-		}
-		try {
-			Integer result = (Integer) interpreter.interpret(null);
-			System.out.println(getResultString("Record Type", result.equals(0)));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		ByteArrayOutputStream resultStream = new ByteArrayOutputStream();
+		WriteNode.setStreamToWriteTo(new PrintStream(resultStream));
 
+		ExpectedResult expectedResult = new ExpectedResult();
+		expectedResult.addString("23");
+		expectedResult.addString("2");
+		expectedResult.addString("3");
+		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
+		ExecuteModule("ExtRef\\RecordTypeTest");
+
+		boolean passed = evaluator.evaluate(resultStream);
+		System.out.println(getResultString("Record Type", passed));
 	}
 
 	private void TestIntegerDivision() {
-		Oberon0Parser parser = GetParser("MODULE module; BEGIN Write( 7 DIV 2 ) END module");
-		Interpretable interpreter = null;
-		try {
-			interpreter = parser.module().module;
-		} catch (RecognitionException e) {
-			e.printStackTrace();
-		}
-		try {
-			Integer result = (Integer) interpreter.interpret(null);
-			System.out.println(getResultString("Procedure with parameters", result.equals(0)));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		ByteArrayOutputStream resultStream = new ByteArrayOutputStream();
+		WriteNode.setStreamToWriteTo(new PrintStream(resultStream));
+
+		ExpectedResult expectedResult = new ExpectedResult();
+		expectedResult.addString("3");
+		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
+		ExecuteModule("ExtRef\\DivisionTest");
+
+		boolean passed = evaluator.evaluate(resultStream);
+		System.out.println(getResultString("Division", passed));
 	}
 
 	private void TestProcedureWithParamters() {
-		Oberon0Parser parser = GetParser("MODULE module; VAR i: INTEGER; PROCEDURE PrintHallo(VAR message: INTEGER); BEGIN Write(\"hallo\"); Write(message); message := 3; Write(message) END PrintHallo; BEGIN i := 1; PrintHallo(i); Write(i) END module");
-		Interpretable interpreter = null;
-		try {
-			interpreter = parser.module().module;
-		} catch (RecognitionException e) {
-			e.printStackTrace();
-		}
-		try {
-			Integer result = (Integer) interpreter.interpret(null);
-			System.out.println(getResultString("Procedure with parameters", result.equals(0)));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		ByteArrayOutputStream resultStream = new ByteArrayOutputStream();
+		WriteNode.setStreamToWriteTo(new PrintStream(resultStream));
+
+		ExpectedResult expectedResult = new ExpectedResult();
+		expectedResult.addString("hallo ");
+		expectedResult.addString("1");
+		expectedResult.addString("3");
+		expectedResult.addString("3");
+		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
+		ExecuteModule("ExtRef\\ProcedureWithParametersTest");
+
+		boolean passed = evaluator.evaluate(resultStream);
+		System.out.println(getResultString("Procedure with parameters", passed));
 	}
 
-	private void TestProcedureWithoutVars() {
-		Oberon0Parser parser = GetParser("MODULE module; PROCEDURE PrintHallo; BEGIN Write(\"hallo\") END PrintHallo; BEGIN PrintHallo END module");
-		Interpretable interpreter = null;
-		try {
-			interpreter = parser.module().module;
-		} catch (RecognitionException e) {
-			e.printStackTrace();
-		}
-		try {
-			Integer result = (Integer) interpreter.interpret(null);
-			System.out.println(getResultString("Procedure without vars", result.equals(0)));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	private void TestProcedureWithoutParameters() {
+		ByteArrayOutputStream resultStream = new ByteArrayOutputStream();
+		WriteNode.setStreamToWriteTo(new PrintStream(resultStream));
 
-	private void TestArray() {
-		Oberon0Parser parser = GetParser("MODULE module;CONST length = 5; VAR input: ARRAY length OF INTEGER; BEGIN input[2] := 5; Write(input[2]); input[2] := 9; Write(input[2]) END module");
-		Interpretable interpreter = null;
-		try {
-			interpreter = parser.module().module;
-		} catch (RecognitionException e) {
-			e.printStackTrace();
-		}
-		try {
-			Integer result = (Integer) interpreter.interpret(null);
-			System.out.println(getResultString("constant", result.equals(0)));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+		ExpectedResult expectedResult = new ExpectedResult();
+		expectedResult.addString("hallo ");
 
-	private void TestConstants() {
-		Oberon0Parser parser = GetParser("MODULE module;CONST const = 9; BEGIN Write(const) END module");
-		Interpretable interpreter = null;
-		try {
-			interpreter = parser.module().module;
-		} catch (RecognitionException e) {
-			e.printStackTrace();
-		}
-		try {
-			Integer result = (Integer) interpreter.interpret(null);
-			System.out.println(getResultString("constant", result.equals(0)));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
+		ExecuteModule("ExtRef\\ProcedureWithoutParametersTest");
+
+		boolean passed = evaluator.evaluate(resultStream);
+		System.out.println(getResultString("Procedure without parameters", passed));
 	}
 
 	private void TestConstantImmutability() {
-		Oberon0Parser parser = GetParser("MODULE module;CONST const = 9; BEGIN Write(const); const := 10; Write(const) END module");
-		Interpretable interpreter = null;
-		try {
-			interpreter = parser.module().module;
-		} catch (RecognitionException e) {
-			e.printStackTrace();
-		}
-		try {
-			Integer result = (Integer) interpreter.interpret(null);
-			System.out.println(getResultString("constant", result.equals(0)));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		ByteArrayOutputStream resultStream = new ByteArrayOutputStream();
+		WriteNode.setStreamToWriteTo(new PrintStream(resultStream));
+
+		ExpectedResult expectedResult = new ExpectedResult();
+		expectedResult.addString("9");
+		expectedResult.addString("9");
+		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
+		ExecuteModule("ExtRef\\ConstantImmutabilityTest");
+
+		boolean passed = evaluator.evaluate(resultStream);
+		System.out.println(getResultString("Constant immutability", passed));
+	}
+
+	private void TestArray() {
+		ByteArrayOutputStream resultStream = new ByteArrayOutputStream();
+		WriteNode.setStreamToWriteTo(new PrintStream(resultStream));
+
+		ExpectedResult expectedResult = new ExpectedResult();
+		expectedResult.addString("5");
+		expectedResult.addString("9");
+		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
+		ExecuteModule("ExtRef\\ArrayTest");
+
+		boolean passed = evaluator.evaluate(resultStream);
+		System.out.println(getResultString("Array", passed));
+	}
+
+	private void TestConstants() {
+		ByteArrayOutputStream resultStream = new ByteArrayOutputStream();
+		WriteNode.setStreamToWriteTo(new PrintStream(resultStream));
+
+		ExpectedResult expectedResult = new ExpectedResult();
+		expectedResult.addString("9");
+		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
+		ExecuteModule("ExtRef\\ConstantTest");
+
+		boolean passed = evaluator.evaluate(resultStream);
+		System.out.println(getResultString("Constant", passed));
 	}
 
 	private void TestIf() {
@@ -468,10 +470,84 @@ public class Tester extends TestCase {
 		}
 	}
 
+	private void ExecuteModule(String pathOfSource) {
+		try {
+			CharStream stream = new ANTLRFileStream(pathOfSource);
+			Oberon0Lexer lexer = new Oberon0Lexer(stream);
+			TokenStream tokenStream = new CommonTokenStream(lexer);
+			Oberon0Parser parser = new Oberon0Parser(tokenStream);
+			Interpretable interpreter = parser.module().module;
+			interpreter.interpret(null);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (RecognitionException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	private String getResultString(String rule, boolean passed) {
 		if (passed)
-			return "passed test for rule " + rule + ".";
+			return "passed test for " + rule + ".";
 		else
-			return "Failed test for rule " + rule + ".";
+			return "Failed test for " + rule + ".";
+	}
+
+	private class TestResultEvaluator {
+		private ExpectedResult expectedResult;
+
+		protected TestResultEvaluator(ExpectedResult expectedResult) {
+			this.expectedResult = expectedResult;
+		}
+
+		protected boolean evaluate(ByteArrayOutputStream outputStream) {
+			BufferedReader actualResultReader = getReaderForOutputStream(outputStream);
+			for (String expectedString : expectedResult) {
+				String actualString;
+				try {
+					actualString = actualResultReader.readLine();
+				} catch (Exception e) {
+					return false;
+				}
+				if (actualString == null) {
+					return false;
+				}
+				if (!actualString.equals(expectedString)) {
+					return false;
+				}
+			}
+
+			try {
+				if (actualResultReader.readLine() != null) {
+					return false;
+				}
+			} catch (Exception e) {
+				return false;
+			}
+			return true;
+		}
+
+		private BufferedReader getReaderForOutputStream(ByteArrayOutputStream outputStream) {
+			InputStream input = new ByteArrayInputStream(outputStream.toByteArray());
+			return new BufferedReader(new InputStreamReader(input));
+		}
+	}
+
+	private class ExpectedResult implements Iterable<String> {
+		List<String> expectedStrings;
+
+		private ExpectedResult() {
+			this.expectedStrings = new ArrayList<String>();
+		}
+
+		protected void addString(String expectedString) {
+			this.expectedStrings.add(expectedString);
+		}
+
+		public Iterator<String> iterator() {
+			return this.expectedStrings.iterator();
+		}
 	}
 }
