@@ -1,12 +1,11 @@
-package oberon.data;
+package oberon;
 
 import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Stack;
 
-import oberon.Declaration;
-import oberon.IProcedure;
+import oberon.data.IntegerArrayType;
 import oberon.procedures.AbstractProcedure;
 import oberon.procedures.ProcedureHeading;
 
@@ -31,7 +30,7 @@ public class VariableManager {
 		currentScope.addNewDeclaration(declaration);
 	}
 	
-	public void enterNewScope(final List<AbstractDataType> actualProcedureParameters, 
+	public void enterNewScope(final List<IDataType> actualProcedureParameters, 
 			final ProcedureHeading currentProcedure){
 		//preserve the old scope, put it on the stack
 		scopes.add(currentScope);
@@ -47,7 +46,7 @@ public class VariableManager {
 		}
 	}
 
-	public AbstractDataType getVariable(final String name) {
+	public IDataType getVariable(final String name) {
 		return currentScope.getVariable(name);
 	}
 	
@@ -64,37 +63,37 @@ public class VariableManager {
 	}
 	
 	class Scope {		
-		private final AbstractMap<String, AbstractDataType> variables;
-		private final AbstractMap<String, ProcedureHeading> procedures;
-		private final AbstractMap<String, AbstractProcedure> systemProcedures;
+		private final AbstractMap<String, IDataType> variables;
+		private final AbstractMap<String, IProcedure> procedures;
+		private final AbstractMap<String, IProcedure> systemProcedures;
 		
 		Scope(){
-			variables = new HashMap<String, AbstractDataType>();
-			procedures = new HashMap<String, ProcedureHeading>();
-			systemProcedures = new HashMap<String, AbstractProcedure>();
+			variables = new HashMap<String, IDataType>();
+			procedures = new HashMap<String, IProcedure>();
+			systemProcedures = new HashMap<String, IProcedure>();
+		}
+
+		Scope(final AbstractMap<String, IDataType> inputVariables, 
+				final AbstractMap<String,IProcedure> inputPprocedures, 
+				final AbstractMap<String, IProcedure> inputSysProcedures){
+			variables = inputVariables;
+			systemProcedures = inputSysProcedures;
+			procedures = inputPprocedures;
 		}
 		
 		public void addSystemProcedure(final AbstractProcedure procedure) {
 			systemProcedures.put(procedure.getName(), procedure);
 		}
 
-		Scope(final AbstractMap<String, AbstractDataType> inputVariables, 
-				final AbstractMap<String,ProcedureHeading> inputPprocedures, 
-				final AbstractMap<String, AbstractProcedure> inputSysProcedures){
-			variables = inputVariables;
-			systemProcedures = inputSysProcedures;
-			procedures = inputPprocedures;
-		}
-
-		private Scope createNewScope(final List<AbstractDataType> actualProcedureParameters, 
-				final ProcedureHeading currentProcedure) {
-			final HashMap<String, AbstractDataType> variables = new HashMap<String, AbstractDataType>();
+		private Scope createNewScope(final List<IDataType> actualProcedureParameters, 
+				final IProcedure currentProcedure) {
+			final HashMap<String, IDataType> variables = new HashMap<String, IDataType>();
 			
-			for (AbstractDataType actualParam : actualProcedureParameters){
+			for (IDataType actualParam : actualProcedureParameters){
 				variables.put(actualParam.getName(), actualParam);
 			}
 			
-			final HashMap<String, ProcedureHeading> procedures = new HashMap<String, ProcedureHeading>();
+			final HashMap<String, IProcedure> procedures = new HashMap<String, IProcedure>();
 			procedures.put(currentProcedure.getName(), currentProcedure);
 			
 			return new Scope(variables, procedures, systemProcedures);
@@ -102,7 +101,7 @@ public class VariableManager {
 		
 		public void addNewDeclaration(final Declaration declaration)
 		{
-			for (AbstractDataType actualParam : declaration.getVariables()){
+			for (IDataType actualParam : declaration.getVariables()){
 				variables.put(actualParam.getName(), actualParam);	
 				
 				if (actualParam instanceof IntegerArrayType){
@@ -110,12 +109,12 @@ public class VariableManager {
 				}
 			}
 			
-			for (ProcedureHeading heading : declaration.getProcedures()){
+			for (IProcedure heading : declaration.getProcedures()){
 				addProcedure(heading);
 			}
 		}
 		
-		protected void addProcedure(final ProcedureHeading procedure) {
+		protected void addProcedure(final IProcedure procedure) {
 			procedures.put(procedure.getName(), procedure);
 		}
 
@@ -134,7 +133,7 @@ public class VariableManager {
 			return procedure;
 		}
 
-		public AbstractDataType getVariable(final String variableName) {
+		public IDataType getVariable(final String variableName) {
 			if (variables.containsKey(variableName)){
 					return variables.get(variableName);
 			}

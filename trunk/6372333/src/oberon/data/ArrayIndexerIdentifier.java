@@ -1,12 +1,14 @@
 package oberon.data;
 
+import oberon.IDataType;
 import oberon.IExpression;
+import oberon.IIdentifier;
 
 public class ArrayIndexerIdentifier extends AbstractIdentifier {
 	private final IExpression indexExpression;
-	private final AbstractIdentifier selector;
+	private final IIdentifier selector;
 
-	public ArrayIndexerIdentifier(final AbstractIdentifier indexSelector, 
+	public ArrayIndexerIdentifier(final IIdentifier indexSelector, 
 			final IExpression expression){
 		indexExpression = expression;
 		selector = indexSelector;
@@ -19,7 +21,7 @@ public class ArrayIndexerIdentifier extends AbstractIdentifier {
 	}
 
 	private IntegerArrayType getDataTypeAsArrayType() {
-		final AbstractDataType type = selector.getDataTypeValue();
+		final IDataType type = selector.getDataTypeValue();
 		if (!(type instanceof IntegerArrayType)) {
 			//TODO: throw exception
 		}
@@ -28,7 +30,7 @@ public class ArrayIndexerIdentifier extends AbstractIdentifier {
 	}
 
 	@Override
-	public AbstractDataType getDataTypeValue() {
+	public IDataType getDataTypeValue() {
 		return new IntegerArrayIndexerDataType(getDataTypeAsArrayType(), indexExpression.evalAsInt());
 	}
 

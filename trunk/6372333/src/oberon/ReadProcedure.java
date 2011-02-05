@@ -7,10 +7,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import oberon.data.AbstractDataType;
 import oberon.data.IntegerArrayType;
-import oberon.data.VariableManager;
-import oberon.procedures.ProcedureHeading;
 import oberon.procedures.SystemMethodCall;
 
 class ReadProcedure implements IStatement {
@@ -48,8 +45,8 @@ class ReadProcedure implements IStatement {
 		final LinkedList<IStatement> statements = new LinkedList<IStatement>();
 		statements.add(new ReadProcedure());
 		
-		final List<AbstractDataType> variables = new ArrayList<AbstractDataType>();
-		final List<ProcedureHeading> procedures = new ArrayList<ProcedureHeading>();
+		final List<IDataType> variables = new ArrayList<IDataType>();
+		final List<IProcedure> procedures = new ArrayList<IProcedure>();
 		final Declaration declaration = new Declaration(variables, procedures);
 		
 		final ProcedureBody body = new ProcedureBody(declaration, new StatementSequence(statements));

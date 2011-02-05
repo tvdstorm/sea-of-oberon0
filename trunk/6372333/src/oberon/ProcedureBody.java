@@ -2,7 +2,6 @@ package oberon;
 
 import java.io.IOException;
 
-import oberon.data.VariableManager;
 
 public class ProcedureBody {
 	private final StatementSequence body;

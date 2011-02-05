@@ -1,5 +1,7 @@
 package oberon.data;
 
+import oberon.IDataType;
+
 public class IntegerType extends AbstractDataType {
 	private int value;
 	private final Boolean isConstant;
@@ -21,15 +23,10 @@ public class IntegerType extends AbstractDataType {
 	}
 
 	@Override
-	public AbstractDataType deepCopy(final String newName) {
+	public IDataType copy(final String newName) {
 		return new IntegerType(newName, value, isConstant);
 	}
-
-	@Override
-	public AbstractDataType shallowCopy(final String newName) {
-		return new IntegerType(newName, value, isConstant);
-	}
-
+	
 	@Override
 	public void setValue(final int inputValue){
 		value = inputValue;

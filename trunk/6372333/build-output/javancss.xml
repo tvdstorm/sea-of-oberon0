@@ -1,27 +1,27 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-02-05</date>
-  <time>15:40:06</time>
+  <time>16:12:41</time>
   <packages>
     <package>
       <name>oberon</name>
-      <classes>12</classes>
-      <functions>24</functions>
-      <ncss>213</ncss>
+      <classes>16</classes>
+      <functions>48</functions>
+      <ncss>292</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>5</single_comment_lines>
+      <single_comment_lines>7</single_comment_lines>
       <multi_comment_lines>2</multi_comment_lines>
     </package>
     <package>
       <name>oberon.data</name>
-      <classes>10</classes>
-      <functions>56</functions>
-      <ncss>199</ncss>
+      <classes>8</classes>
+      <functions>34</functions>
+      <ncss>120</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>4</single_comment_lines>
-      <multi_comment_lines>0</multi_comment_lines>
+      <single_comment_lines>2</single_comment_lines>
+      <multi_comment_lines>18</multi_comment_lines>
     </package>
     <package>
       <name>oberon.interpret</name>
@@ -44,20 +44,20 @@
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <total>
-      <classes>43</classes>
-      <functions>148</functions>
+      <classes>45</classes>
+      <functions>150</functions>
       <ncss>907</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>33</single_comment_lines>
-      <multi_comment_lines>2</multi_comment_lines>
+      <multi_comment_lines>20</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>4.00</td><td>43.00</td><td>148.00</td><td>907.00</td><td>0.00</td><td>Project</td></tr>
-      <tr><td></td><td>10.75</td><td>37.00</td><td>226.75</td><td>0.00</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.44</td><td>21.09</td><td>0.00</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>6.13</td><td>0.00</td><td>Function</td></tr>
+      <tr><td>4.00</td><td>45.00</td><td>150.00</td><td>907.00</td><td>0.00</td><td>Project</td></tr>
+      <tr><td></td><td>11.25</td><td>37.50</td><td>226.75</td><td>0.00</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.33</td><td>20.16</td><td>0.00</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>6.05</td><td>0.00</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -84,7 +84,21 @@
       <javadocs>0</javadocs>
     </object>
     <object>
+      <name>oberon.IDataType</name>
+      <ncss>5</ncss>
+      <functions>4</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
       <name>oberon.IExpression</name>
+      <ncss>4</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon.IIdentifier</name>
       <ncss>3</ncss>
       <functions>2</functions>
       <classes>0</classes>
@@ -133,6 +147,20 @@
       <javadocs>0</javadocs>
     </object>
     <object>
+      <name>oberon.VariableManager</name>
+      <ncss>72</ncss>
+      <functions>9</functions>
+      <classes>1</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon.VariableManager.Scope</name>
+      <ncss>44</ncss>
+      <functions>8</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
       <name>oberon.WriteCall</name>
       <ncss>22</ncss>
       <functions>2</functions>
@@ -148,8 +176,8 @@
     </object>
     <object>
       <name>oberon.data.AbstractDataType</name>
-      <ncss>10</ncss>
-      <functions>6</functions>
+      <ncss>9</ncss>
+      <functions>5</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -169,29 +197,29 @@
     </object>
     <object>
       <name>oberon.data.ExpressionDataType</name>
-      <ncss>11</ncss>
-      <functions>4</functions>
+      <ncss>9</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>oberon.data.IntegerArrayIndexerDataType</name>
-      <ncss>19</ncss>
-      <functions>6</functions>
+      <ncss>17</ncss>
+      <functions>5</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>oberon.data.IntegerArrayType</name>
-      <ncss>23</ncss>
-      <functions>8</functions>
+      <ncss>21</ncss>
+      <functions>7</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>oberon.data.IntegerType</name>
-      <ncss>17</ncss>
-      <functions>6</functions>
+      <ncss>15</ncss>
+      <functions>5</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -199,20 +227,6 @@
       <name>oberon.data.VariableIdentifier</name>
       <ncss>9</ncss>
       <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon.data.VariableManager</name>
-      <ncss>72</ncss>
-      <functions>9</functions>
-      <classes>1</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon.data.VariableManager.Scope</name>
-      <ncss>44</ncss>
-      <functions>8</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -364,8 +378,8 @@
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>16.12</ncss>
-      <functions>3.44</functions>
+      <ncss>15.40</ncss>
+      <functions>3.33</functions>
       <classes>0.02</classes>
       <javadocs>0.00</javadocs>
     </averages>
@@ -374,7 +388,7 @@
 
   <functions>
     <function>
-      <name>oberon.Declaration.Declaration(AbstractDataType,ProcedureHeading)</name>
+      <name>oberon.Declaration.Declaration(IDataType,IProcedure)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -416,6 +430,30 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>oberon.IDataType.getValue()</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.IDataType.copy(String)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.IDataType.getName()</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.IDataType.setValue(int)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>oberon.IExpression.evalAsInt()</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
@@ -423,6 +461,24 @@
     </function>
     <function>
       <name>oberon.IExpression.evalAsBoolean()</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.IExpression.copy(String)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.IIdentifier.getDataTypeValue()</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.IIdentifier.getSelectorValue()</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -494,6 +550,108 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>oberon.VariableManager.VariableManager()</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.VariableManager.getInstance()</name>
+      <ncss>4</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.VariableManager.addNewDeclaration(Declaration)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.VariableManager.enterNewScope(IDataType,ProcedureHeading)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.VariableManager.leaveScope()</name>
+      <ncss>3</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.VariableManager.getVariable(String)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.VariableManager.addProcedure(ProcedureHeading)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.VariableManager.addSystemProcedure(AbstractProcedure)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.VariableManager.getProcedure(String)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.VariableManager.Scope.Scope()</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.VariableManager.Scope.Scope(IDataType,IProcedure,IProcedure)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.VariableManager.Scope.addSystemProcedure(AbstractProcedure)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.VariableManager.Scope.createNewScope(IDataType,IProcedure)</name>
+      <ncss>7</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.VariableManager.Scope.addNewDeclaration(Declaration)</name>
+      <ncss>7</ncss>
+      <ccn>4</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.VariableManager.Scope.addProcedure(IProcedure)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.VariableManager.Scope.getProcedure(String)</name>
+      <ncss>9</ncss>
+      <ccn>4</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.VariableManager.Scope.getVariable(String)</name>
+      <ncss>5</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>oberon.WriteCall.eval()</name>
       <ncss>5</ncss>
       <ccn>1</ccn>
@@ -530,13 +688,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.data.AbstractDataType.deepCopy(String)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.AbstractDataType.shallowCopy(String)</name>
+      <name>oberon.data.AbstractDataType.copy(String)</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -566,7 +718,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.data.ArrayIndexerIdentifier.ArrayIndexerIdentifier(AbstractIdentifier,IExpression)</name>
+      <name>oberon.data.ArrayIndexerIdentifier.ArrayIndexerIdentifier(IIdentifier,IExpression)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -602,13 +754,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.data.ExpressionDataType.deepCopy(String)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.ExpressionDataType.shallowCopy(String)</name>
+      <name>oberon.data.ExpressionDataType.copy(String)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -632,13 +778,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.data.IntegerArrayIndexerDataType.deepCopy(String)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.IntegerArrayIndexerDataType.shallowCopy(String)</name>
+      <name>oberon.data.IntegerArrayIndexerDataType.copy(String)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -686,13 +826,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.data.IntegerArrayType.deepCopy(String)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.IntegerArrayType.shallowCopy(String)</name>
+      <name>oberon.data.IntegerArrayType.copy(String)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -716,13 +850,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.data.IntegerType.deepCopy(String)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.IntegerType.shallowCopy(String)</name>
+      <name>oberon.data.IntegerType.copy(String)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -749,108 +877,6 @@
       <name>oberon.data.VariableIdentifier.getDataTypeValue()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.VariableManager.VariableManager()</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.VariableManager.getInstance()</name>
-      <ncss>4</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.VariableManager.addNewDeclaration(Declaration)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.VariableManager.enterNewScope(AbstractDataType,ProcedureHeading)</name>
-      <ncss>4</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.VariableManager.leaveScope()</name>
-      <ncss>3</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.VariableManager.getVariable(String)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.VariableManager.addProcedure(ProcedureHeading)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.VariableManager.addSystemProcedure(AbstractProcedure)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.VariableManager.getProcedure(String)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.VariableManager.Scope.Scope()</name>
-      <ncss>4</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.VariableManager.Scope.addSystemProcedure(AbstractProcedure)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.VariableManager.Scope.Scope(AbstractDataType,ProcedureHeading,AbstractProcedure)</name>
-      <ncss>4</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.VariableManager.Scope.createNewScope(AbstractDataType,ProcedureHeading)</name>
-      <ncss>7</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.VariableManager.Scope.addNewDeclaration(Declaration)</name>
-      <ncss>7</ncss>
-      <ccn>4</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.VariableManager.Scope.addProcedure(ProcedureHeading)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.VariableManager.Scope.getProcedure(String)</name>
-      <ncss>9</ncss>
-      <ccn>4</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.VariableManager.Scope.getVariable(String)</name>
-      <ncss>5</ncss>
-      <ccn>3</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -1262,8 +1288,8 @@
       <javadocs>0</javadocs>
     </function>
     <function_averages>
-      <ncss>3.72</ncss>
-      <ccn>1.41</ccn>
+      <ncss>3.65</ncss>
+      <ccn>1.40</ccn>
       <javadocs>0.00</javadocs>
     </function_averages>
     <ncss>907.00</ncss>

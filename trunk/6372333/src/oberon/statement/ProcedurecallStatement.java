@@ -8,7 +8,7 @@ import java.util.Queue;
 import oberon.IExpression;
 import oberon.IProcedure;
 import oberon.IStatement;
-import oberon.data.VariableManager;
+import oberon.VariableManager;
 
 public class ProcedurecallStatement implements IStatement {
 	final private List<IExpression> procParameters;

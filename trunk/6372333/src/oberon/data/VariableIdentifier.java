@@ -1,5 +1,8 @@
 package oberon.data;
 
+import oberon.IDataType;
+import oberon.VariableManager;
+
 public class VariableIdentifier extends AbstractIdentifier {
 	private final String name;
 
@@ -9,12 +12,12 @@ public class VariableIdentifier extends AbstractIdentifier {
 	
 	@Override
 	public int getSelectorValue() {
-		final AbstractDataType datatype = VariableManager.getInstance().getVariable(name);
+		final IDataType datatype = VariableManager.getInstance().getVariable(name);
 		return datatype.getValue();
 	}
 
 	@Override
-	public AbstractDataType getDataTypeValue() {
+	public IDataType getDataTypeValue() {
 		return VariableManager.getInstance().getVariable(name);
 	}
 

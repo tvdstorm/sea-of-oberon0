@@ -1,7 +1,8 @@
 package oberon.data;
 
-public class IntegerArrayIndexerDataType extends AbstractDataType {
+import oberon.IDataType;
 
+public class IntegerArrayIndexerDataType extends AbstractDataType {
 	private final IntegerArrayType array;
 	private final int index;
 
@@ -25,12 +26,7 @@ public class IntegerArrayIndexerDataType extends AbstractDataType {
 	}
 
 	@Override
-	public AbstractDataType deepCopy(final String newName) {
-		return new IntegerArrayIndexerDataType(newName, array, index);
-	}
-
-	@Override
-	public AbstractDataType shallowCopy(final String newName) {
+	public IDataType copy(final String newName) {
 		return new IntegerArrayIndexerDataType(newName, array, index);
 	}
 	
