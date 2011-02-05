@@ -2,7 +2,7 @@ package oberon.expressions;
 
 import oberon.IDataType;
 import oberon.IExpression;
-import oberon.data.IntegerDataType;
+import oberon.data.VariableDataType;
 
 /**
  * The Class AbstractExpression, super class for all expressions.
@@ -45,7 +45,7 @@ public abstract class AbstractExpression implements IExpression {
 		IDataType resultType = null;
 		if (	this instanceof MathematicalExpression ||
 				this instanceof AbstractIntegerExpression){
-			resultType = new IntegerDataType(newName, this.evalAsInt(), false);
+			resultType = new VariableDataType(newName, this.evalAsInt(), false);
 		}
 		else if (this instanceof IdentifierExpression){
 			final IdentifierExpression selectorExpression = ((IdentifierExpression)this);

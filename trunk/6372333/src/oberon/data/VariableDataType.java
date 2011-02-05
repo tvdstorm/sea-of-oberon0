@@ -3,9 +3,9 @@ package oberon.data;
 import oberon.IDataType;
 
 /**
- * The Class IntegerDataType.
+ * The Class VariableDataType, stores a pointer to the value of a variable.
  */
-public class IntegerDataType extends AbstractDataType {
+public class VariableDataType extends AbstractDataType {
 	
 	/** The value. */
 	private int value;
@@ -14,12 +14,12 @@ public class IntegerDataType extends AbstractDataType {
 	private final Boolean isConstant;
 
 	/**
-	 * Instantiates a new integer data type.
+	 * Instantiates a new variable data type.
 	 *
 	 * @param name the new name of the instance
 	 * @param isConst true if the variable is a constant
 	 */
-	public IntegerDataType(final String name, final Boolean isConst) {
+	public VariableDataType(final String name, final Boolean isConst) {
 		super(name);
 		isConstant = isConst;
 	}
@@ -31,7 +31,7 @@ public class IntegerDataType extends AbstractDataType {
 	 * @param inputValue the value
 	 * @param isConst true if the variable is a constant
 	 */
-	public IntegerDataType(final String name, final int inputValue, 
+	public VariableDataType(final String name, final int inputValue, 
 			final Boolean isConst) {
 		this (name, isConst);
 		value = inputValue;
@@ -50,7 +50,7 @@ public class IntegerDataType extends AbstractDataType {
 	 */
 	@Override
 	public IDataType copy(final String newName) {
-		return new IntegerDataType(newName, value, isConstant);
+		return new VariableDataType(newName, value, isConstant);
 	}
 	
 	/* (non-Javadoc)

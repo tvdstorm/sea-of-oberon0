@@ -7,7 +7,7 @@ import oberon.IDataType;
 import oberon.IExpression;
 import oberon.data.ExpressionDataType;
 import oberon.data.IntegerArrayDataType;
-import oberon.data.IntegerDataType;
+import oberon.data.VariableDataType;
 import oberon.node.AArrayType;
 import oberon.node.AConstdecl;
 import oberon.node.AConstdeclaration;
@@ -41,7 +41,7 @@ class VarInterpreter extends AbstractBaseInterpreter<List<IDataType>>{
 				list.add(new IntegerArrayDataType(name.toString().trim(), lengthExpression));
 			}
 			else {
-				list.add(new IntegerDataType(name.toString().trim(), false));
+				list.add(new VariableDataType(name.toString().trim(), false));
 			}
 		}
 	}
@@ -60,7 +60,7 @@ class VarInterpreter extends AbstractBaseInterpreter<List<IDataType>>{
 		final PExp exp = node.getExp();
 		if (exp instanceof AIntegerExp) {
 			final int value = Integer.parseInt(((AIntegerExp)exp).getInteger().getText());
-			list.add(new IntegerDataType(name, value, true));
+			list.add(new VariableDataType(name, value, true));
 		}
 		else {
 			final IExpression expression = ExpInterpreterFactory.getExpression(node.getExp());

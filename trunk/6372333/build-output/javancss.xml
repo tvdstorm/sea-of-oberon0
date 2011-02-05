@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-02-05</date>
-  <time>19:30:22</time>
+  <time>20:06:52</time>
   <packages>
     <package>
       <name>oberon</name>
@@ -28,36 +28,36 @@
       <classes>20</classes>
       <functions>67</functions>
       <ncss>494</ncss>
-      <javadocs>0</javadocs>
-      <javadoc_lines>0</javadoc_lines>
+      <javadocs>33</javadocs>
+      <javadoc_lines>160</javadoc_lines>
       <single_comment_lines>4</single_comment_lines>
-      <multi_comment_lines>0</multi_comment_lines>
+      <multi_comment_lines>149</multi_comment_lines>
     </package>
     <package>
       <name>oberon.test</name>
       <classes>1</classes>
       <functions>1</functions>
-      <ncss>4</ncss>
+      <ncss>24</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>20</single_comment_lines>
+      <single_comment_lines>1</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <total>
       <classes>44</classes>
       <functions>154</functions>
-      <ncss>932</ncss>
-      <javadocs>80</javadocs>
-      <javadoc_lines>374</javadoc_lines>
-      <single_comment_lines>34</single_comment_lines>
-      <multi_comment_lines>112</multi_comment_lines>
+      <ncss>952</ncss>
+      <javadocs>113</javadocs>
+      <javadoc_lines>534</javadoc_lines>
+      <single_comment_lines>15</single_comment_lines>
+      <multi_comment_lines>261</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>4.00</td><td>44.00</td><td>154.00</td><td>932.00</td><td>80.00</td><td>Project</td></tr>
-      <tr><td></td><td>11.00</td><td>38.50</td><td>233.00</td><td>20.00</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.50</td><td>21.18</td><td>1.82</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>6.05</td><td>0.52</td><td>Function</td></tr>
+      <tr><td>4.00</td><td>44.00</td><td>154.00</td><td>952.00</td><td>113.00</td><td>Project</td></tr>
+      <tr><td></td><td>11.00</td><td>38.50</td><td>238.00</td><td>28.25</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.50</td><td>21.64</td><td>2.57</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>6.18</td><td>0.73</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -189,13 +189,6 @@
       <javadocs>3</javadocs>
     </object>
     <object>
-      <name>oberon.data.IntegerDataType</name>
-      <ncss>15</ncss>
-      <functions>5</functions>
-      <classes>0</classes>
-      <javadocs>3</javadocs>
-    </object>
-    <object>
       <name>oberon.data.RecordDataType</name>
       <ncss>18</ncss>
       <functions>5</functions>
@@ -217,6 +210,13 @@
       <javadocs>3</javadocs>
     </object>
     <object>
+      <name>oberon.data.VariableDataType</name>
+      <ncss>15</ncss>
+      <functions>5</functions>
+      <classes>0</classes>
+      <javadocs>3</javadocs>
+    </object>
+    <object>
       <name>oberon.data.VariableIdentifier</name>
       <ncss>9</ncss>
       <functions>3</functions>
@@ -228,133 +228,133 @@
       <ncss>4</ncss>
       <functions>2</functions>
       <classes>0</classes>
-      <javadocs>0</javadocs>
+      <javadocs>3</javadocs>
     </object>
     <object>
       <name>oberon.interpret.AssignmentInterpreter</name>
       <ncss>12</ncss>
       <functions>3</functions>
       <classes>0</classes>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </object>
     <object>
       <name>oberon.interpret.ComparisonExpressionInterpreter</name>
       <ncss>38</ncss>
       <functions>9</functions>
       <classes>0</classes>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </object>
     <object>
       <name>oberon.interpret.DeclarationsInterpreter</name>
       <ncss>18</ncss>
       <functions>2</functions>
       <classes>0</classes>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </object>
     <object>
       <name>oberon.interpret.ExpIntegerInterpreter</name>
       <ncss>6</ncss>
       <functions>2</functions>
       <classes>0</classes>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </object>
     <object>
       <name>oberon.interpret.ExpInterpreterFactory</name>
       <ncss>35</ncss>
       <functions>6</functions>
       <classes>0</classes>
-      <javadocs>0</javadocs>
+      <javadocs>7</javadocs>
     </object>
     <object>
       <name>oberon.interpret.FpSectionInterpreter</name>
       <ncss>20</ncss>
       <functions>3</functions>
       <classes>0</classes>
-      <javadocs>0</javadocs>
+      <javadocs>2</javadocs>
     </object>
     <object>
       <name>oberon.interpret.IfStatementInterpreter</name>
       <ncss>18</ncss>
       <functions>3</functions>
       <classes>0</classes>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </object>
     <object>
       <name>oberon.interpret.MathematicalExpressionInterpreter</name>
       <ncss>26</ncss>
       <functions>6</functions>
       <classes>0</classes>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </object>
     <object>
       <name>oberon.interpret.ModuleInterpreter</name>
       <ncss>14</ncss>
       <functions>2</functions>
       <classes>0</classes>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </object>
     <object>
       <name>oberon.interpret.ParenExpInterpreter</name>
       <ncss>6</ncss>
       <functions>2</functions>
       <classes>0</classes>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </object>
     <object>
       <name>oberon.interpret.ProcedureBodyInterpreter</name>
       <ncss>10</ncss>
       <functions>2</functions>
       <classes>0</classes>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </object>
     <object>
       <name>oberon.interpret.ProcedureHeadingInterpreter</name>
       <ncss>15</ncss>
       <functions>3</functions>
       <classes>0</classes>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </object>
     <object>
       <name>oberon.interpret.SelectorExpInterpreter</name>
       <ncss>8</ncss>
       <functions>2</functions>
       <classes>0</classes>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </object>
     <object>
       <name>oberon.interpret.SelectorInterpreter</name>
       <ncss>17</ncss>
       <functions>4</functions>
       <classes>0</classes>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </object>
     <object>
       <name>oberon.interpret.StatementInterpreterFactory</name>
       <ncss>20</ncss>
       <functions>3</functions>
       <classes>0</classes>
-      <javadocs>0</javadocs>
+      <javadocs>4</javadocs>
     </object>
     <object>
       <name>oberon.interpret.StatementSequenceInterpreter</name>
       <ncss>7</ncss>
       <functions>2</functions>
       <classes>0</classes>
-      <javadocs>0</javadocs>
+      <javadocs>3</javadocs>
     </object>
     <object>
       <name>oberon.interpret.StatprocStatementInterpreter</name>
       <ncss>11</ncss>
       <functions>3</functions>
       <classes>0</classes>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </object>
     <object>
       <name>oberon.interpret.StatwithStatementInterpreter</name>
       <ncss>10</ncss>
       <functions>3</functions>
       <classes>0</classes>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </object>
     <object>
       <name>oberon.interpret.VarInterpreter</name>
@@ -365,18 +365,18 @@
     </object>
     <object>
       <name>oberon.test.WhileTest</name>
-      <ncss>2</ncss>
+      <ncss>15</ncss>
       <functions>1</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>16.02</ncss>
+      <ncss>16.32</ncss>
       <functions>3.50</functions>
       <classes>0.02</classes>
-      <javadocs>2.00</javadocs>
+      <javadocs>2.75</javadocs>
     </averages>
-    <ncss>932.00</ncss>
+    <ncss>952.00</ncss>
   </objects>
 
   <functions>
@@ -771,36 +771,6 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.data.IntegerDataType.IntegerDataType(String,Boolean)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.IntegerDataType.IntegerDataType(String,int,Boolean)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.IntegerDataType.getValue()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.IntegerDataType.copy(String)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.data.IntegerDataType.setValue(int)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
       <name>oberon.data.RecordDataType.RecordDataType(String,String)</name>
       <ncss>6</ncss>
       <ccn>3</ccn>
@@ -879,6 +849,36 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>oberon.data.VariableDataType.VariableDataType(String,Boolean)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.data.VariableDataType.VariableDataType(String,int,Boolean)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.data.VariableDataType.getValue()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.data.VariableDataType.copy(String)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.data.VariableDataType.setValue(int)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>oberon.data.VariableIdentifier.VariableIdentifier(String)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
@@ -900,13 +900,13 @@
       <name>oberon.interpret.AbstractBaseInterpreter.getInterpreterResult()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </function>
     <function>
       <name>oberon.interpret.AbstractBaseInterpreter.buildInterpreterResult()</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </function>
     <function>
       <name>oberon.interpret.AssignmentInterpreter.caseAStatassStatement(AStatassStatement)</name>
@@ -1008,43 +1008,43 @@
       <name>oberon.interpret.ExpInterpreterFactory.ExpInterpreterFactory()</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </function>
     <function>
       <name>oberon.interpret.ExpInterpreterFactory.getInterpreter(TNode)</name>
       <ncss>8</ncss>
       <ccn>3</ccn>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </function>
     <function>
       <name>oberon.interpret.ExpInterpreterFactory.tryGetComparisonExpression(PExp)</name>
       <ncss>5</ncss>
       <ccn>10</ccn>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </function>
     <function>
       <name>oberon.interpret.ExpInterpreterFactory.tryGetMathematicalExpression(PExp)</name>
       <ncss>5</ncss>
       <ccn>7</ccn>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </function>
     <function>
       <name>oberon.interpret.ExpInterpreterFactory.tryGetOtherExpression(PExp)</name>
       <ncss>11</ncss>
       <ccn>4</ccn>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </function>
     <function>
       <name>oberon.interpret.ExpInterpreterFactory.getExpression(TNode)</name>
       <ncss>4</ncss>
       <ccn>1</ccn>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </function>
     <function>
       <name>oberon.interpret.FpSectionInterpreter.FpSectionInterpreter(PFpsection)</name>
       <ncss>4</ncss>
       <ccn>2</ccn>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </function>
     <function>
       <name>oberon.interpret.FpSectionInterpreter.caseAFpsection(AFpsection)</name>
@@ -1206,31 +1206,31 @@
       <name>oberon.interpret.StatementInterpreterFactory.StatementInterpreterFactory()</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </function>
     <function>
       <name>oberon.interpret.StatementInterpreterFactory.getInterpreter(TNode)</name>
       <ncss>14</ncss>
       <ccn>5</ccn>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </function>
     <function>
       <name>oberon.interpret.StatementInterpreterFactory.getStatement(TNode)</name>
       <ncss>4</ncss>
       <ccn>1</ccn>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </function>
     <function>
       <name>oberon.interpret.StatementSequenceInterpreter.StatementSequenceInterpreter()</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </function>
     <function>
       <name>oberon.interpret.StatementSequenceInterpreter.getStatementList(PStatement)</name>
       <ncss>5</ncss>
       <ccn>2</ccn>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </function>
     <function>
       <name>oberon.interpret.StatprocStatementInterpreter.caseAStatprocStatement(AStatprocStatement)</name>
@@ -1300,15 +1300,15 @@
     </function>
     <function>
       <name>oberon.test.WhileTest.test_case_WhileTest1()</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
+      <ncss>14</ncss>
+      <ccn>2</ccn>
       <javadocs>0</javadocs>
     </function>
     <function_averages>
-      <ncss>3.66</ncss>
-      <ccn>1.40</ccn>
-      <javadocs>0.37</javadocs>
+      <ncss>3.74</ncss>
+      <ccn>1.41</ccn>
+      <javadocs>0.46</javadocs>
     </function_averages>
-    <ncss>932.00</ncss>
+    <ncss>952.00</ncss>
   </functions>
 </javancss>
