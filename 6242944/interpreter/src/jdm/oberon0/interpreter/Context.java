@@ -1,6 +1,7 @@
 package jdm.oberon0.interpreter;
 
 import jdm.oberon0.builtins.BuiltinProcedure;
+import jdm.oberon0.interpreter.eval.Evaluator;
 import jdm.oberon0.values.BooleanValue;
 import jdm.oberon0.values.IntegerValue;
 import jdm.oberon0.values.Value;
@@ -29,8 +30,8 @@ public class Context {
 	}
 
 	public void executeProcedure(ScriptedProcedure proc, Value[] arguments) {
-		Interpreter interp = new Interpreter(this);
-		interp.interpret(proc, arguments);
+		Evaluator eval = new Evaluator(this);
+		eval.evaluate(proc, arguments);
 	}
 
 	public void pushScope() {

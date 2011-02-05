@@ -2,6 +2,7 @@ package jdm.oberon0.values;
 
 import java.util.HashMap;
 
+import jdm.oberon0.interpreter.ValueConstructor;
 import jdm.oberon0.types.RecordType;
 import jdm.oberon0.types.Type;
 
@@ -15,7 +16,9 @@ public class RecordValue extends Value {
 		HashMap<String, ReferenceValue> values = new HashMap<String, ReferenceValue>();
 		
 		for (String name : fields.keySet()) {
-			values.put(name, ReferenceValue.getRef(Value.fromType(fields.get(name))));
+			Type fieldType = fields.get(name);
+			Value fieldValue = ValueConstructor.fromType(fieldType);
+			values.put(name, ReferenceValue.getRef(fieldValue));
 		}
 		
 		_type = type;

@@ -1,6 +1,6 @@
 package jdm.oberon0.interpreter;
 
-import jdm.oberon0.ast.Procedure;
+import jdm.oberon0.ast.declarations.Procedure;
 import jdm.oberon0.values.Value;
 
 /**

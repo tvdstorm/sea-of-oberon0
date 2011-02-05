@@ -4,8 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
-import jdm.oberon0.main.Main;
-
+import jdm.oberon0.interpreter.Interpreter;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -52,7 +51,7 @@ public class OberonTests extends TestCase {
 			return;
 		}
 		try {
-			Main.run(reader, _file.getName());
+			Interpreter.run(reader, _file.getName());
 		} catch(jdm.oberon0.exceptions.RuntimeException e) {
 			fail(e.getMessage());
 		}
