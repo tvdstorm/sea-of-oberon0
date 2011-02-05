@@ -1,9 +1,9 @@
 package oberon.interpret;
 
-import oberon.Declaration;
-import oberon.ProcedureBody;
 import oberon.StatementSequence;
 import oberon.node.AProcedurebody;
+import oberon.procedures.Declaration;
+import oberon.procedures.ProcedureBody;
 
 class ProcedureBodyInterpreter extends AbstractBaseInterpreter<ProcedureBody> {
 	private Declaration variableDeclaration;

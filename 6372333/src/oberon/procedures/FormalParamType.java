@@ -1,4 +1,4 @@
-package oberon;
+package oberon.procedures;
 
 public enum FormalParamType {
 	Array,

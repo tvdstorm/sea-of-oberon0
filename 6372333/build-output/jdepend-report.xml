@@ -4,14 +4,14 @@
 
         <Package name="oberon">
             <Stats>
-                <TotalClasses>16</TotalClasses>
-                <ConcreteClasses>11</ConcreteClasses>
+                <TotalClasses>12</TotalClasses>
+                <ConcreteClasses>7</ConcreteClasses>
                 <AbstractClasses>5</AbstractClasses>
                 <Ca>5</Ca>
                 <Ce>3</Ce>
-                <A>0.31</A>
+                <A>0.42</A>
                 <I>0.38</I>
-                <D>0.31</D>
+                <D>0.21</D>
                 <V>1</V>
             </Stats>
 
@@ -34,20 +34,8 @@
             </AbstractClasses>
 
             <ConcreteClasses>
-                <Class sourceFile="Declaration.java">
-                    oberon.Declaration
-                </Class>
-                <Class sourceFile="FormalParamSection.java">
-                    oberon.FormalParamSection
-                </Class>
-                <Class sourceFile="FormalParamType.java">
-                    oberon.FormalParamType
-                </Class>
                 <Class sourceFile="Main.java">
                     oberon.Main
-                </Class>
-                <Class sourceFile="ProcedureBody.java">
-                    oberon.ProcedureBody
                 </Class>
                 <Class sourceFile="ReadProcedure.java">
                     oberon.ReadProcedure
@@ -288,14 +276,14 @@
 
         <Package name="oberon.procedures">
             <Stats>
-                <TotalClasses>3</TotalClasses>
-                <ConcreteClasses>2</ConcreteClasses>
+                <TotalClasses>7</TotalClasses>
+                <ConcreteClasses>6</ConcreteClasses>
                 <AbstractClasses>1</AbstractClasses>
                 <Ca>2</Ca>
                 <Ce>1</Ce>
-                <A>0.33</A>
+                <A>0.14</A>
                 <I>0.33</I>
-                <D>0.33</D>
+                <D>0.52</D>
                 <V>1</V>
             </Stats>
 
@@ -306,6 +294,18 @@
             </AbstractClasses>
 
             <ConcreteClasses>
+                <Class sourceFile="Declaration.java">
+                    oberon.procedures.Declaration
+                </Class>
+                <Class sourceFile="FormalParamSection.java">
+                    oberon.procedures.FormalParamSection
+                </Class>
+                <Class sourceFile="FormalParamType.java">
+                    oberon.procedures.FormalParamType
+                </Class>
+                <Class sourceFile="ProcedureBody.java">
+                    oberon.procedures.ProcedureBody
+                </Class>
                 <Class sourceFile="ProcedureHeading.java">
                     oberon.procedures.ProcedureHeading
                 </Class>

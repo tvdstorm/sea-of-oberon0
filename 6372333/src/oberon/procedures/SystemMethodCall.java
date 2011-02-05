@@ -4,9 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Queue;
 
-import oberon.FormalParamSection;
 import oberon.IExpression;
-import oberon.ProcedureBody;
 
 public class SystemMethodCall extends AbstractProcedure {
 

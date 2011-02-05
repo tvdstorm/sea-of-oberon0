@@ -6,6 +6,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 import oberon.data.IntegerArrayType;
+import oberon.procedures.Declaration;
+import oberon.procedures.FormalParamSection;
+import oberon.procedures.FormalParamType;
+import oberon.procedures.ProcedureBody;
 import oberon.procedures.SystemMethodCall;
 
 class WriteCall implements IStatement {

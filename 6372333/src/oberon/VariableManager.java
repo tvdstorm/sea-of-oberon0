@@ -7,6 +7,7 @@ import java.util.Stack;
 
 import oberon.data.IntegerArrayType;
 import oberon.procedures.AbstractProcedure;
+import oberon.procedures.Declaration;
 import oberon.procedures.ProcedureHeading;
 
 public class VariableManager {
