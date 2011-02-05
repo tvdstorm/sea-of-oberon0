@@ -1,5 +1,6 @@
 package ar.oberon0.ast.expression;
 
+import junit.framework.Assert;
 import ar.oberon0.runtime.Context;
 import ar.oberon0.runtime.DataField;
 import ar.oberon0.shared.Interpretable;
@@ -9,50 +10,29 @@ import ar.oberon0.shared.TechnicalException;
  * The var selector is used to select a variable, constant, etc. form the context (memory).
  */
 public class VarSelectorNode extends SelectorNode implements Interpretable {
-	/*
-	 * The name to look for in the context (memory).
-	 */
 	private String identName;
 
-	/*
-	 * Create a new IdentSelector that is going to look for the variable,
-	 * constant, etc. with the specified name.
-	 */
 	public VarSelectorNode(final String identName) {
 		this.identName = identName;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * ar.oberon0.interpreter.Interpretable#Interpret(ar.oberon0.interpreter
-	 * .Memory.Context)
-	 */
 	@Override
 	public final Object interpret(final Context context) throws TechnicalException {
 		return getItem(null, context);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * ar.oberon0.interpreter.Memory.Selector#getItem(ar.oberon0.interpreter
-	 * .Memory.DataField, ar.oberon0.interpreter.Memory.Context)
-	 */
 	@Override
 	protected final DataField getItem(final DataField parent, final Context context) throws TechnicalException {
+		Assert.assertNull("The parent parameter must be null. A VarSelector can only occur as first selector.", parent);
 
-		if (parent != null) {
-			throw new TechnicalException("this feature is yet supported.");
-		}
-
-		DataField currentVar = context.getVarOrConstantAsDataField(this.identName);
+		DataField resultVar = context.getVarOrConstantAsDataField(this.identName);
+		// If there is no next selector node the resultField is the field that
+		// was asked for.
 		if (getNextNode() == null) {
-			return currentVar;
+			return resultVar;
 		}
-		return getNextNode().getItem(currentVar, context);
+		// If there is a selector node invoke the next selector.
+		return getNextNode().getItem(resultVar, context);
 
 	}
 }

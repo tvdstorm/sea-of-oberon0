@@ -9,9 +9,7 @@ import ar.oberon0.runtime.DataField;
  * A list that is used to store name DataField data. DataFields can be looked up by their name. For example used in the context to store the variables.
  */
 public class DataFieldList extends BaseMap<DataField> {
-	/*
-	 * Create a new empty DataFieldList.
-	 */
+
 	public DataFieldList() {
 		super();
 	}
@@ -32,9 +30,7 @@ public class DataFieldList extends BaseMap<DataField> {
 	}
 
 	/*
-	 * Add a item to the list for each identifier in the list. The type
-	 * specified is used to create the instance. For example a variable named i
-	 * of type IntegerNode.
+	 * Add a item to the list for each identifier in the list.
 	 */
 	public final void addVariables(final IdentList identifiers, final CreatableType type) {
 		for (String identifier : identifiers) {

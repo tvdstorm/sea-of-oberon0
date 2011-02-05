@@ -59,6 +59,17 @@ public class ProcedureDeclaration {
 	}
 
 	/*
+	 * Create a procedure that can be interpreted (executed).
+	 */
+	public final Procedure createProcedure(final Context context, final List<DataField> actualParameters) throws TechnicalException {
+		Context procedureContext = this.context.clone();
+		procedureContext.setParentContext(context);
+		checkAndAddActualParametersToContext(actualParameters, procedureContext);
+		Procedure procedure = new Procedure(this.statementSequence, procedureContext);
+		return procedure;
+	}
+
+	/*
 	 * This function checks if the actual parameters are of the expected type
 	 * and if so it adds the parameters to the context.
 	 */
@@ -87,16 +98,4 @@ public class ProcedureDeclaration {
 	private boolean containsFormalParameters() {
 		return (formalParameters != null && formalParameters.getCount() > 0);
 	}
-
-	/*
-	 * Create a procedure that can be interpreted (executed).
-	 */
-	public final Procedure createProcedure(final Context context, final List<DataField> actualParameters) throws TechnicalException {
-		Context procedureContext = this.context.clone();
-		procedureContext.setParentContext(context);
-		checkAndAddActualParametersToContext(actualParameters, procedureContext);
-		Procedure procedure = new Procedure(this.statementSequence, procedureContext);
-		return procedure;
-	}
-
 }

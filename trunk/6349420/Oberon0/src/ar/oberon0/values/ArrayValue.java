@@ -9,7 +9,7 @@ import ar.oberon0.shared.TechnicalException;
 /*
  * This class is used to store datafields in a list. Array is a default oberon 0 datastructure.
  */
-public class Array implements Value {
+public class ArrayValue implements Value {
 	/*
 	 * The java aray containing the DataFields (variables).
 	 */
@@ -21,12 +21,12 @@ public class Array implements Value {
 	/*
 	 * The length of the array.
 	 */
-	private IntegerNode length;
+	private IntegerValue length;
 
 	/*
 	 * Create a new array of length length and of type childType.
 	 */
-	public Array(IntegerNode length, CreatableType childType) {
+	public ArrayValue(IntegerValue length, CreatableType childType) {
 		this.childType = childType;
 		this.length = length;
 		initArray(length, childType);
@@ -50,7 +50,7 @@ public class Array implements Value {
 	 * be returned if the datafields are not initialized. because of this reason
 	 * every element in the array is initialized when the array is created.
 	 */
-	private void initArray(IntegerNode length, CreatableType type) {
+	private void initArray(IntegerValue length, CreatableType type) {
 		this.items = new DataField[length.getValueAsInt()];
 		for (int i = 0; i < length.getValueAsInt(); i++) {
 			this.items[i] = new DataField(type);
@@ -60,7 +60,7 @@ public class Array implements Value {
 	/*
 	 * Get the datafield at location the specified index.
 	 */
-	public DataField getDataFieldAt(IntegerNode index) {
+	public DataField getDataFieldAt(IntegerValue index) {
 		return this.items[index.getValueAsInt()];
 	}
 

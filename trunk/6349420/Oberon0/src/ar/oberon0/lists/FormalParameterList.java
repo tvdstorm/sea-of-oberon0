@@ -3,6 +3,7 @@ package ar.oberon0.lists;
 import java.util.ArrayList;
 import java.util.List;
 
+import junit.framework.Assert;
 import ar.oberon0.ast.dataTypes.CreatableType;
 import ar.oberon0.ast.declarations.FormalParameter;
 
@@ -18,16 +19,10 @@ public class FormalParameterList {
 	 */
 	private List<FormalParameterWithName> _parameters;
 
-	/*
-	 * Create a new FormalParameterList object and init the array.
-	 */
 	public FormalParameterList() {
 		this._parameters = new ArrayList<FormalParameterWithName>();
 	}
 
-	/*
-	 * Get the number of parameters.
-	 */
 	public int getCount() {
 		return this._parameters.size();
 	}
@@ -37,21 +32,18 @@ public class FormalParameterList {
 	 * specified type.
 	 */
 	public void addParameters(IdentList identifiers, CreatableType type, FormalParameter.Direction direction) {
+		Assert.assertNotNull("The identifiers parameter can't be null.", identifiers);
+		Assert.assertNotNull("The type parameter can't be null.", type);
+		Assert.assertNotNull("The direction parameter can't be null.", direction);
 		for (String identifier : identifiers) {
 			this._parameters.add(new FormalParameterWithName(identifier, type, direction));
 		}
 	}
 
-	/*
-	 * Get the formal parameter at the specified index.
-	 */
 	public FormalParameter getFormalParameter(int index) {
 		return this._parameters.get(index);
 	}
 
-	/*
-	 * Get the name of the paramater at the specified index.
-	 */
 	public String getNameOfParameter(int index) {
 		return this._parameters.get(index).getName();
 	}

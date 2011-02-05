@@ -16,9 +16,7 @@ import ar.oberon0.shared.TechnicalException;
  */
 public class ProcedureCallNode implements Interpretable {
 	private String procedureName;
-	/*
-	 * The parameters that get passed to the procedure.
-	 */
+
 	private List<Interpretable> parameters;
 
 	public ProcedureCallNode(final String procedureName, final List<Interpretable> parameters) {

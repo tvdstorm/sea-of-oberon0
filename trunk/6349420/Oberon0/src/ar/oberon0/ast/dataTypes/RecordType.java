@@ -12,10 +12,6 @@ import ar.oberon0.shared.TechnicalException;
 import ar.oberon0.values.RecordValue;
 import ar.oberon0.values.Value;
 
-/*
- * This class is not yet implemented.
- * This class is used to create oberon 0 record types.
- */
 public class RecordType implements CreatableType {
 
 	private Map<String, CreatableType> members;
@@ -35,9 +31,9 @@ public class RecordType implements CreatableType {
 	@Override
 	public Value createInstance(Context context) throws TechnicalException {
 		RecordValue recordValue = new RecordValue(this);
-		Iterator it = members.entrySet().iterator();
+		Iterator<Entry<String, CreatableType>> it = members.entrySet().iterator();
 		while (it.hasNext()) {
-			Entry<String, CreatableType> entry = (Entry<String, CreatableType>) it.next();
+			Entry<String, CreatableType> entry = it.next();
 			recordValue.addMember(entry.getKey(), new DataField(entry.getValue()));
 		}
 		return recordValue;

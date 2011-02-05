@@ -19,7 +19,8 @@ import ar.oberon0.parser.Oberon0Parser;
 import ar.oberon0.runtime.Context;
 import ar.oberon0.runtime.DataField;
 import ar.oberon0.shared.Interpretable;
-import ar.oberon0.values.IntegerNode;
+import ar.oberon0.values.BooleanValue;
+import ar.oberon0.values.IntegerValue;
 
 public class Tester extends TestCase {
 
@@ -307,8 +308,8 @@ public class Tester extends TestCase {
 			e.printStackTrace();
 		}
 		try {
-			IntegerNode result = (IntegerNode) interpreter.interpret(new Context());
-			System.out.println(getResultString("simpleExpression with negation", result.equals(new IntegerNode(-22))));
+			IntegerValue result = (IntegerValue) interpreter.interpret(new Context());
+			System.out.println(getResultString("simpleExpression with negation", result.equals(new IntegerValue(-22))));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -323,8 +324,8 @@ public class Tester extends TestCase {
 			e.printStackTrace();
 		}
 		try {
-			IntegerNode result = (IntegerNode) interpreter.interpret(new Context());
-			System.out.println(getResultString("simpleExpression with add", result.equals(new IntegerNode(24))));
+			IntegerValue result = (IntegerValue) interpreter.interpret(new Context());
+			System.out.println(getResultString("simpleExpression with add", result.equals(new IntegerValue(24))));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -339,8 +340,8 @@ public class Tester extends TestCase {
 			e.printStackTrace();
 		}
 		try {
-			IntegerNode result = (IntegerNode) interpreter.interpret(new Context());
-			System.out.println(getResultString("simpleExpression with min", result.equals(new IntegerNode(20))));
+			IntegerValue result = (IntegerValue) interpreter.interpret(new Context());
+			System.out.println(getResultString("simpleExpression with min", result.equals(new IntegerValue(20))));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -355,8 +356,8 @@ public class Tester extends TestCase {
 			e.printStackTrace();
 		}
 		try {
-			IntegerNode result = (IntegerNode) interpreter.interpret(new Context());
-			System.out.println(getResultString("term", result.equals(new IntegerNode(44))));
+			IntegerValue result = (IntegerValue) interpreter.interpret(new Context());
+			System.out.println(getResultString("term", result.equals(new IntegerValue(44))));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -371,8 +372,8 @@ public class Tester extends TestCase {
 			e.printStackTrace();
 		}
 		try {
-			IntegerNode result = (IntegerNode) interpreter.interpret(new Context());
-			System.out.println(getResultString("factor with integer", result.equals(new IntegerNode(22))));
+			IntegerValue result = (IntegerValue) interpreter.interpret(new Context());
+			System.out.println(getResultString("factor with integer", result.equals(new IntegerValue(22))));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -389,7 +390,7 @@ public class Tester extends TestCase {
 		try {
 			Context context = new Context();
 			ConstantList constants = new ConstantList();
-			constants.addItem("a", new DataField(new SimpleType("INTEGER"), new IntegerNode(9)));
+			constants.addItem("a", new DataField(new SimpleType("INTEGER"), new IntegerValue(9)));
 			context.addConstants(constants);
 			Object result = interpreter.interpret(context);
 			System.out.println(getResultString("factor with ident", ((DataField) result).getValue(context).toString().compareTo("9") == 0));
@@ -429,7 +430,7 @@ public class Tester extends TestCase {
 		}
 		try {
 			Object result = interpreter.interpret(new Context());
-			System.out.println(getResultString("expression with Equals", (Boolean) result));
+			System.out.println(getResultString("expression with Equals", ((BooleanValue) result).getValueAsBoolean()));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -445,7 +446,7 @@ public class Tester extends TestCase {
 		}
 		try {
 			Object result = interpreter.interpret(new Context());
-			System.out.println(getResultString("expression with Equals", (Boolean) result));
+			System.out.println(getResultString("expression with Equals", ((BooleanValue) result).getValueAsBoolean()));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -461,7 +462,7 @@ public class Tester extends TestCase {
 		}
 		try {
 			Object result = interpreter.interpret(new Context());
-			System.out.println(getResultString("BIG TEST", ((IntegerNode) result).equals(new IntegerNode(2))));
+			System.out.println(getResultString("BIG TEST", ((IntegerValue) result).equals(new IntegerValue(2))));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

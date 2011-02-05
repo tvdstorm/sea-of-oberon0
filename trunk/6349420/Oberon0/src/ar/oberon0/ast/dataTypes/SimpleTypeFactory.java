@@ -1,17 +1,14 @@
 package ar.oberon0.ast.dataTypes;
 
+/*
+ * This factory is used in the grammer to create a simple type or lookup type.
+ */
 public class SimpleTypeFactory {
 	public CreatableType getType(String name) {
 
-		if (isPrinitiveType(name)) {
+		if (PrimitiveTypes.doesPrimitiveTypeExist(name)) {
 			return new SimpleType(name);
 		}
 		return new LookupType(name);
-	}
-
-	private static boolean isPrinitiveType(String name) {
-		if (name == "INTEGER")
-			return true;
-		return false;
 	}
 }

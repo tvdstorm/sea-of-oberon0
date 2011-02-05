@@ -1,1 +1,1 @@
-java javancss.Main -all -xml -recursive "src\ar\oberon0\interpreter" > "Metrieken\%date:~10,4%-%date:~4,2%-%date:~7,2%_JavaNCSS.xml"
+java javancss.Main -all -xml -recursive "src\ar\oberon0\ast" "src\ar\oberon0\lists" "src\ar\oberon0\runtime" "src\ar\oberon0\shared" "src\ar\oberon0\values" > "Metrieken\%date:~10,4%-%date:~4,2%-%date:~7,2%_JavaNCSS.xml"

@@ -1,5 +1,6 @@
 package ar.oberon0.shared;
 
+import junit.framework.Assert;
 import ar.oberon0.ast.expression.SelectorNode;
 import ar.oberon0.runtime.Context;
 import ar.oberon0.runtime.DataField;
@@ -17,9 +18,6 @@ public final class Helper {
 	private Helper() {
 	}
 
-	/*
-	 * Check if both objects are of the same type.
-	 */
 	public static boolean areSameType(final Object o1, final Object o2) {
 		if (o1.getClass() == o2.getClass()) {
 			return true;
@@ -64,9 +62,9 @@ public final class Helper {
 	 * procedure call.
 	 */
 	public static DataField convertToDataField(final Interpretable node, final Context context) throws TechnicalException {
-		if (node == null) {
-			throw new IllegalArgumentException("The node value can't be null");
-		} else if (node instanceof DataField) {
+		Assert.assertNotNull("The node parameter can't be null", node);
+
+		if (node instanceof DataField) {
 			return (DataField) node;
 		} else if (node instanceof SelectorNode) {
 			// the value returned by a selector is always of the type DataField.
