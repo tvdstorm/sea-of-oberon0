@@ -1,18 +1,18 @@
 package oberon.data;
 
-public class IntegerArrayIndexerType extends AbstractDataType {
+public class IntegerArrayIndexerDataType extends AbstractDataType {
 
 	private final IntegerArrayType array;
 	private final int index;
 
-	public IntegerArrayIndexerType(final IntegerArrayType inputArray, 
+	public IntegerArrayIndexerDataType(final IntegerArrayType inputArray, 
 			final int inputIndex) {
 		super(inputArray.getName());
 		array = inputArray;
 		index = inputIndex;
 	}
 	
-	IntegerArrayIndexerType(final String name, final IntegerArrayType inputArray, 
+	IntegerArrayIndexerDataType(final String name, final IntegerArrayType inputArray, 
 			final int inputIndex) {
 		super(name);
 		array = inputArray;
@@ -26,12 +26,12 @@ public class IntegerArrayIndexerType extends AbstractDataType {
 
 	@Override
 	public AbstractDataType deepCopy(final String newName) {
-		return new IntegerArrayIndexerType(newName, array, index);
+		return new IntegerArrayIndexerDataType(newName, array, index);
 	}
 
 	@Override
 	public AbstractDataType shallowCopy(final String newName) {
-		return new IntegerArrayIndexerType(newName, array, index);
+		return new IntegerArrayIndexerDataType(newName, array, index);
 	}
 	
 	@Override

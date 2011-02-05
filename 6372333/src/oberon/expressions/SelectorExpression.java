@@ -1,12 +1,12 @@
 package oberon.expressions;
 
 import oberon.data.AbstractDataType;
-import oberon.data.AbstractSelector;
+import oberon.data.AbstractIdentifier;
 
 public class SelectorExpression extends AbstractExpression {
-	private final AbstractSelector selector;
+	private final AbstractIdentifier selector;
 
-	public SelectorExpression(final AbstractSelector selectorExp) {
+	public SelectorExpression(final AbstractIdentifier selectorExp) {
 		selector = selectorExp;
 	}
 	

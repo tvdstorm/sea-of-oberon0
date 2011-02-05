@@ -89,29 +89,29 @@
                 <Class sourceFile="AbstractDataType.java">
                     oberon.data.AbstractDataType
                 </Class>
-                <Class sourceFile="AbstractSelector.java">
-                    oberon.data.AbstractSelector
+                <Class sourceFile="AbstractIdentifier.java">
+                    oberon.data.AbstractIdentifier
                 </Class>
             </AbstractClasses>
 
             <ConcreteClasses>
-                <Class sourceFile="ArrayIndexerSelector.java">
-                    oberon.data.ArrayIndexerSelector
+                <Class sourceFile="ArrayIndexerIdentifier.java">
+                    oberon.data.ArrayIndexerIdentifier
                 </Class>
                 <Class sourceFile="ExpressionDataType.java">
                     oberon.data.ExpressionDataType
                 </Class>
-                <Class sourceFile="IdentifierSelector.java">
-                    oberon.data.IdentifierSelector
-                </Class>
-                <Class sourceFile="IntegerArrayIndexerType.java">
-                    oberon.data.IntegerArrayIndexerType
+                <Class sourceFile="IntegerArrayIndexerDataType.java">
+                    oberon.data.IntegerArrayIndexerDataType
                 </Class>
                 <Class sourceFile="IntegerArrayType.java">
                     oberon.data.IntegerArrayType
                 </Class>
                 <Class sourceFile="IntegerType.java">
                     oberon.data.IntegerType
+                </Class>
+                <Class sourceFile="VariableIdentifier.java">
+                    oberon.data.VariableIdentifier
                 </Class>
                 <Class sourceFile="VariableManager.java">
                     oberon.data.VariableManager
