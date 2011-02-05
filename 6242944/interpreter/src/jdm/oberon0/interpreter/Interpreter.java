@@ -21,10 +21,10 @@ public class Interpreter {
 			module = (jdm.oberon0.ast.Module)parser.value(result);
 		} catch (IOException e) {
 			System.err.println("IOError: " + e.getMessage());
-			System.exit(2);
+			System.exit(1);
 		} catch (ParseException e) {
 			System.err.println(e.getMessage());
-			System.exit(3);
+			System.exit(1);
 		}
 		
 		Context context = new Context();
