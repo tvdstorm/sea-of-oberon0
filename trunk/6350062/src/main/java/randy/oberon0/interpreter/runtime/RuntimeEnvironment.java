@@ -1,7 +1,7 @@
 package randy.oberon0.interpreter.runtime;
 
 import randy.oberon0.ast.IInvokableFunction;
-import randy.oberon0.ast.datastructures.Tuple;
+import randy.library.datastructures.Tuple;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.exception.*;
 import randy.oberon0.value.Value;

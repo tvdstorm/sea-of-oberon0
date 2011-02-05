@@ -5,7 +5,7 @@ import java.util.*;
 import org.antlr.runtime.*;
 import org.antlr.runtime.tree.Tree;
 import randy.oberon0.ast.*;
-import randy.oberon0.ast.datastructures.Tuple;
+import randy.library.datastructures.Tuple;
 import randy.oberon0.exception.Exception;
 import randy.oberon0.exception.*;
 import randy.oberon0.generated.antlr.*;
