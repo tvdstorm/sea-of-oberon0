@@ -1,5 +1,9 @@
 package oberon0.environment;
 
+/*
+ * A Reference is like a pointer in c, 
+ * allows arrays, records and calls-by-reference
+ */
 public class Reference {	
 	private IValue _value;
 	

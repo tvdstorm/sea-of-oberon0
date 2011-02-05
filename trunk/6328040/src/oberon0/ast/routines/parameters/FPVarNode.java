@@ -18,6 +18,8 @@ public class FPVarNode extends BaseFormalParameterNode {
 	public void fillIn(Context context, ArrayList<IReferable> actualParams) {
 		ArrayList<String> names = new ArrayList<String>(_names);
 		while (names.size() > 0){
+			checkNonEmptyActualParameters(actualParams);
+			
 			IValue FormalParamType = _type.eval(context);
 			String currentName = names.get(0);
 			

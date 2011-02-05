@@ -6,6 +6,11 @@ import oberon0.ast.routines.ICallable;
 import oberon0.ast.variables.IReferable;
 import oberon0.environment.Context;
 import oberon0.environment.IValue;
+
+/*
+ * Built in routine from oberon-0
+ * when called, it write the value of the first actual parameter to the console
+ */
 public class Write implements ICallable {
 
 	@Override
