@@ -1,7 +1,8 @@
 package org.elcid.oberon0.ast;
 
 import org.elcid.oberon0.ast.util.NodeType;
-import org.elcid.oberon0.ast.visitor.NodeVisitor;
+import org.elcid.oberon0.ast.values.Environment;
+import org.elcid.oberon0.ast.visitor.BaseVisitor;
 import java.util.List;
 
 /**
@@ -9,7 +10,7 @@ import java.util.List;
  *
  * @author Pieter Brandwijk
  */
-public class EqualsExpNode extends ExpressionNode {
+public class EqualsExpNode extends BooleanExpNode {
 
 	private ExpressionNode leftExp;
 	private ExpressionNode rightExp;
@@ -19,17 +20,17 @@ public class EqualsExpNode extends ExpressionNode {
 		this.rightExp = rightExp;
 	}
 
-	public Node getLeftExp() {
+	public ExpressionNode getLeftExp() {
 		return leftExp;
 	}
 
-	public Node getRightExp() {
+	public ExpressionNode getRightExp() {
 		return rightExp;
 	}
 
 	@Override
-	public Object accept(NodeVisitor visitor) {
-		return visitor.visitEqualsExpNode(this);
+	public Boolean accept(BaseVisitor visitor, Environment localEnv) {
+		return visitor.visitEqualsExpNode(this, localEnv);
 	}
 
 	@Override

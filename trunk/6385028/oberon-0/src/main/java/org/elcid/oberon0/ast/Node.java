@@ -1,9 +1,10 @@
 package org.elcid.oberon0.ast;
 
 import org.elcid.oberon0.ast.util.NodeType;
+import org.elcid.oberon0.ast.values.Environment;
+import org.elcid.oberon0.ast.visitor.BaseVisitor;
 import java.util.ArrayList;
 import java.util.List;
-import org.elcid.oberon0.ast.visitor.NodeVisitor;
 
 /**
  * Base class for all nodes in the AST.
@@ -14,7 +15,7 @@ public abstract class Node {
 	
 	static final List<Node> EMPTY_LIST = new ArrayList<Node>();
 
-	public abstract Object accept(NodeVisitor visitor);
+	public abstract Object accept(BaseVisitor visitor, Environment localEnv);
 
 	public abstract List<Node> childNodes();
 
