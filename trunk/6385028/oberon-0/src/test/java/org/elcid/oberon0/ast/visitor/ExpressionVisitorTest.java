@@ -20,12 +20,14 @@ public class ExpressionVisitorTest {
 	private static Logger LOG = LoggerFactory.getLogger(ExpressionVisitorTest.class);
 
 	private ExpressionVisitor instance;
+	private Environment env;
 
 	public ExpressionVisitorTest() { }
 
 	@Before
 	public void setUp() {
 		instance = new ExpressionVisitor();
+		env = new Environment();
 	}
 
 	@Test
@@ -39,7 +41,7 @@ public class ExpressionVisitorTest {
 		assertEquals(expResultInt, resultInt);
 
 		// Test with an integer variable value
-		Environment env = new Environment();
+		env = new Environment();
 		ValueExpNode varNode = new ValueExpNode(new IntVariable("age", 25, env));
 		Integer resultIntVar = instance.visitValueExpNode(varNode, env);
 		Integer expResultIntVar = 25;
@@ -48,7 +50,21 @@ public class ExpressionVisitorTest {
 
 	@Test
 	public void testVisitPlusExpNode() {
+		LOG.info("Testing method: visitPlusExpNode");
 
+		// Test with two integer values
+		PlusExpNode nodeInt = new PlusExpNode(new ValueExpNode(new Int(2)), new ValueExpNode(new Int(3)));
+		Integer resultInt = instance.visitPlusExpNode(nodeInt, null);
+		Integer expResultInt = 5;
+		assertEquals(expResultInt, resultInt);
+
+		// Test with two integer variable values
+		IntVariable left = new IntVariable("left", 4, env);
+		IntVariable right = new IntVariable("right", 5, env);
+		PlusExpNode nodeIntVar = new PlusExpNode(new ValueExpNode(left), new ValueExpNode(right));
+		Integer resultIntVar = instance.visitPlusExpNode(nodeIntVar, env);
+		Integer expResultIntVar = 9;
+		assertEquals(expResultIntVar, resultIntVar);
 	}
 
 	@Test
