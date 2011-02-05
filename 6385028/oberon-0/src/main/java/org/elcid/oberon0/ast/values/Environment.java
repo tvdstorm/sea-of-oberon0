@@ -41,7 +41,7 @@ public class Environment {
 	 */
 	public void put(String variableName, Integer value) {
 		assert (variableName != null) : "Variable name is null";
-		assert (variableName.equals("")) : "Variable name is empty string";
+		assert (!variableName.equals("")) : "Variable name is empty string";
 		assert (value != null) : "Integer value is null";
 		map.put(variableName, value);
 	}
