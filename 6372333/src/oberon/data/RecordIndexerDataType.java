@@ -2,34 +2,58 @@ package oberon.data;
 
 import oberon.IDataType;
 
+/**
+ * The Class RecordIndexerDataType, stores a identifier to a specific field in a record.
+ */
 public class RecordIndexerDataType extends AbstractDataType {
 
-	private final String index;
+	/** The fieldName. */
+	private final String fieldName;
+	
+	/** The record. */
 	private final RecordDataType record;
 
+	/**
+	 * Instantiates a new record indexer data type.
+	 *
+	 * @param inputName the new name of the instance
+	 * @param inputRecord the underlying record
+	 * @param inputFieldname the input fieldname
+	 */
 	public RecordIndexerDataType(final String inputName, final RecordDataType inputRecord, 
-			final String inputIndex) {
+			final String inputFieldname) {
 		super(inputName);
-		index = inputIndex;
+		fieldName = inputFieldname;
 		record = inputRecord;
 	}
 
+	/**
+	 * Instantiates a new record indexer data type.
+	 *
+	 * @param recordDataType the underlying record data type
+	 * @param inputFieldname the fieldname
+	 */
 	public RecordIndexerDataType(final RecordDataType recordDataType,
-			final String inputIndex) {
+			final String inputFieldname) {
 		super(recordDataType.getName());
 		record = recordDataType;
-		index = inputIndex;
-		// TODO Auto-generated constructor stub
+		fieldName = inputFieldname;
 	}
 
+	/* (non-Javadoc)
+	 * @see oberon.data.AbstractDataType#getValue()
+	 */
 	@Override
 	public int getValue() {
-		return record.getValueAtIndex(index);
+		return record.getValueAtIndex(fieldName);
 	}
 
+	/* (non-Javadoc)
+	 * @see oberon.data.AbstractDataType#copy(java.lang.String)
+	 */
 	@Override
 	public IDataType copy(final String newName) {
-		return new RecordIndexerDataType(newName, record, index);
+		return new RecordIndexerDataType(newName, record, fieldName);
 	}
 
 }
