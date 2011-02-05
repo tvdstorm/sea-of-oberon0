@@ -7,9 +7,9 @@ import oberon.Declaration;
 import oberon.FormalParamSection;
 import oberon.FormalParamType;
 import oberon.ProcedureBody;
-import oberon.ProcedureHeading;
 import oberon.StatementSequence;
 import oberon.node.AModule;
+import oberon.procedures.ProcedureHeading;
 
 public class ModuleInterpreter extends AbstractBaseInterpreter<ProcedureHeading> { 
 	  

@@ -10,6 +10,8 @@ import java.util.List;
 import oberon.data.AbstractDataType;
 import oberon.data.IntegerArrayType;
 import oberon.data.VariableManager;
+import oberon.procedures.ProcedureHeading;
+import oberon.procedures.SystemMethodCall;
 
 class ReadProcedure implements IStatement {
 	@Override

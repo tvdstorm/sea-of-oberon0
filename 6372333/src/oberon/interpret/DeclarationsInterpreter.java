@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import oberon.Declaration;
-import oberon.ProcedureHeading;
 import oberon.data.AbstractDataType;
 import oberon.node.ADeclarations;
 import oberon.node.PConstdecl;
 import oberon.node.PProceduredeclaration;
 import oberon.node.PVardecl;
+import oberon.procedures.ProcedureHeading;
 
 class DeclarationsInterpreter extends AbstractBaseInterpreter<Declaration> {
 	private final List<AbstractDataType> variables = new ArrayList<AbstractDataType>();
