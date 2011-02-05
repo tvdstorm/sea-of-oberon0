@@ -102,7 +102,8 @@ declarations returns [ IDeclarable node ]
 						 new ArrayList<IDeclarable>();	}
 	(constdecl = constDeclarations	{list.add($constdecl.node);		}
 	)? 
-	//typeDeclaration? 
+	(typdecl = typeDeclarations	{list.add($typdecl.node);		}
+	)? 
 	(vardecl = varDeclarations  	{list.add($vardecl.node);		}
 	)?
 	(proc = procedureDeclaration 	{list.add($proc.node);			}
@@ -121,10 +122,17 @@ constDeclarations returns [ IDeclarable node]
 	)*				{node = new DeclarationsNode(list);				}
 	;
 
-/*typeDeclaration
-	:	(TYPEDECL (IDENT EQUALS type SEMICOLON)*)
-			-> ^(TYPEDECL (IDENT type)*);		
-*/
+typeDeclarations returns [ IDeclarable node ]
+	:				{ArrayList<IDeclarable> list = 
+						 new ArrayList<IDeclarable>();				}
+	(TYPEDECL 			
+	(name = IDENT 			
+	EQUALS 
+	typ = type 			{list.add(new TypeDeclarationNode($name.text, $typ.node));	}
+	SEMICOLON)*
+	)				{node = new DeclarationsNode(list);				}
+	;	
+
 
 varDeclarations returns [ IDeclarable node ]
 	: 				{ArrayList<IDeclarable> list = 
