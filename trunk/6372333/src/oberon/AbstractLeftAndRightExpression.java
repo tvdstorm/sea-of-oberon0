@@ -1,28 +1,28 @@
 package oberon;
 
 public abstract class AbstractLeftAndRightExpression extends AbstractExpression {
-	private AbstractExpression righthandSide;
-	private AbstractExpression lefthandSide;
+	private IExpression righthandSide;
+	private IExpression lefthandSide;
 
-	public AbstractLeftAndRightExpression(final AbstractExpression lefthandSide, 
-			final AbstractExpression righthandSide) {
+	public AbstractLeftAndRightExpression(final IExpression lefthandSide, 
+			final IExpression righthandSide) {
 		setLefthandSide(lefthandSide);
 		setRighthandSide(righthandSide);
 	}
 
-	private void setRighthandSide(final AbstractExpression rightSide) {
+	private void setRighthandSide(final IExpression rightSide) {
 		righthandSide = rightSide;
 	}
 
-	protected AbstractExpression getRighthandSide() {
+	protected IExpression getRighthandSide() {
 		return righthandSide;
 	}
 
-	private void setLefthandSide(final AbstractExpression leftSide) {
+	private void setLefthandSide(final IExpression leftSide) {
 		lefthandSide = leftSide;
 	}
 
-	protected AbstractExpression getLefthandSide() {
+	protected IExpression getLefthandSide() {
 		return lefthandSide;
 	}
 }

@@ -1,6 +1,6 @@
 package oberon.interpret;
 
-import oberon.AbstractExpression;
+import oberon.IExpression;
 import oberon.data.ArrayIndexerSelector;
 import oberon.data.IdentifierSelector;
 import oberon.data.AbstractSelector;
@@ -23,7 +23,7 @@ public class SelectorInterpreter extends AbstractBaseInterpreter<AbstractSelecto
 	
 	@Override
 	public void caseAArrayexpressionSelector(final AArrayexpressionSelector node) {
-		final AbstractExpression expression = ExpInterpreterFactory.getExpression(node.getExp());
+		final IExpression expression = ExpInterpreterFactory.getExpression(node.getExp());
 		
 		final SelectorInterpreter interpreter = new SelectorInterpreter();
 		node.getSelector().apply(interpreter);

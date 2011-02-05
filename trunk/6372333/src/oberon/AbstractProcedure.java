@@ -28,5 +28,5 @@ public abstract class AbstractProcedure {
 		return body;
 	}
 
-	public abstract void call(Queue<AbstractExpression> localQueue) throws IOException;
+	public abstract void call(Queue<IExpression> localQueue) throws IOException;
 }

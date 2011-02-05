@@ -1,10 +1,10 @@
 package oberon.interpret;
 
-import oberon.AbstractExpression;
+import oberon.IExpression;
 import oberon.SelectorExpression;
 import oberon.node.ASelectorExp;
 
-public class SelectorExpInterpreter extends AbstractBaseInterpreter<AbstractExpression> {
+public class SelectorExpInterpreter extends AbstractBaseInterpreter<IExpression> {
 	private SelectorExpression value;
 	
 	@Override
@@ -15,7 +15,7 @@ public class SelectorExpInterpreter extends AbstractBaseInterpreter<AbstractExpr
 	}
 
 	@Override
-	public AbstractExpression buildInterpreterResult() {
+	public IExpression buildInterpreterResult() {
 		return value;
 	}
 

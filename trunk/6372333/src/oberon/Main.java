@@ -50,7 +50,7 @@ public class Main {
 		WriteLnCall.initialize();
 		
 		final AbstractProcedure mainProc = interpreter.buildInterpreterResult();
-		final Queue<AbstractExpression> paramList = new LinkedList<AbstractExpression>();
+		final Queue<IExpression> paramList = new LinkedList<IExpression>();
 			 
 		try {
 			mainProc.call(paramList);

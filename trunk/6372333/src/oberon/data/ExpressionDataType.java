@@ -1,11 +1,11 @@
 package oberon.data;
 
-import oberon.AbstractExpression;
+import oberon.IExpression;
 
 public class ExpressionDataType extends AbstractDataType {
-	private final AbstractExpression expression;
+	private final IExpression expression;
 
-	public ExpressionDataType(final String name, final AbstractExpression inputExpression) {
+	public ExpressionDataType(final String name, final IExpression inputExpression) {
 		super(name);
 		expression = inputExpression;
 	}

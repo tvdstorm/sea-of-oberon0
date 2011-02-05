@@ -1,6 +1,6 @@
 package oberon.interpret;
 
-import oberon.AbstractExpression;
+import oberon.IExpression;
 import oberon.IStatement;
 import oberon.StatementSequence;
 import oberon.node.AStatwhileStatement;
@@ -8,7 +8,7 @@ import oberon.node.AWhilestatement;
 import oberon.statement.WhileStatement;
 
 class StatwithStatementInterpreter extends AbstractBaseInterpreter<IStatement>{
-	private AbstractExpression condition;
+	private IExpression condition;
 	private StatementSequence body;
 
 	@Override

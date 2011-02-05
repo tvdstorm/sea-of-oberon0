@@ -3,7 +3,7 @@ package oberon.interpret;
 import java.util.ArrayList;
 import java.util.List;
 
-import oberon.AbstractExpression;
+import oberon.IExpression;
 import oberon.data.AbstractDataType;
 import oberon.data.ExpressionDataType;
 import oberon.data.IntegerArrayType;
@@ -35,7 +35,7 @@ class VarInterpreter extends AbstractBaseInterpreter<List<AbstractDataType>>{
 		
 		for (TIdentifier name : node.getIdentifier()) {
 			if (isArray) {
-				final AbstractExpression lengthExpression = ExpInterpreterFactory.getExpression(((AArrayType)nodeType).getExp());
+				final IExpression lengthExpression = ExpInterpreterFactory.getExpression(((AArrayType)nodeType).getExp());
 				list.add(new IntegerArrayType(name.toString().trim(), lengthExpression));
 			}
 			else {
@@ -59,7 +59,7 @@ class VarInterpreter extends AbstractBaseInterpreter<List<AbstractDataType>>{
 			list.add(new IntegerType(name, value, true));
 		}
 		else {
-			final AbstractExpression expression = ExpInterpreterFactory.getExpression(node.getExp());
+			final IExpression expression = ExpInterpreterFactory.getExpression(node.getExp());
 			
 			list.add(new ExpressionDataType(name, expression));
 		}

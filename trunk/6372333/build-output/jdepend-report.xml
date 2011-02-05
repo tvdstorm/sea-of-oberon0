@@ -4,14 +4,14 @@
 
         <Package name="oberon">
             <Stats>
-                <TotalClasses>22</TotalClasses>
+                <TotalClasses>23</TotalClasses>
                 <ConcreteClasses>18</ConcreteClasses>
-                <AbstractClasses>4</AbstractClasses>
+                <AbstractClasses>5</AbstractClasses>
                 <Ca>3</Ca>
                 <Ce>2</Ce>
-                <A>0.18</A>
+                <A>0.22</A>
                 <I>0.4</I>
-                <D>0.42</D>
+                <D>0.38</D>
                 <V>1</V>
             </Stats>
 
@@ -24,6 +24,9 @@
                 </Class>
                 <Class sourceFile="AbstractProcedure.java">
                     oberon.AbstractProcedure
+                </Class>
+                <Class sourceFile="IExpression.java">
+                    oberon.IExpression
                 </Class>
                 <Class sourceFile="IStatement.java">
                     oberon.IStatement

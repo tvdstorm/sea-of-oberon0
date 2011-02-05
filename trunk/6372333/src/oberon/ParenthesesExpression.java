@@ -1,9 +1,9 @@
 package oberon;
 
 public class ParenthesesExpression extends AbstractExpression {
-	private final AbstractExpression _expression;
+	private final IExpression _expression;
 
-	public ParenthesesExpression(final AbstractExpression expression) {
+	public ParenthesesExpression(final IExpression expression) {
 		_expression = expression;
 	}
 	

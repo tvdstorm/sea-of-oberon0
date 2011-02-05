@@ -1,13 +1,13 @@
 package oberon.data;
 
-import oberon.AbstractExpression;
+import oberon.IExpression;
 
 public class ArrayIndexerSelector extends AbstractSelector {
-	private final AbstractExpression indexExpression;
+	private final IExpression indexExpression;
 	private final AbstractSelector selector;
 
 	public ArrayIndexerSelector(final AbstractSelector indexSelector, 
-			final AbstractExpression expression){
+			final IExpression expression){
 		indexExpression = expression;
 		selector = indexSelector;
 	}

@@ -3,8 +3,8 @@ package oberon;
 public class MathematicalExpression extends AbstractLeftAndRightExpression {
 	private final MathematicalExpressionType expressionType;
 
-	public MathematicalExpression(final AbstractExpression lefthandSide,
-			final AbstractExpression righthandSide, final MathematicalExpressionType type) {
+	public MathematicalExpression(final IExpression lefthandSide,
+			final IExpression righthandSide, final MathematicalExpressionType type) {
 		super(lefthandSide, righthandSide);
 		expressionType = type;
 	}
