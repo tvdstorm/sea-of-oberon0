@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-02-05</date>
-  <time>16:27:17</time>
+  <time>16:33:13</time>
   <packages>
     <package>
       <name>oberon</name>
@@ -27,7 +27,7 @@
       <name>oberon.interpret</name>
       <classes>20</classes>
       <functions>67</functions>
-      <ncss>491</ncss>
+      <ncss>490</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>4</single_comment_lines>
@@ -46,7 +46,7 @@
     <total>
       <classes>41</classes>
       <functions>141</functions>
-      <ncss>871</ncss>
+      <ncss>870</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>33</single_comment_lines>
@@ -54,10 +54,10 @@
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>4.00</td><td>41.00</td><td>141.00</td><td>871.00</td><td>0.00</td><td>Project</td></tr>
-      <tr><td></td><td>10.25</td><td>35.25</td><td>217.75</td><td>0.00</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.44</td><td>21.24</td><td>0.00</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>6.18</td><td>0.00</td><td>Function</td></tr>
+      <tr><td>4.00</td><td>41.00</td><td>141.00</td><td>870.00</td><td>0.00</td><td>Project</td></tr>
+      <tr><td></td><td>10.25</td><td>35.25</td><td>217.50</td><td>0.00</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.44</td><td>21.22</td><td>0.00</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>6.17</td><td>0.00</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -246,7 +246,7 @@
     </object>
     <object>
       <name>oberon.interpret.FpSectionInterpreter</name>
-      <ncss>21</ncss>
+      <ncss>20</ncss>
       <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
@@ -350,12 +350,12 @@
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>15.98</ncss>
+      <ncss>15.95</ncss>
       <functions>3.44</functions>
       <classes>0.02</classes>
       <javadocs>0.00</javadocs>
     </averages>
-    <ncss>871.00</ncss>
+    <ncss>870.00</ncss>
   </objects>
 
   <functions>
@@ -949,7 +949,7 @@
     </function>
     <function>
       <name>oberon.interpret.FpSectionInterpreter.caseAFpsection(AFpsection)</name>
-      <ncss>13</ncss>
+      <ncss>12</ncss>
       <ccn>4</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -1206,10 +1206,10 @@
       <javadocs>0</javadocs>
     </function>
     <function_averages>
-      <ncss>3.70</ncss>
+      <ncss>3.69</ncss>
       <ccn>1.42</ccn>
       <javadocs>0.00</javadocs>
     </function_averages>
-    <ncss>871.00</ncss>
+    <ncss>870.00</ncss>
   </functions>
 </javancss>

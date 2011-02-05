@@ -35,14 +35,12 @@ class FpSectionInterpreter extends AbstractBaseInterpreter<List<FormalParamSecti
 			fpType = FormalParamType.Identifier;
 		}
 		
-		final Boolean callByRef = node.getCallbyref() != null;
-		
 		final List<String> nameList = new ArrayList<String>();
 		for (TIdentifier paramName : node.getParamnames()) {
 			nameList.add(paramName.toString().trim());
 		}
 		
-		paramSectionList.add(new FormalParamSection(nameList, fpType, callByRef));
+		paramSectionList.add(new FormalParamSection(nameList, fpType));
 	}
 
 	@Override
