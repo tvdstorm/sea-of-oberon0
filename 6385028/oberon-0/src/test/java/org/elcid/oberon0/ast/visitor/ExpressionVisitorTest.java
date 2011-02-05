@@ -1,7 +1,7 @@
 package org.elcid.oberon0.ast.visitor;
 
 import org.elcid.oberon0.ast.*;
-import org.elcid.oberon0.ast.values.Environment;
+import org.elcid.oberon0.ast.env.Environment;
 import org.elcid.oberon0.ast.values.IntVariable;
 import org.elcid.oberon0.ast.values.Int;
 import org.junit.Before;

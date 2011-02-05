@@ -1,5 +1,7 @@
 package org.elcid.oberon0.ast.values;
 
+import org.elcid.oberon0.ast.env.Environment;
+
 /**
  * Represents integers in the Oberon-0 language.
  *

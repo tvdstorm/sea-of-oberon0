@@ -2,7 +2,7 @@ package org.elcid.oberon0.ast;
 
 import java.util.List;
 import org.elcid.oberon0.ast.util.NodeType;
-import org.elcid.oberon0.ast.values.Environment;
+import org.elcid.oberon0.ast.env.Environment;
 import org.elcid.oberon0.ast.values.Value;
 import org.elcid.oberon0.ast.visitor.BaseVisitor;
 

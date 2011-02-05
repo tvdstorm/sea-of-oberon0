@@ -1,4 +1,4 @@
-package org.elcid.oberon0.ast.values;
+package org.elcid.oberon0.ast.env;
 
 import java.util.HashMap;
 import java.util.Map;
