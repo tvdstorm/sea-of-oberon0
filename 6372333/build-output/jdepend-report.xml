@@ -1,0 +1,280 @@
+<?xml version="1.0"?>
+<JDepend>
+    <Packages>
+
+        <Package name="oberon">
+            <Stats>
+                <TotalClasses>26</TotalClasses>
+                <ConcreteClasses>22</ConcreteClasses>
+                <AbstractClasses>4</AbstractClasses>
+                <Ca>2</Ca>
+                <Ce>2</Ce>
+                <A>0.15</A>
+                <I>0.5</I>
+                <D>0.35</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="AbstractExpression.java">
+                    oberon.AbstractExpression
+                </Class>
+                <Class sourceFile="AbstractLeftAndRightExpression.java">
+                    oberon.AbstractLeftAndRightExpression
+                </Class>
+                <Class sourceFile="AbstractProcedure.java">
+                    oberon.AbstractProcedure
+                </Class>
+                <Class sourceFile="AbstractStatement.java">
+                    oberon.AbstractStatement
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="AbstractIntegerExpression.java">
+                    oberon.AbstractIntegerExpression
+                </Class>
+                <Class sourceFile="AssignmentStatement.java">
+                    oberon.AssignmentStatement
+                </Class>
+                <Class sourceFile="ComparisonExpression.java">
+                    oberon.ComparisonExpression
+                </Class>
+                <Class sourceFile="ComparisonType.java">
+                    oberon.ComparisonType
+                </Class>
+                <Class sourceFile="Declaration.java">
+                    oberon.Declaration
+                </Class>
+                <Class sourceFile="FormalParamSection.java">
+                    oberon.FormalParamSection
+                </Class>
+                <Class sourceFile="FormalParamType.java">
+                    oberon.FormalParamType
+                </Class>
+                <Class sourceFile="IfStatement.java">
+                    oberon.IfStatement
+                </Class>
+                <Class sourceFile="Main.java">
+                    oberon.Main
+                </Class>
+                <Class sourceFile="MathematicalExpression.java">
+                    oberon.MathematicalExpression
+                </Class>
+                <Class sourceFile="MathematicalExpressionType.java">
+                    oberon.MathematicalExpressionType
+                </Class>
+                <Class sourceFile="ParenthesesExpression.java">
+                    oberon.ParenthesesExpression
+                </Class>
+                <Class sourceFile="ProcedureBody.java">
+                    oberon.ProcedureBody
+                </Class>
+                <Class sourceFile="ProcedureHeading.java">
+                    oberon.ProcedureHeading
+                </Class>
+                <Class sourceFile="ProcedurecallStatement.java">
+                    oberon.ProcedurecallStatement
+                </Class>
+                <Class sourceFile="ReadProcedure.java">
+                    oberon.ReadProcedure
+                </Class>
+                <Class sourceFile="SelectorExpression.java">
+                    oberon.SelectorExpression
+                </Class>
+                <Class sourceFile="StatementSequence.java">
+                    oberon.StatementSequence
+                </Class>
+                <Class sourceFile="SystemMethodCall.java">
+                    oberon.SystemMethodCall
+                </Class>
+                <Class sourceFile="WhileStatement.java">
+                    oberon.WhileStatement
+                </Class>
+                <Class sourceFile="WriteCall.java">
+                    oberon.WriteCall
+                </Class>
+                <Class sourceFile="WriteLnCall.java">
+                    oberon.WriteLnCall
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>oberon.data</Package>
+                <Package>oberon.interpret</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>oberon.data</Package>
+                <Package>oberon.interpret</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="oberon.data">
+            <Stats>
+                <TotalClasses>10</TotalClasses>
+                <ConcreteClasses>8</ConcreteClasses>
+                <AbstractClasses>2</AbstractClasses>
+                <Ca>2</Ca>
+                <Ce>1</Ce>
+                <A>0.2</A>
+                <I>0.33</I>
+                <D>0.47</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="AbstractDataType.java">
+                    oberon.data.AbstractDataType
+                </Class>
+                <Class sourceFile="AbstractSelector.java">
+                    oberon.data.AbstractSelector
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="ArrayIndexerSelector.java">
+                    oberon.data.ArrayIndexerSelector
+                </Class>
+                <Class sourceFile="ExpressionDataType.java">
+                    oberon.data.ExpressionDataType
+                </Class>
+                <Class sourceFile="IdentifierSelector.java">
+                    oberon.data.IdentifierSelector
+                </Class>
+                <Class sourceFile="IntegerArrayIndexerType.java">
+                    oberon.data.IntegerArrayIndexerType
+                </Class>
+                <Class sourceFile="IntegerArrayType.java">
+                    oberon.data.IntegerArrayType
+                </Class>
+                <Class sourceFile="IntegerType.java">
+                    oberon.data.IntegerType
+                </Class>
+                <Class sourceFile="VariableManager.java">
+                    oberon.data.VariableManager
+                </Class>
+                <Class sourceFile="VariableManager.java">
+                    oberon.data.VariableManager$Scope
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>oberon</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>oberon</Package>
+                <Package>oberon.interpret</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="oberon.interpret">
+            <Stats>
+                <TotalClasses>20</TotalClasses>
+                <ConcreteClasses>19</ConcreteClasses>
+                <AbstractClasses>1</AbstractClasses>
+                <Ca>1</Ca>
+                <Ce>2</Ce>
+                <A>0.05</A>
+                <I>0.67</I>
+                <D>0.28</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="AbstractBaseInterpreter.java">
+                    oberon.interpret.AbstractBaseInterpreter
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="AssignmentInterpreter.java">
+                    oberon.interpret.AssignmentInterpreter
+                </Class>
+                <Class sourceFile="ComparisonExpressionInterpreter.java">
+                    oberon.interpret.ComparisonExpressionInterpreter
+                </Class>
+                <Class sourceFile="DeclarationsInterpreter.java">
+                    oberon.interpret.DeclarationsInterpreter
+                </Class>
+                <Class sourceFile="ExpIntegerInterpreter.java">
+                    oberon.interpret.ExpIntegerInterpreter
+                </Class>
+                <Class sourceFile="ExpInterpreterFactory.java">
+                    oberon.interpret.ExpInterpreterFactory
+                </Class>
+                <Class sourceFile="FpSectionInterpreter.java">
+                    oberon.interpret.FpSectionInterpreter
+                </Class>
+                <Class sourceFile="IfStatementInterpreter.java">
+                    oberon.interpret.IfStatementInterpreter
+                </Class>
+                <Class sourceFile="MathematicalExpressionInterpreter.java">
+                    oberon.interpret.MathematicalExpressionInterpreter
+                </Class>
+                <Class sourceFile="ModuleInterpreter.java">
+                    oberon.interpret.ModuleInterpreter
+                </Class>
+                <Class sourceFile="ParenExpInterpreter.java">
+                    oberon.interpret.ParenExpInterpreter
+                </Class>
+                <Class sourceFile="ProcedureBodyInterpreter.java">
+                    oberon.interpret.ProcedureBodyInterpreter
+                </Class>
+                <Class sourceFile="ProcedureHeadingInterpreter.java">
+                    oberon.interpret.ProcedureHeadingInterpreter
+                </Class>
+                <Class sourceFile="SelectorExpInterpreter.java">
+                    oberon.interpret.SelectorExpInterpreter
+                </Class>
+                <Class sourceFile="SelectorInterpreter.java">
+                    oberon.interpret.SelectorInterpreter
+                </Class>
+                <Class sourceFile="StatementInterpreterFactory.java">
+                    oberon.interpret.StatementInterpreterFactory
+                </Class>
+                <Class sourceFile="StatementSequenceInterpreter.java">
+                    oberon.interpret.StatementSequenceInterpreter
+                </Class>
+                <Class sourceFile="StatprocStatementInterpreter.java">
+                    oberon.interpret.StatprocStatementInterpreter
+                </Class>
+                <Class sourceFile="StatwithStatementInterpreter.java">
+                    oberon.interpret.StatwithStatementInterpreter
+                </Class>
+                <Class sourceFile="VarDeclInterpreter.java">
+                    oberon.interpret.VarInterpreter
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>oberon</Package>
+                <Package>oberon.data</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>oberon</Package>
+            </UsedBy>
+        </Package>
+    </Packages>
+
+    <Cycles>
+        <Package Name="oberon">
+            <Package>oberon.data</Package>
+            <Package>oberon</Package>
+        </Package>
+
+        <Package Name="oberon.data">
+            <Package>oberon</Package>
+            <Package>oberon.data</Package>
+        </Package>
+
+        <Package Name="oberon.interpret">
+            <Package>oberon</Package>
+            <Package>oberon.data</Package>
+            <Package>oberon</Package>
+        </Package>
+
+    </Cycles>
+</JDepend>
