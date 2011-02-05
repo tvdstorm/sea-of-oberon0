@@ -13,7 +13,7 @@ public class Int extends Value {
 		this.value = value;
 	}
 
-	public Integer getValue() {
+	public Integer getValue(Environment localEnv) {
 		assert (value != null) : "Int value is null";
 		return value;
 	}
