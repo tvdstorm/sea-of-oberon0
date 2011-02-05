@@ -1,8 +1,11 @@
-package oberon;
+package oberon.procedures;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import oberon.IDataType;
+import oberon.IProcedure;
 
 public class Declaration {
 	private final List<IDataType> constAndVarDeclarations;

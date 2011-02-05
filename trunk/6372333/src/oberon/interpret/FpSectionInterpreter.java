@@ -3,14 +3,14 @@ package oberon.interpret;
 import java.util.ArrayList;
 import java.util.List;
 
-import oberon.FormalParamSection;
-import oberon.FormalParamType;
 import oberon.node.AArrayType;
 import oberon.node.AFpsection;
 import oberon.node.AIdentifierType;
 import oberon.node.PFpsection;
 import oberon.node.PType;
 import oberon.node.TIdentifier;
+import oberon.procedures.FormalParamSection;
+import oberon.procedures.FormalParamType;
 
 class FpSectionInterpreter extends AbstractBaseInterpreter<List<FormalParamSection>> {
 	private final List<FormalParamSection> paramSectionList;

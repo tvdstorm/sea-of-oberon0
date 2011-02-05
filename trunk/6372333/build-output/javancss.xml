@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-02-05</date>
-  <time>16:12:41</time>
+  <time>16:27:17</time>
   <packages>
     <package>
       <name>oberon</name>
-      <classes>16</classes>
-      <functions>48</functions>
-      <ncss>292</ncss>
+      <classes>12</classes>
+      <functions>39</functions>
+      <ncss>256</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>7</single_comment_lines>
@@ -44,9 +44,9 @@
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <total>
-      <classes>45</classes>
-      <functions>150</functions>
-      <ncss>907</ncss>
+      <classes>41</classes>
+      <functions>141</functions>
+      <ncss>871</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>33</single_comment_lines>
@@ -54,35 +54,14 @@
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>4.00</td><td>45.00</td><td>150.00</td><td>907.00</td><td>0.00</td><td>Project</td></tr>
-      <tr><td></td><td>11.25</td><td>37.50</td><td>226.75</td><td>0.00</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.33</td><td>20.16</td><td>0.00</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>6.05</td><td>0.00</td><td>Function</td></tr>
+      <tr><td>4.00</td><td>41.00</td><td>141.00</td><td>871.00</td><td>0.00</td><td>Project</td></tr>
+      <tr><td></td><td>10.25</td><td>35.25</td><td>217.75</td><td>0.00</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.44</td><td>21.24</td><td>0.00</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>6.18</td><td>0.00</td><td>Function</td></tr>
     </table>
   </packages>
 
   <objects>
-    <object>
-      <name>oberon.Declaration</name>
-      <ncss>13</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon.FormalParamSection</name>
-      <ncss>14</ncss>
-      <functions>4</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon.FormalParamType</name>
-      <ncss>1</ncss>
-      <functions>0</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
     <object>
       <name>oberon.IDataType</name>
       <ncss>5</ncss>
@@ -122,13 +101,6 @@
       <name>oberon.Main</name>
       <ncss>29</ncss>
       <functions>1</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon.ProcedureBody</name>
-      <ncss>10</ncss>
-      <functions>2</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -378,57 +350,15 @@
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>15.40</ncss>
-      <functions>3.33</functions>
+      <ncss>15.98</ncss>
+      <functions>3.44</functions>
       <classes>0.02</classes>
       <javadocs>0.00</javadocs>
     </averages>
-    <ncss>907.00</ncss>
+    <ncss>871.00</ncss>
   </objects>
 
   <functions>
-    <function>
-      <name>oberon.Declaration.Declaration(IDataType,IProcedure)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.Declaration.getVariables()</name>
-      <ncss>5</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.Declaration.getProcedures()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.FormalParamSection.FormalParamSection(String,FormalParamType,Boolean)</name>
-      <ncss>4</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.FormalParamSection.shouldBeCalledByRef()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.FormalParamSection.getNames()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.FormalParamSection.getType()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
     <function>
       <name>oberon.IDataType.getValue()</name>
       <ncss>1</ncss>
@@ -505,18 +435,6 @@
       <name>oberon.Main.main(String[])</name>
       <ncss>28</ncss>
       <ccn>7</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.ProcedureBody.ProcedureBody(Declaration,StatementSequence)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.ProcedureBody.eval()</name>
-      <ncss>4</ncss>
-      <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -1288,10 +1206,10 @@
       <javadocs>0</javadocs>
     </function>
     <function_averages>
-      <ncss>3.65</ncss>
-      <ccn>1.40</ccn>
+      <ncss>3.70</ncss>
+      <ccn>1.42</ccn>
       <javadocs>0.00</javadocs>
     </function_averages>
-    <ncss>907.00</ncss>
+    <ncss>871.00</ncss>
   </functions>
 </javancss>

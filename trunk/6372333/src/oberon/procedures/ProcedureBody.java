@@ -1,6 +1,9 @@
-package oberon;
+package oberon.procedures;
 
 import java.io.IOException;
+
+import oberon.StatementSequence;
+import oberon.VariableManager;
 
 
 public class ProcedureBody {

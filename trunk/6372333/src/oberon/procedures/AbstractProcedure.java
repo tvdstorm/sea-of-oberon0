@@ -4,10 +4,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Queue;
 
-import oberon.FormalParamSection;
 import oberon.IExpression;
 import oberon.IProcedure;
-import oberon.ProcedureBody;
 
 public abstract class AbstractProcedure implements IProcedure {
 	private final String name;

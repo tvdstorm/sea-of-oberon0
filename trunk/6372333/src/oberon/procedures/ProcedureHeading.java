@@ -5,10 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
-import oberon.FormalParamSection;
 import oberon.IDataType;
 import oberon.IExpression;
-import oberon.ProcedureBody;
 import oberon.VariableManager;
 
 
