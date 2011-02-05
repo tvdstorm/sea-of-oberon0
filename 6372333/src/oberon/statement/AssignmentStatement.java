@@ -1,22 +1,22 @@
 package oberon.statement;
 
+import oberon.IDataType;
 import oberon.IExpression;
+import oberon.IIdentifier;
 import oberon.IStatement;
-import oberon.data.AbstractDataType;
-import oberon.data.AbstractIdentifier;
 
 public class AssignmentStatement implements IStatement {
-	private final AbstractIdentifier selectorToAssignTo;
+	private final IIdentifier selectorToAssignTo;
 	private final IExpression assignmentExpression;
 
-	public AssignmentStatement(final AbstractIdentifier name, final IExpression value){		
+	public AssignmentStatement(final IIdentifier name, final IExpression value){		
 		selectorToAssignTo = name;
 		assignmentExpression = value;
 	}
 	
 	@Override
 	public void eval() {
-		final AbstractDataType type = selectorToAssignTo.getDataTypeValue();
+		final IDataType type = selectorToAssignTo.getDataTypeValue();
 		type.setValue(assignmentExpression.evalAsInt());
 	}
 

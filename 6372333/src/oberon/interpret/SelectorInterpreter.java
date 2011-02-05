@@ -1,15 +1,15 @@
 package oberon.interpret;
 
 import oberon.IExpression;
+import oberon.IIdentifier;
 import oberon.data.ArrayIndexerIdentifier;
 import oberon.data.VariableIdentifier;
-import oberon.data.AbstractIdentifier;
 import oberon.node.AAdditionalselectorSelector;
 import oberon.node.AArrayexpressionSelector;
 import oberon.node.AIdentifierSelector;
 
-public class SelectorInterpreter extends AbstractBaseInterpreter<AbstractIdentifier> {
-	private AbstractIdentifier selector;
+public class SelectorInterpreter extends AbstractBaseInterpreter<IIdentifier> {
+	private IIdentifier selector;
 	
 	@Override
 	public void caseAIdentifierSelector(final AIdentifierSelector node) {
@@ -27,13 +27,13 @@ public class SelectorInterpreter extends AbstractBaseInterpreter<AbstractIdentif
 		
 		final SelectorInterpreter interpreter = new SelectorInterpreter();
 		node.getSelector().apply(interpreter);
-		final AbstractIdentifier arraySelector = interpreter.buildInterpreterResult();
+		final IIdentifier arraySelector = interpreter.buildInterpreterResult();
 		
 		selector = new ArrayIndexerIdentifier(arraySelector, expression);
 	}
 	
 	@Override
-	public AbstractIdentifier buildInterpreterResult() {
+	public IIdentifier buildInterpreterResult() {
 		return selector;
 	}
 

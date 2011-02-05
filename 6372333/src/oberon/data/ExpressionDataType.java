@@ -1,5 +1,6 @@
 package oberon.data;
 
+import oberon.IDataType;
 import oberon.IExpression;
 
 public class ExpressionDataType extends AbstractDataType {
@@ -16,13 +17,7 @@ public class ExpressionDataType extends AbstractDataType {
 	}
 
 	@Override
-	public AbstractDataType deepCopy(final String newName) {
+	public IDataType copy(final String newName) {
 		return new ExpressionDataType(newName, expression);
 	}
-
-	@Override
-	public AbstractDataType shallowCopy(final String newName) {
-		return new ExpressionDataType(newName, expression);
-	}
-
 }

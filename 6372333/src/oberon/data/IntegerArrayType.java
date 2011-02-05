@@ -1,5 +1,6 @@
 package oberon.data;
 
+import oberon.IDataType;
 import oberon.IExpression;
 
 public class IntegerArrayType extends AbstractDataType {
@@ -37,13 +38,7 @@ public class IntegerArrayType extends AbstractDataType {
 	}
 
 	@Override
-	public AbstractDataType deepCopy(final String newName) {
-		return new IntegerArrayType(newName, array.clone(), lengthExpression);
-	}
-
-	@Override
-	public AbstractDataType shallowCopy(final String newName) {
+	public IDataType copy(final String newName) {
 		return new IntegerArrayType(newName, array, lengthExpression);
 	}
-
 }

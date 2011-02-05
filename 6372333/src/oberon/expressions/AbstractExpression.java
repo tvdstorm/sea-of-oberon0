@@ -1,6 +1,8 @@
 package oberon.expressions;
 
+import oberon.IDataType;
 import oberon.IExpression;
+import oberon.data.IntegerType;
 
 public abstract class AbstractExpression implements IExpression {
 	/* (non-Javadoc)
@@ -23,6 +25,22 @@ public abstract class AbstractExpression implements IExpression {
 			result = 1;
 		}
 		return result;
+	}
+	
+	@Override
+	public IDataType copy(String newName)
+	{
+		if (	this instanceof MathematicalExpression ||
+				this instanceof AbstractIntegerExpression){
+			return new IntegerType(newName, this.evalAsInt(), false);
+		}
+		else if (this instanceof SelectorExpression){
+			final SelectorExpression selectorExpression = ((SelectorExpression)this);
+			return selectorExpression.copy(newName);
+		}
+		
+		//TODO: throw;
+		return null;
 	}
 
 }

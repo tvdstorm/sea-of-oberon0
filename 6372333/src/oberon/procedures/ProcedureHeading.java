@@ -6,14 +6,10 @@ import java.util.List;
 import java.util.Queue;
 
 import oberon.FormalParamSection;
+import oberon.IDataType;
 import oberon.IExpression;
 import oberon.ProcedureBody;
-import oberon.data.AbstractDataType;
-import oberon.data.IntegerType;
-import oberon.data.VariableManager;
-import oberon.expressions.AbstractIntegerExpression;
-import oberon.expressions.MathematicalExpression;
-import oberon.expressions.SelectorExpression;
+import oberon.VariableManager;
 
 
 public class ProcedureHeading extends AbstractProcedure {
@@ -24,7 +20,7 @@ public class ProcedureHeading extends AbstractProcedure {
 
 	@Override
 	public void call(final Queue<IExpression> localQueue) throws IOException {
-		final List<AbstractDataType> actualParameterList = new ArrayList<AbstractDataType>();
+		final List<IDataType> actualParameterList = new ArrayList<IDataType>();
 		
 		for (FormalParamSection section : getParamSections()) {
 			for (String name : section.getNames()) {
@@ -33,21 +29,7 @@ public class ProcedureHeading extends AbstractProcedure {
 				}
 						
 				final IExpression actualParam = localQueue.poll();
-				if (	actualParam instanceof MathematicalExpression ||
-						actualParam instanceof AbstractIntegerExpression){
-					actualParameterList.add(new IntegerType(name, actualParam.evalAsInt(), false));
-				}
-				else if (actualParam instanceof SelectorExpression){
-					final SelectorExpression selectorExpression = ((SelectorExpression)actualParam);
-					if (section.shouldBeCalledByRef()) {
-						//Pass by value
-						actualParameterList.add(selectorExpression.performShallowCopyOfValue(name));
-					}
-					else {
-						//Pass by ref
-						actualParameterList.add(selectorExpression.performDeepCopyOfValue(name));
-					}
-				}
+				actualParameterList.add(actualParam.copy(name));
 			}
 		}
 		
