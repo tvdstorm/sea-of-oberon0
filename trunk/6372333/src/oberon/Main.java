@@ -49,7 +49,7 @@ public class Main {
 		WriteCall.initialize();
 		WriteLnCall.initialize();
 		
-		final AbstractProcedure mainProc = interpreter.buildInterpreterResult();
+		final IProcedure mainProc = interpreter.buildInterpreterResult();
 		final Queue<IExpression> paramList = new LinkedList<IExpression>();
 			 
 		try {

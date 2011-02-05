@@ -4,23 +4,23 @@
 
         <Package name="oberon">
             <Stats>
-                <TotalClasses>14</TotalClasses>
-                <ConcreteClasses>11</ConcreteClasses>
+                <TotalClasses>12</TotalClasses>
+                <ConcreteClasses>9</ConcreteClasses>
                 <AbstractClasses>3</AbstractClasses>
-                <Ca>4</Ca>
+                <Ca>5</Ca>
                 <Ce>3</Ce>
-                <A>0.21</A>
-                <I>0.43</I>
-                <D>0.36</D>
+                <A>0.25</A>
+                <I>0.38</I>
+                <D>0.38</D>
                 <V>1</V>
             </Stats>
 
             <AbstractClasses>
-                <Class sourceFile="AbstractProcedure.java">
-                    oberon.AbstractProcedure
-                </Class>
                 <Class sourceFile="IExpression.java">
                     oberon.IExpression
+                </Class>
+                <Class sourceFile="IProcedure.java">
+                    oberon.IProcedure
                 </Class>
                 <Class sourceFile="IStatement.java">
                     oberon.IStatement
@@ -43,17 +43,11 @@
                 <Class sourceFile="ProcedureBody.java">
                     oberon.ProcedureBody
                 </Class>
-                <Class sourceFile="ProcedureHeading.java">
-                    oberon.ProcedureHeading
-                </Class>
                 <Class sourceFile="ReadProcedure.java">
                     oberon.ReadProcedure
                 </Class>
                 <Class sourceFile="StatementSequence.java">
                     oberon.StatementSequence
-                </Class>
-                <Class sourceFile="SystemMethodCall.java">
-                    oberon.SystemMethodCall
                 </Class>
                 <Class sourceFile="WriteCall.java">
                     oberon.WriteCall
@@ -65,14 +59,15 @@
 
             <DependsUpon>
                 <Package>oberon.data</Package>
-                <Package>oberon.expressions</Package>
                 <Package>oberon.interpret</Package>
+                <Package>oberon.procedures</Package>
             </DependsUpon>
 
             <UsedBy>
                 <Package>oberon.data</Package>
                 <Package>oberon.expressions</Package>
                 <Package>oberon.interpret</Package>
+                <Package>oberon.procedures</Package>
                 <Package>oberon.statement</Package>
             </UsedBy>
         </Package>
@@ -82,11 +77,11 @@
                 <TotalClasses>10</TotalClasses>
                 <ConcreteClasses>8</ConcreteClasses>
                 <AbstractClasses>2</AbstractClasses>
-                <Ca>4</Ca>
-                <Ce>1</Ce>
+                <Ca>5</Ca>
+                <Ce>2</Ce>
                 <A>0.2</A>
-                <I>0.2</I>
-                <D>0.6</D>
+                <I>0.29</I>
+                <D>0.51</D>
                 <V>1</V>
             </Stats>
 
@@ -128,12 +123,14 @@
 
             <DependsUpon>
                 <Package>oberon</Package>
+                <Package>oberon.procedures</Package>
             </DependsUpon>
 
             <UsedBy>
                 <Package>oberon</Package>
                 <Package>oberon.expressions</Package>
                 <Package>oberon.interpret</Package>
+                <Package>oberon.procedures</Package>
                 <Package>oberon.statement</Package>
             </UsedBy>
         </Package>
@@ -190,8 +187,8 @@
             </DependsUpon>
 
             <UsedBy>
-                <Package>oberon</Package>
                 <Package>oberon.interpret</Package>
+                <Package>oberon.procedures</Package>
             </UsedBy>
         </Package>
 
@@ -201,10 +198,10 @@
                 <ConcreteClasses>19</ConcreteClasses>
                 <AbstractClasses>1</AbstractClasses>
                 <Ca>1</Ca>
-                <Ce>4</Ce>
+                <Ce>5</Ce>
                 <A>0.05</A>
-                <I>0.8</I>
-                <D>0.15</D>
+                <I>0.83</I>
+                <D>0.12</D>
                 <V>1</V>
             </Stats>
 
@@ -278,11 +275,53 @@
                 <Package>oberon</Package>
                 <Package>oberon.data</Package>
                 <Package>oberon.expressions</Package>
+                <Package>oberon.procedures</Package>
                 <Package>oberon.statement</Package>
             </DependsUpon>
 
             <UsedBy>
                 <Package>oberon</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="oberon.procedures">
+            <Stats>
+                <TotalClasses>3</TotalClasses>
+                <ConcreteClasses>2</ConcreteClasses>
+                <AbstractClasses>1</AbstractClasses>
+                <Ca>3</Ca>
+                <Ce>3</Ce>
+                <A>0.33</A>
+                <I>0.5</I>
+                <D>0.17</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="AbstractProcedure.java">
+                    oberon.procedures.AbstractProcedure
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="ProcedureHeading.java">
+                    oberon.procedures.ProcedureHeading
+                </Class>
+                <Class sourceFile="SystemMethodCall.java">
+                    oberon.procedures.SystemMethodCall
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>oberon</Package>
+                <Package>oberon.data</Package>
+                <Package>oberon.expressions</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>oberon</Package>
+                <Package>oberon.data</Package>
+                <Package>oberon.interpret</Package>
             </UsedBy>
         </Package>
 
@@ -347,6 +386,12 @@
 
         <Package Name="oberon.interpret">
             <Package>oberon.statement</Package>
+            <Package>oberon</Package>
+            <Package>oberon.data</Package>
+            <Package>oberon</Package>
+        </Package>
+
+        <Package Name="oberon.procedures">
             <Package>oberon</Package>
             <Package>oberon.data</Package>
             <Package>oberon</Package>

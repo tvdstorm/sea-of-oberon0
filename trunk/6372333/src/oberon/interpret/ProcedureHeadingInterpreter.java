@@ -5,9 +5,9 @@ import java.util.List;
 
 import oberon.FormalParamSection;
 import oberon.ProcedureBody;
-import oberon.ProcedureHeading;
 import oberon.node.AProceduredeclaration;
 import oberon.node.AProcedureheading;
+import oberon.procedures.ProcedureHeading;
 
 class ProcedureHeadingInterpreter extends AbstractBaseInterpreter<ProcedureHeading> {
 	private ProcedureBody body;

@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import oberon.data.AbstractDataType;
+import oberon.procedures.ProcedureHeading;
 
 public class Declaration {
 	private final List<AbstractDataType> constAndVarDeclarations;

@@ -6,8 +6,9 @@ import java.util.List;
 import java.util.Stack;
 
 import oberon.Declaration;
-import oberon.AbstractProcedure;
-import oberon.ProcedureHeading;
+import oberon.IProcedure;
+import oberon.procedures.AbstractProcedure;
+import oberon.procedures.ProcedureHeading;
 
 public class VariableManager {
 	private static VariableManager instance;
@@ -58,7 +59,7 @@ public class VariableManager {
 		currentScope.addSystemProcedure(procedure);
 	}
 
-	public AbstractProcedure getProcedure(final String name) {
+	public IProcedure getProcedure(final String name) {
 		return currentScope.getProcedure(name);
 	}
 	
@@ -118,8 +119,8 @@ public class VariableManager {
 			procedures.put(procedure.getName(), procedure);
 		}
 
-		public AbstractProcedure getProcedure(final String name) {
-			AbstractProcedure procedure = null;
+		public IProcedure getProcedure(final String name) {
+			IProcedure procedure = null;
 			if (procedures.containsKey(name)){
 				procedure = procedures.get(name);
 			}
