@@ -15,16 +15,10 @@ public abstract class SelectorNode {
 	 */
 	private SelectorNode nextNode;
 
-	/*
-	 * Get the next node of the chain.
-	 */
 	public final SelectorNode getNextNode() {
 		return this.nextNode;
 	}
 
-	/*
-	 * Set the next node.
-	 */
 	public final void setNextNode(final SelectorNode nextNode) {
 		this.nextNode = nextNode;
 	}

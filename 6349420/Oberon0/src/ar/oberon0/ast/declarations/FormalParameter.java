@@ -1,10 +1,11 @@
 package ar.oberon0.ast.declarations;
 
+import junit.framework.Assert;
 import ar.oberon0.ast.dataTypes.CreatableType;
 
 /*
  * A formal parameter describes a parameter that is expected by a procedure.
- * It describes the type of the parameter and the direction ( in or in and out).
+ * It describes the type of the parameter and the direction ( in or in/out).
  */
 public class FormalParameter {
 	private CreatableType type;
@@ -19,6 +20,8 @@ public class FormalParameter {
 	}
 
 	public FormalParameter(final CreatableType type, final Direction direction) {
+		Assert.assertNotNull("The type parameter can't be null.", type);
+		Assert.assertNotNull("The direction parameter can't be null.", direction);
 		this.type = type;
 		this.direction = direction;
 	}

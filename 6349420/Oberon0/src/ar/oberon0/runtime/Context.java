@@ -44,16 +44,10 @@ public final class Context {
 		this.parentContext = context;
 	}
 
-	/*
-	 * Set the procedure's list.
-	 */
 	public void setProcedures(final ProcedureList procedures) {
 		this.procedures = procedures;
 	}
 
-	/*
-	 * Create a new context.
-	 */
 	public Context() {
 		this.parentContext = null;
 		this.variables = new DataFieldList();
@@ -61,13 +55,10 @@ public final class Context {
 		this.constants = new ConstantList();
 	}
 
-	public CreatableType getType(String name) {
+	public CreatableType getType(final String name) {
 		return this.typeIdentifiers.getItem(name);
 	}
 
-	/*
-	 * Get the procedure with the specified name.
-	 */
 	public ProcedureDeclaration getProcedure(final String name) throws TechnicalException {
 		if (!itemExist(name, this.procedures)) {
 			throw new TechnicalException("There was no procedure named " + name + " in the context.");
@@ -75,9 +66,6 @@ public final class Context {
 		return this.procedures.getItem(name);
 	}
 
-	/*
-	 * Add a new constant to the list of constants.
-	 */
 	public void addConstants(final ConstantList constants) {
 		if (constants != null) {
 			if (this.constants.getCount() <= 0) {
@@ -90,16 +78,10 @@ public final class Context {
 		}
 	}
 
-	/*
-	 * Add a new procedure to the list of procedures.
-	 */
 	public void addProcedure(final String name, final ProcedureDeclaration procedure) {
 		this.procedures.addItem(name, procedure);
 	}
 
-	/*
-	 * Add the type identifiers.
-	 */
 	public void addTypeIdentifiers(final TypeIdentifierList typeIdentifiers) {
 		if (typeIdentifiers != null) {
 
@@ -110,16 +92,10 @@ public final class Context {
 		}
 	}
 
-	/*
-	 * Add a new variable to the list of variables.
-	 */
 	public void addVariable(final String name, final DataField value) {
 		this.variables.addItem(name, value);
 	}
 
-	/*
-	 * Add the variables.
-	 */
 	public void addVariables(final DataFieldList variables) {
 		if (variables != null) {
 			if (this.variables.getCount() <= 0) {
@@ -149,30 +125,6 @@ public final class Context {
 		return clone;
 	}
 
-	/*
-	 * Get the type identifier for the specified name.
-	 */
-	private CreatableType getTypeIdentifier(final String name) throws TechnicalException {
-		if (!itemExist(name, this.typeIdentifiers)) {
-			throw new TechnicalException("There was no type named " + name + " in the context.");
-		}
-		return this.typeIdentifiers.getItem(name);
-	}
-
-	/*
-	 * Check if there is an item with the specified name in the specified list.
-	 */
-	private boolean itemExist(final String name, final BaseMap list) {
-		if (list.getItem(name) == null) {
-			return false;
-		} else {
-			return true;
-		}
-	}
-
-	/*
-	 * Get the datafield of the constant or variable with the specified name.
-	 */
 	public DataField getVarOrConstantAsDataField(final String name) throws TechnicalException {
 		if (itemExist(name, this.variables)) {
 			return this.variables.getItem(name);
@@ -181,5 +133,19 @@ public final class Context {
 		} else {
 			throw new TechnicalException("There was no variable or constant named " + name + " in the context.");
 		}
+	}
+
+	private CreatableType getTypeIdentifier(final String name) throws TechnicalException {
+		if (!itemExist(name, this.typeIdentifiers)) {
+			throw new TechnicalException("There was no type named " + name + " in the context.");
+		}
+		return this.typeIdentifiers.getItem(name);
+	}
+
+	private boolean itemExist(final String name, final BaseMap list) {
+		if (list.getItem(name) == null) {
+			return false;
+		}
+		return true;
 	}
 }

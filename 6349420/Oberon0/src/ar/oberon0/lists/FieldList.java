@@ -4,9 +4,6 @@ import java.util.List;
 
 import ar.oberon0.ast.dataTypes.CreatableType;
 
-/*
- * Not yet implemented.
- */
 public class FieldList {
 
 	private IdentList fieldNames;

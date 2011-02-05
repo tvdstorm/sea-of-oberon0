@@ -1,5 +1,6 @@
 package ar.oberon0.ast.statements;
 
+import junit.framework.Assert;
 import ar.oberon0.runtime.Context;
 import ar.oberon0.shared.Helper;
 import ar.oberon0.shared.Interpretable;
@@ -13,34 +14,17 @@ public class WriteNode implements Interpretable {
 	 * The expression, datafield, etc. to write to the console. Can be null.
 	 */
 	private Interpretable message;
-	/*
-	 * The message to print if _message doesn't contain a value. This field is
-	 * used to print text directly from the source code.
-	 */
 	private String stringMessage;
 
-	/*
-	 * Constructor with a interpretable message, the message can be an
-	 * expression, datafield, etc.
-	 */
 	public WriteNode(final Interpretable message) {
+		Assert.assertNotNull("The message paramter can't be null.", message);
 		this.message = message;
 	}
 
-	/*
-	 * Constructor
-	 */
 	public WriteNode() {
 		this.stringMessage = "";
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * ar.oberon0.interpreter.Interpretable#Interpret(ar.oberon0.interpreter
-	 * .Memory.Context)
-	 */
 	@Override
 	public final Object interpret(final Context context) throws TechnicalException {
 		if (this.message != null) {
@@ -51,9 +35,6 @@ public class WriteNode implements Interpretable {
 		return 0;
 	}
 
-	/*
-	 * Add text to the message to write.
-	 */
 	public final void addToMessage(final String text) {
 		this.stringMessage = this.stringMessage + text;
 	}

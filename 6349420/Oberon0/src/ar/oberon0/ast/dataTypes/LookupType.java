@@ -4,10 +4,14 @@ import ar.oberon0.runtime.Context;
 import ar.oberon0.shared.TechnicalException;
 import ar.oberon0.values.Value;
 
+/*
+ * The lookup type is a type that looks up the concrete type on runtime.
+ * This is used when a type identifier is used. 
+ */
 public class LookupType implements CreatableType {
-	String name;
+	private String name;
 
-	public LookupType(String name) {
+	protected LookupType(final String name) {
 		this.name = name;
 	}
 
@@ -17,6 +21,7 @@ public class LookupType implements CreatableType {
 			return new SimpleType(name).createInstance(context);
 		}
 
+		// If the code comes here it means that it was a TypeIdentifier.
 		CreatableType type = context.getType(this.name);
 		return type.createInstance(context);
 	}

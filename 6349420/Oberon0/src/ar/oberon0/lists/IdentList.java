@@ -10,37 +10,23 @@ import java.util.List;
  * a b and c are the values that are stored in the identlist.
  */
 public class IdentList implements Iterable<String> {
-	/*
-	 * The list with identifiers.
-	 */
+
 	private List<String> identifiers;
 
 	public List<String> getIdentifiers() {
 		return this.identifiers;
 	}
 
-	/*
-	 * Create a new IdentList and initialize the List with identifiers.
-	 */
 	public IdentList() {
 		this.identifiers = new ArrayList<String>();
 	}
 
-	/*
-	 * Add a new identifier to the list.
-	 */
 	public final void addIdent(final String name) {
 		this.identifiers.add(name);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Iterable#iterator()
-	 */
 	@Override
 	public final Iterator<String> iterator() {
 		return this.identifiers.iterator();
 	}
-
 }

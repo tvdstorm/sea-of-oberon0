@@ -1,5 +1,6 @@
 package ar.oberon0.runtime;
 
+import junit.framework.Assert;
 import ar.oberon0.ast.dataTypes.CreatableType;
 import ar.oberon0.ast.dataTypes.LookupType;
 import ar.oberon0.shared.Interpretable;
@@ -13,30 +14,34 @@ import ar.oberon0.values.Value;
  * If a clone isn't made the DataField is passed by reference.
  */
 public class DataField implements Interpretable {
-	/*
-	 * The type of the item stored in the DataField.
-	 */
+
 	private CreatableType type;
-	/*
-	 * The actual value.
-	 */
 	private Value value;
 
 	public final CreatableType getType() {
 		return this.type;
 	}
 
-	/*
-	 * Get the value of this DataField.
-	 */
-	public final Value getValue(final Context context) throws TechnicalException {
-		ifNotInitInit(context);
-		return this.value;
+	public DataField(final CreatableType type) {
+		this(type, null);
 	}
 
-	/*
-	 * Set the value of the DataField.
-	 */
+	public DataField(final Value value) {
+		this(value.getType(), value);
+	}
+
+	public DataField(final CreatableType type, final Value value) {
+		Assert.assertNotNull("The type parameter can't be null.", type);
+		this.type = type;
+		this.value = value;
+	}
+
+	@Override
+	public final Object interpret(final Context context) throws TechnicalException {
+		ifNotInitInit(context);
+		return getValue(context);
+	}
+
 	public final void setValue(final Value value, final Context context) throws TechnicalException {
 		if (value.getType().getClass() != this.type.getClass() && this.type.getClass() != LookupType.class) {
 			throw new IllegalArgumentException("The value was of type " + value.getType().getClass() + " while " + this.type.getClass() + " was expected.");
@@ -45,37 +50,13 @@ public class DataField implements Interpretable {
 		this.value = value;
 	}
 
-	/*
-	 * Create a new DataField of the specified type.
-	 */
-	public DataField(final CreatableType type) {
-		this(type, null);
-	}
-
-	/*
-	 * Create a new DataField of the specified type and with the specified
-	 * value.
-	 */
-	public DataField(final CreatableType type, final Value value) {
-		this.type = type;
-		this.value = value;
-	}
-
-	public DataField(final Value value) {
-		this(value.getType(), value);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * ar.oberon0.interpreter.Interpretable#Interpret(ar.oberon0.interpreter
-	 * .Memory.Context)
-	 */
-	@Override
-	public final Object interpret(final Context context) throws TechnicalException {
+	public final Value getValue(final Context context) throws TechnicalException {
 		ifNotInitInit(context);
-		return getValue(context);
+		return this.value;
+	}
+
+	public final DataField clone() {
+		return new DataField(this.type, this.value);
 	}
 
 	/*
@@ -88,12 +69,4 @@ public class DataField implements Interpretable {
 			this.value = type.createInstance(context);
 		}
 	}
-
-	/*
-	 * Create a new DataField with the same value.
-	 */
-	public final DataField clone() {
-		return new DataField(this.type, this.value);
-	}
-
 }

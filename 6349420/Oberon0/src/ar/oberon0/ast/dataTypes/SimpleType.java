@@ -1,42 +1,35 @@
 package ar.oberon0.ast.dataTypes;
 
+import junit.framework.Assert;
 import ar.oberon0.runtime.Context;
 import ar.oberon0.shared.TechnicalException;
-import ar.oberon0.values.IntegerNode;
+import ar.oberon0.values.BooleanValue;
+import ar.oberon0.values.IntegerValue;
 import ar.oberon0.values.Value;
 
 /*
- * A simple type is a type that contains one value, for example an integer node.
+ * A simple type can create a primitive type.
  */
 public class SimpleType implements CreatableType {
-	/*
-	 * The name of the type.
-	 */
+
 	private String type;
 
-	/*
-	 * Create a new simple type of the specified type.
-	 */
 	public SimpleType(String type) {
+		Assert.assertNotNull("the type parameter can't be null.", type);
 		if (!PrimitiveTypes.doesPrimitiveTypeExist(type)) {
 			throw new TechnicalException("The type " + type + " does not exist.");
 		}
 		this.type = type;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * ar.oberon0.interpreter.DataTypes.CreatableType#createInstance(ar.oberon0
-	 * .interpreter.Memory.Context)
-	 */
 	@Override
 	public Value createInstance(Context context) throws TechnicalException {
 		if (this.type.equals(PrimitiveTypes.INTEGER)) {
-			return new IntegerNode();
+			return new IntegerValue();
+		}
+		if (this.type.equals(PrimitiveTypes.BOOLEAN)) {
+			return new BooleanValue();
 		}
 		throw new TechnicalException("Simple type " + this.type.toString() + " is not supported");
 	}
-
 }
