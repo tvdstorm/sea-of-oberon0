@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import oberon.AbstractExpression;
+import oberon.IStatement;
 import oberon.ProcedurecallStatement;
-import oberon.AbstractStatement;
 import oberon.node.AProcedurecall;
 import oberon.node.AStatprocStatement;
 import oberon.node.PExp;
 
-public class StatprocStatementInterpreter extends AbstractBaseInterpreter<AbstractStatement> {
+public class StatprocStatementInterpreter extends AbstractBaseInterpreter<IStatement> {
 	private String name;
 	private final List<AbstractExpression> expressions = new ArrayList<AbstractExpression>();
 
@@ -30,7 +30,7 @@ public class StatprocStatementInterpreter extends AbstractBaseInterpreter<Abstra
 	}
 
 	@Override
-	public AbstractStatement buildInterpreterResult() {
+	public IStatement buildInterpreterResult() {
 		return new ProcedurecallStatement(name, expressions);
 	}
 

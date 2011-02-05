@@ -1,13 +1,13 @@
 package oberon.interpret;
 
 import oberon.AbstractExpression;
-import oberon.AbstractStatement;
+import oberon.IStatement;
 import oberon.StatementSequence;
 import oberon.WhileStatement;
 import oberon.node.AStatwhileStatement;
 import oberon.node.AWhilestatement;
 
-class StatwithStatementInterpreter extends AbstractBaseInterpreter<AbstractStatement>{
+class StatwithStatementInterpreter extends AbstractBaseInterpreter<IStatement>{
 	private AbstractExpression condition;
 	private StatementSequence body;
 
@@ -25,7 +25,7 @@ class StatwithStatementInterpreter extends AbstractBaseInterpreter<AbstractState
 	}
 	
 	@Override
-	public AbstractStatement buildInterpreterResult() {
+	public IStatement buildInterpreterResult() {
 		return new WhileStatement(condition, body);
 	}
 

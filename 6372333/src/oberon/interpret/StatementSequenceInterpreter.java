@@ -3,7 +3,7 @@ package oberon.interpret;
 import java.util.LinkedList;
 import java.util.List;
 
-import oberon.AbstractStatement;
+import oberon.IStatement;
 import oberon.StatementSequence;
 import oberon.node.PStatement;
 
@@ -13,7 +13,7 @@ final class StatementSequenceInterpreter {
 	}
 	
 	public static StatementSequence getStatementList(final List<PStatement> statementList){
-		final LinkedList<AbstractStatement> list = new LinkedList<AbstractStatement>();
+		final LinkedList<IStatement> list = new LinkedList<IStatement>();
 		for (PStatement elseStatement : statementList) {
 			list.add(StatementInterpreterFactory.getStatement(elseStatement));
 		}

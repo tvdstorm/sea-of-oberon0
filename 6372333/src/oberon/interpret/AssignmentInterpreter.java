@@ -1,13 +1,13 @@
 package oberon.interpret;
 
-import oberon.AssignmentStatement;
 import oberon.AbstractExpression;
-import oberon.AbstractStatement;
+import oberon.AssignmentStatement;
+import oberon.IStatement;
 import oberon.data.AbstractSelector;
 import oberon.node.AAssignment;
 import oberon.node.AStatassStatement;
 
-class AssignmentInterpreter extends AbstractBaseInterpreter<AbstractStatement> {
+class AssignmentInterpreter extends AbstractBaseInterpreter<IStatement> {
 	private AbstractExpression expression;
 	private AbstractSelector selectorToAssignTo;
 
@@ -27,7 +27,7 @@ class AssignmentInterpreter extends AbstractBaseInterpreter<AbstractStatement> {
 	}	
 	
 	@Override
-	public AbstractStatement buildInterpreterResult() {
+	public IStatement buildInterpreterResult() {
 		return new AssignmentStatement(selectorToAssignTo, expression);
 	}
 

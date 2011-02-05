@@ -18,7 +18,7 @@ class WriteLnCall extends AbstractStatement {
 	public static void initialize(){
 		final List<FormalParamSection> params = new ArrayList<FormalParamSection>();
 		
-		final LinkedList<AbstractStatement> statements = new LinkedList<AbstractStatement>();
+		final LinkedList<IStatement> statements = new LinkedList<IStatement>();
 		statements.add(new WriteLnCall());
 		
 		final List<AbstractDataType> variables = new ArrayList<AbstractDataType>();
