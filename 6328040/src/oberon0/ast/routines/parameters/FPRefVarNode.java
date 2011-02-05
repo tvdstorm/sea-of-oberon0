@@ -16,8 +16,10 @@ public class FPRefVarNode extends BaseFormalParameterNode {
 	@Override
 	public void fillIn(Context context, ArrayList<IReferable> actualParams) {
 		ArrayList<String> names = new ArrayList<String>(_names);
-		//TODO typechecking
+		//TODO typechecking unimplemented
 		while (names.size() > 0){
+			checkNonEmptyActualParameters(actualParams);
+			
 			IReferable currentActualParam = actualParams.get(0);
 			Reference currentAPReference = currentActualParam.refer(context.getParent(), IReferable.noPreviousReference);
 			

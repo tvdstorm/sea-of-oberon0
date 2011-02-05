@@ -10,7 +10,6 @@ public class ModuloNode extends BaseBiliteralExpressionNode {
 
 	public ModuloNode(IEvaluable lhsExpression, IEvaluable rhsExpression) {
 		super(lhsExpression, rhsExpression);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

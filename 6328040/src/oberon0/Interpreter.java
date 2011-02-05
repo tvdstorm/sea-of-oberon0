@@ -18,7 +18,7 @@ public class Interpreter {
 	/*
 	 * Interprets the given file
 	 */
-	public void interpretFile(ANTLRFileStream inputfile){
+	public static void interpretFile(ANTLRFileStream inputfile){
 		getOutputContextFromFile(inputfile);
 	}
 	
@@ -28,18 +28,18 @@ public class Interpreter {
 	 */
 	public static Context getOutputContextFromFile(ANTLRFileStream inputfile){
 		// let ANTLR-generated code do the job
-		Oberon0Lexer lex = new Oberon0Lexer(inputfile);			// lexer/parser are part of the processor
+		Oberon0Lexer lex = new Oberon0Lexer(inputfile);
 		TokenRewriteStream tokens = new TokenRewriteStream(lex);
 		Oberon0Parser parser = new Oberon0Parser(tokens);
         
 		ModuleNode module = null;
+		//start parsing
 		try {
 			module = (ModuleNode) parser.module();
 		} catch (RecognitionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
-        
+        //start interpreter by calling module
 		module.call(Context.noParent, ICallable.noActualParameters);
 		return module.getContextAfterCall();
 	}

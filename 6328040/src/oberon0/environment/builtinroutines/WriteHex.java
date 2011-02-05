@@ -7,6 +7,10 @@ import oberon0.ast.variables.IReferable;
 import oberon0.environment.Context;
 import oberon0.environment.IntegerValue;
 
+/*
+ * Built in routine from oberon-0
+ * when called, it write the hexadecimal value of the first actual parameter to the console
+ */
 public class WriteHex implements ICallable {
 
 	@Override
