@@ -13,7 +13,7 @@ public class SystemMethodCall extends AbstractProcedure {
 	}
 
 	@Override
-	public void call(final Queue<AbstractExpression> localQueue) throws IOException {
+	public void call(final Queue<IExpression> localQueue) throws IOException {
 		getBody().eval();
 	}
 

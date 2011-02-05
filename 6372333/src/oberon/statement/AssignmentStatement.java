@@ -1,15 +1,15 @@
 package oberon.statement;
 
-import oberon.AbstractExpression;
+import oberon.IExpression;
 import oberon.IStatement;
 import oberon.data.AbstractDataType;
 import oberon.data.AbstractSelector;
 
 public class AssignmentStatement implements IStatement {
 	private final AbstractSelector selectorToAssignTo;
-	private final AbstractExpression assignmentExpression;
+	private final IExpression assignmentExpression;
 
-	public AssignmentStatement(final AbstractSelector name, final AbstractExpression value){		
+	public AssignmentStatement(final AbstractSelector name, final IExpression value){		
 		selectorToAssignTo = name;
 		assignmentExpression = value;
 	}

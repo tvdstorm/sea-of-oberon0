@@ -2,12 +2,19 @@ package oberon.interpret;
 
 import oberon.ComparisonExpression;
 import oberon.ComparisonType;
-import oberon.AbstractExpression;
-import oberon.node.*;
+import oberon.IExpression;
+import oberon.node.AAmpExp;
+import oberon.node.AExeqExp;
+import oberon.node.AExgeExp;
+import oberon.node.AExgtExp;
+import oberon.node.AExhaExp;
+import oberon.node.AExseExp;
+import oberon.node.AExstExp;
+import oberon.node.ATilExp;
 
-public class ComparisonExpressionInterpreter extends AbstractBaseInterpreter<AbstractExpression> {
-	private AbstractExpression left;
-	private AbstractExpression right;
+public class ComparisonExpressionInterpreter extends AbstractBaseInterpreter<IExpression> {
+	private IExpression left;
+	private IExpression right;
 	private ComparisonType type;
 
 	@Override
@@ -74,7 +81,7 @@ public class ComparisonExpressionInterpreter extends AbstractBaseInterpreter<Abs
 	}
 
 	@Override
-	public AbstractExpression buildInterpreterResult() {
+	public IExpression buildInterpreterResult() {
 		return new ComparisonExpression(left, right, type);
 	}
 

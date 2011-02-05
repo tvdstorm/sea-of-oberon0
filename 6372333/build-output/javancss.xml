@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-02-05</date>
-  <time>15:22:54</time>
+  <time>15:30:11</time>
   <packages>
     <package>
       <name>oberon</name>
-      <classes>22</classes>
-      <functions>49</functions>
-      <ncss>370</ncss>
+      <classes>23</classes>
+      <functions>51</functions>
+      <ncss>374</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>10</single_comment_lines>
-      <multi_comment_lines>2</multi_comment_lines>
+      <multi_comment_lines>8</multi_comment_lines>
     </package>
     <package>
       <name>oberon.data</name>
@@ -27,7 +27,7 @@
       <name>oberon.interpret</name>
       <classes>20</classes>
       <functions>67</functions>
-      <ncss>464</ncss>
+      <ncss>491</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>4</single_comment_lines>
@@ -44,20 +44,20 @@
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <total>
-      <classes>53</classes>
-      <functions>173</functions>
-      <ncss>1036</ncss>
+      <classes>54</classes>
+      <functions>175</functions>
+      <ncss>1067</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>38</single_comment_lines>
-      <multi_comment_lines>2</multi_comment_lines>
+      <multi_comment_lines>8</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>4.00</td><td>53.00</td><td>173.00</td><td>1,036.00</td><td>0.00</td><td>Project</td></tr>
-      <tr><td></td><td>13.25</td><td>43.25</td><td>259.00</td><td>0.00</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.26</td><td>19.55</td><td>0.00</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>5.99</td><td>0.00</td><td>Function</td></tr>
+      <tr><td>4.00</td><td>54.00</td><td>175.00</td><td>1,067.00</td><td>0.00</td><td>Project</td></tr>
+      <tr><td></td><td>13.50</td><td>43.75</td><td>266.75</td><td>0.00</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.24</td><td>19.76</td><td>0.00</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>6.10</td><td>0.00</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -122,6 +122,13 @@
       <name>oberon.FormalParamType</name>
       <ncss>1</ncss>
       <functions>0</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon.IExpression</name>
+      <ncss>3</ncss>
+      <functions>2</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -434,12 +441,12 @@
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>15.74</ncss>
-      <functions>3.26</functions>
+      <ncss>15.50</ncss>
+      <functions>3.24</functions>
       <classes>0.02</classes>
       <javadocs>0.00</javadocs>
     </averages>
-    <ncss>1,036.00</ncss>
+    <ncss>1,067.00</ncss>
   </objects>
 
   <functions>
@@ -474,13 +481,13 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.AbstractLeftAndRightExpression.AbstractLeftAndRightExpression(AbstractExpression,AbstractExpression)</name>
+      <name>oberon.AbstractLeftAndRightExpression.AbstractLeftAndRightExpression(IExpression,IExpression)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.AbstractLeftAndRightExpression.setRighthandSide(AbstractExpression)</name>
+      <name>oberon.AbstractLeftAndRightExpression.setRighthandSide(IExpression)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -492,7 +499,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.AbstractLeftAndRightExpression.setLefthandSide(AbstractExpression)</name>
+      <name>oberon.AbstractLeftAndRightExpression.setLefthandSide(IExpression)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -528,13 +535,13 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.AbstractProcedure.call(AbstractExpression)</name>
+      <name>oberon.AbstractProcedure.call(IExpression)</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.ComparisonExpression.ComparisonExpression(AbstractExpression,AbstractExpression,ComparisonType)</name>
+      <name>oberon.ComparisonExpression.ComparisonExpression(IExpression,IExpression,ComparisonType)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -588,6 +595,18 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>oberon.IExpression.evalAsInt()</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.IExpression.evalAsBoolean()</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>oberon.IStatement.eval()</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
@@ -600,7 +619,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.MathematicalExpression.MathematicalExpression(AbstractExpression,AbstractExpression,MathematicalExpressionType)</name>
+      <name>oberon.MathematicalExpression.MathematicalExpression(IExpression,IExpression,MathematicalExpressionType)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -612,7 +631,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.ParenthesesExpression.ParenthesesExpression(AbstractExpression)</name>
+      <name>oberon.ParenthesesExpression.ParenthesesExpression(IExpression)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -642,7 +661,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.ProcedureHeading.call(AbstractExpression)</name>
+      <name>oberon.ProcedureHeading.call(IExpression)</name>
       <ncss>19</ncss>
       <ccn>8</ccn>
       <javadocs>0</javadocs>
@@ -708,7 +727,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.SystemMethodCall.call(AbstractExpression)</name>
+      <name>oberon.SystemMethodCall.call(IExpression)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -786,7 +805,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.data.ArrayIndexerSelector.ArrayIndexerSelector(AbstractSelector,AbstractExpression)</name>
+      <name>oberon.data.ArrayIndexerSelector.ArrayIndexerSelector(AbstractSelector,IExpression)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -810,7 +829,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.data.ExpressionDataType.ExpressionDataType(String,AbstractExpression)</name>
+      <name>oberon.data.ExpressionDataType.ExpressionDataType(String,IExpression)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -888,13 +907,13 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.data.IntegerArrayType.IntegerArrayType(String,AbstractExpression)</name>
+      <name>oberon.data.IntegerArrayType.IntegerArrayType(String,IExpression)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.data.IntegerArrayType.IntegerArrayType(String,String[],AbstractExpression)</name>
+      <name>oberon.data.IntegerArrayType.IntegerArrayType(String,String[],IExpression)</name>
       <ncss>4</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -1482,10 +1501,10 @@
       <javadocs>0</javadocs>
     </function>
     <function_averages>
-      <ncss>3.88</ncss>
+      <ncss>3.85</ncss>
       <ccn>1.46</ccn>
       <javadocs>0.00</javadocs>
     </function_averages>
-    <ncss>1,036.00</ncss>
+    <ncss>1,067.00</ncss>
   </functions>
 </javancss>

@@ -17,7 +17,7 @@ public class ProcedureHeading extends AbstractProcedure {
 	}
 
 	@Override
-	public void call(final Queue<AbstractExpression> localQueue) throws IOException {
+	public void call(final Queue<IExpression> localQueue) throws IOException {
 		final List<AbstractDataType> actualParameterList = new ArrayList<AbstractDataType>();
 		
 		for (FormalParamSection section : getParamSections()) {
@@ -26,7 +26,7 @@ public class ProcedureHeading extends AbstractProcedure {
 					//TODO throw, less actualparams than formalparams are supplied
 				}
 						
-				final AbstractExpression actualParam = localQueue.poll();
+				final IExpression actualParam = localQueue.poll();
 				if (	actualParam instanceof MathematicalExpression ||
 						actualParam instanceof AbstractIntegerExpression){
 					actualParameterList.add(new IntegerType(name, actualParam.evalAsInt(), false));

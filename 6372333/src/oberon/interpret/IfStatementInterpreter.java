@@ -3,7 +3,7 @@ package oberon.interpret;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import oberon.AbstractExpression;
+import oberon.IExpression;
 import oberon.IStatement;
 import oberon.StatementSequence;
 import oberon.node.AIfstatement;
@@ -12,7 +12,7 @@ import oberon.node.PIfstatement;
 import oberon.statement.IfStatement;
 
 class IfStatementInterpreter extends AbstractBaseInterpreter<IStatement> {
-	private AbstractExpression condition;
+	private IExpression condition;
 	private Queue<IfStatement> elseIfList;
 	private StatementSequence ifBody;
 	private StatementSequence elseBody;

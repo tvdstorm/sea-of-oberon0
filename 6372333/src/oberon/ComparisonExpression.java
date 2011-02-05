@@ -4,8 +4,8 @@ public class ComparisonExpression extends AbstractLeftAndRightExpression {
 
 	private final ComparisonType comparisonType;
 
-	public ComparisonExpression(final AbstractExpression lefthandSide,
-			final AbstractExpression righthandSide, final ComparisonType type) {
+	public ComparisonExpression(final IExpression lefthandSide,
+			final IExpression righthandSide, final ComparisonType type) {
 		super(lefthandSide, righthandSide);
 		
 		comparisonType = type;
@@ -13,8 +13,8 @@ public class ComparisonExpression extends AbstractLeftAndRightExpression {
 
 	@Override
 	public int evalAsInt() {
-		final AbstractExpression leftHandSide = getLefthandSide();
-		final AbstractExpression rightHandSide = getRighthandSide();
+		final IExpression leftHandSide = getLefthandSide();
+		final IExpression rightHandSide = getRighthandSide();
 		
 		int result = 0;
 		switch(comparisonType) {

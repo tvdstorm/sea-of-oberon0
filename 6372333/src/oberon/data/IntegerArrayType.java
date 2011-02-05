@@ -1,18 +1,18 @@
 package oberon.data;
 
-import oberon.AbstractExpression;
+import oberon.IExpression;
 
 public class IntegerArrayType extends AbstractDataType {
 	private int[] array;
-	private final AbstractExpression lengthExpression;
+	private final IExpression lengthExpression;
 
-	public IntegerArrayType(final String name, final AbstractExpression lengthExp){
+	public IntegerArrayType(final String name, final IExpression lengthExp){
 		super(name);
 		lengthExpression = lengthExp;
 	}
 	
 	IntegerArrayType(final String name, final int[] inputArray, 
-			final AbstractExpression lengthExp) {
+			final IExpression lengthExp) {
 		super(name);
 		array = inputArray;
 		lengthExpression = lengthExp;

@@ -1,7 +1,23 @@
 package oberon.interpret;
 
-import oberon.AbstractExpression;
-import oberon.node.*;
+import oberon.IExpression;
+import oberon.node.AAddExp;
+import oberon.node.AAmpExp;
+import oberon.node.ADivExp;
+import oberon.node.AExeqExp;
+import oberon.node.AExgeExp;
+import oberon.node.AExgtExp;
+import oberon.node.AExhaExp;
+import oberon.node.AExseExp;
+import oberon.node.AExstExp;
+import oberon.node.AIntegerExp;
+import oberon.node.AModExp;
+import oberon.node.AMulExp;
+import oberon.node.AParenExp;
+import oberon.node.ASelectorExp;
+import oberon.node.ASubExp;
+import oberon.node.ATilExp;
+import oberon.node.PExp;
 
 final class ExpInterpreterFactory {
 	
@@ -9,10 +25,10 @@ final class ExpInterpreterFactory {
 	private ExpInterpreterFactory(){
 	}
 	
-	private static <TNode extends PExp> AbstractBaseInterpreter<AbstractExpression> 
+	private static <TNode extends PExp> AbstractBaseInterpreter<IExpression> 
 		getInterpreter(final TNode node)// throws NoInterpreterDefinedException
 	{	
-		AbstractBaseInterpreter<AbstractExpression> returnExp = null;
+		AbstractBaseInterpreter<IExpression> returnExp = null;
 		
 		returnExp = tryGetComparisonExpression(node);
 		if (returnExp == null) {
@@ -25,9 +41,9 @@ final class ExpInterpreterFactory {
 		return returnExp;
 	}
 	
-	private static AbstractBaseInterpreter<AbstractExpression> tryGetComparisonExpression(
+	private static AbstractBaseInterpreter<IExpression> tryGetComparisonExpression(
 			final PExp node) {
-		AbstractBaseInterpreter<AbstractExpression> returnExp = null;
+		AbstractBaseInterpreter<IExpression> returnExp = null;
 		if (	node instanceof AExgtExp ||
 				node instanceof AExseExp ||
 				node instanceof AExgtExp ||
@@ -42,9 +58,9 @@ final class ExpInterpreterFactory {
 		return returnExp;
 	}
 	
-	private static AbstractBaseInterpreter<AbstractExpression> tryGetMathematicalExpression(
+	private static AbstractBaseInterpreter<IExpression> tryGetMathematicalExpression(
 			final PExp node) {
-		AbstractBaseInterpreter<AbstractExpression> returnExp = null;
+		AbstractBaseInterpreter<IExpression> returnExp = null;
 		if(	node instanceof ASubExp ||
 			node instanceof ADivExp ||
 			node instanceof AAddExp ||
@@ -56,9 +72,9 @@ final class ExpInterpreterFactory {
 		return returnExp;
 	}
 	
-	private static AbstractBaseInterpreter<AbstractExpression> tryGetOtherExpression(
+	private static AbstractBaseInterpreter<IExpression> tryGetOtherExpression(
 			final PExp node) {
-		AbstractBaseInterpreter<AbstractExpression> returnExp = null;
+		AbstractBaseInterpreter<IExpression> returnExp = null;
 		if(	node instanceof AParenExp) {
 			returnExp = new ParenExpInterpreter();
 		}
@@ -71,9 +87,9 @@ final class ExpInterpreterFactory {
 		return returnExp;
 	}
 
-	public static <TNode extends PExp> AbstractExpression getExpression(final TNode node)
+	public static <TNode extends PExp> IExpression getExpression(final TNode node)
 	{
-		final AbstractBaseInterpreter<AbstractExpression> interpreter = ExpInterpreterFactory.getInterpreter(node);
+		final AbstractBaseInterpreter<IExpression> interpreter = ExpInterpreterFactory.getInterpreter(node);
 		node.apply(interpreter);
 		return interpreter.buildInterpreterResult();
 	}

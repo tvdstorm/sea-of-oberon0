@@ -3,7 +3,7 @@ package oberon.interpret;
 import java.util.ArrayList;
 import java.util.List;
 
-import oberon.AbstractExpression;
+import oberon.IExpression;
 import oberon.IStatement;
 import oberon.node.AProcedurecall;
 import oberon.node.AStatprocStatement;
@@ -12,7 +12,7 @@ import oberon.statement.ProcedurecallStatement;
 
 public class StatprocStatementInterpreter extends AbstractBaseInterpreter<IStatement> {
 	private String name;
-	private final List<AbstractExpression> expressions = new ArrayList<AbstractExpression>();
+	private final List<IExpression> expressions = new ArrayList<IExpression>();
 
 	public void caseAStatprocStatement(final AStatprocStatement node)
 	{

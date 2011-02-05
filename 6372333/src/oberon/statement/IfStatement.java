@@ -3,17 +3,17 @@ package oberon.statement;
 import java.io.IOException;
 import java.util.Queue;
 
-import oberon.AbstractExpression;
+import oberon.IExpression;
 import oberon.IStatement;
 import oberon.StatementSequence;
 
 public class IfStatement implements IStatement {
 	private final StatementSequence elseBody;
 	private final Queue<IfStatement> elseIfBlocks;
-	private final AbstractExpression ifCondition;
+	private final IExpression ifCondition;
 	private final StatementSequence ifBody;
 
-	public IfStatement (final AbstractExpression condition, final StatementSequence ifBlock, 
+	public IfStatement (final IExpression condition, final StatementSequence ifBlock, 
 			final Queue<IfStatement> elseIfs, final StatementSequence elseBlock)
 	{
 		ifCondition = condition;

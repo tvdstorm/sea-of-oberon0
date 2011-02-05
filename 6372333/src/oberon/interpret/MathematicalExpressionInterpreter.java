@@ -1,13 +1,17 @@
 package oberon.interpret;
 
-import oberon.AbstractExpression;
+import oberon.IExpression;
 import oberon.MathematicalExpression;
 import oberon.MathematicalExpressionType;
-import oberon.node.*;
+import oberon.node.AAddExp;
+import oberon.node.ADivExp;
+import oberon.node.AModExp;
+import oberon.node.AMulExp;
+import oberon.node.ASubExp;
 
-public class MathematicalExpressionInterpreter extends AbstractBaseInterpreter<AbstractExpression>{
-	private AbstractExpression left;
-	private AbstractExpression right;
+public class MathematicalExpressionInterpreter extends AbstractBaseInterpreter<IExpression>{
+	private IExpression left;
+	private IExpression right;
 	private MathematicalExpressionType type;
 	
 	@Override
@@ -51,7 +55,7 @@ public class MathematicalExpressionInterpreter extends AbstractBaseInterpreter<A
 	}
 	
 	@Override
-	public AbstractExpression buildInterpreterResult() {
+	public IExpression buildInterpreterResult() {
 		return new MathematicalExpression(left, right, type);
 	}
 
