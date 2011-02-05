@@ -12,7 +12,14 @@ import oberon.procedures.FormalParamType;
 import oberon.procedures.ProcedureBody;
 import oberon.procedures.SystemMethodCall;
 
+/**
+ * The Class WriteCall, handles the calls to system call Write().
+ */
 class WriteCall implements IStatement {
+	
+	/* (non-Javadoc)
+	 * @see oberon.IStatement#eval()
+	 */
 	@Override
 	public void eval() throws IOException {
 		final VariableManager instance = VariableManager.getInstance();
@@ -22,6 +29,9 @@ class WriteCall implements IStatement {
 		System.out.println(inputArray.getValueAtIndex(index));
 	}
 
+	/**
+	 * Initialize.
+	 */
 	public static void initialize() {
 		final List<FormalParamSection> params = new ArrayList<FormalParamSection>();
 		List<String> paramNames = new ArrayList<String>();
@@ -40,6 +50,6 @@ class WriteCall implements IStatement {
 		
 		final ProcedureBody body = new ProcedureBody(declaration, new StatementSequence(statements));
 		final SystemMethodCall procedure = new SystemMethodCall("Write", params, body);
-		VariableManager.getInstance().addSystemProcedure(procedure);
+		VariableManager.getInstance().addSystemProcedureToCurrentScope(procedure);
 	}
 }

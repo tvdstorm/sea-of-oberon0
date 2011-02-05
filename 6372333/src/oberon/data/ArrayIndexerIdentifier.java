@@ -24,7 +24,7 @@ public class ArrayIndexerIdentifier extends AbstractIdentifier {
 	}
 
 	@Override
-	public int getSelectorValue() {
+	public int getValue() {
 		final IntegerArrayDataType array = getDataTypeAsArrayType();
 		return array.getValueAtIndex(indexExpression.evalAsInt());
 	}

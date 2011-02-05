@@ -10,13 +10,22 @@ import oberon.procedures.FormalParamSection;
 import oberon.procedures.ProcedureBody;
 import oberon.procedures.SystemMethodCall;
 
+/**
+ * The Class WriteLnCall, handles call to system call WriteLn().
+ */
 class WriteLnCall implements IStatement {
 
+	/* (non-Javadoc)
+	 * @see oberon.IStatement#eval()
+	 */
 	@Override
 	public void eval() throws IOException {
 		System.out.println();
 	}
 
+	/**
+	 * Initialize.
+	 */
 	public static void initialize(){
 		final List<FormalParamSection> params = new ArrayList<FormalParamSection>();
 		
@@ -29,6 +38,6 @@ class WriteLnCall implements IStatement {
 		
 		final ProcedureBody body = new ProcedureBody(declaration, new StatementSequence(statements));
 		final SystemMethodCall procedure = new SystemMethodCall("WriteLn", params, body);
-		VariableManager.getInstance().addSystemProcedure(procedure);
+		VariableManager.getInstance().addSystemProcedureToCurrentScope(procedure);
 	}
 }

@@ -14,7 +14,16 @@ import oberon.node.Start;
 import oberon.parser.Parser;
 import oberon.parser.ParserException;
 
+/**
+ * The Main class of the package, use this class to run the program.
+ */
 public class Main { 
+   
+   /**
+    * The main method.
+    *
+    * @param the args supplied from the command line
+    */
    public static void main(final String[] args) { 
       if (args.length > 0) { 
 		/* Form our AST */ 

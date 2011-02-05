@@ -16,7 +16,7 @@ public class SelectorExpression extends AbstractExpression {
 	
 	@Override
 	public int evalAsInt() {
-		return selector.getSelectorValue();
+		return selector.getValue();
 	}
 
 }

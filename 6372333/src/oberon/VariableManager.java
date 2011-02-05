@@ -10,16 +10,33 @@ import oberon.procedures.AbstractProcedure;
 import oberon.procedures.Declaration;
 import oberon.procedures.ProcedureHeading;
 
+/**
+ * The Class VariableManager, controls variables available and scoping.
+ */
 public class VariableManager {
+	
+	/** The instance. */
 	private static VariableManager instance;
+	
+	/** The scopes. */
 	private final Stack<Scope> scopes;
+	
+	/** The current scope. */
 	private Scope currentScope;
 	
+	/**
+	 * Instantiates a new variable manager.
+	 */
 	private VariableManager(){
 		scopes = new Stack<Scope>();
 		currentScope = new Scope();
 	}
 
+	/**
+	 * Gets the single instance of VariableManager.
+	 *
+	 * @return single instance of VariableManager
+	 */
 	public static VariableManager getInstance(){
 		if (instance == null){
 			instance = new VariableManager();
@@ -27,10 +44,21 @@ public class VariableManager {
 		return instance;
 	}
 	
+	/**
+	 * Adds a new declaration to the current scope.
+	 *
+	 * @param declaration the declaration to be added
+	 */
 	public void addNewDeclaration(final Declaration declaration){
 		currentScope.addNewDeclaration(declaration);
 	}
 	
+	/**
+	 * Enter a new scope.
+	 *
+	 * @param actualProcedureParameters the actual procedure parameters
+	 * @param currentProcedure the current procedure
+	 */
 	public void enterNewScope(final List<IDataType> actualProcedureParameters, 
 			final ProcedureHeading currentProcedure){
 		//preserve the old scope, put it on the stack
@@ -41,39 +69,83 @@ public class VariableManager {
 		currentScope = newScope;
 	}
 	
+	/**
+	 * Leave scope.
+	 */
 	public void leaveScope(){
 		if (!scopes.empty()){
 			currentScope = scopes.pop();
 		}
 	}
 
+	/**
+	 * Gets a variable.
+	 *
+	 * @param name the name of the variable
+	 * @return the variable from the scope
+	 */
 	public IDataType getVariable(final String name) {
 		return currentScope.getVariable(name);
 	}
 	
-	public void addProcedure(final ProcedureHeading procedure) {
+	/**
+	 * Adds the procedure to the current scope.
+	 *
+	 * @param procedure the procedure to add
+	 */
+	public void addProcedureToCurrentScope(final ProcedureHeading procedure) {
 		currentScope.addProcedure(procedure);
 	}
 	
-	public void addSystemProcedure(final AbstractProcedure procedure) {
+	/**
+	 * Adds the system procedure to the current scope.
+	 *
+	 * @param procedure the procedure to add
+	 */
+	public void addSystemProcedureToCurrentScope(final AbstractProcedure procedure) {
 		currentScope.addSystemProcedure(procedure);
 	}
 
-	public IProcedure getProcedure(final String name) {
+	/**
+	 * Gets the procedure from the current scope.
+	 *
+	 * @param name the name of the procedure to get
+	 * @return the procedure
+	 */
+	public IProcedure getProcedureFromCurrentScope(final String name) {
 		return currentScope.getProcedure(name);
 	}
 	
+	/**
+	 * The Class Scope.
+	 */
 	class Scope {		
+		
+		/** The variables. */
 		private final AbstractMap<String, IDataType> variables;
+		
+		/** The procedures. */
 		private final AbstractMap<String, IProcedure> procedures;
+		
+		/** The system procedures. */
 		private final AbstractMap<String, IProcedure> systemProcedures;
 		
+		/**
+		 * Instantiates a new scope.
+		 */
 		Scope(){
 			variables = new HashMap<String, IDataType>();
 			procedures = new HashMap<String, IProcedure>();
 			systemProcedures = new HashMap<String, IProcedure>();
 		}
 
+		/**
+		 * Instantiates a new scope.
+		 *
+		 * @param inputVariables the variables
+		 * @param inputPprocedures the procedures
+		 * @param inputSysProcedures the sys procedures
+		 */
 		Scope(final AbstractMap<String, IDataType> inputVariables, 
 				final AbstractMap<String,IProcedure> inputPprocedures, 
 				final AbstractMap<String, IProcedure> inputSysProcedures){
@@ -82,10 +154,22 @@ public class VariableManager {
 			procedures = inputPprocedures;
 		}
 		
+		/**
+		 * Adds the system procedure.
+		 *
+		 * @param procedure the procedure
+		 */
 		public void addSystemProcedure(final AbstractProcedure procedure) {
 			systemProcedures.put(procedure.getName(), procedure);
 		}
 
+		/**
+		 * Creates the new scope.
+		 *
+		 * @param actualProcedureParameters the actual procedure parameters
+		 * @param currentProcedure the current procedure
+		 * @return the scope
+		 */
 		private Scope createNewScope(final List<IDataType> actualProcedureParameters, 
 				final IProcedure currentProcedure) {
 			final HashMap<String, IDataType> variables = new HashMap<String, IDataType>();
@@ -100,6 +184,11 @@ public class VariableManager {
 			return new Scope(variables, procedures, systemProcedures);
 		}
 		
+		/**
+		 * Adds the new declaration.
+		 *
+		 * @param declaration the declaration
+		 */
 		public void addNewDeclaration(final Declaration declaration)
 		{
 			for (IDataType actualParam : declaration.getVariables()){
@@ -115,10 +204,21 @@ public class VariableManager {
 			}
 		}
 		
+		/**
+		 * Adds the procedure.
+		 *
+		 * @param procedure the procedure
+		 */
 		protected void addProcedure(final IProcedure procedure) {
 			procedures.put(procedure.getName(), procedure);
 		}
 
+		/**
+		 * Gets the procedure.
+		 *
+		 * @param name the name of the procedure to get
+		 * @return the procedure
+		 */
 		public IProcedure getProcedure(final String name) {
 			IProcedure procedure = null;
 			if (procedures.containsKey(name)){
@@ -134,6 +234,12 @@ public class VariableManager {
 			return procedure;
 		}
 
+		/**
+		 * Gets the variable.
+		 *
+		 * @param variableName the name of the variable
+		 * @return the variable
+		 */
 		public IDataType getVariable(final String variableName) {
 			if (variables.containsKey(variableName)){
 					return variables.get(variableName);

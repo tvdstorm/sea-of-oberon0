@@ -21,7 +21,7 @@ public class ProcedurecallStatement implements IStatement {
 
 	@Override
 	public void eval() throws IOException {
-		final IProcedure procedure = VariableManager.getInstance().getProcedure(procNameToCall);
+		final IProcedure procedure = VariableManager.getInstance().getProcedureFromCurrentScope(procNameToCall);
 		
 		final Queue<IExpression> localQueue = new LinkedList<IExpression>();
 		localQueue.addAll(procParameters);
