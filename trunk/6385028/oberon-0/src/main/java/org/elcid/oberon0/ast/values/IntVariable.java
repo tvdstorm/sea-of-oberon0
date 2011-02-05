@@ -1,5 +1,6 @@
 package org.elcid.oberon0.ast.values;
 
+import org.elcid.oberon0.ast.env.Environment;
 import org.elcid.oberon0.exceptions.UnboundVariableException;
 
 /**
