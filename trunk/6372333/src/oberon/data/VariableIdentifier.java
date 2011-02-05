@@ -1,9 +1,9 @@
 package oberon.data;
 
-public class IdentifierSelector extends AbstractSelector {
+public class VariableIdentifier extends AbstractIdentifier {
 	private final String name;
 
-	public IdentifierSelector(final String inputName){
+	public VariableIdentifier(final String inputName){
 		name = inputName;
 	}
 	

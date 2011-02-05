@@ -2,14 +2,14 @@ package oberon.interpret;
 
 import oberon.IExpression;
 import oberon.IStatement;
-import oberon.data.AbstractSelector;
+import oberon.data.AbstractIdentifier;
 import oberon.node.AAssignment;
 import oberon.node.AStatassStatement;
 import oberon.statement.AssignmentStatement;
 
 class AssignmentInterpreter extends AbstractBaseInterpreter<IStatement> {
 	private IExpression expression;
-	private AbstractSelector selectorToAssignTo;
+	private AbstractIdentifier selectorToAssignTo;
 
 
 	public void caseAStatassStatement(final AStatassStatement node)

@@ -3,13 +3,13 @@ package oberon.statement;
 import oberon.IExpression;
 import oberon.IStatement;
 import oberon.data.AbstractDataType;
-import oberon.data.AbstractSelector;
+import oberon.data.AbstractIdentifier;
 
 public class AssignmentStatement implements IStatement {
-	private final AbstractSelector selectorToAssignTo;
+	private final AbstractIdentifier selectorToAssignTo;
 	private final IExpression assignmentExpression;
 
-	public AssignmentStatement(final AbstractSelector name, final IExpression value){		
+	public AssignmentStatement(final AbstractIdentifier name, final IExpression value){		
 		selectorToAssignTo = name;
 		assignmentExpression = value;
 	}

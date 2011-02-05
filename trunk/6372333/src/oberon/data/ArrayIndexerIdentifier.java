@@ -2,11 +2,11 @@ package oberon.data;
 
 import oberon.IExpression;
 
-public class ArrayIndexerSelector extends AbstractSelector {
+public class ArrayIndexerIdentifier extends AbstractIdentifier {
 	private final IExpression indexExpression;
-	private final AbstractSelector selector;
+	private final AbstractIdentifier selector;
 
-	public ArrayIndexerSelector(final AbstractSelector indexSelector, 
+	public ArrayIndexerIdentifier(final AbstractIdentifier indexSelector, 
 			final IExpression expression){
 		indexExpression = expression;
 		selector = indexSelector;
@@ -29,7 +29,7 @@ public class ArrayIndexerSelector extends AbstractSelector {
 
 	@Override
 	public AbstractDataType getDataTypeValue() {
-		return new IntegerArrayIndexerType(getDataTypeAsArrayType(), indexExpression.evalAsInt());
+		return new IntegerArrayIndexerDataType(getDataTypeAsArrayType(), indexExpression.evalAsInt());
 	}
 
 }
