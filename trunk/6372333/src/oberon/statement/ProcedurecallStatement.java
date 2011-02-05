@@ -9,6 +9,7 @@ import oberon.IExpression;
 import oberon.IProcedure;
 import oberon.IStatement;
 import oberon.VariableManager;
+import oberon.exceptions.UnsupportedException;
 
 /**
  * The Class ProcedurecallStatement, calls a procedure.
@@ -36,7 +37,7 @@ public class ProcedurecallStatement implements IStatement {
 	 * @see oberon.IStatement#eval()
 	 */
 	@Override
-	public void eval() throws IOException {
+	public void eval() throws IOException, UnsupportedException {
 		final IProcedure procedure = VariableManager.getInstance().getProcedureFromCurrentScope(procNameToCall);
 		
 		final Queue<IExpression> localQueue = new LinkedList<IExpression>();

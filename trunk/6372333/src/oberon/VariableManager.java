@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Stack;
 
 import oberon.data.IntegerArrayDataType;
+import oberon.exceptions.UnsupportedException;
 import oberon.procedures.AbstractProcedure;
 import oberon.procedures.Declaration;
 import oberon.procedures.ProcedureHeading;
@@ -48,8 +49,9 @@ public class VariableManager {
 	 * Adds a new declaration to the current scope.
 	 *
 	 * @param declaration the declaration to be added
+	 * @throws UnsupportedException 
 	 */
-	public void addNewDeclaration(final Declaration declaration){
+	public void addNewDeclaration(final Declaration declaration) throws UnsupportedException{
 		currentScope.addNewDeclaration(declaration);
 	}
 	
@@ -188,8 +190,9 @@ public class VariableManager {
 		 * Adds the new declaration.
 		 *
 		 * @param declaration the declaration
+		 * @throws UnsupportedException 
 		 */
-		public void addNewDeclaration(final Declaration declaration)
+		public void addNewDeclaration(final Declaration declaration) throws UnsupportedException
 		{
 			for (IDataType actualParam : declaration.getVariables()){
 				variables.put(actualParam.getName(), actualParam);	

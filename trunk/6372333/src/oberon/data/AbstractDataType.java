@@ -1,6 +1,7 @@
 package oberon.data;
 
 import oberon.IDataType;
+import oberon.exceptions.UnsupportedException;
 
 /**
  * The Class AbstractDataType.
@@ -23,7 +24,7 @@ public abstract class AbstractDataType implements IDataType {
 	 * @see oberon.data.IDataType#getValue()
 	 */
 	@Override
-	public abstract int getValue();
+	public abstract int getValue() throws UnsupportedException;
 	/* (non-Javadoc)
 	 * @see oberon.data.IDataType#copy(java.lang.String)
 	 */

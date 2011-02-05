@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import oberon.StatementSequence;
 import oberon.VariableManager;
+import oberon.exceptions.UnsupportedException;
 
 /**
  * The Class ProcedureBody, contains the body of a procedure.
@@ -31,8 +32,9 @@ public class ProcedureBody {
 	 * Evaluates the body of the procedure.
 	 *
 	 * @throws IOException throws when an exception occurs when reading from the console
+	 * @throws UnsupportedException 
 	 */
-	public void eval() throws IOException {
+	public void eval() throws IOException, UnsupportedException {
 		final VariableManager variableManager = VariableManager.getInstance();
 		variableManager.addNewDeclaration(variableDeclaration);
 		

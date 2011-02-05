@@ -7,6 +7,7 @@ import java.io.PushbackReader;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import oberon.exceptions.UnsupportedException;
 import oberon.interpret.ModuleInterpreter;
 import oberon.lexer.Lexer;
 import oberon.lexer.LexerException;
@@ -23,48 +24,34 @@ public class Main {
     * The main method.
     *
     * @param the args supplied from the command line
+ * @throws UnsupportedException 
     */
-   public static void main(final String[] args) { 
+   public static void main(final String[] args) throws UnsupportedException { 
       if (args.length > 0) { 
 		/* Form our AST */ 
 		Lexer lexer = null;
 		try {
 			lexer = new Lexer (new PushbackReader( 
 			   new FileReader(args[0]), 1024));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-		final Parser parser = new Parser(lexer); 
-		Start ast = null;
-		try {
+			
+			final Parser parser = new Parser(lexer); 
+			Start ast = null;
 			ast = parser.parse();
-		} catch (ParserException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (LexerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-		
-		/* Get our Interpreter going. */ 
-		final ModuleInterpreter interpreter = new ModuleInterpreter();
-		ast.apply(interpreter);	     
-		
-		ReadProcedure.initialize();
-		WriteCall.initialize();
-		WriteLnCall.initialize();
-		
-		final IProcedure mainProc = interpreter.buildInterpreterResult();
-		final Queue<IExpression> paramList = new LinkedList<IExpression>();
-			 
-		try {
+		 
+			/* Get our Interpreter going. */ 
+			final ModuleInterpreter interpreter = new ModuleInterpreter();
+			ast.apply(interpreter);	     
+			
+			ReadProcedure.initialize();
+			WriteCall.initialize();
+			WriteLnCall.initialize();
+			
+			final IProcedure mainProc = interpreter.buildInterpreterResult();
+			final Queue<IExpression> paramList = new LinkedList<IExpression>();
+				 
 			mainProc.call(paramList);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		}			
+		catch (Exception e) {
 			e.printStackTrace();
 		}
       } 

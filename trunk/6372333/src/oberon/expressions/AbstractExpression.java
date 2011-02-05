@@ -3,6 +3,7 @@ package oberon.expressions;
 import oberon.IDataType;
 import oberon.IExpression;
 import oberon.data.VariableDataType;
+import oberon.exceptions.UnsupportedException;
 
 /**
  * The Class AbstractExpression, super class for all expressions.
@@ -12,13 +13,13 @@ public abstract class AbstractExpression implements IExpression {
 	 * @see oberon.IExpression#evalAsInt()
 	 */
 	@Override
-	public abstract int evalAsInt();
+	public abstract int evalAsInt() throws UnsupportedException;
 	
 	/* (non-Javadoc)
 	 * @see oberon.IExpression#evalAsBoolean()
 	 */
 	@Override
-	public Boolean evalAsBoolean() {
+	public Boolean evalAsBoolean() throws UnsupportedException {
 		return evalAsInt() == 1;
 	}
 	
@@ -40,8 +41,12 @@ public abstract class AbstractExpression implements IExpression {
 	 * @see oberon.IExpression#copy(java.lang.String)
 	 */
 	@Override
-	public IDataType copy(String newName)
+	public IDataType copy(String newName) throws UnsupportedException
 	{
+		assert(this instanceof MathematicalExpression ||
+				this instanceof AbstractIntegerExpression ||
+				this instanceof IdentifierExpression);		
+		
 		IDataType resultType = null;
 		if (	this instanceof MathematicalExpression ||
 				this instanceof AbstractIntegerExpression){
@@ -51,8 +56,7 @@ public abstract class AbstractExpression implements IExpression {
 			final IdentifierExpression selectorExpression = ((IdentifierExpression)this);
 			resultType = selectorExpression.copy(newName);
 		}
-		
-		//TODO: throw;
+	
 		return resultType;
 	}
 

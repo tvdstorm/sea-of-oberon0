@@ -2,6 +2,7 @@ package oberon.expressions;
 
 import oberon.IDataType;
 import oberon.IIdentifier;
+import oberon.exceptions.UnsupportedException;
 
 /**
  * The Class IdentifierExpression, for selectors contained in expressions.
@@ -23,7 +24,7 @@ public class IdentifierExpression extends AbstractExpression {
 	/* (non-Javadoc)
 	 * @see oberon.expressions.AbstractExpression#copy(java.lang.String)
 	 */
-	public IDataType copy(final String newName) {
+	public IDataType copy(final String newName) throws UnsupportedException {
 		return selector.getDataTypeValue().copy(newName);
 	}
 	
@@ -31,7 +32,7 @@ public class IdentifierExpression extends AbstractExpression {
 	 * @see oberon.expressions.AbstractExpression#evalAsInt()
 	 */
 	@Override
-	public int evalAsInt() {
+	public int evalAsInt() throws UnsupportedException {
 		return selector.getValue();
 	}
 

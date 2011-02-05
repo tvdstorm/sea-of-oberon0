@@ -2,6 +2,7 @@ package oberon.data;
 
 import oberon.IDataType;
 import oberon.IExpression;
+import oberon.exceptions.UnsupportedException;
 
 /**
  * The Class ExpressionDataType, class for storing a variable of type expression.
@@ -26,7 +27,7 @@ public class ExpressionDataType extends AbstractDataType {
 	 * @see oberon.data.AbstractDataType#getValue()
 	 */
 	@Override
-	public int getValue() {
+	public int getValue() throws UnsupportedException {
 		return expression.evalAsInt();
 	}
 

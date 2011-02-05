@@ -3,6 +3,7 @@ package oberon.data;
 import oberon.IDataType;
 import oberon.IExpression;
 import oberon.IIdentifier;
+import oberon.exceptions.UnsupportedException;
 
 /**
  * The Class ArrayIndexerIdentifier, handles calls to the index of an array.
@@ -31,12 +32,13 @@ public class ArrayIndexerIdentifier extends AbstractIdentifier {
 	 * Gets the data type as array type.
 	 *
 	 * @return the data type as array type
+	 * @throws UnsupportedException 
 	 */
-	private IntegerArrayDataType getDataTypeAsArrayType() {
+	private IntegerArrayDataType getDataTypeAsArrayType() throws UnsupportedException {
 		final IDataType type = selector.getDataTypeValue();
-		if (!(type instanceof IntegerArrayDataType)) {
-			//TODO: throw exception
-		}
+		
+		//type should always be an array
+		assert(type instanceof IntegerArrayDataType);
 		
 		return ((IntegerArrayDataType)type);
 	}
@@ -45,7 +47,7 @@ public class ArrayIndexerIdentifier extends AbstractIdentifier {
 	 * @see oberon.data.AbstractIdentifier#getValue()
 	 */
 	@Override
-	public int getValue() {
+	public int getValue() throws UnsupportedException {
 		final IntegerArrayDataType array = getDataTypeAsArrayType();
 		return array.getValueAtIndex(indexExpression.evalAsInt());
 	}
@@ -54,7 +56,7 @@ public class ArrayIndexerIdentifier extends AbstractIdentifier {
 	 * @see oberon.data.AbstractIdentifier#getDataTypeValue()
 	 */
 	@Override
-	public IDataType getDataTypeValue() {
+	public IDataType getDataTypeValue() throws UnsupportedException {
 		return new IntegerArrayIndexerDataType(getDataTypeAsArrayType(), indexExpression.evalAsInt());
 	}
 

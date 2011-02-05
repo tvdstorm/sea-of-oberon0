@@ -6,6 +6,7 @@ import java.util.Queue;
 import oberon.IExpression;
 import oberon.IStatement;
 import oberon.StatementSequence;
+import oberon.exceptions.UnsupportedException;
 
 /**
  * The Class IfStatement, contains an if statement.
@@ -45,7 +46,7 @@ public class IfStatement implements IStatement {
 	 * @see oberon.IStatement#eval()
 	 */
 	@Override
-	public void eval() throws IOException {
+	public void eval() throws IOException, UnsupportedException {
 		Boolean bodyIsExecuted = false;
 		if (conditionIsTrue()) {
 			evalStatements();
@@ -70,8 +71,9 @@ public class IfStatement implements IStatement {
 	 * Evaluates the statements.
 	 *
 	 * @throws IOException throws when an exception occurs when reading from the console
+	 * @throws UnsupportedException 
 	 */
-	protected void evalStatements() throws IOException {
+	protected void evalStatements() throws IOException, UnsupportedException {
 		ifBody.eval();
 	}
 
@@ -79,8 +81,9 @@ public class IfStatement implements IStatement {
 	 * Condition is true.
 	 *
 	 * @return true if the condition is true
+	 * @throws UnsupportedException 
 	 */
-	protected Boolean conditionIsTrue() {
+	protected Boolean conditionIsTrue() throws UnsupportedException {
 		return ifCondition.evalAsBoolean();
 	}
 

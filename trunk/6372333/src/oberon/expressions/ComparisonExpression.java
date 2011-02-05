@@ -1,6 +1,7 @@
 package oberon.expressions;
 
 import oberon.IExpression;
+import oberon.exceptions.UnsupportedException;
 
 /**
  * The Class ComparisonExpression, compares to expressions.
@@ -28,7 +29,7 @@ public class ComparisonExpression extends AbstractLeftAndRightExpression {
 	 * @see oberon.expressions.AbstractExpression#evalAsInt()
 	 */
 	@Override
-	public int evalAsInt() {
+	public int evalAsInt() throws UnsupportedException {
 		final IExpression leftHandSide = getLefthandSide();
 		final IExpression rightHandSide = getRighthandSide();
 		
@@ -53,7 +54,7 @@ public class ComparisonExpression extends AbstractLeftAndRightExpression {
 			result = booleanAsInt(leftHandSide.evalAsBoolean() && rightHandSide.evalAsBoolean());
 			break;
 		default:
-			//TODO: throw
+			throw new UnsupportedException("Unsupported comparison: "+ comparisonType.toString());
 		}
 		return result;
 	}

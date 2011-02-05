@@ -4,6 +4,7 @@ import oberon.IDataType;
 import oberon.IExpression;
 import oberon.IIdentifier;
 import oberon.IStatement;
+import oberon.exceptions.UnsupportedException;
 
 /**
  * The Class AssignmentStatement, contains an assignment of a value to an identifier.
@@ -31,7 +32,7 @@ public class AssignmentStatement implements IStatement {
 	 * @see oberon.IStatement#eval()
 	 */
 	@Override
-	public void eval() {
+	public void eval() throws UnsupportedException {
 		final IDataType type = identifierToAssignTo.getDataTypeValue();
 		type.setValue(assignmentExpression.evalAsInt());
 	}

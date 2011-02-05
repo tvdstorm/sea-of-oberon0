@@ -2,6 +2,7 @@ package oberon.data;
 
 import oberon.IDataType;
 import oberon.IExpression;
+import oberon.exceptions.UnsupportedException;
 
 /**
  * The Class IntegerArrayDataType, stores the value of array instance variables.
@@ -51,8 +52,9 @@ public class IntegerArrayDataType extends AbstractDataType {
 
 	/**
 	 * Initialize array.
+	 * @throws UnsupportedException 
 	 */
-	public void initializeArray() {
+	public void initializeArray() throws UnsupportedException {
 		array = new int[lengthExpression.evalAsInt()];			
 	}
 

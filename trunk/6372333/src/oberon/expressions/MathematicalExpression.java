@@ -1,6 +1,7 @@
 package oberon.expressions;
 
 import oberon.IExpression;
+import oberon.exceptions.UnsupportedException;
 
 /**
  * The Class MathematicalExpression, class for all mathematical oriented expressions.
@@ -27,7 +28,7 @@ public class MathematicalExpression extends AbstractLeftAndRightExpression {
 	 * @see oberon.expressions.AbstractExpression#evalAsInt()
 	 */
 	@Override
-	public int evalAsInt() {
+	public int evalAsInt() throws UnsupportedException {
 		int result = 0;
 		final int left = getLefthandSide().evalAsInt();
 		final int right = getRighthandSide().evalAsInt();
@@ -49,8 +50,7 @@ public class MathematicalExpression extends AbstractLeftAndRightExpression {
 			result = left - right;
 			break;
 		default:
-			//TODO: throw
-			break;
+			throw new UnsupportedException("Unsupported comparison: "+ expressionType.toString());
 		}
 		
 		return result;

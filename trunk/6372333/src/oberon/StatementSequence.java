@@ -3,6 +3,8 @@ package oberon;
 import java.io.IOException;
 import java.util.List;
 
+import oberon.exceptions.UnsupportedException;
+
 /**
  * The Class StatementSequence, represents a sequence of statements.
  */
@@ -24,8 +26,9 @@ public class StatementSequence{
 	 * Evaluates the sequence of statements.
 	 *
 	 * @throws IOException When reading from the command line fails
+	 * @throws UnsupportedException 
 	 */
-	public void eval() throws IOException {
+	public void eval() throws IOException, UnsupportedException {
 		if (body != null) {
 			for(IStatement statement : body) {
 				statement.eval();

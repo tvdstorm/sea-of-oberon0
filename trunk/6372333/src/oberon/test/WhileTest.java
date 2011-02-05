@@ -1,5 +1,6 @@
 package oberon.test;
 
+import oberon.exceptions.UnsupportedException;
 import oberon.expressions.*;
 import oberon.procedures.*;
 import oberon.statement.*;
@@ -8,10 +9,16 @@ import oberon.*;
 
 import java.io.IOException;
 import java.util.*;
+
+import org.junit.Test;
+
+import junit.framework.Assert;
 import junit.framework.TestCase;
 
 public class WhileTest extends TestCase {
-	public void test_case_WhileTest1()
+
+	@Test
+	public void test_case_WhileTest1() throws UnsupportedException, IOException
 	{
 		ComparisonExpression condition = 
 			new ComparisonExpression(new IdentifierExpression(new VariableIdentifier("i")), new IntegerExpression(5), ComparisonType.Exst);
@@ -24,14 +31,12 @@ public class WhileTest extends TestCase {
 		List<IDataType> variables = new ArrayList<IDataType>();
 		variables.add(new VariableDataType("i", false));
 		Declaration declaration = new Declaration(variables, new ArrayList<IProcedure>());
-		VariableManager.getInstance().addNewDeclaration(declaration);
+		VariableManager variableManager = VariableManager.getInstance();
+		variableManager.addNewDeclaration(declaration);
 		
 		WhileStatement whileStat = new WhileStatement(condition, statements);
-		try {
-			whileStat.eval();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		whileStat.eval();
+		
+		Assert.assertEquals(5, variableManager.getVariable("i").getValue());
 	}
 }

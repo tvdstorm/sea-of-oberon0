@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Queue;
 
 import oberon.IExpression;
+import oberon.exceptions.UnsupportedException;
 
 /**
  * The Class SystemMethodCall, contains a non user defined procedure.
@@ -28,7 +29,7 @@ public class SystemMethodCall extends AbstractProcedure {
 	 * @see oberon.procedures.AbstractProcedure#call(java.util.Queue)
 	 */
 	@Override
-	public void call(final Queue<IExpression> localQueue) throws IOException {
+	public void call(final Queue<IExpression> localQueue) throws IOException, UnsupportedException {
 		getBody().eval();
 	}
 
