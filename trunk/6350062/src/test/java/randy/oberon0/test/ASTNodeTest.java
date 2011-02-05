@@ -361,8 +361,6 @@ public class ASTNodeTest
 		Assert.assertFalse(array.equals(bool));
 		Assert.assertFalse(array.equals(integer));
 		Assert.assertTrue(array.equals(array));
-		
-		Assert.assertTrue(Type.get("BLAAT") == null);
 	}
 	@Test
 	public void test_SmoketestQuicksort()

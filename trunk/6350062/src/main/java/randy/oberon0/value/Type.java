@@ -27,8 +27,4 @@ public enum Type
 	{
 		return typeText;
 	}
-	public static Type get(String typeText)
-	{
-		return lookup.get(typeText);
-	}
 }
