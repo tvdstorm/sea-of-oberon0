@@ -29,7 +29,7 @@ public class RecordDataType extends AbstractDataType {
 	}
 
 	@Override
-	public IDataType copy(String newName) {
+	public IDataType copy(final String newName) {
 		// TODO Auto-generated method stub
 		return null;
 	}

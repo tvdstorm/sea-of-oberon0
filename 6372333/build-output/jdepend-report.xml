@@ -74,14 +74,14 @@
 
         <Package name="oberon.data">
             <Stats>
-                <TotalClasses>12</TotalClasses>
+                <TotalClasses>11</TotalClasses>
                 <ConcreteClasses>9</ConcreteClasses>
-                <AbstractClasses>3</AbstractClasses>
+                <AbstractClasses>2</AbstractClasses>
                 <Ca>3</Ca>
                 <Ce>1</Ce>
-                <A>0.25</A>
+                <A>0.18</A>
                 <I>0.25</I>
-                <D>0.5</D>
+                <D>0.57</D>
                 <V>1</V>
             </Stats>
 
@@ -91,9 +91,6 @@
                 </Class>
                 <Class sourceFile="AbstractIdentifier.java">
                     oberon.data.AbstractIdentifier
-                </Class>
-                <Class sourceFile="AbstractMapDataType.java">
-                    oberon.data.AbstractMapDataType
                 </Class>
             </AbstractClasses>
 
