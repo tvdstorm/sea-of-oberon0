@@ -1,4 +1,4 @@
-package oberon;
+package oberon.expressions;
 
 public class AbstractIntegerExpression extends AbstractExpression {
 	private final int expressionValue;

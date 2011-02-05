@@ -1,7 +1,7 @@
 package oberon.interpret;
 
-import oberon.AbstractIntegerExpression;
 import oberon.IExpression;
+import oberon.expressions.AbstractIntegerExpression;
 import oberon.node.AIntegerExp;
 
 public class ExpIntegerInterpreter extends AbstractBaseInterpreter<IExpression> {

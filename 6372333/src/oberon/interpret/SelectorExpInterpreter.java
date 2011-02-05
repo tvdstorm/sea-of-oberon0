@@ -1,7 +1,7 @@
 package oberon.interpret;
 
 import oberon.IExpression;
-import oberon.SelectorExpression;
+import oberon.expressions.SelectorExpression;
 import oberon.node.ASelectorExp;
 
 public class SelectorExpInterpreter extends AbstractBaseInterpreter<IExpression> {

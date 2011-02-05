@@ -1,8 +1,8 @@
 package oberon.interpret;
 
 import oberon.IExpression;
-import oberon.MathematicalExpression;
-import oberon.MathematicalExpressionType;
+import oberon.expressions.MathematicalExpression;
+import oberon.expressions.MathematicalExpressionType;
 import oberon.node.AAddExp;
 import oberon.node.ADivExp;
 import oberon.node.AModExp;

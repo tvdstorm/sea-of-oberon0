@@ -1,4 +1,6 @@
-package oberon;
+package oberon.expressions;
+
+import oberon.IExpression;
 
 public abstract class AbstractLeftAndRightExpression extends AbstractExpression {
 	private IExpression righthandSide;

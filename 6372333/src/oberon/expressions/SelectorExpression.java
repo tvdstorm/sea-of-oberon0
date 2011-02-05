@@ -1,4 +1,4 @@
-package oberon;
+package oberon.expressions;
 
 import oberon.data.AbstractDataType;
 import oberon.data.AbstractSelector;

@@ -1,4 +1,6 @@
-package oberon;
+package oberon.expressions;
+
+import oberon.IExpression;
 
 public class ParenthesesExpression extends AbstractExpression {
 	private final IExpression _expression;
