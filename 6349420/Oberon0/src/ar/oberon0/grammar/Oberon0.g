@@ -34,7 +34,7 @@ selector [SelectorNode selectorIn] returns [SelectorNode selector]
 factor returns [Interpretable factor]
 	:	IDENT 													{VarSelectorNode selector = new VarSelectorNode($IDENT.getText());}
 		selector[selector]											{$factor = selector;}
-	| 	INTEGER 												{$factor = new IntegerNode(Integer.parseInt($INTEGER.getText()));}
+	| 	INTEGER 												{$factor = new IntegerValue(Integer.parseInt($INTEGER.getText()));}
 	| 	'(' expression ')' 										{$factor = $expression.expression;} 
 	| 	'~' negatedFactor=factor								{$factor = new NegationNode($negatedFactor.factor);}
 	; 
