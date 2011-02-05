@@ -38,7 +38,9 @@ public class Boolean extends Value
 	{
 		_value = _value.dereference();
 		if (!(_value instanceof Boolean))
+		{
 			return false;
+		}
 		return ((Boolean)_value).value == value;
 	}
 	@Override

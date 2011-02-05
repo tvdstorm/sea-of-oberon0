@@ -52,7 +52,9 @@ public class ArrayVarDeclaration extends VarDeclaration
 		assert(parameterValues != null);
 		// Check if we have enough parameter values left for all our variables
 		if (parameterValues.size() < variableNames.size())
+		{
 			throw new IncorrectNumberOfArgumentsException();
+		}
 		
 		// Loop through all the length expressions in normal order to resolve them
 		Queue<Integer> lengths = new LinkedList<Integer>();
@@ -85,7 +87,9 @@ public class ArrayVarDeclaration extends VarDeclaration
 			}
 			// The test array next nesting shouldn't be an array anymore, or else the nesting doesn't match
 			if (testArray.getIndexValue(0).getType() == Type.ARRAY)
+			{
 				throw new ArrayLengthMismatch();
+			}
 			// Check if the variable is a reference
 			if (isReference)
 			{

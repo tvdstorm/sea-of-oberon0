@@ -44,7 +44,9 @@ public class VarDeclaration extends BodyDeclaration
 		assert(parameterValues != null);
 		// Check if we have enough parameter values left for all our variables
 		if (parameterValues.size() < variableNames.size())
+		{
 			throw new IncorrectNumberOfArgumentsException();
+		}
 		// Loop through all variable names
 		for (String variableName : variableNames)
 		{
@@ -52,7 +54,9 @@ public class VarDeclaration extends BodyDeclaration
 			final Value parameterValue = parameterValues.poll();
 			// Resolve the variable type and check if they are compatible
 			if (parameterValue.getType() != environment.resolveType(typeName).instantiate(environment).getType())
+			{
 				throw new TypeMismatchException(parameterValue.getType().toString(), typeName);
+			}
 			// Check if the variable is a reference
 			if (isReference)
 			{

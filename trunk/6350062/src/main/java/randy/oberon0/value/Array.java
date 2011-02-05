@@ -23,7 +23,9 @@ public class Array extends Value
 	public Value getIndexValue(int _index) throws OutOfBoundsException
 	{
 		if (_index >= values.length)
+		{
 			throw new OutOfBoundsException(_index);
+		}
 		return values[_index];
 	}
 	public Value dereference()
@@ -64,14 +66,20 @@ public class Array extends Value
 	{
 		_value = _value.dereference();
 		if (!(_value instanceof Array))
+		{
 			return false;
+		}
 		Array other = (Array)_value;
 		if (values.length != other.values.length)
+		{
 			return false;
+		}
 		for (int i=0;i<values.length;i++)
 		{
 			if (!values[i].equalsToValue(other.values[i]))
+			{
 				return false;
+			}
 		}
 		return true;
 	}

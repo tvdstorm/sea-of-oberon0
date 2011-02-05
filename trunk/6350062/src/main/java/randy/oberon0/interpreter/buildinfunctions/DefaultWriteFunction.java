@@ -20,7 +20,9 @@ public class DefaultWriteFunction implements IInvokableFunction
 	{
 		// Accept one parameter
 		if (parameterValues.size() != 1)
+		{
 			throw new IncorrectNumberOfArgumentsException();
+		}
 		// Accept only an integer
 		Integer param = parameterValues.poll().dereference().castToInteger();
 		// Print the integer

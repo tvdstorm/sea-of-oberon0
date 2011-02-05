@@ -14,7 +14,9 @@ public enum Type
 	static
 	{
 		for (Type s : EnumSet.allOf(Type.class))
+		{
 			lookup.put(s.getTypeText(), s);
+		}
 	}
 	private String typeText;
 	private Type(String _typeText)

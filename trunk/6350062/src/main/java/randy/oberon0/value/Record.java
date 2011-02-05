@@ -62,17 +62,25 @@ public class Record extends Value
 	{
 		_value = _value.dereference();
 		if (!(_value instanceof Record))
+		{
 			return false;
+		}
 		Record other = (Record)_value;
 		if (members.size() != other.members.size())
+		{
 			return false;
+		}
 		for (String name : members.keySet())
 		{
 			Value otherValue = other.members.get(name);
 			if (otherValue == null)
+			{
 				return false;
+			}
 			if (!members.get(name).equalsToValue(otherValue))
+			{
 				return false;
+			}
 		}
 		return true;
 	}

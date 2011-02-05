@@ -38,7 +38,9 @@ public class Integer extends Value
 	{
 		_value = _value.dereference();
 		if (!(_value instanceof Integer))
+		{
 			return false;
+		}
 		return ((Integer)_value).value == value;
 	}
 	@Override

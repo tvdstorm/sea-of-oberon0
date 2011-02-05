@@ -21,7 +21,9 @@ public class VariableStack
 		assert(value != null);
 		// Check if the variable has already been declared in the current scope
 		if (variables.containsKey(variableName))
+		{
 			throw new DuplicateVariableException(variableName);
+		}
 		// Add the variable to the current scope
 		variables.put(variableName, value);
 	}
@@ -36,12 +38,18 @@ public class VariableStack
 		assert(variableName.length() > 0);
 		// Check if the variable is in the current scope
 		if (variables.containsKey(variableName))
+		{
 			return variables.get(variableName);
+		}
 		// Check if we have a parent scope and check it for the variable
 		else if (parentScope != null)
+		{
 			return parentScope.getVariableValue(variableName);
+		}
 		// The variable isn't defined in this scope and we don't have a parent scope, return an exception
 		else
+		{
 			throw new UndefinedVariableException(variableName);
+		}
 	}
 }
