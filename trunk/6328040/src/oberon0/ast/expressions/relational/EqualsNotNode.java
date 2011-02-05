@@ -18,7 +18,7 @@ public class EqualsNotNode extends BaseBiliteralExpressionNode {
 	public IValue eval(Context context) {
 		int lhs = ((IntegerValue)evalLhsExpression(context)).getValue();
 		int rhs = ((IntegerValue)evalRhsExpression(context)).getValue();
-		return new BooleanValue(lhs == rhs);
+		return new BooleanValue(lhs != rhs);
 	}
 
 }

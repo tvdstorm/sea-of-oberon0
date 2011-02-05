@@ -15,8 +15,10 @@ public class WhileNode implements IExecutable {
 
 	@Override
 	public void execute(Context context) {
-		while(((BooleanValue)_condition.eval(context)).getValue()){
+		boolean condition = ((BooleanValue)_condition.eval(context)).getValue();
+		while(condition){
 			_statements.execute(context);
+			condition = ((BooleanValue)_condition.eval(context)).getValue();
 		}
 	}
 

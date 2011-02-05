@@ -24,7 +24,7 @@ import oberon0.environment.IntegerValue;
 public class TestExpressions {
 	
 	/**
-	 * Test all Integer Expressions
+	 * Test Expressions
 	 */
 	public static void main(String[] args) {
 		Context context  = new Context("expressiontest", null);

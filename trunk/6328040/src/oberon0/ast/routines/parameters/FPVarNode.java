@@ -25,7 +25,7 @@ public class FPVarNode extends BaseFormalParameterNode {
 			Reference reference= context.getReference(currentName);
 			
 			IReferable currentActualParam = actualParams.get(0);
-			IValue currentAPValue = currentActualParam.eval(context);
+			IValue currentAPValue = currentActualParam.eval(context.getParent());
 			reference.setValue(currentAPValue);
 			
 			actualParams.remove(0);
