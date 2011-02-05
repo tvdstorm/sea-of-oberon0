@@ -1,6 +1,6 @@
 package oberon.interpret;
 
-import oberon.AbstractStatement;
+import oberon.IStatement;
 import oberon.node.AStatassStatement;
 import oberon.node.AStatifStatement;
 import oberon.node.AStatprocStatement;
@@ -13,10 +13,10 @@ final class StatementInterpreterFactory {
 	private StatementInterpreterFactory(){
 	}
 	
-	private static <TNode extends PStatement> AbstractBaseInterpreter<AbstractStatement> 
+	private static <TNode extends PStatement> AbstractBaseInterpreter<IStatement> 
 		getInterpreter(final TNode node)
 	{	
-		AbstractBaseInterpreter<AbstractStatement> returnStatement = null;
+		AbstractBaseInterpreter<IStatement> returnStatement = null;
 		if (node instanceof AStatifStatement) {
 			returnStatement = new IfStatementInterpreter();
 		}
@@ -33,9 +33,9 @@ final class StatementInterpreterFactory {
 		return returnStatement;
 	}
 	
-	public static <TNode extends PStatement> AbstractStatement getStatement(final TNode node)
+	public static <TNode extends PStatement> IStatement getStatement(final TNode node)
 	{
-		final AbstractBaseInterpreter<AbstractStatement> interpreter = 
+		final AbstractBaseInterpreter<IStatement> interpreter = 
 			StatementInterpreterFactory.getInterpreter(node);
 		node.apply(interpreter);
 		return interpreter.buildInterpreterResult();

@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-02-05</date>
-  <time>14:58:44</time>
+  <time>15:10:15</time>
   <packages>
     <package>
       <name>oberon</name>
-      <classes>26</classes>
-      <functions>60</functions>
-      <ncss>443</ncss>
+      <classes>27</classes>
+      <functions>61</functions>
+      <ncss>447</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>10</single_comment_lines>
-      <multi_comment_lines>2</multi_comment_lines>
+      <multi_comment_lines>5</multi_comment_lines>
     </package>
     <package>
       <name>oberon.data</name>
@@ -44,20 +44,20 @@
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <total>
-      <classes>57</classes>
-      <functions>184</functions>
-      <ncss>1109</ncss>
+      <classes>58</classes>
+      <functions>185</functions>
+      <ncss>1113</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>38</single_comment_lines>
-      <multi_comment_lines>2</multi_comment_lines>
+      <multi_comment_lines>5</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>4.00</td><td>57.00</td><td>184.00</td><td>1,109.00</td><td>0.00</td><td>Project</td></tr>
-      <tr><td></td><td>14.25</td><td>46.00</td><td>277.25</td><td>0.00</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.23</td><td>19.46</td><td>0.00</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>6.03</td><td>0.00</td><td>Function</td></tr>
+      <tr><td>4.00</td><td>58.00</td><td>185.00</td><td>1,113.00</td><td>0.00</td><td>Project</td></tr>
+      <tr><td></td><td>14.50</td><td>46.25</td><td>278.25</td><td>0.00</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.19</td><td>19.19</td><td>0.00</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>6.02</td><td>0.00</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -136,6 +136,13 @@
       <name>oberon.FormalParamType</name>
       <ncss>1</ncss>
       <functions>0</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon.IStatement</name>
+      <ncss>2</ncss>
+      <functions>1</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -462,12 +469,12 @@
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>15.65</ncss>
-      <functions>3.23</functions>
+      <ncss>15.41</ncss>
+      <functions>3.19</functions>
       <classes>0.02</classes>
       <javadocs>0.00</javadocs>
     </averages>
-    <ncss>1,109.00</ncss>
+    <ncss>1,113.00</ncss>
   </objects>
 
   <functions>
@@ -640,6 +647,12 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>oberon.IStatement.eval()</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>oberon.IfStatement.IfStatement(AbstractExpression,StatementSequence,IfStatement,StatementSequence)</name>
       <ncss>5</ncss>
       <ccn>1</ccn>
@@ -772,7 +785,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.StatementSequence.StatementSequence(AbstractStatement)</name>
+      <name>oberon.StatementSequence.StatementSequence(IStatement)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -1576,10 +1589,10 @@
       <javadocs>0</javadocs>
     </function>
     <function_averages>
-      <ncss>3.89</ncss>
+      <ncss>3.87</ncss>
       <ccn>1.46</ccn>
       <javadocs>0.00</javadocs>
     </function_averages>
-    <ncss>1,109.00</ncss>
+    <ncss>1,113.00</ncss>
   </functions>
 </javancss>

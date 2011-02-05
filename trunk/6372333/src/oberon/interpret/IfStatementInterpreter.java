@@ -4,14 +4,14 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import oberon.AbstractExpression;
+import oberon.IStatement;
 import oberon.IfStatement;
-import oberon.AbstractStatement;
 import oberon.StatementSequence;
 import oberon.node.AIfstatement;
 import oberon.node.AStatifStatement;
 import oberon.node.PIfstatement;
 
-class IfStatementInterpreter extends AbstractBaseInterpreter<AbstractStatement> {
+class IfStatementInterpreter extends AbstractBaseInterpreter<IStatement> {
 	private AbstractExpression condition;
 	private Queue<IfStatement> elseIfList;
 	private StatementSequence ifBody;

@@ -28,7 +28,7 @@ class WriteCall extends AbstractStatement {
 		paramNames.add("input");
 		params.add(new FormalParamSection(paramNames, FormalParamType.Array, false));
 		
-		final LinkedList<AbstractStatement> statements = new LinkedList<AbstractStatement>();
+		final LinkedList<IStatement> statements = new LinkedList<IStatement>();
 		statements.add(new WriteCall());
 		
 		final List<AbstractDataType> variables = new ArrayList<AbstractDataType>();
