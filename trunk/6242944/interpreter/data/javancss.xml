@@ -1,13 +1,53 @@
 <?xml version="1.0"?>
 <javancss>
-  <date>2011-02-04</date>
-  <time>21:01:27</time>
+  <date>2011-02-05</date>
+  <time>17:49:42</time>
   <packages>
     <package>
       <name>jdm.oberon0.ast</name>
-      <classes>43</classes>
-      <functions>142</functions>
-      <ncss>405</ncss>
+      <classes>2</classes>
+      <functions>4</functions>
+      <ncss>19</ncss>
+      <javadocs>0</javadocs>
+      <javadoc_lines>0</javadoc_lines>
+      <single_comment_lines>0</single_comment_lines>
+      <multi_comment_lines>0</multi_comment_lines>
+    </package>
+    <package>
+      <name>jdm.oberon0.ast.declarations</name>
+      <classes>8</classes>
+      <functions>31</functions>
+      <ncss>105</ncss>
+      <javadocs>0</javadocs>
+      <javadoc_lines>0</javadoc_lines>
+      <single_comment_lines>0</single_comment_lines>
+      <multi_comment_lines>0</multi_comment_lines>
+    </package>
+    <package>
+      <name>jdm.oberon0.ast.expressions</name>
+      <classes>24</classes>
+      <functions>72</functions>
+      <ncss>184</ncss>
+      <javadocs>0</javadocs>
+      <javadoc_lines>0</javadoc_lines>
+      <single_comment_lines>0</single_comment_lines>
+      <multi_comment_lines>0</multi_comment_lines>
+    </package>
+    <package>
+      <name>jdm.oberon0.ast.statements</name>
+      <classes>7</classes>
+      <functions>26</functions>
+      <ncss>86</ncss>
+      <javadocs>0</javadocs>
+      <javadoc_lines>0</javadoc_lines>
+      <single_comment_lines>0</single_comment_lines>
+      <multi_comment_lines>0</multi_comment_lines>
+    </package>
+    <package>
+      <name>jdm.oberon0.ast.types</name>
+      <classes>5</classes>
+      <functions>14</functions>
+      <ncss>42</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>0</single_comment_lines>
@@ -45,19 +85,29 @@
     </package>
     <package>
       <name>jdm.oberon0.interpreter</name>
+      <classes>6</classes>
+      <functions>28</functions>
+      <ncss>140</ncss>
+      <javadocs>4</javadocs>
+      <javadoc_lines>13</javadoc_lines>
+      <single_comment_lines>0</single_comment_lines>
+      <multi_comment_lines>0</multi_comment_lines>
+    </package>
+    <package>
+      <name>jdm.oberon0.interpreter.eval</name>
       <classes>5</classes>
-      <functions>71</functions>
-      <ncss>267</ncss>
-      <javadocs>13</javadocs>
-      <javadoc_lines>41</javadoc_lines>
+      <functions>49</functions>
+      <ncss>220</ncss>
+      <javadocs>6</javadocs>
+      <javadoc_lines>18</javadoc_lines>
       <single_comment_lines>14</single_comment_lines>
       <multi_comment_lines>6</multi_comment_lines>
     </package>
     <package>
       <name>jdm.oberon0.main</name>
       <classes>1</classes>
-      <functions>2</functions>
-      <ncss>37</ncss>
+      <functions>1</functions>
+      <ncss>14</ncss>
       <javadocs>1</javadocs>
       <javadoc_lines>3</javadoc_lines>
       <single_comment_lines>1</single_comment_lines>
@@ -76,211 +126,260 @@
     <package>
       <name>jdm.oberon0.values</name>
       <classes>6</classes>
-      <functions>52</functions>
-      <ncss>194</ncss>
+      <functions>51</functions>
+      <ncss>185</ncss>
       <javadocs>2</javadocs>
       <javadoc_lines>7</javadoc_lines>
       <single_comment_lines>2</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <total>
-      <classes>76</classes>
-      <functions>297</functions>
-      <ncss>1076</ncss>
-      <javadocs>28</javadocs>
-      <javadoc_lines>89</javadoc_lines>
+      <classes>85</classes>
+      <functions>306</functions>
+      <ncss>1168</ncss>
+      <javadocs>25</javadocs>
+      <javadoc_lines>79</javadoc_lines>
       <single_comment_lines>21</single_comment_lines>
       <multi_comment_lines>10</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>8.00</td><td>76.00</td><td>297.00</td><td>1,076.00</td><td>28.00</td><td>Project</td></tr>
-      <tr><td></td><td>9.50</td><td>37.13</td><td>134.50</td><td>3.50</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.91</td><td>14.16</td><td>0.37</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>3.62</td><td>0.09</td><td>Function</td></tr>
+      <tr><td>13.00</td><td>85.00</td><td>306.00</td><td>1,168.00</td><td>25.00</td><td>Project</td></tr>
+      <tr><td></td><td>6.54</td><td>23.54</td><td>89.85</td><td>1.92</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.60</td><td>13.74</td><td>0.29</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>3.82</td><td>0.08</td><td>Function</td></tr>
     </table>
   </packages>
 
   <objects>
     <object>
-      <name>jdm.oberon0.ast.AbstractType</name>
-      <ncss>1</ncss>
-      <functions>0</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>jdm.oberon0.ast.AddExpression</name>
-      <ncss>5</ncss>
-      <functions>2</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>jdm.oberon0.ast.AndExpression</name>
-      <ncss>5</ncss>
-      <functions>2</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>jdm.oberon0.ast.Array</name>
-      <ncss>10</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>jdm.oberon0.ast.ArraySelector</name>
+      <name>jdm.oberon0.ast.declarations.ConstDeclaration</name>
       <ncss>12</ncss>
       <functions>4</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>jdm.oberon0.ast.Assignment</name>
-      <ncss>12</ncss>
-      <functions>4</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>jdm.oberon0.ast.BinaryExpression</name>
-      <ncss>10</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>jdm.oberon0.ast.ConstDeclaration</name>
-      <ncss>12</ncss>
-      <functions>4</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>jdm.oberon0.ast.Declaration</name>
+      <name>jdm.oberon0.ast.declarations.Declaration</name>
       <ncss>2</ncss>
       <functions>1</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>jdm.oberon0.ast.Declarations</name>
+      <name>jdm.oberon0.ast.declarations.Declarations</name>
       <ncss>8</ncss>
       <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>jdm.oberon0.ast.DivExpression</name>
+      <name>jdm.oberon0.ast.declarations.DeclarationVisitor</name>
+      <ncss>6</ncss>
+      <functions>5</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.ast.declarations.Parameter</name>
+      <ncss>14</ncss>
+      <functions>4</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.ast.declarations.Procedure</name>
+      <ncss>20</ncss>
+      <functions>6</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.ast.declarations.TypeDeclaration</name>
+      <ncss>12</ncss>
+      <functions>4</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.ast.declarations.VarDeclaration</name>
+      <ncss>12</ncss>
+      <functions>4</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.ast.expressions.AddExpression</name>
       <ncss>5</ncss>
       <functions>2</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>jdm.oberon0.ast.EqExpression</name>
+      <name>jdm.oberon0.ast.expressions.AndExpression</name>
       <ncss>5</ncss>
       <functions>2</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>jdm.oberon0.ast.Expression</name>
+      <name>jdm.oberon0.ast.expressions.ArraySelector</name>
+      <ncss>12</ncss>
+      <functions>4</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.ast.expressions.BinaryExpression</name>
+      <ncss>10</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.ast.expressions.DivExpression</name>
+      <ncss>5</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.ast.expressions.EqExpression</name>
+      <ncss>5</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.ast.expressions.Expression</name>
       <ncss>2</ncss>
       <functions>1</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>jdm.oberon0.ast.GeExpression</name>
+      <name>jdm.oberon0.ast.expressions.ExpressionVisitor</name>
+      <ncss>21</ncss>
+      <functions>20</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.ast.expressions.GeExpression</name>
       <ncss>5</ncss>
       <functions>2</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>jdm.oberon0.ast.GtExpression</name>
+      <name>jdm.oberon0.ast.expressions.GtExpression</name>
       <ncss>5</ncss>
       <functions>2</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>jdm.oberon0.ast.Identifier</name>
+      <name>jdm.oberon0.ast.expressions.Identifier</name>
       <ncss>8</ncss>
       <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>jdm.oberon0.ast.IdentifierType</name>
+      <name>jdm.oberon0.ast.expressions.IntegerLiteral</name>
+      <ncss>8</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.ast.expressions.LeExpression</name>
+      <ncss>5</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.ast.expressions.LtExpression</name>
+      <ncss>5</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.ast.expressions.ModExpression</name>
+      <ncss>5</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.ast.expressions.MulExpression</name>
+      <ncss>5</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.ast.expressions.NeExpression</name>
+      <ncss>5</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.ast.expressions.NegExpression</name>
+      <ncss>5</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.ast.expressions.NotExpression</name>
+      <ncss>5</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.ast.expressions.OrExpression</name>
+      <ncss>5</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.ast.expressions.PosExpression</name>
+      <ncss>5</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.ast.expressions.RecordSelector</name>
+      <ncss>12</ncss>
+      <functions>4</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.ast.expressions.SubExpression</name>
+      <ncss>5</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.ast.expressions.UnaryExpression</name>
       <ncss>6</ncss>
       <functions>2</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>jdm.oberon0.ast.IfStatement</name>
-      <ncss>16</ncss>
-      <functions>5</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>jdm.oberon0.ast.IntegerLiteral</name>
-      <ncss>8</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>jdm.oberon0.ast.LeExpression</name>
-      <ncss>5</ncss>
-      <functions>2</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>jdm.oberon0.ast.LtExpression</name>
-      <ncss>5</ncss>
-      <functions>2</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>jdm.oberon0.ast.ModExpression</name>
-      <ncss>5</ncss>
-      <functions>2</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
       <name>jdm.oberon0.ast.Module</name>
-      <ncss>16</ncss>
-      <functions>5</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>jdm.oberon0.ast.MulExpression</name>
-      <ncss>5</ncss>
-      <functions>2</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>jdm.oberon0.ast.NeExpression</name>
-      <ncss>5</ncss>
-      <functions>2</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>jdm.oberon0.ast.NegExpression</name>
-      <ncss>5</ncss>
-      <functions>2</functions>
+      <ncss>14</ncss>
+      <functions>4</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -292,114 +391,86 @@
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>jdm.oberon0.ast.NotExpression</name>
-      <ncss>5</ncss>
-      <functions>2</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>jdm.oberon0.ast.OrExpression</name>
-      <ncss>5</ncss>
-      <functions>2</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>jdm.oberon0.ast.Parameter</name>
-      <ncss>14</ncss>
+      <name>jdm.oberon0.ast.statements.Assignment</name>
+      <ncss>12</ncss>
       <functions>4</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>jdm.oberon0.ast.PosExpression</name>
-      <ncss>5</ncss>
-      <functions>2</functions>
+      <name>jdm.oberon0.ast.statements.IfStatement</name>
+      <ncss>16</ncss>
+      <functions>5</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>jdm.oberon0.ast.Procedure</name>
-      <ncss>20</ncss>
-      <functions>6</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>jdm.oberon0.ast.ProcedureCall</name>
+      <name>jdm.oberon0.ast.statements.ProcedureCall</name>
       <ncss>16</ncss>
       <functions>4</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>jdm.oberon0.ast.Record</name>
-      <ncss>6</ncss>
-      <functions>2</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>jdm.oberon0.ast.RecordSelector</name>
-      <ncss>12</ncss>
-      <functions>4</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>jdm.oberon0.ast.Statement</name>
+      <name>jdm.oberon0.ast.statements.Statement</name>
       <ncss>2</ncss>
       <functions>1</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>jdm.oberon0.ast.StatementSequence</name>
+      <name>jdm.oberon0.ast.statements.StatementSequence</name>
       <ncss>8</ncss>
       <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>jdm.oberon0.ast.SubExpression</name>
-      <ncss>5</ncss>
-      <functions>2</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>jdm.oberon0.ast.TypeDeclaration</name>
-      <ncss>12</ncss>
-      <functions>4</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>jdm.oberon0.ast.UnaryExpression</name>
+      <name>jdm.oberon0.ast.statements.StatementVisitor</name>
       <ncss>6</ncss>
-      <functions>2</functions>
+      <functions>5</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>jdm.oberon0.ast.VarDeclaration</name>
+      <name>jdm.oberon0.ast.statements.WhileStatement</name>
       <ncss>12</ncss>
       <functions>4</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>jdm.oberon0.ast.Visitor</name>
-      <ncss>32</ncss>
-      <functions>31</functions>
+      <name>jdm.oberon0.ast.types.ArrayType</name>
+      <ncss>12</ncss>
+      <functions>4</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>jdm.oberon0.ast.WhileStatement</name>
-      <ncss>12</ncss>
-      <functions>4</functions>
+      <name>jdm.oberon0.ast.types.IdentifierType</name>
+      <ncss>8</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.ast.types.RecordType</name>
+      <ncss>8</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.ast.types.Type</name>
+      <ncss>2</ncss>
+      <functions>1</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.ast.types.TypeVisitor</name>
+      <ncss>4</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -537,11 +608,46 @@
       <javadocs>1</javadocs>
     </object>
     <object>
-      <name>jdm.oberon0.interpreter.Interpreter</name>
-      <ncss>158</ncss>
-      <functions>45</functions>
+      <name>jdm.oberon0.interpreter.eval.DeclarationEvaluator</name>
+      <ncss>26</ncss>
+      <functions>6</functions>
       <classes>0</classes>
-      <javadocs>9</javadocs>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.interpreter.eval.Evaluator</name>
+      <ncss>30</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>1</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator</name>
+      <ncss>72</ncss>
+      <functions>29</functions>
+      <classes>0</classes>
+      <javadocs>5</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.interpreter.eval.StatementEvaluator</name>
+      <ncss>32</ncss>
+      <functions>7</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.interpreter.eval.TypeEvaluator</name>
+      <ncss>19</ncss>
+      <functions>4</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.interpreter.Interpreter</name>
+      <ncss>16</ncss>
+      <functions>1</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
     </object>
     <object>
       <name>jdm.oberon0.interpreter.Scope</name>
@@ -558,9 +664,16 @@
       <javadocs>1</javadocs>
     </object>
     <object>
+      <name>jdm.oberon0.interpreter.ValueConstructor</name>
+      <ncss>11</ncss>
+      <functions>1</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
       <name>jdm.oberon0.main.Main</name>
-      <ncss>24</ncss>
-      <functions>2</functions>
+      <ncss>9</ncss>
+      <functions>1</functions>
       <classes>0</classes>
       <javadocs>1</javadocs>
     </object>
@@ -615,7 +728,7 @@
     </object>
     <object>
       <name>jdm.oberon0.values.RecordValue</name>
-      <ncss>28</ncss>
+      <ncss>30</ncss>
       <functions>7</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
@@ -629,341 +742,635 @@
     </object>
     <object>
       <name>jdm.oberon0.values.Value</name>
-      <ncss>25</ncss>
-      <functions>10</functions>
+      <ncss>15</ncss>
+      <functions>9</functions>
       <classes>0</classes>
       <javadocs>1</javadocs>
     </object>
     <averages>
-      <ncss>11.97</ncss>
-      <functions>3.91</functions>
+      <ncss>11.12</ncss>
+      <functions>3.60</functions>
       <classes>0.00</classes>
-      <javadocs>0.37</javadocs>
+      <javadocs>0.29</javadocs>
     </averages>
-    <ncss>1,076.00</ncss>
+    <ncss>1,168.00</ncss>
   </objects>
 
   <functions>
     <function>
-      <name>jdm.oberon0.ast.AddExpression.AddExpression(Expression,Expression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.AddExpression.accept(T)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.AndExpression.AndExpression(Expression,Expression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.AndExpression.accept(T)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Array.Array(Expression,AbstractType)</name>
+      <name>jdm.oberon0.ast.declarations.ConstDeclaration.ConstDeclaration(String,Expression)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.Array.getSize()</name>
+      <name>jdm.oberon0.ast.declarations.ConstDeclaration.getName()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.Array.getElementType()</name>
+      <name>jdm.oberon0.ast.declarations.ConstDeclaration.getValue()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.ArraySelector.ArraySelector(Expression,Expression)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.ArraySelector.getBase()</name>
+      <name>jdm.oberon0.ast.declarations.ConstDeclaration.accept(DeclarationVisitor)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.ArraySelector.getIndex()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.ArraySelector.accept(T)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Assignment.Assignment(Expression,Expression)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Assignment.getLhs()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Assignment.getRhs()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Assignment.accept(T)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.BinaryExpression.BinaryExpression(Expression,Expression)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.BinaryExpression.getLhs()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.BinaryExpression.getRhs()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.ConstDeclaration.ConstDeclaration(String,Expression)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.ConstDeclaration.getName()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.ConstDeclaration.getValue()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.ConstDeclaration.accept(T)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Declaration.accept(T)</name>
+      <name>jdm.oberon0.ast.declarations.Declaration.accept(DeclarationVisitor)</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.Declarations.Declarations(Declaration)</name>
+      <name>jdm.oberon0.ast.declarations.Declarations.Declarations(Declaration)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.Declarations.getDeclarations()</name>
+      <name>jdm.oberon0.ast.declarations.Declarations.getDeclarations()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.Declarations.accept(T)</name>
+      <name>jdm.oberon0.ast.declarations.Declarations.accept(DeclarationVisitor)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.DivExpression.DivExpression(Expression,Expression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.DivExpression.accept(T)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.EqExpression.EqExpression(Expression,Expression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.EqExpression.accept(T)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Expression.accept(T)</name>
+      <name>jdm.oberon0.ast.declarations.DeclarationVisitor.visitDeclarations(Declarations)</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.GeExpression.GeExpression(Expression,Expression)</name>
-      <ncss>2</ncss>
+      <name>jdm.oberon0.ast.declarations.DeclarationVisitor.visitConstDeclaration(ConstDeclaration)</name>
+      <ncss>1</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.GeExpression.accept(T)</name>
-      <ncss>2</ncss>
+      <name>jdm.oberon0.ast.declarations.DeclarationVisitor.visitVarDeclaration(VarDeclaration)</name>
+      <ncss>1</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.GtExpression.GtExpression(Expression,Expression)</name>
-      <ncss>2</ncss>
+      <name>jdm.oberon0.ast.declarations.DeclarationVisitor.visitTypeDeclaration(TypeDeclaration)</name>
+      <ncss>1</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.GtExpression.accept(T)</name>
-      <ncss>2</ncss>
+      <name>jdm.oberon0.ast.declarations.DeclarationVisitor.visitProcedure(Procedure)</name>
+      <ncss>1</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.Identifier.Identifier(String)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Identifier.getName()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Identifier.accept(T)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.IdentifierType.IdentifierType(String)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.IdentifierType.getName()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.IfStatement.IfStatement(Expression,StatementSequence,Statement)</name>
+      <name>jdm.oberon0.ast.declarations.Parameter.Parameter(String,Type,boolean)</name>
       <ncss>4</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.IfStatement.getTest()</name>
+      <name>jdm.oberon0.ast.declarations.Parameter.getName()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.IfStatement.getThen()</name>
+      <name>jdm.oberon0.ast.declarations.Parameter.isByRef()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.IfStatement.getElse()</name>
+      <name>jdm.oberon0.ast.declarations.Parameter.getType()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.IfStatement.accept(T)</name>
+      <name>jdm.oberon0.ast.declarations.Procedure.Procedure(String,jdm.oberon0.ast.declarations.Parameter,Declarations,StatementSequence)</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.declarations.Procedure.getName()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.IntegerLiteral.IntegerLiteral(int)</name>
+      <name>jdm.oberon0.ast.declarations.Procedure.getStatements()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.IntegerLiteral.getValue()</name>
+      <name>jdm.oberon0.ast.declarations.Procedure.getDeclarations()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.IntegerLiteral.accept(T)</name>
+      <name>jdm.oberon0.ast.declarations.Procedure.getParameters()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.LeExpression.LeExpression(Expression,Expression)</name>
+      <name>jdm.oberon0.ast.declarations.Procedure.accept(DeclarationVisitor)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.LeExpression.accept(T)</name>
+      <name>jdm.oberon0.ast.declarations.TypeDeclaration.TypeDeclaration(String,Type)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.declarations.TypeDeclaration.getName()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.LtExpression.LtExpression(Expression,Expression)</name>
+      <name>jdm.oberon0.ast.declarations.TypeDeclaration.getType()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.LtExpression.accept(T)</name>
+      <name>jdm.oberon0.ast.declarations.TypeDeclaration.accept(DeclarationVisitor)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.ModExpression.ModExpression(Expression,Expression)</name>
+      <name>jdm.oberon0.ast.declarations.VarDeclaration.VarDeclaration(String,Type)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.declarations.VarDeclaration.getNames()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.ModExpression.accept(T)</name>
+      <name>jdm.oberon0.ast.declarations.VarDeclaration.getType()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.declarations.VarDeclaration.accept(DeclarationVisitor)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.AddExpression.AddExpression(Expression,Expression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.AddExpression.accept(T)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.AndExpression.AndExpression(Expression,Expression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.AndExpression.accept(T)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.ArraySelector.ArraySelector(Expression,Expression)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.ArraySelector.getBase()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.ArraySelector.getIndex()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.ArraySelector.accept(T)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.BinaryExpression.BinaryExpression(Expression,Expression)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.BinaryExpression.getLhs()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.BinaryExpression.getRhs()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.DivExpression.DivExpression(Expression,Expression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.DivExpression.accept(T)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.EqExpression.EqExpression(Expression,Expression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.EqExpression.accept(T)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.Expression.accept(T)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.ExpressionVisitor.visitArraySelector(ArraySelector)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.ExpressionVisitor.visitRecordSelector(RecordSelector)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.ExpressionVisitor.visitAddExpression(AddExpression)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.ExpressionVisitor.visitSubExpression(SubExpression)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.ExpressionVisitor.visitMulExpression(MulExpression)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.ExpressionVisitor.visitDivExpression(DivExpression)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.ExpressionVisitor.visitModExpression(ModExpression)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.ExpressionVisitor.visitAndExpression(AndExpression)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.ExpressionVisitor.visitOrExpression(OrExpression)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.ExpressionVisitor.visitLtExpression(LtExpression)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.ExpressionVisitor.visitGtExpression(GtExpression)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.ExpressionVisitor.visitLeExpression(LeExpression)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.ExpressionVisitor.visitGeExpression(GeExpression)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.ExpressionVisitor.visitEqExpression(EqExpression)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.ExpressionVisitor.visitNeExpression(NeExpression)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.ExpressionVisitor.visitIntegerLiteral(IntegerLiteral)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.ExpressionVisitor.visitIdentifier(Identifier)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.ExpressionVisitor.visitNegExpression(NegExpression)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.ExpressionVisitor.visitPosExpression(PosExpression)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.ExpressionVisitor.visitNotExpression(NotExpression)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.GeExpression.GeExpression(Expression,Expression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.GeExpression.accept(T)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.GtExpression.GtExpression(Expression,Expression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.GtExpression.accept(T)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.Identifier.Identifier(String)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.Identifier.getName()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.Identifier.accept(T)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.IntegerLiteral.IntegerLiteral(int)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.IntegerLiteral.getValue()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.IntegerLiteral.accept(T)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.LeExpression.LeExpression(Expression,Expression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.LeExpression.accept(T)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.LtExpression.LtExpression(Expression,Expression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.LtExpression.accept(T)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.ModExpression.ModExpression(Expression,Expression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.ModExpression.accept(T)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.MulExpression.MulExpression(Expression,Expression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.MulExpression.accept(T)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.NeExpression.NeExpression(Expression,Expression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.NeExpression.accept(T)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.NegExpression.NegExpression(Expression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.NegExpression.accept(T)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.NotExpression.NotExpression(Expression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.NotExpression.accept(T)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.OrExpression.OrExpression(Expression,Expression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.OrExpression.accept(T)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.PosExpression.PosExpression(Expression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.PosExpression.accept(T)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.RecordSelector.RecordSelector(Expression,String)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.RecordSelector.getBase()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.RecordSelector.getName()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.RecordSelector.accept(T)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.SubExpression.SubExpression(Expression,Expression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.SubExpression.accept(T)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.UnaryExpression.UnaryExpression(Expression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.expressions.UnaryExpression.getArgument()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -993,506 +1400,242 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.Module.accept(T)</name>
+      <name>jdm.oberon0.ast.statements.Assignment.Assignment(Expression,Expression)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.statements.Assignment.getLhs()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.MulExpression.MulExpression(Expression,Expression)</name>
+      <name>jdm.oberon0.ast.statements.Assignment.getRhs()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.MulExpression.accept(T)</name>
+      <name>jdm.oberon0.ast.statements.Assignment.accept(StatementVisitor)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.NeExpression.NeExpression(Expression,Expression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.NeExpression.accept(T)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.NegExpression.NegExpression(Expression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.NegExpression.accept(T)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.NotExpression.NotExpression(Expression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.NotExpression.accept(T)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.OrExpression.OrExpression(Expression,Expression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.OrExpression.accept(T)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Parameter.Parameter(String,AbstractType,boolean)</name>
+      <name>jdm.oberon0.ast.statements.IfStatement.IfStatement(Expression,StatementSequence,Statement)</name>
       <ncss>4</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.Parameter.getName()</name>
+      <name>jdm.oberon0.ast.statements.IfStatement.getTest()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.Parameter.isByRef()</name>
+      <name>jdm.oberon0.ast.statements.IfStatement.getThen()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.Parameter.getType()</name>
+      <name>jdm.oberon0.ast.statements.IfStatement.getElse()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.PosExpression.PosExpression(Expression)</name>
+      <name>jdm.oberon0.ast.statements.IfStatement.accept(StatementVisitor)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.PosExpression.accept(T)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Procedure.Procedure(String,jdm.oberon0.ast.Parameter,Declarations,StatementSequence)</name>
-      <ncss>5</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Procedure.getName()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Procedure.getStatements()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Procedure.getDeclarations()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Procedure.getParameters()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Procedure.accept(T)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.ProcedureCall.ProcedureCall(String,Expression)</name>
+      <name>jdm.oberon0.ast.statements.ProcedureCall.ProcedureCall(String,Expression)</name>
       <ncss>7</ncss>
       <ccn>2</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.ProcedureCall.getName()</name>
+      <name>jdm.oberon0.ast.statements.ProcedureCall.getName()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.ProcedureCall.getArgs()</name>
+      <name>jdm.oberon0.ast.statements.ProcedureCall.getArgs()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.ProcedureCall.accept(T)</name>
+      <name>jdm.oberon0.ast.statements.ProcedureCall.accept(StatementVisitor)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.Record.Record(AbstractType)</name>
+      <name>jdm.oberon0.ast.statements.Statement.accept(StatementVisitor)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.statements.StatementSequence.StatementSequence(Statement)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.Record.getFields()</name>
+      <name>jdm.oberon0.ast.statements.StatementSequence.getStatements()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.RecordSelector.RecordSelector(Expression,String)</name>
+      <name>jdm.oberon0.ast.statements.StatementSequence.accept(StatementVisitor)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.statements.StatementVisitor.visitStatementSequence(StatementSequence)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.statements.StatementVisitor.visitAssignment(Assignment)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.statements.StatementVisitor.visitProcedureCall(ProcedureCall)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.statements.StatementVisitor.visitIfStatement(IfStatement)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.statements.StatementVisitor.visitWhileStatement(WhileStatement)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.statements.WhileStatement.WhileStatement(Expression,StatementSequence)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.RecordSelector.getBase()</name>
+      <name>jdm.oberon0.ast.statements.WhileStatement.getTest()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.RecordSelector.getName()</name>
+      <name>jdm.oberon0.ast.statements.WhileStatement.getBody()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.RecordSelector.accept(T)</name>
+      <name>jdm.oberon0.ast.statements.WhileStatement.accept(StatementVisitor)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.Statement.accept(T)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.StatementSequence.StatementSequence(Statement)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.StatementSequence.getStatements()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.StatementSequence.accept(T)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.SubExpression.SubExpression(Expression,Expression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.SubExpression.accept(T)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.TypeDeclaration.TypeDeclaration(String,AbstractType)</name>
+      <name>jdm.oberon0.ast.types.ArrayType.ArrayType(Expression,Type)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.TypeDeclaration.getName()</name>
+      <name>jdm.oberon0.ast.types.ArrayType.getSize()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.TypeDeclaration.getType()</name>
+      <name>jdm.oberon0.ast.types.ArrayType.getElementType()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.TypeDeclaration.accept(T)</name>
+      <name>jdm.oberon0.ast.types.ArrayType.accept(T)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.UnaryExpression.UnaryExpression(Expression)</name>
+      <name>jdm.oberon0.ast.types.IdentifierType.IdentifierType(String)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.UnaryExpression.getArgument()</name>
+      <name>jdm.oberon0.ast.types.IdentifierType.getName()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.VarDeclaration.VarDeclaration(String,AbstractType)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.VarDeclaration.getNames()</name>
+      <name>jdm.oberon0.ast.types.IdentifierType.accept(T)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.VarDeclaration.getType()</name>
+      <name>jdm.oberon0.ast.types.RecordType.RecordType(Type)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.VarDeclaration.accept(T)</name>
+      <name>jdm.oberon0.ast.types.RecordType.getFields()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.Visitor.visitModule(Module)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitDeclarations(Declarations)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitConstDeclaration(ConstDeclaration)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitVarDeclaration(VarDeclaration)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitTypeDeclaration(TypeDeclaration)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitStatementSequence(StatementSequence)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitProcedure(Procedure)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitProcedureCall(ProcedureCall)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitIfStatement(IfStatement)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitWhileStatement(WhileStatement)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitAssignment(Assignment)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitArraySelector(ArraySelector)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitRecordSelector(RecordSelector)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitAddExpression(AddExpression)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitSubExpression(SubExpression)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitMulExpression(MulExpression)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitDivExpression(DivExpression)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitModExpression(ModExpression)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitAndExpression(AndExpression)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitOrExpression(OrExpression)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitLtExpression(LtExpression)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitGtExpression(GtExpression)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitLeExpression(LeExpression)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitGeExpression(GeExpression)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitEqExpression(EqExpression)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitNeExpression(NeExpression)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitIntegerLiteral(IntegerLiteral)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitIdentifier(Identifier)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitNegExpression(NegExpression)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitPosExpression(PosExpression)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.Visitor.visitNotExpression(NotExpression)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.WhileStatement.WhileStatement(Expression,StatementSequence)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.ast.WhileStatement.getTest()</name>
+      <name>jdm.oberon0.ast.types.RecordType.accept(T)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.WhileStatement.getBody()</name>
-      <ncss>2</ncss>
+      <name>jdm.oberon0.ast.types.Type.accept(T)</name>
+      <ncss>1</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.WhileStatement.accept(T)</name>
-      <ncss>2</ncss>
+      <name>jdm.oberon0.ast.types.TypeVisitor.visitIdentifierType(IdentifierType)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.types.TypeVisitor.visitArray(ArrayType)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.types.TypeVisitor.visitRecord(RecordType)</name>
+      <ncss>1</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -1689,273 +1832,303 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.interpreter.Interpreter.Interpreter(Context)</name>
-      <ncss>2</ncss>
+      <name>jdm.oberon0.interpreter.eval.DeclarationEvaluator.DeclarationEvaluator(Context)</name>
+      <ncss>4</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.interpreter.Interpreter.interpret(Module)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
+      <name>jdm.oberon0.interpreter.eval.DeclarationEvaluator.visitDeclarations(Declarations)</name>
+      <ncss>3</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.interpreter.Interpreter.interpret(ScriptedProcedure,Value[])</name>
-      <ncss>18</ncss>
-      <ccn>5</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.wrapBoolean(boolean)</name>
-      <ncss>2</ncss>
+      <name>jdm.oberon0.interpreter.eval.DeclarationEvaluator.visitConstDeclaration(ConstDeclaration)</name>
+      <ncss>4</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.interpreter.Interpreter.wrapInteger(int)</name>
-      <ncss>2</ncss>
+      <name>jdm.oberon0.interpreter.eval.DeclarationEvaluator.visitTypeDeclaration(TypeDeclaration)</name>
+      <ncss>4</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitModule(Module)</name>
+      <name>jdm.oberon0.interpreter.eval.DeclarationEvaluator.visitVarDeclaration(VarDeclaration)</name>
+      <ncss>4</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.DeclarationEvaluator.visitProcedure(Procedure)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitIntegerLiteral(IntegerLiteral)</name>
+      <name>jdm.oberon0.interpreter.eval.Evaluator.Evaluator(Context)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.Evaluator.evaluate(Module)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.Evaluator.evaluate(ScriptedProcedure,Value[])</name>
+      <ncss>19</ncss>
+      <ccn>5</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.ExpressionEvaluator(Context)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitProcedureCall(ProcedureCall)</name>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.eval(Expression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.evalBoolean(Expression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.evalInteger(Expression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.evalRef(Expression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.evalArray(Expression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.evalRecord(Expression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.visitIdentifier(Identifier)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.visitArraySelector(ArraySelector)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.visitRecordSelector(RecordSelector)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.visitIntegerLiteral(IntegerLiteral)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.wrapBoolean(boolean)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.wrapInteger(int)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.visitGtExpression(GtExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.visitGeExpression(GeExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.visitLtExpression(LtExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.visitLeExpression(LeExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.visitEqExpression(EqExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.visitNeExpression(NeExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.visitAddExpression(AddExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.visitSubExpression(SubExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.visitMulExpression(MulExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.visitDivExpression(DivExpression)</name>
+      <ncss>6</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.visitModExpression(ModExpression)</name>
+      <ncss>6</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.visitAndExpression(AndExpression)</name>
+      <ncss>2</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.visitOrExpression(OrExpression)</name>
+      <ncss>2</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.visitNegExpression(NegExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.visitPosExpression(PosExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.visitNotExpression(NotExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.StatementEvaluator.StatementEvaluator(Context)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.StatementEvaluator.visitProcedureCall(ProcedureCall)</name>
       <ncss>10</ncss>
       <ccn>4</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitStatementSequence(StatementSequence)</name>
+      <name>jdm.oberon0.interpreter.eval.StatementEvaluator.visitStatementSequence(StatementSequence)</name>
       <ncss>3</ncss>
       <ccn>2</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitIfStatement(IfStatement)</name>
+      <name>jdm.oberon0.interpreter.eval.StatementEvaluator.visitIfStatement(IfStatement)</name>
       <ncss>6</ncss>
       <ccn>3</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitWhileStatement(WhileStatement)</name>
+      <name>jdm.oberon0.interpreter.eval.StatementEvaluator.visitWhileStatement(WhileStatement)</name>
       <ncss>3</ncss>
       <ccn>2</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitDeclarations(Declarations)</name>
+      <name>jdm.oberon0.interpreter.eval.StatementEvaluator.visitAssignment(Assignment)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.StatementEvaluator.execute(Statement)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.TypeEvaluator.TypeEvaluator(Context)</name>
       <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.TypeEvaluator.visitIdentifierType(IdentifierType)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.TypeEvaluator.visitArray(jdm.oberon0.ast.types.ArrayType)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.TypeEvaluator.visitRecord(jdm.oberon0.ast.types.RecordType)</name>
+      <ncss>7</ncss>
       <ccn>2</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitConstDeclaration(ConstDeclaration)</name>
-      <ncss>4</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitTypeDeclaration(TypeDeclaration)</name>
-      <ncss>4</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitVarDeclaration(VarDeclaration)</name>
-      <ncss>4</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitIdentifier(Identifier)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.getRuntimeType(AbstractType)</name>
-      <ncss>17</ncss>
-      <ccn>6</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitAssignment(Assignment)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitArraySelector(ArraySelector)</name>
-      <ncss>4</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitRecordSelector(RecordSelector)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitProcedure(Procedure)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.eval(Expression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.evalBoolean(Expression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.evalInteger(Expression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.evalRef(Expression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.evalArray(Expression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.evalRecord(Expression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.execute(Statement)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.execute(Declarations)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitGtExpression(GtExpression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitGeExpression(GeExpression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitLtExpression(LtExpression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitLeExpression(LeExpression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitEqExpression(EqExpression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitNeExpression(NeExpression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitAddExpression(AddExpression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitSubExpression(SubExpression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitMulExpression(MulExpression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitDivExpression(DivExpression)</name>
-      <ncss>6</ncss>
+      <name>jdm.oberon0.interpreter.Interpreter.run(Reader,String)</name>
+      <ncss>15</ncss>
       <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitModExpression(ModExpression)</name>
-      <ncss>6</ncss>
-      <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitAndExpression(AndExpression)</name>
-      <ncss>2</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitOrExpression(OrExpression)</name>
-      <ncss>2</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitNegExpression(NegExpression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitPosExpression(PosExpression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.Interpreter.visitNotExpression(NotExpression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -2049,15 +2222,15 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.main.Main.main(String[])</name>
-      <ncss>8</ncss>
-      <ccn>2</ccn>
+      <name>jdm.oberon0.interpreter.ValueConstructor.fromType(Type)</name>
+      <ncss>10</ncss>
+      <ccn>10</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.main.Main.run(Reader,String)</name>
-      <ncss>15</ncss>
-      <ccn>3</ccn>
+      <name>jdm.oberon0.main.Main.main(String[])</name>
+      <ncss>8</ncss>
+      <ccn>2</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -2248,7 +2421,7 @@
     </function>
     <function>
       <name>jdm.oberon0.values.RecordValue.RecordValue(RecordType)</name>
-      <ncss>7</ncss>
+      <ncss>9</ncss>
       <ccn>2</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -2420,17 +2593,11 @@
       <ccn>2</ccn>
       <javadocs>0</javadocs>
     </function>
-    <function>
-      <name>jdm.oberon0.values.Value.fromType(Type)</name>
-      <ncss>10</ncss>
-      <ccn>10</ccn>
-      <javadocs>0</javadocs>
-    </function>
     <function_averages>
-      <ncss>2.58</ncss>
-      <ccn>1.31</ccn>
-      <javadocs>0.03</javadocs>
+      <ncss>2.55</ncss>
+      <ccn>1.29</ccn>
+      <javadocs>0.02</javadocs>
     </function_averages>
-    <ncss>1,076.00</ncss>
+    <ncss>1,168.00</ncss>
   </functions>
 </javancss>
