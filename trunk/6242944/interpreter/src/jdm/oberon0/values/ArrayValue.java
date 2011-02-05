@@ -1,6 +1,7 @@
 package jdm.oberon0.values;
 
 import jdm.oberon0.exceptions.InvalidIndexException;
+import jdm.oberon0.interpreter.ValueConstructor;
 import jdm.oberon0.types.ArrayType;
 import jdm.oberon0.types.Type;
 
@@ -13,7 +14,7 @@ public class ArrayValue extends Value {
 		_values = new ReferenceValue[size];
 		
 		for(int i=0; i<size; i++) {
-			_values[i] = ReferenceValue.getRef(Value.fromType(type.getElementType()));
+			_values[i] = ReferenceValue.getRef(ValueConstructor.fromType(type.getElementType()));
 		}
 		_type = type;
 	}

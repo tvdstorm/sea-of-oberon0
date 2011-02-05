@@ -1,9 +1,6 @@
 package jdm.oberon0.values;
 
 import jdm.oberon0.exceptions.InvalidTypeException;
-import jdm.oberon0.types.ArrayType;
-import jdm.oberon0.types.PrimitiveType;
-import jdm.oberon0.types.RecordType;
 import jdm.oberon0.types.Type;
 
 /**
@@ -35,21 +32,5 @@ public abstract class Value {
 
 	public ReferenceValue toReference() {
 		throw new InvalidTypeException("reference");
-	}
-
-	public static Value fromType(Type type) {
-		if (type == PrimitiveType.Integer) {
-			return new IntegerValue(0);
-		}
-		if (type == PrimitiveType.Boolean) {
-			return new BooleanValue(false);
-		}
-		if (type instanceof RecordType) {
-			return new RecordValue((RecordType)type);
-		}
-		if (type instanceof ArrayType) {
-			return new ArrayValue((ArrayType)type);
-		}
-		throw new UnsupportedOperationException();
 	}
 }

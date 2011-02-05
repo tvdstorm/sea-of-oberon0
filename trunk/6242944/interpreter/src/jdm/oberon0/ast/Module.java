@@ -1,5 +1,8 @@
 package jdm.oberon0.ast;
 
+import jdm.oberon0.ast.declarations.Declarations;
+import jdm.oberon0.ast.statements.StatementSequence;
+
 public class Module extends Node {
 	protected String _name;
 	protected Declarations _declarations;
@@ -19,9 +22,5 @@ public class Module extends Node {
 	}
 	public StatementSequence getStatements() {
 		return _statements;
-	}
-
-	public <T> void accept(Visitor<T> visitor) {
-		visitor.visitModule(this);
 	}
 }
