@@ -7,4 +7,6 @@ package org.elcid.oberon0.ast.values;
  */
 public abstract class Value {
 
+	public abstract Integer getValue(Environment localEnv);
+
 }
