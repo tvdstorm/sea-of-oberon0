@@ -1,4 +1,4 @@
-package randy.oberon0.ast.datastructures;
+package randy.library.datastructures;
 
 public class Tuple<A, B>
 {

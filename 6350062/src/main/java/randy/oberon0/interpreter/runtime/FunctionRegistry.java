@@ -2,7 +2,7 @@ package randy.oberon0.interpreter.runtime;
 
 import java.util.*;
 import randy.oberon0.ast.IInvokableFunction;
-import randy.oberon0.ast.datastructures.Tuple;
+import randy.library.datastructures.Tuple;
 import randy.oberon0.exception.DuplicateFunctionException;
 import randy.oberon0.exception.UndefinedMethodException;
 
