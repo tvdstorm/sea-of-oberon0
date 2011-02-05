@@ -1,29 +1,37 @@
 package oberon.test;
 
+import oberon.expressions.*;
+import oberon.procedures.*;
+import oberon.statement.*;
+import oberon.data.*;
+import oberon.*;
+
+import java.io.IOException;
+import java.util.*;
 import junit.framework.TestCase;
 
 public class WhileTest extends TestCase {
 	public void test_case_WhileTest1()
 	{
-//		ComparisonExpression condition = 
-//			new ComparisonExpression(new IdentifierExpression("i"), new IntegerExpression(5), ComparisonType.Exst);
-//		
-//		LinkedList<Statement> statementList = new LinkedList<Statement>();
-//		MathematicalExpression statement = new MathematicalExpression(new IdentifierExpression("i"), new IntegerExpression(1), MathematicalExpressionType.Add);
-//		statementList.add(new AssignmentStatement("i", statement));
-//		StatementSequence statements = new StatementSequence(statementList);
-//		
-//		List<VarDeclaration> varVariables = new ArrayList<VarDeclaration>();
-//		varVariables.add(new VarDeclaration("i", VarType.Identifier));
-//		Declaration declaration = new Declaration(new ArrayList<ConstVariable>(), varVariables , new ArrayList<ProcedureHeading>());
-//		VariableManager.getInstance().AddNewDeclaration(declaration);
-//		
-//		WhileStatement whileStat = new WhileStatement(condition, statements);
-//		try {
-//			whileStat.Eval();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		ComparisonExpression condition = 
+			new ComparisonExpression(new IdentifierExpression(new VariableIdentifier("i")), new IntegerExpression(5), ComparisonType.Exst);
+		
+		LinkedList<IStatement> statementList = new LinkedList<IStatement>();
+		MathematicalExpression statement = new MathematicalExpression(new IdentifierExpression(new VariableIdentifier("i")), new IntegerExpression(1), MathematicalExpressionType.Add);
+		statementList.add(new AssignmentStatement(new VariableIdentifier("i"), statement));
+		StatementSequence statements = new StatementSequence(statementList);
+		
+		List<IDataType> variables = new ArrayList<IDataType>();
+		variables.add(new VariableDataType("i", false));
+		Declaration declaration = new Declaration(variables, new ArrayList<IProcedure>());
+		VariableManager.getInstance().addNewDeclaration(declaration);
+		
+		WhileStatement whileStat = new WhileStatement(condition, statements);
+		try {
+			whileStat.eval();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

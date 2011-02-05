@@ -107,9 +107,6 @@
                 <Class sourceFile="IntegerArrayIndexerDataType.java">
                     oberon.data.IntegerArrayIndexerDataType
                 </Class>
-                <Class sourceFile="IntegerDataType.java">
-                    oberon.data.IntegerDataType
-                </Class>
                 <Class sourceFile="RecordDataType.java">
                     oberon.data.RecordDataType
                 </Class>
@@ -118,6 +115,9 @@
                 </Class>
                 <Class sourceFile="RecordIndexerIdentifier.java">
                     oberon.data.RecordIndexerIdentifier
+                </Class>
+                <Class sourceFile="VariableDataType.java">
+                    oberon.data.VariableDataType
                 </Class>
                 <Class sourceFile="VariableIdentifier.java">
                     oberon.data.VariableIdentifier
@@ -137,14 +137,14 @@
 
         <Package name="oberon.expressions">
             <Stats>
-                <TotalClasses>9</TotalClasses>
-                <ConcreteClasses>7</ConcreteClasses>
+                <TotalClasses>10</TotalClasses>
+                <ConcreteClasses>8</ConcreteClasses>
                 <AbstractClasses>2</AbstractClasses>
                 <Ca>1</Ca>
                 <Ce>2</Ce>
-                <A>0.22</A>
+                <A>0.2</A>
                 <I>0.67</I>
-                <D>0.11</D>
+                <D>0.13</D>
                 <V>1</V>
             </Stats>
 
@@ -167,6 +167,12 @@
                 <Class sourceFile="ComparisonType.java">
                     oberon.expressions.ComparisonType
                 </Class>
+                <Class sourceFile="IdentifierExpression.java">
+                    oberon.expressions.IdentifierExpression
+                </Class>
+                <Class sourceFile="IntegerExpression.java">
+                    oberon.expressions.IntegerExpression
+                </Class>
                 <Class sourceFile="MathematicalExpression.java">
                     oberon.expressions.MathematicalExpression
                 </Class>
@@ -175,9 +181,6 @@
                 </Class>
                 <Class sourceFile="ParenthesesExpression.java">
                     oberon.expressions.ParenthesesExpression
-                </Class>
-                <Class sourceFile="SelectorExpression.java">
-                    oberon.expressions.SelectorExpression
                 </Class>
             </ConcreteClasses>
 
