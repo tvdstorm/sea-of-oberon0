@@ -11,9 +11,9 @@ public class ProcedureCallNode implements IExecutable {
 	private ArrayList<IReferable> _actualParams;
 	
 	
-	public ProcedureCallNode(String name, ArrayList<IReferable> ap) {
+	public ProcedureCallNode(String name, ArrayList<IReferable> actualParams) {
 		_name = name;
-		_actualParams = ap;
+		_actualParams = actualParams;
 	}
 
 	@Override

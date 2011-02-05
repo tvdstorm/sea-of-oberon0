@@ -12,11 +12,13 @@ public class ModuleNode implements ICallable{
 	private String _name;
 	private IDeclarable _declarations;
 	private IExecutable _body;
+	private Context _context;
 	
 	public ModuleNode(String name, IDeclarable declarations, IExecutable body){
 		_name = name;
 		_declarations = declarations;
 		_body = body;
+		_context = new Context(_name, Context.noParent);
 	}
 
 	@Override
@@ -28,5 +30,15 @@ public class ModuleNode implements ICallable{
 		
 		_declarations.declare(context);
 		_body.execute(context);
+		
+		_context = context;
+	}
+	
+	/*
+	 * For auto-testing oberon0 scripts 
+	 * Returns the current context (has a context with content after a module "call")
+	 */
+	public Context getContextAfterCall(){
+		return _context;
 	}
 }

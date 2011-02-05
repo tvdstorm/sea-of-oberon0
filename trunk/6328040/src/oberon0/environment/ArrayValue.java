@@ -20,6 +20,10 @@ private ArrayList<Reference>  _references;
 		return _references.get(index).getValue();
 	}
 	
+	public int getSize(){
+		return _references.size();
+	}
+	
 	@Override
 	public String toString(){
 		String buffer = "[ ";
