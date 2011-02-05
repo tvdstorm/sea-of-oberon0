@@ -1,0 +1,20 @@
+MODULE module; 
+	VAR i: INTEGER; 
+	
+PROCEDURE PrintHallo(VAR message: INTEGER); 
+BEGIN 
+	Write("hallo"); 
+	WriteLn;
+	Write(message);
+	WriteLn; 
+	message := 3; 
+	Write(message);
+	WriteLn
+END PrintHallo; 
+
+BEGIN 
+	i := 1; 
+	PrintHallo(i); 
+	Write(i) 
+END module
+

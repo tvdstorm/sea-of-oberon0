@@ -1,6 +1,9 @@
 package ar.oberon0.ast.statements;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import junit.framework.Assert;
 import ar.oberon0.ast.expression.VarSelectorNode;
@@ -15,6 +18,18 @@ import ar.oberon0.values.IntegerValue;
  */
 public class ReadNode implements Interpretable {
 	private VarSelectorNode selector;
+	private static BufferedReader streamToReadFrom;
+
+	public static void setStreamToReadFrom(InputStream stream) {
+		streamToReadFrom = new BufferedReader(new InputStreamReader(stream));
+	}
+
+	private BufferedReader getStreamToReadFrom() {
+		if (streamToReadFrom != null) {
+			return streamToReadFrom;
+		}
+		return new BufferedReader(new InputStreamReader(System.in));
+	}
 
 	public ReadNode(final VarSelectorNode selector) {
 		Assert.assertNotNull("The selector parameter can't be null", selector);
@@ -38,9 +53,13 @@ public class ReadNode implements Interpretable {
 	}
 
 	private int getInputAsInteger() {
-		Scanner in = new Scanner(System.in);
 		while (true) {
-			String rawConsoleValue = in.next();
+			String rawConsoleValue = null;
+			try {
+				rawConsoleValue = getStreamToReadFrom().readLine();
+			} catch (IOException e1) {
+				System.out.println("Error while reading from the input stream.");
+			}
 			try {
 				return Integer.parseInt(rawConsoleValue);
 			} catch (NumberFormatException e) {

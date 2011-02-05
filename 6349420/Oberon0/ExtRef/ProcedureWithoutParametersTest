@@ -1,0 +1,10 @@
+MODULE module; 
+
+PROCEDURE PrintHallo; 
+BEGIN 
+	Write("hallo") 
+END PrintHallo; 
+
+BEGIN 
+	PrintHallo 
+END module

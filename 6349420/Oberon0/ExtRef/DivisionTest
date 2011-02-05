@@ -1,0 +1,6 @@
+MODULE module; 
+
+BEGIN 
+	Write( 7 DIV 2 ) 
+
+END module

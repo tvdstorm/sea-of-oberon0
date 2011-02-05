@@ -1,0 +1,6 @@
+MODULE module;
+	CONST const = 9; 
+	
+BEGIN 
+	Write(const) 
+END module
