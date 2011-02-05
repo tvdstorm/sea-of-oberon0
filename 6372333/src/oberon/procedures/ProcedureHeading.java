@@ -9,13 +9,26 @@ import oberon.IDataType;
 import oberon.IExpression;
 import oberon.VariableManager;
 
-
+/**
+ * The Class ProcedureHeading, contains a concrete procedure.
+ */
 public class ProcedureHeading extends AbstractProcedure {
+	
+	/**
+	 * Instantiates a new procedure heading.
+	 *
+	 * @param name the name of the procedure
+	 * @param paramSections the param sections of the procedure
+	 * @param body the body of the procedure
+	 */
 	public ProcedureHeading(final String name, final List<FormalParamSection> paramSections, 
 			final ProcedureBody body) {
 		super(name, paramSections, body);
 	}
 
+	/* (non-Javadoc)
+	 * @see oberon.procedures.AbstractProcedure#call(java.util.Queue)
+	 */
 	@Override
 	public void call(final Queue<IExpression> localQueue) throws IOException {
 		final List<IDataType> actualParameterList = new ArrayList<IDataType>();

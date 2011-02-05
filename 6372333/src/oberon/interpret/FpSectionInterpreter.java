@@ -12,9 +12,19 @@ import oberon.node.TIdentifier;
 import oberon.procedures.FormalParamSection;
 import oberon.procedures.FormalParamType;
 
+/**
+ * The Class FpSectionInterpreter.
+ */
 class FpSectionInterpreter extends AbstractBaseInterpreter<List<FormalParamSection>> {
+	
+	/** The param section list. */
 	private final List<FormalParamSection> paramSectionList;
 
+	/**
+	 * Instantiates a new fp section interpreter.
+	 *
+	 * @param formalparams the formalparams
+	 */
 	public FpSectionInterpreter(final List<PFpsection> formalparams) {
 		paramSectionList = new ArrayList<FormalParamSection>();
 		
@@ -24,6 +34,9 @@ class FpSectionInterpreter extends AbstractBaseInterpreter<List<FormalParamSecti
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see oberon.analysis.DepthFirstAdapter#caseAFpsection(oberon.node.AFpsection)
+	 */
 	@Override
 	public void caseAFpsection(final AFpsection node)
 	{
@@ -44,6 +57,9 @@ class FpSectionInterpreter extends AbstractBaseInterpreter<List<FormalParamSecti
 		paramSectionList.add(new FormalParamSection(nameList, fpType));
 	}
 
+	/* (non-Javadoc)
+	 * @see oberon.interpret.AbstractBaseInterpreter#buildInterpreterResult()
+	 */
 	@Override
 	public List<FormalParamSection> buildInterpreterResult() {
 		return paramSectionList;

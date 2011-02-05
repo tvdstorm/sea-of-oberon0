@@ -11,10 +11,20 @@ import oberon.node.PProceduredeclaration;
 import oberon.node.PVardecl;
 import oberon.procedures.Declaration;
 
+/**
+ * The Class DeclarationsInterpreter.
+ */
 class DeclarationsInterpreter extends AbstractBaseInterpreter<Declaration> {
+	
+	/** The variables. */
 	private final List<IDataType> variables = new ArrayList<IDataType>();
+	
+	/** The procedures. */
 	private final List<IProcedure> procedures = new ArrayList<IProcedure>();
 
+	/* (non-Javadoc)
+	 * @see oberon.analysis.DepthFirstAdapter#caseADeclarations(oberon.node.ADeclarations)
+	 */
 	@Override
 	public void caseADeclarations(final ADeclarations node)
 	{	
@@ -41,6 +51,9 @@ class DeclarationsInterpreter extends AbstractBaseInterpreter<Declaration> {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see oberon.interpret.AbstractBaseInterpreter#buildInterpreterResult()
+	 */
 	@Override
 	public Declaration buildInterpreterResult() {
 		return new Declaration(variables, procedures);

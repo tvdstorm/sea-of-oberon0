@@ -11,11 +11,20 @@ import oberon.procedures.FormalParamType;
 import oberon.procedures.ProcedureBody;
 import oberon.procedures.ProcedureHeading;
 
+/**
+ * The Class ModuleInterpreter.
+ */
 public class ModuleInterpreter extends AbstractBaseInterpreter<ProcedureHeading> { 
 	  
+	/** The declaration. */
 	private Declaration declaration;
+	
+	/** The module body. */
 	private StatementSequence moduleBody;
 
+	/* (non-Javadoc)
+	 * @see oberon.analysis.DepthFirstAdapter#caseAModule(oberon.node.AModule)
+	 */
 	@Override
 	public void caseAModule(final AModule node) {
 		final DeclarationsInterpreter declInterpreter = new DeclarationsInterpreter();
@@ -26,6 +35,9 @@ public class ModuleInterpreter extends AbstractBaseInterpreter<ProcedureHeading>
 		moduleBody = StatementSequenceInterpreter.getStatementList(node.getStatements());
 	}
 
+	/* (non-Javadoc)
+	 * @see oberon.interpret.AbstractBaseInterpreter#buildInterpreterResult()
+	 */
 	@Override
 	public ProcedureHeading buildInterpreterResult() {
 		final List<FormalParamSection> params = new ArrayList<FormalParamSection>();
