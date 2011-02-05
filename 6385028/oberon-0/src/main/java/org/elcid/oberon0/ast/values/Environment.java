@@ -34,7 +34,8 @@ public class Environment {
 	}
 
 	/**
-	 * Puts a new mapping of a variable name to an integer.
+	 * Puts a new mapping of a variable name to an integer. If variable name was already bound
+	 * to a value, the old value is overwritten by the new value.
 	 *
 	 * @param variableName
 	 * @param value
