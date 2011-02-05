@@ -12,5 +12,4 @@ public class WriteLn implements ICallable {
 	public void call(Context context, ArrayList<IReferable> actualParameters) {
 		System.out.print("\n");
 	}
-
 }
