@@ -10,16 +10,29 @@ import oberon.node.AStatprocStatement;
 import oberon.node.PExp;
 import oberon.statement.ProcedurecallStatement;
 
+/**
+ * The Class StatprocStatementInterpreter.
+ */
 public class StatprocStatementInterpreter extends AbstractBaseInterpreter<IStatement> {
+	
+	/** The name. */
 	private String name;
+	
+	/** The expressions. */
 	private final List<IExpression> expressions = new ArrayList<IExpression>();
 
+	/* (non-Javadoc)
+	 * @see oberon.analysis.DepthFirstAdapter#caseAStatprocStatement(oberon.node.AStatprocStatement)
+	 */
 	@Override
 	public void caseAStatprocStatement(final AStatprocStatement node)
 	{
 		node.getProcedurecall().apply(this);
 	}
 
+	/* (non-Javadoc)
+	 * @see oberon.analysis.DepthFirstAdapter#caseAProcedurecall(oberon.node.AProcedurecall)
+	 */
 	@Override
 	public void caseAProcedurecall(final AProcedurecall node)
 	{
@@ -31,6 +44,9 @@ public class StatprocStatementInterpreter extends AbstractBaseInterpreter<IState
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see oberon.interpret.AbstractBaseInterpreter#buildInterpreterResult()
+	 */
 	@Override
 	public IStatement buildInterpreterResult() {
 		return new ProcedurecallStatement(name, expressions);

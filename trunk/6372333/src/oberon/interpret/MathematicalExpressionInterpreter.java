@@ -9,11 +9,23 @@ import oberon.node.AModExp;
 import oberon.node.AMulExp;
 import oberon.node.ASubExp;
 
+/**
+ * The Class MathematicalExpressionInterpreter.
+ */
 public class MathematicalExpressionInterpreter extends AbstractBaseInterpreter<IExpression>{
+	
+	/** The left. */
 	private IExpression left;
+	
+	/** The right. */
 	private IExpression right;
+	
+	/** The type. */
 	private MathematicalExpressionType type;
 	
+	/* (non-Javadoc)
+	 * @see oberon.analysis.DepthFirstAdapter#caseASubExp(oberon.node.ASubExp)
+	 */
 	@Override
 	public void caseASubExp(final ASubExp node)
 	{
@@ -22,6 +34,9 @@ public class MathematicalExpressionInterpreter extends AbstractBaseInterpreter<I
 		type = MathematicalExpressionType.Sub;
 	}
 
+	/* (non-Javadoc)
+	 * @see oberon.analysis.DepthFirstAdapter#caseAAddExp(oberon.node.AAddExp)
+	 */
 	@Override
 	public void caseAAddExp(final AAddExp node)
 	{
@@ -30,6 +45,9 @@ public class MathematicalExpressionInterpreter extends AbstractBaseInterpreter<I
 		type = MathematicalExpressionType.Add;
 	}
 
+	/* (non-Javadoc)
+	 * @see oberon.analysis.DepthFirstAdapter#caseADivExp(oberon.node.ADivExp)
+	 */
 	@Override
 	public void caseADivExp(final ADivExp node)
 	{
@@ -38,6 +56,9 @@ public class MathematicalExpressionInterpreter extends AbstractBaseInterpreter<I
 		type = MathematicalExpressionType.Div;
 	}	
 
+	/* (non-Javadoc)
+	 * @see oberon.analysis.DepthFirstAdapter#caseAModExp(oberon.node.AModExp)
+	 */
 	@Override
 	public void caseAModExp(final AModExp node)
 	{
@@ -46,6 +67,9 @@ public class MathematicalExpressionInterpreter extends AbstractBaseInterpreter<I
 		type = MathematicalExpressionType.Mod;
 	}
 
+	/* (non-Javadoc)
+	 * @see oberon.analysis.DepthFirstAdapter#caseAMulExp(oberon.node.AMulExp)
+	 */
 	@Override
 	public void caseAMulExp(final AMulExp node)
 	{
@@ -54,6 +78,9 @@ public class MathematicalExpressionInterpreter extends AbstractBaseInterpreter<I
 		type = MathematicalExpressionType.Mul;
 	}
 	
+	/* (non-Javadoc)
+	 * @see oberon.interpret.AbstractBaseInterpreter#buildInterpreterResult()
+	 */
 	@Override
 	public IExpression buildInterpreterResult() {
 		return new MathematicalExpression(left, right, type);

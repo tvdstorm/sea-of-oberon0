@@ -19,12 +19,25 @@ import oberon.node.ASubExp;
 import oberon.node.ATilExp;
 import oberon.node.PExp;
 
+/**
+ * A factory for creating ExpInterpreter objects.
+ */
 final class ExpInterpreterFactory {
 	
 	//private constructor to prevent this type from being instantiated
+	/**
+	 * Instantiates a new exp interpreter factory.
+	 */
 	private ExpInterpreterFactory(){
 	}
 	
+	/**
+	 * Gets the interpreter.
+	 *
+	 * @param <TNode> the generic type
+	 * @param node the node
+	 * @return the interpreter
+	 */
 	private static <TNode extends PExp> AbstractBaseInterpreter<IExpression> 
 		getInterpreter(final TNode node)// throws NoInterpreterDefinedException
 	{	
@@ -41,6 +54,12 @@ final class ExpInterpreterFactory {
 		return returnExp;
 	}
 	
+	/**
+	 * Try get comparison expression.
+	 *
+	 * @param node the node
+	 * @return the abstract base interpreter
+	 */
 	private static AbstractBaseInterpreter<IExpression> tryGetComparisonExpression(
 			final PExp node) {
 		AbstractBaseInterpreter<IExpression> returnExp = null;
@@ -58,6 +77,12 @@ final class ExpInterpreterFactory {
 		return returnExp;
 	}
 	
+	/**
+	 * Try get mathematical expression.
+	 *
+	 * @param node the node
+	 * @return the abstract base interpreter
+	 */
 	private static AbstractBaseInterpreter<IExpression> tryGetMathematicalExpression(
 			final PExp node) {
 		AbstractBaseInterpreter<IExpression> returnExp = null;
@@ -72,6 +97,12 @@ final class ExpInterpreterFactory {
 		return returnExp;
 	}
 	
+	/**
+	 * Try get other expression.
+	 *
+	 * @param node the node
+	 * @return the abstract base interpreter
+	 */
 	private static AbstractBaseInterpreter<IExpression> tryGetOtherExpression(
 			final PExp node) {
 		AbstractBaseInterpreter<IExpression> returnExp = null;
@@ -87,6 +118,13 @@ final class ExpInterpreterFactory {
 		return returnExp;
 	}
 
+	/**
+	 * Gets the expression.
+	 *
+	 * @param <TNode> the generic type
+	 * @param node the node
+	 * @return the expression
+	 */
 	public static <TNode extends PExp> IExpression getExpression(final TNode node)
 	{
 		final AbstractBaseInterpreter<IExpression> interpreter = ExpInterpreterFactory.getInterpreter(node);

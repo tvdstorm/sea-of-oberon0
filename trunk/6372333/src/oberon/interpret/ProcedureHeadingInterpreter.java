@@ -9,11 +9,23 @@ import oberon.procedures.FormalParamSection;
 import oberon.procedures.ProcedureBody;
 import oberon.procedures.ProcedureHeading;
 
+/**
+ * The Class ProcedureHeadingInterpreter.
+ */
 class ProcedureHeadingInterpreter extends AbstractBaseInterpreter<ProcedureHeading> {
+	
+	/** The body. */
 	private ProcedureBody body;
+	
+	/** The name. */
 	private String name;
+	
+	/** The param sections. */
 	private final List<FormalParamSection> paramSections = new ArrayList<FormalParamSection>();
 
+	/* (non-Javadoc)
+	 * @see oberon.analysis.DepthFirstAdapter#caseAProceduredeclaration(oberon.node.AProceduredeclaration)
+	 */
 	@Override
 	public void caseAProceduredeclaration(final AProceduredeclaration node){
 		final ProcedureBodyInterpreter bodyInterpreter = new ProcedureBodyInterpreter();
@@ -23,6 +35,9 @@ class ProcedureHeadingInterpreter extends AbstractBaseInterpreter<ProcedureHeadi
 		node.getProcedureheading().apply(this);
 	}
 
+	/* (non-Javadoc)
+	 * @see oberon.analysis.DepthFirstAdapter#caseAProcedureheading(oberon.node.AProcedureheading)
+	 */
 	@Override
 	public void caseAProcedureheading(final AProcedureheading node)	{
 		name = node.getIdentifier().toString().trim();
@@ -31,6 +46,9 @@ class ProcedureHeadingInterpreter extends AbstractBaseInterpreter<ProcedureHeadi
 		paramSections.addAll(interpreter.buildInterpreterResult());		
 	}
 	
+	/* (non-Javadoc)
+	 * @see oberon.interpret.AbstractBaseInterpreter#buildInterpreterResult()
+	 */
 	@Override
 	public ProcedureHeading buildInterpreterResult() {
 		return new ProcedureHeading(name, paramSections, body);
