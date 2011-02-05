@@ -1,11 +1,11 @@
 package oberon.interpret;
 
 import oberon.AbstractExpression;
-import oberon.AssignmentStatement;
 import oberon.IStatement;
 import oberon.data.AbstractSelector;
 import oberon.node.AAssignment;
 import oberon.node.AStatassStatement;
+import oberon.statement.AssignmentStatement;
 
 class AssignmentInterpreter extends AbstractBaseInterpreter<IStatement> {
 	private AbstractExpression expression;

@@ -5,11 +5,11 @@ import java.util.Queue;
 
 import oberon.AbstractExpression;
 import oberon.IStatement;
-import oberon.IfStatement;
 import oberon.StatementSequence;
 import oberon.node.AIfstatement;
 import oberon.node.AStatifStatement;
 import oberon.node.PIfstatement;
+import oberon.statement.IfStatement;
 
 class IfStatementInterpreter extends AbstractBaseInterpreter<IStatement> {
 	private AbstractExpression condition;

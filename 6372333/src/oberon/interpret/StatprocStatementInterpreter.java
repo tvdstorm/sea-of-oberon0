@@ -5,10 +5,10 @@ import java.util.List;
 
 import oberon.AbstractExpression;
 import oberon.IStatement;
-import oberon.ProcedurecallStatement;
 import oberon.node.AProcedurecall;
 import oberon.node.AStatprocStatement;
 import oberon.node.PExp;
+import oberon.statement.ProcedurecallStatement;
 
 public class StatprocStatementInterpreter extends AbstractBaseInterpreter<IStatement> {
 	private String name;

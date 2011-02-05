@@ -9,7 +9,7 @@ import oberon.data.AbstractDataType;
 import oberon.data.IntegerArrayType;
 import oberon.data.VariableManager;
 
-class WriteCall extends AbstractStatement {
+class WriteCall implements IStatement {
 	@Override
 	public void eval() throws IOException {
 		final VariableManager instance = VariableManager.getInstance();

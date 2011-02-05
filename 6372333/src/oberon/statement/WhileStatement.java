@@ -1,8 +1,12 @@
-package oberon;
+package oberon.statement;
 
 import java.io.IOException;
 
-public class WhileStatement extends AbstractStatement {
+import oberon.AbstractExpression;
+import oberon.IStatement;
+import oberon.StatementSequence;
+
+public class WhileStatement implements IStatement {
 	private final StatementSequence body;
 	private final AbstractExpression condition;
 

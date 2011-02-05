@@ -8,7 +8,7 @@ import java.util.List;
 import oberon.data.AbstractDataType;
 import oberon.data.VariableManager;
 
-class WriteLnCall extends AbstractStatement {
+class WriteLnCall implements IStatement {
 
 	@Override
 	public void eval() throws IOException {

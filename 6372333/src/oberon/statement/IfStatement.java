@@ -1,9 +1,13 @@
-package oberon;
+package oberon.statement;
 
 import java.io.IOException;
 import java.util.Queue;
 
-public class IfStatement extends AbstractStatement {
+import oberon.AbstractExpression;
+import oberon.IStatement;
+import oberon.StatementSequence;
+
+public class IfStatement implements IStatement {
 	private final StatementSequence elseBody;
 	private final Queue<IfStatement> elseIfBlocks;
 	private final AbstractExpression ifCondition;
