@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-02-05</date>
-  <time>15:51:09</time>
+  <time>16:32:42</time>
   <objects>
     <object>
       <name>oberon0.ast.declarations.ConstDeclarationNode</name>
@@ -21,6 +21,13 @@
       <name>oberon0.ast.declarations.IDeclarable</name>
       <ncss>2</ncss>
       <functions>1</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.ast.declarations.TypeDeclarationNode</name>
+      <ncss>9</ncss>
+      <functions>2</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -411,8 +418,8 @@
     </object>
     <object>
       <name>oberon0.environment.Context</name>
-      <ncss>38</ncss>
-      <functions>10</functions>
+      <ncss>44</ncss>
+      <functions>12</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -452,11 +459,11 @@
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>9.03</ncss>
-      <functions>2.13</functions>
+      <ncss>9.12</ncss>
+      <functions>2.15</functions>
       <classes>0.00</classes>
       <javadocs>0.00</javadocs>
     </averages>
-    <ncss>890.00</ncss>
+    <ncss>909.00</ncss>
   </objects>
 </javancss>
