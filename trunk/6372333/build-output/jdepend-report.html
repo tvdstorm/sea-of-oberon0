@@ -77,13 +77,16 @@
 <th>Package</th><th>Total Classes</th><th><a href="#EXnumber">Abstract Classes</a></th><th><a href="#EXnumber">Concrete Classes</a></th><th><a href="#EXafferent">Afferent Couplings</a></th><th><a href="#EXefferent">Efferent Couplings</a></th><th><a href="#EXabstractness">Abstractness</a></th><th><a href="#EXinstability">Instability</a></th><th><a href="#EXdistance">Distance</a></th>
 </tr>
 <tr>
-<td align="left"><a href="#PKoberon">oberon</a></td><td align="right">27</td><td align="right">5</td><td align="right">22</td><td align="right">2</td><td align="right">2</td><td align="right">0.19</td><td align="right">0.5</td><td align="right">0.31</td>
+<td align="left"><a href="#PKoberon">oberon</a></td><td align="right">22</td><td align="right">4</td><td align="right">18</td><td align="right">3</td><td align="right">2</td><td align="right">0.18</td><td align="right">0.4</td><td align="right">0.42</td>
 </tr>
 <tr>
-<td align="left"><a href="#PKoberon.data">oberon.data</a></td><td align="right">10</td><td align="right">2</td><td align="right">8</td><td align="right">2</td><td align="right">1</td><td align="right">0.2</td><td align="right">0.33</td><td align="right">0.47</td>
+<td align="left"><a href="#PKoberon.data">oberon.data</a></td><td align="right">10</td><td align="right">2</td><td align="right">8</td><td align="right">3</td><td align="right">1</td><td align="right">0.2</td><td align="right">0.25</td><td align="right">0.55</td>
 </tr>
 <tr>
-<td align="left"><a href="#PKoberon.interpret">oberon.interpret</a></td><td align="right">20</td><td align="right">1</td><td align="right">19</td><td align="right">1</td><td align="right">2</td><td align="right">0.05</td><td align="right">0.67</td><td align="right">0.28</td>
+<td align="left"><a href="#PKoberon.interpret">oberon.interpret</a></td><td align="right">20</td><td align="right">1</td><td align="right">19</td><td align="right">1</td><td align="right">3</td><td align="right">0.05</td><td align="right">0.75</td><td align="right">0.2</td>
+</tr>
+<tr>
+<td align="left"><a href="#PKoberon.statement">oberon.statement</a></td><td align="right">4</td><td align="right">0</td><td align="right">4</td><td align="right">1</td><td align="right">2</td><td align="right">0</td><td align="right">0.67</td><td align="right">0.33</td>
 </tr>
 </table>
 <table width="100%">
@@ -103,7 +106,7 @@
 </h3>
 <table width="100%">
 <tr>
-<td><a href="#EXafferent">Afferent Couplings</a>: 2</td><td><a href="#EXefferent">Efferent Couplings</a>: 2</td><td><a href="#EXabstractness">Abstractness</a>: 0.19</td><td><a href="#EXinstability">Instability</a>: 0.5</td><td><a href="#EXdistance">Distance</a>: 0.31</td>
+<td><a href="#EXafferent">Afferent Couplings</a>: 3</td><td><a href="#EXefferent">Efferent Couplings</a>: 2</td><td><a href="#EXabstractness">Abstractness</a>: 0.18</td><td><a href="#EXinstability">Instability</a>: 0.4</td><td><a href="#EXdistance">Distance</a>: 0.42</td>
 </tr>
 </table>
 <table width="100%" class="details">
@@ -118,14 +121,10 @@
                 <br>
                     oberon.AbstractProcedure
                 <br>
-                    oberon.AbstractStatement
-                <br>
                     oberon.IStatement
                 <br>
 </td><td valign="top" width="25%">
                     oberon.AbstractIntegerExpression
-                <br>
-                    oberon.AssignmentStatement
                 <br>
                     oberon.ComparisonExpression
                 <br>
@@ -136,8 +135,6 @@
                     oberon.FormalParamSection
                 <br>
                     oberon.FormalParamType
-                <br>
-                    oberon.IfStatement
                 <br>
                     oberon.Main
                 <br>
@@ -151,8 +148,6 @@
                 <br>
                     oberon.ProcedureHeading
                 <br>
-                    oberon.ProcedurecallStatement
-                <br>
                     oberon.ReadProcedure
                 <br>
                     oberon.SelectorExpression
@@ -161,8 +156,6 @@
                 <br>
                     oberon.SystemMethodCall
                 <br>
-                    oberon.WhileStatement
-                <br>
                     oberon.WriteCall
                 <br>
                     oberon.WriteLnCall
@@ -170,6 +163,8 @@
 </td><td valign="top" width="25%"><a href="#PKoberon.data">oberon.data</a>
 <br>
 <a href="#PKoberon.interpret">oberon.interpret</a>
+<br>
+<a href="#PKoberon.statement">oberon.statement</a>
 <br>
 </td><td valign="top" width="25%"><a href="#PKoberon.data">oberon.data</a>
 <br>
@@ -183,7 +178,7 @@
 </h3>
 <table width="100%">
 <tr>
-<td><a href="#EXafferent">Afferent Couplings</a>: 2</td><td><a href="#EXefferent">Efferent Couplings</a>: 1</td><td><a href="#EXabstractness">Abstractness</a>: 0.2</td><td><a href="#EXinstability">Instability</a>: 0.33</td><td><a href="#EXdistance">Distance</a>: 0.47</td>
+<td><a href="#EXafferent">Afferent Couplings</a>: 3</td><td><a href="#EXefferent">Efferent Couplings</a>: 1</td><td><a href="#EXabstractness">Abstractness</a>: 0.2</td><td><a href="#EXinstability">Instability</a>: 0.25</td><td><a href="#EXdistance">Distance</a>: 0.55</td>
 </tr>
 </table>
 <table width="100%" class="details">
@@ -217,6 +212,8 @@
 <br>
 <a href="#PKoberon.interpret">oberon.interpret</a>
 <br>
+<a href="#PKoberon.statement">oberon.statement</a>
+<br>
 </td><td valign="top" width="25%"><a href="#PKoberon">oberon</a>
 <br>
 </td>
@@ -227,7 +224,7 @@
 </h3>
 <table width="100%">
 <tr>
-<td><a href="#EXafferent">Afferent Couplings</a>: 1</td><td><a href="#EXefferent">Efferent Couplings</a>: 2</td><td><a href="#EXabstractness">Abstractness</a>: 0.05</td><td><a href="#EXinstability">Instability</a>: 0.67</td><td><a href="#EXdistance">Distance</a>: 0.28</td>
+<td><a href="#EXafferent">Afferent Couplings</a>: 1</td><td><a href="#EXefferent">Efferent Couplings</a>: 3</td><td><a href="#EXabstractness">Abstractness</a>: 0.05</td><td><a href="#EXinstability">Instability</a>: 0.75</td><td><a href="#EXdistance">Distance</a>: 0.2</td>
 </tr>
 </table>
 <table width="100%" class="details">
@@ -283,6 +280,39 @@
 <br>
 <a href="#PKoberon.data">oberon.data</a>
 <br>
+<a href="#PKoberon.statement">oberon.statement</a>
+<br>
+</td>
+</tr>
+</table>
+<h3>
+<a name="PKoberon.statement">oberon.statement</a>
+</h3>
+<table width="100%">
+<tr>
+<td><a href="#EXafferent">Afferent Couplings</a>: 1</td><td><a href="#EXefferent">Efferent Couplings</a>: 2</td><td><a href="#EXabstractness">Abstractness</a>: 0</td><td><a href="#EXinstability">Instability</a>: 0.67</td><td><a href="#EXdistance">Distance</a>: 0.33</td>
+</tr>
+</table>
+<table width="100%" class="details">
+<tr>
+<th>Abstract Classes</th><th>Concrete Classes</th><th>Used by Packages</th><th>Uses Packages</th>
+</tr>
+<tr>
+<td valign="top" width="25%"><i>None</i></td><td valign="top" width="25%">
+                    oberon.statement.AssignmentStatement
+                <br>
+                    oberon.statement.IfStatement
+                <br>
+                    oberon.statement.ProcedurecallStatement
+                <br>
+                    oberon.statement.WhileStatement
+                <br>
+</td><td valign="top" width="25%"><a href="#PKoberon.interpret">oberon.interpret</a>
+<br>
+</td><td valign="top" width="25%"><a href="#PKoberon">oberon</a>
+<br>
+<a href="#PKoberon.data">oberon.data</a>
+<br>
 </td>
 </tr>
 </table>
@@ -305,6 +335,9 @@
 <p>oberon<br>oberon.data<br>
 </p>
 <h3>oberon.interpret</h3>
+<p>oberon.statement<br>oberon<br>oberon.data<br>oberon<br>
+</p>
+<h3>oberon.statement</h3>
 <p>oberon<br>oberon.data<br>oberon<br>
 </p>
 <table width="100%">

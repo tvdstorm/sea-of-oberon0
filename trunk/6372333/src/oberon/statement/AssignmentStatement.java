@@ -1,9 +1,11 @@
-package oberon;
+package oberon.statement;
 
+import oberon.AbstractExpression;
+import oberon.IStatement;
 import oberon.data.AbstractDataType;
 import oberon.data.AbstractSelector;
 
-public class AssignmentStatement extends AbstractStatement {
+public class AssignmentStatement implements IStatement {
 	private final AbstractSelector selectorToAssignTo;
 	private final AbstractExpression assignmentExpression;
 

@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-02-05</date>
-  <time>15:10:15</time>
+  <time>15:22:54</time>
   <packages>
     <package>
       <name>oberon</name>
-      <classes>27</classes>
-      <functions>61</functions>
-      <ncss>447</ncss>
+      <classes>22</classes>
+      <functions>49</functions>
+      <ncss>370</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>10</single_comment_lines>
-      <multi_comment_lines>5</multi_comment_lines>
+      <multi_comment_lines>2</multi_comment_lines>
     </package>
     <package>
       <name>oberon.data</name>
@@ -44,20 +44,20 @@
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <total>
-      <classes>58</classes>
-      <functions>185</functions>
-      <ncss>1113</ncss>
+      <classes>53</classes>
+      <functions>173</functions>
+      <ncss>1036</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>38</single_comment_lines>
-      <multi_comment_lines>5</multi_comment_lines>
+      <multi_comment_lines>2</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>4.00</td><td>58.00</td><td>185.00</td><td>1,113.00</td><td>0.00</td><td>Project</td></tr>
-      <tr><td></td><td>14.50</td><td>46.25</td><td>278.25</td><td>0.00</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.19</td><td>19.19</td><td>0.00</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>6.02</td><td>0.00</td><td>Function</td></tr>
+      <tr><td>4.00</td><td>53.00</td><td>173.00</td><td>1,036.00</td><td>0.00</td><td>Project</td></tr>
+      <tr><td></td><td>13.25</td><td>43.25</td><td>259.00</td><td>0.00</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.26</td><td>19.55</td><td>0.00</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>5.99</td><td>0.00</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -87,20 +87,6 @@
       <name>oberon.AbstractProcedure</name>
       <ncss>15</ncss>
       <functions>5</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon.AbstractStatement</name>
-      <ncss>4</ncss>
-      <functions>2</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon.AssignmentStatement</name>
-      <ncss>9</ncss>
-      <functions>2</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -147,13 +133,6 @@
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>oberon.IfStatement</name>
-      <ncss>27</ncss>
-      <functions>4</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
       <name>oberon.Main</name>
       <ncss>29</ncss>
       <functions>1</functions>
@@ -196,13 +175,6 @@
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>oberon.ProcedurecallStatement</name>
-      <ncss>11</ncss>
-      <functions>2</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
       <name>oberon.ReadProcedure</name>
       <ncss>29</ncss>
       <functions>3</functions>
@@ -226,13 +198,6 @@
     <object>
       <name>oberon.SystemMethodCall</name>
       <ncss>5</ncss>
-      <functions>2</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon.WhileStatement</name>
-      <ncss>9</ncss>
       <functions>2</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
@@ -469,12 +434,12 @@
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>15.41</ncss>
-      <functions>3.19</functions>
+      <ncss>15.74</ncss>
+      <functions>3.26</functions>
       <classes>0.02</classes>
       <javadocs>0.00</javadocs>
     </averages>
-    <ncss>1,113.00</ncss>
+    <ncss>1,036.00</ncss>
   </objects>
 
   <functions>
@@ -569,30 +534,6 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.AbstractStatement.getVariableManager()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.AbstractStatement.eval()</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.AssignmentStatement.AssignmentStatement(AbstractSelector,AbstractExpression)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.AssignmentStatement.eval()</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
       <name>oberon.ComparisonExpression.ComparisonExpression(AbstractExpression,AbstractExpression,ComparisonType)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
@@ -653,30 +594,6 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.IfStatement.IfStatement(AbstractExpression,StatementSequence,IfStatement,StatementSequence)</name>
-      <ncss>5</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.IfStatement.eval()</name>
-      <ncss>13</ncss>
-      <ccn>5</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.IfStatement.evalStatements()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.IfStatement.conditionIsTrue()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
       <name>oberon.Main.main(String[])</name>
       <ncss>28</ncss>
       <ccn>7</ccn>
@@ -728,18 +645,6 @@
       <name>oberon.ProcedureHeading.call(AbstractExpression)</name>
       <ncss>19</ncss>
       <ccn>8</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.ProcedurecallStatement.ProcedurecallStatement(String,AbstractExpression)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.ProcedurecallStatement.eval()</name>
-      <ncss>5</ncss>
-      <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -806,18 +711,6 @@
       <name>oberon.SystemMethodCall.call(AbstractExpression)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.WhileStatement.WhileStatement(AbstractExpression,StatementSequence)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon.WhileStatement.eval()</name>
-      <ncss>3</ncss>
-      <ccn>2</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -1589,10 +1482,10 @@
       <javadocs>0</javadocs>
     </function>
     <function_averages>
-      <ncss>3.87</ncss>
+      <ncss>3.88</ncss>
       <ccn>1.46</ccn>
       <javadocs>0.00</javadocs>
     </function_averages>
-    <ncss>1,113.00</ncss>
+    <ncss>1,036.00</ncss>
   </functions>
 </javancss>

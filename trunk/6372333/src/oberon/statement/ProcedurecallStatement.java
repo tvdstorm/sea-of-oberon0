@@ -1,13 +1,16 @@
-package oberon;
+package oberon.statement;
 
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+import oberon.AbstractExpression;
+import oberon.AbstractProcedure;
+import oberon.IStatement;
 import oberon.data.VariableManager;
 
-public class ProcedurecallStatement extends AbstractStatement {
+public class ProcedurecallStatement implements IStatement {
 	final private List<AbstractExpression> procParameters;
 	final private String procNameToCall;
 
