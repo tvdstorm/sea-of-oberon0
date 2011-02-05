@@ -12,9 +12,6 @@ import generated.*;
 
 public class Interpreter {
 	
-	/*TODO type declarations
-	 */
-	
 	/*
 	 * Interprets the given file
 	 */

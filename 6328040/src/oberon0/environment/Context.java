@@ -8,6 +8,7 @@ public class Context {
 	private String _name;
 	private HashMap<String, Reference> _variables;
 	private HashMap<String, ICallable> _procedures;
+	private HashMap<String, IValue> _types;
 	private Context _parent;
 	
 	//a better looking 'macro' when there is no parent context
@@ -17,6 +18,7 @@ public class Context {
 		_name = name;
 		_variables = new HashMap<String, Reference>();
 		_procedures = new HashMap<String, ICallable>();
+		_types = new HashMap<String, IValue>();
 		_parent = parent;
 	}
 	
@@ -63,6 +65,14 @@ public class Context {
 		for(String key: _procedures.keySet()){
 			System.out.print("\t  * " + key  +"\n");
 		}
+	}
+	
+	public IValue getType(String name){
+		return _types.get(name);
+	}
+	
+	public void declareType(String name, IValue type){
+		_types.put(name, type);
 	}
 	
 	public Context getParent(){

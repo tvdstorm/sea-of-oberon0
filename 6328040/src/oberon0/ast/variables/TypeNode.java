@@ -20,9 +20,8 @@ public class TypeNode implements IEvaluable{
 		}else if(_typename.equals("BOOLEAN")){
 			return new BooleanValue(false);
 		}else{
-			//TODO declared types
+			return context.getType(_typename);
 		}
-		return null;
 	}
 
 }
