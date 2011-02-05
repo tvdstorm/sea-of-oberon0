@@ -1,17 +1,17 @@
 package oberon.interpret;
 
 import oberon.IExpression;
-import oberon.expressions.SelectorExpression;
+import oberon.expressions.IdentifierExpression;
 import oberon.node.ASelectorExp;
 
 public class SelectorExpInterpreter extends AbstractBaseInterpreter<IExpression> {
-	private SelectorExpression value;
+	private IdentifierExpression value;
 	
 	@Override
 	public void caseASelectorExp(final ASelectorExp node) {
 		final SelectorInterpreter interpreter = new SelectorInterpreter();
 		node.getSelector().apply(interpreter);
-		value = new SelectorExpression(interpreter.buildInterpreterResult());
+		value = new IdentifierExpression(interpreter.buildInterpreterResult());
 	}
 
 	@Override

@@ -2,15 +2,30 @@ package oberon.expressions;
 
 import oberon.IExpression;
 
+/**
+ * The Class MathematicalExpression, class for all mathematical oriented expressions.
+ */
 public class MathematicalExpression extends AbstractLeftAndRightExpression {
+	
+	/** The expression type. */
 	private final MathematicalExpressionType expressionType;
 
+	/**
+	 * Instantiates a new mathematical expression.
+	 *
+	 * @param lefthandSide the lefthand side of the expression
+	 * @param righthandSide the righthand side of the expression
+	 * @param type the type of the expression
+	 */
 	public MathematicalExpression(final IExpression lefthandSide,
 			final IExpression righthandSide, final MathematicalExpressionType type) {
 		super(lefthandSide, righthandSide);
 		expressionType = type;
 	}
 
+	/* (non-Javadoc)
+	 * @see oberon.expressions.AbstractExpression#evalAsInt()
+	 */
 	@Override
 	public int evalAsInt() {
 		int result = 0;
