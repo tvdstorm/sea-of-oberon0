@@ -2,7 +2,6 @@ package uva.oberon0.abstractsyntax.declarations;
 
 import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.abstractsyntax.types.BaseType;
-import uva.oberon0.runtime.Scope;
 
 /**
  * @author Chiel Labee
