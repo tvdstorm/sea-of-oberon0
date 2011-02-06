@@ -20,6 +20,7 @@ PROCEDURE
 	:	'PROCEDURE';
 CONST	:	'CONST';
 VAR	:	'VAR';
+TYPE	:	'TYPE';
 
 IF	:	'IF';
 THEN	:	'THEN';
@@ -77,14 +78,17 @@ module  returns [Module node]
 		END id '.'									{$node = new Module($node_id.node, $node_declarations.node, $node_statements.node);};
 
 declarations	returns [DeclarationList node]	:						{$node = new DeclarationList();}
-		(constDeclaration[node]|varDeclaration[node]|procedureDeclaration[node])*
+		(constDeclaration[node]|varDeclaration[node]|typeDeclaration[node]|procedureDeclaration[node])*
 		;
 
 constDeclaration[DeclarationList list]	
-	:	CONST (node_id=id '=' node_exp=expression ';')					{$list.add(new Constant($node_id.node, $node_exp.node));};
+	:	CONST node_id=id '=' node_exp=expression ';'					{$list.add(new Constant($node_id.node, $node_exp.node));};
 
 varDeclaration[DeclarationList list]
 	:	VAR (node_ids=idList ':' node_type=type ';' 					{for (ID id : $idList.node){ $list.add(new Variable(id, $node_type.node));}})*;
+
+typeDeclaration[DeclarationList list]
+	:	TYPE node_id=id '=' node_type=type ';'						{$list.add(new CustomType($node_id.node, $node_type.node));};
 
 procedureDeclaration[DeclarationList list]	
 	:	PROCEDURE node_id=id ('(' node_params=procedureParams ')')? ';'
@@ -118,6 +122,7 @@ type	returns [Type node]
 	:	node_array=arrayType								{$node = $node_array.node;}
 	|	node_record=recordType								{$node = $node_record.node;}
 	|	INTEGER										{$node = new IntType();}
+	|	ID										{$node = new IDType($ID.text);}
 	;
 
 arrayType returns [ArrayType node]
@@ -131,7 +136,7 @@ recordType returns [RecordType node]	:							{RecordFieldList fields = new Recor
 	;
 		
 recordField[RecordFieldList list]
-	:	(node_ids=idList ':' node_type=type 					{for (ID id : $idList.node){ $list.add(new RecordField(id, $node_type.node));}});
+	:	(node_ids=idList ':' node_type=type						{for (ID id : $idList.node){ $list.add(new RecordField(id, $node_type.node));}});
 
 
 factor 	returns [Expression node]
