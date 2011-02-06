@@ -4,7 +4,7 @@ import uva.oberon0.runtime.Scope;
 import uva.oberon0.runtime.ScopeValue;
 import uva.oberon0.runtime.ScopeValueRecord;
 
-public class RecordType extends Type {
+public class RecordType extends BaseType {
 
 	private final RecordFieldList _fields;
 	

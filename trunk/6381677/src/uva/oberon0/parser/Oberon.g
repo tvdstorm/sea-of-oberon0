@@ -8,7 +8,6 @@ import uva.oberon0.abstractsyntax.declarations.*;
 import uva.oberon0.abstractsyntax.expressions.*;
 import uva.oberon0.abstractsyntax.statements.*;
 import uva.oberon0.abstractsyntax.types.*;
-import uva.oberon0.abstractsyntax.types.Type;
 }
 @lexer::header
 {
@@ -118,7 +117,7 @@ procedureActualParams returns [ExpressionList node]
 	 )? ')'
 	;
 
-type	returns [Type node]	
+type	returns [BaseType node]	
 	:	node_array=arrayType								{$node = $node_array.node;}
 	|	node_record=recordType								{$node = $node_record.node;}
 	|	INTEGER										{$node = new IntType();}

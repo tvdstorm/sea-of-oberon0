@@ -3,9 +3,9 @@ package uva.oberon0.abstractsyntax.types;
 public class RecordField 
 {
 	private final ID 	_id;
-	private final Type 	_type;
+	private final BaseType 	_type;
 	
-	public RecordField(ID id, Type type)
+	public RecordField(ID id, BaseType type)
 	{
 		assert id != null 		: "No Identifier is available for the current Record Field!";
 		assert type != null 	: "No Type is available for the current Record Field!";
@@ -14,7 +14,7 @@ public class RecordField
 		_type = type;
 	}
 
-	public Type getType() {
+	public BaseType getType() {
 		return _type;
 	}
 

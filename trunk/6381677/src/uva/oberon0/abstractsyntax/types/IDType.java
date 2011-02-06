@@ -3,7 +3,7 @@ package uva.oberon0.abstractsyntax.types;
 import uva.oberon0.runtime.Scope;
 import uva.oberon0.runtime.ScopeValue;
 
-public class IDType extends Type {
+public class IDType extends BaseType {
 	private final ID _id;
 	
 	public IDType(String id)
