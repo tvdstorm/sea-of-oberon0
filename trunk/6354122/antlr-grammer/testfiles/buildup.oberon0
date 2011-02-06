@@ -1,0 +1,47 @@
+MODULE QuickSort;
+
+CONST
+  INPUTLENGTH = 5;
+
+VAR
+  i: INTEGER;
+  input: ARRAY INPUTLENGTH OF INTEGER;
+
+PROCEDURE test(VAR array: ARRAY INPUTLENGTH OF INTEGER; left, right,middle: INTEGER);
+  VAR
+    pivot, leftIdx, rightIdx: INTEGER;
+
+  PROCEDURE Swap(VAR b: ARRAY INPUTLENGTH OF INTEGER; VAR x, y: INTEGER);
+  VAR
+    temp: INTEGER;
+  BEGIN
+    temp := x;
+    x := y;
+    y := temp
+  END Swap;
+
+BEGIN
+  input[4] := middle;
+  Write(left);
+  Write(right);
+  Write(middle);
+  WriteLn;
+  pivot := right - left;
+  Write(pivot);
+  WriteLn;
+  Swap(array,left,right)
+END test;
+
+BEGIN
+ i := 0;
+ Read(input[0]);
+ Read(input[1]);
+ Write(input[0]);
+ Write(input[1]);
+ WriteLn;
+ test(input, 0, INPUTLENGTH - 1, 10);
+ Write(input[0]);
+ Write(input[1]);
+ i := i + 10
+ 
+END QuickSort.

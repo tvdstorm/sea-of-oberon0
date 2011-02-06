@@ -95,6 +95,7 @@ public class ConfigurationTest {
 	 */
 	@Test
 	public void testCreateConfigurationFaultyArguments() {
+		boolean exceptionThrown = false;
 		// Create the configuration using the factory
 		try {
 			SeaOfOberonConfiguration config = ConfigurationFactory
@@ -103,9 +104,15 @@ public class ConfigurationTest {
 		} catch (SeaOfOberonException sooe) {
 			// This should result in a message stating that pigscanfly is a
 			// faulty argument
+			exceptionThrown = true;
 			assertTrue(
 					"Exception is thrown, but argument is not in the exception message",
 					sooe.getCause().getMessage().contains("-pigscanfly"));
 		}
+		 finally{
+				if (!exceptionThrown){
+					fail("No exception is thrown, thus argument is found. That is incorrect.");
+				}
+			}
 	}
 }

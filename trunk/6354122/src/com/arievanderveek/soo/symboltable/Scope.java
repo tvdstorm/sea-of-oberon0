@@ -114,7 +114,7 @@ public class Scope {
 				return enclosingScope.getProcedure(name);
 			} else {
 				throw new SeaOfOberonException("Procedure " + name
-						+ "not found in any scope");
+						+ " not found in any scope");
 			}
 		}
 	}
@@ -141,12 +141,12 @@ public class Scope {
 		getMemoryMap().updateValue(getAddressForSymbol(identNode), value);
 	}
 
-	public void deleteValue(IdentifierNode identNode)
+	/* Not needed, deleting of values is not permitted.
+	  public void deleteValue(IdentifierNode identNode)
 			throws SeaOfOberonException {
 		// Lookup the address for the symbol and return the value from memory
-		//System.out.println("Deleting value for " + identNode.getName());
 		getMemoryMap().deleteValue(getAddressForSymbol(identNode));
-	}
+	}*/
 
 	private Symbol lookupSymbol(String symbolName) {
 		if (symbolTable.containsKey(symbolName)) {
