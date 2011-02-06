@@ -45,13 +45,7 @@ public class Variable extends Declaration
 	{
 		return _isByReference;
 	}
-	
-	@Override
-	public int eval(Scope scope) 
-	{
-		return 0;
-	}
-	
+		
 	public ScopeValue instantiate(Scope scope) 
 	{
 		return _type.instantiate(scope);

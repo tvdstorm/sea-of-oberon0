@@ -1,6 +1,5 @@
 package uva.oberon0.abstractsyntax.declarations;
 
-import uva.oberon0.abstractsyntax.BaseNodeWithID;
 import uva.oberon0.abstractsyntax.statements.StatementList;
 import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.runtime.Scope;
@@ -10,18 +9,19 @@ import uva.oberon0.runtime.Scope;
  * @author Chiel Labee
  * This class represents the primairy Module Structure.
 */
-public class Module extends BaseNodeWithID
+public class Module
 {
+	private final ID 				_id;
 	private final DeclarationList 	_declarations;
 	private final StatementList 	_statements;
 
 	public Module(ID id, DeclarationList declarations, StatementList statements)
 	{
-		super(id);
-		
+		assert id != null 			: "No Identifier is available for the current Module!";
 		assert declarations != null : "No Declarations are available for the current Module!";
 		assert statements 	!= null : "No Statements are available for the current Module!";
 
+		_id 			= id;
 		_declarations 	= declarations;
 		_statements 	= statements;
 	}
@@ -42,7 +42,9 @@ public class Module extends BaseNodeWithID
 		return eval(createScope());
 	}
 	
-	@Override
+	/**
+	 * Performs interpreter evaluation for the current Module structure.
+	 */
 	public int eval(uva.oberon0.runtime.Scope scope)
 	{
 		return _statements.eval(scope);
