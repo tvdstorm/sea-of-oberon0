@@ -1,7 +1,6 @@
 package uva.oberon0.abstractsyntax.types;
 
 import uva.oberon0.abstractsyntax.BaseNode;
-import uva.oberon0.abstractsyntax.BaseNodeWithID;
 import uva.oberon0.abstractsyntax.expressions.Reference;
 import uva.oberon0.runtime.Scope;
 
@@ -76,10 +75,6 @@ public class ID extends BaseNode
 	{
 		if (value instanceof ID) {
 			return (ID)value;
-		}
-		
-		if (value instanceof BaseNodeWithID) {
-			return ((BaseNodeWithID)value).getID();
 		}
 		
 		if (value instanceof Reference) {

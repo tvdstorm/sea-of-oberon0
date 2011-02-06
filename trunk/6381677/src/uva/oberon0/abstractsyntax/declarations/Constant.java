@@ -23,12 +23,6 @@ public class Constant extends Declaration
 
 		_expression = expression;
 	}
-
-	@Override
-	public int eval(Scope scope)
-	{
-		return _expression.eval(scope);
-	}
 	
 	public ScopeValue instantiate(Scope scope) {
 		return new ScopeValueInt(scope, _expression.eval(scope));

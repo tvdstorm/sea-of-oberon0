@@ -25,11 +25,4 @@ public class CustomType extends Declaration
 	{
 		return _type;
 	}
-	
-	@Override
-	public int eval(Scope scope) 
-	{
-		return 0;
-	}
-
 }
