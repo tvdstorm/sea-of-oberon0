@@ -2,6 +2,7 @@ package uva.oberon0.abstractsyntax.declarations;
 
 import uva.oberon0.abstractsyntax.statements.StatementList;
 import uva.oberon0.abstractsyntax.types.ID;
+import uva.oberon0.abstractsyntax.types.IIdentifiable;
 import uva.oberon0.runtime.Scope;
 
 
@@ -9,7 +10,7 @@ import uva.oberon0.runtime.Scope;
  * @author Chiel Labee
  * This class represents the primairy Module Structure.
 */
-public class Module
+public class Module implements IIdentifiable
 {
 	private final ID 				_id;
 	private final DeclarationList 	_declarations;
@@ -48,5 +49,10 @@ public class Module
 	public int eval(uva.oberon0.runtime.Scope scope)
 	{
 		return _statements.eval(scope);
+	}
+
+	@Override
+	public ID getID() {
+		return _id;
 	}
 }

@@ -1,6 +1,7 @@
 package uva.oberon0.abstractsyntax.declarations;
 
 import uva.oberon0.abstractsyntax.types.ID;
+import uva.oberon0.abstractsyntax.types.IIdentifiable;
 
 
 /**
@@ -8,7 +9,7 @@ import uva.oberon0.abstractsyntax.types.ID;
  * This class represents a Declaration.
  * This class is abstract.
 */
-public abstract class Declaration
+public abstract class Declaration implements IIdentifiable
 {
 	private final ID _id;
 	
@@ -17,9 +18,7 @@ public abstract class Declaration
 		_id = id;
 	}
 	
-	/**
-	 * Gets the ID of the current Abstract Syntax Tree Node.
-	 */
+	@Override
 	public ID getID()
 	{
 		return _id;

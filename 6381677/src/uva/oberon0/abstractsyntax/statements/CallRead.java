@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import uva.oberon0.abstractsyntax.expressions.ExpressionList;
-import uva.oberon0.abstractsyntax.types.ID;
+import uva.oberon0.abstractsyntax.types.IIdentifiable;
 import uva.oberon0.runtime.Scope;
 
 /**
@@ -25,7 +25,7 @@ public class CallRead extends Call
 		try 
 		{
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-			scope.setValue(ID.get(getActualParameter(0)), Integer.parseInt(reader.readLine()));
+			scope.setValue(((IIdentifiable)getActualParameter(0)).getID(), Integer.parseInt(reader.readLine()));
 		} 
 		catch (IOException e) 
 		{

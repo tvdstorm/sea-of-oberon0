@@ -1,7 +1,6 @@
 package uva.oberon0.abstractsyntax.types;
 
 import uva.oberon0.abstractsyntax.BaseNode;
-import uva.oberon0.abstractsyntax.expressions.Reference;
 import uva.oberon0.runtime.Scope;
 
 
@@ -9,7 +8,7 @@ import uva.oberon0.runtime.Scope;
  * @author Chiel Labee
  * This class represents an Identifier.
  */
-public class ID extends BaseNode
+public class ID extends BaseNode implements IIdentifiable
 {
 	private final String _value;
 	private BaseNode selector = null;
@@ -68,19 +67,8 @@ public class ID extends BaseNode
 		return _value;
 	}
 	
-	/**
-	 * Gets the Identifier of different Node Types.
-	 */
-	public static ID get(BaseNode value)
-	{
-		if (value instanceof ID) {
-			return (ID)value;
-		}
-		
-		if (value instanceof Reference) {
-			return ((Reference)value).getID();
-		}
-		
-		return null;
+	@Override
+	public ID getID() {
+		return this;
 	}
 }

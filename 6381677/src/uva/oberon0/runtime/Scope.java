@@ -13,6 +13,7 @@ import uva.oberon0.abstractsyntax.declarations.Variable;
 import uva.oberon0.abstractsyntax.expressions.ExpressionList;
 import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.abstractsyntax.types.BaseType;
+import uva.oberon0.abstractsyntax.types.IIdentifiable;
 
 
 /**
@@ -90,7 +91,7 @@ public class Scope
 			//Determine if the declaration should be passed by Reference.
 			if (formal.isByReference()) {
 				//Get and Add the existing Execution Scope Value. 
-				addValue(formal.getID(), parent.getValueReference(ID.get(actual)));
+				addValue(formal.getID(), parent.getValueReference(((IIdentifiable)actual).getID()));
 			}
 			
 			//Determine if the declaration should be passed by Value.
