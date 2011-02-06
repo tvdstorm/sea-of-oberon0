@@ -450,7 +450,7 @@
                     randy.oberon0.interpreter.antlr.Oberon0ASTTreeGenerator
                 </Class>
                 <Class sourceFile="Oberon0ASTTreeGenerator.java">
-                    randy.oberon0.interpreter.antlr.Oberon0ASTTreeGenerator$__CLR3_0_1bbbbgjtvnxzv
+                    randy.oberon0.interpreter.antlr.Oberon0ASTTreeGenerator$__CLR3_0_13m43m4gjtzkamj
                 </Class>
                 <Class sourceFile="BuildinFunctions.java">
                     randy.oberon0.interpreter.buildinfunctions.BuildinFunctions
@@ -462,7 +462,7 @@
                     randy.oberon0.interpreter.buildinfunctions.DefaultReadFunction
                 </Class>
                 <Class sourceFile="DefaultReadFunction.java">
-                    randy.oberon0.interpreter.buildinfunctions.DefaultReadFunction$__CLR3_0_1ajajgjtvnxz0
+                    randy.oberon0.interpreter.buildinfunctions.DefaultReadFunction$__CLR3_0_1zyzygjtw2hz9
                 </Class>
                 <Class sourceFile="DefaultWriteFunction.java">
                     randy.oberon0.interpreter.buildinfunctions.DefaultWriteFunction
