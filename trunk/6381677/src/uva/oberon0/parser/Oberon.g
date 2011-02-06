@@ -124,14 +124,14 @@ arrayType returns [ArrayType node]
 	:	ARRAY node_exp=expression OF node_type=type					{$node = new ArrayType($node_exp.node, $node_type.node);};
 
 
-recordType returns [Record node]	:							{RecordFieldList fields = new RecordFieldList();}
+recordType returns [RecordType node]	:							{RecordFieldList fields = new RecordFieldList();}
 		RECORD
 		recordField[fields] (';' recordField[fields])*
-		END 										{$node = new Record(fields);}
+		END 										{$node = new RecordType(fields);}
 	;
 		
 recordField[RecordFieldList list]
-	:	(node_ids=idList ':' node_type=type ';' 					{for (ID id : $idList.node){ $list.add(new RecordField(id, $node_type.node));}});
+	:	(node_ids=idList ':' node_type=type 					{for (ID id : $idList.node){ $list.add(new RecordField(id, $node_type.node));}});
 
 
 factor 	returns [Expression node]

@@ -13,4 +13,12 @@ public class RecordField
 		_id = id;
 		_type = type;
 	}
+
+	public Type getType() {
+		return _type;
+	}
+
+	public ID getID() {
+		return _id;
+	}
 }

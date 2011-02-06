@@ -2,6 +2,7 @@ package uva.oberon0.abstractsyntax.statements;
 
 import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.abstractsyntax.types.ID;
+import uva.oberon0.runtime.Scope;
 
 
 /**
@@ -22,8 +23,10 @@ public class Assign extends Statement {
 	}
 
 	@Override
-	public int eval(uva.oberon0.runtime.Scope scope)
+	public int eval(Scope scope)
 	{
-		return scope.setValue(_id, _value.eval(scope));
+		scope.setValue(_id, _value.eval(scope));
+		
+		return 1;
 	}
 }
