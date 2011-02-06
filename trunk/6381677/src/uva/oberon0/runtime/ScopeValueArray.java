@@ -15,8 +15,9 @@ public class ScopeValueArray extends ScopeValue
 		
 		_value = new ScopeValue[arrayLength];
 		
-		for (int i = 0; i<arrayLength; i++)
+		for (int i = 0; i<arrayLength; i++) {
 			_value[i] = type.getType().instantiate(scope);
+		}
 	}
 	
 	private ScopeValue[] _value;
@@ -35,8 +36,9 @@ public class ScopeValueArray extends ScopeValue
 	@Override
 	public ScopeValue getValueReference(Scope scope, ID id)
 	{
-		if (id.getSub() == null)
+		if (id.getSub() == null) {
 			return this;
+		}
 		
 		return _value[id.getSub(scope)];
 	}

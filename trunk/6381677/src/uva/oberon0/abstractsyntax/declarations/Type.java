@@ -3,6 +3,10 @@ package uva.oberon0.abstractsyntax.declarations;
 import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.runtime.Scope;
 
+/**
+ * @author Chiel Labee
+ * This class represents a declarable Type Structure.
+*/
 public class Type extends Declaration 
 {
 	private final Type _type;
