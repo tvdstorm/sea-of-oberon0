@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-02-06</date>
-  <time>12:08:37</time>
+  <time>15:52:59</time>
   <packages>
     <package>
       <name>oberon</name>
@@ -37,7 +37,7 @@
       <name>oberon.expressions</name>
       <classes>10</classes>
       <functions>22</functions>
-      <ncss>149</ncss>
+      <ncss>152</ncss>
       <javadocs>20</javadocs>
       <javadoc_lines>93</javadoc_lines>
       <single_comment_lines>0</single_comment_lines>
@@ -75,29 +75,29 @@
     </package>
     <package>
       <name>oberon.test</name>
-      <classes>3</classes>
-      <functions>10</functions>
-      <ncss>133</ncss>
+      <classes>5</classes>
+      <functions>28</functions>
+      <ncss>257</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>16</single_comment_lines>
+      <single_comment_lines>19</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <total>
-      <classes>69</classes>
-      <functions>214</functions>
-      <ncss>1437</ncss>
+      <classes>71</classes>
+      <functions>232</functions>
+      <ncss>1564</ncss>
       <javadocs>162</javadocs>
       <javadoc_lines>803</javadoc_lines>
-      <single_comment_lines>25</single_comment_lines>
+      <single_comment_lines>28</single_comment_lines>
       <multi_comment_lines>371</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>8.00</td><td>69.00</td><td>214.00</td><td>1,437.00</td><td>162.00</td><td>Project</td></tr>
-      <tr><td></td><td>8.63</td><td>26.75</td><td>179.63</td><td>20.25</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.10</td><td>20.83</td><td>2.35</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>6.71</td><td>0.76</td><td>Function</td></tr>
+      <tr><td>8.00</td><td>71.00</td><td>232.00</td><td>1,564.00</td><td>162.00</td><td>Project</td></tr>
+      <tr><td></td><td>8.88</td><td>29.00</td><td>195.50</td><td>20.25</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.27</td><td>22.03</td><td>2.28</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>6.74</td><td>0.70</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -300,7 +300,7 @@
     </object>
     <object>
       <name>oberon.expressions.ComparisonExpression</name>
-      <ncss>31</ncss>
+      <ncss>34</ncss>
       <functions>2</functions>
       <classes>0</classes>
       <javadocs>2</javadocs>
@@ -566,14 +566,28 @@
     </object>
     <object>
       <name>oberon.test.AbstractTest</name>
-      <ncss>15</ncss>
-      <functions>5</functions>
+      <ncss>28</ncss>
+      <functions>7</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon.test.ComparisonExpressionTest</name>
+      <ncss>48</ncss>
+      <functions>9</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon.test.MathematicalExpressionTest</name>
+      <ncss>37</ncss>
+      <functions>7</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>oberon.test.VariableManagerTest</name>
-      <ncss>37</ncss>
+      <ncss>28</ncss>
       <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
@@ -586,12 +600,12 @@
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>14.86</ncss>
-      <functions>3.10</functions>
+      <ncss>15.73</ncss>
+      <functions>3.27</functions>
       <classes>0.01</classes>
-      <javadocs>2.46</javadocs>
+      <javadocs>2.39</javadocs>
     </averages>
-    <ncss>1,437.00</ncss>
+    <ncss>1,564.00</ncss>
   </objects>
 
   <functions>
@@ -1197,7 +1211,7 @@
     </function>
     <function>
       <name>oberon.expressions.ComparisonExpression.evalAsInt()</name>
-      <ncss>26</ncss>
+      <ncss>29</ncss>
       <ccn>9</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -1820,6 +1834,12 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>oberon.test.AbstractTest.setUp()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>oberon.test.AbstractTest.loadDeclaration()</name>
       <ncss>4</ncss>
       <ccn>1</ccn>
@@ -1850,6 +1870,108 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>oberon.test.AbstractTest.enterNewEmptyScope()</name>
+      <ncss>11</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.test.ComparisonExpressionTest.test_case_AmpExpressionTest()</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.test.ComparisonExpressionTest.test_case_ExeqExpressionTest()</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.test.ComparisonExpressionTest.test_case_ExgeExpressionTest()</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.test.ComparisonExpressionTest.test_case_ExgtExpressionTest()</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.test.ComparisonExpressionTest.test_case_ExseExpressionTest()</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.test.ComparisonExpressionTest.test_case_ExstExpressionTest()</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.test.ComparisonExpressionTest.test_case_TilExpressionTest()</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.test.ComparisonExpressionTest.testComparisonExpression(int,int,ComparisonType)</name>
+      <ncss>8</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.test.ComparisonExpressionTest.test_case_ComplexExpressionTest()</name>
+      <ncss>11</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.test.MathematicalExpressionTest.test_case_MulExpressionTest()</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.test.MathematicalExpressionTest.test_case_SubExpressionTest()</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.test.MathematicalExpressionTest.test_case_AddExpressionTest()</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.test.MathematicalExpressionTest.test_case_DivExpressionTest()</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.test.MathematicalExpressionTest.test_case_ModExpressionTest()</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.test.MathematicalExpressionTest.testMathematicalExpression(int,int,MathematicalExpressionType)</name>
+      <ncss>8</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.test.MathematicalExpressionTest.test_case_ComplexExpressionTest()</name>
+      <ncss>11</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>oberon.test.VariableManagerTest.test_case_VariableManagerAddVariableToScopeAndRetrieve()</name>
       <ncss>5</ncss>
       <ccn>1</ccn>
@@ -1863,7 +1985,7 @@
     </function>
     <function>
       <name>oberon.test.VariableManagerTest.test_case_VariableManagerVariablesInPreviousScopeAreRestoredAfterLeavingTheScope()</name>
-      <ncss>16</ncss>
+      <ncss>7</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -1880,10 +2002,10 @@
       <javadocs>0</javadocs>
     </function>
     <function_averages>
-      <ncss>3.87</ncss>
-      <ccn>1.40</ccn>
-      <javadocs>0.48</javadocs>
+      <ncss>3.96</ncss>
+      <ccn>1.37</ccn>
+      <javadocs>0.44</javadocs>
     </function_averages>
-    <ncss>1,437.00</ncss>
+    <ncss>1,564.00</ncss>
   </functions>
 </javancss>
