@@ -183,7 +183,7 @@ simpleExpression returns [ExpressionNode result]
 	:	(PLUS_OP | MINUS_OP)? t1=term					{ $result = $t1.result; }
 			( PLUS_OP t2=term							{ $result = new PlusExpNode((IntExpNode) $t1.result, (IntExpNode) $t2.result); }
 			| MINUS_OP t2=term							{ $result = new MinusExpNode((IntExpNode) $t1.result, (IntExpNode) $t2.result); }
-			| OR_OP t2=term
+			| OR_OP t2=term								{ $result = new OrExpNode((BooleanExpNode) $t1.result, (BooleanExpNode) $t2.result); }
 			)*
 	;
 
@@ -192,7 +192,7 @@ term returns [ExpressionNode result]
 			( MULTIPLY_OP f2=factor						{ $result = new MultiplyExpNode((IntExpNode) $f1.result, (IntExpNode) $f2.result); }
 			| DIVIDE_OP f2=factor						{ $result = new DivideExpNode((IntExpNode) $f1.result, (IntExpNode) $f2.result); }
 			| MODULO_OP f2=factor						{ $result = new ModuloExpNode((IntExpNode) $f1.result, (IntExpNode) $f2.result); }
-			| AND_OP f2=factor
+			| AND_OP f2=factor							{ $result = new AndExpNode((BooleanExpNode) $f1.result, (BooleanExpNode) $f2.result); }
 			)*
 	;
 
