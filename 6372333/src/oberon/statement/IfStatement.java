@@ -7,6 +7,7 @@ import oberon.IExpression;
 import oberon.IStatement;
 import oberon.StatementSequence;
 import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
  * The Class IfStatement, contains an if statement.
@@ -46,7 +47,7 @@ public class IfStatement implements IStatement {
 	 * @see oberon.IStatement#eval()
 	 */
 	@Override
-	public void eval() throws IOException, UnsupportedException {
+	public void eval() throws IOException, UnsupportedException, VariableNotFoundInScopeException {
 		Boolean bodyIsExecuted = false;
 		if (conditionIsTrue()) {
 			evalStatements();
@@ -72,8 +73,9 @@ public class IfStatement implements IStatement {
 	 *
 	 * @throws IOException throws when an exception occurs when reading from the console
 	 * @throws UnsupportedException 
+	 * @throws VariableNotFoundInScopeException 
 	 */
-	protected void evalStatements() throws IOException, UnsupportedException {
+	protected void evalStatements() throws IOException, UnsupportedException, VariableNotFoundInScopeException {
 		ifBody.eval();
 	}
 
@@ -82,8 +84,9 @@ public class IfStatement implements IStatement {
 	 *
 	 * @return true if the condition is true
 	 * @throws UnsupportedException 
+	 * @throws VariableNotFoundInScopeException 
 	 */
-	protected Boolean conditionIsTrue() throws UnsupportedException {
+	protected Boolean conditionIsTrue() throws UnsupportedException, VariableNotFoundInScopeException {
 		return ifCondition.evalAsBoolean();
 	}
 

@@ -5,6 +5,7 @@ import oberon.IExpression;
 import oberon.IIdentifier;
 import oberon.IStatement;
 import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
  * The Class AssignmentStatement, contains an assignment of a value to an identifier.
@@ -32,7 +33,7 @@ public class AssignmentStatement implements IStatement {
 	 * @see oberon.IStatement#eval()
 	 */
 	@Override
-	public void eval() throws UnsupportedException {
+	public void eval() throws UnsupportedException, VariableNotFoundInScopeException {
 		final IDataType type = identifierToAssignTo.getDataTypeValue();
 		type.setValue(assignmentExpression.evalAsInt());
 	}

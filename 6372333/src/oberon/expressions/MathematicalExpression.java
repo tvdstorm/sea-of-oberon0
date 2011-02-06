@@ -2,6 +2,7 @@ package oberon.expressions;
 
 import oberon.IExpression;
 import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
  * The Class MathematicalExpression, class for all mathematical oriented expressions.
@@ -28,7 +29,7 @@ public class MathematicalExpression extends AbstractLeftAndRightExpression {
 	 * @see oberon.expressions.AbstractExpression#evalAsInt()
 	 */
 	@Override
-	public int evalAsInt() throws UnsupportedException {
+	public int evalAsInt() throws UnsupportedException, VariableNotFoundInScopeException {
 		int result = 0;
 		final int left = getLefthandSide().evalAsInt();
 		final int right = getRighthandSide().evalAsInt();

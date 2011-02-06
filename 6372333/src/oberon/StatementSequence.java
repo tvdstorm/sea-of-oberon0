@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
  * The Class StatementSequence, represents a sequence of statements.
@@ -27,8 +28,9 @@ public class StatementSequence{
 	 *
 	 * @throws IOException When reading from the command line fails
 	 * @throws UnsupportedException 
+	 * @throws VariableNotFoundInScopeException 
 	 */
-	public void eval() throws IOException, UnsupportedException {
+	public void eval() throws IOException, UnsupportedException, VariableNotFoundInScopeException {
 		if (body != null) {
 			for(IStatement statement : body) {
 				statement.eval();

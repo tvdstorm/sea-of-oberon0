@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <javancss>
-  <date>2011-02-05</date>
-  <time>22:27:22</time>
+  <date>2011-02-06</date>
+  <time>10:53:56</time>
   <packages>
     <package>
       <name>oberon</name>
       <classes>12</classes>
       <functions>39</functions>
-      <ncss>258</ncss>
+      <ncss>262</ncss>
       <javadocs>48</javadocs>
-      <javadoc_lines>226</javadoc_lines>
+      <javadoc_lines>239</javadoc_lines>
       <single_comment_lines>2</single_comment_lines>
       <multi_comment_lines>22</multi_comment_lines>
     </package>
@@ -17,9 +17,9 @@
       <name>oberon.data</name>
       <classes>11</classes>
       <functions>47</functions>
-      <ncss>185</ncss>
+      <ncss>192</ncss>
       <javadocs>32</javadocs>
-      <javadoc_lines>162</javadoc_lines>
+      <javadoc_lines>165</javadoc_lines>
       <single_comment_lines>3</single_comment_lines>
       <multi_comment_lines>91</multi_comment_lines>
     </package>
@@ -35,29 +35,29 @@
     </package>
     <package>
       <name>oberon.test</name>
-      <classes>1</classes>
-      <functions>1</functions>
-      <ncss>27</ncss>
+      <classes>3</classes>
+      <functions>10</functions>
+      <ncss>133</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>0</single_comment_lines>
+      <single_comment_lines>16</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <total>
-      <classes>44</classes>
-      <functions>154</functions>
-      <ncss>964</ncss>
+      <classes>46</classes>
+      <functions>163</functions>
+      <ncss>1081</ncss>
       <javadocs>113</javadocs>
-      <javadoc_lines>548</javadoc_lines>
-      <single_comment_lines>9</single_comment_lines>
+      <javadoc_lines>564</javadoc_lines>
+      <single_comment_lines>25</single_comment_lines>
       <multi_comment_lines>262</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>4.00</td><td>44.00</td><td>154.00</td><td>964.00</td><td>113.00</td><td>Project</td></tr>
-      <tr><td></td><td>11.00</td><td>38.50</td><td>241.00</td><td>28.25</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.50</td><td>21.91</td><td>2.57</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>6.26</td><td>0.73</td><td>Function</td></tr>
+      <tr><td>4.00</td><td>46.00</td><td>163.00</td><td>1,081.00</td><td>113.00</td><td>Project</td></tr>
+      <tr><td></td><td>11.50</td><td>40.75</td><td>270.25</td><td>28.25</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.54</td><td>23.50</td><td>2.46</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>6.63</td><td>0.69</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -120,14 +120,14 @@
     </object>
     <object>
       <name>oberon.VariableManager</name>
-      <ncss>72</ncss>
+      <ncss>71</ncss>
       <functions>9</functions>
       <classes>1</classes>
       <javadocs>19</javadocs>
     </object>
     <object>
       <name>oberon.VariableManager.Scope</name>
-      <ncss>44</ncss>
+      <ncss>43</ncss>
       <functions>8</functions>
       <classes>0</classes>
       <javadocs>8</javadocs>
@@ -364,19 +364,33 @@
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>oberon.test.WhileTest</name>
+      <name>oberon.test.AbstractTest</name>
       <ncss>15</ncss>
-      <functions>1</functions>
+      <functions>5</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon.test.VariableManagerTest</name>
+      <ncss>37</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon.test.WhileTest</name>
+      <ncss>29</ncss>
+      <functions>2</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>16.14</ncss>
-      <functions>3.50</functions>
+      <ncss>16.83</ncss>
+      <functions>3.54</functions>
       <classes>0.02</classes>
-      <javadocs>2.75</javadocs>
+      <javadocs>2.63</javadocs>
     </averages>
-    <ncss>964.00</ncss>
+    <ncss>1,081.00</ncss>
   </objects>
 
   <functions>
@@ -507,7 +521,7 @@
       <javadocs>1</javadocs>
     </function>
     <function>
-      <name>oberon.VariableManager.enterNewScope(IDataType,ProcedureHeading)</name>
+      <name>oberon.VariableManager.enterNewScope(IDataType,IProcedure)</name>
       <ncss>4</ncss>
       <ccn>1</ccn>
       <javadocs>1</javadocs>
@@ -586,8 +600,8 @@
     </function>
     <function>
       <name>oberon.VariableManager.Scope.getVariable(String)</name>
-      <ncss>5</ncss>
-      <ccn>3</ccn>
+      <ncss>4</ncss>
+      <ccn>4</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
@@ -1299,16 +1313,70 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.test.WhileTest.test_case_WhileTest1()</name>
-      <ncss>14</ncss>
+      <name>oberon.test.AbstractTest.loadDeclaration()</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.test.AbstractTest.addVariableToDeclaration(VariableDataType)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.test.AbstractTest.getNewMathematicalExpression(String,int,MathematicalExpressionType)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.test.AbstractTest.getNewComparisonExpression(String,int,ComparisonType)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.test.AbstractTest.getAssignmentStatement(String,IExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.test.VariableManagerTest.test_case_VariableManagerAddVariableToScopeAndRetrieve()</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.test.VariableManagerTest.test_case_VariableManagerAddVariableToScopeAndRetrieveAfterEnteringNewScope()</name>
+      <ncss>15</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.test.VariableManagerTest.test_case_VariableManagerVariablesInPreviousScopeAreRestoredAfterLeavingTheScope()</name>
+      <ncss>16</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.test.WhileTest.test_case_WhileTestWithValidCondition()</name>
+      <ncss>13</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.test.WhileTest.test_case_WhileTestWithImmediatelyTrueCondition()</name>
+      <ncss>15</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function_averages>
-      <ncss>3.69</ncss>
-      <ccn>1.36</ccn>
-      <javadocs>0.46</javadocs>
+      <ncss>3.86</ncss>
+      <ccn>1.35</ccn>
+      <javadocs>0.44</javadocs>
     </function_averages>
-    <ncss>964.00</ncss>
+    <ncss>1,081.00</ncss>
   </functions>
 </javancss>

@@ -4,6 +4,7 @@ import oberon.IDataType;
 import oberon.IExpression;
 import oberon.IIdentifier;
 import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
  * The Class ArrayIndexerIdentifier, handles calls to the index of an array.
@@ -33,8 +34,9 @@ public class ArrayIndexerIdentifier extends AbstractIdentifier {
 	 *
 	 * @return the data type as array type
 	 * @throws UnsupportedException 
+	 * @throws VariableNotFoundInScopeException 
 	 */
-	private IntegerArrayDataType getDataTypeAsArrayType() throws UnsupportedException {
+	private IntegerArrayDataType getDataTypeAsArrayType() throws UnsupportedException, VariableNotFoundInScopeException {
 		final IDataType type = selector.getDataTypeValue();
 		
 		//type should always be an array
@@ -47,7 +49,7 @@ public class ArrayIndexerIdentifier extends AbstractIdentifier {
 	 * @see oberon.data.AbstractIdentifier#getValue()
 	 */
 	@Override
-	public int getValue() throws UnsupportedException {
+	public int getValue() throws UnsupportedException, VariableNotFoundInScopeException {
 		final IntegerArrayDataType array = getDataTypeAsArrayType();
 		return array.getValueAtIndex(indexExpression.evalAsInt());
 	}
@@ -56,7 +58,7 @@ public class ArrayIndexerIdentifier extends AbstractIdentifier {
 	 * @see oberon.data.AbstractIdentifier#getDataTypeValue()
 	 */
 	@Override
-	public IDataType getDataTypeValue() throws UnsupportedException {
+	public IDataType getDataTypeValue() throws UnsupportedException, VariableNotFoundInScopeException {
 		return new IntegerArrayIndexerDataType(getDataTypeAsArrayType(), indexExpression.evalAsInt());
 	}
 

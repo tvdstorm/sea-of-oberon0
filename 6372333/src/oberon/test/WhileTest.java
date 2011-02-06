@@ -1,42 +1,80 @@
 package oberon.test;
 
-import oberon.exceptions.UnsupportedException;
-import oberon.expressions.*;
-import oberon.procedures.*;
-import oberon.statement.*;
-import oberon.data.*;
-import oberon.*;
-
 import java.io.IOException;
-import java.util.*;
+import java.util.LinkedList;
+
+import junit.framework.Assert;
+import oberon.IExpression;
+import oberon.IStatement;
+import oberon.StatementSequence;
+import oberon.VariableManager;
+import oberon.data.VariableDataType;
+import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.VariableNotFoundInScopeException;
+import oberon.expressions.ComparisonType;
+import oberon.expressions.MathematicalExpressionType;
+import oberon.statement.WhileStatement;
 
 import org.junit.Test;
 
-import junit.framework.Assert;
-import junit.framework.TestCase;
-
-public class WhileTest extends TestCase {
-
+public class WhileTest extends AbstractTest {
+	
 	@Test
-	public void test_case_WhileTest1() throws UnsupportedException, IOException
+	public void test_case_WhileTestWithValidCondition() throws UnsupportedException, IOException, VariableNotFoundInScopeException
 	{
-		ComparisonExpression condition = 
-			new ComparisonExpression(new IdentifierExpression(new VariableIdentifier("i")), new IntegerExpression(5), ComparisonType.Exst);
+		//Get the condition, "i <= 5"
+		IExpression condition = getNewComparisonExpression("i", 5, ComparisonType.Exst);
 		
 		LinkedList<IStatement> statementList = new LinkedList<IStatement>();
-		MathematicalExpression statement = new MathematicalExpression(new IdentifierExpression(new VariableIdentifier("i")), new IntegerExpression(1), MathematicalExpressionType.Add);
-		statementList.add(new AssignmentStatement(new VariableIdentifier("i"), statement));
+		//Get the expression, "i + 1"
+		IExpression expression = getNewMathematicalExpression("i", 1, MathematicalExpressionType.Add);
+		//Assign the result of the statement, "i = i + 1"
+		IStatement statement = getAssignmentStatement("i", expression);
+		
+		statementList.add(statement);
 		StatementSequence statements = new StatementSequence(statementList);
 		
-		List<IDataType> variables = new ArrayList<IDataType>();
-		variables.add(new VariableDataType("i", false));
-		Declaration declaration = new Declaration(variables, new ArrayList<IProcedure>());
-		VariableManager variableManager = VariableManager.getInstance();
-		variableManager.addNewDeclaration(declaration);
+		//Declare the variable i
+		VariableDataType inputVariable = new VariableDataType("i", false);
 		
+		addVariableToDeclaration(inputVariable);
+		loadDeclaration();
+		
+		//Create new while statement
 		WhileStatement whileStat = new WhileStatement(condition, statements);
 		whileStat.eval();
 		
-		Assert.assertEquals(5, variableManager.getVariable("i").getValue());
+		Assert.assertEquals(5, VariableManager.getInstance().getVariable("i").getValue());
+	}
+
+	@Test
+	public void test_case_WhileTestWithImmediatelyTrueCondition() throws UnsupportedException, IOException, VariableNotFoundInScopeException
+	{
+		//Get the condition, "i <= 5"
+		IExpression condition = getNewComparisonExpression("trueConst", 5, ComparisonType.Exst);
+		
+		LinkedList<IStatement> statementList = new LinkedList<IStatement>();
+		//Get the expression, "i + 1"
+		IExpression expression = getNewMathematicalExpression("i", 1, MathematicalExpressionType.Add);
+		//Assign the result of the statement, "i = i + 1"
+		IStatement statement = getAssignmentStatement("i", expression);
+		
+		statementList.add(statement);
+		StatementSequence statements = new StatementSequence(statementList);
+		
+		//Declare the variable i
+		VariableDataType inputVariable = new VariableDataType("i", false);
+		VariableDataType trueConst = new VariableDataType("trueConst", 6, true);
+		
+		addVariableToDeclaration(inputVariable);
+		addVariableToDeclaration(trueConst);
+		loadDeclaration();
+		
+		//Create new while statement
+		WhileStatement whileStat = new WhileStatement(condition, statements);
+		whileStat.eval();
+		
+		//i should be 0 as the body of the while is never executed
+		Assert.assertEquals(0, VariableManager.getInstance().getVariable("i").getValue());
 	}
 }

@@ -2,6 +2,7 @@ package oberon.expressions;
 
 import oberon.IExpression;
 import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
  * The Class ComparisonExpression, compares to expressions.
@@ -29,7 +30,7 @@ public class ComparisonExpression extends AbstractLeftAndRightExpression {
 	 * @see oberon.expressions.AbstractExpression#evalAsInt()
 	 */
 	@Override
-	public int evalAsInt() throws UnsupportedException {
+	public int evalAsInt() throws UnsupportedException, VariableNotFoundInScopeException {
 		final IExpression leftHandSide = getLefthandSide();
 		final IExpression rightHandSide = getRighthandSide();
 		

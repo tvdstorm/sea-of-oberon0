@@ -9,6 +9,7 @@ import oberon.IDataType;
 import oberon.IExpression;
 import oberon.VariableManager;
 import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
  * The Class ProcedureHeading, contains a concrete procedure.
@@ -31,7 +32,7 @@ public class ProcedureHeading extends AbstractProcedure {
 	 * @see oberon.procedures.AbstractProcedure#call(java.util.Queue)
 	 */
 	@Override
-	public void call(final Queue<IExpression> localQueue) throws IOException, UnsupportedException {
+	public void call(final Queue<IExpression> localQueue) throws IOException, UnsupportedException, VariableNotFoundInScopeException {
 		final List<IDataType> actualParameterList = new ArrayList<IDataType>();
 		
 		for (FormalParamSection section : getParamSections()) {

@@ -3,6 +3,7 @@ package oberon.data;
 import oberon.IDataType;
 import oberon.IExpression;
 import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
  * The Class IntegerArrayDataType, stores the value of array instance variables.
@@ -53,8 +54,9 @@ public class IntegerArrayDataType extends AbstractDataType {
 	/**
 	 * Initialize array.
 	 * @throws UnsupportedException 
+	 * @throws VariableNotFoundInScopeException 
 	 */
-	public void initializeArray() throws UnsupportedException {
+	public void initializeArray() throws UnsupportedException, VariableNotFoundInScopeException {
 		array = new int[lengthExpression.evalAsInt()];			
 	}
 

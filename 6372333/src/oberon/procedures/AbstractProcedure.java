@@ -7,6 +7,7 @@ import java.util.Queue;
 import oberon.IExpression;
 import oberon.IProcedure;
 import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
  * The Class AbstractProcedure, super class for procedures.
@@ -66,5 +67,5 @@ public abstract class AbstractProcedure implements IProcedure {
 	 * @see oberon.IProcedure#call(java.util.Queue)
 	 */
 	@Override
-	public abstract void call(Queue<IExpression> localQueue) throws IOException, UnsupportedException;
+	public abstract void call(Queue<IExpression> localQueue) throws IOException, UnsupportedException, VariableNotFoundInScopeException;
 }

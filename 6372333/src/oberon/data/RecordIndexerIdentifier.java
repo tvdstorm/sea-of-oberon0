@@ -3,6 +3,7 @@ package oberon.data;
 import oberon.IDataType;
 import oberon.IIdentifier;
 import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
  * The Class RecordIndexerIdentifier, identifier containing a pointer to a specific field in a record.
@@ -32,8 +33,9 @@ public class RecordIndexerIdentifier extends AbstractIdentifier {
 	 *
 	 * @return the data type as record data type
 	 * @throws UnsupportedException 
+	 * @throws VariableNotFoundInScopeException 
 	 */
-	private RecordDataType getDataTypeAsRecordDataType() throws UnsupportedException {
+	private RecordDataType getDataTypeAsRecordDataType() throws UnsupportedException, VariableNotFoundInScopeException {
 		final IDataType type = selector.getDataTypeValue();
 		
 		//type should always be a recorddatatype
@@ -47,7 +49,7 @@ public class RecordIndexerIdentifier extends AbstractIdentifier {
 	 * @see oberon.data.AbstractIdentifier#getValue()
 	 */
 	@Override
-	public int getValue() throws UnsupportedException {
+	public int getValue() throws UnsupportedException, VariableNotFoundInScopeException {
 		final RecordDataType record = getDataTypeAsRecordDataType();
 		return record.getValueAtIndex(index);
 	}
@@ -56,7 +58,7 @@ public class RecordIndexerIdentifier extends AbstractIdentifier {
 	 * @see oberon.data.AbstractIdentifier#getDataTypeValue()
 	 */
 	@Override
-	public IDataType getDataTypeValue() throws UnsupportedException {
+	public IDataType getDataTypeValue() throws UnsupportedException, VariableNotFoundInScopeException {
 		return new RecordIndexerDataType(getDataTypeAsRecordDataType(), index);
 	}
 }
