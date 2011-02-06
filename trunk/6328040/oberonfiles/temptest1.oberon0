@@ -1,22 +1,19 @@
-MODULE testmodule;
+MODULE variablenesting;
 
-CONST
-  MAXLENGTH	= 5;
-  
-VAR
-  array: ARRAY MAXLENGTH OF INTEGER; 
-  i,j,k: INTEGER;
+VAR x: INTEGER;
 
-PROCEDURE testproc(VAR xx, yy: INTEGER; plus: INTEGER);
-
- BEGIN
-	 xx := xx + plus;
-	 yy := yy + plus;
-END testproc;
+PROCEDURE a();
+  VAR x: INTEGER;
+  BEGIN
+    x := 2;
+    b();
+  END a;
+PROCEDURE b();
+  BEGIN
+    Write(x);
+  END b;
 
 BEGIN
- i := 1;
- j := 2;
- k := 6;
- testproc(i, j, MAXLENGTH)
-END testmodule.
+  x := 1;
+  a();
+END variablenesting.
