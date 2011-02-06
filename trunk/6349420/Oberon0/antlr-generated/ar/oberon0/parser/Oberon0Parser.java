@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g 2011-02-05 20:11:53
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g 2011-02-06 14:16:24
 
   package ar.oberon0.parser;
   import ar.oberon0.ast.*;
@@ -3074,33 +3074,35 @@ public class Oberon0Parser extends Parser {
     };
 
     // $ANTLR start "write"
-    // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:241:1: write returns [Interpretable write] : ( ( 'Write' ( '(' expression ')' | '(\"' ( IDENT )* '\")' ) ) | ( 'WriteLn' ) );
+    // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:241:1: write returns [Interpretable write] : ( ( 'Write' ( '(' expression ')' | '(\"' firstIdent= IDENT (otherIdent= IDENT )* '\")' ) ) | ( 'WriteLn' ) );
     public final Oberon0Parser.write_return write() throws RecognitionException {
         Oberon0Parser.write_return retval = new Oberon0Parser.write_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
 
+        Token firstIdent=null;
+        Token otherIdent=null;
         Token string_literal106=null;
         Token char_literal107=null;
         Token char_literal109=null;
         Token string_literal110=null;
-        Token IDENT111=null;
+        Token string_literal111=null;
         Token string_literal112=null;
-        Token string_literal113=null;
         Oberon0Parser.expression_return expression108 = null;
 
 
+        Object firstIdent_tree=null;
+        Object otherIdent_tree=null;
         Object string_literal106_tree=null;
         Object char_literal107_tree=null;
         Object char_literal109_tree=null;
         Object string_literal110_tree=null;
-        Object IDENT111_tree=null;
+        Object string_literal111_tree=null;
         Object string_literal112_tree=null;
-        Object string_literal113_tree=null;
 
         try {
-            // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:242:2: ( ( 'Write' ( '(' expression ')' | '(\"' ( IDENT )* '\")' ) ) | ( 'WriteLn' ) )
+            // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:242:2: ( ( 'Write' ( '(' expression ')' | '(\"' firstIdent= IDENT (otherIdent= IDENT )* '\")' ) ) | ( 'WriteLn' ) )
             int alt33=2;
             int LA33_0 = input.LA(1);
 
@@ -3118,18 +3120,18 @@ public class Oberon0Parser extends Parser {
             }
             switch (alt33) {
                 case 1 :
-                    // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:243:3: ( 'Write' ( '(' expression ')' | '(\"' ( IDENT )* '\")' ) )
+                    // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:243:3: ( 'Write' ( '(' expression ')' | '(\"' firstIdent= IDENT (otherIdent= IDENT )* '\")' ) )
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:243:3: ( 'Write' ( '(' expression ')' | '(\"' ( IDENT )* '\")' ) )
-                    // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:243:4: 'Write' ( '(' expression ')' | '(\"' ( IDENT )* '\")' )
+                    // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:243:3: ( 'Write' ( '(' expression ')' | '(\"' firstIdent= IDENT (otherIdent= IDENT )* '\")' ) )
+                    // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:243:4: 'Write' ( '(' expression ')' | '(\"' firstIdent= IDENT (otherIdent= IDENT )* '\")' )
                     {
                     string_literal106=(Token)match(input,48,FOLLOW_48_in_write2325); 
                     string_literal106_tree = (Object)adaptor.create(string_literal106);
                     adaptor.addChild(root_0, string_literal106_tree);
 
-                    // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:244:4: ( '(' expression ')' | '(\"' ( IDENT )* '\")' )
+                    // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:244:4: ( '(' expression ')' | '(\"' firstIdent= IDENT (otherIdent= IDENT )* '\")' )
                     int alt32=2;
                     int LA32_0 = input.LA(1);
 
@@ -3168,14 +3170,19 @@ public class Oberon0Parser extends Parser {
                             }
                             break;
                         case 2 :
-                            // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:245:19: '(\"' ( IDENT )* '\")'
+                            // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:245:19: '(\"' firstIdent= IDENT (otherIdent= IDENT )* '\")'
                             {
                             WriteNode writeNode = new WriteNode();
                             string_literal110=(Token)match(input,49,FOLLOW_49_in_write2373); 
                             string_literal110_tree = (Object)adaptor.create(string_literal110);
                             adaptor.addChild(root_0, string_literal110_tree);
 
-                            // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:246:9: ( IDENT )*
+                            firstIdent=(Token)match(input,IDENT,FOLLOW_IDENT_in_write2377); 
+                            firstIdent_tree = (Object)adaptor.create(firstIdent);
+                            adaptor.addChild(root_0, firstIdent_tree);
+
+                            writeNode.addToMessage(firstIdent.getText());
+                            // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:247:7: (otherIdent= IDENT )*
                             loop31:
                             do {
                                 int alt31=2;
@@ -3188,13 +3195,13 @@ public class Oberon0Parser extends Parser {
 
                                 switch (alt31) {
                             	case 1 :
-                            	    // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:246:11: IDENT
+                            	    // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:247:8: otherIdent= IDENT
                             	    {
-                            	    IDENT111=(Token)match(input,IDENT,FOLLOW_IDENT_in_write2376); 
-                            	    IDENT111_tree = (Object)adaptor.create(IDENT111);
-                            	    adaptor.addChild(root_0, IDENT111_tree);
+                            	    otherIdent=(Token)match(input,IDENT,FOLLOW_IDENT_in_write2396); 
+                            	    otherIdent_tree = (Object)adaptor.create(otherIdent);
+                            	    adaptor.addChild(root_0, otherIdent_tree);
 
-                            	    writeNode.addToMessage(IDENT111.getText() + " ");
+                            	    writeNode.addToMessage(" " + otherIdent.getText());
 
                             	    }
                             	    break;
@@ -3204,9 +3211,9 @@ public class Oberon0Parser extends Parser {
                                 }
                             } while (true);
 
-                            string_literal112=(Token)match(input,50,FOLLOW_50_in_write2395); 
-                            string_literal112_tree = (Object)adaptor.create(string_literal112);
-                            adaptor.addChild(root_0, string_literal112_tree);
+                            string_literal111=(Token)match(input,50,FOLLOW_50_in_write2419); 
+                            string_literal111_tree = (Object)adaptor.create(string_literal111);
+                            adaptor.addChild(root_0, string_literal111_tree);
 
                             retval.write = writeNode;
 
@@ -3222,16 +3229,16 @@ public class Oberon0Parser extends Parser {
                     }
                     break;
                 case 2 :
-                    // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:250:4: ( 'WriteLn' )
+                    // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:252:4: ( 'WriteLn' )
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:250:4: ( 'WriteLn' )
-                    // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:250:5: 'WriteLn'
+                    // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:252:4: ( 'WriteLn' )
+                    // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:252:5: 'WriteLn'
                     {
-                    string_literal113=(Token)match(input,51,FOLLOW_51_in_write2423); 
-                    string_literal113_tree = (Object)adaptor.create(string_literal113);
-                    adaptor.addChild(root_0, string_literal113_tree);
+                    string_literal112=(Token)match(input,51,FOLLOW_51_in_write2447); 
+                    string_literal112_tree = (Object)adaptor.create(string_literal112);
+                    adaptor.addChild(root_0, string_literal112_tree);
 
 
                     }
@@ -3267,53 +3274,53 @@ public class Oberon0Parser extends Parser {
     };
 
     // $ANTLR start "read"
-    // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:253:1: read returns [Interpretable read] : 'Read' '(' IDENT selector[selector] ')' ;
+    // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:255:1: read returns [Interpretable read] : 'Read' '(' IDENT selector[selector] ')' ;
     public final Oberon0Parser.read_return read() throws RecognitionException {
         Oberon0Parser.read_return retval = new Oberon0Parser.read_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
 
-        Token string_literal114=null;
-        Token char_literal115=null;
-        Token IDENT116=null;
-        Token char_literal118=null;
-        Oberon0Parser.selector_return selector117 = null;
+        Token string_literal113=null;
+        Token char_literal114=null;
+        Token IDENT115=null;
+        Token char_literal117=null;
+        Oberon0Parser.selector_return selector116 = null;
 
 
-        Object string_literal114_tree=null;
-        Object char_literal115_tree=null;
-        Object IDENT116_tree=null;
-        Object char_literal118_tree=null;
+        Object string_literal113_tree=null;
+        Object char_literal114_tree=null;
+        Object IDENT115_tree=null;
+        Object char_literal117_tree=null;
 
         try {
-            // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:254:2: ( 'Read' '(' IDENT selector[selector] ')' )
-            // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:254:4: 'Read' '(' IDENT selector[selector] ')'
+            // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:256:2: ( 'Read' '(' IDENT selector[selector] ')' )
+            // D:\\DropBox\\My Dropbox\\UVA\\SC\\Workspac\\Oberon0\\src\\ar\\oberon0\\grammar\\Oberon0.g:256:4: 'Read' '(' IDENT selector[selector] ')'
             {
             root_0 = (Object)adaptor.nil();
 
-            string_literal114=(Token)match(input,52,FOLLOW_52_in_read2456); 
-            string_literal114_tree = (Object)adaptor.create(string_literal114);
-            adaptor.addChild(root_0, string_literal114_tree);
+            string_literal113=(Token)match(input,52,FOLLOW_52_in_read2480); 
+            string_literal113_tree = (Object)adaptor.create(string_literal113);
+            adaptor.addChild(root_0, string_literal113_tree);
 
-            char_literal115=(Token)match(input,12,FOLLOW_12_in_read2457); 
-            char_literal115_tree = (Object)adaptor.create(char_literal115);
-            adaptor.addChild(root_0, char_literal115_tree);
+            char_literal114=(Token)match(input,12,FOLLOW_12_in_read2481); 
+            char_literal114_tree = (Object)adaptor.create(char_literal114);
+            adaptor.addChild(root_0, char_literal114_tree);
 
-            IDENT116=(Token)match(input,IDENT,FOLLOW_IDENT_in_read2459); 
-            IDENT116_tree = (Object)adaptor.create(IDENT116);
-            adaptor.addChild(root_0, IDENT116_tree);
+            IDENT115=(Token)match(input,IDENT,FOLLOW_IDENT_in_read2483); 
+            IDENT115_tree = (Object)adaptor.create(IDENT115);
+            adaptor.addChild(root_0, IDENT115_tree);
 
-            VarSelectorNode selector = new VarSelectorNode(IDENT116.getText());
-            pushFollow(FOLLOW_selector_in_read2476);
-            selector117=selector(selector);
+            VarSelectorNode selector = new VarSelectorNode(IDENT115.getText());
+            pushFollow(FOLLOW_selector_in_read2500);
+            selector116=selector(selector);
 
             state._fsp--;
 
-            adaptor.addChild(root_0, selector117.getTree());
-            char_literal118=(Token)match(input,13,FOLLOW_13_in_read2479); 
-            char_literal118_tree = (Object)adaptor.create(char_literal118);
-            adaptor.addChild(root_0, char_literal118_tree);
+            adaptor.addChild(root_0, selector116.getTree());
+            char_literal117=(Token)match(input,13,FOLLOW_13_in_read2503); 
+            char_literal117_tree = (Object)adaptor.create(char_literal117);
+            adaptor.addChild(root_0, char_literal117_tree);
 
             retval.read = new ReadNode(selector);
 
@@ -3489,14 +3496,15 @@ public class Oberon0Parser extends Parser {
     public static final BitSet FOLLOW_12_in_write2333 = new BitSet(new long[]{0x0000000000185030L});
     public static final BitSet FOLLOW_expression_in_write2335 = new BitSet(new long[]{0x0000000000002000L});
     public static final BitSet FOLLOW_13_in_write2337 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_49_in_write2373 = new BitSet(new long[]{0x0004000000000010L});
-    public static final BitSet FOLLOW_IDENT_in_write2376 = new BitSet(new long[]{0x0004000000000010L});
-    public static final BitSet FOLLOW_50_in_write2395 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_51_in_write2423 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_52_in_read2456 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_12_in_read2457 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_IDENT_in_read2459 = new BitSet(new long[]{0x0000000000002600L});
-    public static final BitSet FOLLOW_selector_in_read2476 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_13_in_read2479 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_49_in_write2373 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_IDENT_in_write2377 = new BitSet(new long[]{0x0004000000000010L});
+    public static final BitSet FOLLOW_IDENT_in_write2396 = new BitSet(new long[]{0x0004000000000010L});
+    public static final BitSet FOLLOW_50_in_write2419 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_51_in_write2447 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_52_in_read2480 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_12_in_read2481 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_IDENT_in_read2483 = new BitSet(new long[]{0x0000000000002600L});
+    public static final BitSet FOLLOW_selector_in_read2500 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_13_in_read2503 = new BitSet(new long[]{0x0000000000000002L});
 
 }

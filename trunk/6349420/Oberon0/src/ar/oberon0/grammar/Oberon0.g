@@ -243,8 +243,10 @@ write returns [Interpretable write]
 		('Write' 
 			(	'(' expression ')'									{$write = new WriteNode($expression.expression);}
 			|														{WriteNode writeNode = new WriteNode();}
-				'("'(	IDENT										{writeNode.addToMessage($IDENT.getText() + " ");}
-				)*'")'												{$write = writeNode;}
+				'("'	firstIdent=IDENT							{writeNode.addToMessage($firstIdent.getText());}
+						(otherIdent=IDENT							{writeNode.addToMessage(" " + $otherIdent.getText());}
+						)*
+				'")'												{$write = writeNode;}
 			)
 		)
 	|	('WriteLn')													{$write = new WriteNode(); ((WriteNode)$write).addToMessage("\n");}	
