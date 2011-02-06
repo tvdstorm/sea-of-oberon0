@@ -162,7 +162,22 @@ public class ExpressionVisitorTest {
 
 	@Test
 	public void testVisitGreaterExpNode() {
+		LOG.info("Testing eval GreaterExpNode");
 
+		// Test with two integer values where the left is greater
+		GreaterExpNode nodeTrue = new GreaterExpNode(new ValueExpNode(new Int(4)), new ValueExpNode(new Int(3)));
+		Boolean resultTrue = instance.eval(nodeTrue, null);
+		assertEquals(true, resultTrue);
+
+		// Test with two integer values where the left is not greater
+		GreaterExpNode nodeFalse = new GreaterExpNode(new ValueExpNode(new Int(2)), new ValueExpNode(new Int(3)));
+		Boolean resultFalse = instance.eval(nodeFalse, null);
+		assertEquals(false, resultFalse);
+
+		// Test with two integer values that are equal
+		GreaterExpNode nodeEqual = new GreaterExpNode(new ValueExpNode(new Int(3)), new ValueExpNode(new Int(3)));
+		Boolean resultEqual = instance.eval(nodeEqual, null);
+		assertEquals(false, resultEqual);
 	}
 
 	@Test
