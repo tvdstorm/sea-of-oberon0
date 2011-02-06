@@ -5,6 +5,7 @@
 	<classpathentry kind="src" path="tests"/>
 	<classpathentry kind="src" path="grammer"/>
 	<classpathentry kind="src" path="sources"/>
+	<classpathentry kind="src" path="metrics"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/Users/israelposner/Documents/svn/antlr -3.3/lib/antlr-3.3-complete.jar"/>
