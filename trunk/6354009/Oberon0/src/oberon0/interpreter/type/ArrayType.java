@@ -71,7 +71,7 @@ public class ArrayType extends Type {
 			else if (expression.getType() == ArrayExpression.TYPE) {
 				ArrayType type = ((ArrayExpression)expression).getArrayType();
 				
-				ArrayType typeCopy = (ArrayType) type.getCopy();
+				ArrayType typeCopy = (ArrayType) type.getCopy(module);
 				this.values = typeCopy.getValues();
 			}
 			else {
@@ -83,15 +83,19 @@ public class ArrayType extends Type {
 
 	@Override
 	public Type getNew() {
-		return new ArrayType(sizeExpression, itemsType);
+		return new ArrayType(sizeExpression, itemsType.getNew());
 	}
 	
 	//COPYING
 	@Override
-	public Type getCopy() {
+	public Type getCopy(Module module) {
+		if (values == null) {
+			createTypeArray(module);
+		}
+		//Copy the values and make a new arraytype.
 		Type[] valuesCopy = new Type [values.length];
 		for (int i=0; i < values.length;i++) {
-			valuesCopy[i]  =  values[i].getCopy();
+			valuesCopy[i]  =  values[i].getCopy(module);
 		}
 		
 		return new ArrayType(valuesCopy);

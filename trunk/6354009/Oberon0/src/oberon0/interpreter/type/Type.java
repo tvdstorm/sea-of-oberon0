@@ -25,5 +25,5 @@ public abstract class Type {
 
 	public abstract Type getNew();
 	
-	public abstract Type getCopy();
+	public abstract Type getCopy(Module module);
 }
