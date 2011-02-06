@@ -13,33 +13,33 @@ import org.elcid.oberon0.exceptions.ModuloZeroException;
 public class ExpressionVisitor extends BaseVisitor {
 
 	@Override
-	public Integer visitValueExpNode(ValueExpNode node, Environment localEnv) {
+	public Integer eval(ValueExpNode node, Environment localEnv) {
 		return (Integer) node.getValue(localEnv);
 	}
 
 	@Override
-	public Integer visitPlusExpNode(PlusExpNode node, Environment localEnv) {
+	public Integer eval(PlusExpNode node, Environment localEnv) {
 		Integer left = (Integer) node.getLeftExp().accept(this, localEnv);
 		Integer right = (Integer) node.getRightExp().accept(this, localEnv);
 		return left + right;
 	}
 
 	@Override
-	public Integer visitMinusExpNode(MinusExpNode node, Environment localEnv) {
+	public Integer eval(MinusExpNode node, Environment localEnv) {
 		Integer left = (Integer) node.getLeftExp().accept(this, localEnv);
 		Integer right = (Integer) node.getRightExp().accept(this, localEnv);
 		return left - right;
 	}
 
 	@Override
-	public Integer visitMultiplyExpNode(MultiplyExpNode node, Environment localEnv) {
+	public Integer eval(MultiplyExpNode node, Environment localEnv) {
 		Integer left = (Integer) node.getLeftExp().accept(this, localEnv);
 		Integer right = (Integer) node.getRightExp().accept(this, localEnv);
 		return left * right;
 	}
 
 	@Override
-	public Integer visitDivideExpNode(DivideExpNode node, Environment localEnv) {
+	public Integer eval(DivideExpNode node, Environment localEnv) {
 		Integer left = (Integer) node.getLeftExp().accept(this, localEnv);
 		Integer right = (Integer) node.getRightExp().accept(this, localEnv);
 		if (right == 0)
@@ -48,7 +48,7 @@ public class ExpressionVisitor extends BaseVisitor {
 	}
 
 	@Override
-	public Integer visitModuloExpNode(ModuloExpNode node, Environment localEnv) {
+	public Integer eval(ModuloExpNode node, Environment localEnv) {
 		Integer left = (Integer) node.getLeftExp().accept(this, localEnv);
 		Integer right = (Integer) node.getRightExp().accept(this, localEnv);
 		if (right == 0)
@@ -57,35 +57,35 @@ public class ExpressionVisitor extends BaseVisitor {
 	}
 
 	@Override
-	public Boolean visitEqualsExpNode(EqualsExpNode node, Environment localEnv) {
+	public Boolean eval(EqualsExpNode node, Environment localEnv) {
 		Object left = node.getLeftExp().accept(this, localEnv);
 		Object right = node.getRightExp().accept(this, localEnv);
 		return left.equals(right);
 	}
 
 	@Override
-	public Boolean visitGreaterExpNode(GreaterExpNode node, Environment localEnv) {
+	public Boolean eval(GreaterExpNode node, Environment localEnv) {
 		Integer left = (Integer) node.getLeftExp().accept(this, localEnv);
 		Integer right = (Integer) node.getRightExp().accept(this, localEnv);
 		return left > right;
 	}
 
 	@Override
-	public Boolean visitGreaterOrEqualsExpNode(GreaterOrEqualsExpNode node, Environment localEnv) {
+	public Boolean eval(GreaterOrEqualsExpNode node, Environment localEnv) {
 		Integer left = (Integer) node.getLeftExp().accept(this, localEnv);
 		Integer right = (Integer) node.getRightExp().accept(this, localEnv);
 		return left >= right;
 	}
 
 	@Override
-	public Boolean visitLesserExpNode(LesserExpNode node, Environment localEnv) {
+	public Boolean eval(LesserExpNode node, Environment localEnv) {
 		Integer left = (Integer) node.getLeftExp().accept(this, localEnv);
 		Integer right = (Integer) node.getRightExp().accept(this, localEnv);
 		return left < right;
 	}
 
 	@Override
-	public Boolean visitLesserOrEqualsExpNode(LesserOrEqualsExpNode node, Environment localEnv) {
+	public Boolean eval(LesserOrEqualsExpNode node, Environment localEnv) {
 		Integer left = (Integer) node.getLeftExp().accept(this, localEnv);
 		Integer right = (Integer) node.getRightExp().accept(this, localEnv);
 		return left <= right;

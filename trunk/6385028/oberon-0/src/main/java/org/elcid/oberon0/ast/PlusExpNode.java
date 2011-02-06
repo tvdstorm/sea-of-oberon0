@@ -30,7 +30,7 @@ public class PlusExpNode extends IntExpNode {
 
 	@Override
 	public Integer accept(BaseVisitor visitor, Environment localEnv) {
-		return visitor.visitPlusExpNode(this, localEnv);
+		return visitor.eval(this, localEnv);
 	}
 
 	@Override
