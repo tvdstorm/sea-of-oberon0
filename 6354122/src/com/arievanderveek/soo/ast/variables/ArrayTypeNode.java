@@ -9,18 +9,20 @@ import com.arievanderveek.soo.symboltable.Scope;
 
 /**
  * @author arieveek
- *
+ * 
  */
 public class ArrayTypeNode implements ASTNode {
-	
+
 	private final ASTNode sizeExpression;
 	private final ASTNode type;
-	
+
 	/**
 	 * Constructor with all required fields
 	 * 
-	 * @param sizeExpression the expression that is the size of the array
-	 * @param type	the type of the array
+	 * @param sizeExpression
+	 *            the expression that is the size of the array
+	 * @param type
+	 *            the type of the array
 	 */
 	public ArrayTypeNode(ASTNode sizeExpression, ASTNode type) {
 		// Expression will be evaluated later to create a size.
@@ -28,7 +30,9 @@ public class ArrayTypeNode implements ASTNode {
 		this.type = type;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
 	 */
 	@Override
@@ -36,7 +40,9 @@ public class ArrayTypeNode implements ASTNode {
 		return null;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.arievanderveek.soo.ast.ASTNode#toTreeString(java.lang.String)
 	 */
 	@Override

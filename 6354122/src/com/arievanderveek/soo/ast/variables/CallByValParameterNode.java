@@ -11,7 +11,7 @@ import com.arievanderveek.soo.symboltable.Scope;
 
 /**
  * @author arieveek
- *
+ * 
  */
 public class CallByValParameterNode extends AbstractParameterNode {
 
@@ -22,7 +22,9 @@ public class CallByValParameterNode extends AbstractParameterNode {
 		super(formalParameter);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
 	 */
 	@Override
@@ -30,13 +32,15 @@ public class CallByValParameterNode extends AbstractParameterNode {
 		return null;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.arievanderveek.soo.ast.ASTNode#toTreeString(java.lang.String)
 	 */
 	@Override
 	public String toTreeString(String ident) throws SeaOfOberonException {
 		return super.toTreeString(ident);
-		
+
 	}
 
 }

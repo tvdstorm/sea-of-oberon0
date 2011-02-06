@@ -12,52 +12,57 @@ import com.arievanderveek.soo.util.Constants;
 
 /**
  * @author arieveek
- *
+ * 
  */
 public class WhileLoopNode implements ASTNode {
-	
-	private final ASTNode condition;
-	private final List<ASTNode> statementSequence; 
 
-	
+	private final ASTNode condition;
+	private final List<ASTNode> statementSequence;
+
 	/**
-	 * @param condition The condition that should be true for the loop to continue
-	 * @param statementSequence A sequence of statements that should be executed while
-	 * 	the condition is true
+	 * @param condition
+	 *            The condition that should be true for the loop to continue
+	 * @param statementSequence
+	 *            A sequence of statements that should be executed while the
+	 *            condition is true
 	 */
 	public WhileLoopNode(ASTNode condition, List<ASTNode> statementSequence) {
 		this.condition = condition;
 		this.statementSequence = statementSequence;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
 	 */
 	@Override
 	public Integer interpret(Scope scope) throws SeaOfOberonException {
-		while (conditionIsTrue(scope)){
-			for (ASTNode node : statementSequence){
+		while (conditionIsTrue(scope)) {
+			for (ASTNode node : statementSequence) {
 				node.interpret(scope);
 			}
 		}
 		return null;
 	}
-	
-	private boolean conditionIsTrue(Scope scope) throws SeaOfOberonException{
-		//  0 = false and 1 = true and anything else is exception
+
+	private boolean conditionIsTrue(Scope scope) throws SeaOfOberonException {
+		// 0 = false and 1 = true and anything else is exception
 		Integer resolvedCondition = condition.interpret(scope);
-		if (resolvedCondition == 0){
+		if (resolvedCondition == 0) {
 			return false;
-		} else if (resolvedCondition == 1){
+		} else if (resolvedCondition == 1) {
 			return true;
-		}else {
-			throw new SeaOfOberonException("Result of boolean expression not 1 or 0. " + resolvedCondition);
+		} else {
+			throw new SeaOfOberonException(
+					"Result of boolean expression not 1 or 0. "
+							+ resolvedCondition);
 		}
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.arievanderveek.soo.ast.ASTNode#toTreeString(java.lang.String)
 	 */
 	@Override
@@ -69,7 +74,7 @@ public class WhileLoopNode implements ASTNode {
 		sb.append(Constants.LINE_SEPARATOR);
 		sb.append("DO");
 		sb.append(Constants.LINE_SEPARATOR);
-		for (ASTNode node : statementSequence ){
+		for (ASTNode node : statementSequence) {
 			sb.append(ident + ident + node.toTreeString(ident));
 			sb.append(Constants.LINE_SEPARATOR);
 		}
@@ -77,6 +82,5 @@ public class WhileLoopNode implements ASTNode {
 		sb.append(Constants.LINE_SEPARATOR);
 		return sb.toString();
 	}
-
 
 }

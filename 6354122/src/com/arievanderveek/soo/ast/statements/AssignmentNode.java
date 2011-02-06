@@ -10,18 +10,20 @@ import com.arievanderveek.soo.symboltable.Scope;
 
 /**
  * @author arieveek
- *
+ * 
  */
 public class AssignmentNode implements ASTNode {
-	
+
 	private final ASTNode identifier, expression;
 
-	public AssignmentNode(ASTNode identifier, ASTNode expression){
+	public AssignmentNode(ASTNode identifier, ASTNode expression) {
 		this.identifier = identifier;
 		this.expression = expression;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
 	 */
 	@Override
@@ -31,14 +33,16 @@ public class AssignmentNode implements ASTNode {
 		return null;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.arievanderveek.soo.ast.ASTNode#toTreeString(java.lang.String)
 	 */
 	@Override
 	public String toTreeString(String ident) throws SeaOfOberonException {
 		StringBuilder sb = new StringBuilder();
 		sb.append(identifier.toTreeString(ident));
-		sb.append(ident + ":=" + ident); 
+		sb.append(ident + ":=" + ident);
 		sb.append(expression.toTreeString(ident));
 		return sb.toString();
 	}

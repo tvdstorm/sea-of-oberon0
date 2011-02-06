@@ -22,7 +22,7 @@ import com.arievanderveek.soo.util.Constants;
 public class ProcedureNode extends CodeBlockNode {
 	// TODO: Might migrate system procedures to extend from this class
 	protected final List<ASTNode> parameterBlocks;
-	
+
 	/**
 	 * Constructor with all required fields
 	 * 
@@ -48,29 +48,32 @@ public class ProcedureNode extends CodeBlockNode {
 	 * 
 	 * @param startName
 	 * @param endName
-	 * @param parameterBlocks 
+	 * @param parameterBlocks
 	 * @param constants
 	 * @param types
 	 * @param variables
 	 * @param procedures
 	 * @param statementSequence
 	 */
-	public ProcedureNode(String startName, String endName, List<ASTNode> parameterBlocks,
-			Map<String, ASTNode> constants, Map<String, ASTNode> types,
-			Map<String, ASTNode> variables, Map<String, ASTNode> procedures,
-			List<ASTNode> statementSequence) {
+	public ProcedureNode(String startName, String endName,
+			List<ASTNode> parameterBlocks, Map<String, ASTNode> constants,
+			Map<String, ASTNode> types, Map<String, ASTNode> variables,
+			Map<String, ASTNode> procedures, List<ASTNode> statementSequence) {
 		super(startName, endName, constants, types, variables, procedures,
 				statementSequence);
 		this.parameterBlocks = parameterBlocks;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
 	 */
 	@Override
 	public Integer interpret(Scope scope) throws SeaOfOberonException {
-		// loop over statements and call interpret method with the Scope Variable
-		for (ASTNode statementNode : statementSequence){
+		// loop over statements and call interpret method with the Scope
+		// Variable
+		for (ASTNode statementNode : statementSequence) {
 			statementNode.interpret(scope);
 		}
 		return null;
@@ -81,7 +84,7 @@ public class ProcedureNode extends CodeBlockNode {
 		sb.append(Constants.LINE_SEPARATOR);
 		sb.append("Parameters");
 		sb.append(Constants.LINE_SEPARATOR);
-		for (ASTNode node : parameterBlocks){
+		for (ASTNode node : parameterBlocks) {
 			sb.append(node.toTreeString(ident));
 			sb.append(Constants.LINE_SEPARATOR);
 		}
@@ -97,20 +100,21 @@ public class ProcedureNode extends CodeBlockNode {
 	public List<ASTNode> getParameterBlocks() {
 		return parameterBlocks;
 	}
-	
-	public boolean isAmountOfParametersEqual(List<ASTNode> procedureCallParameters){
+
+	public boolean isAmountOfParametersEqual(
+			List<ASTNode> procedureCallParameters) {
 		// Count all the parameters defined in this class.
 		int amountOfDefinedParameters = 0;
-		for (ASTNode node : parameterBlocks){
-			amountOfDefinedParameters += ((AbstractParameterNode)node).getFormalParameter().size();
+		for (ASTNode node : parameterBlocks) {
+			amountOfDefinedParameters += ((AbstractParameterNode) node)
+					.getFormalParameter().size();
 		}
 		// Count all the passed parameters
 		int amountOfPassedParameters = procedureCallParameters.size();
-		if (amountOfDefinedParameters == amountOfPassedParameters){
+		if (amountOfDefinedParameters == amountOfPassedParameters) {
 			return true;
-		} else
-		{
-		return false;
+		} else {
+			return false;
 		}
 	}
 

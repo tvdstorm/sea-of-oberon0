@@ -1,8 +1,5 @@
 package com.arievanderveek.soo;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import com.arievanderveek.soo.util.ConfigurationFactory;
 import com.arievanderveek.soo.util.SeaOfOberonConfiguration;
 
@@ -13,32 +10,32 @@ import com.arievanderveek.soo.util.SeaOfOberonConfiguration;
  * 
  */
 public class Main {
-	
+
 	// TODO: Implement logging everywhere
 	// TODO: Scope class is to fat, so refactor it!!
-	// TODO: Write ALOT OF unit tests, with refactoring of scope in mind.	
+	// TODO: Write ALOT OF unit tests, with refactoring of scope in mind.
 	// TODO: Write javadoc for every class
-	// TODO: Migrate some lists to a Queue/LinkedList interface so FIFO is guaranteed.
+	// TODO: Migrate some lists to a Queue/LinkedList interface so FIFO is
+	// guaranteed.
 	// TODO: Check all classes for variable (final) consistency
 	// TODO: Implement record types
-	
-	private final static Logger LOGGER = Logger
-	.getLogger(Main.class.getName());
-	
+
 	/**
 	 * Parses the arguments and instantiates a instance of the oberon-0
 	 * interpreter
 	 * 
-	 * @param args Command line arguments
+	 * @param args
+	 *            Command line arguments
 	 */
 	public static void main(String[] args) {
 		try {
-			SeaOfOberonConfiguration config = ConfigurationFactory.createConfiguration(args);
-			SeaOfOberonController sooc = new SeaOfOberonController(config);
-			sooc.executeSourceCode();
+			SeaOfOberonConfiguration config = ConfigurationFactory
+					.createConfiguration(args);
+			SeaOfOberonController controller = new SeaOfOberonController(config);
+			controller.executeSourceCode();
 			System.exit(0);
 		} catch (Exception e) {
-			LOGGER.log(Level.SEVERE,"Exception encountered, exiting program", e);
+			e.printStackTrace();
 			System.exit(1);
 		}
 	}

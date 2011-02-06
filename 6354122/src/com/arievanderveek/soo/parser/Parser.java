@@ -10,11 +10,10 @@ import com.arievanderveek.soo.ast.ASTNode;
  * Interface for a parser implementation
  * 
  * @author arieveek
- *
+ * 
  */
 public interface Parser {
-	
-	
+
 	public ASTNode parseFile(String fileName) throws SeaOfOberonException;
 
 }

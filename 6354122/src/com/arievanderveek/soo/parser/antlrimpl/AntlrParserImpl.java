@@ -8,7 +8,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.logging.Logger;
 
 import org.antlr.runtime.ANTLRInputStream;
 import org.antlr.runtime.CharStream;
@@ -23,15 +22,11 @@ import com.arievanderveek.soo.parser.antlrimpl.generated.Oberon0Lexer;
 import com.arievanderveek.soo.parser.antlrimpl.generated.Oberon0Parser;
 import com.arievanderveek.soo.parser.antlrimpl.generated.Oberon0Parser.module_return;
 
-
 /**
  * @author arieveek
  * 
  */
 public class AntlrParserImpl implements Parser {
-
-	private final static Logger LOGGER = Logger.getLogger(AntlrParserImpl.class
-			.getName());
 
 	/*
 	 * (non-Javadoc)

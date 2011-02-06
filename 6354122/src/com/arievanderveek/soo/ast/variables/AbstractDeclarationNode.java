@@ -8,7 +8,7 @@ import com.arievanderveek.soo.ast.ASTNode;
 
 /**
  * @author arieveek
- *
+ * 
  */
 public abstract class AbstractDeclarationNode implements ASTNode {
 
@@ -26,15 +26,17 @@ public abstract class AbstractDeclarationNode implements ASTNode {
 		this.expression = expression;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.arievanderveek.soo.ast.ASTNode#toTreeString(java.lang.String)
 	 */
 	@Override
 	public String toTreeString(String ident) throws SeaOfOberonException {
 		return expression.toTreeString(ident);
 	}
-	
-	public ASTNode getExpression(){
+
+	public ASTNode getExpression() {
 		return this.expression;
 	}
 }

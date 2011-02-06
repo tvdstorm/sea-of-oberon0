@@ -9,7 +9,7 @@ import com.arievanderveek.soo.symboltable.Scope;
 
 /**
  * @author arieveek
- *
+ * 
  */
 public class SmallerEqualThenOperatorNode extends AbstractBinaryOperatorNode {
 
@@ -32,7 +32,7 @@ public class SmallerEqualThenOperatorNode extends AbstractBinaryOperatorNode {
 	public String toTreeString(String ident) throws SeaOfOberonException {
 		StringBuilder sb = new StringBuilder();
 		sb.append(super.leftHandNode.toTreeString(ident));
-		sb.append(ident + "Smaller Equal then" + ident); 
+		sb.append(ident + "Smaller Equal then" + ident);
 		sb.append(super.rightHandNode.toTreeString(ident));
 		return sb.toString();
 	}
@@ -44,7 +44,8 @@ public class SmallerEqualThenOperatorNode extends AbstractBinaryOperatorNode {
 	 */
 	@Override
 	public Integer interpret(Scope scope) throws SeaOfOberonException {
-		if (super.leftHandNode.interpret(scope) <= super.rightHandNode.interpret(scope)) {
+		if (super.leftHandNode.interpret(scope) <= super.rightHandNode
+				.interpret(scope)) {
 			return 1;
 		} else {
 			return 0;

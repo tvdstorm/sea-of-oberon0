@@ -22,7 +22,9 @@ public class TypeDeclarationNode extends AbstractDeclarationNode {
 		super(expression);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
 	 */
 	@Override

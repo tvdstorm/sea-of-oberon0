@@ -8,19 +8,20 @@ package com.arievanderveek.soo.util;
  * values.
  * 
  * @author arieveek
- *
+ * 
  */
 public class SeaOfOberonConfiguration {
-	
-	
-	// TODO: Visitor is obsolete, but kept for future usage?!? 
-	private String parserImplClass, visitorImplClass, sourceCodeFileName; 
+
+	// TODO: Visitor is obsolete, but kept for future usage?!?
+	private String parserImplClass, visitorImplClass, sourceCodeFileName;
 	private boolean printTree = false;
 
 	/**
-	 * Setter for Oberon Parser Implementation class. Default value is: 
+	 * Setter for Oberon Parser Implementation class. Default value is:
 	 * "com.arievanderveek.soo.parser.antlrimpl.AntlParserImpl"
-	 * @param parserImplClass The Oberon-0 parser implementation fully qualified classname
+	 * 
+	 * @param parserImplClass
+	 *            The Oberon-0 parser implementation fully qualified classname
 	 */
 	public void setParserImplClass(String parserImplClass) {
 		this.parserImplClass = parserImplClass;
@@ -38,7 +39,9 @@ public class SeaOfOberonConfiguration {
 	/**
 	 * Setter for source code file name that is input for the Oberon-0 parser
 	 * and interpreter
-	 * @param sourceCodeFileName the sourceCodeFile to set 
+	 * 
+	 * @param sourceCodeFileName
+	 *            the sourceCodeFile to set
 	 */
 	public void setSourceCodeFileName(String sourceCodeFileName) {
 		this.sourceCodeFileName = sourceCodeFileName;
@@ -63,10 +66,11 @@ public class SeaOfOberonConfiguration {
 	}
 
 	/**
-	 * Setter for the visitorImplClass. By default it is: 
+	 * Setter for the visitorImplClass. By default it is:
 	 * "com.arievanderveek.soo.visitors.PrettyPrintVisitor"
 	 * 
-	 * @param visitorImplClass the visitorImplClass to set
+	 * @param visitorImplClass
+	 *            the visitorImplClass to set
 	 */
 	public void setVisitorImplClass(String visitorImplClass) {
 		this.visitorImplClass = visitorImplClass;
@@ -80,7 +84,8 @@ public class SeaOfOberonConfiguration {
 	}
 
 	/**
-	 * @param printtree the printtree to set
+	 * @param printtree
+	 *            the printtree to set
 	 */
 	public void setPrintTree(boolean printTree) {
 		this.printTree = printTree;

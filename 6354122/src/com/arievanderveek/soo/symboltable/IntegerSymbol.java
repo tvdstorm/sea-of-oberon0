@@ -5,26 +5,26 @@ package com.arievanderveek.soo.symboltable;
 
 import com.arievanderveek.soo.util.Constants;
 
-
 /**
  * Abstract class representing the base of a Symbol
  * 
  * @author arieveek
- *
+ * 
  */
 public class IntegerSymbol extends Symbol {
-	
+
 	private boolean mutable;
 	private String name;
 	private MemoryAddress memoryAdress;
-	
+
 	/**
 	 * Constructor for a Symbol
 	 * 
 	 * @param name
 	 * @param memoryAdress
 	 */
-	public IntegerSymbol(String name, boolean mutable, MemoryAddress memoryAdress) {
+	public IntegerSymbol(String name, boolean mutable,
+			MemoryAddress memoryAdress) {
 		super.type = SymbolTypesEnum.INTEGER;
 		this.name = name;
 		this.mutable = mutable;
@@ -48,19 +48,23 @@ public class IntegerSymbol extends Symbol {
 	public MemoryAddress getMemoryAdress() {
 		return memoryAdress;
 	}
-	
-	public void updateMemoryAddress(MemoryAddress memoryAdress){
+
+	public void updateMemoryAddress(MemoryAddress memoryAdress) {
 		this.memoryAdress = memoryAdress;
-		
+
 	}
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.arievanderveek.soo.symboltable.Symbol#isMutable()
 	 */
 	@Override
 	public boolean isMutable() {
 		return mutable;
 	}
-	public String toString(){
+
+	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(Constants.LINE);
 		sb.append(Constants.LINE_SEPARATOR);
