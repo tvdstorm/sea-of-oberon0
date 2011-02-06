@@ -110,7 +110,7 @@ public class UnitTests extends TestCase {
 
 	public void testProcedureWithParamters() {
 		ExpectedResult expectedResult = new ExpectedResult();
-		expectedResult.addString("hallo ");
+		expectedResult.addString("hallo");
 		expectedResult.addString("1");
 		expectedResult.addString("3");
 		expectedResult.addString("3");
@@ -122,7 +122,7 @@ public class UnitTests extends TestCase {
 
 	public void testProcedureWithoutParameters() {
 		ExpectedResult expectedResult = new ExpectedResult();
-		expectedResult.addString("hallo ");
+		expectedResult.addString("hallo");
 
 		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
 		InterpreterExecuter.Execute("ExtRef\\ProcedureWithoutParametersTest", "module", "module");
@@ -161,7 +161,7 @@ public class UnitTests extends TestCase {
 
 	public void testSimpleModule() {
 		ExpectedResult expectedResult = new ExpectedResult();
-		expectedResult.addString("testtt ");
+		expectedResult.addString("testtt");
 		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
 		InterpreterExecuter.Execute("ExtRef\\SimpleModuleTest", "module", "module");
 
@@ -170,11 +170,11 @@ public class UnitTests extends TestCase {
 
 	public void testWhileLoop() {
 		ExpectedResult expectedResult = new ExpectedResult();
-		expectedResult.addString("a ");
-		expectedResult.addString("a ");
-		expectedResult.addString("a ");
-		expectedResult.addString("a ");
-		expectedResult.addString("a ");
+		expectedResult.addString("a");
+		expectedResult.addString("a");
+		expectedResult.addString("a");
+		expectedResult.addString("a");
+		expectedResult.addString("a");
 		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
 		InterpreterExecuter.Execute("ExtRef\\WhileTest", "module", "module");
 
@@ -183,7 +183,7 @@ public class UnitTests extends TestCase {
 
 	public void testIf() {
 		ExpectedResult expectedResult = new ExpectedResult();
-		expectedResult.addString("in if ");
+		expectedResult.addString("in if");
 		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
 		InterpreterExecuter.Execute("ExtRef\\IfTest", "ifStatement", "ifStatement");
 
@@ -192,7 +192,7 @@ public class UnitTests extends TestCase {
 
 	public void testIfElse() {
 		ExpectedResult expectedResult = new ExpectedResult();
-		expectedResult.addString("in else ");
+		expectedResult.addString("in else");
 		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
 		InterpreterExecuter.Execute("ExtRef\\IfElseTest", "ifStatement", "ifStatement");
 
@@ -201,7 +201,7 @@ public class UnitTests extends TestCase {
 
 	public void testIfElseIf() {
 		ExpectedResult expectedResult = new ExpectedResult();
-		expectedResult.addString("in else if ");
+		expectedResult.addString("in else if");
 		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
 		InterpreterExecuter.Execute("ExtRef\\IfElseElseIfTest", "ifStatement", "ifStatement");
 
