@@ -18,15 +18,6 @@ public abstract class Value
 		}
 		throw new TypeMismatchException(dereferenced.getType().toString(), Type.INTEGER.toString());
 	}
-	public Boolean castToBoolean() throws TypeMismatchException
-	{
-		Value dereferenced = dereference();
-		if (dereferenced instanceof Boolean)
-		{
-			return (Boolean)dereferenced;
-		}
-		throw new TypeMismatchException(dereferenced.getType().toString(), Type.BOOLEAN.toString());
-	}
 	public Array castToArray() throws TypeMismatchException
 	{
 		Value dereferenced = dereference();

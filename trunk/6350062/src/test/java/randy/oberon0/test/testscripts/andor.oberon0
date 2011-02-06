@@ -1,10 +1,10 @@
 MODULE Andor;
 
-VAR t, f: BOOLEAN;
+VAR t, f: INTEGER;
 BEGIN
 
-t := TRUE;
-f := FALSE;
+t := (1 = 1);
+f := (1 = 2);
 
 IF t & t THEN
 	Write(1)

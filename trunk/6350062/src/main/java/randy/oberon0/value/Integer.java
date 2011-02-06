@@ -1,5 +1,6 @@
 package randy.oberon0.value;
 
+import randy.oberon0.exception.TypeMismatchException;
 import randy.oberon0.exception.RuntimeException;
 
 public class Integer extends Value
@@ -9,6 +10,17 @@ public class Integer extends Value
 	public Integer(int _value)
 	{
 		value = _value;
+	}
+	public Integer(boolean _value)
+	{
+		if (_value)
+		{
+			value = 1;
+		}
+		else
+		{
+			value = 0;
+		}
 	}
 	public int getIntValue()
 	{
@@ -47,5 +59,20 @@ public class Integer extends Value
 	public Value clone()
 	{
 		return new Integer(value);
+	}
+	public boolean isTrue() throws TypeMismatchException
+	{
+		if (value == 0)
+		{
+			return false;
+		}
+		else if (value == 1)
+		{
+			return true;
+		}
+		else
+		{
+			throw new TypeMismatchException("INTEGER", "BOOLEAN");
+		}
 	}
 }
