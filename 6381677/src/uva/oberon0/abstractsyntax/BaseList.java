@@ -8,11 +8,11 @@ import java.util.List;
  * @author Chiel Labee
  *
  */
-public abstract class BaseNodeWithList<E> extends BaseNode implements Iterable<E>
+public abstract class BaseList<E> implements Iterable<E>
 {
 	private final List<E> _list;
 	
-	protected BaseNodeWithList() 
+	protected BaseList() 
 	{
 		_list = new ArrayList<E>();
 	}

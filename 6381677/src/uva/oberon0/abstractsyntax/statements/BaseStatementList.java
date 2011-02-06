@@ -1,6 +1,6 @@
 package uva.oberon0.abstractsyntax.statements;
 
-import uva.oberon0.abstractsyntax.BaseNodeWithList;
+import uva.oberon0.abstractsyntax.BaseList;
 import uva.oberon0.runtime.Scope;
 
 
@@ -8,9 +8,8 @@ import uva.oberon0.runtime.Scope;
  * @author Chiel Labee
  * This class represents a List of Statement Nodes.
 */
-public class BaseStatementList extends BaseNodeWithList<BaseStatement> 
+public class BaseStatementList extends BaseList<BaseStatement> 
 {
-	@Override
 	public int eval(Scope scope)
 	{
 		//Loop all Statement Nodes.

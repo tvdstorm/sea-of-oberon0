@@ -11,7 +11,6 @@ import uva.oberon0.abstractsyntax.declarations.Constant;
 import uva.oberon0.abstractsyntax.declarations.Procedure;
 import uva.oberon0.abstractsyntax.declarations.Type;
 import uva.oberon0.abstractsyntax.declarations.Variable;
-import uva.oberon0.abstractsyntax.declarations.VariableByRef;
 import uva.oberon0.abstractsyntax.statements.CallActualParameterList;
 
 
@@ -21,12 +20,18 @@ import uva.oberon0.abstractsyntax.statements.CallActualParameterList;
 */
 public class Scope 
 {
+	private final Scope						_parent			;
 	private final Map<ID, Type> 			_mapTypes 		;
 	private final Map<ID, ScopeValueBase> 	_mapValues 		;
 	private final Map<ID, Procedure> 		_mapProcedures 	;
 
-	public Scope() 
+	public Scope()
 	{
+		this(null);
+	}
+	public Scope(Scope parent) 
+	{
+		_parent 		= parent;
 		_mapTypes 		= new HashMap<ID, Type>();
 		_mapValues 		= new HashMap<ID, ScopeValueBase>();
 		_mapProcedures 	= new HashMap<ID, Procedure>();
@@ -34,29 +39,34 @@ public class Scope
 	
 	public Scope(BaseDeclarationList declarations, Scope parent)
 	{
-		this();
+		this(parent);
 		
 		//Loop all Declarations.
 		for (BaseDeclaration declaration : declarations)
 		{
 			//Add item to Procedures map.
-			if (declaration instanceof Procedure)
+			if (declaration instanceof Procedure) {
 				addProcedure((Procedure)declaration);
-
+			}
+			
 			//Add  item to Type map.
-			else if (declaration instanceof Type)
+			else if (declaration instanceof Type) {
 				addType((Type)declaration);
-
+			}
+			
 			//Create and Add an Execution Scope Value to the Value hash.
-			else if (declaration instanceof Variable)
+			else if (declaration instanceof Variable) {
 				addValue(declaration.getID(), ((Variable)declaration).instantiate(this));
-
+			}
+			
 			//Create and Add an Execution Scope Value to the Value hash.
-			else if (declaration instanceof Constant)
+			else if (declaration instanceof Constant) {
 				addValue(declaration.getID(), ((Constant)declaration).instantiate(this));
-
-			else
+			}
+			
+			else {
 				assert false : "Declaration Type not implemented!";
+			}
 		}
 	}
 	public Scope(CallActualParameterList actualParameters, Procedure procedure, Scope parent)
@@ -68,7 +78,7 @@ public class Scope
 		_mapProcedures.put(procedure.getID(), procedure);
 		
 		//Loop all Method Call Variables.
-		for (int i = 0; i < procedure.getParameterCount(); i++)
+		for (int i = 0; i < procedure.getParameterCount(); i++) 
 		{
 			//Determine the Formal Procedure Parameter.
 			Variable formal = (Variable)procedure.getParameter(i);
@@ -77,15 +87,13 @@ public class Scope
 			BaseNode actual = actualParameters.get(i);
 			
 			//Determine if the declaration should be passed by Reference.
-			if (formal instanceof VariableByRef)
-			{
+			if (formal.isByReference()) {
 				//Get and Add the existing Execution Scope Value. 
 				addValue(formal.getID(), parent.getValueReference(ID.get(actual)));
 			}
 			
 			//Determine if the declaration should be passed by Value.
-			else
-			{
+			else {
 				ScopeValueBase value = formal.instantiate(this);
 				value.setValue(this, actual.eval(parent));
 				
@@ -116,8 +124,7 @@ public class Scope
 	{
 		ScopeValueBase scopeValue = getValueReference(id);
 		
-		if (scopeValue == null)
-		{
+		if (scopeValue == null){
 			assert false : "Variable " + id + " not found!";
 			return 0;
 		}
@@ -128,10 +135,19 @@ public class Scope
 	{
 		assert id != null : "ID cannot be Null!";
 		
-		ScopeValueBase value = _mapValues.get(id);
+		ScopeValueBase value = null;
 		
-		if (value != null)
+		if (_mapValues.containsKey(id)){
+			value = _mapValues.get(id);
+		}
+		
+		else if (_parent != null){
+			value = _parent.getValueReference(id);
+		}
+		
+		if (value != null){
 			return value.getValueReference(this, id);
+		}
 		
 		assert false : "Variable " + id + " not found!";
 		return null;
@@ -157,6 +173,23 @@ public class Scope
 	}
 	
 	/**
+	 * Get the specified Type from within the current Execution Scope.
+	 */
+	public Type getType(ID id)
+	{
+		if (_mapTypes.containsKey(id)) {
+			return _mapTypes.get(id);
+		}
+		
+		if (_parent != null) {
+			return _parent.getType(id);
+		}
+		
+		assert false : "Undefined Type " + id + "!";
+		return null;
+	}
+	
+	/**
 	 * Performs a Procedure Method Call within the current Execution Scope.
 	 * @param id The Identifier of the Procedure that should be executed.
 	 * @param callVars The Method Call Variables that should be passed to the Procedure.
@@ -171,8 +204,7 @@ public class Scope
 		Procedure procedure = _mapProcedures.get(id);
 		
 		//Determine procedure match in current Execution Scope.
-		if (procedure != null)
-		{
+		if (procedure != null) {
 			//Create a new child Execution Scope for the Procedure Method Call.
 			Scope scope = new Scope(callVars, procedure, parentScope);
 			//Evaluate the Procedure Method Call.
