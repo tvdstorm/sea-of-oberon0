@@ -1,6 +1,7 @@
 package oberon;
 
 import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.VariableNotFoundInScopeException;
 
 
 /**
@@ -13,15 +14,17 @@ public interface IIdentifier {
 	 *
 	 * @return data type value for the variable
 	 * @throws UnsupportedException 
+	 * @throws VariableNotFoundInScopeException 
 	 */
-	public abstract IDataType getDataTypeValue() throws UnsupportedException;
+	public abstract IDataType getDataTypeValue() throws UnsupportedException, VariableNotFoundInScopeException;
 
 	/**
 	 * Gets the value.
 	 *
 	 * @return the value of the variable
 	 * @throws UnsupportedException 
+	 * @throws VariableNotFoundInScopeException 
 	 */
-	public abstract int getValue() throws UnsupportedException;
+	public abstract int getValue() throws UnsupportedException, VariableNotFoundInScopeException;
 
 }

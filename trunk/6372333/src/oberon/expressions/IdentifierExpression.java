@@ -3,6 +3,7 @@ package oberon.expressions;
 import oberon.IDataType;
 import oberon.IIdentifier;
 import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
  * The Class IdentifierExpression, for selectors contained in expressions.
@@ -24,7 +25,7 @@ public class IdentifierExpression extends AbstractExpression {
 	/* (non-Javadoc)
 	 * @see oberon.expressions.AbstractExpression#copy(java.lang.String)
 	 */
-	public IDataType copy(final String newName) throws UnsupportedException {
+	public IDataType copy(final String newName) throws UnsupportedException, VariableNotFoundInScopeException {
 		return selector.getDataTypeValue().copy(newName);
 	}
 	
@@ -32,7 +33,7 @@ public class IdentifierExpression extends AbstractExpression {
 	 * @see oberon.expressions.AbstractExpression#evalAsInt()
 	 */
 	@Override
-	public int evalAsInt() throws UnsupportedException {
+	public int evalAsInt() throws UnsupportedException, VariableNotFoundInScopeException {
 		return selector.getValue();
 	}
 

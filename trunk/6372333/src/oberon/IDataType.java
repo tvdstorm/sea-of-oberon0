@@ -1,6 +1,7 @@
 package oberon;
 
 import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
  * The Interface IDataType, used for all data types.
@@ -12,8 +13,9 @@ public interface IDataType {
 	 *
 	 * @return the value
 	 * @throws UnsupportedException 
+	 * @throws VariableNotFoundInScopeException 
 	 */
-	public abstract int getValue() throws UnsupportedException;
+	public abstract int getValue() throws UnsupportedException, VariableNotFoundInScopeException;
 
 	/**
 	 * Copy.

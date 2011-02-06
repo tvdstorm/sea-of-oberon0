@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="1" failures="0" hostname="lapkip" name="oberon.test.WhileTest" tests="1" time="0.0" timestamp="2011-02-06T09:53:57">
+<testsuite errors="1" failures="0" hostname="lapkip" name="oberon.test.AbstractTest" tests="1" time="0.0" timestamp="2011-02-06T09:53:57">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jre6\bin" />
@@ -67,7 +67,7 @@
     <property name="sun.desktop" value="windows" />
     <property name="sun.cpu.isalist" value="amd64" />
   </properties>
-  <error message="oberon.test.WhileTest" type="java.lang.ClassNotFoundException">java.lang.ClassNotFoundException: oberon.test.WhileTest
+  <error message="oberon.test.AbstractTest" type="java.lang.ClassNotFoundException">java.lang.ClassNotFoundException: oberon.test.AbstractTest
 	at java.net.URLClassLoader$1.run(Unknown Source)
 	at java.security.AccessController.doPrivileged(Native Method)
 	at java.net.URLClassLoader.findClass(Unknown Source)

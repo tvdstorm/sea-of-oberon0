@@ -1,8 +1,6 @@
 package oberon;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.io.PushbackReader;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -10,10 +8,8 @@ import java.util.Queue;
 import oberon.exceptions.UnsupportedException;
 import oberon.interpret.ModuleInterpreter;
 import oberon.lexer.Lexer;
-import oberon.lexer.LexerException;
 import oberon.node.Start;
 import oberon.parser.Parser;
-import oberon.parser.ParserException;
 
 /**
  * The Main class of the package, use this class to run the program.

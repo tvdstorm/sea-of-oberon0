@@ -9,6 +9,7 @@ import java.util.List;
 
 import oberon.data.IntegerArrayDataType;
 import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.VariableNotFoundInScopeException;
 import oberon.procedures.Declaration;
 import oberon.procedures.FormalParamSection;
 import oberon.procedures.FormalParamType;
@@ -24,7 +25,7 @@ class ReadProcedure implements IStatement {
 	 * @see oberon.IStatement#eval()
 	 */
 	@Override
-	public void eval() throws IOException, UnsupportedException {
+	public void eval() throws IOException, UnsupportedException, VariableNotFoundInScopeException {
 		final VariableManager instance = VariableManager.getInstance();
 		final int index = instance.getVariable("i").getValue();
 		

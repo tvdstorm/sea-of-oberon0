@@ -4,6 +4,7 @@ import oberon.IDataType;
 import oberon.IExpression;
 import oberon.data.VariableDataType;
 import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
  * The Class AbstractExpression, super class for all expressions.
@@ -13,13 +14,13 @@ public abstract class AbstractExpression implements IExpression {
 	 * @see oberon.IExpression#evalAsInt()
 	 */
 	@Override
-	public abstract int evalAsInt() throws UnsupportedException;
+	public abstract int evalAsInt() throws UnsupportedException, VariableNotFoundInScopeException;
 	
 	/* (non-Javadoc)
 	 * @see oberon.IExpression#evalAsBoolean()
 	 */
 	@Override
-	public Boolean evalAsBoolean() throws UnsupportedException {
+	public Boolean evalAsBoolean() throws UnsupportedException, VariableNotFoundInScopeException {
 		return evalAsInt() == 1;
 	}
 	
@@ -41,7 +42,7 @@ public abstract class AbstractExpression implements IExpression {
 	 * @see oberon.IExpression#copy(java.lang.String)
 	 */
 	@Override
-	public IDataType copy(String newName) throws UnsupportedException
+	public IDataType copy(String newName) throws UnsupportedException, VariableNotFoundInScopeException
 	{
 		assert(this instanceof MathematicalExpression ||
 				this instanceof AbstractIntegerExpression ||

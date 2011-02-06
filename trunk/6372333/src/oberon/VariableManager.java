@@ -7,6 +7,7 @@ import java.util.Stack;
 
 import oberon.data.IntegerArrayDataType;
 import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.VariableNotFoundInScopeException;
 import oberon.procedures.AbstractProcedure;
 import oberon.procedures.Declaration;
 import oberon.procedures.ProcedureHeading;
@@ -50,8 +51,9 @@ public class VariableManager {
 	 *
 	 * @param declaration the declaration to be added
 	 * @throws UnsupportedException 
+	 * @throws VariableNotFoundInScopeException 
 	 */
-	public void addNewDeclaration(final Declaration declaration) throws UnsupportedException{
+	public void addNewDeclaration(final Declaration declaration) throws UnsupportedException, VariableNotFoundInScopeException{
 		currentScope.addNewDeclaration(declaration);
 	}
 	
@@ -62,7 +64,7 @@ public class VariableManager {
 	 * @param currentProcedure the current procedure
 	 */
 	public void enterNewScope(final List<IDataType> actualProcedureParameters, 
-			final ProcedureHeading currentProcedure){
+			final IProcedure currentProcedure){
 		//preserve the old scope, put it on the stack
 		scopes.add(currentScope);
 		
@@ -85,8 +87,9 @@ public class VariableManager {
 	 *
 	 * @param name the name of the variable
 	 * @return the variable from the scope
+	 * @throws VariableNotFoundInScopeException 
 	 */
-	public IDataType getVariable(final String name) {
+	public IDataType getVariable(final String name) throws VariableNotFoundInScopeException {
 		return currentScope.getVariable(name);
 	}
 	
@@ -191,8 +194,9 @@ public class VariableManager {
 		 *
 		 * @param declaration the declaration
 		 * @throws UnsupportedException 
+		 * @throws VariableNotFoundInScopeException 
 		 */
-		public void addNewDeclaration(final Declaration declaration) throws UnsupportedException
+		public void addNewDeclaration(final Declaration declaration) throws UnsupportedException, VariableNotFoundInScopeException
 		{
 			for (IDataType actualParam : declaration.getVariables()){
 				variables.put(actualParam.getName(), actualParam);	
@@ -242,14 +246,14 @@ public class VariableManager {
 		 *
 		 * @param variableName the name of the variable
 		 * @return the variable
+		 * @throws VariableNotFoundInScopeException 
 		 */
-		public IDataType getVariable(final String variableName) {
+		public IDataType getVariable(final String variableName) throws VariableNotFoundInScopeException {
 			if (variables.containsKey(variableName)){
 					return variables.get(variableName);
 			}
 			
-			System.out.println("Variable not found in scope: "+ variableName);
-			return null;
+			throw new VariableNotFoundInScopeException(variableName);
 		}
 	}
 }

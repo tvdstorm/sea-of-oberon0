@@ -3,6 +3,7 @@ package oberon.data;
 import oberon.IDataType;
 import oberon.IIdentifier;
 import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
  * The Class AbstractIdentifier, super class for all identifiers
@@ -12,10 +13,10 @@ public abstract class AbstractIdentifier implements IIdentifier {
 	 * @see oberon.data.IIdentifier#getDataTypeValue()
 	 */
 	@Override
-	public abstract IDataType getDataTypeValue() throws UnsupportedException;
+	public abstract IDataType getDataTypeValue() throws UnsupportedException, VariableNotFoundInScopeException;
 	/* (non-Javadoc)
 	 * @see oberon.data.IIdentifier#getSelectorValue()
 	 */
 	@Override
-	public abstract int getValue() throws UnsupportedException;
+	public abstract int getValue() throws UnsupportedException, VariableNotFoundInScopeException;
 }
