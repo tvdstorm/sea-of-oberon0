@@ -16,6 +16,11 @@ public class Type extends BaseDeclaration
 		_type = type;
 	}
 
+	public Type getType()
+	{
+		return _type;
+	}
+	
 	@Override
 	public int eval(Scope scope) 
 	{
