@@ -182,17 +182,62 @@ public class ExpressionVisitorTest {
 
 	@Test
 	public void testVisitGreaterOrEqualsExpNode() {
+		LOG.info("Testing eval GreaterOrEqualsExpNode");
 
+		// Test with two integer values where the left is greater
+		GreaterOrEqualsExpNode nodeTrue = new GreaterOrEqualsExpNode(new ValueExpNode(new Int(4)), new ValueExpNode(new Int(3)));
+		Boolean resultTrue = instance.eval(nodeTrue, null);
+		assertEquals(true, resultTrue);
+
+		// Test with two integer values where the left is not greater
+		GreaterOrEqualsExpNode nodeFalse = new GreaterOrEqualsExpNode(new ValueExpNode(new Int(2)), new ValueExpNode(new Int(3)));
+		Boolean resultFalse = instance.eval(nodeFalse, null);
+		assertEquals(false, resultFalse);
+
+		// Test with two integer values that are equal
+		GreaterOrEqualsExpNode nodeEqual = new GreaterOrEqualsExpNode(new ValueExpNode(new Int(3)), new ValueExpNode(new Int(3)));
+		Boolean resultEqual = instance.eval(nodeEqual, null);
+		assertEquals(true, resultEqual);
 	}
 
 	@Test
 	public void testVisitLesserExpNode() {
+		LOG.info("Testing eval LesserExpNode");
 
+		// Test with two integer values where the left is lesser
+		LesserExpNode nodeTrue = new LesserExpNode(new ValueExpNode(new Int(3)), new ValueExpNode(new Int(4)));
+		Boolean resultTrue = instance.eval(nodeTrue, null);
+		assertEquals(true, resultTrue);
+
+		// Test with two integer values where the left is not lesser
+		LesserExpNode nodeFalse = new LesserExpNode(new ValueExpNode(new Int(3)), new ValueExpNode(new Int(2)));
+		Boolean resultFalse = instance.eval(nodeFalse, null);
+		assertEquals(false, resultFalse);
+
+		// Test with two integer values that are equal
+		LesserExpNode nodeEqual = new LesserExpNode(new ValueExpNode(new Int(3)), new ValueExpNode(new Int(3)));
+		Boolean resultEqual = instance.eval(nodeEqual, null);
+		assertEquals(false, resultEqual);
 	}
 
 	@Test
 	public void testVisitLesserOrEqualsExpNode() {
-		
+		LOG.info("Testing eval LesserOrEqualsExpNode");
+
+		// Test with two integer values where the left is lesser
+		LesserOrEqualsExpNode nodeTrue = new LesserOrEqualsExpNode(new ValueExpNode(new Int(3)), new ValueExpNode(new Int(4)));
+		Boolean resultTrue = instance.eval(nodeTrue, null);
+		assertEquals(true, resultTrue);
+
+		// Test with two integer values where the left is not lesser
+		LesserOrEqualsExpNode nodeFalse = new LesserOrEqualsExpNode(new ValueExpNode(new Int(3)), new ValueExpNode(new Int(2)));
+		Boolean resultFalse = instance.eval(nodeFalse, null);
+		assertEquals(false, resultFalse);
+
+		// Test with two integer values that are equal
+		LesserOrEqualsExpNode nodeEqual = new LesserOrEqualsExpNode(new ValueExpNode(new Int(3)), new ValueExpNode(new Int(3)));
+		Boolean resultEqual = instance.eval(nodeEqual, null);
+		assertEquals(true, resultEqual);
 	}
 
 	@Test
