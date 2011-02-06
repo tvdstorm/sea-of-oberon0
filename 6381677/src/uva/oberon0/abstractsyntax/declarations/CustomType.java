@@ -1,17 +1,18 @@
 package uva.oberon0.abstractsyntax.declarations;
 
 import uva.oberon0.abstractsyntax.types.ID;
+import uva.oberon0.abstractsyntax.types.Type;
 import uva.oberon0.runtime.Scope;
 
 /**
  * @author Chiel Labee
  * This class represents a declarable Type Structure.
 */
-public class Type extends Declaration 
+public class CustomType extends Declaration 
 {
 	private final Type _type;
 
-	public Type(ID id, Type type) 
+	public CustomType(ID id, Type type) 
 	{
 		super(id);
 		

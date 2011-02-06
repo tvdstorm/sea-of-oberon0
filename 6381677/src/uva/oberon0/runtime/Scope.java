@@ -4,14 +4,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 import uva.oberon0.abstractsyntax.BaseNode;
+import uva.oberon0.abstractsyntax.declarations.CustomType;
 import uva.oberon0.abstractsyntax.declarations.Declaration;
 import uva.oberon0.abstractsyntax.declarations.DeclarationList;
 import uva.oberon0.abstractsyntax.declarations.Constant;
 import uva.oberon0.abstractsyntax.declarations.Procedure;
-import uva.oberon0.abstractsyntax.declarations.Type;
 import uva.oberon0.abstractsyntax.declarations.Variable;
 import uva.oberon0.abstractsyntax.expressions.ExpressionList;
 import uva.oberon0.abstractsyntax.types.ID;
+import uva.oberon0.abstractsyntax.types.Type;
 
 
 /**
@@ -50,8 +51,8 @@ public class Scope
 			}
 			
 			//Add  item to Type map.
-			else if (declaration instanceof Type) {
-				addType((Type)declaration);
+			else if (declaration instanceof CustomType) {
+				addType((CustomType)declaration);
 			}
 			
 			//Create and Add an Execution Scope Value to the Value hash.
@@ -107,9 +108,9 @@ public class Scope
 	{
 		_mapProcedures.put(procedure.getID(), procedure);
 	}
-	private void addType(Type type)
+	private void addType(CustomType type)
 	{
-		_mapTypes.put(type.getID(), type);
+		_mapTypes.put(type.getID(), type.getType());
 	}
 	public void addValue(ID id, ScopeValue value)
 	{

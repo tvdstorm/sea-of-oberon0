@@ -1,0 +1,21 @@
+package uva.oberon0.abstractsyntax.types;
+
+import uva.oberon0.runtime.Scope;
+import uva.oberon0.runtime.ScopeValue;
+
+public class IDType extends Type {
+	private final ID _id;
+	
+	public IDType(String id)
+	{
+		assert id != null : "No Identifier is available for the current ID Type!";
+		
+		_id = new ID(id);
+	}
+	
+	@Override
+	public ScopeValue instantiate(Scope scope) {
+		return scope.getType(_id).instantiate(scope);
+	}
+
+}
