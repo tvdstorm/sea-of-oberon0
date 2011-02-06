@@ -64,18 +64,7 @@ public class VariableManagerTest extends AbstractTest {
 		addVariableToDeclaration(trueConst);
 		loadDeclaration();
 		
-		List<IDataType> actualProcedureParameters = new ArrayList<IDataType>();
-		List<FormalParamSection> paramSections = new ArrayList<FormalParamSection>();
-		List<IProcedure> procedures = new ArrayList<IProcedure>();
-		List<IDataType> variables = new ArrayList<IDataType>();
-		Declaration declaration = new Declaration(variables, procedures);
-		List<IStatement> statementList = new ArrayList<IStatement>();
-		StatementSequence statements = new StatementSequence(statementList );
-		ProcedureBody body = new ProcedureBody(declaration, statements );
-		IProcedure currentProcedure = new ProcedureHeading("test", paramSections, body);
-		
-		//enter a new scope
-		VariableManager.getInstance().enterNewScope(actualProcedureParameters, currentProcedure);
+		enterNewEmptyScope();
 		
 		//leave the scope
 		VariableManager.getInstance().leaveScope();
