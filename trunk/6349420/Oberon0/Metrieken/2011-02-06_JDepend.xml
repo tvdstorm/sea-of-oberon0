@@ -1,0 +1,543 @@
+<?xml version="1.0"?>
+<JDepend>
+    <Packages>
+
+        <Package name="ar.oberon0.ast.dataTypes">
+            <Stats>
+                <TotalClasses>7</TotalClasses>
+                <ConcreteClasses>6</ConcreteClasses>
+                <AbstractClasses>1</AbstractClasses>
+                <Ca>5</Ca>
+                <Ce>8</Ce>
+                <A>0.14</A>
+                <I>0.62</I>
+                <D>0.24</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="CreatableType.java">
+                    ar.oberon0.ast.dataTypes.CreatableType
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="ArrayType.java">
+                    ar.oberon0.ast.dataTypes.ArrayType
+                </Class>
+                <Class sourceFile="LookupType.java">
+                    ar.oberon0.ast.dataTypes.LookupType
+                </Class>
+                <Class sourceFile="PrimitiveTypes.java">
+                    ar.oberon0.ast.dataTypes.PrimitiveTypes
+                </Class>
+                <Class sourceFile="RecordType.java">
+                    ar.oberon0.ast.dataTypes.RecordType
+                </Class>
+                <Class sourceFile="SimpleType.java">
+                    ar.oberon0.ast.dataTypes.SimpleType
+                </Class>
+                <Class sourceFile="SimpleTypeFactory.java">
+                    ar.oberon0.ast.dataTypes.SimpleTypeFactory
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>ar.oberon0.lists</Package>
+                <Package>ar.oberon0.runtime</Package>
+                <Package>ar.oberon0.shared</Package>
+                <Package>ar.oberon0.values</Package>
+                <Package>java.lang</Package>
+                <Package>java.lang.reflect</Package>
+                <Package>java.util</Package>
+                <Package>junit.framework</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>ar.oberon0.ast.declarations</Package>
+                <Package>ar.oberon0.ast.expression</Package>
+                <Package>ar.oberon0.lists</Package>
+                <Package>ar.oberon0.runtime</Package>
+                <Package>ar.oberon0.values</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="ar.oberon0.ast.declarations">
+            <Stats>
+                <TotalClasses>3</TotalClasses>
+                <ConcreteClasses>3</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>3</Ca>
+                <Ce>8</Ce>
+                <A>0</A>
+                <I>0.73</I>
+                <D>0.27</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="FormalParameter.java">
+                    ar.oberon0.ast.declarations.FormalParameter
+                </Class>
+                <Class sourceFile="FormalParameter.java">
+                    ar.oberon0.ast.declarations.FormalParameter$Direction
+                </Class>
+                <Class sourceFile="ProcedureDeclaration.java">
+                    ar.oberon0.ast.declarations.ProcedureDeclaration
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>ar.oberon0.ast.dataTypes</Package>
+                <Package>ar.oberon0.ast.statements</Package>
+                <Package>ar.oberon0.lists</Package>
+                <Package>ar.oberon0.runtime</Package>
+                <Package>ar.oberon0.shared</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+                <Package>junit.framework</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>ar.oberon0.ast.statements</Package>
+                <Package>ar.oberon0.lists</Package>
+                <Package>ar.oberon0.runtime</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="ar.oberon0.ast.expression">
+            <Stats>
+                <TotalClasses>19</TotalClasses>
+                <ConcreteClasses>17</ConcreteClasses>
+                <AbstractClasses>2</AbstractClasses>
+                <Ca>2</Ca>
+                <Ce>6</Ce>
+                <A>0.11</A>
+                <I>0.75</I>
+                <D>0.14</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="BinaryNode.java">
+                    ar.oberon0.ast.expression.BinaryNode
+                </Class>
+                <Class sourceFile="SelectorNode.java">
+                    ar.oberon0.ast.expression.SelectorNode
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="AddNode.java">
+                    ar.oberon0.ast.expression.AddNode
+                </Class>
+                <Class sourceFile="AndNode.java">
+                    ar.oberon0.ast.expression.AndNode
+                </Class>
+                <Class sourceFile="ArrayItemSelectorNode.java">
+                    ar.oberon0.ast.expression.ArrayItemSelectorNode
+                </Class>
+                <Class sourceFile="DivNode.java">
+                    ar.oberon0.ast.expression.DivNode
+                </Class>
+                <Class sourceFile="EqualNode.java">
+                    ar.oberon0.ast.expression.EqualNode
+                </Class>
+                <Class sourceFile="GreaterNode.java">
+                    ar.oberon0.ast.expression.GreaterNode
+                </Class>
+                <Class sourceFile="GreaterOrEqualNode.java">
+                    ar.oberon0.ast.expression.GreaterOrEqualNode
+                </Class>
+                <Class sourceFile="MinNode.java">
+                    ar.oberon0.ast.expression.MinNode
+                </Class>
+                <Class sourceFile="ModNode.java">
+                    ar.oberon0.ast.expression.ModNode
+                </Class>
+                <Class sourceFile="MultNode.java">
+                    ar.oberon0.ast.expression.MultNode
+                </Class>
+                <Class sourceFile="NegationNode.java">
+                    ar.oberon0.ast.expression.NegationNode
+                </Class>
+                <Class sourceFile="NotEqualNode.java">
+                    ar.oberon0.ast.expression.NotEqualNode
+                </Class>
+                <Class sourceFile="OrNode.java">
+                    ar.oberon0.ast.expression.OrNode
+                </Class>
+                <Class sourceFile="RecordSelectorNode.java">
+                    ar.oberon0.ast.expression.RecordSelectorNode
+                </Class>
+                <Class sourceFile="SmallerNode.java">
+                    ar.oberon0.ast.expression.SmallerNode
+                </Class>
+                <Class sourceFile="SmallerOrEqualNode.java">
+                    ar.oberon0.ast.expression.SmallerOrEqualNode
+                </Class>
+                <Class sourceFile="VarSelectorNode.java">
+                    ar.oberon0.ast.expression.VarSelectorNode
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>ar.oberon0.ast.dataTypes</Package>
+                <Package>ar.oberon0.runtime</Package>
+                <Package>ar.oberon0.shared</Package>
+                <Package>ar.oberon0.values</Package>
+                <Package>java.lang</Package>
+                <Package>junit.framework</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>ar.oberon0.ast.statements</Package>
+                <Package>ar.oberon0.shared</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="ar.oberon0.ast.statements">
+            <Stats>
+                <TotalClasses>9</TotalClasses>
+                <ConcreteClasses>9</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>2</Ca>
+                <Ce>10</Ce>
+                <A>0</A>
+                <I>0.83</I>
+                <D>0.17</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="AssignmentNode.java">
+                    ar.oberon0.ast.statements.AssignmentNode
+                </Class>
+                <Class sourceFile="IfNode.java">
+                    ar.oberon0.ast.statements.IfNode
+                </Class>
+                <Class sourceFile="IfNode.java">
+                    ar.oberon0.ast.statements.IfNode$IfStatement
+                </Class>
+                <Class sourceFile="ModuleNode.java">
+                    ar.oberon0.ast.statements.ModuleNode
+                </Class>
+                <Class sourceFile="ProcedureCallNode.java">
+                    ar.oberon0.ast.statements.ProcedureCallNode
+                </Class>
+                <Class sourceFile="ReadNode.java">
+                    ar.oberon0.ast.statements.ReadNode
+                </Class>
+                <Class sourceFile="StatementSequence.java">
+                    ar.oberon0.ast.statements.StatementSequence
+                </Class>
+                <Class sourceFile="WhileNode.java">
+                    ar.oberon0.ast.statements.WhileNode
+                </Class>
+                <Class sourceFile="WriteNode.java">
+                    ar.oberon0.ast.statements.WriteNode
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>ar.oberon0.ast.declarations</Package>
+                <Package>ar.oberon0.ast.expression</Package>
+                <Package>ar.oberon0.lists</Package>
+                <Package>ar.oberon0.runtime</Package>
+                <Package>ar.oberon0.shared</Package>
+                <Package>ar.oberon0.values</Package>
+                <Package>java.io</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+                <Package>junit.framework</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>ar.oberon0.ast.declarations</Package>
+                <Package>ar.oberon0.runtime</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="ar.oberon0.lists">
+            <Stats>
+                <TotalClasses>9</TotalClasses>
+                <ConcreteClasses>8</ConcreteClasses>
+                <AbstractClasses>1</AbstractClasses>
+                <Ca>4</Ca>
+                <Ce>6</Ce>
+                <A>0.11</A>
+                <I>0.6</I>
+                <D>0.29</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="BaseMap.java">
+                    ar.oberon0.lists.BaseMap
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="ConstantList.java">
+                    ar.oberon0.lists.ConstantList
+                </Class>
+                <Class sourceFile="DataFieldList.java">
+                    ar.oberon0.lists.DataFieldList
+                </Class>
+                <Class sourceFile="FieldList.java">
+                    ar.oberon0.lists.FieldList
+                </Class>
+                <Class sourceFile="FormalParameterList.java">
+                    ar.oberon0.lists.FormalParameterList
+                </Class>
+                <Class sourceFile="FormalParameterList.java">
+                    ar.oberon0.lists.FormalParameterList$FormalParameterWithName
+                </Class>
+                <Class sourceFile="IdentList.java">
+                    ar.oberon0.lists.IdentList
+                </Class>
+                <Class sourceFile="ProcedureList.java">
+                    ar.oberon0.lists.ProcedureList
+                </Class>
+                <Class sourceFile="TypeIdentifierList.java">
+                    ar.oberon0.lists.TypeIdentifierList
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>ar.oberon0.ast.dataTypes</Package>
+                <Package>ar.oberon0.ast.declarations</Package>
+                <Package>ar.oberon0.runtime</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+                <Package>junit.framework</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>ar.oberon0.ast.dataTypes</Package>
+                <Package>ar.oberon0.ast.declarations</Package>
+                <Package>ar.oberon0.ast.statements</Package>
+                <Package>ar.oberon0.runtime</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="ar.oberon0.runtime">
+            <Stats>
+                <TotalClasses>3</TotalClasses>
+                <ConcreteClasses>3</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>7</Ca>
+                <Ce>9</Ce>
+                <A>0</A>
+                <I>0.56</I>
+                <D>0.44</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="Context.java">
+                    ar.oberon0.runtime.Context
+                </Class>
+                <Class sourceFile="DataField.java">
+                    ar.oberon0.runtime.DataField
+                </Class>
+                <Class sourceFile="Procedure.java">
+                    ar.oberon0.runtime.Procedure
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>ar.oberon0.ast.dataTypes</Package>
+                <Package>ar.oberon0.ast.declarations</Package>
+                <Package>ar.oberon0.ast.statements</Package>
+                <Package>ar.oberon0.lists</Package>
+                <Package>ar.oberon0.shared</Package>
+                <Package>ar.oberon0.values</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+                <Package>junit.framework</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>ar.oberon0.ast.dataTypes</Package>
+                <Package>ar.oberon0.ast.declarations</Package>
+                <Package>ar.oberon0.ast.expression</Package>
+                <Package>ar.oberon0.ast.statements</Package>
+                <Package>ar.oberon0.lists</Package>
+                <Package>ar.oberon0.shared</Package>
+                <Package>ar.oberon0.values</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="ar.oberon0.shared">
+            <Stats>
+                <TotalClasses>3</TotalClasses>
+                <ConcreteClasses>2</ConcreteClasses>
+                <AbstractClasses>1</AbstractClasses>
+                <Ca>6</Ca>
+                <Ce>5</Ce>
+                <A>0.33</A>
+                <I>0.45</I>
+                <D>0.21</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="Interpretable.java">
+                    ar.oberon0.shared.Interpretable
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="Helper.java">
+                    ar.oberon0.shared.Helper
+                </Class>
+                <Class sourceFile="TechnicalException.java">
+                    ar.oberon0.shared.TechnicalException
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>ar.oberon0.ast.expression</Package>
+                <Package>ar.oberon0.runtime</Package>
+                <Package>ar.oberon0.values</Package>
+                <Package>java.lang</Package>
+                <Package>junit.framework</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>ar.oberon0.ast.dataTypes</Package>
+                <Package>ar.oberon0.ast.declarations</Package>
+                <Package>ar.oberon0.ast.expression</Package>
+                <Package>ar.oberon0.ast.statements</Package>
+                <Package>ar.oberon0.runtime</Package>
+                <Package>ar.oberon0.values</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="ar.oberon0.values">
+            <Stats>
+                <TotalClasses>7</TotalClasses>
+                <ConcreteClasses>4</ConcreteClasses>
+                <AbstractClasses>3</AbstractClasses>
+                <Ca>5</Ca>
+                <Ce>5</Ce>
+                <A>0.43</A>
+                <I>0.5</I>
+                <D>0.07</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="ArithmeticValue.java">
+                    ar.oberon0.values.ArithmeticValue
+                </Class>
+                <Class sourceFile="ComparableValue.java">
+                    ar.oberon0.values.ComparableValue
+                </Class>
+                <Class sourceFile="Value.java">
+                    ar.oberon0.values.Value
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="ArrayValue.java">
+                    ar.oberon0.values.ArrayValue
+                </Class>
+                <Class sourceFile="BooleanValue.java">
+                    ar.oberon0.values.BooleanValue
+                </Class>
+                <Class sourceFile="IntegerValue.java">
+                    ar.oberon0.values.IntegerValue
+                </Class>
+                <Class sourceFile="RecordValue.java">
+                    ar.oberon0.values.RecordValue
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>ar.oberon0.ast.dataTypes</Package>
+                <Package>ar.oberon0.runtime</Package>
+                <Package>ar.oberon0.shared</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>ar.oberon0.ast.dataTypes</Package>
+                <Package>ar.oberon0.ast.expression</Package>
+                <Package>ar.oberon0.ast.statements</Package>
+                <Package>ar.oberon0.runtime</Package>
+                <Package>ar.oberon0.shared</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="junit.framework">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+    </Packages>
+
+    <Cycles>
+        <Package Name="ar.oberon0.ast.dataTypes">
+            <Package>ar.oberon0.shared</Package>
+            <Package>ar.oberon0.ast.expression</Package>
+            <Package>ar.oberon0.shared</Package>
+        </Package>
+
+        <Package Name="ar.oberon0.ast.declarations">
+            <Package>ar.oberon0.ast.dataTypes</Package>
+            <Package>ar.oberon0.shared</Package>
+            <Package>ar.oberon0.ast.expression</Package>
+            <Package>ar.oberon0.shared</Package>
+        </Package>
+
+        <Package Name="ar.oberon0.ast.expression">
+            <Package>ar.oberon0.shared</Package>
+            <Package>ar.oberon0.ast.expression</Package>
+        </Package>
+
+        <Package Name="ar.oberon0.ast.statements">
+            <Package>ar.oberon0.shared</Package>
+            <Package>ar.oberon0.ast.expression</Package>
+            <Package>ar.oberon0.shared</Package>
+        </Package>
+
+        <Package Name="ar.oberon0.lists">
+            <Package>ar.oberon0.runtime</Package>
+            <Package>ar.oberon0.ast.declarations</Package>
+            <Package>ar.oberon0.ast.dataTypes</Package>
+            <Package>ar.oberon0.shared</Package>
+            <Package>ar.oberon0.ast.expression</Package>
+            <Package>ar.oberon0.shared</Package>
+        </Package>
+
+        <Package Name="ar.oberon0.runtime">
+            <Package>ar.oberon0.ast.declarations</Package>
+            <Package>ar.oberon0.ast.dataTypes</Package>
+            <Package>ar.oberon0.shared</Package>
+            <Package>ar.oberon0.ast.expression</Package>
+            <Package>ar.oberon0.shared</Package>
+        </Package>
+
+        <Package Name="ar.oberon0.shared">
+            <Package>ar.oberon0.ast.expression</Package>
+            <Package>ar.oberon0.shared</Package>
+        </Package>
+
+        <Package Name="ar.oberon0.values">
+            <Package>ar.oberon0.shared</Package>
+            <Package>ar.oberon0.ast.expression</Package>
+            <Package>ar.oberon0.shared</Package>
+        </Package>
+
+    </Cycles>
+</JDepend>
