@@ -10,7 +10,6 @@ import org.junit.Test;
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.util.ConfigurationFactory;
 import com.arievanderveek.soo.util.SeaOfOberonConfiguration;
-import com.sun.net.httpserver.Authenticator.Success;
 
 /**
  * @author arieveek
@@ -98,9 +97,9 @@ public class ConfigurationTest {
 		boolean exceptionThrown = false;
 		// Create the configuration using the factory
 		try {
+			@SuppressWarnings("unused")
 			SeaOfOberonConfiguration config = ConfigurationFactory
 					.createConfiguration(faultyArguments);
-			fail("Creating a configuration with faulty arguments shoul result in an Exception");
 		} catch (SeaOfOberonException sooe) {
 			// This should result in a message stating that pigscanfly is a
 			// faulty argument

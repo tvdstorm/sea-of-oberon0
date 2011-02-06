@@ -207,17 +207,10 @@ public class ScopeTest {
 		Integer updateValue2 = new Integer(2374);
 		IdentifierNode identTemp = new IdentifierNode("temp");
 		// Data for array values
-		Integer expectedValueForPos0InArray = new Integer(178456);
-		Integer expectedValueForPos1InArray = new Integer(478615);
 		Queue<ASTNode> selectorPos0 = new LinkedList<ASTNode>();
 		selectorPos0.add(new IntegerNode(0));
 		Queue<ASTNode> selectorPos1 = new LinkedList<ASTNode>();
 		selectorPos1.add(new IntegerNode(1));
-		final String identifier = "input";
-		IdentifierNode Pos0InArray = new IdentifierNode(identifier,
-				new SelectorNode(selectorPos0));
-		IdentifierNode Pos1InArray = new IdentifierNode(identifier,
-				new SelectorNode(selectorPos1));
 		// Do the test
 		try {
 			Scope scope = new Scope(simpleMaths.getConstants(),

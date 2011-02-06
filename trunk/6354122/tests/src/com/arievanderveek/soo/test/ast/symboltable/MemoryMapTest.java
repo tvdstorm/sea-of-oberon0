@@ -36,12 +36,15 @@ public class MemoryMapTest {
 	}
 
 	/**
+	 * This method calls a series of private methods that perform all operations mentioned below.
+	 * The private methods must be executed in a predefined order, therefore they are not exposed.
+	 * 
 	 * Test method for:
 	 * 	- {@link com.arievanderveek.soo.symboltable.MemoryMap#getValue(com.arievanderveek.soo.symboltable.MemoryAddress)}.
 	 *  - {@link com.arievanderveek.soo.symboltable.MemoryMap#removeValue(com.arievanderveek.soo.symboltable.MemoryAddress)}
 	 *  - {@link com.arievanderveek.soo.symboltable.MemoryMap#updateValue(com.arievanderveek.soo.symboltable.MemoryAddress, java.lang.Integer)}.
 	 *  - {@link com.arievanderveek.soo.symboltable.MemoryMap#addValue(java.lang.Integer)}
-	 *  - {@link com.arievanderveek.soo.symboltable.MemoryMap#addValue(java.lang.Integer)}.
+	 *  - {@link com.arievanderveek.soo.symboltable.MemoryMap#copyValueToNewAdress(MemoryAddress)}
 	 *  
 	 */
 	@Test
@@ -56,28 +59,28 @@ public class MemoryMapTest {
 	}
 	
 
-	public void testGetValue() {
+	private void testGetValue() {
 		assertEquals("Testing get for value" + valueOne.intValue() ,memory.getValue(memoryOne).intValue(), valueOne.intValue());
 		assertEquals("Testing get for value" + valueTwo.intValue() ,memory.getValue(memoryTwo).intValue(), valueTwo.intValue());
 		assertEquals("Testing get for value" + valueThree.intValue() ,memory.getValue(memoryThree).intValue(), valueThree.intValue());
 		assertEquals("Testing get for value" + valueFour.intValue() ,memory.getValue(memoryFour).intValue(), valueFour.intValue());
 	}
 
-	public void testRemoveValue() {
+	private void testRemoveValue() {
 		memory.deleteValue(copyOfThree);
 		memory.deleteValue(copyOfFour);
 		assertNull(memory.getValue(copyOfThree));
 		assertNull(memory.getValue(copyOfFour));
 	}
 
-	public void testUpdateValue() {
+	private void testUpdateValue() {
 		memory.updateValue(copyOfThree, updateValueThree);
 		memory.updateValue(copyOfFour, updateValueFour);
 		assertEquals("Comparing copyOfThree and updateValueThree" ,updateValueThree.intValue(), memory.getValue(copyOfThree).intValue());
 		assertEquals("Comparing copyOfFour and updateValueFour"  ,updateValueFour.intValue(), memory.getValue(copyOfFour).intValue());
 	}
 
-	public void testAddValue() {
+	private void testAddValue() {
 		try {
 		memoryOne = memory.addValue(valueOne);
 		memoryTwo = memory.addValue(valueTwo);
@@ -88,7 +91,7 @@ public class MemoryMapTest {
 		}
 	}
 	
-	public void testCopyAddressAndValue() {
+	private void testCopyAddressAndValue() {
 		try {
 		copyOfThree  = memory.copyValueToNewAdress(memoryThree);
 		copyOfFour  = memory.copyValueToNewAdress(memoryFour);

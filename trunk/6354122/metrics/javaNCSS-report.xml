@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-02-06</date>
-  <time>13:20:56</time>
+  <time>15:30:49</time>
   <packages>
     <package>
       <name>com.arievanderveek.soo</name>
       <classes>3</classes>
       <functions>5</functions>
-      <ncss>46</ncss>
+      <ncss>41</ncss>
       <javadocs>7</javadocs>
-      <javadoc_lines>46</javadoc_lines>
-      <single_comment_lines>12</single_comment_lines>
+      <javadoc_lines>47</javadoc_lines>
+      <single_comment_lines>13</single_comment_lines>
       <multi_comment_lines>4</multi_comment_lines>
     </package>
     <package>
@@ -19,8 +19,8 @@
       <functions>2</functions>
       <ncss>6</ncss>
       <javadocs>3</javadocs>
-      <javadoc_lines>26</javadoc_lines>
-      <single_comment_lines>6</single_comment_lines>
+      <javadoc_lines>29</javadoc_lines>
+      <single_comment_lines>8</single_comment_lines>
       <multi_comment_lines>3</multi_comment_lines>
     </package>
     <package>
@@ -29,19 +29,19 @@
       <functions>40</functions>
       <ncss>228</ncss>
       <javadocs>27</javadocs>
-      <javadoc_lines>111</javadoc_lines>
+      <javadoc_lines>110</javadoc_lines>
       <single_comment_lines>11</single_comment_lines>
-      <multi_comment_lines>152</multi_comment_lines>
+      <multi_comment_lines>172</multi_comment_lines>
     </package>
     <package>
       <name>com.arievanderveek.soo.ast.codeblocks</name>
       <classes>6</classes>
       <functions>25</functions>
-      <ncss>240</ncss>
+      <ncss>228</ncss>
       <javadocs>19</javadocs>
       <javadoc_lines>112</javadoc_lines>
-      <single_comment_lines>11</single_comment_lines>
-      <multi_comment_lines>40</multi_comment_lines>
+      <single_comment_lines>13</single_comment_lines>
+      <multi_comment_lines>49</multi_comment_lines>
     </package>
     <package>
       <name>com.arievanderveek.soo.ast.statements</name>
@@ -49,9 +49,9 @@
       <functions>18</functions>
       <ncss>161</ncss>
       <javadocs>12</javadocs>
-      <javadoc_lines>58</javadoc_lines>
-      <single_comment_lines>13</single_comment_lines>
-      <multi_comment_lines>39</multi_comment_lines>
+      <javadoc_lines>65</javadoc_lines>
+      <single_comment_lines>17</single_comment_lines>
+      <multi_comment_lines>55</multi_comment_lines>
     </package>
     <package>
       <name>com.arievanderveek.soo.ast.unaryoperators</name>
@@ -61,17 +61,17 @@
       <javadocs>6</javadocs>
       <javadoc_lines>25</javadoc_lines>
       <single_comment_lines>0</single_comment_lines>
-      <multi_comment_lines>21</multi_comment_lines>
+      <multi_comment_lines>29</multi_comment_lines>
     </package>
     <package>
       <name>com.arievanderveek.soo.ast.variables</name>
       <classes>13</classes>
       <functions>46</functions>
-      <ncss>212</ncss>
+      <ncss>211</ncss>
       <javadocs>33</javadocs>
-      <javadoc_lines>131</javadoc_lines>
-      <single_comment_lines>13</single_comment_lines>
-      <multi_comment_lines>109</multi_comment_lines>
+      <javadoc_lines>136</javadoc_lines>
+      <single_comment_lines>14</single_comment_lines>
+      <multi_comment_lines>147</multi_comment_lines>
     </package>
     <package>
       <name>com.arievanderveek.soo.parser</name>
@@ -87,7 +87,7 @@
       <name>com.arievanderveek.soo.parser.antlrimpl</name>
       <classes>1</classes>
       <functions>1</functions>
-      <ncss>35</ncss>
+      <ncss>33</ncss>
       <javadocs>1</javadocs>
       <javadoc_lines>4</javadoc_lines>
       <single_comment_lines>4</single_comment_lines>
@@ -97,19 +97,19 @@
       <name>com.arievanderveek.soo.symboltable</name>
       <classes>7</classes>
       <functions>50</functions>
-      <ncss>396</ncss>
+      <ncss>395</ncss>
       <javadocs>17</javadocs>
       <javadoc_lines>108</javadoc_lines>
-      <single_comment_lines>74</single_comment_lines>
-      <multi_comment_lines>42</multi_comment_lines>
+      <single_comment_lines>77</single_comment_lines>
+      <multi_comment_lines>46</multi_comment_lines>
     </package>
     <package>
       <name>com.arievanderveek.soo.util</name>
       <classes>3</classes>
       <functions>12</functions>
-      <ncss>87</ncss>
+      <ncss>82</ncss>
       <javadocs>14</javadocs>
-      <javadoc_lines>85</javadoc_lines>
+      <javadoc_lines>97</javadoc_lines>
       <single_comment_lines>10</single_comment_lines>
       <multi_comment_lines>9</multi_comment_lines>
     </package>
@@ -117,7 +117,7 @@
       <name>com.arievanderveek.soo.visitors</name>
       <classes>1</classes>
       <functions>0</functions>
-      <ncss>6</ncss>
+      <ncss>2</ncss>
       <javadocs>1</javadocs>
       <javadoc_lines>4</javadoc_lines>
       <single_comment_lines>0</single_comment_lines>
@@ -126,32 +126,32 @@
     <total>
       <classes>58</classes>
       <functions>208</functions>
-      <ncss>1465</ncss>
+      <ncss>1435</ncss>
       <javadocs>141</javadocs>
-      <javadoc_lines>716</javadoc_lines>
-      <single_comment_lines>154</single_comment_lines>
-      <multi_comment_lines>457</multi_comment_lines>
+      <javadoc_lines>743</javadoc_lines>
+      <single_comment_lines>167</single_comment_lines>
+      <multi_comment_lines>552</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>12.00</td><td>58.00</td><td>208.00</td><td>1,465.00</td><td>141.00</td><td>Project</td></tr>
-      <tr><td></td><td>4.83</td><td>17.33</td><td>122.08</td><td>11.75</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.59</td><td>25.26</td><td>2.43</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>7.04</td><td>0.68</td><td>Function</td></tr>
+      <tr><td>12.00</td><td>58.00</td><td>208.00</td><td>1,435.00</td><td>141.00</td><td>Project</td></tr>
+      <tr><td></td><td>4.83</td><td>17.33</td><td>119.58</td><td>11.75</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.59</td><td>24.74</td><td>2.43</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>6.90</td><td>0.68</td><td>Function</td></tr>
     </table>
   </packages>
 
   <objects>
     <object>
       <name>com.arievanderveek.soo.Main</name>
-      <ncss>10</ncss>
+      <ncss>9</ncss>
       <functions>1</functions>
       <classes>0</classes>
       <javadocs>2</javadocs>
     </object>
     <object>
       <name>com.arievanderveek.soo.SeaOfOberonController</name>
-      <ncss>19</ncss>
+      <ncss>18</ncss>
       <functions>2</functions>
       <classes>0</classes>
       <javadocs>2</javadocs>
@@ -466,7 +466,7 @@
     </object>
     <object>
       <name>com.arievanderveek.soo.parser.antlrimpl.AntlrParserImpl</name>
-      <ncss>17</ncss>
+      <ncss>16</ncss>
       <functions>1</functions>
       <classes>0</classes>
       <javadocs>1</javadocs>
@@ -522,7 +522,7 @@
     </object>
     <object>
       <name>com.arievanderveek.soo.util.ConfigurationFactory</name>
-      <ncss>47</ncss>
+      <ncss>44</ncss>
       <functions>4</functions>
       <classes>0</classes>
       <javadocs>4</javadocs>
@@ -549,12 +549,12 @@
       <javadocs>1</javadocs>
     </object>
     <averages>
-      <ncss>20.03</ncss>
+      <ncss>19.93</ncss>
       <functions>3.59</functions>
       <classes>0.00</classes>
       <javadocs>2.43</javadocs>
     </averages>
-    <ncss>1,465.00</ncss>
+    <ncss>1,435.00</ncss>
   </objects>
 
   <functions>
@@ -1742,13 +1742,13 @@
     </function>
     <function>
       <name>com.arievanderveek.soo.util.ConfigurationFactory.parseArguments(String[])</name>
-      <ncss>26</ncss>
+      <ncss>23</ncss>
       <ccn>7</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
       <name>com.arievanderveek.soo.util.ConfigurationFactory.printHelp(Options,String)</name>
-      <ncss>3</ncss>
+      <ncss>5</ncss>
       <ccn>1</ccn>
       <javadocs>1</javadocs>
     </function>
@@ -1811,6 +1811,6 @@
       <ccn>1.75</ccn>
       <javadocs>0.40</javadocs>
     </function_averages>
-    <ncss>1,465.00</ncss>
+    <ncss>1,435.00</ncss>
   </functions>
 </javancss>

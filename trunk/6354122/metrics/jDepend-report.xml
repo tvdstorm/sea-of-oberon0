@@ -8,10 +8,10 @@
                 <ConcreteClasses>3</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
                 <Ca>11</Ca>
-                <Ce>6</Ce>
+                <Ce>5</Ce>
                 <A>0</A>
-                <I>0.35</I>
-                <D>0.65</D>
+                <I>0.31</I>
+                <D>0.69</D>
                 <V>1</V>
             </Stats>
 
@@ -36,7 +36,6 @@
                 <Package>com.arievanderveek.soo.util</Package>
                 <Package>java.io</Package>
                 <Package>java.lang</Package>
-                <Package>java.util.logging</Package>
             </DependsUpon>
 
             <UsedBy>
@@ -433,7 +432,7 @@
                 <ConcreteClasses>1</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
                 <Ca>0</Ca>
-                <Ce>8</Ce>
+                <Ce>7</Ce>
                 <A>0</A>
                 <I>1</I>
                 <D>0</D>
@@ -456,7 +455,6 @@
                 <Package>com.arievanderveek.soo.parser.antlrimpl.generated</Package>
                 <Package>java.io</Package>
                 <Package>java.lang</Package>
-                <Package>java.util.logging</Package>
                 <Package>org.antlr.runtime</Package>
             </DependsUpon>
 
@@ -855,8 +853,8 @@
 
             <DependsUpon>
                 <Package>com.arievanderveek.soo</Package>
+                <Package>java.io</Package>
                 <Package>java.lang</Package>
-                <Package>java.util.logging</Package>
                 <Package>org.apache.commons.cli</Package>
             </DependsUpon>
 
@@ -912,10 +910,6 @@
             <error>No stats available: package referenced, but not analyzed.</error>
         </Package>
 
-        <Package name="java.util.logging">
-            <error>No stats available: package referenced, but not analyzed.</error>
-        </Package>
-
         <Package name="org.antlr.runtime">
             <error>No stats available: package referenced, but not analyzed.</error>
         </Package>
@@ -946,6 +940,7 @@
         </Package>
 
         <Package Name="com.arievanderveek.soo.ast.binaryoperators">
+            <Package>com.arievanderveek.soo.ast</Package>
             <Package>com.arievanderveek.soo</Package>
             <Package>com.arievanderveek.soo.util</Package>
             <Package>com.arievanderveek.soo</Package>
@@ -958,14 +953,12 @@
         </Package>
 
         <Package Name="com.arievanderveek.soo.ast.statements">
-            <Package>com.arievanderveek.soo.ast.variables</Package>
             <Package>com.arievanderveek.soo</Package>
             <Package>com.arievanderveek.soo.util</Package>
             <Package>com.arievanderveek.soo</Package>
         </Package>
 
         <Package Name="com.arievanderveek.soo.ast.unaryoperators">
-            <Package>com.arievanderveek.soo.ast</Package>
             <Package>com.arievanderveek.soo</Package>
             <Package>com.arievanderveek.soo.util</Package>
             <Package>com.arievanderveek.soo</Package>
@@ -997,9 +990,9 @@
         </Package>
 
         <Package Name="com.arievanderveek.soo.symboltable">
-            <Package>com.arievanderveek.soo</Package>
             <Package>com.arievanderveek.soo.util</Package>
             <Package>com.arievanderveek.soo</Package>
+            <Package>com.arievanderveek.soo.util</Package>
         </Package>
 
         <Package Name="com.arievanderveek.soo.test">
@@ -1010,10 +1003,10 @@
         </Package>
 
         <Package Name="com.arievanderveek.soo.test.ast.symboltable">
-            <Package>com.arievanderveek.soo.ast.variables</Package>
-            <Package>com.arievanderveek.soo</Package>
+            <Package>com.arievanderveek.soo.symboltable</Package>
             <Package>com.arievanderveek.soo.util</Package>
             <Package>com.arievanderveek.soo</Package>
+            <Package>com.arievanderveek.soo.util</Package>
         </Package>
 
         <Package Name="com.arievanderveek.soo.test.util">
