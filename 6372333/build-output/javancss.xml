@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-02-06</date>
-  <time>10:53:56</time>
+  <time>12:08:37</time>
   <packages>
     <package>
       <name>oberon</name>
@@ -24,6 +24,26 @@
       <multi_comment_lines>91</multi_comment_lines>
     </package>
     <package>
+      <name>oberon.exceptions</name>
+      <classes>2</classes>
+      <functions>2</functions>
+      <ncss>10</ncss>
+      <javadocs>0</javadocs>
+      <javadoc_lines>0</javadoc_lines>
+      <single_comment_lines>0</single_comment_lines>
+      <multi_comment_lines>6</multi_comment_lines>
+    </package>
+    <package>
+      <name>oberon.expressions</name>
+      <classes>10</classes>
+      <functions>22</functions>
+      <ncss>149</ncss>
+      <javadocs>20</javadocs>
+      <javadoc_lines>93</javadoc_lines>
+      <single_comment_lines>0</single_comment_lines>
+      <multi_comment_lines>54</multi_comment_lines>
+    </package>
+    <package>
       <name>oberon.interpret</name>
       <classes>20</classes>
       <functions>67</functions>
@@ -32,6 +52,26 @@
       <javadoc_lines>160</javadoc_lines>
       <single_comment_lines>4</single_comment_lines>
       <multi_comment_lines>149</multi_comment_lines>
+    </package>
+    <package>
+      <name>oberon.procedures</name>
+      <classes>7</classes>
+      <functions>17</functions>
+      <ncss>108</ncss>
+      <javadocs>19</javadocs>
+      <javadoc_lines>94</javadoc_lines>
+      <single_comment_lines>0</single_comment_lines>
+      <multi_comment_lines>27</multi_comment_lines>
+    </package>
+    <package>
+      <name>oberon.statement</name>
+      <classes>4</classes>
+      <functions>10</functions>
+      <ncss>89</ncss>
+      <javadocs>10</javadocs>
+      <javadoc_lines>52</javadoc_lines>
+      <single_comment_lines>0</single_comment_lines>
+      <multi_comment_lines>22</multi_comment_lines>
     </package>
     <package>
       <name>oberon.test</name>
@@ -44,20 +84,20 @@
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <total>
-      <classes>46</classes>
-      <functions>163</functions>
-      <ncss>1081</ncss>
-      <javadocs>113</javadocs>
-      <javadoc_lines>564</javadoc_lines>
+      <classes>69</classes>
+      <functions>214</functions>
+      <ncss>1437</ncss>
+      <javadocs>162</javadocs>
+      <javadoc_lines>803</javadoc_lines>
       <single_comment_lines>25</single_comment_lines>
-      <multi_comment_lines>262</multi_comment_lines>
+      <multi_comment_lines>371</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>4.00</td><td>46.00</td><td>163.00</td><td>1,081.00</td><td>113.00</td><td>Project</td></tr>
-      <tr><td></td><td>11.50</td><td>40.75</td><td>270.25</td><td>28.25</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.54</td><td>23.50</td><td>2.46</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>6.63</td><td>0.69</td><td>Function</td></tr>
+      <tr><td>8.00</td><td>69.00</td><td>214.00</td><td>1,437.00</td><td>162.00</td><td>Project</td></tr>
+      <tr><td></td><td>8.63</td><td>26.75</td><td>179.63</td><td>20.25</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.10</td><td>20.83</td><td>2.35</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>6.71</td><td>0.76</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -224,6 +264,90 @@
       <javadocs>2</javadocs>
     </object>
     <object>
+      <name>oberon.exceptions.UnsupportedException</name>
+      <ncss>4</ncss>
+      <functions>1</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon.exceptions.VariableNotFoundInScopeException</name>
+      <ncss>4</ncss>
+      <functions>1</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon.expressions.AbstractExpression</name>
+      <ncss>19</ncss>
+      <functions>4</functions>
+      <classes>0</classes>
+      <javadocs>2</javadocs>
+    </object>
+    <object>
+      <name>oberon.expressions.AbstractIntegerExpression</name>
+      <ncss>6</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>2</javadocs>
+    </object>
+    <object>
+      <name>oberon.expressions.AbstractLeftAndRightExpression</name>
+      <ncss>14</ncss>
+      <functions>5</functions>
+      <classes>0</classes>
+      <javadocs>6</javadocs>
+    </object>
+    <object>
+      <name>oberon.expressions.ComparisonExpression</name>
+      <ncss>31</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>2</javadocs>
+    </object>
+    <object>
+      <name>oberon.expressions.ComparisonType</name>
+      <ncss>1</ncss>
+      <functions>0</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon.expressions.IdentifierExpression</name>
+      <ncss>8</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>2</javadocs>
+    </object>
+    <object>
+      <name>oberon.expressions.IntegerExpression</name>
+      <ncss>6</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>2</javadocs>
+    </object>
+    <object>
+      <name>oberon.expressions.MathematicalExpression</name>
+      <ncss>28</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>2</javadocs>
+    </object>
+    <object>
+      <name>oberon.expressions.MathematicalExpressionType</name>
+      <ncss>1</ncss>
+      <functions>0</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon.expressions.ParenthesesExpression</name>
+      <ncss>6</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>2</javadocs>
+    </object>
+    <object>
       <name>oberon.interpret.AbstractBaseInterpreter</name>
       <ncss>4</ncss>
       <functions>2</functions>
@@ -364,6 +488,83 @@
       <javadocs>0</javadocs>
     </object>
     <object>
+      <name>oberon.procedures.AbstractProcedure</name>
+      <ncss>15</ncss>
+      <functions>5</functions>
+      <classes>0</classes>
+      <javadocs>4</javadocs>
+    </object>
+    <object>
+      <name>oberon.procedures.Declaration</name>
+      <ncss>13</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>4</javadocs>
+    </object>
+    <object>
+      <name>oberon.procedures.FormalParamSection</name>
+      <ncss>10</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>4</javadocs>
+    </object>
+    <object>
+      <name>oberon.procedures.FormalParamType</name>
+      <ncss>1</ncss>
+      <functions>0</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon.procedures.ProcedureBody</name>
+      <ncss>10</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>3</javadocs>
+    </object>
+    <object>
+      <name>oberon.procedures.ProcedureHeading</name>
+      <ncss>13</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>2</javadocs>
+    </object>
+    <object>
+      <name>oberon.procedures.SystemMethodCall</name>
+      <ncss>5</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>2</javadocs>
+    </object>
+    <object>
+      <name>oberon.statement.AssignmentStatement</name>
+      <ncss>9</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>2</javadocs>
+    </object>
+    <object>
+      <name>oberon.statement.IfStatement</name>
+      <ncss>27</ncss>
+      <functions>4</functions>
+      <classes>0</classes>
+      <javadocs>4</javadocs>
+    </object>
+    <object>
+      <name>oberon.statement.ProcedurecallStatement</name>
+      <ncss>11</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>2</javadocs>
+    </object>
+    <object>
+      <name>oberon.statement.WhileStatement</name>
+      <ncss>9</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>2</javadocs>
+    </object>
+    <object>
       <name>oberon.test.AbstractTest</name>
       <ncss>15</ncss>
       <functions>5</functions>
@@ -385,12 +586,12 @@
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>16.83</ncss>
-      <functions>3.54</functions>
-      <classes>0.02</classes>
-      <javadocs>2.63</javadocs>
+      <ncss>14.86</ncss>
+      <functions>3.10</functions>
+      <classes>0.01</classes>
+      <javadocs>2.46</javadocs>
     </averages>
-    <ncss>1,081.00</ncss>
+    <ncss>1,437.00</ncss>
   </objects>
 
   <functions>
@@ -911,6 +1112,150 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>oberon.exceptions.UnsupportedException.UnsupportedException(String)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.exceptions.VariableNotFoundInScopeException.VariableNotFoundInScopeException(String)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.expressions.AbstractExpression.evalAsInt()</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.expressions.AbstractExpression.evalAsBoolean()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.expressions.AbstractExpression.booleanAsInt(Boolean)</name>
+      <ncss>5</ncss>
+      <ccn>2</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.expressions.AbstractExpression.copy(String)</name>
+      <ncss>10</ncss>
+      <ccn>6</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.expressions.AbstractIntegerExpression.AbstractIntegerExpression(int)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.expressions.AbstractIntegerExpression.evalAsInt()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.expressions.AbstractLeftAndRightExpression.AbstractLeftAndRightExpression(IExpression,IExpression)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.expressions.AbstractLeftAndRightExpression.setRighthandSide(IExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.expressions.AbstractLeftAndRightExpression.getRighthandSide()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.expressions.AbstractLeftAndRightExpression.setLefthandSide(IExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.expressions.AbstractLeftAndRightExpression.getLefthandSide()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.expressions.ComparisonExpression.ComparisonExpression(IExpression,IExpression,ComparisonType)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.expressions.ComparisonExpression.evalAsInt()</name>
+      <ncss>26</ncss>
+      <ccn>9</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.expressions.IdentifierExpression.IdentifierExpression(IIdentifier)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.expressions.IdentifierExpression.copy(String)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.expressions.IdentifierExpression.evalAsInt()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.expressions.IntegerExpression.IntegerExpression(int)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.expressions.IntegerExpression.evalAsInt()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.expressions.MathematicalExpression.MathematicalExpression(IExpression,IExpression,MathematicalExpressionType)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.expressions.MathematicalExpression.evalAsInt()</name>
+      <ncss>23</ncss>
+      <ccn>7</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.expressions.ParenthesesExpression.ParenthesesExpression(IExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.expressions.ParenthesesExpression.evalAsInt()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>oberon.interpret.AbstractBaseInterpreter.getInterpreterResult()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
@@ -1313,6 +1658,168 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>oberon.procedures.AbstractProcedure.AbstractProcedure(String,FormalParamSection,ProcedureBody)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.procedures.AbstractProcedure.getName()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.procedures.AbstractProcedure.getParamSections()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.procedures.AbstractProcedure.getBody()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.procedures.AbstractProcedure.call(IExpression)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.procedures.Declaration.Declaration(IDataType,IProcedure)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.procedures.Declaration.getVariables()</name>
+      <ncss>5</ncss>
+      <ccn>2</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.procedures.Declaration.getProcedures()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.procedures.FormalParamSection.FormalParamSection(String,FormalParamType)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.procedures.FormalParamSection.getNames()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.procedures.FormalParamSection.getType()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.procedures.ProcedureBody.ProcedureBody(Declaration,StatementSequence)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.procedures.ProcedureBody.eval()</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.procedures.ProcedureHeading.ProcedureHeading(String,FormalParamSection,ProcedureBody)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.procedures.ProcedureHeading.call(IExpression)</name>
+      <ncss>10</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.procedures.SystemMethodCall.SystemMethodCall(String,FormalParamSection,ProcedureBody)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.procedures.SystemMethodCall.call(IExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.statement.AssignmentStatement.AssignmentStatement(IIdentifier,IExpression)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.statement.AssignmentStatement.eval()</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.statement.IfStatement.IfStatement(IExpression,StatementSequence,IfStatement,StatementSequence)</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.statement.IfStatement.eval()</name>
+      <ncss>13</ncss>
+      <ccn>5</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.statement.IfStatement.evalStatements()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.statement.IfStatement.conditionIsTrue()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.statement.ProcedurecallStatement.ProcedurecallStatement(String,IExpression)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.statement.ProcedurecallStatement.eval()</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.statement.WhileStatement.WhileStatement(IExpression,StatementSequence)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>oberon.statement.WhileStatement.eval()</name>
+      <ncss>3</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>oberon.test.AbstractTest.loadDeclaration()</name>
       <ncss>4</ncss>
       <ccn>1</ccn>
@@ -1373,10 +1880,10 @@
       <javadocs>0</javadocs>
     </function>
     <function_averages>
-      <ncss>3.86</ncss>
-      <ccn>1.35</ccn>
-      <javadocs>0.44</javadocs>
+      <ncss>3.87</ncss>
+      <ccn>1.40</ccn>
+      <javadocs>0.48</javadocs>
     </function_averages>
-    <ncss>1,081.00</ncss>
+    <ncss>1,437.00</ncss>
   </functions>
 </javancss>
