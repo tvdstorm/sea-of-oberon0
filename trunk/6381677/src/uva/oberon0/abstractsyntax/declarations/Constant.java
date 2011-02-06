@@ -1,7 +1,7 @@
 package uva.oberon0.abstractsyntax.declarations;
 
-import uva.oberon0.abstractsyntax.ID;
 import uva.oberon0.abstractsyntax.expressions.BaseExpression;
+import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.runtime.Scope;
 import uva.oberon0.runtime.ScopeValueBase;
 import uva.oberon0.runtime.ScopeValueInt;

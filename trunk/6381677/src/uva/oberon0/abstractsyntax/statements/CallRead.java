@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import uva.oberon0.abstractsyntax.ID;
+import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.runtime.Scope;
 
 /**

@@ -1,6 +1,6 @@
 package uva.oberon0.abstractsyntax.expressions;
 
-import uva.oberon0.abstractsyntax.ID;
+import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.runtime.Scope;
 
 public class Reference extends BaseExpression {

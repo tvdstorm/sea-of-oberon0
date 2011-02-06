@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import uva.oberon0.abstractsyntax.BaseNode;
-import uva.oberon0.abstractsyntax.ID;
 import uva.oberon0.abstractsyntax.declarations.BaseDeclaration;
 import uva.oberon0.abstractsyntax.declarations.BaseDeclarationList;
 import uva.oberon0.abstractsyntax.declarations.Constant;
@@ -12,6 +11,7 @@ import uva.oberon0.abstractsyntax.declarations.Procedure;
 import uva.oberon0.abstractsyntax.declarations.Type;
 import uva.oberon0.abstractsyntax.declarations.Variable;
 import uva.oberon0.abstractsyntax.statements.CallActualParameterList;
+import uva.oberon0.abstractsyntax.types.ID;
 
 
 /**

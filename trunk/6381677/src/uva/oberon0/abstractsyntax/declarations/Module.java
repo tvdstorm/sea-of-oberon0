@@ -1,8 +1,8 @@
 package uva.oberon0.abstractsyntax.declarations;
 
 import uva.oberon0.abstractsyntax.BaseNodeWithID;
-import uva.oberon0.abstractsyntax.ID;
 import uva.oberon0.abstractsyntax.statements.BaseStatementList;
+import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.runtime.Scope;
 
 

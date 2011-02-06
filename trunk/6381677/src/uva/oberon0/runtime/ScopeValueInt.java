@@ -1,6 +1,6 @@
 package uva.oberon0.runtime;
 
-import uva.oberon0.abstractsyntax.ID;
+import uva.oberon0.abstractsyntax.types.ID;
 
 /**
  * @author Chiel Labee
