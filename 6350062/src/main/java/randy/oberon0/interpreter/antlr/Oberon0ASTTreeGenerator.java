@@ -67,9 +67,8 @@ public class Oberon0ASTTreeGenerator
 	{
 		assert(tree.getType() == Oberon0Parser.ASSIGNMENT);
 		assert(tree.getChildCount() == 2);
-		assert(tree.getChild(0).getType() == Oberon0Parser.LH && tree.getChild(1).getType() == Oberon0Parser.RH);
-		Selector lhs = buildSelector(tree.getChild(0).getChild(0));
-		Expression rhs = buildExpression(tree.getChild(1).getChild(0));
+		Selector lhs = buildSelector(tree.getChild(0));
+		Expression rhs = buildExpression(tree.getChild(1));
 		return new AssignmentStatement(lhs, rhs);
 	}
 	public static Module buildASTTree(Tree tree) throws Exception
@@ -166,7 +165,7 @@ public class Oberon0ASTTreeGenerator
 		assert(tree.getChildCount() >= 2);
 		assert(tree.getChild(1).getType() == Oberon0Parser.BODY); 
 		List<Tuple<Expression, Block>> ifStatements = new Vector<Tuple<Expression, Block>>();
-		ifStatements.add(new Tuple<Expression, Block>(buildExpression(tree.getChild(0).getChild(0)), buildBlock(tree.getChild(1))));
+		ifStatements.add(new Tuple<Expression, Block>(buildExpression(tree.getChild(0)), buildBlock(tree.getChild(1))));
 		Block elseBody = null;
 		for (int i=2;i<tree.getChildCount();i++)
 		{
@@ -174,7 +173,7 @@ public class Oberon0ASTTreeGenerator
 			switch (child.getType())
 			{
 				case Oberon0Parser.ELSIF:
-					ifStatements.add(new Tuple<Expression, Block>(buildExpression(child.getChild(0).getChild(0)), buildBlock(child.getChild(1))));
+					ifStatements.add(new Tuple<Expression, Block>(buildExpression(child.getChild(0)), buildBlock(child.getChild(1))));
 					break;
 				case Oberon0Parser.ELSE:
 					elseBody = buildBlock(child.getChild(0));
@@ -378,9 +377,9 @@ public class Oberon0ASTTreeGenerator
 			while (subTree.getText().equals(Type.ARRAY.getTypeText()))
 			{
 				assert(subTree.getType() == Oberon0Parser.ARRAY);
-				type = subTree.getChild(0).getChild(0).getText();
-				arrayLength.add(buildExpression(subTree.getChild(1).getChild(0)));
-				subTree = subTree.getChild(0).getChild(0);
+				type = subTree.getChild(0).getText();
+				arrayLength.add(buildExpression(subTree.getChild(1)));
+				subTree = subTree.getChild(0);
 			}
 			return new ArrayVarDeclaration(type, isReference, names, arrayLength);
 		}
@@ -397,8 +396,7 @@ public class Oberon0ASTTreeGenerator
 	{
 		assert(tree.getType() == Oberon0Parser.WHILE);
 		assert(tree.getChildCount() == 2);
-		assert(tree.getChild(0).getType() == Oberon0Parser.EXPRESSION);
-		Expression expression = buildExpression(tree.getChild(0).getChild(0));
+		Expression expression = buildExpression(tree.getChild(0));
 		Block statement = buildBlock(tree.getChild(1));
 		return new WhileStatement(expression, statement);
 	}
