@@ -29,7 +29,7 @@ public class IntegerType extends Type {
 	
 	//COPYING
 	@Override
-	public Type getCopy() {
+	public Type getCopy(Module module) {
 		// TODO Auto-generated method stub
 		return new IntegerType(value);
 	}
