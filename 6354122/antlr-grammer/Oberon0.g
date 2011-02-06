@@ -13,7 +13,6 @@ tokens {
 
 @header {
   package com.arievanderveek.soo.parser.antlrimpl.generated;
-  import com.arievanderveek.soo.SeaOfOberonException;
   import com.arievanderveek.soo.ast.*;
   import com.arievanderveek.soo.ast.statements.*;
   import com.arievanderveek.soo.ast.variables.*;
@@ -48,7 +47,7 @@ scope{
 	Queue<ASTNode> selectors;
 }
 @init{
-	$selector::selectors = new LinkedList();
+	$selector::selectors = new LinkedList<ASTNode>();
 }
 	:	selectorPart*
 	{ $return_selectors = new SelectorNode($selector::selectors); }
@@ -193,7 +192,7 @@ scope{
 	List<ASTNode> parameters;
 }
 @init{
-	$actualParameters::parameters = new LinkedList();
+	$actualParameters::parameters = new LinkedList<ASTNode>();
 }
 		: '('
 		expression {$actualParameters::parameters.add($expression.node);} 
@@ -273,7 +272,7 @@ scope{
 	List<ASTNode> statements
 }
 @init{
-	$statementSequence::statements = new LinkedList();
+	$statementSequence::statements = new LinkedList<ASTNode>();
 }
 	:	
 	statement {$statementSequence::statements.add($statement.node); }
@@ -281,7 +280,7 @@ scope{
 	 {$return_statements = $statementSequence::statements;}
 	;
 
-identList returns[List idents] //done
+identList returns[List<String> idents] //done
 	:	ids+=IDENT (',' ids+=IDENT)*
 		{$idents=$ids;}
 	;
@@ -296,7 +295,7 @@ scope{
 	List<ASTNode> fields
 }
 @init{
-	$fieldList::fields = new LinkedList();
+	$fieldList::fields = new LinkedList<ASTNode>();
 }
 	:	(identList ':' type)?
 	{
@@ -318,7 +317,7 @@ scope{
 	List<ASTNode> fields
 }
 @init{
-	$recordType::fields = new LinkedList();	
+	$recordType::fields = new LinkedList<ASTNode>();	
 }
 	:	
 	'RECORD'
@@ -358,7 +357,7 @@ scope{
 	List<ASTNode> fields
 }
 @init{
-	$formalParameters::fields = new LinkedList();	
+	$formalParameters::fields = new LinkedList<ASTNode>();	
 }
 	:
 	'(' 
@@ -381,10 +380,10 @@ procedureBody returns[Map<String, ASTNode> return_constants, Map<String, ASTNode
 			if ($statementSequence.return_statements!=null) {
 				$return_stats = $statementSequence.return_statements;
 			} else {
-				$return_stats = new LinkedList();
+				$return_stats = new LinkedList<ASTNode>();
 			}
 		} else { 
-			$return_stats = new LinkedList();
+			$return_stats = new LinkedList<ASTNode>();
 		}
 	}
 	;
@@ -449,10 +448,10 @@ scope{
 					Map<String, ASTNode> procedures;
 }
 @init{
-					$declarations::constants = new Hashtable() ;
-					$declarations::types = new Hashtable();
-					$declarations::variables = new Hashtable();
-					$declarations::procedures = new Hashtable();
+					$declarations::constants = new Hashtable<String, ASTNode>() ;
+					$declarations::types = new Hashtable<String, ASTNode>();
+					$declarations::variables = new Hashtable<String, ASTNode>();
+					$declarations::procedures = new Hashtable<String, ASTNode>();
 }
 
 	:	constsDecl? typesDecl? varsDecl? (procedureDeclaration ';')* 
@@ -477,10 +476,10 @@ scope{
 				if ($statementSequence.return_statements != null){
 					$module::statementsSeq = $statementSequence.return_statements;
 				} else{
-					$module::statementsSeq = new LinkedList();
+					$module::statementsSeq = new LinkedList<ASTNode>();
 				}
 		} else {
-			$module::statementsSeq = new LinkedList();
+			$module::statementsSeq = new LinkedList<ASTNode>();
 		}
 		// Create the modulenode with all required fields
 		$module::moduleNode = new ModuleNode(	$start.text, $end.text,	$declarations.return_constants,
