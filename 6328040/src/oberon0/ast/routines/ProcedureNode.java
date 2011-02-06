@@ -19,7 +19,12 @@ public class ProcedureNode implements ICallable, IDeclarable{
 	
 	public ProcedureNode(String name, ArrayList<IFormalParameter> formalParameters, IDeclarable declarations, IExecutable body){
 		_name = name;
-		_formalParameters = formalParameters;
+		if(formalParameters!= null){
+			_formalParameters = new ArrayList<IFormalParameter>();
+		}
+		else{
+			_formalParameters = formalParameters;
+		}
 		_declarations = declarations;
 		_body = body;
 	}

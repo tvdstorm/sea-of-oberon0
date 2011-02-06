@@ -19,8 +19,9 @@ public class ProcedureCallNode implements IExecutable {
 	@Override
 	public void execute(Context context) {
 		ICallable procedure = context.getProcedure(_name);
-		
-		procedure.call(context, _actualParams);
+		if (procedure != null){
+			procedure.call(context, _actualParams);
+		}else throw new RuntimeException("Procedure " + _name + " is not in current scope");
 	}
 	
 	/*

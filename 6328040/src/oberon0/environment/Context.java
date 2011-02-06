@@ -36,7 +36,7 @@ public class Context {
 			if (_parent != noParent){
 				return _parent.getReference(name);
 			}
-			throw new IllegalArgumentException("'"+ name + "' is not in scope");
+			throw new RuntimeException("'"+ name + "' is not in scope");
 		}
 		return _variables.get(name);
 	}
