@@ -91,4 +91,17 @@ public class ExpressionVisitor extends BaseVisitor {
 		return left <= right;
 	}
 
+	@Override
+	public Boolean eval(AndExpNode node, Environment localEnv) {
+		Boolean left = (Boolean) node.getLeftExp().accept(this, localEnv);
+		Boolean right = (Boolean) node.getRightExp().accept(this, localEnv);
+		return left && right;
+	}
+
+	@Override
+	public Boolean eval(OrExpNode node, Environment localEnv) {
+		Boolean left = (Boolean) node.getLeftExp().accept(this, localEnv);
+		Boolean right = (Boolean) node.getRightExp().accept(this, localEnv);
+		return left || right;
+	}
 }
