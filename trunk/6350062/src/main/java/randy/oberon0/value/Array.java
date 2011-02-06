@@ -36,10 +36,13 @@ public class Array extends Value
 	{
 		// Resolve CONST
 		Array v = _val.dereference().castToArray();
-		values = new Value[v.values.length];
-		for (int i=0;i<v.values.length;i++)
+		if (v != this)
 		{
-			values[i] = v.values[i].clone();
+			values = new Value[v.values.length];
+			for (int i=0;i<v.values.length;i++)
+			{
+				values[i] = v.values[i].clone();
+			}
 		}
 	}
 	public Type getType()
