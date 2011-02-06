@@ -48,7 +48,6 @@ public class ModuleNode extends CodeBlockNode {
 	 */
 	public Integer interpret(Scope scope) throws SeaOfOberonException {
 		// Create a new Scope
-		System.out.println("Amount of procedures:" + procedures.size());
 		Scope localScope = new Scope(constants, types, variables, procedures);
 		// loop over statements and call interpret method with the Scope Variable
 		for (ASTNode statementNode : statementSequence){
