@@ -33,6 +33,8 @@ public class DefaultReadFunction implements IInvokableFunction
 			{
 				throw new TypeMismatchException(param.getType().toString(), Type.INTEGER.toString());
 			}
+			// Write a prompt to indicate that we need input
+			System.out.println("Script requests input: ");
 			// Read a line from the input
 			byte input[] = new byte[1024];
 			int length = System.in.read(input);
