@@ -4,6 +4,8 @@ import org.elcid.oberon0.ast.*;
 import org.elcid.oberon0.ast.env.Environment;
 import org.elcid.oberon0.ast.values.IntVariable;
 import org.elcid.oberon0.ast.values.Int;
+import org.elcid.oberon0.exceptions.DivideByZeroException;
+import org.elcid.oberon0.exceptions.ModuloZeroException;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -32,7 +34,7 @@ public class ExpressionVisitorTest {
 
 	@Test
 	public void testVisitValueExpNode() {
-		LOG.info("Testing method: visitValueExpNode");
+		LOG.info("Testing eval ValueExpNode");
 
 		// Test with an integer value
 		ValueExpNode intNode = new ValueExpNode(new Int(2));
@@ -50,7 +52,7 @@ public class ExpressionVisitorTest {
 
 	@Test
 	public void testVisitPlusExpNode() {
-		LOG.info("Testing method: visitPlusExpNode");
+		LOG.info("Testing eval PlusExpNode");
 
 		// Test with two integer values
 		PlusExpNode nodeInt = new PlusExpNode(new ValueExpNode(new Int(2)), new ValueExpNode(new Int(3)));
@@ -69,27 +71,93 @@ public class ExpressionVisitorTest {
 
 	@Test
 	public void testVisitMinusExpNode() {
+		LOG.info("Testing eval MinusExpNode");
 
+		// Test with two integer values
+		MinusExpNode nodeInt = new MinusExpNode(new ValueExpNode(new Int(8)), new ValueExpNode(new Int(3)));
+		Integer resultInt = instance.eval(nodeInt, null);
+		Integer expResultInt = 5;
+		assertEquals(expResultInt, resultInt);
 	}
 
 	@Test
 	public void testVisitMultiplyExpNode() {
+		LOG.info("Testing eval MultiplyExpNode");
 
+		// Test with two integer values
+		MultiplyExpNode nodeInt = new MultiplyExpNode(new ValueExpNode(new Int(3)), new ValueExpNode(new Int(3)));
+		Integer resultInt = instance.eval(nodeInt, null);
+		Integer expResultInt = 9;
+		assertEquals(expResultInt, resultInt);
 	}
 
 	@Test
 	public void testVisitDivideExpNode() {
+		LOG.info("Testing eval DivideExpNode");
 
+		// Test with two integer values
+		DivideExpNode nodeInt = new DivideExpNode(new ValueExpNode(new Int(9)), new ValueExpNode(new Int(3)));
+		Integer resultInt = instance.eval(nodeInt, null);
+		Integer expResultInt = 3;
+		assertEquals(expResultInt, resultInt);
+	}
+
+	@Test(expected= DivideByZeroException.class)
+	public void testVisitDivideExpNodeWithZero() {
+		LOG.info("Testing eval DivideExpNode for a DivivdeByZeroException");
+
+		// Test with two integer values
+		DivideExpNode nodeInt = new DivideExpNode(new ValueExpNode(new Int(9)), new ValueExpNode(new Int(0)));
+		Integer resultInt = instance.eval(nodeInt, null);
 	}
 
 	@Test
 	public void testVisitModuloExpNode() {
+		LOG.info("Testing eval ModuloExpNode");
 
+		// Test with two integer values
+		ModuloExpNode nodeInt = new ModuloExpNode(new ValueExpNode(new Int(9)), new ValueExpNode(new Int(7)));
+		Integer resultInt = instance.eval(nodeInt, null);
+		Integer expResultInt = 2;
+		assertEquals(expResultInt, resultInt);
+	}
+
+	@Test(expected= ModuloZeroException.class)
+	public void testVisitModuloExpNodeWithZero() {
+		LOG.info("Testing eval ModuloExpNode for a ModuloZeroException");
+
+		// Test with two integer values
+		ModuloExpNode nodeInt = new ModuloExpNode(new ValueExpNode(new Int(9)), new ValueExpNode(new Int(0)));
+		Integer resultInt = instance.eval(nodeInt, null);
 	}
 
 	@Test
 	public void testVisitEqualsExpNode() {
+		LOG.info("Testing eval EqualsExpNode");
 
+		// Test with two integer values that are equal
+		EqualsExpNode nodeTrue = new EqualsExpNode(new ValueExpNode(new Int(3)), new ValueExpNode(new Int(3)));
+		Boolean resultTrue = instance.eval(nodeTrue, null);
+		assertEquals(true, resultTrue);
+
+		// Test with two integer values that are not equal
+		EqualsExpNode nodeFalse = new EqualsExpNode(new ValueExpNode(new Int(4)), new ValueExpNode(new Int(3)));
+		Boolean resultFalse = instance.eval(nodeFalse, null);
+		assertEquals(false, resultFalse);
+
+		// Test with two integer variable values that are equal
+		IntVariable leftTrue = new IntVariable("left", 4, env);
+		IntVariable rightTrue = new IntVariable("right", 4, env);
+		EqualsExpNode nodeTrueVar = new EqualsExpNode(new ValueExpNode(leftTrue), new ValueExpNode(rightTrue));
+		Boolean resultTrueVar = instance.eval(nodeTrueVar, env);
+		assertEquals(true, resultTrueVar);
+
+		// Test with two integer variable values that are not equal
+		IntVariable leftFalse = new IntVariable("left", 4, env);
+		IntVariable rightFalse = new IntVariable("right", 5, env);
+		EqualsExpNode nodeFalseVar = new EqualsExpNode(new ValueExpNode(leftFalse), new ValueExpNode(rightFalse));
+		Boolean resultFalseVar = instance.eval(nodeFalseVar, env);
+		assertEquals(false, resultFalseVar);
 	}
 
 	@Test
@@ -110,5 +178,15 @@ public class ExpressionVisitorTest {
 	@Test
 	public void testVisitLesserOrEqualsExpNode() {
 		
+	}
+
+	@Test
+	public void testVisitAndExpNode() {
+
+	}
+
+	@Test
+	public void testVisitOrExpNode() {
+
 	}
 }
