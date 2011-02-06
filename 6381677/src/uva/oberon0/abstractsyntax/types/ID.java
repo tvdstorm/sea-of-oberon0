@@ -13,7 +13,7 @@ import uva.oberon0.runtime.Scope;
 public class ID extends BaseNode
 {
 	private final String _value;
-	private BaseNode _sub = null;
+	private BaseNode selector = null;
 
 	public ID(String value)
 	{
@@ -24,23 +24,16 @@ public class ID extends BaseNode
 	
 	public BaseNode setSub(BaseNode value)
 	{
-		_sub = value;
-		return _sub;
+		selector = value;
+		return selector;
 	}
 	
 	/**
 	 * Get the Identifier Index Abstract Syntax Tree Node.
 	 */
-	public BaseNode getSub()
+	public BaseNode getSelector()
 	{
-		return _sub;
-	}
-	/**
-	 * Get the Identifier Index Value from the Execution Scope.
-	 */
-	public int getSub(Scope scope)
-	{
-		return _sub.eval(scope);
+		return selector;
 	}
 
 	@Override 

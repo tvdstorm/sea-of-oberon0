@@ -22,12 +22,10 @@ public class CallRead extends Call
 	@Override
 	public int eval(Scope scope)
 	{
-		int result;
-		
 		try 
 		{
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-			result = Integer.parseInt(reader.readLine());
+			scope.setValue(ID.get(getActualParameter(0)), Integer.parseInt(reader.readLine()));
 		} 
 		catch (IOException e) 
 		{
@@ -35,6 +33,6 @@ public class CallRead extends Call
 			return 0;
 		}
 		
-		return scope.setValue(ID.get(getActualParameter(0)), result);
+		return 1;
 	}
 }

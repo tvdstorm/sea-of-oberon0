@@ -1,7 +1,5 @@
 package uva.oberon0.runtime;
 
-import uva.oberon0.abstractsyntax.types.ID;
-
 /**
  * @author Chiel Labee
  * This class represents an Integer based Execution Scope Value.
@@ -19,21 +17,13 @@ public class ScopeValueInt extends ScopeValue
 		_value = value;
 	}
 	
-	@Override
-	public int getValue(Scope scope) 
+	public int getValue() 
 	{
 		return _value;
 	}
 
-	@Override
-	public void setValue(Scope scope, int valueNew) 
+	public void setValue(int valueNew) 
 	{
 		_value = valueNew;
-	}
-
-	@Override
-	public ScopeValue getValueReference(Scope scope, ID id) 
-	{
-		return this;
 	}
 }

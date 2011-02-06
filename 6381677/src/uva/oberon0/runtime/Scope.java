@@ -22,7 +22,7 @@ public class Scope
 {
 	private final Scope						_parent			;
 	private final Map<ID, Type> 			_mapTypes 		;
-	private final Map<ID, ScopeValue> 	_mapValues 		;
+	private final Map<ID, ScopeValue> 		_mapValues 		;
 	private final Map<ID, Procedure> 		_mapProcedures 	;
 
 	public Scope()
@@ -95,7 +95,7 @@ public class Scope
 			//Determine if the declaration should be passed by Value.
 			else {
 				ScopeValue value = formal.instantiate(this);
-				value.setValue(this, actual.eval(parent));
+				((ScopeValueInt)value).setValue(actual.eval(parent));
 				
 				//Create and Add an Execution Scope Value to the Value hash.
 				addValue(formal.getID(), value);
@@ -122,14 +122,7 @@ public class Scope
 	 */
 	public int getValue(ID id)
 	{
-		ScopeValue scopeValue = getValueReference(id);
-		
-		if (scopeValue == null){
-			assert false : "Variable " + id + " not found!";
-			return 0;
-		}
-		
-		return scopeValue.getValue(this);
+		return ((ScopeValueInt)getValueReference(id)).getValue();
 	}
 	private ScopeValue getValueReference(ID id)
 	{
@@ -137,39 +130,38 @@ public class Scope
 		
 		ScopeValue value = null;
 		
+		//Determine value reference from current scope.
 		if (_mapValues.containsKey(id)){
 			value = _mapValues.get(id);
 		}
 		
+		//Determine value reference from parent scope.
 		else if (_parent != null){
 			value = _parent.getValueReference(id);
 		}
 		
-		if (value != null){
-			return value.getValueReference(this, id);
+		//Unsuspected termination.
+		if (value == null){
+			assert false : "Value for " + id + " not found!";
+			return null;
+		}
+
+		//Determine selector value.
+		if (id.getSelector() != null){
+			value = value.getValue(this, id.getSelector());
 		}
 		
-		assert false : "Variable " + id + " not found!";
-		return null;
+		return value;
 	}
 
 	/**
 	 * Sets the Integer Value whitin the current Execution Scope.
 	 * @param id The Identifier of the Value that should be stored.
 	 */
-	public int setValue(ID id, int valueNew)
+	public void setValue(ID id, int valueNew)
 	{
-		ScopeValue scopeValue = getValueReference(id);
-		
-		if (scopeValue == null)
-		{
-			assert false : "Variable " + id + " not found!";
-			return 0;
-		}
-		
-		scopeValue.setValue(this, valueNew);
-		
-		return 1;
+		ScopeValueInt scopeValue = (ScopeValueInt)getValueReference(id);
+		scopeValue.setValue(valueNew);
 	}
 	
 	/**

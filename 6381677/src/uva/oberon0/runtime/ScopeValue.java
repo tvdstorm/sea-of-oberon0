@@ -1,6 +1,6 @@
 package uva.oberon0.runtime;
 
-import uva.oberon0.abstractsyntax.types.ID;
+import uva.oberon0.abstractsyntax.BaseNode;
 
 /**
  * @author Chiel Labee
@@ -9,23 +9,8 @@ import uva.oberon0.abstractsyntax.types.ID;
 */
 public abstract class ScopeValue 
 {	
-	/**
-	 * Gets an Integer Value from the current Execution Scope Value.
-	 * @param scope The Execution Scope to retrieve the Index Value from.
-	 * @param index The Index Value specification.
-	 */
-	public abstract int getValue(Scope scope);
-	/**
-	 * Sets the Integer Value to the current Execution Scope Value.
-	 * @param scope The Execution Scope to retrieve the Index Value from.
-	 * @param index The Index Value specification.
-	 */
-	public abstract void setValue(Scope scope, int valueNew);
-	
-	/**
-	 * Gets the current Execution Scope Value to be passed by Reference.
-	 * @param scope The Execution Scope to retrieve the Index Value from.
-	 * @param id The Identifier to determine the Index Value specification.
-	 */
-	public abstract ScopeValue getValueReference(Scope scope, ID id);
+	public ScopeValue getValue(Scope scope, BaseNode selector)
+	{
+		return null;
+	}
 }

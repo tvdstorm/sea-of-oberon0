@@ -137,6 +137,7 @@ public class Test
 		runTest("Statement Complex Assign", "VAR i,i2: INTEGER; BEGIN i2:=2; i:=i2+1; r:=((i = 3) & (i # i2) & (i = i2+1)) END");
 		runTest("Statement Array Assign", "VAR array: ARRAY 1 OF INTEGER; BEGIN array[0]:=1; r:=array[0] END");
 		runTest("Statement Array Assign", "VAR array: ARRAY 2 OF INTEGER; i: INTEGER; BEGIN i:=1; array[i]:=1; r:=array[i] END");
+		runTest("Statement Record Assign", "VAR i: RECORD test: INTEGER END; BEGIN i.test:=1; r:=i.test END");
 		runTest("Statement ByValue Assign", "VAR i,i2: INTEGER; " +
 				"PROCEDURE SetValue(x, y :INTEGER); BEGIN x:=y END SetValue; " +
 				"BEGIN i:=2; i2:=3; SetValue(i,i2); r:=((i = 2) & (i # i2)) END");
