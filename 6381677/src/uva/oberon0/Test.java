@@ -3,8 +3,8 @@ package uva.oberon0;
 
 import org.antlr.runtime.RecognitionException;
 
-import uva.oberon0.abstractsyntax.ID;
 import uva.oberon0.abstractsyntax.declarations.Module;
+import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.parser.Helper;
 import uva.oberon0.parser.OberonParser;
 import uva.oberon0.runtime.Scope;

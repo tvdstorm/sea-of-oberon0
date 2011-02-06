@@ -1,5 +1,7 @@
 package uva.oberon0.abstractsyntax;
 
+import uva.oberon0.abstractsyntax.types.ID;
+
 /**
  * @author Chiel Labee
  * This class represents an Abstract Syntax Tree Node containing an Identifier Node.

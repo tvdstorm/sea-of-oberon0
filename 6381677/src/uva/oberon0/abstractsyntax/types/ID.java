@@ -1,5 +1,7 @@
-package uva.oberon0.abstractsyntax;
+package uva.oberon0.abstractsyntax.types;
 
+import uva.oberon0.abstractsyntax.BaseNode;
+import uva.oberon0.abstractsyntax.BaseNodeWithID;
 import uva.oberon0.abstractsyntax.expressions.Reference;
 import uva.oberon0.runtime.Scope;
 
@@ -45,12 +47,14 @@ public class ID extends BaseNode
 	public boolean equals(Object compareTo)
 	{
 		//Determine if the same reference.
-		if (this == compareTo)
+		if (this == compareTo) {
 			return true;
+		}
 		
 		//Determine compareTo is and ID.
-		if ( !(compareTo instanceof ID) ) 
+		if ( !(compareTo instanceof ID) ) {
 			return false;
+		}
 		
 		//Determine match on text value.
 		return _value.equals(((ID)compareTo).toString());
@@ -77,14 +81,17 @@ public class ID extends BaseNode
 	 */
 	public static ID get(BaseNode value)
 	{
-		if (value instanceof ID)
+		if (value instanceof ID) {
 			return (ID)value;
+		}
 		
-		if (value instanceof BaseNodeWithID)
+		if (value instanceof BaseNodeWithID) {
 			return ((BaseNodeWithID)value).getID();
+		}
 		
-		if (value instanceof Reference)
+		if (value instanceof Reference) {
 			return ((Reference)value).getID();
+		}
 		
 		return null;
 	}
