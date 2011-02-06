@@ -60,143 +60,185 @@ tokens
  * PARSER RULES
  *------------------------------------------------------------------*/
 
-module			:	MODULE_KW identifier SEMI_COLON declarations (BEGIN_KW statementSequence)? END_KW identifier DOT
-				;
+module
+	:	MODULE_KW identifier SEMI_COLON declarations (BEGIN_KW statementSequence)? END_KW identifier DOT
+	;
 
-declarations 	: 	constDecl?
-					typeDecl?
-					varDecl?
-					(procedureDecl SEMI_COLON)*
-				;
+declarations
+	: 	constDecl? typeDecl? varDecl? (procedureDecl SEMI_COLON)*
+	;
 
-constDecl		:	CONST_KW (identifier EQUALS_OP expression SEMI_COLON)*
-				;
+constDecl
+	:	CONST_KW (identifier EQUALS_OP expression SEMI_COLON)*
+	;
 
-typeDecl		:	TYPE_KW (identifier EQUALS_OP type SEMI_COLON)*
-				;
+typeDecl
+	:	TYPE_KW (identifier EQUALS_OP type SEMI_COLON)*
+	;
 
-varDecl			:	VAR_KW (identList COLON type SEMI_COLON)*
-				;
+varDecl
+	:	VAR_KW (identList COLON type SEMI_COLON)*
+	;
 
-procedureDecl 	: 	PROCEDURE_KW identifier (formalParams)? SEMI_COLON procedureBody
-				;
+procedureDecl
+	: 	PROCEDURE_KW identifier (formalParams)? SEMI_COLON procedureBody
+	;
 
-procedureBody	:	declarations (BEGIN_KW statementSequence)? END_KW identifier
-				;
+procedureBody
+	:	declarations (BEGIN_KW statementSequence)? END_KW identifier
+	;
 
-formalParams 	:	RND_OPEN (fPSection (SEMI_COLON fPSection)*)? RND_CLOSE
-				;
+formalParams
+	:	RND_OPEN (fPSection (SEMI_COLON fPSection)*)? RND_CLOSE
+	;
 
-fPSection 		: 	VAR_KW identList COLON type
-				|	identList COLON type
-				;
+fPSection
+	: 	VAR_KW identList COLON type
+	|	identList COLON type
+	;
 
-type			:	identifier | arrayType | recordType ;
+type
+	:	identifier
+	|	arrayType
+	|	recordType
+	;
 
-identList		:	identifier (COMMA identifier)*
-				;
+identList
+	:	identifier (COMMA identifier)*
+	;
 
-arrayType		:	ARRAY_KW expression OF_KW type
-				;
+arrayType
+	:	ARRAY_KW expression OF_KW type
+	;
 
-fieldList		:	(identList COLON type)?
-				;
+fieldList
+	:	(identList COLON type)?
+	;
 
-recordType		:	RECORD_KW fieldList (SEMI_COLON fieldList)* END_KW
-				;
+recordType
+	:	RECORD_KW fieldList (SEMI_COLON fieldList)* END_KW
+	;
 
 statementSequence
-				:	statement (SEMI_COLON statement)*
-				;
+	:	statement (SEMI_COLON statement)*
+	;
 
-statement		:	((identSelector ASSIGN_OP) => assignment)
-				|	procedureCall
-				|	ifStatement
-				|	whileStatement ;
+statement
+	:	((identSelector ASSIGN_OP) => assignment)
+	|	procedureCall
+	|	ifStatement
+	|	whileStatement
+	;
 
-assignment		:	identSelector ASSIGN_OP expression
-				;
+assignment
+	:	identSelector ASSIGN_OP expression
+	;
 
-procedureCall	:	identSelector (actualParameters)?
-				;
+procedureCall
+	:	identSelector (actualParameters)?
+	;
 
-whileStatement	:	WHILE_KW expression DO_KW statementSequence END_KW
-				;
+whileStatement
+	:	WHILE_KW expression DO_KW statementSequence END_KW
+	;
 
-ifStatement		:	IF_KW expression THEN_KW statementSequence (elsifStatement)* (elseStatement)? END_KW
-				;
+ifStatement
+	:	IF_KW expression THEN_KW statementSequence (elsifStatement)* (elseStatement)? END_KW
+	;
 
-elsifStatement	:	ELSIF_KW expression THEN_KW statementSequence
-				;
+elsifStatement
+	:	ELSIF_KW expression THEN_KW statementSequence
+	;
 
-elseStatement	:	ELSE_KW statementSequence
-				;
+elseStatement
+	:	ELSE_KW statementSequence
+	;
 
 actualParameters
-				: 	RND_OPEN RND_CLOSE
-				|	RND_OPEN expression (COMMA expression)* RND_CLOSE
-				;
+	: 	RND_OPEN RND_CLOSE
+	|	RND_OPEN expression (COMMA expression)* RND_CLOSE
+	;
 
 expression
-				:	simpleExpression (expressionOperator simpleExpression)? ;
+	:	simpleExpression (expressionOperator simpleExpression)?
+	;
 
 expressionOperator
-				:	EQUALS_OP
-				|	HASH_OP
-				|	LESSER_OP
-				|	LESSER_OR_EQUAL_OP
-				|	GREATER_OP
-				|	GREATER_OR_EQUAL_OP
-				;
+	:	EQUALS_OP
+	|	HASH_OP
+	|	LESSER_OP
+	|	LESSER_OR_EQUAL_OP
+	|	GREATER_OP
+	|	GREATER_OR_EQUAL_OP
+	;
 
 
 simpleExpression
-				:	(PLUS_OP | MINUS_OP)? term (simpleExpressionOperator term)* ;
+	:	(PLUS_OP | MINUS_OP)? term (simpleExpressionOperator term)*
+	;
 
 simpleExpressionOperator
-				:	PLUS_OP
-				|	MINUS_OP
-				|	OR_OP
-				;
+	:	PLUS_OP
+	|	MINUS_OP
+	|	OR_OP
+	;
 
-term			:	factor (termOperator factor)* ;
+term
+	:	factor (termOperator factor)*
+	;
 
 termOperator
-				:	MULTIPLY_OP
-				|	DIVIDE_OP
-				|	MODULO_OP
-				|	AND_OP
-				;
+	:	MULTIPLY_OP
+	|	DIVIDE_OP
+	|	MODULO_OP
+	|	AND_OP
+	;
 
-factor			:	identSelector 
-				|	integer
-				|	RND_OPEN expression RND_CLOSE
-				|	TILDE factor
-				;
+factor
+	:	identSelector
+	|	integer
+	|	RND_OPEN expression RND_CLOSE
+	|	TILDE factor
+	;
 
-identSelector	:	identifier selector* ;
+identSelector
+	:	identifier selector*
+	;
 
-selector		:	DOT identifier
-				|	SQR_OPEN expression SQR_CLOSE
-				;
+selector
+	:	DOT identifier
+	|	SQR_OPEN expression SQR_CLOSE
+	;
 
-identifier		:	IDENT
-				;
+identifier
+	:	IDENT
+	;
 
-integer			:	INT
-				;
+integer
+	:	INT
+	;
 
 
 /*------------------------------------------------------------------
  * LEXER RULES
  *------------------------------------------------------------------*/
 
-INT				:	DIGIT+ ;
+INT
+	:	DIGIT+
+	;
 
-IDENT 			:	LETTER (LETTER | DIGIT)*;
+IDENT
+	:	LETTER (LETTER | DIGIT)*
+	;
 
-WHITESPACE		:	( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ 	{ $channel = HIDDEN; } ;
+WHITESPACE
+	:	( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ 	{ $channel = HIDDEN; }
+	;
 
-fragment DIGIT	:	'0'..'9' ;
+fragment DIGIT	
+	:	'0'..'9'
+	;
 
-fragment LETTER	:	('a'..'z' | 'A'..'Z') ;
+fragment LETTER	
+	:	('a'..'z' | 'A'..'Z')
+	;
