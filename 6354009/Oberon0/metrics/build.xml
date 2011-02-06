@@ -1,0 +1,25 @@
+<project name="Oberon0 Metrics">
+
+	<taskdef name="javancss" classname="javancss.JavancssAntTask" classpath="../../../../javancss-32.53/lib/javancss.jar"/>
+		
+	<javancss 	srcdir="../src"
+				outputfile="~/Desktop/javancss_metrics.xml"
+	            includes="**/*.java"
+	/>
+	
+<target name="jdepend">
+
+  <jdepend format="xml" outputfile="jdepend-report.xml">
+      <exclude name="java.*"/>
+      <exclude name="javax.*"/>
+      <classpath location="../src" />
+  </jdepend>
+
+  <style basedir="docs" destdir="docs"
+         includes="jdepend-report.xml" 
+         style="${ant.home}/etc/jdepend.xsl" />
+
+</target>
+	
+  
+</project>

@@ -1,7 +1,5 @@
 package oberon0.identifier;
 
-
-
 public class Identifier {
 	
 	private String identifier;
