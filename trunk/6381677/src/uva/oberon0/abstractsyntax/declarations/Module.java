@@ -12,8 +12,8 @@ import uva.oberon0.runtime.Scope;
 */
 public class Module extends BaseNodeWithID
 {
-	private final BaseDeclarationList _declarations;
-	private final BaseStatementList _statements;
+	private final BaseDeclarationList 	_declarations;
+	private final BaseStatementList 	_statements;
 
 	public Module(ID id, BaseDeclarationList declarations, BaseStatementList statements)
 	{
@@ -22,8 +22,8 @@ public class Module extends BaseNodeWithID
 		assert declarations != null : "No Declarations are available for the current Module!";
 		assert statements 	!= null : "No Statements are available for the current Module!";
 
-		_declarations = declarations;
-		_statements = statements;
+		_declarations 	= declarations;
+		_statements 	= statements;
 	}
 	
 	/**

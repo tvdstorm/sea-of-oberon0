@@ -13,14 +13,20 @@ import uva.oberon0.runtime.ScopeValueBase;
 public class Variable extends BaseDeclaration
 {
 	private final BaseType _type;
-
+	private final boolean _isByReference;
+	
 	public Variable(ID id, BaseType type)
+	{
+		this(id, type, false);
+	}
+	public Variable(ID id, BaseType type, boolean isByReference)
 	{
 		super(id);
 
 		assert type != null : "No Type available for the current Declaration!";
 		
 		_type = type;
+		_isByReference = isByReference;
 	}
 	
 		
@@ -30,6 +36,14 @@ public class Variable extends BaseDeclaration
 	public BaseType getType()
 	{
 		return _type;
+	}
+	
+	/**
+	 * Gets an indication if this Variable should be passed By Reference or not (By Value).
+	 */
+	public boolean isByReference()
+	{
+		return _isByReference;
 	}
 	
 	@Override

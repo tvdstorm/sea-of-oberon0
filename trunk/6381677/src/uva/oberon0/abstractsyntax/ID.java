@@ -62,7 +62,7 @@ public class ID extends BaseNode
 	}
 	
 	@Override
-	public int eval(uva.oberon0.runtime.Scope scope)
+	public int eval(Scope scope)
 	{
 		return scope.getValue(this);
 	}

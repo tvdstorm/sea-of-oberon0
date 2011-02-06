@@ -17,7 +17,8 @@ public class Type extends BaseDeclaration
 	}
 
 	@Override
-	public int eval(Scope scope) {
+	public int eval(Scope scope) 
+	{
 		return 0;
 	}
 

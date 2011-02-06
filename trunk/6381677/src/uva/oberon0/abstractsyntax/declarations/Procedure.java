@@ -11,11 +11,11 @@ import uva.oberon0.runtime.Scope;
 */
 public class Procedure extends BaseDeclaration 
 {
-	private final BaseDeclarationList _parameters;
-	private final BaseDeclarationList _declarations;
-	private final BaseStatementList _statements;
+	private final VariableList 			_parameters;
+	private final BaseDeclarationList 	_declarations;
+	private final BaseStatementList 	_statements;
 
-	public Procedure(ID id, BaseDeclarationList parameters, BaseDeclarationList declarations, BaseStatementList statements)
+	public Procedure(ID id, VariableList parameters, BaseDeclarationList declarations, BaseStatementList statements)
 	{
 		super(id);
 		
