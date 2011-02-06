@@ -13,7 +13,7 @@ import com.arievanderveek.soo.symboltable.Scope;
  * @author arieveek
  * 
  */
-public class VariableDeclarationNode extends AbstractDeclarationNode{
+public class VariableDeclarationNode extends AbstractDeclarationNode {
 
 	/**
 	 * @param expression
@@ -22,7 +22,9 @@ public class VariableDeclarationNode extends AbstractDeclarationNode{
 		super(expression);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
 	 */
 	@Override

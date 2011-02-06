@@ -13,18 +13,20 @@ import com.arievanderveek.soo.symboltable.Scope;
  * ASTNode representing a Selector
  * 
  * @author arieveek
- *
+ * 
  */
 public class SelectorNode implements ASTNode {
-	
+
 	final Queue<ASTNode> selectors;
 
-	public SelectorNode(Queue<ASTNode> selectors){
-		assert selectors!=null;
+	public SelectorNode(Queue<ASTNode> selectors) {
+		assert selectors != null;
 		this.selectors = selectors;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
 	 */
 	@Override
@@ -33,13 +35,15 @@ public class SelectorNode implements ASTNode {
 		return 0;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.arievanderveek.soo.ast.ASTNode#toTreeString(java.lang.String)
 	 */
 	@Override
 	public String toTreeString(String ident) throws SeaOfOberonException {
 		StringBuilder sb = new StringBuilder();
-		for (Object node : selectors.toArray() ){
+		for (Object node : selectors.toArray()) {
 			sb.append(((ASTNode) node).toTreeString(ident));
 		}
 		return sb.toString();

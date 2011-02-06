@@ -9,8 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
-import antlr.collections.AST;
-
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
 import com.arievanderveek.soo.ast.codeblocks.ProcedureNode;
@@ -130,23 +128,24 @@ public class Scope {
 	public Integer getValue(IdentifierNode identNode)
 			throws SeaOfOberonException {
 		// Lookup the address for the symbol and return the value from memory
-		//System.out.println("Looking up value for " + identNode.getName());
+		// System.out.println("Looking up value for " + identNode.getName());
 		return getMemoryMap().getValue(getAddressForSymbol(identNode));
 	}
 
 	public void updateValue(IdentifierNode identNode, Integer value)
 			throws SeaOfOberonException {
 		// Lookup the address for the symbol and return the value from memory
-		//System.out.println("Updating value for " + identNode.getName() + " with value: " + value);
+		// System.out.println("Updating value for " + identNode.getName() +
+		// " with value: " + value);
 		getMemoryMap().updateValue(getAddressForSymbol(identNode), value);
 	}
 
-	/* Not needed, deleting of values is not permitted.
-	  public void deleteValue(IdentifierNode identNode)
-			throws SeaOfOberonException {
-		// Lookup the address for the symbol and return the value from memory
-		getMemoryMap().deleteValue(getAddressForSymbol(identNode));
-	}*/
+	/*
+	 * Not needed, deleting of values is not permitted. public void
+	 * deleteValue(IdentifierNode identNode) throws SeaOfOberonException { //
+	 * Lookup the address for the symbol and return the value from memory
+	 * getMemoryMap().deleteValue(getAddressForSymbol(identNode)); }
+	 */
 
 	private Symbol lookupSymbol(String symbolName) {
 		if (symbolTable.containsKey(symbolName)) {
@@ -254,12 +253,12 @@ public class Scope {
 					StringBuilder select = new StringBuilder();
 					select.append("Size" + selectors.size());
 					ASTNode selector = selectors.poll();
-					while(selector!=null){
+					while (selector != null) {
 						select.append(selector.toString());
 						select.append(Constants.LINE_SEPARATOR);
 					}
-					//System.out.println(select.toString());
-					//System.out.println(this.toString());
+					// System.out.println(select.toString());
+					// System.out.println(this.toString());
 					throw new SeaOfOberonException(
 							"Multidimentional arrays not yet supported");
 				}
@@ -268,7 +267,7 @@ public class Scope {
 				throw new SeaOfOberonException("SymbolType " + symbol.getType()
 						+ " not supported");
 			}
-		} else if(!isRootScope()){
+		} else if (!isRootScope()) {
 			return enclosingScope.getAddressForSymbol(identNode);
 		} else {
 			// If the symbol table does not contain a symbol, it is not defined
@@ -283,20 +282,22 @@ public class Scope {
 		// First remove all Values for the adresses used by this scope
 		for (String key : symbolTable.keySet()) {
 			Symbol symbol = symbolTable.get(key);
-			if (!symbol.referencedSymbol){
-			if (symbol.getType() == SymbolTypesEnum.INTEGER && !symbol.referencedSymbol) {
-				getMemoryMap().deleteAddress(
-						((IntegerSymbol) symbol).getMemoryAdress());
-			}else if (symbol.getType() == SymbolTypesEnum.ARRAY) {
-				for (MemoryAddress address : ((ArraySymbol) symbol)
-						.getAddressList()) {
-					getMemoryMap().deleteAddress(address);
+			if (!symbol.referencedSymbol) {
+				if (symbol.getType() == SymbolTypesEnum.INTEGER
+						&& !symbol.referencedSymbol) {
+					getMemoryMap().deleteAddress(
+							((IntegerSymbol) symbol).getMemoryAdress());
+				} else if (symbol.getType() == SymbolTypesEnum.ARRAY) {
+					for (MemoryAddress address : ((ArraySymbol) symbol)
+							.getAddressList()) {
+						getMemoryMap().deleteAddress(address);
+					}
+				} else {
+					// This conditions should never be true!!
+					System.err.println("Neither an Integer or Array"
+							+ symbol.getType());
+					assert false;
 				}
-			} else {
-				// This conditions should never be true!!
-				System.err.println("Neither an Integer or Array" + symbol.getType() );
-				assert false;
-			}
 			}
 		}
 		// now return the enclosing scope
@@ -426,9 +427,9 @@ public class Scope {
 			if (castedParamNode instanceof CallByRefParameterNode) {
 				// Loop over parameters in the paramater block
 				for (ASTNode parameter : castedParamNode.getFormalParameter()) {
-					MethodCallParamNode castParameter = (MethodCallParamNode)parameter;
+					MethodCallParamNode castParameter = (MethodCallParamNode) parameter;
 					String identifier = castParameter.getName();
-					//System.out.println("Ident in keyset" + identifier);
+					// System.out.println("Ident in keyset" + identifier);
 					// Its a call by refernce, so retrieve the referenced
 					// parameter
 					// and store it in the local symbol map the param name
@@ -437,21 +438,30 @@ public class Scope {
 					// Test if its an identifier, if not throw an exception
 					if (referencedParamNode instanceof IdentifierNode) {
 						// Get the parameter from the store and put it in local
-						// the symbol table under its new name. Assumed its the same
+						// the symbol table under its new name. Assumed its the
+						// same
 						// type and size.... TODO: write validation.
-						IdentifierNode castedRefParamNode = (IdentifierNode)referencedParamNode;
-						SelectorNode selectorNode = (SelectorNode)castedRefParamNode.getSelectors();
+						IdentifierNode castedRefParamNode = (IdentifierNode) referencedParamNode;
+						SelectorNode selectorNode = (SelectorNode) castedRefParamNode
+								.getSelectors();
 						Symbol referencedSymbol = null;
-						if(selectorNode.getSelectors().size() == 0 ){
-							referencedSymbol = lookupSymbol(castedRefParamNode.getName());
-						}else {
-							Symbol tmpSymbol = lookupSymbol(castedRefParamNode.getName());
-							if (tmpSymbol.getType() == SymbolTypesEnum.ARRAY){
-								Integer position = selectorNode.getSelectors().peek().interpret(this);
-								MemoryAddress address = ((ArraySymbol)tmpSymbol).getAddress(position);
-								referencedSymbol = new IntegerSymbol("TMPSYMARRYPOS"+position,true,address);
-							} else{
-								throw new SeaOfOberonException("Found more then 1 selector, but no array");
+						if (selectorNode.getSelectors().size() == 0) {
+							referencedSymbol = lookupSymbol(castedRefParamNode
+									.getName());
+						} else {
+							Symbol tmpSymbol = lookupSymbol(castedRefParamNode
+									.getName());
+							if (tmpSymbol.getType() == SymbolTypesEnum.ARRAY) {
+								Integer position = selectorNode.getSelectors()
+										.peek().interpret(this);
+								MemoryAddress address = ((ArraySymbol) tmpSymbol)
+										.getAddress(position);
+								referencedSymbol = new IntegerSymbol(
+										"TMPSYMARRYPOS" + position, true,
+										address);
+							} else {
+								throw new SeaOfOberonException(
+										"Found more then 1 selector, but no array");
 							}
 						}
 						// Change the symbol to referenced
@@ -464,7 +474,8 @@ public class Scope {
 							parameterCounter++;
 						} else {
 							throw new SeaOfOberonException(
-									"Referenced symbol does not exist in any scope. Name: " + identifier);
+									"Referenced symbol does not exist in any scope. Name: "
+											+ identifier);
 						}
 					} else {
 						throw new SeaOfOberonException(
@@ -478,9 +489,9 @@ public class Scope {
 				// store
 				// it locally for all identifiers in the formal parameter list
 				for (ASTNode parameter : castedParamNode.getFormalParameter()) {
-					MethodCallParamNode castParameter = (MethodCallParamNode)parameter;
+					MethodCallParamNode castParameter = (MethodCallParamNode) parameter;
 					String identifier = castParameter.getName();
-					//System.out.println("Ident in keyset" + identifier);
+					// System.out.println("Ident in keyset" + identifier);
 					ASTNode valParamNode = parameters.get(parameterCounter);
 					Integer evaluatedParam = valParamNode.interpret(this);
 					addIntegerSymbol(identifier, evaluatedParam, true);
@@ -493,7 +504,6 @@ public class Scope {
 		}
 	}
 
-	
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
 		sb.append("Scope Contents");
@@ -517,6 +527,6 @@ public class Scope {
 			sb.append(Constants.LINE_SEPARATOR);
 		}
 		return sb.toString();
-		
+
 	}
 }

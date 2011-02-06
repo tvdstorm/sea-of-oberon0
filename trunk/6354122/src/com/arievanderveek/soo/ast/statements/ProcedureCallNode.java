@@ -13,7 +13,7 @@ import com.arievanderveek.soo.symboltable.Scope;
 
 /**
  * @author arieveek
- *
+ * 
  */
 public class ProcedureCallNode extends AbstractCallNode {
 
@@ -23,33 +23,41 @@ public class ProcedureCallNode extends AbstractCallNode {
 	public ProcedureCallNode(ASTNode identifier) {
 		super(identifier);
 	}
-	
+
 	/**
 	 * @param identifier
 	 */
 	public ProcedureCallNode(ASTNode identifier, List<ASTNode> parameters) {
-		super(identifier,parameters);
+		super(identifier, parameters);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
 	 */
 	@Override
 	public Integer interpret(Scope scope) throws SeaOfOberonException {
 		// First lookup the procedure in the scope
-		String procedureName = ((IdentifierNode)identifier).getName();
-		ProcedureNode procedure = (ProcedureNode)scope.getProcedure(procedureName);
+		String procedureName = ((IdentifierNode) identifier).getName();
+		ProcedureNode procedure = (ProcedureNode) scope
+				.getProcedure(procedureName);
 		// Validate if the amout of parameters are the same
-		if (!procedure.isAmountOfParametersEqual(parameters)){
-			throw new SeaOfOberonException("Amount of parameters in procedure call does not match " +
-					"the declared amout of paramters for procedure:" + procedureName);
+		if (!procedure.isAmountOfParametersEqual(parameters)) {
+			throw new SeaOfOberonException(
+					"Amount of parameters in procedure call does not match "
+							+ "the declared amout of paramters for procedure:"
+							+ procedureName);
 		}
-		// Create a new scope with the procedures, current parameters and the current scope
+		// Create a new scope with the procedures, current parameters and the
+		// current scope
 		Scope scopeForProcedure = new Scope(scope, procedure, this.parameters);
 		// Interpret the procedure with the new scope
 		procedure.interpret(scopeForProcedure);
-		// as we are done with the scope, pop the newly created scope from the old scope
-		// so varaibles are deallocated. If this is not done, you will have a memory leak.
+		// as we are done with the scope, pop the newly created scope from the
+		// old scope
+		// so varaibles are deallocated. If this is not done, you will have a
+		// memory leak.
 		scopeForProcedure.popScope();
 		return null;
 	}

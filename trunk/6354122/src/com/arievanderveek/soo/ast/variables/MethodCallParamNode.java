@@ -9,14 +9,15 @@ import com.arievanderveek.soo.symboltable.Scope;
 
 /**
  * @author arieveek
- *
+ * 
  */
-public class MethodCallParamNode implements ASTNode{
-	
+public class MethodCallParamNode implements ASTNode {
+
 	// TODO: SHITTY TMP CLASS FOR BUGFIX, FIXIT!!!
-	
+
 	private String Name;
 	private ASTNode type;
+
 	/**
 	 * @param name
 	 * @param type
@@ -26,39 +27,52 @@ public class MethodCallParamNode implements ASTNode{
 		Name = name;
 		this.type = type;
 	}
+
 	/**
 	 * @return the name
 	 */
 	public String getName() {
 		return Name;
 	}
+
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		Name = name;
 	}
+
 	/**
 	 * @return the type
 	 */
 	public ASTNode getType() {
 		return type;
 	}
+
 	/**
-	 * @param type the type to set
+	 * @param type
+	 *            the type to set
 	 */
 	public void setType(ASTNode type) {
 		this.type = type;
 	}
-	/* (non-Javadoc)
-	 * @see com.arievanderveek.soo.ast.ASTNode#interpret(com.arievanderveek.soo.symboltable.Scope)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.arievanderveek.soo.ast.ASTNode#interpret(com.arievanderveek.soo.
+	 * symboltable.Scope)
 	 */
 	@Override
 	public Integer interpret(Scope scope) throws SeaOfOberonException {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.arievanderveek.soo.ast.ASTNode#toTreeString(java.lang.String)
 	 */
 	@Override
@@ -66,8 +80,5 @@ public class MethodCallParamNode implements ASTNode{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
-	
 
 }

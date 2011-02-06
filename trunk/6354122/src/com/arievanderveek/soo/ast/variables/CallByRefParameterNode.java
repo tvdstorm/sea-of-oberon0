@@ -12,7 +12,7 @@ import com.arievanderveek.soo.util.Constants;
 
 /**
  * @author arieveek
- *
+ * 
  */
 public class CallByRefParameterNode extends AbstractParameterNode {
 
@@ -23,7 +23,9 @@ public class CallByRefParameterNode extends AbstractParameterNode {
 		super(formalParameter);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
 	 */
 	@Override
@@ -31,7 +33,9 @@ public class CallByRefParameterNode extends AbstractParameterNode {
 		return null;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.arievanderveek.soo.ast.ASTNode#toTreeString(java.lang.String)
 	 */
 	@Override
@@ -40,7 +44,7 @@ public class CallByRefParameterNode extends AbstractParameterNode {
 		sb.append("VAR");
 		sb.append(Constants.LINE_SEPARATOR);
 		sb.append(super.toTreeString(ident));
-		return sb.toString();		
+		return sb.toString();
 	}
 
 }

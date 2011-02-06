@@ -16,7 +16,7 @@ public abstract class UnaryOperatorNode implements ASTNode {
 	private final ASTNode node;
 
 	public UnaryOperatorNode(ASTNode node) {
-		assert(node!=null);
+		assert (node != null);
 		this.node = node;
 	}
 

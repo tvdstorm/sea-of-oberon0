@@ -9,7 +9,7 @@ import com.arievanderveek.soo.symboltable.Scope;
 
 /**
  * @author arieveek
- *
+ * 
  */
 public class NotOperatorNode extends UnaryOperatorNode {
 
@@ -20,23 +20,28 @@ public class NotOperatorNode extends UnaryOperatorNode {
 		super(node);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
 	 */
 	@Override
 	public Integer interpret(Scope scope) throws SeaOfOberonException {
-		if (getNode().interpret(scope)==1){
+		if (getNode().interpret(scope) == 1) {
 			return 0;
-		} else { 
-			if (getNode().interpret(scope)==0){
+		} else {
+			if (getNode().interpret(scope) == 0) {
 				return 1;
 			} else {
-				throw new SeaOfOberonException("Not Operator node did not return a boolean value");
+				throw new SeaOfOberonException(
+						"Not Operator node did not return a boolean value");
 			}
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.arievanderveek.soo.ast.ASTNode#toTreeString(java.lang.String)
 	 */
 	@Override

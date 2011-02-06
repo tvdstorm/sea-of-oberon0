@@ -11,22 +11,25 @@ import com.arievanderveek.soo.symboltable.Scope;
 
 /**
  * @author arieveek
- *
+ * 
  */
 public class RecordTypeNode implements ASTNode {
-	
-	List< ASTNode> recordElements;
+
+	List<ASTNode> recordElements;
 
 	/**
 	 * Constructor with all required fields
 	 * 
-	 * @param recordElements the elements of the record
+	 * @param recordElements
+	 *            the elements of the record
 	 */
 	public RecordTypeNode(List<ASTNode> recordElements) {
 		this.recordElements = recordElements;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
 	 */
 	@Override
@@ -35,21 +38,20 @@ public class RecordTypeNode implements ASTNode {
 		return 0;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.arievanderveek.soo.ast.ASTNode#toTreeString(java.lang.String)
 	 */
 	@Override
 	public String toTreeString(String ident) throws SeaOfOberonException {
 		return "Not Implemented";
 	}
-		/*	StringBuilder sb = new StringBuilder();
-		sb.append("RECORD" + ident);
-		for (Object key : recordElements.keySet().toArray()){
-			sb.append(ident);
-			sb.append((String)key);
-			sb.append(recordElements.get((String)key).toTreeString(ident));
-			sb.append(ident);
-		}
-		return sb.toString();
-	}*/
+	/*
+	 * StringBuilder sb = new StringBuilder(); sb.append("RECORD" + ident); for
+	 * (Object key : recordElements.keySet().toArray()){ sb.append(ident);
+	 * sb.append((String)key);
+	 * sb.append(recordElements.get((String)key).toTreeString(ident));
+	 * sb.append(ident); } return sb.toString(); }
+	 */
 }

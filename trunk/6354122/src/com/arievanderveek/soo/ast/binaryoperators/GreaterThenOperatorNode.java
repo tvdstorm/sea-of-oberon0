@@ -9,7 +9,7 @@ import com.arievanderveek.soo.symboltable.Scope;
 
 /**
  * @author arieveek
- *
+ * 
  */
 public class GreaterThenOperatorNode extends AbstractBinaryOperatorNode {
 
@@ -31,7 +31,7 @@ public class GreaterThenOperatorNode extends AbstractBinaryOperatorNode {
 	public String toTreeString(String ident) throws SeaOfOberonException {
 		StringBuilder sb = new StringBuilder();
 		sb.append(super.leftHandNode.toTreeString(ident));
-		sb.append(ident + "Greater Then" + ident); 
+		sb.append(ident + "Greater Then" + ident);
 		sb.append(super.rightHandNode.toTreeString(ident));
 		return sb.toString();
 	}
@@ -43,7 +43,8 @@ public class GreaterThenOperatorNode extends AbstractBinaryOperatorNode {
 	 */
 	@Override
 	public Integer interpret(Scope scope) throws SeaOfOberonException {
-		if (super.leftHandNode.interpret(scope) >= super.rightHandNode.interpret(scope)) {
+		if (super.leftHandNode.interpret(scope) >= super.rightHandNode
+				.interpret(scope)) {
 			return 1;
 		} else {
 			return 0;

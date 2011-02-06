@@ -9,7 +9,7 @@ import com.arievanderveek.soo.symboltable.Scope;
 
 /**
  * @author arieveek
- *
+ * 
  */
 public class NegationOperatorNode extends UnaryOperatorNode {
 
@@ -20,7 +20,9 @@ public class NegationOperatorNode extends UnaryOperatorNode {
 		super(node);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.arievanderveek.soo.ast.ASTNode#toTreeString(java.lang.String)
 	 */
 	@Override
@@ -28,15 +30,17 @@ public class NegationOperatorNode extends UnaryOperatorNode {
 		StringBuilder sb = new StringBuilder();
 		sb.append("NEGATION" + ident);
 		sb.append(getNode().toTreeString(ident));
-		return sb.toString();		
+		return sb.toString();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
 	 */
 	@Override
 	public Integer interpret(Scope scope) throws SeaOfOberonException {
-		return - getNode().interpret(scope);
+		return -getNode().interpret(scope);
 	}
 
 }

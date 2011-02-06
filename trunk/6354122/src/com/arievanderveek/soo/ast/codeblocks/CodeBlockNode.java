@@ -12,7 +12,7 @@ import com.arievanderveek.soo.util.Constants;
 
 /**
  * @author arieveek
- *
+ * 
  */
 public abstract class CodeBlockNode implements ASTNode {
 
