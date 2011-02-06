@@ -52,7 +52,10 @@ public class ComparisonExpression extends AbstractLeftAndRightExpression {
 			result = booleanAsInt(leftHandSide.evalAsInt() < rightHandSide.evalAsInt());
 			break;
 		case Amp:
-			result = booleanAsInt(leftHandSide.evalAsBoolean() && rightHandSide.evalAsBoolean());
+			result = booleanAsInt(leftHandSide.evalAsInt() == rightHandSide.evalAsInt());
+			break;
+		case Til:
+			result = booleanAsInt(leftHandSide.evalAsInt() != rightHandSide.evalAsInt());
 			break;
 		default:
 			throw new UnsupportedException("Unsupported comparison: "+ comparisonType.toString());
