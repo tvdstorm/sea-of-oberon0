@@ -7,7 +7,7 @@ import uva.oberon0.runtime.Scope;
  * @author Chiel Labee
  * This class represents an Integer Value.
 */
-public class IntegerValue extends BaseExpression
+public class IntegerValue extends Expression
 {
 	private int _value = 0;
 

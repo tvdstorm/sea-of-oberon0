@@ -1,5 +1,6 @@
 package uva.oberon0.abstractsyntax.statements;
 
+import uva.oberon0.abstractsyntax.expressions.ExpressionList;
 import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.runtime.Scope;
 
@@ -10,7 +11,7 @@ import uva.oberon0.runtime.Scope;
 */
 public class CallProcedure extends Call 
 {
-	public CallProcedure(CallActualParameterList actualParameterList, ID procedureID)
+	public CallProcedure(ExpressionList actualParameterList, ID procedureID)
 	{
 		super(actualParameterList);
 		

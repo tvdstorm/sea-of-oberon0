@@ -6,9 +6,9 @@ import uva.oberon0.runtime.Scope;
  * This class represents a Positive Unary Expression (+x).
  * @author Chiel Labee
  */
-public class Positive extends BaseExpressionUnary {
+public class Positive extends UnaryExpression {
 
-	public Positive(BaseExpression argument) {
+	public Positive(Expression argument) {
 		super(argument);
 	}
 

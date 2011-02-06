@@ -6,9 +6,9 @@ import uva.oberon0.runtime.Scope;
  * This class represents a Modulo Binary Expression (x % y).
  * @author Chiel Labee
  */
-public class Modulo extends BaseExpressionBinary {
+public class Modulo extends BinaryExpression {
 
-	public Modulo(BaseExpression left, BaseExpression right) {
+	public Modulo(Expression left, Expression right) {
 		super(left, right);
 	}
 

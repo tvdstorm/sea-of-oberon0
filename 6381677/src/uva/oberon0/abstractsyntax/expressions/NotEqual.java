@@ -6,9 +6,9 @@ import uva.oberon0.runtime.Scope;
  * This class represents a Not Equals Binary Expression (x != y).
  * @author Chiel Labee
  */
-public class NotEqual extends BaseExpressionBinary {
+public class NotEqual extends BinaryExpression {
 
-	public NotEqual(BaseExpression left, BaseExpression right) {
+	public NotEqual(Expression left, Expression right) {
 		super(left, right);
 	}
 

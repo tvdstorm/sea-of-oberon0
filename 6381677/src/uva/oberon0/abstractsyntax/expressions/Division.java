@@ -6,9 +6,9 @@ import uva.oberon0.runtime.Scope;
  * This class represents a Division Binary Expression (x / y).
  * @author Chiel Labee
  */
-public class Division extends BaseExpressionBinary {
+public class Division extends BinaryExpression {
 
-	public Division(BaseExpression left, BaseExpression right) {
+	public Division(Expression left, Expression right) {
 		super(left, right);
 	}
 

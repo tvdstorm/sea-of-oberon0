@@ -1,26 +1,32 @@
 package uva.oberon0.abstractsyntax.statements;
 
-import uva.oberon0.abstractsyntax.BaseNode;
-import uva.oberon0.runtime.Scope;
+import uva.oberon0.abstractsyntax.expressions.Expression;
 
 
 /**
  * @author Chiel Labee
  * This class represents the ElsIf part of an If-Then-ElsIf-Else Statement.
 */
-public class IfPartForElsIf extends BaseWithCondition 
+public class IfPartForElsIf
 {
-	public IfPartForElsIf(BaseNode elsifExpression, BaseStatementList elsIfStatements)
+	private final Expression 	_elsifExpression;
+	private final StatementList _elsIfStatements;
+	
+	public IfPartForElsIf(Expression elsIfExpression, StatementList elsIfStatements)
 	{
-		super(elsifExpression, elsIfStatements);
-	}
+		assert elsIfExpression != null 		: "No Els If Expression is available for the current If Statement!";
+		assert elsIfStatements != null 		: "No Els If Statement List is available for the current If Statement!";
 
-	@Override
-	public int eval(Scope scope) 
+		_elsifExpression = elsIfExpression;
+		_elsIfStatements = elsIfStatements;
+	}
+	
+	public Expression getExpression()
 	{
-		if (getExpression().eval(scope) == 1)
-			return getStatements().eval(scope);
-		
-		return 0;
+		return _elsifExpression;
+	}
+	public StatementList getStatementList()
+	{
+		return _elsIfStatements;
 	}
 }

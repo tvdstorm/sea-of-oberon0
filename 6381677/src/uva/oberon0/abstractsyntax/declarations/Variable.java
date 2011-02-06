@@ -1,25 +1,25 @@
 package uva.oberon0.abstractsyntax.declarations;
 
-import uva.oberon0.abstractsyntax.types.BaseType;
+import uva.oberon0.abstractsyntax.types.Type;
 import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.runtime.Scope;
-import uva.oberon0.runtime.ScopeValueBase;
+import uva.oberon0.runtime.ScopeValue;
 
 
 /**
  * @author Chiel Labee
  * This class represents a Variable Declaration that is passed by Value.
 */
-public class Variable extends BaseDeclaration
+public class Variable extends Declaration
 {
-	private final BaseType _type;
+	private final Type _type;
 	private final boolean _isByReference;
 	
-	public Variable(ID id, BaseType type)
+	public Variable(ID id, Type type)
 	{
 		this(id, type, false);
 	}
-	public Variable(ID id, BaseType type, boolean isByReference)
+	public Variable(ID id, Type type, boolean isByReference)
 	{
 		super(id);
 
@@ -33,7 +33,7 @@ public class Variable extends BaseDeclaration
 	/**
 	 * Gets data Type of this Variable Declaration Node.
 	 */
-	public BaseType getType()
+	public Type getType()
 	{
 		return _type;
 	}
@@ -52,7 +52,7 @@ public class Variable extends BaseDeclaration
 		return 0;
 	}
 	
-	public ScopeValueBase instantiate(Scope scope) 
+	public ScopeValue instantiate(Scope scope) 
 	{
 		return _type.instantiate(scope);
 	}

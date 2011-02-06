@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 D:\\Projects UVA\\Oberon.g 2011-02-06 13:52:08
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 D:\\Projects UVA\\Oberon.g 2011-02-06 14:28:22
 
 package uva.oberon0.parser;
 
@@ -305,8 +305,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = IF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:28:4: ( 'IF' )
-            // D:\\Projects UVA\\Oberon.g:28:6: 'IF'
+            // D:\\Projects UVA\\Oberon.g:29:4: ( 'IF' )
+            // D:\\Projects UVA\\Oberon.g:29:6: 'IF'
             {
             match("IF"); 
 
@@ -326,8 +326,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = THEN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:29:6: ( 'THEN' )
-            // D:\\Projects UVA\\Oberon.g:29:8: 'THEN'
+            // D:\\Projects UVA\\Oberon.g:30:6: ( 'THEN' )
+            // D:\\Projects UVA\\Oberon.g:30:8: 'THEN'
             {
             match("THEN"); 
 
@@ -347,8 +347,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = ELSE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:30:6: ( 'ELSE' )
-            // D:\\Projects UVA\\Oberon.g:30:8: 'ELSE'
+            // D:\\Projects UVA\\Oberon.g:31:6: ( 'ELSE' )
+            // D:\\Projects UVA\\Oberon.g:31:8: 'ELSE'
             {
             match("ELSE"); 
 
@@ -368,8 +368,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = ELSIF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:31:9: ( 'ELSIF' )
-            // D:\\Projects UVA\\Oberon.g:31:14: 'ELSIF'
+            // D:\\Projects UVA\\Oberon.g:32:9: ( 'ELSIF' )
+            // D:\\Projects UVA\\Oberon.g:32:14: 'ELSIF'
             {
             match("ELSIF"); 
 
@@ -389,8 +389,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = END;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:32:5: ( 'END' )
-            // D:\\Projects UVA\\Oberon.g:32:7: 'END'
+            // D:\\Projects UVA\\Oberon.g:33:5: ( 'END' )
+            // D:\\Projects UVA\\Oberon.g:33:7: 'END'
             {
             match("END"); 
 
@@ -410,8 +410,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = WHILE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:33:7: ( 'WHILE' )
-            // D:\\Projects UVA\\Oberon.g:33:9: 'WHILE'
+            // D:\\Projects UVA\\Oberon.g:34:7: ( 'WHILE' )
+            // D:\\Projects UVA\\Oberon.g:34:9: 'WHILE'
             {
             match("WHILE"); 
 
@@ -431,8 +431,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = DO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:34:4: ( 'DO' )
-            // D:\\Projects UVA\\Oberon.g:34:6: 'DO'
+            // D:\\Projects UVA\\Oberon.g:35:4: ( 'DO' )
+            // D:\\Projects UVA\\Oberon.g:35:6: 'DO'
             {
             match("DO"); 
 
@@ -452,8 +452,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = EQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:36:7: ( '=' )
-            // D:\\Projects UVA\\Oberon.g:36:9: '='
+            // D:\\Projects UVA\\Oberon.g:37:7: ( '=' )
+            // D:\\Projects UVA\\Oberon.g:37:9: '='
             {
             match('='); 
 
@@ -472,8 +472,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = UNEQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:37:9: ( '#' )
-            // D:\\Projects UVA\\Oberon.g:37:11: '#'
+            // D:\\Projects UVA\\Oberon.g:38:9: ( '#' )
+            // D:\\Projects UVA\\Oberon.g:38:11: '#'
             {
             match('#'); 
 
@@ -492,8 +492,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = LESS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:38:6: ( '<' )
-            // D:\\Projects UVA\\Oberon.g:38:8: '<'
+            // D:\\Projects UVA\\Oberon.g:39:6: ( '<' )
+            // D:\\Projects UVA\\Oberon.g:39:8: '<'
             {
             match('<'); 
 
@@ -512,8 +512,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = LESS_EQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:40:2: ( '<=' )
-            // D:\\Projects UVA\\Oberon.g:40:4: '<='
+            // D:\\Projects UVA\\Oberon.g:41:2: ( '<=' )
+            // D:\\Projects UVA\\Oberon.g:41:4: '<='
             {
             match("<="); 
 
@@ -533,8 +533,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = GREAT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:41:7: ( '>' )
-            // D:\\Projects UVA\\Oberon.g:41:9: '>'
+            // D:\\Projects UVA\\Oberon.g:42:7: ( '>' )
+            // D:\\Projects UVA\\Oberon.g:42:9: '>'
             {
             match('>'); 
 
@@ -553,8 +553,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = GREAT_EQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:43:2: ( '>=' )
-            // D:\\Projects UVA\\Oberon.g:43:4: '>='
+            // D:\\Projects UVA\\Oberon.g:44:2: ( '>=' )
+            // D:\\Projects UVA\\Oberon.g:44:4: '>='
             {
             match(">="); 
 
@@ -574,8 +574,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = MIN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:45:5: ( '-' )
-            // D:\\Projects UVA\\Oberon.g:45:7: '-'
+            // D:\\Projects UVA\\Oberon.g:46:5: ( '-' )
+            // D:\\Projects UVA\\Oberon.g:46:7: '-'
             {
             match('-'); 
 
@@ -594,8 +594,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = PLUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:46:6: ( '+' )
-            // D:\\Projects UVA\\Oberon.g:46:8: '+'
+            // D:\\Projects UVA\\Oberon.g:47:6: ( '+' )
+            // D:\\Projects UVA\\Oberon.g:47:8: '+'
             {
             match('+'); 
 
@@ -614,8 +614,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = MUL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:47:5: ( '*' )
-            // D:\\Projects UVA\\Oberon.g:47:7: '*'
+            // D:\\Projects UVA\\Oberon.g:48:5: ( '*' )
+            // D:\\Projects UVA\\Oberon.g:48:7: '*'
             {
             match('*'); 
 
@@ -634,8 +634,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = DIV;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:48:5: ( 'DIV' )
-            // D:\\Projects UVA\\Oberon.g:48:7: 'DIV'
+            // D:\\Projects UVA\\Oberon.g:49:5: ( 'DIV' )
+            // D:\\Projects UVA\\Oberon.g:49:7: 'DIV'
             {
             match("DIV"); 
 
@@ -655,8 +655,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = MOD;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:49:5: ( 'MOD' )
-            // D:\\Projects UVA\\Oberon.g:49:7: 'MOD'
+            // D:\\Projects UVA\\Oberon.g:50:5: ( 'MOD' )
+            // D:\\Projects UVA\\Oberon.g:50:7: 'MOD'
             {
             match("MOD"); 
 
@@ -676,8 +676,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = AND;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:51:5: ( '&' )
-            // D:\\Projects UVA\\Oberon.g:51:7: '&'
+            // D:\\Projects UVA\\Oberon.g:52:5: ( '&' )
+            // D:\\Projects UVA\\Oberon.g:52:7: '&'
             {
             match('&'); 
 
@@ -696,8 +696,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = OR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:52:4: ( 'OR' )
-            // D:\\Projects UVA\\Oberon.g:52:6: 'OR'
+            // D:\\Projects UVA\\Oberon.g:53:4: ( 'OR' )
+            // D:\\Projects UVA\\Oberon.g:53:6: 'OR'
             {
             match("OR"); 
 
@@ -717,8 +717,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = NOT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:53:5: ( '~' )
-            // D:\\Projects UVA\\Oberon.g:53:7: '~'
+            // D:\\Projects UVA\\Oberon.g:54:5: ( '~' )
+            // D:\\Projects UVA\\Oberon.g:54:7: '~'
             {
             match('~'); 
 
@@ -737,8 +737,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = DECLARATIONS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:56:2: ( 'DECLARATIONS' )
-            // D:\\Projects UVA\\Oberon.g:56:4: 'DECLARATIONS'
+            // D:\\Projects UVA\\Oberon.g:57:2: ( 'DECLARATIONS' )
+            // D:\\Projects UVA\\Oberon.g:57:4: 'DECLARATIONS'
             {
             match("DECLARATIONS"); 
 
@@ -758,8 +758,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = INPUTVARS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:58:2: ( 'INPUTVARS' )
-            // D:\\Projects UVA\\Oberon.g:58:4: 'INPUTVARS'
+            // D:\\Projects UVA\\Oberon.g:59:2: ( 'INPUTVARS' )
+            // D:\\Projects UVA\\Oberon.g:59:4: 'INPUTVARS'
             {
             match("INPUTVARS"); 
 
@@ -779,8 +779,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = CALL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:59:6: ( 'CALL' )
-            // D:\\Projects UVA\\Oberon.g:59:8: 'CALL'
+            // D:\\Projects UVA\\Oberon.g:60:6: ( 'CALL' )
+            // D:\\Projects UVA\\Oberon.g:60:8: 'CALL'
             {
             match("CALL"); 
 
@@ -800,8 +800,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = CALL_READ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:61:2: ( 'Read' )
-            // D:\\Projects UVA\\Oberon.g:61:4: 'Read'
+            // D:\\Projects UVA\\Oberon.g:62:2: ( 'Read' )
+            // D:\\Projects UVA\\Oberon.g:62:4: 'Read'
             {
             match("Read"); 
 
@@ -821,8 +821,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = CALL_WRITE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:63:2: ( 'Write' )
-            // D:\\Projects UVA\\Oberon.g:63:4: 'Write'
+            // D:\\Projects UVA\\Oberon.g:64:2: ( 'Write' )
+            // D:\\Projects UVA\\Oberon.g:64:4: 'Write'
             {
             match("Write"); 
 
@@ -842,8 +842,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = CALL_WRITELN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:65:2: ( 'WriteLn' )
-            // D:\\Projects UVA\\Oberon.g:65:4: 'WriteLn'
+            // D:\\Projects UVA\\Oberon.g:66:2: ( 'WriteLn' )
+            // D:\\Projects UVA\\Oberon.g:66:4: 'WriteLn'
             {
             match("WriteLn"); 
 
@@ -863,8 +863,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = CONST;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:66:7: ( 'CONST' )
-            // D:\\Projects UVA\\Oberon.g:66:9: 'CONST'
+            // D:\\Projects UVA\\Oberon.g:67:7: ( 'CONST' )
+            // D:\\Projects UVA\\Oberon.g:67:9: 'CONST'
             {
             match("CONST"); 
 
@@ -884,8 +884,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = VAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:67:5: ( 'VAR' )
-            // D:\\Projects UVA\\Oberon.g:67:7: 'VAR'
+            // D:\\Projects UVA\\Oberon.g:68:5: ( 'VAR' )
+            // D:\\Projects UVA\\Oberon.g:68:7: 'VAR'
             {
             match("VAR"); 
 
@@ -905,8 +905,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = ASSIGN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:68:8: ( ':=' )
-            // D:\\Projects UVA\\Oberon.g:68:10: ':='
+            // D:\\Projects UVA\\Oberon.g:69:8: ( ':=' )
+            // D:\\Projects UVA\\Oberon.g:69:10: ':='
             {
             match(":="); 
 
@@ -926,8 +926,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = INTEGER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:70:9: ( 'INTEGER' )
-            // D:\\Projects UVA\\Oberon.g:70:11: 'INTEGER'
+            // D:\\Projects UVA\\Oberon.g:71:9: ( 'INTEGER' )
+            // D:\\Projects UVA\\Oberon.g:71:11: 'INTEGER'
             {
             match("INTEGER"); 
 
@@ -947,8 +947,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = ARRAY;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:71:7: ( 'ARRAY' )
-            // D:\\Projects UVA\\Oberon.g:71:9: 'ARRAY'
+            // D:\\Projects UVA\\Oberon.g:72:7: ( 'ARRAY' )
+            // D:\\Projects UVA\\Oberon.g:72:9: 'ARRAY'
             {
             match("ARRAY"); 
 
@@ -968,8 +968,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = OF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:72:4: ( 'OF' )
-            // D:\\Projects UVA\\Oberon.g:72:6: 'OF'
+            // D:\\Projects UVA\\Oberon.g:73:4: ( 'OF' )
+            // D:\\Projects UVA\\Oberon.g:73:6: 'OF'
             {
             match("OF"); 
 
@@ -989,8 +989,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:215:6: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
-            // D:\\Projects UVA\\Oberon.g:215:8: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // D:\\Projects UVA\\Oberon.g:216:6: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+            // D:\\Projects UVA\\Oberon.g:216:8: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -1001,7 +1001,7 @@ public class OberonLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // D:\\Projects UVA\\Oberon.g:215:32: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // D:\\Projects UVA\\Oberon.g:216:32: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             loop1:
             do {
                 int alt1=2;
@@ -1050,10 +1050,10 @@ public class OberonLexer extends Lexer {
         try {
             int _type = INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:216:7: ( ( '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' )+ )
-            // D:\\Projects UVA\\Oberon.g:216:9: ( '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' )+
+            // D:\\Projects UVA\\Oberon.g:217:7: ( ( '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' )+ )
+            // D:\\Projects UVA\\Oberon.g:217:9: ( '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' )+
             {
-            // D:\\Projects UVA\\Oberon.g:216:9: ( '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' )+
+            // D:\\Projects UVA\\Oberon.g:217:9: ( '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' )+
             int cnt2=0;
             loop2:
             do {
@@ -1107,10 +1107,10 @@ public class OberonLexer extends Lexer {
         try {
             int _type = WHITESPACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon.g:218:8: ( ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+ )
-            // D:\\Projects UVA\\Oberon.g:218:16: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
+            // D:\\Projects UVA\\Oberon.g:219:8: ( ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+ )
+            // D:\\Projects UVA\\Oberon.g:219:16: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
             {
-            // D:\\Projects UVA\\Oberon.g:218:16: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
+            // D:\\Projects UVA\\Oberon.g:219:16: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
             int cnt3=0;
             loop3:
             do {

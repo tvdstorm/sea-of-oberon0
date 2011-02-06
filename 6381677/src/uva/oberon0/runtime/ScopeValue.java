@@ -7,7 +7,7 @@ import uva.oberon0.abstractsyntax.types.ID;
  * This class represents an Execution Scope Value.
  * This class is abstract.
 */
-public abstract class ScopeValueBase 
+public abstract class ScopeValue 
 {	
 	/**
 	 * Gets an Integer Value from the current Execution Scope Value.
@@ -27,5 +27,5 @@ public abstract class ScopeValueBase
 	 * @param scope The Execution Scope to retrieve the Index Value from.
 	 * @param id The Identifier to determine the Index Value specification.
 	 */
-	public abstract ScopeValueBase getValueReference(Scope scope, ID id);
+	public abstract ScopeValue getValueReference(Scope scope, ID id);
 }

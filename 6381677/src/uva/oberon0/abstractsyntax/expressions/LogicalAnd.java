@@ -6,9 +6,9 @@ import uva.oberon0.runtime.Scope;
  * This class represents a Logical And Binary Expression (x & y).
  * @author Chiel Labee
  */
-public class LogicalAnd extends BaseExpressionBinary {
+public class LogicalAnd extends BinaryExpression {
 
-	public LogicalAnd(BaseExpression left, BaseExpression right) {
+	public LogicalAnd(Expression left, Expression right) {
 		super(left, right);
 	}
 

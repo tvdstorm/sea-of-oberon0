@@ -3,7 +3,7 @@ package uva.oberon0.abstractsyntax.declarations;
 import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.runtime.Scope;
 
-public class Type extends BaseDeclaration 
+public class Type extends Declaration 
 {
 	private final Type _type;
 

@@ -6,9 +6,9 @@ import uva.oberon0.runtime.Scope;
  * This class represents an Equals Binary Expression (x = y).
  * @author Chiel Labee
  */
-public class Equal extends BaseExpressionBinary {
+public class Equal extends BinaryExpression {
 
-	public Equal(BaseExpression left, BaseExpression right) {
+	public Equal(Expression left, Expression right) {
 		super(left, right);
 	}
 

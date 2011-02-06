@@ -1,5 +1,6 @@
 package uva.oberon0.abstractsyntax.statements;
 
+import uva.oberon0.abstractsyntax.expressions.ExpressionList;
 import uva.oberon0.runtime.Scope;
 
 /**
@@ -8,7 +9,7 @@ import uva.oberon0.runtime.Scope;
 */
 public class CallWriteLn extends Call 
 {
-	public CallWriteLn(CallActualParameterList actualParameterList)
+	public CallWriteLn(ExpressionList actualParameterList)
 	{
 		super(actualParameterList);
 	}

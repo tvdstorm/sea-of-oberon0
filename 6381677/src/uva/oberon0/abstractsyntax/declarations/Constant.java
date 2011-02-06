@@ -1,9 +1,9 @@
 package uva.oberon0.abstractsyntax.declarations;
 
-import uva.oberon0.abstractsyntax.expressions.BaseExpression;
+import uva.oberon0.abstractsyntax.expressions.Expression;
 import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.runtime.Scope;
-import uva.oberon0.runtime.ScopeValueBase;
+import uva.oberon0.runtime.ScopeValue;
 import uva.oberon0.runtime.ScopeValueInt;
 
 
@@ -11,11 +11,11 @@ import uva.oberon0.runtime.ScopeValueInt;
  * @author Chiel Labee
  * This class represents a Constanct Declaration.
 */
-public class Constant extends BaseDeclaration
+public class Constant extends Declaration
 {
-	private final BaseExpression _expression;
+	private final Expression _expression;
 
-	public Constant(ID id, BaseExpression expression)
+	public Constant(ID id, Expression expression)
 	{
 		super(id);
 
@@ -30,7 +30,7 @@ public class Constant extends BaseDeclaration
 		return _expression.eval(scope);
 	}
 	
-	public ScopeValueBase instantiate(Scope scope) {
+	public ScopeValue instantiate(Scope scope) {
 		return new ScopeValueInt(scope, _expression.eval(scope));
 	}
 }
