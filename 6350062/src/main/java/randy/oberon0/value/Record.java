@@ -35,10 +35,13 @@ public class Record extends Value
 	{
 		// Resolve CONST
 		Record v = _val.dereference().castToRecord();
-		members = new HashMap<String, Value>();
-		for (String key : v.members.keySet())
+		if (v != this)
 		{
-			members.put(key, v.members.get(key).clone());
+			members = new HashMap<String, Value>();
+			for (String key : v.members.keySet())
+			{
+				members.put(key, v.members.get(key).clone());
+			}
 		}
 	}
 	@Override
