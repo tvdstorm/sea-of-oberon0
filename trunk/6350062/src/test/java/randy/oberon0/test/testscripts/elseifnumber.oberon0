@@ -5,7 +5,7 @@ BEGIN
 IF 1 = 2 THEN
 	Write(1);
 ELSIF 3 THEN
-	Write(1);
+	Write(2);
 END;
 
 END Elseifnumber.
