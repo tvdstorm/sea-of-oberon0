@@ -1,9 +1,0 @@
-Testsuite: com.arievanderveek.soo.test.TestASTCreator
-Tests run: 1, Failures: 0, Errors: 1, Time elapsed: 0.013 sec
-
-Testcase: initializationError took 0.002 sec
-	Caused an ERROR
-No runnable methods
-java.lang.Exception: No runnable methods
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
-

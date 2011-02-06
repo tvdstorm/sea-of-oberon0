@@ -51,9 +51,6 @@
 			<classpath>
 				<pathelement location="${build.tests}" />
 				<pathelement location="${build.dir}" />
-				<pathelement location="${dist.dir}/soo_lib/antlr-3.3-complete.jar" />
-				<pathelement location="${dist.dir}/soo_lib/commons-cli-1.2.jar" />
-				<pathelement location="${dist.dir}/soo_lib/org.hamcrest.core_1.1.0.v20090501071000.jar" />
 				<pathelement path="${java.class.path}" />
 			</classpath>
 			<formatter type="plain" />
@@ -68,12 +65,10 @@
 	</target>
 	<!-- Create runnable jar task-->
 	<target name="create_run_jar" depends="compile">
-		<jar destfile="/school/construction/labassignment1/6354122/jar/soo.jar">
+		<jar destfile="/school/construction/labassignment1/6354122/jar/soo.jar" basedir="${build.dir}">
 			<manifest>
-				<attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" />
-				<attribute name="Rsrc-Main-Class" value="com.arievanderveek.soo.Main" />
-				<attribute name="Class-Path" value="." />
-				<attribute name="Rsrc-Class-Path" value="./ antlr-3.3-complete.jar commons-cli-1.2.jar junit.jar org.hamcrest.core_1.1.0.v20090501071000.jar" />
+				<attribute name="Main-Class" value="com.arievanderveek.soo.Main" />
+				<attribute name="Class-Path" value="lib/antlr-3.3-complete.jar lib/commons-cli-1.2.jar"/>
 			</manifest>
 		</jar>
 	</target>
