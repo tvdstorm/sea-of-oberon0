@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g 2011-02-05 21:46:24
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g 2011-02-06 14:13:00
 
 package randy.oberon0.generated.antlr;
 
@@ -8,15 +8,14 @@ import java.util.Stack;
 import java.util.List;
 import java.util.ArrayList;
 
-@SuppressWarnings("all")
 public class Oberon0Lexer extends Lexer {
     public static final int EOF=-1;
+    public static final int T__44=44;
+    public static final int T__45=45;
+    public static final int T__46=46;
     public static final int T__47=47;
     public static final int T__48=48;
     public static final int T__49=49;
-    public static final int T__50=50;
-    public static final int T__51=51;
-    public static final int T__52=52;
     public static final int MINUS=4;
     public static final int PLUS=5;
     public static final int TIMES=6;
@@ -51,15 +50,12 @@ public class Oberon0Lexer extends Lexer {
     public static final int REFVAR=35;
     public static final int PROCEDURECALL=36;
     public static final int PARAMETERS=37;
-    public static final int EXPRESSION=38;
-    public static final int BODY=39;
-    public static final int LH=40;
-    public static final int RH=41;
-    public static final int DOTSELECTOR=42;
-    public static final int ARRAYSELECTOR=43;
-    public static final int IDENT=44;
-    public static final int WHITESPACE=45;
-    public static final int INTEGER=46;
+    public static final int BODY=38;
+    public static final int DOTSELECTOR=39;
+    public static final int ARRAYSELECTOR=40;
+    public static final int IDENT=41;
+    public static final int WHITESPACE=42;
+    public static final int INTEGER=43;
 
     // delegates
     // delegators
@@ -756,15 +752,75 @@ public class Oberon0Lexer extends Lexer {
     }
     // $ANTLR end "ARRAYSELECTOR"
 
-    // $ANTLR start "T__47"
-    public final void mT__47() throws RecognitionException {
+    // $ANTLR start "T__44"
+    public final void mT__44() throws RecognitionException {
         try {
-            int _type = T__47;
+            int _type = T__44;
             int _channel = DEFAULT_TOKEN_CHANNEL;
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:44:7: ( ']' )
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:44:9: ']'
             {
             match(']'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__44"
+
+    // $ANTLR start "T__45"
+    public final void mT__45() throws RecognitionException {
+        try {
+            int _type = T__45;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:45:7: ( '(' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:45:9: '('
+            {
+            match('('); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__45"
+
+    // $ANTLR start "T__46"
+    public final void mT__46() throws RecognitionException {
+        try {
+            int _type = T__46;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:46:7: ( ')' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:46:9: ')'
+            {
+            match(')'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__46"
+
+    // $ANTLR start "T__47"
+    public final void mT__47() throws RecognitionException {
+        try {
+            int _type = T__47;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:47:7: ( ',' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:47:9: ','
+            {
+            match(','); 
 
             }
 
@@ -781,10 +837,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__48;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:45:7: ( '(' )
-            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:45:9: '('
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:48:7: ( ';' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:48:9: ';'
             {
-            match('('); 
+            match(';'); 
 
             }
 
@@ -801,66 +857,6 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__49;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:46:7: ( ')' )
-            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:46:9: ')'
-            {
-            match(')'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__49"
-
-    // $ANTLR start "T__50"
-    public final void mT__50() throws RecognitionException {
-        try {
-            int _type = T__50;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:47:7: ( ',' )
-            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:47:9: ','
-            {
-            match(','); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__50"
-
-    // $ANTLR start "T__51"
-    public final void mT__51() throws RecognitionException {
-        try {
-            int _type = T__51;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:48:7: ( ';' )
-            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:48:9: ';'
-            {
-            match(';'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__51"
-
-    // $ANTLR start "T__52"
-    public final void mT__52() throws RecognitionException {
-        try {
-            int _type = T__52;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:49:7: ( ':' )
             // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:49:9: ':'
             {
@@ -874,15 +870,15 @@ public class Oberon0Lexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "T__52"
+    // $ANTLR end "T__49"
 
     // $ANTLR start "IDENT"
     public final void mIDENT() throws RecognitionException {
         try {
             int _type = IDENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:66:6: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
-            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:66:10: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:63:6: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:63:10: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -893,7 +889,7 @@ public class Oberon0Lexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:66:30: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:63:30: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
             loop1:
             do {
                 int alt1=2;
@@ -942,8 +938,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = WHITESPACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:67:11: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
-            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:67:14: ( ' ' | '\\t' | '\\r' | '\\n' )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:64:11: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:64:14: ( ' ' | '\\t' | '\\r' | '\\n' )
             {
             if ( (input.LA(1)>='\t' && input.LA(1)<='\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
                 input.consume();
@@ -971,10 +967,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = INTEGER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:70:8: ( ( '0' .. '9' )+ )
-            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:70:11: ( '0' .. '9' )+
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:65:8: ( ( '0' .. '9' )+ )
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:65:11: ( '0' .. '9' )+
             {
-            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:70:11: ( '0' .. '9' )+
+            // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:65:11: ( '0' .. '9' )+
             int cnt2=0;
             loop2:
             do {
@@ -988,7 +984,7 @@ public class Oberon0Lexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:70:12: '0' .. '9'
+            	    // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:65:12: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1016,7 +1012,7 @@ public class Oberon0Lexer extends Lexer {
     // $ANTLR end "INTEGER"
 
     public void mTokens() throws RecognitionException {
-        // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:8: ( MINUS | PLUS | TIMES | DIVIDE | CONST | VAR | TYPE | IF | THEN | ELSE | ELSIF | END | MODULE | DO | WHILE | BEGIN | PROCEDURE | ARRAY | OF | RECORD | MOD | AND | OR | ASSIGNMENT | EQUALS | NOTEQUALS | SMALLERTHAN | GREATERTHAN | SMALLEREQUALS | GREATEREQUALS | NOT | DOTSELECTOR | ARRAYSELECTOR | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | IDENT | WHITESPACE | INTEGER )
+        // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:8: ( MINUS | PLUS | TIMES | DIVIDE | CONST | VAR | TYPE | IF | THEN | ELSE | ELSIF | END | MODULE | DO | WHILE | BEGIN | PROCEDURE | ARRAY | OF | RECORD | MOD | AND | OR | ASSIGNMENT | EQUALS | NOTEQUALS | SMALLERTHAN | GREATERTHAN | SMALLEREQUALS | GREATEREQUALS | NOT | DOTSELECTOR | ARRAYSELECTOR | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | IDENT | WHITESPACE | INTEGER )
         int alt3=42;
         alt3 = dfa3.predict(input);
         switch (alt3) {
@@ -1252,44 +1248,44 @@ public class Oberon0Lexer extends Lexer {
                 }
                 break;
             case 34 :
-                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:241: T__47
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:241: T__44
+                {
+                mT__44(); 
+
+                }
+                break;
+            case 35 :
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:247: T__45
+                {
+                mT__45(); 
+
+                }
+                break;
+            case 36 :
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:253: T__46
+                {
+                mT__46(); 
+
+                }
+                break;
+            case 37 :
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:259: T__47
                 {
                 mT__47(); 
 
                 }
                 break;
-            case 35 :
-                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:247: T__48
+            case 38 :
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:265: T__48
                 {
                 mT__48(); 
 
                 }
                 break;
-            case 36 :
-                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:253: T__49
+            case 39 :
+                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:271: T__49
                 {
                 mT__49(); 
-
-                }
-                break;
-            case 37 :
-                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:259: T__50
-                {
-                mT__50(); 
-
-                }
-                break;
-            case 38 :
-                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:265: T__51
-                {
-                mT__51(); 
-
-                }
-                break;
-            case 39 :
-                // D:\\SSD\\rascal_workspace\\6350062\\grammar\\Oberon0.g:1:271: T__52
-                {
-                mT__52(); 
 
                 }
                 break;
@@ -1510,7 +1506,7 @@ public class Oberon0Lexer extends Lexer {
             this.transition = DFA3_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( MINUS | PLUS | TIMES | DIVIDE | CONST | VAR | TYPE | IF | THEN | ELSE | ELSIF | END | MODULE | DO | WHILE | BEGIN | PROCEDURE | ARRAY | OF | RECORD | MOD | AND | OR | ASSIGNMENT | EQUALS | NOTEQUALS | SMALLERTHAN | GREATERTHAN | SMALLEREQUALS | GREATEREQUALS | NOT | DOTSELECTOR | ARRAYSELECTOR | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | IDENT | WHITESPACE | INTEGER );";
+            return "1:1: Tokens : ( MINUS | PLUS | TIMES | DIVIDE | CONST | VAR | TYPE | IF | THEN | ELSE | ELSIF | END | MODULE | DO | WHILE | BEGIN | PROCEDURE | ARRAY | OF | RECORD | MOD | AND | OR | ASSIGNMENT | EQUALS | NOTEQUALS | SMALLERTHAN | GREATERTHAN | SMALLEREQUALS | GREATEREQUALS | NOT | DOTSELECTOR | ARRAYSELECTOR | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | IDENT | WHITESPACE | INTEGER );";
         }
     }
  

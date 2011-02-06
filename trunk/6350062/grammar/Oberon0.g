@@ -44,10 +44,7 @@ tokens
 	REFVAR;
 	PROCEDURECALL;
 	PARAMETERS;
-	EXPRESSION;
 	BODY;
-	LH;
-	RH;
 	TYPE;
 	DOTSELECTOR='.';
 	ARRAYSELECTOR='[';
@@ -63,16 +60,13 @@ package randy.oberon0.generated.antlr;
 package randy.oberon0.generated.antlr;
 }
 
-IDENT:			('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'0'..'9')*;
 WHITESPACE:		(' '|'\t'|'\r'|'\n') { skip(); };
-ws:			(WHITESPACE)*;
-ident:			IDENT;
+IDENT:			('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'0'..'9')*;
 INTEGER:		('0'..'9')+;
-selector:		ident ((DOTSELECTOR^ ident)|(ARRAYSELECTOR^ expression ']'!))+ | ident;
-numberLiteral:		INTEGER;
-factor:			selector | numberLiteral | '('! expression ')'! | NOT^ factor;
+selector:		IDENT ((DOTSELECTOR^ IDENT)|(ARRAYSELECTOR^ expression ']'!))+ | IDENT;
+factor:			selector | INTEGER | '('! expression ')'! | NOT^ factor;
 term:			factor ((TIMES|DIVIDE|MOD|AND)^ factor)*;
-simpleExpression:	(PLUS!|MINUS^ )? term ((PLUS|MINUS |OR)^ term)*;
+simpleExpression:	(PLUS!|MINUS^)? term ((PLUS|MINUS |OR)^ term)*;
 infixOperand:		EQUALS | NOTEQUALS | SMALLERTHAN | SMALLEREQUALS | GREATERTHAN | GREATEREQUALS;
 expression:		simpleExpression infixOperand simpleExpression 
 				-> ^(infixOperand simpleExpression simpleExpression) |
@@ -81,31 +75,31 @@ expression:		simpleExpression infixOperand simpleExpression
 actualParameters:	'(' (expression (',' expression)*)? ')'
 				-> (expression (expression)*)?;
 ifStatement:		IF expression THEN statementSequence (ELSIF expression THEN statementSequence)+ (ELSE statementSequence) END
-				-> ^(IF ^(EXPRESSION expression) ^(BODY statementSequence) ^(ELSIF ^(EXPRESSION expression) ^(BODY statementSequence))+ ^(ELSE ^(BODY statementSequence))) |
+				-> ^(IF expression ^(BODY statementSequence) ^(ELSIF expression ^(BODY statementSequence))+ ^(ELSE ^(BODY statementSequence))) |
 			IF expression THEN statementSequence (ELSIF expression THEN statementSequence)+ END
-				-> ^(IF ^(EXPRESSION expression) ^(BODY statementSequence) ^(ELSIF ^(EXPRESSION expression) ^(BODY statementSequence))+) |
+				-> ^(IF expression ^(BODY statementSequence) ^(ELSIF expression ^(BODY statementSequence))+) |
 			IF expression THEN statementSequence (ELSE statementSequence) END
-				-> ^(IF ^(EXPRESSION expression)^(BODY statementSequence) ^(ELSE ^(BODY statementSequence))) |
+				-> ^(IF expression ^(BODY statementSequence) ^(ELSE ^(BODY statementSequence))) |
 			IF expression THEN statementSequence END
-				-> ^(IF ^(EXPRESSION expression) ^(BODY statementSequence));
+				-> ^(IF expression ^(BODY statementSequence));
 whileStatement:		WHILE expression DO statementSequence END
-				-> ^(WHILE ^(EXPRESSION expression) ^(BODY statementSequence));
+				-> ^(WHILE expression ^(BODY statementSequence));
 assignment:		selector ASSIGNMENT expression
-				-> ^(ASSIGNMENT ^(LH selector) ^(RH expression));
+				-> ^(ASSIGNMENT selector expression);
 procedureCall:		selector (actualParameters)?
 				-> ^(PROCEDURECALL selector actualParameters?);
 statement:		(assignment | procedureCall| ifStatement | whileStatement)?;
 statementSequence:	statement (';' statement)*
 				-> statement (statement)*;
-identList:		ident ( ',' ident)*
-				-> ident (ident)*;
+identList:		IDENT ( ',' IDENT)*
+				-> IDENT (IDENT)*;
 arrayType:		ARRAY expression OF type
-				-> ^(ARRAY ^(TYPE type) ^(EXPRESSION expression));
+				-> ^(ARRAY type expression);
 fieldList:		(identList ':' type )?
 				-> ^(VAR type? identList?);
 recordType:		RECORD fieldList (';' fieldList)* END
 				-> ^(RECORD fieldList*);
-type:			ident | arrayType | recordType;
+type:			IDENT | arrayType | recordType;
 fPSection:		VAR identList ':' type
 				-> ^(REFVAR type identList) |
 			identList ':' type
@@ -114,17 +108,17 @@ formalParameters:	'(' (fPSection (';' fPSection)*)? ')'
 				-> ^(PARAMETERS (fPSection (fPSection)*)?);
 procedureBody:		BEGIN statementSequence
 				-> ^(BODY statementSequence);
-procedureDeclaration:	PROCEDURE ident ( formalParameters)? ';' declarations (procedureBody)? END ident 
-				-> ^(PROCEDURE ident (formalParameters)? declarations? (procedureBody)?);
-constDeclaration:	(CONST (ident '=' expression ';')*)
-				-> ^(CONST ident expression)*;
-typeDeclaration:	(TYPE (ident '=' type ';')*)
-				-> ^(TYPE ident type)*;
+procedureDeclaration:	PROCEDURE IDENT ( formalParameters)? ';' declarations (procedureBody)? END IDENT 
+				-> ^(PROCEDURE IDENT (formalParameters)? declarations? (procedureBody)?);
+constDeclaration:	(CONST (IDENT '=' expression ';')*)
+				-> ^(CONST IDENT expression)*;
+typeDeclaration:	(TYPE (IDENT '=' type ';')*)
+				-> ^(TYPE IDENT type)*;
 varDeclarations:	(VAR (identList ':' type ';')*)
 				-> ^(VAR type identList)*;
 declarations:		constDeclaration? typeDeclaration? varDeclarations? (procedureDeclaration ';')*
 				-> constDeclaration? typeDeclaration? varDeclarations? (procedureDeclaration)*;
 moduleBody:		declarations (BEGIN statementSequence)? END
 				-> declarations? ^(BODY statementSequence)?;
-module:			MODULE ident ';' moduleBody ident '.' EOF
-				-> ^(MODULE ident moduleBody);
+module:			MODULE IDENT ';' moduleBody IDENT '.' EOF
+				-> ^(MODULE IDENT moduleBody);
