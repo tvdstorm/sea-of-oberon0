@@ -1,6 +1,6 @@
 package uva.oberon0.abstractsyntax.declarations;
 
-import uva.oberon0.abstractsyntax.types.Type;
+import uva.oberon0.abstractsyntax.types.BaseType;
 import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.runtime.Scope;
 import uva.oberon0.runtime.ScopeValue;
@@ -12,14 +12,14 @@ import uva.oberon0.runtime.ScopeValue;
 */
 public class Variable extends Declaration
 {
-	private final Type _type;
+	private final BaseType _type;
 	private final boolean _isByReference;
 	
-	public Variable(ID id, Type type)
+	public Variable(ID id, BaseType type)
 	{
 		this(id, type, false);
 	}
-	public Variable(ID id, Type type, boolean isByReference)
+	public Variable(ID id, BaseType type, boolean isByReference)
 	{
 		super(id);
 
@@ -33,7 +33,7 @@ public class Variable extends Declaration
 	/**
 	 * Gets data Type of this Variable Declaration Node.
 	 */
-	public Type getType()
+	public BaseType getType()
 	{
 		return _type;
 	}

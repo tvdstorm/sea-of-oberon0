@@ -12,7 +12,7 @@ import uva.oberon0.abstractsyntax.declarations.Procedure;
 import uva.oberon0.abstractsyntax.declarations.Variable;
 import uva.oberon0.abstractsyntax.expressions.ExpressionList;
 import uva.oberon0.abstractsyntax.types.ID;
-import uva.oberon0.abstractsyntax.types.Type;
+import uva.oberon0.abstractsyntax.types.BaseType;
 
 
 /**
@@ -22,7 +22,7 @@ import uva.oberon0.abstractsyntax.types.Type;
 public class Scope 
 {
 	private final Scope						_parent			;
-	private final Map<ID, Type> 			_mapTypes 		;
+	private final Map<ID, BaseType> 			_mapTypes 		;
 	private final Map<ID, ScopeValue> 		_mapValues 		;
 	private final Map<ID, Procedure> 		_mapProcedures 	;
 
@@ -33,7 +33,7 @@ public class Scope
 	public Scope(Scope parent) 
 	{
 		_parent 		= parent;
-		_mapTypes 		= new HashMap<ID, Type>();
+		_mapTypes 		= new HashMap<ID, BaseType>();
 		_mapValues 		= new HashMap<ID, ScopeValue>();
 		_mapProcedures 	= new HashMap<ID, Procedure>();
 	}
@@ -168,7 +168,7 @@ public class Scope
 	/**
 	 * Get the specified Type from within the current Execution Scope.
 	 */
-	public Type getType(ID id)
+	public BaseType getType(ID id)
 	{
 		if (_mapTypes.containsKey(id)) {
 			return _mapTypes.get(id);

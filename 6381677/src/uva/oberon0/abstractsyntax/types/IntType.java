@@ -9,7 +9,7 @@ import uva.oberon0.runtime.ScopeValueInt;
  * @author Chiel Labee
  * This class represents an Integer Value Type.
 */
-public class IntType  extends Type
+public class IntType  extends BaseType
 {
 	public IntType()
 	{

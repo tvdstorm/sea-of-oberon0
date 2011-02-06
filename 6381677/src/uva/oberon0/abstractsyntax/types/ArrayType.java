@@ -5,12 +5,12 @@ import uva.oberon0.runtime.Scope;
 import uva.oberon0.runtime.ScopeValueArray;
 import uva.oberon0.runtime.ScopeValue;
 
-public class ArrayType extends Type {
+public class ArrayType extends BaseType {
 
 	private final BaseNode _length;
-	private final Type _type;
+	private final BaseType _type;
 	
-	public ArrayType(BaseNode length, Type type)
+	public ArrayType(BaseNode length, BaseType type)
 	{
 		assert length != null 		: "No Length is available for the current Array Type!";
 		assert type != null 		: "No Type is available for the current Array Type!";
@@ -30,7 +30,7 @@ public class ArrayType extends Type {
 	/**
 	 * Gets the data Type of this Variable Declaration Node.
 	 */
-	public Type getType()
+	public BaseType getType()
 	{
 		return _type;
 	}

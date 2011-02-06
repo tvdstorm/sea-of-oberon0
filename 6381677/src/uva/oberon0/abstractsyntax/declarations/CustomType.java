@@ -1,7 +1,7 @@
 package uva.oberon0.abstractsyntax.declarations;
 
 import uva.oberon0.abstractsyntax.types.ID;
-import uva.oberon0.abstractsyntax.types.Type;
+import uva.oberon0.abstractsyntax.types.BaseType;
 import uva.oberon0.runtime.Scope;
 
 /**
@@ -10,9 +10,9 @@ import uva.oberon0.runtime.Scope;
 */
 public class CustomType extends Declaration 
 {
-	private final Type _type;
+	private final BaseType _type;
 
-	public CustomType(ID id, Type type) 
+	public CustomType(ID id, BaseType type) 
 	{
 		super(id);
 		
@@ -21,7 +21,7 @@ public class CustomType extends Declaration
 		_type = type;
 	}
 
-	public Type getType()
+	public BaseType getType()
 	{
 		return _type;
 	}
