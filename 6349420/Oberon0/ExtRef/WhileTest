@@ -1,0 +1,12 @@
+MODULE module;
+	VAR iterations, i : INTEGER; 
+	
+BEGIN 
+	iterations := 5; 
+	i := 0; 
+	WHILE i < iterations DO 
+		Write("a");
+		WriteLn;
+		i := i + 1
+	END 
+END module

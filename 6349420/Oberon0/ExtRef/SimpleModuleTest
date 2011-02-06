@@ -1,0 +1,9 @@
+MODULE module;
+	CONST const1 = 9; 
+	TYPE type1 = INTEGER; 
+	VAR var1 : INTEGER; 
+
+BEGIN 
+	var1 := 1+1; 
+	Write("testtt") 
+END module
