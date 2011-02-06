@@ -4,7 +4,7 @@ import randy.oberon0.exception.OperatorTypeUndefinedException;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
 import randy.oberon0.value.Value;
-import randy.oberon0.value.Boolean;
+import randy.oberon0.value.Integer;
 
 public class PrefixNotExpression extends PrefixExpression
 {
@@ -19,9 +19,9 @@ public class PrefixNotExpression extends PrefixExpression
 		// Evaluate the right hand side expression
 		final Value valRh = rightHandExpression.evaluate(environment);
 		// Check if we support the operator
-		if (valRh instanceof Boolean)
+		if (valRh instanceof Integer)
 		{
-			return new Boolean(!valRh.castToBoolean().getBoolValue());
+			return new Integer(!valRh.castToInteger().isTrue());
 		}
 		else
 		{

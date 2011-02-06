@@ -5,7 +5,6 @@ import org.junit.*;
 import randy.oberon0.exception.Exception;
 import randy.oberon0.exception.*;
 import randy.oberon0.interpreter.runtime.*;
-import randy.oberon0.value.Boolean;
 import randy.oberon0.value.Integer;
 import randy.oberon0.value.*;
 import java.util.*;
@@ -240,15 +239,15 @@ public class ASTNodeTest
 		{
 			prepareTest("infixintegerand");
 			program.run();
-			Assert.fail("Should be throwing an OperatorTypeUndefinedException...");
+			Assert.fail("Should be throwing an TypeMismatchException...");
 		}
-		catch (OperatorTypeUndefinedException e)
+		catch (TypeMismatchException e)
 		{
 			// Success
 		}
 		catch (Exception e)
 		{
-			Assert.fail("Should be throwing an OperatorTypeUndefinedException instead of a general Exception...");
+			Assert.fail("Should be throwing an TypeMismatchException instead of a general Exception...");
 		}
 	}
 	@Test
@@ -258,15 +257,11 @@ public class ASTNodeTest
 		{
 			prepareTest("infixbooleanadd");
 			program.run();
-			Assert.fail("Should be throwing an OperatorTypeUndefinedException...");
-		}
-		catch (OperatorTypeUndefinedException e)
-		{
 			// Success
 		}
 		catch (Exception e)
 		{
-			Assert.fail("Should be throwing an OperatorTypeUndefinedException instead of a general Exception...");
+			Assert.fail("Shouldn't be throwing an Exception since booleans are represented by integers...");
 		}
 	}
 	@Test
@@ -344,21 +339,14 @@ public class ASTNodeTest
 	@Test
 	public void test_Type()
 	{
-		Type bool = Type.BOOLEAN;
 		Type integer = Type.INTEGER;
 		Type array = Type.ARRAY;
 		
-		Assert.assertTrue(bool.equals(Type.BOOLEAN));
 		Assert.assertTrue(integer.equals(Type.INTEGER));
 		Assert.assertTrue(array.equals(Type.ARRAY));
 		
-		Assert.assertTrue(bool.equals(bool));
-		Assert.assertFalse(bool.equals(integer));
-		Assert.assertFalse(bool.equals(array));
-		Assert.assertFalse(integer.equals(bool));
 		Assert.assertTrue(integer.equals(integer));
 		Assert.assertFalse(integer.equals(array));
-		Assert.assertFalse(array.equals(bool));
 		Assert.assertFalse(array.equals(integer));
 		Assert.assertTrue(array.equals(array));
 	}
@@ -433,24 +421,6 @@ public class ASTNodeTest
 			Assert.assertTrue(functions.popOutput().equals("" + b));
 			Assert.assertTrue(functions.popOutput().equals("" + ((a + 1) + (b + 1))));
 			Assert.assertTrue(functions.outputIsEmpty());
-		}
-	}
-	@Test
-	public void test_ArrayIndexBoolean()
-	{
-		try
-		{
-			prepareTest("arrayindexboolean");
-			program.run();
-			Assert.fail("Should be throwing an SelectorException...");
-		}
-		catch (TypeMismatchException e)
-		{
-			// Success
-		}
-		catch (Exception e)
-		{
-			Assert.fail("Should be throwing an SelectorException...");
 		}
 	}
 	@Test
@@ -530,50 +500,19 @@ public class ASTNodeTest
 				Assert.assertTrue(cInteger.getType() == integer.getType());
 				Assert.assertTrue(cInteger.toString().equals(integer.toString()));
 				
-				boolean bRand = random.nextBoolean();
-				Boolean bool = new Boolean(bRand);
-				Assert.assertTrue(bRand == bool.getBoolValue());
-				Boolean bool3 = new Boolean(false);
-				bool3.setValue(bool);
-				Assert.assertTrue(bool.getBoolValue() == bool3.getBoolValue());
-				Const cBool = new Const(bool);
-				Assert.assertTrue(cBool.getType() == bool.getType());
-				Assert.assertTrue(cBool.toString().equals(bool.toString()));
-								
 				Assert.assertTrue((new Integer(0)).getType() == Type.INTEGER);
-				Assert.assertTrue((new Boolean(false)).getType() == Type.BOOLEAN);
 				
-				try
-				{
-					integer.setValue(bool3);
-					Assert.fail("Should be throwing an TypeMismatchException...");
-				}
-				catch (TypeMismatchException e)
-				{
-					// Success
-				}
-				try
-				{
-					bool.setValue(integer3);
-					Assert.fail("Should be throwing an TypeMismatchException...");
-				}
-				catch (TypeMismatchException e)
-				{
-					// Success
-				}
-								
 				TypeRegistry typeRegistry = new TypeRegistry(null);
 				typeRegistry.registerType(Type.INTEGER.getTypeText(), new PrimitiveVariableInstantiation(Type.INTEGER));
 				RuntimeEnvironment environment = new RuntimeEnvironment(new VariableStack(null), new FunctionRegistry(null), typeRegistry);
 				
-				Value values[] = new Value[4];
+				Value values[] = new Value[3];
 				values[0] = new Integer(random.nextInt(10)+1);
-				values[1] = new Boolean(bRand);
-				values[2] = new Array(random.nextInt(10)+1, environment.resolveType("INTEGER"), environment);
+				values[1] = new Array(random.nextInt(10)+1, environment.resolveType("INTEGER"), environment);
 				HashMap<String, IInstantiateableVariable> members = new HashMap<String, IInstantiateableVariable>();
 				members.put("a", environment.resolveType("INTEGER"));
 				members.put("b", environment.resolveType("INTEGER"));
-				values[3] = new Record(members, environment);
+				values[2] = new Record(members, environment);
 				
 				for (int i=0;i<values.length;i++)
 				{
@@ -596,14 +535,13 @@ public class ASTNodeTest
 						Assert.assertTrue(con.toString().equals(con2.toString()));
 						Assert.assertTrue(con.equalsToValue(con2));
 						
-						Value copies[] = new Value[4];
+						Value copies[] = new Value[3];
 						copies[0] = new Integer(random.nextInt(10)+1);
-						copies[1] = new Boolean(bRand);
-						copies[2] = new Array(random.nextInt(10)+1, environment.resolveType("INTEGER"), environment);
+						copies[1] = new Array(random.nextInt(10)+1, environment.resolveType("INTEGER"), environment);
 						HashMap<String, IInstantiateableVariable> copyMembers = new HashMap<String, IInstantiateableVariable>();
 						copyMembers.put("a", environment.resolveType("INTEGER"));
 						copyMembers.put("b", environment.resolveType("INTEGER"));
-						copies[3] = new Record(copyMembers, environment);
+						copies[2] = new Record(copyMembers, environment);
 						if (i == j)
 						{
 							copies[i].setValue(values[j]);
@@ -825,6 +763,14 @@ public class ASTNodeTest
 			
 			Assert.assertTrue(functions.outputIsEmpty());
 		}
+	}
+	@Test
+	public void test_VariableNesting()
+	{
+		prepareTest("variablenesting");
+		runTest();
+		Assert.assertTrue(functions.popOutput().equals("1"));
+		Assert.assertTrue(functions.outputIsEmpty());
 	}
 	@Ignore
 	private void prepareTestThrowException(String testName) throws Exception

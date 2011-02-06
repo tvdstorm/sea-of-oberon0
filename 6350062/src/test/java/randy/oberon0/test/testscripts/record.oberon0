@@ -3,7 +3,7 @@ MODULE Record;
 TYPE ObjDesc = RECORD
 name: INTEGER;
 type: INTEGER;
-active: BOOLEAN
+active: INTEGER
 END;
 VAR o: ObjDesc;
 

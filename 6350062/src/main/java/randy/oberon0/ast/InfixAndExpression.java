@@ -4,7 +4,7 @@ import randy.oberon0.exception.OperatorTypeUndefinedException;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
 import randy.oberon0.value.Value;
-import randy.oberon0.value.Boolean;
+import randy.oberon0.value.Integer;
 
 public class InfixAndExpression extends InfixExpression
 {
@@ -20,9 +20,9 @@ public class InfixAndExpression extends InfixExpression
 		final Value valRh = rightHandExpression.evaluate(environment).dereference();
 		final Value valLh = leftHandExpression.evaluate(environment).dereference();
 		// Check if we support the operator
-		if (valLh instanceof Boolean && valRh instanceof Boolean)
+		if (valLh instanceof Integer && valRh instanceof Integer)
 		{
-			return new Boolean(valLh.castToBoolean().getBoolValue() && valRh.castToBoolean().getBoolValue());
+			return new Integer(valLh.castToInteger().isTrue() && valRh.castToInteger().isTrue());
 		}
 		else
 		{
