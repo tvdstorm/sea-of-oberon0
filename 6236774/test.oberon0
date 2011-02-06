@@ -1,0 +1,15 @@
+MODULE QuickSort;
+
+BEGIN 
+
+	IF a - 1 = c THEN
+	    a := b
+	ELSIF b + 1 = c THEN
+	    a := c
+	ELSIF c + 1 = d THEN
+	    b := c
+	ELSE 
+	    a := d
+	END
+  
+END QuickSort.
