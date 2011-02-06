@@ -30,8 +30,9 @@ public class If extends Statement
 	@Override
 	public int eval(Scope scope)
 	{
-		if (_ifExpression.eval(scope) == 1)
+		if (_ifExpression.eval(scope) == 1) {
 			return _ifStatements.eval(scope);
+		}
 		
 		for (IfPartForElsIf elsIf : _elsIfList)
 		{
@@ -39,8 +40,9 @@ public class If extends Statement
 				return elsIf.getStatementList().eval(scope);
 		}
 		
-		if (_elseStatementList != null)
+		if (_elseStatementList != null) {
 			return _elseStatementList.eval(scope);
+		}
 		
 		return 1;
 	}

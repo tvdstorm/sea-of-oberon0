@@ -9,7 +9,4 @@ import uva.oberon0.abstractsyntax.BaseNode;
 */
 public abstract class Statement extends BaseNode 
 {
-	protected Statement() 
-	{
-	}
 }

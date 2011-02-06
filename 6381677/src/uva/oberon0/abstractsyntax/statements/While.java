@@ -27,8 +27,9 @@ public class While extends Statement
 	{
 		while (_whileExpression.eval(scope) == 1)
 		{
-			if (_whileStatements.eval(scope) == 0)
+			if (_whileStatements.eval(scope) == 0) {
 				return 0;
+			}
 		}
 		
 		return 1;
