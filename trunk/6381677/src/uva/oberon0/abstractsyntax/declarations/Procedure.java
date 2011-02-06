@@ -1,6 +1,6 @@
 package uva.oberon0.abstractsyntax.declarations;
 
-import uva.oberon0.abstractsyntax.statements.BaseStatementList;
+import uva.oberon0.abstractsyntax.statements.StatementList;
 import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.runtime.Scope;
 
@@ -9,13 +9,13 @@ import uva.oberon0.runtime.Scope;
  * @author Chiel Labee
  * This class represents a Procedure Structure.
 */
-public class Procedure extends BaseDeclaration 
+public class Procedure extends Declaration 
 {
 	private final VariableList 			_parameters;
-	private final BaseDeclarationList 	_declarations;
-	private final BaseStatementList 	_statements;
+	private final DeclarationList 	_declarations;
+	private final StatementList 	_statements;
 
-	public Procedure(ID id, VariableList parameters, BaseDeclarationList declarations, BaseStatementList statements)
+	public Procedure(ID id, VariableList parameters, DeclarationList declarations, StatementList statements)
 	{
 		super(id);
 		
@@ -39,11 +39,11 @@ public class Procedure extends BaseDeclaration
 	/**
 	 * Gets a specific formal Parameter based on the index number value.
 	 */
-	public BaseDeclaration getParameter(int index)
+	public Declaration getParameter(int index)
 	{
 		return _parameters.get(index);
 	}
-	public BaseDeclarationList getDeclarations()
+	public DeclarationList getDeclarations()
 	{
 		return _declarations;
 	}

@@ -7,19 +7,19 @@ import uva.oberon0.abstractsyntax.types.ID;
  * @author Chiel Labee
  * This class represents an Array based Execution Scope Value.
 */
-public class ScopeValueArray extends ScopeValueBase 
+public class ScopeValueArray extends ScopeValue 
 {
 	public ScopeValueArray(Scope scope, ArrayType type)
 	{
 		int arrayLength = type.getLength().eval(scope);
 		
-		_value = new ScopeValueBase[arrayLength];
+		_value = new ScopeValue[arrayLength];
 		
 		for (int i = 0; i<arrayLength; i++)
 			_value[i] = type.getType().instantiate(scope);
 	}
 	
-	private ScopeValueBase[] _value;
+	private ScopeValue[] _value;
 
 	@Override
 	public int getValue(Scope scope) 
@@ -33,7 +33,7 @@ public class ScopeValueArray extends ScopeValueBase
 	}
 
 	@Override
-	public ScopeValueBase getValueReference(Scope scope, ID id)
+	public ScopeValue getValueReference(Scope scope, ID id)
 	{
 		if (id.getSub() == null)
 			return this;

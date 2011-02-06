@@ -1,17 +1,18 @@
 package uva.oberon0.abstractsyntax.statements;
 
-import uva.oberon0.abstractsyntax.BaseNode;
+import uva.oberon0.abstractsyntax.expressions.Expression;
+import uva.oberon0.abstractsyntax.expressions.ExpressionList;
 
 
 /**
  * @author Chiel Labee
  * This class represents a Method Call Statement.
 */
-public abstract class Call extends BaseStatement
+public abstract class Call extends Statement
 {
-	private final CallActualParameterList _actualParameterList;
+	private final ExpressionList _actualParameterList;
 	
-	protected Call(CallActualParameterList actualParameterList)
+	protected Call(ExpressionList actualParameterList)
 	{
 		_actualParameterList = actualParameterList;
 	}
@@ -19,14 +20,14 @@ public abstract class Call extends BaseStatement
 	/**
 	 * Gets all Method Call Actual Parameters.
 	 */
-	public CallActualParameterList getCallVars()
+	public ExpressionList getCallVars()
 	{
 		return _actualParameterList;
 	}
 	/**
 	 * Gets a specific Method Call Actual Parameter based on its list Index value.
 	 */
-	public BaseNode getActualParameter(int index)
+	public Expression getActualParameter(int index)
 	{
 		return _actualParameterList.get(index);
 	}

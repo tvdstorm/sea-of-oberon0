@@ -6,9 +6,9 @@ import uva.oberon0.runtime.Scope;
  * This class represents a Subtraction Binary Expression (x - y).
  * @author Chiel Labee
  */
-public class Subtraction extends BaseExpressionBinary {
+public class Subtraction extends BinaryExpression {
 
-	public Subtraction(BaseExpression left, BaseExpression right) {
+	public Subtraction(Expression left, Expression right) {
 		super(left, right);
 	}
 

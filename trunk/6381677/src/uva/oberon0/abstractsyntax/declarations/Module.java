@@ -1,7 +1,7 @@
 package uva.oberon0.abstractsyntax.declarations;
 
 import uva.oberon0.abstractsyntax.BaseNodeWithID;
-import uva.oberon0.abstractsyntax.statements.BaseStatementList;
+import uva.oberon0.abstractsyntax.statements.StatementList;
 import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.runtime.Scope;
 
@@ -12,10 +12,10 @@ import uva.oberon0.runtime.Scope;
 */
 public class Module extends BaseNodeWithID
 {
-	private final BaseDeclarationList 	_declarations;
-	private final BaseStatementList 	_statements;
+	private final DeclarationList 	_declarations;
+	private final StatementList 	_statements;
 
-	public Module(ID id, BaseDeclarationList declarations, BaseStatementList statements)
+	public Module(ID id, DeclarationList declarations, StatementList statements)
 	{
 		super(id);
 		

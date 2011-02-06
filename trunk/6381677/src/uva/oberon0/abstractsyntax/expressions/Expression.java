@@ -7,6 +7,6 @@ import uva.oberon0.abstractsyntax.BaseNode;
  * This class represents a Expression.
  * This class is abstract.
 */
-public abstract class BaseExpression extends BaseNode 
+public abstract class Expression extends BaseNode 
 {	
 }

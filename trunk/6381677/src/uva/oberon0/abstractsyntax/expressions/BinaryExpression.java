@@ -6,9 +6,9 @@ package uva.oberon0.abstractsyntax.expressions;
  * This class represents a Binary Expression.
  * This class is abstract.
 */
-public abstract class BaseExpressionBinary extends BaseExpression {
+public abstract class BinaryExpression extends Expression {
 
-	public BaseExpressionBinary(BaseExpression left, BaseExpression right) 
+	public BinaryExpression(Expression left, Expression right) 
 	{
 		assert left!= null 	: "No Left Expression is available for the current Binary Expression!";
 		assert right!= null : "No Right Expression is available for the current Binary Expressio!";
@@ -17,20 +17,20 @@ public abstract class BaseExpressionBinary extends BaseExpression {
 		_right = right;
 	}
 	
-	private BaseExpression _left = null;
+	private Expression _left = null;
 	/**
 	 * Gets the Left part of the Expression.
 	 */
-	public BaseExpression getLeft()
+	public Expression getLeft()
 	{
 		return _left;
 	}
 	
-	private BaseExpression _right = null;
+	private Expression _right = null;
 	/**
 	 * Gets the Right part of the Expression.
 	 */
-	public BaseExpression getRight()
+	public Expression getRight()
 	{
 		return _right;
 	}

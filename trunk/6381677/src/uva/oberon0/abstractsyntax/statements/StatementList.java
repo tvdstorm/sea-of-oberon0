@@ -8,12 +8,12 @@ import uva.oberon0.runtime.Scope;
  * @author Chiel Labee
  * This class represents a List of Statement Nodes.
 */
-public class BaseStatementList extends BaseList<BaseStatement> 
+public class StatementList extends BaseList<Statement> 
 {
 	public int eval(Scope scope)
 	{
 		//Loop all Statement Nodes.
-		for (BaseStatement statement : this)
+		for (Statement statement : this)
 		{
 			//Evaluate Statement Node.
 			if (statement.eval(scope) == 0)

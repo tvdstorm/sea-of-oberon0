@@ -4,13 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import uva.oberon0.abstractsyntax.BaseNode;
-import uva.oberon0.abstractsyntax.declarations.BaseDeclaration;
-import uva.oberon0.abstractsyntax.declarations.BaseDeclarationList;
+import uva.oberon0.abstractsyntax.declarations.Declaration;
+import uva.oberon0.abstractsyntax.declarations.DeclarationList;
 import uva.oberon0.abstractsyntax.declarations.Constant;
 import uva.oberon0.abstractsyntax.declarations.Procedure;
 import uva.oberon0.abstractsyntax.declarations.Type;
 import uva.oberon0.abstractsyntax.declarations.Variable;
-import uva.oberon0.abstractsyntax.statements.CallActualParameterList;
+import uva.oberon0.abstractsyntax.expressions.ExpressionList;
 import uva.oberon0.abstractsyntax.types.ID;
 
 
@@ -22,7 +22,7 @@ public class Scope
 {
 	private final Scope						_parent			;
 	private final Map<ID, Type> 			_mapTypes 		;
-	private final Map<ID, ScopeValueBase> 	_mapValues 		;
+	private final Map<ID, ScopeValue> 	_mapValues 		;
 	private final Map<ID, Procedure> 		_mapProcedures 	;
 
 	public Scope()
@@ -33,16 +33,16 @@ public class Scope
 	{
 		_parent 		= parent;
 		_mapTypes 		= new HashMap<ID, Type>();
-		_mapValues 		= new HashMap<ID, ScopeValueBase>();
+		_mapValues 		= new HashMap<ID, ScopeValue>();
 		_mapProcedures 	= new HashMap<ID, Procedure>();
 	}
 	
-	public Scope(BaseDeclarationList declarations, Scope parent)
+	public Scope(DeclarationList declarations, Scope parent)
 	{
 		this(parent);
 		
 		//Loop all Declarations.
-		for (BaseDeclaration declaration : declarations)
+		for (Declaration declaration : declarations)
 		{
 			//Add item to Procedures map.
 			if (declaration instanceof Procedure) {
@@ -69,7 +69,7 @@ public class Scope
 			}
 		}
 	}
-	public Scope(CallActualParameterList actualParameters, Procedure procedure, Scope parent)
+	public Scope(ExpressionList actualParameters, Procedure procedure, Scope parent)
 	{
 		//Process the Procedure Body declarations.
 		this(procedure.getDeclarations(), parent);
@@ -94,7 +94,7 @@ public class Scope
 			
 			//Determine if the declaration should be passed by Value.
 			else {
-				ScopeValueBase value = formal.instantiate(this);
+				ScopeValue value = formal.instantiate(this);
 				value.setValue(this, actual.eval(parent));
 				
 				//Create and Add an Execution Scope Value to the Value hash.
@@ -111,7 +111,7 @@ public class Scope
 	{
 		_mapTypes.put(type.getID(), type);
 	}
-	public void addValue(ID id, ScopeValueBase value)
+	public void addValue(ID id, ScopeValue value)
 	{
 		_mapValues.put(id, value);
 	}
@@ -122,7 +122,7 @@ public class Scope
 	 */
 	public int getValue(ID id)
 	{
-		ScopeValueBase scopeValue = getValueReference(id);
+		ScopeValue scopeValue = getValueReference(id);
 		
 		if (scopeValue == null){
 			assert false : "Variable " + id + " not found!";
@@ -131,11 +131,11 @@ public class Scope
 		
 		return scopeValue.getValue(this);
 	}
-	private ScopeValueBase getValueReference(ID id)
+	private ScopeValue getValueReference(ID id)
 	{
 		assert id != null : "ID cannot be Null!";
 		
-		ScopeValueBase value = null;
+		ScopeValue value = null;
 		
 		if (_mapValues.containsKey(id)){
 			value = _mapValues.get(id);
@@ -159,7 +159,7 @@ public class Scope
 	 */
 	public int setValue(ID id, int valueNew)
 	{
-		ScopeValueBase scopeValue = getValueReference(id);
+		ScopeValue scopeValue = getValueReference(id);
 		
 		if (scopeValue == null)
 		{
@@ -194,11 +194,11 @@ public class Scope
 	 * @param id The Identifier of the Procedure that should be executed.
 	 * @param callVars The Method Call Variables that should be passed to the Procedure.
 	 */
-	public int callProcedure(ID id, CallActualParameterList callVars)
+	public int callProcedure(ID id, ExpressionList callVars)
 	{
 		return callProcedure(id, callVars, this);
 	}
-	protected int callProcedure(ID id, CallActualParameterList callVars, Scope parentScope)
+	protected int callProcedure(ID id, ExpressionList callVars, Scope parentScope)
 	{
 		//Retrieve procedure from hash in current Execution Scope.
 		Procedure procedure = _mapProcedures.get(id);

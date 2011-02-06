@@ -8,7 +8,7 @@ import uva.oberon0.abstractsyntax.types.ID;
  * @author Chiel Labee
  * This class represents an Assignment Statement.
 */
-public class Assign extends BaseStatement {
+public class Assign extends Statement {
 	private final ID _id;
 	private final BaseNode _value;
 

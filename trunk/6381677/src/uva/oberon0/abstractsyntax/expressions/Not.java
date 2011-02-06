@@ -6,9 +6,9 @@ import uva.oberon0.runtime.Scope;
  * This class represents a Not Unary Expression (!x).
  * @author Chiel Labee
  */
-public class Not extends BaseExpressionUnary {
+public class Not extends UnaryExpression {
 
-	public Not(BaseExpression argument) {
+	public Not(Expression argument) {
 		super(argument);
 	}
 

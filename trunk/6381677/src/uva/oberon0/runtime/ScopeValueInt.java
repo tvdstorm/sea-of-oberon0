@@ -6,7 +6,7 @@ import uva.oberon0.abstractsyntax.types.ID;
  * @author Chiel Labee
  * This class represents an Integer based Execution Scope Value.
 */
-public class ScopeValueInt extends ScopeValueBase 
+public class ScopeValueInt extends ScopeValue 
 {
 	private int _value;
 	
@@ -32,7 +32,7 @@ public class ScopeValueInt extends ScopeValueBase
 	}
 
 	@Override
-	public ScopeValueBase getValueReference(Scope scope, ID id) 
+	public ScopeValue getValueReference(Scope scope, ID id) 
 	{
 		return this;
 	}

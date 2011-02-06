@@ -7,9 +7,9 @@ import uva.oberon0.abstractsyntax.BaseNode;
  * This class represents a Unary Expression.
  * This class is abstract.
 */
-public abstract class BaseExpressionUnary extends BaseExpression {
+public abstract class UnaryExpression extends Expression {
 
-	protected BaseExpressionUnary(BaseExpression argument)
+	protected UnaryExpression(Expression argument)
 	{
 		assert argument != null : "No Argument is available for this Unary Expression!";
 		

@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import uva.oberon0.abstractsyntax.expressions.ExpressionList;
 import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.runtime.Scope;
 
@@ -13,9 +14,9 @@ import uva.oberon0.runtime.Scope;
 */
 public class CallRead extends Call 
 {
-	public CallRead(CallActualParameterList actualParameterList)
+	public CallRead(ExpressionList call_vars)
 	{
-		super(actualParameterList);
+		super(call_vars);
 	}
 	
 	@Override

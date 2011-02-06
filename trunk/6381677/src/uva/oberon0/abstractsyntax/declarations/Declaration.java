@@ -9,9 +9,9 @@ import uva.oberon0.abstractsyntax.types.ID;
  * This class represents a Declaration.
  * This class is abstract.
 */
-public abstract class BaseDeclaration extends BaseNodeWithID
+public abstract class Declaration extends BaseNodeWithID
 {
-	protected BaseDeclaration(ID id) 
+	protected Declaration(ID id) 
 	{
 		super(id);
 	}
