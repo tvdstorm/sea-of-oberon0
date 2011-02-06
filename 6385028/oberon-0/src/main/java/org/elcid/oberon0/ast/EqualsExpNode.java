@@ -30,7 +30,7 @@ public class EqualsExpNode extends BooleanExpNode {
 
 	@Override
 	public Boolean accept(BaseVisitor visitor, Environment localEnv) {
-		return visitor.visitEqualsExpNode(this, localEnv);
+		return visitor.eval(this, localEnv);
 	}
 
 	@Override

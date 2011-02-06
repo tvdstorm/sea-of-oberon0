@@ -25,7 +25,7 @@ public class ValueExpNode extends IntExpNode {
 
 	@Override
 	public Object accept(BaseVisitor visitor, Environment localEnv) {
-		return visitor.visitValueExpNode(this, localEnv);
+		return visitor.eval(this, localEnv);
 	}
 
 	@Override

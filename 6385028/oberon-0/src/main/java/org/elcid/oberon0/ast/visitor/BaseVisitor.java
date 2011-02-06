@@ -12,47 +12,47 @@ import org.elcid.oberon0.ast.values.*;
  */
 public abstract class BaseVisitor {
 
-	public Integer visitValueExpNode(ValueExpNode node, Environment localEnv) {
+	public Integer eval(ValueExpNode node, Environment localEnv) {
 		return null;
 	}
 
-	public Integer visitPlusExpNode(PlusExpNode node, Environment localEnv) {
+	public Integer eval(PlusExpNode node, Environment localEnv) {
 		return null;
 	}
 
-	public Integer visitMinusExpNode(MinusExpNode node, Environment localEnv) {
+	public Integer eval(MinusExpNode node, Environment localEnv) {
 		return null;
 	}
 
-	public Integer visitMultiplyExpNode(MultiplyExpNode node, Environment localEnv) {
+	public Integer eval(MultiplyExpNode node, Environment localEnv) {
 		return null;
 	}
 
-	public Integer visitDivideExpNode(DivideExpNode node, Environment localEnv) {
+	public Integer eval(DivideExpNode node, Environment localEnv) {
 		return null;
 	}
 
-	public Integer visitModuloExpNode(ModuloExpNode node, Environment localEnv) {
+	public Integer eval(ModuloExpNode node, Environment localEnv) {
 		return null;
 	}
 
-	public Boolean visitEqualsExpNode(EqualsExpNode node, Environment localEnv) {
+	public Boolean eval(EqualsExpNode node, Environment localEnv) {
 		return null;
 	}
 
-	public Boolean visitGreaterExpNode(GreaterExpNode node, Environment localEnv) {
+	public Boolean eval(GreaterExpNode node, Environment localEnv) {
 		return null;
 	}
 
-	public Boolean visitGreaterOrEqualsExpNode(GreaterOrEqualsExpNode node, Environment localEnv) {
+	public Boolean eval(GreaterOrEqualsExpNode node, Environment localEnv) {
 		return null;
 	}
 
-	public Boolean visitLesserExpNode(LesserExpNode node, Environment localEnv) {
+	public Boolean eval(LesserExpNode node, Environment localEnv) {
 		return null;
 	}
 
-	public Boolean visitLesserOrEqualsExpNode(LesserOrEqualsExpNode node, Environment localEnv) {
+	public Boolean eval(LesserOrEqualsExpNode node, Environment localEnv) {
 		return null;
 	}
 
