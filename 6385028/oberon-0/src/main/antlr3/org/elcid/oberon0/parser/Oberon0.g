@@ -53,8 +53,17 @@ tokens
 
 }
 
-@header {package org.elcid.oberon0.parser;}
-@lexer::header {package org.elcid.oberon0.parser;}
+@header {
+package org.elcid.oberon0.parser;
+
+import org.elcid.oberon0.ast.*;
+import org.elcid.oberon0.ast.values.*;
+import org.elcid.oberon0.ast.visitor.*;
+}
+
+@lexer::header {
+package org.elcid.oberon0.parser;
+}
 
 /*------------------------------------------------------------------
  * PARSER RULES
@@ -159,46 +168,39 @@ actualParameters
 	|	RND_OPEN expression (COMMA expression)* RND_CLOSE
 	;
 
-expression
-	:	simpleExpression (expressionOperator simpleExpression)?
+expression returns [ExpressionNode result]
+	:	s1=simpleExpression								{ $result = $s1.result; System.out.println($s1.text /*+ " = " + new ExpressionVisitor().eval($s1.result)*/); }
+			( EQUALS_OP s2=simpleExpression				{ $result = new EqualsExpNode($s1.result, $s2.result); }
+			| HASH_OP s2=simpleExpression
+			| LESSER_OP s2=simpleExpression				{ $result = new LesserExpNode((IntExpNode) $s1.result, (IntExpNode) $s2.result); }
+			| LESSER_OR_EQUAL_OP s2=simpleExpression	{ $result = new LesserOrEqualsExpNode((IntExpNode) $s1.result, (IntExpNode) $s2.result); }
+			| GREATER_OP s2=simpleExpression			{ $result = new GreaterExpNode((IntExpNode) $s1.result, (IntExpNode) $s2.result); }
+			| GREATER_OR_EQUAL_OP s2=simpleExpression	{ $result = new GreaterOrEqualsExpNode((IntExpNode) $s1.result, (IntExpNode) $s2.result); }
+			)?
 	;
 
-expressionOperator
-	:	EQUALS_OP
-	|	HASH_OP
-	|	LESSER_OP
-	|	LESSER_OR_EQUAL_OP
-	|	GREATER_OP
-	|	GREATER_OR_EQUAL_OP
+simpleExpression returns [ExpressionNode result]
+	:	(PLUS_OP | MINUS_OP)? t1=term					{ $result = $t1.result; }
+			( PLUS_OP t2=term							{ $result = new PlusExpNode((IntExpNode) $t1.result, (IntExpNode) $t2.result); }
+			| MINUS_OP t2=term							{ $result = new MinusExpNode((IntExpNode) $t1.result, (IntExpNode) $t2.result); }
+			| OR_OP t2=term
+			)*
 	;
 
-
-simpleExpression
-	:	(PLUS_OP | MINUS_OP)? term (simpleExpressionOperator term)*
+term returns [ExpressionNode result]
+	:	f1=factor										{ $result = $f1.result; }
+			( MULTIPLY_OP f2=factor						{ $result = new MultiplyExpNode((IntExpNode) $f1.result, (IntExpNode) $f2.result); }
+			| DIVIDE_OP f2=factor						{ $result = new DivideExpNode((IntExpNode) $f1.result, (IntExpNode) $f2.result); }
+			| MODULO_OP f2=factor						{ $result = new ModuloExpNode((IntExpNode) $f1.result, (IntExpNode) $f2.result); }
+			| AND_OP f2=factor
+			)*
 	;
 
-simpleExpressionOperator
-	:	PLUS_OP
-	|	MINUS_OP
-	|	OR_OP
-	;
-
-term
-	:	factor (termOperator factor)*
-	;
-
-termOperator
-	:	MULTIPLY_OP
-	|	DIVIDE_OP
-	|	MODULO_OP
-	|	AND_OP
-	;
-
-factor
-	:	identSelector
-	|	integer
-	|	RND_OPEN expression RND_CLOSE
-	|	TILDE factor
+factor returns [ExpressionNode result]
+	:	is=identSelector
+	|	i=integer										{ $result = new ValueExpNode(new Int(Integer.parseInt($i.text))); }
+	|	RND_OPEN e=expression RND_CLOSE					{ $result = $e.result; }
+	|	TILDE f=factor									{ $result = $f.result; }
 	;
 
 identSelector
