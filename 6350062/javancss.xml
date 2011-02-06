@@ -1,26 +1,26 @@
 <?xml version="1.0"?>
 <javancss>
-  <date>2011-02-04</date>
-  <time>16:07:42</time>
+  <date>2011-02-06</date>
+  <time>12:46:27</time>
   <packages>
     <package>
-      <name>randy.oberon0.ast</name>
-      <classes>39</classes>
-      <functions>76</functions>
-      <ncss>659</ncss>
-      <javadocs>0</javadocs>
-      <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>111</single_comment_lines>
-      <multi_comment_lines>0</multi_comment_lines>
-    </package>
-    <package>
-      <name>randy.oberon0.ast.datastructures</name>
+      <name>randy.library.datastructures</name>
       <classes>1</classes>
       <functions>3</functions>
       <ncss>11</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>0</single_comment_lines>
+      <multi_comment_lines>0</multi_comment_lines>
+    </package>
+    <package>
+      <name>randy.oberon0.ast</name>
+      <classes>38</classes>
+      <functions>74</functions>
+      <ncss>634</ncss>
+      <javadocs>0</javadocs>
+      <javadoc_lines>0</javadoc_lines>
+      <single_comment_lines>110</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <package>
@@ -36,8 +36,8 @@
     <package>
       <name>randy.oberon0.interpreter.antlr</name>
       <classes>1</classes>
-      <functions>24</functions>
-      <ncss>299</ncss>
+      <functions>23</functions>
+      <ncss>292</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>2</single_comment_lines>
@@ -57,7 +57,7 @@
       <name>randy.oberon0.interpreter.runtime</name>
       <classes>9</classes>
       <functions>31</functions>
-      <ncss>195</ncss>
+      <ncss>190</ncss>
       <javadocs>3</javadocs>
       <javadoc_lines>9</javadoc_lines>
       <single_comment_lines>29</single_comment_lines>
@@ -70,34 +70,34 @@
       <ncss>11</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>0</single_comment_lines>
+      <single_comment_lines>1</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <package>
       <name>randy.oberon0.value</name>
-      <classes>8</classes>
-      <functions>61</functions>
-      <ncss>227</ncss>
+      <classes>7</classes>
+      <functions>53</functions>
+      <ncss>210</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>4</single_comment_lines>
+      <single_comment_lines>3</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <total>
-      <classes>82</classes>
-      <functions>227</functions>
-      <ncss>1575</ncss>
+      <classes>80</classes>
+      <functions>216</functions>
+      <ncss>1521</ncss>
       <javadocs>3</javadocs>
       <javadoc_lines>9</javadoc_lines>
-      <single_comment_lines>158</single_comment_lines>
+      <single_comment_lines>157</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>8.00</td><td>82.00</td><td>227.00</td><td>1,575.00</td><td>3.00</td><td>Project</td></tr>
-      <tr><td></td><td>10.25</td><td>28.38</td><td>196.88</td><td>0.38</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>2.77</td><td>19.21</td><td>0.04</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>6.94</td><td>0.01</td><td>Function</td></tr>
+      <tr><td>8.00</td><td>80.00</td><td>216.00</td><td>1,521.00</td><td>3.00</td><td>Project</td></tr>
+      <tr><td></td><td>10.00</td><td>27.00</td><td>190.13</td><td>0.38</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>2.70</td><td>19.01</td><td>0.04</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>7.04</td><td>0.01</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -152,23 +152,9 @@
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>randy.oberon0.ast.BooleanLiteral</name>
-      <ncss>8</ncss>
-      <functions>2</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
       <name>randy.oberon0.ast.ConstDeclaration</name>
       <ncss>12</ncss>
       <functions>2</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>randy.oberon0.ast.datastructures.Tuple</name>
-      <ncss>10</ncss>
-      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -223,7 +209,7 @@
     </object>
     <object>
       <name>randy.oberon0.ast.InfixEqualsExpression</name>
-      <ncss>17</ncss>
+      <ncss>14</ncss>
       <functions>2</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
@@ -258,7 +244,7 @@
     </object>
     <object>
       <name>randy.oberon0.ast.InfixNotEqualsExpression</name>
-      <ncss>17</ncss>
+      <ncss>14</ncss>
       <functions>2</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
@@ -510,8 +496,8 @@
     </object>
     <object>
       <name>randy.oberon0.interpreter.antlr.Oberon0ASTTreeGenerator</name>
-      <ncss>285</ncss>
-      <functions>24</functions>
+      <ncss>279</ncss>
+      <functions>23</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -573,14 +559,14 @@
     </object>
     <object>
       <name>randy.oberon0.interpreter.runtime.PrimitiveVariableInstantiation</name>
-      <ncss>12</ncss>
+      <ncss>9</ncss>
       <functions>2</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>randy.oberon0.interpreter.runtime.Program</name>
-      <ncss>22</ncss>
+      <ncss>21</ncss>
       <functions>4</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
@@ -628,13 +614,6 @@
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>randy.oberon0.value.Boolean</name>
-      <ncss>22</ncss>
-      <functions>8</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
       <name>randy.oberon0.value.Const</name>
       <ncss>16</ncss>
       <functions>7</functions>
@@ -643,8 +622,8 @@
     </object>
     <object>
       <name>randy.oberon0.value.Integer</name>
-      <ncss>22</ncss>
-      <functions>8</functions>
+      <ncss>35</ncss>
+      <functions>10</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -664,25 +643,32 @@
     </object>
     <object>
       <name>randy.oberon0.value.Type</name>
-      <ncss>10</ncss>
-      <functions>3</functions>
+      <ncss>8</ncss>
+      <functions>2</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>randy.oberon0.value.Value</name>
-      <ncss>26</ncss>
-      <functions>9</functions>
+      <ncss>21</ncss>
+      <functions>8</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>randy.library.datastructures.Tuple</name>
+      <ncss>10</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>15.23</ncss>
-      <functions>2.77</functions>
+      <ncss>15.11</ncss>
+      <functions>2.70</functions>
       <classes>0.00</classes>
       <javadocs>0.04</javadocs>
     </averages>
-    <ncss>1,575.00</ncss>
+    <ncss>1,521.00</ncss>
   </objects>
 
   <functions>
@@ -747,18 +733,6 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>randy.oberon0.ast.BooleanLiteral.BooleanLiteral(Boolean)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>randy.oberon0.ast.BooleanLiteral.evaluate(RuntimeEnvironment)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
       <name>randy.oberon0.ast.ConstDeclaration.ConstDeclaration(String,Expression)</name>
       <ncss>6</ncss>
       <ccn>1</ccn>
@@ -767,24 +741,6 @@
     <function>
       <name>randy.oberon0.ast.ConstDeclaration.register(RuntimeEnvironment)</name>
       <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>randy.oberon0.ast.datastructures.Tuple.Tuple(A,B)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>randy.oberon0.ast.datastructures.Tuple.getFirst()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>randy.oberon0.ast.datastructures.Tuple.getSecond()</name>
-      <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -880,8 +836,8 @@
     </function>
     <function>
       <name>randy.oberon0.ast.InfixEqualsExpression.evaluate(RuntimeEnvironment)</name>
-      <ncss>14</ncss>
-      <ccn>11</ccn>
+      <ncss>11</ncss>
+      <ccn>8</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -934,8 +890,8 @@
     </function>
     <function>
       <name>randy.oberon0.ast.InfixNotEqualsExpression.evaluate(RuntimeEnvironment)</name>
-      <ncss>14</ncss>
-      <ccn>11</ccn>
+      <ncss>11</ncss>
+      <ccn>8</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -1317,12 +1273,6 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>randy.oberon0.interpreter.antlr.Oberon0ASTTreeGenerator.buildBooleanLiteral(Tree)</name>
-      <ncss>3</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
       <name>randy.oberon0.interpreter.antlr.Oberon0ASTTreeGenerator.buildConstDeclaration(Tree)</name>
       <ncss>7</ncss>
       <ccn>1</ccn>
@@ -1336,8 +1286,8 @@
     </function>
     <function>
       <name>randy.oberon0.interpreter.antlr.Oberon0ASTTreeGenerator.buildExpression(Tree)</name>
-      <ncss>33</ncss>
-      <ccn>30</ccn>
+      <ncss>30</ncss>
+      <ccn>27</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -1540,8 +1490,8 @@
     </function>
     <function>
       <name>randy.oberon0.interpreter.runtime.PrimitiveVariableInstantiation.instantiate(RuntimeEnvironment)</name>
-      <ncss>8</ncss>
-      <ccn>6</ccn>
+      <ncss>5</ncss>
+      <ccn>4</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -1558,7 +1508,7 @@
     </function>
     <function>
       <name>randy.oberon0.interpreter.runtime.Program.run()</name>
-      <ncss>10</ncss>
+      <ncss>9</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -1743,54 +1693,6 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>randy.oberon0.value.Boolean.Boolean(boolean)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>randy.oberon0.value.Boolean.getBoolValue()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>randy.oberon0.value.Boolean.dereference()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>randy.oberon0.value.Boolean.setValue(Value)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>randy.oberon0.value.Boolean.getType()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>randy.oberon0.value.Boolean.toString()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>randy.oberon0.value.Boolean.equalsToValue(Value)</name>
-      <ncss>5</ncss>
-      <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>randy.oberon0.value.Boolean.clone()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
       <name>randy.oberon0.value.Const.Const(Value)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
@@ -1839,6 +1741,12 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>randy.oberon0.value.Integer.Integer(boolean)</name>
+      <ncss>5</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>randy.oberon0.value.Integer.getIntValue()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
@@ -1878,6 +1786,12 @@
       <name>randy.oberon0.value.Integer.clone()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.value.Integer.isTrue()</name>
+      <ncss>8</ncss>
+      <ccn>6</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -1989,12 +1903,6 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>randy.oberon0.value.Type.get(String)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
       <name>randy.oberon0.value.Value.dereference()</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
@@ -2025,12 +1933,6 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>randy.oberon0.value.Value.castToBoolean()</name>
-      <ncss>5</ncss>
-      <ccn>4</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
       <name>randy.oberon0.value.Value.castToArray()</name>
       <ncss>5</ncss>
       <ccn>4</ccn>
@@ -2048,11 +1950,29 @@
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
+    <function>
+      <name>randy.library.datastructures.Tuple.Tuple(A,B)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.library.datastructures.Tuple.getFirst()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.library.datastructures.Tuple.getSecond()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
     <function_averages>
-      <ncss>4.78</ncss>
-      <ccn>2.38</ccn>
+      <ncss>4.86</ncss>
+      <ccn>2.40</ccn>
       <javadocs>0.01</javadocs>
     </function_averages>
-    <ncss>1,575.00</ncss>
+    <ncss>1,521.00</ncss>
   </functions>
 </javancss>
