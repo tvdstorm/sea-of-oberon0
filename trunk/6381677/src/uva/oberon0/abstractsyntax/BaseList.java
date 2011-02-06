@@ -1,7 +1,7 @@
 package uva.oberon0.abstractsyntax;
 
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -14,7 +14,7 @@ public abstract class BaseList<E> implements Iterable<E>
 	
 	protected BaseList() 
 	{
-		_list = new ArrayList<E>();
+		_list = new LinkedList<E>();
 	}
 
 	/**
