@@ -28,6 +28,11 @@ public class ID extends BaseNode {
 		return selector;
 	}
 
+	public String getValue()
+	{
+		return _value;
+	}
+	
 	@Override
 	public boolean equals(Object compareTo) {
 		// Determine if the same reference.

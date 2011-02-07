@@ -5,7 +5,7 @@ public class Program {
 		Test.testAll();
 
 		uva.oberon0.abstractsyntax.declarations.Module module = uva.oberon0.parser.Helper
-				.createModuleFromFile("D:\\DropBox\\My Dropbox\\UVA\\SC\\Smoke.txt");
+				.createModuleFromFile("Smoke1.txt");
 		module.eval();
 
 		System.exit(0);

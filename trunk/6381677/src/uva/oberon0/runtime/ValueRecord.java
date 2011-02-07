@@ -8,12 +8,12 @@ import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.abstractsyntax.types.RecordField;
 import uva.oberon0.abstractsyntax.types.RecordType;
 
-public class ScopeValueRecord extends ScopeValue {
+public class ValueRecord extends Value 
+{
+	private final Map<ID, Value> _values;
 
-	private final Map<ID, ScopeValue> _values;
-
-	public ScopeValueRecord(Scope scope, RecordType type) {
-		_values = new HashMap<ID, ScopeValue>(type.getFields().size());
+	public ValueRecord(Scope scope, RecordType type) {
+		_values = new HashMap<ID, Value>(type.getFields().size());
 
 		for (RecordField field : type.getFields()) {
 			_values.put(field.getID(), field.getType().instantiate(scope));
@@ -21,10 +21,10 @@ public class ScopeValueRecord extends ScopeValue {
 	}
 
 	@Override
-	public ScopeValue getValueBySelector(Scope scope, BaseNode selector) {
+	public Value getValueBySelector(Scope scope, BaseNode selector) {
 		ID selectorID = (ID) selector;
 
-		ScopeValue value = _values.get(selectorID);
+		Value value = _values.get(selectorID);
 
 		if (selectorID.getSelector() != null) {
 			value = value.getValueBySelector(scope, selectorID.getSelector());

@@ -59,7 +59,6 @@ import uva.oberon0.abstractsyntax.types.RecordField;
 import uva.oberon0.abstractsyntax.types.RecordFieldList;
 import uva.oberon0.abstractsyntax.types.RecordType;
 
-@SuppressWarnings("unused")
 public class OberonParser extends Parser {
 	public static final String[] tokenNames = new String[] { "<invalid>",
 			"<EOR>", "<DOWN>", "<UP>", "MODULE", "PROCEDURE", "CONST", "VAR",

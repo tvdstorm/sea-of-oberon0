@@ -2,12 +2,14 @@ package uva.oberon0.abstractsyntax.declarations;
 
 import uva.oberon0.abstractsyntax.statements.StatementList;
 import uva.oberon0.abstractsyntax.types.ID;
+import uva.oberon0.runtime.IBindable;
 import uva.oberon0.runtime.Scope;
 
 /**
  * @author Chiel Labee This class represents a Procedure Structure.
  */
-public class Procedure extends Declaration {
+public class Procedure extends Declaration  implements IBindable
+{
 	private final VariableList _parameterList;
 	private final DeclarationList _declarationList;
 	private final StatementList _statementList;

@@ -1,7 +1,7 @@
 package uva.oberon0.abstractsyntax.types;
 
 import uva.oberon0.runtime.Scope;
-import uva.oberon0.runtime.ScopeValue;
+import uva.oberon0.runtime.Value;
 
 public class IDType extends BaseType {
 	private final ID _id;
@@ -14,8 +14,7 @@ public class IDType extends BaseType {
 	}
 	
 	@Override
-	public ScopeValue instantiate(Scope scope) {
-		return scope.getType(_id).instantiate(scope);
+	public Value instantiate(Scope scope) {
+		return ((BaseType)scope.getBindable(_id)).instantiate(scope);
 	}
-
 }

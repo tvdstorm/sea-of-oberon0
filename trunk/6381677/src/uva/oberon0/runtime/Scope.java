@@ -12,7 +12,6 @@ import uva.oberon0.abstractsyntax.declarations.Procedure;
 import uva.oberon0.abstractsyntax.declarations.Variable;
 import uva.oberon0.abstractsyntax.expressions.ExpressionList;
 import uva.oberon0.abstractsyntax.expressions.Reference;
-import uva.oberon0.abstractsyntax.types.BaseType;
 import uva.oberon0.abstractsyntax.types.ID;
 
 /**
@@ -20,9 +19,7 @@ import uva.oberon0.abstractsyntax.types.ID;
  */
 public class Scope {
 	private final Scope _parent;
-	private final Map<ID, BaseType> _mapTypes;
-	private final Map<ID, ScopeValue> _mapValues;
-	private final Map<ID, Procedure> _mapProcedures;
+	private final Map<String, IBindable> _mapBindings;
 
 	public Scope() {
 		this(null);
@@ -30,9 +27,7 @@ public class Scope {
 
 	public Scope(Scope parent) {
 		_parent = parent;
-		_mapTypes = new HashMap<ID, BaseType>();
-		_mapValues = new HashMap<ID, ScopeValue>();
-		_mapProcedures = new HashMap<ID, Procedure>();
+		_mapBindings = new HashMap<String, IBindable>();
 	}
 
 	public Scope(DeclarationList declarations, Scope parent) {
@@ -41,24 +36,24 @@ public class Scope {
 		// Loop all Declarations.
 		for (Declaration declaration : declarations) {
 			// Add item to Procedures map.
-			if (declaration instanceof Procedure) {
-				addProcedure((Procedure) declaration);
+			if (declaration instanceof IBindable) {
+				putBindable(declaration.getID(), (IBindable)declaration);
 			}
 
 			// Add item to Type map.
 			else if (declaration instanceof CustomType) {
-				addType((CustomType) declaration);
+				putBindable(((CustomType) declaration).getID(), ((CustomType)declaration).getType());
 			}
 
 			// Create and Add an Execution Scope Value to the Value hash.
 			else if (declaration instanceof Variable) {
-				addValue(declaration.getID(),
+				putBindable(declaration.getID(),
 						((Variable) declaration).instantiate(this));
 			}
 
 			// Create and Add an Execution Scope Value to the Value hash.
 			else if (declaration instanceof Constant) {
-				addValue(declaration.getID(),
+				putBindable(declaration.getID(),
 						((Constant) declaration).instantiate(this));
 			}
 
@@ -74,7 +69,7 @@ public class Scope {
 		this(procedure.getDeclarations(), parent);
 
 		// Register current Procedure for executing.
-		_mapProcedures.put(procedure.getID(), procedure);
+		putBindable(procedure.getID(), procedure);
 
 		// Loop all Method Call Variables.
 		for (int i = 0; i < procedure.getParameterCount(); i++) {
@@ -87,31 +82,25 @@ public class Scope {
 			// Determine if the declaration should be passed by Reference.
 			if (formal.isByReference()) {
 				// Get and Add the existing Execution Scope Value.
-				addValue(formal.getID(),
-						parent.getValueReference(((Reference) actual).getID()));
+				putBindable(formal.getID(), parent.getValueReference(((Reference) actual).getID()));
 			}
 
 			// Determine if the declaration should be passed by Value.
 			else {
-				ScopeValue value = formal.instantiate(this);
-				((ScopeValueInt) value).setValue(actual.eval(parent));
+				Value value = formal.instantiate(this);
+				((ValueInt) value).setValue(actual.eval(parent));
 
 				// Create and Add an Execution Scope Value to the Value hash.
-				addValue(formal.getID(), value);
+				putBindable(formal.getID(), value);
 			}
 		}
 	}
-
-	private void addProcedure(Procedure procedure) {
-		_mapProcedures.put(procedure.getID(), procedure);
+	public void putBindable(ID itemID, IBindable item) {
+		_mapBindings.put(itemID.getValue(), item);
 	}
-
-	private void addType(CustomType type) {
-		_mapTypes.put(type.getID(), type.getType());
-	}
-
-	public void addValue(ID id, ScopeValue value) {
-		_mapValues.put(id, value);
+	public IBindable getBindable(ID itemID)
+	{
+		return _mapBindings.get(itemID.getValue());
 	}
 
 	/**
@@ -121,17 +110,17 @@ public class Scope {
 	 *            The Identifier of the Value that should be retrieved.
 	 */
 	public int getValue(ID id) {
-		return ((ScopeValueInt) getValueReference(id)).getValue();
+		return ((ValueInt) getValueReference(id)).getValue();
 	}
 
-	private ScopeValue getValueReference(ID id) {
+	private Value getValueReference(ID id) {
 		assert id != null : "ID cannot be Null!";
 
-		ScopeValue value = null;
+		Value value = null;
 
 		// Determine value reference from current scope.
-		if (_mapValues.containsKey(id)) {
-			value = _mapValues.get(id);
+		if (_mapBindings.containsKey(id.getValue())) {
+			value = (Value)_mapBindings.get(id.getValue());
 		}
 
 		// Determine value reference from parent scope.
@@ -160,25 +149,10 @@ public class Scope {
 	 *            The Identifier of the Value that should be stored.
 	 */
 	public void setValue(ID id, int valueNew) {
-		ScopeValueInt scopeValue = (ScopeValueInt) getValueReference(id);
+		ValueInt scopeValue = (ValueInt) getValueReference(id);
 		scopeValue.setValue(valueNew);
 	}
 
-	/**
-	 * Get the specified Type from within the current Execution Scope.
-	 */
-	public BaseType getType(ID id) {
-		if (_mapTypes.containsKey(id)) {
-			return _mapTypes.get(id);
-		}
-
-		if (_parent != null) {
-			return _parent.getType(id);
-		}
-
-		assert false : "Undefined Type " + id + "!";
-		return null;
-	}
 
 	/**
 	 * Performs a Procedure Method Call within the current Execution Scope.
@@ -196,7 +170,7 @@ public class Scope {
 	protected int callProcedure(ID id, ExpressionList actualParameterList,
 			Scope parentScope) {
 		// Retrieve procedure from hash in current Execution Scope.
-		Procedure procedure = _mapProcedures.get(id);
+		Procedure procedure = (Procedure)getBindable(id);
 
 		// Determine procedure match in current Execution Scope.
 		if (procedure != null) {
