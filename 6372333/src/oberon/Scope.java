@@ -27,7 +27,7 @@ public class Scope {
 	/**
 	 * Instantiates a new scope.
 	 */
-	Scope(){
+	public Scope(){
 		variables = new HashMap<String, IDataType>();
 		procedures = new HashMap<String, IProcedure>();
 		systemProcedures = new HashMap<String, IProcedure>();

@@ -7,8 +7,8 @@ import junit.framework.Assert;
 import oberon.IDataType;
 import oberon.IProcedure;
 import oberon.IStatement;
+import oberon.Scope;
 import oberon.StatementSequence;
-import oberon.VariableManager;
 import oberon.data.VariableDataType;
 import oberon.exceptions.UnsupportedException;
 import oberon.exceptions.VariableNotFoundInScopeException;
@@ -26,11 +26,13 @@ public class VariableManagerTest extends AbstractTest {
 	public void test_case_VariableManagerAddVariableToScopeAndRetrieve() throws UnsupportedException, VariableNotFoundInScopeException{
 		VariableDataType trueConst = new VariableDataType("trueConst", 6, true);
 		
+		Scope newScope = new Scope();
+		
 		addVariableToDeclaration(trueConst);
-		loadDeclaration();
+		loadDeclaration(newScope);
 		
 		//should be 6 as the trueconst variable should be within the current scope
-		Assert.assertEquals(6, VariableManager.getInstance().getVariable("trueConst").getValue());
+		Assert.assertEquals(6, newScope.getVariable("trueConst").getValue(newScope));
 	}
 	
 	@Test(expected=VariableNotFoundInScopeException.class)
@@ -38,8 +40,10 @@ public class VariableManagerTest extends AbstractTest {
 	throws UnsupportedException, VariableNotFoundInScopeException{
 		VariableDataType trueConst = new VariableDataType("trueConst", 6, true);
 		
+		Scope oldScope = new Scope();
+		
 		addVariableToDeclaration(trueConst);
-		loadDeclaration();
+		loadDeclaration(oldScope);
 		
 		List<IDataType> actualProcedureParameters = new ArrayList<IDataType>();
 		List<FormalParamSection> paramSections = new ArrayList<FormalParamSection>();
@@ -50,26 +54,9 @@ public class VariableManagerTest extends AbstractTest {
 		StatementSequence statements = new StatementSequence(statementList );
 		ProcedureBody body = new ProcedureBody(declaration, statements );
 		IProcedure currentProcedure = new ProcedureHeading("test", paramSections, body);
-		VariableManager.getInstance().enterNewScope(actualProcedureParameters, currentProcedure);
+		Scope newScope = oldScope.createNewScope(actualProcedureParameters, currentProcedure);
 		
 		//should be 0 as the trueconst variable should not be within the current scope
-		Assert.assertEquals(0, VariableManager.getInstance().getVariable("trueConst").getValue());
-	}
-	
-	@Test
-	public void test_case_VariableManagerVariablesInPreviousScopeAreRestoredAfterLeavingTheScope() 
-	throws UnsupportedException, VariableNotFoundInScopeException{
-		VariableDataType trueConst = new VariableDataType("trueConst", 6, true);
-		
-		addVariableToDeclaration(trueConst);
-		loadDeclaration();
-		
-		enterNewEmptyScope();
-		
-		//leave the scope
-		VariableManager.getInstance().leaveScope();
-		
-		//should be 6 as the trueconst variable should be within the current scope
-		Assert.assertEquals(6, VariableManager.getInstance().getVariable("trueConst").getValue());
+		Assert.assertEquals(0, newScope.getVariable("trueConst").getValue(newScope));
 	}
 }

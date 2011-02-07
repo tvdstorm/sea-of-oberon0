@@ -5,7 +5,7 @@ import java.io.IOException;
 import junit.framework.Assert;
 import oberon.IExpression;
 import oberon.IStatement;
-import oberon.VariableManager;
+import oberon.Scope;
 import oberon.data.VariableDataType;
 import oberon.exceptions.UnsupportedException;
 import oberon.exceptions.VariableNotFoundInScopeException;
@@ -91,12 +91,14 @@ public class ComparisonExpressionTest extends AbstractTest {
 
 		VariableDataType resultVariable = new VariableDataType("result", false);
 		
+		Scope newScope = new Scope();
+		
 		addVariableToDeclaration(resultVariable);
-		loadDeclaration();
+		loadDeclaration(newScope);
 		
-		testStatement.eval();
+		testStatement.eval(newScope);
 		
-		return VariableManager.getInstance().getVariable("result").getValue();
+		return newScope.getVariable("result").getValue(newScope);
 	}
 	
 	@Test
@@ -123,11 +125,13 @@ public class ComparisonExpressionTest extends AbstractTest {
 
 		VariableDataType resultVariable = new VariableDataType("result", false);
 		
+		Scope newScope = new Scope();
+		
 		addVariableToDeclaration(resultVariable);
-		loadDeclaration();
+		loadDeclaration(newScope);
 		
-		testStatement.eval();
+		testStatement.eval(newScope);
 		
-		Assert.assertEquals(11, VariableManager.getInstance().getVariable("result").getValue());
+		Assert.assertEquals(11, newScope.getVariable("result").getValue(newScope));
 	}
 }
