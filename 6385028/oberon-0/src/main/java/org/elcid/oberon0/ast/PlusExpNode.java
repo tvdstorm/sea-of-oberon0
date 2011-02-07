@@ -1,9 +1,7 @@
 package org.elcid.oberon0.ast;
 
-import org.elcid.oberon0.ast.util.NodeType;
 import org.elcid.oberon0.ast.env.Environment;
 import org.elcid.oberon0.ast.visitor.BaseVisitor;
-import java.util.List;
 
 /**
  * Represents the plus ('+') expression in the Oberon-0 language.
@@ -31,16 +29,6 @@ public class PlusExpNode extends IntExpNode {
 	@Override
 	public Integer accept(BaseVisitor visitor, Environment localEnv) {
 		return visitor.eval(this, localEnv);
-	}
-
-	@Override
-	public List<Node> childNodes() {
-		return createList(leftExp, rightExp);
-	}
-
-	@Override
-	public NodeType getNodeType() {
-		return NodeType.PLUSNODE;
 	}
 
 }

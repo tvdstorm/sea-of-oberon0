@@ -1,7 +1,5 @@
 package org.elcid.oberon0.ast;
 
-import java.util.List;
-import org.elcid.oberon0.ast.util.NodeType;
 import org.elcid.oberon0.ast.env.Environment;
 import org.elcid.oberon0.ast.values.Value;
 import org.elcid.oberon0.ast.visitor.BaseVisitor;
@@ -26,16 +24,6 @@ public class ValueExpNode extends IntExpNode {
 	@Override
 	public Object accept(BaseVisitor visitor, Environment localEnv) {
 		return visitor.eval(this, localEnv);
-	}
-
-	@Override
-	public List<Node> childNodes() {
-		return EMPTY_LIST;
-	}
-
-	@Override
-	public NodeType getNodeType() {
-		return NodeType.VALUEEXPNODE;
 	}
 
 }
