@@ -5,8 +5,12 @@ import jdm.oberon0.ast.statements.*;
 import jdm.oberon0.exceptions.InvalidArgumentCountException;
 import jdm.oberon0.interpreter.Callable;
 import jdm.oberon0.interpreter.Context;
+import jdm.oberon0.values.ReferenceValue;
 import jdm.oberon0.values.Value;
 
+/**
+ * Evaluator for Oberon0 statements
+ */
 class StatementEvaluator extends StatementVisitor {
 	private Context _context;
 	private ExpressionEvaluator _exprEval;
@@ -15,7 +19,15 @@ class StatementEvaluator extends StatementVisitor {
 		_context = context;
 		_exprEval = new ExpressionEvaluator(context);
 	}
-	
+
+	@Override
+	protected void visitAssignment(Assignment assignment) {
+		// Note: setValue ensures correct types
+		ReferenceValue lhs = _exprEval.evalRef(assignment.getLhs());
+		Value rhs = _exprEval.eval(assignment.getRhs());
+		lhs.setValue(rhs);
+	}
+
 	@Override
 	protected void visitProcedureCall(ProcedureCall procedureCall) {		
 		// get callable
@@ -63,12 +75,7 @@ class StatementEvaluator extends StatementVisitor {
 			execute(statement.getBody());
 		}
 	}
-
-	@Override
-	protected void visitAssignment(Assignment assignment) {
-		// Note: setValue will check types
-		_exprEval.evalRef(assignment.getLhs()).setValue(_exprEval.eval(assignment.getRhs()));
-	}
+	
 	protected void execute(Statement s) {
 		s.accept(this);
 	}

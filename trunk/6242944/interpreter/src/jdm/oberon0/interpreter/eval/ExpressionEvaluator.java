@@ -5,6 +5,9 @@ import jdm.oberon0.exceptions.DivisionByZeroException;
 import jdm.oberon0.interpreter.Context;
 import jdm.oberon0.values.*;
 
+/** 
+ * Evaluator for Oberon0 expressions
+ */
 class ExpressionEvaluator extends ExpressionVisitor<Value> {
 	private Context _context;
 
@@ -51,7 +54,25 @@ class ExpressionEvaluator extends ExpressionVisitor<Value> {
 		return e.accept(this).toRecord();
 	}
 	
+	/**
+	 * Helper function to wrap booleans.
+	 */
+	protected BooleanValue wrapBoolean(boolean b) {
+		return _context.wrapBoolean(b);
+	}
 
+	/**
+	 * Helper function to wrap integers.
+	 */
+	protected IntegerValue wrapInteger(int i) {
+		return _context.wrapInteger(i);
+	}
+
+	/* -------------------
+	 * Primary expressions
+	 * -------------------
+	 */
+	
 	@Override
 	protected Value visitIdentifier(Identifier identifier) {
 		String name = identifier.getName();
@@ -59,38 +80,15 @@ class ExpressionEvaluator extends ExpressionVisitor<Value> {
 	}
 
 	@Override
-	protected Value visitArraySelector(ArraySelector selector) {
-		ArrayValue base = evalArray(selector.getBase());
-		int index = evalInteger(selector.getIndex());
-		return base.getValueAt(index);
-	}
-	
-	@Override
-	protected Value visitRecordSelector(RecordSelector selector) {
-		RecordValue base = evalRecord(selector.getBase());
-		return base.getFieldValue(selector.getName());
-	}
-
-
-	@Override
 	protected Value visitIntegerLiteral(IntegerLiteral e) {
 		return wrapInteger(e.getValue());
 	}
 
-	/*
-	 * Helper function to wrap booleans.
+	/* ------------------
+	 * Binary expressions
+	 * ------------------
 	 */
-	protected BooleanValue wrapBoolean(boolean b) {
-		return _context.wrapBoolean(b);
-	}
-
-	/*
-	 * Helper function to wrap integers.
-	 */
-	protected IntegerValue wrapInteger(int i) {
-		return _context.wrapInteger(i);
-	}
-
+	
 	@Override
 	protected Value visitGtExpression(GtExpression e) {
 		return wrapBoolean(evalInteger(e.getLhs()) > evalInteger(e.getRhs()));
@@ -167,7 +165,12 @@ class ExpressionEvaluator extends ExpressionVisitor<Value> {
 	protected Value visitOrExpression(OrExpression e) {
 		return wrapBoolean(evalBoolean(e.getLhs()) || evalBoolean(e.getRhs()));
 	}
-		
+	
+	/* -----------------
+	 * Unary expressions
+	 * -----------------
+	 */
+	
 	@Override
 	protected Value visitNegExpression(NegExpression e) {
 		return wrapInteger(-evalInteger(e.getArgument()));
@@ -181,5 +184,23 @@ class ExpressionEvaluator extends ExpressionVisitor<Value> {
 	@Override
 	protected Value visitNotExpression(NotExpression e) {
 		return wrapBoolean(!evalBoolean(e.getArgument()));
+	}
+	
+	/* --------------------
+	 * Selector expressions
+	 * --------------------
+	 */
+	
+	@Override
+	protected Value visitArraySelector(ArraySelector selector) {
+		ArrayValue base = evalArray(selector.getBase());
+		int index = evalInteger(selector.getIndex());
+		return base.getValueAt(index);
+	}
+	
+	@Override
+	protected Value visitRecordSelector(RecordSelector selector) {
+		RecordValue base = evalRecord(selector.getBase());
+		return base.getFieldValue(selector.getName());
 	}
 }

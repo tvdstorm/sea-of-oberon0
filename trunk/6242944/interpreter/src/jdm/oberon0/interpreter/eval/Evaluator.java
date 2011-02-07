@@ -9,6 +9,7 @@ import jdm.oberon0.exceptions.InvalidArgumentTypeException;
 import jdm.oberon0.interpreter.Context;
 import jdm.oberon0.interpreter.ScriptedProcedure;
 import jdm.oberon0.types.Type;
+import jdm.oberon0.values.ReferenceValue;
 import jdm.oberon0.values.Value;
 
 public class Evaluator {
@@ -50,13 +51,17 @@ public class Evaluator {
 			// make sure argument type is valid
 			TypeEvaluator typeEval = new TypeEvaluator(_context);
 			Type runtimeType = argument.getType().accept(typeEval);
+			
 			if (!runtimeType.equals(value.getType())) {
 				throw new InvalidArgumentTypeException(i);
 			}
 			
-			// Make sure we don't pass a (writable) reference if argument is
-			// by-value. Also deep-copy arrays and records.
-			if (!argument.isByRef()) {
+			if (argument.isByRef()) {
+				// make sure argument is writable
+				value = value.toReference();
+			} else {
+				// Make sure we don't pass a (writable) reference if argument is
+				// by-value. Also deep-copy arrays and records.
 				value = value.clone();
 			}
 			_context.getScope().defineVar(name, value);

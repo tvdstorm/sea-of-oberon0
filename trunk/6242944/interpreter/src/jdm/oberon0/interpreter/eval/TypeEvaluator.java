@@ -7,6 +7,9 @@ import jdm.oberon0.ast.types.IdentifierType;
 import jdm.oberon0.ast.types.TypeVisitor;
 import jdm.oberon0.interpreter.Context;
 
+/**
+ * Evaluator to convert AST types to runtime types
+ */
 class TypeEvaluator extends TypeVisitor<Type> {
 	private Context _context;
 	private ExpressionEvaluator _exprEval;

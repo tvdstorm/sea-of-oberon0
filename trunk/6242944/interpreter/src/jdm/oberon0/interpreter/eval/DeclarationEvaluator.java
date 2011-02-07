@@ -1,18 +1,15 @@
 package jdm.oberon0.interpreter.eval;
 
-import jdm.oberon0.ast.declarations.ConstDeclaration;
-import jdm.oberon0.ast.declarations.Declaration;
-import jdm.oberon0.ast.declarations.DeclarationVisitor;
-import jdm.oberon0.ast.declarations.Declarations;
-import jdm.oberon0.ast.declarations.Procedure;
-import jdm.oberon0.ast.declarations.TypeDeclaration;
-import jdm.oberon0.ast.declarations.VarDeclaration;
+import jdm.oberon0.ast.declarations.*;
 import jdm.oberon0.interpreter.Context;
 import jdm.oberon0.interpreter.ScriptedProcedure;
 import jdm.oberon0.interpreter.ValueConstructor;
 import jdm.oberon0.types.Type;
 import jdm.oberon0.values.Value;
 
+/**
+ * Evaluator for declarations
+ */
 class DeclarationEvaluator extends DeclarationVisitor {
 	private Context _context;
 	private ExpressionEvaluator _exprEval;
