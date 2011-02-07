@@ -169,30 +169,30 @@ actualParameters
 	;
 
 expression returns [ExpressionNode result]
-	:	s1=simpleExpression								{ $result = $s1.result; System.out.println($s1.text /*+ " = " + new ExpressionVisitor().eval($s1.result)*/); }
-			( EQUALS_OP s2=simpleExpression				{ $result = new EqualsExpNode($s1.result, $s2.result); }
+	:	s1=simpleExpression								{ $result = $s1.result; System.out.println($s1.text); }
+			( EQUALS_OP s2=simpleExpression				{ $result = new EqualsExpNode($result, $s2.result); System.out.println($s2.text); }
 			| HASH_OP s2=simpleExpression
-			| LESSER_OP s2=simpleExpression				{ $result = new LesserExpNode((IntExpNode) $s1.result, (IntExpNode) $s2.result); }
-			| LESSER_OR_EQUAL_OP s2=simpleExpression	{ $result = new LesserOrEqualsExpNode((IntExpNode) $s1.result, (IntExpNode) $s2.result); }
-			| GREATER_OP s2=simpleExpression			{ $result = new GreaterExpNode((IntExpNode) $s1.result, (IntExpNode) $s2.result); }
-			| GREATER_OR_EQUAL_OP s2=simpleExpression	{ $result = new GreaterOrEqualsExpNode((IntExpNode) $s1.result, (IntExpNode) $s2.result); }
+			| LESSER_OP s2=simpleExpression				{ $result = new LesserExpNode((IntExpNode) $result, (IntExpNode) $s2.result); }
+			| LESSER_OR_EQUAL_OP s2=simpleExpression	{ $result = new LesserOrEqualsExpNode((IntExpNode) $result, (IntExpNode) $s2.result); }
+			| GREATER_OP s2=simpleExpression			{ $result = new GreaterExpNode((IntExpNode) $result, (IntExpNode) $s2.result); }
+			| GREATER_OR_EQUAL_OP s2=simpleExpression	{ $result = new GreaterOrEqualsExpNode((IntExpNode) $result, (IntExpNode) $s2.result); }
 			)?
 	;
 
 simpleExpression returns [ExpressionNode result]
 	:	(PLUS_OP | MINUS_OP)? t1=term					{ $result = $t1.result; }
-			( PLUS_OP t2=term							{ $result = new PlusExpNode((IntExpNode) $t1.result, (IntExpNode) $t2.result); }
-			| MINUS_OP t2=term							{ $result = new MinusExpNode((IntExpNode) $t1.result, (IntExpNode) $t2.result); }
-			| OR_OP t2=term								{ $result = new OrExpNode((BooleanExpNode) $t1.result, (BooleanExpNode) $t2.result); }
+			( PLUS_OP t2=term							{ $result = new PlusExpNode((IntExpNode) $result, (IntExpNode) $t2.result); }
+			| MINUS_OP t2=term							{ $result = new MinusExpNode((IntExpNode) $result, (IntExpNode) $t2.result); }
+			| OR_OP t2=term								{ $result = new OrExpNode((BooleanExpNode) $result, (BooleanExpNode) $t2.result); }
 			)*
 	;
 
 term returns [ExpressionNode result]
 	:	f1=factor										{ $result = $f1.result; }
-			( MULTIPLY_OP f2=factor						{ $result = new MultiplyExpNode((IntExpNode) $f1.result, (IntExpNode) $f2.result); }
-			| DIVIDE_OP f2=factor						{ $result = new DivideExpNode((IntExpNode) $f1.result, (IntExpNode) $f2.result); }
-			| MODULO_OP f2=factor						{ $result = new ModuloExpNode((IntExpNode) $f1.result, (IntExpNode) $f2.result); }
-			| AND_OP f2=factor							{ $result = new AndExpNode((BooleanExpNode) $f1.result, (BooleanExpNode) $f2.result); }
+			( MULTIPLY_OP f2=factor						{ $result = new MultiplyExpNode((IntExpNode) $result, (IntExpNode) $f2.result); }
+			| DIVIDE_OP f2=factor						{ $result = new DivideExpNode((IntExpNode) $result, (IntExpNode) $f2.result); }
+			| MODULO_OP f2=factor						{ $result = new ModuloExpNode((IntExpNode) $result, (IntExpNode) $f2.result); }
+			| AND_OP f2=factor							{ $result = new AndExpNode((BooleanExpNode) $result, (BooleanExpNode) $f2.result); }
 			)*
 	;
 
