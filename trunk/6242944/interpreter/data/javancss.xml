@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <javancss>
-  <date>2011-02-05</date>
-  <time>17:49:42</time>
+  <date>2011-02-07</date>
+  <time>10:38:30</time>
   <packages>
     <package>
       <name>jdm.oberon0.ast</name>
@@ -87,7 +87,7 @@
       <name>jdm.oberon0.interpreter</name>
       <classes>6</classes>
       <functions>28</functions>
-      <ncss>140</ncss>
+      <ncss>134</ncss>
       <javadocs>4</javadocs>
       <javadoc_lines>13</javadoc_lines>
       <single_comment_lines>0</single_comment_lines>
@@ -107,10 +107,10 @@
       <name>jdm.oberon0.main</name>
       <classes>1</classes>
       <functions>1</functions>
-      <ncss>14</ncss>
+      <ncss>25</ncss>
       <javadocs>1</javadocs>
       <javadoc_lines>3</javadoc_lines>
-      <single_comment_lines>1</single_comment_lines>
+      <single_comment_lines>0</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <package>
@@ -136,18 +136,18 @@
     <total>
       <classes>85</classes>
       <functions>306</functions>
-      <ncss>1168</ncss>
+      <ncss>1173</ncss>
       <javadocs>25</javadocs>
       <javadoc_lines>79</javadoc_lines>
-      <single_comment_lines>21</single_comment_lines>
+      <single_comment_lines>20</single_comment_lines>
       <multi_comment_lines>10</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>13.00</td><td>85.00</td><td>306.00</td><td>1,168.00</td><td>25.00</td><td>Project</td></tr>
-      <tr><td></td><td>6.54</td><td>23.54</td><td>89.85</td><td>1.92</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.60</td><td>13.74</td><td>0.29</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>3.82</td><td>0.08</td><td>Function</td></tr>
+      <tr><td>13.00</td><td>85.00</td><td>306.00</td><td>1,173.00</td><td>25.00</td><td>Project</td></tr>
+      <tr><td></td><td>6.54</td><td>23.54</td><td>90.23</td><td>1.92</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.60</td><td>13.80</td><td>0.29</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>3.83</td><td>0.08</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -644,7 +644,7 @@
     </object>
     <object>
       <name>jdm.oberon0.interpreter.Interpreter</name>
-      <ncss>16</ncss>
+      <ncss>10</ncss>
       <functions>1</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
@@ -672,7 +672,7 @@
     </object>
     <object>
       <name>jdm.oberon0.main.Main</name>
-      <ncss>9</ncss>
+      <ncss>18</ncss>
       <functions>1</functions>
       <classes>0</classes>
       <javadocs>1</javadocs>
@@ -748,12 +748,12 @@
       <javadocs>1</javadocs>
     </object>
     <averages>
-      <ncss>11.12</ncss>
+      <ncss>11.15</ncss>
       <functions>3.60</functions>
       <classes>0.00</classes>
       <javadocs>0.29</javadocs>
     </averages>
-    <ncss>1,168.00</ncss>
+    <ncss>1,173.00</ncss>
   </objects>
 
   <functions>
@@ -2127,8 +2127,8 @@
     </function>
     <function>
       <name>jdm.oberon0.interpreter.Interpreter.run(Reader,String)</name>
-      <ncss>15</ncss>
-      <ccn>3</ccn>
+      <ncss>9</ncss>
+      <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -2229,8 +2229,8 @@
     </function>
     <function>
       <name>jdm.oberon0.main.Main.main(String[])</name>
-      <ncss>8</ncss>
-      <ccn>2</ccn>
+      <ncss>17</ncss>
+      <ccn>6</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -2594,10 +2594,10 @@
       <javadocs>0</javadocs>
     </function>
     <function_averages>
-      <ncss>2.55</ncss>
+      <ncss>2.56</ncss>
       <ccn>1.29</ccn>
       <javadocs>0.02</javadocs>
     </function_averages>
-    <ncss>1,168.00</ncss>
+    <ncss>1,173.00</ncss>
   </functions>
 </javancss>

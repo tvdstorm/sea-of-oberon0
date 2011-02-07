@@ -3,6 +3,9 @@ package jdm.oberon0.tests;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
+
+import xtc.parser.ParseException;
 
 import jdm.oberon0.interpreter.Interpreter;
 
@@ -53,6 +56,10 @@ public class OberonTests extends TestCase {
 		try {
 			Interpreter.run(reader, _file.getName());
 		} catch(jdm.oberon0.exceptions.RuntimeException e) {
+			fail(e.getMessage());
+		} catch (IOException e) {
+			fail(e.getMessage());
+		} catch (ParseException e) {
 			fail(e.getMessage());
 		}
 	}

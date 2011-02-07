@@ -408,11 +408,11 @@
                 <TotalClasses>11</TotalClasses>
                 <ConcreteClasses>11</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
-                <Ca>4</Ca>
+                <Ca>5</Ca>
                 <Ce>2</Ce>
                 <A>0</A>
-                <I>0.33</I>
-                <D>0.67</D>
+                <I>0.29</I>
+                <D>0.71</D>
                 <V>1</V>
             </Stats>
 
@@ -464,6 +464,7 @@
                 <Package>jdm.oberon0.builtins.procedures</Package>
                 <Package>jdm.oberon0.interpreter</Package>
                 <Package>jdm.oberon0.interpreter.eval</Package>
+                <Package>jdm.oberon0.main</Package>
                 <Package>jdm.oberon0.values</Package>
             </UsedBy>
         </Package>
@@ -588,7 +589,7 @@
                 <ConcreteClasses>1</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
                 <Ca>0</Ca>
-                <Ce>3</Ce>
+                <Ce>5</Ce>
                 <A>0</A>
                 <I>1</I>
                 <D>0</D>
@@ -607,7 +608,9 @@
             <DependsUpon>
                 <Package>java.io</Package>
                 <Package>java.lang</Package>
+                <Package>jdm.oberon0.exceptions</Package>
                 <Package>jdm.oberon0.interpreter</Package>
+                <Package>xtc.parser</Package>
             </DependsUpon>
 
             <UsedBy>
