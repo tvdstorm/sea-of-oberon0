@@ -33,7 +33,7 @@ selector [SelectorNode selectorIn] returns [SelectorNode selector]
 
 factor returns [Interpretable factor]
 	:	IDENT 													{VarSelectorNode selector = new VarSelectorNode($IDENT.getText());}
-		selector[selector]											{$factor = selector;}
+		selector[selector]										{$factor = selector;}
 	| 	INTEGER 												{$factor = new IntegerValue(Integer.parseInt($INTEGER.getText()));}
 	| 	'(' expression ')' 										{$factor = $expression.expression;} 
 	| 	'~' negatedFactor=factor								{$factor = new NegationNode($negatedFactor.factor);}
@@ -237,8 +237,9 @@ module	returns [ModuleNode module]
 	;
 
 with returns [Interpretable with]
-	:	'WITH' factor 'DO'							
-		statementSequence											{$with = new WithNode($factor.factor,(StatementSequence)$statementSequence.statementSequence);}
+	:	'WITH' IDENT 											{VarSelectorNode selector = new VarSelectorNode($IDENT.getText());}		
+		selector[selector] 'DO'														
+		statementSequence										{$with = new WithNode(selector,(StatementSequence)$statementSequence.statementSequence);}
 		'END' 
 	;
 
