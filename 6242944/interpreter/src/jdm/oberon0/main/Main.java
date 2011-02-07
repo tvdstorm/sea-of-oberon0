@@ -12,7 +12,9 @@ import jdm.oberon0.interpreter.Interpreter;
  * Entry point for the Oberon interpreter.
  */
 public class Main {
-	
+	/**
+	 * Run the Oberon file passed as parameter.
+	 */
 	public static void main(String[] args) {
 		if (args.length != 1) {
 			System.err.println("Expected filename");

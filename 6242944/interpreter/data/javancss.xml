@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-02-07</date>
-  <time>10:38:30</time>
+  <time>11:06:43</time>
   <packages>
     <package>
       <name>jdm.oberon0.ast</name>
@@ -98,18 +98,18 @@
       <classes>5</classes>
       <functions>49</functions>
       <ncss>220</ncss>
-      <javadocs>6</javadocs>
-      <javadoc_lines>18</javadoc_lines>
-      <single_comment_lines>14</single_comment_lines>
-      <multi_comment_lines>6</multi_comment_lines>
+      <javadocs>12</javadocs>
+      <javadoc_lines>36</javadoc_lines>
+      <single_comment_lines>15</single_comment_lines>
+      <multi_comment_lines>16</multi_comment_lines>
     </package>
     <package>
       <name>jdm.oberon0.main</name>
       <classes>1</classes>
       <functions>1</functions>
       <ncss>25</ncss>
-      <javadocs>1</javadocs>
-      <javadoc_lines>3</javadoc_lines>
+      <javadocs>2</javadocs>
+      <javadoc_lines>6</javadoc_lines>
       <single_comment_lines>0</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </package>
@@ -137,17 +137,17 @@
       <classes>85</classes>
       <functions>306</functions>
       <ncss>1173</ncss>
-      <javadocs>25</javadocs>
-      <javadoc_lines>79</javadoc_lines>
-      <single_comment_lines>20</single_comment_lines>
-      <multi_comment_lines>10</multi_comment_lines>
+      <javadocs>32</javadocs>
+      <javadoc_lines>100</javadoc_lines>
+      <single_comment_lines>21</single_comment_lines>
+      <multi_comment_lines>20</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>13.00</td><td>85.00</td><td>306.00</td><td>1,173.00</td><td>25.00</td><td>Project</td></tr>
-      <tr><td></td><td>6.54</td><td>23.54</td><td>90.23</td><td>1.92</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.60</td><td>13.80</td><td>0.29</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>3.83</td><td>0.08</td><td>Function</td></tr>
+      <tr><td>13.00</td><td>85.00</td><td>306.00</td><td>1,173.00</td><td>32.00</td><td>Project</td></tr>
+      <tr><td></td><td>6.54</td><td>23.54</td><td>90.23</td><td>2.46</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.60</td><td>13.80</td><td>0.38</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>3.83</td><td>0.10</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -612,11 +612,11 @@
       <ncss>26</ncss>
       <functions>6</functions>
       <classes>0</classes>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </object>
     <object>
       <name>jdm.oberon0.interpreter.eval.Evaluator</name>
-      <ncss>30</ncss>
+      <ncss>32</ncss>
       <functions>3</functions>
       <classes>0</classes>
       <javadocs>1</javadocs>
@@ -626,21 +626,21 @@
       <ncss>72</ncss>
       <functions>29</functions>
       <classes>0</classes>
-      <javadocs>5</javadocs>
+      <javadocs>8</javadocs>
     </object>
     <object>
       <name>jdm.oberon0.interpreter.eval.StatementEvaluator</name>
-      <ncss>32</ncss>
+      <ncss>34</ncss>
       <functions>7</functions>
       <classes>0</classes>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </object>
     <object>
       <name>jdm.oberon0.interpreter.eval.TypeEvaluator</name>
       <ncss>19</ncss>
       <functions>4</functions>
       <classes>0</classes>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </object>
     <object>
       <name>jdm.oberon0.interpreter.Interpreter</name>
@@ -675,7 +675,7 @@
       <ncss>18</ncss>
       <functions>1</functions>
       <classes>0</classes>
-      <javadocs>1</javadocs>
+      <javadocs>2</javadocs>
     </object>
     <object>
       <name>jdm.oberon0.types.ArrayType</name>
@@ -748,10 +748,10 @@
       <javadocs>1</javadocs>
     </object>
     <averages>
-      <ncss>11.15</ncss>
+      <ncss>11.20</ncss>
       <functions>3.60</functions>
       <classes>0.00</classes>
-      <javadocs>0.29</javadocs>
+      <javadocs>0.38</javadocs>
     </averages>
     <ncss>1,173.00</ncss>
   </objects>
@@ -1881,7 +1881,7 @@
     </function>
     <function>
       <name>jdm.oberon0.interpreter.eval.Evaluator.evaluate(ScriptedProcedure,Value[])</name>
-      <ncss>19</ncss>
+      <ncss>21</ncss>
       <ccn>5</ccn>
       <javadocs>1</javadocs>
     </function>
@@ -1928,37 +1928,25 @@
       <javadocs>1</javadocs>
     </function>
     <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.wrapBoolean(boolean)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.wrapInteger(int)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
       <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.visitIdentifier(Identifier)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.visitArraySelector(ArraySelector)</name>
-      <ncss>4</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.visitRecordSelector(RecordSelector)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
       <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.visitIntegerLiteral(IntegerLiteral)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.wrapBoolean(boolean)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.wrapInteger(int)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -2060,8 +2048,26 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.visitArraySelector(ArraySelector)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator.visitRecordSelector(RecordSelector)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>jdm.oberon0.interpreter.eval.StatementEvaluator.StatementEvaluator(Context)</name>
       <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.interpreter.eval.StatementEvaluator.visitAssignment(Assignment)</name>
+      <ncss>4</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -2087,12 +2093,6 @@
       <name>jdm.oberon0.interpreter.eval.StatementEvaluator.visitWhileStatement(WhileStatement)</name>
       <ncss>3</ncss>
       <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>jdm.oberon0.interpreter.eval.StatementEvaluator.visitAssignment(Assignment)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -2231,7 +2231,7 @@
       <name>jdm.oberon0.main.Main.main(String[])</name>
       <ncss>17</ncss>
       <ccn>6</ccn>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </function>
     <function>
       <name>jdm.oberon0.types.ArrayType.ArrayType(Type,int)</name>
@@ -2594,9 +2594,9 @@
       <javadocs>0</javadocs>
     </function>
     <function_averages>
-      <ncss>2.56</ncss>
+      <ncss>2.58</ncss>
       <ccn>1.29</ccn>
-      <javadocs>0.02</javadocs>
+      <javadocs>0.03</javadocs>
     </function_averages>
     <ncss>1,173.00</ncss>
   </functions>
