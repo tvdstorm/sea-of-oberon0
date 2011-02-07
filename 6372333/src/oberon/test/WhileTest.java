@@ -11,8 +11,8 @@ import oberon.VariableManager;
 import oberon.data.VariableDataType;
 import oberon.exceptions.UnsupportedException;
 import oberon.exceptions.VariableNotFoundInScopeException;
-import oberon.expressions.ComparisonType;
 import oberon.expressions.MathematicalExpressionType;
+import oberon.expressions.SmallerThanOperator;
 import oberon.statement.WhileStatement;
 
 import org.junit.Test;
@@ -23,7 +23,7 @@ public class WhileTest extends AbstractTest {
 	public void test_case_WhileTestWithValidCondition() throws UnsupportedException, IOException, VariableNotFoundInScopeException
 	{
 		//Get the condition, "i <= 5"
-		IExpression condition = getNewComparisonExpression("i", 5, ComparisonType.Exst);
+		IExpression condition = getNewComparisonExpression("i", 5, new SmallerThanOperator());
 		
 		LinkedList<IStatement> statementList = new LinkedList<IStatement>();
 		//Get the expression, "i + 1"
@@ -51,7 +51,7 @@ public class WhileTest extends AbstractTest {
 	public void test_case_WhileTestWithImmediatelyTrueCondition() throws UnsupportedException, IOException, VariableNotFoundInScopeException
 	{
 		//Get the condition, "i <= 5"
-		IExpression condition = getNewComparisonExpression("trueConst", 5, ComparisonType.Exst);
+		IExpression condition = getNewComparisonExpression("trueConst", 5, new SmallerThanOperator());
 		
 		LinkedList<IStatement> statementList = new LinkedList<IStatement>();
 		//Get the expression, "i + 1"

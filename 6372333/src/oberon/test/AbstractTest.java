@@ -3,8 +3,6 @@ package oberon.test;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Before;
-
 import oberon.IDataType;
 import oberon.IExpression;
 import oberon.IProcedure;
@@ -16,7 +14,7 @@ import oberon.data.VariableIdentifier;
 import oberon.exceptions.UnsupportedException;
 import oberon.exceptions.VariableNotFoundInScopeException;
 import oberon.expressions.ComparisonExpression;
-import oberon.expressions.ComparisonType;
+import oberon.expressions.IComparisonOperatorImplementation;
 import oberon.expressions.IdentifierExpression;
 import oberon.expressions.IntegerExpression;
 import oberon.expressions.MathematicalExpression;
@@ -26,6 +24,8 @@ import oberon.procedures.FormalParamSection;
 import oberon.procedures.ProcedureBody;
 import oberon.procedures.ProcedureHeading;
 import oberon.statement.AssignmentStatement;
+
+import org.junit.Before;
 
 public abstract class AbstractTest {
 
@@ -57,11 +57,11 @@ public abstract class AbstractTest {
 			}
 
 	protected IExpression getNewComparisonExpression(String variableName, int value,
-			ComparisonType type) {
+			IComparisonOperatorImplementation operatorImplementation) {
 				return new ComparisonExpression(new IdentifierExpression(
 						new VariableIdentifier(variableName)), 
 						new IntegerExpression(value), 
-						type);
+						operatorImplementation);
 			}
 
 	protected IStatement getAssignmentStatement(String variableName, IExpression expression) {
