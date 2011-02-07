@@ -20,6 +20,10 @@ public class Record extends Value
 	{
 		members = new HashMap<String, Value>();
 	}
+	public Set<String> getMemberNames()
+	{
+		return members.keySet();
+	}
 	public Value getMemberValue(String name)
 	{
 		assert(name != null);
