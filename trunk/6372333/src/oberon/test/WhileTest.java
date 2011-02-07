@@ -6,8 +6,8 @@ import java.util.LinkedList;
 import junit.framework.Assert;
 import oberon.IExpression;
 import oberon.IStatement;
+import oberon.Scope;
 import oberon.StatementSequence;
-import oberon.VariableManager;
 import oberon.data.VariableDataType;
 import oberon.exceptions.UnsupportedException;
 import oberon.exceptions.VariableNotFoundInScopeException;
@@ -37,14 +37,16 @@ public class WhileTest extends AbstractTest {
 		//Declare the variable i
 		VariableDataType inputVariable = new VariableDataType("i", false);
 		
+		Scope newScope = new Scope();
+		
 		addVariableToDeclaration(inputVariable);
-		loadDeclaration();
+		loadDeclaration(newScope);
 		
 		//Create new while statement
 		WhileStatement whileStat = new WhileStatement(condition, statements);
-		whileStat.eval();
+		whileStat.eval(newScope);
 		
-		Assert.assertEquals(5, VariableManager.getInstance().getVariable("i").getValue());
+		Assert.assertEquals(5, newScope.getVariable("i").getValue(newScope));
 	}
 
 	@Test
@@ -66,15 +68,17 @@ public class WhileTest extends AbstractTest {
 		VariableDataType inputVariable = new VariableDataType("i", false);
 		VariableDataType trueConst = new VariableDataType("trueConst", 6, true);
 		
+		Scope newScope = new Scope();
+		
 		addVariableToDeclaration(inputVariable);
 		addVariableToDeclaration(trueConst);
-		loadDeclaration();
+		loadDeclaration(newScope);
 		
 		//Create new while statement
 		WhileStatement whileStat = new WhileStatement(condition, statements);
-		whileStat.eval();
+		whileStat.eval(newScope);
 		
 		//i should be 0 as the body of the while is never executed
-		Assert.assertEquals(0, VariableManager.getInstance().getVariable("i").getValue());
+		Assert.assertEquals(0, newScope.getVariable("i").getValue(newScope));
 	}
 }

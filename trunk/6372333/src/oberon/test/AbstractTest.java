@@ -7,8 +7,8 @@ import oberon.IDataType;
 import oberon.IExpression;
 import oberon.IProcedure;
 import oberon.IStatement;
+import oberon.Scope;
 import oberon.StatementSequence;
-import oberon.VariableManager;
 import oberon.data.VariableDataType;
 import oberon.data.VariableIdentifier;
 import oberon.exceptions.UnsupportedException;
@@ -25,22 +25,14 @@ import oberon.procedures.ProcedureBody;
 import oberon.procedures.ProcedureHeading;
 import oberon.statement.AssignmentStatement;
 
-import org.junit.Before;
-
 public abstract class AbstractTest {
 
 	private Declaration declaration;
 	private final ArrayList<IDataType> variables = new ArrayList<IDataType>();
-
-    @Before
-    public void setUp() {
-    	enterNewEmptyScope();
-    }
     
-	protected void loadDeclaration() throws UnsupportedException, VariableNotFoundInScopeException {
+	protected void loadDeclaration(Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException {
 		declaration = new Declaration(variables, new ArrayList<IProcedure>());
-		VariableManager variableManager = VariableManager.getInstance();
-		variableManager.addNewDeclaration(declaration);
+		currentScope.addNewDeclaration(declaration);
 	}
 
 	protected void addVariableToDeclaration(
@@ -68,7 +60,7 @@ public abstract class AbstractTest {
 		return new AssignmentStatement(new VariableIdentifier(variableName), expression);
 	}
 
-	protected void enterNewEmptyScope() {
+	protected Scope enterNewEmptyScope(Scope currentScope) {
 		List<IDataType> actualProcedureParameters = new ArrayList<IDataType>();
 		List<FormalParamSection> paramSections = new ArrayList<FormalParamSection>();
 		List<IProcedure> procedures = new ArrayList<IProcedure>();
@@ -80,6 +72,6 @@ public abstract class AbstractTest {
 		IProcedure currentProcedure = new ProcedureHeading("test", paramSections, body);
 		
 		//enter a new scope
-		VariableManager.getInstance().enterNewScope(actualProcedureParameters, currentProcedure);
+		return currentScope.createNewScope(actualProcedureParameters, currentProcedure);
 	}
 }
