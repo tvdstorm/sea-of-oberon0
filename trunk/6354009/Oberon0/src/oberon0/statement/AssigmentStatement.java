@@ -1,7 +1,6 @@
 package oberon0.statement;
 
 import oberon0.exception.ExecutionException;
-import oberon0.exception.IncorrectStatementException;
 import oberon0.expression.Expression;
 import oberon0.identifier.Identifier;
 import oberon0.module.Module;
@@ -25,9 +24,4 @@ public class AssigmentStatement  implements Statement {
 		module.assignExpressionToVariable(identifier,evaluatedExpr);
 	}
 	
-	@Override
-	public void check(Module module) throws IncorrectStatementException {
-		
-		
-	}
 }

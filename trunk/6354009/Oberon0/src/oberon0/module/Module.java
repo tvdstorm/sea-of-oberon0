@@ -138,7 +138,6 @@ public class Module {
 	//ADDING STATEMENTS
 	//////////////////////////////////////////////////////////
 	public void addStatement(Statement statement) throws IncorrectStatementException {
-		statement.check(this);
 		statements.add(statement);
 	}
 	

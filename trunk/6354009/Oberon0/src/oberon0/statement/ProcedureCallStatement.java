@@ -3,7 +3,6 @@ package oberon0.statement;
 import java.util.ArrayList;
 
 import oberon0.exception.ExecutionException;
-import oberon0.exception.IncorrectStatementException;
 import oberon0.exception.ProcedureNotFoundException;
 import oberon0.expression.Expression;
 import oberon0.module.Module;
@@ -43,11 +42,5 @@ public class ProcedureCallStatement  implements Statement {
 				throw new ExecutionException();
 			}
 		}
-	}
-	
-	@Override
-	public void check(Module module) throws IncorrectStatementException {
-		
-		
 	}
 }

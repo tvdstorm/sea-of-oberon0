@@ -3,7 +3,6 @@ package oberon0.statement;
 import java.util.ArrayList;
 
 import oberon0.exception.ExecutionException;
-import oberon0.exception.IncorrectStatementException;
 import oberon0.expression.Expression;
 import oberon0.expression.IntegerExpression;
 import oberon0.module.Module;
@@ -39,9 +38,4 @@ public class WhileStatement implements Statement {
 		}
 	}
 
-	@Override
-	public void check(Module module) throws IncorrectStatementException {
-		
-		
-	}
 }
