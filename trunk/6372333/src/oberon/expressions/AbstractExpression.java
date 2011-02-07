@@ -46,12 +46,12 @@ public abstract class AbstractExpression implements IExpression {
 	public IDataType copy(Scope currentScope, String newName) throws UnsupportedException, VariableNotFoundInScopeException
 	{
 		assert(this instanceof MathematicalExpression ||
-				this instanceof AbstractIntegerExpression ||
+				this instanceof IntegerExpression ||
 				this instanceof IdentifierExpression);		
 		
 		IDataType resultType = null;
 		if (	this instanceof MathematicalExpression ||
-				this instanceof AbstractIntegerExpression){
+				this instanceof IntegerExpression){
 			resultType = new VariableDataType(newName, this.evalAsInt(currentScope), false);
 		}
 		else if (this instanceof IdentifierExpression){
