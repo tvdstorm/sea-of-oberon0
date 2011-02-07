@@ -38,7 +38,44 @@ public class VarDeclaration extends BodyDeclaration
 			newEnvironment.registerVariable(variableName, newEnvironment.resolveType(typeName).instantiate(newEnvironment));
 		}
 	}
+	@Override
+	public void typeCheckRegister(RuntimeEnvironment newEnvironment) throws RuntimeException // Use for variable declarations IN methods or modules
+	{
+		register(newEnvironment);
+	}
 	public void registerAsParameter(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException // Use for registering parameters
+	{
+		assert(environment != null);
+		assert(parameterValues != null);
+		// Check if we have enough parameter values left for all our variables
+		if (parameterValues.size() < variableNames.size())
+		{
+			throw new IncorrectNumberOfArgumentsException();
+		}
+		// Loop through all variable names
+		for (String variableName : variableNames)
+		{
+			// Fetch a parameter value from the parameter values
+			final Value parameterValue = parameterValues.poll();
+			// Resolve the variable type and check if they are compatible
+			if (parameterValue.getType() != environment.resolveType(typeName).instantiate(environment).getType())
+			{
+				throw new TypeMismatchException(parameterValue.getType().toString(), typeName);
+			}
+			// Check if the variable is a reference
+			if (isReference)
+			{
+				// Yes, make a reference to the variable and add it to the environment
+				environment.registerVariable(variableName, new Reference(parameterValue));
+			}
+			else
+			{	
+				// No, create a copy of the parameter and register it in the environment
+				environment.registerVariable(variableName, parameterValue.clone());
+			}
+		}
+	}
+	public void typeCheckRegisterAsParameter(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException // Use for registering parameters
 	{
 		assert(environment != null);
 		assert(parameterValues != null);

@@ -29,4 +29,21 @@ public class PrefixNotExpression extends PrefixExpression
 			throw new OperatorTypeUndefinedException("~", valRh.getType().toString());
 		}
 	}
+	@Override
+	public Value typeCheck(RuntimeEnvironment environment) throws RuntimeException
+	{
+		assert(environment != null);
+		// Evaluate the right hand side expression
+		final Value valRh = rightHandExpression.typeCheck(environment);
+		// Check if we support the operator
+		if (valRh instanceof Integer)
+		{
+			return new Integer(0);
+		}
+		else
+		{
+			// No, throw an exception
+			throw new OperatorTypeUndefinedException("~", valRh.getType().toString());
+		}
+	}
 }

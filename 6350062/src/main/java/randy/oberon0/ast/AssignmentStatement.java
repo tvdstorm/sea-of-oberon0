@@ -26,4 +26,14 @@ public class AssignmentStatement extends Statement
 		// Evaluate the expression and assign the result as the value of the variable
 		var.setValue(expression.evaluate(environment));
 	}
+	@Override
+	public void typeCheck(RuntimeEnvironment environment) throws RuntimeException
+	{
+		assert(environment != null);
+		// Evaluate the variable
+		Value var = variable.typeCheck(environment);
+		assert(var != null);
+		// Evaluate the expression and see if we can assign the result as the value of the variable
+		var.setValue(expression.typeCheck(environment));
+	}
 }

@@ -56,4 +56,38 @@ public class Module extends ASTNode implements IInvokableFunction
 	{
 		return "$MODULE";
 	}
+	@Override
+	public void typeCheckInvoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
+	{
+		assert(environment != null);
+		assert(parameterValues != null);
+		// Modules don't have parameters
+		if (parameterValues.size() != 0)
+		{
+			throw new IncorrectNumberOfArgumentsException();
+		}
+		// Loop through all body declarations except type declarations
+		for (BodyDeclaration bodyDecl : bodyDeclarations)
+		{
+			if (!(bodyDecl instanceof AbstractTypeDeclaration))
+			{
+				bodyDecl.typeCheckRegister(environment);
+			}
+		}
+		// Run the body of the module
+		body.typeCheck(environment);
+	}
+	@Override
+	public void typeCheckRegisterTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException
+	{
+		assert(newEnvironment != null);
+		// Register all the type declarations in the environment
+		for (BodyDeclaration bodyDecl : bodyDeclarations)
+		{
+			if (bodyDecl instanceof AbstractTypeDeclaration)
+			{
+				bodyDecl.typeCheckRegister(newEnvironment);
+			}
+		}
+	}
 }

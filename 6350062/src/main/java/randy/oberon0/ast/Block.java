@@ -23,4 +23,14 @@ public class Block extends Statement
 			st.run(environment);
 		}
 	}
+	@Override
+	public void typeCheck(RuntimeEnvironment environment) throws RuntimeException
+	{
+		assert(environment != null);
+		// Loop through all statements and type check them
+		for (Statement st : statements)
+		{
+			st.typeCheck(environment);
+		}
+	}
 }

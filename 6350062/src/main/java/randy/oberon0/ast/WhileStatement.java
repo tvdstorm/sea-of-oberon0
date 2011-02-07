@@ -26,4 +26,15 @@ public class WhileStatement extends Statement
 			body.run(environment);
 		}
 	}
+	@Override
+	public void typeCheck(RuntimeEnvironment environment) throws RuntimeException
+	{
+		assert(environment != null);
+		// Run while the condition evaluates to true
+		while (condition.typeCheck(environment).castToInteger().isTrue())
+		{
+			// Run the body
+			body.typeCheck(environment);
+		}
+	}
 }

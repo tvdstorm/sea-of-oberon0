@@ -33,4 +33,20 @@ public class DefaultWriteFunction implements IInvokableFunction
 	{
 		// Leeg
 	}
+	@Override
+	public void typeCheckInvoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
+	{
+		// Accept one parameter
+		if (parameterValues.size() != 1)
+		{
+			throw new IncorrectNumberOfArgumentsException();
+		}
+		// Accept only an integer
+		parameterValues.poll().dereference().castToInteger();
+	}
+	@Override
+	public void typeCheckRegisterTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException
+	{
+		// Leeg
+	}
 }
