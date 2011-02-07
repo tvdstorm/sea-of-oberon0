@@ -25,6 +25,7 @@ tokens
 	MODULE='MODULE';
 	DO='DO';
 	WHILE='WHILE';
+	WITH='WITH';
 	BEGIN='BEGIN';
 	PROCEDURE='PROCEDURE';
 	ARRAY='ARRAY';
@@ -84,11 +85,13 @@ ifStatement:		IF expression THEN statementSequence (ELSIF expression THEN statem
 				-> ^(IF expression ^(BODY statementSequence));
 whileStatement:		WHILE expression DO statementSequence END
 				-> ^(WHILE expression ^(BODY statementSequence));
+withStatement:		WITH selector DO statementSequence END
+				-> ^(WITH selector ^(BODY statementSequence));
 assignment:		selector ASSIGNMENT expression
 				-> ^(ASSIGNMENT selector expression);
 procedureCall:		selector (actualParameters)?
 				-> ^(PROCEDURECALL selector actualParameters?);
-statement:		(assignment | procedureCall| ifStatement | whileStatement)?;
+statement:		(assignment | procedureCall| ifStatement | whileStatement | withStatement)?;
 statementSequence:	statement (';' statement)*
 				-> statement (statement)*;
 identList:		IDENT ( ',' IDENT)*
