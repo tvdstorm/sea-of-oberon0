@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-02-07</date>
-  <time>11:01:20</time>
+  <time>15:19:32</time>
   <packages>
     <package>
       <name>randy.library.datastructures</name>
@@ -15,12 +15,12 @@
     </package>
     <package>
       <name>randy.oberon0.ast</name>
-      <classes>39</classes>
-      <functions>76</functions>
-      <ncss>653</ncss>
+      <classes>40</classes>
+      <functions>122</functions>
+      <ncss>971</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>114</single_comment_lines>
+      <single_comment_lines>229</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <package>
@@ -36,8 +36,8 @@
     <package>
       <name>randy.oberon0.interpreter.antlr</name>
       <classes>1</classes>
-      <functions>24</functions>
-      <ncss>298</ncss>
+      <functions>25</functions>
+      <ncss>305</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>2</single_comment_lines>
@@ -46,21 +46,21 @@
     <package>
       <name>randy.oberon0.interpreter.buildinfunctions</name>
       <classes>5</classes>
-      <functions>12</functions>
-      <ncss>82</ncss>
+      <functions>21</functions>
+      <ncss>99</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>13</single_comment_lines>
+      <single_comment_lines>24</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <package>
       <name>randy.oberon0.interpreter.runtime</name>
       <classes>9</classes>
-      <functions>31</functions>
-      <ncss>190</ncss>
+      <functions>32</functions>
+      <ncss>207</ncss>
       <javadocs>3</javadocs>
       <javadoc_lines>9</javadoc_lines>
-      <single_comment_lines>29</single_comment_lines>
+      <single_comment_lines>36</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <package>
@@ -75,29 +75,29 @@
     </package>
     <package>
       <name>randy.oberon0.value</name>
-      <classes>7</classes>
-      <functions>54</functions>
-      <ncss>214</ncss>
+      <classes>8</classes>
+      <functions>61</functions>
+      <ncss>229</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>3</single_comment_lines>
+      <single_comment_lines>4</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <total>
-      <classes>81</classes>
-      <functions>220</functions>
-      <ncss>1551</ncss>
+      <classes>83</classes>
+      <functions>284</functions>
+      <ncss>1925</ncss>
       <javadocs>3</javadocs>
       <javadoc_lines>9</javadoc_lines>
-      <single_comment_lines>161</single_comment_lines>
+      <single_comment_lines>295</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>8.00</td><td>81.00</td><td>220.00</td><td>1,551.00</td><td>3.00</td><td>Project</td></tr>
-      <tr><td></td><td>10.13</td><td>27.50</td><td>193.88</td><td>0.38</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>2.72</td><td>19.15</td><td>0.04</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>7.05</td><td>0.01</td><td>Function</td></tr>
+      <tr><td>8.00</td><td>83.00</td><td>284.00</td><td>1,925.00</td><td>3.00</td><td>Project</td></tr>
+      <tr><td></td><td>10.38</td><td>35.50</td><td>240.63</td><td>0.38</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.42</td><td>23.19</td><td>0.04</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>6.78</td><td>0.01</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -111,22 +111,22 @@
     </object>
     <object>
       <name>randy.oberon0.ast.ArraySelector</name>
-      <ncss>13</ncss>
-      <functions>2</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>randy.oberon0.ast.ArrayVarDeclaration</name>
-      <ncss>42</ncss>
+      <ncss>18</ncss>
       <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
+      <name>randy.oberon0.ast.ArrayVarDeclaration</name>
+      <ncss>76</ncss>
+      <functions>5</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
       <name>randy.oberon0.ast.AssignmentStatement</name>
-      <ncss>13</ncss>
-      <functions>2</functions>
+      <ncss>18</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -139,78 +139,85 @@
     </object>
     <object>
       <name>randy.oberon0.ast.Block</name>
-      <ncss>9</ncss>
-      <functions>2</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>randy.oberon0.ast.BodyDeclaration</name>
-      <ncss>2</ncss>
-      <functions>1</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>randy.oberon0.ast.ConstDeclaration</name>
-      <ncss>12</ncss>
-      <functions>2</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>randy.oberon0.ast.DotSelector</name>
       <ncss>13</ncss>
-      <functions>2</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>randy.oberon0.ast.Expression</name>
-      <ncss>2</ncss>
-      <functions>1</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>randy.oberon0.ast.IfStatement</name>
-      <ncss>16</ncss>
-      <functions>2</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>randy.oberon0.ast.IInvokableFunction</name>
-      <ncss>4</ncss>
       <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>randy.oberon0.ast.InfixAdditionExpression</name>
-      <ncss>11</ncss>
+      <name>randy.oberon0.ast.BodyDeclaration</name>
+      <ncss>3</ncss>
       <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>randy.oberon0.ast.BooleanLiteral</name>
+      <ncss>11</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>randy.oberon0.ast.ConstDeclaration</name>
+      <ncss>14</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>randy.oberon0.ast.DotSelector</name>
+      <ncss>17</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>randy.oberon0.ast.Expression</name>
+      <ncss>3</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>randy.oberon0.ast.IfStatement</name>
+      <ncss>23</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>randy.oberon0.ast.IInvokableFunction</name>
+      <ncss>7</ncss>
+      <functions>6</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>randy.oberon0.ast.InfixAdditionExpression</name>
+      <ncss>19</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>randy.oberon0.ast.InfixAndExpression</name>
-      <ncss>11</ncss>
-      <functions>2</functions>
+      <ncss>19</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>randy.oberon0.ast.InfixDivisionExpression</name>
-      <ncss>14</ncss>
-      <functions>2</functions>
+      <ncss>22</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>randy.oberon0.ast.InfixEqualsExpression</name>
-      <ncss>14</ncss>
-      <functions>2</functions>
+      <ncss>31</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -223,71 +230,71 @@
     </object>
     <object>
       <name>randy.oberon0.ast.InfixGreaterEqualsExpression</name>
-      <ncss>11</ncss>
-      <functions>2</functions>
+      <ncss>19</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>randy.oberon0.ast.InfixGreaterThanExpression</name>
-      <ncss>11</ncss>
-      <functions>2</functions>
+      <ncss>19</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>randy.oberon0.ast.InfixMultiplicationExpression</name>
-      <ncss>11</ncss>
-      <functions>2</functions>
+      <ncss>19</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>randy.oberon0.ast.InfixNotEqualsExpression</name>
-      <ncss>14</ncss>
-      <functions>2</functions>
+      <ncss>31</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>randy.oberon0.ast.InfixOrExpression</name>
-      <ncss>11</ncss>
-      <functions>2</functions>
+      <ncss>19</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>randy.oberon0.ast.InfixSmallerEqualsExpression</name>
-      <ncss>11</ncss>
-      <functions>2</functions>
+      <ncss>19</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>randy.oberon0.ast.InfixSmallerThanExpression</name>
-      <ncss>11</ncss>
-      <functions>2</functions>
+      <ncss>19</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>randy.oberon0.ast.InfixSubtractionExpression</name>
-      <ncss>11</ncss>
-      <functions>2</functions>
+      <ncss>19</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>randy.oberon0.ast.IntegerLiteral</name>
-      <ncss>8</ncss>
-      <functions>2</functions>
+      <ncss>11</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>randy.oberon0.ast.Module</name>
-      <ncss>24</ncss>
-      <functions>4</functions>
+      <ncss>49</ncss>
+      <functions>7</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -300,36 +307,36 @@
     </object>
     <object>
       <name>randy.oberon0.ast.PrefixMinExpression</name>
-      <ncss>10</ncss>
-      <functions>2</functions>
+      <ncss>17</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>randy.oberon0.ast.PrefixNotExpression</name>
-      <ncss>10</ncss>
-      <functions>2</functions>
+      <ncss>17</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>randy.oberon0.ast.ProcedureCall</name>
-      <ncss>18</ncss>
-      <functions>2</functions>
+      <ncss>28</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>randy.oberon0.ast.ProcedureDeclaration</name>
-      <ncss>36</ncss>
-      <functions>5</functions>
+      <ncss>68</ncss>
+      <functions>9</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>randy.oberon0.ast.RecordDeclaration</name>
-      <ncss>12</ncss>
-      <functions>2</functions>
+      <ncss>14</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -342,36 +349,36 @@
     </object>
     <object>
       <name>randy.oberon0.ast.Statement</name>
-      <ncss>2</ncss>
-      <functions>1</functions>
+      <ncss>3</ncss>
+      <functions>2</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>randy.oberon0.ast.VarDeclaration</name>
-      <ncss>32</ncss>
-      <functions>4</functions>
+      <ncss>47</ncss>
+      <functions>6</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>randy.oberon0.ast.VariableSelector</name>
-      <ncss>8</ncss>
-      <functions>2</functions>
+      <ncss>11</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>randy.oberon0.ast.WhileStatement</name>
-      <ncss>12</ncss>
-      <functions>2</functions>
+      <ncss>16</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>randy.oberon0.ast.WithStatement</name>
-      <ncss>15</ncss>
-      <functions>2</functions>
+      <ncss>22</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -503,8 +510,8 @@
     </object>
     <object>
       <name>randy.oberon0.interpreter.antlr.Oberon0ASTTreeGenerator</name>
-      <ncss>285</ncss>
-      <functions>24</functions>
+      <ncss>291</ncss>
+      <functions>25</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -517,22 +524,22 @@
     </object>
     <object>
       <name>randy.oberon0.interpreter.buildinfunctions.DefaultReadFunction</name>
-      <ncss>18</ncss>
-      <functions>3</functions>
+      <ncss>24</ncss>
+      <functions>6</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>randy.oberon0.interpreter.buildinfunctions.DefaultWriteFunction</name>
-      <ncss>9</ncss>
-      <functions>3</functions>
+      <ncss>15</ncss>
+      <functions>6</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>randy.oberon0.interpreter.buildinfunctions.DefaultWriteLnFunction</name>
-      <ncss>8</ncss>
-      <functions>3</functions>
+      <ncss>13</ncss>
+      <functions>6</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -566,15 +573,15 @@
     </object>
     <object>
       <name>randy.oberon0.interpreter.runtime.PrimitiveVariableInstantiation</name>
-      <ncss>9</ncss>
+      <ncss>12</ncss>
       <functions>2</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>randy.oberon0.interpreter.runtime.Program</name>
-      <ncss>21</ncss>
-      <functions>4</functions>
+      <ncss>34</ncss>
+      <functions>5</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -621,6 +628,13 @@
       <javadocs>0</javadocs>
     </object>
     <object>
+      <name>randy.oberon0.value.Boolean</name>
+      <ncss>22</ncss>
+      <functions>8</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
       <name>randy.oberon0.value.Const</name>
       <ncss>16</ncss>
       <functions>7</functions>
@@ -629,8 +643,8 @@
     </object>
     <object>
       <name>randy.oberon0.value.Integer</name>
-      <ncss>35</ncss>
-      <functions>10</functions>
+      <ncss>22</ncss>
+      <functions>8</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -657,8 +671,8 @@
     </object>
     <object>
       <name>randy.oberon0.value.Value</name>
-      <ncss>21</ncss>
-      <functions>8</functions>
+      <ncss>26</ncss>
+      <functions>9</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -670,12 +684,12 @@
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>15.25</ncss>
-      <functions>2.72</functions>
+      <ncss>19.22</ncss>
+      <functions>3.42</functions>
       <classes>0.00</classes>
       <javadocs>0.04</javadocs>
     </averages>
-    <ncss>1,551.00</ncss>
+    <ncss>1,925.00</ncss>
   </objects>
 
   <functions>
@@ -687,6 +701,12 @@
     </function>
     <function>
       <name>randy.oberon0.ast.ArraySelector.evaluate(RuntimeEnvironment)</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.ArraySelector.typeCheck(RuntimeEnvironment)</name>
       <ncss>5</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -710,6 +730,18 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>randy.oberon0.ast.ArrayVarDeclaration.typeCheckRegister(RuntimeEnvironment)</name>
+      <ncss>12</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.ArrayVarDeclaration.typeCheckRegisterAsParameter(RuntimeEnvironment,Value)</name>
+      <ncss>22</ncss>
+      <ccn>10</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>randy.oberon0.ast.AssignmentStatement.AssignmentStatement(Selector,Expression)</name>
       <ncss>5</ncss>
       <ccn>1</ccn>
@@ -717,6 +749,12 @@
     </function>
     <function>
       <name>randy.oberon0.ast.AssignmentStatement.run(RuntimeEnvironment)</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.AssignmentStatement.typeCheck(RuntimeEnvironment)</name>
       <ncss>5</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -734,8 +772,38 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>randy.oberon0.ast.Block.typeCheck(RuntimeEnvironment)</name>
+      <ncss>4</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>randy.oberon0.ast.BodyDeclaration.register(RuntimeEnvironment)</name>
       <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.BodyDeclaration.typeCheckRegister(RuntimeEnvironment)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.BooleanLiteral.BooleanLiteral(Boolean)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.BooleanLiteral.evaluate(RuntimeEnvironment)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.BooleanLiteral.typeCheck(RuntimeEnvironment)</name>
+      <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -752,6 +820,12 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>randy.oberon0.ast.ConstDeclaration.typeCheckRegister(RuntimeEnvironment)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>randy.oberon0.ast.DotSelector.DotSelector(Selector,String)</name>
       <ncss>6</ncss>
       <ccn>1</ccn>
@@ -764,7 +838,19 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>randy.oberon0.ast.DotSelector.typeCheck(RuntimeEnvironment)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>randy.oberon0.ast.Expression.evaluate(RuntimeEnvironment)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.Expression.typeCheck(RuntimeEnvironment)</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -782,6 +868,12 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>randy.oberon0.ast.IfStatement.typeCheck(RuntimeEnvironment)</name>
+      <ncss>7</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>randy.oberon0.ast.IInvokableFunction.getName()</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
@@ -794,7 +886,25 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>randy.oberon0.ast.IInvokableFunction.typeCheckInvoke(RuntimeEnvironment,Value)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>randy.oberon0.ast.IInvokableFunction.registerTypeDeclarations(RuntimeEnvironment)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.IInvokableFunction.typeCheckRegisterTypeDeclarations(RuntimeEnvironment)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.IInvokableFunction.typeCheckBody(RuntimeEnvironment)</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -812,6 +922,12 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>randy.oberon0.ast.InfixAdditionExpression.typeCheck(RuntimeEnvironment)</name>
+      <ncss>8</ncss>
+      <ccn>5</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>randy.oberon0.ast.InfixAndExpression.InfixAndExpression(Expression,Expression)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
@@ -821,6 +937,12 @@
       <name>randy.oberon0.ast.InfixAndExpression.evaluate(RuntimeEnvironment)</name>
       <ncss>8</ncss>
       <ccn>6</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.InfixAndExpression.typeCheck(RuntimeEnvironment)</name>
+      <ncss>8</ncss>
+      <ccn>5</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -836,6 +958,12 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>randy.oberon0.ast.InfixDivisionExpression.typeCheck(RuntimeEnvironment)</name>
+      <ncss>8</ncss>
+      <ccn>5</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>randy.oberon0.ast.InfixEqualsExpression.InfixEqualsExpression(Expression,Expression)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
@@ -843,8 +971,14 @@
     </function>
     <function>
       <name>randy.oberon0.ast.InfixEqualsExpression.evaluate(RuntimeEnvironment)</name>
-      <ncss>11</ncss>
-      <ccn>8</ccn>
+      <ncss>14</ncss>
+      <ccn>11</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.InfixEqualsExpression.typeCheck(RuntimeEnvironment)</name>
+      <ncss>14</ncss>
+      <ccn>11</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -866,6 +1000,12 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>randy.oberon0.ast.InfixGreaterEqualsExpression.typeCheck(RuntimeEnvironment)</name>
+      <ncss>8</ncss>
+      <ccn>5</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>randy.oberon0.ast.InfixGreaterThanExpression.InfixGreaterThanExpression(Expression,Expression)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
@@ -873,6 +1013,12 @@
     </function>
     <function>
       <name>randy.oberon0.ast.InfixGreaterThanExpression.evaluate(RuntimeEnvironment)</name>
+      <ncss>8</ncss>
+      <ccn>5</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.InfixGreaterThanExpression.typeCheck(RuntimeEnvironment)</name>
       <ncss>8</ncss>
       <ccn>5</ccn>
       <javadocs>0</javadocs>
@@ -890,6 +1036,12 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>randy.oberon0.ast.InfixMultiplicationExpression.typeCheck(RuntimeEnvironment)</name>
+      <ncss>8</ncss>
+      <ccn>5</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>randy.oberon0.ast.InfixNotEqualsExpression.InfixNotEqualsExpression(Expression,Expression)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
@@ -897,8 +1049,14 @@
     </function>
     <function>
       <name>randy.oberon0.ast.InfixNotEqualsExpression.evaluate(RuntimeEnvironment)</name>
-      <ncss>11</ncss>
-      <ccn>8</ccn>
+      <ncss>14</ncss>
+      <ccn>11</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.InfixNotEqualsExpression.typeCheck(RuntimeEnvironment)</name>
+      <ncss>14</ncss>
+      <ccn>11</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -914,6 +1072,12 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>randy.oberon0.ast.InfixOrExpression.typeCheck(RuntimeEnvironment)</name>
+      <ncss>8</ncss>
+      <ccn>5</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>randy.oberon0.ast.InfixSmallerEqualsExpression.InfixSmallerEqualsExpression(Expression,Expression)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
@@ -921,6 +1085,12 @@
     </function>
     <function>
       <name>randy.oberon0.ast.InfixSmallerEqualsExpression.evaluate(RuntimeEnvironment)</name>
+      <ncss>8</ncss>
+      <ccn>5</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.InfixSmallerEqualsExpression.typeCheck(RuntimeEnvironment)</name>
       <ncss>8</ncss>
       <ccn>5</ccn>
       <javadocs>0</javadocs>
@@ -938,6 +1108,12 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>randy.oberon0.ast.InfixSmallerThanExpression.typeCheck(RuntimeEnvironment)</name>
+      <ncss>8</ncss>
+      <ccn>5</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>randy.oberon0.ast.InfixSubtractionExpression.InfixSubtractionExpression(Expression,Expression)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
@@ -950,6 +1126,12 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>randy.oberon0.ast.InfixSubtractionExpression.typeCheck(RuntimeEnvironment)</name>
+      <ncss>8</ncss>
+      <ccn>5</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>randy.oberon0.ast.IntegerLiteral.IntegerLiteral(Integer)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
@@ -957,6 +1139,12 @@
     </function>
     <function>
       <name>randy.oberon0.ast.IntegerLiteral.evaluate(RuntimeEnvironment)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.IntegerLiteral.typeCheck(RuntimeEnvironment)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -986,6 +1174,24 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>randy.oberon0.ast.Module.typeCheckInvoke(RuntimeEnvironment,Value)</name>
+      <ncss>8</ncss>
+      <ccn>5</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.Module.typeCheckRegisterTypeDeclarations(RuntimeEnvironment)</name>
+      <ncss>5</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.Module.typeCheckBody(RuntimeEnvironment)</name>
+      <ncss>12</ncss>
+      <ccn>7</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>randy.oberon0.ast.PrefixExpression.PrefixExpression(Expression)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
@@ -1004,6 +1210,12 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>randy.oberon0.ast.PrefixMinExpression.typeCheck(RuntimeEnvironment)</name>
+      <ncss>7</ncss>
+      <ccn>4</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>randy.oberon0.ast.PrefixNotExpression.PrefixNotExpression(Expression)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
@@ -1011,6 +1223,12 @@
     </function>
     <function>
       <name>randy.oberon0.ast.PrefixNotExpression.evaluate(RuntimeEnvironment)</name>
+      <ncss>7</ncss>
+      <ccn>4</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.PrefixNotExpression.typeCheck(RuntimeEnvironment)</name>
       <ncss>7</ncss>
       <ccn>4</ccn>
       <javadocs>0</javadocs>
@@ -1028,6 +1246,12 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>randy.oberon0.ast.ProcedureCall.typeCheck(RuntimeEnvironment)</name>
+      <ncss>10</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>randy.oberon0.ast.ProcedureDeclaration.ProcedureDeclaration(String,VarDeclaration,BodyDeclaration,Block)</name>
       <ncss>10</ncss>
       <ccn>1</ccn>
@@ -1036,6 +1260,12 @@
     <function>
       <name>randy.oberon0.ast.ProcedureDeclaration.register(RuntimeEnvironment)</name>
       <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.ProcedureDeclaration.typeCheckRegister(RuntimeEnvironment)</name>
+      <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -1058,6 +1288,24 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>randy.oberon0.ast.ProcedureDeclaration.typeCheckInvoke(RuntimeEnvironment,Value)</name>
+      <ncss>10</ncss>
+      <ccn>6</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.ProcedureDeclaration.typeCheckRegisterTypeDeclarations(RuntimeEnvironment)</name>
+      <ncss>5</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.ProcedureDeclaration.typeCheckBody(RuntimeEnvironment)</name>
+      <ncss>15</ncss>
+      <ccn>8</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>randy.oberon0.ast.RecordDeclaration.RecordDeclaration(String,String)</name>
       <ncss>6</ncss>
       <ccn>1</ccn>
@@ -1070,7 +1318,19 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>randy.oberon0.ast.RecordDeclaration.typeCheckRegister(RuntimeEnvironment)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>randy.oberon0.ast.Statement.run(RuntimeEnvironment)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.Statement.typeCheck(RuntimeEnvironment)</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -1094,7 +1354,19 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>randy.oberon0.ast.VarDeclaration.typeCheckRegister(RuntimeEnvironment)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>randy.oberon0.ast.VarDeclaration.registerAsParameter(RuntimeEnvironment,Value)</name>
+      <ncss>13</ncss>
+      <ccn>7</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.VarDeclaration.typeCheckRegisterAsParameter(RuntimeEnvironment,Value)</name>
       <ncss>13</ncss>
       <ccn>7</ccn>
       <javadocs>0</javadocs>
@@ -1112,6 +1384,12 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>randy.oberon0.ast.VariableSelector.typeCheck(RuntimeEnvironment)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>randy.oberon0.ast.WhileStatement.WhileStatement(Expression,Block)</name>
       <ncss>5</ncss>
       <ccn>1</ccn>
@@ -1124,6 +1402,12 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>randy.oberon0.ast.WhileStatement.typeCheck(RuntimeEnvironment)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>randy.oberon0.ast.WithStatement.WithStatement(Selector,Block)</name>
       <ncss>5</ncss>
       <ccn>1</ccn>
@@ -1131,6 +1415,12 @@
     </function>
     <function>
       <name>randy.oberon0.ast.WithStatement.run(RuntimeEnvironment)</name>
+      <ncss>7</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.WithStatement.typeCheck(RuntimeEnvironment)</name>
       <ncss>7</ncss>
       <ccn>2</ccn>
       <javadocs>0</javadocs>
@@ -1292,6 +1582,12 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>randy.oberon0.interpreter.antlr.Oberon0ASTTreeGenerator.buildBooleanLiteral(Tree)</name>
+      <ncss>3</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>randy.oberon0.interpreter.antlr.Oberon0ASTTreeGenerator.buildConstDeclaration(Tree)</name>
       <ncss>7</ncss>
       <ccn>1</ccn>
@@ -1305,8 +1601,8 @@
     </function>
     <function>
       <name>randy.oberon0.interpreter.antlr.Oberon0ASTTreeGenerator.buildExpression(Tree)</name>
-      <ncss>30</ncss>
-      <ccn>27</ccn>
+      <ncss>33</ncss>
+      <ccn>30</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -1424,6 +1720,24 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>randy.oberon0.interpreter.buildinfunctions.DefaultReadFunction.typeCheckInvoke(RuntimeEnvironment,Value)</name>
+      <ncss>4</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.interpreter.buildinfunctions.DefaultReadFunction.typeCheckRegisterTypeDeclarations(RuntimeEnvironment)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.interpreter.buildinfunctions.DefaultReadFunction.typeCheckBody(RuntimeEnvironment)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>randy.oberon0.interpreter.buildinfunctions.DefaultWriteFunction.getName()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
@@ -1442,6 +1756,24 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>randy.oberon0.interpreter.buildinfunctions.DefaultWriteFunction.typeCheckInvoke(RuntimeEnvironment,Value)</name>
+      <ncss>4</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.interpreter.buildinfunctions.DefaultWriteFunction.typeCheckRegisterTypeDeclarations(RuntimeEnvironment)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.interpreter.buildinfunctions.DefaultWriteFunction.typeCheckBody(RuntimeEnvironment)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>randy.oberon0.interpreter.buildinfunctions.DefaultWriteLnFunction.getName()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
@@ -1455,6 +1787,24 @@
     </function>
     <function>
       <name>randy.oberon0.interpreter.buildinfunctions.DefaultWriteLnFunction.registerTypeDeclarations(RuntimeEnvironment)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.interpreter.buildinfunctions.DefaultWriteLnFunction.typeCheckInvoke(RuntimeEnvironment,Value)</name>
+      <ncss>3</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.interpreter.buildinfunctions.DefaultWriteLnFunction.typeCheckRegisterTypeDeclarations(RuntimeEnvironment)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.interpreter.buildinfunctions.DefaultWriteLnFunction.typeCheckBody(RuntimeEnvironment)</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -1515,8 +1865,8 @@
     </function>
     <function>
       <name>randy.oberon0.interpreter.runtime.PrimitiveVariableInstantiation.instantiate(RuntimeEnvironment)</name>
-      <ncss>5</ncss>
-      <ccn>4</ccn>
+      <ncss>8</ncss>
+      <ccn>6</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -1533,7 +1883,13 @@
     </function>
     <function>
       <name>randy.oberon0.interpreter.runtime.Program.run()</name>
-      <ncss>9</ncss>
+      <ncss>10</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.interpreter.runtime.Program.typeCheck()</name>
+      <ncss>12</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -1718,6 +2074,54 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>randy.oberon0.value.Boolean.Boolean(boolean)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.value.Boolean.getBoolValue()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.value.Boolean.dereference()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.value.Boolean.setValue(Value)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.value.Boolean.getType()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.value.Boolean.toString()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.value.Boolean.equalsToValue(Value)</name>
+      <ncss>5</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.value.Boolean.clone()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>randy.oberon0.value.Const.Const(Value)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
@@ -1766,12 +2170,6 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>randy.oberon0.value.Integer.Integer(boolean)</name>
-      <ncss>5</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
       <name>randy.oberon0.value.Integer.getIntValue()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
@@ -1811,12 +2209,6 @@
       <name>randy.oberon0.value.Integer.clone()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>randy.oberon0.value.Integer.isTrue()</name>
-      <ncss>8</ncss>
-      <ccn>6</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -1964,6 +2356,12 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>randy.oberon0.value.Value.castToBoolean()</name>
+      <ncss>5</ncss>
+      <ccn>4</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>randy.oberon0.value.Value.castToArray()</name>
       <ncss>5</ncss>
       <ccn>4</ccn>
@@ -2000,10 +2398,10 @@
       <javadocs>0</javadocs>
     </function>
     <function_averages>
-      <ncss>4.88</ncss>
-      <ccn>2.39</ccn>
+      <ncss>5.03</ncss>
+      <ccn>2.54</ccn>
       <javadocs>0.01</javadocs>
     </function_averages>
-    <ncss>1,551.00</ncss>
+    <ncss>1,925.00</ncss>
   </functions>
 </javancss>
