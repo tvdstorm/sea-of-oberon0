@@ -1,9 +1,11 @@
 /*
  * 
  * TODO 
- * - Create new classes for all operations
  * - memory datatypes change
- * - PrintNode moet ToString worden
+ * - if elseif else -> create elseif node instead of transforming elseif into else if
+ * - Java doc toevoegen aan code
+ * - kijken of we de grammar kunnen herschrijven voor bijvoorbeeld operators naar het eind herschrijven
+ * 
  * 
  */
 package oberon0;
@@ -22,9 +24,9 @@ public class oberon0
   public static void main( String[] args ) 
   {
     CommandLineOptions CommandLine = new CommandLineOptions( args );
-    ParserInput        pIn         = new ParserInput( );
-    ParserOutput       Pout        = new ParserOutput( );
-    ModuleNode         AST;
+    ParserInput pIn = new ParserInput( );
+    ParserOutput Pout = new ParserOutput( );
+    ModuleNode AST;
     
     // get the AST from the parser
     Pout.setFile( pIn.getInputFile( CommandLine.sourceFile() ) );

@@ -13,7 +13,7 @@ public class MemoryManager {
   {
     // Check wheter var does not already exist in the scope
     int oldLocation = getLocationOf( varName, scope );
-    if( oldLocation == -1 && !isArrayOrRecord( varName ) )
+    if( oldLocation == -1 && !isArrayOrRecord( varName, scope ) )
     {
       int location;
       if( refName != null )
@@ -69,7 +69,7 @@ public class MemoryManager {
     }
     else
     {
-      if( !isArrayOrRecord( varName ) )
+      if( !isArrayOrRecord( varName, scope ) )
       {
         throw new OberonException( "Trying to get the value of the undefined variable: " + varName );
       }
@@ -128,16 +128,40 @@ public class MemoryManager {
     }
   }
   
-  private static boolean isArrayOrRecord( String varname )
+  /*
+   * Returns a list of all children of the element
+   */
+  public static Vector<String> getChildren( String varname )
+  {
+    Vector<String> children = new Vector<String>(0);
+    
+    // loop through the memory to find all the children of the record
+    MemoryMap container = null;
+    for( int i = list.size()-1; i >= 0; i-- )
+    {
+      container = list.get( i );
+      if( container.varName.startsWith( varname + "." ) )
+      {
+        children.add( container.varName );
+      }
+    }
+    
+    return children;
+  }
+
+  private static boolean isArrayOrRecord( String varname, String Scope )
   {
     // findout whether the variable is a record or array
     MemoryMap container = null;
     for( int i = list.size()-1; i >= 0; i-- )
     {
       container = list.get( i );
-      if( container.varName.startsWith( varname + "." ) || container.varName.startsWith( varname + "[" ) )
+      if( container.scope.contentEquals( Scope ) )
       {
-        return true;
+        if( container.varName.startsWith( varname + "." ) || container.varName.startsWith( varname + "[" ) )
+        {
+          return true;
+        }
       }
     }
     return false;
