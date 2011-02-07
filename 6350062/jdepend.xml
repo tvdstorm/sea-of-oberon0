@@ -43,14 +43,14 @@
 
         <Package name="randy.oberon0.ast">
             <Stats>
-                <TotalClasses>39</TotalClasses>
-                <ConcreteClasses>30</ConcreteClasses>
+                <TotalClasses>42</TotalClasses>
+                <ConcreteClasses>33</ConcreteClasses>
                 <AbstractClasses>9</AbstractClasses>
                 <Ca>1</Ca>
                 <Ce>4</Ce>
-                <A>0.23</A>
+                <A>0.21</A>
                 <I>0.8</I>
-                <D>0.03</D>
+                <D>0.01</D>
                 <V>1</V>
             </Stats>
 
@@ -96,6 +96,9 @@
                 </Class>
                 <Class sourceFile="Block.java">
                     randy.oberon0.ast.Block
+                </Class>
+                <Class sourceFile="BooleanLiteral.java">
+                    randy.oberon0.ast.BooleanLiteral
                 </Class>
                 <Class sourceFile="ConstDeclaration.java">
                     randy.oberon0.ast.ConstDeclaration
@@ -148,6 +151,9 @@
                 <Class sourceFile="Module.java">
                     randy.oberon0.ast.Module
                 </Class>
+                <Class sourceFile="Module.java">
+                    randy.oberon0.ast.Module$__CLR3_0_1fohfohgjvgw2vp
+                </Class>
                 <Class sourceFile="PrefixMinExpression.java">
                     randy.oberon0.ast.PrefixMinExpression
                 </Class>
@@ -159,6 +165,9 @@
                 </Class>
                 <Class sourceFile="ProcedureDeclaration.java">
                     randy.oberon0.ast.ProcedureDeclaration
+                </Class>
+                <Class sourceFile="ProcedureDeclaration.java">
+                    randy.oberon0.ast.ProcedureDeclaration$__CLR3_0_1fqhfqhgjvgwc7d
                 </Class>
                 <Class sourceFile="RecordDeclaration.java">
                     randy.oberon0.ast.RecordDeclaration
@@ -389,14 +398,14 @@
 
         <Package name="randy.oberon0.value">
             <Stats>
-                <TotalClasses>7</TotalClasses>
-                <ConcreteClasses>6</ConcreteClasses>
+                <TotalClasses>8</TotalClasses>
+                <ConcreteClasses>7</ConcreteClasses>
                 <AbstractClasses>1</AbstractClasses>
                 <Ca>2</Ca>
                 <Ce>2</Ce>
-                <A>0.14</A>
+                <A>0.12</A>
                 <I>0.5</I>
-                <D>0.36</D>
+                <D>0.38</D>
                 <V>1</V>
             </Stats>
 
@@ -409,6 +418,9 @@
             <ConcreteClasses>
                 <Class sourceFile="Array.java">
                     randy.oberon0.value.Array
+                </Class>
+                <Class sourceFile="Boolean.java">
+                    randy.oberon0.value.Boolean
                 </Class>
                 <Class sourceFile="Const.java">
                     randy.oberon0.value.Const
