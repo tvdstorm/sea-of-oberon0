@@ -11,21 +11,13 @@ import xtc.parser.ParseException;
 import xtc.parser.Result;
 
 public class Interpreter {
-	public static void run(Reader reader, String name) {
+	public static void run(Reader reader, String name) throws IOException, ParseException {
 		OberonParser parser = new OberonParser(reader, name);
 
 		Module module = null;
 		
-		try {
-			Result result = parser.pModule(0);
-			module = (jdm.oberon0.ast.Module)parser.value(result);
-		} catch (IOException e) {
-			System.err.println("IOError: " + e.getMessage());
-			System.exit(1);
-		} catch (ParseException e) {
-			System.err.println(e.getMessage());
-			System.exit(1);
-		}
+		Result result = parser.pModule(0);
+		module = (Module)parser.value(result);
 		
 		Context context = new Context();
 		Builtins.initBuiltins(context);
