@@ -20,7 +20,7 @@ public class Parameter extends Variable{
 	}
 	
 	//REFERENCE
-	public boolean isReferenced() {
+	public boolean isByReference() {
 		return referenced;
 	}
 
@@ -52,7 +52,7 @@ public class Parameter extends Variable{
 	public Parameter getNew() {
 		String ident = getIdentifier();
 		Type type = getType().getNew();
-		Boolean isRef = isReferenced();
+		Boolean isRef = isByReference();
 		return new Parameter(ident,type, isRef);
 	}
 

@@ -21,7 +21,7 @@ public class ProcedureCallStatement  implements Statement {
 	
 	
 	@Override
-	public void execute(Module module) throws ExecutionException {
+	public void execute(Module module){
 		//Is this a reserverd procedure call? (Read or Write(Ln))
 		if (Program.isReservedProcedureCall(identifier)) {
 			module.getProgram().executeReserverdProcedure(identifier,expressions,module);

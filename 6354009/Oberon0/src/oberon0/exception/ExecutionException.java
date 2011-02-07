@@ -1,6 +1,6 @@
 package oberon0.exception;
 
-public class ExecutionException extends Exception {
+public class ExecutionException extends RuntimeException {
 
 	/**
 	 * 

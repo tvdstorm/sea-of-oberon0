@@ -47,7 +47,9 @@ public class Program {
 		module.start();
 	}
 	
+	//////////////////////////////////////////////////////////
 	//RESERVER PROCERDURE CALLS (READ & WRITE(LN))
+	//////////////////////////////////////////////////////////
 	public static boolean isReservedProcedureCall(String identifier) {
 		if ( (identifier.equals(RESERVER_CALL_READ)) ||
 			 (identifier.equals(RESERVER_CALL_WRITE))|| 

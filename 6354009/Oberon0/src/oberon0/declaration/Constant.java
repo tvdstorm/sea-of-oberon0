@@ -19,4 +19,5 @@ public class Constant {
 	public Expression getExpression() {
 		return expresion;
 	}
+	
 }

@@ -42,7 +42,7 @@ public class Module {
 	
 	
 	//////////////////////////////////////////////////////////
-	//IDENTIFIERS
+	//IDENTIFIER
 	//////////////////////////////////////////////////////////
 	public String getIdentifier() {
 		return identifier;
@@ -137,11 +137,11 @@ public class Module {
 	//////////////////////////////////////////////////////////
 	//ADDING STATEMENTS
 	//////////////////////////////////////////////////////////
-	public void addStatement(Statement statement) throws IncorrectStatementException {
+	public void addStatement(Statement statement) {
 		statements.add(statement);
 	}
 	
-	public void addStatements(ArrayList<Statement> statementList) throws IncorrectStatementException {
+	public void addStatements(ArrayList<Statement> statementList){
 		for (Statement statement : statementList) {
 			addStatement(statement);
 		}
@@ -227,7 +227,6 @@ public class Module {
 	//////////////////////////////////////////////////////////
 	//MAKE A NEW MODULE (ONLY HELPERS)
 	//////////////////////////////////////////////////////////
-	
 	protected ArrayList<Constant> getNewConstants() {
 		//Add constants (no need to make new; contains no type).
 		return new ArrayList<Constant>(constants.values());
@@ -240,8 +239,8 @@ public class Module {
 	
 	
 	protected ArrayList<Variable> getNewVariables() {
-		ArrayList<Variable> newVariables = new ArrayList<Variable>();
 		//Add new variables (make new; contains a type).
+		ArrayList<Variable> newVariables = new ArrayList<Variable>();
 		for (Variable variable : variables.values()) {
 			newVariables.add(variable.getNew());
 		}
@@ -249,7 +248,6 @@ public class Module {
 	}
 	
 	protected ArrayList<Procedure> getNewProcedures() {
-		
 		ArrayList<Procedure> newProcedures = new ArrayList<Procedure>();
 		//Add new procedures(make new; contains a type).
 		for (Procedure procedure : procedures.values()) {

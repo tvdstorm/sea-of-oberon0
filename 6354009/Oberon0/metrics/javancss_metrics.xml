@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <javancss>
-  <date>2011-02-06</date>
-  <time>15:27:06</time>
+  <date>2011-02-07</date>
+  <time>12:01:31</time>
   <packages>
     <package>
       <name>oberon0</name>
@@ -57,7 +57,7 @@
       <name>oberon0.module</name>
       <classes>1</classes>
       <functions>27</functions>
-      <ncss>124</ncss>
+      <ncss>123</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>51</single_comment_lines>
@@ -86,8 +86,8 @@
     <package>
       <name>oberon0.statement</name>
       <classes>5</classes>
-      <functions>15</functions>
-      <ncss>104</ncss>
+      <functions>10</functions>
+      <ncss>94</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>13</single_comment_lines>
@@ -105,8 +105,8 @@
     </package>
     <total>
       <classes>45</classes>
-      <functions>177</functions>
-      <ncss>916</ncss>
+      <functions>172</functions>
+      <ncss>905</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>155</single_comment_lines>
@@ -114,10 +114,10 @@
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>10.00</td><td>45.00</td><td>177.00</td><td>916.00</td><td>0.00</td><td>Project</td></tr>
-      <tr><td></td><td>4.50</td><td>17.70</td><td>91.60</td><td>0.00</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.93</td><td>20.36</td><td>0.00</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>5.18</td><td>0.00</td><td>Function</td></tr>
+      <tr><td>10.00</td><td>45.00</td><td>172.00</td><td>905.00</td><td>0.00</td><td>Project</td></tr>
+      <tr><td></td><td>4.50</td><td>17.20</td><td>90.50</td><td>0.00</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.82</td><td>20.11</td><td>0.00</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>5.26</td><td>0.00</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -355,7 +355,7 @@
     </object>
     <object>
       <name>oberon0.module.Module</name>
-      <ncss>108</ncss>
+      <ncss>107</ncss>
       <functions>27</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
@@ -383,36 +383,36 @@
     </object>
     <object>
       <name>oberon0.statement.AssigmentStatement</name>
-      <ncss>10</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon0.statement.IfStatement</name>
-      <ncss>24</ncss>
-      <functions>4</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon0.statement.ProcedureCallStatement</name>
-      <ncss>18</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon0.statement.Statement</name>
-      <ncss>3</ncss>
+      <ncss>9</ncss>
       <functions>2</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>oberon0.statement.WhileStatement</name>
-      <ncss>16</ncss>
+      <name>oberon0.statement.IfStatement</name>
+      <ncss>23</ncss>
       <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.statement.ProcedureCallStatement</name>
+      <ncss>17</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.statement.Statement</name>
+      <ncss>2</ncss>
+      <functions>1</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.statement.WhileStatement</name>
+      <ncss>15</ncss>
+      <functions>2</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -438,12 +438,12 @@
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>16.49</ncss>
-      <functions>3.93</functions>
+      <ncss>16.36</ncss>
+      <functions>3.82</functions>
       <classes>0.00</classes>
       <javadocs>0.00</javadocs>
     </averages>
-    <ncss>916.00</ncss>
+    <ncss>905.00</ncss>
   </objects>
 
   <functions>
@@ -1037,7 +1037,7 @@
     </function>
     <function>
       <name>oberon0.module.Module.addStatement(Statement)</name>
-      <ncss>3</ncss>
+      <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -1288,12 +1288,6 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.statement.AssigmentStatement.check(Module)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
       <name>oberon0.statement.IfStatement.IfStatement(Expression,Statement)</name>
       <ncss>4</ncss>
       <ccn>1</ccn>
@@ -1312,12 +1306,6 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.statement.IfStatement.check(Module)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
       <name>oberon0.statement.ProcedureCallStatement.ProcedureCallStatement(String,Expression)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
@@ -1330,19 +1318,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.statement.ProcedureCallStatement.check(Module)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
       <name>oberon0.statement.Statement.execute(Module)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.statement.Statement.check(Module)</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -1357,12 +1333,6 @@
       <name>oberon0.statement.WhileStatement.execute(Module)</name>
       <ncss>9</ncss>
       <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.statement.WhileStatement.check(Module)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -1510,10 +1480,10 @@
       <javadocs>0</javadocs>
     </function>
     <function_averages>
-      <ncss>3.51</ncss>
-      <ccn>1.46</ccn>
+      <ncss>3.58</ncss>
+      <ccn>1.48</ccn>
       <javadocs>0.00</javadocs>
     </function_averages>
-    <ncss>916.00</ncss>
+    <ncss>905.00</ncss>
   </functions>
 </javancss>
