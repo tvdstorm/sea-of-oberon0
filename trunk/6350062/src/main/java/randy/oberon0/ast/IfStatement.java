@@ -40,4 +40,22 @@ public class IfStatement extends Statement
 			elseBody.run(environment);
 		}
 	}
+	@Override
+	public void typeCheck(RuntimeEnvironment environment) throws RuntimeException
+	{
+		assert(environment != null);
+		// Loop through all if expressions until one is true
+		for (Tuple<Expression, Block> curIf : ifStatements)
+		{
+			// Type check the condition and convert it to an boolean
+			curIf.getFirst().typeCheck(environment).castToInteger();
+			// Type check the associated body
+			curIf.getSecond().typeCheck(environment);
+		}
+		// No conditions evaluated to true, if there is an else body, run it
+		if (elseBody != null)
+		{
+			elseBody.typeCheck(environment);
+		}
+	}
 }

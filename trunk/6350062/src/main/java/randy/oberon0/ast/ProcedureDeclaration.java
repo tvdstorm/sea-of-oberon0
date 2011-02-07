@@ -33,6 +33,11 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 		newEnvironment.registerFunction(getName(), this);
 	}
 	@Override
+	public void typeCheckRegister(RuntimeEnvironment newEnvironment) throws RuntimeException
+	{
+		register(newEnvironment);
+	}
+	@Override
 	public void registerTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException
 	{
 		assert(newEnvironment != null);
@@ -74,5 +79,44 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 	public String getName()
 	{
 		return procedureName;
+	}
+	@Override
+	public void typeCheckInvoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
+	{
+		assert(environment != null);
+		assert(parameterValues != null);
+		// Loop through all parameters and declare them in the invoked functions environment
+		for (VarDeclaration p : parameterDeclarations)
+		{
+			p.typeCheckRegisterAsParameter(environment, parameterValues);
+		}
+		// If parameterValues has any values left, the number of arguments don't match
+		if (parameterValues.size() > 0)
+		{
+			throw new IncorrectNumberOfArgumentsException();
+		}
+		// Loop through all body declarations except type declarations
+		for (BodyDeclaration bodyDecl : bodyDeclarations)
+		{
+			if (!(bodyDecl instanceof AbstractTypeDeclaration))
+			{
+				bodyDecl.typeCheckRegister(environment);
+			}
+		}
+		// Run the body of the function
+		body.typeCheck(environment);
+	}
+	@Override
+	public void typeCheckRegisterTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException
+	{
+		assert(newEnvironment != null);
+		// Register all the type declarations in the environment
+		for (BodyDeclaration bodyDecl : bodyDeclarations)
+		{
+			if (bodyDecl instanceof AbstractTypeDeclaration)
+			{
+				bodyDecl.typeCheckRegister(newEnvironment);
+			}
+		}
 	}
 }

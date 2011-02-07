@@ -21,4 +21,11 @@ public class IntegerLiteral extends Expression
 		// Return the integer value
 		return value;
 	}
+	@Override
+	public Value typeCheck(RuntimeEnvironment environment) throws RuntimeException
+	{
+		assert(environment != null);
+		// Return the integer value
+		return new Integer(0);
+	}
 }

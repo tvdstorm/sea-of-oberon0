@@ -48,6 +48,27 @@ public class Program
 		// Invoke the module
 		module.invoke(moduleEnvironment, new LinkedList<Value>());
 	}
+	public void typeCheck() throws RuntimeException
+	{
+		// Registrate buildin primitive types
+		TypeRegistry typeRegistry = new TypeRegistry(null);
+		typeRegistry.registerType(Type.INTEGER.getTypeText(), new PrimitiveVariableInstantiation(Type.INTEGER));
+		
+		FunctionRegistry functionRegistry = new FunctionRegistry(null);
+		
+		// Create a global environment
+		RuntimeEnvironment globalEnvironment = new RuntimeEnvironment(new VariableStack(null), functionRegistry, typeRegistry);
+		// Registrate buildin functions
+		buildinFunctions.register(functionRegistry, globalEnvironment);
+		
+		// Create a module environment on top of the global environment
+		RuntimeEnvironment moduleEnvironment = new RuntimeEnvironment(globalEnvironment);
+	
+		// Registrate the modules type declarations in the modole environment
+		module.registerTypeDeclarations(moduleEnvironment);
+		// Invoke the module
+		module.typeCheckInvoke(moduleEnvironment, new LinkedList<Value>());
+	}
 	public void setBuildinFunctions(IBuildinFunctions _buildinFunctions)
 	{
 		buildinFunctions = _buildinFunctions;

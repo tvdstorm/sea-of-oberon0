@@ -26,4 +26,13 @@ public class DotSelector extends Selector
 		// Evaluate the member and return it
 		return new Reference(record.getMemberValue(recordMemberName));
 	}
+	@Override
+	public Value typeCheck(RuntimeEnvironment environment) throws RuntimeException
+	{
+		assert(environment != null);
+		// Evaluate the selector and convert it to a record
+		final Record record = selector.evaluate(environment).dereference().castToRecord();
+		// Evaluate the member and return it
+		return new Reference(record.getMemberValue(recordMemberName));
+	}
 }

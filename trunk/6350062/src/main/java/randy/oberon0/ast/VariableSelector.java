@@ -20,4 +20,11 @@ public class VariableSelector extends Selector
 		// Retrieve the value of the variable and return it
 		return environment.getVariableValue(variableName);
 	}
+	@Override
+	public Value typeCheck(RuntimeEnvironment environment) throws RuntimeException
+	{
+		assert(environment != null);
+		// Retrieve the value of the variable and return it
+		return environment.getVariableValue(variableName);
+	}
 }

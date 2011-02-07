@@ -23,4 +23,9 @@ public class ConstDeclaration extends BodyDeclaration
 		// Add the constant to the variable scope
 		newEnvironment.registerConstant(constantName, value.evaluate(newEnvironment));
 	}
+	@Override
+	public void typeCheckRegister(RuntimeEnvironment newEnvironment) throws RuntimeException
+	{
+		register(newEnvironment);
+	}
 }

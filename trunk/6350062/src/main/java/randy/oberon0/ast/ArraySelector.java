@@ -28,4 +28,15 @@ public class ArraySelector extends Selector
 		// Return the requested index of the array
 		return new Reference(array.getIndexValue(index.getIntValue()));
 	}
+	@Override
+	public Value typeCheck(RuntimeEnvironment environment) throws RuntimeException
+	{
+		assert(environment != null);
+		// Evaluate the selector and convert it to an array
+		final Array array = selector.typeCheck(environment).dereference().castToArray();
+		// Evaluate the array index and convert it to an integer
+		arrayIndex.typeCheck(environment).castToInteger();
+		// Return the requested index of the array
+		return new Reference(array.getIndexValue(0));
+	}
 }

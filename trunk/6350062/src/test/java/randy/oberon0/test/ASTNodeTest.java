@@ -4,6 +4,7 @@ import java.util.Random;
 import org.junit.*;
 import randy.oberon0.exception.Exception;
 import randy.oberon0.exception.*;
+import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.*;
 import randy.oberon0.value.Integer;
 import randy.oberon0.value.*;
@@ -27,7 +28,7 @@ public class ASTNodeTest
 	@Test
 	public void test_Addition()
 	{
-		prepareTest("addition");
+		prepareTest("addition", true);
 		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
@@ -40,7 +41,7 @@ public class ASTNodeTest
 	@Test
 	public void test_Subtraction()
 	{
-		prepareTest("subtraction");
+		prepareTest("subtraction", true);
 		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
@@ -53,7 +54,7 @@ public class ASTNodeTest
 	@Test
 	public void test_Multiplication()
 	{
-		prepareTest("multiplication");
+		prepareTest("multiplication", true);
 		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
@@ -66,7 +67,7 @@ public class ASTNodeTest
 	@Test
 	public void test_Division()
 	{
-		prepareTest("division");
+		prepareTest("division", true);
 		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
@@ -79,7 +80,7 @@ public class ASTNodeTest
 	@Test
 	public void test_VarRef()
 	{
-		prepareTest("refvar");
+		prepareTest("refvar", true);
 		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int getal = random.nextInt();
@@ -91,7 +92,7 @@ public class ASTNodeTest
 	@Test
 	public void test_VarRefArray()
 	{
-		prepareTest("refvararray");
+		prepareTest("refvararray", true);
 		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
@@ -105,7 +106,7 @@ public class ASTNodeTest
 	@Test
 	public void test_Swap()
 	{
-		prepareTest("swap");
+		prepareTest("swap", true);
 		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int a = random.nextInt(), b = random.nextInt();
@@ -133,7 +134,7 @@ public class ASTNodeTest
 	@Test
 	public void test_GreaterSmallerThen()
 	{
-		prepareTest("greatersmallerthen");
+		prepareTest("greatersmallerthen", true);
 		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int a = random.nextInt(10), b = random.nextInt(10);
@@ -151,7 +152,7 @@ public class ASTNodeTest
 	@Test
 	public void test_Andor()
 	{
-		prepareTest("andor");
+		prepareTest("andor", true);
 		runTest();
 
 		Assert.assertTrue(functions.popOutput().equals("1"));
@@ -183,7 +184,7 @@ public class ASTNodeTest
 	{
 		try
 		{
-			prepareTest("constassignment");
+			prepareTest("constassignment", false);
 			program.run();
 			Assert.fail("Should be throwing an ConstAssignmentException...");
 		}
@@ -201,7 +202,7 @@ public class ASTNodeTest
 	{
 		try
 		{
-			prepareTest("ifnumber");
+			prepareTest("ifnumber", true); // TODO: IF 4 THEN is geen type check error?
 			program.run();
 			Assert.fail("Should be throwing an TypeMismatchException...");
 		}
@@ -219,7 +220,7 @@ public class ASTNodeTest
 	{
 		try
 		{
-			prepareTest("elseifnumber");
+			prepareTest("elseifnumber", true); // TODO: ELSIF 3 THEN is geen type check error?
 			program.run();
 			Assert.fail("Should be throwing an TypeMismatchException...");
 		}
@@ -237,7 +238,7 @@ public class ASTNodeTest
 	{
 		try
 		{
-			prepareTest("infixintegerand");
+			prepareTest("infixintegerand", false);
 			program.run();
 			Assert.fail("Should be throwing an TypeMismatchException...");
 		}
@@ -255,7 +256,7 @@ public class ASTNodeTest
 	{
 		try
 		{
-			prepareTest("infixbooleanadd");
+			prepareTest("infixbooleanadd", false);
 			program.run();
 			// Success
 		}
@@ -269,7 +270,7 @@ public class ASTNodeTest
 	{
 		try
 		{
-			prepareTestThrowException("unknownfunction");
+			prepareTestThrowException("unknownfunction", false);
 			program.run();
 			Assert.fail("Should be throwing an UndefinedMethodException...");
 		}
@@ -287,7 +288,7 @@ public class ASTNodeTest
 	{
 		try
 		{
-			prepareTest("functioncalltoomanyparameters");
+			prepareTest("functioncalltoomanyparameters", false);
 			program.run();
 			Assert.fail("Should be throwing an IncorrectNumberOfArgumentsException...");
 		}
@@ -305,7 +306,7 @@ public class ASTNodeTest
 	{
 		try
 		{
-			prepareTest("functioncalltoofewparameters");
+			prepareTest("functioncalltoofewparameters", false);
 			program.run();
 			Assert.fail("Should be throwing an IncorrectNumberOfArgumentsException...");
 		}
@@ -323,7 +324,7 @@ public class ASTNodeTest
 	{
 		try
 		{
-			prepareTest("whileintegerexpression");
+			prepareTest("whileintegerexpression", false);
 			program.run();
 			Assert.fail("Should be throwing an TypeMismatchException...");
 		}
@@ -353,7 +354,7 @@ public class ASTNodeTest
 	@Test
 	public void test_SmoketestQuicksort()
 	{
-		prepareTest("smoketest_quicksort");
+		prepareTest("smoketest_quicksort", true);
 		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int numbers[] = new int[5];
@@ -377,7 +378,7 @@ public class ASTNodeTest
 	{
 		try
 		{
-			prepareTest("duplicatevariablename");
+			prepareTest("duplicatevariablename", false);
 			program.run();
 			Assert.fail("Should be throwing an DuplicateVariableException...");
 		}
@@ -395,7 +396,7 @@ public class ASTNodeTest
 	{
 		try
 		{
-			prepareTest("undefinedvariable");
+			prepareTest("undefinedvariable", false);
 			program.run();
 			Assert.fail("Should be throwing an UndefinedVariableException...");
 		}
@@ -411,7 +412,7 @@ public class ASTNodeTest
 	@Test
 	public void test_GlobalVariable()
 	{
-		prepareTest("globalvariable");
+		prepareTest("globalvariable", true);
 		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
@@ -428,7 +429,7 @@ public class ASTNodeTest
 	{
 		try
 		{
-			prepareTest("arrayaccessoroninteger");
+			prepareTest("arrayaccessoroninteger", false);
 			program.run();
 			Assert.fail("Should be throwing an SelectorException...");
 		}
@@ -444,7 +445,7 @@ public class ASTNodeTest
 	@Test
 	public void test_Functionnesting()
 	{
-		prepareTest("functionnesting");
+		prepareTest("functionnesting", true);
 		runTest();
 		Assert.assertTrue(functions.outputIsEmpty());
 	}
@@ -453,7 +454,7 @@ public class ASTNodeTest
 	{
 		try
 		{
-			prepareTest("incorrectparametertype");
+			prepareTest("incorrectparametertype", false);
 			program.run();
 			Assert.fail("Should be throwing an TypeMismatchException...");
 		}
@@ -469,7 +470,7 @@ public class ASTNodeTest
 	@Test
 	public void test_ArrayParameter()
 	{
-		prepareTest("arrayparameter");
+		prepareTest("arrayparameter", true);
 		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt(), d = random.nextInt(), e = random.nextInt();
@@ -573,28 +574,28 @@ public class ASTNodeTest
 			Assert.fail("Shouldn't be throwing an Exception...");
 		}
 	}
-	/*@Test
+	@Test
 	public void test_ArrayParameterLength()
 	{
 		try
 		{
-			prepareTest("arrayparameterlength");
+			prepareTest("arrayparameterlength", false);
 			program.run();
-			Assert.fail("Should be throwing an Exception...");
+			Assert.fail("Should be throwing an ArrayLengthMismatch exception...");
 		}	
-		//catch (OutOfBoundsException e)
+		catch (ArrayLengthMismatch e)
 		{
 			// Success
 		}
 		catch (Exception e)
 		{
-			Assert.fail("Should be throwing an OutOfBoundsException...");
+			Assert.fail("Should be throwing an ArrayLengthMismatch exception...");
 		}
-	}*/
+	}
 	@Test
 	public void test_Prefixoperators()
 	{
-		prepareTest("prefixoperators");
+		prepareTest("prefixoperators", true);
 		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int a = random.nextInt(), b = 0;
@@ -630,7 +631,7 @@ public class ASTNodeTest
 	@Test
 	public void test_VariableScoping()
 	{
-		prepareTest("variablescoping");
+		prepareTest("variablescoping", true);
 		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int vm = random.nextInt();
@@ -659,7 +660,7 @@ public class ASTNodeTest
 		{
 			try
 			{
-				prepareTest("variablescopingfout" + i);
+				prepareTest("variablescopingfout" + i, false);
 				functions.addInput("1");
 				program.run();
 				Assert.fail("Should be throwing an UndefinedVariableException...");
@@ -677,7 +678,7 @@ public class ASTNodeTest
 	@Test
 	public void test_Record()
 	{
-		prepareTest("record");
+		prepareTest("record", true);
 		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int a = random.nextInt(), b = random.nextInt();
@@ -707,7 +708,7 @@ public class ASTNodeTest
 	@Test
 	public void test_ArrayRecordNesting()
 	{
-		prepareTest("arrayrecordnesting");
+		prepareTest("arrayrecordnesting", true);
 		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			final int lengthI = 5;
@@ -767,7 +768,7 @@ public class ASTNodeTest
 	@Test
 	public void test_VariableNesting()
 	{
-		prepareTest("variablenesting");
+		prepareTest("variablenesting", true);
 		runTest();
 		Assert.assertTrue(functions.popOutput().equals("1"));
 		Assert.assertTrue(functions.outputIsEmpty());
@@ -775,7 +776,7 @@ public class ASTNodeTest
 	@Test
 	public void test_With()
 	{
-		prepareTest("with");
+		prepareTest("with", true);
 		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			int a = random.nextInt(), b = random.nextInt();
@@ -807,17 +808,29 @@ public class ASTNodeTest
 		}
 	}
 	@Ignore
-	private void prepareTestThrowException(String testName) throws Exception
+	private void prepareTestThrowException(String testName, boolean bIsValid) throws Exception
 	{
 		functions = new TestBuildinFunctions();
 		program = new Program();
 		program.loadProgram("src/test/java/randy/oberon0/test/testscripts/" + testName + ".oberon0", functions);
+		System.out.println(testName + " " + bIsValid);
+		try
+		{
+			program.typeCheck();
+			System.out.println("true");
+			Assert.assertTrue(bIsValid);
+		}
+		catch (RuntimeException e)
+		{
+			System.out.println("false: " + e.getClass().toString() + " " + e.toString());
+			Assert.assertFalse(bIsValid);
+		}
 	}
-	private void prepareTest(String testName)
+	private void prepareTest(String testName, boolean bIsValid)
 	{
 		try
 		{
-			prepareTestThrowException(testName);
+			prepareTestThrowException(testName, bIsValid);
 		}
 		catch (Exception e)
 		{

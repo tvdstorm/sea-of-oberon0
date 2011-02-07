@@ -37,4 +37,24 @@ public class ProcedureCall extends Statement
 		// Invoke the function
 		functionDeclaration.invoke(invokedEnvironment, parameters);
 	}
+	@Override
+	public void typeCheck(RuntimeEnvironment environment) throws RuntimeException
+	{
+		assert(environment != null);
+		// Evaluate all the parameters and add them to a queue
+		Queue<Value> parameters = new LinkedList<Value>();
+		for (Expression parameter : parameterExpressions)
+		{
+			Value v = parameter.typeCheck(environment);
+			parameters.add(v);
+		}
+		// Resolve the function name to a function
+		final IInvokableFunction functionDeclaration = environment.resolveFunction(procedureName).getSecond();
+		// Create a new environment for the to be invoked function
+		RuntimeEnvironment invokedEnvironment = new RuntimeEnvironment(environment.resolveFunction(procedureName).getFirst());
+		// Register all declarations of the to be invoked function to it's environment 
+		functionDeclaration.typeCheckRegisterTypeDeclarations(invokedEnvironment);
+		// Invoke the function
+		functionDeclaration.typeCheckInvoke(invokedEnvironment, parameters);
+	}
 }

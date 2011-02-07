@@ -35,4 +35,26 @@ public class InfixEqualsExpression extends InfixExpression
 			throw new OperatorTypeUndefinedException("=", valLh.getType().toString(), valRh.getType().toString());
 		}
 	}
+	@Override
+	public Value typeCheck(RuntimeEnvironment environment) throws RuntimeException
+	{
+		assert(environment != null);
+		// Evaluate the left and right hand side expressions
+		final Value valRh = rightHandExpression.typeCheck(environment).dereference();
+		final Value valLh = leftHandExpression.typeCheck(environment).dereference();
+		// Check if we support the operator
+		if (valLh instanceof Integer && valRh instanceof Integer)
+		{
+			return new Integer(0);
+		}
+		else if (valLh instanceof Record && valRh instanceof Record)
+		{
+			return new Integer(0);
+		}
+		else
+		{
+			// No, throw an exception
+			throw new OperatorTypeUndefinedException("=", valLh.getType().toString(), valRh.getType().toString());
+		}
+	}
 }
