@@ -156,26 +156,15 @@ public class Scope {
 
 	/**
 	 * Performs a Procedure Method Call within the current Execution Scope.
-	 * 
-	 * @param id
-	 *            The Identifier of the Procedure that should be executed.
-	 * @param callVars
-	 *            The Method Call Variables that should be passed to the
-	 *            Procedure.
 	 */
-	public int callProcedure(ID id, ExpressionList callVars) {
-		return callProcedure(id, callVars, this);
-	}
-
-	protected int callProcedure(ID id, ExpressionList actualParameterList,
-			Scope parentScope) {
+	public int callProcedure(ID id, ExpressionList actualParameterList) {
 		// Retrieve procedure from hash in current Execution Scope.
 		Procedure procedure = (Procedure)getBindable(id);
 
 		// Determine procedure match in current Execution Scope.
 		if (procedure != null) {
 			// Create a new child Execution Scope for the Procedure Method Call.
-			Scope scope = new Scope(actualParameterList, procedure, parentScope);
+			Scope scope = new Scope(actualParameterList, procedure, this);
 			// Evaluate the Procedure Method Call.
 			return procedure.eval(scope);
 		}
