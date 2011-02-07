@@ -10,7 +10,7 @@ import uva.oberon0.abstractsyntax.expressions.Expression;
 public class IfPartForElsIf
 {
 	private final Expression 	_elsifExpression;
-	private final StatementList _elsIfStatements;
+	private final StatementList _elsIfStatementList;
 	
 	public IfPartForElsIf(Expression elsIfExpression, StatementList elsIfStatements)
 	{
@@ -18,7 +18,7 @@ public class IfPartForElsIf
 		assert elsIfStatements != null 		: "No Els If Statement List is available for the current If Statement!";
 
 		_elsifExpression = elsIfExpression;
-		_elsIfStatements = elsIfStatements;
+		_elsIfStatementList = elsIfStatements;
 	}
 	
 	public Expression getExpression()
@@ -27,6 +27,6 @@ public class IfPartForElsIf
 	}
 	public StatementList getStatementList()
 	{
-		return _elsIfStatements;
+		return _elsIfStatementList;
 	}
 }

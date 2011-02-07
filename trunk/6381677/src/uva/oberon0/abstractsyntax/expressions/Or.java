@@ -6,9 +6,9 @@ import uva.oberon0.runtime.Scope;
  * This class represents a Logical Or Binary Expression (x | y).
  * @author Chiel Labee
  */
-public class LogicalOr extends BinaryExpression {
+public class Or extends BinaryExpression {
 
-	public LogicalOr(Expression left, Expression right) {
+	public Or(Expression left, Expression right) {
 		super(left, right);
 	}
 

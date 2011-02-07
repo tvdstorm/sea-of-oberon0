@@ -2,56 +2,48 @@ package uva.oberon0.abstractsyntax.declarations;
 
 import uva.oberon0.abstractsyntax.statements.StatementList;
 import uva.oberon0.abstractsyntax.types.ID;
-import uva.oberon0.abstractsyntax.types.IIdentifiable;
 import uva.oberon0.runtime.Scope;
 
-
 /**
- * @author Chiel Labee
- * This class represents the primairy Module Structure.
-*/
-public class Module implements IIdentifiable
-{
-	private final ID 				_id;
-	private final DeclarationList 	_declarations;
-	private final StatementList 	_statements;
+ * @author Chiel Labee This class represents the primairy Module Structure.
+ */
+public class Module {
+	private final ID _id;
+	private final DeclarationList _declarations;
+	private final StatementList _statements;
 
-	public Module(ID id, DeclarationList declarations, StatementList statements)
-	{
-		assert id != null 			: "No Identifier is available for the current Module!";
+	public Module(ID id, DeclarationList declarations, StatementList statements) {
+		assert id != null : "No Identifier is available for the current Module!";
 		assert declarations != null : "No Declarations are available for the current Module!";
-		assert statements 	!= null : "No Statements are available for the current Module!";
+		assert statements != null : "No Statements are available for the current Module!";
 
-		_id 			= id;
-		_declarations 	= declarations;
-		_statements 	= statements;
+		_id = id;
+		_declarations = declarations;
+		_statements = statements;
 	}
-	
+
 	/**
 	 * Creates a new Execution Scope for this Module.
 	 */
-	public Scope createScope()
-	{
+	public Scope createScope() {
 		return new Scope(_declarations, null);
 	}
+
 	/**
-	 * Performs interpreter evaluation for the current Module structure.
-	 * Creates a new Execution Scope for this Module.
+	 * Performs interpreter evaluation for the current Module structure. Creates
+	 * a new Execution Scope for this Module.
 	 */
-	public int eval()
-	{
+	public int eval() {
 		return eval(createScope());
 	}
-	
+
 	/**
 	 * Performs interpreter evaluation for the current Module structure.
 	 */
-	public int eval(uva.oberon0.runtime.Scope scope)
-	{
+	public int eval(uva.oberon0.runtime.Scope scope) {
 		return _statements.eval(scope);
 	}
 
-	@Override
 	public ID getID() {
 		return _id;
 	}

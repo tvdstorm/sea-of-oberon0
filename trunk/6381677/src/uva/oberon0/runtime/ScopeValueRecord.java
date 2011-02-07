@@ -12,27 +12,25 @@ public class ScopeValueRecord extends ScopeValue {
 
 	private final Map<ID, ScopeValue> _values;
 
-	public ScopeValueRecord(Scope scope, RecordType type)
-	{
+	public ScopeValueRecord(Scope scope, RecordType type) {
 		_values = new HashMap<ID, ScopeValue>(type.getFields().size());
-		
-		for (RecordField field : type.getFields())
-		{
+
+		for (RecordField field : type.getFields()) {
 			_values.put(field.getID(), field.getType().instantiate(scope));
 		}
 	}
-	
+
 	@Override
-	public ScopeValue getValue(Scope scope, BaseNode selector) {
-		ID selectorID = (ID)selector;
-		
+	public ScopeValue getValueBySelector(Scope scope, BaseNode selector) {
+		ID selectorID = (ID) selector;
+
 		ScopeValue value = _values.get(selectorID);
-		
-		if (selectorID.getSelector() != null){
-			value = value.getValue(scope, selectorID.getSelector());
+
+		if (selectorID.getSelector() != null) {
+			value = value.getValueBySelector(scope, selectorID.getSelector());
 		}
-		
+
 		return value;
 	}
-	
+
 }
