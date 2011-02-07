@@ -27,7 +27,7 @@ public class OrExpNode extends BooleanExpNode {
 	}
 
 	@Override
-	public Boolean accept(BaseVisitor visitor, Environment localEnv) {
+	public Boolean eval(BaseVisitor visitor, Environment localEnv) {
 		return visitor.eval(this, localEnv);
 	}
 

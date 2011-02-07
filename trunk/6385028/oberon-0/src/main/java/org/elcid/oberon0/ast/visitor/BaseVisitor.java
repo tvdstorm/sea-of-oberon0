@@ -63,4 +63,6 @@ public abstract class BaseVisitor {
 	public Boolean eval(OrExpNode node, Environment localEnv) {
 		return null;
 	}
+
+	public void run(AssignmentNode node, Environment localEnv) { }
 }

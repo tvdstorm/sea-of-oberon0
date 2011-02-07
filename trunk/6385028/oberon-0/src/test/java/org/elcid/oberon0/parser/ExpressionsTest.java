@@ -29,16 +29,12 @@ public class ExpressionsTest {
 		CommonTokenStream tokens = new CommonTokenStream(lexer);
 		// Create a parser that feeds off the token stream
 		Oberon0Parser parser = new Oberon0Parser(tokens);
-		// Begin parsing at rule module
+		// Begin parsing at rule expression
 		ExpressionNode expr = parser.expression();
-		System.out.println(parser.getNumberOfSyntaxErrors());
 
 		Environment env = new Environment();
 		env.put("a", 2);
 
-		System.out.println(expr.accept(new ExpressionVisitor(), env));
-
-		//ExpressionVisitor visitor = new ExpressionVisitor();
-		//System.out.println(visitor.eval(expr, env));
+		System.out.println(expr.eval(new ExpressionVisitor(), env));
 	}
 }
