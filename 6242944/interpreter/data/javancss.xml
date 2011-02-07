@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-02-07</date>
-  <time>11:06:43</time>
+  <time>11:13:47</time>
   <packages>
     <package>
       <name>jdm.oberon0.ast</name>
@@ -97,9 +97,9 @@
       <name>jdm.oberon0.interpreter.eval</name>
       <classes>5</classes>
       <functions>49</functions>
-      <ncss>220</ncss>
-      <javadocs>12</javadocs>
-      <javadoc_lines>36</javadoc_lines>
+      <ncss>219</ncss>
+      <javadocs>13</javadocs>
+      <javadoc_lines>39</javadoc_lines>
       <single_comment_lines>15</single_comment_lines>
       <multi_comment_lines>16</multi_comment_lines>
     </package>
@@ -136,18 +136,18 @@
     <total>
       <classes>85</classes>
       <functions>306</functions>
-      <ncss>1173</ncss>
-      <javadocs>32</javadocs>
-      <javadoc_lines>100</javadoc_lines>
+      <ncss>1172</ncss>
+      <javadocs>33</javadocs>
+      <javadoc_lines>103</javadoc_lines>
       <single_comment_lines>21</single_comment_lines>
       <multi_comment_lines>20</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>13.00</td><td>85.00</td><td>306.00</td><td>1,173.00</td><td>32.00</td><td>Project</td></tr>
-      <tr><td></td><td>6.54</td><td>23.54</td><td>90.23</td><td>2.46</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.60</td><td>13.80</td><td>0.38</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>3.83</td><td>0.10</td><td>Function</td></tr>
+      <tr><td>13.00</td><td>85.00</td><td>306.00</td><td>1,172.00</td><td>33.00</td><td>Project</td></tr>
+      <tr><td></td><td>6.54</td><td>23.54</td><td>90.15</td><td>2.54</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.60</td><td>13.79</td><td>0.39</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>3.83</td><td>0.11</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -619,7 +619,7 @@
       <ncss>32</ncss>
       <functions>3</functions>
       <classes>0</classes>
-      <javadocs>1</javadocs>
+      <javadocs>2</javadocs>
     </object>
     <object>
       <name>jdm.oberon0.interpreter.eval.ExpressionEvaluator</name>
@@ -751,9 +751,9 @@
       <ncss>11.20</ncss>
       <functions>3.60</functions>
       <classes>0.00</classes>
-      <javadocs>0.38</javadocs>
+      <javadocs>0.39</javadocs>
     </averages>
-    <ncss>1,173.00</ncss>
+    <ncss>1,172.00</ncss>
   </objects>
 
   <functions>
@@ -2598,6 +2598,6 @@
       <ccn>1.29</ccn>
       <javadocs>0.03</javadocs>
     </function_averages>
-    <ncss>1,173.00</ncss>
+    <ncss>1,172.00</ncss>
   </functions>
 </javancss>
