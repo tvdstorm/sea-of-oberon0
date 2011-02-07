@@ -20,7 +20,7 @@ public abstract class Call extends Statement
 	/**
 	 * Gets all Method Call Actual Parameters.
 	 */
-	public ExpressionList getCallVars()
+	public ExpressionList getActualParameterList()
 	{
 		return _actualParameterList;
 	}

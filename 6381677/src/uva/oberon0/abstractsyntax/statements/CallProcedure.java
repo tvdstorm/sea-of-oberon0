@@ -24,6 +24,6 @@ public class CallProcedure extends Call
 	
 	@Override
 	public int eval(Scope scope) {
-		return scope.callProcedure(_procedureID, getCallVars());
+		return scope.callProcedure(_procedureID, getActualParameterList());
 	}
 }
