@@ -152,7 +152,7 @@ term    returns [Expression node]
 		MUL right=factor								{$node=new Multiplication($node, $right.node);}
 	|	DIV right=factor								{$node=new Division($node, $right.node);}
 	|	MOD right=factor								{$node=new Modulo($node, $right.node);}
-	|	AND right=factor								{$node=new LogicalAnd($node, $right.node);}
+	|	AND right=factor								{$node=new And($node, $right.node);}
 	)* ;
 
 base 	returns [Expression node]
@@ -164,7 +164,7 @@ base 	returns [Expression node]
     	 	(
     		MIN right=term									{$node=new Subtraction($node, $right.node);}
     	|	PLUS right=term									{$node=new Addition($node, $right.node);}
-    	|	OR right=term									{$node=new LogicalOr($node, $right.node);}
+    	|	OR right=term									{$node=new Or($node, $right.node);}
     	 	)* ;
 
 expression returns [Expression node]
@@ -202,9 +202,9 @@ ifStatement	returns [If node]
     		(ELSE node_else=statements)? END
     												{$node = new If($node_expression.node, $node_statements.node, $node_elsifs.node, $node_else.node);};
 
-ifElsIfList	returns [IfListForElsIf node]	:						{$node = new IfListForElsIf();}
+ifElsIfList	returns [ElsIfList node]	:						{$node = new ElsIfList();}
 		(
-		ELSIF node_expression=expression THEN node_statements=statements 		{$node.add(new IfPartForElsIf($node_expression.node, $node_statements.node));}
+		ELSIF node_expression=expression THEN node_statements=statements 		{$node.add(new ElsIf($node_expression.node, $node_statements.node));}
 		)*
 	;
 		
@@ -223,8 +223,8 @@ idList	returns [IDList node]	:								{$node = new IDList();}
 
 idSelector [ID node_parent]
 @init												{ID node_current = $node_parent;}
-    	:   	(('.' ID									{node_current=(ID)node_current.setSub(new ID($ID.text));})
-    	| 	('[' node_expression=expression ']'						{node_current.setSub($node_expression.node);})
+    	:   	(('.' ID									{node_current=(ID)node_current.setSelector(new ID($ID.text));})
+    	| 	('[' node_expression=expression ']'						{node_current.setSelector($node_expression.node);})
     		)*;
 
 ID  	:	('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*;
