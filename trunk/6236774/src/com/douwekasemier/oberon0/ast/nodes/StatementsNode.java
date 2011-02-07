@@ -8,6 +8,8 @@ import com.douwekasemier.oberon0.ast.ASTGenerationException;
 import com.douwekasemier.oberon0.ast.AbstractNode;
 import com.douwekasemier.oberon0.ast.Node;
 import com.douwekasemier.oberon0.core.Oberon0Parser;
+import com.douwekasemier.oberon0.interpreter.Oberon0RuntimeException;
+import com.douwekasemier.oberon0.interpreter.environment.Environment;
 
 public class StatementsNode extends AbstractNode implements Node {
 
@@ -41,5 +43,14 @@ public class StatementsNode extends AbstractNode implements Node {
             }
         }
     }
+
+    @Override
+    public void interpret(Environment environment) throws Oberon0RuntimeException {
+        for( Node statement : statements ) {
+            statement.interpret(environment);
+        }
+    }
+    
+    
 
 }

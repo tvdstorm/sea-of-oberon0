@@ -14,12 +14,12 @@ public class Oberon0 {
 	 * @throws IOException
 	 */
 	public static void main(String[] args) {
-		// Laad een bestand oberon0 bestand	    
+		// Laad een bestand oberon0 bestand
 		Interpreter interpreter = new Interpreter();
 		File file = new File(args[0]);
         String input = "";
         String output = interpreter.interpret(file, input);
 
-        System.out.println(output);
+        //System.out.println(output);
 	}
 }

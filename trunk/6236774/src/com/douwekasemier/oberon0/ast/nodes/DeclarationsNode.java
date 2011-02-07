@@ -17,7 +17,6 @@ public class DeclarationsNode extends AbstractNode implements Node {
 
     public DeclarationsNode(Tree node, Node parent) throws ASTGenerationException {
         super(node, parent);
-        //printNodeAndChildren(node);
 
         // Assert that this is the node we expected, if it isn't the calling constructor is bugged!
         assert (type == Oberon0Parser.DECLARATIONS);
@@ -50,6 +49,21 @@ public class DeclarationsNode extends AbstractNode implements Node {
 
     @Override
     public void interpret(Environment environment) throws Oberon0RuntimeException {
-        
+
+        for (Node constant : constants) {
+            constant.interpret(environment);
+        }
+
+        for (Node variable : variables) {
+            variable.interpret(environment);
+        }
+
+        for (Node type : types) {
+            type.interpret(environment);
+        }
+
+        for (Node procedure : procedures) {
+            procedure.interpret(environment);
+        }
     }
 }

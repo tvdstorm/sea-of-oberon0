@@ -2,7 +2,9 @@ package com.douwekasemier.oberon0.ast.nodes;
 
 import org.antlr.runtime.tree.Tree;
 
-import com.douwekasemier.oberon0.ast.*;
+import com.douwekasemier.oberon0.ast.ASTGenerationException;
+import com.douwekasemier.oberon0.ast.AbstractNode;
+import com.douwekasemier.oberon0.ast.Node;
 import com.douwekasemier.oberon0.core.Oberon0Parser;
 import com.douwekasemier.oberon0.interpreter.Oberon0RuntimeException;
 import com.douwekasemier.oberon0.interpreter.environment.Environment;
@@ -37,14 +39,12 @@ public class ModuleNode extends AbstractNode {
     @Override
     public void interpret(Environment environment) throws Oberon0RuntimeException {
 
-        Environment localEnvironment = environment.newEnvironment();
-
         if (declarations != null) {
-            declarations.interpret(localEnvironment);
+            declarations.interpret(environment);
         }
 
         if (statements != null) {
-            declarations.interpret(localEnvironment);
+            statements.interpret(environment);
         }
     }
 }
