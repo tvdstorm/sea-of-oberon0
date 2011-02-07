@@ -7,13 +7,13 @@ public class Main
 {
 	public static void main(String args[]) throws Exception
 	{
-		if (args.length == 1)
+		//if (args.length == 1)
 		{
 			Program p = new Program();
-			p.loadProgram(args[0], new BuildinFunctions());
+			p.loadProgram("C:/Data/software_construction/src/test/java/randy/oberon0/test/testscripts/smoketest_quicksort.oberon0", new BuildinFunctions());
 			p.run();
 		}
-		else
+		//else
 		{
 			System.out.println("Expecting one argument: scriptname.oberon0");
 		}
