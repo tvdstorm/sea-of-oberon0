@@ -9,9 +9,11 @@ import jdm.oberon0.exceptions.InvalidArgumentTypeException;
 import jdm.oberon0.interpreter.Context;
 import jdm.oberon0.interpreter.ScriptedProcedure;
 import jdm.oberon0.types.Type;
-import jdm.oberon0.values.ReferenceValue;
 import jdm.oberon0.values.Value;
 
+/**
+ * Evaluator for Oberon0 modules and procedures.
+ */
 public class Evaluator {
 	private Context _context;
 	private DeclarationEvaluator _declEval;
