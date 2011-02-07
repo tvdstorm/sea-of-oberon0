@@ -22,7 +22,7 @@ public class ASTNodeTest
 	{
 		random = new Random();
 		int seed = random.nextInt();
-		//System.out.println("Seed: " + seed);
+		System.out.println("Seed: " + seed);
 		random = new Random(seed);
 		program = null;
 	}
@@ -367,17 +367,20 @@ public class ASTNodeTest
 	public void test_SmoketestQuicksort()
 	{
 		prepareTest("smoketest_quicksort", true);
-		for (int curTest=0;curTest<numTests;curTest++)
+		for (int curTest=0;curTest<10000;curTest++)
 		{
-			int numbers[] = new int[5];
-			for (int n=0;n<5;n++)
+			final int numWaardes = 150;
+			int numbers[] = new int[numWaardes];
+			String input[] = new String[numWaardes];
+			for (int n=0;n<numWaardes;n++)
 			{
 				numbers[n] = random.nextInt();
+				input[n] = "" + numbers[n];
 			}
-			runTest(""+numbers[0], ""+numbers[1], ""+numbers[2], ""+numbers[3], ""+numbers[4]);
+			runTest(input);
 			Arrays.sort(numbers);
 			
-			for (int n=0;n<5;n++)
+			for (int n=0;n<numWaardes;n++)
 			{
 				Assert.assertTrue(functions.popOutput().equals("" + numbers[n]));
 				Assert.assertTrue(functions.popOutput() == null);
