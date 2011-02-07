@@ -1,5 +1,7 @@
 package oberon.expressions;
 
+import oberon.Scope;
+
 /**
  * The Class AbstractIntegerExpression, super class for all integer expressions.
  */
@@ -21,7 +23,7 @@ public class AbstractIntegerExpression extends AbstractExpression {
 	 * @see oberon.expressions.AbstractExpression#evalAsInt()
 	 */
 	@Override
-	public int evalAsInt() {
+	public int evalAsInt(Scope currentScope) {
 		return expressionValue;
 	}
 

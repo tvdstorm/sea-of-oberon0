@@ -23,10 +23,9 @@ class WriteCall implements IStatement {
 	 * @see oberon.IStatement#eval()
 	 */
 	@Override
-	public void eval() throws IOException, UnsupportedException, VariableNotFoundInScopeException {
-		final VariableManager instance = VariableManager.getInstance();
-		final IntegerArrayDataType inputArray = (IntegerArrayDataType) instance.getVariable("input");
-		final int index = instance.getVariable("i").getValue();
+	public void eval(Scope currentScope) throws IOException, UnsupportedException, VariableNotFoundInScopeException {
+		final IntegerArrayDataType inputArray = (IntegerArrayDataType) currentScope.getVariable("input");
+		final int index = currentScope.getVariable("i").getValue(currentScope);
 		
 		System.out.println(inputArray.getValueAtIndex(index));
 	}
@@ -34,7 +33,7 @@ class WriteCall implements IStatement {
 	/**
 	 * Initialize.
 	 */
-	public static void initialize() {
+	public static void initialize(Scope currentScope) {
 		final List<FormalParamSection> params = new ArrayList<FormalParamSection>();
 		List<String> paramNames = new ArrayList<String>();
 		paramNames.add("i");
@@ -52,6 +51,6 @@ class WriteCall implements IStatement {
 		
 		final ProcedureBody body = new ProcedureBody(declaration, new StatementSequence(statements));
 		final SystemMethodCall procedure = new SystemMethodCall("Write", params, body);
-		VariableManager.getInstance().addSystemProcedureToCurrentScope(procedure);
+		currentScope.addSystemProcedure(procedure);
 	}
 }

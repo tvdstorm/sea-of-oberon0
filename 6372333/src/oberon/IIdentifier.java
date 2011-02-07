@@ -16,7 +16,7 @@ public interface IIdentifier {
 	 * @throws UnsupportedException 
 	 * @throws VariableNotFoundInScopeException 
 	 */
-	public abstract IDataType getDataTypeValue() throws UnsupportedException, VariableNotFoundInScopeException;
+	public abstract IDataType getDataTypeValue(Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException;
 
 	/**
 	 * Gets the value.
@@ -25,6 +25,6 @@ public interface IIdentifier {
 	 * @throws UnsupportedException 
 	 * @throws VariableNotFoundInScopeException 
 	 */
-	public abstract int getValue() throws UnsupportedException, VariableNotFoundInScopeException;
+	public abstract int getValue(Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException;
 
 }

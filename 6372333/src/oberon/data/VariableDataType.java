@@ -1,6 +1,7 @@
 package oberon.data;
 
 import oberon.IDataType;
+import oberon.Scope;
 
 /**
  * The Class VariableDataType, stores a pointer to the value of a variable.
@@ -41,7 +42,7 @@ public class VariableDataType extends AbstractDataType {
 	 * @see oberon.data.AbstractDataType#getValue()
 	 */
 	@Override
-	public int getValue() {
+	public int getValue(Scope currentScope) {
 		return value;
 	}
 

@@ -2,6 +2,7 @@ package oberon.expressions;
 
 import oberon.IDataType;
 import oberon.IExpression;
+import oberon.Scope;
 import oberon.data.VariableDataType;
 import oberon.exceptions.UnsupportedException;
 import oberon.exceptions.VariableNotFoundInScopeException;
@@ -14,14 +15,14 @@ public abstract class AbstractExpression implements IExpression {
 	 * @see oberon.IExpression#evalAsInt()
 	 */
 	@Override
-	public abstract int evalAsInt() throws UnsupportedException, VariableNotFoundInScopeException;
+	public abstract int evalAsInt(Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException;
 	
 	/* (non-Javadoc)
 	 * @see oberon.IExpression#evalAsBoolean()
 	 */
 	@Override
-	public Boolean evalAsBoolean() throws UnsupportedException, VariableNotFoundInScopeException {
-		return evalAsInt() == 1;
+	public Boolean evalAsBoolean(Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException {
+		return evalAsInt(currentScope) == 1;
 	}
 	
 	/**
@@ -42,7 +43,7 @@ public abstract class AbstractExpression implements IExpression {
 	 * @see oberon.IExpression#copy(java.lang.String)
 	 */
 	@Override
-	public IDataType copy(String newName) throws UnsupportedException, VariableNotFoundInScopeException
+	public IDataType copy(Scope currentScope, String newName) throws UnsupportedException, VariableNotFoundInScopeException
 	{
 		assert(this instanceof MathematicalExpression ||
 				this instanceof AbstractIntegerExpression ||
@@ -51,11 +52,11 @@ public abstract class AbstractExpression implements IExpression {
 		IDataType resultType = null;
 		if (	this instanceof MathematicalExpression ||
 				this instanceof AbstractIntegerExpression){
-			resultType = new VariableDataType(newName, this.evalAsInt(), false);
+			resultType = new VariableDataType(newName, this.evalAsInt(currentScope), false);
 		}
 		else if (this instanceof IdentifierExpression){
 			final IdentifierExpression selectorExpression = ((IdentifierExpression)this);
-			resultType = selectorExpression.copy(newName);
+			resultType = selectorExpression.copy(currentScope, newName);
 		}
 	
 		return resultType;

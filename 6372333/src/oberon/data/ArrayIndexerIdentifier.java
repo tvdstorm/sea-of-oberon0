@@ -1,8 +1,6 @@
 package oberon.data;
 
-import oberon.IDataType;
-import oberon.IExpression;
-import oberon.IIdentifier;
+import oberon.*;
 import oberon.exceptions.UnsupportedException;
 import oberon.exceptions.VariableNotFoundInScopeException;
 
@@ -31,13 +29,14 @@ public class ArrayIndexerIdentifier extends AbstractIdentifier {
 
 	/**
 	 * Gets the data type as array type.
+	 * @param currentScope the scope current execution is in
 	 *
 	 * @return the data type as array type
 	 * @throws UnsupportedException 
 	 * @throws VariableNotFoundInScopeException 
 	 */
-	private IntegerArrayDataType getDataTypeAsArrayType() throws UnsupportedException, VariableNotFoundInScopeException {
-		final IDataType type = selector.getDataTypeValue();
+	private IntegerArrayDataType getDataTypeAsArrayType(Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException {
+		final IDataType type = selector.getDataTypeValue(currentScope);
 		
 		//type should always be an array
 		assert(type instanceof IntegerArrayDataType);
@@ -49,17 +48,17 @@ public class ArrayIndexerIdentifier extends AbstractIdentifier {
 	 * @see oberon.data.AbstractIdentifier#getValue()
 	 */
 	@Override
-	public int getValue() throws UnsupportedException, VariableNotFoundInScopeException {
-		final IntegerArrayDataType array = getDataTypeAsArrayType();
-		return array.getValueAtIndex(indexExpression.evalAsInt());
+	public int getValue(Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException {
+		final IntegerArrayDataType array = getDataTypeAsArrayType(currentScope);
+		return array.getValueAtIndex(indexExpression.evalAsInt(currentScope));
 	}
 
 	/* (non-Javadoc)
 	 * @see oberon.data.AbstractIdentifier#getDataTypeValue()
 	 */
 	@Override
-	public IDataType getDataTypeValue() throws UnsupportedException, VariableNotFoundInScopeException {
-		return new IntegerArrayIndexerDataType(getDataTypeAsArrayType(), indexExpression.evalAsInt());
+	public IDataType getDataTypeValue(Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException {
+		return new IntegerArrayIndexerDataType(getDataTypeAsArrayType(currentScope), indexExpression.evalAsInt(currentScope));
 	}
 
 }

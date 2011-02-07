@@ -1,6 +1,7 @@
 package oberon.data;
 
 import oberon.IDataType;
+import oberon.Scope;
 import oberon.exceptions.UnsupportedException;
 import oberon.exceptions.VariableNotFoundInScopeException;
 
@@ -25,7 +26,7 @@ public abstract class AbstractDataType implements IDataType {
 	 * @see oberon.data.IDataType#getValue()
 	 */
 	@Override
-	public abstract int getValue() throws UnsupportedException, VariableNotFoundInScopeException;
+	public abstract int getValue(Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException;
 	/* (non-Javadoc)
 	 * @see oberon.data.IDataType#copy(java.lang.String)
 	 */

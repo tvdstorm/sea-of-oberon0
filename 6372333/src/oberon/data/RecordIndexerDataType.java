@@ -1,6 +1,7 @@
 package oberon.data;
 
 import oberon.IDataType;
+import oberon.Scope;
 
 /**
  * The Class RecordIndexerDataType, stores a identifier to a specific field in a record.
@@ -44,7 +45,7 @@ public class RecordIndexerDataType extends AbstractDataType {
 	 * @see oberon.data.AbstractDataType#getValue()
 	 */
 	@Override
-	public int getValue() {
+	public int getValue(Scope currentScope) {
 		return record.getValueAtIndex(fieldName);
 	}
 

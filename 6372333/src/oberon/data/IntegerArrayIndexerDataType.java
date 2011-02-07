@@ -1,6 +1,7 @@
 package oberon.data;
 
 import oberon.IDataType;
+import oberon.Scope;
 
 /**
  * The Class IntegerArrayIndexerDataType, stores the value of a specific index in an array.
@@ -44,7 +45,7 @@ public class IntegerArrayIndexerDataType extends AbstractDataType {
 	 * @see oberon.data.AbstractDataType#getValue()
 	 */
 	@Override
-	public int getValue() {
+	public int getValue(Scope currentScope) {
 		return array.getValueAtIndex(index);
 	}
 

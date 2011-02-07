@@ -4,6 +4,7 @@ import oberon.IDataType;
 import oberon.IExpression;
 import oberon.IIdentifier;
 import oberon.IStatement;
+import oberon.Scope;
 import oberon.exceptions.UnsupportedException;
 import oberon.exceptions.VariableNotFoundInScopeException;
 
@@ -33,9 +34,9 @@ public class AssignmentStatement implements IStatement {
 	 * @see oberon.IStatement#eval()
 	 */
 	@Override
-	public void eval() throws UnsupportedException, VariableNotFoundInScopeException {
-		final IDataType type = identifierToAssignTo.getDataTypeValue();
-		type.setValue(assignmentExpression.evalAsInt());
+	public void eval(final Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException {
+		final IDataType type = identifierToAssignTo.getDataTypeValue(currentScope);
+		type.setValue(assignmentExpression.evalAsInt(currentScope));
 	}
 
 }

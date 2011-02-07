@@ -26,6 +26,6 @@ public interface IProcedure {
 	 * @throws UnsupportedException 
 	 * @throws VariableNotFoundInScopeException 
 	 */
-	public abstract void call(Queue<IExpression> localQueue) throws IOException, UnsupportedException, VariableNotFoundInScopeException;
+	public abstract void call(Scope currentScope, Queue<IExpression> localQueue) throws IOException, UnsupportedException, VariableNotFoundInScopeException;
 
 }

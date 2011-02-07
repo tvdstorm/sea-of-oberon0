@@ -17,6 +17,6 @@ public interface IStatement {
 	 * @throws UnsupportedException 
 	 * @throws VariableNotFoundInScopeException 
 	 */
-	public abstract void eval() throws IOException, UnsupportedException, VariableNotFoundInScopeException;
+	public abstract void eval(Scope currentScope) throws IOException, UnsupportedException, VariableNotFoundInScopeException;
 
 }

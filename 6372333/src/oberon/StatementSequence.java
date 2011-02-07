@@ -25,15 +25,16 @@ public class StatementSequence{
 
 	/**
 	 * Evaluates the sequence of statements.
+	 * @param currentScope scope the current execution is in
 	 *
 	 * @throws IOException When reading from the command line fails
 	 * @throws UnsupportedException 
 	 * @throws VariableNotFoundInScopeException 
 	 */
-	public void eval() throws IOException, UnsupportedException, VariableNotFoundInScopeException {
+	public void eval(Scope currentScope) throws IOException, UnsupportedException, VariableNotFoundInScopeException {
 		if (body != null) {
 			for(IStatement statement : body) {
-				statement.eval();
+				statement.eval(currentScope);
 			}
 		}
 	}
