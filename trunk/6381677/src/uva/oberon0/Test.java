@@ -141,6 +141,8 @@ public class Test {
 				"VAR i: RECORD test1,test2: INTEGER END; BEGIN i.test1:=1; i.test2:=2; r:=((i.test1=1) & (i.test2=2)) END");
 		runTest("Statement Type Record Assign",
 				"TYPE rec=RECORD test1,test2: INTEGER END; VAR i: rec; BEGIN i.test1:=1; i.test2:=2; r:=((i.test1=1) & (i.test2=2)) END");
+		runTest("Statement With Assign",
+				"VAR i: RECORD test1,test2: INTEGER END; BEGIN WITH i DO test1:=1; test2:=2 END; r:=((i.test1=1) & (i.test2=2)) END");
 		runTest("Statement ByValue Assign",
 				"VAR i,i2: INTEGER; "
 						+ "PROCEDURE SetValue(x, y :INTEGER); BEGIN x:=y END SetValue; "

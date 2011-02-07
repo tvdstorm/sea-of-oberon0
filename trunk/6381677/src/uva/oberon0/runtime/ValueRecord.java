@@ -2,6 +2,7 @@ package uva.oberon0.runtime;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.abstractsyntax.types.ID;
@@ -20,6 +21,11 @@ public class ValueRecord extends Value
 		}
 	}
 
+	public Set<Map.Entry<ID, Value>> getValueSet()
+	{
+		return _values.entrySet();
+	}
+	
 	@Override
 	public Value getValueBySelector(Scope scope, BaseNode selector) {
 		ID selectorID = (ID) selector;

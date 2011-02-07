@@ -26,6 +26,7 @@ THEN	:	'THEN';
 ELSE	:	'ELSE';
 ELSIF   :   	'ELSIF';
 WHILE	:	'WHILE';
+WITH	:	'WITH';
 
 BEGIN	:	'BEGIN';
 END	:	'END';
@@ -189,6 +190,7 @@ statement	returns [Statement node]
    	| 	procedureCall 									{$node = $procedureCall.node;}
    	| 	ifStatement 									{$node = $ifStatement.node;}
    	| 	whileStatement 									{$node = $whileStatement.node;}
+   	| 	withStatement 									{$node = $withStatement.node;}
    	)? ;
         
 assignment  	returns [Assign node]
@@ -212,6 +214,12 @@ whileStatement  returns [While node]
 	:	WHILE node_expression=expression 
 		DO node_statements=statements 
 		END										{$node = new While($node_expression.node, $node_statements.node);};
+
+withStatement	returns [With node]
+	:	WITH ID 									{ID node_id = new ID($ID.text);} 
+		idSelector[node_id]
+		DO  node_statements=statements 
+		END										{$node = new With(node_id, $node_statements.node);};
 
 id 	returns [ID node]
 	:	ID										{$node = new ID($ID.text);};
