@@ -70,7 +70,7 @@ package org.elcid.oberon0.parser;
  *------------------------------------------------------------------*/
 
 module
-	:	MODULE_KW identifier SEMI_COLON declarations (BEGIN_KW statementSequence)? END_KW identifier DOT
+	:	MODULE_KW identifier SEMI_COLON declarations (BEGIN_KW statementSequence)? END_KW identifier DOT EOF
 	;
 
 declarations
