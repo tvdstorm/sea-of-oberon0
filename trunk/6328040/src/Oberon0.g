@@ -176,7 +176,7 @@ statement returns [ IExecutable node ]
 	| proc = procedureCall 		{node = $proc.node;	}
 	| ifs = ifStatement 		{node = $ifs.node;	} 
 	| whil = whileStatement		{node = $whil.node;	}
-//	| wit = withStatement		{node = $wit.node;	}
+	| wit = withStatement		{node = $wit.node;	}
 	)?;
 
 procedureCall returns [ IExecutable node ]
@@ -205,12 +205,14 @@ statementSequence returns [ IExecutable node ]
 	)*				{node = new StatementsNode(list);		}
 	;
 
-/*withStatement returns [ IExecutable node ]
+withStatement returns [ IExecutable node ]
 	:'WITH'
+	ident=IDENT selec=selector 
 	'DO'
+	bod = statementSequence		{node = new WithNode($ident.text, $selec.node,  $bod.node);	}
 	'END'
 	;
-*/
+
 ifStatement returns [ IExecutable node ]
 	:	  
 	IF 
