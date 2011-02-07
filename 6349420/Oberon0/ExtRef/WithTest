@@ -1,0 +1,20 @@
+MODULE module; 
+	VAR persoon : RECORD 
+			leeftijd : INTEGER; 
+		END;
+		autos : INTEGER; 
+
+BEGIN
+	autos := 4;
+	WITH persoon DO
+		Write(autos);
+		WriteLn;
+		autos := 5;
+		leeftijd := 23
+	END; 
+	Write(autos);
+	WriteLn;
+	Write( persoon.leeftijd ); 
+	WriteLn
+	
+END module
