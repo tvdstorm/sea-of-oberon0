@@ -3,22 +3,25 @@
  */
 package com.arievanderveek.soo.ast.statements;
 
+import java.util.List;
+
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
-import com.arievanderveek.soo.ast.variables.IdentifierNode;
 import com.arievanderveek.soo.runtime.Scope;
 
 /**
+ * Represents a parameter node for call by value parameters
+ * 
  * @author arieveek
  * 
  */
-public class AssignmentNode implements ASTNode {
+public class CallByValParameterNode extends AbstractParameterNode {
 
-	private final ASTNode identifier, expression;
-
-	public AssignmentNode(ASTNode identifier, ASTNode expression) {
-		this.identifier = identifier;
-		this.expression = expression;
+	/**
+	 * @param formalParameter
+	 */
+	public CallByValParameterNode(List<ASTNode> formalParameter) {
+		super(formalParameter);
 	}
 
 	/*
@@ -28,8 +31,6 @@ public class AssignmentNode implements ASTNode {
 	 */
 	@Override
 	public Integer interpret(Scope scope) throws SeaOfOberonException {
-		Integer result = expression.interpret(scope);
-		scope.updateValue((IdentifierNode) identifier, result);
 		return null;
 	}
 
@@ -40,10 +41,8 @@ public class AssignmentNode implements ASTNode {
 	 */
 	@Override
 	public String toTreeString(String ident) throws SeaOfOberonException {
-		StringBuilder sb = new StringBuilder();
-		sb.append(identifier.toTreeString(ident));
-		sb.append(ident + ":=" + ident);
-		sb.append(expression.toTreeString(ident));
-		return sb.toString();
+		return super.toTreeString(ident);
+
 	}
+
 }
