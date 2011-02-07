@@ -11,7 +11,7 @@ import uva.oberon0.runtime.Scope;
 public class While extends Statement 
 {
 	private final Expression 	_whileExpression;
-	private final StatementList _whileStatements;
+	private final StatementList _whileStatementList;
 	
 	public While(Expression whileExpression, StatementList whileStatements)
 	{
@@ -19,7 +19,7 @@ public class While extends Statement
 		assert whileStatements != null 		: "No While Statement List is available for the current If Statement!";
 
 		_whileExpression = whileExpression;
-		_whileStatements = whileStatements;
+		_whileStatementList = whileStatements;
 	}
 	
 	@Override
@@ -27,7 +27,7 @@ public class While extends Statement
 	{
 		while (_whileExpression.eval(scope) == 1)
 		{
-			if (_whileStatements.eval(scope) == 0) {
+			if (_whileStatementList.eval(scope) == 0) {
 				return 0;
 			}
 		}

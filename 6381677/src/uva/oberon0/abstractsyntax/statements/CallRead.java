@@ -5,34 +5,29 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import uva.oberon0.abstractsyntax.expressions.ExpressionList;
-import uva.oberon0.abstractsyntax.types.IIdentifiable;
+import uva.oberon0.abstractsyntax.expressions.Reference;
 import uva.oberon0.runtime.Scope;
 
 /**
- * @author Chiel Labee
- * This class represents the build-in Read Method Call.
-*/
-public class CallRead extends Call 
-{
-	public CallRead(ExpressionList call_vars)
-	{
+ * @author Chiel Labee This class represents the build-in Read Method Call.
+ */
+public class CallRead extends Call {
+	public CallRead(ExpressionList call_vars) {
 		super(call_vars);
 	}
-	
+
 	@Override
-	public int eval(Scope scope)
-	{
-		try 
-		{
-			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-			scope.setValue(((IIdentifiable)getActualParameter(0)).getID(), Integer.parseInt(reader.readLine()));
-		} 
-		catch (IOException e) 
-		{
+	public int eval(Scope scope) {
+		try {
+			BufferedReader reader = new BufferedReader(new InputStreamReader(
+					System.in));
+			scope.setValue(((Reference) getActualParameter(0)).getID(),
+					Integer.parseInt(reader.readLine()));
+		} catch (IOException e) {
 			e.printStackTrace();
 			return 0;
 		}
-		
+
 		return 1;
 	}
 }
