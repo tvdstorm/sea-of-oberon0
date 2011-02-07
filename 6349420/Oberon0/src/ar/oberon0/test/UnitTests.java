@@ -56,21 +56,21 @@ public class UnitTests extends TestCase {
 	}
 
 	public void testSmokeTest() {
-		inputForProgram.println("1");
-		inputForProgram.println("4");
-		inputForProgram.println("3");
-		inputForProgram.println("2");
+		inputForProgram.println("10");
+		inputForProgram.println("14");
+		inputForProgram.println("12");
+		inputForProgram.println("6");
 		inputForProgram.println("5");
 
 		InputStream inputForProgramInputStream = new ByteArrayInputStream(inputForProgramOutputStream.toByteArray());
 		ReadNode.setStreamToReadFrom(inputForProgramInputStream);
 
 		ExpectedResult expectedResult = new ExpectedResult();
-		expectedResult.addString("1");
-		expectedResult.addString("2");
-		expectedResult.addString("3");
-		expectedResult.addString("4");
 		expectedResult.addString("5");
+		expectedResult.addString("6");
+		expectedResult.addString("10");
+		expectedResult.addString("12");
+		expectedResult.addString("14");
 		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
 
 		InterpreterExecuter.Execute("ExtRef\\smoke.txt", "module", "module");
@@ -84,6 +84,17 @@ public class UnitTests extends TestCase {
 		expectedResult.addString("4");
 		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
 		InterpreterExecuter.Execute("ExtRef\\TypeIdentifierTest", "module", "module");
+
+		assertTrue(evaluator.evaluate(resultStream));
+	}
+
+	public void testWith() {
+		ExpectedResult expectedResult = new ExpectedResult();
+		expectedResult.addString("4");
+		expectedResult.addString("5");
+		expectedResult.addString("23");
+		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
+		InterpreterExecuter.Execute("ExtRef\\WithTest", "module", "module");
 
 		assertTrue(evaluator.evaluate(resultStream));
 	}

@@ -121,6 +121,7 @@ statement returns [Interpretable statement]
 		| whileStatement										{$statement = $whileStatement.whileStatement;}
 		| write													{$statement = $write.write;}
 		| read													{$statement = $read.read;}
+		| with													{$statement = $with.with;}
 		)? 
 	;
 
@@ -235,8 +236,11 @@ module	returns [ModuleNode module]
 		'END'! IDENT
 	;
 
-
-
+with returns [Interpretable with]
+	:	'WITH' factor 'DO'							
+		statementSequence											{$with = new WithNode($factor.factor,(StatementSequence)$statementSequence.statementSequence);}
+		'END' 
+	;
 
 write returns [Interpretable write]
 	:	

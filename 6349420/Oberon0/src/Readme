@@ -1,11 +1,5 @@
 Dit bestand bevat een aantal belangrijke kenmerken van de Oberon 0 interpreter.
 
-Het package ar.oberon0.interpreter.ControlFlow bevat klassen die de controlflow van het programma bepalen.
-Het package ar.oberon0.interpreter.DataTypes bevat de klassen die betrekking hebben op de oberon0 datatypen. Hierin bevinden zich zowel de typen klassen als de datatypes zelf.
-Het package ar.oberon0.interpreter.Lists bevat de lijsten die door de interpeter gebruikt worden.
-Het package ar.oberon0.interpreter.Memory bevat de klassen die op runtime het geheugen beheren.
-Het package ar.oberon0.interpreter.Operators bevat de klassen die operaties uitvoeren.
-Het package ar.oberon0.interpreter.Procedure bevat de klassen die nodig zijn voor een procedure call.
 
 Om zowel call by value en call by reference mogelijk te maken is ervoor gekozen om een DataField klasse te gebruiken.
 De DataField klasse bevat een DataType. Een DataType is een oberon 0 DataType, bijvoorbeeld een integer.

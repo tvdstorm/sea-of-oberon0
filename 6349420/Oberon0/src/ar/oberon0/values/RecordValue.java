@@ -1,7 +1,9 @@
 package ar.oberon0.values;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import ar.oberon0.ast.dataTypes.CreatableType;
 import ar.oberon0.runtime.Context;
@@ -15,6 +17,10 @@ public class RecordValue implements Value {
 
 	public DataField getMember(String name) {
 		return members.get(name);
+	}
+
+	public Iterator<Entry<String, DataField>> getMembers() {
+		return members.entrySet().iterator();
 	}
 
 	public RecordValue(CreatableType type) {
