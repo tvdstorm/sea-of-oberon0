@@ -33,4 +33,8 @@ private HashMap<String, Reference> _fields;
 	public IValue getCopy() {
 		return new RecordValue(_fields);
 	}
+	
+	public HashMap<String, Reference> getFields(){
+		return _fields;
+	}
 }
