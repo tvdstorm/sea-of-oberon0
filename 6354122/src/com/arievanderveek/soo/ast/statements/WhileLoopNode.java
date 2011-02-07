@@ -7,10 +7,12 @@ import java.util.List;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
-import com.arievanderveek.soo.symboltable.Scope;
+import com.arievanderveek.soo.runtime.Scope;
 import com.arievanderveek.soo.util.Constants;
 
 /**
+ * Represents a while loop
+ * 
  * @author arieveek
  * 
  */
@@ -46,6 +48,15 @@ public class WhileLoopNode implements ASTNode {
 		return null;
 	}
 
+	/**
+	 * Checks if the condition of the while loop evaluates to true
+	 * 
+	 * @param scope
+	 *            the currents scope
+	 * @return true if the condition evaluates to true, otherwise false
+	 * @throws SeaOfOberonException
+	 *             if the evaluation does not result in a boolean value.
+	 */
 	private boolean conditionIsTrue(Scope scope) throws SeaOfOberonException {
 		// 0 = false and 1 = true and anything else is exception
 		Integer resolvedCondition = condition.interpret(scope);
@@ -54,9 +65,8 @@ public class WhileLoopNode implements ASTNode {
 		} else if (resolvedCondition == 1) {
 			return true;
 		} else {
-			throw new SeaOfOberonException(
-					"Result of boolean expression not 1 or 0. "
-							+ resolvedCondition);
+			throw new SeaOfOberonException("Result of boolean expression not 1 or 0. "
+					+ resolvedCondition);
 		}
 	}
 
