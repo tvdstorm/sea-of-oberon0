@@ -15,7 +15,7 @@ public class QuicksortQuickcheck {
 	{
 		//quicksorttest.oberon0 is quicksort with Read replaced by ReadRandom
 		String filename ="oberonfiles/quicksorttest.oberon0";
-	    quickcheckQuicksort(1000, filename);    
+	    quickcheckQuicksort(10000, filename);    
 	}
 	
 	/*

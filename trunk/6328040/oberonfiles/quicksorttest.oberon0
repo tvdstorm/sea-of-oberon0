@@ -1,7 +1,7 @@
 MODULE QuickSort;
 
 CONST
-  INPUTLENGTH = 5;
+  INPUTLENGTH = 299;
 
 VAR
   input: ARRAY INPUTLENGTH OF INTEGER;
@@ -53,16 +53,12 @@ BEGIN
  i := 0;
  WHILE i < INPUTLENGTH DO
    ReadRandom(input[i]);
-   Write(input[i]);
-   WriteLn;
    i := i + 1
  END;
  WriteLn;
  QuickSort(input, 0, INPUTLENGTH - 1);
  i := 0;
  WHILE i < INPUTLENGTH DO
-   Write(input[i]);
-   WriteLn;
    i := i + 1
  END
 END QuickSort.
