@@ -9,11 +9,11 @@ import uva.oberon0.runtime.Scope;
 public class If extends Statement {
 	private final Expression _ifExpression;
 	private final StatementList _ifStatementList;
-	private final IfListForElsIf _elsIfList;
+	private final ElsIfList _elsIfList;
 	private final StatementList _elseStatementList;
 
 	public If(Expression ifExpression, StatementList ifStatements,
-			IfListForElsIf elsIfList, StatementList elseStatementList) {
+			ElsIfList elsIfList, StatementList elseStatementList) {
 		assert ifExpression != null : "No If Expression is available for the current If Statement!";
 		assert ifStatements != null : "No If Statement List is available for the current If Statement!";
 		assert elsIfList != null : "No ElsIf List is available for the current If Statement!";
@@ -30,7 +30,7 @@ public class If extends Statement {
 			return _ifStatementList.eval(scope);
 		}
 
-		for (IfPartForElsIf elsIf : _elsIfList) {
+		for (ElsIf elsIf : _elsIfList) {
 			if (elsIf.getExpression().eval(scope) == 1)
 				return elsIf.getStatementList().eval(scope);
 		}
