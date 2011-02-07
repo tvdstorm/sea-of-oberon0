@@ -3,7 +3,6 @@ package com.kootsjur.oberon.statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.kootsjur.oberon.declaration.StatementSequence;
 import com.kootsjur.oberon.evaluator.ExpressionEvaluator;
 
 public class IfStatement extends Statement

@@ -1,4 +1,4 @@
-package com.kootsjur.oberon.declaration;
+package com.kootsjur.oberon.declaration.constant;
 
 import java.util.HashMap;
 

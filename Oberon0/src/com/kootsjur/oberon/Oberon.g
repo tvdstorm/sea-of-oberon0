@@ -47,8 +47,8 @@ varDeclaration returns [List<VarDeclaration> lvd]
 identList returns [IdentList i] 
 	:  {$i = new IdentList();}	ident1=ident {$i.add($ident1.text);}(','ident2=ident {$i.add($ident2.text);})*;				
 		
-procedure returns [Procedure p] 
-	:	procedureHeading ';' procedureBody {$p = new Procedure($procedureHeading.ph, $procedureBody.pb);};
+procedure returns [ProcedureDeclaration p] 
+	:	procedureHeading ';' procedureBody {$p = new ProcedureDeclaration($procedureHeading.ph, $procedureBody.pb);};
 	
 procedureBody returns [ProcedureBody pb]
 	: {$pb = new ProcedureBody();}	

@@ -1,4 +1,4 @@
-package com.kootsjur.oberon.declaration;
+package com.kootsjur.oberon.declaration.type;
 
 import com.kootsjur.oberon.type.TypeDefinition;
 

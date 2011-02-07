@@ -1,26 +1,29 @@
-package com.kootsjur.oberon.declaration;
+package com.kootsjur.oberon.declaration.procedure;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.kootsjur.oberon.declaration.Declaration;
+import com.kootsjur.oberon.statement.StatementSequence;
 
 
 public class ProcedureBody
 {
    private List<Declaration> declarations;
-   private List<Procedure> procedures;
+   private List<ProcedureDeclaration> procedureDeclarations;
    private StatementSequence statementSequence;
    
    public ProcedureBody()
    {
       declarations = new ArrayList<Declaration>();
-      procedures = new ArrayList<Procedure>();
+      procedureDeclarations = new ArrayList<ProcedureDeclaration>();
       statementSequence = new StatementSequence();
    }
    
-   public boolean addProcedure(Procedure procedure)
+   public boolean addProcedure(ProcedureDeclaration procedureDeclaration)
    {
-      assert(procedures != null):"Erros procedures is not initialized!";
-      return procedures.add(procedure);
+      assert(procedureDeclarations != null):"Erros procedureDeclarations is not initialized!";
+      return procedureDeclarations.add(procedureDeclaration);
          
    }
    
@@ -42,13 +45,13 @@ public class ProcedureBody
       return statementSequence;
    }
    
-   public void setProcedures(List<Procedure> procedures)
+   public void setProcedures(List<ProcedureDeclaration> procedureDeclarations)
    {
-      this.procedures = procedures;
+      this.procedureDeclarations = procedureDeclarations;
    }
-   public List<Procedure> getProcedures()
+   public List<ProcedureDeclaration> getProcedures()
    {
-      return procedures;
+      return procedureDeclarations;
    }
 
 }

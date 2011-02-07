@@ -1,7 +1,11 @@
-package com.kootsjur.oberon.declaration;
+package com.kootsjur.oberon.declaration.module;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.kootsjur.oberon.declaration.Declaration;
+import com.kootsjur.oberon.declaration.procedure.ProcedureDeclaration;
+import com.kootsjur.oberon.statement.StatementSequence;
 
 
 
@@ -9,7 +13,7 @@ public class Module
 {
    private String name;
    private List<Declaration> declarations;
-   private List<Procedure> procedures;
+   private List<ProcedureDeclaration> procedureDeclarations;
    private StatementSequence statementSequence;
    
    /**
@@ -21,7 +25,7 @@ public class Module
    {
       this.name = name;
       declarations = new ArrayList<Declaration>();
-      procedures = new ArrayList<Procedure>();
+      procedureDeclarations = new ArrayList<ProcedureDeclaration>();
    }
    
    /**
@@ -56,13 +60,13 @@ public class Module
     * 
     * TODO
     * @param procedureName
-    * @param procedure
+    * @param procedureDeclaration
     */
-   public boolean addProcedure(Procedure procedure)
+   public boolean addProcedure(ProcedureDeclaration procedureDeclaration)
    {
-      assert(procedures != null):"Error procedures is not initialised";
+      assert(procedureDeclarations != null):"Error procedureDeclarations is not initialised";
       
-      return procedures.add(procedure);
+      return procedureDeclarations.add(procedureDeclaration);
       //TODO
    }
    
@@ -72,9 +76,9 @@ public class Module
     * @param procedureName
     * @return
     */
-   public Procedure getProcedure(String procedureName)
+   public ProcedureDeclaration getProcedure(String procedureName)
    {
-      if(procedures == null)
+      if(procedureDeclarations == null)
       {
          return null;
       }

@@ -1,8 +1,7 @@
-package com.kootsjur.oberon.declaration;
+package com.kootsjur.oberon.statement;
 
 import java.util.ArrayList;
 
-import com.kootsjur.oberon.statement.Statement;
 
 @SuppressWarnings("serial")
 public class StatementSequence extends ArrayList<Statement>
