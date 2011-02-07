@@ -98,8 +98,8 @@ selector
   ; 
 
 factor 
-  : identifier selector 
-  -> identifier selector
+  : identifier selector
+  -> identifier selector?
   | literal
   -> literal
   | '(' expression ')'
@@ -146,8 +146,8 @@ expression
   ;
   
 assignment
-  : selector ':=' expression
-  -> ^(ASSIGN selector expression)
+  : identifier selector ':=' expression
+  -> ^(ASSIGN identifier selector? expression)
   ;
  
 actualParameters
@@ -273,10 +273,6 @@ declarations
     typeDeclarations?
     varDeclarations? 
     (procedureDeclarations ';')*
-// -> ^(CONSTANTS constantDeclarations)?
-//    ^(TYPES typeDeclarations)?
-//    ^(VARIABLES varDeclarations)?
-//    ^(PROCEDURES procedureDeclarations*)?
  -> constantDeclarations?
     typeDeclarations?
     varDeclarations?
