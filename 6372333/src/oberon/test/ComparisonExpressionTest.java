@@ -9,15 +9,16 @@ import oberon.VariableManager;
 import oberon.data.VariableDataType;
 import oberon.exceptions.UnsupportedException;
 import oberon.exceptions.VariableNotFoundInScopeException;
+import oberon.expressions.AddOperator;
 import oberon.expressions.AndOperator;
 import oberon.expressions.ComparisonExpression;
 import oberon.expressions.EqualsOperator;
 import oberon.expressions.GreaterEqualsOperator;
 import oberon.expressions.GreaterThanOperator;
-import oberon.expressions.IComparisonOperatorImplementation;
+import oberon.expressions.IComparisonOperator;
 import oberon.expressions.IntegerExpression;
 import oberon.expressions.MathematicalExpression;
-import oberon.expressions.MathematicalExpressionType;
+import oberon.expressions.MulOperator;
 import oberon.expressions.NotEqualsOperator;
 import oberon.expressions.ParenthesesExpression;
 import oberon.expressions.SmallerEqualsOperator;
@@ -77,7 +78,7 @@ public class ComparisonExpressionTest extends AbstractTest {
 	}
 
 	private int testComparisonExpression(
-			int leftSide, int rightSide, IComparisonOperatorImplementation expressionType)
+			int leftSide, int rightSide, IComparisonOperator expressionType)
 			throws UnsupportedException, VariableNotFoundInScopeException,
 			IOException {
 		IExpression expToTest = new ComparisonExpression(
@@ -104,19 +105,19 @@ public class ComparisonExpressionTest extends AbstractTest {
 		IExpression parenthesesContent = new MathematicalExpression(
 				new IntegerExpression(1),
 				new IntegerExpression(3), 
-				MathematicalExpressionType.Mul);
+				new MulOperator());
 		
 		IExpression parenExp = new ParenthesesExpression(parenthesesContent);
 		
 		IExpression multExp = new MathematicalExpression(
 				new IntegerExpression(2),
 				new IntegerExpression(4), 
-				MathematicalExpressionType.Mul);
+				new MulOperator());
 		
 		IExpression addExp = new MathematicalExpression(
 				parenExp,
 				multExp, 
-				MathematicalExpressionType.Add);
+				new AddOperator());
 		
 		IStatement testStatement = getAssignmentStatement("result", addExp);
 

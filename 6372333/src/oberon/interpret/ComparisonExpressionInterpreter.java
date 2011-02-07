@@ -6,7 +6,7 @@ import oberon.expressions.ComparisonExpression;
 import oberon.expressions.EqualsOperator;
 import oberon.expressions.GreaterEqualsOperator;
 import oberon.expressions.GreaterThanOperator;
-import oberon.expressions.IComparisonOperatorImplementation;
+import oberon.expressions.IComparisonOperator;
 import oberon.expressions.NotEqualsOperator;
 import oberon.expressions.SmallerEqualsOperator;
 import oberon.expressions.SmallerThanOperator;
@@ -31,7 +31,7 @@ public class ComparisonExpressionInterpreter extends AbstractBaseInterpreter<IEx
 	private IExpression right;
 	
 	/** The type. */
-	private IComparisonOperatorImplementation operatorImplementation;
+	private IComparisonOperator operatorImplementation;
 
 	/* (non-Javadoc)
 	 * @see oberon.analysis.DepthFirstAdapter#caseAExeqExp(oberon.node.AExeqExp)

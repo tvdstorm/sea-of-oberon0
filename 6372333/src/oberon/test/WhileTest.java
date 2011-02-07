@@ -11,7 +11,7 @@ import oberon.VariableManager;
 import oberon.data.VariableDataType;
 import oberon.exceptions.UnsupportedException;
 import oberon.exceptions.VariableNotFoundInScopeException;
-import oberon.expressions.MathematicalExpressionType;
+import oberon.expressions.AddOperator;
 import oberon.expressions.SmallerThanOperator;
 import oberon.statement.WhileStatement;
 
@@ -27,7 +27,7 @@ public class WhileTest extends AbstractTest {
 		
 		LinkedList<IStatement> statementList = new LinkedList<IStatement>();
 		//Get the expression, "i + 1"
-		IExpression expression = getNewMathematicalExpression("i", 1, MathematicalExpressionType.Add);
+		IExpression expression = getNewMathematicalExpression("i", 1, new AddOperator());
 		//Assign the result of the statement, "i = i + 1"
 		IStatement statement = getAssignmentStatement("i", expression);
 		
@@ -55,7 +55,7 @@ public class WhileTest extends AbstractTest {
 		
 		LinkedList<IStatement> statementList = new LinkedList<IStatement>();
 		//Get the expression, "i + 1"
-		IExpression expression = getNewMathematicalExpression("i", 1, MathematicalExpressionType.Add);
+		IExpression expression = getNewMathematicalExpression("i", 1, new AddOperator());
 		//Assign the result of the statement, "i = i + 1"
 		IStatement statement = getAssignmentStatement("i", expression);
 		

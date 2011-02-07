@@ -1,8 +1,13 @@
 package oberon.interpret;
 
 import oberon.IExpression;
+import oberon.expressions.AddOperator;
+import oberon.expressions.DivOperator;
+import oberon.expressions.IMathematicalOperator;
 import oberon.expressions.MathematicalExpression;
-import oberon.expressions.MathematicalExpressionType;
+import oberon.expressions.ModOperator;
+import oberon.expressions.MulOperator;
+import oberon.expressions.SubOperator;
 import oberon.node.AAddExp;
 import oberon.node.ADivExp;
 import oberon.node.AModExp;
@@ -21,7 +26,7 @@ public class MathematicalExpressionInterpreter extends AbstractBaseInterpreter<I
 	private IExpression right;
 	
 	/** The type. */
-	private MathematicalExpressionType type;
+	private IMathematicalOperator operator;
 	
 	/* (non-Javadoc)
 	 * @see oberon.analysis.DepthFirstAdapter#caseASubExp(oberon.node.ASubExp)
@@ -31,7 +36,7 @@ public class MathematicalExpressionInterpreter extends AbstractBaseInterpreter<I
 	{
 		left = ExpInterpreterFactory.getExpression(node.getLeft());
 		right = ExpInterpreterFactory.getExpression(node.getRight());
-		type = MathematicalExpressionType.Sub;
+		operator = new SubOperator();
 	}
 
 	/* (non-Javadoc)
@@ -42,7 +47,7 @@ public class MathematicalExpressionInterpreter extends AbstractBaseInterpreter<I
 	{
 		left = ExpInterpreterFactory.getExpression(node.getLeft());
 		right = ExpInterpreterFactory.getExpression(node.getRight());
-		type = MathematicalExpressionType.Add;
+		operator = new AddOperator();
 	}
 
 	/* (non-Javadoc)
@@ -53,7 +58,7 @@ public class MathematicalExpressionInterpreter extends AbstractBaseInterpreter<I
 	{
 		left = ExpInterpreterFactory.getExpression(node.getLeft());
 		right = ExpInterpreterFactory.getExpression(node.getRight());
-		type = MathematicalExpressionType.Div;
+		operator = new DivOperator();
 	}	
 
 	/* (non-Javadoc)
@@ -64,7 +69,7 @@ public class MathematicalExpressionInterpreter extends AbstractBaseInterpreter<I
 	{
 		left = ExpInterpreterFactory.getExpression(node.getLeft());
 		right = ExpInterpreterFactory.getExpression(node.getRight());
-		type = MathematicalExpressionType.Mod;
+		operator = new ModOperator();
 	}
 
 	/* (non-Javadoc)
@@ -75,7 +80,7 @@ public class MathematicalExpressionInterpreter extends AbstractBaseInterpreter<I
 	{
 		left = ExpInterpreterFactory.getExpression(node.getLeft());
 		right = ExpInterpreterFactory.getExpression(node.getRight());
-		type = MathematicalExpressionType.Mul;
+		operator = new MulOperator();
 	}
 	
 	/* (non-Javadoc)
@@ -83,7 +88,7 @@ public class MathematicalExpressionInterpreter extends AbstractBaseInterpreter<I
 	 */
 	@Override
 	public IExpression buildInterpreterResult() {
-		return new MathematicalExpression(left, right, type);
+		return new MathematicalExpression(left, right, operator);
 	}
 
 }
