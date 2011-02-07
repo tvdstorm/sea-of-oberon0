@@ -13,6 +13,8 @@ public class FormalParamSection {
 	
 	/** The param type. */
 	private final FormalParamType paramType;
+
+	private Boolean shouldBeCalledByRef;
 	
 	/**
 	 * Instantiates a new formal param section.
@@ -24,6 +26,7 @@ public class FormalParamSection {
 	public FormalParamSection(final List<String> names, final FormalParamType type, Boolean callByRef) {
 		paramType = type;
 		paramNames = names;
+		shouldBeCalledByRef = callByRef;
 	}
 	
 	/**
@@ -42,5 +45,9 @@ public class FormalParamSection {
 	 */
 	public FormalParamType getType() {
 		return paramType;
+	}
+
+	public boolean shouldBeCalledByRef() {
+		return shouldBeCalledByRef;
 	}
 }
