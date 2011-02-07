@@ -19,8 +19,6 @@ import static org.junit.Assert.*;
  */
 public class ExpressionVisitorTest {
 
-	private static Logger LOG = LoggerFactory.getLogger(ExpressionVisitorTest.class);
-
 	private ExpressionVisitor instance;
 	private Environment env;
 
@@ -34,7 +32,6 @@ public class ExpressionVisitorTest {
 
 	@Test
 	public void testVisitValueExpNode() {
-		LOG.info("Testing eval ValueExpNode");
 
 		// Test with an integer value
 		ValueExpNode intNode = new ValueExpNode(new Int(2));
@@ -52,7 +49,6 @@ public class ExpressionVisitorTest {
 
 	@Test
 	public void testVisitPlusExpNode() {
-		LOG.info("Testing eval PlusExpNode");
 
 		// Test with two integer values
 		PlusExpNode nodeInt = new PlusExpNode(new ValueExpNode(new Int(2)), new ValueExpNode(new Int(3)));
@@ -73,7 +69,6 @@ public class ExpressionVisitorTest {
 
 	@Test
 	public void testVisitMinusExpNode() {
-		LOG.info("Testing eval MinusExpNode");
 
 		// Test with two integer values
 		MinusExpNode nodeInt = new MinusExpNode(new ValueExpNode(new Int(8)), new ValueExpNode(new Int(3)));
@@ -84,7 +79,6 @@ public class ExpressionVisitorTest {
 
 	@Test
 	public void testVisitMultiplyExpNode() {
-		LOG.info("Testing eval MultiplyExpNode");
 
 		// Test with two integer values
 		MultiplyExpNode nodeInt = new MultiplyExpNode(new ValueExpNode(new Int(3)), new ValueExpNode(new Int(3)));
@@ -95,7 +89,6 @@ public class ExpressionVisitorTest {
 
 	@Test
 	public void testVisitDivideExpNode() {
-		LOG.info("Testing eval DivideExpNode");
 
 		// Test with two integer values
 		DivideExpNode nodeInt = new DivideExpNode(new ValueExpNode(new Int(9)), new ValueExpNode(new Int(3)));
@@ -106,16 +99,14 @@ public class ExpressionVisitorTest {
 
 	@Test(expected= DivideByZeroException.class)
 	public void testVisitDivideExpNodeWithZero() {
-		LOG.info("Testing eval DivideExpNode for a DivivdeByZeroException");
 
 		// Test with two integer values
 		DivideExpNode nodeInt = new DivideExpNode(new ValueExpNode(new Int(9)), new ValueExpNode(new Int(0)));
-		Integer resultInt = instance.eval(nodeInt, null);
+		instance.eval(nodeInt, null);
 	}
 
 	@Test
 	public void testVisitModuloExpNode() {
-		LOG.info("Testing eval ModuloExpNode");
 
 		// Test with two integer values
 		ModuloExpNode nodeInt = new ModuloExpNode(new ValueExpNode(new Int(9)), new ValueExpNode(new Int(7)));
@@ -126,16 +117,14 @@ public class ExpressionVisitorTest {
 
 	@Test(expected= ModuloZeroException.class)
 	public void testVisitModuloExpNodeWithZero() {
-		LOG.info("Testing eval ModuloExpNode for a ModuloZeroException");
 
 		// Test with two integer values
 		ModuloExpNode nodeInt = new ModuloExpNode(new ValueExpNode(new Int(9)), new ValueExpNode(new Int(0)));
-		Integer resultInt = instance.eval(nodeInt, null);
+		instance.eval(nodeInt, null);
 	}
 
 	@Test
 	public void testVisitEqualsExpNode() {
-		LOG.info("Testing eval EqualsExpNode");
 
 		// Test with two integer values that are equal
 		EqualsExpNode nodeTrue = new EqualsExpNode(new ValueExpNode(new Int(3)), new ValueExpNode(new Int(3)));
@@ -168,7 +157,6 @@ public class ExpressionVisitorTest {
 
 	@Test
 	public void testVisitGreaterExpNode() {
-		LOG.info("Testing eval GreaterExpNode");
 
 		// Test with two integer values where the left is greater
 		GreaterExpNode nodeTrue = new GreaterExpNode(new ValueExpNode(new Int(4)), new ValueExpNode(new Int(3)));
@@ -188,7 +176,6 @@ public class ExpressionVisitorTest {
 
 	@Test
 	public void testVisitGreaterOrEqualsExpNode() {
-		LOG.info("Testing eval GreaterOrEqualsExpNode");
 
 		// Test with two integer values where the left is greater
 		GreaterOrEqualsExpNode nodeTrue = new GreaterOrEqualsExpNode(new ValueExpNode(new Int(4)), new ValueExpNode(new Int(3)));
@@ -208,7 +195,6 @@ public class ExpressionVisitorTest {
 
 	@Test
 	public void testVisitLesserExpNode() {
-		LOG.info("Testing eval LesserExpNode");
 
 		// Test with two integer values where the left is lesser
 		LesserExpNode nodeTrue = new LesserExpNode(new ValueExpNode(new Int(3)), new ValueExpNode(new Int(4)));
@@ -228,7 +214,6 @@ public class ExpressionVisitorTest {
 
 	@Test
 	public void testVisitLesserOrEqualsExpNode() {
-		LOG.info("Testing eval LesserOrEqualsExpNode");
 
 		// Test with two integer values where the left is lesser
 		LesserOrEqualsExpNode nodeTrue = new LesserOrEqualsExpNode(new ValueExpNode(new Int(3)), new ValueExpNode(new Int(4)));
