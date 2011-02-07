@@ -203,13 +203,15 @@ factor returns [ExpressionNode result]
 	|	TILDE f=factor									{ $result = $f.result; }
 	;
 
-identSelector
-	:	identifier selector*
+identSelector returns [IdentSelectorNode result]
+	:	i=identifier									{ $result = new IdentSelectorNode($i.text); }
+			( s=selector								{ $result.addSelector($s.result); }
+			)*
 	;
 
-selector
-	:	DOT identifier
-	|	SQR_OPEN expression SQR_CLOSE
+selector returns [Selector result]
+	:	DOT i=identifier								{ $result = new Selector($i.text); }
+	|	SQR_OPEN expression SQR_CLOSE					{ $result = new Selector(null); }
 	;
 
 identifier
