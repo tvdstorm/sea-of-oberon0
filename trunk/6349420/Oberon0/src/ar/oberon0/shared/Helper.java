@@ -37,16 +37,8 @@ public final class Helper {
 			if (!(tempNode instanceof Interpretable)) {
 				return null;
 			}
-			// this try catch can't go wrong because the type is checked in
-			// the if statement.
-			// its mandatory in java to catch the cast exception so this try
-			// catch is needed.
-			try {
-				tempNode = ((Interpretable) tempNode).interpret(context);
-			} catch (TechnicalException e) {
-				// unreachable code.
-				e.printStackTrace();
-			}
+			tempNode = ((Interpretable) tempNode).interpret(context);
+
 		}
 		return (T) tempNode; // Caution because java uses type erasure with
 								// generics this cast is not compile time

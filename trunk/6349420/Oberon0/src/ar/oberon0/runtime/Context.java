@@ -130,6 +130,8 @@ public final class Context {
 			return this.variables.getItem(name);
 		} else if (itemExist(name, this.constants)) {
 			return this.constants.getItem(name).clone();
+		} else if (parentContext != null) {
+			return parentContext.getVarOrConstantAsDataField(name);
 		} else {
 			throw new TechnicalException("There was no variable or constant named " + name + " in the context.");
 		}
