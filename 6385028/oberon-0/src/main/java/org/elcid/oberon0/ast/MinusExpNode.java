@@ -27,7 +27,7 @@ public class MinusExpNode extends IntExpNode {
 	}
 
 	@Override
-	public Integer accept(BaseVisitor visitor, Environment localEnv) {
+	public Integer eval(BaseVisitor visitor, Environment localEnv) {
 		return visitor.eval(this, localEnv);
 	}
 
