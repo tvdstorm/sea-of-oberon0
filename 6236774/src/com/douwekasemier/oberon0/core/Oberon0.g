@@ -86,18 +86,20 @@ literal
   : integer
   ;
   
+subselector
+  : '.' identifier
+  -> ^(RECORDSELECTOR identifier)
+  | '[' expression ']'
+	-> ^(ARRAYSELECTOR expression)
+  ;
+  
 selector
-  : identifier
-  -> identifier
-  | identifier ('.' identifier)
-  -> ^(RECORDSELECTOR identifier identifier)
-  | identifier ('[' expression ']')
-  -> ^(ARRAYSELECTOR identifier expression)
+  : (subselector)*
   ; 
 
 factor 
-  : selector 
-  -> selector
+  : identifier selector 
+  -> identifier selector
   | literal
   -> literal
   | '(' expression ')'
@@ -211,8 +213,8 @@ arrayType
 
 field
   : (identifierList ':' type)?
-  -> identifierList type
-  ;
+  -> type identifierList
+  ; 
   
 recordType
   : RECORD field (';' field)* 'END'

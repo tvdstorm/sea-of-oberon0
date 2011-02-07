@@ -9,23 +9,25 @@ import com.douwekasemier.oberon0.ast.AbstractNode;
 import com.douwekasemier.oberon0.ast.Node;
 import com.douwekasemier.oberon0.core.Oberon0Parser;
 
-public class ReferenceParameterNode extends AbstractNode implements Node {
+public class ReferenceParameterNode extends ParameterNode implements Node {
 
-    private Node vartype;
-    private ArrayList<String> identifiers;
-    
     public ReferenceParameterNode(Tree node, Node parent) throws ASTGenerationException {
         super(node, parent);
-        
-        assert(type == Oberon0Parser.FORMALPARAMETER);
-        
+        reference = true;
+
+        assert (type == Oberon0Parser.FORMALPARAMETER);
+
         identifiers = new ArrayList<String>();
 
         // Var type
         Tree typeNode = node.getChild(1);
         switch (typeNode.getType()) {
             case Oberon0Parser.IDENTIFIER:
-                vartype = new VartypeIdentifierNode(typeNode, this);
+                if (typeNode.getText().equals("INTEGER")) {
+                    vartype = new VartypeIntegerNode(typeNode, this);
+                } else {
+                    throw new ASTGenerationException();
+                }
                 break;
             case Oberon0Parser.ARRAY:
                 vartype = new VartypeArrayNode(typeNode, this);

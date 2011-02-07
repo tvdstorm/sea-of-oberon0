@@ -1,5 +1,3 @@
 package com.douwekasemier.oberon0.interpreter.environment;
 
-public class Value {
-
-}
+public interface Value { }

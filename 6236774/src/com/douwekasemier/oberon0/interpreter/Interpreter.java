@@ -15,8 +15,9 @@ import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.TokenStream;
 import org.antlr.runtime.tree.Tree;
 
-import com.douwekasemier.oberon0.ast.*;
-import com.douwekasemier.oberon0.ast.nodes.*;
+import com.douwekasemier.oberon0.ast.ASTGenerationException;
+import com.douwekasemier.oberon0.ast.Node;
+import com.douwekasemier.oberon0.ast.nodes.ModuleNode;
 import com.douwekasemier.oberon0.core.Oberon0Lexer;
 import com.douwekasemier.oberon0.core.Oberon0Parser;
 import com.douwekasemier.oberon0.core.Oberon0Parser.module_return;
@@ -30,10 +31,10 @@ public class Interpreter {
     }
 
     /**
-     * 
+     *
      * Interpret the input file
-     * 
-     * @param file 
+     *
+     * @param file
      */
     public String interpret(File file, BufferedReader input, StringWriter output) {
         // Create and run the antlr lexer
@@ -63,15 +64,14 @@ public class Interpreter {
 
         // Runtime environment
         Environment environment = new Environment(input, new PrintWriter(output));
-        
+
         // Built-in functions
-        //environment.loadIOFunctions();
-        
+        environment.loadCoreFunctions();
+
         try {
             module.interpret(environment);
             return output.toString();
         } catch (Oberon0RuntimeException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return null;
@@ -79,7 +79,7 @@ public class Interpreter {
 
     /**
      * Create and run the antlr lexer
-     * 
+     *
      * @return
      * @throws IOException
      */
@@ -92,7 +92,7 @@ public class Interpreter {
 
     /**
      * Create and run the antlr parser
-     * 
+     *
      * @param lexer
      * @return
      */
@@ -104,7 +104,7 @@ public class Interpreter {
 
     /**
      * Generate our own AST which implements the Interpreter pattern
-     * 
+     *
      * @param parserOutput
      * @throws ASTGenerationException
      */
