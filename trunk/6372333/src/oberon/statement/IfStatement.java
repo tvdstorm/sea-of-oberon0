@@ -51,21 +51,18 @@ public class IfStatement implements IStatement {
 		Boolean bodyIsExecuted = false;
 		if (conditionIsTrue()) {
 			evalStatements();
-			bodyIsExecuted = true;
+			return;
 		}
-		else {
-			while (!elseIfBlocks.isEmpty()) {
-				final IfStatement nextElseIf = elseIfBlocks.poll();
-				if (nextElseIf.conditionIsTrue()) {
-					nextElseIf.evalStatements();
-					bodyIsExecuted = true;
-				}
+
+		while (!elseIfBlocks.isEmpty()) {
+			final IfStatement nextElseIf = elseIfBlocks.poll();
+			if (nextElseIf.conditionIsTrue()) {
+				nextElseIf.evalStatements();
+				return;
 			}
 		}
 		
-		if (!bodyIsExecuted) {
-			elseBody.eval();
-		}
+		elseBody.eval();
 	}
 
 	/**

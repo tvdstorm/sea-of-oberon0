@@ -176,14 +176,14 @@
 
         <Package name="oberon.expressions">
             <Stats>
-                <TotalClasses>10</TotalClasses>
-                <ConcreteClasses>8</ConcreteClasses>
-                <AbstractClasses>2</AbstractClasses>
+                <TotalClasses>17</TotalClasses>
+                <ConcreteClasses>14</ConcreteClasses>
+                <AbstractClasses>3</AbstractClasses>
                 <Ca>1</Ca>
                 <Ce>3</Ce>
-                <A>0.2</A>
+                <A>0.18</A>
                 <I>0.75</I>
-                <D>0.05</D>
+                <D>0.07</D>
                 <V>1</V>
             </Stats>
 
@@ -194,17 +194,29 @@
                 <Class sourceFile="AbstractLeftAndRightExpression.java">
                     oberon.expressions.AbstractLeftAndRightExpression
                 </Class>
+                <Class sourceFile="IComparisonOperatorImplementation.java">
+                    oberon.expressions.IComparisonOperatorImplementation
+                </Class>
             </AbstractClasses>
 
             <ConcreteClasses>
                 <Class sourceFile="AbstractIntegerExpression.java">
                     oberon.expressions.AbstractIntegerExpression
                 </Class>
+                <Class sourceFile="AndOperator.java">
+                    oberon.expressions.AndOperator
+                </Class>
                 <Class sourceFile="ComparisonExpression.java">
                     oberon.expressions.ComparisonExpression
                 </Class>
-                <Class sourceFile="ComparisonType.java">
-                    oberon.expressions.ComparisonType
+                <Class sourceFile="EqualsOperator.java">
+                    oberon.expressions.EqualsOperator
+                </Class>
+                <Class sourceFile="GreaterEqualsOperator.java">
+                    oberon.expressions.GreaterEqualsOperator
+                </Class>
+                <Class sourceFile="GreaterThanOperator.java">
+                    oberon.expressions.GreaterThanOperator
                 </Class>
                 <Class sourceFile="IdentifierExpression.java">
                     oberon.expressions.IdentifierExpression
@@ -218,8 +230,17 @@
                 <Class sourceFile="MathematicalExpressionType.java">
                     oberon.expressions.MathematicalExpressionType
                 </Class>
+                <Class sourceFile="NotEqualsOperator.java">
+                    oberon.expressions.NotEqualsOperator
+                </Class>
                 <Class sourceFile="ParenthesesExpression.java">
                     oberon.expressions.ParenthesesExpression
+                </Class>
+                <Class sourceFile="SmallerEqualsOperator.java">
+                    oberon.expressions.SmallerEqualsOperator
+                </Class>
+                <Class sourceFile="SmallerThanOperator.java">
+                    oberon.expressions.SmallerThanOperator
                 </Class>
             </ConcreteClasses>
 

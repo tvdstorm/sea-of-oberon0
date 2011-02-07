@@ -1,8 +1,15 @@
 package oberon.interpret;
 
 import oberon.IExpression;
+import oberon.expressions.AndOperator;
 import oberon.expressions.ComparisonExpression;
-import oberon.expressions.ComparisonType;
+import oberon.expressions.EqualsOperator;
+import oberon.expressions.GreaterEqualsOperator;
+import oberon.expressions.GreaterThanOperator;
+import oberon.expressions.IComparisonOperatorImplementation;
+import oberon.expressions.NotEqualsOperator;
+import oberon.expressions.SmallerEqualsOperator;
+import oberon.expressions.SmallerThanOperator;
 import oberon.node.AAmpExp;
 import oberon.node.AExeqExp;
 import oberon.node.AExgeExp;
@@ -24,7 +31,7 @@ public class ComparisonExpressionInterpreter extends AbstractBaseInterpreter<IEx
 	private IExpression right;
 	
 	/** The type. */
-	private ComparisonType type;
+	private IComparisonOperatorImplementation operatorImplementation;
 
 	/* (non-Javadoc)
 	 * @see oberon.analysis.DepthFirstAdapter#caseAExeqExp(oberon.node.AExeqExp)
@@ -34,7 +41,7 @@ public class ComparisonExpressionInterpreter extends AbstractBaseInterpreter<IEx
 	{
 		left = ExpInterpreterFactory.getExpression(node.getLeft());
 		right = ExpInterpreterFactory.getExpression(node.getRight());
-		type = ComparisonType.Exeq;
+		operatorImplementation = new EqualsOperator();
 	}
 
 	/* (non-Javadoc)
@@ -43,9 +50,10 @@ public class ComparisonExpressionInterpreter extends AbstractBaseInterpreter<IEx
 	@Override
 	public void caseAExhaExp(final AExhaExp node)
 	{
-		left = ExpInterpreterFactory.getExpression(node.getLeft());
-		right = ExpInterpreterFactory.getExpression(node.getRight());
-		type = ComparisonType.Exha;
+		//TODO: implement
+//		left = ExpInterpreterFactory.getExpression(node.getLeft());
+//		right = ExpInterpreterFactory.getExpression(node.getRight());
+//		type = ComparisonType.Exha;
 	}
 
 	/* (non-Javadoc)
@@ -56,7 +64,7 @@ public class ComparisonExpressionInterpreter extends AbstractBaseInterpreter<IEx
 	{
 		left = ExpInterpreterFactory.getExpression(node.getLeft());
 		right = ExpInterpreterFactory.getExpression(node.getRight());
-		type = ComparisonType.Amp;
+		operatorImplementation = new AndOperator();
 	}
 
 	/* (non-Javadoc)
@@ -67,7 +75,7 @@ public class ComparisonExpressionInterpreter extends AbstractBaseInterpreter<IEx
 	{
 		left = ExpInterpreterFactory.getExpression(node.getLeft());
 		right = ExpInterpreterFactory.getExpression(node.getRight());
-		type = ComparisonType.Exge;
+		operatorImplementation = new GreaterEqualsOperator();
 	}
 
 	/* (non-Javadoc)
@@ -78,7 +86,7 @@ public class ComparisonExpressionInterpreter extends AbstractBaseInterpreter<IEx
 	{
 		left = ExpInterpreterFactory.getExpression(node.getLeft());
 		right = ExpInterpreterFactory.getExpression(node.getRight());
-		type = ComparisonType.Exgt;
+		operatorImplementation = new GreaterThanOperator();
 	}
 
 	/* (non-Javadoc)
@@ -89,7 +97,7 @@ public class ComparisonExpressionInterpreter extends AbstractBaseInterpreter<IEx
 	{
 		left = ExpInterpreterFactory.getExpression(node.getLeft());
 		right = ExpInterpreterFactory.getExpression(node.getRight());
-		type = ComparisonType.Til;
+		operatorImplementation = new NotEqualsOperator();
 	}
 	
 	/* (non-Javadoc)
@@ -100,7 +108,7 @@ public class ComparisonExpressionInterpreter extends AbstractBaseInterpreter<IEx
 	{
 		left = ExpInterpreterFactory.getExpression(node.getLeft());
 		right = ExpInterpreterFactory.getExpression(node.getRight());
-		type = ComparisonType.Exst;
+		operatorImplementation = new SmallerThanOperator();
 	}
 	
 	/* (non-Javadoc)
@@ -111,7 +119,7 @@ public class ComparisonExpressionInterpreter extends AbstractBaseInterpreter<IEx
 	{
 		left = ExpInterpreterFactory.getExpression(node.getLeft());
 		right = ExpInterpreterFactory.getExpression(node.getRight());
-		type = ComparisonType.Exse;
+		operatorImplementation = new SmallerEqualsOperator();
 	}
 
 	/* (non-Javadoc)
@@ -119,7 +127,7 @@ public class ComparisonExpressionInterpreter extends AbstractBaseInterpreter<IEx
 	 */
 	@Override
 	public IExpression buildInterpreterResult() {
-		return new ComparisonExpression(left, right, type);
+		return new ComparisonExpression(left, right, operatorImplementation);
 	}
 
 }

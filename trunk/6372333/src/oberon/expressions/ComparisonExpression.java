@@ -8,9 +8,8 @@ import oberon.exceptions.VariableNotFoundInScopeException;
  * The Class ComparisonExpression, compares to expressions.
  */
 public class ComparisonExpression extends AbstractLeftAndRightExpression {
-
-	/** The comparison type. */
-	private final ComparisonType comparisonType;
+	
+	private final IComparisonOperatorImplementation evaluator;
 
 	/**
 	 * Instantiates a new comparison expression.
@@ -20,10 +19,10 @@ public class ComparisonExpression extends AbstractLeftAndRightExpression {
 	 * @param type the type of the expression
 	 */
 	public ComparisonExpression(final IExpression lefthandSide,
-			final IExpression righthandSide, final ComparisonType type) {
+			final IExpression righthandSide, final IComparisonOperatorImplementation expEvaluator) {
 		super(lefthandSide, righthandSide);
 		
-		comparisonType = type;
+		evaluator = expEvaluator;
 	}
 
 	/* (non-Javadoc)
@@ -34,32 +33,6 @@ public class ComparisonExpression extends AbstractLeftAndRightExpression {
 		final IExpression leftHandSide = getLefthandSide();
 		final IExpression rightHandSide = getRighthandSide();
 		
-		int result = 0;
-		switch(comparisonType) {
-		case Exeq:
-			result = booleanAsInt(leftHandSide.evalAsInt() == rightHandSide.evalAsInt());
-			break;
-		case Exge:
-			result = booleanAsInt(leftHandSide.evalAsInt() >= rightHandSide.evalAsInt());
-			break;
-		case Exgt:
-			result = booleanAsInt(leftHandSide.evalAsInt() > rightHandSide.evalAsInt());
-			break;
-		case Exse:
-			result = booleanAsInt(leftHandSide.evalAsInt() <= rightHandSide.evalAsInt());
-			break;
-		case Exst:
-			result = booleanAsInt(leftHandSide.evalAsInt() < rightHandSide.evalAsInt());
-			break;
-		case Amp:
-			result = booleanAsInt(leftHandSide.evalAsInt() == rightHandSide.evalAsInt());
-			break;
-		case Til:
-			result = booleanAsInt(leftHandSide.evalAsInt() != rightHandSide.evalAsInt());
-			break;
-		default:
-			throw new UnsupportedException("Unsupported comparison: "+ comparisonType.toString());
-		}
-		return result;
+		return booleanAsInt(evaluator.eval(leftHandSide.evalAsInt(), rightHandSide.evalAsInt()));
 	}
 }
