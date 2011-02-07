@@ -3,11 +3,11 @@ package oberon0.ast.expressions;
 import oberon0.environment.Context;
 import oberon0.environment.IValue;
 
-public abstract class BaseBiliteralExpressionNode implements IEvaluable{
+public abstract class BaseBinaryExpressionNode implements IEvaluable{
 	IEvaluable _lhsExpression;
 	IEvaluable _rhsExpression;
 
-	public BaseBiliteralExpressionNode(IEvaluable lhsExpression, IEvaluable rhsExpression) {
+	public BaseBinaryExpressionNode(IEvaluable lhsExpression, IEvaluable rhsExpression) {
 		_lhsExpression = lhsExpression;
 		_rhsExpression = rhsExpression;
 		
