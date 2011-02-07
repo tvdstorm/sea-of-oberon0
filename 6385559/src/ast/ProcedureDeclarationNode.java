@@ -18,6 +18,11 @@ public class ProcedureDeclarationNode implements ASTnode
     this.heading = heading;
     this.body = body;
   
+    if( this.heading == null || this.body == null )
+    {
+      errorhandler.Errorlog.addMessage( "Invalid procedure declaration found." );
+      return;
+    }
     String headerName = this.heading.getIdentifier( );
     String bodyName = this.body.getIdentifier( );
     if( !headerName.contentEquals( bodyName ) )

@@ -1,16 +1,22 @@
 MODULE Sample;
 CONST a = 5;
 TYPE bla = INTEGER;
-VAR b : bla;
+VAR b : RECORD b, v : INTEGER END; i : INTEGER;
 
-PROCEDURE x( VAR c : bla );
-VAR b : ARRAY 2 OF bla;
+PROCEDURE x( VAR y : RECORD b, v : INTEGER END; i : INTEGER );
+VAR b : INTEGER;
+
 BEGIN
-  c := 6;
+  WITH y DO
+    b := 10
+  END;
+  b := 4
 END x;
 
 BEGIN
-  b := 5;
-  x( b );
-  Write( b );
+  b.b := 4;
+  WITH b DO
+    b := 5;
+  END;
+  x( b, 6 );
 END Sample.
