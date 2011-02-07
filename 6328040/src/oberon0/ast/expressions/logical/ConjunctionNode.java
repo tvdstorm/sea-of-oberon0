@@ -1,12 +1,12 @@
 package oberon0.ast.expressions.logical;
 
-import oberon0.ast.expressions.BaseBiliteralExpressionNode;
+import oberon0.ast.expressions.BaseBinaryExpressionNode;
 import oberon0.ast.expressions.IEvaluable;
 import oberon0.environment.Context;
 import oberon0.environment.IValue;
 import oberon0.environment.BooleanValue;
 
-public class ConjunctionNode extends BaseBiliteralExpressionNode {
+public class ConjunctionNode extends BaseBinaryExpressionNode {
 
 	public ConjunctionNode(IEvaluable lhsExpression, IEvaluable rhsExpression) {
 		super(lhsExpression, rhsExpression);

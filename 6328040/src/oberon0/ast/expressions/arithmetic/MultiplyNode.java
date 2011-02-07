@@ -1,12 +1,12 @@
 package oberon0.ast.expressions.arithmetic;
 
-import oberon0.ast.expressions.BaseBiliteralExpressionNode;
+import oberon0.ast.expressions.BaseBinaryExpressionNode;
 import oberon0.ast.expressions.IEvaluable;
 import oberon0.environment.Context;
 import oberon0.environment.IValue;
 import oberon0.environment.IntegerValue;
 
-public class MultiplyNode extends BaseBiliteralExpressionNode {
+public class MultiplyNode extends BaseBinaryExpressionNode {
 
 	public MultiplyNode(IEvaluable lhsExpression,
 			IEvaluable rhsExpression) {
