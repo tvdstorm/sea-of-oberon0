@@ -27,6 +27,7 @@ public class ScopeValueInt extends ScopeValue {
 
 	@Override
 	public ScopeValue getValueBySelector(Scope scope, BaseNode selector) {
+		assert false : "Unsupported Selector Search.";
 		return null;
 	}
 }

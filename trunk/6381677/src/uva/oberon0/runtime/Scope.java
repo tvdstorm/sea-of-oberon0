@@ -193,7 +193,7 @@ public class Scope {
 		return callProcedure(id, callVars, this);
 	}
 
-	protected int callProcedure(ID id, ExpressionList callVars,
+	protected int callProcedure(ID id, ExpressionList actualParameterList,
 			Scope parentScope) {
 		// Retrieve procedure from hash in current Execution Scope.
 		Procedure procedure = _mapProcedures.get(id);
@@ -201,7 +201,7 @@ public class Scope {
 		// Determine procedure match in current Execution Scope.
 		if (procedure != null) {
 			// Create a new child Execution Scope for the Procedure Method Call.
-			Scope scope = new Scope(callVars, procedure, parentScope);
+			Scope scope = new Scope(actualParameterList, procedure, parentScope);
 			// Evaluate the Procedure Method Call.
 			return procedure.eval(scope);
 		}
