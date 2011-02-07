@@ -1,0 +1,42 @@
+MODULE TestModules;
+
+CONST
+  INPUTLENGTH = 5;
+
+VAR
+  input: ARRAY INPUTLENGTH OF INTEGER;
+  i: INTEGER;
+
+PROCEDURE test(array : ARRAY INPUTLENGTH OF INTEGER; max: INTEGER);
+   VAR i:INTEGER;
+  BEGIN
+   i:=0;
+    WHILE i < max DO
+   array[i] := array[i] + max;
+   i := i + 1
+   END;
+  END test;
+
+BEGIN
+
+ i := 0;
+ WHILE i < INPUTLENGTH DO
+   ReadRandom(input[i]);
+   Write(input[i]);
+   WriteLn;
+   i := i + 1
+ END;
+ WriteLn;
+
+test(input, INPUTLENGTH);
+
+ i := 0;
+ WHILE i < INPUTLENGTH DO
+   Write(input[i]);
+   WriteLn;
+   i := i + 1
+ END;
+ WriteLn;
+ 
+END TestModules.
+

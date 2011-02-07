@@ -6,8 +6,10 @@ public class RecordValue implements IValue{
 private HashMap<String, Reference> _fields;
 	
 	public RecordValue(HashMap<String, Reference> values){
-		_fields = values;
-
+		_fields = new HashMap<String, Reference>();
+		for (String name: values.keySet()){
+			_fields.put(name, values.get(name).getCopy());
+		}
 	}
 	
 	public Reference getReference(String key){
@@ -25,5 +27,10 @@ private HashMap<String, Reference> _fields;
 			buffer += currentKey+ "=" + _fields.get(currentKey).toString() +" ";
 		}
 		return buffer + " ] ";
+	}
+
+	@Override
+	public IValue getCopy() {
+		return new RecordValue(_fields);
 	}
 }

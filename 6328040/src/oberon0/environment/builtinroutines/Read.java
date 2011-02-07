@@ -25,7 +25,7 @@ public class Read implements ICallable{
 		//get the first parameter
 		IReferable actualParam = actualParameters.get(0);
 		//get the reference of the first paramter
-		Reference ref= actualParam.refer(context, IReferable.noPreviousReference);
+		Reference ref= actualParam.getRef(context, IReferable.noPreviousReference);
 		
 		//get input from user:
 		String line = "";
