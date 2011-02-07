@@ -32,13 +32,10 @@ public class Context {
 	 * Get a reference from the variable scope with the given name
 	 */
 	public Reference getReference(String name){
-		if (!containsVariable(name)){
-			if (_parent != noParent){
-				return _parent.getReference(name);
-			}
-			throw new RuntimeException("'"+ name + "' is not in scope");
+		if (containsVariable(name)){
+			return _variables.get(name);
 		}
-		return _variables.get(name);
+		throw new RuntimeException("'"+ name + "' is not in scope");
 	}
 	
 	/*

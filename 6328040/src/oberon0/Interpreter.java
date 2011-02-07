@@ -29,7 +29,9 @@ public class Interpreter {
 		TokenRewriteStream tokens = new TokenRewriteStream(lex);
 		Oberon0Parser parser = new Oberon0Parser(tokens);
         
+		//the start node
 		ModuleNode module = null;
+		
 		//start parsing
 		try {
 			module = (ModuleNode) parser.module();
