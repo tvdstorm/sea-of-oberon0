@@ -32,4 +32,20 @@ public class WithStatement extends Statement
 		// Run the body of the with block
 		body.run(withEnvironment);
 	}
+	@Override
+	public void typeCheck(RuntimeEnvironment environment) throws RuntimeException
+	{
+		assert(environment != null);
+		// Evaluate the selector
+		Record selectorValue = selector.typeCheck(environment).castToRecord();
+		// Create a new environment to use in the with block
+		RuntimeEnvironment withEnvironment = new RuntimeEnvironment(environment);
+		// Register all members of the record in the new environment
+		for (String memberName : selectorValue.getMemberNames())
+		{
+			withEnvironment.registerVariable(memberName, new Reference(selectorValue.getMemberValue(memberName)));
+		}
+		// Run the body of the with block
+		body.typeCheck(withEnvironment);
+	}
 }
