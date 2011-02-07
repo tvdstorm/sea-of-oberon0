@@ -1,7 +1,7 @@
 package oberon.exceptions;
 
 
-public class UnsupportedException extends Exception {
+public class UnsupportedException extends RuntimeException {
 
 	  /**
 	 * 

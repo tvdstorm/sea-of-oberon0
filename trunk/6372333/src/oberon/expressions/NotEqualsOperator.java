@@ -1,6 +1,6 @@
 package oberon.expressions;
 
-public class NotEqualsOperator implements IComparisonOperatorImplementation {
+public class NotEqualsOperator implements IComparisonOperator {
 
 	public NotEqualsOperator() {}
 	

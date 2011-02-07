@@ -1,6 +1,6 @@
 package oberon.exceptions;
 
-public class VariableNotFoundInScopeException extends Exception {
+public class VariableNotFoundInScopeException extends RuntimeException {
 
 	public VariableNotFoundInScopeException(String variableName){
 		super("Variable was not found in current scope, variable name: " + variableName);

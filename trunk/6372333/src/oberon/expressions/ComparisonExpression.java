@@ -1,15 +1,13 @@
 package oberon.expressions;
 
 import oberon.IExpression;
-import oberon.exceptions.UnsupportedException;
-import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
  * The Class ComparisonExpression, compares to expressions.
  */
 public class ComparisonExpression extends AbstractLeftAndRightExpression {
 	
-	private final IComparisonOperatorImplementation evaluator;
+	private final IComparisonOperator evaluator;
 
 	/**
 	 * Instantiates a new comparison expression.
@@ -19,7 +17,7 @@ public class ComparisonExpression extends AbstractLeftAndRightExpression {
 	 * @param type the type of the expression
 	 */
 	public ComparisonExpression(final IExpression lefthandSide,
-			final IExpression righthandSide, final IComparisonOperatorImplementation expEvaluator) {
+			final IExpression righthandSide, final IComparisonOperator expEvaluator) {
 		super(lefthandSide, righthandSide);
 		
 		evaluator = expEvaluator;
@@ -29,7 +27,7 @@ public class ComparisonExpression extends AbstractLeftAndRightExpression {
 	 * @see oberon.expressions.AbstractExpression#evalAsInt()
 	 */
 	@Override
-	public int evalAsInt() throws UnsupportedException, VariableNotFoundInScopeException {
+	public int evalAsInt() {
 		final IExpression leftHandSide = getLefthandSide();
 		final IExpression rightHandSide = getRighthandSide();
 		

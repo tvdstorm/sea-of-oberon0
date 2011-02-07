@@ -1,8 +1,6 @@
 package oberon.expressions;
 
 import oberon.IExpression;
-import oberon.exceptions.UnsupportedException;
-import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
  * The Class MathematicalExpression, class for all mathematical oriented expressions.
@@ -10,7 +8,7 @@ import oberon.exceptions.VariableNotFoundInScopeException;
 public class MathematicalExpression extends AbstractLeftAndRightExpression {
 	
 	/** The expression type. */
-	private final MathematicalExpressionType expressionType;
+	private final IMathematicalOperator operatorImplementation;
 
 	/**
 	 * Instantiates a new mathematical expression.
@@ -20,41 +18,20 @@ public class MathematicalExpression extends AbstractLeftAndRightExpression {
 	 * @param type the type of the expression
 	 */
 	public MathematicalExpression(final IExpression lefthandSide,
-			final IExpression righthandSide, final MathematicalExpressionType type) {
+			final IExpression righthandSide, final IMathematicalOperator operator) {
 		super(lefthandSide, righthandSide);
-		expressionType = type;
+		operatorImplementation = operator;
 	}
 
 	/* (non-Javadoc)
 	 * @see oberon.expressions.AbstractExpression#evalAsInt()
 	 */
 	@Override
-	public int evalAsInt() throws UnsupportedException, VariableNotFoundInScopeException {
-		int result = 0;
+	public int evalAsInt() {
 		final int left = getLefthandSide().evalAsInt();
 		final int right = getRighthandSide().evalAsInt();
 		
-		switch (expressionType) {
-		case Add:
-			result = left + right;
-			break;
-		case Div: 
-			result = left / right;
-			break;
-		case Mod:
-			result = left % right;
-			break;
-		case Mul:
-			result = left * right;
-			break;
-		case Sub: 
-			result = left - right;
-			break;
-		default:
-			throw new UnsupportedException("Unsupported comparison: "+ expressionType.toString());
-		}
-		
-		return result;
+		return operatorImplementation.eval(left, right);
 	}
 
 }

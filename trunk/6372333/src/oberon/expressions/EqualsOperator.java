@@ -1,7 +1,7 @@
 package oberon.expressions;
 
 
-public class EqualsOperator implements IComparisonOperatorImplementation {
+public class EqualsOperator implements IComparisonOperator {
 
 	public EqualsOperator() {} 
 	

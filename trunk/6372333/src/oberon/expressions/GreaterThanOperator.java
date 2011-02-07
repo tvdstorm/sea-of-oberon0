@@ -1,6 +1,6 @@
 package oberon.expressions;
 
-public class GreaterThanOperator implements IComparisonOperatorImplementation {
+public class GreaterThanOperator implements IComparisonOperator {
 	
 	public GreaterThanOperator() {}
 	

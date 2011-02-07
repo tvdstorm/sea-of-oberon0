@@ -14,11 +14,11 @@ import oberon.data.VariableIdentifier;
 import oberon.exceptions.UnsupportedException;
 import oberon.exceptions.VariableNotFoundInScopeException;
 import oberon.expressions.ComparisonExpression;
-import oberon.expressions.IComparisonOperatorImplementation;
+import oberon.expressions.IComparisonOperator;
+import oberon.expressions.IMathematicalOperator;
 import oberon.expressions.IdentifierExpression;
 import oberon.expressions.IntegerExpression;
 import oberon.expressions.MathematicalExpression;
-import oberon.expressions.MathematicalExpressionType;
 import oberon.procedures.Declaration;
 import oberon.procedures.FormalParamSection;
 import oberon.procedures.ProcedureBody;
@@ -49,15 +49,15 @@ public abstract class AbstractTest {
 	}
 
 	protected IExpression getNewMathematicalExpression(String variableName, int value,
-			MathematicalExpressionType type) {
+			IMathematicalOperator operator) {
 				return new MathematicalExpression(new IdentifierExpression(
 						new VariableIdentifier(variableName)), 
 						new IntegerExpression(value), 
-						type);
+						operator);
 			}
 
 	protected IExpression getNewComparisonExpression(String variableName, int value,
-			IComparisonOperatorImplementation operatorImplementation) {
+			IComparisonOperator operatorImplementation) {
 				return new ComparisonExpression(new IdentifierExpression(
 						new VariableIdentifier(variableName)), 
 						new IntegerExpression(value), 
