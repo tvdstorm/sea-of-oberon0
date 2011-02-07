@@ -8,15 +8,15 @@ import org.elcid.oberon0.exceptions.UnboundVariableException;
  *
  * @author Pieter Brandwijk
  */
-public class IntVariable extends Value {
+public class Variable extends Value {
 
 	private String name;
 
-	public IntVariable(String name, Integer value, Environment env) {
+	public Variable(String name) {
 		this.name = name;
-		env.put(name, value);
 	}
 
+	@Override
 	public Integer getValue(Environment localEnv) {
 		Integer value = localEnv.getValue(name);
 		if (value == null)
