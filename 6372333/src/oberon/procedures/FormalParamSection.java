@@ -19,8 +19,9 @@ public class FormalParamSection {
 	 *
 	 * @param names the names of the parameters
 	 * @param type the type of parameter
+	 * @param callByRef determines if the variables should be called by ref or value
 	 */
-	public FormalParamSection(final List<String> names, final FormalParamType type) {
+	public FormalParamSection(final List<String> names, final FormalParamType type, Boolean callByRef) {
 		paramType = type;
 		paramNames = names;
 	}

@@ -59,10 +59,10 @@ class ReadProcedure implements IStatement {
 		final List<FormalParamSection> params = new ArrayList<FormalParamSection>();
 		List<String> paramNames = new ArrayList<String>();
 		paramNames.add("i");
-		params.add(new FormalParamSection(paramNames, FormalParamType.Identifier));
+		params.add(new FormalParamSection(paramNames, FormalParamType.Identifier, false));
 		paramNames = new ArrayList<String>();
 		paramNames.add("input");
-		params.add(new FormalParamSection(paramNames, FormalParamType.Array));
+		params.add(new FormalParamSection(paramNames, FormalParamType.Array, false));
 		
 		final LinkedList<IStatement> statements = new LinkedList<IStatement>();
 		statements.add(new ReadProcedure());

@@ -42,7 +42,7 @@ public class ModuleInterpreter extends AbstractBaseInterpreter<ProcedureHeading>
 	public ProcedureHeading buildInterpreterResult() {
 		final List<FormalParamSection> params = new ArrayList<FormalParamSection>();
 		final List<String> paramNames = new ArrayList<String>();
-		params.add(new FormalParamSection(paramNames, FormalParamType.Identifier));
+		params.add(new FormalParamSection(paramNames, FormalParamType.Identifier, false));
 		
 		final ProcedureBody body = new ProcedureBody(declaration, moduleBody);
 		return new ProcedureHeading("Main", params, body);
