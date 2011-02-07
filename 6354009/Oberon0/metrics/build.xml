@@ -1,11 +1,13 @@
 <project name="Oberon0 Metrics">
 
-	<taskdef name="javancss" classname="javancss.JavancssAntTask" classpath="../../../../javancss-32.53/lib/javancss.jar"/>
-		
+	<taskdef name="javancss" classname="javancss.JavancssAntTask" classpath="../javancss.jar"/>	
+	
 	<javancss 	srcdir="../src"
-				outputfile="~/Desktop/javancss_metrics.xml"
+				outputfile="
+		javancss_metrics.xml"
 	            includes="**/*.java"
 	/>
+	
 	
 <target name="jdepend">
 
