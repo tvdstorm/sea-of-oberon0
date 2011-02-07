@@ -1,0 +1,1 @@
+java -jar libs/rats.jar -out src/jdm/oberon0/parser src/jdm/oberon0/parser/Oberon.rats

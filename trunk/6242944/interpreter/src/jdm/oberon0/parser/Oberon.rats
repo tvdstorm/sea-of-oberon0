@@ -4,6 +4,10 @@ header {
 	import xtc.util.Action;
 	import java.util.*;
 	import jdm.oberon0.ast.*;
+	import jdm.oberon0.ast.statements.*;
+	import jdm.oberon0.ast.expressions.*;
+	import jdm.oberon0.ast.types.*;
+	import jdm.oberon0.ast.declarations.*;
 }
 
 body {
@@ -145,37 +149,37 @@ IdentifierType IdentifierType =
 	{ yyValue = new IdentifierType(ident); }
 	;
 
-Array ArrayType = 
+ArrayType ArrayType = 
 	"ARRAY" Spacing 
 	length:Expression Spacing 
 	"OF" Spacing 
 	type:Type
-	{ yyValue = new Array(length, type); }
+	{ yyValue = new ArrayType(length, type); }
 	;
 
-HashMap<String, AbstractType> FieldList = 
+HashMap<String, Type> FieldList = 
 	idents:IdentList ":" Spacing t:Type Spacing
 	{
-		yyValue = new HashMap<String, AbstractType>();
+		yyValue = new HashMap<String, Type>();
 		for(String s : idents) {
 			yyValue.put(s, t);
 		}
 	}
 	;
 
-Record RecordType =
+RecordType RecordType =
 	"RECORD" Spacing 
 	l1:FieldList l2:(void:";" Spacing FieldList)* Spacing 
 	"END" Spacing
 	{ 
-		for(HashMap<String, AbstractType> map : l2.list()) {
+		for(HashMap<String, Type> map : l2.list()) {
 			l1.putAll(map);
 		}
-		yyValue = new Record(l1); 
+		yyValue = new RecordType(l1); 
 	}
 	;
 
-AbstractType Type = ArrayType / RecordType / IdentifierType;
+Type Type = ArrayType / RecordType / IdentifierType;
 
 Pair<String> IdentList = 
 	ident1:Ident Spacing 
