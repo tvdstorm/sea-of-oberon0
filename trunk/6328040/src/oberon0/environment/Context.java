@@ -100,6 +100,13 @@ public class Context {
 	}
 	
 	/*
+	 * returns the parentscope
+	 */
+	public Context getParent(){
+		return _parent;
+	}
+	
+	/*
 	 * Prints the current context
 	 * can be used for debugging and testing
 	 */
@@ -112,12 +119,5 @@ public class Context {
 		for(String key: _procedures.keySet()){
 			System.out.print("\t  * " + key  +"\n");
 		}
-	}
-	
-	/*
-	 * returns the parentscope
-	 */
-	public Context getParent(){
-		return _parent;
 	}
 }

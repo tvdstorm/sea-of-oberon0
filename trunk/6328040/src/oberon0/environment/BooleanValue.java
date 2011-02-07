@@ -15,4 +15,9 @@ public class BooleanValue implements IValue {
 	public String toString(){
 		return Boolean.toString(_value);
 	}
+
+	@Override
+	public IValue getCopy() {
+		return new BooleanValue(_value);
+	}
 }

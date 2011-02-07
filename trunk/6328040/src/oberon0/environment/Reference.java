@@ -8,7 +8,7 @@ public class Reference {
 	private IValue _value;
 	
 	public Reference(IValue value){
-		_value = value;
+		_value = value.getCopy();
 	}
 	
 	public IValue getValue(){
@@ -21,5 +21,9 @@ public class Reference {
 	
 	public String toString(){
 		return _value.toString();
+	}
+	
+	public Reference getCopy(){
+		return new Reference(_value.getCopy());
 	}
 }

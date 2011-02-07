@@ -15,4 +15,9 @@ public class IntegerValue implements IValue{
 	public String toString(){
 		return Integer.toString(_value);
 	}
+
+	@Override
+	public IValue getCopy() {
+		return new IntegerValue(_value);
+	}
 }

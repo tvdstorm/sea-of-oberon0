@@ -24,7 +24,7 @@ public class VariableNode implements IReferable{
 	}
 
 	@Override
-	public Reference refer(Context context, Reference previousReference) {
+	public Reference getRef(Context context, Reference previousReference) {
 		Reference ref= context.getReference(_name);
 		ref = _selector.refer(context, ref);
 		return ref;

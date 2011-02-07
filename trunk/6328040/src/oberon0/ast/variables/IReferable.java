@@ -11,5 +11,5 @@ import oberon0.environment.Reference;
 public interface IReferable extends IEvaluable{
 	public final static Reference noPreviousReference = null;
 	
-	public Reference refer(Context context, Reference previousReference);
+	public Reference getRef(Context context, Reference previousReference);
 }

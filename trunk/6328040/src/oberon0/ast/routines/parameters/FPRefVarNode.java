@@ -21,7 +21,7 @@ public class FPRefVarNode extends BaseFormalParameterNode {
 			checkNonEmptyActualParameters(actualParams);
 			
 			IReferable currentActualParam = actualParams.get(0);
-			Reference currentAPReference = currentActualParam.refer(context.getParent(), IReferable.noPreviousReference);
+			Reference currentAPReference = currentActualParam.getRef(context.getParent(), IReferable.noPreviousReference);
 			
 			String currentName = names.get(0);
 			context.declareReferenceVariable(currentName, currentAPReference);
