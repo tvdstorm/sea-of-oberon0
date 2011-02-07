@@ -1,15 +1,15 @@
 package jdm.oberon0.interpreter;
 
-import jdm.oberon0.ast.declarations.Procedure;
+import jdm.oberon0.ast.declarations.ProcedureDeclaration;
 import jdm.oberon0.values.Value;
 
 /**
  * An Oberon procedure defined in the program.
  */
 public class ScriptedProcedure implements Callable {
-	private Procedure _node;
+	private ProcedureDeclaration _node;
 	
-	public ScriptedProcedure(Procedure node) {
+	public ScriptedProcedure(ProcedureDeclaration node) {
 		this._node = node;
 	}
 
@@ -18,7 +18,7 @@ public class ScriptedProcedure implements Callable {
 		context.executeProcedure(this, arguments);
 	}
 
-	public Procedure getNode() {
+	public ProcedureDeclaration getNode() {
 		return _node;
 	}
 

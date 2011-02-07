@@ -252,7 +252,7 @@ List<Parameter> FormalParameters =
 	}
 	;
 
-Procedure ProcedureDeclaration = 
+ProcedureDeclaration ProcedureDeclaration = 
 	"PROCEDURE" Spacing 
 	name:Ident Spacing
 	params:FormalParameters? Spacing 
@@ -262,7 +262,7 @@ Procedure ProcedureDeclaration =
 	"END" Spacing 
 	Ident Spacing
 	{	if (params == null) params = new ArrayList<Parameter>();
-		yyValue = new Procedure(name, params, decl, stat);  }
+		yyValue = new ProcedureDeclaration(name, params, decl, stat);  }
 	;
 
 public Pair<Expression> ActualParameters = 

@@ -4,7 +4,7 @@ import java.util.List;
 
 import jdm.oberon0.ast.Module;
 import jdm.oberon0.ast.declarations.Parameter;
-import jdm.oberon0.ast.declarations.Procedure;
+import jdm.oberon0.ast.declarations.ProcedureDeclaration;
 import jdm.oberon0.exceptions.InvalidArgumentTypeException;
 import jdm.oberon0.interpreter.Context;
 import jdm.oberon0.interpreter.ScriptedProcedure;
@@ -37,7 +37,7 @@ public class Evaluator {
 		// functions have their own scope to store arguments and locals
 		_context.pushScope();
 		
-		Procedure node = proc.getNode();
+		ProcedureDeclaration node = proc.getNode();
 		List<Parameter> formalArguments = node.getParameters();
 
 		// argument count is checked at call site
