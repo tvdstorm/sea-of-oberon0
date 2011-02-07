@@ -4,13 +4,13 @@ import java.util.List;
 
 import jdm.oberon0.ast.statements.StatementSequence;
 
-public class Procedure extends Declaration {
+public class ProcedureDeclaration extends Declaration {
 	protected String _name;
 	protected List<jdm.oberon0.ast.declarations.Parameter> _parameters;
 	protected Declarations _declarations;
 	protected StatementSequence _statements;
 	
-	public Procedure(String name, List<jdm.oberon0.ast.declarations.Parameter> parameters, Declarations declarations, StatementSequence statements) {
+	public ProcedureDeclaration(String name, List<jdm.oberon0.ast.declarations.Parameter> parameters, Declarations declarations, StatementSequence statements) {
 		this._name = name;
 		this._parameters = parameters;
 		this._declarations = declarations;
