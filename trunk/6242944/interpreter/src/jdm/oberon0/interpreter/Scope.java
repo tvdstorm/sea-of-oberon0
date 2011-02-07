@@ -47,6 +47,10 @@ public class Scope {
 		_variables.put(name, ReferenceValue.getRef(value));
 	}
 	
+	public void defineProcedure(String name, Callable procedure) {
+		_procedures.put(name, procedure);
+	}
+	
 	public Value lookupVarOrConst(String name) {
 		if (_constants.containsKey(name)) {
 			return _constants.get(name);
@@ -58,16 +62,8 @@ public class Scope {
 		throw new UndefinedVariableException(name);
 	}
 
-	public void defineProcedure(String name, Callable procedure) {
-		_procedures.put(name, procedure);
-	}
-
 	public Callable lookupProcedure(String name) {
 		return _procedures.get(name);
-	}
-
-	public Scope getParentScope() {
-		return _parentScope;
 	}
 
 	public Type lookupType(String name) {
@@ -75,6 +71,10 @@ public class Scope {
 			throw new UndefinedTypeException(name);
 		}
 		return _types.get(name);
+	}
+	
+	public Scope getParentScope() {
+		return _parentScope;
 	}
 	
 	public boolean isGlobalScope() {
