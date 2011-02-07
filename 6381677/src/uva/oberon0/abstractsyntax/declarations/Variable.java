@@ -3,7 +3,7 @@ package uva.oberon0.abstractsyntax.declarations;
 import uva.oberon0.abstractsyntax.types.BaseType;
 import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.runtime.Scope;
-import uva.oberon0.runtime.ScopeValue;
+import uva.oberon0.runtime.Value;
 
 
 /**
@@ -46,7 +46,7 @@ public class Variable extends Declaration
 		return _isByReference;
 	}
 		
-	public ScopeValue instantiate(Scope scope) 
+	public Value instantiate(Scope scope) 
 	{
 		return _type.instantiate(scope);
 	}

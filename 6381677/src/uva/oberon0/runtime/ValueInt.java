@@ -6,14 +6,15 @@ import uva.oberon0.abstractsyntax.BaseNode;
  * @author Chiel Labee This class represents an Integer based Execution Scope
  *         Value.
  */
-public class ScopeValueInt extends ScopeValue {
+public class ValueInt extends Value 
+{
 	private int _value;
 
-	public ScopeValueInt() {
+	public ValueInt() {
 		_value = 0;
 	}
 
-	public ScopeValueInt(int value) {
+	public ValueInt(int value) {
 		_value = value;
 	}
 
@@ -26,7 +27,7 @@ public class ScopeValueInt extends ScopeValue {
 	}
 
 	@Override
-	public ScopeValue getValueBySelector(Scope scope, BaseNode selector) {
+	public Value getValueBySelector(Scope scope, BaseNode selector) {
 		assert false : "Unsupported Selector Search.";
 		return null;
 	}

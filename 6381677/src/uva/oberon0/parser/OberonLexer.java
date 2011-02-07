@@ -11,7 +11,6 @@ import org.antlr.runtime.MismatchedSetException;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.RecognizerSharedState;
 
-@SuppressWarnings("unused")
 public class OberonLexer extends Lexer {
 	public static final int EOF = -1;
 	public static final int T__45 = 45;

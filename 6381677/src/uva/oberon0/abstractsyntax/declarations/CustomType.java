@@ -7,7 +7,7 @@ import uva.oberon0.abstractsyntax.types.BaseType;
  * @author Chiel Labee
  * This class represents a declarable Type Structure.
 */
-public class CustomType extends Declaration 
+public class CustomType extends Declaration
 {
 	private final BaseType _type;
 
