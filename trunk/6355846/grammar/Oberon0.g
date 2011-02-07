@@ -18,8 +18,8 @@ tokens {
 @header {
 package nl.bve.uva.oberon.parser;
 
-import nl.bve.uva.oberon.ast.OberonRootNode;
 import nl.bve.uva.oberon.ast.*;
+import nl.bve.uva.oberon.ast.expressions.*;
 }
 
 @lexer::header {
@@ -34,9 +34,9 @@ prog returns [IInterpretableNode prog]
 	: statement									{$prog = $statement.result; };
 
 statementSequence returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()]
-	:	statement 								{$result.add($result); }
+	:	s1=statement 							{$result.add($s1.result); }
 		(
-			';' statement						{$result.add(statement.result); }
+			';' s2=statement					{$result.add($s2.result); }
 		)*;
 
 statement returns [IInterpretableNode result]
@@ -46,19 +46,10 @@ statement returns [IInterpretableNode result]
 		)?;
 
 callStatement returns [IInterpretableNode result]	
-	:	IDENT selector (':=' expression | (actualParameters)?);
-
-ifStatement returns [IInterpretableNode result]
-	:	'IF' expression 'THEN' statementSequence ('ELSIF' expression 'THEN' statementSequence)* ('ELSE' statementSequence)? 'END';
-
-whileStatement returns [IInterpretableNode result]
-	:	'WHILE' expression 'DO' statementSequence 'END';
-
-procedureCall returns [IInterpretableNode result]
-	:	IDENT selector 							{$result = new ProcedureCall(new IdentChangerNode($IDENT.text, $selector.result), null); }
-		(
-			actualParameters					{$result = new ProcedureCall(new IdentChangerNode($IDENT.text, $selector.result), $actualParameters.result); }
-		)?;
+	:	IDENT selector							{$result = new IdentChangerNode($IDENT.text, $selector.result); }
+			(':=' expression					{$result = new AssignmentNode($result, $expression.result); } 
+			| (actualParameters)?				{$result = new ProcedureCallNode($result, $actualParameters.result); }
+			);
 
 actualParameters returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()]
 	:	'(' (e1=expression 						{$result.add($e1.result); }
@@ -67,6 +58,12 @@ actualParameters returns [List<IInterpretableNode> result = new ArrayList<IInter
 				)*
 			)? 
 		')'	;
+
+ifStatement returns [IInterpretableNode result]
+	:	'IF' expression 'THEN' statementSequence ('ELSIF' expression 'THEN' statementSequence)* ('ELSE' statementSequence)? 'END';
+
+whileStatement returns [IInterpretableNode result]
+	:	'WHILE' expression 'DO' statementSequence 'END';
 
 assignment returns [IInterpretableNode result]
 	:	IDENT selector 							{$result = new IdentChangerNode($IDENT.text, $selector.result); }
