@@ -31,13 +31,36 @@ package nl.bve.uva.oberon.parser;
  *------------------------------------------------------------------*/
 
 prog returns [IInterpretableNode prog]
-	: assignment								{$prog = $assignment.result; };
+	: statement									{$prog = $statement.result; };
 
-procedureCall
-	:	IDENT selector 
-		(actualParameters)?;					
+statementSequence returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()]
+	:	statement 								{$result.add($result); }
+		(
+			';' statement						{$result.add(statement.result); }
+		)*;
 
-actualParameters returns [List<IInterpretableNode> result]
+statement returns [IInterpretableNode result]
+	:	( callStatement 						{$result = $callStatement.result; }
+		| ifStatement							{$result = $ifStatement.result; }
+		| whileStatement						{$result = $whileStatement.result; }
+		)?;
+
+callStatement returns [IInterpretableNode result]	
+	:	IDENT selector (':=' expression | (actualParameters)?);
+
+ifStatement returns [IInterpretableNode result]
+	:	'IF' expression 'THEN' statementSequence ('ELSIF' expression 'THEN' statementSequence)* ('ELSE' statementSequence)? 'END';
+
+whileStatement returns [IInterpretableNode result]
+	:	'WHILE' expression 'DO' statementSequence 'END';
+
+procedureCall returns [IInterpretableNode result]
+	:	IDENT selector 							{$result = new ProcedureCall(new IdentChangerNode($IDENT.text, $selector.result), null); }
+		(
+			actualParameters					{$result = new ProcedureCall(new IdentChangerNode($IDENT.text, $selector.result), $actualParameters.result); }
+		)?;
+
+actualParameters returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()]
 	:	'(' (e1=expression 						{$result.add($e1.result); }
 				(
 					',' e2=expression			{$result.add($e2.result); }

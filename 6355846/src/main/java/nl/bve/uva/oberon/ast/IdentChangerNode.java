@@ -9,7 +9,7 @@ public class IdentChangerNode extends IdentNode {
 	
 	@Override
 	public Object interpret() {
-		// returns a unique reference to ident?!
+		// returns a unique reference to ident!?
 		return null;
 	}
 }

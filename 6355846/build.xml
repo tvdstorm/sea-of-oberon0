@@ -10,8 +10,10 @@
 	</path>
 
 	<target name="grammarCreator">
-		<delete dir="${parser.dir}" />
-		<mkdir dir="${parser.dir}"/>
+		<delete>
+			<fileset dir="${parser.dir}" includes="**/*.*"/>
+		</delete>
+		
 		<taskdef name="antlr3"
 				classname="org.apache.tools.ant.antlr.ANTLR3"
 				classpathref="classpath" />

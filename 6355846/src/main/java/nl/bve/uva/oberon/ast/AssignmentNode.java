@@ -12,6 +12,11 @@ public class AssignmentNode implements IInterpretableNode {
 	
 	@Override
 	public Object interpret() {
+		Object ident = lhn.interpret();
+		Object value = rhn.interpret();
+		
+		/* TODO: lookup variable and assign value; */
+		
 		return null;
 	}
 }
