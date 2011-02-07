@@ -29,15 +29,15 @@ public class Read extends ProcedureNode implements Node {
     
     public void attachToEnvironment(Environment environment) {        
         Environment localEnvironment = environment.newEnvironment();
-        environment.declareProcedure(getIdentifier(), new Procedure(this, localEnvironment));
+        //environment.declareProcedure(getIdentifier(), new Procedure(this, localEnvironment));
     }
 
-    @Override
-    public void invoke(Environment environment, Value[] actualparameters) throws Oberon0RuntimeException {
+    //@Override
+    /*public void invoke(Environment environment, Value[] actualparameters) throws Oberon0RuntimeException {
         Value targetArray = actualparameters[0];
-}
+    }*/
     
-    public String getIdentifier() {
+    /*public String getIdentifier() {
         return identifier;
-    }
+    }*/
 }

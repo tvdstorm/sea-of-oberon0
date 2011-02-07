@@ -28,6 +28,7 @@ public abstract class AbstractNode implements Node {
         type = node.getType();
         text = node.getText();
         this.parent = parent;
+        //System.out.println(this);
     }
 
     @Override
