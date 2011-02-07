@@ -5,19 +5,21 @@ package com.arievanderveek.soo.ast.variables;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
-import com.arievanderveek.soo.symboltable.Scope;
+import com.arievanderveek.soo.runtime.Scope;
 
 /**
+ * Represents an INTEGER type definition
+ * 
  * AST Node representing an Integer
  * 
  * @author arieveek
  * 
  */
-public class IntegerNode implements ASTNode {
+public class IntegerTypeNode implements ASTNode {
 
 	final Integer value;
 
-	public IntegerNode(Integer value) {
+	public IntegerTypeNode(Integer value) {
 		assert value != null;
 		this.value = value;
 	}

@@ -5,9 +5,11 @@ package com.arievanderveek.soo.ast.variables;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
-import com.arievanderveek.soo.symboltable.Scope;
+import com.arievanderveek.soo.runtime.Scope;
 
 /**
+ * Represents an array type definition
+ * 
  * @author arieveek
  * 
  */

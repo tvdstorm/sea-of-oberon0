@@ -4,14 +4,14 @@
 package com.arievanderveek.soo.ast.variables;
 
 import java.util.LinkedList;
-import java.util.Queue;
+import java.util.List;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
-import com.arievanderveek.soo.symboltable.Scope;
+import com.arievanderveek.soo.runtime.Scope;
 
 /**
- * AST Node representing an Identifier
+ * AST Node representing an Identifier with optional selectors.
  * 
  * @author arieveek
  * 
@@ -21,18 +21,17 @@ public class IdentifierNode implements ASTNode {
 	private final String name;
 	// TODO: Re-think selector setup. Might remove the node and just add the
 	// queue here.
-	private final ASTNode selectors;
+	private final List<ASTNode> selectors;
 
 	public IdentifierNode(String name) {
 		assert name != null;
 		this.name = name;
-		// Create a Queue of 0 selectors
-		Queue<ASTNode> emptyQueue = new LinkedList<ASTNode>();
-		this.selectors = new SelectorNode(emptyQueue);
+		// Create a list of 0 selectors
+		this.selectors = new LinkedList<ASTNode>();
 	}
 
-	public IdentifierNode(String name, ASTNode selectors) {
-		// assert name!=null;
+	public IdentifierNode(String name, List<ASTNode> selectors) {
+		assert name != null;
 		assert selectors != null;
 		this.name = name;
 		this.selectors = selectors;
@@ -58,7 +57,9 @@ public class IdentifierNode implements ASTNode {
 		StringBuilder sb = new StringBuilder();
 		sb.append(name + ident);
 		if (selectors != null) {
-			sb.append(selectors.toTreeString(ident));
+			for (ASTNode node : selectors) {
+				sb.append(node.toTreeString(ident));
+			}
 		}
 		return sb.toString();
 	}
@@ -73,7 +74,7 @@ public class IdentifierNode implements ASTNode {
 	/**
 	 * @return the selectors
 	 */
-	public ASTNode getSelectors() {
+	public List<ASTNode> getSelectors() {
 		return selectors;
 	}
 }
