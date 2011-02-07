@@ -2,8 +2,8 @@ package oberon.procedures;
 
 import java.io.IOException;
 
+import oberon.Scope;
 import oberon.StatementSequence;
-import oberon.VariableManager;
 import oberon.exceptions.UnsupportedException;
 import oberon.exceptions.VariableNotFoundInScopeException;
 
@@ -36,10 +36,9 @@ public class ProcedureBody {
 	 * @throws UnsupportedException 
 	 * @throws VariableNotFoundInScopeException 
 	 */
-	public void eval() throws IOException, UnsupportedException, VariableNotFoundInScopeException {
-		final VariableManager variableManager = VariableManager.getInstance();
-		variableManager.addNewDeclaration(variableDeclaration);
+	public void eval(final Scope currentScope) throws IOException, UnsupportedException, VariableNotFoundInScopeException {
+		currentScope.addNewDeclaration(variableDeclaration);
 		
-		body.eval();
+		body.eval(currentScope);
 	}
 }

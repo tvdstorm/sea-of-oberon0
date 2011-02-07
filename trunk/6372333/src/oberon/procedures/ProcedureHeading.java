@@ -7,7 +7,7 @@ import java.util.Queue;
 
 import oberon.IDataType;
 import oberon.IExpression;
-import oberon.VariableManager;
+import oberon.Scope;
 import oberon.exceptions.UnsupportedException;
 import oberon.exceptions.VariableNotFoundInScopeException;
 
@@ -32,21 +32,18 @@ public class ProcedureHeading extends AbstractProcedure {
 	 * @see oberon.procedures.AbstractProcedure#call(java.util.Queue)
 	 */
 	@Override
-	public void call(final Queue<IExpression> localQueue) throws IOException, UnsupportedException, VariableNotFoundInScopeException {
+	public void call(final Scope currentScope, final Queue<IExpression> localQueue) throws IOException, UnsupportedException, VariableNotFoundInScopeException {
 		final List<IDataType> actualParameterList = new ArrayList<IDataType>();
 		
 		for (FormalParamSection section : getParamSections()) {
 			for (String name : section.getNames()) {						
 				final IExpression actualParam = localQueue.poll();
-				actualParameterList.add(actualParam.copy(name));
+				actualParameterList.add(actualParam.copy(currentScope, name));
 			}
 		}
 		
-		final VariableManager variableManager = VariableManager.getInstance();
-		variableManager.enterNewScope(actualParameterList, this);
+		Scope newScope = currentScope.createNewScope(actualParameterList, this);
 		
-		getBody().eval();
-		
-		variableManager.leaveScope();
+		getBody().eval(newScope);
 	}
 }

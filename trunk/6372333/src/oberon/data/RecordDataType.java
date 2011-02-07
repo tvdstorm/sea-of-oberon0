@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import oberon.IDataType;
+import oberon.Scope;
 
 /**
  * The Class RecordDataType, stores an instance of a record.
@@ -57,7 +58,7 @@ public class RecordDataType extends AbstractDataType {
 	 * @see oberon.data.AbstractDataType#getValue()
 	 */
 	@Override
-	public int getValue() {
+	public int getValue(Scope currentScope) {
 		System.out.println("getValue() called on IntegerArrayType");
 		return 0;
 	}

@@ -8,7 +8,7 @@ import java.util.Queue;
 import oberon.IExpression;
 import oberon.IProcedure;
 import oberon.IStatement;
-import oberon.VariableManager;
+import oberon.Scope;
 import oberon.exceptions.UnsupportedException;
 import oberon.exceptions.VariableNotFoundInScopeException;
 
@@ -38,13 +38,13 @@ public class ProcedurecallStatement implements IStatement {
 	 * @see oberon.IStatement#eval()
 	 */
 	@Override
-	public void eval() throws IOException, UnsupportedException, VariableNotFoundInScopeException {
-		final IProcedure procedure = VariableManager.getInstance().getProcedureFromCurrentScope(procNameToCall);
+	public void eval(Scope currentScope) throws IOException, UnsupportedException, VariableNotFoundInScopeException {
+		final IProcedure procedure = currentScope.getProcedure(procNameToCall);
 		
 		final Queue<IExpression> localQueue = new LinkedList<IExpression>();
 		localQueue.addAll(procParameters);
 		
-		procedure.call(localQueue);
+		procedure.call(currentScope, localQueue);
 	}
 
 }

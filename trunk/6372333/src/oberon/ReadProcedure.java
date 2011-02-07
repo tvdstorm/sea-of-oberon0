@@ -25,12 +25,11 @@ class ReadProcedure implements IStatement {
 	 * @see oberon.IStatement#eval()
 	 */
 	@Override
-	public void eval() throws IOException, UnsupportedException, VariableNotFoundInScopeException {
-		final VariableManager instance = VariableManager.getInstance();
-		final int index = instance.getVariable("i").getValue();
+	public void eval(Scope currentScope) throws IOException, UnsupportedException, VariableNotFoundInScopeException {
+		final int index = currentScope.getVariable("i").getValue(currentScope);
 		
 		final int input = readInputFromConsole(index);
-		final IntegerArrayDataType inputArray = (IntegerArrayDataType)instance.getVariable("input");
+		final IntegerArrayDataType inputArray = (IntegerArrayDataType)currentScope.getVariable("input");
 		inputArray.setValueAtIndex(index, input);
 	}
 	
@@ -56,7 +55,7 @@ class ReadProcedure implements IStatement {
 	/**
 	 * Initializes the read procedure.
 	 */
-	public static void initialize() {
+	public static void initialize(Scope currentScope) {
 		final List<FormalParamSection> params = new ArrayList<FormalParamSection>();
 		List<String> paramNames = new ArrayList<String>();
 		paramNames.add("i");
@@ -74,6 +73,6 @@ class ReadProcedure implements IStatement {
 		
 		final ProcedureBody body = new ProcedureBody(declaration, new StatementSequence(statements));
 		final SystemMethodCall procedure = new SystemMethodCall("Read", params, body);
-		VariableManager.getInstance().addSystemProcedureToCurrentScope(procedure);
+		currentScope.addSystemProcedure(procedure);
 	}
 }

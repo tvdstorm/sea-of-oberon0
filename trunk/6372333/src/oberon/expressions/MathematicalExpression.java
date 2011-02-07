@@ -1,6 +1,7 @@
 package oberon.expressions;
 
 import oberon.IExpression;
+import oberon.Scope;
 
 /**
  * The Class MathematicalExpression, class for all mathematical oriented expressions.
@@ -27,9 +28,9 @@ public class MathematicalExpression extends AbstractLeftAndRightExpression {
 	 * @see oberon.expressions.AbstractExpression#evalAsInt()
 	 */
 	@Override
-	public int evalAsInt() {
-		final int left = getLefthandSide().evalAsInt();
-		final int right = getRighthandSide().evalAsInt();
+	public int evalAsInt(Scope currentScope) {
+		final int left = getLefthandSide().evalAsInt(currentScope);
+		final int right = getRighthandSide().evalAsInt(currentScope);
 		
 		return operatorImplementation.eval(left, right);
 	}

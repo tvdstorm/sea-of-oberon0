@@ -15,7 +15,7 @@ public interface IExpression {
 	 * @throws UnsupportedException 
 	 * @throws VariableNotFoundInScopeException 
 	 */
-	public abstract int evalAsInt() throws UnsupportedException, VariableNotFoundInScopeException;
+	public abstract int evalAsInt(Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException;
 
 	/**
 	 * Evaluate the expression as boolean.
@@ -24,7 +24,7 @@ public interface IExpression {
 	 * @throws UnsupportedException 
 	 * @throws VariableNotFoundInScopeException 
 	 */
-	public abstract Boolean evalAsBoolean() throws UnsupportedException, VariableNotFoundInScopeException;
+	public abstract Boolean evalAsBoolean(Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException;
 
 	/**
 	 * Copy.
@@ -34,6 +34,6 @@ public interface IExpression {
 	 * @throws UnsupportedException 
 	 * @throws VariableNotFoundInScopeException 
 	 */
-	public abstract IDataType copy(String newName) throws UnsupportedException, VariableNotFoundInScopeException;
+	public abstract IDataType copy(Scope currentScope, String newName) throws UnsupportedException, VariableNotFoundInScopeException;
 
 }

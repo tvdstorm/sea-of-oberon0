@@ -1,6 +1,7 @@
 package oberon.expressions;
 
 import oberon.IExpression;
+import oberon.Scope;
 
 /**
  * The Class ComparisonExpression, compares to expressions.
@@ -27,10 +28,10 @@ public class ComparisonExpression extends AbstractLeftAndRightExpression {
 	 * @see oberon.expressions.AbstractExpression#evalAsInt()
 	 */
 	@Override
-	public int evalAsInt() {
+	public int evalAsInt(Scope currentScope) {
 		final IExpression leftHandSide = getLefthandSide();
 		final IExpression rightHandSide = getRighthandSide();
 		
-		return booleanAsInt(evaluator.eval(leftHandSide.evalAsInt(), rightHandSide.evalAsInt()));
+		return booleanAsInt(evaluator.eval(leftHandSide.evalAsInt(currentScope), rightHandSide.evalAsInt(currentScope)));
 	}
 }

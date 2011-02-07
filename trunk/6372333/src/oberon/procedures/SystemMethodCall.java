@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Queue;
 
 import oberon.IExpression;
+import oberon.Scope;
 import oberon.exceptions.UnsupportedException;
 import oberon.exceptions.VariableNotFoundInScopeException;
 
@@ -30,8 +31,8 @@ public class SystemMethodCall extends AbstractProcedure {
 	 * @see oberon.procedures.AbstractProcedure#call(java.util.Queue)
 	 */
 	@Override
-	public void call(final Queue<IExpression> localQueue) throws IOException, UnsupportedException, VariableNotFoundInScopeException {
-		getBody().eval();
+	public void call(final Scope currentScope, final Queue<IExpression> localQueue) throws IOException, UnsupportedException, VariableNotFoundInScopeException {
+		getBody().eval(currentScope);
 	}
 
 }

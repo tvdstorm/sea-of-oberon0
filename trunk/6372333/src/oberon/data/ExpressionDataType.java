@@ -2,6 +2,7 @@ package oberon.data;
 
 import oberon.IDataType;
 import oberon.IExpression;
+import oberon.Scope;
 import oberon.exceptions.UnsupportedException;
 import oberon.exceptions.VariableNotFoundInScopeException;
 
@@ -28,8 +29,8 @@ public class ExpressionDataType extends AbstractDataType {
 	 * @see oberon.data.AbstractDataType#getValue()
 	 */
 	@Override
-	public int getValue() throws UnsupportedException, VariableNotFoundInScopeException {
-		return expression.evalAsInt();
+	public int getValue(Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException {
+		return expression.evalAsInt(currentScope);
 	}
 
 	/* (non-Javadoc)

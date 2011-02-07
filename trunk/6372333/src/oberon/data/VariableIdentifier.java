@@ -1,7 +1,7 @@
 package oberon.data;
 
 import oberon.IDataType;
-import oberon.VariableManager;
+import oberon.Scope;
 import oberon.exceptions.UnsupportedException;
 import oberon.exceptions.VariableNotFoundInScopeException;
 
@@ -26,17 +26,17 @@ public class VariableIdentifier extends AbstractIdentifier {
 	 * @see oberon.data.AbstractIdentifier#getValue()
 	 */
 	@Override
-	public int getValue() throws UnsupportedException, VariableNotFoundInScopeException {
-		final IDataType datatype = VariableManager.getInstance().getVariable(name);
-		return datatype.getValue();
+	public int getValue(Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException {
+		final IDataType datatype = currentScope.getVariable(name);
+		return datatype.getValue(currentScope);
 	}
 
 	/* (non-Javadoc)
 	 * @see oberon.data.AbstractIdentifier#getDataTypeValue()
 	 */
 	@Override
-	public IDataType getDataTypeValue() throws VariableNotFoundInScopeException {
-		return VariableManager.getInstance().getVariable(name);
+	public IDataType getDataTypeValue(Scope currentScope) throws VariableNotFoundInScopeException {
+		return currentScope.getVariable(name);
 	}
 
 }

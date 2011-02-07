@@ -2,6 +2,7 @@ package oberon.data;
 
 import oberon.IDataType;
 import oberon.IExpression;
+import oberon.Scope;
 import oberon.exceptions.UnsupportedException;
 import oberon.exceptions.VariableNotFoundInScopeException;
 
@@ -56,15 +57,15 @@ public class IntegerArrayDataType extends AbstractDataType {
 	 * @throws UnsupportedException 
 	 * @throws VariableNotFoundInScopeException 
 	 */
-	public void initializeArray() throws UnsupportedException, VariableNotFoundInScopeException {
-		array = new int[lengthExpression.evalAsInt()];			
+	public void initializeArray(Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException {
+		array = new int[lengthExpression.evalAsInt(currentScope)];			
 	}
 
 	/* (non-Javadoc)
 	 * @see oberon.data.AbstractDataType#getValue()
 	 */
 	@Override
-	public int getValue() {
+	public int getValue(Scope currentScope) {
 		System.out.println("getValue() called on IntegerArrayType");
 		return 0;
 	}

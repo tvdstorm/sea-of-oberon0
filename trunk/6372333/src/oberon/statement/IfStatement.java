@@ -5,6 +5,7 @@ import java.util.Queue;
 
 import oberon.IExpression;
 import oberon.IStatement;
+import oberon.Scope;
 import oberon.StatementSequence;
 import oberon.exceptions.UnsupportedException;
 import oberon.exceptions.VariableNotFoundInScopeException;
@@ -47,22 +48,21 @@ public class IfStatement implements IStatement {
 	 * @see oberon.IStatement#eval()
 	 */
 	@Override
-	public void eval() throws IOException, UnsupportedException, VariableNotFoundInScopeException {
-		Boolean bodyIsExecuted = false;
-		if (conditionIsTrue()) {
-			evalStatements();
+	public void eval(Scope currentScope) throws IOException, UnsupportedException, VariableNotFoundInScopeException {
+		if (conditionIsTrue(currentScope)) {
+			evalStatements(currentScope);
 			return;
 		}
 
 		while (!elseIfBlocks.isEmpty()) {
 			final IfStatement nextElseIf = elseIfBlocks.poll();
-			if (nextElseIf.conditionIsTrue()) {
-				nextElseIf.evalStatements();
+			if (nextElseIf.conditionIsTrue(currentScope)) {
+				nextElseIf.evalStatements(currentScope);
 				return;
 			}
 		}
 		
-		elseBody.eval();
+		elseBody.eval(currentScope);
 	}
 
 	/**
@@ -72,8 +72,8 @@ public class IfStatement implements IStatement {
 	 * @throws UnsupportedException 
 	 * @throws VariableNotFoundInScopeException 
 	 */
-	protected void evalStatements() throws IOException, UnsupportedException, VariableNotFoundInScopeException {
-		ifBody.eval();
+	protected void evalStatements(final Scope currentScope) throws IOException, UnsupportedException, VariableNotFoundInScopeException {
+		ifBody.eval(currentScope);
 	}
 
 	/**
@@ -83,8 +83,8 @@ public class IfStatement implements IStatement {
 	 * @throws UnsupportedException 
 	 * @throws VariableNotFoundInScopeException 
 	 */
-	protected Boolean conditionIsTrue() throws UnsupportedException, VariableNotFoundInScopeException {
-		return ifCondition.evalAsBoolean();
+	protected Boolean conditionIsTrue(Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException {
+		return ifCondition.evalAsBoolean(currentScope);
 	}
 
 }

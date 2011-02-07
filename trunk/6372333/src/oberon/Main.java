@@ -36,16 +36,18 @@ public class Main {
 		 
 			/* Get our Interpreter going. */ 
 			final ModuleInterpreter interpreter = new ModuleInterpreter();
-			ast.apply(interpreter);	     
+			ast.apply(interpreter);	
 			
-			ReadProcedure.initialize();
-			WriteCall.initialize();
-			WriteLnCall.initialize();
+			Scope newScope = new Scope();
+			
+			ReadProcedure.initialize(newScope);
+			WriteCall.initialize(newScope);
+			WriteLnCall.initialize(newScope);
 			
 			final IProcedure mainProc = interpreter.buildInterpreterResult();
 			final Queue<IExpression> paramList = new LinkedList<IExpression>();
 				 
-			mainProc.call(paramList);
+			mainProc.call(newScope, paramList);
 		}			
 		catch (Exception e) {
 			e.printStackTrace();

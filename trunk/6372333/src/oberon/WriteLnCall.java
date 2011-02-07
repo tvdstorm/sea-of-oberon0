@@ -19,14 +19,14 @@ class WriteLnCall implements IStatement {
 	 * @see oberon.IStatement#eval()
 	 */
 	@Override
-	public void eval() throws IOException {
+	public void eval(Scope currentScope) throws IOException {
 		System.out.println();
 	}
 
 	/**
 	 * Initialize.
 	 */
-	public static void initialize(){
+	public static void initialize(Scope currentScope){
 		final List<FormalParamSection> params = new ArrayList<FormalParamSection>();
 		
 		final LinkedList<IStatement> statements = new LinkedList<IStatement>();
@@ -38,6 +38,6 @@ class WriteLnCall implements IStatement {
 		
 		final ProcedureBody body = new ProcedureBody(declaration, new StatementSequence(statements));
 		final SystemMethodCall procedure = new SystemMethodCall("WriteLn", params, body);
-		VariableManager.getInstance().addSystemProcedureToCurrentScope(procedure);
+		currentScope.addSystemProcedure(procedure);
 	}
 }
