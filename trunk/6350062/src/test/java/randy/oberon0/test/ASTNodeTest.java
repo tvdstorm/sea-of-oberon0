@@ -772,6 +772,40 @@ public class ASTNodeTest
 		Assert.assertTrue(functions.popOutput().equals("1"));
 		Assert.assertTrue(functions.outputIsEmpty());
 	}
+	@Test
+	public void test_With()
+	{
+		prepareTest("with");
+		for (int curTest=0;curTest<numTests;curTest++)
+		{
+			int a = random.nextInt(), b = random.nextInt();
+			runTest(""+a, ""+b);
+			
+			Assert.assertTrue(functions.popOutput().equals("" + a));
+			Assert.assertTrue(functions.popOutput().equals("" + b));
+			Assert.assertTrue(functions.popOutput().equals(a == b?"1":"0"));
+			
+			Assert.assertTrue(functions.popOutput().equals("" + a));
+			Assert.assertTrue(functions.popOutput().equals("" + b));
+			Assert.assertTrue(functions.popOutput().equals(a == b?"1":"0"));
+			
+			Assert.assertTrue(functions.popOutput().equals("" + b));
+			Assert.assertTrue(functions.popOutput().equals("" + a));
+			Assert.assertTrue(functions.popOutput().equals(a == b?"1":"0"));
+			Assert.assertTrue(functions.popOutput().equals("" + a));
+			Assert.assertTrue(functions.popOutput().equals("" + b));
+			
+			Assert.assertTrue(functions.popOutput().equals("" + a));
+			
+			Assert.assertTrue(functions.popOutput().equals("" + a));
+			Assert.assertTrue(functions.popOutput().equals("" + b));
+			
+			Assert.assertTrue(functions.popOutput().equals("" + (a + 4)));
+			Assert.assertTrue(functions.popOutput().equals("" + (b - 3)));
+			
+			Assert.assertTrue(functions.outputIsEmpty());
+		}
+	}
 	@Ignore
 	private void prepareTestThrowException(String testName) throws Exception
 	{
