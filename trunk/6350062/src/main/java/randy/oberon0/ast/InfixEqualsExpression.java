@@ -6,6 +6,7 @@ import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
 import randy.oberon0.value.Record;
 import randy.oberon0.value.Value;
 import randy.oberon0.value.Integer;
+import randy.oberon0.value.Boolean;
 
 public class InfixEqualsExpression extends InfixExpression
 {
@@ -23,11 +24,15 @@ public class InfixEqualsExpression extends InfixExpression
 		// Check if we support the operator
 		if (valLh instanceof Integer && valRh instanceof Integer)
 		{
-			return new Integer(valLh.equalsToValue(valRh));
+			return new Boolean(valLh.equalsToValue(valRh));
+		}
+		else if (valLh instanceof Boolean && valRh instanceof Boolean)
+		{
+			return new Boolean(valLh.equalsToValue(valRh));
 		}
 		else if (valLh instanceof Record && valRh instanceof Record)
 		{
-			return new Integer(valLh.equalsToValue(valRh));
+			return new Boolean(valLh.equalsToValue(valRh));
 		}
 		else
 		{
@@ -45,11 +50,15 @@ public class InfixEqualsExpression extends InfixExpression
 		// Check if we support the operator
 		if (valLh instanceof Integer && valRh instanceof Integer)
 		{
-			return new Integer(0);
+			return new Boolean(false);
+		}
+		else if (valLh instanceof Boolean && valRh instanceof Boolean)
+		{
+			return new Boolean(false);
 		}
 		else if (valLh instanceof Record && valRh instanceof Record)
 		{
-			return new Integer(0);
+			return new Boolean(false);
 		}
 		else
 		{
