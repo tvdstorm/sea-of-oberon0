@@ -16,7 +16,7 @@ public class AssigmentStatement  implements Statement {
 	}
 	
 	@Override
-	public void execute(Module module) throws ExecutionException {
+	public void execute(Module module){
 		//Flatten the expression
 		Expression evaluatedExpr = expression.evaluate(module);
 		

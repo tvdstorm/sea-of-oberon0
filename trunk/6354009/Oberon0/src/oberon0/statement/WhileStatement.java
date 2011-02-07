@@ -19,7 +19,7 @@ public class WhileStatement implements Statement {
 	}
 	
 	@Override
-	public void execute(Module module) throws ExecutionException {
+	public void execute(Module module) {
 		Expression evaluatedExp = expression.evaluate(module);
 		
 		assert(evaluatedExp.getType() == IntegerExpression.TYPE);

@@ -21,6 +21,4 @@ public class TypeDeclaration {
 		return typeName;
 	}
 	
-	
-	
 }

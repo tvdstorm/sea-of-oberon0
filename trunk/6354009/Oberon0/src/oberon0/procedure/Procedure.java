@@ -44,7 +44,6 @@ public class Procedure extends Module {
 	}
 	
 	//IDENTIFIER VALUES
-	
 	@Override
 	public Expression getValueForIdentifier(Identifier identifier) {
 		Parameter parameter = getParameter(identifier.getIdentifier());
@@ -102,7 +101,7 @@ public class Procedure extends Module {
 	private void passParameterExpressionsToHigherModule() {
 		//See if we have referenced parameters.
 		for (Parameter parameter : parameters) {
-			if (parameter.isReferenced()) {
+			if (parameter.isByReference()) {
 				//A procedure should always have a higher module.
 				assert(higherModule != null);
 				//If their a higher module identifier?
@@ -119,7 +118,7 @@ public class Procedure extends Module {
 	//NEW
 	public Procedure getNew(){
 		Procedure procedure = new Procedure(getIdentifier());
-		try {
+		
 		//Create a new procedure object and copy all of its properties.
 		procedure.addParameters(getNewParameters());
 		procedure.addConstants(getNewConstants());
@@ -127,11 +126,6 @@ public class Procedure extends Module {
 		procedure.addVariables(getNewVariables());
 		procedure.addStatements(getNewStatements());
 		procedure.addProcedures(getNewProcedures());
-		
-		} catch (Exception e) {
-			//Something went wrong while copying.
-			e.printStackTrace();
-		}
 		
 		//Finally return the new procedure (of same type).
 		return procedure;
