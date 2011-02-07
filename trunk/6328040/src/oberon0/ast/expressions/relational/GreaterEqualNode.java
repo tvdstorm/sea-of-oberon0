@@ -1,13 +1,13 @@
 package oberon0.ast.expressions.relational;
 
-import oberon0.ast.expressions.BaseBiliteralExpressionNode;
+import oberon0.ast.expressions.BaseBinaryExpressionNode;
 import oberon0.ast.expressions.IEvaluable;
 import oberon0.environment.BooleanValue;
 import oberon0.environment.Context;
 import oberon0.environment.IValue;
 import oberon0.environment.IntegerValue;
 
-public class GreaterEqualNode extends BaseBiliteralExpressionNode {
+public class GreaterEqualNode extends BaseBinaryExpressionNode {
 
 	public GreaterEqualNode(IEvaluable lhsExpression,
 			IEvaluable rhsExpression) {
