@@ -197,7 +197,7 @@ term returns [ExpressionNode result]
 	;
 
 factor returns [ExpressionNode result]
-	:	is=identSelector
+	:	is=identSelector								{ $result = new ValueExpNode(new Variable($is.text)); }
 	|	i=integer										{ $result = new ValueExpNode(new Int(Integer.parseInt($i.text))); }
 	|	RND_OPEN e=expression RND_CLOSE					{ $result = $e.result; }
 	|	TILDE f=factor									{ $result = $f.result; }

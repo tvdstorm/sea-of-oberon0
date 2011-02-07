@@ -2,7 +2,7 @@ package org.elcid.oberon0.ast.visitor;
 
 import org.elcid.oberon0.ast.*;
 import org.elcid.oberon0.ast.env.Environment;
-import org.elcid.oberon0.ast.values.IntVariable;
+import org.elcid.oberon0.ast.values.Variable;
 import org.elcid.oberon0.ast.values.Int;
 import org.elcid.oberon0.exceptions.DivideByZeroException;
 import org.elcid.oberon0.exceptions.ModuloZeroException;
@@ -43,8 +43,8 @@ public class ExpressionVisitorTest {
 		assertEquals(expResultInt, resultInt);
 
 		// Test with an integer variable value
-		env = new Environment();
-		ValueExpNode varNode = new ValueExpNode(new IntVariable("age", 25, env));
+		env.put("varName", 25);
+		ValueExpNode varNode = new ValueExpNode(new Variable("varName"));
 		Integer resultIntVar = instance.eval(varNode, env);
 		Integer expResultIntVar = 25;
 		assertEquals(expResultIntVar, resultIntVar);
@@ -61,8 +61,10 @@ public class ExpressionVisitorTest {
 		assertEquals(expResultInt, resultInt);
 
 		// Test with two integer variable values
-		IntVariable left = new IntVariable("left", 4, env);
-		IntVariable right = new IntVariable("right", 5, env);
+		env.put("left", 4);
+		env.put("right", 5);
+		Variable left = new Variable("left");
+		Variable right = new Variable("right");
 		PlusExpNode nodeIntVar = new PlusExpNode(new ValueExpNode(left), new ValueExpNode(right));
 		Integer resultIntVar = instance.eval(nodeIntVar, env);
 		Integer expResultIntVar = 9;
@@ -146,15 +148,19 @@ public class ExpressionVisitorTest {
 		assertEquals(false, resultFalse);
 
 		// Test with two integer variable values that are equal
-		IntVariable leftTrue = new IntVariable("left", 4, env);
-		IntVariable rightTrue = new IntVariable("right", 4, env);
+		env.put("left", 4);
+		env.put("right", 4);
+		Variable leftTrue = new Variable("left");
+		Variable rightTrue = new Variable("right");
 		EqualsExpNode nodeTrueVar = new EqualsExpNode(new ValueExpNode(leftTrue), new ValueExpNode(rightTrue));
 		Boolean resultTrueVar = instance.eval(nodeTrueVar, env);
 		assertEquals(true, resultTrueVar);
 
 		// Test with two integer variable values that are not equal
-		IntVariable leftFalse = new IntVariable("left", 4, env);
-		IntVariable rightFalse = new IntVariable("right", 5, env);
+		env.put("left", 4);
+		env.put("right", 5);
+		Variable leftFalse = new Variable("left");
+		Variable rightFalse = new Variable("right");
 		EqualsExpNode nodeFalseVar = new EqualsExpNode(new ValueExpNode(leftFalse), new ValueExpNode(rightFalse));
 		Boolean resultFalseVar = instance.eval(nodeFalseVar, env);
 		assertEquals(false, resultFalseVar);
