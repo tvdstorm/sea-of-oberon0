@@ -35,7 +35,42 @@ public class Context {
 		if (containsVariable(name)){
 			return _variables.get(name);
 		}
-		throw new RuntimeException("'"+ name + "' is not in scope");
+		else {
+			if (_parent!=null){
+				return _parent.getReference(name);
+			}
+			throw new RuntimeException("'"+ name + "' is not in scope");
+		}
+	}
+	
+	/*
+	 * Get a procedure known in the scope with the given name
+	 */
+	public ICallable getProcedure(String name){
+		if (containsProcedure(name)){
+			return _procedures.get(name);
+		}
+		else {
+			if (_parent!=null){
+				return _parent.getProcedure(name);
+			}
+			throw new RuntimeException("'"+ name + "' is not in scope");
+		}
+	}
+	
+	/*
+	 * Get the type with the given name from the scope 
+	 */
+	public IValue getType(String name){
+		if (containsType(name)){
+			return _types.get(name);
+		}
+		else {
+			if (_parent!=null){
+				return _parent.getType(name);
+			}
+			throw new RuntimeException("'"+ name + "' is not in scope");
+		}
 	}
 	
 	/*
@@ -47,17 +82,19 @@ public class Context {
 	}
 	
 	/*
-	 * Get a procedure known in the current scope with the given name
+	 * returns true if name exists in current procedurescope (_procedures)
+	 * otherwise returns false
 	 */
-	public ICallable getProcedure(String name){
-		return _procedures.get(name);
+	private boolean containsProcedure(String name){
+		return _procedures.containsKey(name);
 	}
 	
 	/*
-	 * Get the type with the given name from the current scope 
+	 * returns true if name exists in current typescope (_types)
+	 * otherwise returns false
 	 */
-	public IValue getType(String name){
-		return _types.get(name);
+	private boolean containsType(String name){
+		return _types.containsKey(name);
 	}
 	
 	/*
