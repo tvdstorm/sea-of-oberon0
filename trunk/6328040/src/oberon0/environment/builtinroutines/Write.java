@@ -2,6 +2,7 @@ package oberon0.environment.builtinroutines;
 
 import java.util.ArrayList;
 
+import oberon0.ast.expressions.IEvaluable;
 import oberon0.ast.routines.ICallable;
 import oberon0.ast.variables.IReferable;
 import oberon0.environment.Context;
@@ -15,8 +16,8 @@ public class Write implements ICallable {
 
 	@Override
 	public void call(Context context, ArrayList<IReferable> actualParameters) {
-		IReferable param = actualParameters.get(0);
-		IValue value = param.refer(context, IReferable.noPreviousReference).getValue();
+		IEvaluable param = actualParameters.get(0);
+		IValue value = param.eval(context);
 		System.out.print(value.toString() + " ");
 	}
 

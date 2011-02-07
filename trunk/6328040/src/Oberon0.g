@@ -46,16 +46,6 @@ tokens
 	MODULE		=	'MODULE';
 	TRUE		=	'TRUE';
 	FALSE		=	'FALSE';
-	DECLARATIONS;
-	BODY;
-	FORMALPARAMETERS;
-	ACTUALPARAMETERS;
-	CONDITION;
-	IFBLOCK;
-	IDENTLIST;
-	NONREFVAR;
-	PROCEDURECALL;
-	OBERONPROGRAM;
 }
 
 @header {package generated; 
@@ -182,10 +172,11 @@ fpSection returns [ IFormalParameter node ]
 
 
 statement returns [ IExecutable node ]
-	:(ass = assignment 		{$node = $ass.node;	} 
-	| proc = procedureCall 		{$node = $proc.node;	}
-	| ifs = ifStatement 		{$node = $ifs.node;	} 
-	| whil = whileStatement		{$node = $whil.node;	}
+	:(ass = assignment 		{node = $ass.node;	} 
+	| proc = procedureCall 		{node = $proc.node;	}
+	| ifs = ifStatement 		{node = $ifs.node;	} 
+	| whil = whileStatement		{node = $whil.node;	}
+//	| wit = withStatement		{node = $wit.node;	}
 	)?;
 
 procedureCall returns [ IExecutable node ]
@@ -205,7 +196,6 @@ actualParameters returns [ ArrayList<IReferable> list]
 	RNDCLOSE)?
 	;
 
-
 statementSequence returns [ IExecutable node ]
 	: 				{ ArrayList<IExecutable> list = 
 							new  ArrayList<IExecutable>();	}
@@ -215,6 +205,12 @@ statementSequence returns [ IExecutable node ]
 	)*				{node = new StatementsNode(list);		}
 	;
 
+/*withStatement returns [ IExecutable node ]
+	:'WITH'
+	'DO'
+	'END'
+	;
+*/
 ifStatement returns [ IExecutable node ]
 	:	  
 	IF 
@@ -232,7 +228,6 @@ ifStatement returns [ IExecutable node ]
 	)? END					{$node = new IfNode($ifcond.node, $ifbody.node, 
 									condlist, bodylist, $elsebody.node);	}
 	;
-
 
 whileStatement returns [ IExecutable node ]
 	: WHILE cond = expression 

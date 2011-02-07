@@ -15,6 +15,5 @@ public class BooleanNode implements IEvaluable {
 	@Override
 	public IValue eval(Context context) {
 		return new BooleanValue(_value);
-	}
-
+	}	
 }

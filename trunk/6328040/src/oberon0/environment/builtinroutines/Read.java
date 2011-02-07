@@ -41,9 +41,9 @@ public class Read implements ICallable{
 		      val = Integer.parseInt(line);
 		      validInputReceived = true;
 		    } catch (NumberFormatException ex) {
-		      System.err.println("Not a valid number " + line + " please try again: ");
+		      System.err.print("Not a valid number " + line + " please try again: ");
 		    } catch (IOException e) {
-		      System.err.println("Unexpected IO ERROR: " + e + " please try again: ");
+		      System.err.print("Unexpected IO ERROR: " + e + " please try again: ");
 		    }
 		}
 		//wrap it into an IntegerValue
