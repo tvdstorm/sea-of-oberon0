@@ -1,37 +1,27 @@
 package com.kootsjur.oberon;
 
+import com.kootsjur.oberon.evaluator.ConditionalEvaluator;
+import com.kootsjur.oberon.evaluator.SimpleExpressionEvaluator;
+
 public class Expression
 {
-   private SimpleExpression leftSimpleExpression;
-   private SimpleExpression rightSimpleExpression;
-   private RelationalOperator relationalOperator;
+   private SimpleExpressionEvaluator leftSimpleExpression;
+   private SimpleExpressionEvaluator rightSimpleExpression;
+   private ConditionalEvaluator conditionalEvaluator;
   
-   public void setLeftSimpleExpression(SimpleExpression leftSimpleExpression)
+   public Expression(SimpleExpressionEvaluator leftSimpleExpression)
    {
       this.leftSimpleExpression = leftSimpleExpression;
    }
-   public SimpleExpression getLeftSimpleExpression()
-   {
-      return leftSimpleExpression;
-   }
    
-   public void setRightSimpleExpression(SimpleExpression rightSimpleExpression)
-   {
-      this.rightSimpleExpression = rightSimpleExpression;
-   }
-   public SimpleExpression getRightSimpleExpression()
-   {
-      return rightSimpleExpression;
-   }
+   public void setLeftSimpleExpression(SimpleExpressionEvaluator leftSimpleExpression){this.leftSimpleExpression = leftSimpleExpression;}
+   public SimpleExpressionEvaluator getLeftSimpleExpression(){return leftSimpleExpression;}
    
-   public void setExpressionType(RelationalOperator relationalOperator)
-   {
-      this.relationalOperator = relationalOperator;
-   }
-   public RelationalOperator getExpressionType()
-   {
-      return relationalOperator;
-   }
+   public void setRightSimpleExpression(SimpleExpressionEvaluator rightSimpleExpression){this.rightSimpleExpression = rightSimpleExpression;}
+   public SimpleExpressionEvaluator getRightSimpleExpression(){return rightSimpleExpression;}
+   
+   public void setConditionalEvaluator(ConditionalEvaluator conditionalEvaluator){this.conditionalEvaluator = conditionalEvaluator;}
+   public ConditionalEvaluator getConditionalEvaluatore(){return conditionalEvaluator;}
 
    
 }

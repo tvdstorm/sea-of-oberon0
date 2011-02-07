@@ -2,10 +2,21 @@ package com.kootsjur.oberon;
 
 import java.util.List;
 
+import com.kootsjur.oberon.type.TypeDefinition;
+
 public class FPSection
 {
    private List<String> names;
    private TypeDefinition typeDefinition;
+   private ParameterDirection parameterDirection;
+   
+   public FPSection(List<String> names, TypeDefinition typeDefinition, ParameterDirection parameterDirection)
+   {
+      this.names = names;
+      this.typeDefinition = typeDefinition;
+      this.parameterDirection = parameterDirection;
+   }
+   
    /**
     * Set the names to the specified value.
     *
@@ -24,6 +35,7 @@ public class FPSection
    {
       return names;
    }
+   
    /**
     * Set the typeDefinition to the specified value.
     *
@@ -41,5 +53,14 @@ public class FPSection
    public TypeDefinition getType()
    {
       return typeDefinition;
+   }
+   
+   public void setParameterDirection(ParameterDirection parameterDirection)
+   {
+      this.parameterDirection = parameterDirection;
+   }
+   public ParameterDirection getParameterDirection()
+   {
+      return parameterDirection;
    }
 }

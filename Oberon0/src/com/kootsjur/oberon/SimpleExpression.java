@@ -1,45 +1,45 @@
 package com.kootsjur.oberon;
 
+import com.kootsjur.oberon.evaluator.SimpleExpressionEvaluator;
+
 public class SimpleExpression
 {
    private Term leftTerm;
-   private BinaryOperator leftSimpleExpressionType;
+   private SimpleExpressionEvaluator leftSimpleExpressionEvaluatore;
    private Term rightTerm;
-   private BinaryOperator rightSimpleExpressionType;
+   private SimpleExpressionEvaluator SimpleExpressionEvaluator;
    
-   
-   public void setLeftTerm(Term leftTerm)
+   public SimpleExpression(Term leftTerm)
    {
       this.leftTerm = leftTerm;
    }
-   public Term getLeftTerm()
+   
+   public SimpleExpression(Term leftTerm, boolean Negative)
    {
-      return leftTerm;
-   }
-   public void setRightTerm(Term rightTerm)
-   {
-      this.rightTerm = rightTerm;
-   }
-   public Term getRightTerm()
-   {
-      return rightTerm;
+      this.leftTerm = leftTerm;
    }
    
-   public void setRightSimpleExpressionType(BinaryOperator rightSimpleExpressionType)
+   public void setLeftTerm(Term leftTerm){this.leftTerm = leftTerm;}
+   public Term getLeftTerm(){return leftTerm;}
+   
+   public void setRightTerm(Term rightTerm){this.rightTerm = rightTerm;}
+   public Term getRightTerm(){return rightTerm;}
+   
+   public void setLeftSimpleExpressionEvaluatore(SimpleExpressionEvaluator leftSimpleExpressionEvaluatore)
    {
-      this.rightSimpleExpressionType = rightSimpleExpressionType;
+      this.leftSimpleExpressionEvaluatore = leftSimpleExpressionEvaluatore;
    }
-   public BinaryOperator getRightSimpleExpressionType()
+   public SimpleExpressionEvaluator getLeftSimpleExpressionEvaluatore()
    {
-      return rightSimpleExpressionType;
+      return leftSimpleExpressionEvaluatore;
    }
-   public void setLeftSimpleExpressionType(BinaryOperator leftSimpleExpressionType)
+   
+   public void setSimpleExpressionEvaluator(SimpleExpressionEvaluator simpleExpressionEvaluator)
    {
-      this.leftSimpleExpressionType = leftSimpleExpressionType;
+      SimpleExpressionEvaluator = simpleExpressionEvaluator;
    }
-   public BinaryOperator getLeftSimpleExpressionType()
+   public SimpleExpressionEvaluator getSimpleExpressionEvaluator()
    {
-      return leftSimpleExpressionType;
+      return SimpleExpressionEvaluator;
    }
-
 }

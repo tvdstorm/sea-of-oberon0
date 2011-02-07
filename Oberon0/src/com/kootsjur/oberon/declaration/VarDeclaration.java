@@ -1,20 +1,20 @@
-package com.kootsjur.oberon;
+package com.kootsjur.oberon.declaration;
 
 import java.util.List;
 
 import com.kootsjur.oberon.type.TypeDefinition;
 
-public class FieldList
+public class VarDeclaration extends Declaration
 {
    private List<String> names;
    private TypeDefinition typeDefinition;
    
-   public FieldList(List<String> names, TypeDefinition typeDefinition)
+   public VarDeclaration(List<String> names, TypeDefinition typeDefinition)
    {
+      super(DeclarationType.VAR);
       this.names = names;
       this.typeDefinition = typeDefinition;
    }
-   
    public void setNames(List<String> names)
    {
       this.names = names;
@@ -24,11 +24,11 @@ public class FieldList
       return names;
    }
    
-   public void setTypeDefinition(TypeDefinition typeDefinition)
+   public void setType(TypeDefinition typeDefinition)
    {
       this.typeDefinition = typeDefinition;
    }
-   public TypeDefinition getTypeDefinition()
+   public TypeDefinition getType()
    {
       return typeDefinition;
    }

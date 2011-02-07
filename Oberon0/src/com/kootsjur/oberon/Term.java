@@ -3,8 +3,13 @@ package com.kootsjur.oberon;
 public class Term
 {
    private Factor leftFactor;
-   private Factor rightFactor;
-   private MultiplyingOperator multiplyingOperator;
+   private Factor factor;
+   private TermEvaluator termEvaluator;
+   
+   public Term(Factor leftFactor)
+   {
+      this.leftFactor = leftFactor;
+   }
    
    public void setLeftFactor(Factor leftFactor)
    {
@@ -15,21 +20,21 @@ public class Term
       return leftFactor;
    }
    
-   public void setRightFactor(Factor rightFactor)
+   public void setFactor(Factor factor)
    {
-      this.rightFactor = rightFactor;
+      this.factor = factor;
    }
-   public Factor getRightFactor()
+   public Factor getFactor()
    {
-      return rightFactor;
+      return factor;
    }
    
-   public void setTermType(MultiplyingOperator multiplyingOperator)
+   public void setTermType(TermEvaluator termEvaluator)
    {
-      this.multiplyingOperator = multiplyingOperator;
+      this.termEvaluator = termEvaluator;
    }
-   public MultiplyingOperator getTermType()
+   public TermEvaluator getTermType()
    {
-      return multiplyingOperator;
+      return termEvaluator;
    }
 }
