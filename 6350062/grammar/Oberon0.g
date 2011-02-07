@@ -10,6 +10,8 @@ options {
 
 tokens
 {
+	TRUE='TRUE';
+	FALSE='FALSE';
 	MINUS='-';
 	PLUS='+';
 	TIMES='*';
@@ -65,7 +67,9 @@ WHITESPACE:		(' '|'\t'|'\r'|'\n') { skip(); };
 IDENT:			('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'0'..'9')*;
 INTEGER:		('0'..'9')+;
 selector:		IDENT ((DOTSELECTOR^ IDENT)|(ARRAYSELECTOR^ expression ']'!))+ | IDENT;
-factor:			selector | INTEGER | '('! expression ')'! | NOT^ factor;
+numberLiteral:		INTEGER;
+booleanLiteral:		TRUE|FALSE;
+factor:			selector | booleanLiteral | numberLiteral | '('! expression ')'! | NOT^ factor;
 term:			factor ((TIMES|DIVIDE|MOD|AND)^ factor)*;
 simpleExpression:	(PLUS!|MINUS^)? term ((PLUS|MINUS |OR)^ term)*;
 infixOperand:		EQUALS | NOTEQUALS | SMALLERTHAN | SMALLEREQUALS | GREATERTHAN | GREATEREQUALS;

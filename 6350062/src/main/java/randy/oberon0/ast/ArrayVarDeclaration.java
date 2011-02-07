@@ -158,7 +158,7 @@ public class ArrayVarDeclaration extends VarDeclaration
 			// Check if the length of the parameter matches the definition
 			Array testArray = parameterValue;
 			boolean bFirst = true;
-			for (Integer length : lengths)
+			for (@SuppressWarnings("unused") Integer length : lengths)
 			{
 				if (!bFirst)
 				{

@@ -74,8 +74,6 @@ public class Module extends ASTNode implements IInvokableFunction
 				bodyDecl.typeCheckRegister(environment);
 			}
 		}
-		// Run the body of the module
-		body.typeCheck(environment);
 	}
 	@Override
 	public void typeCheckRegisterTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException
@@ -87,6 +85,37 @@ public class Module extends ASTNode implements IInvokableFunction
 			if (bodyDecl instanceof AbstractTypeDeclaration)
 			{
 				bodyDecl.typeCheckRegister(newEnvironment);
+			}
+		}
+	}
+	@Override
+	public void typeCheckBody(RuntimeEnvironment newEnvironment) throws RuntimeException
+	{
+		// Register all the type declarations in the environment
+		for (BodyDeclaration bodyDecl : bodyDeclarations)
+		{
+			if (bodyDecl instanceof AbstractTypeDeclaration)
+			{
+				bodyDecl.typeCheckRegister(newEnvironment);
+			}
+		}
+		// Loop through all body declarations except type declarations
+		for (BodyDeclaration bodyDecl : bodyDeclarations)
+		{
+			if (!(bodyDecl instanceof AbstractTypeDeclaration))
+			{
+				bodyDecl.typeCheckRegister(newEnvironment);
+			}
+		}
+		// Run the body of the module
+		body.typeCheck(newEnvironment);
+		// Loop through all ProcedureDeclarations and typeCheck their bodies
+		for (BodyDeclaration bodyDecl : bodyDeclarations)
+		{
+			if (bodyDecl instanceof ProcedureDeclaration)
+			{
+				RuntimeEnvironment functionEnvironment = new RuntimeEnvironment(newEnvironment);
+				((ProcedureDeclaration)bodyDecl).typeCheckBody(functionEnvironment);
 			}
 		}
 	}

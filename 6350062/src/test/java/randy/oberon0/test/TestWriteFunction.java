@@ -49,4 +49,9 @@ public class TestWriteFunction implements IInvokableFunction
 	{
 		// Leeg
 	}
+	@Override
+	public void typeCheckBody(RuntimeEnvironment newEnvironment) throws RuntimeException
+	{
+		// Leeg
+	}
 }

@@ -12,4 +12,5 @@ public interface IInvokableFunction
 	public abstract void typeCheckInvoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException;
 	public abstract void registerTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException;
 	public abstract void typeCheckRegisterTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException;
+	public abstract void typeCheckBody(RuntimeEnvironment newEnvironment) throws RuntimeException;
 }
