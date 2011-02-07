@@ -12,8 +12,8 @@ import uva.oberon0.runtime.Scope;
  * @author Chiel Labee This class represents the build-in Read Method Call.
  */
 public class CallRead extends Call {
-	public CallRead(ExpressionList call_vars) {
-		super(call_vars);
+	public CallRead(ExpressionList actualParameterList) {
+		super(actualParameterList);
 	}
 
 	@Override
