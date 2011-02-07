@@ -51,7 +51,7 @@ class DeclarationEvaluator extends DeclarationVisitor {
 	}
 
 	@Override
-	protected void visitProcedure(Procedure procedure) {
+	protected void visitProcedure(ProcedureDeclaration procedure) {
 		ScriptedProcedure proc = new ScriptedProcedure(procedure);
 		_context.getScope().defineProcedure(procedure.getName(), proc);
 	}
