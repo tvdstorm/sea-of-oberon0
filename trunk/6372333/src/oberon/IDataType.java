@@ -23,7 +23,15 @@ public interface IDataType {
 	 * @param newName the new name of the copy
 	 * @return copy of the current instance
 	 */
-	public abstract IDataType copy(final String newName);
+	public abstract IDataType performDeepCopy(final String newName);
+
+	/**
+	 * Copy.
+	 *
+	 * @param newName the new name of the copy
+	 * @return copy of the current instance
+	 */
+	public abstract IDataType performShallowCopy(final String newName);
 
 	/**
 	 * Gets the name.

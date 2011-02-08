@@ -38,7 +38,7 @@ public class Declaration {
 		final List<IDataType> list = new ArrayList<IDataType>();
 		
 		for (IDataType declaration : constAndVarDeclarations) {
-			list.add(declaration);
+			list.add(declaration.performDeepCopy(declaration.getName()));
 		}
 		
 		return Collections.unmodifiableList(list);

@@ -1,6 +1,8 @@
 package oberon.statement;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Queue;
 
 import oberon.IExpression;
@@ -19,7 +21,7 @@ public class IfStatement implements IStatement {
 	private final StatementSequence elseBody;
 	
 	/** The else if blocks. */
-	private final Queue<IfStatement> elseIfBlocks;
+	private final List<IfStatement> elseIfBlocks;
 	
 	/** The if condition. */
 	private final IExpression ifCondition;
@@ -36,7 +38,7 @@ public class IfStatement implements IStatement {
 	 * @param elseBlock the else block body
 	 */
 	public IfStatement (final IExpression condition, final StatementSequence ifBlock, 
-			final Queue<IfStatement> elseIfs, final StatementSequence elseBlock)
+			final ArrayList<IfStatement> elseIfs, final StatementSequence elseBlock)
 	{
 		ifCondition = condition;
 		ifBody = ifBlock;
@@ -54,8 +56,8 @@ public class IfStatement implements IStatement {
 			return;
 		}
 
-		while (!elseIfBlocks.isEmpty()) {
-			final IfStatement nextElseIf = elseIfBlocks.poll();
+		
+		for (IfStatement nextElseIf : elseIfBlocks){
 			if (nextElseIf.conditionIsTrue(currentScope)) {
 				nextElseIf.evalStatements(currentScope);
 				return;
