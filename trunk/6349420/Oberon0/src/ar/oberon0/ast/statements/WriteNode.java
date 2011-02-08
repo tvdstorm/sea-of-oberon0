@@ -2,7 +2,6 @@ package ar.oberon0.ast.statements;
 
 import java.io.PrintStream;
 
-import junit.framework.Assert;
 import ar.oberon0.runtime.Context;
 import ar.oberon0.shared.Helper;
 import ar.oberon0.shared.Interpretable;
@@ -31,7 +30,7 @@ public class WriteNode implements Interpretable {
 	}
 
 	public WriteNode(final Interpretable message) {
-		Assert.assertNotNull("The message paramter can't be null.", message);
+		assert message != null : "The message paramter can't be null.";
 		this.message = message;
 	}
 

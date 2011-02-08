@@ -1,6 +1,5 @@
 package ar.oberon0.ast.dataTypes;
 
-import junit.framework.Assert;
 import ar.oberon0.runtime.Context;
 import ar.oberon0.shared.Helper;
 import ar.oberon0.shared.Interpretable;
@@ -14,8 +13,8 @@ public class ArrayType implements CreatableType {
 	private CreatableType type;
 
 	public ArrayType(Interpretable length, CreatableType type) {
-		Assert.assertNotNull("the length parameter can't be null.", length);
-		Assert.assertNotNull("the type parameter can't be null.", type);
+		assert length != null : "the length parameter can't be null.";
+		assert type != null : "the type parameter can't be null.";
 		this.length = length;
 		this.type = type;
 	}

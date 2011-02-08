@@ -1,6 +1,5 @@
 package ar.oberon0.shared;
 
-import junit.framework.Assert;
 import ar.oberon0.ast.expression.SelectorNode;
 import ar.oberon0.runtime.Context;
 import ar.oberon0.runtime.DataField;
@@ -54,7 +53,7 @@ public final class Helper {
 	 * procedure call.
 	 */
 	public static DataField convertToDataField(final Interpretable node, final Context context) throws TechnicalException {
-		Assert.assertNotNull("The node parameter can't be null", node);
+		assert node != null : "The node parameter can't be null";
 
 		if (node instanceof DataField) {
 			return (DataField) node;

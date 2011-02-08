@@ -1,6 +1,5 @@
 package ar.oberon0.ast.expression;
 
-import junit.framework.Assert;
 import ar.oberon0.runtime.Context;
 import ar.oberon0.runtime.DataField;
 import ar.oberon0.shared.Interpretable;
@@ -23,7 +22,7 @@ public class VarSelectorNode extends SelectorNode implements Interpretable {
 
 	@Override
 	protected final DataField getItem(final DataField parent, final Context context) throws TechnicalException {
-		Assert.assertNull("The parent parameter must be null. A VarSelector can only occur as first selector.", parent);
+		assert parent != null : "The parent parameter must be null. A VarSelector can only occur as first selector.";
 
 		DataField resultVar = context.getVarOrConstantAsDataField(this.identName);
 		// If there is no next selector node the resultField is the field that

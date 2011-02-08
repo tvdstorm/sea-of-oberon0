@@ -1,6 +1,5 @@
 package ar.oberon0.ast.statements;
 
-import junit.framework.Assert;
 import ar.oberon0.runtime.Context;
 import ar.oberon0.shared.Interpretable;
 import ar.oberon0.shared.TechnicalException;
@@ -23,8 +22,8 @@ public class WhileNode implements Interpretable {
 	 * statements that are executed every time the while loop is processed.
 	 */
 	public WhileNode(Interpretable controlExpression, Interpretable statementsToExecute) {
-		Assert.assertNotNull("The controlExpression parameter can't be null.", controlExpression);
-		Assert.assertNotNull("The statementsToExecute parameter can't be null.", statementsToExecute);
+		assert controlExpression != null : "The controlExpression parameter can't be null.";
+		assert statementsToExecute != null : "The statementsToExecute parameter can't be null.";
 		this.controlExpression = controlExpression;
 		this.statementsToExecute = statementsToExecute;
 	}

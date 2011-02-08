@@ -3,7 +3,6 @@ package ar.oberon0.lists;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Assert;
 import ar.oberon0.ast.dataTypes.CreatableType;
 import ar.oberon0.ast.declarations.FormalParameter;
 
@@ -32,9 +31,9 @@ public class FormalParameterList {
 	 * specified type.
 	 */
 	public void addParameters(IdentList identifiers, CreatableType type, FormalParameter.Direction direction) {
-		Assert.assertNotNull("The identifiers parameter can't be null.", identifiers);
-		Assert.assertNotNull("The type parameter can't be null.", type);
-		Assert.assertNotNull("The direction parameter can't be null.", direction);
+		assert identifiers != null : "The identifiers parameter can't be null.";
+		assert type != null : "The type parameter can't be null.";
+		assert direction != null : "The direction parameter can't be null.";
 		for (String identifier : identifiers) {
 			this._parameters.add(new FormalParameterWithName(identifier, type, direction));
 		}

@@ -1,6 +1,5 @@
 package ar.oberon0.ast.declarations;
 
-import junit.framework.Assert;
 import ar.oberon0.ast.dataTypes.CreatableType;
 
 /*
@@ -20,8 +19,8 @@ public class FormalParameter {
 	}
 
 	public FormalParameter(final CreatableType type, final Direction direction) {
-		Assert.assertNotNull("The type parameter can't be null.", type);
-		Assert.assertNotNull("The direction parameter can't be null.", direction);
+		assert type != null : "The type parameter can't be null.";
+		assert direction != null : "The direction parameter can't be null.";
 		this.type = type;
 		this.direction = direction;
 	}
