@@ -1,5 +1,7 @@
 package ast;
 
+import ast.expression.ExpressionNode;
+import ast.expression.VarNode;
 import errorhandler.OberonException;
 import management.MemoryManager;
 

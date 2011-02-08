@@ -1,4 +1,4 @@
-package ast;
+package ast.expression;
 import errorhandler.OberonException;
 
 public class IntegerNode extends ExpressionNode

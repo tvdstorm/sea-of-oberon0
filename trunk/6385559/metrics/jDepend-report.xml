@@ -4,14 +4,14 @@
 
         <Package name="ast">
             <Stats>
-                <TotalClasses>47</TotalClasses>
-                <ConcreteClasses>45</ConcreteClasses>
+                <TotalClasses>26</TotalClasses>
+                <ConcreteClasses>24</ConcreteClasses>
                 <AbstractClasses>2</AbstractClasses>
-                <Ca>4</Ca>
-                <Ce>5</Ce>
-                <A>0.04</A>
-                <I>0.56</I>
-                <D>0.4</D>
+                <Ca>6</Ca>
+                <Ce>6</Ce>
+                <A>0.08</A>
+                <I>0.5</I>
+                <D>0.42</D>
                 <V>1</V>
             </Stats>
 
@@ -40,54 +40,6 @@
                 <Class sourceFile="ElseStatementNode.java">
                     ast.ElseStatementNode
                 </Class>
-                <Class sourceFile="ExpressionAndNode.java">
-                    ast.ExpressionAndNode
-                </Class>
-                <Class sourceFile="ExpressionBiggerEqualNode.java">
-                    ast.ExpressionBiggerEqualNode
-                </Class>
-                <Class sourceFile="ExpressionBiggerNode.java">
-                    ast.ExpressionBiggerNode
-                </Class>
-                <Class sourceFile="ExpressionDivideNode.java">
-                    ast.ExpressionDivideNode
-                </Class>
-                <Class sourceFile="ExpressionEqualNode.java">
-                    ast.ExpressionEqualNode
-                </Class>
-                <Class sourceFile="ExpressionMinNode.java">
-                    ast.ExpressionMinNode
-                </Class>
-                <Class sourceFile="ExpressionMinusNode.java">
-                    ast.ExpressionMinusNode
-                </Class>
-                <Class sourceFile="ExpressionModuloNode.java">
-                    ast.ExpressionModuloNode
-                </Class>
-                <Class sourceFile="ExpressionMultiplyNode.java">
-                    ast.ExpressionMultiplyNode
-                </Class>
-                <Class sourceFile="ExpressionNode.java">
-                    ast.ExpressionNode
-                </Class>
-                <Class sourceFile="ExpressionNotEqualNode.java">
-                    ast.ExpressionNotEqualNode
-                </Class>
-                <Class sourceFile="ExpressionNotNode.java">
-                    ast.ExpressionNotNode
-                </Class>
-                <Class sourceFile="ExpressionOrNode.java">
-                    ast.ExpressionOrNode
-                </Class>
-                <Class sourceFile="ExpressionPlusNode.java">
-                    ast.ExpressionPlusNode
-                </Class>
-                <Class sourceFile="ExpressionSmallerEqualNode.java">
-                    ast.ExpressionSmallerEqualNode
-                </Class>
-                <Class sourceFile="ExpressionSmallerNode.java">
-                    ast.ExpressionSmallerNode
-                </Class>
                 <Class sourceFile="FieldlistNode.java">
                     ast.FieldlistNode
                 </Class>
@@ -105,9 +57,6 @@
                 </Class>
                 <Class sourceFile="IfStatementNode.java">
                     ast.IfStatementNode
-                </Class>
-                <Class sourceFile="IntegerNode.java">
-                    ast.IntegerNode
                 </Class>
                 <Class sourceFile="ModuleNode.java">
                     ast.ModuleNode
@@ -133,15 +82,6 @@
                 <Class sourceFile="RecordNode.java">
                     ast.RecordNode
                 </Class>
-                <Class sourceFile="SelectorArrayNode.java">
-                    ast.SelectorArrayNode
-                </Class>
-                <Class sourceFile="SelectorNode.java">
-                    ast.SelectorNode
-                </Class>
-                <Class sourceFile="SelectorRecordNode.java">
-                    ast.SelectorRecordNode
-                </Class>
                 <Class sourceFile="StatementSequenceNode.java">
                     ast.StatementSequenceNode
                 </Class>
@@ -150,9 +90,6 @@
                 </Class>
                 <Class sourceFile="TypeNode.java">
                     ast.TypeNode
-                </Class>
-                <Class sourceFile="VarNode.java">
-                    ast.VarNode
                 </Class>
                 <Class sourceFile="WhileStatementNode.java">
                     ast.WhileStatementNode
@@ -163,6 +100,7 @@
             </ConcreteClasses>
 
             <DependsUpon>
+                <Package>ast.expression</Package>
                 <Package>errorhandler</Package>
                 <Package>java.lang</Package>
                 <Package>java.util</Package>
@@ -171,6 +109,8 @@
             </DependsUpon>
 
             <UsedBy>
+                <Package>ast.expression</Package>
+                <Package>ast.expression.selector</Package>
                 <Package>management</Package>
                 <Package>oberon0</Package>
                 <Package>parser</Package>
@@ -178,16 +118,142 @@
             </UsedBy>
         </Package>
 
+        <Package name="ast.expression">
+            <Stats>
+                <TotalClasses>18</TotalClasses>
+                <ConcreteClasses>18</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>3</Ca>
+                <Ce>5</Ce>
+                <A>0</A>
+                <I>0.62</I>
+                <D>0.38</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="AndNode.java">
+                    ast.expression.AndNode
+                </Class>
+                <Class sourceFile="BiggerEqualNode.java">
+                    ast.expression.BiggerEqualNode
+                </Class>
+                <Class sourceFile="BiggerNode.java">
+                    ast.expression.BiggerNode
+                </Class>
+                <Class sourceFile="DivideNode.java">
+                    ast.expression.DivideNode
+                </Class>
+                <Class sourceFile="EqualNode.java">
+                    ast.expression.EqualNode
+                </Class>
+                <Class sourceFile="ExpressionNode.java">
+                    ast.expression.ExpressionNode
+                </Class>
+                <Class sourceFile="IntegerNode.java">
+                    ast.expression.IntegerNode
+                </Class>
+                <Class sourceFile="MinNode.java">
+                    ast.expression.MinNode
+                </Class>
+                <Class sourceFile="MinusNode.java">
+                    ast.expression.MinusNode
+                </Class>
+                <Class sourceFile="ModuloNode.java">
+                    ast.expression.ModuloNode
+                </Class>
+                <Class sourceFile="MultiplyNode.java">
+                    ast.expression.MultiplyNode
+                </Class>
+                <Class sourceFile="NotEqualNode.java">
+                    ast.expression.NotEqualNode
+                </Class>
+                <Class sourceFile="NotNode.java">
+                    ast.expression.NotNode
+                </Class>
+                <Class sourceFile="OrNode.java">
+                    ast.expression.OrNode
+                </Class>
+                <Class sourceFile="PlusNode.java">
+                    ast.expression.PlusNode
+                </Class>
+                <Class sourceFile="SmallerEqualNode.java">
+                    ast.expression.SmallerEqualNode
+                </Class>
+                <Class sourceFile="SmallerNode.java">
+                    ast.expression.SmallerNode
+                </Class>
+                <Class sourceFile="VarNode.java">
+                    ast.expression.VarNode
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>ast</Package>
+                <Package>ast.expression.selector</Package>
+                <Package>errorhandler</Package>
+                <Package>java.lang</Package>
+                <Package>management</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>ast</Package>
+                <Package>ast.expression.selector</Package>
+                <Package>parser</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="ast.expression.selector">
+            <Stats>
+                <TotalClasses>2</TotalClasses>
+                <ConcreteClasses>2</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>2</Ca>
+                <Ce>4</Ce>
+                <A>0</A>
+                <I>0.67</I>
+                <D>0.33</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="SelectorArrayNode.java">
+                    ast.expression.selector.SelectorArrayNode
+                </Class>
+                <Class sourceFile="SelectorRecordNode.java">
+                    ast.expression.selector.SelectorRecordNode
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>ast</Package>
+                <Package>ast.expression</Package>
+                <Package>errorhandler</Package>
+                <Package>java.lang</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>ast.expression</Package>
+                <Package>parser</Package>
+            </UsedBy>
+        </Package>
+
         <Package name="datatype">
             <Stats>
-                <TotalClasses>5</TotalClasses>
-                <ConcreteClasses>5</ConcreteClasses>
+                <TotalClasses>7</TotalClasses>
+                <ConcreteClasses>7</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
-                <Ca>0</Ca>
+                <Ca>1</Ca>
                 <Ce>2</Ce>
                 <A>0</A>
-                <I>1</I>
-                <D>0</D>
+                <I>0.67</I>
+                <D>0.33</D>
                 <V>1</V>
             </Stats>
 
@@ -204,6 +270,12 @@
                 <Class sourceFile="Datatype.java">
                     datatype.Datatype
                 </Class>
+                <Class sourceFile="Datatype.java">
+                    datatype.Datatype$booleanValues
+                </Class>
+                <Class sourceFile="Datatype.java">
+                    datatype.Datatype$integerValues
+                </Class>
                 <Class sourceFile="IntegerType.java">
                     datatype.IntegerType
                 </Class>
@@ -218,6 +290,7 @@
             </DependsUpon>
 
             <UsedBy>
+                <Package>memoryTest</Package>
             </UsedBy>
         </Package>
 
@@ -226,11 +299,11 @@
                 <TotalClasses>2</TotalClasses>
                 <ConcreteClasses>2</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
-                <Ca>6</Ca>
+                <Ca>8</Ca>
                 <Ce>3</Ce>
                 <A>0</A>
-                <I>0.33</I>
-                <D>0.67</D>
+                <I>0.27</I>
+                <D>0.73</D>
                 <V>1</V>
             </Stats>
 
@@ -254,6 +327,8 @@
 
             <UsedBy>
                 <Package>ast</Package>
+                <Package>ast.expression</Package>
+                <Package>ast.expression.selector</Package>
                 <Package>datatype</Package>
                 <Package>management</Package>
                 <Package>oberon0</Package>
@@ -279,11 +354,11 @@
                 <TotalClasses>9</TotalClasses>
                 <ConcreteClasses>9</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
-                <Ca>3</Ca>
+                <Ca>4</Ca>
                 <Ce>5</Ce>
                 <A>0</A>
-                <I>0.62</I>
-                <D>0.38</D>
+                <I>0.56</I>
+                <D>0.44</D>
                 <V>1</V>
             </Stats>
 
@@ -330,6 +405,7 @@
 
             <UsedBy>
                 <Package>ast</Package>
+                <Package>ast.expression</Package>
                 <Package>oberon0</Package>
                 <Package>systemcalls</Package>
             </UsedBy>
@@ -341,7 +417,7 @@
                 <ConcreteClasses>2</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
                 <Ca>0</Ca>
-                <Ce>2</Ce>
+                <Ce>4</Ce>
                 <A>0</A>
                 <I>1</I>
                 <D>0</D>
@@ -361,6 +437,8 @@
             </ConcreteClasses>
 
             <DependsUpon>
+                <Package>datatype</Package>
+                <Package>java.io</Package>
                 <Package>java.lang</Package>
                 <Package>java.util</Package>
             </DependsUpon>
@@ -426,10 +504,10 @@
                 <ConcreteClasses>3</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
                 <Ca>1</Ca>
-                <Ce>5</Ce>
+                <Ce>7</Ce>
                 <A>0</A>
-                <I>0.83</I>
-                <D>0.17</D>
+                <I>0.88</I>
+                <D>0.12</D>
                 <V>1</V>
             </Stats>
 
@@ -450,6 +528,8 @@
 
             <DependsUpon>
                 <Package>ast</Package>
+                <Package>ast.expression</Package>
+                <Package>ast.expression.selector</Package>
                 <Package>errorhandler</Package>
                 <Package>java.io</Package>
                 <Package>java.lang</Package>
@@ -506,31 +586,42 @@
 
     <Cycles>
         <Package Name="ast">
-            <Package>management</Package>
+            <Package>ast.expression</Package>
             <Package>ast</Package>
+        </Package>
+
+        <Package Name="ast.expression">
+            <Package>ast</Package>
+            <Package>ast.expression</Package>
+        </Package>
+
+        <Package Name="ast.expression.selector">
+            <Package>ast.expression</Package>
+            <Package>ast</Package>
+            <Package>ast.expression</Package>
         </Package>
 
         <Package Name="management">
             <Package>ast</Package>
-            <Package>management</Package>
+            <Package>ast.expression</Package>
+            <Package>ast</Package>
         </Package>
 
         <Package Name="oberon0">
-            <Package>systemcalls</Package>
             <Package>ast</Package>
-            <Package>management</Package>
+            <Package>ast.expression</Package>
             <Package>ast</Package>
         </Package>
 
         <Package Name="parser">
+            <Package>ast.expression</Package>
             <Package>ast</Package>
-            <Package>management</Package>
-            <Package>ast</Package>
+            <Package>ast.expression</Package>
         </Package>
 
         <Package Name="systemcalls">
             <Package>ast</Package>
-            <Package>management</Package>
+            <Package>ast.expression</Package>
             <Package>ast</Package>
         </Package>
 

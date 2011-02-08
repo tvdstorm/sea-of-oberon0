@@ -2,6 +2,9 @@ package ast;
 
 import java.util.Vector;
 
+import ast.expression.ExpressionNode;
+import ast.expression.VarNode;
+
 import errorhandler.OberonException;
 import management.ParamContainer;
 
