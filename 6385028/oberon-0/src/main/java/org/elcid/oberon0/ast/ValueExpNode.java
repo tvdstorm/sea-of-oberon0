@@ -9,7 +9,7 @@ import org.elcid.oberon0.ast.visitor.BaseVisitor;
  *
  * @author Pieter Brandwijk
  */
-public class ValueExpNode extends IntExpNode {
+public class ValueExpNode extends ExpressionNode {
 
 	private Value value;
 

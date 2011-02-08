@@ -8,7 +8,7 @@ import org.elcid.oberon0.ast.visitor.BaseVisitor;
  *
  * @author Pieter Brandwijk
  */
-public class EqualsExpNode extends BooleanExpNode {
+public class EqualsExpNode extends ExpressionNode {
 
 	private ExpressionNode leftExp;
 	private ExpressionNode rightExp;
