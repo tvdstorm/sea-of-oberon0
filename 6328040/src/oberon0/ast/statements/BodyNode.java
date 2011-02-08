@@ -9,7 +9,7 @@ public class BodyNode implements IExecutable {
 	private final List<IExecutable> _statements;
 
 	public BodyNode(ArrayList<IExecutable> statements) {
-		if (statements != null){
+		if (statements != null) {
 			_statements = statements;
 		} else {
 			_statements = new ArrayList<IExecutable>();

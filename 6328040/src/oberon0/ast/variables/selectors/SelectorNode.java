@@ -10,7 +10,7 @@ public class SelectorNode implements ISelector {
 	private final List<ISelector> _selectors;
 
 	public SelectorNode(List<ISelector> list) {
-		if (list != null){
+		if (list != null) {
 			_selectors = list;
 		} else {
 			_selectors = new ArrayList<ISelector>();
@@ -18,10 +18,10 @@ public class SelectorNode implements ISelector {
 	}
 
 	@Override
-	public Reference refer(Context context, Reference firstRef) {
+	public Reference deref(Context context, Reference firstRef) {
 		Reference ref = firstRef;
 		for (ISelector currentSelector : _selectors) {
-			ref = currentSelector.refer(context, ref);
+			ref = currentSelector.deref(context, ref);
 		}
 		return ref;
 	}

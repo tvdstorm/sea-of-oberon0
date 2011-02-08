@@ -6,7 +6,7 @@ package oberon0.environment;
  */
 public class Reference {
 	public final static Reference EMPTY_REFERENCE = null;
-	
+
 	private IValue _value;
 
 	public Reference(IValue value) {

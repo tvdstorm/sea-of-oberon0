@@ -13,7 +13,7 @@ public class RecordTypeNode implements IEvaluable {
 	private final Map<String, IEvaluable> _fields;
 
 	public RecordTypeNode(Map<String, IEvaluable> rec) {
-		if (rec != null ) {
+		if (rec != null) {
 			_fields = rec;
 		} else {
 			_fields = new HashMap<String, IEvaluable>();

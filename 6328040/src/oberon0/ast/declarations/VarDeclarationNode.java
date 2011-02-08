@@ -12,7 +12,7 @@ public class VarDeclarationNode implements IDeclarable {
 	private IEvaluable _type;
 
 	public VarDeclarationNode(List<String> names, IEvaluable type) {
-		if (names != null){
+		if (names != null) {
 			_names = names;
 		} else {
 			_names = new ArrayList<String>();

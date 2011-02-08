@@ -20,7 +20,7 @@ public class FPRefVarNode extends BaseFormalParameterNode {
 
 		while (fpNames.hasNext()) {
 			IReferable currentActualParam = getNextActualParameter(actualParams);
-			Reference currentAPReference = currentActualParam.getRef(
+			Reference currentAPReference = currentActualParam.deref(
 					context.getParent(), Reference.EMPTY_REFERENCE);
 
 			String currentName = fpNames.next();
