@@ -5,7 +5,7 @@ import java.util.*;
 import org.antlr.runtime.*;
 import org.antlr.runtime.tree.Tree;
 import randy.oberon0.ast.*;
-import randy.library.datastructures.Tuple;
+import randy.oberon0.ast.datastructures.IfExpressionAndBody;
 import randy.oberon0.exception.Exception;
 import randy.oberon0.exception.*;
 import randy.oberon0.generated.antlr.*;
@@ -173,8 +173,8 @@ public class Oberon0ASTTreeGenerator
 		assert(tree.getType() == Oberon0Parser.IF);
 		assert(tree.getChildCount() >= 2);
 		assert(tree.getChild(1).getType() == Oberon0Parser.BODY); 
-		List<Tuple<Expression, Block>> ifStatements = new Vector<Tuple<Expression, Block>>();
-		ifStatements.add(new Tuple<Expression, Block>(buildExpression(tree.getChild(0)), buildBlock(tree.getChild(1))));
+		List<IfExpressionAndBody> ifStatements = new Vector<IfExpressionAndBody>();
+		ifStatements.add(new IfExpressionAndBody(buildExpression(tree.getChild(0)), buildBlock(tree.getChild(1))));
 		Block elseBody = null;
 		for (int i=2;i<tree.getChildCount();i++)
 		{
@@ -182,7 +182,7 @@ public class Oberon0ASTTreeGenerator
 			switch (child.getType())
 			{
 				case Oberon0Parser.ELSIF:
-					ifStatements.add(new Tuple<Expression, Block>(buildExpression(child.getChild(0)), buildBlock(child.getChild(1))));
+					ifStatements.add(new IfExpressionAndBody(buildExpression(child.getChild(0)), buildBlock(child.getChild(1))));
 					break;
 				case Oberon0Parser.ELSE:
 					elseBody = buildBlock(child.getChild(0));
