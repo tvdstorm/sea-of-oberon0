@@ -72,7 +72,11 @@ public abstract class BaseVisitor {
 		return null;
 	}
 
-	public Value eval(NotExpNode aThis, Environment localEnv) {
+	public Value eval(NotExpNode node, Environment localEnv) {
+		return null;
+	}
+
+	public Value eval(NegativeExpNode node, Environment localEnv) {
 		return null;
 	}
 

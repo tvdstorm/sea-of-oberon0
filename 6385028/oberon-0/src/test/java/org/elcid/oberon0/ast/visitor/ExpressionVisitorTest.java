@@ -259,4 +259,9 @@ public class ExpressionVisitorTest {
 
 	}
 
+	@Test
+	public void testVisitNegativeExpNode() {
+
+	}
+
 }
