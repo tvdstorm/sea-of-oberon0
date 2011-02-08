@@ -1,6 +1,6 @@
 package oberon0.environment.builtinroutines;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import oberon0.ast.expressions.IEvaluable;
 import oberon0.ast.routines.ICallable;
@@ -15,7 +15,7 @@ import oberon0.environment.IntegerValue;
 public class WriteHex implements ICallable {
 
 	@Override
-	public void call(Context context, ArrayList<IReferable> actualParameters) {
+	public void call(Context context, List<IReferable> actualParameters) {
 		IEvaluable param = actualParameters.get(0);
 		IntegerValue value = (IntegerValue) param.eval(context);
 		int intvalue = value.getValue();

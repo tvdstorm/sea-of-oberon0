@@ -1,6 +1,6 @@
 package oberon0.environment.builtinroutines;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import oberon0.ast.routines.ICallable;
@@ -20,7 +20,7 @@ public class ReadRandom implements ICallable{
 	 * Generates a random number (0-9) 
 	 * and returns it to the first reference in actual parameters
 	 */
-	public void call(Context context, ArrayList<IReferable> actualParameters) {
+	public void call(Context context, List<IReferable> actualParameters) {
 		//generate a random number
 		Random random = new Random();
 		int val = random.nextInt(10);

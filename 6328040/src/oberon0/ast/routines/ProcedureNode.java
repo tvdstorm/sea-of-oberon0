@@ -1,23 +1,24 @@
 package oberon0.ast.routines;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import oberon0.ast.declarations.IDeclarable;
 import oberon0.ast.routines.parameters.IFormalParameter;
 import oberon0.ast.statements.IExecutable;
 import oberon0.ast.variables.IReferable;
 import oberon0.environment.Context;
-import oberon0.environment.builtinroutines.BuiltInRoutines;
 
 public class ProcedureNode implements ICallable, IDeclarable{	
 	private String _name;
 	private IDeclarable _declarations;
 	private IExecutable _body;
-	private ArrayList<IFormalParameter> _formalParameters;
+	private List<IFormalParameter> _formalParameters;
 	
-	public final static ArrayList<IFormalParameter> noFormalParameters = null;
+	public final static List<IFormalParameter> noFormalParameters = null;
 	
-	public ProcedureNode(String name, ArrayList<IFormalParameter> formalParameters, IDeclarable declarations, IExecutable body){
+	public ProcedureNode(String name, List<IFormalParameter> formalParameters, IDeclarable declarations, IExecutable body){
 		_name = name;
 		if(formalParameters!= null){
 			_formalParameters = formalParameters;
@@ -30,17 +31,14 @@ public class ProcedureNode implements ICallable, IDeclarable{
 	}
 
 	@Override
-	public void call(Context context, ArrayList<IReferable> actualParams) {
+	public void call(Context context, List<IReferable> actualParams) {
 		context = new Context(_name, context);
 
-		ArrayList<IReferable> actualParamsClone = new ArrayList<IReferable>(actualParams);
+		Iterator<IReferable> actualParamsIter = actualParams.iterator();
 		for(int index = 0; index < _formalParameters.size(); index++){
 			IFormalParameter currentFP = _formalParameters.get(index);
-			currentFP.fillIn(context, actualParamsClone);
+			currentFP.fillIn(context, actualParamsIter);
 		}
-		
-		BuiltInRoutines builtin = new BuiltInRoutines();
-		builtin.declare(context);
 		
 		declare(context);
 		_declarations.declare(context);
