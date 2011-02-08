@@ -9,8 +9,8 @@ import java.util.Map;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
-import com.arievanderveek.soo.ast.variables.AbstractParameterNode;
-import com.arievanderveek.soo.symboltable.Scope;
+import com.arievanderveek.soo.ast.statements.AbstractParameterNode;
+import com.arievanderveek.soo.runtime.Scope;
 import com.arievanderveek.soo.util.Constants;
 
 /**
