@@ -29,10 +29,6 @@ public class Array extends Value
 		}
 		return values[_index];
 	}
-	public Value dereference()
-	{
-		return this;
-	}
 	public void setValue(Value _val) throws RuntimeException
 	{
 		Array v = _val.castToArray();
