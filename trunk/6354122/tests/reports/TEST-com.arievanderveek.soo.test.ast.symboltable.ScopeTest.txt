@@ -4,5 +4,5 @@ Tests run: 5, Failures: 0, Errors: 0, Time elapsed: 0,118 sec
 Testcase: testRootScope took 0,073 sec
 Testcase: testScopeScopeProcedureNodeListOfASTNode took 0,007 sec
 Testcase: testGetProcedure took 0,006 sec
-Testcase: testUpdateIntegerValue took 0,006 sec
-Testcase: testUpdateArrayValue took 0,007 sec
+Testcase: testUpdateIntegerValue took 0,007 sec
+Testcase: testUpdateArrayValue took 0,006 sec

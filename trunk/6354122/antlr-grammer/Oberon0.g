@@ -42,15 +42,15 @@ selectorPart
 	|	'['	e=expression	']' { $selector::selectors.add($e.node); }
 	;
 
-selector returns[SelectorNode return_selectors] // done
+selector returns[List<ASTNode> return_selectors]
 scope{
-	Queue<ASTNode> selectors;
+	List<ASTNode> selectors;
 }
 @init{
 	$selector::selectors = new LinkedList<ASTNode>();
 }
 	:	selectorPart*
-	{ $return_selectors = new SelectorNode($selector::selectors); }
+	{ $return_selectors = $selector::selectors; }
 	;
 
 identSelector returns[ASTNode node] // done
@@ -59,7 +59,7 @@ identSelector returns[ASTNode node] // done
 
 factor returns[ASTNode node] //done
 	:	identSelector { $node = $identSelector.node;}
-	| INTEGER {$node = new IntegerNode(new Integer($INTEGER.text)) ;}
+	| INTEGER {$node = new IntegerTypeNode(new Integer($INTEGER.text)) ;}
 	| '(' expression ')' {$node = $expression.node; }
 	| '~'^ f=factor {$node = new NotOperatorNode($f.node); } // Stands for not P
 	;
@@ -301,7 +301,7 @@ scope{
 	{
 			for (Object token : $identList.idents)
 			{
-				$fieldList::fields.add(new MethodCallParamNode( ((CommonToken) token).getText(), $type.node));
+				$fieldList::fields.add(new FieldNode( ((CommonToken) token).getText(), $type.node));
 			}
 			$return_fieldlist = $fieldList::fields; 
 	}
@@ -408,14 +408,14 @@ procedureDeclaration
 constDecl
 	: (IDENT '=' expression ';')
 		{
-			$declarations::constants.put($IDENT.text , new ConstantDeclarationNode($expression.node));
+			$declarations::constants.put($IDENT.text , new DeclarationNode($expression.node));
 		}
 	;
 	
 typeDecl
 	: ( IDENT '=' type ';')
 		{
-			$declarations::types.put($IDENT.text , new TypeDeclarationNode($type.node));
+			$declarations::types.put($IDENT.text , new DeclarationNode($type.node));
 		}
 	;	
 
@@ -423,7 +423,7 @@ varDecl
 	: (identList ':' type ';')
 		{
 			for (Object token : $identList.idents){
-				$declarations::variables.put( ((CommonToken) token).getText(), new VariableDeclarationNode($type.node));
+				$declarations::variables.put( ((CommonToken) token).getText(), new DeclarationNode($type.node));
 			}
 		}
 	;

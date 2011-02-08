@@ -47,7 +47,7 @@
                 <Package>com.arievanderveek.soo.ast.variables</Package>
                 <Package>com.arievanderveek.soo.parser</Package>
                 <Package>com.arievanderveek.soo.parser.antlrimpl</Package>
-                <Package>com.arievanderveek.soo.symboltable</Package>
+                <Package>com.arievanderveek.soo.runtime</Package>
                 <Package>com.arievanderveek.soo.test.util</Package>
                 <Package>com.arievanderveek.soo.util</Package>
             </UsedBy>
@@ -77,7 +77,7 @@
 
             <DependsUpon>
                 <Package>com.arievanderveek.soo</Package>
-                <Package>com.arievanderveek.soo.symboltable</Package>
+                <Package>com.arievanderveek.soo.runtime</Package>
                 <Package>java.lang</Package>
             </DependsUpon>
 
@@ -91,7 +91,7 @@
                 <Package>com.arievanderveek.soo.parser</Package>
                 <Package>com.arievanderveek.soo.parser.antlrimpl</Package>
                 <Package>com.arievanderveek.soo.parser.antlrimpl.generated</Package>
-                <Package>com.arievanderveek.soo.symboltable</Package>
+                <Package>com.arievanderveek.soo.runtime</Package>
                 <Package>com.arievanderveek.soo.test</Package>
                 <Package>com.arievanderveek.soo.test.ast.symboltable</Package>
             </UsedBy>
@@ -161,7 +161,7 @@
             <DependsUpon>
                 <Package>com.arievanderveek.soo</Package>
                 <Package>com.arievanderveek.soo.ast</Package>
-                <Package>com.arievanderveek.soo.symboltable</Package>
+                <Package>com.arievanderveek.soo.runtime</Package>
                 <Package>java.lang</Package>
             </DependsUpon>
 
@@ -176,10 +176,10 @@
                 <ConcreteClasses>5</ConcreteClasses>
                 <AbstractClasses>1</AbstractClasses>
                 <Ca>4</Ca>
-                <Ce>8</Ce>
+                <Ce>9</Ce>
                 <A>0.17</A>
-                <I>0.67</I>
-                <D>0.17</D>
+                <I>0.69</I>
+                <D>0.14</D>
                 <V>1</V>
             </Stats>
 
@@ -210,8 +210,9 @@
             <DependsUpon>
                 <Package>com.arievanderveek.soo</Package>
                 <Package>com.arievanderveek.soo.ast</Package>
+                <Package>com.arievanderveek.soo.ast.statements</Package>
                 <Package>com.arievanderveek.soo.ast.variables</Package>
-                <Package>com.arievanderveek.soo.symboltable</Package>
+                <Package>com.arievanderveek.soo.runtime</Package>
                 <Package>com.arievanderveek.soo.util</Package>
                 <Package>java.io</Package>
                 <Package>java.lang</Package>
@@ -221,33 +222,39 @@
             <UsedBy>
                 <Package>com.arievanderveek.soo.ast.statements</Package>
                 <Package>com.arievanderveek.soo.parser.antlrimpl.generated</Package>
-                <Package>com.arievanderveek.soo.symboltable</Package>
+                <Package>com.arievanderveek.soo.runtime</Package>
                 <Package>com.arievanderveek.soo.test.ast.symboltable</Package>
             </UsedBy>
         </Package>
 
         <Package name="com.arievanderveek.soo.ast.statements">
             <Stats>
-                <TotalClasses>5</TotalClasses>
-                <ConcreteClasses>4</ConcreteClasses>
+                <TotalClasses>7</TotalClasses>
+                <ConcreteClasses>6</ConcreteClasses>
                 <AbstractClasses>1</AbstractClasses>
-                <Ca>1</Ca>
+                <Ca>3</Ca>
                 <Ce>8</Ce>
-                <A>0.2</A>
-                <I>0.89</I>
-                <D>0.09</D>
+                <A>0.14</A>
+                <I>0.73</I>
+                <D>0.13</D>
                 <V>1</V>
             </Stats>
 
             <AbstractClasses>
-                <Class sourceFile="AbstractCallNode.java">
-                    com.arievanderveek.soo.ast.statements.AbstractCallNode
+                <Class sourceFile="AbstractParameterNode.java">
+                    com.arievanderveek.soo.ast.statements.AbstractParameterNode
                 </Class>
             </AbstractClasses>
 
             <ConcreteClasses>
                 <Class sourceFile="AssignmentNode.java">
                     com.arievanderveek.soo.ast.statements.AssignmentNode
+                </Class>
+                <Class sourceFile="CallByRefParameterNode.java">
+                    com.arievanderveek.soo.ast.statements.CallByRefParameterNode
+                </Class>
+                <Class sourceFile="CallByValParameterNode.java">
+                    com.arievanderveek.soo.ast.statements.CallByValParameterNode
                 </Class>
                 <Class sourceFile="IfStatementNode.java">
                     com.arievanderveek.soo.ast.statements.IfStatementNode
@@ -265,14 +272,16 @@
                 <Package>com.arievanderveek.soo.ast</Package>
                 <Package>com.arievanderveek.soo.ast.codeblocks</Package>
                 <Package>com.arievanderveek.soo.ast.variables</Package>
-                <Package>com.arievanderveek.soo.symboltable</Package>
+                <Package>com.arievanderveek.soo.runtime</Package>
                 <Package>com.arievanderveek.soo.util</Package>
                 <Package>java.lang</Package>
                 <Package>java.util</Package>
             </DependsUpon>
 
             <UsedBy>
+                <Package>com.arievanderveek.soo.ast.codeblocks</Package>
                 <Package>com.arievanderveek.soo.parser.antlrimpl.generated</Package>
+                <Package>com.arievanderveek.soo.runtime</Package>
             </UsedBy>
         </Package>
 
@@ -307,7 +316,7 @@
             <DependsUpon>
                 <Package>com.arievanderveek.soo</Package>
                 <Package>com.arievanderveek.soo.ast</Package>
-                <Package>com.arievanderveek.soo.symboltable</Package>
+                <Package>com.arievanderveek.soo.runtime</Package>
                 <Package>java.lang</Package>
             </DependsUpon>
 
@@ -318,67 +327,45 @@
 
         <Package name="com.arievanderveek.soo.ast.variables">
             <Stats>
-                <TotalClasses>13</TotalClasses>
-                <ConcreteClasses>11</ConcreteClasses>
-                <AbstractClasses>2</AbstractClasses>
+                <TotalClasses>6</TotalClasses>
+                <ConcreteClasses>6</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
                 <Ca>5</Ca>
-                <Ce>6</Ce>
-                <A>0.15</A>
-                <I>0.55</I>
-                <D>0.3</D>
+                <Ce>5</Ce>
+                <A>0</A>
+                <I>0.5</I>
+                <D>0.5</D>
                 <V>1</V>
             </Stats>
 
             <AbstractClasses>
-                <Class sourceFile="AbstractDeclarationNode.java">
-                    com.arievanderveek.soo.ast.variables.AbstractDeclarationNode
-                </Class>
-                <Class sourceFile="AbstractParameterNode.java">
-                    com.arievanderveek.soo.ast.variables.AbstractParameterNode
-                </Class>
             </AbstractClasses>
 
             <ConcreteClasses>
                 <Class sourceFile="ArrayTypeNode.java">
                     com.arievanderveek.soo.ast.variables.ArrayTypeNode
                 </Class>
-                <Class sourceFile="CallByRefParameterNode.java">
-                    com.arievanderveek.soo.ast.variables.CallByRefParameterNode
+                <Class sourceFile="DeclarationNode.java">
+                    com.arievanderveek.soo.ast.variables.DeclarationNode
                 </Class>
-                <Class sourceFile="CallByValParameterNode.java">
-                    com.arievanderveek.soo.ast.variables.CallByValParameterNode
-                </Class>
-                <Class sourceFile="ConstantDeclarationNode.java">
-                    com.arievanderveek.soo.ast.variables.ConstantDeclarationNode
+                <Class sourceFile="FieldNode.java">
+                    com.arievanderveek.soo.ast.variables.FieldNode
                 </Class>
                 <Class sourceFile="IdentifierNode.java">
                     com.arievanderveek.soo.ast.variables.IdentifierNode
                 </Class>
-                <Class sourceFile="IntegerNode.java">
-                    com.arievanderveek.soo.ast.variables.IntegerNode
-                </Class>
-                <Class sourceFile="MethodCallParamNode.java">
-                    com.arievanderveek.soo.ast.variables.MethodCallParamNode
+                <Class sourceFile="IntegerTypeNode.java">
+                    com.arievanderveek.soo.ast.variables.IntegerTypeNode
                 </Class>
                 <Class sourceFile="RecordTypeNode.java">
                     com.arievanderveek.soo.ast.variables.RecordTypeNode
-                </Class>
-                <Class sourceFile="SelectorNode.java">
-                    com.arievanderveek.soo.ast.variables.SelectorNode
-                </Class>
-                <Class sourceFile="TypeDeclarationNode.java">
-                    com.arievanderveek.soo.ast.variables.TypeDeclarationNode
-                </Class>
-                <Class sourceFile="VariableDeclarationNode.java">
-                    com.arievanderveek.soo.ast.variables.VariableDeclarationNode
                 </Class>
             </ConcreteClasses>
 
             <DependsUpon>
                 <Package>com.arievanderveek.soo</Package>
                 <Package>com.arievanderveek.soo.ast</Package>
-                <Package>com.arievanderveek.soo.symboltable</Package>
-                <Package>com.arievanderveek.soo.util</Package>
+                <Package>com.arievanderveek.soo.runtime</Package>
                 <Package>java.lang</Package>
                 <Package>java.util</Package>
             </DependsUpon>
@@ -387,7 +374,7 @@
                 <Package>com.arievanderveek.soo.ast.codeblocks</Package>
                 <Package>com.arievanderveek.soo.ast.statements</Package>
                 <Package>com.arievanderveek.soo.parser.antlrimpl.generated</Package>
-                <Package>com.arievanderveek.soo.symboltable</Package>
+                <Package>com.arievanderveek.soo.runtime</Package>
                 <Package>com.arievanderveek.soo.test.ast.symboltable</Package>
             </UsedBy>
         </Package>
@@ -653,43 +640,46 @@
             </UsedBy>
         </Package>
 
-        <Package name="com.arievanderveek.soo.symboltable">
+        <Package name="com.arievanderveek.soo.runtime">
             <Stats>
-                <TotalClasses>7</TotalClasses>
-                <ConcreteClasses>6</ConcreteClasses>
+                <TotalClasses>8</TotalClasses>
+                <ConcreteClasses>7</ConcreteClasses>
                 <AbstractClasses>1</AbstractClasses>
                 <Ca>7</Ca>
-                <Ce>8</Ce>
-                <A>0.14</A>
-                <I>0.53</I>
-                <D>0.32</D>
+                <Ce>9</Ce>
+                <A>0.12</A>
+                <I>0.56</I>
+                <D>0.31</D>
                 <V>1</V>
             </Stats>
 
             <AbstractClasses>
                 <Class sourceFile="Symbol.java">
-                    com.arievanderveek.soo.symboltable.Symbol
+                    com.arievanderveek.soo.runtime.Symbol
                 </Class>
             </AbstractClasses>
 
             <ConcreteClasses>
                 <Class sourceFile="ArraySymbol.java">
-                    com.arievanderveek.soo.symboltable.ArraySymbol
+                    com.arievanderveek.soo.runtime.ArraySymbol
                 </Class>
                 <Class sourceFile="IntegerSymbol.java">
-                    com.arievanderveek.soo.symboltable.IntegerSymbol
+                    com.arievanderveek.soo.runtime.IntegerSymbol
                 </Class>
                 <Class sourceFile="MemoryAddress.java">
-                    com.arievanderveek.soo.symboltable.MemoryAddress
+                    com.arievanderveek.soo.runtime.MemoryAddress
                 </Class>
                 <Class sourceFile="MemoryMap.java">
-                    com.arievanderveek.soo.symboltable.MemoryMap
+                    com.arievanderveek.soo.runtime.MemoryMap
                 </Class>
                 <Class sourceFile="Scope.java">
-                    com.arievanderveek.soo.symboltable.Scope
+                    com.arievanderveek.soo.runtime.Scope
+                </Class>
+                <Class sourceFile="SymbolTable.java">
+                    com.arievanderveek.soo.runtime.SymbolTable
                 </Class>
                 <Class sourceFile="SymbolTypesEnum.java">
-                    com.arievanderveek.soo.symboltable.SymbolTypesEnum
+                    com.arievanderveek.soo.runtime.SymbolTypesEnum
                 </Class>
             </ConcreteClasses>
 
@@ -697,6 +687,7 @@
                 <Package>com.arievanderveek.soo</Package>
                 <Package>com.arievanderveek.soo.ast</Package>
                 <Package>com.arievanderveek.soo.ast.codeblocks</Package>
+                <Package>com.arievanderveek.soo.ast.statements</Package>
                 <Package>com.arievanderveek.soo.ast.variables</Package>
                 <Package>com.arievanderveek.soo.util</Package>
                 <Package>java.io</Package>
@@ -779,7 +770,7 @@
                 <Package>com.arievanderveek.soo.ast</Package>
                 <Package>com.arievanderveek.soo.ast.codeblocks</Package>
                 <Package>com.arievanderveek.soo.ast.variables</Package>
-                <Package>com.arievanderveek.soo.symboltable</Package>
+                <Package>com.arievanderveek.soo.runtime</Package>
                 <Package>com.arievanderveek.soo.test</Package>
                 <Package>java.lang</Package>
                 <Package>java.util</Package>
@@ -828,11 +819,11 @@
                 <TotalClasses>3</TotalClasses>
                 <ConcreteClasses>3</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
-                <Ca>6</Ca>
+                <Ca>5</Ca>
                 <Ce>4</Ce>
                 <A>0</A>
-                <I>0.4</I>
-                <D>0.6</D>
+                <I>0.44</I>
+                <D>0.56</D>
                 <V>1</V>
             </Stats>
 
@@ -862,8 +853,7 @@
                 <Package>com.arievanderveek.soo</Package>
                 <Package>com.arievanderveek.soo.ast.codeblocks</Package>
                 <Package>com.arievanderveek.soo.ast.statements</Package>
-                <Package>com.arievanderveek.soo.ast.variables</Package>
-                <Package>com.arievanderveek.soo.symboltable</Package>
+                <Package>com.arievanderveek.soo.runtime</Package>
                 <Package>com.arievanderveek.soo.test.util</Package>
             </UsedBy>
         </Package>
@@ -953,6 +943,7 @@
         </Package>
 
         <Package Name="com.arievanderveek.soo.ast.statements">
+            <Package>com.arievanderveek.soo.ast.variables</Package>
             <Package>com.arievanderveek.soo</Package>
             <Package>com.arievanderveek.soo.util</Package>
             <Package>com.arievanderveek.soo</Package>
@@ -989,7 +980,7 @@
             <Package>com.arievanderveek.soo</Package>
         </Package>
 
-        <Package Name="com.arievanderveek.soo.symboltable">
+        <Package Name="com.arievanderveek.soo.runtime">
             <Package>com.arievanderveek.soo.util</Package>
             <Package>com.arievanderveek.soo</Package>
             <Package>com.arievanderveek.soo.util</Package>
@@ -1003,7 +994,7 @@
         </Package>
 
         <Package Name="com.arievanderveek.soo.test.ast.symboltable">
-            <Package>com.arievanderveek.soo.symboltable</Package>
+            <Package>com.arievanderveek.soo.runtime</Package>
             <Package>com.arievanderveek.soo.util</Package>
             <Package>com.arievanderveek.soo</Package>
             <Package>com.arievanderveek.soo.util</Package>
