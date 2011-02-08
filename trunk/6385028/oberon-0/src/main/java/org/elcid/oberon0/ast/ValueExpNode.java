@@ -17,8 +17,8 @@ public class ValueExpNode extends IntExpNode {
 		this.value = value;
 	}
 
-	public Integer getValue(Environment localEnv) {
-		return value.getValue(localEnv);
+	public Object getValue(Environment localEnv) {
+		return value.applySelector(localEnv);
 	}
 
 	@Override

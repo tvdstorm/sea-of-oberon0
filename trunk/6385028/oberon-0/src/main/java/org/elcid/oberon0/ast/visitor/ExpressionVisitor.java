@@ -2,6 +2,9 @@ package org.elcid.oberon0.ast.visitor;
 
 import org.elcid.oberon0.ast.*;
 import org.elcid.oberon0.ast.env.Environment;
+import org.elcid.oberon0.ast.values.Bool;
+import org.elcid.oberon0.ast.values.Int;
+import org.elcid.oberon0.ast.values.Value;
 import org.elcid.oberon0.exceptions.DivideByZeroException;
 import org.elcid.oberon0.exceptions.ModuloZeroException;
 
@@ -13,95 +16,99 @@ import org.elcid.oberon0.exceptions.ModuloZeroException;
 public class ExpressionVisitor extends BaseVisitor {
 
 	@Override
-	public Integer eval(ValueExpNode node, Environment localEnv) {
-		return (Integer) node.getValue(localEnv);
+	public Value eval(PlusExpNode node, Environment localEnv) {
+		Int left = (Int) node.getLeftExp().eval(this, localEnv);
+		Int right = (Int) node.getRightExp().eval(this, localEnv);
+		return new Int(left.getValue() + right.getValue());
 	}
 
 	@Override
-	public Integer eval(PlusExpNode node, Environment localEnv) {
-		Integer left = (Integer) node.getLeftExp().eval(this, localEnv);
-		Integer right = (Integer) node.getRightExp().eval(this, localEnv);
-		return left + right;
+	public Value eval(MinusExpNode node, Environment localEnv) {
+		Int left = (Int) node.getLeftExp().eval(this, localEnv);
+		Int right = (Int) node.getRightExp().eval(this, localEnv);
+		return new Int(left.getValue() - right.getValue());
 	}
 
 	@Override
-	public Integer eval(MinusExpNode node, Environment localEnv) {
-		Integer left = (Integer) node.getLeftExp().eval(this, localEnv);
-		Integer right = (Integer) node.getRightExp().eval(this, localEnv);
-		return left - right;
+	public Value eval(MultiplyExpNode node, Environment localEnv) {
+		Int left = (Int) node.getLeftExp().eval(this, localEnv);
+		Int right = (Int) node.getRightExp().eval(this, localEnv);
+		return new Int(left.getValue() * right.getValue());
 	}
 
 	@Override
-	public Integer eval(MultiplyExpNode node, Environment localEnv) {
-		Integer left = (Integer) node.getLeftExp().eval(this, localEnv);
-		Integer right = (Integer) node.getRightExp().eval(this, localEnv);
-		return left * right;
-	}
-
-	@Override
-	public Integer eval(DivideExpNode node, Environment localEnv) {
-		Integer left = (Integer) node.getLeftExp().eval(this, localEnv);
-		Integer right = (Integer) node.getRightExp().eval(this, localEnv);
-		if (right == 0)
+	public Value eval(DivideExpNode node, Environment localEnv) {
+		Int left = (Int) node.getLeftExp().eval(this, localEnv);
+		Int right = (Int) node.getRightExp().eval(this, localEnv);
+		if (right.getValue() == 0)
 			throw new DivideByZeroException("Cannot divide by zero");
-		return left / right;
+		return new Int(left.getValue() / right.getValue());
 	}
 
 	@Override
-	public Integer eval(ModuloExpNode node, Environment localEnv) {
-		Integer left = (Integer) node.getLeftExp().eval(this, localEnv);
-		Integer right = (Integer) node.getRightExp().eval(this, localEnv);
-		if (right == 0)
+	public Value eval(ModuloExpNode node, Environment localEnv) {
+		Int left = (Int) node.getLeftExp().eval(this, localEnv);
+		Int right = (Int) node.getRightExp().eval(this, localEnv);
+		if (right.getValue() == 0)
 			throw new ModuloZeroException("Cannot calculate modulo of zero");
-		return left % right;
+		return new Int(left.getValue() % right.getValue());
 	}
 
 	@Override
-	public Boolean eval(EqualsExpNode node, Environment localEnv) {
+	public Value eval(EqualsExpNode node, Environment localEnv) {
 		Object left = node.getLeftExp().eval(this, localEnv);
 		Object right = node.getRightExp().eval(this, localEnv);
-		return left.equals(right);
+		return new Bool(left.equals(right));
 	}
 
 	@Override
-	public Boolean eval(GreaterExpNode node, Environment localEnv) {
-		Integer left = (Integer) node.getLeftExp().eval(this, localEnv);
-		Integer right = (Integer) node.getRightExp().eval(this, localEnv);
-		return left > right;
+	public Value eval(GreaterExpNode node, Environment localEnv) {
+		Int left = (Int) node.getLeftExp().eval(this, localEnv);
+		Int right = (Int) node.getRightExp().eval(this, localEnv);
+		return new Bool(left.getValue() > right.getValue());
 	}
 
 	@Override
-	public Boolean eval(GreaterOrEqualsExpNode node, Environment localEnv) {
-		Integer left = (Integer) node.getLeftExp().eval(this, localEnv);
-		Integer right = (Integer) node.getRightExp().eval(this, localEnv);
-		return left >= right;
+	public Value eval(GreaterOrEqualsExpNode node, Environment localEnv) {
+		Int left = (Int) node.getLeftExp().eval(this, localEnv);
+		Int right = (Int) node.getRightExp().eval(this, localEnv);
+		return new Bool(left.getValue() >= right.getValue());
 	}
 
 	@Override
-	public Boolean eval(LesserExpNode node, Environment localEnv) {
-		Integer left = (Integer) node.getLeftExp().eval(this, localEnv);
-		Integer right = (Integer) node.getRightExp().eval(this, localEnv);
-		return left < right;
+	public Value eval(LesserExpNode node, Environment localEnv) {
+		Int left = (Int) node.getLeftExp().eval(this, localEnv);
+		Int right = (Int) node.getRightExp().eval(this, localEnv);
+		return new Bool(left.getValue() < right.getValue());
 	}
 
 	@Override
-	public Boolean eval(LesserOrEqualsExpNode node, Environment localEnv) {
-		Integer left = (Integer) node.getLeftExp().eval(this, localEnv);
-		Integer right = (Integer) node.getRightExp().eval(this, localEnv);
-		return left <= right;
+	public Value eval(LesserOrEqualsExpNode node, Environment localEnv) {
+		Int left = (Int) node.getLeftExp().eval(this, localEnv);
+		Int right = (Int) node.getRightExp().eval(this, localEnv);
+		return new Bool(left.getValue() <= right.getValue());
 	}
 
 	@Override
-	public Boolean eval(AndExpNode node, Environment localEnv) {
-		Boolean left = (Boolean) node.getLeftExp().eval(this, localEnv);
-		Boolean right = (Boolean) node.getRightExp().eval(this, localEnv);
-		return left && right;
+	public Value eval(AndExpNode node, Environment localEnv) {
+		Bool left = (Bool) node.getLeftExp().eval(this, localEnv);
+		Bool right = (Bool) node.getRightExp().eval(this, localEnv);
+		return new Bool(left.getValue() && right.getValue());
 	}
 
 	@Override
-	public Boolean eval(OrExpNode node, Environment localEnv) {
-		Boolean left = (Boolean) node.getLeftExp().eval(this, localEnv);
-		Boolean right = (Boolean) node.getRightExp().eval(this, localEnv);
-		return left || right;
+	public Value eval(OrExpNode node, Environment localEnv) {
+		Bool left = (Bool) node.getLeftExp().eval(this, localEnv);
+		Bool right = (Bool) node.getRightExp().eval(this, localEnv);
+		return new Bool(left.getValue() || right.getValue());
+	}
+
+	@Override
+	public Value eval(IdentSelectorNode node, Environment localEnv) {
+		Value value = localEnv.getValue(node.getIdentifier());
+		for(SelectorNode selector : node.getSelectors()) {
+			value = value.applySelector(selector.select(localEnv));
+		}
+		return value;
 	}
 }

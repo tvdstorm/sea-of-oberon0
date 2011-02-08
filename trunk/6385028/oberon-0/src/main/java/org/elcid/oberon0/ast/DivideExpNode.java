@@ -27,7 +27,7 @@ public class DivideExpNode extends IntExpNode {
 	}
 
 	@Override
-	public Integer eval(BaseVisitor visitor, Environment localEnv) {
+	public Object eval(BaseVisitor visitor, Environment localEnv) {
 		return visitor.eval(this, localEnv);
 	}
 
