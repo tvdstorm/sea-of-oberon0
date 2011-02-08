@@ -30,7 +30,7 @@ public class App {
 		
 		try {
 			// Begin parsing at rule prog
-			IInterpretableNode startNode = parser.statement();
+			IInterpretableNode startNode = parser.module();
 			
 			System.out.println("lexer: " +lexer.getNumberOfSyntaxErrors());
 			System.out.println("parser: " +parser.getNumberOfSyntaxErrors());

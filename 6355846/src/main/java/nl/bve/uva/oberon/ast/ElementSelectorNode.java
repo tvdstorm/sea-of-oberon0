@@ -10,7 +10,7 @@ public class ElementSelectorNode implements IInterpretableNode {
 	
 	@Override
 	public Object interpret() {
-		return 12;
+		return selector.interpret();
 	}
 
 }
