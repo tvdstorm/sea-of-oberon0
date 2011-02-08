@@ -26,7 +26,7 @@ public class ConfigurationFactory {
 	private final static String OPTION_SOURCE_FILE = "sourcefile";
 	private final static String OPTION_PARSER = "parser";
 	private final static String OPTION_PRINTTREE = "printtree";
-	private final static String DEFAULT_PARSER_IMPL = "com.arievanderveek.soo.parser.antlrimpl.AntlrParserImpl";
+	private final static String DEFAULT_PARSER_IMPL = "com.arievanderveek.soo.parser.AntlrParserImpl";
 
 	/**
 	 * Creates a SeaOfOberonConfiguration containing the configuration to be
