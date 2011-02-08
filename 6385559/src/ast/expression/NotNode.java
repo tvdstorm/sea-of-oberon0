@@ -8,11 +8,11 @@ public class NotNode extends ExpressionNode
     super( expression, null );
   }
   
-  public String ToString( int depth )
+  public String toString( int depth )
   {
     if( super.getLeft( ) != null )
     {
-      return "(-" + super.getLeft( ).ToString( 0 ) + ")";
+      return "(-" + super.getLeft( ).toString( 0 ) + ")";
     }
     return "";
   }

@@ -19,17 +19,17 @@ public class ParamNode implements ASTnode
     this.nextParam = nextParam;
   }
   
-  public String ToString( int depth ) 
+  public String toString( int depth ) 
   {
     String code = "";
     if( this.param != null )
     {
-      code += param.ToString( 0 );
+      code += param.toString( 0 );
     }
     
     if( this.nextParam != null )
     {
-      code += ", " + nextParam.ToString( 0 );
+      code += ", " + nextParam.toString( 0 );
     }
     return code;
   }

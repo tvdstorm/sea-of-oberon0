@@ -16,7 +16,7 @@ public class ProcedureHeadingNode implements ASTnode
     this.formalParams = formalParams;
   }
   
-  public String ToString( int depth ) 
+  public String toString( int depth ) 
   {
     String code = "";
     if( this.identifier != null )
@@ -28,7 +28,7 @@ public class ProcedureHeadingNode implements ASTnode
       code += "PROCEDURE " + this.identifier;
       if( this.formalParams != null )
       {
-        code += "( " + this.formalParams.ToString( 0 ) + " )";
+        code += "( " + this.formalParams.toString( 0 ) + " )";
       }
       code += ";\n";
     }

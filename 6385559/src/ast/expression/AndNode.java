@@ -9,9 +9,9 @@ public class AndNode extends ExpressionNode
     super( left, right );
   }
   
-  public String ToString( int depth )
+  public String toString( int depth )
   {
-    return this.getLeft( ).ToString( 0 ) + " & " + this.getRight( ).ToString( 0 );
+    return this.getLeft( ).toString( 0 ) + " & " + this.getRight( ).toString( 0 );
   }
   
   public int eval( ) throws OberonException

@@ -49,7 +49,7 @@ public class oberon0
         
         if( CommandLine.doPrint( ) )
         { // if print request print the source to the screen
-          System.out.println( AST.ToString( 0 ) );
+          System.out.println( AST.toString( 0 ) );
         }
         
         if( CommandLine.doMemoryDump( ) )

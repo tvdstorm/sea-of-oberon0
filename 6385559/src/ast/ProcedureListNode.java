@@ -12,17 +12,17 @@ public class ProcedureListNode implements ASTnode
     this.procedureList = procedureList;
   }
   
-  public String ToString( int depth ) 
+  public String toString( int depth ) 
   {
     String code = "";
     if( procedureDeclaration != null )
     {
-      code += this.procedureDeclaration.ToString( depth ) + "\n";
+      code += this.procedureDeclaration.toString( depth ) + "\n";
     }
     
     if( this.procedureList != null )
     {
-      code += this.procedureList.ToString( depth );
+      code += this.procedureList.toString( depth );
     }
     return code;
   }

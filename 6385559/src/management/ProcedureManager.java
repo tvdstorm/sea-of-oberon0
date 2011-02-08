@@ -58,7 +58,7 @@ public class ProcedureManager {
     {
       container = procedures.get( i );
       System.out.println( "Procedure: " + container.getName() + "\tScope: " + container.getScope() );
-      System.out.println( container.getProcedure().ToString( 0 ) );
+      System.out.println( container.getProcedure().toString( 0 ) );
     }
   }
   

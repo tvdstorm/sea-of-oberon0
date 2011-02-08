@@ -22,7 +22,7 @@ public class FpSectionNode implements ASTnode
     this.callByRef = ( identifier != null && identifier.contentEquals("VAR") ) ? true : false ;
   }
 
-  public String ToString( int depth ) 
+  public String toString( int depth ) 
   {
     String code = "";
     if( this.callByRef == true )
@@ -31,10 +31,10 @@ public class FpSectionNode implements ASTnode
     }
     if( this.variables != null )
     {
-      code += this.variables.ToString( 0 ) + " : ";
+      code += this.variables.toString( 0 ) + " : ";
       if( this.type != null )
       {
-        code += this.type.ToString( 0 );
+        code += this.type.toString( 0 );
       }
     }
     return code;

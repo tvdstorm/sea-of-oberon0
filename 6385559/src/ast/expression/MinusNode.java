@@ -9,9 +9,9 @@ public class MinusNode extends ExpressionNode
     super( left, null );
   }
   
-  public String ToString( int depth )
+  public String toString( int depth )
   {
-    return "(-" + this.getLeft( ).ToString( 0 ) + ")";
+    return "(-" + this.getLeft( ).toString( 0 ) + ")";
   }
   
   public int eval( ) throws OberonException

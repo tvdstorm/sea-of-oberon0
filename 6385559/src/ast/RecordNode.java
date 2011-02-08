@@ -13,12 +13,12 @@ public class RecordNode implements ASTnode
     this.fields = fields;
   }
   
-  public String ToString( int depth ) 
+  public String toString( int depth ) 
   {
     String code = "RECORD ";
     if( this.fields != null )
     {
-      code += this.fields.ToString( 0 );
+      code += this.fields.toString( 0 );
     }
     return code + " END";
   }

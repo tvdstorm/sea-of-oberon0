@@ -15,17 +15,17 @@ public class FieldsNode implements ASTnode
     this.fieldsnode = fieldsnode;
   }
   
-  public String ToString( int depth ) 
+  public String toString( int depth ) 
   {
     String code = "";
     if( this.fieldlist != null )
     {
-      code += this.fieldlist.ToString( 0 );
+      code += this.fieldlist.toString( 0 );
     }
     
     if( this.fieldsnode != null)
     {
-      code += this.fieldsnode.ToString( 0 );
+      code += this.fieldsnode.toString( 0 );
     }
     return code;
   }

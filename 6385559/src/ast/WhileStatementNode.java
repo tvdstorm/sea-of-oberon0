@@ -14,7 +14,7 @@ public class WhileStatementNode implements StatementNode
     this.executionSequence = statements;
   }
   
-  public String ToString( int depth )
+  public String toString( int depth )
   {
     String code = "";
     code += this.addWhitespace( depth );
@@ -22,13 +22,13 @@ public class WhileStatementNode implements StatementNode
     code += "WHILE ";
     if( this.cond != null )
     {
-      code += this.cond.ToString( 0 );
+      code += this.cond.toString( 0 );
     }
     
     code += " DO\n" ;
     if( this.executionSequence != null )
     {
-      code += this.executionSequence.ToString( depth+2 );
+      code += this.executionSequence.toString( depth+2 );
     }
     
     code += this.addWhitespace( depth ) + "END;\n";

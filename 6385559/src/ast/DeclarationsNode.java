@@ -16,27 +16,27 @@ public class DeclarationsNode implements ASTnode
     this.procedureList = procedureList;
   }
   
-  public String ToString( int depth )
+  public String toString( int depth )
   {
     String code = "";
     if( this.constant != null )
     {
-      code += this.addWhitespace( depth ) + "CONST " + this.constant.ToString( depth ) + "\n";
+      code += this.addWhitespace( depth ) + "CONST " + this.constant.toString( depth ) + "\n";
     }
   
     if( this.typeDefs != null )
     {
-      code += this.addWhitespace( depth ) + "TYPE " + this.typeDefs.ToString( depth ) + "\n";
+      code += this.addWhitespace( depth ) + "TYPE " + this.typeDefs.toString( depth ) + "\n";
     }
   
     if( this.vars != null )
     {
-      code += this.addWhitespace( depth ) + "VAR " + this.vars.ToString( depth ) + "\n";
+      code += this.addWhitespace( depth ) + "VAR " + this.vars.toString( depth ) + "\n";
     }
   
     if( this.procedureList != null )
     {
-      code += "\n" + this.procedureList.ToString( depth );
+      code += "\n" + this.procedureList.toString( depth );
     }
     return code;
   }
