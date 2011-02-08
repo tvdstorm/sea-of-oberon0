@@ -1,0 +1,51 @@
+MODULE QuickSort;
+
+CONST
+  INPUTLENGTH = 5;
+
+VAR
+  i: INTEGER;
+  input: ARRAY INPUTLENGTH OF INTEGER;
+
+PROCEDURE test(VAR array: ARRAY INPUTLENGTH OF INTEGER; left, right: INTEGER);
+  VAR
+    pivot, leftIdx, rightIdx: INTEGER;
+
+  PROCEDURE Swap(VAR x, y: INTEGER);
+  VAR
+    temp: INTEGER;
+  BEGIN
+    temp := x;
+    x := y;
+    y := temp
+  END Swap;
+
+BEGIN
+  Write(left);
+  Write(right);
+  WriteLn;
+  pivot := right - left;
+  Write(pivot);
+  WriteLn;
+      IF left - 1 = right THEN
+        Swap(array[0],array[1])
+      ELSIF left - 3 =right THEN
+        array[0] := array[0] + 1;
+        Swap(array[0],array[1])
+      END
+  
+END test;
+
+BEGIN
+ i := 0;
+ Read(input[0]);
+ Read(input[1]);
+ Write(input[0]);
+ Write(input[1]);
+ WriteLn;
+ test(input, 7, 4);
+ Write(input[0]);
+ Write(input[1]);
+ i := i + 10
+ 
+END QuickSort.

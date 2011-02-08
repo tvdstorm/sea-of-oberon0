@@ -1,0 +1,19 @@
+MODULE SimpleMaths;
+
+CONST
+  i = 10;
+  j = 15;
+
+  VAR
+    temp: INTEGER;
+  BEGIN
+	temp := -1 + 3 * 4;
+	Write(temp);
+	WriteLn;
+	temp := (i+j) DIV 2;
+	Write(temp);
+	WriteLn;
+	temp := ( 1 + 7 ) * ( 3 + 1 );
+	Write(temp);
+	WriteLn
+END SimpleMaths.
