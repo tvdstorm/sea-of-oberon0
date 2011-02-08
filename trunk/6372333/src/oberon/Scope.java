@@ -7,7 +7,6 @@ import java.util.List;
 import oberon.data.IntegerArrayDataType;
 import oberon.exceptions.UnsupportedException;
 import oberon.exceptions.VariableNotFoundInScopeException;
-import oberon.procedures.AbstractProcedure;
 import oberon.procedures.Declaration;
 
 /**
@@ -53,7 +52,7 @@ public class Scope {
 	 *
 	 * @param procedure the procedure
 	 */
-	public void addSystemProcedure(final AbstractProcedure procedure) {
+	public void addSystemProcedure(final IProcedure procedure) {
 		systemProcedures.put(procedure.getName(), procedure);
 	}
 
