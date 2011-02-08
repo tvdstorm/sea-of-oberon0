@@ -4,6 +4,8 @@ import org.elcid.oberon0.ast.visitor.ExpressionVisitor;
 import org.elcid.oberon0.ast.env.Environment;
 import org.elcid.oberon0.ast.ExpressionNode;
 import org.antlr.runtime.*;
+import org.elcid.oberon0.ast.values.Array;
+import org.elcid.oberon0.ast.values.Int;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -33,8 +35,13 @@ public class ExpressionsTest {
 		ExpressionNode expr = parser.expression();
 
 		Environment env = new Environment();
-		env.put("a", 2);
+		env.put("a", new Int(2));
+		Array ar = new Array();
+		ar.add(new Int(3));
+		ar.add(new Int(2));
+		env.put("ar", ar);
 
-		System.out.println(expr.eval(new ExpressionVisitor(), env));
+		Int result = (Int) expr.eval(new ExpressionVisitor(), env);
+		System.out.println(result.getValue());
 	}
 }
