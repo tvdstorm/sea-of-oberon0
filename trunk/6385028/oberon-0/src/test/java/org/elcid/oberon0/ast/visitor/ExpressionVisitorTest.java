@@ -240,4 +240,9 @@ public class ExpressionVisitorTest {
 
 	}
 
+	@Test
+	public void testVisitNotExpNode() {
+
+	}
+
 }
