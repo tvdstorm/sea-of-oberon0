@@ -5,45 +5,40 @@ import randy.oberon0.exception.*;
 
 public abstract class Value
 {
-	public abstract Value dereference();
 	public abstract void setValue(Value _val) throws RuntimeException;
 	public abstract Type getType();
 	public abstract Value clone();
 	public Integer castToInteger() throws TypeMismatchException
 	{
-		Value dereferenced = dereference();
-		if (dereferenced instanceof Integer)
+		if (this instanceof Integer)
 		{
-			return (Integer)dereferenced;
+			return (Integer)this;
 		}
-		throw new TypeMismatchException(dereferenced.getType().toString(), Type.INTEGER.toString());
+		throw new TypeMismatchException(getType().toString(), Type.INTEGER.toString());
 	}
 	public Boolean castToBoolean() throws TypeMismatchException
 	{
-		Value dereferenced = dereference();
-		if (dereferenced instanceof Boolean)
+		if (this instanceof Boolean)
 		{
-			return (Boolean)dereferenced;
+			return (Boolean)this;
 		}
-		throw new TypeMismatchException(dereferenced.getType().toString(), Type.BOOLEAN.toString());
+		throw new TypeMismatchException(getType().toString(), Type.BOOLEAN.toString());
 	}
 	public Array castToArray() throws TypeMismatchException
 	{
-		Value dereferenced = dereference();
-		if (dereferenced instanceof Array)
+		if (this instanceof Array)
 		{
-			return (Array)dereferenced;
+			return (Array)this;
 		}
-		throw new TypeMismatchException(dereferenced.getType().toString(), Type.ARRAY.toString());
+		throw new TypeMismatchException(getType().toString(), Type.ARRAY.toString());
 	}
 	public Record castToRecord() throws TypeMismatchException
 	{
-		Value dereferenced = dereference();
-		if (dereferenced instanceof Record)
+		if (this instanceof Record)
 		{
-			return (Record)dereferenced;
+			return (Record)this;
 		}
-		throw new TypeMismatchException(dereferenced.getType().toString(), Type.RECORD.toString());
+		throw new TypeMismatchException(getType().toString(), Type.RECORD.toString());
 	}
 	public abstract boolean equalsToValue(Value _value);
 }

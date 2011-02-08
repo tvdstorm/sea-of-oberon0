@@ -10,7 +10,7 @@ public class Main
 		//if (args.length == 1)
 		{
 			Program p = new Program();
-			p.loadProgram("src/test/java/randy/oberon0/test/testscripts/smoketest_quicksort.oberon0", new BuildinFunctions());
+			p.loadProgram("src/test/java/randy/oberon0/test/testscripts/addition.oberon0", new BuildinFunctions());
 			p.run();
 		}
 		//else

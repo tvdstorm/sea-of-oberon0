@@ -20,8 +20,7 @@ public class Integer extends Value
 	}
 	public void setValue(Value _val) throws RuntimeException
 	{
-		// Resolve CONST
-		Integer v = _val.dereference().castToInteger();
+		Integer v = _val.castToInteger();
 		this.value = v.value;
 	}
 	public Type getType()
@@ -36,7 +35,6 @@ public class Integer extends Value
 	@Override
 	public boolean equalsToValue(Value _value)
 	{
-		_value = _value.dereference();
 		if (!(_value instanceof Integer))
 		{
 			return false;

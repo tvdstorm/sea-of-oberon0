@@ -25,7 +25,7 @@ public class IfStatement extends Statement
 		for (IfExpressionAndBody curIf : ifStatements)
 		{
 			// Evaluate the condition and convert it to an boolean
-			final Boolean conditionResult = curIf.getExpression().evaluate(environment).castToBoolean();
+			final Boolean conditionResult = curIf.getExpression().evaluate(environment).getValue().castToBoolean();
 			// Check if the condition is true
 			if (conditionResult.getBoolValue())
 			{

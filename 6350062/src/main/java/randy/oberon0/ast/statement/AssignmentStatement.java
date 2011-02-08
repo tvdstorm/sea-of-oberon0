@@ -4,6 +4,7 @@ import randy.oberon0.ast.expression.Expression;
 import randy.oberon0.ast.selector.Selector;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
+import randy.oberon0.interpreter.runtime.environment.Reference;
 import randy.oberon0.value.Value;
 
 public class AssignmentStatement extends Statement
@@ -23,10 +24,10 @@ public class AssignmentStatement extends Statement
 	{
 		assert(environment != null);
 		// Evaluate the variable
-		Value var = variable.evaluate(environment);
+		Reference var = variable.evaluate(environment);
 		assert(var != null);
 		// Evaluate the expression and assign the result as the value of the variable
-		var.setValue(expression.evaluate(environment));
+		var.setValue(expression.evaluate(environment).getValue());
 	}
 	@Override
 	public void typeCheck(RuntimeEnvironment environment) throws RuntimeException

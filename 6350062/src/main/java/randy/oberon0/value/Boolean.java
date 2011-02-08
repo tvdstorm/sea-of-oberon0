@@ -20,8 +20,7 @@ public class Boolean extends Value
 	}
 	public void setValue(Value _val) throws RuntimeException
 	{
-		// Resolve CONST
-		Boolean v = _val.dereference().castToBoolean();
+		Boolean v = _val.castToBoolean();
 		this.value = v.value;
 	}
 	public Type getType()
@@ -36,7 +35,6 @@ public class Boolean extends Value
 	@Override
 	public boolean equalsToValue(Value _value)
 	{
-		_value = _value.dereference();
 		if (!(_value instanceof Boolean))
 		{
 			return false;

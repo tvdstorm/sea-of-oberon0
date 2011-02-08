@@ -1,7 +1,10 @@
 package randy.oberon0.test;
 
+import java.util.Iterator;
 import java.util.Queue;
 import randy.oberon0.ast.IInvokableFunction;
+import randy.oberon0.interpreter.runtime.environment.IValue;
+import randy.oberon0.interpreter.runtime.environment.Reference;
 import randy.oberon0.exception.*;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.*;
@@ -15,14 +18,19 @@ public class TestWriteFunction implements IInvokableFunction
 		output = _output;
 	}
 	@Override
-	public void invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
+	public void invoke(RuntimeEnvironment environment, Iterator<IValue> parameterValues) throws RuntimeException
 	{
-		if (parameterValues.size() != 1)
+		if (!parameterValues.hasNext())
 			throw new IncorrectNumberOfArgumentsException();
-		Value param = parameterValues.poll();
+		Value param = parameterValues.next().getValue();
 		if (!param.getType().equals(Type.INTEGER))
 			throw new TypeMismatchException(param.getType().toString(), Type.INTEGER.toString());
 		output.add(param.toString());
+		// No parameters should be left
+		if (parameterValues.hasNext())
+		{
+			throw new IncorrectNumberOfArgumentsException();
+		}
 	}
 	public String getName()
 	{
@@ -34,15 +42,20 @@ public class TestWriteFunction implements IInvokableFunction
 		// Leeg
 	}
 	@Override
-	public void typeCheckInvoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
+	public void typeCheckInvoke(RuntimeEnvironment environment, Iterator<Reference> parameterValues) throws RuntimeException
 	{
 		// Accept one parameter
-		if (parameterValues.size() != 1)
+		if (!parameterValues.hasNext())
 		{
 			throw new IncorrectNumberOfArgumentsException();
 		}
 		// Accept only an integer
-		parameterValues.poll().dereference().castToInteger();
+		parameterValues.next().getValue().castToInteger();
+		// No parameters should be left
+		if (parameterValues.hasNext())
+		{
+			throw new IncorrectNumberOfArgumentsException();
+		}
 	}
 	@Override
 	public void typeCheckRegisterTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException

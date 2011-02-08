@@ -3,28 +3,29 @@ package randy.oberon0.value;
 import java.util.*;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.*;
+import randy.oberon0.interpreter.runtime.environment.Reference;
 
 public class Record extends Value
 {
-	private Map<String, Value> members;
+	private Map<String, Reference> members;
 	
 	public Record(Map<String, IInstantiateableVariable> _members, RuntimeEnvironment environment) throws RuntimeException
 	{
-		members = new HashMap<String, Value>();
+		members = new HashMap<String, Reference>();
 		for (String name : _members.keySet())
 		{
-			members.put(name, _members.get(name).instantiate(environment));
+			members.put(name, new Reference(_members.get(name).instantiate(environment)));
 		}
 	}
 	private Record()
 	{
-		members = new HashMap<String, Value>();
+		members = new HashMap<String, Reference>();
 	}
 	public Set<String> getMemberNames()
 	{
 		return members.keySet();
 	}
-	public Value getMemberValue(String name)
+	public Reference getMemberValue(String name)
 	{
 		assert(name != null);
 		assert(members.get(name) != null);
@@ -37,14 +38,13 @@ public class Record extends Value
 	@Override
 	public void setValue(Value _val) throws RuntimeException
 	{
-		// Resolve CONST
-		Record v = _val.dereference().castToRecord();
+		Record v = _val.castToRecord();
 		if (v != this)
 		{
-			members = new HashMap<String, Value>();
+			members = new HashMap<String, Reference>();
 			for (String key : v.members.keySet())
 			{
-				members.put(key, v.members.get(key).clone());
+				members.put(key, new Reference(v.members.get(key).getValue().clone()));
 			}
 		}
 	}
@@ -67,7 +67,6 @@ public class Record extends Value
 	@Override
 	public boolean equalsToValue(Value _value)
 	{
-		_value = _value.dereference();
 		if (!(_value instanceof Record))
 		{
 			return false;
@@ -79,12 +78,12 @@ public class Record extends Value
 		}
 		for (String name : members.keySet())
 		{
-			Value otherValue = other.members.get(name);
+			Reference otherValue = other.members.get(name);
 			if (otherValue == null)
 			{
 				return false;
 			}
-			if (!members.get(name).equalsToValue(otherValue))
+			if (!members.get(name).getValue().equalsToValue(otherValue.getValue()))
 			{
 				return false;
 			}
@@ -97,7 +96,7 @@ public class Record extends Value
 		Record record = new Record();
 		for (String name : members.keySet())
 		{
-			record.members.put(name, members.get(name).clone());
+			record.members.put(name, new Reference(members.get(name).getValue().clone()));
 		}
 		return record;
 	}

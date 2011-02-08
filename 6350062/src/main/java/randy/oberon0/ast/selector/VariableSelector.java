@@ -2,6 +2,7 @@ package randy.oberon0.ast.selector;
 
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
+import randy.oberon0.interpreter.runtime.environment.Reference;
 import randy.oberon0.value.Value;
 
 public class VariableSelector extends Selector
@@ -14,17 +15,17 @@ public class VariableSelector extends Selector
 		variableName = _variableName;
 	}
 	@Override
-	public Value evaluate(RuntimeEnvironment environment) throws RuntimeException
+	public Reference evaluate(RuntimeEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Retrieve the value of the variable and return it
-		return environment.getVariableValue(variableName);
+		return (Reference)environment.lookup(variableName);
 	}
 	@Override
 	public Value typeCheck(RuntimeEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Retrieve the value of the variable and return it
-		return environment.getVariableValue(variableName);
+		return ((Reference)environment.lookup(variableName)).getValue();
 	}
 }

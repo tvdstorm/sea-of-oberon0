@@ -3,6 +3,8 @@ package randy.oberon0.ast.expression;
 import randy.oberon0.exception.OperatorTypeUndefinedException;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
+import randy.oberon0.interpreter.runtime.environment.ByValue;
+import randy.oberon0.interpreter.runtime.environment.IValue;
 import randy.oberon0.value.Value;
 import randy.oberon0.value.Integer;
 import randy.oberon0.value.Boolean;
@@ -14,16 +16,16 @@ public class InfixSmallerThanExpression extends InfixExpression
 		super(_leftHandExpression, _rightHandExpression);
 	}
 	@Override
-	public Value evaluate(RuntimeEnvironment environment) throws RuntimeException
+	public IValue evaluate(RuntimeEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Evaluate the left and right hand side expressions
-		final Value valRh = rightHandExpression.evaluate(environment).dereference();
-		final Value valLh = leftHandExpression.evaluate(environment).dereference();
+		final Value valRh = rightHandExpression.evaluate(environment).getValue();
+		final Value valLh = leftHandExpression.evaluate(environment).getValue();
 		// Check if we support the operator
 		if (valLh instanceof Integer && valRh instanceof Integer)
 		{
-			return new Boolean(valLh.castToInteger().getIntValue() < valRh.castToInteger().getIntValue());
+			return new ByValue(new Boolean(valLh.castToInteger().getIntValue() < valRh.castToInteger().getIntValue()));
 		}
 		else
 		{
@@ -36,8 +38,8 @@ public class InfixSmallerThanExpression extends InfixExpression
 	{
 		assert(environment != null);
 		// Evaluate the left and right hand side expressions
-		final Value valRh = rightHandExpression.typeCheck(environment).dereference();
-		final Value valLh = leftHandExpression.typeCheck(environment).dereference();
+		final Value valRh = rightHandExpression.typeCheck(environment);
+		final Value valLh = leftHandExpression.typeCheck(environment);
 		// Check if we support the operator
 		if (valLh instanceof Integer && valRh instanceof Integer)
 		{

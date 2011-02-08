@@ -1,14 +1,15 @@
 package randy.oberon0.interpreter.buildinfunctions;
 
 import java.io.IOException;
-import java.util.Queue;
+import java.util.Iterator;
 import randy.oberon0.ast.IInvokableFunction;
+import randy.oberon0.interpreter.runtime.environment.IValue;
+import randy.oberon0.interpreter.runtime.environment.Reference;
 import randy.oberon0.exception.*;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.*;
 import randy.oberon0.value.Integer;
 import randy.oberon0.value.Type;
-import randy.oberon0.value.Value;
 
 public class DefaultReadFunction implements IInvokableFunction
 {
@@ -18,20 +19,21 @@ public class DefaultReadFunction implements IInvokableFunction
 		return "Read";
 	}
 	@Override
-	public void invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
+	public void invoke(RuntimeEnvironment environment, Iterator<IValue> parameterValues) throws RuntimeException
 	{
 		try
 		{
 			// Accept one parameter
-			if (parameterValues.size() != 1)
+			if (!parameterValues.hasNext())
 			{
 				throw new IncorrectNumberOfArgumentsException();
 			}
 			// Check if the parameter is an integer
-			Value param = parameterValues.poll();
-			if (!param.getType().equals(Type.INTEGER))
+			Reference param = (Reference)parameterValues.next();
+			
+			if (!param.getValue().getType().equals(Type.INTEGER))
 			{
-				throw new TypeMismatchException(param.getType().toString(), Type.INTEGER.toString());
+				throw new TypeMismatchException(param.getValue().getType().toString(), Type.INTEGER.toString());
 			}
 			// Write a prompt to indicate that we need input
 			System.out.println("Script requests input: ");
@@ -42,6 +44,11 @@ public class DefaultReadFunction implements IInvokableFunction
 			in = in.trim();
 			// Parse the string to an integer and set the parameters value
 			param.setValue(new Integer(java.lang.Integer.parseInt(in)));
+			// No parameters should be left
+			if (parameterValues.hasNext())
+			{
+				throw new IncorrectNumberOfArgumentsException();
+			}
 		}
 		catch (IOException e)
 		{
@@ -54,15 +61,20 @@ public class DefaultReadFunction implements IInvokableFunction
 		// Leeg
 	}
 	@Override
-	public void typeCheckInvoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
+	public void typeCheckInvoke(RuntimeEnvironment environment, Iterator<Reference> parameterValues) throws RuntimeException
 	{
 		// Accept one parameter
-		if (parameterValues.size() != 1)
+		if (!parameterValues.hasNext())
 		{
 			throw new IncorrectNumberOfArgumentsException();
 		}
 		// Accept only an integer
-		parameterValues.poll().castToInteger();
+		parameterValues.next().getValue().castToInteger();
+		// No parameters should be left
+		if (parameterValues.hasNext())
+		{
+			throw new IncorrectNumberOfArgumentsException();
+		}
 	}
 	@Override
 	public void typeCheckRegisterTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException
