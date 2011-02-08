@@ -30,7 +30,7 @@ public class StatementSequence implements Interpretable {
 	}
 
 	public void addStatement(Interpretable statement) {
-		Assert.assertNotNull("The statement parameter can't be null.", statement);
+		assert statement != null : "The statement parameter can't be null.";
 		this.statements.add(statement);
 	}
 

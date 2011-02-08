@@ -1,6 +1,5 @@
 package ar.oberon0.ast.statements;
 
-import junit.framework.Assert;
 import ar.oberon0.lists.ConstantList;
 import ar.oberon0.lists.DataFieldList;
 import ar.oberon0.lists.ProcedureList;
@@ -35,7 +34,7 @@ public class ModuleNode implements Interpretable {
 	}
 
 	public void setStatements(StatementSequence statementsToExecute) {
-		Assert.assertNotNull("The statementsToExecute parameter can't be null", statementsToExecute);
+		assert statementsToExecute != null : "The statementsToExecute parameter can't be null";
 		this.statements = statementsToExecute;
 	}
 

@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import junit.framework.Assert;
 import ar.oberon0.ast.expression.VarSelectorNode;
 import ar.oberon0.runtime.Context;
 import ar.oberon0.runtime.DataField;
@@ -32,7 +31,7 @@ public class ReadNode implements Interpretable {
 	}
 
 	public ReadNode(final VarSelectorNode selector) {
-		Assert.assertNotNull("The selector parameter can't be null", selector);
+		assert selector != null : "The selector parameter can't be null";
 		this.selector = selector;
 	}
 

@@ -1,6 +1,5 @@
 package ar.oberon0.ast.expression;
 
-import junit.framework.Assert;
 import ar.oberon0.ast.dataTypes.LookupType;
 import ar.oberon0.ast.dataTypes.RecordType;
 import ar.oberon0.runtime.Context;
@@ -18,7 +17,7 @@ public class RecordSelectorNode extends SelectorNode {
 
 	@Override
 	protected DataField getItem(DataField parent, Context context) throws TechnicalException {
-		Assert.assertNotNull("The parent parameter can't be null. A RecordSelector can't be the first selector.", parent);
+		assert parent != null : "The parent parameter can't be null. A RecordSelector can't be the first selector.";
 
 		if (!(parent.getType() instanceof RecordType) && parent.getType().getClass() != LookupType.class) {
 			throw new TechnicalException("The parent type that was passed to the record selector was not of the record type.");

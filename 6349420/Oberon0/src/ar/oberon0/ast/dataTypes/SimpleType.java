@@ -1,6 +1,5 @@
 package ar.oberon0.ast.dataTypes;
 
-import junit.framework.Assert;
 import ar.oberon0.runtime.Context;
 import ar.oberon0.shared.TechnicalException;
 import ar.oberon0.values.BooleanValue;
@@ -15,7 +14,7 @@ public class SimpleType implements CreatableType {
 	private String type;
 
 	public SimpleType(String type) {
-		Assert.assertNotNull("the type parameter can't be null.", type);
+		assert type != null : "the type parameter can't be null.";
 		if (!PrimitiveTypes.doesPrimitiveTypeExist(type)) {
 			throw new TechnicalException("The type " + type + " does not exist.");
 		}

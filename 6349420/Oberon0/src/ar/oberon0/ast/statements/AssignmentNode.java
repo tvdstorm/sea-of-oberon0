@@ -18,8 +18,8 @@ public class AssignmentNode implements Interpretable {
 	private Interpretable value;
 
 	public AssignmentNode(final VarSelectorNode varSelector, final Interpretable value) {
-		Assert.assertNotNull("The varSelector parameter can't be null", varSelector);
-		Assert.assertNotNull("The value parameter can't be null", value);
+		assert varSelector != null : "The varSelector parameter can't be null";
+		assert value != null : "The value parameter can't be null";
 		this.varSelector = varSelector;
 		this.value = value;
 	}

@@ -11,7 +11,7 @@ public class NegationNode implements Interpretable {
 	private Interpretable _nodeToNegate;
 
 	public NegationNode(final Interpretable nodeToNegate) {
-		Assert.assertNotNull("the nodeToNegate parameter can't be null.", nodeToNegate);
+		assert nodeToNegate != null : "the nodeToNegate parameter can't be null.";
 		_nodeToNegate = nodeToNegate;
 	}
 

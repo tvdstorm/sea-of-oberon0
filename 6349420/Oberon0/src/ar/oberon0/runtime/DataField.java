@@ -1,6 +1,5 @@
 package ar.oberon0.runtime;
 
-import junit.framework.Assert;
 import ar.oberon0.ast.dataTypes.CreatableType;
 import ar.oberon0.ast.dataTypes.LookupType;
 import ar.oberon0.shared.Interpretable;
@@ -31,7 +30,7 @@ public class DataField implements Interpretable {
 	}
 
 	public DataField(final CreatableType type, final Value value) {
-		Assert.assertNotNull("The type parameter can't be null.", type);
+		assert type != null : "The type parameter can't be null.";
 		this.type = type;
 		this.value = value;
 	}

@@ -1,6 +1,5 @@
 package ar.oberon0.ast.expression;
 
-import junit.framework.Assert;
 import ar.oberon0.runtime.Context;
 import ar.oberon0.runtime.DataField;
 import ar.oberon0.shared.Helper;
@@ -28,7 +27,7 @@ public class ArrayItemSelectorNode extends SelectorNode {
 	 */
 	@Override
 	protected final DataField getItem(final DataField parent, final Context context) throws TechnicalException {
-		Assert.assertNotNull("The parent parameter can't be null. An ArrayItemSelector can't be the first selector.", parent);
+		assert parent != null : "The parent parameter can't be null. An ArrayItemSelector can't be the first selector.";
 
 		if (!(parent.getValue(context) instanceof ArrayValue)) {
 			throw new IllegalArgumentException("The parent parameter doesn't contain a DataField with an Array.");

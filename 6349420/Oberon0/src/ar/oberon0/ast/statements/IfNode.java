@@ -24,8 +24,8 @@ public class IfNode implements Interpretable {
 	}
 
 	public IfNode(Interpretable expression, Interpretable statementsToExecute) {
-		Assert.assertNotNull("The statementsToExecute parameter can't be null", statementsToExecute);
-		Assert.assertNotNull("The expression parameter can't be null", expression);
+		assert statementsToExecute != null : "The statementsToExecute parameter can't be null";
+		assert expression != null : "The expression parameter can't be null";
 		this.mainIfStatements = new IfStatement(expression, statementsToExecute);
 		this.elseIfStatementsList = new ArrayList<IfStatement>();
 	}

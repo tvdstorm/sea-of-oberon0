@@ -5,8 +5,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import junit.framework.Assert;
-
 /*
  * This is a base map that contains some functions that are used in by other maps. 
  * This map is used to store name value pairs where the value can be specified by the generic type. An example is the variables list in the context.
@@ -20,7 +18,7 @@ public abstract class BaseMap<itemType> implements Iterable<Entry<String, itemTy
 	}
 
 	public final void addItem(final String name, final itemType item) {
-		Assert.assertNotNull("The item parameter can't be null.", item);
+		assert item != null : "The item parameter can't be null.";
 		this.items.put(name, item);
 	}
 

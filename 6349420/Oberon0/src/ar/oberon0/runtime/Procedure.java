@@ -1,6 +1,5 @@
 package ar.oberon0.runtime;
 
-import junit.framework.Assert;
 import ar.oberon0.ast.statements.StatementSequence;
 import ar.oberon0.shared.Interpretable;
 import ar.oberon0.shared.TechnicalException;
@@ -15,8 +14,8 @@ public class Procedure implements Interpretable {
 	private Context procedureContext;
 
 	public Procedure(final StatementSequence statementsToExecute, final Context procedureContext) {
-		Assert.assertNotNull("The statementsToExecute parameter can't be null.", statementsToExecute);
-		Assert.assertNotNull("The procedureContext parameter can't be null.", procedureContext);
+		assert statementsToExecute != null : "The statementsToExecute parameter can't be null.";
+		assert procedureContext != null : "The procedureContext parameter can't be null.";
 		this.procedureContext = procedureContext;
 		this.statementsToExecute = statementsToExecute;
 	}
