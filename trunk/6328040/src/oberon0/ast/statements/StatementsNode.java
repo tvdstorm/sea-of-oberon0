@@ -9,7 +9,7 @@ public class StatementsNode implements IExecutable {
 	private final List<IExecutable> _statementSequence;
 
 	public StatementsNode(ArrayList<IExecutable> statements) {
-		if (statements != null){
+		if (statements != null) {
 			_statementSequence = statements;
 		} else {
 			_statementSequence = new ArrayList<IExecutable>();

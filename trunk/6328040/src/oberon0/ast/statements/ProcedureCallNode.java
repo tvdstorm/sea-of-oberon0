@@ -13,9 +13,9 @@ public class ProcedureCallNode implements IExecutable {
 
 	public ProcedureCallNode(String name, List<IReferable> actualParams) {
 		_name = name;
-		if (actualParams != null){
+		if (actualParams != null) {
 			_actualParams = actualParams;
-		} else{
+		} else {
 			_actualParams = new ArrayList<IReferable>();
 		}
 	}

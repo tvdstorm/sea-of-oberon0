@@ -26,7 +26,7 @@ public class WithNode implements IExecutable {
 		BuiltInRoutines builtin = new BuiltInRoutines();
 		builtin.declare(withContext);
 
-		Reference ref = _selector.refer(context, context.getReference(_name));
+		Reference ref = _selector.deref(context, context.getReference(_name));
 		RecordValue record = (RecordValue) ref.getValue();
 		Map<String, Reference> fields = record.getFields();
 		for (String name : fields.keySet()) {

@@ -19,12 +19,12 @@ public class IfNode implements IExecutable {
 			IExecutable elsebody) {
 		_ifCondition = ifcondition;
 		_ifBody = ifbody;
-		if (condlist != null){
+		if (condlist != null) {
 			_ifelsConditions = condlist;
 		} else {
 			_ifelsConditions = new ArrayList<IEvaluable>();
-		}	
-		if (ifelsbody != null){
+		}
+		if (ifelsbody != null) {
 			_ifelsBodies = ifelsbody;
 		} else {
 			_ifelsBodies = new ArrayList<IExecutable>();

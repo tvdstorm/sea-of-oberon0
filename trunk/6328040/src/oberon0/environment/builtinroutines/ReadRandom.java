@@ -30,7 +30,7 @@ public class ReadRandom implements ICallable {
 
 		// get the reference from actual parameter
 		IReferable actualParam = actualParameters.get(0);
-		Reference ref = actualParam.getRef(context, Reference.EMPTY_REFERENCE);
+		Reference ref = actualParam.deref(context, Reference.EMPTY_REFERENCE);
 
 		// update the reference with the random number
 		ref.setValue(value);

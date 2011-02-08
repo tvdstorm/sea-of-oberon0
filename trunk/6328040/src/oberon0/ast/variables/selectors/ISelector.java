@@ -9,5 +9,5 @@ import oberon0.environment.Reference;
  */
 public interface ISelector {
 
-	public Reference refer(Context context, Reference previousReference);
+	public Reference deref(Context context, Reference previousReference);
 }

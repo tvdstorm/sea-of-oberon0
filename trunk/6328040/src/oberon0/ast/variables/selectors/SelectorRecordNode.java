@@ -12,7 +12,7 @@ public class SelectorRecordNode implements ISelector {
 	}
 
 	@Override
-	public Reference refer(Context context, Reference previousRef) {
+	public Reference deref(Context context, Reference previousRef) {
 		RecordValue selectorValue = (RecordValue) previousRef.getValue();
 		return selectorValue.getReference(_fieldName);
 	}

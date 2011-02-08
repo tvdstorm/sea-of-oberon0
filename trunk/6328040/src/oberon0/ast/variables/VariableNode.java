@@ -18,14 +18,14 @@ public class VariableNode implements IReferable {
 	@Override
 	public IValue eval(Context context) {
 		Reference ref = context.getReference(_name);
-		ref = _selector.refer(context, ref);
+		ref = _selector.deref(context, ref);
 		return ref.getValue();
 	}
 
 	@Override
-	public Reference getRef(Context context, Reference previousReference) {
+	public Reference deref(Context context, Reference previousReference) {
 		Reference ref = context.getReference(_name);
-		ref = _selector.refer(context, ref);
+		ref = _selector.deref(context, ref);
 		return ref;
 	}
 

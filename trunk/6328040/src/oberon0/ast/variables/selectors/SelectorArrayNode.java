@@ -15,7 +15,7 @@ public class SelectorArrayNode implements ISelector {
 	}
 
 	@Override
-	public Reference refer(Context context, Reference previousRef) {
+	public Reference deref(Context context, Reference previousRef) {
 		IValue selectorValue = _selectorExpression.eval(context);
 		int index = ((IntegerValue) selectorValue).getValue();
 		return ((ArrayValue) previousRef.getValue()).getReference(index);

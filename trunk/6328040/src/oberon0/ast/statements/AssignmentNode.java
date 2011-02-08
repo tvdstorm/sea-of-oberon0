@@ -21,7 +21,7 @@ public class AssignmentNode implements IExecutable {
 	public void execute(Context context) {
 		IValue value = _expression.eval(context);
 		Reference ref = context.getReference(_name);
-		ref = _selector.refer(context, ref);
+		ref = _selector.deref(context, ref);
 		ref.setValue(value);
 	}
 

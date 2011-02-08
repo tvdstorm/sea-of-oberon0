@@ -19,8 +19,8 @@ public class ActualParamNode implements IReferable {
 	}
 
 	@Override
-	public Reference getRef(Context context, Reference firstref) {
-		return ((IReferable) _actualParamNode).getRef(context, firstref);
+	public Reference deref(Context context, Reference firstref) {
+		return ((IReferable) _actualParamNode).deref(context, firstref);
 	}
 
 }
