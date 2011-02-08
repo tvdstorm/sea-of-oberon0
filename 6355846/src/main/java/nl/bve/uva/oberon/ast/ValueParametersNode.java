@@ -3,10 +3,10 @@ package nl.bve.uva.oberon.ast;
 import java.util.List;
 
 public class ValueParametersNode implements IInterpretableNode {
-	private List<IInterpretableNode> identList;
+	private List<String> identList;
 	private IInterpretableNode type;
 	
-	public ValueParametersNode(List<IInterpretableNode> identList, IInterpretableNode type) {
+	public ValueParametersNode(List<String> identList, IInterpretableNode type) {
 		this.identList = identList;
 		this.type = type;
 	}

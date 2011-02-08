@@ -30,14 +30,14 @@ package nl.bve.uva.oberon.parser;
  * PARSER RULES
  *------------------------------------------------------------------*/
 
-module returns [IInterpretableNode module]
+module returns [IInterpretableNode result]
 	:	'MODULE' i1=IDENT ';' declarations 
 			(
 				'BEGIN' statementSequence						{$result = $statementSequence.result; }
-			)? 'END' i2=IDENT '.'								{$result = new ModuleNode($i1.text, $i2.text, $declarations.result, $result}
+			)? 'END' i2=IDENT '.'								{$result = new ModuleNode($i1.text, $i2.text, $declarations.result, $result); }
 	;
 
-declarations returns [IInterpretableNode declarations]
+declarations returns [IInterpretableNode result]
 	:	c=constantDeclarations 
 		t=typeDeclarations 
 		v=varDeclarations 
@@ -46,27 +46,27 @@ declarations returns [IInterpretableNode declarations]
 																
 constantDeclarations returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()]	
 	:	('CONST' 
-			(IDENT '=' expression ';'							{$result.add(new ConstantDeclarationNode($IDENT.text, $expression.result); }
+			(IDENT '=' expression ';'							{$result.add(new ConstantDeclarationNode($IDENT.text, $expression.result)); }
 			)*
 		)?
 	;
 
 typeDeclarations returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()]
 	:	('TYPE' 
-			(IDENT '=' type ';'									{$result.add(new TypeDeclarationNode($IDENT.text, $type.result); }
+			(IDENT '=' type ';'									{$result.add(new TypeDeclarationNode($IDENT.text, $type.result)); }
 			)*
 		)?
 	;
 
 varDeclarations returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()]
 	:	('VAR'
-			(identList ':' type ';	'							{$result.add(new VarDeclarationNode($identList.result, $type.result); }
+			(identList ':' type ';	'							{$result.add(new VarDeclarationNode($identList.result, $type.result)); }
 			)* 
 		)?;
 
 procedureDeclarations returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()]
 	:	(
-			ph=procedureHeading ';' pb=procedureBody ';'		{$result.add(new ProcedureDeclarationNode($ph.result, $pb.result); }		
+			ph=procedureHeading ';' pb=procedureBody ';'		{$result.add(new ProcedureDeclarationNode($ph.result, $pb.result)); }		
 		)*
 	;
 
@@ -79,43 +79,44 @@ procedureHeading returns [IInterpretableNode result]
 procedureBody returns [IInterpretableNode result]
 	:	d=declarations 
 			('BEGIN' ss=statementSequence						{$result = $ss.result; }
-			)? 'END' IDENT										{$result = new ProcedureBodyNode($d.result, $ss.result, $IDENT.text); }
+			)? 'END' IDENT										{$result = new ProcedureBodyNode($d.result, $result, $IDENT.text); }
 	;
 			
-formalParameters returns [List<IInterpretableNode result = new ArrayList<IInterpretableNode>()]
+formalParameters returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()]
 	:	'(' (fp1=fPSection 										{$result.add($fp1.result); }
 				(';' fp2=fPSection								{$result.add($fp2.result); }
 				)*
 			)? ')'
 	;
 
-fPSection returns [IInterpretable result]
-	:	('VAR' identList ':' type								{$result = new ReferenceParametersNode($identList.result, $type.result); }
-		|identList ':' type										{$result = new ValueParametersNode($identList.result, $type.result); }
+fPSection returns [IInterpretableNode result]
+	:	('VAR' i1=identList ':' t1=type							{$result = new ReferenceParametersNode($i1.result, $t1.result); }
+		|i2=identList ':' t2=type								{$result = new ValueParametersNode($i2.result, $t2.result); }
 		)
 	;
 
-type returns [IInterpretable result]
-	: IDENT 													{$result =;}
-	| arrayType													{$result =;}
-	| recordType												{$result =;}
+type returns [IInterpretableNode result]
+	: IDENT 													{$result = new UserTypeNode($IDENT.text); }
+	| arrayType													{$result = $arrayType.result; }
+	| recordType												{$result = $recordType.result; }
 	;
 
-recordType
-	:	'RECORD' fieldList 'END'				{$result = new RecordTypeNode($fieldList.result, }
+recordType returns [IInterpretableNode result]
+	:	'RECORD' fieldLists 'END'								{$result = new RecordTypeNode($fieldLists.result); }
 	;
 
-fieldList
-	:	(identList ':' type)? 									{}
-			(';' (identList ':' type))*							{} 
+fieldLists returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()]
+	:	(i1=identList ':' t1=type)? 							{$result.add(new TypedFieldListNode($i1.result, $t1.result)); }
+			(';' (i2=identList ':' t2=type))*					{$result.add(new TypedFieldListNode($i2.result, $t2.result)); }
+	; 
 
-arrayType
+arrayType returns [IInterpretableNode result]
 	:	'ARRAY' expression 'OF' type							{$result = new ArrayTypeNode($expression.result, $type.result); }
 	;
 
-identList returns [List<IInterpretableNode> result = new ArrayList<IInterpretable>()]
-	:	IDENT													{$result.add($IDENT.text); } 
-			(',' IDENT											{$result.add($IDENT.text); }
+identList returns [List<String> result = new ArrayList<String>()]
+	:	i1=IDENT												{$result.add($i1.text); } 
+			(',' i2=IDENT										{$result.add($i2.text); }
 			)*
 	;
 
