@@ -59,10 +59,13 @@ public class ExpressionVisitor extends BaseVisitor {
 		return new Int(left.getValue() % right.getValue());
 	}
 
+	/**
+	 * A the moment the equals expression only compares expressions that evaluate to an Int value
+	 */
 	@Override
 	public Value eval(EqualsExpNode node, Environment localEnv) {
-		Object left = node.getLeftExp().eval(this, localEnv);
-		Object right = node.getRightExp().eval(this, localEnv);
+		Integer left = ((Int) node.getLeftExp().eval(this, localEnv)).getValue();
+		Integer right = ((Int) node.getRightExp().eval(this, localEnv)).getValue();
 		return new Bool(left.equals(right));
 	}
 
