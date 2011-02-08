@@ -7,3 +7,7 @@ ELSIF a > 5 THEN
 ELSE
 	a := 4
 END
+
+
+
+PROCEDURE (x := ARRAY 32 OF INTEGER)

@@ -10,7 +10,7 @@ public class DotSelectorNode implements IInterpretableNode {
 	
 	@Override
 	public Object interpret() {
-		return 12;
+		return selector;
 	}
 
 }
