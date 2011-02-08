@@ -7,11 +7,11 @@
                 <TotalClasses>3</TotalClasses>
                 <ConcreteClasses>3</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
-                <Ca>11</Ca>
+                <Ca>10</Ca>
                 <Ce>5</Ce>
                 <A>0</A>
-                <I>0.31</I>
-                <D>0.69</D>
+                <I>0.33</I>
+                <D>0.67</D>
                 <V>1</V>
             </Stats>
 
@@ -46,7 +46,6 @@
                 <Package>com.arievanderveek.soo.ast.unaryoperators</Package>
                 <Package>com.arievanderveek.soo.ast.variables</Package>
                 <Package>com.arievanderveek.soo.parser</Package>
-                <Package>com.arievanderveek.soo.parser.antlrimpl</Package>
                 <Package>com.arievanderveek.soo.runtime</Package>
                 <Package>com.arievanderveek.soo.test.util</Package>
                 <Package>com.arievanderveek.soo.util</Package>
@@ -58,11 +57,11 @@
                 <TotalClasses>1</TotalClasses>
                 <ConcreteClasses>0</ConcreteClasses>
                 <AbstractClasses>1</AbstractClasses>
-                <Ca>12</Ca>
+                <Ca>11</Ca>
                 <Ce>3</Ce>
                 <A>1</A>
-                <I>0.2</I>
-                <D>0.2</D>
+                <I>0.21</I>
+                <D>0.21</D>
                 <V>1</V>
             </Stats>
 
@@ -89,7 +88,6 @@
                 <Package>com.arievanderveek.soo.ast.unaryoperators</Package>
                 <Package>com.arievanderveek.soo.ast.variables</Package>
                 <Package>com.arievanderveek.soo.parser</Package>
-                <Package>com.arievanderveek.soo.parser.antlrimpl</Package>
                 <Package>com.arievanderveek.soo.parser.antlrimpl.generated</Package>
                 <Package>com.arievanderveek.soo.runtime</Package>
                 <Package>com.arievanderveek.soo.test</Package>
@@ -381,14 +379,14 @@
 
         <Package name="com.arievanderveek.soo.parser">
             <Stats>
-                <TotalClasses>1</TotalClasses>
-                <ConcreteClasses>0</ConcreteClasses>
+                <TotalClasses>2</TotalClasses>
+                <ConcreteClasses>1</ConcreteClasses>
                 <AbstractClasses>1</AbstractClasses>
-                <Ca>2</Ca>
-                <Ce>3</Ce>
-                <A>1</A>
-                <I>0.6</I>
-                <D>0.6</D>
+                <Ca>1</Ca>
+                <Ce>6</Ce>
+                <A>0.5</A>
+                <I>0.86</I>
+                <D>0.36</D>
                 <V>1</V>
             </Stats>
 
@@ -399,46 +397,14 @@
             </AbstractClasses>
 
             <ConcreteClasses>
-            </ConcreteClasses>
-
-            <DependsUpon>
-                <Package>com.arievanderveek.soo</Package>
-                <Package>com.arievanderveek.soo.ast</Package>
-                <Package>java.lang</Package>
-            </DependsUpon>
-
-            <UsedBy>
-                <Package>com.arievanderveek.soo</Package>
-                <Package>com.arievanderveek.soo.parser.antlrimpl</Package>
-            </UsedBy>
-        </Package>
-
-        <Package name="com.arievanderveek.soo.parser.antlrimpl">
-            <Stats>
-                <TotalClasses>1</TotalClasses>
-                <ConcreteClasses>1</ConcreteClasses>
-                <AbstractClasses>0</AbstractClasses>
-                <Ca>0</Ca>
-                <Ce>7</Ce>
-                <A>0</A>
-                <I>1</I>
-                <D>0</D>
-                <V>1</V>
-            </Stats>
-
-            <AbstractClasses>
-            </AbstractClasses>
-
-            <ConcreteClasses>
                 <Class sourceFile="AntlrParserImpl.java">
-                    com.arievanderveek.soo.parser.antlrimpl.AntlrParserImpl
+                    com.arievanderveek.soo.parser.AntlrParserImpl
                 </Class>
             </ConcreteClasses>
 
             <DependsUpon>
                 <Package>com.arievanderveek.soo</Package>
                 <Package>com.arievanderveek.soo.ast</Package>
-                <Package>com.arievanderveek.soo.parser</Package>
                 <Package>com.arievanderveek.soo.parser.antlrimpl.generated</Package>
                 <Package>java.io</Package>
                 <Package>java.lang</Package>
@@ -446,6 +412,7 @@
             </DependsUpon>
 
             <UsedBy>
+                <Package>com.arievanderveek.soo</Package>
             </UsedBy>
         </Package>
 
@@ -635,7 +602,7 @@
             </DependsUpon>
 
             <UsedBy>
-                <Package>com.arievanderveek.soo.parser.antlrimpl</Package>
+                <Package>com.arievanderveek.soo.parser</Package>
                 <Package>com.arievanderveek.soo.test</Package>
             </UsedBy>
         </Package>
@@ -930,7 +897,6 @@
         </Package>
 
         <Package Name="com.arievanderveek.soo.ast.binaryoperators">
-            <Package>com.arievanderveek.soo.ast</Package>
             <Package>com.arievanderveek.soo</Package>
             <Package>com.arievanderveek.soo.util</Package>
             <Package>com.arievanderveek.soo</Package>
@@ -950,6 +916,7 @@
         </Package>
 
         <Package Name="com.arievanderveek.soo.ast.unaryoperators">
+            <Package>com.arievanderveek.soo.ast</Package>
             <Package>com.arievanderveek.soo</Package>
             <Package>com.arievanderveek.soo.util</Package>
             <Package>com.arievanderveek.soo</Package>
@@ -967,12 +934,6 @@
             <Package>com.arievanderveek.soo</Package>
         </Package>
 
-        <Package Name="com.arievanderveek.soo.parser.antlrimpl">
-            <Package>com.arievanderveek.soo</Package>
-            <Package>com.arievanderveek.soo.util</Package>
-            <Package>com.arievanderveek.soo</Package>
-        </Package>
-
         <Package Name="com.arievanderveek.soo.parser.antlrimpl.generated">
             <Package>com.arievanderveek.soo.ast</Package>
             <Package>com.arievanderveek.soo</Package>
@@ -981,9 +942,9 @@
         </Package>
 
         <Package Name="com.arievanderveek.soo.runtime">
-            <Package>com.arievanderveek.soo.util</Package>
             <Package>com.arievanderveek.soo</Package>
             <Package>com.arievanderveek.soo.util</Package>
+            <Package>com.arievanderveek.soo</Package>
         </Package>
 
         <Package Name="com.arievanderveek.soo.test">
@@ -994,10 +955,10 @@
         </Package>
 
         <Package Name="com.arievanderveek.soo.test.ast.symboltable">
-            <Package>com.arievanderveek.soo.runtime</Package>
-            <Package>com.arievanderveek.soo.util</Package>
+            <Package>com.arievanderveek.soo.ast.variables</Package>
             <Package>com.arievanderveek.soo</Package>
             <Package>com.arievanderveek.soo.util</Package>
+            <Package>com.arievanderveek.soo</Package>
         </Package>
 
         <Package Name="com.arievanderveek.soo.test.util">
