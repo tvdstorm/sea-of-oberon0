@@ -1,18 +1,23 @@
 package oberon0.ast.statements;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import oberon0.ast.routines.ICallable;
 import oberon0.ast.variables.IReferable;
 import oberon0.environment.Context;
 
 public class ProcedureCallNode implements IExecutable {
-	private String _name;
-	private ArrayList<IReferable> _actualParams;
+	private final String _name;
+	private final List<IReferable> _actualParams;
 
-	public ProcedureCallNode(String name, ArrayList<IReferable> actualParams) {
+	public ProcedureCallNode(String name, List<IReferable> actualParams) {
 		_name = name;
-		_actualParams = actualParams;
+		if (actualParams != null){
+			_actualParams = actualParams;
+		} else{
+			_actualParams = new ArrayList<IReferable>();
+		}
 	}
 
 	@Override

@@ -7,7 +7,7 @@ import oberon0.environment.IValue;
 import oberon0.environment.IntegerValue;
 
 public class TypeNode implements IEvaluable {
-	String _typename;
+	private final String _typename;
 
 	public TypeNode(String typename) {
 		_typename = typename;

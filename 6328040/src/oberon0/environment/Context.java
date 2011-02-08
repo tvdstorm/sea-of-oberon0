@@ -1,6 +1,7 @@
 package oberon0.environment;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import oberon0.ast.routines.ICallable;
 
@@ -10,9 +11,9 @@ import oberon0.ast.routines.ICallable;
  */
 public class Context {
 	private String _name;
-	private HashMap<String, Reference> _variables;
-	private HashMap<String, ICallable> _procedures;
-	private HashMap<String, IValue> _types;
+	private Map<String, Reference> _variables;
+	private Map<String, ICallable> _procedures;
+	private Map<String, IValue> _types;
 	private Context _parent;
 
 	/*

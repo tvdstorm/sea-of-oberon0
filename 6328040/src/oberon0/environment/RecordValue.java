@@ -1,11 +1,12 @@
 package oberon0.environment;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class RecordValue implements IValue {
-	private HashMap<String, Reference> _fields;
+	private final Map<String, Reference> _fields;
 
-	public RecordValue(HashMap<String, Reference> values) {
+	public RecordValue(Map<String, Reference> values) {
 		_fields = new HashMap<String, Reference>();
 		for (String name : values.keySet()) {
 			_fields.put(name, values.get(name).getCopy());
@@ -35,7 +36,7 @@ public class RecordValue implements IValue {
 		return new RecordValue(_fields);
 	}
 
-	public HashMap<String, Reference> getFields() {
+	public Map<String, Reference> getFields() {
 		return _fields;
 	}
 }

@@ -1,7 +1,7 @@
 package oberon0.environment;
 
 public class IntegerValue implements IValue {
-	private int _value;
+	private final int _value;
 
 	public IntegerValue(int value) {
 		_value = value;

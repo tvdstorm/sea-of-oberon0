@@ -1,9 +1,10 @@
 package oberon0.environment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ArrayValue implements IValue {
-	private ArrayList<Reference> _references;
+	private final List<Reference> _references;
 
 	public ArrayValue(IValue type, int size) {
 		_references = new ArrayList<Reference>(size);
@@ -12,7 +13,7 @@ public class ArrayValue implements IValue {
 		}
 	}
 
-	public ArrayValue(ArrayList<Reference> references) {
+	public ArrayValue(List<Reference> references) {
 		_references = new ArrayList<Reference>();
 		for (Reference ref : references) {
 			_references.add(ref.getCopy());

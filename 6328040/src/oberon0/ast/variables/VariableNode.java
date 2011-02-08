@@ -7,8 +7,8 @@ import oberon0.environment.Reference;
 
 public class VariableNode implements IReferable {
 
-	String _name;
-	ISelector _selector;
+	private final String _name;
+	private final ISelector _selector;
 
 	public VariableNode(String name, ISelector selec) {
 		_name = name;

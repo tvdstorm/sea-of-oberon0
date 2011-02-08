@@ -1,15 +1,20 @@
 package oberon0.ast.variables.selectors;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import oberon0.environment.Context;
 import oberon0.environment.Reference;
 
 public class SelectorNode implements ISelector {
-	ArrayList<ISelector> _selectors;
+	private final List<ISelector> _selectors;
 
-	public SelectorNode(ArrayList<ISelector> list) {
-		_selectors = list;
+	public SelectorNode(List<ISelector> list) {
+		if (list != null){
+			_selectors = list;
+		} else {
+			_selectors = new ArrayList<ISelector>();
+		}
 	}
 
 	@Override

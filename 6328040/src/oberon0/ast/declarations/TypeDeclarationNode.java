@@ -5,8 +5,8 @@ import oberon0.environment.Context;
 import oberon0.environment.IValue;
 
 public class TypeDeclarationNode implements IDeclarable {
-	private String _name;
-	private IEvaluable _typeEval;
+	private final String _name;
+	private final IEvaluable _typeEval;
 
 	public TypeDeclarationNode(String name, IEvaluable type) {
 		_name = name;

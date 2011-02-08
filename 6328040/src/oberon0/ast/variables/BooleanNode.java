@@ -6,7 +6,7 @@ import oberon0.environment.Context;
 import oberon0.environment.IValue;
 
 public class BooleanNode implements IEvaluable {
-	private boolean _value;
+	private final boolean _value;
 
 	public BooleanNode(boolean value) {
 		_value = value;

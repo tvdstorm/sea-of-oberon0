@@ -7,8 +7,8 @@ import oberon0.environment.IValue;
 import oberon0.environment.IntegerValue;
 
 public class ArrayTypeNode implements IEvaluable {
-	IEvaluable _sizeExpression;
-	IEvaluable _typeExpression;
+	private final IEvaluable _sizeExpression;
+	private final IEvaluable _typeExpression;
 
 	public ArrayTypeNode(IEvaluable size, IEvaluable type) {
 		_sizeExpression = size;

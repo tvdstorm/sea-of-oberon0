@@ -4,7 +4,7 @@ import oberon0.environment.Context;
 import oberon0.environment.IValue;
 
 public abstract class BaseUnaryExpressionNode implements IEvaluable {
-	IEvaluable _lhsExpression;
+	private final IEvaluable _lhsExpression;
 
 	public BaseUnaryExpressionNode(IEvaluable lhsExpression) {
 		_lhsExpression = lhsExpression;
