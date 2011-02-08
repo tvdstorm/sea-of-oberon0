@@ -1,6 +1,7 @@
 package com.kootsjur.oberon.type;
 
 import com.kootsjur.oberon.evaluator.ExpressionEvaluator;
+import com.kootsjur.oberon.value.Value;
 
 public class ArrayType extends TypeDefinition
 {
@@ -30,5 +31,12 @@ public class ArrayType extends TypeDefinition
    public TypeDefinition getTypeDefinition()
    {
       return typeDefinition;
+   }
+
+   @Override
+   public Value initValue()
+   {
+      // TODO Auto-generated method stub
+      return null;
    }
 }

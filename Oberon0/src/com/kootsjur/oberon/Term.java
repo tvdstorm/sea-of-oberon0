@@ -1,5 +1,7 @@
 package com.kootsjur.oberon;
 
+import com.kootsjur.oberon.evaluator.TermEvaluator;
+
 public class Term
 {
    private Factor leftFactor;

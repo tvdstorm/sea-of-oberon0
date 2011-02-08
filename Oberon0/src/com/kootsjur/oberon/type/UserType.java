@@ -2,11 +2,14 @@ package com.kootsjur.oberon.type;
 
 import com.kootsjur.oberon.value.Value;
 
-public class BoolType extends TypeDefinition
+public class UserType extends TypeDefinition
 {
-   public BoolType()
+   private String typeName;
+
+   public UserType(String name)
    {
-      super(DataType.BOOL);
+      super(DataType.USER);
+      this.typeName = name;
    }
 
    @Override
@@ -15,4 +18,5 @@ public class BoolType extends TypeDefinition
       // TODO Auto-generated method stub
       return null;
    }
+
 }

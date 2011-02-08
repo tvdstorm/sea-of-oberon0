@@ -3,6 +3,7 @@ package com.kootsjur.oberon.type;
 import java.util.List;
 
 import com.kootsjur.oberon.FieldList;
+import com.kootsjur.oberon.value.Value;
 
 public class RecordType extends TypeDefinition
 {
@@ -32,6 +33,13 @@ public class RecordType extends TypeDefinition
    public List<FieldList> getFields()
    {
       return fields;
+   }
+
+   @Override
+   public Value initValue()
+   {
+      // TODO Auto-generated method stub
+      return null;
    }
 
 }

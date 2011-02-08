@@ -4,7 +4,7 @@ import com.kootsjur.oberon.value.Value;
 
 public abstract class TypeDefinition
 {
-   public enum DataType{ NORMAL, ARRAY, RECORD, INTEGER, BOOL;}
+   public enum DataType{ USER, ARRAY, RECORD, INTEGER, BOOL;}
    
    private DataType dataType;
    private String name;
@@ -12,7 +12,7 @@ public abstract class TypeDefinition
    public TypeDefinition (String name)
    {
       this.name = name;
-      this.dataType = DataType.NORMAL;
+      this.dataType = DataType.USER;
    }
    
    public TypeDefinition(DataType dataType)

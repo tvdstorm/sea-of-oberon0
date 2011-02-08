@@ -8,8 +8,14 @@ options {
   package com.kootsjur.oberon;
   import com.kootsjur.oberon.statement.*;
   import com.kootsjur.oberon.value.*;
+  import com.kootsjur.oberon.environment.*;
   import com.kootsjur.oberon.evaluator.*;
   import com.kootsjur.oberon.declaration.*; 
+  import com.kootsjur.oberon.declaration.constant.*;
+  import com.kootsjur.oberon.declaration.formalparameter.*;
+  import com.kootsjur.oberon.declaration.procedure.*;
+  import com.kootsjur.oberon.declaration.type.*;
+  import com.kootsjur.oberon.declaration.var.*;
   import com.kootsjur.oberon.type.*;
   import java.util.List;
   import java.util.ArrayList;
@@ -66,7 +72,7 @@ fPSection returns [FPSection fps]
 	: {String paramDirection = "IN";}	
 	('VAR' {paramDirection = "INOUT";})? identList':'type {$fps = new FPSection($identList.i, $type.t, ParameterDirection.valueOf(paramDirection));};
 	
-type returns [TypeDefinition t]	:	ident {$t = new TypeDefinition($ident.text);}
+type returns [TypeDefinition t]	:	ident {$t = new UserType($ident.text);}
 									|arrayType {$t = $arrayType.a;}
 									|recordType {$t = $recordType.r;}
 									|integerType {$t = $integerType.i;} 
