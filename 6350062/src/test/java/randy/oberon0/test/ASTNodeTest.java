@@ -369,7 +369,7 @@ public class ASTNodeTest
 		prepareTest("smoketest_quicksort", true);
 		for (int curTest=0;curTest<numTests;curTest++)
 		{
-			final int numWaardes = 150;
+			final int numWaardes = 10;
 			int numbers[] = new int[numWaardes];
 			String input[] = new String[numWaardes];
 			for (int n=0;n<numWaardes;n++)
