@@ -7,7 +7,7 @@ import oberon0.environment.IValue;
 
 public class BooleanNode implements IEvaluable {
 	private boolean _value;
-	
+
 	public BooleanNode(boolean value) {
 		_value = value;
 	}
@@ -15,5 +15,5 @@ public class BooleanNode implements IEvaluable {
 	@Override
 	public IValue eval(Context context) {
 		return new BooleanValue(_value);
-	}	
+	}
 }

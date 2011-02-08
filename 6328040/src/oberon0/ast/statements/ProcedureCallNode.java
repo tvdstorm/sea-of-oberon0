@@ -9,8 +9,7 @@ import oberon0.environment.Context;
 public class ProcedureCallNode implements IExecutable {
 	private String _name;
 	private ArrayList<IReferable> _actualParams;
-	
-	
+
 	public ProcedureCallNode(String name, ArrayList<IReferable> actualParams) {
 		_name = name;
 		_actualParams = actualParams;
@@ -19,18 +18,21 @@ public class ProcedureCallNode implements IExecutable {
 	@Override
 	public void execute(Context context) {
 		ICallable procedure = context.getProcedure(_name);
-		if (procedure != null){
+		if (procedure != null) {
 			procedure.call(context, _actualParams);
-		}else throw new RuntimeException("Procedure " + _name + " is not in current scope");
+		} else
+			throw new RuntimeException("Procedure " + _name
+					+ " is not in current scope");
 	}
-	
+
 	/*
-	 * prints function name and actual parameters, this can be used for debugging
+	 * prints function name and actual parameters, this can be used for
+	 * debugging
 	 */
-	public void print(Context context){
+	public void print(Context context) {
 		System.out.print(_name);
-		for  (IReferable ref : _actualParams){
-			System.out.print(" "+ ref.eval(context));
+		for (IReferable ref : _actualParams) {
+			System.out.print(" " + ref.eval(context));
 		}
 		System.out.print("\n");
 	}

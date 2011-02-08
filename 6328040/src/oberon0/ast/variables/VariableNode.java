@@ -5,12 +5,11 @@ import oberon0.environment.Context;
 import oberon0.environment.IValue;
 import oberon0.environment.Reference;
 
-
-public class VariableNode implements IReferable{
+public class VariableNode implements IReferable {
 
 	String _name;
 	ISelector _selector;
-	
+
 	public VariableNode(String name, ISelector selec) {
 		_name = name;
 		_selector = selec;
@@ -18,14 +17,14 @@ public class VariableNode implements IReferable{
 
 	@Override
 	public IValue eval(Context context) {
-		Reference ref= context.getReference(_name);
+		Reference ref = context.getReference(_name);
 		ref = _selector.refer(context, ref);
 		return ref.getValue();
 	}
 
 	@Override
 	public Reference getRef(Context context, Reference previousReference) {
-		Reference ref= context.getReference(_name);
+		Reference ref = context.getReference(_name);
 		ref = _selector.refer(context, ref);
 		return ref;
 	}

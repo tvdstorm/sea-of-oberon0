@@ -10,8 +10,8 @@ import oberon0.environment.Context;
  */
 public interface IFormalParameter {
 	/*
-	 * Fills in the given actual parameters in the formal parameters 
-	 * and declare them in the given context
+	 * Fills in the given actual parameters in the formal parameters and declare
+	 * them in the given context
 	 */
 	public void fillIn(Context context, Iterator<IReferable> _actualParams);
 

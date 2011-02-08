@@ -11,14 +11,15 @@ import oberon0.environment.Context;
  *  Interface for Routines (Procedures and Module)
  *  makes sure they implement a call-method
  */
-public interface ICallable extends IASTNode{
+public interface ICallable extends IASTNode {
 	/*
 	 * to increase readability, use this instead of 'null'
 	 */
-	public final static List<IReferable> EMPTY_ACTUALPARAMETERS = Collections.emptyList();
-	
+	public final static List<IReferable> EMPTY_ACTUALPARAMETERS = Collections
+			.emptyList();
+
 	/*
 	 * call the routine
 	 */
-	public void call(Context context,  List<IReferable> actualParameters);
+	public void call(Context context, List<IReferable> actualParameters);
 }

@@ -15,7 +15,7 @@ public class NegativeNode extends BaseUnaryExpressionNode {
 	@Override
 	public IValue eval(Context context) {
 		int positive = ((IntegerValue) evalChildExpression(context)).getValue();
-		return new IntegerValue( 0 - positive);
+		return new IntegerValue(0 - positive);
 	}
 
 }

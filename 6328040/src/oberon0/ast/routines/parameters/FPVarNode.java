@@ -9,7 +9,7 @@ import oberon0.environment.Context;
 import oberon0.environment.IValue;
 
 public class FPVarNode extends BaseFormalParameterNode {
-	
+
 	public FPVarNode(List<String> names, IEvaluable type) {
 		super(names, type);
 	}
@@ -18,11 +18,12 @@ public class FPVarNode extends BaseFormalParameterNode {
 	public void fillIn(Context context, Iterator<IReferable> actualParams) {
 		Iterator<String> fpNames = getFPNamesIter();
 
-		while (fpNames.hasNext()){			
+		while (fpNames.hasNext()) {
 			IReferable currentActualParam = getNextActualParameter(actualParams);
-			IValue currentAPValue = currentActualParam.eval(context.getParent()).getCopy();
-			
-			String currentName = fpNames.next();	
+			IValue currentAPValue = currentActualParam
+					.eval(context.getParent()).getCopy();
+
+			String currentName = fpNames.next();
 			context.declareVar(currentName, currentAPValue);
 		}
 	}

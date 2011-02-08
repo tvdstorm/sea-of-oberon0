@@ -6,9 +6,9 @@ import oberon0.environment.Context;
 import oberon0.environment.IValue;
 import oberon0.environment.Reference;
 
-public class ActualParamNode implements IReferable{
+public class ActualParamNode implements IReferable {
 	private IEvaluable _actualParamNode;
-	
+
 	public ActualParamNode(IEvaluable exp1) {
 		_actualParamNode = exp1;
 	}
@@ -20,7 +20,7 @@ public class ActualParamNode implements IReferable{
 
 	@Override
 	public Reference getRef(Context context, Reference firstref) {
-		return ((IReferable)_actualParamNode).getRef(context, firstref);
+		return ((IReferable) _actualParamNode).getRef(context, firstref);
 	}
 
 }

@@ -6,10 +6,10 @@ import oberon0.environment.Context;
 import oberon0.environment.IValue;
 import oberon0.environment.IntegerValue;
 
-public class ArrayTypeNode implements IEvaluable{
+public class ArrayTypeNode implements IEvaluable {
 	IEvaluable _sizeExpression;
-	IEvaluable _typeExpression; 
-	
+	IEvaluable _typeExpression;
+
 	public ArrayTypeNode(IEvaluable size, IEvaluable type) {
 		_sizeExpression = size;
 		_typeExpression = type;
@@ -18,7 +18,7 @@ public class ArrayTypeNode implements IEvaluable{
 	@Override
 	public IValue eval(Context context) {
 		IntegerValue size = (IntegerValue) _sizeExpression.eval(context);
-		IValue protoType = _typeExpression.eval(context); 
+		IValue protoType = _typeExpression.eval(context);
 		return new ArrayValue(protoType, size.getValue());
 	}
 

@@ -8,8 +8,7 @@ import oberon0.environment.IValue;
 
 public class DisjunctionNode extends BaseBinaryExpressionNode {
 
-	public DisjunctionNode(IEvaluable lhsExpression,
-			IEvaluable rhsExpression) {
+	public DisjunctionNode(IEvaluable lhsExpression, IEvaluable rhsExpression) {
 		super(lhsExpression, rhsExpression);
 	}
 
