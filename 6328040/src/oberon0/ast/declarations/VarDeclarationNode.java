@@ -21,7 +21,7 @@ public class VarDeclarationNode implements IDeclarable {
 		IValue type = _type.eval(context);
 		for (String name: _names)
 		{
-			context.declareVariable(name, type);
+			context.declareVar(name, type);
 		}
 	}
 

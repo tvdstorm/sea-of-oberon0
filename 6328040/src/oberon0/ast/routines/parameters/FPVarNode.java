@@ -18,12 +18,12 @@ public class FPVarNode extends BaseFormalParameterNode {
 	public void fillIn(Context context, Iterator<IReferable> actualParams) {
 		Iterator<String> fpNames = getFPNamesIter();
 
-		while (fpNames.hasNext()){
-			String currentName = fpNames.next();				
+		while (fpNames.hasNext()){			
 			IReferable currentActualParam = getNextActualParameter(actualParams);
-			IValue currentAPValue = currentActualParam.eval(context.getParent());
+			IValue currentAPValue = currentActualParam.eval(context.getParent()).getCopy();
 			
-			context.declareVariable(currentName, currentAPValue.getCopy());
+			String currentName = fpNames.next();	
+			context.declareVar(currentName, currentAPValue);
 		}
 	}
 

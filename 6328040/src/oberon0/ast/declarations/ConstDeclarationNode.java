@@ -17,6 +17,6 @@ public class ConstDeclarationNode implements IDeclarable{
 	@Override
 	public void declare(Context context) {
 		IValue value = _expression.eval(context);
-		context.declareConstant(_name, value);
+		context.declareConstantVar(_name, value);
 	}
 }
