@@ -1,9 +1,9 @@
 package randy.oberon0.interpreter.runtime;
 
 import randy.oberon0.ast.IInvokableFunction;
-import randy.library.datastructures.Tuple;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.exception.*;
+import randy.oberon0.interpreter.runtime.datastructures.InvokableFunctionAndEnvironment;
 import randy.oberon0.value.Value;
 
 public class RuntimeEnvironment
@@ -48,7 +48,7 @@ public class RuntimeEnvironment
 	{
 		functionRegistry.registerFunction(functionName, functionPointer, this);
 	}
-	public Tuple<RuntimeEnvironment, IInvokableFunction> resolveFunction(String functionName) throws UndefinedMethodException
+	public InvokableFunctionAndEnvironment resolveFunction(String functionName) throws UndefinedMethodException
 	{
 		return functionRegistry.resolveFunction(functionName);
 	}

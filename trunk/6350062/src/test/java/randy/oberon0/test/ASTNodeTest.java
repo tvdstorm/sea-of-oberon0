@@ -367,7 +367,7 @@ public class ASTNodeTest
 	public void test_SmoketestQuicksort()
 	{
 		prepareTest("smoketest_quicksort", true);
-		for (int curTest=0;curTest<10000;curTest++)
+		for (int curTest=0;curTest<numTests;curTest++)
 		{
 			final int numWaardes = 150;
 			int numbers[] = new int[numWaardes];
