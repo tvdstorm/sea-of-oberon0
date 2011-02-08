@@ -4,7 +4,6 @@ import java.util.Random;
 import org.junit.*;
 import randy.oberon0.exception.Exception;
 import randy.oberon0.exception.*;
-import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.*;
 import randy.oberon0.value.Boolean;
 import randy.oberon0.value.Integer;
@@ -277,15 +276,15 @@ public class ASTNodeTest
 		{
 			prepareTestThrowException("unknownfunction", false);
 			program.run();
-			Assert.fail("Should be throwing an UndefinedMethodException...");
+			Assert.fail("Should be throwing an UndefinedBindableException...");
 		}
-		catch (UndefinedMethodException e)
+		catch (UndefinedBindableException e)
 		{
 			// Success
 		}
 		catch (Exception e)
 		{
-			Assert.fail("Should be throwing an UndefinedMethodException instead of a general Exception...");
+			Assert.fail("Should be throwing an UndefinedBindableException instead of a general Exception...");
 		}
 	}
 	@Test
@@ -413,15 +412,15 @@ public class ASTNodeTest
 		{
 			prepareTest("undefinedvariable", false);
 			program.run();
-			Assert.fail("Should be throwing an UndefinedVariableException...");
+			Assert.fail("Should be throwing an UndefinedBindableException...");
 		}
-		catch (UndefinedVariableException e)
+		catch (UndefinedBindableException e)
 		{
 			// Success
 		}
 		catch (Exception e)
 		{
-			Assert.fail("Should be throwing an UndefinedVariableException...");
+			Assert.fail("Should be throwing an UndefinedBindableException...");
 		}
 	}
 	@Test
@@ -731,15 +730,15 @@ public class ASTNodeTest
 				prepareTest("variablescopingfout" + i, false);
 				functions.addInput("1");
 				program.run();
-				Assert.fail("Should be throwing an UndefinedVariableException...");
+				Assert.fail("Should be throwing an UndefinedBindableException...");
 			}
-			catch (UndefinedVariableException e)
+			catch (UndefinedBindableException e)
 			{
 				// Success
 			}
 			catch (Exception e)
 			{
-				Assert.fail("Should be throwing an UndefinedVariableException...");
+				Assert.fail("Should be throwing an UndefinedBindableException...");
 			}
 		}
 	}
@@ -892,7 +891,7 @@ public class ASTNodeTest
 			}
 			Assert.assertTrue(bIsValid);
 		}
-		catch (RuntimeException e)
+		catch (randy.oberon0.exception.RuntimeException e)
 		{
 			if (bIsValid)
 			{

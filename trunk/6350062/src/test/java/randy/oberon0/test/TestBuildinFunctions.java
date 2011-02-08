@@ -4,7 +4,6 @@ import java.util.*;
 import org.junit.Ignore;
 import randy.oberon0.exception.DuplicateFunctionException;
 import randy.oberon0.interpreter.buildinfunctions.*;
-import randy.oberon0.interpreter.runtime.FunctionRegistry;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
 
 @Ignore
@@ -37,10 +36,10 @@ public class TestBuildinFunctions implements IBuildinFunctions
 		return output.isEmpty();
 	}
 	@Override
-	public void register(FunctionRegistry functionRegistry, RuntimeEnvironment environment) throws DuplicateFunctionException
+	public void register(RuntimeEnvironment environment) throws DuplicateFunctionException
 	{
-		functionRegistry.registerFunction(read.getName(), read, environment);
-		functionRegistry.registerFunction(write.getName(), write, environment);
-		functionRegistry.registerFunction(writeLn.getName(), writeLn, environment);
+		environment.registerFunction(read.getName(), read);
+		environment.registerFunction(write.getName(), write);
+		environment.registerFunction(writeLn.getName(), writeLn);
 	}
 }
