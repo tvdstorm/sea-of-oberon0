@@ -7,6 +7,7 @@ public class MinNode extends ExpressionNode
   public MinNode( ExpressionNode left, ExpressionNode right )
   {
     super( left, right );
+    assert ( left != null && right != null ); // both the left and right operand have to be set
   }
   
   public String toString( int depth )

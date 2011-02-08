@@ -13,11 +13,6 @@ public class ExpressionNode implements ASTnode
     this.right = right;
   }
   
-  public final void setRight( ExpressionNode right )
-  { // used to set the right operator
-    this.right = right;
-  }
-  
   public String toString( int depth )
   {
     return "";

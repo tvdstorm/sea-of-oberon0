@@ -4,9 +4,10 @@ import errorhandler.OberonException;
 public class MinusNode extends ExpressionNode 
 {
   
-  public MinusNode( ExpressionNode left )
+  public MinusNode( ExpressionNode expression )
   {
-    super( left, null );
+    super( expression, null );
+    assert ( expression != null ); // the expression has to be set if not assert
   }
   
   public String toString( int depth )
