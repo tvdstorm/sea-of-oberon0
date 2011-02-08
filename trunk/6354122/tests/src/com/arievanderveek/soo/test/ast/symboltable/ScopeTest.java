@@ -8,6 +8,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 import org.junit.Before;
@@ -16,9 +17,8 @@ import org.junit.Test;
 import com.arievanderveek.soo.ast.ASTNode;
 import com.arievanderveek.soo.ast.codeblocks.ModuleNode;
 import com.arievanderveek.soo.ast.variables.IdentifierNode;
-import com.arievanderveek.soo.ast.variables.IntegerNode;
-import com.arievanderveek.soo.ast.variables.SelectorNode;
-import com.arievanderveek.soo.symboltable.Scope;
+import com.arievanderveek.soo.ast.variables.IntegerTypeNode;
+import com.arievanderveek.soo.runtime.Scope;
 import com.arievanderveek.soo.test.TestASTCreator;
 
 /**
@@ -46,8 +46,8 @@ public class ScopeTest {
 
 	/**
 	 * Test method for
-	 * {@link com.arievanderveek.soo.symboltable.Scope#Scope(java.util.Map, java.util.Map, java.util.Map, java.util.Map)}
-	 * {@link com.arievanderveek.soo.symboltable.Scope#getValue(com.arievanderveek.soo.ast.variables.IdentifierNode)}
+	 * {@link com.arievanderveek.soo.runtime.Scope#Scope(java.util.Map, java.util.Map, java.util.Map, java.util.Map)}
+	 * {@link com.arievanderveek.soo.runtime.Scope#getValue(com.arievanderveek.soo.ast.variables.IdentifierNode)}
 	 * .
 	 */
 	@Test
@@ -83,8 +83,8 @@ public class ScopeTest {
 
 	/**
 	 * Test method for
-	 * {@link com.arievanderveek.soo.symboltable.Scope#Scope(com.arievanderveek.soo.symboltable.Scope, com.arievanderveek.soo.ast.codeblocks.ProcedureNode, java.util.List)}
-	 * {@link com.arievanderveek.soo.symboltable.Scope#getValue(com.arievanderveek.soo.ast.variables.IdentifierNode)}
+	 * {@link com.arievanderveek.soo.runtime.Scope#Scope(com.arievanderveek.soo.runtime.Scope, com.arievanderveek.soo.ast.codeblocks.ProcedureNode, java.util.List)}
+	 * {@link com.arievanderveek.soo.runtime.Scope#getValue(com.arievanderveek.soo.ast.variables.IdentifierNode)}
 	 * .
 	 */
 	@Test
@@ -95,24 +95,20 @@ public class ScopeTest {
 		Integer expectedValueForPos3InArray = new Integer(4);
 		Integer expectedValueForPos4InArray = new Integer(3);
 		// Create selector lists
-		Queue<ASTNode> selectorPos0 = new LinkedList<ASTNode>();
-		selectorPos0.add(new IntegerNode(0));
-		Queue<ASTNode> selectorPos1 = new LinkedList<ASTNode>();
-		selectorPos1.add(new IntegerNode(1));
-		Queue<ASTNode> selectorPos3 = new LinkedList<ASTNode>();
-		selectorPos3.add(new IntegerNode(3));
-		Queue<ASTNode> selectorPos4 = new LinkedList<ASTNode>();
-		selectorPos4.add(new IntegerNode(4));
+		List<ASTNode> selectorPos0 = new LinkedList<ASTNode>();
+		selectorPos0.add(new IntegerTypeNode(0));
+		List<ASTNode> selectorPos1 = new LinkedList<ASTNode>();
+		selectorPos1.add(new IntegerTypeNode(1));
+		List<ASTNode> selectorPos3 = new LinkedList<ASTNode>();
+		selectorPos3.add(new IntegerTypeNode(3));
+		List<ASTNode> selectorPos4 = new LinkedList<ASTNode>();
+		selectorPos4.add(new IntegerTypeNode(4));
 		// Create the identifiers for the array positions
 		final String identifier = "input";
-		IdentifierNode Pos0InArray = new IdentifierNode(identifier,
-				new SelectorNode(selectorPos0));
-		IdentifierNode Pos1InArray = new IdentifierNode(identifier,
-				new SelectorNode(selectorPos1));
-		IdentifierNode Pos3InArray = new IdentifierNode(identifier,
-				new SelectorNode(selectorPos3));
-		IdentifierNode Pos4InArray = new IdentifierNode(identifier,
-				new SelectorNode(selectorPos4));
+		IdentifierNode Pos0InArray = new IdentifierNode(identifier,	selectorPos0);
+		IdentifierNode Pos1InArray = new IdentifierNode(identifier, selectorPos1);
+		IdentifierNode Pos3InArray = new IdentifierNode(identifier, selectorPos3);
+		IdentifierNode Pos4InArray = new IdentifierNode(identifier, selectorPos4);
 		try {
 			Scope rootScope = new Scope(procsAndVariables.getConstants(),
 					procsAndVariables.getTypes(),
@@ -148,7 +144,7 @@ public class ScopeTest {
 
 	/**
 	 * Test method for
-	 * {@link com.arievanderveek.soo.symboltable.Scope#getProcedure(java.lang.String)}.
+	 * {@link com.arievanderveek.soo.runtime.Scope#getProcedure(java.lang.String)}.
 	 */
 	@Test
 	public void testGetProcedure() {
@@ -197,7 +193,7 @@ public class ScopeTest {
 
 	/**
 	 * Test method for
-	 * {@link com.arievanderveek.soo.symboltable.Scope#updateValue(com.arievanderveek.soo.ast.variables.IdentifierNode, java.lang.Integer)}.
+	 * {@link com.arievanderveek.soo.runtime.Scope#updateValue(com.arievanderveek.soo.ast.variables.IdentifierNode, java.lang.Integer)}.
 	 * 
 	 */
 	@Test
@@ -208,9 +204,9 @@ public class ScopeTest {
 		IdentifierNode identTemp = new IdentifierNode("temp");
 		// Data for array values
 		Queue<ASTNode> selectorPos0 = new LinkedList<ASTNode>();
-		selectorPos0.add(new IntegerNode(0));
+		selectorPos0.add(new IntegerTypeNode(0));
 		Queue<ASTNode> selectorPos1 = new LinkedList<ASTNode>();
-		selectorPos1.add(new IntegerNode(1));
+		selectorPos1.add(new IntegerTypeNode(1));
 		// Do the test
 		try {
 			Scope scope = new Scope(simpleMaths.getConstants(),
@@ -229,7 +225,7 @@ public class ScopeTest {
 	
 	/**
 	 * Test method for
-	 * {@link com.arievanderveek.soo.symboltable.Scope#updateValue(com.arievanderveek.soo.ast.variables.IdentifierNode, java.lang.Integer)}.
+	 * {@link com.arievanderveek.soo.runtime.Scope#updateValue(com.arievanderveek.soo.ast.variables.IdentifierNode, java.lang.Integer)}.
 	 * 
 	 */
 	@Test
@@ -237,15 +233,13 @@ public class ScopeTest {
 		// Data for array values
 		Integer expectedValueForPos0InArray = new Integer(178456);
 		Integer expectedValueForPos1InArray = new Integer(478615);
-		Queue<ASTNode> selectorPos0 = new LinkedList<ASTNode>();
-		selectorPos0.add(new IntegerNode(0));
-		Queue<ASTNode> selectorPos1 = new LinkedList<ASTNode>();
-		selectorPos1.add(new IntegerNode(1));
+		List<ASTNode> selectorPos0 = new LinkedList<ASTNode>();
+		selectorPos0.add(new IntegerTypeNode(0));
+		List<ASTNode> selectorPos1 = new LinkedList<ASTNode>();
+		selectorPos1.add(new IntegerTypeNode(1));
 		final String identifier = "input";
-		IdentifierNode Pos0InArray = new IdentifierNode(identifier,
-				new SelectorNode(selectorPos0));
-		IdentifierNode Pos1InArray = new IdentifierNode(identifier,
-				new SelectorNode(selectorPos1));
+		IdentifierNode Pos0InArray = new IdentifierNode(identifier,selectorPos0);
+		IdentifierNode Pos1InArray = new IdentifierNode(identifier,selectorPos1);
 		// Do the test
 		try {
 			Scope scope = new Scope(simpleMaths.getConstants(),
