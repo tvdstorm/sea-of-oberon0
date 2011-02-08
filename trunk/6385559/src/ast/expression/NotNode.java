@@ -10,18 +10,18 @@ public class NotNode extends ExpressionNode
   
   public String ToString( int depth )
   {
-    if( super.left != null )
+    if( super.getLeft( ) != null )
     {
-      return "(-" + super.left.ToString( 0 ) + ")";
+      return "(-" + super.getLeft( ).ToString( 0 ) + ")";
     }
     return "";
   }
   
   public int eval( ) throws OberonException
   {
-    if( super.left != null )
+    if( super.getLeft( ) != null )
     {
-      return ~(super.left.eval( ));
+      return ~( super.getLeft( ).eval( ) );
     }
     return 0;
   }

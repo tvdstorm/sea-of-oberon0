@@ -11,11 +11,11 @@ public class ModuloNode extends ExpressionNode
   
   public String ToString( int depth )
   {
-    return super.left.ToString( depth ) + " MOD " + super.right.ToString( depth );
+    return this.getLeft( ).ToString( 0 ) + " MOD " + this.getRight( ).ToString( 0 );
   }
   
   public int eval( ) throws OberonException
   {
-    return super.left.eval( ) % super.right.eval( );
+    return this.getLeft( ).eval( ) % this.getRight( ).eval( );
   }
 }

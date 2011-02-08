@@ -11,15 +11,11 @@ public class BiggerNode extends ExpressionNode
 
   public String ToString( int depth )
   {
-    return super.left.ToString( depth ) + " > " + super.right.ToString( depth );
+    return this.getLeft( ).ToString( 0 ) + " > " + this.getRight( ).ToString( 0 );
   }
   
   public int eval( ) throws OberonException
   {
-    if( super.left == null || super.right == null )
-    {
-      throw new OberonException( "Smaller then operation doesn't have a left or right operator." );
-    }
-    return ( super.left.eval( ) > super.right.eval( ) ) ? 1 : 0;
+    return ( this.getLeft( ).eval( ) > this.getRight( ).eval( ) ) ? 1 : 0;
   }
 }

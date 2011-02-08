@@ -11,11 +11,11 @@ public class MinusNode extends ExpressionNode
   
   public String ToString( int depth )
   {
-    return "(-" + this.left.ToString( 0 ) + ")";
+    return "(-" + this.getLeft( ).ToString( 0 ) + ")";
   }
   
   public int eval( ) throws OberonException
   {
-    return -1 * this.left.eval( );
+    return -1 * this.getLeft( ).eval( );
   }
 }
