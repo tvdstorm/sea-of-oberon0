@@ -60,7 +60,7 @@ typeDeclarations returns [List<IInterpretableNode> result = new ArrayList<IInter
 
 varDeclarations returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()]
 	:	('VAR'
-			(identList ':' type ';	'							{$result.add(new VarDeclarationNode($identList.result, $type.result)); }
+			(identList ':' type ';'								{$result.add(new VarDeclarationNode($identList.result, $type.result)); }
 			)* 
 		)?;
 

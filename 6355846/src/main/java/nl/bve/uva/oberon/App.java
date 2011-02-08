@@ -17,7 +17,7 @@ import org.antlr.runtime.tree.CommonTreeNodeStream;
 public class App {
 	public static void main(String[] args) throws Exception {
 		// use the 'smoke test' file quicksort.oberon0 as testfile
-		FileInputStream fis = new FileInputStream("testprogs/test.calc");
+		FileInputStream fis = new FileInputStream("testprogs/quicksort.oberon0");
 
 		// read from quicksort.oberon0 file
 		ANTLRInputStream input = new ANTLRInputStream(fis);
