@@ -82,8 +82,7 @@ public class ConfigurationFactory {
 			}
 			String sourceFileName = cmd.getOptionValue(OPTION_SOURCE_FILE);
 			if (sourceFileName == null) {
-				throw new SeaOfOberonException(
-						"The source input file was not provided.");
+				throw new SeaOfOberonException("The source input file was not provided.");
 			} else {
 				configuration.setSourceCodeFileName(sourceFileName);
 			}
@@ -91,8 +90,7 @@ public class ConfigurationFactory {
 		} catch (ParseException exp) {
 			// parsing of arguments went wrong. Print message and help
 			printHelp(options, exp.getMessage());
-			throw new SeaOfOberonException(
-					"Command line arguments where not correct", exp);
+			throw new SeaOfOberonException("Command line arguments where not correct", exp);
 		}
 		return configuration;
 
@@ -112,8 +110,7 @@ public class ConfigurationFactory {
 		// automatically generate the help statement
 		HelpFormatter formatter = new HelpFormatter();
 		formatter.printHelp(message, options);
-		System.out
-				.println("---------------------------------------------------------------");
+		System.out.println("---------------------------------------------------------------");
 		System.out.println();
 	}
 
@@ -121,17 +118,14 @@ public class ConfigurationFactory {
 	@SuppressWarnings("static-access")
 	private static Options creatOptions() {
 		// Create the option objects that represent the arguments
-		Option sourceFile = OptionBuilder.withArgName(OPTION_SOURCE_FILE)
-				.isRequired().hasArg()
-				.withDescription("The input Oberon-0 source file")
-				.create(OPTION_SOURCE_FILE);
+		Option sourceFile = OptionBuilder.withArgName(OPTION_SOURCE_FILE).isRequired().hasArg()
+				.withDescription("The input Oberon-0 source file").create(OPTION_SOURCE_FILE);
 		Option parserImpl = OptionBuilder
 				.withArgName(OPTION_PARSER)
 				.hasArg()
 				.withDescription(
 						"(Optional) The parser implementation fully qualified class name."
-								+ "ANTLR is used by default.")
-				.create(OPTION_PARSER);
+								+ "ANTLR is used by default.").create(OPTION_PARSER);
 		Option printTree = OptionBuilder
 				.withArgName(OPTION_PRINTTREE)
 				.withDescription(

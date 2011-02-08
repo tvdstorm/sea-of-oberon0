@@ -9,8 +9,7 @@ package com.arievanderveek.soo.util;
  */
 public class Constants {
 
-	public static final String LINE_SEPARATOR = System
-			.getProperty("line.separator");
+	public static final String LINE_SEPARATOR = System.getProperty("line.separator");
 	public static final String INDENT = "  ";
 	public static final String INPUT_TEXT = "Please give a number and press enter";
 	public static final String OUTPUT_TEXT = "Output: ";
