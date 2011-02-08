@@ -1,2 +1,0 @@
-/* addition operators must be left assoc */
-2 + 3 - 1 + 41

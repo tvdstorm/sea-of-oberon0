@@ -1,2 +1,0 @@
-dbf23315265a33ec8cfe425826c579ef96047914eb86b523faa91339af4e191f
-openlogic-jdepend-2.9.1-all-1-bin

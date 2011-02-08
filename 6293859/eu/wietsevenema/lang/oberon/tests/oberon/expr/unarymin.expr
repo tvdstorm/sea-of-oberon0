@@ -1,2 +1,0 @@
-/* Unary minus fails on right hand side. */
-2*-2 

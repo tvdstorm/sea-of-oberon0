@@ -1,6 +1,0 @@
-MODULE test;
-BEGIN
-    AssertEq(1-1,0);
-    AssertEq(10 - 2-1, 7);
-    AssertEq((10 - 1) - (3 - 2) - 5, 3)
-END test.

@@ -1,1 +1,0 @@
-IF 2 = 3 THEN Write("in if") ELSIF 3 = 3 THEN Write("in else if") ELSE Write("in else") END

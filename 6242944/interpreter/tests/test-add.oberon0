@@ -1,7 +1,0 @@
-MODULE test;
-BEGIN
-    AssertEq(1+1,2);
-    AssertEq(1+1+1,3);
-    AssertEq(1+(1+1), 3);
-    AssertEq((1 + 0) + 2, 3)
-END test.

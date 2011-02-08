@@ -1,1 +1,0 @@
-IF 2 = 2 THEN Write("in if") ELSE Write("in else") END
