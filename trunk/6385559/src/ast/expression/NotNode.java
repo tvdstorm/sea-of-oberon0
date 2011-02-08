@@ -6,23 +6,16 @@ public class NotNode extends ExpressionNode
   public NotNode( ExpressionNode expression )
   {
     super( expression, null );
+    assert ( expression != null ); // the expression has to be set
   }
   
   public String toString( int depth )
   {
-    if( super.getLeft( ) != null )
-    {
-      return "(-" + super.getLeft( ).toString( 0 ) + ")";
-    }
-    return "";
+    return "(-" + super.getLeft( ).toString( 0 ) + ")";
   }
   
   public int eval( ) throws OberonException
   {
-    if( super.getLeft( ) != null )
-    {
-      return ~( super.getLeft( ).eval( ) );
-    }
-    return 0;
+    return ~( super.getLeft( ).eval( ) );
   }
 }

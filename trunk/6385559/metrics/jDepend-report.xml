@@ -123,11 +123,11 @@
                 <TotalClasses>18</TotalClasses>
                 <ConcreteClasses>18</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
-                <Ca>3</Ca>
+                <Ca>4</Ca>
                 <Ce>5</Ce>
                 <A>0</A>
-                <I>0.62</I>
-                <D>0.38</D>
+                <I>0.56</I>
+                <D>0.44</D>
                 <V>1</V>
             </Stats>
 
@@ -202,24 +202,28 @@
             <UsedBy>
                 <Package>ast</Package>
                 <Package>ast.expression.selector</Package>
+                <Package>factory</Package>
                 <Package>parser</Package>
             </UsedBy>
         </Package>
 
         <Package name="ast.expression.selector">
             <Stats>
-                <TotalClasses>2</TotalClasses>
+                <TotalClasses>3</TotalClasses>
                 <ConcreteClasses>2</ConcreteClasses>
-                <AbstractClasses>0</AbstractClasses>
+                <AbstractClasses>1</AbstractClasses>
                 <Ca>2</Ca>
                 <Ce>4</Ce>
-                <A>0</A>
+                <A>0.33</A>
                 <I>0.67</I>
-                <D>0.33</D>
+                <D>0</D>
                 <V>1</V>
             </Stats>
 
             <AbstractClasses>
+                <Class sourceFile="SelectorNode.java">
+                    ast.expression.selector.SelectorNode
+                </Class>
             </AbstractClasses>
 
             <ConcreteClasses>
@@ -334,6 +338,38 @@
                 <Package>oberon0</Package>
                 <Package>parser</Package>
                 <Package>systemcalls</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="factory">
+            <Stats>
+                <TotalClasses>1</TotalClasses>
+                <ConcreteClasses>1</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>1</Ca>
+                <Ce>2</Ce>
+                <A>0</A>
+                <I>0.67</I>
+                <D>0.33</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="ExpressionFactory.java">
+                    factory.ExpressionFactory
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>ast.expression</Package>
+                <Package>java.lang</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>parser</Package>
             </UsedBy>
         </Package>
 
@@ -504,10 +540,10 @@
                 <ConcreteClasses>3</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
                 <Ca>1</Ca>
-                <Ce>7</Ce>
+                <Ce>8</Ce>
                 <A>0</A>
-                <I>0.88</I>
-                <D>0.12</D>
+                <I>0.89</I>
+                <D>0.11</D>
                 <V>1</V>
             </Stats>
 
@@ -531,6 +567,7 @@
                 <Package>ast.expression</Package>
                 <Package>ast.expression.selector</Package>
                 <Package>errorhandler</Package>
+                <Package>factory</Package>
                 <Package>java.io</Package>
                 <Package>java.lang</Package>
                 <Package>org.antlr.runtime</Package>
@@ -596,6 +633,12 @@
         </Package>
 
         <Package Name="ast.expression.selector">
+            <Package>ast.expression</Package>
+            <Package>ast</Package>
+            <Package>ast.expression</Package>
+        </Package>
+
+        <Package Name="factory">
             <Package>ast.expression</Package>
             <Package>ast</Package>
             <Package>ast.expression</Package>

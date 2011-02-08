@@ -13,6 +13,7 @@ options
   import ast.expression.*;
   import ast.expression.selector.*;
   import errorhandler.*;
+  import factory.*;
 }
 
 @lexer::header
@@ -94,29 +95,13 @@ fieldsFollowup returns [ FieldsNode e ]
   ;
   
 expression returns [ ExpressionNode e ] 
-  : simpleLeft=simpleexpression { $e = $simpleLeft.e; } 
-    (operator=(
-      '=' { $e = new EqualNode( $simpleLeft.e, null ); }
-    | '#' { $e = new NotEqualNode( $simpleLeft.e, null ); }
-    | '<' { $e = new SmallerNode( $simpleLeft.e, null ); }
-    | '<=' { $e = new SmallerEqualNode( $simpleLeft.e, null ); }
-    | '>' { $e = new BiggerNode( $simpleLeft.e, null ); }
-    | '>=' { $e = new BiggerEqualNode( $simpleLeft.e, null ); }
-    ) 
-    simpleRight=simpleexpression { $e.setRight( $simpleRight.e ); } )?
+  : simpleLeft=simpleexpression { $e = $simpleLeft.e; } (operator=( '=' | '#' | '<' | '<=' | '>' | '>=' ) 
+    simpleRight=simpleexpression { $e = new ExpressionFactory().getExpressionNode( $simpleLeft.e, $simpleRight.e, $operator.text ); } )?
   ;
   
 simpleexpression returns [ ExpressionNode e ]
-  : specialTerm { $e = $specialTerm.e; }
-  ( operator=(
-    '+' { $e = new PlusNode( $specialTerm.e, null ); }
-  | '-' { $e = new MinNode( $specialTerm.e, null ); }
-  | 'OR' { $e = new OrNode( $specialTerm.e, null ); }
-  ) simpleExpressionFollowup 
-  {
-    $e.setRight( $simpleExpressionFollowup.e );
-  }
-  )?
+  : specialTerm { $e = $specialTerm.e; } ( operator=( '+' | '-' | 'OR' ) simpleExpressionFollowup 
+  { $e = new ExpressionFactory().getExpressionNode( $specialTerm.e, $simpleExpressionFollowup.e, $operator.text ); } )?
   ;
   
 specialTerm returns [ ExpressionNode e ]
@@ -126,29 +111,13 @@ specialTerm returns [ ExpressionNode e ]
   ;
   
 simpleExpressionFollowup returns [ ExpressionNode e ]
-  :  term { $e = $term.e; } 
-  (operator=
-  (
-    '+' { $e = new PlusNode( $term.e, null ); }
-  | '-' { $e = new MinNode( $term.e, null ); }
-  | 'OR' { $e = new OrNode( $term.e, null ); }
-  ) follow2=simpleExpressionFollowup
-  {
-    $e.setRight( $follow2.e );
-  }
-  )?
+  :  term { $e = $term.e; } (operator=( '+' | '-' | 'OR' ) follow2=simpleExpressionFollowup
+  { $e = new ExpressionFactory().getExpressionNode( $term.e, $follow2.e, $operator.text ); } )?
   ;
   
 term returns [ ExpressionNode e ]
-  : factor { $e = $factor.e; }
-  (operator=
-  (
-    '*' { $e = new MultiplyNode( $factor.e, null ); }
-  | 'DIV' { $e = new DivideNode( $factor.e, null ); }
-  | 'MOD' { $e = new ModuloNode( $factor.e, null ); }
-  | '&' { $e = new AndNode( $factor.e, null ); }
-  ) 
-  followup=term { $e.setRight( $followup.e ); } )?
+  : factor { $e = $factor.e; } (operator=( '*' | 'DIV' | 'MOD' | '&' ) followup=term 
+  { $e = new ExpressionFactory().getExpressionNode( $factor.e, $followup.e, $operator.text ); } )?
   ;  
 
 factor returns [ ExpressionNode e ]
@@ -165,7 +134,7 @@ number returns [ ExpressionNode e ]
   }
   ; 
   
-selector returns [ ASTnode e ]
+selector returns [ SelectorNode e ]
   : 
   ( 
   '.' var=IDENT selectorFollowup=selector 

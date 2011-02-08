@@ -7,6 +7,7 @@ public class SmallerEqualNode extends ExpressionNode
   public SmallerEqualNode( ExpressionNode left, ExpressionNode right )
   {
     super( left, right );
+    assert ( left != null && right != null ); // both the left and right expression have to be set
   }
   
   public String toString( int depth )

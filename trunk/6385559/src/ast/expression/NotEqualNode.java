@@ -7,6 +7,7 @@ public class NotEqualNode extends ExpressionNode
   public NotEqualNode( ExpressionNode left, ExpressionNode right )
   {
     super( left, right );
+    assert ( left != null && right != null ); // both the left and right operand have to be set
   }
   
   public String toString( int depth )
@@ -16,10 +17,6 @@ public class NotEqualNode extends ExpressionNode
   
   public int eval( ) throws OberonException
   {
-    if( super.getLeft( ) == null || super.getRight( ) == null ) 
-    {
-      throw new OberonException( "Smaller then operation doesn't have a left or right operator." );
-    }
     return ( this.getLeft( ).eval( ) != this.getRight( ).eval( ) ) ? 1 : 0;
   }
 }

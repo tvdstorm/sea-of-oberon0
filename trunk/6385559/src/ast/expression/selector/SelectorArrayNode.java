@@ -1,14 +1,13 @@
 package ast.expression.selector;
-import ast.ASTnode;
 import ast.expression.ExpressionNode;
 import errorhandler.OberonException;
 
-public class SelectorArrayNode implements ASTnode 
+public class SelectorArrayNode implements SelectorNode 
 {
   private final ExpressionNode expression;
-  private final ASTnode selector;
+  private final SelectorNode selector;
   
-  public SelectorArrayNode( ExpressionNode expression, ASTnode selector )
+  public SelectorArrayNode( ExpressionNode expression, SelectorNode selector )
   {
     this.expression = expression;
     this.selector = selector;
@@ -34,21 +33,8 @@ public class SelectorArrayNode implements ASTnode
     return 0;
   }
   
-  public String getString( ) throws OberonException
+  public String getSelectorString( ) throws OberonException
   {
-    String returnValue = "";
-    returnValue = "[" + this.expression.eval( ) + "]";
-    if( this.selector != null )
-    {
-      if( this.selector instanceof SelectorArrayNode )
-      {
-        returnValue = returnValue + ( ((SelectorArrayNode) this.selector ).getString( ) );
-      }
-      else if( this.selector instanceof SelectorRecordNode )
-      {
-        returnValue = returnValue + ( ((SelectorRecordNode) this.selector ).getString( ) );
-      }
-    }
-    return returnValue;
+    return "[" + this.expression.eval( ) + "]" + ( this.selector != null ? this.selector.getSelectorString( ) : "" );
   }
 }
