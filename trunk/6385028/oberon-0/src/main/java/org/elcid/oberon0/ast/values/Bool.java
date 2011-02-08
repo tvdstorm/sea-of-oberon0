@@ -1,5 +1,7 @@
 package org.elcid.oberon0.ast.values;
 
+import org.elcid.oberon0.exceptions.TerminalValueException;
+
 /**
  *
  * @author Pieter Brandwijk
@@ -19,7 +21,7 @@ public class Bool extends Value {
 
 	@Override
 	public Value applySelector(Object key) {
-		throw new UnsupportedOperationException("Not supported yet.");
+		throw new TerminalValueException("Can't select on a Bool value");
 	}
 
 }

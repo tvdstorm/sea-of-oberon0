@@ -1,5 +1,7 @@
 package org.elcid.oberon0.ast.values;
 
+import org.elcid.oberon0.exceptions.TerminalValueException;
+
 /**
  * Represents integers in the Oberon-0 language.
  *
@@ -20,7 +22,7 @@ public class Int extends Value {
 
 	@Override
 	public Value applySelector(Object key) {
-		throw new UnsupportedOperationException("Not supported yet.");
+		throw new TerminalValueException("Can't select on an integer value");
 	}
 
 }
