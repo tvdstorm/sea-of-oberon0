@@ -27,7 +27,7 @@ public class IdentifierExpression extends AbstractExpression {
 	 * @see oberon.expressions.AbstractExpression#copy(java.lang.String)
 	 */
 	public IDataType copy(final Scope currentScope, final String newName) throws UnsupportedException, VariableNotFoundInScopeException {
-		return selector.getDataTypeValue(currentScope).copy(newName);
+		return selector.getDataTypeValue(currentScope).performDeepCopy(newName);
 	}
 	
 	/* (non-Javadoc)

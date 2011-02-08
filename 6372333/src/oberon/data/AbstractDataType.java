@@ -11,7 +11,7 @@ import oberon.exceptions.VariableNotFoundInScopeException;
 public abstract class AbstractDataType implements IDataType {
 	
 	/** The name. */
-	private final String name;
+	private String name;
 	
 	/**
 	 * Instantiates a new abstract data type.
@@ -31,7 +31,16 @@ public abstract class AbstractDataType implements IDataType {
 	 * @see oberon.data.IDataType#copy(java.lang.String)
 	 */
 	@Override
-	public abstract IDataType copy(String newName);
+	public abstract IDataType performDeepCopy(String newName);
+	
+	/* (non-Javadoc)
+	 * @see oberon.data.IDataType#copy(java.lang.String)
+	 */
+	@Override
+	public IDataType performShallowCopy(String newName){
+		name = newName;
+		return this;
+	}
 	
 	/* (non-Javadoc)
 	 * @see oberon.data.IDataType#getName()

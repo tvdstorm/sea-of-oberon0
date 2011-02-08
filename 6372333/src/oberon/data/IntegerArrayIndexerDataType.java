@@ -53,7 +53,7 @@ public class IntegerArrayIndexerDataType extends AbstractDataType {
 	 * @see oberon.data.AbstractDataType#copy(java.lang.String)
 	 */
 	@Override
-	public IDataType copy(final String newName) {
+	public IDataType performDeepCopy(final String newName) {
 		return new IntegerArrayIndexerDataType(newName, array, index);
 	}
 	

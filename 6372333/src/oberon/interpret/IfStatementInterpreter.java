@@ -1,7 +1,6 @@
 package oberon.interpret;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.ArrayList;
 
 import oberon.IExpression;
 import oberon.IStatement;
@@ -20,7 +19,7 @@ class IfStatementInterpreter extends AbstractBaseInterpreter<IStatement> {
 	private IExpression condition;
 	
 	/** The else if list. */
-	private Queue<IfStatement> elseIfList;
+	private ArrayList<IfStatement> elseIfList;
 	
 	/** The if body. */
 	private StatementSequence ifBody;
@@ -45,7 +44,7 @@ class IfStatementInterpreter extends AbstractBaseInterpreter<IStatement> {
 		
 		ifBody = StatementSequenceInterpreter.getStatementList(node.getBody());
 		
-		elseIfList = new LinkedList<IfStatement>();
+		elseIfList = new ArrayList<IfStatement>();
 		for (PIfstatement elseIf : node.getElseifs()) {
 			final IfStatementInterpreter interpreter = new IfStatementInterpreter();
 			elseIf.apply(interpreter);
