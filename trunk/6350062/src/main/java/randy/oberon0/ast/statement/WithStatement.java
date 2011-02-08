@@ -22,13 +22,13 @@ public class WithStatement extends Statement
 	{
 		assert(environment != null);
 		// Evaluate the selector
-		Record selectorValue = selector.evaluate(environment).castToRecord();
+		Record selectorValue = selector.evaluate(environment).getValue().castToRecord();
 		// Create a new environment to use in the with block
 		RuntimeEnvironment withEnvironment = new RuntimeEnvironment(environment);
 		// Register all members of the record in the new environment
 		for (String memberName : selectorValue.getMemberNames())
 		{
-			withEnvironment.registerVariable(memberName, selectorValue.getMemberValue(memberName));
+			withEnvironment.registerVariableByReference(memberName, selectorValue.getMemberValue(memberName));
 		}
 		// Run the body of the with block
 		body.run(withEnvironment);
@@ -44,7 +44,7 @@ public class WithStatement extends Statement
 		// Register all members of the record in the new environment
 		for (String memberName : selectorValue.getMemberNames())
 		{
-			withEnvironment.registerVariable(memberName, new Reference(selectorValue.getMemberValue(memberName)));
+			withEnvironment.registerVariableByReference(memberName, selectorValue.getMemberValue(memberName));
 		}
 		// Run the body of the with block
 		body.typeCheck(withEnvironment);

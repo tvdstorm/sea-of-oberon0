@@ -5,7 +5,8 @@ import randy.oberon0.ast.IInvokableFunction;
 import randy.oberon0.ast.expression.Expression;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
-import randy.oberon0.value.*;
+import randy.oberon0.interpreter.runtime.environment.IValue;
+import randy.oberon0.interpreter.runtime.environment.Reference;
 
 public class ProcedureCall extends Statement
 {
@@ -24,39 +25,39 @@ public class ProcedureCall extends Statement
 	{
 		assert(environment != null);
 		// Evaluate all the parameters and add them to a queue
-		Queue<Value> parameters = new LinkedList<Value>();
+		List<IValue> parameters = new LinkedList<IValue>();
 		for (Expression parameter : parameterExpressions)
 		{
-			Value v = parameter.evaluate(environment);
+			IValue v = parameter.evaluate(environment);
 			parameters.add(v);
 		}
 		// Resolve the function name to a function
-		final IInvokableFunction functionDeclaration = environment.resolveFunction(procedureName).getFunction();
+		final IInvokableFunction functionDeclaration = environment.resolveFunction(procedureName).getFunction().getFunction();
 		// Create a new environment for the to be invoked function
 		RuntimeEnvironment invokedEnvironment = new RuntimeEnvironment(environment.resolveFunction(procedureName).getEnvironment());
 		// Register all declarations of the to be invoked function to it's environment 
 		functionDeclaration.registerTypeDeclarations(invokedEnvironment);
 		// Invoke the function
-		functionDeclaration.invoke(invokedEnvironment, parameters);
+		functionDeclaration.invoke(invokedEnvironment, parameters.iterator());
 	}
 	@Override
 	public void typeCheck(RuntimeEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Evaluate all the parameters and add them to a queue
-		Queue<Value> parameters = new LinkedList<Value>();
+		List<Reference> parameters = new LinkedList<Reference>();
 		for (Expression parameter : parameterExpressions)
 		{
-			Value v = parameter.typeCheck(environment);
+			Reference v = new Reference(parameter.typeCheck(environment));
 			parameters.add(v);
 		}
 		// Resolve the function name to a function
-		final IInvokableFunction functionDeclaration = environment.resolveFunction(procedureName).getFunction();
+		final IInvokableFunction functionDeclaration = environment.resolveFunction(procedureName).getFunction().getFunction();
 		// Create a new environment for the to be invoked function
 		RuntimeEnvironment invokedEnvironment = new RuntimeEnvironment(environment.resolveFunction(procedureName).getEnvironment());
 		// Register all declarations of the to be invoked function to it's environment 
 		functionDeclaration.typeCheckRegisterTypeDeclarations(invokedEnvironment);
 		// Invoke the function
-		functionDeclaration.typeCheckInvoke(invokedEnvironment, parameters);
+		functionDeclaration.typeCheckInvoke(invokedEnvironment, parameters.iterator());
 	}
 }

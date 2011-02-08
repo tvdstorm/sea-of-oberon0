@@ -1,11 +1,12 @@
 package randy.oberon0.interpreter.buildinfunctions;
 
-import java.util.Queue;
+import java.util.Iterator;
 import randy.oberon0.ast.IInvokableFunction;
+import randy.oberon0.interpreter.runtime.environment.IValue;
+import randy.oberon0.interpreter.runtime.environment.Reference;
 import randy.oberon0.exception.IncorrectNumberOfArgumentsException;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.*;
-import randy.oberon0.value.Value;
 
 public class DefaultWriteLnFunction implements IInvokableFunction
 {
@@ -15,10 +16,10 @@ public class DefaultWriteLnFunction implements IInvokableFunction
 		return "WriteLn";
 	}
 	@Override
-	public void invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
+	public void invoke(RuntimeEnvironment environment, Iterator<IValue> parameterValues) throws RuntimeException
 	{
 		// Don't accept any parameters
-		if (parameterValues.size() != 0)
+		if (parameterValues.hasNext())
 		{
 			throw new IncorrectNumberOfArgumentsException();
 		}
@@ -31,10 +32,10 @@ public class DefaultWriteLnFunction implements IInvokableFunction
 		// Leeg
 	}
 	@Override
-	public void typeCheckInvoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
+	public void typeCheckInvoke(RuntimeEnvironment environment, Iterator<Reference> parameterValues) throws RuntimeException
 	{
 		// Don't accept any parameters
-		if (parameterValues.size() != 0)
+		if (parameterValues.hasNext())
 		{
 			throw new IncorrectNumberOfArgumentsException();
 		}

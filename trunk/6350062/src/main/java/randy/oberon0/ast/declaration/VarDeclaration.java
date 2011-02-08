@@ -4,7 +4,8 @@ import java.util.*;
 import randy.oberon0.exception.*;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
-import randy.oberon0.value.*;
+import randy.oberon0.interpreter.runtime.environment.IValue;
+import randy.oberon0.interpreter.runtime.environment.Reference;
 
 public class VarDeclaration extends BodyDeclaration
 {
@@ -35,7 +36,7 @@ public class VarDeclaration extends BodyDeclaration
 		{
 			assert(variableName.length() >= 1);
 			// Add the variable to the environment
-			newEnvironment.registerVariable(variableName, newEnvironment.resolveType(typeName).instantiate(newEnvironment));
+			newEnvironment.registerVariableByValue(variableName, newEnvironment.resolveType(typeName).instantiate(newEnvironment));
 		}
 	}
 	@Override
@@ -43,67 +44,67 @@ public class VarDeclaration extends BodyDeclaration
 	{
 		register(newEnvironment);
 	}
-	public void registerAsParameter(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException // Use for registering parameters
+	public void registerAsParameter(RuntimeEnvironment environment, Iterator<IValue> parameterValues) throws RuntimeException // Use for registering parameters
 	{
 		assert(environment != null);
 		assert(parameterValues != null);
-		// Check if we have enough parameter values left for all our variables
-		if (parameterValues.size() < variableNames.size())
-		{
-			throw new IncorrectNumberOfArgumentsException();
-		}
 		// Loop through all variable names
 		for (String variableName : variableNames)
 		{
-			// Fetch a parameter value from the parameter values
-			final Value parameterValue = parameterValues.poll();
-			// Resolve the variable type and check if they are compatible
-			if (parameterValue.getType() != environment.resolveType(typeName).instantiate(environment).getType())
+			// Check if we have a parameter left
+			if (!parameterValues.hasNext())
 			{
-				throw new TypeMismatchException(parameterValue.getType().toString(), typeName);
+				throw new IncorrectNumberOfArgumentsException();
+			}
+			// Fetch a parameter value from the parameter values
+			final IValue parameterValue = parameterValues.next();
+			// Resolve the variable type and check if they are compatible
+			if (parameterValue.getValue().getType() != environment.resolveType(typeName).instantiate(environment).getType())
+			{
+				throw new TypeMismatchException(parameterValue.getValue().getType().toString(), typeName);
 			}
 			// Check if the variable is a reference
 			if (isReference)
 			{
 				// Yes, make a reference to the variable and add it to the environment
-				environment.registerVariable(variableName, new Reference(parameterValue));
+				environment.registerVariableByReference(variableName, (Reference)parameterValue);
 			}
 			else
 			{	
 				// No, create a copy of the parameter and register it in the environment
-				environment.registerVariable(variableName, parameterValue.clone());
+				environment.registerVariableByValue(variableName, parameterValue.getValue().clone());
 			}
 		}
 	}
-	public void typeCheckRegisterAsParameter(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException // Use for registering parameters
+	public void typeCheckRegisterAsParameter(RuntimeEnvironment environment, Iterator<Reference> parameterValues) throws RuntimeException // Use for registering parameters
 	{
 		assert(environment != null);
 		assert(parameterValues != null);
-		// Check if we have enough parameter values left for all our variables
-		if (parameterValues.size() < variableNames.size())
-		{
-			throw new IncorrectNumberOfArgumentsException();
-		}
 		// Loop through all variable names
 		for (String variableName : variableNames)
 		{
-			// Fetch a parameter value from the parameter values
-			final Value parameterValue = parameterValues.poll();
-			// Resolve the variable type and check if they are compatible
-			if (parameterValue.getType() != environment.resolveType(typeName).instantiate(environment).getType())
+			// Check if we have a parameter left
+			if (!parameterValues.hasNext())
 			{
-				throw new TypeMismatchException(parameterValue.getType().toString(), typeName);
+				throw new IncorrectNumberOfArgumentsException();
+			}
+			// Fetch a parameter value from the parameter values
+			final Reference parameterValue = parameterValues.next();
+			// Resolve the variable type and check if they are compatible
+			if (parameterValue.getValue().getType() != environment.resolveType(typeName).instantiate(environment).getType())
+			{
+				throw new TypeMismatchException(parameterValue.getValue().getType().toString(), typeName);
 			}
 			// Check if the variable is a reference
 			if (isReference)
 			{
 				// Yes, make a reference to the variable and add it to the environment
-				environment.registerVariable(variableName, new Reference(parameterValue));
+				environment.registerVariableByReference(variableName, parameterValue);
 			}
 			else
 			{	
 				// No, create a copy of the parameter and register it in the environment
-				environment.registerVariable(variableName, parameterValue.clone());
+				environment.registerVariableByValue(variableName, parameterValue.getValue().clone());
 			}
 		}
 	}

@@ -1,21 +1,21 @@
 package randy.oberon0.interpreter.runtime.datastructures;
 
-import randy.oberon0.ast.IInvokableFunction;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
+import randy.oberon0.interpreter.runtime.environment.Closure;
 
-public class InvokableFunctionAndEnvironment
+public class ClosureAndEnvironment
 {
-	private final IInvokableFunction function;
+	private final Closure function;
 	private final RuntimeEnvironment environment;
 	
-	public InvokableFunctionAndEnvironment(IInvokableFunction _function, RuntimeEnvironment _environment)
+	public ClosureAndEnvironment(Closure _function, RuntimeEnvironment _environment)
 	{
 		assert(_function != null);
 		assert(_environment != null);
 		function = _function;
 		environment = _environment;
 	}
-	public IInvokableFunction getFunction()
+	public Closure getFunction()
 	{
 		return function;
 	}

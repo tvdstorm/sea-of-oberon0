@@ -3,24 +3,25 @@ package randy.oberon0.value;
 import randy.oberon0.exception.*;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.*;
+import randy.oberon0.interpreter.runtime.environment.Reference;
 
 public class Array extends Value
 {
-	private Value values[];
+	private Reference values[];
 	
 	public Array(int _size, IInstantiateableVariable _childType, RuntimeEnvironment environment) throws RuntimeException
 	{
-		values = new Value[_size];
+		values = new Reference[_size];
 		for (int i=0;i<_size;i++)
 		{
-			values[i] = _childType.instantiate(environment);
+			values[i] = new Reference(_childType.instantiate(environment));
 		}
 	}
 	private Array(int _size)
 	{
-		values = new Value[_size];
+		values = new Reference[_size];
 	}
-	public Value getIndexValue(int _index) throws OutOfBoundsException
+	public Reference getIndexValue(int _index) throws OutOfBoundsException
 	{
 		if (_index >= values.length)
 		{
@@ -34,14 +35,13 @@ public class Array extends Value
 	}
 	public void setValue(Value _val) throws RuntimeException
 	{
-		// Resolve CONST
-		Array v = _val.dereference().castToArray();
+		Array v = _val.castToArray();
 		if (v != this)
 		{
-			values = new Value[v.values.length];
+			values = new Reference[v.values.length];
 			for (int i=0;i<v.values.length;i++)
 			{
-				values[i] = v.values[i].clone();
+				values[i] = new Reference(v.values[i].getValue().clone());
 			}
 		}
 	}
@@ -57,7 +57,7 @@ public class Array extends Value
 	public String toString()
 	{
 		StringBuilder ret = new StringBuilder("[");
-		for (Value val : values)
+		for (Reference val : values)
 		{
 			ret.append(val.toString() + ",");
 		}
@@ -67,7 +67,6 @@ public class Array extends Value
 	@Override
 	public boolean equalsToValue(Value _value)
 	{
-		_value = _value.dereference();
 		if (!(_value instanceof Array))
 		{
 			return false;
@@ -79,7 +78,7 @@ public class Array extends Value
 		}
 		for (int i=0;i<values.length;i++)
 		{
-			if (!values[i].equalsToValue(other.values[i]))
+			if (!values[i].getValue().equalsToValue(other.values[i].getValue()))
 			{
 				return false;
 			}
@@ -92,7 +91,7 @@ public class Array extends Value
 		Array array = new Array(values.length);
 		for (int i=0;i<values.length;i++)
 		{
-			array.values[i] = values[i].clone();
+			array.values[i] = new Reference(values[i].getValue().clone());
 		}
 		return array;
 	}
