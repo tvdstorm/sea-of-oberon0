@@ -4,8 +4,8 @@ import errorhandler.OberonException;
 
 public class ExpressionNode implements ASTnode 
 {
-  protected ExpressionNode left;
-  protected ExpressionNode right;
+  private ExpressionNode left;
+  private ExpressionNode right;
   
   public ExpressionNode( ExpressionNode left, ExpressionNode right )
   {
@@ -13,7 +13,7 @@ public class ExpressionNode implements ASTnode
     this.right = right;
   }
   
-  public void setRight( ExpressionNode right )
+  public final void setRight( ExpressionNode right )
   { // used to set the right operator
     this.right = right;
   }
@@ -21,6 +21,16 @@ public class ExpressionNode implements ASTnode
   public String ToString( int depth )
   {
     return "";
+  }
+  
+  public final ExpressionNode getLeft()
+  {
+    return this.left;
+  }
+  
+  public final ExpressionNode getRight()
+  {
+    return this.right;
   }
   
   public int eval( ) throws OberonException

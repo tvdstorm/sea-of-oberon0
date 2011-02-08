@@ -11,11 +11,11 @@ public class PlusNode extends ExpressionNode
   
   public String ToString( int depth )
   {
-    return super.left.ToString( depth ) + " OR " + super.right.toString();
+    return super.getLeft( ).ToString( 0 ) + " OR " + super.getRight( ).ToString( 0 );
   }
   
   public int eval( ) throws OberonException
   {
-    return super.left.eval( ) + super.right.eval( );
+    return super.getLeft( ).eval( ) + super.getRight( ).eval( );
   }
 }

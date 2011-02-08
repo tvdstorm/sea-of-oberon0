@@ -11,11 +11,11 @@ public class MinNode extends ExpressionNode
   
   public String ToString( int depth )
   {
-    return super.left.ToString( depth ) + " OR " + super.right.toString();
+    return this.getLeft( ).ToString( 0 ) + " OR " + this.getRight( ).ToString( 0 );
   }
   
   public int eval( ) throws OberonException
   {
-    return super.left.eval( ) - super.right.eval( );
+    return this.getLeft( ).eval( ) -this.getRight( ).eval( );
   }
 }
