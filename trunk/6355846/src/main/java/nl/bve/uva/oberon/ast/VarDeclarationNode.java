@@ -1,10 +1,12 @@
 package nl.bve.uva.oberon.ast;
 
+import java.util.List;
+
 public class VarDeclarationNode implements IInterpretableNode {
-	private IInterpretableNode identList;
+	private List<String> identList;
 	private IInterpretableNode type;
 	
-	public VarDeclarationNode(IInterpretableNode identList, IInterpretableNode type) {
+	public VarDeclarationNode(List<String> identList, IInterpretableNode type) {
 		this.identList = identList;
 		this.type = type;
 	}
