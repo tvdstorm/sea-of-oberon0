@@ -1,6 +1,6 @@
 package com.kootsjur.oberon.declaration.procedure;
 
-import com.kootsjur.oberon.FormalParameters;
+import com.kootsjur.oberon.declaration.formalparameter.FormalParameters;
 
 public class ProcedureHeading
 {

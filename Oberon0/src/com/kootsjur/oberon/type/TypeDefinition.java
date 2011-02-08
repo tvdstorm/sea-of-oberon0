@@ -1,6 +1,8 @@
 package com.kootsjur.oberon.type;
 
-public class TypeDefinition
+import com.kootsjur.oberon.value.Value;
+
+public abstract class TypeDefinition
 {
    public enum DataType{ NORMAL, ARRAY, RECORD, INTEGER, BOOL;}
    
@@ -62,5 +64,6 @@ public class TypeDefinition
    {
       return name;
    }
-   
+
+   public abstract Value initValue();
 }

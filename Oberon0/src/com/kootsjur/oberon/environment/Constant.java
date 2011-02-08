@@ -1,4 +1,4 @@
-package com.kootsjur.oberon.declaration.constant;
+package com.kootsjur.oberon.environment;
 
 import com.kootsjur.oberon.value.Value;
 

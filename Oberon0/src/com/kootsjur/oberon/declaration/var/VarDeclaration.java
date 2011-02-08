@@ -7,14 +7,13 @@ import com.kootsjur.oberon.declaration.DeclarationType;
 import com.kootsjur.oberon.environment.Environment;
 import com.kootsjur.oberon.type.TypeDefinition;
 
-public class VarDeclaration extends Declaration
+public class VarDeclaration implements Declaration
 {
    private List<String> names;
    private TypeDefinition typeDefinition;
    
    public VarDeclaration(List<String> names, TypeDefinition typeDefinition)
    {
-      super(DeclarationType.VAR);
       this.names = names;
       this.typeDefinition = typeDefinition;
    }

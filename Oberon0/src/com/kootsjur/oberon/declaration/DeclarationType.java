@@ -4,5 +4,6 @@ public enum DeclarationType
 {
    CONSTANT,
    VAR,
-   TYPE;
+   TYPE,
+   PROCEDURE;
 }

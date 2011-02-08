@@ -1,4 +1,4 @@
-package com.kootsjur.oberon.declaration.module;
+package com.kootsjur.oberon.environment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import com.kootsjur.oberon.statement.StatementSequence;
 
 
 
-public class Module
+public class Module extends Environment
 {
    private String name;
    private List<Declaration> declarations;
@@ -110,5 +110,27 @@ public class Module
       this.declarations = declarations;
    }
    
+   public void declare()
+   {
+      declareDeclarations(declarations,this);
+      declareProcedures(procedureDeclarations,this);
+   }
+
+   public void declareProcedures(List<ProcedureDeclaration> procedureDeclarations, Environment environment)
+   {
+      for(ProcedureDeclaration procedureDeclaration : procedureDeclarations )
+      {
+         procedureDeclaration.declare(environment);
+      }
+   }
+
+   public void declareDeclarations(List<Declaration> declarations,Environment environment)
+   {
+      for(Declaration declaration : declarations)
+      {
+         declaration.declare(environment);
+      }
+   }
+
    
 }
