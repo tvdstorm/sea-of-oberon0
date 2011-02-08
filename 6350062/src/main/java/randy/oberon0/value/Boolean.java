@@ -14,10 +14,6 @@ public class Boolean extends Value
 	{
 		return value;
 	}
-	public Value dereference()
-	{
-		return this;
-	}
 	public void setValue(Value _val) throws RuntimeException
 	{
 		Boolean v = _val.castToBoolean();
