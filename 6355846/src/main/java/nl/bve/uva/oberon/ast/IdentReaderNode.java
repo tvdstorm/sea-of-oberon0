@@ -8,8 +8,8 @@ public class IdentReaderNode extends IdentNode {
 	}
 	
 	@Override
-	public Object interpret() {
+	public Integer interpret() {
 		// returns ident's value
-		return null;
+		return 9;
 	}
 }
