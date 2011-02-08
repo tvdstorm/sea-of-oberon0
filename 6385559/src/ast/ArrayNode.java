@@ -1,6 +1,8 @@
 package ast;
 import java.util.Vector;
 
+import ast.expression.ExpressionNode;
+
 import errorhandler.OberonException;
 import management.TypeDefinitionManager;
 

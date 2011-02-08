@@ -1,26 +1,46 @@
 <?xml version="1.0"?>
 <javancss>
-  <date>2011-02-07</date>
-  <time>12:03:07</time>
+  <date>2011-02-08</date>
+  <time>09:44:35</time>
   <packages>
     <package>
       <name>ast</name>
-      <classes>47</classes>
-      <functions>159</functions>
-      <ncss>1014</ncss>
+      <classes>26</classes>
+      <functions>92</functions>
+      <ncss>753</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>55</single_comment_lines>
+      <single_comment_lines>53</single_comment_lines>
+      <multi_comment_lines>0</multi_comment_lines>
+    </package>
+    <package>
+      <name>ast.expression</name>
+      <classes>18</classes>
+      <functions>56</functions>
+      <ncss>208</ncss>
+      <javadocs>0</javadocs>
+      <javadoc_lines>0</javadoc_lines>
+      <single_comment_lines>2</single_comment_lines>
+      <multi_comment_lines>0</multi_comment_lines>
+    </package>
+    <package>
+      <name>ast.expression.selector</name>
+      <classes>2</classes>
+      <functions>8</functions>
+      <ncss>56</ncss>
+      <javadocs>0</javadocs>
+      <javadoc_lines>0</javadoc_lines>
+      <single_comment_lines>0</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <package>
       <name>datatype</name>
-      <classes>5</classes>
-      <functions>8</functions>
-      <ncss>39</ncss>
+      <classes>7</classes>
+      <functions>29</functions>
+      <ncss>140</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>0</single_comment_lines>
+      <single_comment_lines>1</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <package>
@@ -41,7 +61,7 @@
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>9</single_comment_lines>
-      <multi_comment_lines>17</multi_comment_lines>
+      <multi_comment_lines>20</multi_comment_lines>
     </package>
     <package>
       <name>oberon0</name>
@@ -51,7 +71,7 @@
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>15</single_comment_lines>
-      <multi_comment_lines>29</multi_comment_lines>
+      <multi_comment_lines>31</multi_comment_lines>
     </package>
     <package>
       <name>systemcalls</name>
@@ -64,20 +84,20 @@
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <total>
-      <classes>70</classes>
-      <functions>234</functions>
-      <ncss>1551</ncss>
+      <classes>71</classes>
+      <functions>252</functions>
+      <ncss>1655</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>82</single_comment_lines>
-      <multi_comment_lines>46</multi_comment_lines>
+      <single_comment_lines>83</single_comment_lines>
+      <multi_comment_lines>51</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>6.00</td><td>70.00</td><td>234.00</td><td>1,551.00</td><td>0.00</td><td>Project</td></tr>
-      <tr><td></td><td>11.67</td><td>39.00</td><td>258.50</td><td>0.00</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.34</td><td>22.16</td><td>0.00</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>6.63</td><td>0.00</td><td>Function</td></tr>
+      <tr><td>8.00</td><td>71.00</td><td>252.00</td><td>1,655.00</td><td>0.00</td><td>Project</td></tr>
+      <tr><td></td><td>8.88</td><td>31.50</td><td>206.88</td><td>0.00</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.55</td><td>23.31</td><td>0.00</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>6.57</td><td>0.00</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -125,118 +145,6 @@
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>ast.ExpressionAndNode</name>
-      <ncss>7</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>ast.ExpressionBiggerEqualNode</name>
-      <ncss>9</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>ast.ExpressionBiggerNode</name>
-      <ncss>9</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>ast.ExpressionDivideNode</name>
-      <ncss>7</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>ast.ExpressionEqualNode</name>
-      <ncss>9</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>ast.ExpressionMinNode</name>
-      <ncss>7</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>ast.ExpressionMinusNode</name>
-      <ncss>7</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>ast.ExpressionModuloNode</name>
-      <ncss>7</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>ast.ExpressionMultiplyNode</name>
-      <ncss>7</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>ast.ExpressionNode</name>
-      <ncss>12</ncss>
-      <functions>4</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>ast.ExpressionNotEqualNode</name>
-      <ncss>9</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>ast.ExpressionNotNode</name>
-      <ncss>11</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>ast.ExpressionOrNode</name>
-      <ncss>7</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>ast.ExpressionPlusNode</name>
-      <ncss>7</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>ast.ExpressionSmallerEqualNode</name>
-      <ncss>9</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>ast.ExpressionSmallerNode</name>
-      <ncss>9</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
       <name>ast.FieldlistNode</name>
       <ncss>45</ncss>
       <functions>4</functions>
@@ -279,13 +187,6 @@
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>ast.IntegerNode</name>
-      <ncss>9</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
       <name>ast.ModuleNode</name>
       <ncss>25</ncss>
       <functions>3</functions>
@@ -315,7 +216,7 @@
     </object>
     <object>
       <name>ast.ProcedureDeclarationNode</name>
-      <ncss>25</ncss>
+      <ncss>28</ncss>
       <functions>4</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
@@ -337,27 +238,6 @@
     <object>
       <name>ast.RecordNode</name>
       <ncss>15</ncss>
-      <functions>4</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>ast.SelectorArrayNode</name>
-      <ncss>25</ncss>
-      <functions>4</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>ast.SelectorNode</name>
-      <ncss>17</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>ast.SelectorRecordNode</name>
-      <ncss>24</ncss>
       <functions>4</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
@@ -391,13 +271,6 @@
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>ast.VarNode</name>
-      <ncss>25</ncss>
-      <functions>4</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
       <name>ast.WhileStatementNode</name>
       <ncss>27</ncss>
       <functions>4</functions>
@@ -406,8 +279,148 @@
     </object>
     <object>
       <name>ast.WithStatementNode</name>
-      <ncss>25</ncss>
+      <ncss>27</ncss>
       <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>ast.expression.AndNode</name>
+      <ncss>7</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>ast.expression.BiggerEqualNode</name>
+      <ncss>9</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>ast.expression.BiggerNode</name>
+      <ncss>9</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>ast.expression.DivideNode</name>
+      <ncss>7</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>ast.expression.EqualNode</name>
+      <ncss>9</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>ast.expression.ExpressionNode</name>
+      <ncss>12</ncss>
+      <functions>4</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>ast.expression.IntegerNode</name>
+      <ncss>9</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>ast.expression.MinNode</name>
+      <ncss>7</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>ast.expression.MinusNode</name>
+      <ncss>7</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>ast.expression.ModuloNode</name>
+      <ncss>7</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>ast.expression.MultiplyNode</name>
+      <ncss>7</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>ast.expression.NotEqualNode</name>
+      <ncss>9</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>ast.expression.NotNode</name>
+      <ncss>11</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>ast.expression.OrNode</name>
+      <ncss>7</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>ast.expression.PlusNode</name>
+      <ncss>7</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>ast.expression.SmallerEqualNode</name>
+      <ncss>9</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>ast.expression.SmallerNode</name>
+      <ncss>9</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>ast.expression.VarNode</name>
+      <ncss>25</ncss>
+      <functions>4</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>ast.expression.selector.SelectorArrayNode</name>
+      <ncss>25</ncss>
+      <functions>4</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>ast.expression.selector.SelectorRecordNode</name>
+      <ncss>24</ncss>
+      <functions>4</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -427,8 +440,22 @@
     </object>
     <object>
       <name>datatype.Datatype</name>
-      <ncss>19</ncss>
-      <functions>4</functions>
+      <ncss>120</ncss>
+      <functions>19</functions>
+      <classes>2</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>datatype.Datatype.booleanValues</name>
+      <ncss>10</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>datatype.Datatype.integerValues</name>
+      <ncss>10</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -573,12 +600,12 @@
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>20.14</ncss>
-      <functions>3.34</functions>
-      <classes>0.04</classes>
+      <ncss>21.39</ncss>
+      <functions>3.55</functions>
+      <classes>0.07</classes>
       <javadocs>0.00</javadocs>
     </averages>
-    <ncss>1,551.00</ncss>
+    <ncss>1,655.00</ncss>
   </objects>
 
   <functions>
@@ -694,300 +721,6 @@
       <name>ast.ElseStatementNode.eval()</name>
       <ncss>4</ncss>
       <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionAndNode.ExpressionAndNode(ExpressionNode,ExpressionNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionAndNode.ToString(int)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionAndNode.eval()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionBiggerEqualNode.ExpressionBiggerEqualNode(ExpressionNode,ExpressionNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionBiggerEqualNode.ToString(int)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionBiggerEqualNode.eval()</name>
-      <ncss>4</ncss>
-      <ccn>5</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionBiggerNode.ExpressionBiggerNode(ExpressionNode,ExpressionNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionBiggerNode.ToString(int)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionBiggerNode.eval()</name>
-      <ncss>4</ncss>
-      <ccn>5</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionDivideNode.ExpressionDivideNode(ExpressionNode,ExpressionNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionDivideNode.ToString(int)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionDivideNode.eval()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionEqualNode.ExpressionEqualNode(ExpressionNode,ExpressionNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionEqualNode.ToString(int)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionEqualNode.eval()</name>
-      <ncss>4</ncss>
-      <ccn>5</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionMinNode.ExpressionMinNode(ExpressionNode,ExpressionNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionMinNode.ToString(int)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionMinNode.eval()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionMinusNode.ExpressionMinusNode(ExpressionNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionMinusNode.ToString(int)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionMinusNode.eval()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionModuloNode.ExpressionModuloNode(ExpressionNode,ExpressionNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionModuloNode.ToString(int)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionModuloNode.eval()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionMultiplyNode.ExpressionMultiplyNode(ExpressionNode,ExpressionNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionMultiplyNode.ToString(int)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionMultiplyNode.eval()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionNode.ExpressionNode(ExpressionNode,ExpressionNode)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionNode.setRight(ExpressionNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionNode.ToString(int)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionNode.eval()</name>
-      <ncss>2</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionNotEqualNode.ExpressionNotEqualNode(ExpressionNode,ExpressionNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionNotEqualNode.ToString(int)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionNotEqualNode.eval()</name>
-      <ncss>4</ncss>
-      <ccn>5</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionNotNode.ExpressionNotNode(ExpressionNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionNotNode.ToString(int)</name>
-      <ncss>4</ncss>
-      <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionNotNode.eval()</name>
-      <ncss>4</ncss>
-      <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionOrNode.ExpressionOrNode(ExpressionNode,ExpressionNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionOrNode.ToString(int)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionOrNode.eval()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionPlusNode.ExpressionPlusNode(ExpressionNode,ExpressionNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionPlusNode.ToString(int)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionPlusNode.eval()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionSmallerEqualNode.ExpressionSmallerEqualNode(ExpressionNode,ExpressionNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionSmallerEqualNode.ToString(int)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionSmallerEqualNode.eval()</name>
-      <ncss>4</ncss>
-      <ccn>5</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionSmallerNode.ExpressionSmallerNode(ExpressionNode,ExpressionNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionSmallerNode.ToString(int)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.ExpressionSmallerNode.eval()</name>
-      <ncss>4</ncss>
-      <ccn>5</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -1147,24 +880,6 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.IntegerNode.IntegerNode(int)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.IntegerNode.ToString(int)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.IntegerNode.eval()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
       <name>ast.ModuleNode.ModuleNode(String,String,DeclarationsNode,StatementSequenceNode)</name>
       <ncss>6</ncss>
       <ccn>2</ccn>
@@ -1250,8 +965,8 @@
     </function>
     <function>
       <name>ast.ProcedureDeclarationNode.ProcedureDeclarationNode(ProcedureHeadingNode,ProcedureBodyNode)</name>
-      <ncss>7</ncss>
-      <ccn>2</ccn>
+      <ncss>10</ncss>
+      <ccn>5</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -1345,72 +1060,6 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.SelectorArrayNode.SelectorArrayNode(ExpressionNode,ASTnode)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.SelectorArrayNode.ToString(int)</name>
-      <ncss>7</ncss>
-      <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.SelectorArrayNode.eval()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.SelectorArrayNode.getString()</name>
-      <ncss>10</ncss>
-      <ccn>4</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.SelectorNode.SelectorNode(ASTnode,ASTnode)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.SelectorNode.ToString(int)</name>
-      <ncss>7</ncss>
-      <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.SelectorNode.eval()</name>
-      <ncss>4</ncss>
-      <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.SelectorRecordNode.SelectorRecordNode(String,ASTnode)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.SelectorRecordNode.ToString(int)</name>
-      <ncss>7</ncss>
-      <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.SelectorRecordNode.eval()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.SelectorRecordNode.getString()</name>
-      <ncss>9</ncss>
-      <ccn>4</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
       <name>ast.StatementSequenceNode.StatementSequenceNode(StatementNode,StatementSequenceNode)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
@@ -1471,30 +1120,6 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>ast.VarNode.VarNode(String,ASTnode)</name>
-      <ncss>4</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.VarNode.ToString(int)</name>
-      <ncss>7</ncss>
-      <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.VarNode.eval()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>ast.VarNode.getVariableName()</name>
-      <ncss>9</ncss>
-      <ccn>4</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
       <name>ast.WhileStatementNode.WhileStatementNode(ExpressionNode,StatementSequenceNode)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
@@ -1532,7 +1157,391 @@
     </function>
     <function>
       <name>ast.WithStatementNode.eval()</name>
-      <ncss>17</ncss>
+      <ncss>19</ncss>
+      <ccn>5</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.AndNode.AndNode(ExpressionNode,ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.AndNode.ToString(int)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.AndNode.eval()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.BiggerEqualNode.BiggerEqualNode(ExpressionNode,ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.BiggerEqualNode.ToString(int)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.BiggerEqualNode.eval()</name>
+      <ncss>4</ncss>
+      <ccn>5</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.BiggerNode.BiggerNode(ExpressionNode,ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.BiggerNode.ToString(int)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.BiggerNode.eval()</name>
+      <ncss>4</ncss>
+      <ccn>5</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.DivideNode.DivideNode(ExpressionNode,ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.DivideNode.ToString(int)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.DivideNode.eval()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.EqualNode.EqualNode(ExpressionNode,ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.EqualNode.ToString(int)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.EqualNode.eval()</name>
+      <ncss>4</ncss>
+      <ccn>5</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.ExpressionNode.ExpressionNode(ExpressionNode,ExpressionNode)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.ExpressionNode.setRight(ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.ExpressionNode.ToString(int)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.ExpressionNode.eval()</name>
+      <ncss>2</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.IntegerNode.IntegerNode(int)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.IntegerNode.ToString(int)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.IntegerNode.eval()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.MinNode.MinNode(ExpressionNode,ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.MinNode.ToString(int)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.MinNode.eval()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.MinusNode.MinusNode(ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.MinusNode.ToString(int)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.MinusNode.eval()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.ModuloNode.ModuloNode(ExpressionNode,ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.ModuloNode.ToString(int)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.ModuloNode.eval()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.MultiplyNode.MultiplyNode(ExpressionNode,ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.MultiplyNode.ToString(int)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.MultiplyNode.eval()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.NotEqualNode.NotEqualNode(ExpressionNode,ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.NotEqualNode.ToString(int)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.NotEqualNode.eval()</name>
+      <ncss>4</ncss>
+      <ccn>5</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.NotNode.NotNode(ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.NotNode.ToString(int)</name>
+      <ncss>4</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.NotNode.eval()</name>
+      <ncss>4</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.OrNode.OrNode(ExpressionNode,ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.OrNode.ToString(int)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.OrNode.eval()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.PlusNode.PlusNode(ExpressionNode,ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.PlusNode.ToString(int)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.PlusNode.eval()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.SmallerEqualNode.SmallerEqualNode(ExpressionNode,ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.SmallerEqualNode.ToString(int)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.SmallerEqualNode.eval()</name>
+      <ncss>4</ncss>
+      <ccn>5</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.SmallerNode.SmallerNode(ExpressionNode,ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.SmallerNode.ToString(int)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.SmallerNode.eval()</name>
+      <ncss>4</ncss>
+      <ccn>5</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.VarNode.VarNode(String,ASTnode)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.VarNode.ToString(int)</name>
+      <ncss>7</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.VarNode.eval()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.VarNode.getVariableName()</name>
+      <ncss>9</ncss>
+      <ccn>4</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.selector.SelectorArrayNode.SelectorArrayNode(ExpressionNode,ASTnode)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.selector.SelectorArrayNode.ToString(int)</name>
+      <ncss>7</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.selector.SelectorArrayNode.eval()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.selector.SelectorArrayNode.getString()</name>
+      <ncss>10</ncss>
+      <ccn>4</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.selector.SelectorRecordNode.SelectorRecordNode(String,ASTnode)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.selector.SelectorRecordNode.ToString(int)</name>
+      <ncss>7</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.selector.SelectorRecordNode.eval()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>ast.expression.selector.SelectorRecordNode.getString()</name>
+      <ncss>9</ncss>
       <ccn>4</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -1567,9 +1576,135 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>datatype.Datatype.add(Datatype)</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>datatype.Datatype.min(Datatype)</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>datatype.Datatype.mul(Datatype)</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>datatype.Datatype.div(Datatype)</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>datatype.Datatype.mod(Datatype)</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>datatype.Datatype.and(Datatype)</name>
+      <ncss>5</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>datatype.Datatype.or(Datatype)</name>
+      <ncss>5</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>datatype.Datatype.eq(Datatype)</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>datatype.Datatype.neq(Datatype)</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>datatype.Datatype.lteq(Datatype)</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>datatype.Datatype.gteq(Datatype)</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>datatype.Datatype.lt(Datatype)</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>datatype.Datatype.gt(Datatype)</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>datatype.Datatype.checkIntegers(Datatype)</name>
+      <ncss>8</ncss>
+      <ccn>4</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>datatype.Datatype.checkBooleans(Datatype)</name>
+      <ncss>8</ncss>
+      <ccn>4</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>datatype.Datatype.throwException(String)</name>
       <ncss>8</ncss>
       <ccn>4</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>datatype.Datatype.integerValues.integerValues(int,int)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>datatype.Datatype.integerValues.getLeft()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>datatype.Datatype.integerValues.getRight()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>datatype.Datatype.booleanValues.booleanValues(boolean,boolean)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>datatype.Datatype.booleanValues.getLeft()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>datatype.Datatype.booleanValues.getRight()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -1987,10 +2122,10 @@
       <javadocs>0</javadocs>
     </function>
     <function_averages>
-      <ncss>5.11</ncss>
-      <ccn>2.30</ccn>
+      <ncss>5.08</ncss>
+      <ccn>2.24</ccn>
       <javadocs>0.00</javadocs>
     </function_averages>
-    <ncss>1,551.00</ncss>
+    <ncss>1,655.00</ncss>
   </functions>
 </javancss>

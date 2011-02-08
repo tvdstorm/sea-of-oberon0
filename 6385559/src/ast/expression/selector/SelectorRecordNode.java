@@ -1,4 +1,5 @@
-package ast;
+package ast.expression.selector;
+import ast.ASTnode;
 import errorhandler.OberonException;
 
 public class SelectorRecordNode implements ASTnode 

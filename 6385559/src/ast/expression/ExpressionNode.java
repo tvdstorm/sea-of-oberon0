@@ -1,4 +1,5 @@
-package ast;
+package ast.expression;
+import ast.ASTnode;
 import errorhandler.OberonException;
 
 public class ExpressionNode implements ASTnode 

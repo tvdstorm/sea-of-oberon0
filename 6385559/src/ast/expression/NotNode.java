@@ -1,9 +1,9 @@
-package ast;
+package ast.expression;
 import errorhandler.OberonException;
 
-public class ExpressionNotNode extends ExpressionNode
+public class NotNode extends ExpressionNode
 { 
-  public ExpressionNotNode( ExpressionNode expression )
+  public NotNode( ExpressionNode expression )
   {
     super( expression, null );
   }

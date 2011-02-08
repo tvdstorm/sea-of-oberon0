@@ -1,10 +1,10 @@
-package ast;
+package ast.expression;
 
 import errorhandler.OberonException;
 
-public class ExpressionPlusNode extends ExpressionNode
+public class PlusNode extends ExpressionNode
 {
-  public ExpressionPlusNode( ExpressionNode left, ExpressionNode right )
+  public PlusNode( ExpressionNode left, ExpressionNode right )
   {
     super( left, right );
   }

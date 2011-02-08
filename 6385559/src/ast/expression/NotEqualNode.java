@@ -1,10 +1,10 @@
-package ast;
+package ast.expression;
 
 import errorhandler.OberonException;
 
-public class ExpressionNotEqualNode extends ExpressionNode
+public class NotEqualNode extends ExpressionNode
 {
-  public ExpressionNotEqualNode( ExpressionNode left, ExpressionNode right )
+  public NotEqualNode( ExpressionNode left, ExpressionNode right )
   {
     super(left, right);
   }

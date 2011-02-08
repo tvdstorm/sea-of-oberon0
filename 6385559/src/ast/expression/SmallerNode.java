@@ -1,17 +1,17 @@
-package ast;
+package ast.expression;
 
 import errorhandler.OberonException;
 
-public class ExpressionSmallerEqualNode extends ExpressionNode
+public class SmallerNode extends ExpressionNode
 {
-  public ExpressionSmallerEqualNode( ExpressionNode left, ExpressionNode right )
+  public SmallerNode( ExpressionNode left, ExpressionNode right )
   {
     super( left, right );
   }
   
   public String ToString( int depth )
   {
-    return super.left.ToString( depth ) + " <= " + super.right.ToString( depth );
+    return super.left.ToString( depth ) + " < " + super.right.ToString( depth );
   }
   
   public int eval( ) throws OberonException
@@ -20,6 +20,6 @@ public class ExpressionSmallerEqualNode extends ExpressionNode
     {
       throw new OberonException( "Smaller then operation doesn't have a left or right operator." );
     }
-    return ( super.left.eval( ) <= super.right.eval( ) ) ? 1 : 0;
+    return ( super.left.eval( ) < super.right.eval( ) ) ? 1 : 0;
   }
 }

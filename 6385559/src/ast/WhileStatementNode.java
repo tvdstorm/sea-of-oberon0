@@ -1,5 +1,6 @@
 package ast;
 
+import ast.expression.ExpressionNode;
 import errorhandler.OberonException;
 
 public class WhileStatementNode implements StatementNode 

@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g 2011-02-07 12:03:07
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g 2011-02-08 09:44:34
 
   package parser;
 
@@ -65,15 +65,15 @@ public class oberon0Lexer extends Lexer {
         super(input,state);
 
     }
-    public String getGrammarFileName() { return "/Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g"; }
+    public String getGrammarFileName() { return "C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g"; }
 
     // $ANTLR start "T__7"
     public final void mT__7() throws RecognitionException {
         try {
             int _type = T__7;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:11:6: ( 'MODULE' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:11:8: 'MODULE'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:11:6: ( 'MODULE' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:11:8: 'MODULE'
             {
             match("MODULE"); 
 
@@ -93,8 +93,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__8;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:12:6: ( ';' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:12:8: ';'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:12:6: ( ';' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:12:8: ';'
             {
             match(';'); 
 
@@ -113,8 +113,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__9;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:13:6: ( 'BEGIN' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:13:8: 'BEGIN'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:13:6: ( 'BEGIN' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:13:8: 'BEGIN'
             {
             match("BEGIN"); 
 
@@ -134,8 +134,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__10;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:14:7: ( 'END' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:14:9: 'END'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:14:7: ( 'END' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:14:9: 'END'
             {
             match("END"); 
 
@@ -155,8 +155,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__11;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:15:7: ( '.' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:15:9: '.'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:15:7: ( '.' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:15:9: '.'
             {
             match('.'); 
 
@@ -175,8 +175,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__12;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:16:7: ( 'CONST' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:16:9: 'CONST'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:16:7: ( 'CONST' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:16:9: 'CONST'
             {
             match("CONST"); 
 
@@ -196,8 +196,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__13;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:17:7: ( 'TYPE' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:17:9: 'TYPE'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:17:7: ( 'TYPE' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:17:9: 'TYPE'
             {
             match("TYPE"); 
 
@@ -217,8 +217,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__14;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:18:7: ( 'VAR' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:18:9: 'VAR'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:18:7: ( 'VAR' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:18:9: 'VAR'
             {
             match("VAR"); 
 
@@ -238,8 +238,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__15;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:19:7: ( '=' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:19:9: '='
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:19:7: ( '=' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:19:9: '='
             {
             match('='); 
 
@@ -258,8 +258,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__16;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:20:7: ( 'ARRAY' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:20:9: 'ARRAY'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:20:7: ( 'ARRAY' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:20:9: 'ARRAY'
             {
             match("ARRAY"); 
 
@@ -279,8 +279,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__17;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:21:7: ( 'OF' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:21:9: 'OF'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:21:7: ( 'OF' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:21:9: 'OF'
             {
             match("OF"); 
 
@@ -300,8 +300,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__18;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:22:7: ( 'RECORD' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:22:9: 'RECORD'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:22:7: ( 'RECORD' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:22:9: 'RECORD'
             {
             match("RECORD"); 
 
@@ -321,8 +321,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__19;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:23:7: ( '#' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:23:9: '#'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:23:7: ( '#' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:23:9: '#'
             {
             match('#'); 
 
@@ -341,8 +341,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__20;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:24:7: ( '<' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:24:9: '<'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:24:7: ( '<' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:24:9: '<'
             {
             match('<'); 
 
@@ -361,8 +361,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__21;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:25:7: ( '<=' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:25:9: '<='
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:25:7: ( '<=' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:25:9: '<='
             {
             match("<="); 
 
@@ -382,8 +382,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__22;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:26:7: ( '>' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:26:9: '>'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:26:7: ( '>' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:26:9: '>'
             {
             match('>'); 
 
@@ -402,8 +402,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__23;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:27:7: ( '>=' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:27:9: '>='
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:27:7: ( '>=' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:27:9: '>='
             {
             match(">="); 
 
@@ -423,8 +423,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__24;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:28:7: ( '+' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:28:9: '+'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:28:7: ( '+' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:28:9: '+'
             {
             match('+'); 
 
@@ -443,8 +443,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__25;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:29:7: ( '-' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:29:9: '-'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:29:7: ( '-' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:29:9: '-'
             {
             match('-'); 
 
@@ -463,8 +463,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__26;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:30:7: ( 'OR' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:30:9: 'OR'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:30:7: ( 'OR' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:30:9: 'OR'
             {
             match("OR"); 
 
@@ -484,8 +484,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__27;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:31:7: ( '*' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:31:9: '*'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:31:7: ( '*' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:31:9: '*'
             {
             match('*'); 
 
@@ -504,8 +504,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:32:7: ( 'DIV' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:32:9: 'DIV'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:32:7: ( 'DIV' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:32:9: 'DIV'
             {
             match("DIV"); 
 
@@ -525,8 +525,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:33:7: ( 'MOD' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:33:9: 'MOD'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:33:7: ( 'MOD' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:33:9: 'MOD'
             {
             match("MOD"); 
 
@@ -546,8 +546,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:34:7: ( '&' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:34:9: '&'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:34:7: ( '&' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:34:9: '&'
             {
             match('&'); 
 
@@ -566,8 +566,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:35:7: ( '(' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:35:9: '('
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:35:7: ( '(' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:35:9: '('
             {
             match('('); 
 
@@ -586,8 +586,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:36:7: ( ')' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:36:9: ')'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:36:7: ( ')' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:36:9: ')'
             {
             match(')'); 
 
@@ -606,8 +606,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__33;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:37:7: ( '~' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:37:9: '~'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:37:7: ( '~' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:37:9: '~'
             {
             match('~'); 
 
@@ -626,8 +626,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:38:7: ( '[' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:38:9: '['
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:38:7: ( '[' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:38:9: '['
             {
             match('['); 
 
@@ -646,8 +646,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__35;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:39:7: ( ']' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:39:9: ']'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:39:7: ( ']' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:39:9: ']'
             {
             match(']'); 
 
@@ -666,8 +666,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:40:7: ( ':' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:40:9: ':'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:40:7: ( ':' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:40:9: ':'
             {
             match(':'); 
 
@@ -686,8 +686,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__37;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:41:7: ( ',' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:41:9: ','
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:41:7: ( ',' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:41:9: ','
             {
             match(','); 
 
@@ -706,8 +706,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__38;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:42:7: ( 'WITH' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:42:9: 'WITH'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:42:7: ( 'WITH' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:42:9: 'WITH'
             {
             match("WITH"); 
 
@@ -727,8 +727,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__39;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:43:7: ( 'DO' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:43:9: 'DO'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:43:7: ( 'DO' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:43:9: 'DO'
             {
             match("DO"); 
 
@@ -748,8 +748,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__40;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:44:7: ( ':=' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:44:9: ':='
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:44:7: ( ':=' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:44:9: ':='
             {
             match(":="); 
 
@@ -769,8 +769,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__41;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:45:7: ( 'IF' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:45:9: 'IF'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:45:7: ( 'IF' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:45:9: 'IF'
             {
             match("IF"); 
 
@@ -790,8 +790,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__42;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:46:7: ( 'THEN' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:46:9: 'THEN'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:46:7: ( 'THEN' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:46:9: 'THEN'
             {
             match("THEN"); 
 
@@ -811,8 +811,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__43;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:47:7: ( 'ELSIF' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:47:9: 'ELSIF'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:47:7: ( 'ELSIF' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:47:9: 'ELSIF'
             {
             match("ELSIF"); 
 
@@ -832,8 +832,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__44;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:48:7: ( 'ELSE' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:48:9: 'ELSE'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:48:7: ( 'ELSE' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:48:9: 'ELSE'
             {
             match("ELSE"); 
 
@@ -853,8 +853,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__45;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:49:7: ( 'WHILE' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:49:9: 'WHILE'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:49:7: ( 'WHILE' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:49:9: 'WHILE'
             {
             match("WHILE"); 
 
@@ -874,8 +874,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__46;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:50:7: ( 'PROCEDURE' )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:50:9: 'PROCEDURE'
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:50:7: ( 'PROCEDURE' )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:50:9: 'PROCEDURE'
             {
             match("PROCEDURE"); 
 
@@ -895,10 +895,10 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = INTEGER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:337:2: ( ( '0' .. '9' )+ )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:337:4: ( '0' .. '9' )+
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:339:3: ( ( '0' .. '9' )+ )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:339:5: ( '0' .. '9' )+
             {
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:337:4: ( '0' .. '9' )+
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:339:5: ( '0' .. '9' )+
             int cnt1=0;
             loop1:
             do {
@@ -912,7 +912,7 @@ public class oberon0Lexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:337:5: '0' .. '9'
+            	    // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:339:6: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -944,8 +944,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = IDENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:341:2: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:341:4: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:343:3: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:343:5: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -956,7 +956,7 @@ public class oberon0Lexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:341:23: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:343:24: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -969,7 +969,7 @@ public class oberon0Lexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:
+            	    // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:
             	    {
             	    if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
             	        input.consume();
@@ -1005,10 +1005,10 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:345:2: ( ( ' ' | '\\t' | '\\n' | '\\r' )+ )
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:345:4: ( ' ' | '\\t' | '\\n' | '\\r' )+
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:347:3: ( ( ' ' | '\\t' | '\\n' | '\\r' )+ )
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:347:4: ( ' ' | '\\t' | '\\n' | '\\r' )+
             {
-            // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:345:4: ( ' ' | '\\t' | '\\n' | '\\r' )+
+            // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:347:4: ( ' ' | '\\t' | '\\n' | '\\r' )+
             int cnt3=0;
             loop3:
             do {
@@ -1022,7 +1022,7 @@ public class oberon0Lexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:
+            	    // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:
             	    {
             	    if ( (input.LA(1)>='\t' && input.LA(1)<='\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
             	        input.consume();
@@ -1059,306 +1059,306 @@ public class oberon0Lexer extends Lexer {
     // $ANTLR end "WS"
 
     public void mTokens() throws RecognitionException {
-        // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:8: ( T__7 | T__8 | T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | INTEGER | IDENT | WS )
+        // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:8: ( T__7 | T__8 | T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | INTEGER | IDENT | WS )
         int alt4=43;
         alt4 = dfa4.predict(input);
         switch (alt4) {
             case 1 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:10: T__7
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:10: T__7
                 {
                 mT__7(); 
 
                 }
                 break;
             case 2 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:15: T__8
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:15: T__8
                 {
                 mT__8(); 
 
                 }
                 break;
             case 3 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:20: T__9
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:20: T__9
                 {
                 mT__9(); 
 
                 }
                 break;
             case 4 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:25: T__10
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:25: T__10
                 {
                 mT__10(); 
 
                 }
                 break;
             case 5 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:31: T__11
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:31: T__11
                 {
                 mT__11(); 
 
                 }
                 break;
             case 6 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:37: T__12
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:37: T__12
                 {
                 mT__12(); 
 
                 }
                 break;
             case 7 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:43: T__13
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:43: T__13
                 {
                 mT__13(); 
 
                 }
                 break;
             case 8 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:49: T__14
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:49: T__14
                 {
                 mT__14(); 
 
                 }
                 break;
             case 9 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:55: T__15
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:55: T__15
                 {
                 mT__15(); 
 
                 }
                 break;
             case 10 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:61: T__16
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:61: T__16
                 {
                 mT__16(); 
 
                 }
                 break;
             case 11 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:67: T__17
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:67: T__17
                 {
                 mT__17(); 
 
                 }
                 break;
             case 12 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:73: T__18
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:73: T__18
                 {
                 mT__18(); 
 
                 }
                 break;
             case 13 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:79: T__19
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:79: T__19
                 {
                 mT__19(); 
 
                 }
                 break;
             case 14 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:85: T__20
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:85: T__20
                 {
                 mT__20(); 
 
                 }
                 break;
             case 15 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:91: T__21
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:91: T__21
                 {
                 mT__21(); 
 
                 }
                 break;
             case 16 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:97: T__22
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:97: T__22
                 {
                 mT__22(); 
 
                 }
                 break;
             case 17 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:103: T__23
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:103: T__23
                 {
                 mT__23(); 
 
                 }
                 break;
             case 18 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:109: T__24
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:109: T__24
                 {
                 mT__24(); 
 
                 }
                 break;
             case 19 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:115: T__25
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:115: T__25
                 {
                 mT__25(); 
 
                 }
                 break;
             case 20 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:121: T__26
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:121: T__26
                 {
                 mT__26(); 
 
                 }
                 break;
             case 21 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:127: T__27
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:127: T__27
                 {
                 mT__27(); 
 
                 }
                 break;
             case 22 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:133: T__28
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:133: T__28
                 {
                 mT__28(); 
 
                 }
                 break;
             case 23 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:139: T__29
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:139: T__29
                 {
                 mT__29(); 
 
                 }
                 break;
             case 24 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:145: T__30
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:145: T__30
                 {
                 mT__30(); 
 
                 }
                 break;
             case 25 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:151: T__31
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:151: T__31
                 {
                 mT__31(); 
 
                 }
                 break;
             case 26 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:157: T__32
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:157: T__32
                 {
                 mT__32(); 
 
                 }
                 break;
             case 27 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:163: T__33
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:163: T__33
                 {
                 mT__33(); 
 
                 }
                 break;
             case 28 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:169: T__34
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:169: T__34
                 {
                 mT__34(); 
 
                 }
                 break;
             case 29 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:175: T__35
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:175: T__35
                 {
                 mT__35(); 
 
                 }
                 break;
             case 30 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:181: T__36
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:181: T__36
                 {
                 mT__36(); 
 
                 }
                 break;
             case 31 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:187: T__37
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:187: T__37
                 {
                 mT__37(); 
 
                 }
                 break;
             case 32 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:193: T__38
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:193: T__38
                 {
                 mT__38(); 
 
                 }
                 break;
             case 33 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:199: T__39
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:199: T__39
                 {
                 mT__39(); 
 
                 }
                 break;
             case 34 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:205: T__40
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:205: T__40
                 {
                 mT__40(); 
 
                 }
                 break;
             case 35 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:211: T__41
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:211: T__41
                 {
                 mT__41(); 
 
                 }
                 break;
             case 36 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:217: T__42
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:217: T__42
                 {
                 mT__42(); 
 
                 }
                 break;
             case 37 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:223: T__43
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:223: T__43
                 {
                 mT__43(); 
 
                 }
                 break;
             case 38 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:229: T__44
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:229: T__44
                 {
                 mT__44(); 
 
                 }
                 break;
             case 39 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:235: T__45
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:235: T__45
                 {
                 mT__45(); 
 
                 }
                 break;
             case 40 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:241: T__46
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:241: T__46
                 {
                 mT__46(); 
 
                 }
                 break;
             case 41 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:247: INTEGER
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:247: INTEGER
                 {
                 mINTEGER(); 
 
                 }
                 break;
             case 42 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:255: IDENT
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:255: IDENT
                 {
                 mIDENT(); 
 
                 }
                 break;
             case 43 :
-                // /Users/benkwint/Documents/uni/softwareConstruction3/grammar/oberon0.g:1:261: WS
+                // C:\\Documents and Settings\\Ben Kwint\\uva\\softwareConstruction3\\grammar\\oberon0.g:1:261: WS
                 {
                 mWS(); 
 
@@ -1372,14 +1372,14 @@ public class oberon0Lexer extends Lexer {
 
     protected DFA4 dfa4 = new DFA4(this);
     static final String DFA4_eotS =
-        "\1\uffff\1\40\1\uffff\2\40\1\uffff\3\40\1\uffff\3\40\1\uffff\1\57"+
-        "\1\61\3\uffff\1\40\6\uffff\1\65\1\uffff\3\40\3\uffff\11\40\1\103"+
-        "\1\104\1\40\4\uffff\1\40\1\107\2\uffff\2\40\1\112\1\40\1\115\1\40"+
-        "\1\117\4\40\1\125\1\40\2\uffff\1\40\1\130\1\uffff\2\40\1\uffff\2"+
-        "\40\1\uffff\1\40\1\uffff\1\40\1\137\1\40\1\141\1\142\1\uffff\2\40"+
-        "\1\uffff\1\145\3\40\1\151\1\152\1\uffff\1\153\2\uffff\1\154\1\40"+
-        "\1\uffff\1\156\1\40\1\160\4\uffff\1\161\1\uffff\1\40\2\uffff\2\40"+
-        "\1\165\1\uffff";
+        "\1\uffff\1\40\1\uffff\2\40\1\uffff\3\40\1\uffff\3\40\1\uffff\1"+
+        "\57\1\61\3\uffff\1\40\6\uffff\1\65\1\uffff\3\40\3\uffff\11\40\1"+
+        "\103\1\104\1\40\4\uffff\1\40\1\107\2\uffff\2\40\1\112\1\40\1\115"+
+        "\1\40\1\117\4\40\1\125\1\40\2\uffff\1\40\1\130\1\uffff\2\40\1\uffff"+
+        "\2\40\1\uffff\1\40\1\uffff\1\40\1\137\1\40\1\141\1\142\1\uffff\2"+
+        "\40\1\uffff\1\145\3\40\1\151\1\152\1\uffff\1\153\2\uffff\1\154\1"+
+        "\40\1\uffff\1\156\1\40\1\160\4\uffff\1\161\1\uffff\1\40\2\uffff"+
+        "\2\40\1\165\1\uffff";
     static final String DFA4_eofS =
         "\166\uffff";
     static final String DFA4_minS =
@@ -1413,8 +1413,8 @@ public class oberon0Lexer extends Lexer {
     static final String DFA4_specialS =
         "\166\uffff}>";
     static final String[] DFA4_transitionS = {
-            "\2\41\2\uffff\1\41\22\uffff\1\41\2\uffff\1\15\2\uffff\1\24\1"+
-            "\uffff\1\25\1\26\1\22\1\20\1\33\1\21\1\5\1\uffff\12\37\1\32"+
+            "\2\41\2\uffff\1\41\22\uffff\1\41\2\uffff\1\15\2\uffff\1\24"+
+            "\1\uffff\1\25\1\26\1\22\1\20\1\33\1\21\1\5\1\uffff\12\37\1\32"+
             "\1\2\1\16\1\11\1\17\2\uffff\1\12\1\3\1\6\1\23\1\4\3\40\1\35"+
             "\3\40\1\1\1\40\1\13\1\36\1\40\1\14\1\40\1\7\1\40\1\10\1\34\3"+
             "\40\1\30\1\uffff\1\31\3\uffff\32\40\3\uffff\1\27",

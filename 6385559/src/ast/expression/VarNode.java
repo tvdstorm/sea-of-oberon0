@@ -1,5 +1,8 @@
-package ast;
+package ast.expression;
 
+import ast.ASTnode;
+import ast.expression.selector.SelectorArrayNode;
+import ast.expression.selector.SelectorRecordNode;
 import errorhandler.OberonException;
 import management.MemoryManager;
 
