@@ -108,22 +108,22 @@ public class Context {
 	 * declares a name and value in the current variablescope
 	 * (makes a new reference from the given value 
 	 */
-	public void declareVariable(String name, IValue value) {
-		_variables.put(name, new Reference(value));
+	public void declareVar(String name, IValue value) {
+		declareVar(name, new Reference(value));
 	}
 	
 	/*
 	 * declares a name and reference in the current variablescope
 	 */
-	public void declareReferenceVariable(String name, Reference reference){
+	public void declareVar(String name, Reference reference){
 		_variables.put(name, reference);
 	}
 	
 	/*
 	 * declares a constant reference in the current variablescope
 	 */
-	public void declareConstant(String name, IValue value) {
-		_variables.put(name, new ConstantReference(value));
+	public void declareConstantVar(String name, IValue value) {
+		declareVar(name, new ConstantReference(value));
 	}
 	
 	/*

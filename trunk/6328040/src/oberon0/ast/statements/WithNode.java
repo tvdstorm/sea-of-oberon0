@@ -29,7 +29,7 @@ public class WithNode implements IExecutable {
 		Reference ref = _selector.refer(context, context.getReference(_name));
 		HashMap<String, Reference> fields = ((RecordValue)ref.getValue()).getFields();
 		for (String name: fields.keySet()){
-			withContext.declareReferenceVariable(name, fields.get(name));
+			withContext.declareVar(name, fields.get(name));
 		}
 		_body.execute(withContext);
 	}
