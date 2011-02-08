@@ -8,21 +8,21 @@ import org.elcid.oberon0.ast.visitor.BaseVisitor;
  *
  * @author Pieter Brandwijk
  */
-public class PlusExpNode extends IntExpNode {
+public class PlusExpNode extends ExpressionNode {
 
-	private IntExpNode leftExp;
-	private IntExpNode rightExp;
+	private ExpressionNode leftExp;
+	private ExpressionNode rightExp;
 
-	public PlusExpNode(IntExpNode leftExp, IntExpNode rightExp) {
+	public PlusExpNode(ExpressionNode leftExp, ExpressionNode rightExp) {
 		this.leftExp = leftExp;
 		this.rightExp = rightExp;
 	}
 
-	public IntExpNode getLeftExp() {
+	public ExpressionNode getLeftExp() {
 		return leftExp;
 	}
 
-	public IntExpNode getRightExp() {
+	public ExpressionNode getRightExp() {
 		return rightExp;
 	}
 

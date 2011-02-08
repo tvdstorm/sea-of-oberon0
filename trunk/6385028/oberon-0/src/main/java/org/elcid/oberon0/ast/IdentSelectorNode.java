@@ -11,7 +11,7 @@ import org.elcid.oberon0.ast.visitor.BaseVisitor;
  *
  * @author Pieter Brandwijk
  */
-public class IdentSelectorNode extends IntExpNode {
+public class IdentSelectorNode extends ExpressionNode {
 
 	private String identifier;
 	private List<SelectorNode> selectors;
