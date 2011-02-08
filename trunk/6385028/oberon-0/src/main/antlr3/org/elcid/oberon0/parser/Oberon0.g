@@ -171,7 +171,7 @@ actualParameters
 expression returns [ExpressionNode result]
 	:	s1=simpleExpression								{$result = $s1.result; }
 			( EQUALS_OP s2=simpleExpression				{$result = new EqualsExpNode($result, $s2.result); }
-			| HASH_OP s2=simpleExpression
+			| HASH_OP s2=simpleExpression				{$result = new NotEqualsExpNode($result, $s2.result); }
 			| LESSER_OP s2=simpleExpression				{$result = new LesserExpNode($result, $s2.result); }
 			| LESSER_OR_EQUAL_OP s2=simpleExpression	{$result = new LesserOrEqualsExpNode($result, $s2.result); }
 			| GREATER_OP s2=simpleExpression			{$result = new GreaterExpNode($result, $s2.result); }
