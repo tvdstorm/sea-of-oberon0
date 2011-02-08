@@ -1,14 +1,19 @@
 package oberon0.ast.statements;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import oberon0.environment.Context;
 
 public class BodyNode implements IExecutable {
-	private ArrayList<IExecutable> _statements;
+	private final List<IExecutable> _statements;
 
 	public BodyNode(ArrayList<IExecutable> statements) {
-		_statements = statements;
+		if (statements != null){
+			_statements = statements;
+		} else {
+			_statements = new ArrayList<IExecutable>();
+		}
 	}
 
 	@Override

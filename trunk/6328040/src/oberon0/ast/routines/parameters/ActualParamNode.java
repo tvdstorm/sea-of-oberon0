@@ -7,10 +7,10 @@ import oberon0.environment.IValue;
 import oberon0.environment.Reference;
 
 public class ActualParamNode implements IReferable {
-	private IEvaluable _actualParamNode;
+	private final IEvaluable _actualParamNode;
 
-	public ActualParamNode(IEvaluable exp1) {
-		_actualParamNode = exp1;
+	public ActualParamNode(IEvaluable actualParam) {
+		_actualParamNode = actualParam;
 	}
 
 	@Override

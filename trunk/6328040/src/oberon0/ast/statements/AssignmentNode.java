@@ -7,9 +7,9 @@ import oberon0.environment.IValue;
 import oberon0.environment.Reference;
 
 public class AssignmentNode implements IExecutable {
-	String _name;
-	ISelector _selector;
-	IEvaluable _expression;
+	private final String _name;
+	private final ISelector _selector;
+	private final IEvaluable _expression;
 
 	public AssignmentNode(String name, ISelector selec, IEvaluable expression) {
 		_name = name;

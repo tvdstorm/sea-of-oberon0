@@ -8,7 +8,7 @@ import oberon0.environment.IntegerValue;
 import oberon0.environment.Reference;
 
 public class SelectorArrayNode implements ISelector {
-	private IEvaluable _selectorExpression;
+	private final IEvaluable _selectorExpression;
 
 	public SelectorArrayNode(IEvaluable selector) {
 		_selectorExpression = selector;

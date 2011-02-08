@@ -1,7 +1,7 @@
 package oberon0.environment;
 
 public class BooleanValue implements IValue {
-	private boolean _value;
+	private final boolean _value;
 
 	public BooleanValue(boolean value) {
 		_value = value;

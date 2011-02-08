@@ -5,8 +5,8 @@ import oberon0.environment.Context;
 import oberon0.environment.IValue;
 
 public class ConstDeclarationNode implements IDeclarable {
-	private String _name;
-	private IEvaluable _expression;
+	private final String _name;
+	private final IEvaluable _expression;
 
 	public ConstDeclarationNode(String name, IEvaluable expression) {
 		_name = name;

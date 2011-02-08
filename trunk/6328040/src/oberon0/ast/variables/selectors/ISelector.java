@@ -8,7 +8,6 @@ import oberon0.environment.Reference;
  * makes sure their reference can be found
  */
 public interface ISelector {
-	public final static Reference noPreviousReference = null;
 
 	public Reference refer(Context context, Reference previousReference);
 }
