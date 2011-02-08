@@ -12,7 +12,7 @@ import org.elcid.oberon0.ast.values.*;
  */
 public abstract class BaseVisitor {
 
-	public Value eval(ValueExpNode node, Environment localEnv) {
+	public Value eval(IntExpNode node, Environment localEnv) {
 		return null;
 	}
 
