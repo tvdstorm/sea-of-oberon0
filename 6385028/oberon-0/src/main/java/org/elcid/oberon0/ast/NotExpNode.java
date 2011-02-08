@@ -4,7 +4,7 @@ import org.elcid.oberon0.ast.env.Environment;
 import org.elcid.oberon0.ast.visitor.BaseVisitor;
 
 /**
- * Represents the equals expression in the Oberon-0 language.
+ * Represents the not ("~") expression in the Oberon-0 language.
  *
  * @author Pieter Brandwijk
  */
