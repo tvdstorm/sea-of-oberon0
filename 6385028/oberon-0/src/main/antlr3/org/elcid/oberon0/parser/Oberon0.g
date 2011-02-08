@@ -169,8 +169,8 @@ actualParameters
 	;
 
 expression returns [ExpressionNode result]
-	:	s1=simpleExpression								{ $result = $s1.result; System.out.println($s1.text); }
-			( EQUALS_OP s2=simpleExpression				{ $result = new EqualsExpNode($result, $s2.result); System.out.println($s2.text); }
+	:	s1=simpleExpression								{ $result = $s1.result; }
+			( EQUALS_OP s2=simpleExpression				{ $result = new EqualsExpNode($result, $s2.result); }
 			| HASH_OP s2=simpleExpression
 			| LESSER_OP s2=simpleExpression				{ $result = new LesserExpNode((IntExpNode) $result, (IntExpNode) $s2.result); }
 			| LESSER_OR_EQUAL_OP s2=simpleExpression	{ $result = new LesserOrEqualsExpNode((IntExpNode) $result, (IntExpNode) $s2.result); }
@@ -197,7 +197,7 @@ term returns [ExpressionNode result]
 	;
 
 factor returns [ExpressionNode result]
-	:	is=identSelector								{ $result = new ValueExpNode(new Variable($is.text)); }
+	:	is=identSelector								{ $result = $is.result; }
 	|	i=integer										{ $result = new ValueExpNode(new Int(Integer.parseInt($i.text))); }
 	|	RND_OPEN e=expression RND_CLOSE					{ $result = $e.result; }
 	|	TILDE f=factor									{ $result = $f.result; }
@@ -209,9 +209,9 @@ identSelector returns [IdentSelectorNode result]
 			)*
 	;
 
-selector returns [Selector result]
-	:	DOT i=identifier								{ $result = new Selector($i.text); }
-	|	SQR_OPEN expression SQR_CLOSE					{ $result = new Selector(null); }
+selector returns [SelectorNode result]
+	:	DOT i=identifier								{ $result = new MemberSelectorNode($i.text); }
+	|	SQR_OPEN e=expression SQR_CLOSE					{ $result = new IndexSelectorNode($e.result); }
 	;
 
 identifier
