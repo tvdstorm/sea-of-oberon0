@@ -1,1 +1,9 @@
-a := (a[1] DIV 2 + 4 * 5 = 26) OR (25 < 24);
+IF a < 5 THEN
+	a := 4 * 5
+ELSIF a > 5 THEN
+	a := 4
+ELSIF a > 5 THEN
+	a := 4
+ELSE
+	a := 4
+END

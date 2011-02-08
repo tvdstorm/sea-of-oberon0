@@ -30,13 +30,14 @@ public class App {
 		
 		try {
 			// Begin parsing at rule prog
-			IInterpretableNode startNode = parser.prog();
+			IInterpretableNode startNode = parser.statement();
 			
 			System.out.println("lexer: " +lexer.getNumberOfSyntaxErrors());
 			System.out.println("parser: " +parser.getNumberOfSyntaxErrors());
 			
 			if ((lexer.getNumberOfSyntaxErrors() == 0) && (parser.getNumberOfSyntaxErrors() == 0)) {
-				System.out.println("prog result: " + startNode.interpret());
+				System.out.println("program   result: " + startNode);
+				System.out.println("interpret result: " + startNode.interpret());
 			} else {
 				System.out.println("There are parse-errors!");
 			}
