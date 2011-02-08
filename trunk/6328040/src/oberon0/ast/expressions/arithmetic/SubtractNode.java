@@ -8,8 +8,7 @@ import oberon0.environment.IntegerValue;
 
 public class SubtractNode extends BaseBinaryExpressionNode {
 
-	public SubtractNode(IEvaluable lhsExpression,
-			IEvaluable rhsExpression) {
+	public SubtractNode(IEvaluable lhsExpression, IEvaluable rhsExpression) {
 		super(lhsExpression, rhsExpression);
 	}
 

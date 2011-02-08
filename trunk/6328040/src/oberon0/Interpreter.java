@@ -11,36 +11,36 @@ import org.antlr.runtime.TokenRewriteStream;
 import generated.*;
 
 public class Interpreter {
-	
+
 	/*
 	 * Interprets the given file
 	 */
-	public static void interpretFile(ANTLRFileStream inputfile){
+	public static void interpretFile(ANTLRFileStream inputfile) {
 		getOutputContextFromFile(inputfile);
 	}
-	
+
 	/*
-	 * Interprets the given file and returns the context after running
-	 * Can be used for testing purposes
+	 * Interprets the given file and returns the context after running Can be
+	 * used for testing purposes
 	 */
-	public static Context getOutputContextFromFile(ANTLRFileStream inputfile){
+	public static Context getOutputContextFromFile(ANTLRFileStream inputfile) {
 		// let ANTLR-generated code do the job
 		Oberon0Lexer lex = new Oberon0Lexer(inputfile);
 		TokenRewriteStream tokens = new TokenRewriteStream(lex);
 		Oberon0Parser parser = new Oberon0Parser(tokens);
-        
-		//the start node
+
+		// the start node
 		ModuleNode module = null;
-		
-		//start parsing
+
+		// start parsing
 		try {
 			module = (ModuleNode) parser.module();
 		} catch (RecognitionException e) {
 			e.printStackTrace();
-		} 
-        //start interpreter by calling module
+		}
+		// start interpreter by calling module
 		module.call(Context.noParent, ICallable.EMPTY_ACTUALPARAMETERS);
 		return module.getContextAfterCall();
 	}
-	
+
 }

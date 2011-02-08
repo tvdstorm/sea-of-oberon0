@@ -9,6 +9,6 @@ import oberon0.environment.IValue;
  * makes sure they can be evaluated in the same way
  * evaluation always results in a IValue
  */
-public interface IEvaluable extends IASTNode{
+public interface IEvaluable extends IASTNode {
 	public IValue eval(Context context);
 }

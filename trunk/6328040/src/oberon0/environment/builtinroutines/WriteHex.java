@@ -19,7 +19,7 @@ public class WriteHex implements ICallable {
 		IEvaluable param = actualParameters.get(0);
 		IntegerValue value = (IntegerValue) param.eval(context);
 		int intvalue = value.getValue();
-		System.out.print("i is hex " + Integer.toHexString(intvalue) );
+		System.out.print("i is hex " + Integer.toHexString(intvalue));
 	}
 
 }

@@ -9,7 +9,7 @@ import oberon0.environment.Context;
 import oberon0.environment.Reference;
 
 public class FPRefVarNode extends BaseFormalParameterNode {
-	
+
 	public FPRefVarNode(List<String> names, IEvaluable type) {
 		super(names, type);
 	}
@@ -17,10 +17,11 @@ public class FPRefVarNode extends BaseFormalParameterNode {
 	@Override
 	public void fillIn(Context context, Iterator<IReferable> actualParams) {
 		Iterator<String> fpNames = getFPNamesIter();
-		
-		while (fpNames.hasNext()){
+
+		while (fpNames.hasNext()) {
 			IReferable currentActualParam = getNextActualParameter(actualParams);
-			Reference currentAPReference = currentActualParam.getRef(context.getParent(), IReferable.noPreviousReference);
+			Reference currentAPReference = currentActualParam.getRef(
+					context.getParent(), IReferable.noPreviousReference);
 
 			String currentName = fpNames.next();
 			context.declareVar(currentName, currentAPReference);

@@ -8,8 +8,8 @@ import oberon0.environment.Reference;
  * An interface for variables
  * makes sure their reference AND value can be found
  */
-public interface IReferable extends IEvaluable{
+public interface IReferable extends IEvaluable {
 	public final static Reference noPreviousReference = null;
-	
+
 	public Reference getRef(Context context, Reference previousReference);
 }

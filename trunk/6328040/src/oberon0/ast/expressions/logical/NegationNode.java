@@ -15,7 +15,7 @@ public class NegationNode extends BaseUnaryExpressionNode {
 	@Override
 	public IValue eval(Context context) {
 		boolean bool = ((BooleanValue) evalChildExpression(context)).getValue();
-		return new BooleanValue(! bool);
+		return new BooleanValue(!bool);
 	}
 
 }

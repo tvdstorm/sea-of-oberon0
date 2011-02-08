@@ -19,8 +19,8 @@ public abstract class BaseFormalParameterNode implements IFormalParameter {
 		}
 		_type = type;
 	}
-	
-	protected Iterator<String> getFPNamesIter(){ 
+
+	protected Iterator<String> getFPNamesIter() {
 		return _names.iterator();
 	}
 
@@ -33,5 +33,5 @@ public abstract class BaseFormalParameterNode implements IFormalParameter {
 					+ "Formal list " + _names.toString());
 		}
 	}
-	
+
 }

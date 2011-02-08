@@ -9,15 +9,14 @@ import oberon0.environment.IntegerValue;
 
 public class EqualsNotNode extends BaseBinaryExpressionNode {
 
-	public EqualsNotNode(IEvaluable lhsExpression,
-			IEvaluable rhsExpression) {
+	public EqualsNotNode(IEvaluable lhsExpression, IEvaluable rhsExpression) {
 		super(lhsExpression, rhsExpression);
 	}
 
 	@Override
 	public IValue eval(Context context) {
-		int lhs = ((IntegerValue)evalLhsExpression(context)).getValue();
-		int rhs = ((IntegerValue)evalRhsExpression(context)).getValue();
+		int lhs = ((IntegerValue) evalLhsExpression(context)).getValue();
+		int rhs = ((IntegerValue) evalRhsExpression(context)).getValue();
 		return new BooleanValue(lhs != rhs);
 	}
 

@@ -6,7 +6,7 @@ import oberon0.environment.Context;
 /*
  * Declarable class that can declare all known builtin routines
  */
-public class BuiltInRoutines implements IDeclarable{
+public class BuiltInRoutines implements IDeclarable {
 
 	@Override
 	/*

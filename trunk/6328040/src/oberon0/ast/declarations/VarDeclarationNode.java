@@ -9,7 +9,6 @@ import oberon0.environment.IValue;
 public class VarDeclarationNode implements IDeclarable {
 	private ArrayList<String> _names;
 	private IEvaluable _type;
-	
 
 	public VarDeclarationNode(ArrayList<String> names, IEvaluable typ) {
 		_names = names;
@@ -19,8 +18,7 @@ public class VarDeclarationNode implements IDeclarable {
 	@Override
 	public void declare(Context context) {
 		IValue type = _type.eval(context);
-		for (String name: _names)
-		{
+		for (String name : _names) {
 			context.declareVar(name, type);
 		}
 	}

@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import oberon0.environment.Context;
 import oberon0.environment.Reference;
 
-public class SelectorNode implements ISelector{
+public class SelectorNode implements ISelector {
 	ArrayList<ISelector> _selectors;
-	
+
 	public SelectorNode(ArrayList<ISelector> list) {
 		_selectors = list;
 	}
@@ -15,7 +15,7 @@ public class SelectorNode implements ISelector{
 	@Override
 	public Reference refer(Context context, Reference firstRef) {
 		Reference ref = firstRef;
-		for(ISelector currentSelector : _selectors){
+		for (ISelector currentSelector : _selectors) {
 			ref = currentSelector.refer(context, ref);
 		}
 		return ref;

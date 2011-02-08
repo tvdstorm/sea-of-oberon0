@@ -9,8 +9,7 @@ import oberon0.environment.IntegerValue;
 
 public class GreaterEqualNode extends BaseBinaryExpressionNode {
 
-	public GreaterEqualNode(IEvaluable lhsExpression,
-			IEvaluable rhsExpression) {
+	public GreaterEqualNode(IEvaluable lhsExpression, IEvaluable rhsExpression) {
 		super(lhsExpression, rhsExpression);
 	}
 

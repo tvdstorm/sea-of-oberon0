@@ -22,13 +22,14 @@ public class WithNode implements IExecutable {
 	@Override
 	public void execute(Context context) {
 		Context withContext = context;
-		
+
 		BuiltInRoutines builtin = new BuiltInRoutines();
 		builtin.declare(withContext);
-		
+
 		Reference ref = _selector.refer(context, context.getReference(_name));
-		HashMap<String, Reference> fields = ((RecordValue)ref.getValue()).getFields();
-		for (String name: fields.keySet()){
+		HashMap<String, Reference> fields = ((RecordValue) ref.getValue())
+				.getFields();
+		for (String name : fields.keySet()) {
 			withContext.declareVar(name, fields.get(name));
 		}
 		_body.execute(withContext);

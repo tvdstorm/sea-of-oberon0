@@ -8,8 +8,7 @@ import oberon0.environment.IntegerValue;
 
 public class MultiplyNode extends BaseBinaryExpressionNode {
 
-	public MultiplyNode(IEvaluable lhsExpression,
-			IEvaluable rhsExpression) {
+	public MultiplyNode(IEvaluable lhsExpression, IEvaluable rhsExpression) {
 		super(lhsExpression, rhsExpression);
 	}
 
