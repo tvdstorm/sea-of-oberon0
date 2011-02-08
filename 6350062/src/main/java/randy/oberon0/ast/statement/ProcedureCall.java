@@ -5,6 +5,7 @@ import randy.oberon0.ast.IInvokableFunction;
 import randy.oberon0.ast.expression.Expression;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
+import randy.oberon0.interpreter.runtime.environment.Closure;
 import randy.oberon0.interpreter.runtime.environment.IValue;
 import randy.oberon0.interpreter.runtime.environment.Reference;
 
@@ -32,9 +33,10 @@ public class ProcedureCall extends Statement
 			parameters.add(v);
 		}
 		// Resolve the function name to a function
-		final IInvokableFunction functionDeclaration = environment.resolveFunction(procedureName).getFunction().getFunction();
+		Closure closure = (Closure)environment.lookup(procedureName);
+		final IInvokableFunction functionDeclaration = closure.getFunction();
 		// Create a new environment for the to be invoked function
-		RuntimeEnvironment invokedEnvironment = new RuntimeEnvironment(environment.resolveFunction(procedureName).getEnvironment());
+		RuntimeEnvironment invokedEnvironment = new RuntimeEnvironment(closure.getEnvironment());
 		// Register all declarations of the to be invoked function to it's environment 
 		functionDeclaration.registerTypeDeclarations(invokedEnvironment);
 		// Invoke the function
@@ -52,9 +54,10 @@ public class ProcedureCall extends Statement
 			parameters.add(v);
 		}
 		// Resolve the function name to a function
-		final IInvokableFunction functionDeclaration = environment.resolveFunction(procedureName).getFunction().getFunction();
+		Closure closure = (Closure)environment.lookup(procedureName);
+		final IInvokableFunction functionDeclaration = closure.getFunction();
 		// Create a new environment for the to be invoked function
-		RuntimeEnvironment invokedEnvironment = new RuntimeEnvironment(environment.resolveFunction(procedureName).getEnvironment());
+		RuntimeEnvironment invokedEnvironment = new RuntimeEnvironment(closure.getEnvironment());
 		// Register all declarations of the to be invoked function to it's environment 
 		functionDeclaration.typeCheckRegisterTypeDeclarations(invokedEnvironment);
 		// Invoke the function

@@ -30,17 +30,15 @@ public class Program
 	}
 	public void run() throws RuntimeException
 	{
-		// Registrate buildin primitive types
-		TypeRegistry typeRegistry = new TypeRegistry(null);
-		typeRegistry.registerType(Type.INTEGER.getTypeText(), new PrimitiveVariableInstantiation(Type.INTEGER));
-		typeRegistry.registerType(Type.BOOLEAN.getTypeText(), new PrimitiveVariableInstantiation(Type.BOOLEAN));
-		
-		FunctionRegistry functionRegistry = new FunctionRegistry(null);
-		
 		// Create a global environment
-		RuntimeEnvironment globalEnvironment = new RuntimeEnvironment(new VariableStack(null), functionRegistry, typeRegistry);
+		RuntimeEnvironment globalEnvironment = new RuntimeEnvironment();
+		
+		// Registrate buildin primitive types
+		globalEnvironment.registerType(Type.INTEGER.getTypeText(), new PrimitiveVariableInstantiation(Type.INTEGER));
+		globalEnvironment.registerType(Type.BOOLEAN.getTypeText(), new PrimitiveVariableInstantiation(Type.BOOLEAN));
+		
 		// Registrate buildin functions
-		buildinFunctions.register(functionRegistry, globalEnvironment);
+		buildinFunctions.register(globalEnvironment);
 		
 		// Create a module environment on top of the global environment
 		RuntimeEnvironment moduleEnvironment = new RuntimeEnvironment(globalEnvironment);
@@ -52,17 +50,15 @@ public class Program
 	}
 	public void typeCheck() throws RuntimeException
 	{
-		// Registrate buildin primitive types
-		TypeRegistry typeRegistry = new TypeRegistry(null);
-		typeRegistry.registerType(Type.INTEGER.getTypeText(), new PrimitiveVariableInstantiation(Type.INTEGER));
-		typeRegistry.registerType(Type.BOOLEAN.getTypeText(), new PrimitiveVariableInstantiation(Type.BOOLEAN));
-		
-		FunctionRegistry functionRegistry = new FunctionRegistry(null);
-		
 		// Create a global environment
-		RuntimeEnvironment globalEnvironment = new RuntimeEnvironment(new VariableStack(null), functionRegistry, typeRegistry);
+		RuntimeEnvironment globalEnvironment = new RuntimeEnvironment();
+		
+		// Registrate buildin primitive types
+		globalEnvironment.registerType(Type.INTEGER.getTypeText(), new PrimitiveVariableInstantiation(Type.INTEGER));
+		globalEnvironment.registerType(Type.BOOLEAN.getTypeText(), new PrimitiveVariableInstantiation(Type.BOOLEAN));
+		
 		// Registrate buildin functions
-		buildinFunctions.register(functionRegistry, globalEnvironment);
+		buildinFunctions.register(globalEnvironment);
 		
 		// Create a module environment on top of the global environment
 		RuntimeEnvironment moduleEnvironment = new RuntimeEnvironment(globalEnvironment);
