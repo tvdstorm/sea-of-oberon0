@@ -21,7 +21,8 @@ public class Array extends Value {
 
 	@Override
 	public Value applySelector(Object key) {
-		Integer index = (Integer) key;
+		Int indexValue = (Int) key;
+		Integer index = indexValue.getValue();
 		return elements.get(index);
 	}
 
