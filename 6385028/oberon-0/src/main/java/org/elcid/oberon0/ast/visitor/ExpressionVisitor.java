@@ -60,13 +60,23 @@ public class ExpressionVisitor extends BaseVisitor {
 	}
 
 	/**
-	 * A the moment the equals expression only compares expressions that evaluate to an Int value
+	 * At the moment the equals expression only compares expressions that evaluate to an Int value
 	 */
 	@Override
 	public Value eval(EqualsExpNode node, Environment localEnv) {
 		Integer left = ((Int) node.getLeftExp().eval(this, localEnv)).getValue();
 		Integer right = ((Int) node.getRightExp().eval(this, localEnv)).getValue();
 		return new Bool(left.equals(right));
+	}
+
+	/**
+	 * At the moment the not equals expression only compares expressions that evaluate to an Int value
+	 */
+	@Override
+	public Value eval(NotEqualsExpNode node, Environment localEnv) {
+		Integer left = ((Int) node.getLeftExp().eval(this, localEnv)).getValue();
+		Integer right = ((Int) node.getRightExp().eval(this, localEnv)).getValue();
+		return new Bool(!left.equals(right));
 	}
 
 	@Override

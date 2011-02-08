@@ -155,6 +155,20 @@ public class ExpressionVisitorTest {
 	}
 
 	@Test
+	public void testVisitNotEqualsExpNode() {
+
+		// Test with two integer values that are not equal
+		NotEqualsExpNode nodeFalse = new NotEqualsExpNode(new IntExpNode(new Int(4)), new IntExpNode(new Int(3)));
+		Bool resultFalse = (Bool) instance.eval(nodeFalse, null);
+		assertEquals(true, resultFalse.getValue());
+
+		// Test with two integer values that are equal
+		NotEqualsExpNode nodeTrue = new NotEqualsExpNode(new IntExpNode(new Int(3)), new IntExpNode(new Int(3)));
+		Bool resultTrue = (Bool) instance.eval(nodeTrue, null);
+		assertEquals(false, resultTrue.getValue());
+	}
+
+	@Test
 	public void testVisitGreaterExpNode() {
 
 		// Test with two integer values where the left is greater

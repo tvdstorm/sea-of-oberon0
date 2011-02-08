@@ -40,6 +40,10 @@ public abstract class BaseVisitor {
 		return null;
 	}
 
+	public Value eval(NotEqualsExpNode node, Environment localEnv) {
+		return null;
+	}
+
 	public Value eval(GreaterExpNode node, Environment localEnv) {
 		return null;
 	}
