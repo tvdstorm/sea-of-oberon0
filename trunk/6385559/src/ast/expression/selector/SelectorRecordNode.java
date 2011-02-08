@@ -13,7 +13,7 @@ public class SelectorRecordNode implements ASTnode
     this.selector = selector;
   }
   
-  public String ToString( int depth ) 
+  public String toString( int depth ) 
   {
     String code = "";
     if( this.ident != null )
@@ -22,7 +22,7 @@ public class SelectorRecordNode implements ASTnode
     }
     if( this.selector != null )
     {
-      code += this.selector.ToString( 0 );
+      code += this.selector.toString( 0 );
     }
     return code;
   }

@@ -15,12 +15,12 @@ public class ProcedureBodyNode implements ASTnode
     this.identifier = identifier;
   }
 
-  public String ToString( int depth ) 
+  public String toString( int depth ) 
   {
     String code = "";
     if( this.declarations != null )
     {
-      code += this.declarations.ToString( depth+2 );
+      code += this.declarations.toString( depth+2 );
     }
     
     if( this.statements != null )
@@ -29,7 +29,7 @@ public class ProcedureBodyNode implements ASTnode
       {
         code += " ";
       }
-      code += "BEGIN\n" + this.statements.ToString( depth+2 );
+      code += "BEGIN\n" + this.statements.toString( depth+2 );
     }
     
     if( this.identifier != null )

@@ -11,7 +11,7 @@ public class IntegerNode extends ExpressionNode
     this.intValue = x;
   }
   
-  public String ToString( int depth )
+  public String toString( int depth )
   {
     return "" + this.intValue;
   }

@@ -17,7 +17,7 @@ public class IdentListNode implements ASTnode
     this.followup = followup;
   }
   
-  public String ToString( int depth ) 
+  public String toString( int depth ) 
   {
     String code = "";
     if( this.identifier != null )
@@ -27,7 +27,7 @@ public class IdentListNode implements ASTnode
     
     if( this.followup != null )
     {
-      code += ", " + this.followup.ToString( 0 );
+      code += ", " + this.followup.toString( 0 );
     }
     return code;
   }

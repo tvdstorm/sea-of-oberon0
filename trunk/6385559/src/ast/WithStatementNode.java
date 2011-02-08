@@ -20,9 +20,9 @@ public class WithStatementNode implements StatementNode
     this.sequence = sequence;
   }
   
-  public String ToString(int depth) 
+  public String toString(int depth) 
   {
-    return "WITH " + this.expr.ToString( 0 ) + " DO\n" + this.sequence.ToString( depth+2 ) + "END;\n";
+    return "WITH " + this.expr.toString( 0 ) + " DO\n" + this.sequence.toString( depth+2 ) + "END;\n";
   }
 
   public int eval() throws OberonException 

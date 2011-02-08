@@ -32,16 +32,16 @@ public class ProcedureDeclarationNode implements ASTnode
     }
   }
   
-  public String ToString( int depth ) 
+  public String toString( int depth ) 
   {
     String code = "";
     if( this.heading != null )
     {
-      code += this.heading.ToString( depth );
+      code += this.heading.toString( depth );
     }
     if( this.body != null )
     {
-      code += this.body.ToString( depth );
+      code += this.body.toString( depth );
     }
     return code;
   }

@@ -16,7 +16,7 @@ public class AssignmentNode implements StatementNode
     this.expression = expression;
   }
   
-  public String ToString( int depth )
+  public String toString( int depth )
   {
     String code = "";
     for( int i = 0; i < depth; i++ )
@@ -25,12 +25,12 @@ public class AssignmentNode implements StatementNode
     }
     if( this.var != null )
     {
-      code += this.var.ToString( 0 );
+      code += this.var.toString( 0 );
     }
     code += " := ";
     if( this.expression != null )
     {
-      code += this.expression.ToString( depth );
+      code += this.expression.toString( depth );
     }
     return code + ";\n";
   }

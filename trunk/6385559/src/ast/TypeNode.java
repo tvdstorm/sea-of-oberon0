@@ -10,7 +10,7 @@ public class TypeNode implements ASTnode
     this.ident = ident;
   }
   
-  public String ToString( int depth ) 
+  public String toString( int depth ) 
   {
     if( this.ident != null )
     {

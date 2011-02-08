@@ -10,11 +10,11 @@ public class ElseStatementNode implements StatementNode
     this.sequence = sequence;
   }
   
-  public String ToString( int depth )
+  public String toString( int depth )
   {
     if( this.sequence != null )
     {
-      return this.sequence.ToString( depth );
+      return this.sequence.toString( depth );
     }
     return "";
   }

@@ -18,7 +18,7 @@ public class ConstantNode implements ASTnode
     this.constant = constant;
   }
   
-  public String ToString( int depth ) 
+  public String toString( int depth ) 
   {
     String code = "";
     if( this.identifier != null )
@@ -27,12 +27,12 @@ public class ConstantNode implements ASTnode
     }
     if( this.expression != null )
     {
-      code += this.expression.ToString( 0 );
+      code += this.expression.toString( 0 );
     }
     code += "; ";
     if( this.constant != null )
     {
-      code += this.constant.ToString( 0 );
+      code += this.constant.toString( 0 );
     }
     return code;
   }

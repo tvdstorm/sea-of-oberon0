@@ -16,16 +16,16 @@ public class FormalParameterNode implements ASTnode
     this.followup = followup;
   }
   
-  public String ToString( int depth ) 
+  public String toString( int depth ) 
   {
     String code = "";
     if( this.fpSection != null )
     {
-      code += this.fpSection.ToString( 0 );
+      code += this.fpSection.toString( 0 );
     }
     if( this.followup != null )
     {
-      code += "; " + this.followup.ToString( 0 );
+      code += "; " + this.followup.toString( 0 );
     }
     return code;
   }

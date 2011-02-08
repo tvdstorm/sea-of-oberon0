@@ -15,7 +15,7 @@ public class IfStatementNode implements StatementNode
     this.elseStatement = elseStatement;
   }
   
-  public String ToString( int depth )
+  public String toString( int depth )
   {
     String code = "";
     for( int i = 0; i < depth; i++ )
@@ -26,13 +26,13 @@ public class IfStatementNode implements StatementNode
     code += "IF ";
     if( this.expression != null )
     {
-      code += expression.ToString( depth );
+      code += expression.toString( depth );
     }
   
     code += " THEN\n";
     if( this.sequence != null )
     {
-      code += this.sequence.ToString( depth+2 );
+      code += this.sequence.toString( depth+2 );
     }
   
     if( this.elseStatement != null )
@@ -41,7 +41,7 @@ public class IfStatementNode implements StatementNode
       { // print the needed depth
         code += " ";
       }
-      code += "ELSE\n" + this.elseStatement.ToString(depth+2);
+      code += "ELSE\n" + this.elseStatement.toString(depth+2);
     }
   
     for( int i = 0; i < depth; i++ )

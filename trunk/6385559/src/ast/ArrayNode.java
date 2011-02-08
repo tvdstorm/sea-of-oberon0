@@ -17,16 +17,16 @@ public class ArrayNode implements ASTnode
     this.type = type; // can contain an TypeNode/ArrayTypeNode/RecordTypeNode
   }
   
-  public String ToString( int depth ) 
+  public String toString( int depth ) 
   {
     String code = "";
     if( this.expression != null )
     {
-      code += "ARRAY " + this.expression.ToString( 0 ) + " OF ";
+      code += "ARRAY " + this.expression.toString( 0 ) + " OF ";
     }
     if( this.type != null )
     {
-      code += this.type.ToString( 0 );
+      code += this.type.toString( 0 );
     }
     return code;
   }

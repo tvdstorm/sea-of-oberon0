@@ -19,7 +19,7 @@ public class ProcedureCallNode implements StatementNode
     this.params = params;
   }
   
-  public String ToString( int depth )
+  public String toString( int depth )
   {
     String code = "";
     for( int i = 0; i < depth; i++ )
@@ -34,7 +34,7 @@ public class ProcedureCallNode implements StatementNode
   
     if( this.params != null )
     {
-      code += "( " + params.ToString( 0 ) + " )";
+      code += "( " + params.toString( 0 ) + " )";
     }
   
     return code + ";\n";

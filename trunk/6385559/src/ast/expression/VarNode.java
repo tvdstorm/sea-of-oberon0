@@ -18,7 +18,7 @@ public class VarNode extends ExpressionNode
     this.select = select;
   }
   
-  public String ToString( int depth ) 
+  public String toString( int depth ) 
   {
     String code = "";
     if( this.varname != null )
@@ -28,7 +28,7 @@ public class VarNode extends ExpressionNode
     
     if( this.select != null )
     {
-      code += this.select.ToString( 0 );
+      code += this.select.toString( 0 );
     }
     return code;
   }

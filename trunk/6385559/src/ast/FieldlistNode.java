@@ -15,17 +15,17 @@ public class FieldlistNode implements ASTnode
     this.type = type;
   }
   
-  public String ToString( int depth ) 
+  public String toString( int depth ) 
   {
     String code = "";
     if( this.identlist != null )
     {
-      code += this.identlist.ToString( 0 ) + " : ";
+      code += this.identlist.toString( 0 ) + " : ";
     }
     
     if( this.type != null )
     {
-      code += this.type.ToString( 0 ) + "; ";
+      code += this.type.toString( 0 ) + "; ";
     } 
     return code;
   }

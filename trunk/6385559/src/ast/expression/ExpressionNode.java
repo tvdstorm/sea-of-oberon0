@@ -18,7 +18,7 @@ public class ExpressionNode implements ASTnode
     this.right = right;
   }
   
-  public String ToString( int depth )
+  public String toString( int depth )
   {
     return "";
   }

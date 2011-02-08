@@ -14,17 +14,17 @@ public class SelectorArrayNode implements ASTnode
     this.selector = selector;
   }
   
-  public String ToString( int depth ) 
+  public String toString( int depth ) 
   {
     String code = "";
     if( this.expression != null )
     {
-      code += "[" + this.expression.ToString( 0 ) + "]";
+      code += "[" + this.expression.toString( 0 ) + "]";
     }
     
     if( this.selector != null )
     {
-      code += this.selector.ToString( 0 );
+      code += this.selector.toString( 0 );
     }
     return code;
   }

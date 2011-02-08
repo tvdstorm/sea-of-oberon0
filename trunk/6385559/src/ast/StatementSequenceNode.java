@@ -11,17 +11,17 @@ public class StatementSequenceNode implements ASTnode {
     this.statementSequence = statementSequence;
   }
   
-  public String ToString( int depth )
+  public String toString( int depth )
   {
     String code = "";
     if( this.statement != null )
     {
-      code += this.statement.ToString( depth );
+      code += this.statement.toString( depth );
     }
     
     if( this.statementSequence != null )
     {
-      code += this.statementSequence.ToString( depth );
+      code += this.statementSequence.toString( depth );
     }
     return code;
   }

@@ -24,18 +24,18 @@ public class ModuleNode implements ASTnode
     this.statementSequence = statementSequence;
   }
 
-  public String ToString( int depth )
+  public String toString( int depth )
   {
     String code = "MODULE " + this.ModuleName + ";";
     if( this.declarations != null )
     {
-      code += this.declarations.ToString( depth+2 );
+      code += this.declarations.toString( depth+2 );
     }
   
     code += "BEGIN";
     if( this.statementSequence != null )
     {
-      code += this.statementSequence.ToString( depth+2 );
+      code += this.statementSequence.toString( depth+2 );
     }
   
     return code + "END " + this.ModuleName + ".";
