@@ -68,5 +68,12 @@ public abstract class BaseVisitor {
 		return null;
 	}
 
-	public void run(AssignmentNode node, Environment localEnv) { }
+	public Value eval(NotExpNode aThis, Environment localEnv) {
+		return null;
+	}
+
+	public void run(AssignmentNode node, Environment localEnv) { 
+		
+	}
+
 }

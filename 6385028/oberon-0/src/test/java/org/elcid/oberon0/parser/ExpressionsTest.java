@@ -5,6 +5,7 @@ import org.elcid.oberon0.ast.env.Environment;
 import org.elcid.oberon0.ast.ExpressionNode;
 import org.antlr.runtime.*;
 import org.elcid.oberon0.ast.values.Array;
+import org.elcid.oberon0.ast.values.Bool;
 import org.elcid.oberon0.ast.values.Int;
 import org.elcid.oberon0.ast.values.Record;
 
@@ -48,7 +49,10 @@ public class ExpressionsTest {
 		env.put("rec", rec);
 
 
-		Int result = (Int) expr.eval(new ExpressionVisitor(), env);
+		//Int result = (Int) expr.eval(new ExpressionVisitor(), env);
+		//System.out.println(result.getValue());
+
+		Bool result = (Bool) expr.eval(new ExpressionVisitor(), env);
 		System.out.println(result.getValue());
 	}
 }

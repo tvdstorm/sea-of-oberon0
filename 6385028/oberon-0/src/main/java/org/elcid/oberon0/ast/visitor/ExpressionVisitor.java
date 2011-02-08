@@ -119,4 +119,10 @@ public class ExpressionVisitor extends BaseVisitor {
 		}
 		return value;
 	}
+
+	@Override
+	public Value eval(NotExpNode node, Environment localEnv) {
+		Boolean value = ((Bool) node.getExpression().eval(this, localEnv)).getValue();
+		return new Bool(!value);
+	}
 }
