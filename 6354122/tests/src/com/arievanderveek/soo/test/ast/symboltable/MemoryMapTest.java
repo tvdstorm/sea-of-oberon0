@@ -8,8 +8,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.arievanderveek.soo.symboltable.MemoryAddress;
-import com.arievanderveek.soo.symboltable.MemoryMap;
+import com.arievanderveek.soo.runtime.MemoryAddress;
+import com.arievanderveek.soo.runtime.MemoryMap;
 
 /**
  * @author arieveek
@@ -40,11 +40,11 @@ public class MemoryMapTest {
 	 * The private methods must be executed in a predefined order, therefore they are not exposed.
 	 * 
 	 * Test method for:
-	 * 	- {@link com.arievanderveek.soo.symboltable.MemoryMap#getValue(com.arievanderveek.soo.symboltable.MemoryAddress)}.
-	 *  - {@link com.arievanderveek.soo.symboltable.MemoryMap#removeValue(com.arievanderveek.soo.symboltable.MemoryAddress)}
-	 *  - {@link com.arievanderveek.soo.symboltable.MemoryMap#updateValue(com.arievanderveek.soo.symboltable.MemoryAddress, java.lang.Integer)}.
-	 *  - {@link com.arievanderveek.soo.symboltable.MemoryMap#addValue(java.lang.Integer)}
-	 *  - {@link com.arievanderveek.soo.symboltable.MemoryMap#copyValueToNewAdress(MemoryAddress)}
+	 * 	- {@link com.arievanderveek.soo.runtime.MemoryMap#getValue(com.arievanderveek.soo.runtime.MemoryAddress)}.
+	 *  - {@link com.arievanderveek.soo.runtime.MemoryMap#removeValue(com.arievanderveek.soo.runtime.MemoryAddress)}
+	 *  - {@link com.arievanderveek.soo.runtime.MemoryMap#updateValue(com.arievanderveek.soo.runtime.MemoryAddress, java.lang.Integer)}.
+	 *  - {@link com.arievanderveek.soo.runtime.MemoryMap#addValue(java.lang.Integer)}
+	 *  - {@link com.arievanderveek.soo.runtime.MemoryMap#copyValueToNewAdress(MemoryAddress)}
 	 *  
 	 */
 	@Test
