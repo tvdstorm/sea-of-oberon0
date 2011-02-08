@@ -16,6 +16,11 @@ import org.elcid.oberon0.exceptions.ModuloZeroException;
 public class ExpressionVisitor extends BaseVisitor {
 
 	@Override
+	public Value eval(ValueExpNode node, Environment localEnv) {
+		return node.getValue();
+	}
+
+	@Override
 	public Value eval(PlusExpNode node, Environment localEnv) {
 		Int left = (Int) node.getLeftExp().eval(this, localEnv);
 		Int right = (Int) node.getRightExp().eval(this, localEnv);
