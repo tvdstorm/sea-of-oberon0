@@ -1,6 +1,7 @@
 package oberon0.ast.routines;
 
-import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import oberon0.ast.IASTNode;
 import oberon0.ast.variables.IReferable;
@@ -14,10 +15,10 @@ public interface ICallable extends IASTNode{
 	/*
 	 * to increase readability, use this instead of 'null'
 	 */
-	public final static ArrayList<IReferable> noActualParameters = null;
+	public final static List<IReferable> EMPTY_ACTUALPARAMETERS = Collections.emptyList();
 	
 	/*
 	 * call the routine
 	 */
-	public void call(Context context,  ArrayList<IReferable> actualParameters);
+	public void call(Context context,  List<IReferable> actualParameters);
 }

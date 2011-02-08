@@ -3,7 +3,7 @@ package oberon0.environment.builtinroutines;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
+import java.util.List;
 
 import oberon0.ast.routines.ICallable;
 import oberon0.ast.variables.IReferable;
@@ -21,7 +21,7 @@ public class Read implements ICallable{
 	/*
 	 * Reads a number from the console and returns it to the first reference in actual parameters
 	 */
-	public void call(Context context, ArrayList<IReferable> actualParameters) {
+	public void call(Context context, List<IReferable> actualParameters) {
 		//get the first parameter
 		IReferable actualParam = actualParameters.get(0);
 		//get the reference of the first paramter

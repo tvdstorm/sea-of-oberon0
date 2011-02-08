@@ -39,7 +39,7 @@ public class Interpreter {
 			e.printStackTrace();
 		} 
         //start interpreter by calling module
-		module.call(Context.noParent, ICallable.noActualParameters);
+		module.call(Context.noParent, ICallable.EMPTY_ACTUALPARAMETERS);
 		return module.getContextAfterCall();
 	}
 	

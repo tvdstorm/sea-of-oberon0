@@ -16,8 +16,6 @@ import oberon0.ast.statements.*;
 
 
 import org.antlr.runtime.*;
-import java.util.Stack;
-import java.util.List;
 import java.util.ArrayList;
 
 public class Oberon0Parser extends Parser {

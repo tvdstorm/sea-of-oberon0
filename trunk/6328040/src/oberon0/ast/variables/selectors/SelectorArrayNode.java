@@ -7,18 +7,17 @@ import oberon0.environment.IValue;
 import oberon0.environment.IntegerValue;
 import oberon0.environment.Reference;
 
-public class SelectorArrayNode implements ISelector{
+public class SelectorArrayNode implements ISelector {
 	private IEvaluable _selectorExpression;
-	
-	public SelectorArrayNode(IEvaluable selector){
+
+	public SelectorArrayNode(IEvaluable selector) {
 		_selectorExpression = selector;
 	}
-
 
 	@Override
 	public Reference refer(Context context, Reference previousRef) {
 		IValue selectorValue = _selectorExpression.eval(context);
 		int index = ((IntegerValue) selectorValue).getValue();
-		return ((ArrayValue)previousRef.getValue()).getReference(index);
+		return ((ArrayValue) previousRef.getValue()).getReference(index);
 	}
 }

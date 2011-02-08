@@ -1,6 +1,7 @@
 package oberon0.ast.routines.parameters;
 
-import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import oberon0.ast.expressions.IEvaluable;
 import oberon0.ast.variables.IReferable;
@@ -9,25 +10,20 @@ import oberon0.environment.Reference;
 
 public class FPRefVarNode extends BaseFormalParameterNode {
 	
-	public FPRefVarNode(ArrayList<String> names, IEvaluable type) {
+	public FPRefVarNode(List<String> names, IEvaluable type) {
 		super(names, type);
 	}
 
 	@Override
-	public void fillIn(Context context, ArrayList<IReferable> actualParams) {
-		ArrayList<String> names = new ArrayList<String>(_names);
-		//TODO typechecking unimplemented
-		while (names.size() > 0){
-			checkNonEmptyActualParameters(actualParams);
-			
-			IReferable currentActualParam = actualParams.get(0);
+	public void fillIn(Context context, Iterator<IReferable> actualParams) {
+		Iterator<String> fpNames = getFPNamesIter();
+		
+		while (fpNames.hasNext()){
+			String currentName = fpNames.next();
+			IReferable currentActualParam = getNextActualParameter(actualParams);
 			Reference currentAPReference = currentActualParam.getRef(context.getParent(), IReferable.noPreviousReference);
 			
-			String currentName = names.get(0);
 			context.declareReferenceVariable(currentName, currentAPReference);
-			
-			actualParams.remove(0);
-			names.remove(0);
 		}
 	}
 
