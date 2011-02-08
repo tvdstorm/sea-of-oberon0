@@ -27,7 +27,7 @@ public class AndExpNode extends BooleanExpNode {
 	}
 
 	@Override
-	public Boolean eval(BaseVisitor visitor, Environment localEnv) {
+	public Object eval(BaseVisitor visitor, Environment localEnv) {
 		return visitor.eval(this, localEnv);
 	}
 

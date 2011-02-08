@@ -1,7 +1,5 @@
 package org.elcid.oberon0.ast.values;
 
-import org.elcid.oberon0.ast.env.Environment;
-
 /**
  * Abstract representation of values in the Oberon-0 language.
  *
@@ -9,6 +7,6 @@ import org.elcid.oberon0.ast.env.Environment;
  */
 public abstract class Value {
 
-	public abstract Integer getValue(Environment localEnv);
-
+	public abstract Value applySelector(Object key);
+	
 }

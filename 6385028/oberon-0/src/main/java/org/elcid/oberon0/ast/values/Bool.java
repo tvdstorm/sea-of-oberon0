@@ -1,19 +1,18 @@
 package org.elcid.oberon0.ast.values;
 
 /**
- * Represents integers in the Oberon-0 language.
  *
  * @author Pieter Brandwijk
  */
-public class Int extends Value {
-	
-	private Integer value;
+public class Bool extends Value {
 
-	public Int(Integer value) {
+	private Boolean value;
+
+	public Bool(Boolean value) {
 		this.value = value;
 	}
 
-	public Integer getValue() {
+	public Boolean getValue() {
 		assert (value != null) : "Int value is null";
 		return value;
 	}

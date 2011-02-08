@@ -12,55 +12,59 @@ import org.elcid.oberon0.ast.values.*;
  */
 public abstract class BaseVisitor {
 
-	public Integer eval(ValueExpNode node, Environment localEnv) {
+	public Value eval(ValueExpNode node, Environment localEnv) {
 		return null;
 	}
 
-	public Integer eval(PlusExpNode node, Environment localEnv) {
+	public Value eval(PlusExpNode node, Environment localEnv) {
 		return null;
 	}
 
-	public Integer eval(MinusExpNode node, Environment localEnv) {
+	public Value eval(MinusExpNode node, Environment localEnv) {
 		return null;
 	}
 
-	public Integer eval(MultiplyExpNode node, Environment localEnv) {
+	public Value eval(MultiplyExpNode node, Environment localEnv) {
 		return null;
 	}
 
-	public Integer eval(DivideExpNode node, Environment localEnv) {
+	public Value eval(DivideExpNode node, Environment localEnv) {
 		return null;
 	}
 
-	public Integer eval(ModuloExpNode node, Environment localEnv) {
+	public Value eval(ModuloExpNode node, Environment localEnv) {
 		return null;
 	}
 
-	public Boolean eval(EqualsExpNode node, Environment localEnv) {
+	public Value eval(EqualsExpNode node, Environment localEnv) {
 		return null;
 	}
 
-	public Boolean eval(GreaterExpNode node, Environment localEnv) {
+	public Value eval(GreaterExpNode node, Environment localEnv) {
 		return null;
 	}
 
-	public Boolean eval(GreaterOrEqualsExpNode node, Environment localEnv) {
+	public Value eval(GreaterOrEqualsExpNode node, Environment localEnv) {
 		return null;
 	}
 
-	public Boolean eval(LesserExpNode node, Environment localEnv) {
+	public Value eval(LesserExpNode node, Environment localEnv) {
 		return null;
 	}
 
-	public Boolean eval(LesserOrEqualsExpNode node, Environment localEnv) {
+	public Value eval(LesserOrEqualsExpNode node, Environment localEnv) {
 		return null;
 	}
 
-	public Boolean eval(AndExpNode node, Environment localEnv) {
+	public Value eval(AndExpNode node, Environment localEnv) {
 		return null;
 	}
 
-	public Boolean eval(OrExpNode node, Environment localEnv) {
+	public Value eval(OrExpNode node, Environment localEnv) {
+		return null;
+	}
+
+	public Value eval(IdentSelectorNode node, Environment localEnv) {
 		return null;
 	}
 
