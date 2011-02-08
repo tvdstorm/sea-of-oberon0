@@ -16,6 +16,8 @@ import oberon.exceptions.VariableNotFoundInScopeException;
  */
 public class ProcedureHeading extends AbstractProcedure {
 	
+	private Scope newScope;
+
 	/**
 	 * Instantiates a new procedure heading.
 	 *
@@ -38,12 +40,23 @@ public class ProcedureHeading extends AbstractProcedure {
 		for (FormalParamSection section : getParamSections()) {
 			for (String name : section.getNames()) {						
 				final IExpression actualParam = localQueue.poll();
+				
 				actualParameterList.add(actualParam.copy(currentScope, name));
 			}
 		}
 		
-		Scope newScope = currentScope.createNewScope(actualParameterList, this);
+		//store the scope in a field for testing purposes
+		newScope = currentScope.createNewScope(actualParameterList, this);
 		
 		getBody().eval(newScope);
+	}
+	
+	/**
+	 * Gets the scope, used for testing purposes.
+	 *
+	 * @return the scope
+	 */
+	public Scope getScope(){
+		return newScope;
 	}
 }
