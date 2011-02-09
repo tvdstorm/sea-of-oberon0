@@ -43,7 +43,8 @@ public abstract class AbstractExpression implements IExpression {
 	 * @see oberon.IExpression#copy(java.lang.String)
 	 */
 	@Override
-	public IDataType copy(Scope currentScope, String newName) throws UnsupportedException, VariableNotFoundInScopeException
+	public IDataType copy(Scope currentScope, String newName, boolean performShallowCopy) 
+		throws UnsupportedException, VariableNotFoundInScopeException
 	{
 		assert(this instanceof MathematicalExpression ||
 				this instanceof IntegerExpression ||
@@ -56,7 +57,13 @@ public abstract class AbstractExpression implements IExpression {
 		}
 		else if (this instanceof IdentifierExpression){
 			final IdentifierExpression selectorExpression = ((IdentifierExpression)this);
-			resultType = selectorExpression.copy(currentScope, newName);
+			
+			if (performShallowCopy){
+				resultType = selectorExpression.performShallowCopy(currentScope, newName);
+			}
+			else {
+				resultType = selectorExpression.performDeepCopy(currentScope, newName);
+			}
 		}
 	
 		return resultType;

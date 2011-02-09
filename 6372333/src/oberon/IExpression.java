@@ -29,11 +29,13 @@ public interface IExpression {
 	/**
 	 * Copy.
 	 *
-	 * @param the new name of the copy
+	 * @param currentScope the current scope
+	 * @param newName the new name
+	 * @param isShallowCopy the is shallow copy
 	 * @return copy of the current instance
-	 * @throws UnsupportedException 
-	 * @throws VariableNotFoundInScopeException 
+	 * @throws UnsupportedException the unsupported exception
+	 * @throws VariableNotFoundInScopeException the variable not found in scope exception
 	 */
-	public abstract IDataType copy(Scope currentScope, String newName) throws UnsupportedException, VariableNotFoundInScopeException;
+	public abstract IDataType copy(Scope currentScope, String newName, boolean isShallowCopy) throws UnsupportedException, VariableNotFoundInScopeException;
 
 }
