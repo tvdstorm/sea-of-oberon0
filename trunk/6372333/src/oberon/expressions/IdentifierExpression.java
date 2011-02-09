@@ -26,8 +26,8 @@ public class IdentifierExpression extends AbstractExpression {
 	/* (non-Javadoc)
 	 * @see oberon.expressions.AbstractExpression#copy(java.lang.String)
 	 */
-	public IDataType copy(final Scope currentScope, final String newName) throws UnsupportedException, VariableNotFoundInScopeException {
-		return selector.getDataTypeValue(currentScope).performDeepCopy(newName);
+	public IDataType performShallowCopy(final Scope currentScope, final String newName) throws UnsupportedException, VariableNotFoundInScopeException {
+		return selector.getDataTypeValue(currentScope).performShallowCopy(newName);
 	}
 	
 	/* (non-Javadoc)
@@ -36,6 +36,17 @@ public class IdentifierExpression extends AbstractExpression {
 	@Override
 	public int evalAsInt(final Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException {
 		return selector.getValue(currentScope);
+	}
+
+	/**
+	 * Perform deep copy.
+	 *
+	 * @param currentScope the current scope
+	 * @param newName the new name
+	 * @return the data type
+	 */
+	public IDataType performDeepCopy(Scope currentScope, String newName) {
+		return selector.getDataTypeValue(currentScope).performDeepCopy(newName);
 	}
 
 }

@@ -41,7 +41,7 @@ public class ProcedureHeading extends AbstractProcedure {
 			for (String name : section.getNames()) {						
 				final IExpression actualParam = localQueue.poll();
 				
-				actualParameterList.add(actualParam.copy(currentScope, name));
+				actualParameterList.add(actualParam.copy(currentScope, name, section.shouldBeCalledByRef()));
 			}
 		}
 		
