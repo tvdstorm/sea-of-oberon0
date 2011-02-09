@@ -52,9 +52,15 @@ public interface Analysis extends Switch
     void caseARecordSelector(ARecordSelector node);
     void caseAIdentifierSelector(AIdentifierSelector node);
     void caseAArrayexpressionSelector(AArrayexpressionSelector node);
+    void caseAReadproc(AReadproc node);
+    void caseAWriteproc(AWriteproc node);
+    void caseAWritelnproc(AWritelnproc node);
     void caseAStatassStatement(AStatassStatement node);
-    void caseAStatprocStatement(AStatprocStatement node);
     void caseAStatifStatement(AStatifStatement node);
+    void caseAReadprocStatement(AReadprocStatement node);
+    void caseAWriteprocStatement(AWriteprocStatement node);
+    void caseAWritelnprocStatement(AWritelnprocStatement node);
+    void caseAStatprocStatement(AStatprocStatement node);
     void caseAStatwhileStatement(AStatwhileStatement node);
 
     void caseTDot(TDot node);
@@ -90,6 +96,9 @@ public interface Analysis extends Switch
     void caseTThentxt(TThentxt node);
     void caseTElsiftxt(TElsiftxt node);
     void caseTElsetxt(TElsetxt node);
+    void caseTReadtxt(TReadtxt node);
+    void caseTWritetxt(TWritetxt node);
+    void caseTWritelntxt(TWritelntxt node);
     void caseTProceduretxt(TProceduretxt node);
     void caseTSptxt(TSptxt node);
     void caseTAdd(TAdd node);

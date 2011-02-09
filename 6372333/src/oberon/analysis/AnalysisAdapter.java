@@ -269,17 +269,47 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
+    public void caseAReadproc(AReadproc node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAWriteproc(AWriteproc node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAWritelnproc(AWritelnproc node)
+    {
+        defaultCase(node);
+    }
+
     public void caseAStatassStatement(AStatassStatement node)
     {
         defaultCase(node);
     }
 
-    public void caseAStatprocStatement(AStatprocStatement node)
+    public void caseAStatifStatement(AStatifStatement node)
     {
         defaultCase(node);
     }
 
-    public void caseAStatifStatement(AStatifStatement node)
+    public void caseAReadprocStatement(AReadprocStatement node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAWriteprocStatement(AWriteprocStatement node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAWritelnprocStatement(AWritelnprocStatement node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAStatprocStatement(AStatprocStatement node)
     {
         defaultCase(node);
     }
@@ -450,6 +480,21 @@ public class AnalysisAdapter implements Analysis
     }
 
     public void caseTElsetxt(TElsetxt node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTReadtxt(TReadtxt node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTWritetxt(TWritetxt node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTWritelntxt(TWritelntxt node)
     {
         defaultCase(node);
     }

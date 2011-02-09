@@ -5,12 +5,13 @@ import java.util.Collections;
 import java.util.List;
 
 import oberon.IDataType;
+import oberon.IDeclaration;
 import oberon.IProcedure;
 
 /**
  * The Class Declaration, contains the declarations in the scope of a procedure.
  */
-public class Declaration {
+public class Declaration implements IDeclaration {
 	
 	/** The const and var declarations. */
 	private final List<IDataType> constAndVarDeclarations;

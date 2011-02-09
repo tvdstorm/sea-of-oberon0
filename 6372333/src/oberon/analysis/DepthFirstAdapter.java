@@ -1075,6 +1075,65 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outAArrayexpressionSelector(node);
     }
 
+    public void inAReadproc(AReadproc node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAReadproc(AReadproc node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAReadproc(AReadproc node)
+    {
+        inAReadproc(node);
+        if(node.getSelector() != null)
+        {
+            node.getSelector().apply(this);
+        }
+        outAReadproc(node);
+    }
+
+    public void inAWriteproc(AWriteproc node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAWriteproc(AWriteproc node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAWriteproc(AWriteproc node)
+    {
+        inAWriteproc(node);
+        if(node.getSelector() != null)
+        {
+            node.getSelector().apply(this);
+        }
+        outAWriteproc(node);
+    }
+
+    public void inAWritelnproc(AWritelnproc node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAWritelnproc(AWritelnproc node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAWritelnproc(AWritelnproc node)
+    {
+        inAWritelnproc(node);
+        outAWritelnproc(node);
+    }
+
     public void inAStatassStatement(AStatassStatement node)
     {
         defaultIn(node);
@@ -1096,27 +1155,6 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outAStatassStatement(node);
     }
 
-    public void inAStatprocStatement(AStatprocStatement node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAStatprocStatement(AStatprocStatement node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAStatprocStatement(AStatprocStatement node)
-    {
-        inAStatprocStatement(node);
-        if(node.getProcedurecall() != null)
-        {
-            node.getProcedurecall().apply(this);
-        }
-        outAStatprocStatement(node);
-    }
-
     public void inAStatifStatement(AStatifStatement node)
     {
         defaultIn(node);
@@ -1136,6 +1174,90 @@ public class DepthFirstAdapter extends AnalysisAdapter
             node.getIfstatement().apply(this);
         }
         outAStatifStatement(node);
+    }
+
+    public void inAReadprocStatement(AReadprocStatement node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAReadprocStatement(AReadprocStatement node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAReadprocStatement(AReadprocStatement node)
+    {
+        inAReadprocStatement(node);
+        if(node.getReadproc() != null)
+        {
+            node.getReadproc().apply(this);
+        }
+        outAReadprocStatement(node);
+    }
+
+    public void inAWriteprocStatement(AWriteprocStatement node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAWriteprocStatement(AWriteprocStatement node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAWriteprocStatement(AWriteprocStatement node)
+    {
+        inAWriteprocStatement(node);
+        if(node.getWriteproc() != null)
+        {
+            node.getWriteproc().apply(this);
+        }
+        outAWriteprocStatement(node);
+    }
+
+    public void inAWritelnprocStatement(AWritelnprocStatement node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAWritelnprocStatement(AWritelnprocStatement node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAWritelnprocStatement(AWritelnprocStatement node)
+    {
+        inAWritelnprocStatement(node);
+        if(node.getWritelnproc() != null)
+        {
+            node.getWritelnproc().apply(this);
+        }
+        outAWritelnprocStatement(node);
+    }
+
+    public void inAStatprocStatement(AStatprocStatement node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAStatprocStatement(AStatprocStatement node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAStatprocStatement(AStatprocStatement node)
+    {
+        inAStatprocStatement(node);
+        if(node.getProcedurecall() != null)
+        {
+            node.getProcedurecall().apply(this);
+        }
+        outAStatprocStatement(node);
     }
 
     public void inAStatwhileStatement(AStatwhileStatement node)

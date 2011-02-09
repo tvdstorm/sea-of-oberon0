@@ -5,8 +5,8 @@ import java.io.PushbackReader;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import oberon.convert.ModuleConverter;
 import oberon.exceptions.UnsupportedException;
-import oberon.interpret.ModuleInterpreter;
 import oberon.lexer.Lexer;
 import oberon.node.Start;
 import oberon.parser.Parser;
@@ -35,18 +35,18 @@ public class Main {
 			ast = parser.parse();
 		 
 			/* Get our Interpreter going. */ 
-			final ModuleInterpreter interpreter = new ModuleInterpreter();
-			ast.apply(interpreter);	
+			final ModuleConverter converter = new ModuleConverter();
+			ast.apply(converter);	
 			
 			Scope newScope = new Scope();
 			
-			ReadProcedure.initialize(newScope);
-			WriteCall.initialize(newScope);
-			WriteLnCall.initialize(newScope);
-			
-			final IProcedure mainProc = interpreter.buildInterpreterResult();
+			final IProcedure mainProc = converter.buildInterpreterResult();
 			final Queue<IExpression> paramList = new LinkedList<IExpression>();
 				 
+			for (IProcedure sysProc : ModuleConverter.getSystemProcedures()){
+				newScope.addSystemProcedure(sysProc);
+			}
+			
 			mainProc.call(newScope, paramList);
 		}			
 		catch (Exception e) {

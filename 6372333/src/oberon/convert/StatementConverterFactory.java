@@ -1,10 +1,13 @@
 package oberon.convert;
 
 import oberon.IStatement;
+import oberon.node.AReadprocStatement;
 import oberon.node.AStatassStatement;
 import oberon.node.AStatifStatement;
 import oberon.node.AStatprocStatement;
 import oberon.node.AStatwhileStatement;
+import oberon.node.AWritelnprocStatement;
+import oberon.node.AWriteprocStatement;
 import oberon.node.PStatement;
 
 /**
@@ -41,6 +44,15 @@ final class StatementConverterFactory {
 		}
 		else if (node instanceof AStatprocStatement) {
 			returnStatement = new StatprocStatementConverter();
+		}
+		else if (node instanceof AReadprocStatement) {
+			returnStatement = new ReadProcConverter();
+		}
+		else if (node instanceof AWriteprocStatement) {
+			returnStatement = new WriteProcConverter();
+		}
+		else if (node instanceof AWritelnprocStatement) {
+			returnStatement = new WriteLnProcConverter();
 		}
 		
 		return returnStatement;
