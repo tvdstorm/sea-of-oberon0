@@ -2,7 +2,7 @@ package oberon;
 
 import java.io.IOException;
 
-import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.ProcedureParamaterCountMismatchException;
 import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
@@ -14,9 +14,9 @@ public interface IStatement {
 	 * Evaluates the statement.
 	 *
 	 * @throws IOException When reading from the command line fails
-	 * @throws UnsupportedException 
+	 * @throws ProcedureParamaterCountMismatchException 
 	 * @throws VariableNotFoundInScopeException 
 	 */
-	public abstract void eval(Scope currentScope) throws IOException, UnsupportedException, VariableNotFoundInScopeException;
+	public abstract void eval(Scope currentScope) throws IOException;
 
 }

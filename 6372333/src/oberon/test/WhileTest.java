@@ -9,7 +9,7 @@ import oberon.IStatement;
 import oberon.Scope;
 import oberon.StatementSequence;
 import oberon.data.VariableDataType;
-import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.ProcedureParamaterCountMismatchException;
 import oberon.exceptions.VariableNotFoundInScopeException;
 import oberon.expressions.AddOperator;
 import oberon.expressions.SmallerThanOperator;
@@ -20,7 +20,7 @@ import org.junit.Test;
 public class WhileTest extends AbstractTest {
 	
 	@Test
-	public void test_case_WhileTestWithValidCondition() throws UnsupportedException, IOException, VariableNotFoundInScopeException
+	public void test_case_WhileTestWithValidCondition() throws ProcedureParamaterCountMismatchException, IOException, VariableNotFoundInScopeException
 	{
 		//Get the condition, "i <= 5"
 		IExpression condition = getNewComparisonExpression("i", 5, new SmallerThanOperator());
@@ -50,7 +50,7 @@ public class WhileTest extends AbstractTest {
 	}
 
 	@Test
-	public void test_case_WhileTestWithImmediatelyTrueCondition() throws UnsupportedException, IOException, VariableNotFoundInScopeException
+	public void test_case_WhileTestWithImmediatelyTrueCondition() throws ProcedureParamaterCountMismatchException, IOException, VariableNotFoundInScopeException
 	{
 		//Get the condition, "i <= 5"
 		IExpression condition = getNewComparisonExpression("trueConst", 5, new SmallerThanOperator());

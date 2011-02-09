@@ -7,7 +7,7 @@ import oberon.IExpression;
 import oberon.IStatement;
 import oberon.Scope;
 import oberon.data.VariableDataType;
-import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.ProcedureParamaterCountMismatchException;
 import oberon.exceptions.VariableNotFoundInScopeException;
 import oberon.expressions.AddOperator;
 import oberon.expressions.AndOperator;
@@ -29,49 +29,49 @@ import org.junit.Test;
 public class ComparisonExpressionTest extends AbstractTest {
 	
 	@Test
-	public void test_case_AmpExpressionTest() throws UnsupportedException, VariableNotFoundInScopeException, IOException{
+	public void test_case_AmpExpressionTest() throws ProcedureParamaterCountMismatchException, VariableNotFoundInScopeException, IOException{
 		Assert.assertEquals(1, testComparisonExpression(3, 3, new AndOperator()));
 		Assert.assertEquals(0, testComparisonExpression(2, 3, new AndOperator()));
 		Assert.assertEquals(1, testComparisonExpression(1, 1, new AndOperator()));
 	}
 	
 	@Test
-	public void test_case_ExeqExpressionTest() throws UnsupportedException, VariableNotFoundInScopeException, IOException{
+	public void test_case_ExeqExpressionTest() throws ProcedureParamaterCountMismatchException, VariableNotFoundInScopeException, IOException{
 		Assert.assertEquals(0, testComparisonExpression(1, 3, new EqualsOperator()));
 		Assert.assertEquals(0, testComparisonExpression(2, 3, new EqualsOperator()));
 		Assert.assertEquals(1, testComparisonExpression(3, 3, new EqualsOperator()));
 	}
 	
 	@Test
-	public void test_case_ExgeExpressionTest() throws UnsupportedException, VariableNotFoundInScopeException, IOException{
+	public void test_case_ExgeExpressionTest() throws ProcedureParamaterCountMismatchException, VariableNotFoundInScopeException, IOException{
 		Assert.assertEquals(0, testComparisonExpression(1, 3, new GreaterEqualsOperator()));
 		Assert.assertEquals(1, testComparisonExpression(3, 3, new GreaterEqualsOperator()));
 		Assert.assertEquals(1, testComparisonExpression(4, 3, new GreaterEqualsOperator()));
 	}
 	
 	@Test
-	public void test_case_ExgtExpressionTest() throws UnsupportedException, VariableNotFoundInScopeException, IOException{
+	public void test_case_ExgtExpressionTest() throws ProcedureParamaterCountMismatchException, VariableNotFoundInScopeException, IOException{
 		Assert.assertEquals(0, testComparisonExpression(1, 3, new GreaterThanOperator()));
 		Assert.assertEquals(0, testComparisonExpression(3, 3, new GreaterThanOperator()));
 		Assert.assertEquals(1, testComparisonExpression(4, 3, new GreaterThanOperator()));
 	}
 	
 	@Test
-	public void test_case_ExseExpressionTest() throws UnsupportedException, VariableNotFoundInScopeException, IOException{
+	public void test_case_ExseExpressionTest() throws ProcedureParamaterCountMismatchException, VariableNotFoundInScopeException, IOException{
 		Assert.assertEquals(1, testComparisonExpression(1, 3, new SmallerEqualsOperator()));
 		Assert.assertEquals(1, testComparisonExpression(3, 3, new SmallerEqualsOperator()));
 		Assert.assertEquals(0, testComparisonExpression(4, 3, new SmallerEqualsOperator()));
 	}
 	
 	@Test
-	public void test_case_ExstExpressionTest() throws UnsupportedException, VariableNotFoundInScopeException, IOException{
+	public void test_case_ExstExpressionTest() throws ProcedureParamaterCountMismatchException, VariableNotFoundInScopeException, IOException{
 		Assert.assertEquals(1, testComparisonExpression(1, 3, new SmallerThanOperator()));
 		Assert.assertEquals(0, testComparisonExpression(3, 3, new SmallerThanOperator()));
 		Assert.assertEquals(0, testComparisonExpression(4, 3, new SmallerThanOperator()));
 	}
 	
 	@Test
-	public void test_case_TilExpressionTest() throws UnsupportedException, VariableNotFoundInScopeException, IOException{
+	public void test_case_TilExpressionTest() throws ProcedureParamaterCountMismatchException, VariableNotFoundInScopeException, IOException{
 		Assert.assertEquals(1, testComparisonExpression(1, 3, new NotEqualsOperator()));
 		Assert.assertEquals(0, testComparisonExpression(3, 3, new NotEqualsOperator()));
 		Assert.assertEquals(1, testComparisonExpression(4, 3, new NotEqualsOperator()));
@@ -79,7 +79,7 @@ public class ComparisonExpressionTest extends AbstractTest {
 
 	private int testComparisonExpression(
 			int leftSide, int rightSide, IComparisonOperator expressionType)
-			throws UnsupportedException, VariableNotFoundInScopeException,
+			throws ProcedureParamaterCountMismatchException, VariableNotFoundInScopeException,
 			IOException {
 		IExpression expToTest = new ComparisonExpression(
 				new IntegerExpression(leftSide),
@@ -102,7 +102,7 @@ public class ComparisonExpressionTest extends AbstractTest {
 	}
 	
 	@Test
-	public void test_case_ComplexExpressionTest() throws UnsupportedException, VariableNotFoundInScopeException, IOException{
+	public void test_case_ComplexExpressionTest() throws ProcedureParamaterCountMismatchException, VariableNotFoundInScopeException, IOException{
 		//Tests the result of the expression (1 * 3) + 2 * 4
 		IExpression parenthesesContent = new MathematicalExpression(
 				new IntegerExpression(1),

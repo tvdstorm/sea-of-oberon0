@@ -3,7 +3,7 @@ package oberon.data;
 import oberon.IDataType;
 import oberon.IExpression;
 import oberon.Scope;
-import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.ProcedureParamaterCountMismatchException;
 import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
@@ -54,10 +54,10 @@ public class IntegerArrayDataType extends AbstractDataType {
 
 	/**
 	 * Initialize array.
-	 * @throws UnsupportedException 
+	 * @throws ProcedureParamaterCountMismatchException 
 	 * @throws VariableNotFoundInScopeException 
 	 */
-	public void initializeArray(Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException {
+	public void initializeArray(Scope currentScope) {
 		array = new int[lengthExpression.evalAsInt(currentScope)];			
 	}
 

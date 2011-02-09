@@ -2,8 +2,6 @@ package oberon.expressions;
 
 import oberon.IExpression;
 import oberon.Scope;
-import oberon.exceptions.UnsupportedException;
-import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
  * The Class ParenthesesExpression, expression between parentheses.
@@ -26,7 +24,7 @@ public class ParenthesesExpression extends AbstractExpression {
 	 * @see oberon.expressions.AbstractExpression#evalAsInt()
 	 */
 	@Override
-	public int evalAsInt(Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException {
+	public int evalAsInt(Scope currentScope) {
 		return _expression.evalAsInt(currentScope);
 	}
 

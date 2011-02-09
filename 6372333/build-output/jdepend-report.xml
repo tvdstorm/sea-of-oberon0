@@ -170,10 +170,10 @@
                 <ConcreteClasses>9</ConcreteClasses>
                 <AbstractClasses>2</AbstractClasses>
                 <Ca>3</Ca>
-                <Ce>2</Ce>
+                <Ce>1</Ce>
                 <A>0.18</A>
-                <I>0.4</I>
-                <D>0.42</D>
+                <I>0.25</I>
+                <D>0.57</D>
                 <V>1</V>
             </Stats>
 
@@ -218,7 +218,6 @@
 
             <DependsUpon>
                 <Package>oberon</Package>
-                <Package>oberon.exceptions</Package>
             </DependsUpon>
 
             <UsedBy>
@@ -230,10 +229,10 @@
 
         <Package name="oberon.exceptions">
             <Stats>
-                <TotalClasses>2</TotalClasses>
-                <ConcreteClasses>2</ConcreteClasses>
+                <TotalClasses>3</TotalClasses>
+                <ConcreteClasses>3</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
-                <Ca>5</Ca>
+                <Ca>1</Ca>
                 <Ce>0</Ce>
                 <A>0</A>
                 <I>0</I>
@@ -245,8 +244,11 @@
             </AbstractClasses>
 
             <ConcreteClasses>
-                <Class sourceFile="UnsupportedException.java">
-                    oberon.exceptions.UnsupportedException
+                <Class sourceFile="ProcedureNotFoundInScopeException.java">
+                    oberon.exceptions.ProcedureNotFoundInScopeException
+                </Class>
+                <Class sourceFile="ProcedureParamaterCountMismatchException.java">
+                    oberon.exceptions.ProcedureParamaterCountMismatchException
                 </Class>
                 <Class sourceFile="VariableNotFoundInScopeException.java">
                     oberon.exceptions.VariableNotFoundInScopeException
@@ -258,10 +260,6 @@
 
             <UsedBy>
                 <Package>oberon</Package>
-                <Package>oberon.data</Package>
-                <Package>oberon.expressions</Package>
-                <Package>oberon.procedures</Package>
-                <Package>oberon.statement</Package>
             </UsedBy>
         </Package>
 
@@ -271,10 +269,10 @@
                 <ConcreteClasses>17</ConcreteClasses>
                 <AbstractClasses>4</AbstractClasses>
                 <Ca>1</Ca>
-                <Ce>3</Ce>
+                <Ce>2</Ce>
                 <A>0.19</A>
-                <I>0.75</I>
-                <D>0.06</D>
+                <I>0.67</I>
+                <D>0.14</D>
                 <V>1</V>
             </Stats>
 
@@ -350,7 +348,6 @@
             <DependsUpon>
                 <Package>oberon</Package>
                 <Package>oberon.data</Package>
-                <Package>oberon.exceptions</Package>
             </DependsUpon>
 
             <UsedBy>
@@ -364,10 +361,10 @@
                 <ConcreteClasses>6</ConcreteClasses>
                 <AbstractClasses>1</AbstractClasses>
                 <Ca>1</Ca>
-                <Ce>2</Ce>
+                <Ce>1</Ce>
                 <A>0.14</A>
-                <I>0.67</I>
-                <D>0.19</D>
+                <I>0.5</I>
+                <D>0.36</D>
                 <V>1</V>
             </Stats>
 
@@ -400,7 +397,6 @@
 
             <DependsUpon>
                 <Package>oberon</Package>
-                <Package>oberon.exceptions</Package>
             </DependsUpon>
 
             <UsedBy>
@@ -414,10 +410,10 @@
                 <ConcreteClasses>7</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
                 <Ca>1</Ca>
-                <Ce>2</Ce>
+                <Ce>1</Ce>
                 <A>0</A>
-                <I>0.67</I>
-                <D>0.33</D>
+                <I>0.5</I>
+                <D>0.5</D>
                 <V>1</V>
             </Stats>
 
@@ -450,7 +446,6 @@
 
             <DependsUpon>
                 <Package>oberon</Package>
-                <Package>oberon.exceptions</Package>
             </DependsUpon>
 
             <UsedBy>

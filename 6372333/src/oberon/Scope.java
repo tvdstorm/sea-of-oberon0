@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import oberon.data.IntegerArrayDataType;
-import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.ProcedureNotFoundInScopeException;
+import oberon.exceptions.ProcedureParamaterCountMismatchException;
 import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
@@ -80,10 +81,10 @@ public class Scope {
 	 * Adds the new declaration.
 	 *
 	 * @param declaration the declaration
-	 * @throws UnsupportedException 
+	 * @throws ProcedureParamaterCountMismatchException 
 	 * @throws VariableNotFoundInScopeException 
 	 */
-	public void addNewDeclaration(final IDeclaration declaration) throws UnsupportedException, VariableNotFoundInScopeException
+	public void addNewDeclaration(final IDeclaration declaration) throws ProcedureParamaterCountMismatchException, VariableNotFoundInScopeException
 	{
 		for (IDataType actualParam : declaration.getVariables()){
 			variables.put(actualParam.getName(), actualParam);	
@@ -123,7 +124,7 @@ public class Scope {
 		}
 		
 		if (procedure == null) {
-			System.out.println("Procedure not found in scope: "+ name);
+			throw new ProcedureNotFoundInScopeException("Procedure not found in scope, name: " + name);
 		}
 		return procedure;
 	}
@@ -135,7 +136,7 @@ public class Scope {
 	 * @return the variable
 	 * @throws VariableNotFoundInScopeException 
 	 */
-	public IDataType getVariable(final String variableName) throws VariableNotFoundInScopeException {
+	public IDataType getVariable(final String variableName) {
 		if (variables.containsKey(variableName)){
 				return variables.get(variableName);
 		}
