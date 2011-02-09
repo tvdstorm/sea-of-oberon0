@@ -40,7 +40,7 @@ public class WithStatement extends Statement
 	{
 		assert(environment != null);
 		// Evaluate the selector
-		ITypeCheckType type = selector.typeCheck(environment);
+		ITypeCheckType type = selector.typeCheck(environment).getValue();
 		if (!(type instanceof TypeCheckRecordType))
 		{
 			throw new TypeMismatchException(type.toString(), "RECORD");
@@ -51,7 +51,7 @@ public class WithStatement extends Statement
 		// Register all members of the record in the new environment
 		for (String memberName : record.getMemberNames())
 		{
-			withEnvironment.registerVariableByReference(memberName, record.getMemberType(memberName, environment));
+			withEnvironment.registerVariableByReference(memberName, new TypeCheckReference(record.getMemberType(memberName, environment)));
 		}
 		// Run the body of the with block
 		body.typeCheck(withEnvironment);

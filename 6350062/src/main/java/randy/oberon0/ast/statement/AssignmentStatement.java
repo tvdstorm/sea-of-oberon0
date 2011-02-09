@@ -34,9 +34,11 @@ public class AssignmentStatement extends Statement
 	{
 		assert(environment != null);
 		// Evaluate the variable
-		ITypeCheckType var = variable.typeCheck(environment);
+		TypeCheckReference var = variable.typeCheck(environment);
 		assert(var != null);
 		// Evaluate the expression and see if we can assign the result as the value of the variable
-		var.mustBe(expression.typeCheck(environment));
+		ITypeCheckType expressionValue = expression.typeCheck(environment).getValue();
+		var.getValue().mustBe(expressionValue);
+		var.setValue(expressionValue);
 	}
 }

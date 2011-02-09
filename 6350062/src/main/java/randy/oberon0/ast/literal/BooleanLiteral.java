@@ -24,10 +24,10 @@ public class BooleanLiteral extends Expression
 		return new ByValue(value);
 	}
 	@Override
-	public ITypeCheckType typeCheck(TypeCheckEnvironment environment) throws RuntimeException
+	public ITypeCheckBindableValue typeCheck(TypeCheckEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Return the boolean value
-		return TypeCheckType.BOOLEAN;
+		return new TypeCheckByValue(TypeCheckType.BOOLEAN);
 	}
 }

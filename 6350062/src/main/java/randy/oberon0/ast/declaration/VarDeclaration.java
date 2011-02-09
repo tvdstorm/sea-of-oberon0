@@ -1,6 +1,7 @@
 package randy.oberon0.ast.declaration;
 
 import java.util.*;
+import randy.oberon0.ast.expression.ValueToReferenceConversion;
 import randy.oberon0.exception.*;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
@@ -37,7 +38,7 @@ public class VarDeclaration extends BodyDeclaration
 		{
 			assert(variableName.length() >= 1);
 			// Add the variable to the environment
-			newEnvironment.registerVariableByValue(variableName, newEnvironment.resolveType(typeName).instantiate(newEnvironment));
+			newEnvironment.registerVariableByReference(variableName, new Reference(newEnvironment.resolveType(typeName).instantiate(newEnvironment)));
 		}
 	}
 	@Override
@@ -49,7 +50,7 @@ public class VarDeclaration extends BodyDeclaration
 		{
 			assert(variableName.length() >= 1);
 			// Add the variable to the environment
-			newEnvironment.registerVariableByValue(variableName, newEnvironment.resolveType(typeName));
+			newEnvironment.registerVariableByReference(variableName, new TypeCheckReference(newEnvironment.resolveType(typeName)));
 		}
 	}
 	public void registerAsParameter(RuntimeEnvironment environment, Iterator<IBindableValue> parameterValues) throws RuntimeException // Use for registering parameters
@@ -84,7 +85,7 @@ public class VarDeclaration extends BodyDeclaration
 			}
 		}
 	}
-	public void typeCheckRegisterAsParameter(TypeCheckEnvironment environment, Iterator<ITypeCheckType> parameterValues) throws RuntimeException // Use for registering parameters
+	public void typeCheckRegisterAsParameter(TypeCheckEnvironment environment, Iterator<ITypeCheckBindableValue> parameterValues) throws RuntimeException // Use for registering parameters
 	{
 		assert(environment != null);
 		assert(parameterValues != null);
@@ -97,7 +98,7 @@ public class VarDeclaration extends BodyDeclaration
 				throw new IncorrectNumberOfArgumentsException();
 			}
 			// Fetch a parameter value from the parameter values
-			final ITypeCheckType parameterValue = parameterValues.next();
+			final ITypeCheckBindableValue parameterValue = parameterValues.next();
 			// Resolve the variable type and check if they are compatible
 			if (!parameterValue.equals(environment.resolveType(typeName)))
 			{
@@ -107,12 +108,16 @@ public class VarDeclaration extends BodyDeclaration
 			if (isReference)
 			{
 				// Yes, make a reference to the variable and add it to the environment
-				environment.registerVariableByReference(variableName, parameterValue.referenceType());
+				if (!(parameterValue instanceof TypeCheckReference))
+				{
+					throw new ValueToReferenceConversion();
+				}
+				environment.registerVariableByReference(variableName, (TypeCheckReference)parameterValue);
 			}
 			else
 			{	
 				// No, create a copy of the parameter and register it in the environment
-				environment.registerVariableByValue(variableName, parameterValue.byValueType());
+				environment.registerVariableByValue(variableName, parameterValue.getValue());
 			}
 		}
 	}

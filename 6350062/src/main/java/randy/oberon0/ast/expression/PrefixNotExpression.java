@@ -33,15 +33,15 @@ public class PrefixNotExpression extends PrefixExpression
 		}
 	}
 	@Override
-	public ITypeCheckType typeCheck(TypeCheckEnvironment environment) throws RuntimeException
+	public ITypeCheckBindableValue typeCheck(TypeCheckEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Evaluate the right hand side expression
-		final ITypeCheckType valRh = rightHandExpression.typeCheck(environment);
+		final ITypeCheckType valRh = rightHandExpression.typeCheck(environment).getValue();
 		// Check if we support the operator
 		if (valRh.equals(TypeCheckType.BOOLEAN))
 		{
-			return TypeCheckType.BOOLEAN;
+			return new TypeCheckByValue(TypeCheckType.BOOLEAN);
 		}
 		else
 		{

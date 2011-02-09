@@ -54,8 +54,8 @@ public class Program
 		TypeCheckEnvironment globalEnvironment = new TypeCheckEnvironment();
 		
 		// Registrate buildin primitive types
-		globalEnvironment.registerType(Type.INTEGER.getTypeText(), new TypeCheckType(Type.INTEGER.getTypeText(), false));
-		globalEnvironment.registerType(Type.BOOLEAN.getTypeText(), new TypeCheckType(Type.BOOLEAN.getTypeText(), false));
+		globalEnvironment.registerType(Type.INTEGER.getTypeText(), new TypeCheckType(Type.INTEGER.getTypeText()));
+		globalEnvironment.registerType(Type.BOOLEAN.getTypeText(), new TypeCheckType(Type.BOOLEAN.getTypeText()));
 		
 		// Registrate buildin functions
 		buildinFunctions.typeCheckRegister(globalEnvironment);
@@ -66,7 +66,7 @@ public class Program
 		// Registrate the modules type declarations in the modole environment
 		module.typeCheckRegisterTypeDeclarations(moduleEnvironment);
 		// Invoke the module
-		module.typeCheckInvoke(moduleEnvironment, (new LinkedList<ITypeCheckType>()).iterator());
+		module.typeCheckInvoke(moduleEnvironment, (new LinkedList<ITypeCheckBindableValue>()).iterator());
 		// Refresh the module environment and invoke the body
 		moduleEnvironment = new TypeCheckEnvironment(globalEnvironment);
 		module.typeCheckBody(moduleEnvironment);
