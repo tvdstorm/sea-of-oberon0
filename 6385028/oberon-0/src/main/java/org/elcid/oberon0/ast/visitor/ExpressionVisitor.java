@@ -138,6 +138,7 @@ public class ExpressionVisitor extends BaseVisitor {
 
 	@Override
 	public Value eval(NegativeExpNode node, Environment localEnv) {
-		return new Int(-1 * ((Int) node.getExpression().eval(this, localEnv)).getValue());
+		Integer exprValue = ((Int) node.getExpression().eval(this, localEnv)).getValue();
+		return new Int(NegativeExpNode.NEGATIVE_FACTOR * exprValue);
 	}
 }
