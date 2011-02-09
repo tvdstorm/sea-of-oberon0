@@ -4,8 +4,7 @@ import java.util.*;
 import randy.oberon0.ast.datastructures.IfExpressionAndBody;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.environment.*;
-import randy.oberon0.interpreter.typecheck.TypeCheckEnvironment;
-import randy.oberon0.interpreter.typecheck.TypeCheckType;
+import randy.oberon0.interpreter.typecheck.environment.*;
 import randy.oberon0.value.Boolean;
 
 public class IfStatement extends Statement

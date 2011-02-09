@@ -1,4 +1,4 @@
-package randy.oberon0.interpreter.typecheck;
+package randy.oberon0.interpreter.typecheck.environment;
 
 import java.util.HashMap;
 import java.util.Map;
