@@ -10,7 +10,7 @@ import oberon.IStatement;
 import oberon.Scope;
 import oberon.StatementSequence;
 import oberon.data.VariableDataType;
-import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.ProcedureParamaterCountMismatchException;
 import oberon.exceptions.VariableNotFoundInScopeException;
 import oberon.procedures.Declaration;
 import oberon.procedures.FormalParamSection;
@@ -23,7 +23,7 @@ import org.junit.Test;
 public class VariableManagerTest extends AbstractTest {
 	
 	@Test
-	public void test_case_VariableManagerAddVariableToScopeAndRetrieve() throws UnsupportedException, VariableNotFoundInScopeException{
+	public void test_case_VariableManagerAddVariableToScopeAndRetrieve() throws ProcedureParamaterCountMismatchException, VariableNotFoundInScopeException{
 		VariableDataType trueConst = new VariableDataType("trueConst", 6, true);
 		
 		Scope newScope = new Scope();
@@ -37,7 +37,7 @@ public class VariableManagerTest extends AbstractTest {
 	
 	@Test(expected=VariableNotFoundInScopeException.class)
 	public void test_case_VariableManagerAddVariableToScopeAndRetrieveAfterEnteringNewScope() 
-	throws UnsupportedException, VariableNotFoundInScopeException{
+	throws ProcedureParamaterCountMismatchException, VariableNotFoundInScopeException{
 		VariableDataType trueConst = new VariableDataType("trueConst", 6, true);
 		
 		Scope oldScope = new Scope();

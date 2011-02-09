@@ -6,8 +6,6 @@ import oberon.IExpression;
 import oberon.IStatement;
 import oberon.Scope;
 import oberon.StatementSequence;
-import oberon.exceptions.UnsupportedException;
-import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
  * The Class WhileStatement, contains a while statement.
@@ -35,7 +33,7 @@ public class WhileStatement implements IStatement {
 	 * @see oberon.IStatement#eval()
 	 */
 	@Override
-	public void eval(Scope currentScope) throws IOException, UnsupportedException, VariableNotFoundInScopeException {
+	public void eval(Scope currentScope) throws IOException {
 		while (condition.evalAsBoolean(currentScope)){
 			body.eval(currentScope);
 		}

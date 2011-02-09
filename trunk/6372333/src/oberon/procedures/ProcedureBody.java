@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import oberon.Scope;
 import oberon.StatementSequence;
-import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.ProcedureParamaterCountMismatchException;
 import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
@@ -33,10 +33,10 @@ public class ProcedureBody {
 	 * Evaluates the body of the procedure.
 	 *
 	 * @throws IOException throws when an exception occurs when reading from the console
-	 * @throws UnsupportedException 
+	 * @throws ProcedureParamaterCountMismatchException 
 	 * @throws VariableNotFoundInScopeException 
 	 */
-	public void eval(final Scope currentScope) throws IOException, UnsupportedException, VariableNotFoundInScopeException {
+	public void eval(final Scope currentScope) throws IOException {
 		currentScope.addNewDeclaration(variableDeclaration);
 		
 		body.eval(currentScope);

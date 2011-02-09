@@ -1,9 +1,9 @@
 package oberon;
 
 import java.io.IOException;
-import java.util.Queue;
+import java.util.List;
 
-import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.ProcedureParamaterCountMismatchException;
 import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
@@ -23,9 +23,9 @@ public interface IProcedure {
 	 *
 	 * @param localQueue Queue with the actual parameters
 	 * @throws IOException When reading from the command line fails.
-	 * @throws UnsupportedException 
+	 * @throws ProcedureParamaterCountMismatchException 
 	 * @throws VariableNotFoundInScopeException 
 	 */
-	public abstract void call(Scope currentScope, Queue<IExpression> localQueue) throws IOException, UnsupportedException, VariableNotFoundInScopeException;
+	public abstract void call(Scope currentScope, List<IExpression> localQueue) throws IOException;
 
 }

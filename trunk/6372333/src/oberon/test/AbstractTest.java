@@ -11,7 +11,7 @@ import oberon.Scope;
 import oberon.StatementSequence;
 import oberon.data.VariableDataType;
 import oberon.data.VariableIdentifier;
-import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.ProcedureParamaterCountMismatchException;
 import oberon.exceptions.VariableNotFoundInScopeException;
 import oberon.expressions.ComparisonExpression;
 import oberon.expressions.IComparisonOperator;
@@ -30,7 +30,7 @@ public abstract class AbstractTest {
 	private Declaration declaration;
 	private final ArrayList<IDataType> variables = new ArrayList<IDataType>();
     
-	protected void loadDeclaration(Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException {
+	protected void loadDeclaration(Scope currentScope) throws ProcedureParamaterCountMismatchException, VariableNotFoundInScopeException {
 		declaration = new Declaration(variables, new ArrayList<IProcedure>());
 		currentScope.addNewDeclaration(declaration);
 	}

@@ -2,11 +2,11 @@ package oberon;
 
 import java.io.FileReader;
 import java.io.PushbackReader;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.ArrayList;
+import java.util.List;
 
 import oberon.convert.ModuleConverter;
-import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.ProcedureParamaterCountMismatchException;
 import oberon.lexer.Lexer;
 import oberon.node.Start;
 import oberon.parser.Parser;
@@ -20,9 +20,9 @@ public class Main {
     * The main method.
     *
     * @param the args supplied from the command line
- * @throws UnsupportedException 
+ * @throws ProcedureParamaterCountMismatchException 
     */
-   public static void main(final String[] args) throws UnsupportedException { 
+   public static void main(final String[] args) { 
       if (args.length > 0) { 
 		/* Form our AST */ 
 		Lexer lexer = null;
@@ -41,7 +41,7 @@ public class Main {
 			Scope newScope = new Scope();
 			
 			final IProcedure mainProc = converter.buildInterpreterResult();
-			final Queue<IExpression> paramList = new LinkedList<IExpression>();
+			final List<IExpression> paramList = new ArrayList<IExpression>();
 				 
 			for (IProcedure sysProc : ModuleConverter.getSystemProcedures()){
 				newScope.addSystemProcedure(sysProc);

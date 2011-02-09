@@ -3,7 +3,7 @@ package oberon.data;
 import oberon.IDataType;
 import oberon.IIdentifier;
 import oberon.Scope;
-import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.ProcedureParamaterCountMismatchException;
 import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
@@ -33,10 +33,10 @@ public class RecordIndexerIdentifier extends AbstractIdentifier {
 	 * Gets the data type as record data type.
 	 *
 	 * @return the data type as record data type
-	 * @throws UnsupportedException 
+	 * @throws ProcedureParamaterCountMismatchException 
 	 * @throws VariableNotFoundInScopeException 
 	 */
-	private RecordDataType getDataTypeAsRecordDataType(Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException {
+	private RecordDataType getDataTypeAsRecordDataType(Scope currentScope) {
 		final IDataType type = selector.getDataTypeValue(currentScope);
 		
 		//type should always be a recorddatatype
@@ -50,7 +50,7 @@ public class RecordIndexerIdentifier extends AbstractIdentifier {
 	 * @see oberon.data.AbstractIdentifier#getValue()
 	 */
 	@Override
-	public int getValue(Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException {
+	public int getValue(Scope currentScope) {
 		final RecordDataType record = getDataTypeAsRecordDataType(currentScope);
 		return record.getValueAtIndex(index);
 	}
@@ -59,7 +59,7 @@ public class RecordIndexerIdentifier extends AbstractIdentifier {
 	 * @see oberon.data.AbstractIdentifier#getDataTypeValue()
 	 */
 	@Override
-	public IDataType getDataTypeValue(Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException {
+	public IDataType getDataTypeValue(Scope currentScope) {
 		return new RecordIndexerDataType(getDataTypeAsRecordDataType(currentScope), index);
 	}
 }

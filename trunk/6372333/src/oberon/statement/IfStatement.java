@@ -8,7 +8,7 @@ import oberon.IExpression;
 import oberon.IStatement;
 import oberon.Scope;
 import oberon.StatementSequence;
-import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.ProcedureParamaterCountMismatchException;
 import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
@@ -49,7 +49,7 @@ public class IfStatement implements IStatement {
 	 * @see oberon.IStatement#eval()
 	 */
 	@Override
-	public void eval(Scope currentScope) throws IOException, UnsupportedException, VariableNotFoundInScopeException {
+	public void eval(Scope currentScope) throws IOException {
 		if (conditionIsTrue(currentScope)) {
 			evalStatements(currentScope);
 			return;
@@ -69,10 +69,10 @@ public class IfStatement implements IStatement {
 	 * Evaluates the statements.
 	 *
 	 * @throws IOException throws when an exception occurs when reading from the console
-	 * @throws UnsupportedException 
+	 * @throws ProcedureParamaterCountMismatchException 
 	 * @throws VariableNotFoundInScopeException 
 	 */
-	protected void evalStatements(final Scope currentScope) throws IOException, UnsupportedException, VariableNotFoundInScopeException {
+	protected void evalStatements(final Scope currentScope) throws IOException {
 		ifBody.eval(currentScope);
 	}
 
@@ -80,10 +80,10 @@ public class IfStatement implements IStatement {
 	 * Condition is true.
 	 *
 	 * @return true if the condition is true
-	 * @throws UnsupportedException 
+	 * @throws ProcedureParamaterCountMismatchException 
 	 * @throws VariableNotFoundInScopeException 
 	 */
-	protected Boolean conditionIsTrue(Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException {
+	protected Boolean conditionIsTrue(Scope currentScope) {
 		return ifCondition.evalAsBoolean(currentScope);
 	}
 

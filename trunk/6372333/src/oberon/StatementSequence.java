@@ -3,7 +3,7 @@ package oberon;
 import java.io.IOException;
 import java.util.List;
 
-import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.ProcedureParamaterCountMismatchException;
 import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
@@ -28,10 +28,10 @@ public class StatementSequence{
 	 * @param currentScope scope the current execution is in
 	 *
 	 * @throws IOException When reading from the command line fails
-	 * @throws UnsupportedException 
+	 * @throws ProcedureParamaterCountMismatchException 
 	 * @throws VariableNotFoundInScopeException 
 	 */
-	public void eval(Scope currentScope) throws IOException, UnsupportedException, VariableNotFoundInScopeException {
+	public void eval(Scope currentScope) throws IOException{
 		if (body != null) {
 			for(IStatement statement : body) {
 				statement.eval(currentScope);

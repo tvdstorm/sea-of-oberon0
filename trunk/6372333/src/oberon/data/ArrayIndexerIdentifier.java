@@ -1,7 +1,7 @@
 package oberon.data;
 
 import oberon.*;
-import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.ProcedureParamaterCountMismatchException;
 import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
@@ -32,10 +32,10 @@ public class ArrayIndexerIdentifier extends AbstractIdentifier {
 	 * @param currentScope the scope current execution is in
 	 *
 	 * @return the data type as array type
-	 * @throws UnsupportedException 
+	 * @throws ProcedureParamaterCountMismatchException 
 	 * @throws VariableNotFoundInScopeException 
 	 */
-	private IntegerArrayDataType getDataTypeAsArrayType(Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException {
+	private IntegerArrayDataType getDataTypeAsArrayType(Scope currentScope) {
 		final IDataType type = selector.getDataTypeValue(currentScope);
 		
 		//type should always be an array
@@ -48,7 +48,7 @@ public class ArrayIndexerIdentifier extends AbstractIdentifier {
 	 * @see oberon.data.AbstractIdentifier#getValue()
 	 */
 	@Override
-	public int getValue(Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException {
+	public int getValue(Scope currentScope) {
 		final IntegerArrayDataType array = getDataTypeAsArrayType(currentScope);
 		return array.getValueAtIndex(indexExpression.evalAsInt(currentScope));
 	}
@@ -57,7 +57,7 @@ public class ArrayIndexerIdentifier extends AbstractIdentifier {
 	 * @see oberon.data.AbstractIdentifier#getDataTypeValue()
 	 */
 	@Override
-	public IDataType getDataTypeValue(Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException {
+	public IDataType getDataTypeValue(Scope currentScope) {
 		return new IntegerArrayIndexerDataType(getDataTypeAsArrayType(currentScope), indexExpression.evalAsInt(currentScope));
 	}
 

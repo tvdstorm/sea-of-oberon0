@@ -2,8 +2,6 @@ package oberon.data;
 
 import oberon.IDataType;
 import oberon.Scope;
-import oberon.exceptions.UnsupportedException;
-import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
  * The Class VariableIdentifier, a pointer to a variable value.
@@ -26,7 +24,7 @@ public class VariableIdentifier extends AbstractIdentifier {
 	 * @see oberon.data.AbstractIdentifier#getValue()
 	 */
 	@Override
-	public int getValue(Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException {
+	public int getValue(Scope currentScope) {
 		final IDataType datatype = currentScope.getVariable(name);
 		return datatype.getValue(currentScope);
 	}
@@ -35,7 +33,7 @@ public class VariableIdentifier extends AbstractIdentifier {
 	 * @see oberon.data.AbstractIdentifier#getDataTypeValue()
 	 */
 	@Override
-	public IDataType getDataTypeValue(Scope currentScope) throws VariableNotFoundInScopeException {
+	public IDataType getDataTypeValue(Scope currentScope) {
 		return currentScope.getVariable(name);
 	}
 

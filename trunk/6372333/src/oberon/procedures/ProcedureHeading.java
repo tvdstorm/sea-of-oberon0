@@ -2,14 +2,12 @@ package oberon.procedures;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Queue;
 
 import oberon.IDataType;
 import oberon.IExpression;
 import oberon.Scope;
-import oberon.exceptions.UnsupportedException;
-import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
  * The Class ProcedureHeading, contains a concrete procedure.
@@ -34,12 +32,18 @@ public class ProcedureHeading extends AbstractProcedure {
 	 * @see oberon.procedures.AbstractProcedure#call(java.util.Queue)
 	 */
 	@Override
-	public void call(final Scope currentScope, final Queue<IExpression> localQueue) throws IOException, UnsupportedException, VariableNotFoundInScopeException {
+	public void call(final Scope currentScope, final List<IExpression> localQueue) throws IOException {
 		final List<IDataType> actualParameterList = new ArrayList<IDataType>();
+		Iterator<IExpression> actualParamIterator = localQueue.iterator();
 		
 		for (FormalParamSection section : getParamSections()) {
-			for (String name : section.getNames()) {						
-				final IExpression actualParam = localQueue.poll();
+			for (String name : section.getNames()) {		
+				
+				if (actualParameterList.isEmpty()){
+					//todo: throw exception te weinig formal params
+				}
+				
+				final IExpression actualParam = actualParamIterator.next();
 				
 				actualParameterList.add(actualParam.copy(currentScope, name, section.shouldBeCalledByRef()));
 			}

@@ -8,8 +8,6 @@ import oberon.IDataType;
 import oberon.IIdentifier;
 import oberon.IStatement;
 import oberon.Scope;
-import oberon.exceptions.UnsupportedException;
-import oberon.exceptions.VariableNotFoundInScopeException;
 
 public class ReadProcStatement implements IStatement {
 
@@ -20,8 +18,7 @@ public class ReadProcStatement implements IStatement {
 	}
 	
 	@Override
-	public void eval(Scope currentScope) throws IOException,
-			UnsupportedException, VariableNotFoundInScopeException {
+	public void eval(Scope currentScope) throws IOException {
 		IDataType dataTypeValue = identifier.getDataTypeValue(currentScope);
 		dataTypeValue.setValue(readInputFromConsole());
 	}

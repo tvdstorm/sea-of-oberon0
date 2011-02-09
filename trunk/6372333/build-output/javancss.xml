@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-02-09</date>
-  <time>21:16:45</time>
+  <time>21:41:30</time>
   <packages>
     <package>
       <name>oberon</name>
       <classes>9</classes>
       <functions>26</functions>
-      <ncss>135</ncss>
+      <ncss>136</ncss>
       <javadocs>34</javadocs>
-      <javadoc_lines>180</javadoc_lines>
+      <javadoc_lines>182</javadoc_lines>
       <single_comment_lines>0</single_comment_lines>
       <multi_comment_lines>11</multi_comment_lines>
     </package>
@@ -27,7 +27,7 @@
       <name>oberon.data</name>
       <classes>11</classes>
       <functions>48</functions>
-      <ncss>202</ncss>
+      <ncss>194</ncss>
       <javadocs>32</javadocs>
       <javadoc_lines>167</javadoc_lines>
       <single_comment_lines>3</single_comment_lines>
@@ -35,21 +35,21 @@
     </package>
     <package>
       <name>oberon.exceptions</name>
-      <classes>2</classes>
-      <functions>2</functions>
-      <ncss>10</ncss>
+      <classes>3</classes>
+      <functions>3</functions>
+      <ncss>15</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>0</single_comment_lines>
-      <multi_comment_lines>6</multi_comment_lines>
+      <multi_comment_lines>9</multi_comment_lines>
     </package>
     <package>
       <name>oberon.expressions</name>
       <classes>21</classes>
-      <functions>46</functions>
-      <ncss>165</ncss>
-      <javadocs>22</javadocs>
-      <javadoc_lines>101</javadoc_lines>
+      <functions>47</functions>
+      <ncss>164</ncss>
+      <javadocs>23</javadocs>
+      <javadoc_lines>108</javadoc_lines>
       <single_comment_lines>1</single_comment_lines>
       <multi_comment_lines>33</multi_comment_lines>
     </package>
@@ -57,17 +57,17 @@
       <name>oberon.procedures</name>
       <classes>7</classes>
       <functions>19</functions>
-      <ncss>115</ncss>
+      <ncss>113</ncss>
       <javadocs>20</javadocs>
       <javadoc_lines>100</javadoc_lines>
-      <single_comment_lines>1</single_comment_lines>
+      <single_comment_lines>2</single_comment_lines>
       <multi_comment_lines>27</multi_comment_lines>
     </package>
     <package>
       <name>oberon.statement</name>
       <classes>7</classes>
       <functions>16</functions>
-      <ncss>136</ncss>
+      <ncss>120</ncss>
       <javadocs>12</javadocs>
       <javadoc_lines>61</javadoc_lines>
       <single_comment_lines>0</single_comment_lines>
@@ -84,20 +84,20 @@
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <total>
-      <classes>85</classes>
-      <functions>261</functions>
-      <ncss>1661</ncss>
-      <javadocs>157</javadocs>
-      <javadoc_lines>786</javadoc_lines>
-      <single_comment_lines>30</single_comment_lines>
-      <multi_comment_lines>369</multi_comment_lines>
+      <classes>86</classes>
+      <functions>263</functions>
+      <ncss>1640</ncss>
+      <javadocs>158</javadocs>
+      <javadoc_lines>795</javadoc_lines>
+      <single_comment_lines>31</single_comment_lines>
+      <multi_comment_lines>372</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>8.00</td><td>85.00</td><td>261.00</td><td>1,661.00</td><td>157.00</td><td>Project</td></tr>
-      <tr><td></td><td>10.63</td><td>32.63</td><td>207.63</td><td>19.63</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.07</td><td>19.54</td><td>1.85</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>6.36</td><td>0.60</td><td>Function</td></tr>
+      <tr><td>8.00</td><td>86.00</td><td>263.00</td><td>1,640.00</td><td>158.00</td><td>Project</td></tr>
+      <tr><td></td><td>10.75</td><td>32.88</td><td>205.00</td><td>19.75</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.06</td><td>19.07</td><td>1.84</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>6.24</td><td>0.60</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -404,7 +404,14 @@
       <javadocs>2</javadocs>
     </object>
     <object>
-      <name>oberon.exceptions.UnsupportedException</name>
+      <name>oberon.exceptions.ProcedureNotFoundInScopeException</name>
+      <ncss>4</ncss>
+      <functions>1</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon.exceptions.ProcedureParamaterCountMismatchException</name>
       <ncss>4</ncss>
       <functions>1</functions>
       <classes>0</classes>
@@ -419,7 +426,7 @@
     </object>
     <object>
       <name>oberon.expressions.AbstractExpression</name>
-      <ncss>19</ncss>
+      <ncss>22</ncss>
       <functions>4</functions>
       <classes>0</classes>
       <javadocs>2</javadocs>
@@ -496,10 +503,10 @@
     </object>
     <object>
       <name>oberon.expressions.IdentifierExpression</name>
-      <ncss>8</ncss>
-      <functions>3</functions>
+      <ncss>10</ncss>
+      <functions>4</functions>
       <classes>0</classes>
-      <javadocs>2</javadocs>
+      <javadocs>3</javadocs>
     </object>
     <object>
       <name>oberon.expressions.IntegerExpression</name>
@@ -601,7 +608,7 @@
     </object>
     <object>
       <name>oberon.procedures.ProcedureHeading</name>
-      <ncss>14</ncss>
+      <ncss>16</ncss>
       <functions>3</functions>
       <classes>0</classes>
       <javadocs>3</javadocs>
@@ -629,7 +636,7 @@
     </object>
     <object>
       <name>oberon.statement.ProcedurecallStatement</name>
-      <ncss>11</ncss>
+      <ncss>9</ncss>
       <functions>2</functions>
       <classes>0</classes>
       <javadocs>2</javadocs>
@@ -698,12 +705,12 @@
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>12.74</ncss>
-      <functions>3.07</functions>
+      <ncss>12.70</ncss>
+      <functions>3.06</functions>
       <classes>0.00</classes>
-      <javadocs>1.85</javadocs>
+      <javadocs>1.84</javadocs>
     </averages>
-    <ncss>1,661.00</ncss>
+    <ncss>1,640.00</ncss>
   </objects>
 
   <functions>
@@ -762,7 +769,7 @@
       <javadocs>1</javadocs>
     </function>
     <function>
-      <name>oberon.IExpression.copy(Scope,String)</name>
+      <name>oberon.IExpression.copy(Scope,String,boolean)</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
       <javadocs>1</javadocs>
@@ -842,7 +849,7 @@
     <function>
       <name>oberon.Scope.getProcedure(String)</name>
       <ncss>9</ncss>
-      <ccn>4</ccn>
+      <ccn>5</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
@@ -1620,7 +1627,13 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon.exceptions.UnsupportedException.UnsupportedException(String)</name>
+      <name>oberon.exceptions.ProcedureNotFoundInScopeException.ProcedureNotFoundInScopeException(String)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.exceptions.ProcedureParamaterCountMismatchException.ProcedureParamaterCountMismatchException(String)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -1650,9 +1663,9 @@
       <javadocs>1</javadocs>
     </function>
     <function>
-      <name>oberon.expressions.AbstractExpression.copy(Scope,String)</name>
-      <ncss>10</ncss>
-      <ccn>6</ccn>
+      <name>oberon.expressions.AbstractExpression.copy(Scope,String,boolean)</name>
+      <ncss>13</ncss>
+      <ccn>7</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -1788,7 +1801,7 @@
       <javadocs>1</javadocs>
     </function>
     <function>
-      <name>oberon.expressions.IdentifierExpression.copy(Scope,String)</name>
+      <name>oberon.expressions.IdentifierExpression.performShallowCopy(Scope,String)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -1798,6 +1811,12 @@
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.expressions.IdentifierExpression.performDeepCopy(Scope,String)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
     </function>
     <function>
       <name>oberon.expressions.IntegerExpression.IntegerExpression(int)</name>
@@ -1999,8 +2018,8 @@
     </function>
     <function>
       <name>oberon.procedures.ProcedureHeading.call(Scope,IExpression)</name>
-      <ncss>8</ncss>
-      <ccn>3</ccn>
+      <ncss>10</ncss>
+      <ccn>4</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -2065,7 +2084,7 @@
     </function>
     <function>
       <name>oberon.statement.ProcedurecallStatement.eval(Scope)</name>
-      <ncss>5</ncss>
+      <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -2275,9 +2294,9 @@
     </function>
     <function_averages>
       <ncss>3.48</ncss>
-      <ccn>1.28</ccn>
+      <ccn>1.29</ccn>
       <javadocs>0.37</javadocs>
     </function_averages>
-    <ncss>1,661.00</ncss>
+    <ncss>1,640.00</ncss>
   </functions>
 </javancss>

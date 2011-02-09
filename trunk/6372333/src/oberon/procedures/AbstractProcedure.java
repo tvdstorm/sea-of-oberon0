@@ -2,12 +2,11 @@ package oberon.procedures;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Queue;
 
 import oberon.IExpression;
 import oberon.IProcedure;
 import oberon.Scope;
-import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.ProcedureParamaterCountMismatchException;
 import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
@@ -68,5 +67,5 @@ public abstract class AbstractProcedure implements IProcedure {
 	 * @see oberon.IProcedure#call(java.util.Queue)
 	 */
 	@Override
-	public abstract void call(Scope currentScope, Queue<IExpression> localQueue) throws IOException, UnsupportedException, VariableNotFoundInScopeException;
+	public abstract void call(Scope currentScope, List<IExpression> localQueue) throws IOException;
 }

@@ -1,14 +1,14 @@
 package oberon.exceptions;
 
 
-public class UnsupportedException extends RuntimeException {
+public class ProcedureParamaterCountMismatchException extends RuntimeException {
 
 	  /**
 	 * 
 	 */
 	private static final long serialVersionUID = -2312655639156225193L;
 
-	public UnsupportedException(final String message){
+	public ProcedureParamaterCountMismatchException(final String message){
 	    super(message);
 	  }
 }

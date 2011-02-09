@@ -1,6 +1,6 @@
 package oberon;
 
-import oberon.exceptions.UnsupportedException;
+import oberon.exceptions.ProcedureParamaterCountMismatchException;
 import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
@@ -12,10 +12,10 @@ public interface IDataType {
 	 * Gets the value.
 	 *
 	 * @return the value
-	 * @throws UnsupportedException 
+	 * @throws ProcedureParamaterCountMismatchException 
 	 * @throws VariableNotFoundInScopeException 
 	 */
-	public abstract int getValue(Scope currentScope) throws UnsupportedException, VariableNotFoundInScopeException;
+	public abstract int getValue(Scope currentScope);
 
 	/**
 	 * Copy.
