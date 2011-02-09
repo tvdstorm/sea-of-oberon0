@@ -1,7 +1,7 @@
 package randy.oberon0.interpreter.buildinfunctions;
 
 import java.util.Iterator;
-import randy.oberon0.ast.IInvokableFunction;
+import randy.oberon0.interpreter.runtime.IInvokableFunction;
 import randy.oberon0.interpreter.runtime.environment.IBindableValue;
 import randy.oberon0.exception.IncorrectNumberOfArgumentsException;
 import randy.oberon0.exception.RuntimeException;

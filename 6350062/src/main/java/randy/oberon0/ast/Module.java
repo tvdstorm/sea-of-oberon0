@@ -3,6 +3,7 @@ package randy.oberon0.ast;
 import java.util.*;
 import randy.oberon0.ast.declaration.*;
 import randy.oberon0.ast.statement.Statement;
+import randy.oberon0.interpreter.runtime.IInvokableFunction;
 import randy.oberon0.exception.IncorrectNumberOfArgumentsException;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.environment.*;

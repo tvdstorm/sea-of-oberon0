@@ -1,7 +1,7 @@
 package randy.oberon0.ast.statement;
 
 import java.util.*;
-import randy.oberon0.ast.IInvokableFunction;
+import randy.oberon0.interpreter.runtime.IInvokableFunction;
 import randy.oberon0.ast.expression.Expression;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.environment.*;
