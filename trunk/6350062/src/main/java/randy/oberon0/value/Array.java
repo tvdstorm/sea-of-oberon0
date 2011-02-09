@@ -63,7 +63,7 @@ public class Array extends Value
 			{
 				ret.append(",");
 			}
-			ret.append(val.getValue().toString());
+			ret.append(val.toString());
 		}
 		ret.append("]");
 		return ret.toString();

@@ -63,7 +63,7 @@ public class Record extends Value
 			{
 				ret.append(",");
 			}
-			ret.append(name + "=" + members.get(name).getValue().toString());
+			ret.append(name + "=" + members.get(name).toString());
 		}
 		ret.append("]");
 		return ret.toString();
