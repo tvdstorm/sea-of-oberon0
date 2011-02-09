@@ -20,6 +20,10 @@ public class Program
 		module = null;
 		buildinFunctions = new BuildinFunctions();
 	}
+	public void loadProgram(String filename) throws Exception
+	{
+		loadProgram(filename, new BuildinFunctions());
+	}
 	public void loadProgram(String filename, IBuildinFunctions _buildinFunctions) throws Exception
 	{
 		buildinFunctions = _buildinFunctions;
