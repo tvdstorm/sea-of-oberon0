@@ -48,13 +48,14 @@ public class TestReadFunction implements IInvokableFunction
 		// Leeg
 	}
 	@Override
-	public void typeCheckInvoke(TypeCheckEnvironment environment, Iterator<ITypeCheckType> parameterValues) throws RuntimeException
+	public void typeCheckInvoke(TypeCheckEnvironment environment, Iterator<ITypeCheckBindableValue> parameterValues) throws RuntimeException
 	{
 		/// Accept one parameter
 		if (!parameterValues.hasNext())
 		{
 			throw new IncorrectNumberOfArgumentsException();
 		}
+		// TODO: read functies moeten controleren of het een reference is of niet
 		// Accept only an integer
 		parameterValues.next().equals(TypeCheckType.INTEGER);
 		// No parameters should be left

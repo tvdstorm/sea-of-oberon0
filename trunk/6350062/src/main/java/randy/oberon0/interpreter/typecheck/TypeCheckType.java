@@ -5,16 +5,14 @@ import randy.oberon0.value.Type;
 
 public class TypeCheckType implements ITypeCheckType
 {
-	public static final TypeCheckType BOOLEAN = new TypeCheckType(Type.BOOLEAN.getTypeText(), false);
-	public static final TypeCheckType INTEGER = new TypeCheckType(Type.INTEGER.getTypeText(), false);
+	public static final TypeCheckType BOOLEAN = new TypeCheckType(Type.BOOLEAN.getTypeText());
+	public static final TypeCheckType INTEGER = new TypeCheckType(Type.INTEGER.getTypeText());
 	
 	private final String type;
-	private final boolean bReference;
 	
-	public TypeCheckType(String _type, boolean _bReference)
+	public TypeCheckType(String _type)
 	{
 		type = _type;
-		bReference = _bReference;
 	}
 	@Override
 	public boolean equals(Object obj)
@@ -26,18 +24,9 @@ public class TypeCheckType implements ITypeCheckType
 		TypeCheckType other = (TypeCheckType)obj;
 		return type.equals(other.type); // TODO:  && bReference == other.bReference;
 	}
-	public ITypeCheckType referenceType()
-	{
-		return this; // TODO: return new TypeCheckType(type, true);
-	}
-	public ITypeCheckType byValueType()
-	{
-		return this; // TODO: return new TypeCheckType(type, false);
-	}
 	@Override
 	public void mustBe(ITypeCheckType other) throws TypeMismatchException
 	{
-		// TODO: oplossen met references
 		if (!equals(other))
 		{
 			throw new TypeMismatchException(toString(), other.toString());

@@ -34,16 +34,16 @@ public class InfixSubtractionExpression extends InfixExpression
 		}
 	}
 	@Override
-	public ITypeCheckType typeCheck(TypeCheckEnvironment environment) throws RuntimeException
+	public ITypeCheckBindableValue typeCheck(TypeCheckEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Evaluate the left and right hand side expressions
-		final ITypeCheckType valRh = rightHandExpression.typeCheck(environment);
-		final ITypeCheckType valLh = leftHandExpression.typeCheck(environment);
+		final ITypeCheckType valRh = rightHandExpression.typeCheck(environment).getValue();
+		final ITypeCheckType valLh = leftHandExpression.typeCheck(environment).getValue();
 		// Check if we support the operator
 		if (valLh.equals(TypeCheckType.INTEGER) && valRh.equals(TypeCheckType.INTEGER))
 		{
-			return TypeCheckType.INTEGER;
+			return new TypeCheckByValue(TypeCheckType.INTEGER);
 		}
 		else
 		{

@@ -24,10 +24,10 @@ public class IntegerLiteral extends Expression
 		return new ByValue(value);
 	}
 	@Override
-	public ITypeCheckType typeCheck(TypeCheckEnvironment environment) throws RuntimeException
+	public ITypeCheckBindableValue typeCheck(TypeCheckEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Return the integer value
-		return TypeCheckType.INTEGER;
+		return new TypeCheckByValue(TypeCheckType.INTEGER);
 	}
 }

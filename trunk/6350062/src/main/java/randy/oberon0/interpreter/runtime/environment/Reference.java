@@ -14,6 +14,7 @@ public class Reference implements IBindableValue
 	}
 	public void setValue(Value _value) throws ConstAssignmentException
 	{
+		assert(_value != null);
 		value = _value;
 	}
 	public Value getValue()

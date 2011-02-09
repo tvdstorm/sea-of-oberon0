@@ -47,10 +47,10 @@ public class ProcedureCall extends Statement
 	{
 		assert(environment != null);
 		// Evaluate all the parameters and add them to a queue
-		List<ITypeCheckType> parameters = new LinkedList<ITypeCheckType>();
+		List<ITypeCheckBindableValue> parameters = new LinkedList<ITypeCheckBindableValue>();
 		for (Expression parameter : parameterExpressions)
 		{
-			ITypeCheckType v = parameter.typeCheck(environment);
+			ITypeCheckBindableValue v = parameter.typeCheck(environment);
 			parameters.add(v);
 		}
 		// Resolve the function name to a function

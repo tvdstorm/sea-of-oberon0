@@ -12,7 +12,7 @@ public interface IInvokableFunction
 	public abstract void invoke(RuntimeEnvironment environment, Iterator<IBindableValue> parameterValues) throws RuntimeException;
 	public abstract void registerTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException;
 	
-	public abstract void typeCheckInvoke(TypeCheckEnvironment environment, Iterator<ITypeCheckType> parameterValues) throws RuntimeException;
+	public abstract void typeCheckInvoke(TypeCheckEnvironment environment, Iterator<ITypeCheckBindableValue> parameterValues) throws RuntimeException;
 	public abstract void typeCheckRegisterTypeDeclarations(TypeCheckEnvironment newEnvironment) throws RuntimeException;
 	public abstract void typeCheckBody(TypeCheckEnvironment newEnvironment) throws RuntimeException;
 }

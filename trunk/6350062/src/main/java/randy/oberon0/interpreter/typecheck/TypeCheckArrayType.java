@@ -21,16 +21,6 @@ public class TypeCheckArrayType implements ITypeCheckType
 		return innerType.equals(other.innerType);
 	}
 	@Override
-	public ITypeCheckType referenceType()
-	{
-		return this; // TODO: implement
-	}
-	@Override
-	public ITypeCheckType byValueType()
-	{
-		return this; // TODO: implement
-	}
-	@Override
 	public void mustBe(ITypeCheckType other) throws TypeMismatchException
 	{
 		if (!equals(other))

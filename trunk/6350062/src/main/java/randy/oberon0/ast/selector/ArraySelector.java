@@ -33,11 +33,11 @@ public class ArraySelector extends Selector
 		return array.getIndexValue(index.getIntValue());
 	}
 	@Override
-	public ITypeCheckType typeCheck(TypeCheckEnvironment environment) throws RuntimeException
+	public TypeCheckReference typeCheck(TypeCheckEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Evaluate the selector and convert it to an array
-		final ITypeCheckType type = selector.typeCheck(environment);
+		final ITypeCheckType type = selector.typeCheck(environment).getValue();
 		if (!(type instanceof TypeCheckArrayType))
 		{
 			throw new TypeMismatchException(type.toString(), "ARRAY");
@@ -46,6 +46,6 @@ public class ArraySelector extends Selector
 		// Evaluate the array index and convert it to an integer
 		arrayIndex.typeCheck(environment).mustBe(TypeCheckType.INTEGER);
 		// Return the inner type of the array
-		return array.getInnerType();
+		return new TypeCheckReference(array.getInnerType());
 	}
 }

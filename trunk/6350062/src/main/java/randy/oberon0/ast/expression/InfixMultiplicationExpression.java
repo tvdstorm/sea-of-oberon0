@@ -4,9 +4,7 @@ import randy.oberon0.exception.OperatorTypeUndefinedException;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
 import randy.oberon0.interpreter.runtime.environment.*;
-import randy.oberon0.interpreter.typecheck.ITypeCheckType;
-import randy.oberon0.interpreter.typecheck.TypeCheckEnvironment;
-import randy.oberon0.interpreter.typecheck.TypeCheckType;
+import randy.oberon0.interpreter.typecheck.*;
 import randy.oberon0.value.Value;
 import randy.oberon0.value.Integer;
 
@@ -35,16 +33,16 @@ public class InfixMultiplicationExpression extends InfixExpression
 		}
 	}
 	@Override
-	public ITypeCheckType typeCheck(TypeCheckEnvironment environment) throws RuntimeException
+	public ITypeCheckBindableValue typeCheck(TypeCheckEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Evaluate the left and right hand side expressions
-		final ITypeCheckType valRh = rightHandExpression.typeCheck(environment);
-		final ITypeCheckType valLh = leftHandExpression.typeCheck(environment);
+		final ITypeCheckType valRh = rightHandExpression.typeCheck(environment).getValue();
+		final ITypeCheckType valLh = leftHandExpression.typeCheck(environment).getValue();
 		// Check if we support the operator
 		if (valLh.equals(TypeCheckType.INTEGER) && valRh.equals(TypeCheckType.INTEGER))
 		{
-			return TypeCheckType.INTEGER;
+			return new TypeCheckByValue(TypeCheckType.INTEGER);
 		}
 		else
 		{

@@ -57,29 +57,25 @@ public class TypeCheckEnvironment
 	 **************************************************************************/
 	public void registerVariableByValue(String variableName, ITypeCheckType valueType) throws DuplicateVariableException
 	{
-		registerVariable(variableName, valueType); // TODO: .byValueType());
+		registerVariableByReference(variableName, new TypeCheckReference(valueType));
 	}
-	public void registerVariableByReference(String variableName, ITypeCheckType reference) throws DuplicateVariableException
-	{
-		registerVariable(variableName, reference); // TODO: .referenceType());
-	}
-	private void registerVariable(String variableName, ITypeCheckType type) throws DuplicateVariableException
+	public void registerVariableByReference(String variableName, TypeCheckReference reference) throws DuplicateVariableException
 	{
 		assert(variableName != null);
 		assert(variableName.length() > 0);
-		assert(type != null);
+		assert(reference != null);
 		// Check if the variable has already been declared in the current scope
 		if (bindings.containsKey(variableName))
 		{
 			throw new DuplicateVariableException(variableName);
 		}
 		// Add the variable to the current scope
-		bindings.put(variableName, type.referenceType());
+		bindings.put(variableName, reference);
 	}
 	public void registerConstant(String constantName) throws DuplicateVariableException
 	{
 		// Package the value as a constant and add it as a variable
-		registerVariableByReference(constantName, new TypeCheckType("CONST", false));
+		registerVariableByReference(constantName, new TypeCheckConstant(TypeCheckType.INTEGER));
 	}
 	/**************************************************************************
 	 * Function functions                                                     *

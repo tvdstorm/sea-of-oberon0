@@ -30,17 +30,17 @@ public class DotSelector extends Selector
 		return record.getMemberValue(recordMemberName);
 	}
 	@Override
-	public ITypeCheckType typeCheck(TypeCheckEnvironment environment) throws RuntimeException
+	public TypeCheckReference typeCheck(TypeCheckEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Evaluate the selector and convert it to a record
-		final ITypeCheckType type = selector.typeCheck(environment);
+		final ITypeCheckType type = selector.typeCheck(environment).getValue();
 		if (!(type instanceof TypeCheckRecordType))
 		{
 			throw new TypeMismatchException(type.toString(), "RECORD");
 		}
 		final TypeCheckRecordType record = (TypeCheckRecordType)type;
 		// Evaluate the member and return it
-		return record.getMemberType(recordMemberName, environment);
+		return new TypeCheckReference(record.getMemberType(recordMemberName, environment));
 	}
 }
