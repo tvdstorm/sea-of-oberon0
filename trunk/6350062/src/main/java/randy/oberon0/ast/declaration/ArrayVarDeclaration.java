@@ -167,9 +167,9 @@ public class ArrayVarDeclaration extends VarDeclaration
 				throw new IncorrectNumberOfArgumentsException();
 			}
 			// Fetch a parameter value from the parameter values
-			ITypeCheckType parameterValue = parameterValues.next().getValue();
+			ITypeCheckBindableValue parameterValue = parameterValues.next();
 			// Check if the parameter is an array
-			if (!(parameterValue instanceof TypeCheckArrayType))
+			if (!(parameterValue.getValue() instanceof TypeCheckArrayType))
 			{
 				throw new TypeMismatchException(parameterValue.toString(), "ARRAY");
 			}
@@ -179,9 +179,9 @@ public class ArrayVarDeclaration extends VarDeclaration
 				if (!bFirst)
 				{
 					// Grab the next nesting
-					parameterValue = ((TypeCheckArrayType)parameterValue).getInnerType();
+					parameterValue = new TypeCheckReference(((TypeCheckArrayType)parameterValue.getValue()).getInnerType());
 					// Check if the next nesting is an array
-					if (!(parameterValue instanceof TypeCheckArrayType))
+					if (!(parameterValue.getValue() instanceof TypeCheckArrayType))
 					{
 						throw new TypeMismatchException(parameterValue.toString(), "ARRAY");
 					}
@@ -189,7 +189,7 @@ public class ArrayVarDeclaration extends VarDeclaration
 				bFirst = false;
 			}
 			// The test array next nesting shouldn't be an array anymore, or else the nesting doesn't match
-			if (((TypeCheckArrayType)parameterValue).getInnerType() instanceof TypeCheckArrayType)
+			if (((TypeCheckArrayType)parameterValue.getValue()).getInnerType() instanceof TypeCheckArrayType)
 			{
 				throw new TypeMismatchException(((TypeCheckArrayType)parameterValue).getInnerType().toString(), "NOT AN ARRAY");
 			}
@@ -206,7 +206,7 @@ public class ArrayVarDeclaration extends VarDeclaration
 			else
 			{
 				// No, create a copy of the array and register it in the environment
-				environment.registerVariableByValue(variableName, parameterValue);
+				environment.registerVariableByValue(variableName, parameterValue.getValue());
 			}
 		}
 	}
