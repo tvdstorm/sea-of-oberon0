@@ -4,7 +4,7 @@ import java.util.*;
 import randy.oberon0.ast.IInvokableFunction;
 import randy.oberon0.ast.expression.Expression;
 import randy.oberon0.exception.RuntimeException;
-import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
+import randy.oberon0.interpreter.runtime.environment.*;
 import randy.oberon0.interpreter.runtime.environment.Closure;
 import randy.oberon0.interpreter.runtime.environment.IBindableValue;
 import randy.oberon0.interpreter.typecheck.*;

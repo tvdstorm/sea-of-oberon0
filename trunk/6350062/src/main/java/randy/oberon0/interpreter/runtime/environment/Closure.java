@@ -1,7 +1,6 @@
 package randy.oberon0.interpreter.runtime.environment;
 
 import randy.oberon0.ast.IInvokableFunction;
-import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
 
 public class Closure implements IBindable
 {

@@ -1,4 +1,4 @@
-package randy.oberon0.interpreter.runtime;
+package randy.oberon0.interpreter.runtime.environment;
 
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.exception.UnknownTypeException;

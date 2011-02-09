@@ -6,7 +6,7 @@ import randy.oberon0.ast.IInvokableFunction;
 import randy.oberon0.interpreter.runtime.environment.IBindableValue;
 import randy.oberon0.exception.*;
 import randy.oberon0.exception.RuntimeException;
-import randy.oberon0.interpreter.runtime.*;
+import randy.oberon0.interpreter.runtime.environment.*;
 import randy.oberon0.interpreter.typecheck.*;
 import randy.oberon0.value.*;
 
