@@ -1,6 +1,7 @@
-package randy.oberon0.ast;
+package randy.oberon0.ast.module;
 
 import java.util.*;
+import randy.oberon0.ast.ASTNode;
 import randy.oberon0.ast.declaration.*;
 import randy.oberon0.ast.statement.Statement;
 import randy.oberon0.interpreter.runtime.IInvokableFunction;
