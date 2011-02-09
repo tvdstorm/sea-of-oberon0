@@ -3,7 +3,7 @@ package randy.oberon0.ast;
 import java.util.Iterator;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.environment.*;
-import randy.oberon0.interpreter.typecheck.*;
+import randy.oberon0.interpreter.typecheck.environment.*;
 
 public interface IInvokableFunction
 {

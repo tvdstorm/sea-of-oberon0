@@ -4,7 +4,7 @@ import randy.oberon0.ast.selector.Selector;
 import randy.oberon0.exception.TypeMismatchException;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.environment.*;
-import randy.oberon0.interpreter.typecheck.*;
+import randy.oberon0.interpreter.typecheck.environment.*;
 import randy.oberon0.value.*;
 
 public class WithStatement extends Statement

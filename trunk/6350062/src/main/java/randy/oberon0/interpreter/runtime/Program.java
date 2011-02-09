@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import randy.oberon0.interpreter.antlr.Oberon0ASTTreeGenerator;
 import randy.oberon0.interpreter.buildinfunctions.*;
 import randy.oberon0.interpreter.runtime.environment.*;
-import randy.oberon0.interpreter.typecheck.*;
+import randy.oberon0.interpreter.typecheck.environment.*;
 import randy.oberon0.value.Type;
 import randy.oberon0.ast.*;
 import randy.oberon0.exception.RuntimeException;

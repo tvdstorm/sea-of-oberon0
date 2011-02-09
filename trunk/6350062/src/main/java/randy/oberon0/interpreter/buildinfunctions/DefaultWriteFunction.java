@@ -6,7 +6,7 @@ import randy.oberon0.interpreter.runtime.environment.IBindableValue;
 import randy.oberon0.exception.IncorrectNumberOfArgumentsException;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.environment.*;
-import randy.oberon0.interpreter.typecheck.*;
+import randy.oberon0.interpreter.typecheck.environment.*;
 import randy.oberon0.value.Integer;
 
 public class DefaultWriteFunction implements IInvokableFunction

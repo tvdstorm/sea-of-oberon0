@@ -4,7 +4,7 @@ import randy.oberon0.exception.DivideByZeroException;
 import randy.oberon0.exception.OperatorTypeUndefinedException;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.environment.*;
-import randy.oberon0.interpreter.typecheck.*;
+import randy.oberon0.interpreter.typecheck.environment.*;
 import randy.oberon0.value.Value;
 import randy.oberon0.value.Integer;
 

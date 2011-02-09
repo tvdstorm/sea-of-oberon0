@@ -3,7 +3,7 @@ package randy.oberon0.ast.expression;
 import randy.oberon0.exception.OperatorTypeUndefinedException;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.environment.*;
-import randy.oberon0.interpreter.typecheck.*;
+import randy.oberon0.interpreter.typecheck.environment.*;
 import randy.oberon0.value.Value;
 import randy.oberon0.value.Integer;
 import randy.oberon0.value.Boolean;

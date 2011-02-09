@@ -3,7 +3,7 @@ package randy.oberon0.ast.declaration;
 import randy.oberon0.ast.expression.Expression;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.environment.*;
-import randy.oberon0.interpreter.typecheck.TypeCheckEnvironment;
+import randy.oberon0.interpreter.typecheck.environment.TypeCheckEnvironment;
 
 public class ConstDeclaration extends BodyDeclaration
 {

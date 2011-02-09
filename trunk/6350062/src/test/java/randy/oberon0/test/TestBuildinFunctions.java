@@ -5,7 +5,7 @@ import org.junit.Ignore;
 import randy.oberon0.exception.DuplicateFunctionException;
 import randy.oberon0.interpreter.buildinfunctions.*;
 import randy.oberon0.interpreter.runtime.environment.*;
-import randy.oberon0.interpreter.typecheck.TypeCheckEnvironment;
+import randy.oberon0.interpreter.typecheck.environment.TypeCheckEnvironment;
 
 @Ignore
 public class TestBuildinFunctions implements IBuildinFunctions

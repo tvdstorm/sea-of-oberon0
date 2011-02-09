@@ -4,7 +4,7 @@ import randy.oberon0.ast.expression.Expression;
 import randy.oberon0.ast.selector.Selector;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.environment.*;
-import randy.oberon0.interpreter.typecheck.*;
+import randy.oberon0.interpreter.typecheck.environment.*;
 
 public class AssignmentStatement extends Statement
 {
