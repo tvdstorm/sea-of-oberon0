@@ -1,8 +1,10 @@
 package randy.oberon0.ast.statement;
 
 import randy.oberon0.ast.selector.Selector;
+import randy.oberon0.exception.TypeMismatchException;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
+import randy.oberon0.interpreter.typecheck.*;
 import randy.oberon0.value.*;
 
 public class WithStatement extends Statement
@@ -34,17 +36,22 @@ public class WithStatement extends Statement
 		body.run(withEnvironment);
 	}
 	@Override
-	public void typeCheck(RuntimeEnvironment environment) throws RuntimeException
+	public void typeCheck(TypeCheckEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Evaluate the selector
-		Record selectorValue = selector.typeCheck(environment).castToRecord();
-		// Create a new environment to use in the with block
-		RuntimeEnvironment withEnvironment = new RuntimeEnvironment(environment);
-		// Register all members of the record in the new environment
-		for (String memberName : selectorValue.getMemberNames())
+		ITypeCheckType type = selector.typeCheck(environment);
+		if (!(type instanceof TypeCheckRecordType))
 		{
-			withEnvironment.registerVariableByReference(memberName, selectorValue.getMemberValue(memberName));
+			throw new TypeMismatchException(type.toString(), "RECORD");
+		}
+		TypeCheckRecordType record = (TypeCheckRecordType)type;
+		// Create a new environment to use in the with block
+		TypeCheckEnvironment withEnvironment = new TypeCheckEnvironment(environment);
+		// Register all members of the record in the new environment
+		for (String memberName : record.getMemberNames())
+		{
+			withEnvironment.registerVariableByReference(memberName, record.getMemberType(memberName, environment));
 		}
 		// Run the body of the with block
 		body.typeCheck(withEnvironment);

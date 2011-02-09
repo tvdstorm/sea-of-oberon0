@@ -3,7 +3,8 @@ package randy.oberon0.ast.selector;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
 import randy.oberon0.interpreter.runtime.environment.Reference;
-import randy.oberon0.value.Value;
+import randy.oberon0.interpreter.typecheck.ITypeCheckType;
+import randy.oberon0.interpreter.typecheck.TypeCheckEnvironment;
 
 public class VariableSelector extends Selector
 {
@@ -22,10 +23,10 @@ public class VariableSelector extends Selector
 		return (Reference)environment.lookup(variableName);
 	}
 	@Override
-	public Value typeCheck(RuntimeEnvironment environment) throws RuntimeException
+	public ITypeCheckType typeCheck(TypeCheckEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Retrieve the value of the variable and return it
-		return ((Reference)environment.lookup(variableName)).getValue();
+		return ((ITypeCheckType)environment.lookup(variableName)).referenceType(); 
 	}
 }

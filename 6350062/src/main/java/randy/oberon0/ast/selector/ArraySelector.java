@@ -1,9 +1,11 @@
 package randy.oberon0.ast.selector;
 
 import randy.oberon0.ast.expression.Expression;
+import randy.oberon0.exception.TypeMismatchException;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
 import randy.oberon0.interpreter.runtime.environment.Reference;
+import randy.oberon0.interpreter.typecheck.*;
 import randy.oberon0.value.*;
 import randy.oberon0.value.Integer;
 
@@ -31,14 +33,19 @@ public class ArraySelector extends Selector
 		return array.getIndexValue(index.getIntValue());
 	}
 	@Override
-	public Value typeCheck(RuntimeEnvironment environment) throws RuntimeException
+	public ITypeCheckType typeCheck(TypeCheckEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Evaluate the selector and convert it to an array
-		final Array array = selector.typeCheck(environment).castToArray();
+		final ITypeCheckType type = selector.typeCheck(environment);
+		if (!(type instanceof TypeCheckArrayType))
+		{
+			throw new TypeMismatchException(type.toString(), "ARRAY");
+		}
+		final TypeCheckArrayType array = (TypeCheckArrayType)type;
 		// Evaluate the array index and convert it to an integer
-		arrayIndex.typeCheck(environment).castToInteger();
-		// Return the requested index of the array
-		return array.getIndexValue(0).getValue();
+		arrayIndex.typeCheck(environment).mustBe(TypeCheckType.INTEGER);
+		// Return the inner type of the array
+		return array.getInnerType();
 	}
 }

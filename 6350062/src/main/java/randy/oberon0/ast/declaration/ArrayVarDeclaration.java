@@ -5,8 +5,9 @@ import randy.oberon0.ast.expression.Expression;
 import randy.oberon0.exception.*;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.*;
-import randy.oberon0.interpreter.runtime.environment.IValue;
+import randy.oberon0.interpreter.runtime.environment.IBindableValue;
 import randy.oberon0.interpreter.runtime.environment.Reference;
+import randy.oberon0.interpreter.typecheck.*;
 import randy.oberon0.value.*;
 import randy.oberon0.value.Integer;
 
@@ -49,7 +50,7 @@ public class ArrayVarDeclaration extends VarDeclaration
 		}
 	}
 	@Override
-	public void registerAsParameter(RuntimeEnvironment environment, Iterator<IValue> parameterValues) throws RuntimeException // Use for registering parameters
+	public void registerAsParameter(RuntimeEnvironment environment, Iterator<IBindableValue> parameterValues) throws RuntimeException // Use for registering parameters
 	{
 		assert(environment != null);
 		assert(parameterValues != null);
@@ -70,7 +71,7 @@ public class ArrayVarDeclaration extends VarDeclaration
 				throw new IncorrectNumberOfArgumentsException();
 			}
 			// Fetch a parameter value from the parameter values
-			final IValue parameterValue = parameterValues.next();
+			final IBindableValue parameterValue = parameterValues.next();
 			// Check if the length of the parameter matches the definition
 			Array testArray = parameterValue.getValue().castToArray();
 			boolean bFirst = true;
@@ -106,11 +107,11 @@ public class ArrayVarDeclaration extends VarDeclaration
 		}
 	}
 	@Override
-	public void typeCheckRegister(RuntimeEnvironment newEnvironment) throws RuntimeException // Use for variable declarations IN methods or modules
+	public void typeCheckRegister(TypeCheckEnvironment newEnvironment) throws RuntimeException // Use for variable declarations IN methods or modules
 	{
 		assert(newEnvironment != null);
 		// Create a new instantializer for the base type
-		IInstantiateableVariable arrayCreator = newEnvironment.resolveType(typeName);
+		ITypeCheckType type = newEnvironment.resolveType(typeName);
 		// Loop through all the length expressions in reverse order
 		ListIterator<Expression> iterator = arrayLength.listIterator(arrayLength.size());
 		while (iterator.hasPrevious())
@@ -118,43 +119,42 @@ public class ArrayVarDeclaration extends VarDeclaration
 			// Get the previous length expressoin
 			Expression curExpression = iterator.previous();
 			// Evaluate the length expression
-			curExpression.typeCheck(newEnvironment).castToInteger();
-			// Create a new array instantializer for the array and set the length of the array
-			ArrayVariableInstantiation thisCreator = new ArrayVariableInstantiation(arrayCreator);
-			thisCreator.setLength(1);
+			curExpression.typeCheck(newEnvironment).mustBe(TypeCheckType.INTEGER);
+			// Create a new array instantializer for the array
+			ITypeCheckType thisType = new TypeCheckArrayType(type);
 			// Set the array instantializer as the current instantializer
-			arrayCreator = thisCreator;
+			type = thisType;
 		}
 		
 		// Loop through all variable names
 		for (String name : variableNames)
 		{
-			// Create the array and add it in the environment
 			// Check if the variable is a reference
 			if (isReference)
 			{
 				// Yes, make a reference to the variable and add it to the environment
-				newEnvironment.registerVariableByReference(name, new Reference(arrayCreator.instantiate(newEnvironment)));
+				newEnvironment.registerVariableByReference(name, type);
 			}
 			else
 			{
 				// No, create a copy of the array and register it in the environment
-				newEnvironment.registerVariableByValue(name, arrayCreator.instantiate(newEnvironment));
+				newEnvironment.registerVariableByValue(name, type);
 			}
 		}
 	}
 	@Override
-	public void typeCheckRegisterAsParameter(RuntimeEnvironment environment, Iterator<Reference> parameterValues) throws RuntimeException // Use for registering parameters
+	public void typeCheckRegisterAsParameter(TypeCheckEnvironment environment, Iterator<ITypeCheckType> parameterValues) throws RuntimeException // Use for registering parameters
 	{
 		assert(environment != null);
 		assert(parameterValues != null);
-		
 		// Loop through all the length expressions in normal order to resolve them
-		Queue<Integer> lengths = new LinkedList<Integer>();
+		List<ITypeCheckType> lengths = new LinkedList<ITypeCheckType>();
 		for (Expression curExpression : arrayLength)
 		{
 			// Evaluate the length expression and add it to the stack
-			lengths.add(curExpression.typeCheck(environment).castToInteger());
+			ITypeCheckType length = curExpression.typeCheck(environment);
+			length.mustBe(TypeCheckType.INTEGER);
+			lengths.add(length);
 		}
 		
 		// Loop through all variable names
@@ -166,23 +166,31 @@ public class ArrayVarDeclaration extends VarDeclaration
 				throw new IncorrectNumberOfArgumentsException();
 			}
 			// Fetch a parameter value from the parameter values
-			final Reference parameterValue = parameterValues.next();
-			// Check if the length of the parameter matches the definition
-			Array testArray = parameterValue.getValue().castToArray();
+			ITypeCheckType parameterValue = parameterValues.next();
+			// Check if the parameter is an array
+			if (!(parameterValue instanceof TypeCheckArrayType))
+			{
+				throw new TypeMismatchException(parameterValue.toString(), "ARRAY");
+			}
 			boolean bFirst = true;
-			for (@SuppressWarnings("unused") Integer length : lengths)
+			for (int i=0;i<lengths.size();i++)
 			{
 				if (!bFirst)
 				{
 					// Grab the next nesting
-					testArray = testArray.getIndexValue(0).getValue().castToArray();
+					parameterValue = ((TypeCheckArrayType)parameterValue).getInnerType();
+					// Check if the next nesting is an array
+					if (!(parameterValue instanceof TypeCheckArrayType))
+					{
+						throw new TypeMismatchException(parameterValue.toString(), "ARRAY");
+					}
 				}
 				bFirst = false;
 			}
 			// The test array next nesting shouldn't be an array anymore, or else the nesting doesn't match
-			if (testArray.getIndexValue(0).getValue().getType() == Type.ARRAY)
+			if (((TypeCheckArrayType)parameterValue).getInnerType() instanceof TypeCheckArrayType)
 			{
-				throw new ArrayLengthMismatch();
+				throw new TypeMismatchException(((TypeCheckArrayType)parameterValue).getInnerType().toString(), "NOT AN ARRAY");
 			}
 			// Check if the variable is a reference
 			if (isReference)
@@ -193,7 +201,7 @@ public class ArrayVarDeclaration extends VarDeclaration
 			else
 			{
 				// No, create a copy of the array and register it in the environment
-				environment.registerVariableByValue(variableName, parameterValue.getValue().clone());
+				environment.registerVariableByValue(variableName, parameterValue);
 			}
 		}
 	}

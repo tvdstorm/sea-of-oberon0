@@ -10,20 +10,20 @@ import randy.oberon0.value.Value;
 public class RuntimeEnvironment
 {
 	private final Map<String, IBindable> bindings;
-	private final TypeRegistry typeRegistry;
+	private final Map<String, IInstantiateableVariable> types;
 	private final RuntimeEnvironment parentScope;
 	
 	public RuntimeEnvironment()
 	{
 		bindings = new HashMap<String, IBindable>();
-		typeRegistry = new TypeRegistry(null);
+		types = new HashMap<String, IInstantiateableVariable>();
 		parentScope = null;
 	}
 	public RuntimeEnvironment(RuntimeEnvironment baseEnvironment)
 	{
 		// Create a new environment on top of the base environment
 		bindings = new HashMap<String, IBindable>();
-		typeRegistry = new TypeRegistry(baseEnvironment.typeRegistry);
+		types = new HashMap<String, IInstantiateableVariable>();
 		parentScope = baseEnvironment;
 	}
 	public IBindable lookup(String name) throws RuntimeException
@@ -91,10 +91,33 @@ public class RuntimeEnvironment
 	 **************************************************************************/
 	public void registerType(String typeName, IInstantiateableVariable typeCreator) throws DuplicateTypeException
 	{
-		typeRegistry.registerType(typeName, typeCreator);
+		assert(typeName != null);
+		assert(typeName.length() > 0);
+		assert(typeCreator != null);
+		// Check if we already have a type with the same name registered
+		if (types.get(typeName) != null)
+		{
+			throw new DuplicateTypeException(typeName);
+		}
+		// No, register the type
+		types.put(typeName, typeCreator);
 	}
-	public IInstantiateableVariable resolveType(String typeName) throws UnknownTypeException
+	public IInstantiateableVariable resolveType(String name) throws UnknownTypeException
 	{
-		return typeRegistry.resolveType(typeName);
+		// Check if we have the type registered in this scope
+		if (types.get(name) != null)
+		{
+			return types.get(name);
+		}
+		// Check if we have a parent scope and check it for the type
+		else if (parentScope != null)
+		{
+			return parentScope.resolveType(name);
+		}
+		// We don't know the type and don't have a parent scope, return an exception
+		else
+		{
+			throw new UnknownTypeException(name);
+		}
 	}
 }

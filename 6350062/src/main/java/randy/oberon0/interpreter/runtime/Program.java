@@ -3,8 +3,8 @@ package randy.oberon0.interpreter.runtime;
 import java.util.LinkedList;
 import randy.oberon0.interpreter.antlr.Oberon0ASTTreeGenerator;
 import randy.oberon0.interpreter.buildinfunctions.*;
-import randy.oberon0.interpreter.runtime.environment.IValue;
-import randy.oberon0.interpreter.runtime.environment.Reference;
+import randy.oberon0.interpreter.runtime.environment.*;
+import randy.oberon0.interpreter.typecheck.*;
 import randy.oberon0.value.Type;
 import randy.oberon0.ast.*;
 import randy.oberon0.exception.RuntimeException;
@@ -46,29 +46,29 @@ public class Program
 		// Registrate the modules type declarations in the modole environment
 		module.registerTypeDeclarations(moduleEnvironment);
 		// Invoke the module
-		module.invoke(moduleEnvironment, (new LinkedList<IValue>()).iterator());
+		module.invoke(moduleEnvironment, (new LinkedList<IBindableValue>()).iterator());
 	}
 	public void typeCheck() throws RuntimeException
 	{
 		// Create a global environment
-		RuntimeEnvironment globalEnvironment = new RuntimeEnvironment();
+		TypeCheckEnvironment globalEnvironment = new TypeCheckEnvironment();
 		
 		// Registrate buildin primitive types
-		globalEnvironment.registerType(Type.INTEGER.getTypeText(), new PrimitiveVariableInstantiation(Type.INTEGER));
-		globalEnvironment.registerType(Type.BOOLEAN.getTypeText(), new PrimitiveVariableInstantiation(Type.BOOLEAN));
+		globalEnvironment.registerType(Type.INTEGER.getTypeText(), new TypeCheckType(Type.INTEGER.getTypeText(), false));
+		globalEnvironment.registerType(Type.BOOLEAN.getTypeText(), new TypeCheckType(Type.BOOLEAN.getTypeText(), false));
 		
 		// Registrate buildin functions
-		buildinFunctions.register(globalEnvironment);
+		buildinFunctions.typeCheckRegister(globalEnvironment);
 		
 		// Create a module environment on top of the global environment
-		RuntimeEnvironment moduleEnvironment = new RuntimeEnvironment(globalEnvironment);
+		TypeCheckEnvironment moduleEnvironment = new TypeCheckEnvironment(globalEnvironment);
 	
 		// Registrate the modules type declarations in the modole environment
-		module.registerTypeDeclarations(moduleEnvironment);
+		module.typeCheckRegisterTypeDeclarations(moduleEnvironment);
 		// Invoke the module
-		module.typeCheckInvoke(moduleEnvironment, (new LinkedList<Reference>()).iterator());
+		module.typeCheckInvoke(moduleEnvironment, (new LinkedList<ITypeCheckType>()).iterator());
 		// Refresh the module environment and invoke the body
-		moduleEnvironment = new RuntimeEnvironment(globalEnvironment);
+		moduleEnvironment = new TypeCheckEnvironment(globalEnvironment);
 		module.typeCheckBody(moduleEnvironment);
 	}
 	public void setBuildinFunctions(IBuildinFunctions _buildinFunctions)

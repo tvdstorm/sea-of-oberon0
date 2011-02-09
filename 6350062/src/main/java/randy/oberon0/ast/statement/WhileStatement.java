@@ -3,6 +3,8 @@ package randy.oberon0.ast.statement;
 import randy.oberon0.ast.expression.Expression;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
+import randy.oberon0.interpreter.typecheck.TypeCheckEnvironment;
+import randy.oberon0.interpreter.typecheck.TypeCheckType;
 
 public class WhileStatement extends Statement
 {
@@ -28,11 +30,11 @@ public class WhileStatement extends Statement
 		}
 	}
 	@Override
-	public void typeCheck(RuntimeEnvironment environment) throws RuntimeException
+	public void typeCheck(TypeCheckEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Run while the condition evaluates to true
-		condition.typeCheck(environment).castToBoolean();
+		condition.typeCheck(environment).mustBe(TypeCheckType.BOOLEAN);
 		// Run the body
 		body.typeCheck(environment);
 	}
