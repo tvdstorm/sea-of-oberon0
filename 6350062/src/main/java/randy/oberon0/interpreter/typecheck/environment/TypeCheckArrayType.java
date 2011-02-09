@@ -11,6 +11,7 @@ public class TypeCheckArrayType implements ITypeCheckType
 		assert(_innerType != null);
 		innerType = _innerType;
 	}
+	@Override
 	public boolean equals(Object obj)
 	{
 		if (!(obj instanceof TypeCheckArrayType))

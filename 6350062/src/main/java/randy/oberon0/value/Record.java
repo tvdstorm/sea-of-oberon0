@@ -52,9 +52,18 @@ public class Record extends Value
 	public String toString()
 	{
 		StringBuilder ret = new StringBuilder("[");
+		boolean bFirst = true;
 		for (String name : members.keySet())
 		{
-			ret.append(name + "=" + members.get(name).toString() + ",");
+			if (bFirst)
+			{
+				bFirst = false;
+			}
+			else
+			{
+				ret.append(",");
+			}
+			ret.append(name + "=" + members.get(name).getValue().toString());
 		}
 		ret.append("]");
 		return ret.toString();

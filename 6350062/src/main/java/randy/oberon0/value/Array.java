@@ -52,9 +52,18 @@ public class Array extends Value
 	public String toString()
 	{
 		StringBuilder ret = new StringBuilder("[");
+		boolean bFirst = true;
 		for (Reference val : values)
 		{
-			ret.append(val.toString() + ",");
+			if (bFirst)
+			{
+				bFirst = false;
+			}
+			else
+			{
+				ret.append(",");
+			}
+			ret.append(val.getValue().toString());
 		}
 		ret.append("]");
 		return ret.toString();

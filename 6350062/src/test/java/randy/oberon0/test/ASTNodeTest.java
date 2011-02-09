@@ -5,6 +5,7 @@ import org.junit.*;
 import randy.oberon0.exception.Exception;
 import randy.oberon0.exception.*;
 import randy.oberon0.interpreter.runtime.*;
+import randy.oberon0.interpreter.runtime.environment.*;
 import randy.oberon0.value.Boolean;
 import randy.oberon0.value.Integer;
 import randy.oberon0.value.*;
@@ -529,20 +530,19 @@ public class ASTNodeTest
 				Integer integer3 = new Integer(0);
 				integer3.setValue(integer);
 				Assert.assertTrue(integer.getIntValue() == integer3.getIntValue());
-				/*Const cInteger = new Const(integer);
-				Assert.assertTrue(cInteger.getType() == integer.getType());
-				Assert.assertTrue(cInteger.toString().equals(integer.toString()));
-				*/
+				Constant cInteger = new Constant(integer);
+				Assert.assertTrue(cInteger.getValue().getType() == integer.getType());
+				Assert.assertTrue(cInteger.getValue().toString().equals(integer.toString()));
+
 				boolean bRand = random.nextBoolean();
 				Boolean bool = new Boolean(bRand);
 				Assert.assertTrue(bRand == bool.getBoolValue());
 				Boolean bool3 = new Boolean(false);
 				bool3.setValue(bool);
 				Assert.assertTrue(bool.getBoolValue() == bool3.getBoolValue());
-				/*
-				Const cBool = new Const(bool);
-				Assert.assertTrue(cBool.getType() == bool.getType());
-				Assert.assertTrue(cBool.toString().equals(bool.toString()));
+				Constant cBool = new Constant(bool);
+				Assert.assertTrue(cBool.getValue().getType() == bool.getType());
+				Assert.assertTrue(cBool.getValue().toString().equals(bool.toString()));
 								
 				Assert.assertTrue((new Integer(0)).getType() == Type.INTEGER);
 				Assert.assertTrue((new Boolean(false)).getType() == Type.BOOLEAN);
@@ -566,9 +566,9 @@ public class ASTNodeTest
 					// Success
 				}
 								
-				TypeRegistry typeRegistry = new TypeRegistry(null);
-				typeRegistry.registerType(Type.INTEGER.getTypeText(), new PrimitiveVariableInstantiation(Type.INTEGER));
-				RuntimeEnvironment environment = new RuntimeEnvironment(new VariableStack(null), new FunctionRegistry(null), typeRegistry);
+				RuntimeEnvironment environment = new RuntimeEnvironment(null);
+				environment.registerType(Type.BOOLEAN.getTypeText(), new PrimitiveVariableInstantiation(Type.BOOLEAN));
+				environment.registerType(Type.INTEGER.getTypeText(), new PrimitiveVariableInstantiation(Type.INTEGER));
 				
 				Value values[] = new Value[4];
 				values[0] = new Integer(random.nextInt(10)+1);
@@ -576,7 +576,7 @@ public class ASTNodeTest
 				values[2] = new Array(random.nextInt(10)+1, environment.resolveType("INTEGER"), environment);
 				HashMap<String, IInstantiateableVariable> members = new HashMap<String, IInstantiateableVariable>();
 				members.put("a", environment.resolveType("INTEGER"));
-				members.put("b", environment.resolveType("INTEGER"));
+				members.put("b", environment.resolveType("BOOLEAN"));
 				values[3] = new Record(members, environment);
 				
 				for (int i=0;i<values.length;i++)
@@ -586,19 +586,19 @@ public class ASTNodeTest
 						Value val = values[i].clone();
 						Assert.assertTrue(val.toString().equals(values[j].toString()) == (i == j));
 						Assert.assertTrue(val.equalsToValue(values[j]) == (i == j));
-						Value ref = val;// TODO: reference new Reference(val);
+						Value ref = (new Reference(val)).getValue();
 						Assert.assertTrue(ref.toString().equals(values[j].toString()) == (i == j));
 						Assert.assertTrue(ref.equalsToValue(values[j]) == (i == j));
 						Assert.assertTrue(ref.getType() == val.getType());
 						Value ref2 = ref.clone();
 						Assert.assertTrue(ref.toString().equals(ref2.toString()));
 						Assert.assertTrue(ref.equalsToValue(ref2));
-						Const con = new Const(val);
-						Assert.assertTrue(con.toString().equals(values[j].toString()) == (i == j));
-						Assert.assertTrue(con.equalsToValue(values[j]) == (i == j));
-						Value con2 = con.clone();
-						Assert.assertTrue(con.toString().equals(con2.toString()));
-						Assert.assertTrue(con.equalsToValue(con2));
+						Constant con = new Constant(val);
+						Assert.assertTrue(con.getValue().toString().equals(values[j].toString()) == (i == j));
+						Assert.assertTrue(con.getValue().equalsToValue(values[j]) == (i == j));
+						Value con2 = con.getValue().clone();
+						Assert.assertTrue(con.getValue().toString().equals(con2.toString()));
+						Assert.assertTrue(con.getValue().equalsToValue(con2));
 						
 						Value copies[] = new Value[4];
 						copies[0] = new Integer(random.nextInt(10)+1);
@@ -606,7 +606,7 @@ public class ASTNodeTest
 						copies[2] = new Array(random.nextInt(10)+1, environment.resolveType("INTEGER"), environment);
 						HashMap<String, IInstantiateableVariable> copyMembers = new HashMap<String, IInstantiateableVariable>();
 						copyMembers.put("a", environment.resolveType("INTEGER"));
-						copyMembers.put("b", environment.resolveType("INTEGER"));
+						copyMembers.put("b", environment.resolveType("BOOLEAN"));
 						copies[3] = new Record(copyMembers, environment);
 						if (i == j)
 						{
@@ -632,8 +632,6 @@ public class ASTNodeTest
 						}
 					}
 				}
-				*/
-				// TODO: updaten
 			}
 		}
 		catch (Exception e)
