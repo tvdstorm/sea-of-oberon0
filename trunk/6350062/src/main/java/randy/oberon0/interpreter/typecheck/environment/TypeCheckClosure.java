@@ -1,6 +1,6 @@
 package randy.oberon0.interpreter.typecheck.environment;
 
-import randy.oberon0.ast.IInvokableFunction;
+import randy.oberon0.interpreter.runtime.IInvokableFunction;
 
 public class TypeCheckClosure implements ITypeCheckBindable
 {

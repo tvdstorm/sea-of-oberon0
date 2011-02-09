@@ -2,7 +2,7 @@ package randy.oberon0.interpreter.typecheck.environment;
 
 import java.util.HashMap;
 import java.util.Map;
-import randy.oberon0.ast.IInvokableFunction;
+import randy.oberon0.interpreter.runtime.IInvokableFunction;
 import randy.oberon0.exception.DuplicateFunctionException;
 import randy.oberon0.exception.DuplicateTypeException;
 import randy.oberon0.exception.DuplicateVariableException;
