@@ -10,6 +10,8 @@ import org.elcid.oberon0.ast.visitor.BaseVisitor;
  */
 public class NegativeExpNode extends ExpressionNode {
 
+	public static final Integer NEGATIVE_FACTOR = -1;
+
 	private ExpressionNode expression;
 
 	public NegativeExpNode(ExpressionNode expression) {
