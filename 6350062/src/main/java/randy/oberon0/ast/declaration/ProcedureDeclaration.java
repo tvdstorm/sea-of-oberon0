@@ -5,8 +5,7 @@ import randy.oberon0.ast.IInvokableFunction;
 import randy.oberon0.ast.statement.Block;
 import randy.oberon0.exception.*;
 import randy.oberon0.exception.RuntimeException;
-import randy.oberon0.interpreter.runtime.*;
-import randy.oberon0.interpreter.runtime.environment.IBindableValue;
+import randy.oberon0.interpreter.runtime.environment.*;
 import randy.oberon0.interpreter.typecheck.*;
 
 public class ProcedureDeclaration extends BodyDeclaration implements IInvokableFunction

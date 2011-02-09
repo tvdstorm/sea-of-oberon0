@@ -1,6 +1,7 @@
-package randy.oberon0.interpreter.runtime;
+package randy.oberon0.interpreter.runtime.environment;
 
 import randy.oberon0.exception.RuntimeException;
+import randy.oberon0.interpreter.runtime.environment.RuntimeEnvironment;
 import randy.oberon0.value.*;
 
 public class ArrayVariableInstantiation implements IInstantiateableVariable
