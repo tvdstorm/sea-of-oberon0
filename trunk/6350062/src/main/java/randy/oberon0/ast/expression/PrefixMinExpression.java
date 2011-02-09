@@ -4,7 +4,8 @@ import randy.oberon0.exception.OperatorTypeUndefinedException;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
 import randy.oberon0.interpreter.runtime.environment.ByValue;
-import randy.oberon0.interpreter.runtime.environment.IValue;
+import randy.oberon0.interpreter.runtime.environment.IBindableValue;
+import randy.oberon0.interpreter.typecheck.*;
 import randy.oberon0.value.Value;
 import randy.oberon0.value.Integer;
 
@@ -15,7 +16,7 @@ public class PrefixMinExpression extends PrefixExpression
 		super(_rhs);
 	}
 	@Override
-	public IValue evaluate(RuntimeEnvironment environment) throws RuntimeException
+	public IBindableValue evaluate(RuntimeEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Evaluate the right hand side expression
@@ -32,20 +33,20 @@ public class PrefixMinExpression extends PrefixExpression
 		}
 	}
 	@Override
-	public Value typeCheck(RuntimeEnvironment environment) throws RuntimeException
+	public ITypeCheckType typeCheck(TypeCheckEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Evaluate the right hand side expression
-		final Value valRh = rightHandExpression.typeCheck(environment);
+		final ITypeCheckType valRh = rightHandExpression.typeCheck(environment);
 		// Check if we support the operator
-		if (valRh instanceof Integer)
+		if (valRh.equals(TypeCheckType.INTEGER))
 		{
-			return new Integer(0);
+			return TypeCheckType.INTEGER;
 		}
 		else
 		{
 			// No, throw an exception
-			throw new OperatorTypeUndefinedException("-", valRh.getType().toString());
+			throw new OperatorTypeUndefinedException("-", valRh.toString());
 		}
 	}
 }

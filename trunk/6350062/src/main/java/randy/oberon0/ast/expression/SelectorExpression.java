@@ -3,8 +3,8 @@ package randy.oberon0.ast.expression;
 import randy.oberon0.ast.selector.Selector;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
-import randy.oberon0.interpreter.runtime.environment.IValue;
-import randy.oberon0.value.Value;
+import randy.oberon0.interpreter.runtime.environment.IBindableValue;
+import randy.oberon0.interpreter.typecheck.*;
 
 public class SelectorExpression extends Expression
 {
@@ -16,12 +16,12 @@ public class SelectorExpression extends Expression
 		selector = _selector;
 	}
 	@Override
-	public IValue evaluate(RuntimeEnvironment environment) throws RuntimeException
+	public IBindableValue evaluate(RuntimeEnvironment environment) throws RuntimeException
 	{
 		return selector.evaluate(environment);
 	}
 	@Override
-	public Value typeCheck(RuntimeEnvironment environment) throws RuntimeException
+	public ITypeCheckType typeCheck(TypeCheckEnvironment environment) throws RuntimeException
 	{
 		return selector.typeCheck(environment);
 	}

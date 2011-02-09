@@ -6,8 +6,8 @@ import randy.oberon0.ast.IInvokableFunction;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.exception.*;
 import randy.oberon0.interpreter.runtime.*;
-import randy.oberon0.interpreter.runtime.environment.IValue;
-import randy.oberon0.interpreter.runtime.environment.Reference;
+import randy.oberon0.interpreter.runtime.environment.IBindableValue;
+import randy.oberon0.interpreter.typecheck.*;
 
 public class TestWriteLnFunction implements IInvokableFunction
 {
@@ -18,7 +18,7 @@ public class TestWriteLnFunction implements IInvokableFunction
 		output = _output;
 	}
 	@Override
-	public void invoke(RuntimeEnvironment environment, Iterator<IValue> parameterValues) throws RuntimeException
+	public void invoke(RuntimeEnvironment environment, Iterator<IBindableValue> parameterValues) throws RuntimeException
 	{
 		if (parameterValues.hasNext())
 			throw new IncorrectNumberOfArgumentsException();
@@ -34,7 +34,7 @@ public class TestWriteLnFunction implements IInvokableFunction
 		// Leeg
 	}
 	@Override
-	public void typeCheckInvoke(RuntimeEnvironment environment, Iterator<Reference> parameterValues) throws RuntimeException
+	public void typeCheckInvoke(TypeCheckEnvironment environment, Iterator<ITypeCheckType> parameterValues) throws RuntimeException
 	{
 		// Don't accept any parameters
 		if (parameterValues.hasNext())
@@ -43,12 +43,12 @@ public class TestWriteLnFunction implements IInvokableFunction
 		}
 	}
 	@Override
-	public void typeCheckRegisterTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException
+	public void typeCheckRegisterTypeDeclarations(TypeCheckEnvironment newEnvironment) throws RuntimeException
 	{
 		// Leeg
 	}
 	@Override
-	public void typeCheckBody(RuntimeEnvironment newEnvironment) throws RuntimeException
+	public void typeCheckBody(TypeCheckEnvironment newEnvironment) throws RuntimeException
 	{
 		// Leeg
 	}

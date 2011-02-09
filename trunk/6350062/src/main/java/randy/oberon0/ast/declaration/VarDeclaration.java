@@ -4,8 +4,9 @@ import java.util.*;
 import randy.oberon0.exception.*;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
-import randy.oberon0.interpreter.runtime.environment.IValue;
+import randy.oberon0.interpreter.runtime.environment.IBindableValue;
 import randy.oberon0.interpreter.runtime.environment.Reference;
+import randy.oberon0.interpreter.typecheck.*;
 
 public class VarDeclaration extends BodyDeclaration
 {
@@ -40,11 +41,18 @@ public class VarDeclaration extends BodyDeclaration
 		}
 	}
 	@Override
-	public void typeCheckRegister(RuntimeEnvironment newEnvironment) throws RuntimeException // Use for variable declarations IN methods or modules
+	public void typeCheckRegister(TypeCheckEnvironment newEnvironment) throws RuntimeException // Use for variable declarations IN methods or modules
 	{
-		register(newEnvironment);
+		assert(newEnvironment != null);
+		// Loop through all variable names
+		for (String variableName : variableNames)
+		{
+			assert(variableName.length() >= 1);
+			// Add the variable to the environment
+			newEnvironment.registerVariableByValue(variableName, newEnvironment.resolveType(typeName));
+		}
 	}
-	public void registerAsParameter(RuntimeEnvironment environment, Iterator<IValue> parameterValues) throws RuntimeException // Use for registering parameters
+	public void registerAsParameter(RuntimeEnvironment environment, Iterator<IBindableValue> parameterValues) throws RuntimeException // Use for registering parameters
 	{
 		assert(environment != null);
 		assert(parameterValues != null);
@@ -57,7 +65,7 @@ public class VarDeclaration extends BodyDeclaration
 				throw new IncorrectNumberOfArgumentsException();
 			}
 			// Fetch a parameter value from the parameter values
-			final IValue parameterValue = parameterValues.next();
+			final IBindableValue parameterValue = parameterValues.next();
 			// Resolve the variable type and check if they are compatible
 			if (parameterValue.getValue().getType() != environment.resolveType(typeName).instantiate(environment).getType())
 			{
@@ -76,7 +84,7 @@ public class VarDeclaration extends BodyDeclaration
 			}
 		}
 	}
-	public void typeCheckRegisterAsParameter(RuntimeEnvironment environment, Iterator<Reference> parameterValues) throws RuntimeException // Use for registering parameters
+	public void typeCheckRegisterAsParameter(TypeCheckEnvironment environment, Iterator<ITypeCheckType> parameterValues) throws RuntimeException // Use for registering parameters
 	{
 		assert(environment != null);
 		assert(parameterValues != null);
@@ -89,22 +97,22 @@ public class VarDeclaration extends BodyDeclaration
 				throw new IncorrectNumberOfArgumentsException();
 			}
 			// Fetch a parameter value from the parameter values
-			final Reference parameterValue = parameterValues.next();
+			final ITypeCheckType parameterValue = parameterValues.next();
 			// Resolve the variable type and check if they are compatible
-			if (parameterValue.getValue().getType() != environment.resolveType(typeName).instantiate(environment).getType())
+			if (!parameterValue.equals(environment.resolveType(typeName)))
 			{
-				throw new TypeMismatchException(parameterValue.getValue().getType().toString(), typeName);
+				throw new TypeMismatchException(parameterValue.toString(), typeName);
 			}
 			// Check if the variable is a reference
 			if (isReference)
 			{
 				// Yes, make a reference to the variable and add it to the environment
-				environment.registerVariableByReference(variableName, parameterValue);
+				environment.registerVariableByReference(variableName, parameterValue.referenceType());
 			}
 			else
 			{	
 				// No, create a copy of the parameter and register it in the environment
-				environment.registerVariableByValue(variableName, parameterValue.getValue().clone());
+				environment.registerVariableByValue(variableName, parameterValue.byValueType());
 			}
 		}
 	}

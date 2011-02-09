@@ -3,6 +3,8 @@ package randy.oberon0.ast.declaration;
 import java.util.*;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.*;
+import randy.oberon0.interpreter.typecheck.TypeCheckEnvironment;
+import randy.oberon0.interpreter.typecheck.TypeCheckRecordType;
 
 public class RecordDeclaration extends AbstractTypeDeclaration
 {
@@ -24,8 +26,10 @@ public class RecordDeclaration extends AbstractTypeDeclaration
 		newEnvironment.registerType(recordName, new RecordInstantiation(memberVariables));
 	}
 	@Override
-	public void typeCheckRegister(RuntimeEnvironment newEnvironment) throws RuntimeException
+	public void typeCheckRegister(TypeCheckEnvironment newEnvironment) throws RuntimeException
 	{
-		register(newEnvironment);
+		assert(newEnvironment != null);
+		TypeCheckRecordType recordType = new TypeCheckRecordType(recordName, memberVariables);
+		newEnvironment.registerType(recordName, recordType);
 	}
 }

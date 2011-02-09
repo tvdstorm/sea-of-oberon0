@@ -3,11 +3,11 @@ package randy.oberon0.test;
 import java.util.Iterator;
 import java.util.Queue;
 import randy.oberon0.ast.IInvokableFunction;
-import randy.oberon0.interpreter.runtime.environment.IValue;
-import randy.oberon0.interpreter.runtime.environment.Reference;
+import randy.oberon0.interpreter.runtime.environment.IBindableValue;
 import randy.oberon0.exception.*;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.*;
+import randy.oberon0.interpreter.typecheck.*;
 import randy.oberon0.value.*;
 
 public class TestWriteFunction implements IInvokableFunction
@@ -18,7 +18,7 @@ public class TestWriteFunction implements IInvokableFunction
 		output = _output;
 	}
 	@Override
-	public void invoke(RuntimeEnvironment environment, Iterator<IValue> parameterValues) throws RuntimeException
+	public void invoke(RuntimeEnvironment environment, Iterator<IBindableValue> parameterValues) throws RuntimeException
 	{
 		if (!parameterValues.hasNext())
 			throw new IncorrectNumberOfArgumentsException();
@@ -42,7 +42,7 @@ public class TestWriteFunction implements IInvokableFunction
 		// Leeg
 	}
 	@Override
-	public void typeCheckInvoke(RuntimeEnvironment environment, Iterator<Reference> parameterValues) throws RuntimeException
+	public void typeCheckInvoke(TypeCheckEnvironment environment, Iterator<ITypeCheckType> parameterValues) throws RuntimeException
 	{
 		// Accept one parameter
 		if (!parameterValues.hasNext())
@@ -50,7 +50,7 @@ public class TestWriteFunction implements IInvokableFunction
 			throw new IncorrectNumberOfArgumentsException();
 		}
 		// Accept only an integer
-		parameterValues.next().getValue().castToInteger();
+		parameterValues.next().equals(TypeCheckType.INTEGER);
 		// No parameters should be left
 		if (parameterValues.hasNext())
 		{
@@ -58,12 +58,12 @@ public class TestWriteFunction implements IInvokableFunction
 		}
 	}
 	@Override
-	public void typeCheckRegisterTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException
+	public void typeCheckRegisterTypeDeclarations(TypeCheckEnvironment newEnvironment) throws RuntimeException
 	{
 		// Leeg
 	}
 	@Override
-	public void typeCheckBody(RuntimeEnvironment newEnvironment) throws RuntimeException
+	public void typeCheckBody(TypeCheckEnvironment newEnvironment) throws RuntimeException
 	{
 		// Leeg
 	}

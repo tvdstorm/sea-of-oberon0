@@ -4,6 +4,8 @@ import java.util.*;
 import randy.oberon0.ast.datastructures.IfExpressionAndBody;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
+import randy.oberon0.interpreter.typecheck.TypeCheckEnvironment;
+import randy.oberon0.interpreter.typecheck.TypeCheckType;
 import randy.oberon0.value.Boolean;
 
 public class IfStatement extends Statement
@@ -41,14 +43,14 @@ public class IfStatement extends Statement
 		}
 	}
 	@Override
-	public void typeCheck(RuntimeEnvironment environment) throws RuntimeException
+	public void typeCheck(TypeCheckEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Loop through all if expressions until one is true
 		for (IfExpressionAndBody curIf : ifStatements)
 		{
 			// Type check the condition and convert it to an boolean
-			curIf.getExpression().typeCheck(environment).castToBoolean();
+			curIf.getExpression().typeCheck(environment).mustBe(TypeCheckType.BOOLEAN);
 			// Type check the associated body
 			curIf.getBody().typeCheck(environment);
 		}

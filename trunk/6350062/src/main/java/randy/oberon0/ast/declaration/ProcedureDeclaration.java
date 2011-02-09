@@ -6,8 +6,8 @@ import randy.oberon0.ast.statement.Block;
 import randy.oberon0.exception.*;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.*;
-import randy.oberon0.interpreter.runtime.environment.IValue;
-import randy.oberon0.interpreter.runtime.environment.Reference;
+import randy.oberon0.interpreter.runtime.environment.IBindableValue;
+import randy.oberon0.interpreter.typecheck.*;
 
 public class ProcedureDeclaration extends BodyDeclaration implements IInvokableFunction
 {
@@ -36,9 +36,11 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 		newEnvironment.registerFunction(getName(), this);
 	}
 	@Override
-	public void typeCheckRegister(RuntimeEnvironment newEnvironment) throws RuntimeException
+	public void typeCheckRegister(TypeCheckEnvironment newEnvironment) throws RuntimeException
 	{
-		register(newEnvironment);
+		assert(newEnvironment != null);
+		// Register the function in the environment
+		newEnvironment.registerFunction(getName(), this);
 	}
 	@Override
 	public void registerTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException
@@ -53,7 +55,7 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 			}
 		}
 	}
-	public void invoke(RuntimeEnvironment environment, Iterator<IValue> parameterValues) throws RuntimeException
+	public void invoke(RuntimeEnvironment environment, Iterator<IBindableValue> parameterValues) throws RuntimeException
 	{
 		assert(environment != null);
 		assert(parameterValues != null);
@@ -84,7 +86,7 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 		return procedureName;
 	}
 	@Override
-	public void typeCheckInvoke(RuntimeEnvironment environment, Iterator<Reference> parameterValues) throws RuntimeException
+	public void typeCheckInvoke(TypeCheckEnvironment environment, Iterator<ITypeCheckType> parameterValues) throws RuntimeException
 	{
 		assert(environment != null);
 		assert(parameterValues != null);
@@ -108,7 +110,7 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 		}
 	}
 	@Override
-	public void typeCheckRegisterTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException
+	public void typeCheckRegisterTypeDeclarations(TypeCheckEnvironment newEnvironment) throws RuntimeException
 	{
 		assert(newEnvironment != null);
 		// Register all the type declarations in the environment
@@ -121,7 +123,7 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 		}
 	}
 	@Override
-	public void typeCheckBody(RuntimeEnvironment newEnvironment) throws RuntimeException
+	public void typeCheckBody(TypeCheckEnvironment newEnvironment) throws RuntimeException
 	{
 		assert(newEnvironment != null);
 		// Loop through all parameters and declare them in the invoked functions environment
@@ -152,7 +154,7 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 		{
 			if (bodyDecl instanceof ProcedureDeclaration)
 			{
-				RuntimeEnvironment functionEnvironment = new RuntimeEnvironment(newEnvironment);
+				TypeCheckEnvironment functionEnvironment = new TypeCheckEnvironment(newEnvironment);
 				((ProcedureDeclaration)bodyDecl).typeCheckBody(functionEnvironment);
 			}
 		}

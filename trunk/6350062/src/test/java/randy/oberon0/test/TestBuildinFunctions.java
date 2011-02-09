@@ -5,6 +5,7 @@ import org.junit.Ignore;
 import randy.oberon0.exception.DuplicateFunctionException;
 import randy.oberon0.interpreter.buildinfunctions.*;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
+import randy.oberon0.interpreter.typecheck.TypeCheckEnvironment;
 
 @Ignore
 public class TestBuildinFunctions implements IBuildinFunctions
@@ -37,6 +38,13 @@ public class TestBuildinFunctions implements IBuildinFunctions
 	}
 	@Override
 	public void register(RuntimeEnvironment environment) throws DuplicateFunctionException
+	{
+		environment.registerFunction(read.getName(), read);
+		environment.registerFunction(write.getName(), write);
+		environment.registerFunction(writeLn.getName(), writeLn);
+	}
+	@Override
+	public void typeCheckRegister(TypeCheckEnvironment environment) throws DuplicateFunctionException
 	{
 		environment.registerFunction(read.getName(), read);
 		environment.registerFunction(write.getName(), write);

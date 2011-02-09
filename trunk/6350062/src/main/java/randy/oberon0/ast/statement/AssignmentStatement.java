@@ -5,7 +5,7 @@ import randy.oberon0.ast.selector.Selector;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
 import randy.oberon0.interpreter.runtime.environment.Reference;
-import randy.oberon0.value.Value;
+import randy.oberon0.interpreter.typecheck.*;
 
 public class AssignmentStatement extends Statement
 {
@@ -30,13 +30,13 @@ public class AssignmentStatement extends Statement
 		var.setValue(expression.evaluate(environment).getValue());
 	}
 	@Override
-	public void typeCheck(RuntimeEnvironment environment) throws RuntimeException
+	public void typeCheck(TypeCheckEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Evaluate the variable
-		Value var = variable.typeCheck(environment);
+		ITypeCheckType var = variable.typeCheck(environment);
 		assert(var != null);
 		// Evaluate the expression and see if we can assign the result as the value of the variable
-		var.setValue(expression.typeCheck(environment));
+		var.mustBe(expression.typeCheck(environment));
 	}
 }

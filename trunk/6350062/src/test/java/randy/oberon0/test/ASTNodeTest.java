@@ -21,7 +21,7 @@ public class ASTNodeTest
 	{
 		random = new Random();
 		int seed = random.nextInt();
-		System.out.println("Seed: " + seed);
+		//System.out.println("Seed: " + seed);
 		random = new Random(seed);
 		program = null;
 	}
@@ -880,7 +880,6 @@ public class ASTNodeTest
 		functions = new TestBuildinFunctions();
 		program = new Program();
 		program.loadProgram("src/test/java/randy/oberon0/test/testscripts/" + testName + ".oberon0", functions);
-		/*
 		try
 		{
 			program.typeCheck();
@@ -899,7 +898,7 @@ public class ASTNodeTest
 				System.out.println("false: " + e.toString());
 			}
 			Assert.assertFalse(bIsValid);
-		}*/
+		}
 	}
 	private void prepareTest(String testName, boolean bIsValid)
 	{

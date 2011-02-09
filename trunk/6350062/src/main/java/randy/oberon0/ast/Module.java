@@ -6,8 +6,8 @@ import randy.oberon0.ast.statement.Statement;
 import randy.oberon0.exception.IncorrectNumberOfArgumentsException;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
-import randy.oberon0.interpreter.runtime.environment.IValue;
-import randy.oberon0.interpreter.runtime.environment.Reference;
+import randy.oberon0.interpreter.runtime.environment.IBindableValue;
+import randy.oberon0.interpreter.typecheck.*;
 
 public class Module extends ASTNode implements IInvokableFunction
 {
@@ -35,7 +35,7 @@ public class Module extends ASTNode implements IInvokableFunction
 		}
 	}
 	@Override
-	public void invoke(RuntimeEnvironment environment, Iterator<IValue> parameterValues) throws RuntimeException
+	public void invoke(RuntimeEnvironment environment, Iterator<IBindableValue> parameterValues) throws RuntimeException
 	{
 		assert(environment != null);
 		assert(parameterValues != null);
@@ -61,7 +61,7 @@ public class Module extends ASTNode implements IInvokableFunction
 		return "$MODULE";
 	}
 	@Override
-	public void typeCheckInvoke(RuntimeEnvironment environment, Iterator<Reference> parameterValues) throws RuntimeException
+	public void typeCheckInvoke(TypeCheckEnvironment environment, Iterator<ITypeCheckType> parameterValues) throws RuntimeException
 	{
 		assert(environment != null);
 		assert(parameterValues != null);
@@ -80,7 +80,7 @@ public class Module extends ASTNode implements IInvokableFunction
 		}
 	}
 	@Override
-	public void typeCheckRegisterTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException
+	public void typeCheckRegisterTypeDeclarations(TypeCheckEnvironment newEnvironment) throws RuntimeException
 	{
 		assert(newEnvironment != null);
 		// Register all the type declarations in the environment
@@ -93,7 +93,7 @@ public class Module extends ASTNode implements IInvokableFunction
 		}
 	}
 	@Override
-	public void typeCheckBody(RuntimeEnvironment newEnvironment) throws RuntimeException
+	public void typeCheckBody(TypeCheckEnvironment newEnvironment) throws RuntimeException
 	{
 		// Register all the type declarations in the environment
 		for (BodyDeclaration bodyDecl : bodyDeclarations)
@@ -118,7 +118,7 @@ public class Module extends ASTNode implements IInvokableFunction
 		{
 			if (bodyDecl instanceof ProcedureDeclaration)
 			{
-				RuntimeEnvironment functionEnvironment = new RuntimeEnvironment(newEnvironment);
+				TypeCheckEnvironment functionEnvironment = new TypeCheckEnvironment(newEnvironment);
 				((ProcedureDeclaration)bodyDecl).typeCheckBody(functionEnvironment);
 			}
 		}

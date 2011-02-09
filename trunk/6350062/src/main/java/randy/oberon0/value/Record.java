@@ -21,7 +21,7 @@ public class Record extends Value
 	{
 		members = new HashMap<String, Reference>();
 	}
-	public Set<String> getMemberNames()
+	public Set<String> getMemberNames() // TODO: kopieren
 	{
 		return members.keySet();
 	}
