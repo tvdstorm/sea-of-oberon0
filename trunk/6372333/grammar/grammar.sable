@@ -62,6 +62,9 @@ Tokens
     thentxt = 'THEN' sp*;
     elsiftxt = 'ELSIF' sp*;
     elsetxt = 'ELSE' sp*;
+    readtxt = 'Read' sp*;
+    writetxt = 'Write' sp*;
+    writelntxt = 'WriteLn' sp*;
     proceduretxt = 'PROCEDURE' sp*;
     sptxt = sp;
 		
@@ -99,10 +102,22 @@ Productions
     | {more}		statements semi statement {-> [statements.statement, statement] }
   	;
 	statement {-> statement}= 
-    	{statass} assignment |
-    	{statproc} procedurecall | 
+    	{statass} assignment | 
     	{statif} ifstatement |
+    	{readproc} readproc |
+    	{writeproc} writeproc |
+    	{writelnproc} writelnproc |
+    	{statproc} procedurecall |
     	{statwhile} whilestatement;
+    	
+    readproc {-> readproc} =
+    	readtxt l_par selector r_par {-> New readproc(selector)};
+    
+    writeproc {-> writeproc} =
+    	writetxt l_par selector r_par {-> New writeproc(selector)};
+    
+    writelnproc {-> writelnproc} =
+    	writelntxt {-> New writelnproc()};
     
     constdeclarations {-> constdeclaration*} =
       {constdeclaration}   	constdeclaration {-> [constdeclaration] }
@@ -286,9 +301,18 @@ Abstract Syntax Tree
 		| {identifier} identifier
 		| {arrayexpression} selector exp
 		;
+		
+	readproc = selector;
+    
+    writeproc = selector;
+    
+    writelnproc = ;
     
     statement = 
     	{statass} assignment |
-    	{statproc} procedurecall | 
     	{statif} ifstatement |
+    	{readproc} readproc |
+    	{writeproc} writeproc |
+    	{writelnproc} writelnproc |
+    	{statproc} procedurecall | 
     	{statwhile} whilestatement;

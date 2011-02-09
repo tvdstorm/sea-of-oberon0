@@ -3,6 +3,7 @@ package oberon.convert;
 import java.util.ArrayList;
 import java.util.List;
 
+import oberon.IProcedure;
 import oberon.StatementSequence;
 import oberon.node.AModule;
 import oberon.procedures.Declaration;
@@ -21,6 +22,9 @@ public class ModuleConverter extends AbstractConverter<ProcedureHeading> {
 	
 	/** The module body. */
 	private StatementSequence moduleBody;
+	
+	/** The system procedures. */
+	private static List<IProcedure> systemProcedures = new ArrayList<IProcedure>();
 
 	/* (non-Javadoc)
 	 * @see oberon.analysis.DepthFirstAdapter#caseAModule(oberon.node.AModule)
@@ -46,5 +50,23 @@ public class ModuleConverter extends AbstractConverter<ProcedureHeading> {
 		
 		final ProcedureBody body = new ProcedureBody(declaration, moduleBody);
 		return new ProcedureHeading("Main", params, body);
+	}
+
+	/**
+	 * Gets the system procedures.
+	 *
+	 * @return the system procedures
+	 */
+	public static List<IProcedure> getSystemProcedures() {
+		return systemProcedures;
+	}
+
+	/**
+	 * Adds a system procedure.
+	 *
+	 * @param procedure the procedure
+	 */
+	public static void addSystemProcedures(IProcedure procedure) {
+		systemProcedures.add(procedure);
 	}
 }

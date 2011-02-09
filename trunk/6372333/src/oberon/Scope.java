@@ -7,7 +7,6 @@ import java.util.List;
 import oberon.data.IntegerArrayDataType;
 import oberon.exceptions.UnsupportedException;
 import oberon.exceptions.VariableNotFoundInScopeException;
-import oberon.procedures.Declaration;
 
 /**
  * The Class Scope.
@@ -84,7 +83,7 @@ public class Scope {
 	 * @throws UnsupportedException 
 	 * @throws VariableNotFoundInScopeException 
 	 */
-	public void addNewDeclaration(final Declaration declaration) throws UnsupportedException, VariableNotFoundInScopeException
+	public void addNewDeclaration(final IDeclaration declaration) throws UnsupportedException, VariableNotFoundInScopeException
 	{
 		for (IDataType actualParam : declaration.getVariables()){
 			variables.put(actualParam.getName(), actualParam);	

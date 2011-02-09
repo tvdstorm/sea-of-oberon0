@@ -208,68 +208,86 @@ class TokenIndex extends AnalysisAdapter
     }
 
     @Override
-    public void caseTProceduretxt(@SuppressWarnings("unused") TProceduretxt node)
+    public void caseTReadtxt(@SuppressWarnings("unused") TReadtxt node)
     {
         this.index = 33;
     }
 
     @Override
-    public void caseTSptxt(@SuppressWarnings("unused") TSptxt node)
+    public void caseTWritetxt(@SuppressWarnings("unused") TWritetxt node)
     {
         this.index = 34;
     }
 
     @Override
-    public void caseTAdd(@SuppressWarnings("unused") TAdd node)
+    public void caseTWritelntxt(@SuppressWarnings("unused") TWritelntxt node)
     {
         this.index = 35;
     }
 
     @Override
-    public void caseTSub(@SuppressWarnings("unused") TSub node)
+    public void caseTProceduretxt(@SuppressWarnings("unused") TProceduretxt node)
     {
         this.index = 36;
     }
 
     @Override
-    public void caseTMul(@SuppressWarnings("unused") TMul node)
+    public void caseTSptxt(@SuppressWarnings("unused") TSptxt node)
     {
         this.index = 37;
     }
 
     @Override
-    public void caseTMod(@SuppressWarnings("unused") TMod node)
+    public void caseTAdd(@SuppressWarnings("unused") TAdd node)
     {
         this.index = 38;
     }
 
     @Override
-    public void caseTAmp(@SuppressWarnings("unused") TAmp node)
+    public void caseTSub(@SuppressWarnings("unused") TSub node)
     {
         this.index = 39;
     }
 
     @Override
-    public void caseTDiv(@SuppressWarnings("unused") TDiv node)
+    public void caseTMul(@SuppressWarnings("unused") TMul node)
     {
         this.index = 40;
     }
 
     @Override
-    public void caseTInteger(@SuppressWarnings("unused") TInteger node)
+    public void caseTMod(@SuppressWarnings("unused") TMod node)
     {
         this.index = 41;
     }
 
     @Override
-    public void caseTIdentifier(@SuppressWarnings("unused") TIdentifier node)
+    public void caseTAmp(@SuppressWarnings("unused") TAmp node)
     {
         this.index = 42;
     }
 
     @Override
-    public void caseEOF(@SuppressWarnings("unused") EOF node)
+    public void caseTDiv(@SuppressWarnings("unused") TDiv node)
     {
         this.index = 43;
+    }
+
+    @Override
+    public void caseTInteger(@SuppressWarnings("unused") TInteger node)
+    {
+        this.index = 44;
+    }
+
+    @Override
+    public void caseTIdentifier(@SuppressWarnings("unused") TIdentifier node)
+    {
+        this.index = 45;
+    }
+
+    @Override
+    public void caseEOF(@SuppressWarnings("unused") EOF node)
+    {
+        this.index = 46;
     }
 }

@@ -3,7 +3,6 @@ package oberon.statement;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
 
 import oberon.IExpression;
 import oberon.IStatement;
@@ -55,7 +54,6 @@ public class IfStatement implements IStatement {
 			evalStatements(currentScope);
 			return;
 		}
-
 		
 		for (IfStatement nextElseIf : elseIfBlocks){
 			if (nextElseIf.conditionIsTrue(currentScope)) {
