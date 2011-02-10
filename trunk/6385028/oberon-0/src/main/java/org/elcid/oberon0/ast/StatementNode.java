@@ -1,7 +1,7 @@
 package org.elcid.oberon0.ast;
 
 import org.elcid.oberon0.ast.env.Environment;
-import org.elcid.oberon0.ast.visitor.BaseVisitor;
+import org.elcid.oberon0.ast.visitor.StatementVisitor;
 
 /**
  * Base class for statements in the Oberon-0 language.
@@ -10,6 +10,6 @@ import org.elcid.oberon0.ast.visitor.BaseVisitor;
  */
 public abstract class StatementNode extends Node {
 
-	public abstract void run(BaseVisitor visitor, Environment localEnv);
+	public abstract void run(StatementVisitor visitor, Environment localEnv);
 
 }
