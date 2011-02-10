@@ -30,7 +30,7 @@ public class VarDeclaration extends BodyDeclaration
 		variableNames = _variableNames;
 	}
 	@Override
-	public void register(RuntimeEnvironment newEnvironment) throws RuntimeException // Use for variable declarations IN methods or modules
+	public void register(RuntimeEnvironment newEnvironment) throws RuntimeException // Use for variable declarations IN procedures or modules
 	{
 		assert(newEnvironment != null);
 		// Loop through all variable names
@@ -42,7 +42,7 @@ public class VarDeclaration extends BodyDeclaration
 		}
 	}
 	@Override
-	public void typeCheckRegister(TypeCheckEnvironment newEnvironment) throws RuntimeException // Use for variable declarations IN methods or modules
+	public void typeCheckRegister(TypeCheckEnvironment newEnvironment) throws RuntimeException // Use for variable declarations IN procedures or modules
 	{
 		assert(newEnvironment != null);
 		// Loop through all variable names

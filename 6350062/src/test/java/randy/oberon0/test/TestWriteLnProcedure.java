@@ -2,17 +2,17 @@ package randy.oberon0.test;
 
 import java.util.Iterator;
 import java.util.Queue;
-import randy.oberon0.interpreter.runtime.IInvokableFunction;
+import randy.oberon0.interpreter.runtime.IInvokableProcedure;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.exception.*;
 import randy.oberon0.interpreter.runtime.environment.*;
 import randy.oberon0.interpreter.typecheck.environment.*;
 
-public class TestWriteLnFunction implements IInvokableFunction
+public class TestWriteLnProcedure implements IInvokableProcedure
 {
 	private Queue<String> output;
 	
-	public TestWriteLnFunction(Queue<String> _output)
+	public TestWriteLnProcedure(Queue<String> _output)
 	{
 		output = _output;
 	}
