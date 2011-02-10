@@ -13,35 +13,30 @@ import org.elcid.oberon0.exceptions.ModuloZeroException;
  *
  * @author Pieter Brandwijk
  */
-public class ExpressionVisitor extends BaseVisitor {
+public class ExpressionVisitor {
 
-	@Override
 	public Value eval(IntExpNode node, Environment localEnv) {
 		return node.getValue();
 	}
 
-	@Override
 	public Value eval(PlusExpNode node, Environment localEnv) {
 		Int left = (Int) node.getLeftExp().eval(this, localEnv);
 		Int right = (Int) node.getRightExp().eval(this, localEnv);
 		return new Int(left.getValue() + right.getValue());
 	}
 
-	@Override
 	public Value eval(MinusExpNode node, Environment localEnv) {
 		Int left = (Int) node.getLeftExp().eval(this, localEnv);
 		Int right = (Int) node.getRightExp().eval(this, localEnv);
 		return new Int(left.getValue() - right.getValue());
 	}
 
-	@Override
 	public Value eval(MultiplyExpNode node, Environment localEnv) {
 		Int left = (Int) node.getLeftExp().eval(this, localEnv);
 		Int right = (Int) node.getRightExp().eval(this, localEnv);
 		return new Int(left.getValue() * right.getValue());
 	}
 
-	@Override
 	public Value eval(DivideExpNode node, Environment localEnv) {
 		Int left = (Int) node.getLeftExp().eval(this, localEnv);
 		Int right = (Int) node.getRightExp().eval(this, localEnv);
@@ -50,7 +45,6 @@ public class ExpressionVisitor extends BaseVisitor {
 		return new Int(left.getValue() / right.getValue());
 	}
 
-	@Override
 	public Value eval(ModuloExpNode node, Environment localEnv) {
 		Int left = (Int) node.getLeftExp().eval(this, localEnv);
 		Int right = (Int) node.getRightExp().eval(this, localEnv);
@@ -62,7 +56,6 @@ public class ExpressionVisitor extends BaseVisitor {
 	/**
 	 * At the moment the equals expression only compares expressions that evaluate to an Int value
 	 */
-	@Override
 	public Value eval(EqualsExpNode node, Environment localEnv) {
 		Integer left = ((Int) node.getLeftExp().eval(this, localEnv)).getValue();
 		Integer right = ((Int) node.getRightExp().eval(this, localEnv)).getValue();
@@ -72,56 +65,48 @@ public class ExpressionVisitor extends BaseVisitor {
 	/**
 	 * At the moment the not equals expression only compares expressions that evaluate to an Int value
 	 */
-	@Override
 	public Value eval(NotEqualsExpNode node, Environment localEnv) {
 		Integer left = ((Int) node.getLeftExp().eval(this, localEnv)).getValue();
 		Integer right = ((Int) node.getRightExp().eval(this, localEnv)).getValue();
 		return new Bool(!left.equals(right));
 	}
 
-	@Override
 	public Value eval(GreaterExpNode node, Environment localEnv) {
 		Int left = (Int) node.getLeftExp().eval(this, localEnv);
 		Int right = (Int) node.getRightExp().eval(this, localEnv);
 		return new Bool(left.getValue() > right.getValue());
 	}
 
-	@Override
 	public Value eval(GreaterOrEqualsExpNode node, Environment localEnv) {
 		Int left = (Int) node.getLeftExp().eval(this, localEnv);
 		Int right = (Int) node.getRightExp().eval(this, localEnv);
 		return new Bool(left.getValue() >= right.getValue());
 	}
 
-	@Override
 	public Value eval(LesserExpNode node, Environment localEnv) {
 		Int left = (Int) node.getLeftExp().eval(this, localEnv);
 		Int right = (Int) node.getRightExp().eval(this, localEnv);
 		return new Bool(left.getValue() < right.getValue());
 	}
 
-	@Override
 	public Value eval(LesserOrEqualsExpNode node, Environment localEnv) {
 		Int left = (Int) node.getLeftExp().eval(this, localEnv);
 		Int right = (Int) node.getRightExp().eval(this, localEnv);
 		return new Bool(left.getValue() <= right.getValue());
 	}
 
-	@Override
 	public Value eval(AndExpNode node, Environment localEnv) {
 		Bool left = (Bool) node.getLeftExp().eval(this, localEnv);
 		Bool right = (Bool) node.getRightExp().eval(this, localEnv);
 		return new Bool(left.getValue() && right.getValue());
 	}
 
-	@Override
 	public Value eval(OrExpNode node, Environment localEnv) {
 		Bool left = (Bool) node.getLeftExp().eval(this, localEnv);
 		Bool right = (Bool) node.getRightExp().eval(this, localEnv);
 		return new Bool(left.getValue() || right.getValue());
 	}
 
-	@Override
 	public Value eval(IdentSelectorNode node, Environment localEnv) {
 		Value value = localEnv.getValue(node.getIdentifier());
 		for(SelectorNode selector : node.getSelectors()) {
@@ -130,13 +115,11 @@ public class ExpressionVisitor extends BaseVisitor {
 		return value;
 	}
 
-	@Override
 	public Value eval(NotExpNode node, Environment localEnv) {
 		Boolean value = ((Bool) node.getExpression().eval(this, localEnv)).getValue();
 		return new Bool(!value);
 	}
 
-	@Override
 	public Value eval(NegativeExpNode node, Environment localEnv) {
 		Integer exprValue = ((Int) node.getExpression().eval(this, localEnv)).getValue();
 		return new Int(NegativeExpNode.NEGATIVE_FACTOR * exprValue);

@@ -9,22 +9,19 @@ import org.elcid.oberon0.ast.values.*;
  *
  * @author Pieter Brandwijk
  */
-public class StatementVisitor extends BaseVisitor {
+public class StatementVisitor {
 
-	@Override
 	public void run(StatementSequenceNode node, Environment localEnv) {
 		for (StatementNode statement : node.getStatements()) {
 			statement.run(this, localEnv);
 		}
 	}
 
-	@Override
 	public void run(AssignmentNode node, Environment localEnv) {
 		Value value = (Value) node.getExpression().eval(new ExpressionVisitor(), localEnv);
 		localEnv.put(node.getIdentSelector().getIdentifier(), value);
 	}
 
-	@Override
 	public void run(IfStmNode node, Environment localEnv) {
 		Boolean condition = ((Bool) node.getCondition().eval(new ExpressionVisitor(), localEnv)).getValue();
 		if (condition) {
@@ -35,12 +32,10 @@ public class StatementVisitor extends BaseVisitor {
 		}
 	}
 
-	@Override
 	public void run(ElseStmNode node, Environment localEnv) {
 		node.getStatementSequence().run(this, localEnv);
 	}
 
-	@Override
 	public void run(WhileStmNode node, Environment localEnv) {
 		Boolean condition = ((Bool)node.getCondition().eval(new ExpressionVisitor(), localEnv)).getValue();
 		if (condition) {
