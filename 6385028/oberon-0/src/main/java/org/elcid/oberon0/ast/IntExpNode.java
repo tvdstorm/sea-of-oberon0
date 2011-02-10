@@ -2,7 +2,7 @@ package org.elcid.oberon0.ast;
 
 import org.elcid.oberon0.ast.env.Environment;
 import org.elcid.oberon0.ast.values.Int;
-import org.elcid.oberon0.ast.visitor.BaseVisitor;
+import org.elcid.oberon0.ast.visitor.ExpressionVisitor;
 
 /**
  * Represents expressions of integer values in the Oberon-0 language.
@@ -22,7 +22,7 @@ public class IntExpNode extends ExpressionNode {
 	}
 
 	@Override
-	public Object eval(BaseVisitor visitor, Environment localEnv) {
+	public Object eval(ExpressionVisitor visitor, Environment localEnv) {
 		return visitor.eval(this, localEnv);
 	}
 

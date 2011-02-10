@@ -1,7 +1,7 @@
 package org.elcid.oberon0.ast;
 
 import org.elcid.oberon0.ast.env.Environment;
-import org.elcid.oberon0.ast.visitor.BaseVisitor;
+import org.elcid.oberon0.ast.visitor.ExpressionVisitor;
 
 /**
  * Represents the greater-than-or-equals expression in the Oberon-0 language.
@@ -27,7 +27,7 @@ public class GreaterOrEqualsExpNode extends ExpressionNode {
 	}
 
 	@Override
-	public Object eval(BaseVisitor visitor, Environment localEnv) {
+	public Object eval(ExpressionVisitor visitor, Environment localEnv) {
 		return visitor.eval(this, localEnv);
 	}
 
