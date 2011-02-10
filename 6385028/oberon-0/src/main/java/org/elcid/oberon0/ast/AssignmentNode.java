@@ -1,7 +1,7 @@
 package org.elcid.oberon0.ast;
 
 import org.elcid.oberon0.ast.env.Environment;
-import org.elcid.oberon0.ast.visitor.BaseVisitor;
+import org.elcid.oberon0.ast.visitor.StatementVisitor;
 
 /**
  * Represents an assignment in the Oberon-0 language.
@@ -10,11 +10,11 @@ import org.elcid.oberon0.ast.visitor.BaseVisitor;
  */
 public class AssignmentNode extends StatementNode {
 
-	private String variableName;
+	private IdentSelectorNode identSelector;
 	private ExpressionNode expression;
 
-	public AssignmentNode(String variableName, ExpressionNode expression) {
-		this.variableName = variableName;
+	public AssignmentNode(IdentSelectorNode variableName, ExpressionNode expression) {
+		this.identSelector = variableName;
 		this.expression = expression;
 	}
 
@@ -22,12 +22,12 @@ public class AssignmentNode extends StatementNode {
 		return expression;
 	}
 
-	public String getVariableName() {
-		return variableName;
+	public IdentSelectorNode getIdentSelector() {
+		return identSelector;
 	}
 
 	@Override
-	public void run(BaseVisitor visitor, Environment localEnv) {
+	public void run(StatementVisitor visitor, Environment localEnv) {
 		visitor.run(this, localEnv);
 	}
 

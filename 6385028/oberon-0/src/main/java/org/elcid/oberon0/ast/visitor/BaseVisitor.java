@@ -80,8 +80,19 @@ public abstract class BaseVisitor {
 		return null;
 	}
 
+	public void run(StatementSequenceNode node, Environment localEnv) {
+
+	}
+
 	public void run(AssignmentNode node, Environment localEnv) { 
 		
 	}
 
+	public void run(IfStmNode node, Environment localEnv) {
+
+	}
+
+	public void run(ElseStmNode node, Environment localEnv) {
+
+	}
 }

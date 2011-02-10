@@ -128,19 +128,22 @@ recordType
 	:	RECORD_KW fieldList (SEMI_COLON fieldList)* END_KW
 	;
 
-statementSequence
-	:	statement (SEMI_COLON statement)*
+statementSequence returns [StatementSequenceNode result]
+	:													{ $result = new StatementSequenceNode(); }
+		s1=statement									{ $result.addStatement($s1.result); System.out.println(((AssignmentNode)$s1.result).getIdentSelector().getIdentifier()); }
+		(SEMI_COLON	s2=statement						{ $result.addStatement($s2.result); }
+		)*
 	;
 
-statement
-	:	((identSelector ASSIGN_OP) => assignment)
+statement returns [StatementNode result]
+	:	((identSelector ASSIGN_OP) => a=assignment)		{ $result = $a.result; }
 	|	procedureCall
-	|	ifStatement
+	|	i=ifStatement									{ $result = $i.result; }
 	|	whileStatement
 	;
 
-assignment
-	:	identSelector ASSIGN_OP expression
+assignment returns [StatementNode result]
+	:	is=identSelector ASSIGN_OP e=expression			{ $result = new AssignmentNode($is.result, $e.result); }
 	;
 
 procedureCall
@@ -151,16 +154,25 @@ whileStatement
 	:	WHILE_KW expression DO_KW statementSequence END_KW
 	;
 
-ifStatement
-	:	IF_KW expression THEN_KW statementSequence (elsifStatement)* (elseStatement)? END_KW
+ifStatement returns [IfThenElseStmNode result]
+	:	IF_KW e=expression THEN_KW ss=statementSequence	{ $result = new IfStmNode($e.result, $ss.result); }
+			(ec=elseCondition)?							{ $result.setElseNode($ec.result); }
+		END_KW
 	;
 
-elsifStatement
-	:	ELSIF_KW expression THEN_KW statementSequence
+elseCondition returns [IfThenElseStmNode result]
+	:	es=elsifStatement								{ $result = $es.result; }
+			(ec=elseCondition)?							{ $result.setElseNode($ec.result); }
+	|	es=elseStatement								{ $result = $es.result; }
 	;
 
-elseStatement
-	:	ELSE_KW statementSequence
+elsifStatement returns [IfThenElseStmNode result]
+	:	ELSIF_KW e=expression
+		THEN_KW ss=statementSequence					{ $result = new IfStmNode($e.result, $ss.result); }
+	;
+
+elseStatement returns [IfThenElseStmNode result]
+	:	ELSE_KW ss=statementSequence					{ $result = new ElseStmNode($ss.result); }
 	;
 
 actualParameters
