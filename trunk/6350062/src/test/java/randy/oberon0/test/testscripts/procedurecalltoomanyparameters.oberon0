@@ -1,4 +1,4 @@
-MODULE Functioncalltoomanyparameters;
+MODULE Procedurecalltoomanyparameters;
 
 PROCEDURE Func(x, y: INTEGER);
   BEGIN
@@ -8,4 +8,4 @@ BEGIN
 
 Func(4, 5, 6)
 
-END Functioncalltoomanyparameters.
+END Procedurecalltoomanyparameters.

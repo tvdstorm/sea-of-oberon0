@@ -1,7 +1,7 @@
 package randy.oberon0.interpreter.runtime.environment;
 
 import java.util.*;
-import randy.oberon0.interpreter.runtime.IInvokableFunction;
+import randy.oberon0.interpreter.runtime.IInvokableProcedure;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.exception.*;
 import randy.oberon0.value.Value;
@@ -46,7 +46,7 @@ public class RuntimeEnvironment
 		}
 	}
 	/**************************************************************************
-	 * Variable functions                                                     *
+	 * Variables                                                              *
 	 **************************************************************************/
 	public void registerVariableByValue(String variableName, Value value) throws DuplicateVariableException
 	{
@@ -71,22 +71,22 @@ public class RuntimeEnvironment
 		registerVariableByReference(constantName, new Constant(value));
 	}
 	/**************************************************************************
-	 * Function functions                                                     *
+	 * Procedures                                                             *
 	 **************************************************************************/
-	public void registerFunction(String functionName, IInvokableFunction functionPointer) throws DuplicateFunctionException
+	public void registerProcedure(String procedureName, IInvokableProcedure procedurePointer) throws DuplicateProcedureException
 	{
-		assert(functionName != null);
-		assert(functionName.length() > 0);
-		assert(functionPointer != null);
-		// Check if the function has already been declared in the current scope
-		if (bindings.containsKey(functionName))
+		assert(procedureName != null);
+		assert(procedureName.length() > 0);
+		assert(procedurePointer != null);
+		// Check if the procedure has already been declared in the current scope
+		if (bindings.containsKey(procedureName))
 		{
-			throw new DuplicateFunctionException(functionName);
+			throw new DuplicateProcedureException(procedureName);
 		}
-		bindings.put(functionName, new Closure(functionPointer, this));
+		bindings.put(procedureName, new Closure(procedurePointer, this));
 	}
 	/**************************************************************************
-	 * Type functions                                                         *
+	 * Types                                                                  *
 	 **************************************************************************/
 	public void registerType(String typeName, IInstantiateableVariable typeCreator) throws DuplicateTypeException
 	{

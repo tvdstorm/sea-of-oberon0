@@ -1,23 +1,22 @@
 package randy.oberon0.interpreter.runtime.environment;
 
-import randy.oberon0.interpreter.runtime.IInvokableFunction;
+import randy.oberon0.interpreter.runtime.IInvokableProcedure;
 
 public class Closure implements IBindable
 {
-	// TODO: function OVERAL procedure noemen!
-	private final IInvokableFunction function;
+	private final IInvokableProcedure procedure;
 	private final RuntimeEnvironment environment;
 	
-	public Closure(IInvokableFunction _function, RuntimeEnvironment _environment)
+	public Closure(IInvokableProcedure _procedure, RuntimeEnvironment _environment)
 	{
-		assert(_function != null);
+		assert(_procedure != null);
 		assert(_environment != null);
-		function = _function;
+		procedure = _procedure;
 		environment = _environment;
 	}
-	public IInvokableFunction getFunction()
+	public IInvokableProcedure getProcedure()
 	{
-		return function;
+		return procedure;
 	}
 	public RuntimeEnvironment getEnvironment()
 	{

@@ -1,8 +1,8 @@
-package randy.oberon0.interpreter.buildinfunctions;
+package randy.oberon0.test;
 
-import java.io.IOException;
 import java.util.Iterator;
-import randy.oberon0.interpreter.runtime.IInvokableFunction;
+import java.util.Queue;
+import randy.oberon0.interpreter.runtime.IInvokableProcedure;
 import randy.oberon0.interpreter.runtime.environment.IBindableValue;
 import randy.oberon0.interpreter.runtime.environment.Reference;
 import randy.oberon0.exception.*;
@@ -12,49 +12,35 @@ import randy.oberon0.interpreter.typecheck.environment.*;
 import randy.oberon0.value.Integer;
 import randy.oberon0.value.Type;
 
-public class DefaultReadFunction implements IInvokableFunction
+public class TestReadProcedure implements IInvokableProcedure
 {
-	@Override
-	public String getName()
+	private Queue<String> input;
+	
+	public TestReadProcedure(Queue<String> _input)
 	{
-		return "Read";
+		input = _input;
 	}
 	@Override
 	public void invoke(RuntimeEnvironment environment, Iterator<IBindableValue> parameterValues) throws RuntimeException
 	{
-		try
+		if (!parameterValues.hasNext())
+			throw new IncorrectNumberOfArgumentsException();
+		Reference param = (Reference)parameterValues.next();
+		if (!param.getValue().getType().equals(Type.INTEGER))
+			throw new TypeMismatchException(param.getValue().getType().toString(), Type.INTEGER.toString());
+		String v = input.poll();
+		if (v == null)
+			throw new IOErrorException("Input stack is empty...");
+		param.setValue(new Integer(java.lang.Integer.parseInt(v)));
+		// No parameters should be left
+		if (parameterValues.hasNext())
 		{
-			// Accept one parameter
-			if (!parameterValues.hasNext())
-			{
-				throw new IncorrectNumberOfArgumentsException();
-			}
-			// Check if the parameter is an integer
-			Reference param = (Reference)parameterValues.next();
-			
-			if (!param.getValue().getType().equals(Type.INTEGER))
-			{
-				throw new TypeMismatchException(param.getValue().getType().toString(), Type.INTEGER.toString());
-			}
-			// Write a prompt to indicate that we need input
-			System.out.println("Script requests input: ");
-			// Read a line from the input
-			byte input[] = new byte[1024];
-			int length = System.in.read(input);
-			String in = new String(input, 0, length);
-			in = in.trim();
-			// Parse the string to an integer and set the parameters value
-			param.setValue(new Integer(java.lang.Integer.parseInt(in)));
-			// No parameters should be left
-			if (parameterValues.hasNext())
-			{
-				throw new IncorrectNumberOfArgumentsException();
-			}
+			throw new IncorrectNumberOfArgumentsException();
 		}
-		catch (IOException e)
-		{
-			throw new IOErrorException("Error reading from stdin...");
-		}
+	}
+	public String getName()
+	{
+		return "Read";
 	}
 	@Override
 	public void registerTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException
@@ -64,13 +50,14 @@ public class DefaultReadFunction implements IInvokableFunction
 	@Override
 	public void typeCheckInvoke(TypeCheckEnvironment environment, Iterator<ITypeCheckBindableValue> parameterValues) throws RuntimeException
 	{
-		// Accept one parameter
+		/// Accept one parameter
 		if (!parameterValues.hasNext())
 		{
 			throw new IncorrectNumberOfArgumentsException();
 		}
+		// TODO: read functies moeten controleren of het een reference is of niet
 		// Accept only an integer
-		parameterValues.next().mustBe(TypeCheckType.INTEGER);
+		parameterValues.next().equals(TypeCheckType.INTEGER);
 		// No parameters should be left
 		if (parameterValues.hasNext())
 		{

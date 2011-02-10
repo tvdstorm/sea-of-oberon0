@@ -2,8 +2,8 @@ package randy.oberon0.interpreter.typecheck.environment;
 
 import java.util.HashMap;
 import java.util.Map;
-import randy.oberon0.interpreter.runtime.IInvokableFunction;
-import randy.oberon0.exception.DuplicateFunctionException;
+import randy.oberon0.interpreter.runtime.IInvokableProcedure;
+import randy.oberon0.exception.DuplicateProcedureException;
 import randy.oberon0.exception.DuplicateTypeException;
 import randy.oberon0.exception.DuplicateVariableException;
 import randy.oberon0.exception.RuntimeException;
@@ -53,7 +53,7 @@ public class TypeCheckEnvironment
 		}
 	}
 	/**************************************************************************
-	 * Variable functions                                                     *
+	 * Variables                                                              *
 	 **************************************************************************/
 	public void registerVariableByValue(String variableName, ITypeCheckType valueType) throws DuplicateVariableException
 	{
@@ -78,22 +78,22 @@ public class TypeCheckEnvironment
 		registerVariableByReference(constantName, new TypeCheckConstant(TypeCheckType.INTEGER));
 	}
 	/**************************************************************************
-	 * Function functions                                                     *
+	 * Procedures                                                             *
 	 **************************************************************************/
-	public void registerFunction(String functionName, IInvokableFunction functionPointer) throws DuplicateFunctionException
+	public void registerProcedure(String procedureName, IInvokableProcedure procedurePointer) throws DuplicateProcedureException
 	{
-		assert(functionName != null);
-		assert(functionName.length() > 0);
-		assert(functionPointer != null);
-		// Check if the function has already been declared in the current scope
-		if (bindings.containsKey(functionName))
+		assert(procedureName != null);
+		assert(procedureName.length() > 0);
+		assert(procedurePointer != null);
+		// Check if the procedure has already been declared in the current scope
+		if (bindings.containsKey(procedureName))
 		{
-			throw new DuplicateFunctionException(functionName);
+			throw new DuplicateProcedureException(procedureName);
 		}
-		bindings.put(functionName, new TypeCheckClosure(functionPointer, this));
+		bindings.put(procedureName, new TypeCheckClosure(procedurePointer, this));
 	}
 	/**************************************************************************
-	 * Type functions                                                         *
+	 * Types                                                                  *
 	 **************************************************************************/
 	public void registerType(String typeName, ITypeCheckType resolvesTo) throws DuplicateTypeException
 	{

@@ -17,7 +17,7 @@ public class ASTNodeTest
 	private final int numTests = 1000;
 	private Random random;
 	private Program program;
-	private TestBuildinFunctions functions;
+	private TestBuildinProcedures procedures;
 	
 	public ASTNodeTest()
 	{
@@ -35,9 +35,9 @@ public class ASTNodeTest
 		{
 			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
 			runTest(""+a, ""+b, ""+c);
-			Assert.assertTrue(functions.popOutput().equals("" + (a+b)));
-			Assert.assertTrue(functions.popOutput().equals("" + (a+b+c)));
-			Assert.assertTrue(functions.outputIsEmpty());
+			Assert.assertTrue(procedures.popOutput().equals("" + (a+b)));
+			Assert.assertTrue(procedures.popOutput().equals("" + (a+b+c)));
+			Assert.assertTrue(procedures.outputIsEmpty());
 		}
 	}
 	@Test
@@ -48,9 +48,9 @@ public class ASTNodeTest
 		{
 			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
 			runTest(""+a, ""+b, ""+c);
-			Assert.assertTrue(functions.popOutput().equals("" + (a-b)));
-			Assert.assertTrue(functions.popOutput().equals("" + (a-b-c)));
-			Assert.assertTrue(functions.outputIsEmpty());
+			Assert.assertTrue(procedures.popOutput().equals("" + (a-b)));
+			Assert.assertTrue(procedures.popOutput().equals("" + (a-b-c)));
+			Assert.assertTrue(procedures.outputIsEmpty());
 		}
 	}
 	@Test
@@ -61,9 +61,9 @@ public class ASTNodeTest
 		{
 			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
 			runTest(""+a, ""+b, ""+c);
-			Assert.assertTrue(functions.popOutput().equals("" + (a*b)));
-			Assert.assertTrue(functions.popOutput().equals("" + (a*b*c)));
-			Assert.assertTrue(functions.outputIsEmpty());
+			Assert.assertTrue(procedures.popOutput().equals("" + (a*b)));
+			Assert.assertTrue(procedures.popOutput().equals("" + (a*b*c)));
+			Assert.assertTrue(procedures.outputIsEmpty());
 		}
 	}
 	@Test
@@ -74,9 +74,9 @@ public class ASTNodeTest
 		{
 			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
 			runTest(""+a, ""+b, ""+c);
-			Assert.assertTrue(functions.popOutput().equals("" + (a/b)));
-			Assert.assertTrue(functions.popOutput().equals("" + (a/b/c)));
-			Assert.assertTrue(functions.outputIsEmpty());
+			Assert.assertTrue(procedures.popOutput().equals("" + (a/b)));
+			Assert.assertTrue(procedures.popOutput().equals("" + (a/b/c)));
+			Assert.assertTrue(procedures.outputIsEmpty());
 		}
 	}
 	@Test
@@ -87,8 +87,8 @@ public class ASTNodeTest
 		{
 			int getal = random.nextInt();
 			runTest(""+getal);
-			Assert.assertTrue(functions.popOutput().equals("" + (getal+1)));
-			Assert.assertTrue(functions.outputIsEmpty());
+			Assert.assertTrue(procedures.popOutput().equals("" + (getal+1)));
+			Assert.assertTrue(procedures.outputIsEmpty());
 		}
 	}
 	@Test
@@ -99,10 +99,10 @@ public class ASTNodeTest
 		{
 			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
 			runTest(""+a, ""+b, ""+c);
-			Assert.assertTrue(functions.popOutput().equals("" + a));
-			Assert.assertTrue(functions.popOutput().equals("" + (b+1)));
-			Assert.assertTrue(functions.popOutput().equals("" + c));
-			Assert.assertTrue(functions.outputIsEmpty());
+			Assert.assertTrue(procedures.popOutput().equals("" + a));
+			Assert.assertTrue(procedures.popOutput().equals("" + (b+1)));
+			Assert.assertTrue(procedures.popOutput().equals("" + c));
+			Assert.assertTrue(procedures.outputIsEmpty());
 		}
 	}
 	@Test
@@ -114,23 +114,23 @@ public class ASTNodeTest
 			int a = random.nextInt(), b = random.nextInt();
 			runTest(""+a, ""+b);
 			// Integer
-			Assert.assertTrue(functions.popOutput().equals("" + a));
-			Assert.assertTrue(functions.popOutput().equals("" + b));
+			Assert.assertTrue(procedures.popOutput().equals("" + a));
+			Assert.assertTrue(procedures.popOutput().equals("" + b));
 			// Swap
-			Assert.assertTrue(functions.popOutput().equals("" + b));
-			Assert.assertTrue(functions.popOutput().equals("" + a));
+			Assert.assertTrue(procedures.popOutput().equals("" + b));
+			Assert.assertTrue(procedures.popOutput().equals("" + a));
 			
 			// Array
-			Assert.assertTrue(functions.popOutput().equals("" + a));
-			Assert.assertTrue(functions.popOutput().equals("" + b));
+			Assert.assertTrue(procedures.popOutput().equals("" + a));
+			Assert.assertTrue(procedures.popOutput().equals("" + b));
 			// Swap
-			Assert.assertTrue(functions.popOutput().equals("" + b));
-			Assert.assertTrue(functions.popOutput().equals("" + a));
+			Assert.assertTrue(procedures.popOutput().equals("" + b));
+			Assert.assertTrue(procedures.popOutput().equals("" + a));
 			
 			// Check
-			Assert.assertTrue(functions.popOutput().equals("" + a));
-			Assert.assertTrue(functions.popOutput().equals("" + b));
-			Assert.assertTrue(functions.outputIsEmpty());
+			Assert.assertTrue(procedures.popOutput().equals("" + a));
+			Assert.assertTrue(procedures.popOutput().equals("" + b));
+			Assert.assertTrue(procedures.outputIsEmpty());
 		}
 	}
 	@Test
@@ -142,13 +142,13 @@ public class ASTNodeTest
 			int a = random.nextInt(10), b = random.nextInt(10);
 			runTest(""+a, ""+b);
 
-			Assert.assertTrue(functions.popOutput().equals("" + Math.max(a, b)));
-			Assert.assertTrue(functions.popOutput().equals("" + Math.min(a, b)));
-			Assert.assertTrue(functions.popOutput().equals((a == b)?"1":"0"));
-			Assert.assertTrue(functions.popOutput().equals((a != b)?"1":"0"));
-			Assert.assertTrue(functions.popOutput().equals("" + ((a <= b)?a:b)));
-			Assert.assertTrue(functions.popOutput().equals("" + ((a >= b)?a:b)));
-			Assert.assertTrue(functions.outputIsEmpty());
+			Assert.assertTrue(procedures.popOutput().equals("" + Math.max(a, b)));
+			Assert.assertTrue(procedures.popOutput().equals("" + Math.min(a, b)));
+			Assert.assertTrue(procedures.popOutput().equals((a == b)?"1":"0"));
+			Assert.assertTrue(procedures.popOutput().equals((a != b)?"1":"0"));
+			Assert.assertTrue(procedures.popOutput().equals("" + ((a <= b)?a:b)));
+			Assert.assertTrue(procedures.popOutput().equals("" + ((a >= b)?a:b)));
+			Assert.assertTrue(procedures.outputIsEmpty());
 		}
 	}
 	@Test
@@ -157,29 +157,29 @@ public class ASTNodeTest
 		prepareTest("andor", true);
 		runTest();
 
-		Assert.assertTrue(functions.popOutput().equals("1"));
-		Assert.assertTrue(functions.popOutput().equals("0"));
-		Assert.assertTrue(functions.popOutput().equals("0"));
-		Assert.assertTrue(functions.popOutput().equals("0"));
+		Assert.assertTrue(procedures.popOutput().equals("1"));
+		Assert.assertTrue(procedures.popOutput().equals("0"));
+		Assert.assertTrue(procedures.popOutput().equals("0"));
+		Assert.assertTrue(procedures.popOutput().equals("0"));
 		
-		Assert.assertTrue(functions.popOutput().equals("1"));
-		Assert.assertTrue(functions.popOutput().equals("1"));
-		Assert.assertTrue(functions.popOutput().equals("1"));
-		Assert.assertTrue(functions.popOutput().equals("0"));
+		Assert.assertTrue(procedures.popOutput().equals("1"));
+		Assert.assertTrue(procedures.popOutput().equals("1"));
+		Assert.assertTrue(procedures.popOutput().equals("1"));
+		Assert.assertTrue(procedures.popOutput().equals("0"));
 
-		Assert.assertTrue(functions.popOutput().equals("1"));
-		Assert.assertTrue(functions.popOutput().equals("1"));
-		Assert.assertTrue(functions.popOutput().equals("0"));
-		Assert.assertTrue(functions.popOutput().equals("0"));
+		Assert.assertTrue(procedures.popOutput().equals("1"));
+		Assert.assertTrue(procedures.popOutput().equals("1"));
+		Assert.assertTrue(procedures.popOutput().equals("0"));
+		Assert.assertTrue(procedures.popOutput().equals("0"));
 		
-		Assert.assertTrue(functions.popOutput().equals("0"));
-		Assert.assertTrue(functions.popOutput().equals("0"));
-		Assert.assertTrue(functions.popOutput().equals("1"));
-		Assert.assertTrue(functions.popOutput().equals("1"));
+		Assert.assertTrue(procedures.popOutput().equals("0"));
+		Assert.assertTrue(procedures.popOutput().equals("0"));
+		Assert.assertTrue(procedures.popOutput().equals("1"));
+		Assert.assertTrue(procedures.popOutput().equals("1"));
 		
-		Assert.assertTrue(functions.popOutput().equals("0"));
-		Assert.assertTrue(functions.popOutput().equals("1"));
-		Assert.assertTrue(functions.outputIsEmpty());
+		Assert.assertTrue(procedures.popOutput().equals("0"));
+		Assert.assertTrue(procedures.popOutput().equals("1"));
+		Assert.assertTrue(procedures.outputIsEmpty());
 	}
 	@Test
 	public void test_ConstAssignment()
@@ -272,11 +272,11 @@ public class ASTNodeTest
 		}
 	}
 	@Test
-	public void test_UnknownFunction()
+	public void test_UnknownProcedure()
 	{
 		try
 		{
-			prepareTestThrowException("unknownfunction", false);
+			prepareTestThrowException("unknownprocedure", false);
 			program.run();
 			Assert.fail("Should be throwing an UndefinedBindableException...");
 		}
@@ -290,11 +290,11 @@ public class ASTNodeTest
 		}
 	}
 	@Test
-	public void test_FunctionCallTooManyParameters()
+	public void test_ProcedureCallTooManyParameters()
 	{
 		try
 		{
-			prepareTest("functioncalltoomanyparameters", false);
+			prepareTest("procedurecalltoomanyparameters", false);
 			program.run();
 			Assert.fail("Should be throwing an IncorrectNumberOfArgumentsException...");
 		}
@@ -308,11 +308,11 @@ public class ASTNodeTest
 		}
 	}
 	@Test
-	public void test_FunctionCallFewManyParameters()
+	public void test_ProcedureCallFewManyParameters()
 	{
 		try
 		{
-			prepareTest("functioncalltoofewparameters", false);
+			prepareTest("procedurecalltoofewparameters", false);
 			program.run();
 			Assert.fail("Should be throwing an IncorrectNumberOfArgumentsException...");
 		}
@@ -383,10 +383,10 @@ public class ASTNodeTest
 			
 			for (int n=0;n<numWaardes;n++)
 			{
-				Assert.assertTrue(functions.popOutput().equals("" + numbers[n]));
-				Assert.assertTrue(functions.popOutput() == null);
+				Assert.assertTrue(procedures.popOutput().equals("" + numbers[n]));
+				Assert.assertTrue(procedures.popOutput() == null);
 			}
-			Assert.assertTrue(functions.outputIsEmpty());
+			Assert.assertTrue(procedures.outputIsEmpty());
 		}
 	}
 	@Test
@@ -434,10 +434,10 @@ public class ASTNodeTest
 			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt();
 			runTest(""+a, ""+b, ""+c);
 			
-			Assert.assertTrue(functions.popOutput().equals("" + a));
-			Assert.assertTrue(functions.popOutput().equals("" + b));
-			Assert.assertTrue(functions.popOutput().equals("" + ((a + 1) + (b + 1))));
-			Assert.assertTrue(functions.outputIsEmpty());
+			Assert.assertTrue(procedures.popOutput().equals("" + a));
+			Assert.assertTrue(procedures.popOutput().equals("" + b));
+			Assert.assertTrue(procedures.popOutput().equals("" + ((a + 1) + (b + 1))));
+			Assert.assertTrue(procedures.outputIsEmpty());
 		}
 	}
 	@Test
@@ -477,11 +477,11 @@ public class ASTNodeTest
 		}
 	}
 	@Test
-	public void test_Functionnesting()
+	public void test_Procedurenesting()
 	{
-		prepareTest("functionnesting", true);
+		prepareTest("procedurenesting", true);
 		runTest();
-		Assert.assertTrue(functions.outputIsEmpty());
+		Assert.assertTrue(procedures.outputIsEmpty());
 	}
 	@Test
 	public void test_IncorrectParameterType()
@@ -510,12 +510,12 @@ public class ASTNodeTest
 			int a = random.nextInt(), b = random.nextInt(), c = random.nextInt(), d = random.nextInt(), e = random.nextInt();
 			runTest(""+a, ""+b, ""+c, ""+d, ""+e);
 			
-			Assert.assertTrue(functions.popOutput().equals("" + a));
-			Assert.assertTrue(functions.popOutput().equals("" + b));
-			Assert.assertTrue(functions.popOutput().equals("" + c));
-			Assert.assertTrue(functions.popOutput().equals("" + d));
-			Assert.assertTrue(functions.popOutput().equals("" + e));
-			Assert.assertTrue(functions.outputIsEmpty());
+			Assert.assertTrue(procedures.popOutput().equals("" + a));
+			Assert.assertTrue(procedures.popOutput().equals("" + b));
+			Assert.assertTrue(procedures.popOutput().equals("" + c));
+			Assert.assertTrue(procedures.popOutput().equals("" + d));
+			Assert.assertTrue(procedures.popOutput().equals("" + e));
+			Assert.assertTrue(procedures.outputIsEmpty());
 		}
 	}
 	@Test
@@ -671,27 +671,27 @@ public class ASTNodeTest
 			}
 			runTest(""+a, ""+b);
 			
-			Assert.assertTrue(functions.popOutput().equals("" + (a + b)));
-			Assert.assertTrue(functions.popOutput().equals("" + (a - b)));
-			Assert.assertTrue(functions.popOutput().equals("" + (a * b)));
-			Assert.assertTrue(functions.popOutput().equals("" + (a / b)));
+			Assert.assertTrue(procedures.popOutput().equals("" + (a + b)));
+			Assert.assertTrue(procedures.popOutput().equals("" + (a - b)));
+			Assert.assertTrue(procedures.popOutput().equals("" + (a * b)));
+			Assert.assertTrue(procedures.popOutput().equals("" + (a / b)));
 			
-			Assert.assertTrue(functions.popOutput().equals("" + ((-a) + b)));
-			Assert.assertTrue(functions.popOutput().equals("" + ((-a) - b)));
-			Assert.assertTrue(functions.popOutput().equals("" + -(a * b)));
-			Assert.assertTrue(functions.popOutput().equals("" + -(a / b)));
+			Assert.assertTrue(procedures.popOutput().equals("" + ((-a) + b)));
+			Assert.assertTrue(procedures.popOutput().equals("" + ((-a) - b)));
+			Assert.assertTrue(procedures.popOutput().equals("" + -(a * b)));
+			Assert.assertTrue(procedures.popOutput().equals("" + -(a / b)));
 			
-			Assert.assertTrue(functions.popOutput().equals("" + (a + (-b))));
-			Assert.assertTrue(functions.popOutput().equals("" + (a - (-b))));
-			Assert.assertTrue(functions.popOutput().equals("" + (a * (-b))));
-			Assert.assertTrue(functions.popOutput().equals("" + (a / (-b))));
+			Assert.assertTrue(procedures.popOutput().equals("" + (a + (-b))));
+			Assert.assertTrue(procedures.popOutput().equals("" + (a - (-b))));
+			Assert.assertTrue(procedures.popOutput().equals("" + (a * (-b))));
+			Assert.assertTrue(procedures.popOutput().equals("" + (a / (-b))));
 			
-			Assert.assertTrue(functions.popOutput().equals("" + ((-a) + (-b))));
-			Assert.assertTrue(functions.popOutput().equals("" + ((-a) - (-b))));
-			Assert.assertTrue(functions.popOutput().equals("" + -(a * (-b))));
-			Assert.assertTrue(functions.popOutput().equals("" + -(a / (-b))));
+			Assert.assertTrue(procedures.popOutput().equals("" + ((-a) + (-b))));
+			Assert.assertTrue(procedures.popOutput().equals("" + ((-a) - (-b))));
+			Assert.assertTrue(procedures.popOutput().equals("" + -(a * (-b))));
+			Assert.assertTrue(procedures.popOutput().equals("" + -(a / (-b))));
 			
-			Assert.assertTrue(functions.outputIsEmpty());
+			Assert.assertTrue(procedures.outputIsEmpty());
 		}
 	}
 	@Test
@@ -704,30 +704,30 @@ public class ASTNodeTest
 			runTest(""+vm);
 			
 			int va = 12;
-			Assert.assertTrue(functions.popOutput().equals("" + va));
+			Assert.assertTrue(procedures.popOutput().equals("" + va));
 			va += vm;
-			Assert.assertTrue(functions.popOutput().equals("" + vm));
+			Assert.assertTrue(procedures.popOutput().equals("" + vm));
 			
 			int vaa = 123;
-			Assert.assertTrue(functions.popOutput().equals("" + vaa));
+			Assert.assertTrue(procedures.popOutput().equals("" + vaa));
 			vaa += va;
-			Assert.assertTrue(functions.popOutput().equals("" + va));
+			Assert.assertTrue(procedures.popOutput().equals("" + va));
 			vaa += vm;
-			Assert.assertTrue(functions.popOutput().equals("" + vm));
-			Assert.assertTrue(functions.popOutput().equals("" + vaa));
+			Assert.assertTrue(procedures.popOutput().equals("" + vm));
+			Assert.assertTrue(procedures.popOutput().equals("" + vaa));
 			
 			int vb = 1234;
-			Assert.assertTrue(functions.popOutput().equals("" + vb));
+			Assert.assertTrue(procedures.popOutput().equals("" + vb));
 			vb += vm;
-			Assert.assertTrue(functions.popOutput().equals("" + vb));
-			Assert.assertTrue(functions.outputIsEmpty());
+			Assert.assertTrue(procedures.popOutput().equals("" + vb));
+			Assert.assertTrue(procedures.outputIsEmpty());
 		}
 		for (int i=1;i<=5;i++)
 		{
 			try
 			{
 				prepareTest("variablescopingfout" + i, false);
-				functions.addInput("1");
+				procedures.addInput("1");
 				program.run();
 				Assert.fail("Should be throwing an UndefinedBindableException...");
 			}
@@ -750,25 +750,25 @@ public class ASTNodeTest
 			int a = random.nextInt(), b = random.nextInt();
 			runTest(""+a, ""+b);
 			
-			Assert.assertTrue(functions.popOutput().equals("" + a));
-			Assert.assertTrue(functions.popOutput().equals("" + b));
-			Assert.assertTrue(functions.popOutput().equals(a == b?"1":"0"));
+			Assert.assertTrue(procedures.popOutput().equals("" + a));
+			Assert.assertTrue(procedures.popOutput().equals("" + b));
+			Assert.assertTrue(procedures.popOutput().equals(a == b?"1":"0"));
 			
-			Assert.assertTrue(functions.popOutput().equals("" + b));
-			Assert.assertTrue(functions.popOutput().equals("" + a));
-			Assert.assertTrue(functions.popOutput().equals(a == b?"1":"0"));
-			Assert.assertTrue(functions.popOutput().equals("" + a));
-			Assert.assertTrue(functions.popOutput().equals("" + b));
+			Assert.assertTrue(procedures.popOutput().equals("" + b));
+			Assert.assertTrue(procedures.popOutput().equals("" + a));
+			Assert.assertTrue(procedures.popOutput().equals(a == b?"1":"0"));
+			Assert.assertTrue(procedures.popOutput().equals("" + a));
+			Assert.assertTrue(procedures.popOutput().equals("" + b));
 			
-			Assert.assertTrue(functions.popOutput().equals("" + a));
+			Assert.assertTrue(procedures.popOutput().equals("" + a));
 			
-			Assert.assertTrue(functions.popOutput().equals("" + a));
-			Assert.assertTrue(functions.popOutput().equals("" + b));
+			Assert.assertTrue(procedures.popOutput().equals("" + a));
+			Assert.assertTrue(procedures.popOutput().equals("" + b));
 			
-			Assert.assertTrue(functions.popOutput().equals("" + (a + 4)));
-			Assert.assertTrue(functions.popOutput().equals("" + (b - 3)));
+			Assert.assertTrue(procedures.popOutput().equals("" + (a + 4)));
+			Assert.assertTrue(procedures.popOutput().equals("" + (b - 3)));
 			
-			Assert.assertTrue(functions.outputIsEmpty());
+			Assert.assertTrue(procedures.outputIsEmpty());
 		}
 	}
 	@Test
@@ -808,7 +808,7 @@ public class ASTNodeTest
 			{
 				for (int j=0;j<lengthJ;j++)
 				{
-					Assert.assertTrue(functions.popOutput().equals("" + array[i][j]));
+					Assert.assertTrue(procedures.popOutput().equals("" + array[i][j]));
 				}
 			}
 			
@@ -816,19 +816,19 @@ public class ASTNodeTest
 			{
 				for (int j=0;j<lengthJ;j++)
 				{
-					Assert.assertTrue(functions.popOutput().equals("" + (array[i][j]+1)));
+					Assert.assertTrue(procedures.popOutput().equals("" + (array[i][j]+1)));
 				}
 			}
 			
 			for (int i=0;i<lengthI;i++)
 			{
-				String getal = functions.popOutput();
-				String getal2 = functions.popOutput();
+				String getal = procedures.popOutput();
+				String getal2 = procedures.popOutput();
 				Assert.assertTrue(getal2.equals(""+objects[i*2]));
 				Assert.assertTrue(getal.equals(""+objects[i*2+1]));
 			}
 			
-			Assert.assertTrue(functions.outputIsEmpty());
+			Assert.assertTrue(procedures.outputIsEmpty());
 		}
 	}
 	@Test
@@ -836,8 +836,8 @@ public class ASTNodeTest
 	{
 		prepareTest("variablenesting", true);
 		runTest();
-		Assert.assertTrue(functions.popOutput().equals("1"));
-		Assert.assertTrue(functions.outputIsEmpty());
+		Assert.assertTrue(procedures.popOutput().equals("1"));
+		Assert.assertTrue(procedures.outputIsEmpty());
 	}
 	@Test
 	public void test_With()
@@ -848,37 +848,37 @@ public class ASTNodeTest
 			int a = random.nextInt(), b = random.nextInt();
 			runTest(""+a, ""+b);
 			
-			Assert.assertTrue(functions.popOutput().equals("" + a));
-			Assert.assertTrue(functions.popOutput().equals("" + b));
-			Assert.assertTrue(functions.popOutput().equals(a == b?"1":"0"));
+			Assert.assertTrue(procedures.popOutput().equals("" + a));
+			Assert.assertTrue(procedures.popOutput().equals("" + b));
+			Assert.assertTrue(procedures.popOutput().equals(a == b?"1":"0"));
 			
-			Assert.assertTrue(functions.popOutput().equals("" + a));
-			Assert.assertTrue(functions.popOutput().equals("" + b));
-			Assert.assertTrue(functions.popOutput().equals(a == b?"1":"0"));
+			Assert.assertTrue(procedures.popOutput().equals("" + a));
+			Assert.assertTrue(procedures.popOutput().equals("" + b));
+			Assert.assertTrue(procedures.popOutput().equals(a == b?"1":"0"));
 			
-			Assert.assertTrue(functions.popOutput().equals("" + b));
-			Assert.assertTrue(functions.popOutput().equals("" + a));
-			Assert.assertTrue(functions.popOutput().equals(a == b?"1":"0"));
-			Assert.assertTrue(functions.popOutput().equals("" + a));
-			Assert.assertTrue(functions.popOutput().equals("" + b));
+			Assert.assertTrue(procedures.popOutput().equals("" + b));
+			Assert.assertTrue(procedures.popOutput().equals("" + a));
+			Assert.assertTrue(procedures.popOutput().equals(a == b?"1":"0"));
+			Assert.assertTrue(procedures.popOutput().equals("" + a));
+			Assert.assertTrue(procedures.popOutput().equals("" + b));
 			
-			Assert.assertTrue(functions.popOutput().equals("" + a));
+			Assert.assertTrue(procedures.popOutput().equals("" + a));
 			
-			Assert.assertTrue(functions.popOutput().equals("" + a));
-			Assert.assertTrue(functions.popOutput().equals("" + b));
+			Assert.assertTrue(procedures.popOutput().equals("" + a));
+			Assert.assertTrue(procedures.popOutput().equals("" + b));
 			
-			Assert.assertTrue(functions.popOutput().equals("" + (a + 4)));
-			Assert.assertTrue(functions.popOutput().equals("" + (b - 3)));
+			Assert.assertTrue(procedures.popOutput().equals("" + (a + 4)));
+			Assert.assertTrue(procedures.popOutput().equals("" + (b - 3)));
 			
-			Assert.assertTrue(functions.outputIsEmpty());
+			Assert.assertTrue(procedures.outputIsEmpty());
 		}
 	}
 	@Ignore
 	private void prepareTestThrowException(String testName, boolean bIsValid) throws Exception
 	{
-		functions = new TestBuildinFunctions();
+		procedures = new TestBuildinProcedures();
 		program = new Program();
-		program.loadProgram("src/test/java/randy/oberon0/test/testscripts/" + testName + ".oberon0", functions);
+		program.loadProgram("src/test/java/randy/oberon0/test/testscripts/" + testName + ".oberon0", procedures);
 		try
 		{
 			program.typeCheck();
@@ -913,14 +913,14 @@ public class ASTNodeTest
 	@Ignore
 	private void runTest(String... input)
 	{
-		Assert.assertTrue(functions.outputIsEmpty());
+		Assert.assertTrue(procedures.outputIsEmpty());
 		try
 		{
 			for (String in : input)
 			{
-				functions.addInput(in);
+				procedures.addInput(in);
 			}
-			program.setBuildinFunctions(functions);
+			program.setBuildinProcedures(procedures);
 			program.run();
 		}
 		catch (Exception e)

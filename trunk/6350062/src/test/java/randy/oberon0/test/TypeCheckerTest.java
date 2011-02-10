@@ -1,7 +1,7 @@
 package randy.oberon0.test;
 
 import org.junit.*;
-import randy.oberon0.interpreter.buildinfunctions.BuildinFunctions;
+import randy.oberon0.interpreter.buildinprocedures.BuildinProcedures;
 import randy.oberon0.interpreter.runtime.Program;
 import randy.oberon0.value.Type;
 import randy.oberon0.exception.RuntimeException;
@@ -32,7 +32,7 @@ public class TypeCheckerTest
 		try
 		{
 			Program program = new Program();
-			program.loadProgram("src/test/java/randy/oberon0/test/testscripts/typechecker/" + testName + ".oberon0", new BuildinFunctions());
+			program.loadProgram("src/test/java/randy/oberon0/test/testscripts/typechecker/" + testName + ".oberon0", new BuildinProcedures());
 			try
 			{
 				program.typeCheck();

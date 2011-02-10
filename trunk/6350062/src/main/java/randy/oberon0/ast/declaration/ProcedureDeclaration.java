@@ -1,14 +1,14 @@
 package randy.oberon0.ast.declaration;
 
 import java.util.*;
-import randy.oberon0.interpreter.runtime.IInvokableFunction;
+import randy.oberon0.interpreter.runtime.IInvokableProcedure;
 import randy.oberon0.ast.statement.Block;
 import randy.oberon0.exception.*;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.environment.*;
 import randy.oberon0.interpreter.typecheck.environment.*;
 
-public class ProcedureDeclaration extends BodyDeclaration implements IInvokableFunction
+public class ProcedureDeclaration extends BodyDeclaration implements IInvokableProcedure
 {
 	private final String procedureName;
 	private final List<VarDeclaration> parameterDeclarations;
@@ -31,15 +31,15 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 	public void register(RuntimeEnvironment newEnvironment) throws RuntimeException
 	{
 		assert(newEnvironment != null);
-		// Register the function in the environment
-		newEnvironment.registerFunction(getName(), this);
+		// Register the procedure in the environment
+		newEnvironment.registerProcedure(getName(), this);
 	}
 	@Override
 	public void typeCheckRegister(TypeCheckEnvironment newEnvironment) throws RuntimeException
 	{
 		assert(newEnvironment != null);
-		// Register the function in the environment
-		newEnvironment.registerFunction(getName(), this);
+		// Register the procedure in the environment
+		newEnvironment.registerProcedure(getName(), this);
 	}
 	@Override
 	public void registerTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException
@@ -58,7 +58,7 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 	{
 		assert(environment != null);
 		assert(parameterValues != null);
-		// Loop through all parameters and declare them in the invoked functions environment
+		// Loop through all parameters and declare them in the invoked procedures environment
 		for (VarDeclaration p : parameterDeclarations)
 		{
 			p.registerAsParameter(environment, parameterValues);
@@ -76,7 +76,7 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 				bodyDecl.register(environment);
 			}
 		}
-		// Run the body of the function
+		// Run the body of the procedure
 		body.run(environment);
 	}
 	@Override
@@ -89,7 +89,7 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 	{
 		assert(environment != null);
 		assert(parameterValues != null);
-		// Loop through all parameters and declare them in the invoked functions environment
+		// Loop through all parameters and declare them in the invoked procedures environment
 		for (VarDeclaration p : parameterDeclarations)
 		{
 			p.typeCheckRegisterAsParameter(environment, parameterValues);
@@ -125,7 +125,7 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 	public void typeCheckBody(TypeCheckEnvironment newEnvironment) throws RuntimeException
 	{
 		assert(newEnvironment != null);
-		// Loop through all parameters and declare them in the invoked functions environment
+		// Loop through all parameters and declare them in the invoked procedures environment
 		for (VarDeclaration p : parameterDeclarations)
 		{
 			p.typeCheckRegister(newEnvironment);
@@ -146,15 +146,15 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 				bodyDecl.typeCheckRegister(newEnvironment);
 			}
 		}
-		// Run the body of the function
+		// Run the body of the procedure
 		body.typeCheck(newEnvironment);
 		// Loop through all ProcedureDeclarations and typeCheck their bodies
 		for (BodyDeclaration bodyDecl : bodyDeclarations)
 		{
 			if (bodyDecl instanceof ProcedureDeclaration)
 			{
-				TypeCheckEnvironment functionEnvironment = new TypeCheckEnvironment(newEnvironment);
-				((ProcedureDeclaration)bodyDecl).typeCheckBody(functionEnvironment);
+				TypeCheckEnvironment procedureEnvironment = new TypeCheckEnvironment(newEnvironment);
+				((ProcedureDeclaration)bodyDecl).typeCheckBody(procedureEnvironment);
 			}
 		}
 	}

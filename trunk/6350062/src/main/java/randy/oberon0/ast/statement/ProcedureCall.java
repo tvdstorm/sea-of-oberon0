@@ -1,7 +1,7 @@
 package randy.oberon0.ast.statement;
 
 import java.util.*;
-import randy.oberon0.interpreter.runtime.IInvokableFunction;
+import randy.oberon0.interpreter.runtime.IInvokableProcedure;
 import randy.oberon0.ast.expression.Expression;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.environment.*;
@@ -32,15 +32,15 @@ public class ProcedureCall extends Statement
 			IBindableValue v = parameter.evaluate(environment);
 			parameters.add(v);
 		}
-		// Resolve the function name to a function
+		// Resolve the procedure name to a procedure
 		Closure closure = (Closure)environment.lookup(procedureName);
-		final IInvokableFunction functionDeclaration = closure.getFunction();
-		// Create a new environment for the to be invoked function
+		final IInvokableProcedure procedureDeclaration = closure.getProcedure();
+		// Create a new environment for the to be invoked procedure
 		RuntimeEnvironment invokedEnvironment = new RuntimeEnvironment(closure.getEnvironment());
-		// Register all declarations of the to be invoked function to it's environment 
-		functionDeclaration.registerTypeDeclarations(invokedEnvironment);
-		// Invoke the function
-		functionDeclaration.invoke(invokedEnvironment, parameters.iterator());
+		// Register all declarations of the to be invoked procedure to it's environment 
+		procedureDeclaration.registerTypeDeclarations(invokedEnvironment);
+		// Invoke the procedure
+		procedureDeclaration.invoke(invokedEnvironment, parameters.iterator());
 	}
 	@Override
 	public void typeCheck(TypeCheckEnvironment environment) throws RuntimeException
@@ -53,14 +53,14 @@ public class ProcedureCall extends Statement
 			ITypeCheckBindableValue v = parameter.typeCheck(environment);
 			parameters.add(v);
 		}
-		// Resolve the function name to a function
+		// Resolve the procedure name to a procedure
 		TypeCheckClosure closure = (TypeCheckClosure)environment.lookup(procedureName);
-		final IInvokableFunction functionDeclaration = closure.getProcedure();
-		// Create a new environment for the to be invoked function
+		final IInvokableProcedure procedureDeclaration = closure.getProcedure();
+		// Create a new environment for the to be invoked procedure
 		TypeCheckEnvironment invokedEnvironment = new TypeCheckEnvironment(closure.getEnvironment());
-		// Register all declarations of the to be invoked function to it's environment 
-		functionDeclaration.typeCheckRegisterTypeDeclarations(invokedEnvironment);
-		// Invoke the function
-		functionDeclaration.typeCheckInvoke(invokedEnvironment, parameters.iterator());
+		// Register all declarations of the to be invoked procedure to it's environment 
+		procedureDeclaration.typeCheckRegisterTypeDeclarations(invokedEnvironment);
+		// Invoke the procedure
+		procedureDeclaration.typeCheckInvoke(invokedEnvironment, parameters.iterator());
 	}
 }
