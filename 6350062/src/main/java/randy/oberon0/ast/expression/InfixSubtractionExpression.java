@@ -2,6 +2,8 @@ package randy.oberon0.ast.expression;
 
 import randy.oberon0.exception.OperatorTypeUndefinedException;
 import randy.oberon0.exception.RuntimeException;
+import randy.oberon0.exception.TypeCheckException;
+import randy.oberon0.exception.UnreachableRuntimeException;
 import randy.oberon0.interpreter.runtime.environment.*;
 import randy.oberon0.interpreter.typecheck.environment.*;
 import randy.oberon0.value.Value;
@@ -23,16 +25,15 @@ public class InfixSubtractionExpression extends InfixExpression
 		// Check if we support the operator
 		if (valLh instanceof Integer && valRh instanceof Integer)
 		{
-			return new ByValue(new Integer(valLh.castToInteger().getIntValue() - valRh.castToInteger().getIntValue()));
+			return new ByValue(new Integer(((Integer)valLh).getIntValue() - ((Integer)valRh).getIntValue()));
 		}
 		else
 		{
-			// No, throw an exception
-			throw new OperatorTypeUndefinedException("-", valLh.getType().toString(), valRh.getType().toString());
+			throw new UnreachableRuntimeException();
 		}
 	}
 	@Override
-	public ITypeCheckBindableValue typeCheck(TypeCheckEnvironment environment) throws RuntimeException
+	public ITypeCheckBindableValue typeCheck(TypeCheckEnvironment environment) throws TypeCheckException
 	{
 		assert(environment != null);
 		// Evaluate the left and right hand side expressions

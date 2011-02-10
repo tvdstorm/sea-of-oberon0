@@ -16,7 +16,7 @@ public class Integer extends Value
 	}
 	public void setValue(Value _val) throws RuntimeException
 	{
-		Integer v = _val.castToInteger();
+		Integer v = (Integer)_val;
 		this.value = v.value;
 	}
 	public Type getType()

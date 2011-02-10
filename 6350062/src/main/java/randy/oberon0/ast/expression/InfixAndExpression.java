@@ -2,6 +2,8 @@ package randy.oberon0.ast.expression;
 
 import randy.oberon0.exception.OperatorTypeUndefinedException;
 import randy.oberon0.exception.RuntimeException;
+import randy.oberon0.exception.TypeCheckException;
+import randy.oberon0.exception.UnreachableRuntimeException;
 import randy.oberon0.interpreter.runtime.environment.*;
 import randy.oberon0.interpreter.typecheck.environment.*;
 import randy.oberon0.value.Value;
@@ -23,16 +25,15 @@ public class InfixAndExpression extends InfixExpression
 		// Check if we support the operator
 		if (valLh instanceof Boolean && valRh instanceof Boolean)
 		{
-			return new ByValue(new Boolean(valLh.castToBoolean().getBoolValue() && valRh.castToBoolean().getBoolValue()));
+			return new ByValue(new Boolean((((Boolean)valLh).getBoolValue() && ((Boolean)valRh).getBoolValue())));
 		}
 		else
 		{
-			// No, throw an exception
-			throw new OperatorTypeUndefinedException("AND", valLh.getType().toString(), valRh.getType().toString());
+			throw new UnreachableRuntimeException();
 		}
 	}
 	@Override
-	public ITypeCheckBindableValue typeCheck(TypeCheckEnvironment environment) throws RuntimeException
+	public ITypeCheckBindableValue typeCheck(TypeCheckEnvironment environment) throws TypeCheckException
 	{
 		assert(environment != null);
 		// Evaluate the left and right hand side expressions

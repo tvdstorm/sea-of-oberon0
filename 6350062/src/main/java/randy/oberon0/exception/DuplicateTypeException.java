@@ -1,6 +1,6 @@
 package randy.oberon0.exception;
 
-public class DuplicateTypeException extends RuntimeException
+public class DuplicateTypeException extends TypeCheckException
 {
 	private static final long serialVersionUID = -5302915287227899469L;
 

@@ -1,6 +1,6 @@
 package randy.oberon0.interpreter.runtime.environment;
 
-import randy.oberon0.exception.ConstAssignmentException;
+import randy.oberon0.exception.UnreachableRuntimeException;
 import randy.oberon0.value.Value;
 
 public class Reference implements IBindableValue
@@ -12,7 +12,7 @@ public class Reference implements IBindableValue
 		assert(_value != null);
 		value = _value;
 	}
-	public void setValue(Value _value) throws ConstAssignmentException
+	public void setValue(Value _value) throws UnreachableRuntimeException
 	{
 		assert(_value != null);
 		value = _value;

@@ -1,6 +1,6 @@
 package randy.oberon0.exception;
 
-public class UnknownTypeException extends RuntimeException
+public class UnknownTypeException extends TypeCheckException
 {
 	private static final long serialVersionUID = -616215702838518101L;
 

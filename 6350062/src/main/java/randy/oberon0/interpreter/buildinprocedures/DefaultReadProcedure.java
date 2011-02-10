@@ -27,14 +27,14 @@ public class DefaultReadProcedure implements IInvokableProcedure
 			// Accept one parameter
 			if (!parameterValues.hasNext())
 			{
-				throw new IncorrectNumberOfArgumentsException();
+				throw new UnreachableRuntimeException();
 			}
 			// Check if the parameter is an integer
 			Reference param = (Reference)parameterValues.next();
 			
 			if (!param.getValue().getType().equals(Type.INTEGER))
 			{
-				throw new TypeMismatchException(param.getValue().getType().toString(), Type.INTEGER.toString());
+				throw new UnreachableRuntimeException();
 			}
 			// Write a prompt to indicate that we need input
 			System.out.println("Script requests input: ");
@@ -48,7 +48,7 @@ public class DefaultReadProcedure implements IInvokableProcedure
 			// No parameters should be left
 			if (parameterValues.hasNext())
 			{
-				throw new IncorrectNumberOfArgumentsException();
+				throw new UnreachableRuntimeException();
 			}
 		}
 		catch (IOException e)
@@ -62,7 +62,7 @@ public class DefaultReadProcedure implements IInvokableProcedure
 		// Leeg
 	}
 	@Override
-	public void typeCheckInvoke(TypeCheckEnvironment environment, Iterator<ITypeCheckBindableValue> parameterValues) throws RuntimeException
+	public void typeCheckInvoke(TypeCheckEnvironment environment, Iterator<ITypeCheckBindableValue> parameterValues) throws TypeCheckException
 	{
 		// Accept one parameter
 		if (!parameterValues.hasNext())
@@ -78,12 +78,12 @@ public class DefaultReadProcedure implements IInvokableProcedure
 		}
 	}
 	@Override
-	public void typeCheckRegisterTypeDeclarations(TypeCheckEnvironment newEnvironment) throws RuntimeException
+	public void typeCheckRegisterTypeDeclarations(TypeCheckEnvironment newEnvironment) throws TypeCheckException
 	{
 		// Leeg
 	}
 	@Override
-	public void typeCheckBody(TypeCheckEnvironment newEnvironment) throws RuntimeException
+	public void typeCheckBody(TypeCheckEnvironment newEnvironment) throws TypeCheckException
 	{
 		// Leeg
 	}

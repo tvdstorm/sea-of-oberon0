@@ -33,7 +33,7 @@ public class ArrayVarDeclaration extends VarDeclaration
 			// Get the previous length expressoin
 			Expression curExpression = iterator.previous();
 			// Evaluate the length expression
-			Integer thisLength = curExpression.evaluate(newEnvironment).getValue().castToInteger();
+			Integer thisLength = (Integer)curExpression.evaluate(newEnvironment).getValue();
 			// Create a new array instantializer for the array and set the length of the array
 			ArrayVariableInstantiation thisCreator = new ArrayVariableInstantiation(arrayCreator);
 			thisCreator.setLength(thisLength.getIntValue());
@@ -49,7 +49,7 @@ public class ArrayVarDeclaration extends VarDeclaration
 		}
 	}
 	@Override
-	public void typeCheckRegister(TypeCheckEnvironment newEnvironment) throws RuntimeException // Use for variable declarations IN procedures or modules
+	public void typeCheckRegister(TypeCheckEnvironment newEnvironment) throws TypeCheckException // Use for variable declarations IN procedures or modules
 	{
 		assert(newEnvironment != null);
 		// Create a new instantializer for the base type
@@ -94,7 +94,7 @@ public class ArrayVarDeclaration extends VarDeclaration
 		for (Expression curExpression : arrayLength)
 		{
 			// Evaluate the length expression and add it to the stack
-			lengths.add(curExpression.evaluate(environment).getValue().castToInteger());
+			lengths.add((Integer)curExpression.evaluate(environment).getValue());
 		}
 		
 		// Loop through all variable names
@@ -103,19 +103,19 @@ public class ArrayVarDeclaration extends VarDeclaration
 			// Check if we have a parameter left
 			if (!parameterValues.hasNext())
 			{
-				throw new IncorrectNumberOfArgumentsException();
+				throw new UnreachableRuntimeException();
 			}
 			// Fetch a parameter value from the parameter values
 			final IBindableValue parameterValue = parameterValues.next();
 			// Check if the length of the parameter matches the definition
-			Array testArray = parameterValue.getValue().castToArray();
+			Array testArray = (Array)parameterValue.getValue();
 			boolean bFirst = true;
 			for (Integer length : lengths)
 			{
 				if (!bFirst)
 				{
 					// Grab the next nesting
-					testArray = testArray.getIndexValue(0).getValue().castToArray();
+					testArray = (Array)testArray.getIndexValue(0).getValue();
 				}
 				if (testArray.getLength() != length.getIntValue())
 				{
@@ -142,7 +142,7 @@ public class ArrayVarDeclaration extends VarDeclaration
 		}
 	}
 	@Override
-	public void typeCheckRegisterAsParameter(TypeCheckEnvironment environment, Iterator<ITypeCheckBindableValue> parameterValues) throws RuntimeException // Use for registering parameters
+	public void typeCheckRegisterAsParameter(TypeCheckEnvironment environment, Iterator<ITypeCheckBindableValue> parameterValues) throws TypeCheckException // Use for registering parameters
 	{
 		assert(environment != null);
 		assert(parameterValues != null);

@@ -42,7 +42,7 @@ public class VarDeclaration extends BodyDeclaration
 		}
 	}
 	@Override
-	public void typeCheckRegister(TypeCheckEnvironment newEnvironment) throws RuntimeException // Use for variable declarations IN procedures or modules
+	public void typeCheckRegister(TypeCheckEnvironment newEnvironment) throws TypeCheckException // Use for variable declarations IN procedures or modules
 	{
 		assert(newEnvironment != null);
 		// Loop through all variable names
@@ -63,14 +63,14 @@ public class VarDeclaration extends BodyDeclaration
 			// Check if we have a parameter left
 			if (!parameterValues.hasNext())
 			{
-				throw new IncorrectNumberOfArgumentsException();
+				throw new UnreachableRuntimeException();
 			}
 			// Fetch a parameter value from the parameter values
 			final IBindableValue parameterValue = parameterValues.next();
 			// Resolve the variable type and check if they are compatible
 			if (parameterValue.getValue().getType() != environment.resolveType(typeName).instantiate(environment).getType())
 			{
-				throw new TypeMismatchException(parameterValue.getValue().getType().toString(), typeName);
+				throw new UnreachableRuntimeException();
 			}
 			// Check if the variable is a reference
 			if (isReference)
@@ -85,7 +85,7 @@ public class VarDeclaration extends BodyDeclaration
 			}
 		}
 	}
-	public void typeCheckRegisterAsParameter(TypeCheckEnvironment environment, Iterator<ITypeCheckBindableValue> parameterValues) throws RuntimeException // Use for registering parameters
+	public void typeCheckRegisterAsParameter(TypeCheckEnvironment environment, Iterator<ITypeCheckBindableValue> parameterValues) throws TypeCheckException // Use for registering parameters
 	{
 		assert(environment != null);
 		assert(parameterValues != null);

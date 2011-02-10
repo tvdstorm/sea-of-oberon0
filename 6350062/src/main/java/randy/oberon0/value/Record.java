@@ -35,7 +35,7 @@ public class Record extends Value
 	@Override
 	public void setValue(Value _val) throws RuntimeException
 	{
-		Record v = _val.castToRecord();
+		Record v = (Record)_val;
 		if (v != this)
 		{
 			members = new HashMap<String, Reference>();

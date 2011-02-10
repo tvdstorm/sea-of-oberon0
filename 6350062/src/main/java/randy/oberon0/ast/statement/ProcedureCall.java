@@ -4,9 +4,8 @@ import java.util.*;
 import randy.oberon0.interpreter.runtime.IInvokableProcedure;
 import randy.oberon0.ast.expression.Expression;
 import randy.oberon0.exception.RuntimeException;
+import randy.oberon0.exception.TypeCheckException;
 import randy.oberon0.interpreter.runtime.environment.*;
-import randy.oberon0.interpreter.runtime.environment.Closure;
-import randy.oberon0.interpreter.runtime.environment.IBindableValue;
 import randy.oberon0.interpreter.typecheck.environment.*;
 
 public class ProcedureCall extends Statement
@@ -43,7 +42,7 @@ public class ProcedureCall extends Statement
 		procedureDeclaration.invoke(invokedEnvironment, parameters.iterator());
 	}
 	@Override
-	public void typeCheck(TypeCheckEnvironment environment) throws RuntimeException
+	public void typeCheck(TypeCheckEnvironment environment) throws TypeCheckException
 	{
 		assert(environment != null);
 		// Evaluate all the parameters and add them to a queue

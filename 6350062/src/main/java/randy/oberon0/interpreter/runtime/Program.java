@@ -9,6 +9,7 @@ import randy.oberon0.value.Type;
 import randy.oberon0.ast.module.Module;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.exception.Exception;
+import randy.oberon0.exception.TypeCheckException;
 
 public class Program
 {
@@ -53,7 +54,7 @@ public class Program
 		// Invoke the module
 		module.invoke(moduleEnvironment, (new LinkedList<IBindableValue>()).iterator());
 	}
-	protected void typeCheck() throws RuntimeException
+	protected void typeCheck() throws TypeCheckException
 	{
 		// Create a global environment
 		TypeCheckEnvironment globalEnvironment = new TypeCheckEnvironment();

@@ -1,6 +1,7 @@
 package randy.oberon0.ast.selector;
 
 import randy.oberon0.ast.expression.Expression;
+import randy.oberon0.exception.TypeCheckException;
 import randy.oberon0.exception.TypeMismatchException;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.environment.*;
@@ -25,14 +26,14 @@ public class ArraySelector extends Selector
 	{
 		assert(environment != null);
 		// Evaluate the selector and convert it to an array
-		final Array array = selector.evaluate(environment).getValue().castToArray();
+		final Array array = (Array)selector.evaluate(environment).getValue();
 		// Evaluate the array index and convert it to an integer
-		final Integer index = arrayIndex.evaluate(environment).getValue().castToInteger();
+		final Integer index = (Integer)arrayIndex.evaluate(environment).getValue();
 		// Return the requested index of the array
 		return array.getIndexValue(index.getIntValue());
 	}
 	@Override
-	public TypeCheckReference typeCheck(TypeCheckEnvironment environment) throws RuntimeException
+	public TypeCheckReference typeCheck(TypeCheckEnvironment environment) throws TypeCheckException
 	{
 		assert(environment != null);
 		// Evaluate the selector and convert it to an array

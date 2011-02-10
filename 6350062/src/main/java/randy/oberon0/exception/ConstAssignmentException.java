@@ -1,6 +1,6 @@
 package randy.oberon0.exception;
 
-public class ConstAssignmentException extends RuntimeException
+public class ConstAssignmentException extends TypeCheckException
 {
 	private static final long serialVersionUID = -6829449544731602719L;
 

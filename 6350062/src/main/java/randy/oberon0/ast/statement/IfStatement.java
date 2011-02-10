@@ -3,6 +3,7 @@ package randy.oberon0.ast.statement;
 import java.util.*;
 import randy.oberon0.ast.datastructures.IfExpressionAndBody;
 import randy.oberon0.exception.RuntimeException;
+import randy.oberon0.exception.TypeCheckException;
 import randy.oberon0.interpreter.runtime.environment.*;
 import randy.oberon0.interpreter.typecheck.environment.*;
 import randy.oberon0.value.Boolean;
@@ -26,7 +27,7 @@ public class IfStatement extends Statement
 		for (IfExpressionAndBody curIf : ifStatements)
 		{
 			// Evaluate the condition and convert it to an boolean
-			final Boolean conditionResult = curIf.getExpression().evaluate(environment).getValue().castToBoolean();
+			final Boolean conditionResult = (Boolean)curIf.getExpression().evaluate(environment).getValue();
 			// Check if the condition is true
 			if (conditionResult.getBoolValue())
 			{
@@ -42,7 +43,7 @@ public class IfStatement extends Statement
 		}
 	}
 	@Override
-	public void typeCheck(TypeCheckEnvironment environment) throws RuntimeException
+	public void typeCheck(TypeCheckEnvironment environment) throws TypeCheckException
 	{
 		assert(environment != null);
 		// Loop through all if expressions until one is true

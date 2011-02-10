@@ -2,6 +2,7 @@ package randy.oberon0.ast.statement;
 
 import java.util.*;
 import randy.oberon0.exception.RuntimeException;
+import randy.oberon0.exception.TypeCheckException;
 import randy.oberon0.interpreter.runtime.environment.*;
 import randy.oberon0.interpreter.typecheck.environment.TypeCheckEnvironment;
 
@@ -25,7 +26,7 @@ public class Block extends Statement
 		}
 	}
 	@Override
-	public void typeCheck(TypeCheckEnvironment environment) throws RuntimeException
+	public void typeCheck(TypeCheckEnvironment environment) throws TypeCheckException
 	{
 		assert(environment != null);
 		// Loop through all statements and type check them

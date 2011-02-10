@@ -30,7 +30,7 @@ public class Array extends Value
 	}
 	public void setValue(Value _val) throws RuntimeException
 	{
-		Array v = _val.castToArray();
+		Array v = (Array)_val;
 		if (v != this)
 		{
 			values = new Reference[v.values.length];

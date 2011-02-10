@@ -16,7 +16,7 @@ public class Boolean extends Value
 	}
 	public void setValue(Value _val) throws RuntimeException
 	{
-		Boolean v = _val.castToBoolean();
+		Boolean v = (Boolean)_val;
 		this.value = v.value;
 	}
 	public Type getType()

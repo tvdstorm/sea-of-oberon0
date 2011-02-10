@@ -1,7 +1,7 @@
 package randy.oberon0.interpreter.runtime.environment;
 
 import randy.oberon0.exception.RuntimeException;
-import randy.oberon0.exception.UnknownTypeException;
+import randy.oberon0.exception.UnreachableRuntimeException;
 import randy.oberon0.value.*;
 import randy.oberon0.value.Boolean;
 import randy.oberon0.value.Integer;
@@ -27,7 +27,7 @@ public class PrimitiveVariableInstantiation implements IInstantiateableVariable
 		}
 		else
 		{
-			throw new UnknownTypeException(primitiveType.toString());
+			throw new UnreachableRuntimeException();
 		}
 	}
 }
