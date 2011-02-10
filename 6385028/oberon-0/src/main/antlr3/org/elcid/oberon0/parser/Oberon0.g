@@ -130,7 +130,7 @@ recordType
 
 statementSequence returns [StatementSequenceNode result]
 	:													{ $result = new StatementSequenceNode(); }
-		s1=statement									{ $result.addStatement($s1.result); System.out.println(((AssignmentNode)$s1.result).getIdentSelector().getIdentifier()); }
+		s1=statement									{ $result.addStatement($s1.result); }
 		(SEMI_COLON	s2=statement						{ $result.addStatement($s2.result); }
 		)*
 	;
