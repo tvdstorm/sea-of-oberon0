@@ -6,9 +6,7 @@ import java.util.List;
 import oberon.IDataType;
 import oberon.IExpression;
 import oberon.data.ExpressionDataType;
-import oberon.data.IntegerArrayDataType;
 import oberon.data.VariableDataType;
-import oberon.node.AArrayType;
 import oberon.node.AConstdecl;
 import oberon.node.AConstdeclaration;
 import oberon.node.AIntegerExp;
@@ -16,7 +14,6 @@ import oberon.node.AVardecl;
 import oberon.node.AVardeclaration;
 import oberon.node.PConstdeclaration;
 import oberon.node.PExp;
-import oberon.node.PType;
 import oberon.node.PVardeclaration;
 import oberon.node.TIdentifier;
 
@@ -32,21 +29,20 @@ class VariableConverter extends AbstractConverter<List<IDataType>>{
 			declaration.apply(this);
 		}
 	}
+	
+	
 
 	@Override
 	public void caseAVardeclaration(final AVardeclaration node) {		
-		final PType nodeType = node.getType();
-		final Boolean isArray = nodeType instanceof AArrayType;
 		
-		for (TIdentifier name : node.getIdentifier()) {
-			if (isArray) {
-				final IExpression lengthExpression = ExpConverterFactory.getExpression(((AArrayType)nodeType).getExp());
-				list.add(new IntegerArrayDataType(name.toString().trim(), lengthExpression));
-			}
-			else {
-				list.add(new VariableDataType(name.toString().trim(), false));
-			}
+		ArrayList<String> nameList = new ArrayList<String>();
+		for (TIdentifier ident : node.getIdentifier()){
+			nameList.add(ident.toString().trim());
 		}
+		
+		TypeConverter converter = new TypeConverter(nameList, null);
+		node.getType().apply(converter);
+		list.addAll(converter.buildInterpreterResult());
 	}
 
 	@Override

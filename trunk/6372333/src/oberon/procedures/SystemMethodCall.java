@@ -5,8 +5,6 @@ import java.util.List;
 
 import oberon.IExpression;
 import oberon.Scope;
-import oberon.exceptions.ProcedureParamaterCountMismatchException;
-import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
  * The Class SystemMethodCall, contains a non user defined procedure.

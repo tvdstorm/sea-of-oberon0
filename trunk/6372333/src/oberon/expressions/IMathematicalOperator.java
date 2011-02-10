@@ -1,6 +1,5 @@
 package oberon.expressions;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Interface IMathematicalOperator.
  */

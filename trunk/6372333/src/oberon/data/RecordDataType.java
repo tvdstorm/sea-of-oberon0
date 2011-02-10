@@ -1,11 +1,12 @@
 package oberon.data;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import oberon.IDataType;
 import oberon.Scope;
+import oberon.convert.RecordTypeConverter;
 
 /**
  * The Class RecordDataType, stores an instance of a record.
@@ -13,22 +14,26 @@ import oberon.Scope;
 public class RecordDataType extends AbstractDataType {
 	
 	/** The field values. */
-	private Map<String, Integer> fieldValues;
+	private Map<String, IDataType> fieldValues;
+	private final IDataType parentRecord;
 	
 	/**
 	 * Instantiates a new record data type.
 	 *
 	 * @param inputName the name of the new instance
+	 * @param iDataType 
 	 * @param fieldNames the field names of the record
 	 */
-	public RecordDataType(final String inputName, final List<String> fieldNames) {
+	public RecordDataType(final String inputName, final HashMap<String, IDataType> values, 
+			IDataType parentRecord) {
 		super(inputName);
+		this.parentRecord = parentRecord;
 		
-		fieldValues = new HashMap<String, Integer>();
+		fieldValues = new HashMap<String, IDataType>();
 		
-		if (fieldNames != null) {
-			for (String name : fieldNames) {
-				fieldValues.put(name, 0);
+		if (values != null) {
+			for (Entry<String, IDataType> valueSet : values.entrySet()) {
+				fieldValues.put(valueSet.getKey(), valueSet.getValue());
 			}
 		}
 	}
@@ -39,18 +44,20 @@ public class RecordDataType extends AbstractDataType {
 	 * @param inputName the name of the new instance
 	 * @param inputFields map with the field values
 	 */	
-	RecordDataType(final String inputName, final Map<String, Integer> inputFields) {
+	RecordDataType(final String inputName, final Map<String, IDataType> inputFields, 
+			IDataType parentRecord) {
 		super(inputName);
 		fieldValues = inputFields;
+		this.parentRecord = parentRecord;
 	}
 	
 	/**
-	 * Gets the value at the specified fieldname.
+	 * Gets the value at index.
 	 *
-	 * @param fieldName the fieldname to get the value for
-	 * @return the value at the specified fieldname
+	 * @param fieldName the field name
+	 * @return the value at index
 	 */
-	public int getValueAtIndex(final String fieldName){
+	public IDataType getValueAtIndex(final String fieldName){
 		return fieldValues.get(fieldName);
 	}
 
@@ -68,7 +75,7 @@ public class RecordDataType extends AbstractDataType {
 	 */
 	@Override
 	public IDataType performDeepCopy(final String newName) {
-		return new RecordDataType(getName(), fieldValues);
+		return new RecordDataType(getName(), fieldValues, parentRecord);
 	}
 
 }

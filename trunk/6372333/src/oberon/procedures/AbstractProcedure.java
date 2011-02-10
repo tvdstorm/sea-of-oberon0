@@ -6,8 +6,6 @@ import java.util.List;
 import oberon.IExpression;
 import oberon.IProcedure;
 import oberon.Scope;
-import oberon.exceptions.ProcedureParamaterCountMismatchException;
-import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
  * The Class AbstractProcedure, super class for procedures.
