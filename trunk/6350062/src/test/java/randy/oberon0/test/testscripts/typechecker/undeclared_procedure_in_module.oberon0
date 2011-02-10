@@ -1,0 +1,10 @@
+MODULE undeclaredProcedureInModule;
+PROCEDURE Test();
+  BEGIN
+    aa();
+  END Test;
+BEGIN
+
+Test();
+
+END undeclaredProcedureInModule.

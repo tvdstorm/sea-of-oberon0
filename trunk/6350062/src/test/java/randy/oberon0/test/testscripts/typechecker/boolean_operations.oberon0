@@ -1,0 +1,20 @@
+MODULE booleanOperations;
+VAR a, b, c: BOOLEAN;
+    i, j: INTEGER;
+BEGIN
+
+c := a;
+c := ~a;
+c := a & b;
+c := a OR b;
+c := a = b;
+c := a # b;
+
+c := i = j;
+c := i # j;
+c := i < j;
+c := i <= j;
+c := i > j;
+c := i >= j;
+
+END booleanOperations.

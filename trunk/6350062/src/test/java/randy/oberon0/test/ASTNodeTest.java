@@ -3,6 +3,7 @@ package randy.oberon0.test;
 import java.util.Random;
 import org.junit.*;
 import randy.oberon0.exception.Exception;
+import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.exception.*;
 import randy.oberon0.interpreter.runtime.*;
 import randy.oberon0.interpreter.runtime.environment.*;
@@ -888,7 +889,7 @@ public class ASTNodeTest
 			}
 			Assert.assertTrue(bIsValid);
 		}
-		catch (randy.oberon0.exception.RuntimeException e)
+		catch (RuntimeException e)
 		{
 			if (bIsValid)
 			{
