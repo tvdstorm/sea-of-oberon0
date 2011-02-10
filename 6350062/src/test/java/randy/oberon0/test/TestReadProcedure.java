@@ -55,9 +55,8 @@ public class TestReadProcedure implements IInvokableProcedure
 		{
 			throw new IncorrectNumberOfArgumentsException();
 		}
-		// TODO: read functies moeten controleren of het een reference is of niet
 		// Accept only an integer
-		parameterValues.next().equals(TypeCheckType.INTEGER);
+		((TypeCheckReference)parameterValues.next()).equals(TypeCheckType.INTEGER);
 		// No parameters should be left
 		if (parameterValues.hasNext())
 		{

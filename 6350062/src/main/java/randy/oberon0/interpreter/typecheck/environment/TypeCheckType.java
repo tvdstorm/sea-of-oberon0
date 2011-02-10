@@ -22,7 +22,7 @@ public class TypeCheckType implements ITypeCheckType
 			return false;
 		}
 		TypeCheckType other = (TypeCheckType)obj;
-		return type.equals(other.type); // TODO:  && bReference == other.bReference;
+		return type.equals(other.type);
 	}
 	@Override
 	public void mustBe(ITypeCheckType other) throws TypeMismatchException

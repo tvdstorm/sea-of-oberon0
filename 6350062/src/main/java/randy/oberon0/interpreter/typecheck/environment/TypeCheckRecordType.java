@@ -1,8 +1,7 @@
 package randy.oberon0.interpreter.typecheck.environment;
 
 import java.util.*;
-import randy.oberon0.exception.TypeMismatchException;
-import randy.oberon0.exception.UnknownTypeException;
+import randy.oberon0.exception.*;
 
 public class TypeCheckRecordType implements ITypeCheckType
 {
@@ -11,7 +10,8 @@ public class TypeCheckRecordType implements ITypeCheckType
 	
 	public TypeCheckRecordType(String _type, Map<String, String> _members)
 	{
-		// TODO: asserts
+		assert(_type != null);
+		assert(_members != null);
 		members = new HashMap<String, String>();
 		for (String name : _members.keySet())
 		{
@@ -59,12 +59,19 @@ public class TypeCheckRecordType implements ITypeCheckType
 	}
 	public Set<String> getMemberNames()
 	{
-		return members.keySet(); // TODO: kopieren
+		return new HashSet<String>(members.keySet());
 	}
-	public ITypeCheckType getMemberType(String memberName, TypeCheckEnvironment environment) throws UnknownTypeException
+	public ITypeCheckType getMemberType(String memberName, TypeCheckEnvironment environment) throws UnknownTypeException, UnknownRecordFieldAccess
 	{
-		// TODO: extra check
-		ITypeCheckType type = environment.resolveType(members.get(memberName));
+		assert(memberName != null);
+		assert(memberName.length() > 0);
+		assert(environment != null);
+		String memberType = members.get(memberName);
+		if (memberType == null)
+		{
+			throw new UnknownRecordFieldAccess(memberName);
+		}
+		ITypeCheckType type = environment.resolveType(memberType);
 		if (type == null)
 		{
 			throw new UnknownTypeException(members.get(memberName));

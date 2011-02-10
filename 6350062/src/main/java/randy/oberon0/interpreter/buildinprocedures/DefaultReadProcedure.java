@@ -70,7 +70,7 @@ public class DefaultReadProcedure implements IInvokableProcedure
 			throw new IncorrectNumberOfArgumentsException();
 		}
 		// Accept only an integer
-		parameterValues.next().mustBe(TypeCheckType.INTEGER);
+		((TypeCheckReference)parameterValues.next()).mustBe(TypeCheckType.INTEGER);
 		// No parameters should be left
 		if (parameterValues.hasNext())
 		{
