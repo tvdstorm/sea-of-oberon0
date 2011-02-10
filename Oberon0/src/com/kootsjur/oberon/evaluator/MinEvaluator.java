@@ -1,6 +1,7 @@
 package com.kootsjur.oberon.evaluator;
 
 import com.kootsjur.oberon.SimpleExpression;
+import com.kootsjur.oberon.environment.Environment;
 import com.kootsjur.oberon.value.Value;
 
 public class MinEvaluator extends SimpleExpressionEvaluator
@@ -19,7 +20,7 @@ public class MinEvaluator extends SimpleExpressionEvaluator
    }
 
    @Override
-   public Value evaluate()
+   public Value evaluate(Environment environment)
    {
       // TODO Auto-generated method stub
       return null;

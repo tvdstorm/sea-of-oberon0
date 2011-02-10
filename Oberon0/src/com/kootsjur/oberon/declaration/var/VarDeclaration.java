@@ -5,6 +5,7 @@ import java.util.List;
 import com.kootsjur.oberon.declaration.Declaration;
 import com.kootsjur.oberon.declaration.DeclarationType;
 import com.kootsjur.oberon.environment.Environment;
+import com.kootsjur.oberon.environment.Var;
 import com.kootsjur.oberon.type.TypeDefinition;
 
 public class VarDeclaration implements Declaration
@@ -26,7 +27,10 @@ public class VarDeclaration implements Declaration
    @Override
    public void declare(Environment environment)
    {
-      // TODO Auto-generated method stub
-      
+      for(String varName: names)
+      {
+         Var var = new Var(typeDefinition);
+         environment.declareVar(varName, var);
+      }      
    }
 }

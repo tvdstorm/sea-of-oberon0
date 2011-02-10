@@ -1,8 +1,10 @@
 package com.kootsjur.oberon.declaration.constant;
 
 import com.kootsjur.oberon.declaration.Declaration;
+import com.kootsjur.oberon.environment.Constant;
 import com.kootsjur.oberon.environment.Environment;
 import com.kootsjur.oberon.evaluator.ExpressionEvaluator;
+import com.kootsjur.oberon.value.Value;
 
 public class ConstantDeclaration implements Declaration
 {
@@ -24,7 +26,9 @@ public class ConstantDeclaration implements Declaration
    @Override
    public void declare(Environment environment)
    {
-      environment.declareConstant(this);      
+      Value value = expression.evaluate();
+      Constant constant = new Constant(value);
+      environment.declareConstant(name,constant);      
    }
 
 }

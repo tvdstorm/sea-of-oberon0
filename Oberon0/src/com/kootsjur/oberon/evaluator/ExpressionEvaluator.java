@@ -13,11 +13,6 @@ public abstract class ExpressionEvaluator implements Evaluator
       this.rightEvaluator = rightEvaluator;
    }
 
-   @Override
-   public Value evaluate()
-   {
-      // TODO Auto-generated method stub
-      return null;
-   }
+   public abstract Value evaluate();
 
 }

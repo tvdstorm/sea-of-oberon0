@@ -112,25 +112,7 @@ public class Module extends Environment
    
    public void declare()
    {
-      declareDeclarations(declarations,this);
-      declareProcedures(procedureDeclarations,this);
+      declareDeclarations(declarations);
+      declareProcedures(procedureDeclarations);
    }
-
-   public void declareProcedures(List<ProcedureDeclaration> procedureDeclarations, Environment environment)
-   {
-      for(ProcedureDeclaration procedureDeclaration : procedureDeclarations )
-      {
-         procedureDeclaration.declare(environment);
-      }
-   }
-
-   public void declareDeclarations(List<Declaration> declarations,Environment environment)
-   {
-      for(Declaration declaration : declarations)
-      {
-         declaration.declare(environment);
-      }
-   }
-
-   
 }

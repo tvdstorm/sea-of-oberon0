@@ -1,6 +1,5 @@
 package com.kootsjur.oberon.statement;
 
-import com.kootsjur.oberon.Selector;
 import com.kootsjur.oberon.evaluator.Evaluator;
 import com.kootsjur.oberon.evaluator.ExpressionEvaluator;
 

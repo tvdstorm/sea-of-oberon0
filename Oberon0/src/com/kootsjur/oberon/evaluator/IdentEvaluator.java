@@ -1,5 +1,6 @@
 package com.kootsjur.oberon.evaluator;
 
+import com.kootsjur.oberon.environment.Environment;
 import com.kootsjur.oberon.value.Value;
 
 public class IdentEvaluator extends FactorEvaluator
@@ -12,7 +13,7 @@ public class IdentEvaluator extends FactorEvaluator
    }
 
    @Override
-   public Value evaluate()
+   public Value evaluate(Environment environment)
    {
       // TODO Auto-generated method stub
       return null;

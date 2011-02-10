@@ -3,6 +3,7 @@ package com.kootsjur.oberon.declaration.type;
 import com.kootsjur.oberon.declaration.Declaration;
 import com.kootsjur.oberon.declaration.DeclarationType;
 import com.kootsjur.oberon.environment.Environment;
+import com.kootsjur.oberon.environment.Type;
 import com.kootsjur.oberon.type.TypeDefinition;
 
 public class TypeDeclaration implements Declaration
@@ -25,7 +26,7 @@ public class TypeDeclaration implements Declaration
    @Override
    public void declare(Environment environment)
    {
-      // TODO Auto-generated method stub
-      
+      Type type = new Type(typeDefinition);
+      environment.declareType(name, type);
    }
 }

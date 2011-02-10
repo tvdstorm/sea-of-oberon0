@@ -1,6 +1,7 @@
 package com.kootsjur.oberon.evaluator;
 
 import com.kootsjur.oberon.Factor;
+import com.kootsjur.oberon.environment.Environment;
 import com.kootsjur.oberon.value.Value;
 
 public class ModEvaluator extends TermEvaluator
@@ -19,7 +20,7 @@ public class ModEvaluator extends TermEvaluator
    }
 
    @Override
-   public Value evaluate()
+   public Value evaluate(Environment environment)
    {
       // TODO Auto-generated method stub
       return null;

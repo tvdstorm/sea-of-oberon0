@@ -35,7 +35,6 @@ public class ProcedureDeclaration implements Declaration
       List<ProcedureDeclaration> procedures = procedureBody.getProcedures();
       StatementSequence statementSequence = procedureBody.getStatementSequence();
       Procedure procedure = new Procedure(formalParameters, declarations, procedures, statementSequence, environment);
-      environment.declareProcedure(procedureName, procedure);
-      
+      environment.declareProcedure(procedureName, procedure);      
    }
 }

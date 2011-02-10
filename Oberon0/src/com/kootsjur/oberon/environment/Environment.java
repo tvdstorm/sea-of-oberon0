@@ -1,9 +1,15 @@
 package com.kootsjur.oberon.environment;
 
+import java.util.List;
+
+import com.kootsjur.oberon.declaration.Declaration;
 import com.kootsjur.oberon.declaration.constant.ConstantDeclaration;
 import com.kootsjur.oberon.declaration.constant.DeclaredConstants;
 import com.kootsjur.oberon.declaration.formalparameter.DeclaredParameters;
+import com.kootsjur.oberon.declaration.formalparameter.FPSection;
+import com.kootsjur.oberon.declaration.formalparameter.FormalParameters;
 import com.kootsjur.oberon.declaration.procedure.DeclaredProcedures;
+import com.kootsjur.oberon.declaration.procedure.ProcedureDeclaration;
 import com.kootsjur.oberon.declaration.type.DeclaredTypes;
 import com.kootsjur.oberon.declaration.type.TypeDeclaration;
 import com.kootsjur.oberon.declaration.var.DeclaredVars;
@@ -105,6 +111,146 @@ public class Environment
       
    }
    
+   public void declareParameters(FormalParameters formalParameters)
+   {
+      for(FPSection formalParameter : formalParameters)
+      {
+         formalParameter.declare(this);
+      }
+      
+   }
 
+   public void declareProcedures(List<ProcedureDeclaration> procedureDeclarations)
+   {
+      for(ProcedureDeclaration procedureDeclaration : procedureDeclarations )
+      {
+         procedureDeclaration.declare(this);
+      }
+   }
+
+   public void declareDeclarations(List<Declaration> declarations)
+   {
+      for(Declaration declaration : declarations)
+      {
+         declaration.declare(this);
+      }
+   } 
    
+   public Constant lookUpConstant(String constantName)
+   {
+      Constant constantToReturn = null;
+      if(declaredConstants.containsKey(constantName))
+      {
+         constantToReturn = declaredConstants.get(constantName);
+         
+      }else
+      {
+         if(parentEnvironment != null)
+         {
+            constantToReturn = parentEnvironment.lookUpConstant(constantName);
+         }
+      }
+      return constantToReturn;
+   }
+   
+   public Var lookUpVar(String varName)
+   {
+      Var varToReturn = null;
+      if(declaredVars.containsKey(varName))
+      {
+         varToReturn = declaredVars.get(varName);      
+      }
+      else
+      {
+         if(parentEnvironment != null)
+         {
+            varToReturn = parentEnvironment.lookUpVar(varName);
+         }
+      }
+      return varToReturn;
+   }
+   
+   public Parameter lookUpParameter(String parameterName)
+   {
+      Parameter parameterToReturn = null;
+      if(parameters.containsKey(parameterName))
+      {
+         parameterToReturn = parameters.get(parameterName);      
+      }
+      else
+      {
+         if(parentEnvironment != null)
+         {
+            parameterToReturn = parentEnvironment.lookUpParameter(parameterName);
+         }
+      }
+      return parameterToReturn;
+   }
+   
+   public Procedure lookUpProcedure(String procedureName)
+   {
+      Procedure procedureToReturn = null;
+      if(procedures.containsKey(procedureName))
+      {
+         procedureToReturn = procedures.get(procedureName);      
+      }
+      else
+      {
+         if(parentEnvironment != null)
+         {
+            procedureToReturn = parentEnvironment.lookUpProcedure(procedureName);
+         }
+      }
+      return procedureToReturn;
+   }
+   
+   public Type lookUpType(String typeName)
+   {
+      Type typeToReturn = null;
+      if(declaredTypes.containsKey(typeName))
+      {
+         typeToReturn = declaredTypes.get(typeName);      
+      }
+      else
+      {
+         if(parentEnvironment != null)
+         {
+            typeToReturn = parentEnvironment.lookUpType(typeName);
+         }
+      }
+      return typeToReturn;
+   }
+   
+   public Value lookUpConstantValue(String constantName)
+   {
+      Constant constant = lookUpConstant(constantName);
+      Value valueToReturn = constant.get();
+      return valueToReturn;
+   }
+   
+   public Value lookUpVarValue(String varName)
+   {
+      Var var = lookUpVar(varName);
+      Value valueToReturn = var.getValue();
+      return valueToReturn;
+   }
+   
+   public Value lookUpParameterValue(String parameterName)
+   {
+      Parameter parameter = lookUpParameter(parameterName);
+      Value valueToReturn = parameter.getValue();
+      return valueToReturn;
+   }
+   
+   public void assignValueToVar(String varName, Value value)
+   {
+      Var var = lookUpVar(varName);
+      var.setValue(value);
+   }
+   
+   public void assignValueToParameter(String parameterName, Value value)
+   {
+      Parameter parameter = lookUpParameter(parameterName);
+      parameter.setValue(value);
+   }
 }
