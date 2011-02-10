@@ -46,7 +46,17 @@ public class RecordIndexerDataType extends AbstractDataType {
 	 */
 	@Override
 	public int getValue(Scope currentScope) {
-		return record.getValueAtIndex(fieldName).getValue(currentScope);
+		return record.getValueAtIndex(fieldName).getValue(currentScope);			
+	}
+	
+	@Override
+	public void setValue(int value) {
+		if (record instanceof RecordDataType){
+			((RecordDataType)record).setValueAtIndex(fieldName, value);
+		}
+		else{
+			record.setValue(value);
+		}
 	}
 
 	/* (non-Javadoc)
@@ -55,16 +65,6 @@ public class RecordIndexerDataType extends AbstractDataType {
 	@Override
 	public IDataType performDeepCopy(final String newName) {
 		return new RecordIndexerDataType(newName, record, fieldName);
-	}
-
-	/**
-	 * Gets the parent record.
-	 *
-	 * @param currentScope the current scope
-	 * @return the parent record
-	 */
-	public RecordDataType getParentRecord(Scope currentScope) {
-		return record;
 	}
 
 }

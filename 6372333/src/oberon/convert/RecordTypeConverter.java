@@ -17,11 +17,9 @@ public class RecordTypeConverter extends AbstractConverter<IDataType> {
 	
 	private List<IDataType> fieldList = new ArrayList<IDataType>();
 	private String name;
-	private final RecordTypeConverter parentRecord;
 	
 	public RecordTypeConverter(String recordName, RecordTypeConverter parentRecordConverter){
 		name = recordName;
-		parentRecord = parentRecordConverter;
 	}
 
 	@Override
@@ -57,12 +55,7 @@ public class RecordTypeConverter extends AbstractConverter<IDataType> {
 			fields.put(dataType.getName(), dataType);
 		}
 		
-		if (parentRecord != null) {
-			return new RecordDataType(name, fields, parentRecord.buildInterpreterResult());
-		}
-		else{
-			return new RecordDataType(name, fields, null);
-		}
+		return new RecordDataType(name, fields);
 	}
 
 }
