@@ -1,0 +1,4 @@
+a := 0 ;
+WHILE (a # 9) DO
+	a := a + 1
+END

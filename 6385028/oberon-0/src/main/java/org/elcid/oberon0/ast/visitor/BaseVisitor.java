@@ -95,4 +95,9 @@ public abstract class BaseVisitor {
 	public void run(ElseStmNode node, Environment localEnv) {
 
 	}
+
+	public void run(WhileStmNode node, Environment localEnv) {
+		
+	}
+
 }
