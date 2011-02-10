@@ -52,7 +52,7 @@ public class ExpressionsTest {
 		//Int result = (Int) expr.eval(new ExpressionVisitor(), env);
 		//System.out.println(result.getValue());
 
-		Bool result = (Bool) expr.eval(new ExpressionVisitor(), env);
-		System.out.println(result.getValue());
+		//Bool result = (Bool) expr.eval(new ExpressionVisitor(), env);
+		//System.out.println(result.getValue());
 	}
 }

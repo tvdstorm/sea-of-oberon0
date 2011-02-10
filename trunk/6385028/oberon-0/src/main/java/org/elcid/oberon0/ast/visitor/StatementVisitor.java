@@ -40,4 +40,13 @@ public class StatementVisitor extends BaseVisitor {
 		node.getStatementSequence().run(this, localEnv);
 	}
 
+	@Override
+	public void run(WhileStmNode node, Environment localEnv) {
+		Boolean condition = ((Bool)node.getCondition().eval(new ExpressionVisitor(), localEnv)).getValue();
+		if (condition) {
+			node.getStatementSequence().run(this, localEnv);
+			node.run(this, localEnv);
+		}
+	}
+
 }

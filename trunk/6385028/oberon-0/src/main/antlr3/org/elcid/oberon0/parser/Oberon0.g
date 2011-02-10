@@ -139,7 +139,7 @@ statement returns [StatementNode result]
 	:	((identSelector ASSIGN_OP) => a=assignment)		{ $result = $a.result; }
 	|	procedureCall
 	|	i=ifStatement									{ $result = $i.result; }
-	|	whileStatement
+	|	w=whileStatement								{ $result = $w.result;}
 	;
 
 assignment returns [StatementNode result]
@@ -150,8 +150,9 @@ procedureCall
 	:	identSelector (actualParameters)?
 	;
 
-whileStatement
-	:	WHILE_KW expression DO_KW statementSequence END_KW
+whileStatement returns [StatementNode result]
+	:	WHILE_KW e=expression DO_KW
+		ss=statementSequence END_KW						{ $result = new WhileStmNode($e.result, $ss.result); }
 	;
 
 ifStatement returns [IfThenElseStmNode result]
@@ -197,7 +198,7 @@ simpleExpression returns [ExpressionNode result]
 	;
 
 termsExpression returns [ExpressionNode result]
-	:	t1=term										{ $result = $t1.result; }
+	:	t1=term											{ $result = $t1.result; }
 			( PLUS_OP t2=term							{ $result = new PlusExpNode($result, $t2.result); }
 			| MINUS_OP t2=term							{ $result = new MinusExpNode($result, $t2.result); }
 			| OR_OP t2=term								{ $result = new OrExpNode($result, $t2.result); }
