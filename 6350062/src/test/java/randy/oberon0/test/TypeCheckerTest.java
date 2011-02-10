@@ -32,10 +32,9 @@ public class TypeCheckerTest
 		try
 		{
 			Program program = new Program();
-			program.loadProgram("src/test/java/randy/oberon0/test/testscripts/typechecker/" + testName + ".oberon0", new BuildinProcedures());
 			try
 			{
-				program.typeCheck();
+				program.loadProgram("src/test/java/randy/oberon0/test/testscripts/typechecker/" + testName + ".oberon0", new BuildinProcedures());
 				Assert.assertTrue(description + ": Should give typecheck exception, but it doesn't.", expectedExceptionMessage == null);
 			}
 			catch (RuntimeException e)

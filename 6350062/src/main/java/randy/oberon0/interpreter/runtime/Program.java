@@ -31,6 +31,7 @@ public class Program
 		// Build the AST tree from a oberon 0 script
 		Oberon0ASTTreeGenerator generator = new Oberon0ASTTreeGenerator();
 		module = generator.buildASTTreeFromFile(filename);
+		typeCheck();
 	}
 	public void run() throws RuntimeException
 	{
@@ -52,7 +53,7 @@ public class Program
 		// Invoke the module
 		module.invoke(moduleEnvironment, (new LinkedList<IBindableValue>()).iterator());
 	}
-	public void typeCheck() throws RuntimeException
+	protected void typeCheck() throws RuntimeException
 	{
 		// Create a global environment
 		TypeCheckEnvironment globalEnvironment = new TypeCheckEnvironment();
