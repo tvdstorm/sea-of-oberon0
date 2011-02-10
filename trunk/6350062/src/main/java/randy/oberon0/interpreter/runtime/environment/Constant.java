@@ -1,6 +1,6 @@
 package randy.oberon0.interpreter.runtime.environment;
 
-import randy.oberon0.exception.ConstAssignmentException;
+import randy.oberon0.exception.UnreachableRuntimeException;
 import randy.oberon0.value.Value;
 
 public class Constant extends Reference
@@ -10,8 +10,8 @@ public class Constant extends Reference
 		super(_value);
 	}
 	@Override
-	public void setValue(Value _value) throws ConstAssignmentException
+	public void setValue(Value _value) throws UnreachableRuntimeException
 	{
-		throw new ConstAssignmentException();
+		throw new UnreachableRuntimeException();
 	}
 }

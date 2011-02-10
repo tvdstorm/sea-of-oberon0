@@ -2,6 +2,7 @@ package randy.oberon0.ast.expression;
 
 import randy.oberon0.ast.selector.Selector;
 import randy.oberon0.exception.RuntimeException;
+import randy.oberon0.exception.TypeCheckException;
 import randy.oberon0.interpreter.runtime.environment.*;
 import randy.oberon0.interpreter.typecheck.environment.*;
 
@@ -20,7 +21,7 @@ public class SelectorExpression extends Expression
 		return selector.evaluate(environment);
 	}
 	@Override
-	public ITypeCheckBindableValue typeCheck(TypeCheckEnvironment environment) throws RuntimeException
+	public ITypeCheckBindableValue typeCheck(TypeCheckEnvironment environment) throws TypeCheckException
 	{
 		return selector.typeCheck(environment);
 	}

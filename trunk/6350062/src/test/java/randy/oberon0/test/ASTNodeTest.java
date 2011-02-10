@@ -182,96 +182,6 @@ public class ASTNodeTest
 		Assert.assertTrue(procedures.outputIsEmpty());
 	}
 	@Test
-	public void test_ConstAssignment()
-	{
-		try
-		{
-			prepareTest("constassignment", false);
-			program.run();
-			Assert.fail("Should be throwing an ConstAssignmentException...");
-		}
-		catch (ConstAssignmentException e)
-		{
-			// Success
-		}
-		catch (Exception e)
-		{
-			Assert.fail("Should be throwing an ConstAssignmentException instead of a general Exception...");
-		}
-	}
-	@Test
-	public void test_IfNumber()
-	{
-		try
-		{
-			prepareTest("ifnumber", false);
-			program.run();
-			Assert.fail("Should be throwing an TypeMismatchException...");
-		}
-		catch (TypeMismatchException e)
-		{
-			// Success
-		}
-		catch (Exception e)
-		{
-			Assert.fail("Should be throwing an TypeMismatchException instead of a general Exception...");
-		}
-	}
-	@Test
-	public void test_ElseIfNumber()
-	{
-		try
-		{
-			prepareTest("elseifnumber", false);
-			program.run();
-			Assert.fail("Should be throwing an TypeMismatchException...");
-		}
-		catch (TypeMismatchException e)
-		{
-			// Success
-		}
-		catch (Exception e)
-		{
-			Assert.fail("Should be throwing an TypeMismatchException instead of a general Exception...");
-		}
-	}
-	@Test
-	public void test_InfixIntegerAnd()
-	{
-		try
-		{
-			prepareTest("infixintegerand", false);
-			program.run();
-			Assert.fail("Should be throwing an OperatorTypeUndefinedException...");
-		}
-		catch (OperatorTypeUndefinedException e)
-		{
-			// Success
-		}
-		catch (Exception e)
-		{
-			Assert.fail("Should be throwing an OperatorTypeUndefinedException instead of a general Exception...");
-		}
-	}
-	@Test
-	public void test_InfixBooleanAdd()
-	{
-		try
-		{
-			prepareTest("infixbooleanadd", false);
-			program.run();
-			Assert.fail("Should be throwing an OperatorTypeUndefinedException...");
-		}
-		catch (OperatorTypeUndefinedException e)
-		{
-			// Success
-		}
-		catch (Exception e)
-		{
-			Assert.fail("Should be throwing an OperatorTypeUndefinedException instead of a general Exception...");
-		}
-	}
-	@Test
 	public void test_UnknownProcedure()
 	{
 		try
@@ -287,60 +197,6 @@ public class ASTNodeTest
 		catch (Exception e)
 		{
 			Assert.fail("Should be throwing an UndefinedBindableException instead of a general Exception...");
-		}
-	}
-	@Test
-	public void test_ProcedureCallTooManyParameters()
-	{
-		try
-		{
-			prepareTest("procedurecalltoomanyparameters", false);
-			program.run();
-			Assert.fail("Should be throwing an IncorrectNumberOfArgumentsException...");
-		}
-		catch (IncorrectNumberOfArgumentsException e)
-		{
-			// Success
-		}
-		catch (Exception e)
-		{
-			Assert.fail("Should be throwing an IncorrectNumberOfArgumentsException instead of a general Exception...");
-		}
-	}
-	@Test
-	public void test_ProcedureCallFewManyParameters()
-	{
-		try
-		{
-			prepareTest("procedurecalltoofewparameters", false);
-			program.run();
-			Assert.fail("Should be throwing an IncorrectNumberOfArgumentsException...");
-		}
-		catch (IncorrectNumberOfArgumentsException e)
-		{
-			// Success
-		}
-		catch (Exception e)
-		{
-			Assert.fail("Should be throwing an IncorrectNumberOfArgumentsException instead of a general Exception...");
-		}
-	}
-	@Test
-	public void test_WhileIntegerExpression()
-	{
-		try
-		{
-			prepareTest("whileintegerexpression", false);
-			program.run();
-			Assert.fail("Should be throwing an TypeMismatchException...");
-		}
-		catch (TypeMismatchException e)
-		{
-			// Success
-		}
-		catch (Exception e)
-		{
-			Assert.fail("Should be throwing an TypeMismatchException instead of a general Exception...");
 		}
 	}
 	@Test
@@ -390,42 +246,6 @@ public class ASTNodeTest
 		}
 	}
 	@Test
-	public void test_DuplicateVariableName()
-	{
-		try
-		{
-			prepareTest("duplicatevariablename", false);
-			program.run();
-			Assert.fail("Should be throwing an DuplicateVariableException...");
-		}
-		catch (DuplicateVariableException e)
-		{
-			// Success
-		}
-		catch (Exception e)
-		{
-			Assert.fail("Should be throwing an DuplicateVariableException...");
-		}
-	}
-	@Test
-	public void test_UndefinedVariable()
-	{
-		try
-		{
-			prepareTest("undefinedvariable", false);
-			program.run();
-			Assert.fail("Should be throwing an UndefinedBindableException...");
-		}
-		catch (UndefinedBindableException e)
-		{
-			// Success
-		}
-		catch (Exception e)
-		{
-			Assert.fail("Should be throwing an UndefinedBindableException...");
-		}
-	}
-	@Test
 	public void test_GlobalVariable()
 	{
 		prepareTest("globalvariable", true);
@@ -441,65 +261,11 @@ public class ASTNodeTest
 		}
 	}
 	@Test
-	public void test_ArrayIndexBoolean()
-	{
-		try
-		{
-			prepareTest("arrayindexboolean", false);
-			program.run();
-			Assert.fail("Should be throwing an SelectorException...");
-		}
-		catch (TypeMismatchException e)
-		{
-			// Success
-		}
-		catch (Exception e)
-		{
-			Assert.fail("Should be throwing an SelectorException...");
-		}
-	}
-	@Test
-	public void test_ArrayAccessorInteger()
-	{
-		try
-		{
-			prepareTest("arrayaccessoroninteger", false);
-			program.run();
-			Assert.fail("Should be throwing an SelectorException...");
-		}
-		catch (TypeMismatchException e)
-		{
-			// Success
-		}
-		catch (Exception e)
-		{
-			Assert.fail("Should be throwing an SelectorException...");
-		}
-	}
-	@Test
 	public void test_Procedurenesting()
 	{
 		prepareTest("procedurenesting", true);
 		runTest();
 		Assert.assertTrue(procedures.outputIsEmpty());
-	}
-	@Test
-	public void test_IncorrectParameterType()
-	{
-		try
-		{
-			prepareTest("incorrectparametertype", false);
-			program.run();
-			Assert.fail("Should be throwing an TypeMismatchException...");
-		}
-		catch (TypeMismatchException e)
-		{
-			// Success
-		}
-		catch (Exception e)
-		{
-			Assert.fail("Should be throwing an TypeMismatchException...");
-		}
 	}
 	@Test
 	public void test_ArrayParameter()
@@ -548,7 +314,7 @@ public class ASTNodeTest
 				Assert.assertTrue((new Integer(0)).getType() == Type.INTEGER);
 				Assert.assertTrue((new Boolean(false)).getType() == Type.BOOLEAN);
 				
-				try
+				/*try
 				{
 					integer.setValue(bool3);
 					Assert.fail("Should be throwing an TypeMismatchException...");
@@ -565,7 +331,7 @@ public class ASTNodeTest
 				catch (TypeMismatchException e)
 				{
 					// Success
-				}
+				}*/
 								
 				RuntimeEnvironment environment = new RuntimeEnvironment(null);
 				environment.registerType(Type.BOOLEAN.getTypeText(), new PrimitiveVariableInstantiation(Type.BOOLEAN));
@@ -617,7 +383,7 @@ public class ASTNodeTest
 						}
 						else
 						{
-							try
+							/*try
 							{
 								copies[i].setValue(values[j]);
 								Assert.fail("Should be throwing a TypeMismatchException...");
@@ -629,7 +395,7 @@ public class ASTNodeTest
 							catch (Exception e)
 							{
 								Assert.fail("Should be throwing a TypeMismatchException...");
-							}
+							}*/
 						}
 					}
 				}
@@ -721,24 +487,6 @@ public class ASTNodeTest
 			vb += vm;
 			Assert.assertTrue(procedures.popOutput().equals("" + vb));
 			Assert.assertTrue(procedures.outputIsEmpty());
-		}
-		for (int i=1;i<=5;i++)
-		{
-			try
-			{
-				prepareTest("variablescopingfout" + i, false);
-				procedures.addInput("1");
-				program.run();
-				Assert.fail("Should be throwing an UndefinedBindableException...");
-			}
-			catch (UndefinedBindableException e)
-			{
-				// Success
-			}
-			catch (Exception e)
-			{
-				Assert.fail("Should be throwing an UndefinedBindableException...");
-			}
 		}
 	}
 	@Test

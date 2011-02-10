@@ -20,7 +20,7 @@ public class TestWriteLnProcedure implements IInvokableProcedure
 	public void invoke(RuntimeEnvironment environment, Iterator<IBindableValue> parameterValues) throws RuntimeException
 	{
 		if (parameterValues.hasNext())
-			throw new IncorrectNumberOfArgumentsException();
+			throw new UnreachableRuntimeException();
 		output.add(null);
 	}
 	public String getName()
@@ -33,7 +33,7 @@ public class TestWriteLnProcedure implements IInvokableProcedure
 		// Leeg
 	}
 	@Override
-	public void typeCheckInvoke(TypeCheckEnvironment environment, Iterator<ITypeCheckBindableValue> parameterValues) throws RuntimeException
+	public void typeCheckInvoke(TypeCheckEnvironment environment, Iterator<ITypeCheckBindableValue> parameterValues) throws TypeCheckException
 	{
 		// Don't accept any parameters
 		if (parameterValues.hasNext())
@@ -42,12 +42,12 @@ public class TestWriteLnProcedure implements IInvokableProcedure
 		}
 	}
 	@Override
-	public void typeCheckRegisterTypeDeclarations(TypeCheckEnvironment newEnvironment) throws RuntimeException
+	public void typeCheckRegisterTypeDeclarations(TypeCheckEnvironment newEnvironment) throws TypeCheckException
 	{
 		// Leeg
 	}
 	@Override
-	public void typeCheckBody(TypeCheckEnvironment newEnvironment) throws RuntimeException
+	public void typeCheckBody(TypeCheckEnvironment newEnvironment) throws TypeCheckException
 	{
 		// Leeg
 	}

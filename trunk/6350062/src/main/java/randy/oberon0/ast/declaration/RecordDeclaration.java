@@ -2,6 +2,7 @@ package randy.oberon0.ast.declaration;
 
 import java.util.*;
 import randy.oberon0.exception.RuntimeException;
+import randy.oberon0.exception.TypeCheckException;
 import randy.oberon0.interpreter.runtime.environment.*;
 import randy.oberon0.interpreter.typecheck.environment.*;
 
@@ -25,7 +26,7 @@ public class RecordDeclaration extends AbstractTypeDeclaration
 		newEnvironment.registerType(recordName, new RecordInstantiation(memberVariables));
 	}
 	@Override
-	public void typeCheckRegister(TypeCheckEnvironment newEnvironment) throws RuntimeException
+	public void typeCheckRegister(TypeCheckEnvironment newEnvironment) throws TypeCheckException
 	{
 		assert(newEnvironment != null);
 		TypeCheckRecordType recordType = new TypeCheckRecordType(recordName, memberVariables);

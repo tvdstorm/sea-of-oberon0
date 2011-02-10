@@ -1,6 +1,6 @@
 package randy.oberon0.exception;
 
-public class IncorrectNumberOfArgumentsException extends RuntimeException
+public class IncorrectNumberOfArgumentsException extends TypeCheckException
 {
 	private static final long serialVersionUID = -1783524693085741233L;
 

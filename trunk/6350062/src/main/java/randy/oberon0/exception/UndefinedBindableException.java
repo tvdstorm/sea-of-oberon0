@@ -1,6 +1,6 @@
 package randy.oberon0.exception;
 
-public class UndefinedBindableException extends RuntimeException
+public class UndefinedBindableException extends TypeCheckException
 {
 	private static final long serialVersionUID = -3588320410165517986L;
 

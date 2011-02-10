@@ -6,7 +6,7 @@ import randy.oberon0.interpreter.runtime.IInvokableProcedure;
 import randy.oberon0.exception.DuplicateProcedureException;
 import randy.oberon0.exception.DuplicateTypeException;
 import randy.oberon0.exception.DuplicateVariableException;
-import randy.oberon0.exception.RuntimeException;
+import randy.oberon0.exception.TypeCheckException;
 import randy.oberon0.exception.UndefinedBindableException;
 import randy.oberon0.exception.UnknownTypeException;
 
@@ -32,7 +32,7 @@ public class TypeCheckEnvironment
 		typeAliases = new HashMap<String, String>();
 		parentScope = baseEnvironment;
 	}
-	public ITypeCheckBindable lookup(String name) throws RuntimeException
+	public ITypeCheckBindable lookup(String name) throws TypeCheckException
 	{
 		assert(name != null);
 		assert(name.length() > 0);

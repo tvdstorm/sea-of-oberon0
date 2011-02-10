@@ -4,7 +4,6 @@ import org.junit.*;
 import randy.oberon0.interpreter.buildinprocedures.BuildinProcedures;
 import randy.oberon0.interpreter.runtime.Program;
 import randy.oberon0.value.Type;
-import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.exception.Exception;
 import randy.oberon0.exception.*;
 
@@ -27,7 +26,7 @@ public class TypeCheckerTest
 		testTypeChecker("undeclared_procedure_in_procedure", new UndefinedBindableException("aa"), "Undeclared procedure in procedure");
 	}
 	@Ignore
-	private void testTypeChecker(String testName, RuntimeException expectedExceptionMessage, String description)
+	private void testTypeChecker(String testName, TypeCheckException expectedExceptionMessage, String description)
 	{
 		try
 		{
@@ -37,7 +36,7 @@ public class TypeCheckerTest
 				program.loadProgram("src/test/java/randy/oberon0/test/testscripts/typechecker/" + testName + ".oberon0", new BuildinProcedures());
 				Assert.assertTrue(description + ": Should give typecheck exception, but it doesn't.", expectedExceptionMessage == null);
 			}
-			catch (RuntimeException e)
+			catch (TypeCheckException e)
 			{
 				Assert.assertTrue(description + ": " + e.toString(), e.toString().equals(expectedExceptionMessage.toString()));
 			}

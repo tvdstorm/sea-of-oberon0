@@ -2,8 +2,10 @@ package randy.oberon0.ast.statement;
 
 import randy.oberon0.ast.expression.Expression;
 import randy.oberon0.exception.RuntimeException;
+import randy.oberon0.exception.TypeCheckException;
 import randy.oberon0.interpreter.runtime.environment.*;
 import randy.oberon0.interpreter.typecheck.environment.*;
+import randy.oberon0.value.Boolean;
 
 public class WhileStatement extends Statement
 {
@@ -22,14 +24,14 @@ public class WhileStatement extends Statement
 	{
 		assert(environment != null);
 		// Run while the condition evaluates to true
-		while (condition.evaluate(environment).getValue().castToBoolean().getBoolValue())
+		while (((Boolean)condition.evaluate(environment).getValue()).getBoolValue())
 		{
 			// Run the body
 			body.run(environment);
 		}
 	}
 	@Override
-	public void typeCheck(TypeCheckEnvironment environment) throws RuntimeException
+	public void typeCheck(TypeCheckEnvironment environment) throws TypeCheckException
 	{
 		assert(environment != null);
 		// Run while the condition evaluates to true

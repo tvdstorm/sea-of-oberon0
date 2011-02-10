@@ -35,7 +35,7 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableP
 		newEnvironment.registerProcedure(getName(), this);
 	}
 	@Override
-	public void typeCheckRegister(TypeCheckEnvironment newEnvironment) throws RuntimeException
+	public void typeCheckRegister(TypeCheckEnvironment newEnvironment) throws TypeCheckException
 	{
 		assert(newEnvironment != null);
 		// Register the procedure in the environment
@@ -66,7 +66,7 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableP
 		// If parameterValues has any values left, the number of arguments don't match
 		if (parameterValues.hasNext())
 		{
-			throw new IncorrectNumberOfArgumentsException();
+			throw new UnreachableRuntimeException();
 		}
 		// Loop through all body declarations except type declarations
 		for (BodyDeclaration bodyDecl : bodyDeclarations)
@@ -85,7 +85,7 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableP
 		return procedureName;
 	}
 	@Override
-	public void typeCheckInvoke(TypeCheckEnvironment environment, Iterator<ITypeCheckBindableValue> parameterValues) throws RuntimeException
+	public void typeCheckInvoke(TypeCheckEnvironment environment, Iterator<ITypeCheckBindableValue> parameterValues) throws TypeCheckException
 	{
 		assert(environment != null);
 		assert(parameterValues != null);
@@ -109,7 +109,7 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableP
 		}
 	}
 	@Override
-	public void typeCheckRegisterTypeDeclarations(TypeCheckEnvironment newEnvironment) throws RuntimeException
+	public void typeCheckRegisterTypeDeclarations(TypeCheckEnvironment newEnvironment) throws TypeCheckException
 	{
 		assert(newEnvironment != null);
 		// Register all the type declarations in the environment
@@ -122,7 +122,7 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableP
 		}
 	}
 	@Override
-	public void typeCheckBody(TypeCheckEnvironment newEnvironment) throws RuntimeException
+	public void typeCheckBody(TypeCheckEnvironment newEnvironment) throws TypeCheckException
 	{
 		assert(newEnvironment != null);
 		// Loop through all parameters and declare them in the invoked procedures environment

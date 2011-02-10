@@ -2,6 +2,7 @@ package randy.oberon0.ast.declaration;
 
 import randy.oberon0.ast.expression.Expression;
 import randy.oberon0.exception.RuntimeException;
+import randy.oberon0.exception.TypeCheckException;
 import randy.oberon0.interpreter.runtime.environment.*;
 import randy.oberon0.interpreter.typecheck.environment.TypeCheckEnvironment;
 
@@ -26,7 +27,7 @@ public class ConstDeclaration extends BodyDeclaration
 		newEnvironment.registerConstant(constantName, value.evaluate(newEnvironment).getValue());
 	}
 	@Override
-	public void typeCheckRegister(TypeCheckEnvironment newEnvironment) throws RuntimeException
+	public void typeCheckRegister(TypeCheckEnvironment newEnvironment) throws TypeCheckException
 	{
 		assert(newEnvironment != null);
 		// Add the constant to the variable scope

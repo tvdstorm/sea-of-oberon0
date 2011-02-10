@@ -5,6 +5,8 @@ import randy.oberon0.interpreter.runtime.IInvokableProcedure;
 import randy.oberon0.interpreter.runtime.environment.IBindableValue;
 import randy.oberon0.exception.IncorrectNumberOfArgumentsException;
 import randy.oberon0.exception.RuntimeException;
+import randy.oberon0.exception.TypeCheckException;
+import randy.oberon0.exception.UnreachableRuntimeException;
 import randy.oberon0.interpreter.runtime.environment.*;
 import randy.oberon0.interpreter.typecheck.environment.*;
 
@@ -21,7 +23,7 @@ public class DefaultWriteLnProcedure implements IInvokableProcedure
 		// Don't accept any parameters
 		if (parameterValues.hasNext())
 		{
-			throw new IncorrectNumberOfArgumentsException();
+			throw new UnreachableRuntimeException();
 		}
 		// Write a new line
 		System.out.println("");
@@ -32,7 +34,7 @@ public class DefaultWriteLnProcedure implements IInvokableProcedure
 		// Leeg
 	}
 	@Override
-	public void typeCheckInvoke(TypeCheckEnvironment environment, Iterator<ITypeCheckBindableValue> parameterValues) throws RuntimeException
+	public void typeCheckInvoke(TypeCheckEnvironment environment, Iterator<ITypeCheckBindableValue> parameterValues) throws TypeCheckException
 	{
 		// Don't accept any parameters
 		if (parameterValues.hasNext())
@@ -41,12 +43,12 @@ public class DefaultWriteLnProcedure implements IInvokableProcedure
 		}
 	}
 	@Override
-	public void typeCheckRegisterTypeDeclarations(TypeCheckEnvironment newEnvironment) throws RuntimeException
+	public void typeCheckRegisterTypeDeclarations(TypeCheckEnvironment newEnvironment) throws TypeCheckException
 	{
 		// Leeg
 	}
 	@Override
-	public void typeCheckBody(TypeCheckEnvironment newEnvironment) throws RuntimeException
+	public void typeCheckBody(TypeCheckEnvironment newEnvironment) throws TypeCheckException
 	{
 		// Leeg
 	}

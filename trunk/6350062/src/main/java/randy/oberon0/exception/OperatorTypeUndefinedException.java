@@ -1,6 +1,6 @@
 package randy.oberon0.exception;
 
-public class OperatorTypeUndefinedException extends RuntimeException
+public class OperatorTypeUndefinedException extends TypeCheckException
 {
 	private static final long serialVersionUID = -4452312422101125649L;
 

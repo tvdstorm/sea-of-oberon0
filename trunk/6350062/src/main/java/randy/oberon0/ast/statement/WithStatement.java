@@ -1,6 +1,7 @@
 package randy.oberon0.ast.statement;
 
 import randy.oberon0.ast.selector.Selector;
+import randy.oberon0.exception.TypeCheckException;
 import randy.oberon0.exception.TypeMismatchException;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.environment.*;
@@ -24,7 +25,7 @@ public class WithStatement extends Statement
 	{
 		assert(environment != null);
 		// Evaluate the selector
-		Record selectorValue = selector.evaluate(environment).getValue().castToRecord();
+		Record selectorValue = (Record)selector.evaluate(environment).getValue();
 		// Create a new environment to use in the with block
 		RuntimeEnvironment withEnvironment = new RuntimeEnvironment(environment);
 		// Register all members of the record in the new environment
@@ -36,7 +37,7 @@ public class WithStatement extends Statement
 		body.run(withEnvironment);
 	}
 	@Override
-	public void typeCheck(TypeCheckEnvironment environment) throws RuntimeException
+	public void typeCheck(TypeCheckEnvironment environment) throws TypeCheckException
 	{
 		assert(environment != null);
 		// Evaluate the selector

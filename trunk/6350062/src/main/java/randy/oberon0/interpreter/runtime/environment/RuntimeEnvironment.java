@@ -42,17 +42,17 @@ public class RuntimeEnvironment
 		// The bindable isn't defined in this scope and we don't have a parent scope, return an exception
 		else
 		{
-			throw new UndefinedBindableException(name);
+			throw new UnreachableRuntimeException();
 		}
 	}
 	/**************************************************************************
 	 * Variables                                                              *
 	 **************************************************************************/
-	public void registerVariableByValue(String variableName, Value value) throws DuplicateVariableException
+	public void registerVariableByValue(String variableName, Value value) throws RuntimeException
 	{
 		registerVariableByReference(variableName, new Reference(value));
 	}
-	public void registerVariableByReference(String variableName, Reference reference) throws DuplicateVariableException
+	public void registerVariableByReference(String variableName, Reference reference) throws RuntimeException
 	{
 		assert(variableName != null);
 		assert(variableName.length() > 0);
@@ -60,12 +60,12 @@ public class RuntimeEnvironment
 		// Check if the variable has already been declared in the current scope
 		if (bindings.containsKey(variableName))
 		{
-			throw new DuplicateVariableException(variableName);
+			throw new UnreachableRuntimeException();
 		}
 		// Add the variable to the current scope
 		bindings.put(variableName, reference);
 	}
-	public void registerConstant(String constantName, Value value) throws DuplicateVariableException
+	public void registerConstant(String constantName, Value value) throws RuntimeException
 	{
 		// Package the value as a constant and add it as a variable
 		registerVariableByReference(constantName, new Constant(value));
@@ -73,7 +73,7 @@ public class RuntimeEnvironment
 	/**************************************************************************
 	 * Procedures                                                             *
 	 **************************************************************************/
-	public void registerProcedure(String procedureName, IInvokableProcedure procedurePointer) throws DuplicateProcedureException
+	public void registerProcedure(String procedureName, IInvokableProcedure procedurePointer) throws RuntimeException
 	{
 		assert(procedureName != null);
 		assert(procedureName.length() > 0);
@@ -81,14 +81,14 @@ public class RuntimeEnvironment
 		// Check if the procedure has already been declared in the current scope
 		if (bindings.containsKey(procedureName))
 		{
-			throw new DuplicateProcedureException(procedureName);
+			throw new UnreachableRuntimeException();
 		}
 		bindings.put(procedureName, new Closure(procedurePointer, this));
 	}
 	/**************************************************************************
 	 * Types                                                                  *
 	 **************************************************************************/
-	public void registerType(String typeName, IInstantiateableVariable typeCreator) throws DuplicateTypeException
+	public void registerType(String typeName, IInstantiateableVariable typeCreator) throws RuntimeException
 	{
 		assert(typeName != null);
 		assert(typeName.length() > 0);
@@ -96,12 +96,12 @@ public class RuntimeEnvironment
 		// Check if we already have a type with the same name registered
 		if (types.get(typeName) != null)
 		{
-			throw new DuplicateTypeException(typeName);
+			throw new UnreachableRuntimeException();
 		}
 		// No, register the type
 		types.put(typeName, typeCreator);
 	}
-	public IInstantiateableVariable resolveType(String name) throws UnknownTypeException
+	public IInstantiateableVariable resolveType(String name) throws RuntimeException
 	{
 		// Check if we have the type registered in this scope
 		if (types.get(name) != null)
@@ -116,7 +116,7 @@ public class RuntimeEnvironment
 		// We don't know the type and don't have a parent scope, return an exception
 		else
 		{
-			throw new UnknownTypeException(name);
+			throw new UnreachableRuntimeException();
 		}
 	}
 }

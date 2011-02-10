@@ -1,6 +1,7 @@
 package randy.oberon0.ast.selector;
 
 import randy.oberon0.exception.RuntimeException;
+import randy.oberon0.exception.TypeCheckException;
 import randy.oberon0.exception.TypeMismatchException;
 import randy.oberon0.interpreter.runtime.environment.*;
 import randy.oberon0.interpreter.typecheck.environment.*;
@@ -24,12 +25,12 @@ public class DotSelector extends Selector
 	{
 		assert(environment != null);
 		// Evaluate the selector and convert it to a record
-		final Record record = selector.evaluate(environment).getValue().castToRecord();
+		final Record record = (Record)selector.evaluate(environment).getValue();
 		// Evaluate the member and return it
 		return record.getMemberValue(recordMemberName);
 	}
 	@Override
-	public TypeCheckReference typeCheck(TypeCheckEnvironment environment) throws RuntimeException
+	public TypeCheckReference typeCheck(TypeCheckEnvironment environment) throws TypeCheckException
 	{
 		assert(environment != null);
 		// Evaluate the selector and convert it to a record

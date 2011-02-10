@@ -7,6 +7,8 @@ import randy.oberon0.ast.statement.Statement;
 import randy.oberon0.interpreter.runtime.IInvokableProcedure;
 import randy.oberon0.exception.IncorrectNumberOfArgumentsException;
 import randy.oberon0.exception.RuntimeException;
+import randy.oberon0.exception.TypeCheckException;
+import randy.oberon0.exception.UnreachableRuntimeException;
 import randy.oberon0.interpreter.runtime.environment.*;
 import randy.oberon0.interpreter.typecheck.environment.*;
 
@@ -43,7 +45,7 @@ public class Module extends ASTNode implements IInvokableProcedure
 		// Modules don't have parameters
 		if (parameterValues.hasNext())
 		{
-			throw new IncorrectNumberOfArgumentsException();
+			throw new UnreachableRuntimeException();
 		}
 		// Loop through all body declarations except type declarations
 		for (BodyDeclaration bodyDecl : bodyDeclarations)
@@ -62,7 +64,7 @@ public class Module extends ASTNode implements IInvokableProcedure
 		return "$MODULE";
 	}
 	@Override
-	public void typeCheckInvoke(TypeCheckEnvironment environment, Iterator<ITypeCheckBindableValue> parameterValues) throws RuntimeException
+	public void typeCheckInvoke(TypeCheckEnvironment environment, Iterator<ITypeCheckBindableValue> parameterValues) throws TypeCheckException
 	{
 		assert(environment != null);
 		assert(parameterValues != null);
@@ -81,7 +83,7 @@ public class Module extends ASTNode implements IInvokableProcedure
 		}
 	}
 	@Override
-	public void typeCheckRegisterTypeDeclarations(TypeCheckEnvironment newEnvironment) throws RuntimeException
+	public void typeCheckRegisterTypeDeclarations(TypeCheckEnvironment newEnvironment) throws TypeCheckException
 	{
 		assert(newEnvironment != null);
 		// Register all the type declarations in the environment
@@ -94,7 +96,7 @@ public class Module extends ASTNode implements IInvokableProcedure
 		}
 	}
 	@Override
-	public void typeCheckBody(TypeCheckEnvironment newEnvironment) throws RuntimeException
+	public void typeCheckBody(TypeCheckEnvironment newEnvironment) throws TypeCheckException
 	{
 		// Register all the type declarations in the environment
 		for (BodyDeclaration bodyDecl : bodyDeclarations)
