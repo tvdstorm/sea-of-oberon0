@@ -878,10 +878,9 @@ public class ASTNodeTest
 	{
 		procedures = new TestBuildinProcedures();
 		program = new Program();
-		program.loadProgram("src/test/java/randy/oberon0/test/testscripts/" + testName + ".oberon0", procedures);
 		try
 		{
-			program.typeCheck();
+			program.loadProgram("src/test/java/randy/oberon0/test/testscripts/" + testName + ".oberon0", procedures);
 			if (!bIsValid)
 			{
 				System.out.println(testName + " " + bIsValid);
