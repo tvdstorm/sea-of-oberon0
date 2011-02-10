@@ -21,7 +21,7 @@ public class DivEvaluator extends TermEvaluator
    }
 
    @Override
-   public Value evaluate(Environment environment)
+   public Int evaluate(Environment environment)
    {
       Int left = (Int) leftEvaluator.evaluate(environment);
       Int right = (Int) rightEvaluator.evaluate(environment);

@@ -22,7 +22,7 @@ public class AndEvaluator extends TermEvaluator
    }
 
    @Override
-   public Value evaluate(Environment environment)
+   public Bool evaluate(Environment environment)
    {
       Bool left = (Bool) leftEvaluator.evaluate(environment);
       Bool right = (Bool) rightEvaluator.evaluate(environment);

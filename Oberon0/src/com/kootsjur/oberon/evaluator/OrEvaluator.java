@@ -2,6 +2,7 @@ package com.kootsjur.oberon.evaluator;
 
 import com.kootsjur.oberon.SimpleExpression;
 import com.kootsjur.oberon.environment.Environment;
+import com.kootsjur.oberon.value.Bool;
 import com.kootsjur.oberon.value.Value;
 
 public class OrEvaluator extends SimpleExpressionEvaluator
@@ -20,10 +21,13 @@ public class OrEvaluator extends SimpleExpressionEvaluator
    }
 
    @Override
-   public Value evaluate(Environment environment)
+   public Bool evaluate(Environment environment)
    {
-      // TODO Auto-generated method stub
-      return null;
+      Bool left = (Bool) leftEvaluator.evaluate(environment);
+      Bool right = (Bool) rightEvaluator.evaluate(environment);
+      Boolean expressionValue = left.getValue() || right.getValue();
+      Bool toReturn = new Bool(expressionValue);
+      return toReturn;
    }
 
 

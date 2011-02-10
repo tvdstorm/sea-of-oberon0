@@ -1,6 +1,7 @@
 package com.kootsjur.oberon.evaluator;
 
 import com.kootsjur.oberon.environment.Environment;
+import com.kootsjur.oberon.value.Int;
 import com.kootsjur.oberon.value.Value;
 
 public class NumberEvaluator implements Evaluator
@@ -13,10 +14,10 @@ public class NumberEvaluator implements Evaluator
    }
 
    @Override
-   public Value evaluate(Environment environment)
+   public Int evaluate(Environment environment)
    {
-      // TODO Auto-generated method stub
-      return null;
+      Int result = new Int(value);
+      return result;
    }
 
 
