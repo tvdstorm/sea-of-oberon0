@@ -69,8 +69,12 @@ package org.elcid.oberon0.parser;
  * PARSER RULES
  *------------------------------------------------------------------*/
 
-module
-	:	MODULE_KW identifier SEMI_COLON declarations (BEGIN_KW statementSequence)? END_KW identifier DOT EOF
+module returns [ModuleNode result]
+	:	MODULE_KW i=identifier							{ $result = new ModuleNode($i.text); }
+		SEMI_COLON declarations
+		(BEGIN_KW ss=statementSequence					{ $result.setStatementSequence($ss.result); }
+		)?
+		END_KW identifier DOT EOF
 	;
 
 declarations
