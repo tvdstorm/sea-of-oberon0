@@ -10,6 +10,8 @@ public class Record extends Value
 	
 	public Record(Map<String, IInstantiateableVariable> _members, RuntimeEnvironment environment) throws RuntimeException
 	{
+		assert(_members != null);
+		assert(environment != null);
 		members = new HashMap<String, Reference>();
 		for (String name : _members.keySet())
 		{
@@ -20,9 +22,9 @@ public class Record extends Value
 	{
 		members = new HashMap<String, Reference>();
 	}
-	public Set<String> getMemberNames() // TODO: kopieren
+	public Set<String> getMemberNames()
 	{
-		return members.keySet();
+		return new HashSet<String>(members.keySet());
 	}
 	public Reference getMemberValue(String name)
 	{
