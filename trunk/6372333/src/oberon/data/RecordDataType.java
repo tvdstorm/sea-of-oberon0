@@ -6,7 +6,6 @@ import java.util.Map.Entry;
 
 import oberon.IDataType;
 import oberon.Scope;
-import oberon.convert.RecordTypeConverter;
 
 /**
  * The Class RecordDataType, stores an instance of a record.
@@ -15,7 +14,6 @@ public class RecordDataType extends AbstractDataType {
 	
 	/** The field values. */
 	private Map<String, IDataType> fieldValues;
-	private final IDataType parentRecord;
 	
 	/**
 	 * Instantiates a new record data type.
@@ -24,10 +22,8 @@ public class RecordDataType extends AbstractDataType {
 	 * @param iDataType 
 	 * @param fieldNames the field names of the record
 	 */
-	public RecordDataType(final String inputName, final HashMap<String, IDataType> values, 
-			IDataType parentRecord) {
+	public RecordDataType(final String inputName, final HashMap<String, IDataType> values) {
 		super(inputName);
-		this.parentRecord = parentRecord;
 		
 		fieldValues = new HashMap<String, IDataType>();
 		
@@ -44,11 +40,9 @@ public class RecordDataType extends AbstractDataType {
 	 * @param inputName the name of the new instance
 	 * @param inputFields map with the field values
 	 */	
-	RecordDataType(final String inputName, final Map<String, IDataType> inputFields, 
-			IDataType parentRecord) {
+	RecordDataType(final String inputName, final Map<String, IDataType> inputFields) {
 		super(inputName);
 		fieldValues = inputFields;
-		this.parentRecord = parentRecord;
 	}
 	
 	/**
@@ -75,7 +69,11 @@ public class RecordDataType extends AbstractDataType {
 	 */
 	@Override
 	public IDataType performDeepCopy(final String newName) {
-		return new RecordDataType(getName(), fieldValues, parentRecord);
+		return new RecordDataType(getName(), fieldValues);
+	}
+
+	public void setValueAtIndex(String fieldName, int value) {
+		fieldValues.get(fieldName).setValue(value);
 	}
 
 }

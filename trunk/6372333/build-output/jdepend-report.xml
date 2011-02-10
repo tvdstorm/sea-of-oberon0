@@ -65,14 +65,14 @@
 
         <Package name="oberon.convert">
             <Stats>
-                <TotalClasses>23</TotalClasses>
-                <ConcreteClasses>22</ConcreteClasses>
+                <TotalClasses>25</TotalClasses>
+                <ConcreteClasses>24</ConcreteClasses>
                 <AbstractClasses>1</AbstractClasses>
                 <Ca>1</Ca>
                 <Ce>5</Ce>
                 <A>0.04</A>
                 <I>0.83</I>
-                <D>0.12</D>
+                <D>0.13</D>
                 <V>1</V>
             </Stats>
 
@@ -122,6 +122,9 @@
                 <Class sourceFile="ReadProcConverter.java">
                     oberon.convert.ReadProcConverter
                 </Class>
+                <Class sourceFile="RecordTypeConverter.java">
+                    oberon.convert.RecordTypeConverter
+                </Class>
                 <Class sourceFile="SelectorConverter.java">
                     oberon.convert.SelectorConverter
                 </Class>
@@ -139,6 +142,9 @@
                 </Class>
                 <Class sourceFile="StatwithStatementConverter.java">
                     oberon.convert.StatwithStatementConverter
+                </Class>
+                <Class sourceFile="TypeConverter.java">
+                    oberon.convert.TypeConverter
                 </Class>
                 <Class sourceFile="VariableConverter.java">
                     oberon.convert.VariableConverter

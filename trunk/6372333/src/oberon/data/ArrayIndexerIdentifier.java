@@ -41,12 +41,6 @@ public class ArrayIndexerIdentifier extends AbstractIdentifier {
 		//type should always be an array
 		assert(type instanceof IntegerArrayDataType);
 		
-		if (type instanceof RecordIndexerDataType)
-		{
-			RecordDataType record = ((RecordIndexerDataType)type).getParentRecord(currentScope);
-			return (IntegerArrayDataType) record.getValueAtIndex(type.getName());
-		}
-		
 		return ((IntegerArrayDataType)type);
 	}
 
