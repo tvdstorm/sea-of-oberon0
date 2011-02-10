@@ -36,8 +36,12 @@ public class RecordIndexerIdentifier extends AbstractIdentifier {
 	 * @throws ProcedureParamaterCountMismatchException 
 	 * @throws VariableNotFoundInScopeException 
 	 */
-	private RecordDataType getDataTypeAsRecordDataType(Scope currentScope) {
-		final IDataType type = selector.getDataTypeValue(currentScope);
+	public RecordDataType getDataTypeAsRecordDataType(Scope currentScope) {
+		IDataType type = selector.getDataTypeValue(currentScope);
+		
+		while (type instanceof RecordIndexerDataType){
+			type = ((RecordIndexerDataType)type).getParentRecord(currentScope);
+		}
 		
 		//type should always be a recorddatatype
 		assert(type instanceof RecordDataType);
@@ -52,7 +56,7 @@ public class RecordIndexerIdentifier extends AbstractIdentifier {
 	@Override
 	public int getValue(Scope currentScope) {
 		final RecordDataType record = getDataTypeAsRecordDataType(currentScope);
-		return record.getValueAtIndex(index);
+		return record.getValueAtIndex(index).getValue(currentScope);
 	}
 
 	/* (non-Javadoc)

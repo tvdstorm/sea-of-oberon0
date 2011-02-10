@@ -1,84 +1,68 @@
 package oberon.test;
 
 import java.io.IOException;
-import java.util.LinkedList;
+import java.io.PushbackReader;
+import java.io.StringReader;
 
 import junit.framework.Assert;
-import oberon.IExpression;
-import oberon.IStatement;
+import oberon.Main;
 import oberon.Scope;
-import oberon.StatementSequence;
-import oberon.data.VariableDataType;
-import oberon.exceptions.ProcedureParamaterCountMismatchException;
-import oberon.exceptions.VariableNotFoundInScopeException;
-import oberon.expressions.AddOperator;
-import oberon.expressions.SmallerThanOperator;
-import oberon.statement.WhileStatement;
+import oberon.lexer.Lexer;
+import oberon.lexer.LexerException;
+import oberon.parser.ParserException;
+import oberon.procedures.ProcedureHeading;
 
 import org.junit.Test;
 
 public class WhileTest extends AbstractTest {
 	
 	@Test
-	public void test_case_WhileTestWithValidCondition() throws ProcedureParamaterCountMismatchException, IOException, VariableNotFoundInScopeException
-	{
-		//Get the condition, "i <= 5"
-		IExpression condition = getNewComparisonExpression("i", 5, new SmallerThanOperator());
+	public void test_case_WhileTestWithValidCondition() throws ParserException, LexerException, IOException {
+		String input = "MODULE QuickSort;" +
+		"" +
+		"		CONST" +
+		"			INPUTLENGTH = 5;" +
+		"" +
+		"VAR i: INTEGER;" +
+		"" +
+		"		BEGIN" +
+		"		 	i := 0;" +
+		"			WHILE i < INPUTLENGTH DO" +
+		"			i := i + 1" +
+		"		END " +
+		"		END QuickSort.";
+
+		StringReader reader = new StringReader(input); 
+		Lexer lexer = new PrintLexer(new PushbackReader(reader));
 		
-		LinkedList<IStatement> statementList = new LinkedList<IStatement>();
-		//Get the expression, "i + 1"
-		IExpression expression = getNewMathematicalExpression("i", 1, new AddOperator());
-		//Assign the result of the statement, "i = i + 1"
-		IStatement statement = getAssignmentStatement("i", expression);
+		ProcedureHeading main = (ProcedureHeading)Main.runParser(lexer);
+		Scope scope = main.getScope();
 		
-		statementList.add(statement);
-		StatementSequence statements = new StatementSequence(statementList);
-		
-		//Declare the variable i
-		VariableDataType inputVariable = new VariableDataType("i", false);
-		
-		Scope newScope = new Scope();
-		
-		addVariableToDeclaration(inputVariable);
-		loadDeclaration(newScope);
-		
-		//Create new while statement
-		WhileStatement whileStat = new WhileStatement(condition, statements);
-		whileStat.eval(newScope);
-		
-		Assert.assertEquals(5, newScope.getVariable("i").getValue(newScope));
+		Assert.assertEquals(5, scope.getVariable("i").getValue(scope));
 	}
 
 	@Test
-	public void test_case_WhileTestWithImmediatelyTrueCondition() throws ProcedureParamaterCountMismatchException, IOException, VariableNotFoundInScopeException
-	{
-		//Get the condition, "i <= 5"
-		IExpression condition = getNewComparisonExpression("trueConst", 5, new SmallerThanOperator());
+	public void test_case_WhileTestWithImmediatelyTrueCondition() throws ParserException, LexerException, IOException {
+		String input = "MODULE QuickSort;" +
+		"" +
+		"		CONST" +
+		"			INPUTLENGTH = 5;" +
+		"" +
+		"VAR i: INTEGER;" +
+		"" +
+		"		BEGIN" +
+		"		 	i := 0;" +
+		"			WHILE i < 0 DO" +
+		"			i := i + 1" +
+		"		END " +
+		"		END QuickSort.";
+
+		StringReader reader = new StringReader(input); 
+		Lexer lexer = new PrintLexer(new PushbackReader(reader));
 		
-		LinkedList<IStatement> statementList = new LinkedList<IStatement>();
-		//Get the expression, "i + 1"
-		IExpression expression = getNewMathematicalExpression("i", 1, new AddOperator());
-		//Assign the result of the statement, "i = i + 1"
-		IStatement statement = getAssignmentStatement("i", expression);
+		ProcedureHeading main = (ProcedureHeading)Main.runParser(lexer);
+		Scope scope = main.getScope();
 		
-		statementList.add(statement);
-		StatementSequence statements = new StatementSequence(statementList);
-		
-		//Declare the variable i
-		VariableDataType inputVariable = new VariableDataType("i", false);
-		VariableDataType trueConst = new VariableDataType("trueConst", 6, true);
-		
-		Scope newScope = new Scope();
-		
-		addVariableToDeclaration(inputVariable);
-		addVariableToDeclaration(trueConst);
-		loadDeclaration(newScope);
-		
-		//Create new while statement
-		WhileStatement whileStat = new WhileStatement(condition, statements);
-		whileStat.eval(newScope);
-		
-		//i should be 0 as the body of the while is never executed
-		Assert.assertEquals(0, newScope.getVariable("i").getValue(newScope));
+		Assert.assertEquals(0, scope.getVariable("i").getValue(scope));
 	}
 }
