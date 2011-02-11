@@ -1,5 +1,7 @@
 package nl.bve.uva.oberon.ast;
 
+import nl.bve.uva.oberon.env.Environment;
+
 public class ElementSelectorNode implements IInterpretableNode {
 	private IInterpretableNode selector;
 	
@@ -9,8 +11,8 @@ public class ElementSelectorNode implements IInterpretableNode {
 	}
 	
 	@Override
-	public Object interpret() {
-		return selector.interpret();
+	public Object interpret(Environment env) {
+		return selector.interpret(env);
 	}
 
 }

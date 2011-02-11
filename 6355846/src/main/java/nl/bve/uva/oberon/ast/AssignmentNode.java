@@ -1,5 +1,8 @@
 package nl.bve.uva.oberon.ast;
 
+import nl.bve.uva.oberon.env.Environment;
+import nl.bve.uva.oberon.env.types.Type;
+
 public class AssignmentNode implements IInterpretableNode {
 	private IInterpretableNode lhn;
 	private IInterpretableNode rhn;
@@ -11,11 +14,14 @@ public class AssignmentNode implements IInterpretableNode {
 	}
 	
 	@Override
-	public Object interpret() {
-		Object ident = lhn.interpret();
-		Object value = rhn.interpret();
+	public Object interpret(Environment env) {
+		Object ident = lhn.interpret(env);
+		Object value = rhn.interpret(env);
 		
-		/* TODO: lookup variable and assign value; */
+		assert ident instanceof Type : "Cannot assign a value to a non-Type instance!";
+		
+		Type var = (Type)ident;
+		var.setValue(value);
 		
 		return null;
 	}

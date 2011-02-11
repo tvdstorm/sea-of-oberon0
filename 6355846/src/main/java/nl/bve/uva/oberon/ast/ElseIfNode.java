@@ -1,5 +1,9 @@
 package nl.bve.uva.oberon.ast;
 
+import nl.bve.uva.oberon.env.Environment;
+import nl.bve.uva.oberon.env.types.OberonInt;
+import nl.bve.uva.oberon.env.types.Type;
+
 public class ElseIfNode implements IInterpretableNode {
 	private IInterpretableNode condition;
 	private IInterpretableNode body;
@@ -12,11 +16,14 @@ public class ElseIfNode implements IInterpretableNode {
 	}
 	
 	@Override
-	public Object interpret() {
-		if ((Boolean)condition.interpret()) {
-			return body.interpret();
+	public Object interpret(Environment env) {
+		Type t = (Type)condition.interpret(env);
+		
+		if (t.interpret(env) == OberonInt.TRUE) {
+			Environment subEnv = env.getNewSubSpace();
+			return body.interpret(subEnv);
 		} else if (nextElse != null) {
-			nextElse.interpret();
+			nextElse.interpret(env);
 		}
 		
 		return null;

@@ -1,5 +1,7 @@
 package nl.bve.uva.oberon.ast;
 
+import nl.bve.uva.oberon.env.Environment;
+
 public class DotSelectorNode implements IInterpretableNode {
 	private String selector;
 	
@@ -9,7 +11,7 @@ public class DotSelectorNode implements IInterpretableNode {
 	}
 	
 	@Override
-	public Object interpret() {
+	public Object interpret(Environment env) {
 		return selector;
 	}
 

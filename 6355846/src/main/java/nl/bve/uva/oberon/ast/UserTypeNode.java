@@ -1,5 +1,7 @@
 package nl.bve.uva.oberon.ast;
 
+import nl.bve.uva.oberon.env.Environment;
+
 public class UserTypeNode implements IInterpretableNode {
 	private String name;
 	
@@ -8,8 +10,7 @@ public class UserTypeNode implements IInterpretableNode {
 	}
 	
 	@Override
-	public Object interpret() {
-		// TODO Auto-generated method stub
-		return null;
+	public Object interpret(Environment env) {
+		return env.createUserType(name);
 	}
 }

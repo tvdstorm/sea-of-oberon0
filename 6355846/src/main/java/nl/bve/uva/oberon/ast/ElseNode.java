@@ -1,5 +1,7 @@
 package nl.bve.uva.oberon.ast;
 
+import nl.bve.uva.oberon.env.Environment;
+
 public class ElseNode implements IInterpretableNode {
 	private IInterpretableNode body;
 	
@@ -8,8 +10,9 @@ public class ElseNode implements IInterpretableNode {
 	}
 	
 	@Override
-	public Object interpret() {
-		return body.interpret();
+	public Object interpret(Environment env) {
+		Environment subEnv = env.getNewSubSpace();
+		return body.interpret(subEnv);
 	}
 	
 	@Override

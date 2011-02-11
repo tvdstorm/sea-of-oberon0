@@ -2,6 +2,8 @@ package nl.bve.uva.oberon.ast;
 
 import java.util.List;
 
+import nl.bve.uva.oberon.env.Environment;
+
 public class RecordTypeNode implements IInterpretableNode {
 	private List<IInterpretableNode> fieldList;
 	
@@ -10,7 +12,7 @@ public class RecordTypeNode implements IInterpretableNode {
 	}
 	
 	@Override
-	public Object interpret() {
+	public Object interpret(Environment env) {
 		// TODO Auto-generated method stub
 		return null;
 	}

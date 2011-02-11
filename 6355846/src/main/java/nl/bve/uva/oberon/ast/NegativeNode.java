@@ -1,5 +1,7 @@
 package nl.bve.uva.oberon.ast;
 
+import nl.bve.uva.oberon.env.Environment;
+
 public class NegativeNode implements IInterpretableNode {
 	private IInterpretableNode negativeNode;
 	
@@ -9,8 +11,8 @@ public class NegativeNode implements IInterpretableNode {
 	}
 	
 	@Override
-	public Object interpret() {
-		Object o = negativeNode.interpret();
+	public Object interpret(Environment env) {
+		Object o = negativeNode.interpret(env);
 		
 		assert (o instanceof Number);
 		
