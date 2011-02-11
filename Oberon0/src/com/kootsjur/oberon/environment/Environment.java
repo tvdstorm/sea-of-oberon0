@@ -242,6 +242,29 @@ public class Environment
       return valueToReturn;
    }
    
+   public Value lookUpValue(String name)
+   {
+      Value valueToReturn = null;
+      if(declaredVars.containsKey(name))
+      {
+         valueToReturn = lookUpVarValue(name);
+      }
+      else if(declaredConstants.containsKey(name))
+      {
+         valueToReturn = lookUpConstantValue(name);
+      }else if(parameters.containsKey(name))
+      {
+         valueToReturn = lookUpParameterValue(name);
+      }
+      
+      if(parentEnvironment != null)
+      {
+         valueToReturn = lookUpValue(name);
+      }
+         
+      return valueToReturn;
+   }
+   
    public void assignValueToVar(String varName, Value value)
    {
       Var var = lookUpVar(varName);

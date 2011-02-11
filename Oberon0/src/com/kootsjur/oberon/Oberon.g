@@ -131,11 +131,18 @@ expression returns [ExpressionEvaluator e]
 		simpleExpression2=simpleExpression )?;
 	
 simpleExpression returns[Evaluator s] 
-	:('+'|'-')?term
-		(('+'  	
-		|'-'  	
-		|'OR' 	
-		)term)*;
+	:{boolean positive=true;}
+		('+'|'-' {positive=false;})?
+		term1=term 	{$s = $term1.t; 
+						if(!positive)
+							$s = new NegationEvaluator($s);
+					}
+		(
+		('+'  	{$s = new PlusEvaluator($s,$term2.t);}
+		|'-'  	{$s = new MinEvaluator($s,$term2.t);}
+		|'OR' 	{$s = new OrEvaluator($s,$term2.t);}
+		)term2=term
+		)*;
 	
 
 term returns [Evaluator t]	:	factor1=factor {$t = $factor1.f;}
