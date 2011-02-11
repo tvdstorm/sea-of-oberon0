@@ -1,0 +1,29 @@
+MODULE QuickSort;
+
+CONST
+  INPUTLENGTH = 5;
+
+VAR
+  input: ARRAY INPUTLENGTH OF ARRAY 5 OF INTEGER;
+  i, j: INTEGER;
+
+  PROCEDURE Swap(VAR x, y: INTEGER);
+  VAR
+    temp: INTEGER;
+  BEGIN
+    temp := x;
+    x := y;
+    y := temp
+  END Swap;
+
+BEGIN
+ i := 0;
+ WHILE i < INPUTLENGTH DO
+   i := i + 1
+ END;
+ Swap(i, j);
+
+ WHILE i < INPUTLENGTH DO
+   i := i + 1
+ END
+END QuickSort.
