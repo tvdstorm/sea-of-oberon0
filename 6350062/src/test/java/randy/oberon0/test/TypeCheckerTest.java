@@ -1,32 +1,59 @@
 package randy.oberon0.test;
 
+import java.util.*;
 import org.junit.*;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.*;
 import randy.oberon0.interpreter.buildinprocedures.BuildinProcedures;
 import randy.oberon0.interpreter.runtime.Program;
 import randy.oberon0.value.Type;
 import randy.oberon0.exception.Exception;
 import randy.oberon0.exception.*;
 
+@RunWith(value = Parameterized.class)
 public class TypeCheckerTest
 {
-	@Test
-	public void test_typeChecker()
+	private final String testName;
+	private final TypeCheckException expectedExceptionMessage;
+	private final String description;
+	
+	/*public TypeCheckerTest()
 	{
-		testTypeChecker("smoketest_quicksort", null, "Quicksort smoketest");
-		testTypeChecker("integer_operations", null, "INTEGER operations");
-		testTypeChecker("boolean_operations", null, "BOOLEAN operations");
-		testTypeChecker("const_assignment_to_integer", null, "CONST assignment to INTEGER");
-		
-		testTypeChecker("boolean_assignment_to_integer", new TypeMismatchException(Type.BOOLEAN.getTypeText(), Type.INTEGER.getTypeText()), "BOOLEAN assignment to INTEGER");
-		testTypeChecker("integer_assignment_to_boolean", new TypeMismatchException(Type.INTEGER.getTypeText(), Type.BOOLEAN.getTypeText()), "INTEGER assignment to BOOLEAN");
-		testTypeChecker("integer_assignment_to_const", new ConstAssignmentException(), "INTEGER assignment to CONST");
-		testTypeChecker("undeclared_variable_in_module", new UndefinedBindableException("aa"), "Undeclared variable in module");
-		testTypeChecker("undeclared_variable_in_procedure", new UndefinedBindableException("aa"), "Undeclared variable in procedure");
-		testTypeChecker("undeclared_procedure_in_module", new UndefinedBindableException("aa"), "Undeclared procedure in module");
-		testTypeChecker("undeclared_procedure_in_procedure", new UndefinedBindableException("aa"), "Undeclared procedure in procedure");
+		testName = null;
+		expectedExceptionMessage = null;
+		description = null;
+	}*/
+	public TypeCheckerTest(String _testName, TypeCheckException _expectedExceptionMessage, String _description)
+	{
+		testName = _testName;
+		expectedExceptionMessage = _expectedExceptionMessage;
+		description = _description;
 	}
-	@Ignore
-	private void testTypeChecker(String testName, TypeCheckException expectedExceptionMessage, String description)
+	@Parameters
+	public static Collection<Object[]> data()
+	{
+		Object[][] data = {
+		{"smoketest_quicksort", null, "Quicksort smoketest"},
+		{"integer_operations", null, "INTEGER operations"},
+		{"boolean_operations", null, "BOOLEAN operations"},
+		{"const_assignment_to_integer", null, "CONST assignment to INTEGER"},
+		
+		{"boolean_assignment_to_integer", new TypeMismatchException(Type.BOOLEAN.getTypeText(), Type.INTEGER.getTypeText()), "BOOLEAN assignment to INTEGER"},
+		{"integer_assignment_to_boolean", new TypeMismatchException(Type.INTEGER.getTypeText(), Type.BOOLEAN.getTypeText()), "INTEGER assignment to BOOLEAN"},
+		{"integer_assignment_to_const", new ConstAssignmentException(), "INTEGER assignment to CONST"},
+		{"undeclared_variable_in_module", new UndefinedBindableException("aa"), "Undeclared variable in module"},
+		{"undeclared_variable_in_procedure", new UndefinedBindableException("aa"), "Undeclared variable in procedure"},
+		{"undeclared_procedure_in_module", new UndefinedBindableException("aa"), "Undeclared procedure in module"},
+		{"undeclared_procedure_in_procedure", new UndefinedBindableException("aa"), "Undeclared procedure in procedure"},
+		{"array_accessor_on_integer", new TypeMismatchException(Type.INTEGER.getTypeText(), Type.ARRAY.getTypeText()), "Array accessor on INTEGER"},
+		{"array_index_boolean", new TypeMismatchException(Type.BOOLEAN.getTypeText(), Type.INTEGER.getTypeText()), "BOOLEAN as array index"},
+		{"duplicate_variable_name", new DuplicateVariableException("a"), "Duplicate variabel name"},
+		};
+		return Arrays.asList(data);
+	}
+	@Test
+	public void testTypeChecker()
 	{
 		try
 		{
@@ -38,7 +65,7 @@ public class TypeCheckerTest
 			}
 			catch (TypeCheckException e)
 			{
-				Assert.assertTrue(description + ": " + e.toString(), e.toString().equals(expectedExceptionMessage.toString()));
+				Assert.assertTrue(description + ": " + e.toString(), expectedExceptionMessage != null && e.toString().equals(expectedExceptionMessage.toString()));
 			}
 		}
 		catch (Exception e)
