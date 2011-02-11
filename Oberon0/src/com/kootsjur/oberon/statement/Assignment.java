@@ -1,7 +1,9 @@
 package com.kootsjur.oberon.statement;
 
+import com.kootsjur.oberon.environment.Environment;
 import com.kootsjur.oberon.evaluator.Evaluator;
 import com.kootsjur.oberon.evaluator.ExpressionEvaluator;
+import com.kootsjur.oberon.value.Value;
 
 public class Assignment extends Statement
 {
@@ -42,6 +44,25 @@ public class Assignment extends Statement
    public ExpressionEvaluator getExpression()
    {
       return expression;
+   }
+
+   @Override
+   public void evaluate(Environment environment)
+   {
+      if(selector == null)
+      {
+         evaluateName(environment);
+      }
+      else
+      {
+         //evaluateNameSelector(environment);
+      }
+   }
+
+   private void evaluateName(Environment environment)
+   {
+      Value value = expression.evaluate();
+      environment.assignValue(name, value); 
    }
    
 

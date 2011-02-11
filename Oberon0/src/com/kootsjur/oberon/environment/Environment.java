@@ -15,6 +15,7 @@ import com.kootsjur.oberon.declaration.type.TypeDeclaration;
 import com.kootsjur.oberon.declaration.var.DeclaredVars;
 import com.kootsjur.oberon.declaration.var.VarDeclaration;
 import com.kootsjur.oberon.evaluator.ExpressionEvaluator;
+import com.kootsjur.oberon.statement.StatementSequence;
 import com.kootsjur.oberon.type.TypeDefinition;
 import com.kootsjur.oberon.value.Value;
 
@@ -136,6 +137,11 @@ public class Environment
       }
    } 
    
+   public void evaluateStatements(StatementSequence statementSequence)
+   {
+      statementSequence.evaluate(this);
+   }
+   
    public Constant lookUpConstant(String constantName)
    {
       Constant constantToReturn = null;
@@ -255,13 +261,13 @@ public class Environment
       }else if(parameters.containsKey(name))
       {
          valueToReturn = lookUpParameterValue(name);
-      }
-      
-      if(parentEnvironment != null)
+      }else
       {
-         valueToReturn = lookUpValue(name);
+         if(parentEnvironment != null)
+         {
+            valueToReturn = lookUpValue(name);
+         }
       }
-         
       return valueToReturn;
    }
    
@@ -276,4 +282,23 @@ public class Environment
       Parameter parameter = lookUpParameter(parameterName);
       parameter.setValue(value);
    }
+   
+   public void assignValue(String name, Value value)
+   {
+      if(declaredVars.containsKey(name))
+      {
+         assignValueToVar(name, value);
+      }
+      else if(parameters.containsKey(name))
+      {
+         assignValueToParameter(name, value);
+      }else
+      {
+         if(parentEnvironment != null)
+         {
+            assignValue(name, value);
+         }
+      }
+   }
+   
 }

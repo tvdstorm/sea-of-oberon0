@@ -115,4 +115,14 @@ public class Module extends Environment
       declareDeclarations(declarations);
       declareProcedures(procedureDeclarations);
    }
+   
+   public void evaluate()
+   {
+      evaluateStatements(statementSequence);
+   }
+
+   public void run()
+   {
+      
+   }
 }

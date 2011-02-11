@@ -3,6 +3,7 @@ package com.kootsjur.oberon.statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.kootsjur.oberon.environment.Environment;
 import com.kootsjur.oberon.evaluator.ExpressionEvaluator;
 
 public class IfStatement extends Statement
@@ -63,6 +64,13 @@ public class IfStatement extends Statement
 
    public void setElseStatementSequence(StatementSequence elseStatementSequence){this.elseStatementSequence = elseStatementSequence;}
    public StatementSequence getElseStatementSequence(){return elseStatementSequence;}
+
+   @Override
+   public void evaluate(Environment environment)
+   {
+      // TODO Auto-generated method stub
+      
+   }
 
 
 

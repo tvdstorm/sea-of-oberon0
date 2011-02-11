@@ -1,6 +1,8 @@
 package com.kootsjur.oberon.statement;
 
-public class Statement
+import com.kootsjur.oberon.environment.Environment;
+
+public abstract class Statement
 {
    public enum StatementType { PROCEDURECALL, ASSIGNMENT, IFSTATEMENT, WHILESTATEMENT}
    
@@ -20,4 +22,6 @@ public class Statement
    {
       return statementType;
    }
+
+   public abstract void evaluate(Environment environment);
 }
