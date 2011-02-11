@@ -2,6 +2,9 @@ package nl.bve.uva.oberon.ast;
 
 import java.util.List;
 
+import nl.bve.uva.oberon.env.Environment;
+import nl.bve.uva.oberon.env.types.Type;
+
 public class VarDeclarationNode implements IInterpretableNode {
 	private List<String> identList;
 	private IInterpretableNode type;
@@ -12,8 +15,13 @@ public class VarDeclarationNode implements IInterpretableNode {
 	}
 	
 	@Override
-	public Object interpret() {
-		// TODO Auto-generated method stub
+	public Object interpret(Environment env) {
+		Type t = (Type)type.interpret(env);
+		
+		for (String ident : identList) {
+			env.addVariable(ident, t.clone());
+		}
+		
 		return null;
 	}
 }

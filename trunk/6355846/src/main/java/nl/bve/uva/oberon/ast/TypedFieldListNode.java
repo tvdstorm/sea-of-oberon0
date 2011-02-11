@@ -2,6 +2,8 @@ package nl.bve.uva.oberon.ast;
 
 import java.util.List;
 
+import nl.bve.uva.oberon.env.Environment;
+
 public class TypedFieldListNode implements IInterpretableNode {
 	private List<String> identList;
 	private IInterpretableNode type;
@@ -11,11 +13,9 @@ public class TypedFieldListNode implements IInterpretableNode {
 		this.type = type;
 	}
 	
-	
 	@Override
-	public Object interpret() {
+	public Object interpret(Environment env) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

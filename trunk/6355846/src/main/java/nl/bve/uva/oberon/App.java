@@ -3,21 +3,19 @@ package nl.bve.uva.oberon;
 import java.io.FileInputStream;
 
 import nl.bve.uva.oberon.ast.IInterpretableNode;
+import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.parser.Oberon0Lexer;
 import nl.bve.uva.oberon.parser.Oberon0Parser;
-import nl.bve.uva.oberon.treeadaptor.OberonNodeAdaptor;
 
 import org.antlr.runtime.ANTLRInputStream;
-import org.antlr.runtime.CommonToken;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.tree.CommonTree;
-import org.antlr.runtime.tree.CommonTreeNodeStream;
 
 public class App {
 	public static void main(String[] args) throws Exception {
 		// use the 'smoke test' file quicksort.oberon0 as testfile
-		FileInputStream fis = new FileInputStream("testprogs/quicksort.oberon0");
+		FileInputStream fis = new FileInputStream("testprogs/simpleOberon.oberon0");
 
 		// read from quicksort.oberon0 file
 		ANTLRInputStream input = new ANTLRInputStream(fis);
@@ -37,7 +35,7 @@ public class App {
 			
 			if ((lexer.getNumberOfSyntaxErrors() == 0) && (parser.getNumberOfSyntaxErrors() == 0)) {
 				System.out.println("program   result: " + startNode);
-				System.out.println("interpret result: " + startNode.interpret());
+				System.out.println("interpret result: " + startNode.interpret(new Environment()));
 			} else {
 				System.out.println("There are parse-errors!");
 			}

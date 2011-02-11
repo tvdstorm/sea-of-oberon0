@@ -2,6 +2,8 @@ package nl.bve.uva.oberon.ast;
 
 import java.util.List;
 
+import nl.bve.uva.oberon.env.Environment;
+
 public class DeclarationsNode implements IInterpretableNode {
 	private List<IInterpretableNode> constants;
 	private List<IInterpretableNode> types;
@@ -20,18 +22,18 @@ public class DeclarationsNode implements IInterpretableNode {
 	}
 	
 	@Override
-	public Object interpret() {
-		interpretDeclarations(constants);
-		interpretDeclarations(types);
-		interpretDeclarations(vars);
-		interpretDeclarations(procedures);
+	public Object interpret(Environment env) {
+		interpretDeclarations(constants, env);
+		interpretDeclarations(types, env);
+		interpretDeclarations(vars, env);
+		interpretDeclarations(procedures, env);
 		
 		return null;
 	}
 	
-	private void interpretDeclarations(List<IInterpretableNode> declarations) {
+	private void interpretDeclarations(List<IInterpretableNode> declarations, Environment env) {
 		for (IInterpretableNode declaration : declarations) {
-			declaration.interpret();
+			declaration.interpret(env);
 		}
 	}
 }

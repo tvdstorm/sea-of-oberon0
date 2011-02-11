@@ -2,17 +2,17 @@ package nl.bve.uva.oberon.ast;
 
 import java.util.List;
 
+import nl.bve.uva.oberon.env.Environment;
+
 public class ProcedureHeadingNode implements IInterpretableNode {
-	private String name;
 	private List<IInterpretableNode> params;
 	
-	public ProcedureHeadingNode(String name, List<IInterpretableNode> params) {
-		this.name = name;
+	public ProcedureHeadingNode(List<IInterpretableNode> params) {
 		this.params = params;
 	}
 	
 	@Override
-	public Object interpret() {
+	public Object interpret(Environment env) {
 		return null;
 	}
 }

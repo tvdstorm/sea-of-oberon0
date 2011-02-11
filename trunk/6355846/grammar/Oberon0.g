@@ -20,6 +20,7 @@ package nl.bve.uva.oberon.parser;
 
 import nl.bve.uva.oberon.ast.*;
 import nl.bve.uva.oberon.ast.expressions.*;
+import nl.bve.uva.oberon.env.*;
 }
 
 @lexer::header {
@@ -66,20 +67,21 @@ varDeclarations returns [List<IInterpretableNode> result = new ArrayList<IInterp
 
 procedureDeclarations returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()]
 	:	(
-			ph=procedureHeading ';' pb=procedureBody ';'		{$result.add(new ProcedureDeclarationNode($ph.result, $pb.result)); }		
+			'PROCEDURE' i1=IDENT
+				ph=procedureHeading ';' pb=procedureBody 		
+					'END' i2=IDENT ';'							{$result.add(new ProcedureDeclarationNode($i1.text, $i2.text, $ph.result, $pb.result)); }
 		)*
 	;
 
 procedureHeading returns [IInterpretableNode result]
-	:	'PROCEDURE' IDENT 										{$result = new ProcedureHeadingNode($IDENT.text, null); }
-			(formalParameters									{$result = new ProcedureHeadingNode($IDENT.text, $formalParameters.result); }
+	:		(formalParameters									{$result = new ProcedureHeadingNode($formalParameters.result); }
 			)?
 	;
 
 procedureBody returns [IInterpretableNode result]
 	:	d=declarations 
 			('BEGIN' ss=statementSequence						{$result = $ss.result; }
-			)? 'END' IDENT										{$result = new ProcedureBodyNode($d.result, $result, $IDENT.text); }
+			)? 													{$result = new ProcedureBodyNode($d.result, $result); }
 	;
 			
 formalParameters returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()]
@@ -130,18 +132,22 @@ statementList returns [List<IInterpretableNode> result = new ArrayList<IInterpre
 	;
 
 statement returns [IInterpretableNode result]
-	:	( callStatement 										{$result = $callStatement.result; }
+	:	( assignment											{$result = $assignment.result; }
+		| procedureCall											{$result = $procedureCall.result; }
 		| ifStatement											{$result = $ifStatement.result; }
 		| whileStatement										{$result = $whileStatement.result; }
 		)?
 	;
 
-callStatement returns [IInterpretableNode result]	
-	:	IDENT selector											{$result = new IdentChangerNode($IDENT.text, $selector.result); }
-			(':=' expression									{$result = new AssignmentNode($result, $expression.result); } 
-			| (actualParameters)?								{$result = new ProcedureCallNode($result, $actualParameters.result); }
-			)
+assignment returns [IInterpretableNode result]
+	:	IDENT selector 											{$result = new IdentSelectorNode($IDENT.text, $selector.result); }
+			':=' expression										{$result = new AssignmentNode($result, $expression.result); }
 	;
+
+procedureCall returns [IInterpretableNode result]
+	:	IDENT (actualParameters)?								{$result = new ProcedureCallNode($IDENT.text, $actualParameters.result); }
+	;
+
 
 actualParameters returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()]
 	:	'(' (e1=expression 										{$result.add($e1.result); }
@@ -166,11 +172,6 @@ elseStatements returns [IInterpretableNode result]
 
 whileStatement returns [IInterpretableNode result]
 	:	'WHILE' expression 'DO' statementSequence 'END'			{$result = new WhileNode($expression.result, $statementSequence.result); }
-	;
-
-assignment returns [IInterpretableNode result]
-	:	IDENT selector 											{$result = new IdentChangerNode($IDENT.text, $selector.result); }
-			':=' expression										{$result = new AssignmentNode($result, $expression.result); }
 	;
 
 expression returns [IInterpretableNode result]
@@ -211,7 +212,7 @@ term returns [IInterpretableNode result]
 	;
 
 factor returns [IInterpretableNode result]
-	: 	IDENT selector											{$result = new IdentReaderNode($IDENT.text, $selector.result); } 
+	: 	IDENT selector											{$result = new IdentSelectorNode($IDENT.text, $selector.result); } 
 			| NUMBER 											{$result = new NumberNode(Integer.parseInt($NUMBER.text)); }
 			| '(' expression ')' 								{$result = $expression.result; }
 /*			| '~' factor */

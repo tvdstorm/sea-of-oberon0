@@ -1,6 +1,10 @@
 package nl.bve.uva.oberon.env;
 
-public class Constant extends Type {
+import nl.bve.uva.oberon.ast.IInterpretableNode;
+import nl.bve.uva.oberon.env.types.OberonInt;
+import nl.bve.uva.oberon.env.types.Type;
+
+public class Constant extends Type implements IInterpretableNode {
 	private OberonInt value;
 	
 	public Constant(OberonInt value) {
@@ -8,12 +12,28 @@ public class Constant extends Type {
 	}
 	
 	@Override
-	public void setValue(Object value) {
-		throw new IllegalArgumentException("Cannot change the value of a CONSTANT!");
+	public Integer interpret(Environment env) {
+		return value.interpret(env);
 	}
 	
 	@Override
-	public Integer getValue() {
-		return value.getValue();
+	public void setValue(Object value) {
+		throw new RuntimeException("Cannot change the value of a CONSTANT!");
+	}
+	
+	@Override
+	public Object getValue() {
+		return value;
+	}
+	
+	@Override
+	public Type clone() {
+		return new Constant(value);
+	}
+	
+	@Override
+	public Type evaluateSelector(Object o) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
