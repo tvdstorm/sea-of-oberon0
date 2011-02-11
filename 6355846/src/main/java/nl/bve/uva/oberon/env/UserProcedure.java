@@ -18,6 +18,7 @@ public class UserProcedure implements Procedure {
 	@Override
 	public Object interpret(Environment env) {
 		System.out.println("executing procedure...");
+		List<IInterpretableNode> actualParameters = this.actualParameters;
 		Environment subEnv = env.getNewSubSpace();
 		
 		if (actualParameters != null) {
