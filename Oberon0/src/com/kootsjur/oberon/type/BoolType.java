@@ -1,6 +1,6 @@
 package com.kootsjur.oberon.type;
 
-import com.kootsjur.oberon.value.Value;
+import com.kootsjur.oberon.value.Bool;
 
 public class BoolType extends TypeDefinition
 {
@@ -10,9 +10,9 @@ public class BoolType extends TypeDefinition
    }
 
    @Override
-   public Value initValue()
+   public Bool initValue()
    {
-      // TODO Auto-generated method stub
-      return null;
+      Bool initValue = new Bool(false);
+      return initValue;
    }
 }

@@ -1,6 +1,6 @@
 package com.kootsjur.oberon.value;
 
-public class Value
+public abstract class Value
 {
 
 }

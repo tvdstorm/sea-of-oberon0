@@ -1,7 +1,6 @@
 package com.kootsjur.oberon.declaration.type;
 
 import com.kootsjur.oberon.declaration.Declaration;
-import com.kootsjur.oberon.declaration.DeclarationType;
 import com.kootsjur.oberon.environment.Environment;
 import com.kootsjur.oberon.environment.Type;
 import com.kootsjur.oberon.type.TypeDefinition;

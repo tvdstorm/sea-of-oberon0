@@ -1,6 +1,6 @@
 package com.kootsjur.oberon.type;
 
-import com.kootsjur.oberon.value.Value;
+import com.kootsjur.oberon.value.Int;
 
 public class IntegerType extends TypeDefinition
 {
@@ -11,10 +11,10 @@ public class IntegerType extends TypeDefinition
    }
 
    @Override
-   public Value initValue()
+   public Int initValue()
    {
-      // TODO Auto-generated method stub
-      return null;
+      Int initValue = new Int(0);
+      return initValue;
    }
 
 }
