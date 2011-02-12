@@ -3,7 +3,6 @@ package nl.bve.uva.oberon.ast;
 import nl.bve.uva.oberon.env.Environment;
 
 public class ModuleNode implements IInterpretableNode {
-	private String name;
 	private IInterpretableNode declarations;
 	private IInterpretableNode body;
 	
@@ -12,7 +11,6 @@ public class ModuleNode implements IInterpretableNode {
 			throw new RuntimeException("Module START-identifier and END-identifier aren't equals: " +name1+ "<>" +name2);
 		}
 		
-		this.name = name1;
 		this.declarations = declarations;
 		this.body = body;
 	}

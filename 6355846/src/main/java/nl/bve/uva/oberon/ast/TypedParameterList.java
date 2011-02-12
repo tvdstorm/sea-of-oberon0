@@ -22,5 +22,9 @@ public abstract class TypedParameterList {
 		return parameterList;
 	}
 	
+	public IInterpretableNode getType() {
+		return type;
+	}
+	
 	public abstract Type processValue(String parameter, Type value, Environment env);
 }
