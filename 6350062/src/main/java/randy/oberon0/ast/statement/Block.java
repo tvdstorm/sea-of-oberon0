@@ -13,7 +13,7 @@ public class Block extends Statement
 	public Block(List<Statement> _statements)
 	{
 		assert(_statements != null);
-		statements = _statements;
+		statements = new ArrayList<Statement>(_statements);
 	}
 	@Override
 	public void run(RuntimeEnvironment environment) throws RuntimeException

@@ -23,14 +23,12 @@ public class ConstDeclaration extends BodyDeclaration
 	public void register(RuntimeEnvironment newEnvironment) throws RuntimeException
 	{
 		assert(newEnvironment != null);
-		// Add the constant to the variable scope
 		newEnvironment.registerConstant(constantName, value.evaluate(newEnvironment).getValue());
 	}
 	@Override
 	public void typeCheckRegister(TypeCheckEnvironment newEnvironment) throws TypeCheckException
 	{
 		assert(newEnvironment != null);
-		// Add the constant to the variable scope
 		newEnvironment.registerConstant(constantName);
 	}
 }

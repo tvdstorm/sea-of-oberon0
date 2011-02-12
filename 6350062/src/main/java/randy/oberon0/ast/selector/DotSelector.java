@@ -1,8 +1,7 @@
 package randy.oberon0.ast.selector;
 
+import randy.oberon0.exception.*;
 import randy.oberon0.exception.RuntimeException;
-import randy.oberon0.exception.TypeCheckException;
-import randy.oberon0.exception.TypeMismatchException;
 import randy.oberon0.interpreter.runtime.environment.*;
 import randy.oberon0.interpreter.typecheck.environment.*;
 import randy.oberon0.value.*;

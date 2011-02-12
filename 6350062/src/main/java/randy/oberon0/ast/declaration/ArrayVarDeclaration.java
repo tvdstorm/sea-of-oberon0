@@ -1,13 +1,12 @@
 package randy.oberon0.ast.declaration;
 
 import java.util.*;
-import randy.oberon0.ast.expression.Expression;
-import randy.oberon0.ast.expression.ValueToReferenceConversion;
+import randy.oberon0.ast.expression.*;
 import randy.oberon0.exception.*;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.environment.*;
 import randy.oberon0.interpreter.typecheck.environment.*;
-import randy.oberon0.value.*;
+import randy.oberon0.value.Array;
 import randy.oberon0.value.Integer;
 
 public class ArrayVarDeclaration extends VarDeclaration
@@ -18,7 +17,7 @@ public class ArrayVarDeclaration extends VarDeclaration
 	{
 		super(_typeName, _isReference, _variableNames, true);
 		assert(_arrayLength.size() >= 1);
-		arrayLength = _arrayLength;
+		arrayLength = new ArrayList<Expression>(_arrayLength);
 	}
 	@Override
 	public void register(RuntimeEnvironment newEnvironment) throws RuntimeException // Use for variable declarations IN procedures or modules
@@ -30,58 +29,17 @@ public class ArrayVarDeclaration extends VarDeclaration
 		ListIterator<Expression> iterator = arrayLength.listIterator(arrayLength.size());
 		while (iterator.hasPrevious())
 		{
-			// Get the previous length expressoin
+			// Get the previous length expression and evaluate it
 			Expression curExpression = iterator.previous();
-			// Evaluate the length expression
 			Integer thisLength = (Integer)curExpression.evaluate(newEnvironment).getValue();
 			// Create a new array instantializer for the array and set the length of the array
-			ArrayVariableInstantiation thisCreator = new ArrayVariableInstantiation(arrayCreator);
-			thisCreator.setLength(thisLength.getIntValue());
-			// Set the array instantializer as the current instantializer
-			arrayCreator = thisCreator;
+			arrayCreator = new ArrayVariableInstantiation(arrayCreator);
+			((ArrayVariableInstantiation)arrayCreator).setLength(thisLength.getIntValue());
 		}
-		
-		// Loop through all variable names
+		// Loop through all variable names, instantiate a new array and add it to the environment
 		for (String name : variableNames)
 		{
-			// Create the array and add it in the environment
 			newEnvironment.registerVariableByReference(name, new Reference(arrayCreator.instantiate(newEnvironment)));
-		}
-	}
-	@Override
-	public void typeCheckRegister(TypeCheckEnvironment newEnvironment) throws TypeCheckException // Use for variable declarations IN procedures or modules
-	{
-		assert(newEnvironment != null);
-		// Create a new instantializer for the base type
-		ITypeCheckType type = newEnvironment.resolveType(typeName);
-		// Loop through all the length expressions in reverse order
-		ListIterator<Expression> iterator = arrayLength.listIterator(arrayLength.size());
-		while (iterator.hasPrevious())
-		{
-			// Get the previous length expressoin
-			Expression curExpression = iterator.previous();
-			// Evaluate the length expression
-			curExpression.typeCheck(newEnvironment).mustBe(TypeCheckType.INTEGER);
-			// Create a new array instantializer for the array
-			ITypeCheckType thisType = new TypeCheckArrayType(type);
-			// Set the array instantializer as the current instantializer
-			type = thisType;
-		}
-		
-		// Loop through all variable names
-		for (String name : variableNames)
-		{
-			// Check if the variable is a reference
-			if (isReference)
-			{
-				// Yes, make a reference to the variable and add it to the environment
-				newEnvironment.registerVariableByReference(name, new TypeCheckReference(type));
-			}
-			else
-			{
-				// No, create a copy of the array and register it in the environment
-				newEnvironment.registerVariableByReference(name, new TypeCheckReference(type));
-			}
 		}
 	}
 	@Override
@@ -100,14 +58,9 @@ public class ArrayVarDeclaration extends VarDeclaration
 		// Loop through all variable names
 		for (String variableName : variableNames)
 		{
-			// Check if we have a parameter left
-			if (!parameterValues.hasNext())
-			{
-				throw new UnreachableRuntimeException();
-			}
 			// Fetch a parameter value from the parameter values
 			final IBindableValue parameterValue = parameterValues.next();
-			// Check if the length of the parameter matches the definition
+			// Check if the length of the array(s) matches the definition
 			Array testArray = (Array)parameterValue.getValue();
 			boolean bFirst = true;
 			for (Integer length : lengths)
@@ -123,21 +76,42 @@ public class ArrayVarDeclaration extends VarDeclaration
 				}
 				bFirst = false;
 			}
-			// The test array next nesting shouldn't be an array anymore, or else the nesting doesn't match
-			if (testArray.getIndexValue(0).getValue().getType() == Type.ARRAY)
-			{
-				throw new ArrayLengthMismatch();
-			}
-			// Check if the variable is a reference
 			if (isReference)
 			{
-				// Yes, make a reference to the variable and add it to the environment
 				environment.registerVariableByReference(variableName, (Reference)parameterValue);
 			}
 			else
 			{
-				// No, create a copy of the array and register it in the environment
 				environment.registerVariableByValue(variableName, parameterValue.getValue().clone());
+			}
+		}
+	}
+	@Override
+	public void typeCheckRegister(TypeCheckEnvironment newEnvironment) throws TypeCheckException // Use for variable declarations IN procedures or modules
+	{
+		assert(newEnvironment != null);
+		// Create a new instantializer for the base type
+		ITypeCheckType type = newEnvironment.resolveType(typeName);
+		// Loop through all the length expressions in reverse order
+		ListIterator<Expression> iterator = arrayLength.listIterator(arrayLength.size());
+		while (iterator.hasPrevious())
+		{
+			// Get the previous length expression and evaluate it
+			Expression curExpression = iterator.previous();
+			curExpression.typeCheck(newEnvironment).mustBe(TypeCheckType.INTEGER);
+			// Create a new array instantializer for the array
+			type = new TypeCheckArrayType(type);
+		}
+		// Loop through all variable names
+		for (String name : variableNames)
+		{
+			if (isReference)
+			{
+				newEnvironment.registerVariableByReference(name, new TypeCheckReference(type));
+			}
+			else
+			{
+				newEnvironment.registerVariableByReference(name, new TypeCheckReference(type));
 			}
 		}
 	}
@@ -197,7 +171,7 @@ public class ArrayVarDeclaration extends VarDeclaration
 				// Yes, make a reference to the variable and add it to the environment
 				if (!(parameterValue instanceof TypeCheckReference))
 				{
-					throw new ValueToReferenceConversion();
+					throw new ValueToReferenceConversionException();
 				}
 				environment.registerVariableByReference(variableName, (TypeCheckReference)parameterValue);
 			}
