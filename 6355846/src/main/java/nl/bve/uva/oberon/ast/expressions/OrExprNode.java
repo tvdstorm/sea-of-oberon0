@@ -8,7 +8,6 @@ import nl.bve.uva.oberon.env.types.Type;
 public class OrExprNode extends ExpressionNode {
 	public OrExprNode(IInterpretableNode lhn, IInterpretableNode rhn) {
 		super(lhn, rhn);
-		System.out.println("ORExprNode(" +lhn+ ", " +rhn+ ")");
 	}
 	
 	@Override

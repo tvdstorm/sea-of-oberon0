@@ -3,6 +3,7 @@ package nl.bve.uva.oberon.env;
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 
+import nl.bve.uva.oberon.env.types.Constant;
 import nl.bve.uva.oberon.env.types.OberonInt;
 import nl.bve.uva.oberon.env.types.Type;
 import nl.bve.uva.oberon.env.types.UserType;

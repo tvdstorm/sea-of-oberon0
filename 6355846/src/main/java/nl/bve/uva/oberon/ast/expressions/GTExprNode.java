@@ -8,7 +8,6 @@ import nl.bve.uva.oberon.env.types.Type;
 public class GTExprNode extends ExpressionNode {
 	public GTExprNode(IInterpretableNode lhn, IInterpretableNode rhn) {
 		super(lhn, rhn);
-		System.out.println("GTExprNode(" +lhn+ ", " +rhn+ ")");
 	}
 	
 	@Override

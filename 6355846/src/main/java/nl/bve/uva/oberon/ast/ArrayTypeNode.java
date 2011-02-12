@@ -9,7 +9,6 @@ public class ArrayTypeNode implements IInterpretableNode {
 	private IInterpretableNode arrayType;
 	
 	public ArrayTypeNode(IInterpretableNode expression, IInterpretableNode arrayType) {
-		System.out.println("ArrayTypeNode(" +expression+ ", " +arrayType+ ")");
 		this.expression = expression;
 		this.arrayType = arrayType;
 	}

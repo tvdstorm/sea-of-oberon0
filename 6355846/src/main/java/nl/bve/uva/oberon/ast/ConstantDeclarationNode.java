@@ -1,7 +1,7 @@
 package nl.bve.uva.oberon.ast;
 
-import nl.bve.uva.oberon.env.Constant;
 import nl.bve.uva.oberon.env.Environment;
+import nl.bve.uva.oberon.env.types.Constant;
 import nl.bve.uva.oberon.env.types.OberonInt;
 
 public class ConstantDeclarationNode implements IInterpretableNode {
