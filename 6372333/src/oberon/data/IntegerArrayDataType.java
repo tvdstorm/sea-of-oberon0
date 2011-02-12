@@ -3,8 +3,6 @@ package oberon.data;
 import oberon.IDataType;
 import oberon.IExpression;
 import oberon.Scope;
-import oberon.exceptions.ProcedureParamaterCountMismatchException;
-import oberon.exceptions.VariableNotFoundInScopeException;
 
 /**
  * The Class IntegerArrayDataType, stores the value of array instance variables.
