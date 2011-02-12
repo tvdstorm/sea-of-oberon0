@@ -1,7 +1,7 @@
 package nl.bve.uva.oberon.ast;
 
 import nl.bve.uva.oberon.env.Environment;
-import nl.bve.uva.oberon.env.types.Constant;
+import nl.bve.uva.oberon.env.types.OberonConstant;
 import nl.bve.uva.oberon.env.types.OberonInt;
 
 public class ConstantDeclarationNode implements IInterpretableNode {
@@ -16,7 +16,7 @@ public class ConstantDeclarationNode implements IInterpretableNode {
 	@Override
 	public Object interpret(Environment env) {
 		Object value = expression.interpret(env);
-		Constant c = new Constant((OberonInt)value);
+		OberonConstant c = new OberonConstant((OberonInt)value);
 		
 		env.addConstant(ident, c);
 		return null;

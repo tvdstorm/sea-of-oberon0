@@ -1,9 +1,9 @@
 package nl.bve.uva.oberon.env.types;
 
-public class Constant extends Type {
+public class OberonConstant extends Type {
 	private OberonInt value;
 	
-	public Constant(OberonInt value) {
+	public OberonConstant(OberonInt value) {
 		this.value = value;
 	}
 	
@@ -24,6 +24,6 @@ public class Constant extends Type {
 	
 	@Override
 	public Type clone() {
-		return new Constant(value);
+		return new OberonConstant(value);
 	}
 }

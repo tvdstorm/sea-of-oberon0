@@ -4,7 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 
 import nl.bve.uva.oberon.env.procedures.Procedure;
-import nl.bve.uva.oberon.env.types.Constant;
+import nl.bve.uva.oberon.env.types.OberonConstant;
 import nl.bve.uva.oberon.env.types.OberonInt;
 import nl.bve.uva.oberon.env.types.Type;
 
@@ -34,7 +34,7 @@ public class Environment {
 		return new Environment(this);
 	}
 	
-	public void addConstant(String const_id, Constant c) {
+	public void addConstant(String const_id, OberonConstant c) {
 		identStack.put(const_id, c);
 	}
 	
