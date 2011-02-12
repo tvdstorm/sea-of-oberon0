@@ -1039,9 +1039,13 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getIdentifier().apply(this);
         }
-        if(node.getSelector() != null)
         {
-            node.getSelector().apply(this);
+            List<PRecord> copy = new ArrayList<PRecord>(node.getRecord());
+            Collections.reverse(copy);
+            for(PRecord e : copy)
+            {
+                e.apply(this);
+            }
         }
         outARecordSelector(node);
     }
@@ -1090,6 +1094,27 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
             node.getSelector().apply(this);
         }
         outAArrayexpressionSelector(node);
+    }
+
+    public void inARecord(ARecord node)
+    {
+        defaultIn(node);
+    }
+
+    public void outARecord(ARecord node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseARecord(ARecord node)
+    {
+        inARecord(node);
+        if(node.getIdentifier() != null)
+        {
+            node.getIdentifier().apply(this);
+        }
+        outARecord(node);
     }
 
     public void inAReadproc(AReadproc node)

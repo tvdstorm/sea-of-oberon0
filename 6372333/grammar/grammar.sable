@@ -238,10 +238,14 @@ Productions
 		;
 	
 	selector {-> selector} 
-		= {recordselector} selector dot identifier		{-> New selector.record(selector, identifier)}
+		= {recordselector} record+ identifier			{-> New selector.record([record], identifier)}
 		| {identifier} identifier 						{-> New selector.identifier(identifier)}
 		| {arrayexpression} selector l_bkt exp r_bkt 	{-> New selector.arrayexpression(selector, exp)}
 		;
+   		
+   	record {-> record} =
+   		identifier dot {-> New record(identifier)};
+   	
    		
 Abstract Syntax Tree
     module = [name]:identifier [decl]:declarations [statements]:statement*;
@@ -297,10 +301,12 @@ Abstract Syntax Tree
 		;
 	
 	selector
-		= {record} selector identifier
+		= {record} record* identifier
 		| {identifier} identifier
 		| {arrayexpression} selector exp
 		;
+		
+	record = identifier;
 		
 	readproc = selector;
     

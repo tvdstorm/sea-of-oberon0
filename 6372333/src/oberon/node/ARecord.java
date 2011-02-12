@@ -2,27 +2,22 @@
 
 package oberon.node;
 
-import java.util.*;
 import oberon.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ARecordSelector extends PSelector
+public final class ARecord extends PRecord
 {
-    private final LinkedList<PRecord> _record_ = new LinkedList<PRecord>();
     private TIdentifier _identifier_;
 
-    public ARecordSelector()
+    public ARecord()
     {
         // Constructor
     }
 
-    public ARecordSelector(
-        @SuppressWarnings("hiding") List<PRecord> _record_,
+    public ARecord(
         @SuppressWarnings("hiding") TIdentifier _identifier_)
     {
         // Constructor
-        setRecord(_record_);
-
         setIdentifier(_identifier_);
 
     }
@@ -30,34 +25,13 @@ public final class ARecordSelector extends PSelector
     @Override
     public Object clone()
     {
-        return new ARecordSelector(
-            cloneList(this._record_),
+        return new ARecord(
             cloneNode(this._identifier_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseARecordSelector(this);
-    }
-
-    public LinkedList<PRecord> getRecord()
-    {
-        return this._record_;
-    }
-
-    public void setRecord(List<PRecord> list)
-    {
-        this._record_.clear();
-        this._record_.addAll(list);
-        for(PRecord e : list)
-        {
-            if(e.parent() != null)
-            {
-                e.parent().removeChild(e);
-            }
-
-            e.parent(this);
-        }
+        ((Analysis) sw).caseARecord(this);
     }
 
     public TIdentifier getIdentifier()
@@ -89,7 +63,6 @@ public final class ARecordSelector extends PSelector
     public String toString()
     {
         return ""
-            + toString(this._record_)
             + toString(this._identifier_);
     }
 
@@ -97,11 +70,6 @@ public final class ARecordSelector extends PSelector
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._record_.remove(child))
-        {
-            return;
-        }
-
         if(this._identifier_ == child)
         {
             this._identifier_ = null;
@@ -115,24 +83,6 @@ public final class ARecordSelector extends PSelector
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        for(ListIterator<PRecord> i = this._record_.listIterator(); i.hasNext();)
-        {
-            if(i.next() == oldChild)
-            {
-                if(newChild != null)
-                {
-                    i.set((PRecord) newChild);
-                    newChild.parent(this);
-                    oldChild.parent(null);
-                    return;
-                }
-
-                i.remove();
-                oldChild.parent(null);
-                return;
-            }
-        }
-
         if(this._identifier_ == oldChild)
         {
             setIdentifier((TIdentifier) newChild);

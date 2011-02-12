@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import oberon.data.IntegerArrayDataType;
+import oberon.data.RecordDataType;
 import oberon.exceptions.ProcedureNotFoundInScopeException;
 import oberon.exceptions.ProcedureParamaterCountMismatchException;
 import oberon.exceptions.VariableNotFoundInScopeException;
@@ -91,6 +92,9 @@ public class Scope {
 			
 			if (actualParam instanceof IntegerArrayDataType){
 				((IntegerArrayDataType)actualParam).initializeArray(this);
+			}
+			else if (actualParam instanceof RecordDataType){
+				((RecordDataType)actualParam).initializeArrayMembers(this);
 			}
 		}
 		

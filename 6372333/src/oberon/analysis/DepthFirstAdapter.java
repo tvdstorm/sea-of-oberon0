@@ -1018,9 +1018,12 @@ public class DepthFirstAdapter extends AnalysisAdapter
     public void caseARecordSelector(ARecordSelector node)
     {
         inARecordSelector(node);
-        if(node.getSelector() != null)
         {
-            node.getSelector().apply(this);
+            List<PRecord> copy = new ArrayList<PRecord>(node.getRecord());
+            for(PRecord e : copy)
+            {
+                e.apply(this);
+            }
         }
         if(node.getIdentifier() != null)
         {
@@ -1073,6 +1076,27 @@ public class DepthFirstAdapter extends AnalysisAdapter
             node.getExp().apply(this);
         }
         outAArrayexpressionSelector(node);
+    }
+
+    public void inARecord(ARecord node)
+    {
+        defaultIn(node);
+    }
+
+    public void outARecord(ARecord node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseARecord(ARecord node)
+    {
+        inARecord(node);
+        if(node.getIdentifier() != null)
+        {
+            node.getIdentifier().apply(this);
+        }
+        outARecord(node);
     }
 
     public void inAReadproc(AReadproc node)

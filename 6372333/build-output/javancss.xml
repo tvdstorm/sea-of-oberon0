@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <javancss>
-  <date>2011-02-10</date>
-  <time>23:25:46</time>
+  <date>2011-02-12</date>
+  <time>12:20:36</time>
   <packages>
     <package>
       <name>oberon</name>
@@ -30,7 +30,7 @@
       <ncss>198</ncss>
       <javadocs>32</javadocs>
       <javadoc_lines>168</javadoc_lines>
-      <single_comment_lines>7</single_comment_lines>
+      <single_comment_lines>2</single_comment_lines>
       <multi_comment_lines>93</multi_comment_lines>
     </package>
     <package>
@@ -89,7 +89,7 @@
       <ncss>1759</ncss>
       <javadocs>159</javadocs>
       <javadoc_lines>797</javadoc_lines>
-      <single_comment_lines>23</single_comment_lines>
+      <single_comment_lines>18</single_comment_lines>
       <multi_comment_lines>380</multi_comment_lines>
     </total>
     <table>

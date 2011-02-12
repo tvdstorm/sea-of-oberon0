@@ -269,6 +269,11 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
+    public void caseARecord(ARecord node)
+    {
+        defaultCase(node);
+    }
+
     public void caseAReadproc(AReadproc node)
     {
         defaultCase(node);

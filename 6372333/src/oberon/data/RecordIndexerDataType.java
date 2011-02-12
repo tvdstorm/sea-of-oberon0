@@ -46,9 +46,13 @@ public class RecordIndexerDataType extends AbstractDataType {
 	 */
 	@Override
 	public int getValue(Scope currentScope) {
-		return record.getValueAtIndex(fieldName).getValue(currentScope);			
+		return getDataType().getValue(currentScope);			
 	}
 	
+	public IDataType getDataType() {
+		return record.getValueAtIndex(fieldName);
+	}
+
 	@Override
 	public void setValue(int value) {
 		if (record instanceof RecordDataType){

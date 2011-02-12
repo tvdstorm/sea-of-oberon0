@@ -36,10 +36,11 @@ public class ArrayIndexerIdentifier extends AbstractIdentifier {
 	 * @throws VariableNotFoundInScopeException 
 	 */
 	private IntegerArrayDataType getDataTypeAsArrayType(Scope currentScope) {
-		final IDataType type = selector.getDataTypeValue(currentScope);
+		IDataType type = selector.getDataTypeValue(currentScope);
 		
-		//type should always be an array
-		assert(type instanceof IntegerArrayDataType);
+		if (type instanceof RecordIndexerDataType){
+			type = ((RecordIndexerDataType)type).getDataType();
+		}
 		
 		return ((IntegerArrayDataType)type);
 	}
