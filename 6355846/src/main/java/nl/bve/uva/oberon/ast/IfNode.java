@@ -10,7 +10,6 @@ public class IfNode implements IInterpretableNode {
 	private IInterpretableNode ifelse;
 	
 	public IfNode(IInterpretableNode condition, IInterpretableNode body, IInterpretableNode ifelse) {
-		System.out.println("IF-node");
 		this.condition = condition;
 		this.body = body;
 		this.ifelse = ifelse;

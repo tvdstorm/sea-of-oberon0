@@ -37,12 +37,12 @@ public class OberonInt extends Type implements IInterpretableNode {
 	}
 	
 	@Override
-	public Type evaluateSelector(Object o) {
+	public Type evaluateSelector(String o) {
 		throw new RuntimeException("Cannot evaluate an OberonInt type!");
 	}
 	
 	@Override
 	public String toString() {
-		return value+ " (OberonInt)";
+		return value+"";
 	}
 }

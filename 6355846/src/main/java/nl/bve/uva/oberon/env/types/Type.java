@@ -7,7 +7,7 @@ public abstract class Type implements IInterpretableNode {
 	public abstract Object getValue();
 	public abstract void setValue(Object value);
 	
-	public abstract Type evaluateSelector(Object o);
+	public abstract Type evaluateSelector(String o);
 	
 	@Override
 	public abstract Type clone();

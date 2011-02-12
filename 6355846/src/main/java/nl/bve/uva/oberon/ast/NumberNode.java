@@ -14,5 +14,10 @@ public class NumberNode implements IInterpretableNode {
 	public Object interpret(Environment env) {
 		return new OberonInt(value);
 	}
+	
+	@Override
+	public String toString() {
+		return "number(" +value+ ")";
+	}
 
 }
