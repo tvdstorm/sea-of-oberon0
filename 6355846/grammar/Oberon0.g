@@ -102,10 +102,11 @@ recordType returns [IInterpretableNode result]
 	:	'RECORD' fieldLists 'END'								{$result = new RecordTypeNode($fieldLists.result); }
 	;
 
-fieldLists returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()]
+fieldLists returns [List<TypedFieldListNode> result = new ArrayList<TypedFieldListNode>()]
 	:	(i1=identList ':' t1=type)? 							{$result.add(new TypedFieldListNode($i1.result, $t1.result)); }
-			(';' (i2=identList ':' t2=type))*					{$result.add(new TypedFieldListNode($i2.result, $t2.result)); }
-	; 
+			(';' i2=identList ':' t2=type						{$result.add(new TypedFieldListNode($i2.result, $t2.result)); }
+	 		)*
+	;
 
 arrayType returns [IInterpretableNode result]
 	:	'ARRAY' expression 'OF' type							{$result = new ArrayTypeNode($expression.result, $type.result); }
@@ -172,7 +173,7 @@ whileStatement returns [IInterpretableNode result]
 expression returns [IInterpretableNode result]
 	:	s1=simpleExpression 									{$result = $s1.result; }
 			( EQUALS s2=simpleExpression						{$result = new EqualsExprNode($s1.result, $s2.result); }
-			| NOT_EQ s2=simpleExpression						{$result = new NotEqualsExprNode($s1.result, $s2.result; }
+			| NOT_EQ s2=simpleExpression						{$result = new NotEqualsExprNode($s1.result, $s2.result); }
 			| LT s2=simpleExpression							{$result = new LTExprNode($result, $s2.result); }
 			| LT_EQ s2=simpleExpression							{$result = new LTEqualsExprNode($result, $s2.result); }
 			| GT s2=simpleExpression							{$result = new GTExprNode($result, $s2.result); }

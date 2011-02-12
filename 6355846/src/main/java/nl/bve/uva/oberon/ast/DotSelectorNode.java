@@ -7,12 +7,10 @@ public class DotSelectorNode implements Selector {
 	
 	public DotSelectorNode(String selector) {
 		this.selector = selector;
-		System.out.println("DotSelectorNode(" +selector+ ")");
 	}
 	
 	@Override
 	public String interpret(Environment env) {
 		return selector;
 	}
-
 }

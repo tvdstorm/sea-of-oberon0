@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:50:56 C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g 2011-02-12 22:23:31
+// $ANTLR 3.3 Nov 30, 2010 12:50:56 C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g 2011-02-13 00:45:40
 
 package nl.bve.uva.oberon.parser;
 
@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 public class Oberon0Lexer extends Lexer {
     public static final int EOF=-1;
-    public static final int T__22=22;
     public static final int T__23=23;
     public static final int T__24=24;
     public static final int T__25=25;
@@ -35,24 +34,26 @@ public class Oberon0Lexer extends Lexer {
     public static final int T__44=44;
     public static final int T__45=45;
     public static final int T__46=46;
+    public static final int T__47=47;
     public static final int PLUS=4;
     public static final int MINUS=5;
     public static final int MULT=6;
     public static final int DIV=7;
     public static final int MOD=8;
     public static final int EQUALS=9;
-    public static final int OR=10;
-    public static final int AND=11;
-    public static final int LT=12;
-    public static final int LT_EQ=13;
-    public static final int GT=14;
-    public static final int GT_EQ=15;
-    public static final int IDENT=16;
-    public static final int NUMBER=17;
-    public static final int INTEGER=18;
-    public static final int LETTER=19;
-    public static final int DIGIT=20;
-    public static final int WHITESPACE=21;
+    public static final int NOT_EQ=10;
+    public static final int OR=11;
+    public static final int AND=12;
+    public static final int LT=13;
+    public static final int LT_EQ=14;
+    public static final int GT=15;
+    public static final int GT_EQ=16;
+    public static final int IDENT=17;
+    public static final int NUMBER=18;
+    public static final int INTEGER=19;
+    public static final int LETTER=20;
+    public static final int DIGIT=21;
+    public static final int WHITESPACE=22;
 
     // delegates
     // delegators
@@ -189,13 +190,33 @@ public class Oberon0Lexer extends Lexer {
     }
     // $ANTLR end "EQUALS"
 
+    // $ANTLR start "NOT_EQ"
+    public final void mNOT_EQ() throws RecognitionException {
+        try {
+            int _type = NOT_EQ;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:13:8: ( '#' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:13:10: '#'
+            {
+            match('#'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "NOT_EQ"
+
     // $ANTLR start "OR"
     public final void mOR() throws RecognitionException {
         try {
             int _type = OR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:13:4: ( 'OR' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:13:6: 'OR'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:14:4: ( 'OR' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:14:6: 'OR'
             {
             match("OR"); 
 
@@ -215,8 +236,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = AND;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:14:5: ( '&' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:14:7: '&'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:15:5: ( '&' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:15:7: '&'
             {
             match('&'); 
 
@@ -235,8 +256,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = LT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:15:4: ( '<' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:15:6: '<'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:16:4: ( '<' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:16:6: '<'
             {
             match('<'); 
 
@@ -255,8 +276,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = LT_EQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:16:7: ( '<=' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:16:9: '<='
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:17:7: ( '<=' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:17:9: '<='
             {
             match("<="); 
 
@@ -276,8 +297,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = GT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:17:4: ( '>' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:17:6: '>'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:18:4: ( '>' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:18:6: '>'
             {
             match('>'); 
 
@@ -296,8 +317,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = GT_EQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:18:7: ( '>=' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:18:9: '>='
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:19:7: ( '>=' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:19:9: '>='
             {
             match(">="); 
 
@@ -312,36 +333,16 @@ public class Oberon0Lexer extends Lexer {
     }
     // $ANTLR end "GT_EQ"
 
-    // $ANTLR start "T__22"
-    public final void mT__22() throws RecognitionException {
-        try {
-            int _type = T__22;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:19:7: ( 'MODULE' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:19:9: 'MODULE'
-            {
-            match("MODULE"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__22"
-
     // $ANTLR start "T__23"
     public final void mT__23() throws RecognitionException {
         try {
             int _type = T__23;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:20:7: ( ';' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:20:9: ';'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:20:7: ( 'MODULE' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:20:9: 'MODULE'
             {
-            match(';'); 
+            match("MODULE"); 
+
 
             }
 
@@ -358,11 +359,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__24;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:21:7: ( 'BEGIN' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:21:9: 'BEGIN'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:21:7: ( ';' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:21:9: ';'
             {
-            match("BEGIN"); 
-
+            match(';'); 
 
             }
 
@@ -379,10 +379,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__25;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:22:7: ( 'END' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:22:9: 'END'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:22:7: ( 'BEGIN' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:22:9: 'BEGIN'
             {
-            match("END"); 
+            match("BEGIN"); 
 
 
             }
@@ -400,10 +400,11 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__26;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:23:7: ( '.' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:23:9: '.'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:23:7: ( 'END' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:23:9: 'END'
             {
-            match('.'); 
+            match("END"); 
+
 
             }
 
@@ -420,11 +421,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__27;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:24:7: ( 'CONST' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:24:9: 'CONST'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:24:7: ( '.' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:24:9: '.'
             {
-            match("CONST"); 
-
+            match('.'); 
 
             }
 
@@ -441,10 +441,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:25:7: ( 'TYPE' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:25:9: 'TYPE'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:25:7: ( 'CONST' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:25:9: 'CONST'
             {
-            match("TYPE"); 
+            match("CONST"); 
 
 
             }
@@ -462,10 +462,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:26:7: ( 'VAR' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:26:9: 'VAR'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:26:7: ( 'TYPE' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:26:9: 'TYPE'
             {
-            match("VAR"); 
+            match("TYPE"); 
 
 
             }
@@ -483,10 +483,11 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:27:7: ( ':' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:27:9: ':'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:27:7: ( 'VAR' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:27:9: 'VAR'
             {
-            match(':'); 
+            match("VAR"); 
+
 
             }
 
@@ -503,11 +504,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:28:7: ( 'PROCEDURE' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:28:9: 'PROCEDURE'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:28:7: ( ':' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:28:9: ':'
             {
-            match("PROCEDURE"); 
-
+            match(':'); 
 
             }
 
@@ -524,10 +524,11 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:29:7: ( '(' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:29:9: '('
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:29:7: ( 'PROCEDURE' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:29:9: 'PROCEDURE'
             {
-            match('('); 
+            match("PROCEDURE"); 
+
 
             }
 
@@ -544,10 +545,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__33;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:30:7: ( ')' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:30:9: ')'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:30:7: ( '(' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:30:9: '('
             {
-            match(')'); 
+            match('('); 
 
             }
 
@@ -564,11 +565,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:31:7: ( 'RECORD' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:31:9: 'RECORD'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:31:7: ( ')' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:31:9: ')'
             {
-            match("RECORD"); 
-
+            match(')'); 
 
             }
 
@@ -585,10 +585,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__35;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:32:7: ( 'ARRAY' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:32:9: 'ARRAY'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:32:7: ( 'RECORD' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:32:9: 'RECORD'
             {
-            match("ARRAY"); 
+            match("RECORD"); 
 
 
             }
@@ -606,10 +606,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:33:7: ( 'OF' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:33:9: 'OF'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:33:7: ( 'ARRAY' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:33:9: 'ARRAY'
             {
-            match("OF"); 
+            match("ARRAY"); 
 
 
             }
@@ -627,10 +627,11 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__37;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:34:7: ( ',' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:34:9: ','
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:34:7: ( 'OF' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:34:9: 'OF'
             {
-            match(','); 
+            match("OF"); 
+
 
             }
 
@@ -647,11 +648,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__38;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:35:7: ( ':=' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:35:9: ':='
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:35:7: ( ',' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:35:9: ','
             {
-            match(":="); 
-
+            match(','); 
 
             }
 
@@ -668,10 +668,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__39;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:36:7: ( 'IF' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:36:9: 'IF'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:36:7: ( ':=' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:36:9: ':='
             {
-            match("IF"); 
+            match(":="); 
 
 
             }
@@ -689,10 +689,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__40;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:37:7: ( 'THEN' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:37:9: 'THEN'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:37:7: ( 'IF' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:37:9: 'IF'
             {
-            match("THEN"); 
+            match("IF"); 
 
 
             }
@@ -710,10 +710,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__41;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:38:7: ( 'ELSIF' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:38:9: 'ELSIF'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:38:7: ( 'THEN' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:38:9: 'THEN'
             {
-            match("ELSIF"); 
+            match("THEN"); 
 
 
             }
@@ -731,10 +731,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__42;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:39:7: ( 'ELSE' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:39:9: 'ELSE'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:39:7: ( 'ELSIF' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:39:9: 'ELSIF'
             {
-            match("ELSE"); 
+            match("ELSIF"); 
 
 
             }
@@ -752,10 +752,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__43;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:40:7: ( 'WHILE' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:40:9: 'WHILE'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:40:7: ( 'ELSE' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:40:9: 'ELSE'
             {
-            match("WHILE"); 
+            match("ELSE"); 
 
 
             }
@@ -773,10 +773,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__44;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:41:7: ( 'DO' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:41:9: 'DO'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:41:7: ( 'WHILE' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:41:9: 'WHILE'
             {
-            match("DO"); 
+            match("WHILE"); 
 
 
             }
@@ -794,10 +794,11 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__45;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:42:7: ( '[' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:42:9: '['
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:42:7: ( 'DO' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:42:9: 'DO'
             {
-            match('['); 
+            match("DO"); 
+
 
             }
 
@@ -814,10 +815,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__46;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:43:7: ( ']' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:43:9: ']'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:43:7: ( '[' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:43:9: '['
             {
-            match(']'); 
+            match('['); 
 
             }
 
@@ -829,13 +830,33 @@ public class Oberon0Lexer extends Lexer {
     }
     // $ANTLR end "T__46"
 
+    // $ANTLR start "T__47"
+    public final void mT__47() throws RecognitionException {
+        try {
+            int _type = T__47;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:44:7: ( ']' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:44:9: ']'
+            {
+            match(']'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__47"
+
     // $ANTLR start "NUMBER"
     public final void mNUMBER() throws RecognitionException {
         try {
             int _type = NUMBER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:225:8: ( INTEGER )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:225:10: INTEGER
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:227:8: ( INTEGER )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:227:10: INTEGER
             {
             mINTEGER(); 
 
@@ -854,11 +875,11 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = IDENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:226:7: ( LETTER ( LETTER | DIGIT )* )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:226:9: LETTER ( LETTER | DIGIT )*
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:228:7: ( LETTER ( LETTER | DIGIT )* )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:228:9: LETTER ( LETTER | DIGIT )*
             {
             mLETTER(); 
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:226:16: ( LETTER | DIGIT )*
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:228:16: ( LETTER | DIGIT )*
             loop1:
             do {
                 int alt1=3;
@@ -874,14 +895,14 @@ public class Oberon0Lexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:226:17: LETTER
+            	    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:228:17: LETTER
             	    {
             	    mLETTER(); 
 
             	    }
             	    break;
             	case 2 :
-            	    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:226:26: DIGIT
+            	    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:228:26: DIGIT
             	    {
             	    mDIGIT(); 
 
@@ -907,10 +928,10 @@ public class Oberon0Lexer extends Lexer {
     // $ANTLR start "INTEGER"
     public final void mINTEGER() throws RecognitionException {
         try {
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:228:17: ( ( DIGIT )+ )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:228:19: ( DIGIT )+
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:230:17: ( ( DIGIT )+ )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:230:19: ( DIGIT )+
             {
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:228:19: ( DIGIT )+
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:230:19: ( DIGIT )+
             int cnt2=0;
             loop2:
             do {
@@ -924,7 +945,7 @@ public class Oberon0Lexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:228:20: DIGIT
+            	    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:230:20: DIGIT
             	    {
             	    mDIGIT(); 
 
@@ -952,10 +973,10 @@ public class Oberon0Lexer extends Lexer {
     // $ANTLR start "LETTER"
     public final void mLETTER() throws RecognitionException {
         try {
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:229:17: ( ( 'a' .. 'z' | 'A' .. 'Z' )+ )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:229:19: ( 'a' .. 'z' | 'A' .. 'Z' )+
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:231:17: ( ( 'a' .. 'z' | 'A' .. 'Z' )+ )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:231:19: ( 'a' .. 'z' | 'A' .. 'Z' )+
             {
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:229:19: ( 'a' .. 'z' | 'A' .. 'Z' )+
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:231:19: ( 'a' .. 'z' | 'A' .. 'Z' )+
             int cnt3=0;
             loop3:
             do {
@@ -1005,8 +1026,8 @@ public class Oberon0Lexer extends Lexer {
     // $ANTLR start "DIGIT"
     public final void mDIGIT() throws RecognitionException {
         try {
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:230:16: ( '0' .. '9' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:230:17: '0' .. '9'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:232:16: ( '0' .. '9' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:232:17: '0' .. '9'
             {
             matchRange('0','9'); 
 
@@ -1023,10 +1044,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = WHITESPACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:232:12: ( ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+ )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:232:14: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:234:12: ( ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+ )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:234:14: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
             {
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:232:14: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:234:14: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
             int cnt4=0;
             loop4:
             do {
@@ -1077,8 +1098,8 @@ public class Oberon0Lexer extends Lexer {
     // $ANTLR end "WHITESPACE"
 
     public void mTokens() throws RecognitionException {
-        // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:8: ( PLUS | MINUS | MULT | DIV | MOD | EQUALS | OR | AND | LT | LT_EQ | GT | GT_EQ | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | NUMBER | IDENT | WHITESPACE )
-        int alt5=40;
+        // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:8: ( PLUS | MINUS | MULT | DIV | MOD | EQUALS | NOT_EQ | OR | AND | LT | LT_EQ | GT | GT_EQ | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | NUMBER | IDENT | WHITESPACE )
+        int alt5=41;
         alt5 = dfa5.predict(input);
         switch (alt5) {
             case 1 :
@@ -1124,238 +1145,245 @@ public class Oberon0Lexer extends Lexer {
                 }
                 break;
             case 7 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:41: OR
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:41: NOT_EQ
+                {
+                mNOT_EQ(); 
+
+                }
+                break;
+            case 8 :
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:48: OR
                 {
                 mOR(); 
 
                 }
                 break;
-            case 8 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:44: AND
+            case 9 :
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:51: AND
                 {
                 mAND(); 
 
                 }
                 break;
-            case 9 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:48: LT
+            case 10 :
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:55: LT
                 {
                 mLT(); 
 
                 }
                 break;
-            case 10 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:51: LT_EQ
+            case 11 :
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:58: LT_EQ
                 {
                 mLT_EQ(); 
 
                 }
                 break;
-            case 11 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:57: GT
+            case 12 :
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:64: GT
                 {
                 mGT(); 
 
                 }
                 break;
-            case 12 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:60: GT_EQ
+            case 13 :
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:67: GT_EQ
                 {
                 mGT_EQ(); 
 
                 }
                 break;
-            case 13 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:66: T__22
-                {
-                mT__22(); 
-
-                }
-                break;
             case 14 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:72: T__23
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:73: T__23
                 {
                 mT__23(); 
 
                 }
                 break;
             case 15 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:78: T__24
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:79: T__24
                 {
                 mT__24(); 
 
                 }
                 break;
             case 16 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:84: T__25
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:85: T__25
                 {
                 mT__25(); 
 
                 }
                 break;
             case 17 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:90: T__26
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:91: T__26
                 {
                 mT__26(); 
 
                 }
                 break;
             case 18 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:96: T__27
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:97: T__27
                 {
                 mT__27(); 
 
                 }
                 break;
             case 19 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:102: T__28
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:103: T__28
                 {
                 mT__28(); 
 
                 }
                 break;
             case 20 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:108: T__29
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:109: T__29
                 {
                 mT__29(); 
 
                 }
                 break;
             case 21 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:114: T__30
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:115: T__30
                 {
                 mT__30(); 
 
                 }
                 break;
             case 22 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:120: T__31
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:121: T__31
                 {
                 mT__31(); 
 
                 }
                 break;
             case 23 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:126: T__32
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:127: T__32
                 {
                 mT__32(); 
 
                 }
                 break;
             case 24 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:132: T__33
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:133: T__33
                 {
                 mT__33(); 
 
                 }
                 break;
             case 25 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:138: T__34
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:139: T__34
                 {
                 mT__34(); 
 
                 }
                 break;
             case 26 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:144: T__35
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:145: T__35
                 {
                 mT__35(); 
 
                 }
                 break;
             case 27 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:150: T__36
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:151: T__36
                 {
                 mT__36(); 
 
                 }
                 break;
             case 28 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:156: T__37
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:157: T__37
                 {
                 mT__37(); 
 
                 }
                 break;
             case 29 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:162: T__38
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:163: T__38
                 {
                 mT__38(); 
 
                 }
                 break;
             case 30 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:168: T__39
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:169: T__39
                 {
                 mT__39(); 
 
                 }
                 break;
             case 31 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:174: T__40
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:175: T__40
                 {
                 mT__40(); 
 
                 }
                 break;
             case 32 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:180: T__41
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:181: T__41
                 {
                 mT__41(); 
 
                 }
                 break;
             case 33 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:186: T__42
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:187: T__42
                 {
                 mT__42(); 
 
                 }
                 break;
             case 34 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:192: T__43
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:193: T__43
                 {
                 mT__43(); 
 
                 }
                 break;
             case 35 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:198: T__44
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:199: T__44
                 {
                 mT__44(); 
 
                 }
                 break;
             case 36 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:204: T__45
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:205: T__45
                 {
                 mT__45(); 
 
                 }
                 break;
             case 37 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:210: T__46
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:211: T__46
                 {
                 mT__46(); 
 
                 }
                 break;
             case 38 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:216: NUMBER
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:217: T__47
+                {
+                mT__47(); 
+
+                }
+                break;
+            case 39 :
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:223: NUMBER
                 {
                 mNUMBER(); 
 
                 }
                 break;
-            case 39 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:223: IDENT
+            case 40 :
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:230: IDENT
                 {
                 mIDENT(); 
 
                 }
                 break;
-            case 40 :
-                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:229: WHITESPACE
+            case 41 :
+                // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:1:236: WHITESPACE
                 {
                 mWHITESPACE(); 
 
@@ -1369,17 +1397,17 @@ public class Oberon0Lexer extends Lexer {
 
     protected DFA5 dfa5 = new DFA5(this);
     static final String DFA5_eotS =
-        "\4\uffff\2\36\1\uffff\1\36\1\uffff\1\46\1\50\1\uffff\2\36\1\uffff"+
-        "\3\36\1\61\1\36\2\uffff\2\36\1\uffff\2\36\5\uffff\1\36\1\70\1\36"+
-        "\1\72\1\73\4\uffff\7\36\2\uffff\3\36\1\106\1\36\1\110\1\uffff\1"+
-        "\112\2\uffff\1\36\1\114\4\36\1\122\3\36\1\uffff\1\36\1\uffff\1\36"+
-        "\1\uffff\1\36\1\uffff\1\36\1\132\1\36\1\134\1\135\1\uffff\5\36\1"+
-        "\143\1\144\1\uffff\1\145\2\uffff\2\36\1\150\1\151\1\152\3\uffff"+
-        "\1\36\1\154\3\uffff\1\36\1\uffff\1\36\1\157\1\uffff";
+        "\4\uffff\2\37\2\uffff\1\37\1\uffff\1\47\1\51\1\uffff\2\37\1\uffff"+
+        "\3\37\1\62\1\37\2\uffff\2\37\1\uffff\2\37\5\uffff\1\37\1\71\1\37"+
+        "\1\73\1\74\4\uffff\7\37\2\uffff\3\37\1\107\1\37\1\111\1\uffff\1"+
+        "\113\2\uffff\1\37\1\115\4\37\1\123\3\37\1\uffff\1\37\1\uffff\1\37"+
+        "\1\uffff\1\37\1\uffff\1\37\1\133\1\37\1\135\1\136\1\uffff\5\37\1"+
+        "\144\1\145\1\uffff\1\146\2\uffff\2\37\1\151\1\152\1\153\3\uffff"+
+        "\1\37\1\155\3\uffff\1\37\1\uffff\1\37\1\160\1\uffff";
     static final String DFA5_eofS =
-        "\160\uffff";
+        "\161\uffff";
     static final String DFA5_minS =
-        "\1\11\3\uffff\1\111\1\117\1\uffff\1\106\1\uffff\2\75\1\uffff\1"+
+        "\1\11\3\uffff\1\111\1\117\2\uffff\1\106\1\uffff\2\75\1\uffff\1"+
         "\105\1\114\1\uffff\1\117\1\110\1\101\1\75\1\122\2\uffff\1\105\1"+
         "\122\1\uffff\1\106\1\110\5\uffff\1\126\1\60\1\104\2\60\4\uffff\1"+
         "\107\1\104\1\123\1\116\1\120\1\105\1\122\2\uffff\1\117\1\103\1\122"+
@@ -1389,7 +1417,7 @@ public class Oberon0Lexer extends Lexer {
         "\105\2\60\1\uffff\1\60\2\uffff\2\104\3\60\3\uffff\1\125\1\60\3\uffff"+
         "\1\122\1\uffff\1\105\1\60\1\uffff";
     static final String DFA5_maxS =
-        "\1\172\3\uffff\2\117\1\uffff\1\122\1\uffff\2\75\1\uffff\1\105\1"+
+        "\1\172\3\uffff\2\117\2\uffff\1\122\1\uffff\2\75\1\uffff\1\105\1"+
         "\116\1\uffff\1\117\1\131\1\101\1\75\1\122\2\uffff\1\105\1\122\1"+
         "\uffff\1\106\1\110\5\uffff\1\126\1\172\1\104\2\172\4\uffff\1\107"+
         "\1\104\1\123\1\116\1\120\1\105\1\122\2\uffff\1\117\1\103\1\122\1"+
@@ -1399,90 +1427,89 @@ public class Oberon0Lexer extends Lexer {
         "\1\131\2\105\2\172\1\uffff\1\172\2\uffff\2\104\3\172\3\uffff\1\125"+
         "\1\172\3\uffff\1\122\1\uffff\1\105\1\172\1\uffff";
     static final String DFA5_acceptS =
-        "\1\uffff\1\1\1\2\1\3\2\uffff\1\6\1\uffff\1\10\2\uffff\1\16\2\uffff"+
-        "\1\21\5\uffff\1\27\1\30\2\uffff\1\34\2\uffff\1\44\1\45\1\46\1\47"+
-        "\1\50\5\uffff\1\12\1\11\1\14\1\13\7\uffff\1\35\1\25\6\uffff\1\43"+
-        "\1\uffff\1\7\1\33\12\uffff\1\36\1\uffff\1\4\1\uffff\1\5\1\uffff"+
-        "\1\20\5\uffff\1\24\7\uffff\1\41\1\uffff\1\23\1\37\5\uffff\1\17\1"+
-        "\40\1\22\2\uffff\1\32\1\42\1\15\1\uffff\1\31\2\uffff\1\26";
+        "\1\uffff\1\1\1\2\1\3\2\uffff\1\6\1\7\1\uffff\1\11\2\uffff\1\17"+
+        "\2\uffff\1\22\5\uffff\1\30\1\31\2\uffff\1\35\2\uffff\1\45\1\46\1"+
+        "\47\1\50\1\51\5\uffff\1\13\1\12\1\15\1\14\7\uffff\1\36\1\26\6\uffff"+
+        "\1\44\1\uffff\1\10\1\34\12\uffff\1\37\1\uffff\1\4\1\uffff\1\5\1"+
+        "\uffff\1\21\5\uffff\1\25\7\uffff\1\42\1\uffff\1\24\1\40\5\uffff"+
+        "\1\20\1\41\1\23\2\uffff\1\33\1\43\1\16\1\uffff\1\32\2\uffff\1\27";
     static final String DFA5_specialS =
-        "\160\uffff}>";
+        "\161\uffff}>";
     static final String[] DFA5_transitionS = {
-            "\2\37\1\uffff\2\37\22\uffff\1\37\5\uffff\1\10\1\uffff\1\24"+
-            "\1\25\1\3\1\1\1\30\1\2\1\16\1\uffff\12\35\1\22\1\13\1\11\1\6"+
-            "\1\12\2\uffff\1\27\1\14\1\17\1\4\1\15\3\36\1\31\3\36\1\5\1\36"+
-            "\1\7\1\23\1\36\1\26\1\36\1\20\1\36\1\21\1\32\3\36\1\33\1\uffff"+
-            "\1\34\3\uffff\32\36",
+            "\2\40\1\uffff\2\40\22\uffff\1\40\2\uffff\1\7\2\uffff\1\11\1"+
+            "\uffff\1\25\1\26\1\3\1\1\1\31\1\2\1\17\1\uffff\12\36\1\23\1"+
+            "\14\1\12\1\6\1\13\2\uffff\1\30\1\15\1\20\1\4\1\16\3\37\1\32"+
+            "\3\37\1\5\1\37\1\10\1\24\1\37\1\27\1\37\1\21\1\37\1\22\1\33"+
+            "\3\37\1\34\1\uffff\1\35\3\uffff\32\37",
             "",
             "",
             "",
-            "\1\40\5\uffff\1\41",
-            "\1\42",
+            "\1\41\5\uffff\1\42",
+            "\1\43",
             "",
-            "\1\44\13\uffff\1\43",
             "",
-            "\1\45",
-            "\1\47",
+            "\1\45\13\uffff\1\44",
             "",
-            "\1\51",
-            "\1\53\1\uffff\1\52",
+            "\1\46",
+            "\1\50",
             "",
-            "\1\54",
-            "\1\56\20\uffff\1\55",
-            "\1\57",
+            "\1\52",
+            "\1\54\1\uffff\1\53",
+            "",
+            "\1\55",
+            "\1\57\20\uffff\1\56",
             "\1\60",
-            "\1\62",
-            "",
-            "",
+            "\1\61",
             "\1\63",
+            "",
+            "",
             "\1\64",
-            "",
             "\1\65",
+            "",
             "\1\66",
-            "",
-            "",
-            "",
-            "",
-            "",
             "\1\67",
-            "\12\36\7\uffff\32\36\6\uffff\32\36",
-            "\1\71",
-            "\12\36\7\uffff\32\36\6\uffff\32\36",
-            "\12\36\7\uffff\32\36\6\uffff\32\36",
             "",
             "",
             "",
             "",
-            "\1\74",
+            "",
+            "\1\70",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
+            "\1\72",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
+            "",
+            "",
+            "",
+            "",
             "\1\75",
             "\1\76",
             "\1\77",
             "\1\100",
             "\1\101",
             "\1\102",
-            "",
-            "",
             "\1\103",
+            "",
+            "",
             "\1\104",
             "\1\105",
-            "\12\36\7\uffff\32\36\6\uffff\32\36",
-            "\1\107",
-            "\12\36\7\uffff\32\36\6\uffff\32\36",
+            "\1\106",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
+            "\1\110",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
             "",
-            "\12\36\7\uffff\24\36\1\111\5\36\6\uffff\32\36",
+            "\12\37\7\uffff\24\37\1\112\5\37\6\uffff\32\37",
             "",
             "",
-            "\1\113",
-            "\12\36\7\uffff\32\36\6\uffff\32\36",
-            "\1\116\3\uffff\1\115",
-            "\1\117",
+            "\1\114",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
+            "\1\117\3\uffff\1\116",
             "\1\120",
             "\1\121",
-            "\12\36\7\uffff\32\36\6\uffff\32\36",
-            "\1\123",
+            "\1\122",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
             "\1\124",
             "\1\125",
-            "",
             "\1\126",
             "",
             "\1\127",
@@ -1490,39 +1517,41 @@ public class Oberon0Lexer extends Lexer {
             "\1\130",
             "",
             "\1\131",
-            "\12\36\7\uffff\32\36\6\uffff\32\36",
-            "\1\133",
-            "\12\36\7\uffff\32\36\6\uffff\32\36",
-            "\12\36\7\uffff\32\36\6\uffff\32\36",
             "",
-            "\1\136",
+            "\1\132",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
+            "\1\134",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
+            "",
             "\1\137",
             "\1\140",
             "\1\141",
             "\1\142",
-            "\12\36\7\uffff\32\36\6\uffff\32\36",
-            "\12\36\7\uffff\32\36\6\uffff\32\36",
+            "\1\143",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
             "",
-            "\12\36\7\uffff\32\36\6\uffff\32\36",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
             "",
             "",
-            "\1\146",
             "\1\147",
-            "\12\36\7\uffff\32\36\6\uffff\32\36",
-            "\12\36\7\uffff\32\36\6\uffff\32\36",
-            "\12\36\7\uffff\32\36\6\uffff\32\36",
+            "\1\150",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
             "",
             "",
             "",
-            "\1\153",
-            "\12\36\7\uffff\32\36\6\uffff\32\36",
+            "\1\154",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
             "",
             "",
-            "",
-            "\1\155",
             "",
             "\1\156",
-            "\12\36\7\uffff\32\36\6\uffff\32\36",
+            "",
+            "\1\157",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
             ""
     };
 
@@ -1556,7 +1585,7 @@ public class Oberon0Lexer extends Lexer {
             this.transition = DFA5_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( PLUS | MINUS | MULT | DIV | MOD | EQUALS | OR | AND | LT | LT_EQ | GT | GT_EQ | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | NUMBER | IDENT | WHITESPACE );";
+            return "1:1: Tokens : ( PLUS | MINUS | MULT | DIV | MOD | EQUALS | NOT_EQ | OR | AND | LT | LT_EQ | GT | GT_EQ | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | NUMBER | IDENT | WHITESPACE );";
         }
     }
  
