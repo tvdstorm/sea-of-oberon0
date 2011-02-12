@@ -20,6 +20,6 @@ public class ArrayTypeNode implements IInterpretableNode {
 		Type size = (Type)expression.interpret(env);
 		Type type = (Type)arrayType.interpret(env);
 		
-		return new OberonArray(type, (Integer)size.interpret(env));
+		return new OberonArray(type, (Integer)size.getValue());
 	}
 }

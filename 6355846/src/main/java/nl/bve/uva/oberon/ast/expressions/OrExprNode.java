@@ -18,8 +18,8 @@ public class OrExprNode extends ExpressionNode {
 		assert (lhn instanceof Type);
 		assert (rhn instanceof Type);
 		
-		int left  = ((Type)lhn).interpret(env);
-		int right = ((Type)rhn).interpret(env);
+		int left  = ((Type)lhn).getValue();
+		int right = ((Type)rhn).getValue();
 		
 		if ((left == OberonInt.TRUE) || (right == OberonInt.TRUE)) {
 			return new OberonInt(OberonInt.TRUE);

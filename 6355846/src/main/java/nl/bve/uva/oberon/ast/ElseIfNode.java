@@ -19,7 +19,7 @@ public class ElseIfNode implements IInterpretableNode {
 	public Object interpret(Environment env) {
 		Type t = (Type)condition.interpret(env);
 		
-		if (t.interpret(env) == OberonInt.TRUE) {
+		if (t.getValue() == OberonInt.TRUE) {
 			Environment subEnv = env.getNewSubSpace();
 			return body.interpret(subEnv);
 		} else if (nextElse != null) {
