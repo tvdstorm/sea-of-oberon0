@@ -1,7 +1,5 @@
 package nl.bve.uva.oberon.env.types;
 
-import nl.bve.uva.oberon.env.Environment;
-
 public class OberonArray extends Type {
 	private Type[] values;
 	
@@ -12,11 +10,14 @@ public class OberonArray extends Type {
 		}
 	}
 	
-	public void changeValue(int position, Type value) {
-		assert position >= 0 : "Array index must be a positive number"; 
-		assert values.length > position : "Array index out of bounds!";
-		
-		values[position] = value;
+	@Override
+	public Integer getValue() {
+		throw new RuntimeException("Cannot get the value of an Array!");
+	}
+	
+	@Override
+	public void setValue(Type t) {
+		throw new RuntimeException("Cannot set the value of an Array!");
 	}
 	
 	@Override
@@ -25,24 +26,8 @@ public class OberonArray extends Type {
 	}
 	
 	@Override
-	public void setValue(Object o) {
-		throw new RuntimeException("Cannot set the value of an Array!");
-	}
-	
-	@Override
-	public Object getValue() {
-		throw new RuntimeException("Cannot get the value of an Array!");
-	}
-	
-	@Override
 	public Type clone() {
 		return new OberonArray(values[0], this.values.length);
-	}
-	
-	@Override
-	public Integer interpret(Environment env) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	
 	@Override

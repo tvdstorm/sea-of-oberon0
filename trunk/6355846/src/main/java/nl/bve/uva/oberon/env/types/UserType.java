@@ -1,29 +1,20 @@
 package nl.bve.uva.oberon.env.types;
 
-import nl.bve.uva.oberon.env.Environment;
-
-
 public class UserType extends Type {
 	public UserType() {
 		
 	}
 	
 	@Override
-	public Object getValue() {
+	public Integer getValue() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
 	@Override
-	public void setValue(Object value) {
+	public void setValue(Type value) {
 		// TODO Auto-generated method stub
 		
-	}
-	
-	@Override
-	public Type clone() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	
 	@Override
@@ -33,7 +24,7 @@ public class UserType extends Type {
 	}
 	
 	@Override
-	public Integer interpret(Environment env) {
+	public Type clone() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -24,7 +24,7 @@ public class Write extends Procedure {
 	@Override
 	public void execute(Environment env) {
 		Type variable = env.getVariable(VAL_VAR_STORE);
-		System.out.print(variable.interpret(env));
+		System.out.print(variable.getValue());
 		System.out.flush();
 	}
 }

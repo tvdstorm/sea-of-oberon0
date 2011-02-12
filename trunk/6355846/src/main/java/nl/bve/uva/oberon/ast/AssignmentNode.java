@@ -20,7 +20,7 @@ public class AssignmentNode implements IInterpretableNode {
 		assert ident instanceof Type : "Cannot assign a value to a non-Type instance!";
 		
 		Type var = (Type)ident;
-		var.setValue(value);
+		var.setValue((Type)value);
 		
 		return null;
 	}
