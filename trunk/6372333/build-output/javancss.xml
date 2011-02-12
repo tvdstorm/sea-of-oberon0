@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-02-12</date>
-  <time>13:57:53</time>
+  <time>15:21:50</time>
   <packages>
     <package>
       <name>oberon</name>
@@ -15,9 +15,9 @@
     </package>
     <package>
       <name>oberon.convert</name>
-      <classes>25</classes>
-      <functions>88</functions>
-      <ncss>695</ncss>
+      <classes>26</classes>
+      <functions>92</functions>
+      <ncss>723</ncss>
       <javadocs>37</javadocs>
       <javadoc_lines>177</javadoc_lines>
       <single_comment_lines>8</single_comment_lines>
@@ -65,39 +65,39 @@
     </package>
     <package>
       <name>oberon.statement</name>
-      <classes>7</classes>
-      <functions>16</functions>
-      <ncss>120</ncss>
+      <classes>9</classes>
+      <functions>20</functions>
+      <ncss>148</ncss>
       <javadocs>12</javadocs>
       <javadoc_lines>61</javadoc_lines>
-      <single_comment_lines>0</single_comment_lines>
-      <multi_comment_lines>25</multi_comment_lines>
+      <single_comment_lines>1</single_comment_lines>
+      <multi_comment_lines>28</multi_comment_lines>
     </package>
     <package>
       <name>oberon.test</name>
-      <classes>8</classes>
-      <functions>33</functions>
-      <ncss>328</ncss>
+      <classes>9</classes>
+      <functions>34</functions>
+      <ncss>346</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>6</single_comment_lines>
+      <single_comment_lines>7</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <total>
-      <classes>91</classes>
-      <functions>287</functions>
-      <ncss>1800</ncss>
+      <classes>95</classes>
+      <functions>296</functions>
+      <ncss>1874</ncss>
       <javadocs>159</javadocs>
       <javadoc_lines>797</javadoc_lines>
-      <single_comment_lines>19</single_comment_lines>
-      <multi_comment_lines>382</multi_comment_lines>
+      <single_comment_lines>21</single_comment_lines>
+      <multi_comment_lines>385</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>8.00</td><td>91.00</td><td>287.00</td><td>1,800.00</td><td>159.00</td><td>Project</td></tr>
-      <tr><td></td><td>11.38</td><td>35.88</td><td>225.00</td><td>19.88</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.15</td><td>19.78</td><td>1.75</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>6.27</td><td>0.55</td><td>Function</td></tr>
+      <tr><td>8.00</td><td>95.00</td><td>296.00</td><td>1,874.00</td><td>159.00</td><td>Project</td></tr>
+      <tr><td></td><td>11.88</td><td>37.00</td><td>234.25</td><td>19.88</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.12</td><td>19.73</td><td>1.67</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>6.33</td><td>0.54</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -286,7 +286,7 @@
     </object>
     <object>
       <name>oberon.convert.StatementConverterFactory</name>
-      <ncss>29</ncss>
+      <ncss>32</ncss>
       <functions>3</functions>
       <classes>0</classes>
       <javadocs>4</javadocs>
@@ -325,6 +325,13 @@
       <functions>5</functions>
       <classes>0</classes>
       <javadocs>1</javadocs>
+    </object>
+    <object>
+      <name>oberon.convert.WithStatementConverter</name>
+      <ncss>14</ncss>
+      <functions>4</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
     </object>
     <object>
       <name>oberon.convert.WriteLnProcConverter</name>
@@ -670,6 +677,20 @@
       <javadocs>2</javadocs>
     </object>
     <object>
+      <name>oberon.statement.WithAssignmentStatement</name>
+      <ncss>8</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon.statement.WithStatement</name>
+      <ncss>9</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
       <name>oberon.statement.WriteLnProcStatement</name>
       <ncss>3</ncss>
       <functions>1</functions>
@@ -739,13 +760,20 @@
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
+    <object>
+      <name>oberon.test.WithTest</name>
+      <ncss>7</ncss>
+      <functions>1</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
     <averages>
-      <ncss>13.29</ncss>
-      <functions>3.15</functions>
+      <ncss>13.16</ncss>
+      <functions>3.12</functions>
       <classes>0.00</classes>
-      <javadocs>1.75</javadocs>
+      <javadocs>1.67</javadocs>
     </averages>
-    <ncss>1,800.00</ncss>
+    <ncss>1,874.00</ncss>
   </objects>
 
   <functions>
@@ -1291,8 +1319,8 @@
     </function>
     <function>
       <name>oberon.convert.StatementConverterFactory.getInterpreter(TNode)</name>
-      <ncss>23</ncss>
-      <ccn>8</ccn>
+      <ncss>26</ncss>
+      <ccn>9</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
@@ -1405,6 +1433,30 @@
     </function>
     <function>
       <name>oberon.convert.VariableConverter.buildInterpreterResult()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.convert.WithStatementConverter.caseAWithstatement(AWithstatement)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.convert.WithStatementConverter.caseAWithassignment(AWithassignment)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.convert.WithStatementConverter.caseAStatwithStatement(AStatwithStatement)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.convert.WithStatementConverter.buildInterpreterResult()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -2256,6 +2308,30 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>oberon.statement.WithAssignmentStatement.WithAssignmentStatement(IIdentifier,IExpression)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.statement.WithAssignmentStatement.eval(Scope)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.statement.WithStatement.WithStatement(IIdentifier,WithAssignmentStatement)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon.statement.WithStatement.eval(Scope)</name>
+      <ncss>3</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>oberon.statement.WriteLnProcStatement.eval(Scope)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
@@ -2471,11 +2547,17 @@
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
+    <function>
+      <name>oberon.test.WithTest.withTest()</name>
+      <ncss>6</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
     <function_averages>
-      <ncss>3.56</ncss>
+      <ncss>3.55</ncss>
       <ccn>1.32</ccn>
-      <javadocs>0.34</javadocs>
+      <javadocs>0.33</javadocs>
     </function_averages>
-    <ncss>1,800.00</ncss>
+    <ncss>1,874.00</ncss>
   </functions>
 </javancss>

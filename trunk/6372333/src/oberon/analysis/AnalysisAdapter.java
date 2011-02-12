@@ -289,6 +289,16 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
+    public void caseAWithstatement(AWithstatement node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAWithassignment(AWithassignment node)
+    {
+        defaultCase(node);
+    }
+
     public void caseAStatassStatement(AStatassStatement node)
     {
         defaultCase(node);
@@ -315,6 +325,11 @@ public class AnalysisAdapter implements Analysis
     }
 
     public void caseAStatprocStatement(AStatprocStatement node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAStatwithStatement(AStatwithStatement node)
     {
         defaultCase(node);
     }
@@ -500,6 +515,11 @@ public class AnalysisAdapter implements Analysis
     }
 
     public void caseTWritelntxt(TWritelntxt node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTWithtxt(TWithtxt node)
     {
         defaultCase(node);
     }

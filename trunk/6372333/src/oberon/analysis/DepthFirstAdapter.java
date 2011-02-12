@@ -1158,6 +1158,59 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outAWritelnproc(node);
     }
 
+    public void inAWithstatement(AWithstatement node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAWithstatement(AWithstatement node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAWithstatement(AWithstatement node)
+    {
+        inAWithstatement(node);
+        if(node.getSelector() != null)
+        {
+            node.getSelector().apply(this);
+        }
+        {
+            List<PWithassignment> copy = new ArrayList<PWithassignment>(node.getWithassignment());
+            for(PWithassignment e : copy)
+            {
+                e.apply(this);
+            }
+        }
+        outAWithstatement(node);
+    }
+
+    public void inAWithassignment(AWithassignment node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAWithassignment(AWithassignment node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAWithassignment(AWithassignment node)
+    {
+        inAWithassignment(node);
+        if(node.getSelector() != null)
+        {
+            node.getSelector().apply(this);
+        }
+        if(node.getExp() != null)
+        {
+            node.getExp().apply(this);
+        }
+        outAWithassignment(node);
+    }
+
     public void inAStatassStatement(AStatassStatement node)
     {
         defaultIn(node);
@@ -1282,6 +1335,27 @@ public class DepthFirstAdapter extends AnalysisAdapter
             node.getProcedurecall().apply(this);
         }
         outAStatprocStatement(node);
+    }
+
+    public void inAStatwithStatement(AStatwithStatement node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAStatwithStatement(AStatwithStatement node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAStatwithStatement(AStatwithStatement node)
+    {
+        inAStatwithStatement(node);
+        if(node.getWithstatement() != null)
+        {
+            node.getWithstatement().apply(this);
+        }
+        outAStatwithStatement(node);
     }
 
     public void inAStatwhileStatement(AStatwhileStatement node)

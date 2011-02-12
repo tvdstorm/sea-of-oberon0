@@ -65,6 +65,7 @@ Tokens
     readtxt = 'Read' sp*;
     writetxt = 'Write' sp*;
     writelntxt = 'WriteLn' sp*;
+    withtxt = 'WITH' sp*;
     proceduretxt = 'PROCEDURE' sp*;
     sptxt = sp;
 		
@@ -108,7 +109,14 @@ Productions
     	{writeproc} writeproc |
     	{writelnproc} writelnproc |
     	{statproc} procedurecall |
+    	{statwith} withstatement |
     	{statwhile} whilestatement;
+    	
+    withstatement {-> withstatement} =
+    	withtxt selector withassignment* endtxt {-> New withstatement(selector, [withassignment])};
+    	
+    withassignment {-> withassignment} = 
+    	selector ass exp {-> New withassignment(selector, exp)};
     	
     readproc {-> readproc} =
     	readtxt l_par selector r_par {-> New readproc(selector)};
@@ -313,6 +321,10 @@ Abstract Syntax Tree
     writeproc = selector;
     
     writelnproc = ;
+    	
+    withstatement = selector withassignment*;
+    	
+    withassignment = selector exp;
     
     statement = 
     	{statass} assignment |
@@ -321,4 +333,5 @@ Abstract Syntax Tree
     	{writeproc} writeproc |
     	{writelnproc} writelnproc |
     	{statproc} procedurecall | 
+    	{statwith} withstatement |
     	{statwhile} whilestatement;

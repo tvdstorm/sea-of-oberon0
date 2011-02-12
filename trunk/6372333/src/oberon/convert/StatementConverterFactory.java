@@ -6,6 +6,7 @@ import oberon.node.AStatassStatement;
 import oberon.node.AStatifStatement;
 import oberon.node.AStatprocStatement;
 import oberon.node.AStatwhileStatement;
+import oberon.node.AStatwithStatement;
 import oberon.node.AWritelnprocStatement;
 import oberon.node.AWriteprocStatement;
 import oberon.node.PStatement;
@@ -53,6 +54,9 @@ final class StatementConverterFactory {
 		}
 		else if (node instanceof AWritelnprocStatement) {
 			returnStatement = new WriteLnProcConverter();
+		}
+		else if (node instanceof AStatwithStatement) {
+			returnStatement = new WithStatementConverter();
 		}
 		
 		return returnStatement;
