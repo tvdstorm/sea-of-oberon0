@@ -52,15 +52,6 @@ public class IntegerArrayDataType extends AbstractDataType {
 		return array[index];
 	}
 
-	/**
-	 * Initialize array.
-	 * @throws ProcedureParamaterCountMismatchException 
-	 * @throws VariableNotFoundInScopeException 
-	 */
-	public void initializeArray(Scope currentScope) {
-		array = new int[lengthExpression.evalAsInt(currentScope)];			
-	}
-
 	/* (non-Javadoc)
 	 * @see oberon.data.AbstractDataType#getValue()
 	 */
@@ -87,4 +78,11 @@ public class IntegerArrayDataType extends AbstractDataType {
 	public IDataType performDeepCopy(final String newName) {
 		return new IntegerArrayDataType(newName, array, lengthExpression);
 	}
+
+	@Override
+	public void initialize(Scope currentScope) {
+		array = new int[lengthExpression.evalAsInt(currentScope)];
+	}
+	
+	
 }

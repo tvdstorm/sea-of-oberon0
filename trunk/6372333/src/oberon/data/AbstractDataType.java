@@ -55,4 +55,8 @@ public abstract class AbstractDataType implements IDataType {
 	public void setValue(final int value){
 		//nothing to do, specific implementations will be done in derived classes
 	}
+	
+	public void initialize(Scope currentScope){
+		//nothing to do, specific implementations will be done in derived classes 
+	}
 }

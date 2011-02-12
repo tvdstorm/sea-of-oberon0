@@ -90,12 +90,7 @@ public class Scope {
 		for (IDataType actualParam : declaration.getVariables()){
 			variables.put(actualParam.getName(), actualParam);	
 			
-			if (actualParam instanceof IntegerArrayDataType){
-				((IntegerArrayDataType)actualParam).initializeArray(this);
-			}
-			else if (actualParam instanceof RecordDataType){
-				((RecordDataType)actualParam).initializeArrayMembers(this);
-			}
+			actualParam.initialize(this);
 		}
 		
 		for (IProcedure heading : declaration.getProcedures()){
