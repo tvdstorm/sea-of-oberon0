@@ -4,8 +4,6 @@ import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.List;
 
-import oberon.data.IntegerArrayDataType;
-import oberon.data.RecordDataType;
 import oberon.exceptions.ProcedureNotFoundInScopeException;
 import oberon.exceptions.ProcedureParamaterCountMismatchException;
 import oberon.exceptions.VariableNotFoundInScopeException;
