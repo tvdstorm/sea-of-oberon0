@@ -10,11 +10,11 @@ import java.util.List;
 import nl.bve.uva.oberon.ast.TypedParameterList;
 import nl.bve.uva.oberon.ast.TypedReferenceParameterList;
 import nl.bve.uva.oberon.env.Environment;
-import nl.bve.uva.oberon.env.procedures.BuiltInProcedure;
+import nl.bve.uva.oberon.env.procedures.Procedure;
 import nl.bve.uva.oberon.env.types.OberonInt;
 import nl.bve.uva.oberon.env.types.Type;
 
-public class Read extends BuiltInProcedure {
+public class Read extends Procedure {
 	private final String REF_VAR_STORE = "var_storage";
 	
 	@Override
