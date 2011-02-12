@@ -56,6 +56,9 @@ tokens
 @header {
 package org.elcid.oberon0.parser;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.elcid.oberon0.ast.*;
 import org.elcid.oberon0.ast.values.*;
 import org.elcid.oberon0.ast.visitor.*;
@@ -71,18 +74,24 @@ package org.elcid.oberon0.parser;
 
 module returns [ModuleNode result]
 	:	MODULE_KW i=identifier							{ $result = new ModuleNode($i.text); }
-		SEMI_COLON declarations
+		SEMI_COLON ds=declarations						{ $result.setDeclarationSequence($ds.result); }
 		(BEGIN_KW ss=statementSequence					{ $result.setStatementSequence($ss.result); }
 		)?
 		END_KW identifier DOT EOF
 	;
 
-declarations
-	: 	constDecl? typeDecl? varDecl? (procedureDecl SEMI_COLON)*
+declarations returns [DeclarationSequenceNode result]
+	:													{ $result = new DeclarationSequenceNode(); }
+		(c=constDecl									{ $result.addAll($c.result); } )?
+		(t=typeDecl										{  } )?
+		(v=varDecl										{  } )?
+		(p=procedureDecl SEMI_COLON						{  } )*
 	;
 
-constDecl
-	:	CONST_KW (identifier EQUALS_OP expression SEMI_COLON)*
+constDecl returns [List<ConstDeclNode> result]
+	:	CONST_KW										{ $result = new ArrayList<ConstDeclNode>(); }
+		(i=identifier EQUALS_OP e=expression SEMI_COLON	{ $result.add(new ConstDeclNode($i.text, $e.result)); }
+		)*
 	;
 
 typeDecl
