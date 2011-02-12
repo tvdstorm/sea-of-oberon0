@@ -2,12 +2,8 @@ package nl.bve.uva.oberon.env.types;
 
 import nl.bve.uva.oberon.env.Environment;
 
-
-
 public class OberonArray extends Type {
 	private Type[] values;
-	
-	private OberonArray() { /* for cloning only */ }
 	
 	public OberonArray(Type value, int size) {
 		values = new Type[size];
@@ -23,6 +19,7 @@ public class OberonArray extends Type {
 		values[position] = value;
 	}
 	
+	@Override
 	public Type evaluateSelector(String selector) {
 		return values[Integer.parseInt(selector)];
 	}
@@ -43,12 +40,6 @@ public class OberonArray extends Type {
 	}
 	
 	@Override
-	public Type evaluateSelector(Object o) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
 	public Integer interpret(Environment env) {
 		// TODO Auto-generated method stub
 		return null;
@@ -56,6 +47,12 @@ public class OberonArray extends Type {
 	
 	@Override
 	public String toString() {
-		return "OberonArray[" +values.length+ "]: " +values[0].getClass().getCanonicalName();
+		StringBuilder sb = new StringBuilder();
+		sb.append("OberonArray:");
+		for (Type t : values) {
+			sb.append("[" +t.toString()+ "]");
+		}
+		
+		return sb.toString();
 	}
 }

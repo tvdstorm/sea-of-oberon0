@@ -32,7 +32,7 @@ public class Constant extends Type implements IInterpretableNode {
 	}
 	
 	@Override
-	public Type evaluateSelector(Object o) {
+	public Type evaluateSelector(String s) {
 		// TODO Auto-generated method stub
 		return null;
 	}

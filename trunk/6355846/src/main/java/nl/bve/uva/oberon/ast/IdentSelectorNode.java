@@ -13,7 +13,6 @@ public class IdentSelectorNode implements IInterpretableNode {
 	public IdentSelectorNode(String name, List<IInterpretableNode> selectors) {
 		this.name = name;
 		this.selectors = selectors;
-		System.out.println("IdentNode(" +name+ ", " +selectors+ ")");
 	}
 	
 	@Override
@@ -22,10 +21,16 @@ public class IdentSelectorNode implements IInterpretableNode {
 		
 		if (selectors != null) {
 			for (IInterpretableNode selector : selectors) {
-				type = type.evaluateSelector(selector);
+				Selector s = (Selector)selector;
+				type = type.evaluateSelector(s.interpret(env));
 			}
 		}
 		
 		return type;
+	}
+	
+	@Override
+	public String toString() {
+		return name+ "(" +selectors+ ")";
 	}
 }

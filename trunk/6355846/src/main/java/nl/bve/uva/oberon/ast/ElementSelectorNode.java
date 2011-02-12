@@ -2,17 +2,15 @@ package nl.bve.uva.oberon.ast;
 
 import nl.bve.uva.oberon.env.Environment;
 
-public class ElementSelectorNode implements IInterpretableNode {
-	private IInterpretableNode selector;
+public class ElementSelectorNode implements Selector {
+	private IInterpretableNode expression;
 	
 	public ElementSelectorNode(IInterpretableNode selector) {
-		this.selector = selector;
-		System.out.println("ElementSelectorNode(" +selector+ ")");
+		this.expression = selector;
 	}
 	
 	@Override
-	public Object interpret(Environment env) {
-		return selector.interpret(env);
+	public String interpret(Environment env) {
+		return expression.interpret(env).toString();
 	}
-
 }
