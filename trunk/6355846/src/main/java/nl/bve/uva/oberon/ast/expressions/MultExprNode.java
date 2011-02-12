@@ -8,7 +8,6 @@ import nl.bve.uva.oberon.env.types.Type;
 public class MultExprNode extends ExpressionNode {
 	public MultExprNode(IInterpretableNode lhn, IInterpretableNode rhn) {
 		super(lhn, rhn);
-		System.out.println("MultExprNode(" +lhn+ ", " +rhn+ ")");
 	}
 	
 	public OberonInt interpret(Environment env) {

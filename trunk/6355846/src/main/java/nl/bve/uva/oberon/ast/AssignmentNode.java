@@ -10,7 +10,6 @@ public class AssignmentNode implements IInterpretableNode {
 	public AssignmentNode(IInterpretableNode lhn, IInterpretableNode rhn) {
 		this.lhn = lhn;
 		this.rhn = rhn;
-		System.out.println("AssignmentNode(" +lhn+ ", " +rhn);
 	}
 	
 	@Override

@@ -1,8 +1,7 @@
-package nl.bve.uva.oberon.env;
+package nl.bve.uva.oberon.env.types;
 
 import nl.bve.uva.oberon.ast.IInterpretableNode;
-import nl.bve.uva.oberon.env.types.OberonInt;
-import nl.bve.uva.oberon.env.types.Type;
+import nl.bve.uva.oberon.env.Environment;
 
 public class Constant extends Type implements IInterpretableNode {
 	private OberonInt value;

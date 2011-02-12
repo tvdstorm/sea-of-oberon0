@@ -8,7 +8,6 @@ import nl.bve.uva.oberon.env.types.Type;
 public class EqualsExprNode extends ExpressionNode {
 	public EqualsExprNode(IInterpretableNode lhn, IInterpretableNode rhn) {
 		super(lhn, rhn);
-		System.out.println("EqualsExprNode(" +lhn+ ", " +rhn+ ")");
 	}
 	
 	@Override

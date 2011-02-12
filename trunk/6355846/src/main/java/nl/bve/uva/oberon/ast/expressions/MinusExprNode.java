@@ -8,7 +8,6 @@ import nl.bve.uva.oberon.env.types.Type;
 public class MinusExprNode extends ExpressionNode {
 	public MinusExprNode(IInterpretableNode lhn, IInterpretableNode rhn) {
 		super(lhn, rhn);
-		System.out.println("MinusExprNode(" +lhn+ ", " +rhn+ ")");
 	}
 	
 	@Override
