@@ -20,8 +20,6 @@ public class WhileNode implements IInterpretableNode {
 			body.interpret(subEnv);
 		}
 		
-		System.out.println("ENVIRONMENT: \n" +env.toString()+ "\nEND OF ENVIRONMENT");
-		
 		return null;
 	}
 }
