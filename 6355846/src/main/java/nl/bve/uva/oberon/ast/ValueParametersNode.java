@@ -5,7 +5,7 @@ import java.util.List;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.types.Type;
 
-public class ValueParametersNode implements IInterpretableNode {
+public class ValueParametersNode implements ParametersNode {
 	private List<String> identList;
 	private IInterpretableNode type;
 	
@@ -15,17 +15,16 @@ public class ValueParametersNode implements IInterpretableNode {
 	}
 	
 	@Override
-	public Object interpret(Environment env) {
-//		// TODO: copy of variable?
-//		
-//		Object o = type.interpret(env);
-//		
-//		assert o instanceof Type : "Found incorrect type for actual parameters!";
-//		
-//		for (String ident : identList) {
-//			env.addVariable(ident, (Type)o);
-//		}
-//		
-		return null;
+	public List<String> interpret(Environment env) {
+		return identList;
+	}
+	
+	@Override
+	public Type processValue(String identName, Type value) {
+		if (!identList.contains(identName)) {
+			throw new RuntimeException("Parameter " +identName+ " is not in the list!");
+		}
+		
+		return value.clone();
 	}
 }

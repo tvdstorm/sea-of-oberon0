@@ -16,6 +16,13 @@ VAR
     y := temp
   END Swap;
 
+PROCEDURE Swap2;
+  VAR
+    temp: INTEGER;
+  BEGIN
+    temp := 5;
+  END Swap2;
+
 BEGIN
  i := 0;
  WHILE i < INPUTLENGTH DO

@@ -4,6 +4,6 @@ import java.util.List;
 
 import nl.bve.uva.oberon.ast.IInterpretableNode;
 
-public interface Procedure extends IInterpretableNode {
-	public void setActualParameters(List<IInterpretableNode> fp);
+public interface Procedure {
+	public void callProcedure(Environment env, List<IInterpretableNode> ap);
 }

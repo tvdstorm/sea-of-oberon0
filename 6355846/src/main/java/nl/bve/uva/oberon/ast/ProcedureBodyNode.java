@@ -14,7 +14,12 @@ public class ProcedureBodyNode implements IInterpretableNode {
 	@Override
 	public Object interpret(Environment env) {
 		declarations.interpret(env);
+		
+		System.out.println("ENVIRONMENT in UserProcedure: \n" +env.toString()+ "\nEND OF ENVIRONMENT");
+		
 		body.interpret(env);
+		
+		System.out.println("ENVIRONMENT in UserProcedure: \n" +env.toString()+ "\nEND OF ENVIRONMENT");
 		
 		return null;
 	}

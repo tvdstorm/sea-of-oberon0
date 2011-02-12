@@ -1,50 +1,57 @@
 package nl.bve.uva.oberon.env;
 
 import java.util.List;
+import java.util.ListIterator;
 
 import nl.bve.uva.oberon.ast.IInterpretableNode;
+import nl.bve.uva.oberon.ast.ParametersNode;
 import nl.bve.uva.oberon.env.types.Type;
 
 public class UserProcedure implements Procedure {
-	private IInterpretableNode heading;
-	private IInterpretableNode body;
-	private List<IInterpretableNode> actualParameters;
+	private String name;
+	private List<IInterpretableNode> formalParametersList;
+	private IInterpretableNode body;	
 	
-	public UserProcedure(IInterpretableNode heading, IInterpretableNode body) {
-		this.heading = heading;
+	public UserProcedure(String name, List<IInterpretableNode> fpList, IInterpretableNode body) {
+		this.name = name;
+		this.formalParametersList = fpList;
 		this.body = body;
 	}
 	
 	@Override
-	public Object interpret(Environment env) {
-		System.out.println("executing procedure...");
-		List<IInterpretableNode> actualParameters = this.actualParameters;
+	public void callProcedure(Environment env, List<IInterpretableNode> actualParameters) {
+		if (formalParametersList == null && actualParameters != null) {
+			throw new RuntimeException("Too many actual values provided for procedure " +name);
+		}
+		if (formalParametersList != null && actualParameters == null) {
+			throw new RuntimeException("No actual values given for procedure " +name+ " (parameters needed: " +formalParametersList.size());
+		}
+		
 		Environment subEnv = env.getNewSubSpace();
 		
-		if (actualParameters != null) {
-			int paramCount = 1;
-			for (IInterpretableNode parameter : actualParameters) {
-				Type t = (Type)parameter.interpret(subEnv);
+		if (formalParametersList != null && actualParameters != null) {
+			ListIterator<IInterpretableNode> actuals = actualParameters.listIterator();
+			
+			for (IInterpretableNode fpList : formalParametersList) {
+				ParametersNode fpSection = (ParametersNode) fpList;
+				List<String> identList = fpSection.interpret(subEnv);
 				
-				subEnv.addVariable("ACTUAL_VAR_" +paramCount, t);
-				
-				paramCount++;
+				for (String ident : identList) {
+					if (!actuals.hasNext()) {
+						throw new RuntimeException("Not enough actual values given for procedure " +name+ " (parameters needed: " +formalParametersList.size());
+					}
+					
+					Type value = (Type)actuals.next().interpret(subEnv);
+					value = fpSection.processValue(ident, value);
+					subEnv.addVariable(ident, value);
+				}
+			}
+			
+			if (actuals.hasNext()) {
+				throw new RuntimeException("Too many actual values given for procedure " +name+ " (parameters needed: " +formalParametersList.size());
 			}
 		}
 		
-		System.out.println("ENVIRONMENT in UserProcedure: \n" +env.toString()+ "\nEND OF ENVIRONMENT");
-		
-		heading.interpret(subEnv);
 		body.interpret(subEnv);
-		
-		
-		actualParameters = null;
-		return null;
-	}
-	
-	@Override
-	public void setActualParameters(List<IInterpretableNode> ap) {
-		System.out.println("setting actual parameters...");
-		this.actualParameters = ap;
 	}
 }
