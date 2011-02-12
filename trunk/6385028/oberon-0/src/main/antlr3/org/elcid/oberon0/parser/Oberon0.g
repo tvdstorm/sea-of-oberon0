@@ -140,8 +140,8 @@ statementSequence returns [StatementSequenceNode result]
 	;
 
 statement returns [StatementNode result]
-	:	((identSelector ASSIGN_OP) => a=assignment)		{ $result = $a.result; }
-	|	procedureCall
+	:	a=assignment									{ $result = $a.result; }
+	|	p=procedureCall
 	|	i=ifStatement									{ $result = $i.result; }
 	|	w=whileStatement								{ $result = $w.result;}
 	;
@@ -151,7 +151,7 @@ assignment returns [StatementNode result]
 	;
 
 procedureCall
-	:	identSelector (actualParameters)?
+	:	identifier (actualParameters)?
 	;
 
 whileStatement returns [StatementNode result]
