@@ -75,17 +75,23 @@ public class RecordDataType extends AbstractDataType {
 	public void setValueAtIndex(String fieldName, int value) {
 		fieldValues.get(fieldName).setValue(value);
 	}
-	
-	public void initializeArrayMembers(Scope currentScope){
+
+	/* (non-Javadoc)
+	 * @see oberon.data.AbstractDataType#initialize()
+	 */
+	@Override
+	public void initialize(Scope currentScope) {
 		for (Entry<String, IDataType> valueSet : fieldValues.entrySet()) {
 			IDataType value = valueSet.getValue();
 			if (value instanceof RecordDataType){
-				((RecordDataType)value).initializeArrayMembers(currentScope);
+				((RecordDataType)value).initialize(currentScope);
 			}
 			else if (value instanceof IntegerArrayDataType){
-				((IntegerArrayDataType)value).initializeArray(currentScope);
+				((IntegerArrayDataType)value).initialize(currentScope);
 			}
 		}
 	}
+	
+	
 
 }

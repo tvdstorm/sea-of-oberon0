@@ -47,4 +47,11 @@ public interface IDataType {
 	 */
 	public abstract void setValue(final int value);
 
+	/**
+	 * Initializes the datatype.
+	 *
+	 * @param currentScope the current scope
+	 */
+	public abstract void initialize(Scope currentScope);
+
 }
