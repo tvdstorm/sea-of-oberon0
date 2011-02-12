@@ -33,8 +33,7 @@ package nl.bve.uva.oberon.parser;
 
 module returns [IInterpretableNode result]
 	:	'MODULE' i1=IDENT ';' declarations 
-			(
-				'BEGIN' statementSequence						{$result = $statementSequence.result; }
+			('BEGIN' statementSequence							{$result = $statementSequence.result; }
 			)? 'END' i2=IDENT '.'								{$result = new ModuleNode($i1.text, $i2.text, $declarations.result, $result); }
 	;
 
@@ -79,16 +78,16 @@ procedureBody returns [IInterpretableNode result]
 			)? 													{$result = new ProcedureBodyNode($d.result, $result); }
 	;
 			
-formalParameters returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()]
+formalParameters returns [List<TypedParameterList> result = new ArrayList<TypedParameterList>()]
 	:	'(' (fp1=fPSection 										{$result.add($fp1.result); }
 				(';' fp2=fPSection								{$result.add($fp2.result); }
 				)*
 			)? ')'
 	;
 
-fPSection returns [IInterpretableNode result]
-	:	('VAR' i1=identList ':' t1=type							{$result = new ReferenceParametersNode($i1.result, $t1.result); }
-		|i2=identList ':' t2=type								{$result = new ValueParametersNode($i2.result, $t2.result); }
+fPSection returns [TypedParameterList result]
+	:	('VAR' i1=identList ':' t1=type							{$result = new TypedReferenceParameterList($i1.result, $t1.result); }
+		|i2=identList ':' t2=type								{$result = new TypedValueParameterList($i2.result, $t2.result); }
 		)
 	;
 

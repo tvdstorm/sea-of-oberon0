@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import nl.bve.uva.oberon.ast.TypedParameterList;
+import nl.bve.uva.oberon.ast.TypedReferenceParameterList;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.procedures.BuiltInProcedure;
-import nl.bve.uva.oberon.env.procedures.TypedParameterList;
-import nl.bve.uva.oberon.env.procedures.TypedReferenceParameterList;
 import nl.bve.uva.oberon.env.types.OberonInt;
 import nl.bve.uva.oberon.env.types.Type;
 

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 import nl.bve.uva.oberon.ast.IInterpretableNode;
+import nl.bve.uva.oberon.ast.TypedParameterList;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.types.Type;
 
@@ -33,7 +34,7 @@ public abstract class BuiltInProcedure implements Procedure {
 					}
 					
 					Type value = (Type)actuals.next().interpret(subEnv);
-					value = fpList.processValue(value);
+					value = fpList.processValue(ident, value, subEnv);
 					subEnv.addVariable(ident, value);
 				}
 			}

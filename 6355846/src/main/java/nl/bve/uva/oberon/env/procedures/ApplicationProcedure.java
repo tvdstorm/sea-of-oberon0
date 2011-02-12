@@ -4,16 +4,16 @@ import java.util.List;
 import java.util.ListIterator;
 
 import nl.bve.uva.oberon.ast.IInterpretableNode;
-import nl.bve.uva.oberon.ast.ParametersNode;
+import nl.bve.uva.oberon.ast.TypedParameterList;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.types.Type;
 
 public class ApplicationProcedure implements Procedure {
 	private String name;
-	private List<IInterpretableNode> formalParametersList;
+	private List<TypedParameterList> formalParametersList;
 	private IInterpretableNode body;	
 	
-	public ApplicationProcedure(String name, List<IInterpretableNode> fpList, IInterpretableNode body) {
+	public ApplicationProcedure(String name, List<TypedParameterList> fpList, IInterpretableNode body) {
 		this.name = name;
 		this.formalParametersList = fpList;
 		this.body = body;
@@ -33,9 +33,8 @@ public class ApplicationProcedure implements Procedure {
 		if (formalParametersList != null && actualParameters != null) {
 			ListIterator<IInterpretableNode> actuals = actualParameters.listIterator();
 			
-			for (IInterpretableNode fpList : formalParametersList) {
-				ParametersNode fpSection = (ParametersNode) fpList;
-				List<String> identList = fpSection.interpret(subEnv);
+			for (TypedParameterList fpList : formalParametersList) {
+				List<String> identList = fpList.getParametersList();
 				
 				for (String ident : identList) {
 					if (!actuals.hasNext()) {
@@ -43,7 +42,7 @@ public class ApplicationProcedure implements Procedure {
 					}
 					
 					Type value = (Type)actuals.next().interpret(subEnv);
-					value = fpSection.processValue(ident, value);
+					value = fpList.processValue(ident, value, subEnv);
 					subEnv.addVariable(ident, value);
 				}
 			}

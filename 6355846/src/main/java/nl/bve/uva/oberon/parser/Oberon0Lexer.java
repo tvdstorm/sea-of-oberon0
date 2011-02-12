@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:50:56 C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g 2011-02-12 21:04:58
+// $ANTLR 3.3 Nov 30, 2010 12:50:56 C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g 2011-02-12 22:07:08
 
 package nl.bve.uva.oberon.parser;
 
@@ -834,8 +834,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = NUMBER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:226:8: ( INTEGER )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:226:10: INTEGER
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:225:8: ( INTEGER )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:225:10: INTEGER
             {
             mINTEGER(); 
 
@@ -854,11 +854,11 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = IDENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:227:7: ( LETTER ( LETTER | DIGIT )* )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:227:9: LETTER ( LETTER | DIGIT )*
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:226:7: ( LETTER ( LETTER | DIGIT )* )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:226:9: LETTER ( LETTER | DIGIT )*
             {
             mLETTER(); 
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:227:16: ( LETTER | DIGIT )*
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:226:16: ( LETTER | DIGIT )*
             loop1:
             do {
                 int alt1=3;
@@ -874,14 +874,14 @@ public class Oberon0Lexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:227:17: LETTER
+            	    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:226:17: LETTER
             	    {
             	    mLETTER(); 
 
             	    }
             	    break;
             	case 2 :
-            	    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:227:26: DIGIT
+            	    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:226:26: DIGIT
             	    {
             	    mDIGIT(); 
 
@@ -907,10 +907,10 @@ public class Oberon0Lexer extends Lexer {
     // $ANTLR start "INTEGER"
     public final void mINTEGER() throws RecognitionException {
         try {
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:229:17: ( ( DIGIT )+ )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:229:19: ( DIGIT )+
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:228:17: ( ( DIGIT )+ )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:228:19: ( DIGIT )+
             {
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:229:19: ( DIGIT )+
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:228:19: ( DIGIT )+
             int cnt2=0;
             loop2:
             do {
@@ -924,7 +924,7 @@ public class Oberon0Lexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:229:20: DIGIT
+            	    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:228:20: DIGIT
             	    {
             	    mDIGIT(); 
 
@@ -952,10 +952,10 @@ public class Oberon0Lexer extends Lexer {
     // $ANTLR start "LETTER"
     public final void mLETTER() throws RecognitionException {
         try {
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:230:17: ( ( 'a' .. 'z' | 'A' .. 'Z' )+ )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:230:19: ( 'a' .. 'z' | 'A' .. 'Z' )+
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:229:17: ( ( 'a' .. 'z' | 'A' .. 'Z' )+ )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:229:19: ( 'a' .. 'z' | 'A' .. 'Z' )+
             {
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:230:19: ( 'a' .. 'z' | 'A' .. 'Z' )+
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:229:19: ( 'a' .. 'z' | 'A' .. 'Z' )+
             int cnt3=0;
             loop3:
             do {
@@ -1005,8 +1005,8 @@ public class Oberon0Lexer extends Lexer {
     // $ANTLR start "DIGIT"
     public final void mDIGIT() throws RecognitionException {
         try {
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:231:16: ( '0' .. '9' )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:231:17: '0' .. '9'
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:230:16: ( '0' .. '9' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:230:17: '0' .. '9'
             {
             matchRange('0','9'); 
 
@@ -1023,10 +1023,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = WHITESPACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:233:12: ( ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+ )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:233:14: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:232:12: ( ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+ )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:232:14: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
             {
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:233:14: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:232:14: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
             int cnt4=0;
             loop4:
             do {
