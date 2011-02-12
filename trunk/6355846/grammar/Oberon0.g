@@ -68,14 +68,9 @@ varDeclarations returns [List<IInterpretableNode> result = new ArrayList<IInterp
 procedureDeclarations returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()]
 	:	(
 			'PROCEDURE' i1=IDENT
-				ph=procedureHeading ';' pb=procedureBody 		
-					'END' i2=IDENT ';'							{$result.add(new ProcedureDeclarationNode($i1.text, $i2.text, $ph.result, $pb.result)); }
+				(fp=formalParameters							
+				)? ';' pb=procedureBody 'END' i2=IDENT ';'		{$result.add(new ProcedureDeclarationNode($i1.text, $i2.text, $fp.result, $pb.result)); }
 		)*
-	;
-
-procedureHeading returns [IInterpretableNode result]
-	:		(formalParameters									{$result = new ProcedureHeadingNode($formalParameters.result); }
-			)?
 	;
 
 procedureBody returns [IInterpretableNode result]

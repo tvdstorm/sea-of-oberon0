@@ -20,8 +20,7 @@ public class ProcedureCallNode implements IInterpretableNode {
 		
 		assert p != null : "No procedure found, Environment returned null!";
 		
-		p.setActualParameters(actuals);
-		p.interpret(env);
+		p.callProcedure(env, actuals);
 		
 		return null;
 	}
