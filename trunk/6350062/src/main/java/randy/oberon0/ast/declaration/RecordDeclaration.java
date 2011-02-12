@@ -17,7 +17,7 @@ public class RecordDeclaration extends AbstractTypeDeclaration
 		assert(_recordName.length() > 0);
 		assert(_memberVariables != null);
 		recordName = _recordName;
-		memberVariables = _memberVariables;
+		memberVariables = new HashMap<String, String>(_memberVariables);
 	}
 	@Override
 	public void register(RuntimeEnvironment newEnvironment) throws RuntimeException
@@ -29,7 +29,6 @@ public class RecordDeclaration extends AbstractTypeDeclaration
 	public void typeCheckRegister(TypeCheckEnvironment newEnvironment) throws TypeCheckException
 	{
 		assert(newEnvironment != null);
-		TypeCheckRecordType recordType = new TypeCheckRecordType(recordName, memberVariables);
-		newEnvironment.registerType(recordName, recordType);
+		newEnvironment.registerType(recordName, new TypeCheckRecordType(recordName, memberVariables));
 	}
 }

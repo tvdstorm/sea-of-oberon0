@@ -1,7 +1,7 @@
 package randy.oberon0.ast.selector;
 
+import randy.oberon0.exception.*;
 import randy.oberon0.exception.RuntimeException;
-import randy.oberon0.exception.TypeCheckException;
 import randy.oberon0.interpreter.runtime.environment.*;
 import randy.oberon0.interpreter.typecheck.environment.*;
 
@@ -26,6 +26,11 @@ public class VariableSelector extends Selector
 	{
 		assert(environment != null);
 		// Retrieve the value of the variable and return it
-		return (TypeCheckReference)environment.lookup(variableName);
+		ITypeCheckBindable binding = environment.lookup(variableName);
+		if (!(binding instanceof TypeCheckReference))
+		{
+			throw new UndefinedBindableException(variableName); // TODO: andere exception voor maken
+		}
+		return (TypeCheckReference)binding;
 	}
 }

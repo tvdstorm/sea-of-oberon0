@@ -4,7 +4,7 @@ import java.util.*;
 import randy.oberon0.interpreter.runtime.IInvokableProcedure;
 import randy.oberon0.ast.expression.Expression;
 import randy.oberon0.exception.RuntimeException;
-import randy.oberon0.exception.TypeCheckException;
+import randy.oberon0.exception.*;
 import randy.oberon0.interpreter.runtime.environment.*;
 import randy.oberon0.interpreter.typecheck.environment.*;
 
@@ -18,7 +18,7 @@ public class ProcedureCall extends Statement
 		assert(_procedureName != null);
 		assert(_parameterExpressions != null);
 		procedureName = _procedureName;
-		parameterExpressions = _parameterExpressions;
+		parameterExpressions = new ArrayList<Expression>(_parameterExpressions);
 	}
 	@Override
 	public void run(RuntimeEnvironment environment) throws RuntimeException
@@ -53,7 +53,12 @@ public class ProcedureCall extends Statement
 			parameters.add(v);
 		}
 		// Resolve the procedure name to a procedure
-		TypeCheckClosure closure = (TypeCheckClosure)environment.lookup(procedureName);
+		ITypeCheckBindable binding = environment.lookup(procedureName);
+		if (!(binding instanceof TypeCheckClosure))
+		{
+			throw new UndefinedBindableException(procedureName); // TODO: eigen exceptie geven
+		}
+		TypeCheckClosure closure = (TypeCheckClosure)binding;
 		final IInvokableProcedure procedureDeclaration = closure.getProcedure();
 		// Create a new environment for the to be invoked procedure
 		TypeCheckEnvironment invokedEnvironment = new TypeCheckEnvironment(closure.getEnvironment());

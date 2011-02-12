@@ -35,13 +35,6 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableP
 		newEnvironment.registerProcedure(getName(), this);
 	}
 	@Override
-	public void typeCheckRegister(TypeCheckEnvironment newEnvironment) throws TypeCheckException
-	{
-		assert(newEnvironment != null);
-		// Register the procedure in the environment
-		newEnvironment.registerProcedure(getName(), this);
-	}
-	@Override
 	public void registerTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException
 	{
 		assert(newEnvironment != null);
@@ -63,11 +56,6 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableP
 		{
 			p.registerAsParameter(environment, parameterValues);
 		}
-		// If parameterValues has any values left, the number of arguments don't match
-		if (parameterValues.hasNext())
-		{
-			throw new UnreachableRuntimeException();
-		}
 		// Loop through all body declarations except type declarations
 		for (BodyDeclaration bodyDecl : bodyDeclarations)
 		{
@@ -83,6 +71,13 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableP
 	public String getName()
 	{
 		return procedureName;
+	}
+	@Override
+	public void typeCheckRegister(TypeCheckEnvironment newEnvironment) throws TypeCheckException
+	{
+		assert(newEnvironment != null);
+		// Register the procedure in the environment
+		newEnvironment.registerProcedure(getName(), this);
 	}
 	@Override
 	public void typeCheckInvoke(TypeCheckEnvironment environment, Iterator<ITypeCheckBindableValue> parameterValues) throws TypeCheckException

@@ -1,12 +1,9 @@
 package randy.oberon0.ast.declaration;
 
 import java.util.*;
-import randy.oberon0.ast.expression.ValueToReferenceConversion;
 import randy.oberon0.exception.*;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.environment.*;
-import randy.oberon0.interpreter.runtime.environment.IBindableValue;
-import randy.oberon0.interpreter.runtime.environment.Reference;
 import randy.oberon0.interpreter.typecheck.environment.*;
 
 public class VarDeclaration extends BodyDeclaration
@@ -27,30 +24,17 @@ public class VarDeclaration extends BodyDeclaration
 		typeName = _typeName;
 		isArray = _isArray;
 		isReference = _isReference;
-		variableNames = _variableNames;
+		variableNames = new ArrayList<String>(_variableNames);
 	}
 	@Override
 	public void register(RuntimeEnvironment newEnvironment) throws RuntimeException // Use for variable declarations IN procedures or modules
 	{
 		assert(newEnvironment != null);
-		// Loop through all variable names
+		// Add all variables to the environment
 		for (String variableName : variableNames)
 		{
 			assert(variableName.length() >= 1);
-			// Add the variable to the environment
 			newEnvironment.registerVariableByReference(variableName, new Reference(newEnvironment.resolveType(typeName).instantiate(newEnvironment)));
-		}
-	}
-	@Override
-	public void typeCheckRegister(TypeCheckEnvironment newEnvironment) throws TypeCheckException // Use for variable declarations IN procedures or modules
-	{
-		assert(newEnvironment != null);
-		// Loop through all variable names
-		for (String variableName : variableNames)
-		{
-			assert(variableName.length() >= 1);
-			// Add the variable to the environment
-			newEnvironment.registerVariableByReference(variableName, new TypeCheckReference(newEnvironment.resolveType(typeName)));
 		}
 	}
 	public void registerAsParameter(RuntimeEnvironment environment, Iterator<IBindableValue> parameterValues) throws RuntimeException // Use for registering parameters
@@ -60,29 +44,27 @@ public class VarDeclaration extends BodyDeclaration
 		// Loop through all variable names
 		for (String variableName : variableNames)
 		{
-			// Check if we have a parameter left
-			if (!parameterValues.hasNext())
-			{
-				throw new UnreachableRuntimeException();
-			}
 			// Fetch a parameter value from the parameter values
 			final IBindableValue parameterValue = parameterValues.next();
-			// Resolve the variable type and check if they are compatible
-			if (parameterValue.getValue().getType() != environment.resolveType(typeName).instantiate(environment).getType())
-			{
-				throw new UnreachableRuntimeException();
-			}
-			// Check if the variable is a reference
 			if (isReference)
 			{
-				// Yes, make a reference to the variable and add it to the environment
 				environment.registerVariableByReference(variableName, (Reference)parameterValue);
 			}
 			else
-			{	
-				// No, create a copy of the parameter and register it in the environment
+			{
 				environment.registerVariableByValue(variableName, parameterValue.getValue().clone());
 			}
+		}
+	}
+	@Override
+	public void typeCheckRegister(TypeCheckEnvironment newEnvironment) throws TypeCheckException // Use for variable declarations IN procedures or modules
+	{
+		assert(newEnvironment != null);
+		// Add all variables to the environment
+		for (String variableName : variableNames)
+		{
+			assert(variableName.length() >= 1);
+			newEnvironment.registerVariableByReference(variableName, new TypeCheckReference(newEnvironment.resolveType(typeName)));
 		}
 	}
 	public void typeCheckRegisterAsParameter(TypeCheckEnvironment environment, Iterator<ITypeCheckBindableValue> parameterValues) throws TypeCheckException // Use for registering parameters
@@ -110,7 +92,7 @@ public class VarDeclaration extends BodyDeclaration
 				// Yes, make a reference to the variable and add it to the environment
 				if (!(parameterValue instanceof TypeCheckReference))
 				{
-					throw new ValueToReferenceConversion();
+					throw new ValueToReferenceConversionException();
 				}
 				environment.registerVariableByReference(variableName, (TypeCheckReference)parameterValue);
 			}

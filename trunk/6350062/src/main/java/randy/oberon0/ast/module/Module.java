@@ -5,10 +5,8 @@ import randy.oberon0.ast.ASTNode;
 import randy.oberon0.ast.declaration.*;
 import randy.oberon0.ast.statement.Statement;
 import randy.oberon0.interpreter.runtime.IInvokableProcedure;
-import randy.oberon0.exception.IncorrectNumberOfArgumentsException;
+import randy.oberon0.exception.*;
 import randy.oberon0.exception.RuntimeException;
-import randy.oberon0.exception.TypeCheckException;
-import randy.oberon0.exception.UnreachableRuntimeException;
 import randy.oberon0.interpreter.runtime.environment.*;
 import randy.oberon0.interpreter.typecheck.environment.*;
 
@@ -42,11 +40,6 @@ public class Module extends ASTNode implements IInvokableProcedure
 	{
 		assert(environment != null);
 		assert(parameterValues != null);
-		// Modules don't have parameters
-		if (parameterValues.hasNext())
-		{
-			throw new UnreachableRuntimeException();
-		}
 		// Loop through all body declarations except type declarations
 		for (BodyDeclaration bodyDecl : bodyDeclarations)
 		{

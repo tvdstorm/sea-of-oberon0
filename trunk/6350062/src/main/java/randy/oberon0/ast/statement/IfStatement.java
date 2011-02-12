@@ -16,7 +16,7 @@ public class IfStatement extends Statement
 	public IfStatement(List<IfExpressionAndBody> _ifStatements, Block _elseBody)
 	{
 		assert(_ifStatements != null);
-		ifStatements = _ifStatements;
+		ifStatements = new ArrayList<IfExpressionAndBody>(_ifStatements);
 		elseBody = _elseBody;
 	}
 	@Override
