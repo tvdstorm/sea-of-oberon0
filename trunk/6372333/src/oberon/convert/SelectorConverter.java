@@ -1,13 +1,13 @@
 package oberon.convert;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import oberon.IExpression;
 import oberon.IIdentifier;
-import oberon.data.ArrayIndexerIdentifier;
-import oberon.data.RecordIndexerIdentifier;
-import oberon.data.VariableIdentifier;
-import oberon.node.AArrayexpressionSelector;
-import oberon.node.AIdentifierSelector;
-import oberon.node.ARecordSelector;
+import oberon.data.*;
+import oberon.node.*;
 
 /**
  * The Class SelectorConverter.
@@ -30,11 +30,19 @@ public class SelectorConverter extends AbstractConverter<IIdentifier> {
 	 */
 	@Override
 	public void caseARecordSelector(final ARecordSelector node) {
-		final SelectorConverter interpreter = new SelectorConverter();
-		node.getSelector().apply(interpreter);
-		final IIdentifier recordSelector = interpreter.buildInterpreterResult();
+		Iterator<PRecord> iterator = node.getRecord().iterator();
 		
-		selector = new RecordIndexerIdentifier(recordSelector, node.getIdentifier().toString().trim());
+		ARecord rootRecord = (ARecord) iterator.next();
+		VariableIdentifier rootName = new VariableIdentifier(rootRecord.getIdentifier().toString().trim());
+		
+		List<String> subRecords = new ArrayList<String>();
+		while (iterator.hasNext()){
+			ARecord record = (ARecord)iterator.next();
+			subRecords.add(record.getIdentifier().toString().trim());
+		}
+		
+		selector = new RecordIndexerIdentifier(rootName, subRecords, 
+				node.getIdentifier().toString().trim());
 	}
 	
 	/* (non-Javadoc)

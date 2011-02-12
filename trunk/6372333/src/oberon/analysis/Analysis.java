@@ -52,6 +52,7 @@ public interface Analysis extends Switch
     void caseARecordSelector(ARecordSelector node);
     void caseAIdentifierSelector(AIdentifierSelector node);
     void caseAArrayexpressionSelector(AArrayexpressionSelector node);
+    void caseARecord(ARecord node);
     void caseAReadproc(AReadproc node);
     void caseAWriteproc(AWriteproc node);
     void caseAWritelnproc(AWritelnproc node);
