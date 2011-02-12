@@ -90,6 +90,7 @@ public class Environment {
 		return result;
 	}
 	
+	@SuppressWarnings("unchecked")
 	private Procedure loadProcedure(String procedureName) {
 		Procedure result = null;
 		
