@@ -37,6 +37,7 @@ public class ASTNodeTest
 			runTest(""+a, ""+b, ""+c);
 			Assert.assertTrue(procedures.popOutput().equals("" + (a+b)));
 			Assert.assertTrue(procedures.popOutput().equals("" + (a+b+c)));
+			Assert.assertTrue(procedures.popOutput().equals("" + (a%b)));
 			Assert.assertTrue(procedures.outputIsEmpty());
 		}
 	}

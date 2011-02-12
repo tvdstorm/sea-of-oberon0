@@ -7,5 +7,6 @@ Read(b);
 Read(c);
 Write(a+b);
 Write(a+b+c);
+Write(a MOD b);
 
 END Addition.

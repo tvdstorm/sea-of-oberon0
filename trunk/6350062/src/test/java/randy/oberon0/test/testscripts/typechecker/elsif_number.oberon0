@@ -1,4 +1,4 @@
-MODULE Elseifnumber;
+MODULE Elsifnumber;
 
 BEGIN
 
@@ -8,5 +8,5 @@ ELSIF 3 THEN
 	Write(2);
 END;
 
-END Elseifnumber.
+END Elsifnumber.
 
