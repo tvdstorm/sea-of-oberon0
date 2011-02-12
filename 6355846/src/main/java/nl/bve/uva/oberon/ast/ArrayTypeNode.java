@@ -15,8 +15,6 @@ public class ArrayTypeNode implements IInterpretableNode {
 	
 	@Override
 	public Object interpret(Environment env) {
-		System.out.println("ENVIRONMENT: \n" +env.toString()+ "\nEND OF ENVIRONMENT");
-		
 		Type size = (Type)expression.interpret(env);
 		Type type = (Type)arrayType.interpret(env);
 		
