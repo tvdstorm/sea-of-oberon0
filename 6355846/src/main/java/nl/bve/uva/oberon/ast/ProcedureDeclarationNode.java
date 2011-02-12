@@ -3,7 +3,7 @@ package nl.bve.uva.oberon.ast;
 import java.util.List;
 
 import nl.bve.uva.oberon.env.Environment;
-import nl.bve.uva.oberon.env.procedures.UserProcedure;
+import nl.bve.uva.oberon.env.procedures.ApplicationProcedure;
 
 public class ProcedureDeclarationNode implements IInterpretableNode {
 	private String ident;
@@ -27,7 +27,7 @@ public class ProcedureDeclarationNode implements IInterpretableNode {
 			System.out.println(node.toString());
 		}
 		
-		env.addProcedure(ident, new UserProcedure(ident, formalParameters, body));
+		env.addProcedure(ident, new ApplicationProcedure(ident, formalParameters, body));
 		
 		return null;
 	}
