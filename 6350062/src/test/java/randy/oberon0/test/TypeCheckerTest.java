@@ -49,6 +49,15 @@ public class TypeCheckerTest
 		{"array_accessor_on_integer", new TypeMismatchException(Type.INTEGER.getTypeText(), Type.ARRAY.getTypeText()), "Array accessor on INTEGER"},
 		{"array_index_boolean", new TypeMismatchException(Type.BOOLEAN.getTypeText(), Type.INTEGER.getTypeText()), "BOOLEAN as array index"},
 		{"duplicate_variable_name", new DuplicateVariableException("a"), "Duplicate variabel name"},
+		{"if_number", new TypeMismatchException(Type.INTEGER.getTypeText(), Type.BOOLEAN.getTypeText()), "INTEGER as IF expression"},
+		{"elsif_number", new TypeMismatchException(Type.INTEGER.getTypeText(), Type.BOOLEAN.getTypeText()), "INTEGER as ELSIF expression"},
+		{"procedurecall_too_few_parameters", new IncorrectNumberOfArgumentsException(), "Not enough parameters passed to a procedure call"},
+		{"procedurecall_too_many_parameters", new IncorrectNumberOfArgumentsException(), "Too many parameters passed to a procedure call"},
+		{"infix_boolean_add", new OperatorTypeUndefinedException("+", Type.BOOLEAN.getTypeText(), Type.BOOLEAN.getTypeText()), "Add on BOOLEAN and BOOLEAN"},
+		{"while_integer_expression", new TypeMismatchException(Type.INTEGER.getTypeText(), Type.BOOLEAN.getTypeText()), "INTEGER as WHILE expression"},
+		{"infix_integer_and", new OperatorTypeUndefinedException("AND", Type.INTEGER.getTypeText(), Type.INTEGER.getTypeText()), "And on INTEGER and INTEGER"},
+		{"incorrect_parameter_type", new TypeMismatchException(Type.INTEGER.getTypeText(), Type.ARRAY.getTypeText()), "INTEGER instead of a ARRAY parameter"},
+		{"variable_in_deeper_scope", new UndefinedBindableException("vaa"), "Using a variable declared in a deeper scope in a procedure"},
 		};
 		return Arrays.asList(data);
 	}

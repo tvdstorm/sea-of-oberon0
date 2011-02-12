@@ -33,6 +33,7 @@ public class Program
 		Oberon0ASTTreeGenerator generator = new Oberon0ASTTreeGenerator();
 		module = generator.buildASTTreeFromFile(filename);
 		typeCheck();
+		// TODO: wat doen als het type checken mislukt
 	}
 	public void run() throws RuntimeException
 	{
