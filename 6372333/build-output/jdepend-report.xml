@@ -64,8 +64,8 @@
 
         <Package name="oberon.convert">
             <Stats>
-                <TotalClasses>25</TotalClasses>
-                <ConcreteClasses>24</ConcreteClasses>
+                <TotalClasses>26</TotalClasses>
+                <ConcreteClasses>25</ConcreteClasses>
                 <AbstractClasses>1</AbstractClasses>
                 <Ca>1</Ca>
                 <Ce>5</Ce>
@@ -147,6 +147,9 @@
                 </Class>
                 <Class sourceFile="VariableConverter.java">
                     oberon.convert.VariableConverter
+                </Class>
+                <Class sourceFile="WithStatementConverter.java">
+                    oberon.convert.WithStatementConverter
                 </Class>
                 <Class sourceFile="WriteLnProcConverter.java">
                     oberon.convert.WriteLnProcConverter
@@ -410,8 +413,8 @@
 
         <Package name="oberon.statement">
             <Stats>
-                <TotalClasses>7</TotalClasses>
-                <ConcreteClasses>7</ConcreteClasses>
+                <TotalClasses>9</TotalClasses>
+                <ConcreteClasses>9</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
                 <Ca>1</Ca>
                 <Ce>1</Ce>
@@ -439,6 +442,12 @@
                 </Class>
                 <Class sourceFile="WhileStatement.java">
                     oberon.statement.WhileStatement
+                </Class>
+                <Class sourceFile="WithAssignmentStatement.java">
+                    oberon.statement.WithAssignmentStatement
+                </Class>
+                <Class sourceFile="WithStatement.java">
+                    oberon.statement.WithStatement
                 </Class>
                 <Class sourceFile="WriteLnProcStatement.java">
                     oberon.statement.WriteLnProcStatement

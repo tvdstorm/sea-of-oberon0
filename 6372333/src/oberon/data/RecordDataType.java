@@ -91,6 +91,15 @@ public class RecordDataType extends AbstractDataType {
 			}
 		}
 	}
+
+	/**
+	 * Gets the fields.
+	 *
+	 * @return the fields
+	 */
+	public Map<String, IDataType> getFields() {
+		return fieldValues;
+	}
 	
 	
 

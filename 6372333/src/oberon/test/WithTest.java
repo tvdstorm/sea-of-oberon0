@@ -5,6 +5,7 @@ import java.io.PushbackReader;
 import java.io.StringReader;
 
 import junit.framework.Assert;
+
 import oberon.Main;
 import oberon.Scope;
 import oberon.data.IntegerArrayDataType;
@@ -16,35 +17,29 @@ import oberon.procedures.ProcedureHeading;
 
 import org.junit.Test;
 
-public class RecordTest extends AbstractTest {
-
+public class WithTest extends AbstractTest {
 	@Test
-	public void test_case_RecordTypeTest() throws ParserException, LexerException, IOException{
+	public void withTest() throws ParserException, LexerException, IOException{
 		String input = "MODULE module;" +
-				"" +
-				"VAR persoon : RECORD" +
-				"	leeftijd : INTEGER;" +
-				"	getallen : ARRAY 10 OF INTEGER;" +
-				"	adres : RECORD" +
-				"			straat : INTEGER" +
-				"		END;" +
-				"		jaar : INTEGER;" +
-				"END;" +
-				"" +
-				"BEGIN" +
-				"	persoon.leeftijd := 23;" +
-				"	persoon.jaar := 1923;" +
-				"	Write( persoon.jaar );" +
-				"	WriteLn;" +
-				"	persoon.adres.straat := 2;" +
-				"	Write(persoon.adres.straat);" +
-				"	WriteLn;" +
-				"	Write( persoon.leeftijd );" +
-				"	WriteLn;" +
-				"	persoon.getallen[1] := 3;" +
-				"	Write(persoon.getallen[1])" +
-				"END module.";
-
+		"" +
+		"VAR persoon : RECORD" +
+		"	leeftijd : INTEGER;" +
+		"	getallen : ARRAY 10 OF INTEGER;" +
+		"	adres : RECORD" +
+		"			straat : INTEGER" +
+		"		END;" +
+		"		jaar : INTEGER;" +
+		"END;" +
+		"" +
+		"BEGIN" +
+		"	WITH persoon " +
+		"		leeftijd := 23" +
+		"		jaar := 1923" +
+		"		adres.straat := 2" +
+		"		getallen[1] := 3" +
+		"	END " +
+		"END module.";
+		
 		StringReader reader = new StringReader(input); 
 		Lexer lexer = new PrintLexer(new PushbackReader(reader));
 		
@@ -58,5 +53,4 @@ public class RecordTest extends AbstractTest {
 		IntegerArrayDataType array = (IntegerArrayDataType) persoon.getValueAtIndex("getallen");
 		Assert.assertEquals(3, array.getValueAtIndex(1));
 	}
-	
 }

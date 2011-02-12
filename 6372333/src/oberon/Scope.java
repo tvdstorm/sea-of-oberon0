@@ -4,6 +4,8 @@ import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.List;
 
+import oberon.data.RecordDataType;
+import oberon.exceptions.BadWithStatementField;
 import oberon.exceptions.ProcedureNotFoundInScopeException;
 import oberon.exceptions.ProcedureParamaterCountMismatchException;
 import oberon.exceptions.VariableNotFoundInScopeException;
@@ -139,5 +141,22 @@ public class Scope {
 		}
 		
 		throw new VariableNotFoundInScopeException(variableName);
+	}
+
+	/**
+	 * Creates the new scope.
+	 *
+	 * @param identifierToWith the identifier to with
+	 * @return the scope
+	 */
+	public Scope createNewScope(IIdentifier identifierToWith) {
+		IDataType dataType = identifierToWith.getDataTypeValue(this);
+		if (dataType instanceof RecordDataType){
+			RecordDataType record = (RecordDataType)dataType;
+			
+			return new Scope((AbstractMap<String, IDataType>) record.getFields(), null, null);
+		}
+		
+		throw new BadWithStatementField("Field \"" + dataType.getName() + "\" is not a record and cannot be used in a with statement");
 	}
 }
