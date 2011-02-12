@@ -7,6 +7,7 @@ tokens {
 	DIV		= 'DIV';
 	MOD		= 'MOD';
 	EQUALS	= '='  ;
+	NOT_EQ  = '#'  ;
 	OR		= 'OR' ;
 	AND		= '&'  ;
 	LT		= '<'  ;
@@ -171,7 +172,7 @@ whileStatement returns [IInterpretableNode result]
 expression returns [IInterpretableNode result]
 	:	s1=simpleExpression 									{$result = $s1.result; }
 			( EQUALS s2=simpleExpression						{$result = new EqualsExprNode($s1.result, $s2.result); }
-			/* | '#' s2=simpleExpression						{} */
+			| NOT_EQ s2=simpleExpression						{$result = new NotEqualsExprNode($s1.result, $s2.result; }
 			| LT s2=simpleExpression							{$result = new LTExprNode($result, $s2.result); }
 			| LT_EQ s2=simpleExpression							{$result = new LTEqualsExprNode($result, $s2.result); }
 			| GT s2=simpleExpression							{$result = new GTExprNode($result, $s2.result); }

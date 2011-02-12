@@ -4,8 +4,8 @@ import nl.bve.uva.oberon.ast.IInterpretableNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.types.OberonInt;
 
-public class DivExprNode extends ExpressionNode {
-	public DivExprNode(IInterpretableNode lhn, IInterpretableNode rhn) {
+public class NotEqualsExprNode extends ExpressionNode {
+	public NotEqualsExprNode(IInterpretableNode lhn, IInterpretableNode rhn) {
 		super(lhn, rhn);
 	}
 	
@@ -14,6 +14,10 @@ public class DivExprNode extends ExpressionNode {
 		int left = getLeftHandValue(env);
 		int right = getRightHandValue(env);
 		
-		return new OberonInt(left / right);
+		if (left != right) {
+			return new OberonInt(OberonInt.TRUE);
+		} else {
+			return new OberonInt(OberonInt.FALSE);
+		}
 	}
 }
