@@ -2,9 +2,9 @@ package nl.bve.uva.oberon.env.procedures.builtins;
 
 import java.util.List;
 
+import nl.bve.uva.oberon.ast.TypedParameterList;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.procedures.BuiltInProcedure;
-import nl.bve.uva.oberon.env.procedures.TypedParameterList;
 
 public class WriteLn extends BuiltInProcedure {
 	@Override
