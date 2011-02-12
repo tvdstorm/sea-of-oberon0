@@ -1,6 +1,7 @@
 package org.elcid.oberon0.ast;
 
 import org.elcid.oberon0.ast.env.Environment;
+import org.elcid.oberon0.ast.visitor.DeclarationVisitor;
 import org.elcid.oberon0.ast.visitor.StatementVisitor;
 
 /**
@@ -10,6 +11,7 @@ import org.elcid.oberon0.ast.visitor.StatementVisitor;
 public class ModuleNode extends Node {
 
 	private String moduleName;
+	private DeclarationSequenceNode declarationSequence;
 	private StatementSequenceNode statementSequence;
 
 	public ModuleNode(String moduleName) {
@@ -18,6 +20,14 @@ public class ModuleNode extends Node {
 
 	public String getModuleName() {
 		return moduleName;
+	}
+
+	public void setDeclarationSequence(DeclarationSequenceNode declarationSequence) {
+		this.declarationSequence = declarationSequence;
+	}
+
+	public DeclarationSequenceNode getDeclarationSequence() {
+		return declarationSequence;
 	}
 
 	public void setStatementSequence(StatementSequenceNode statementSequence) {
@@ -29,6 +39,7 @@ public class ModuleNode extends Node {
 	}
 
 	public void run(Environment env) {
+		declarationSequence.run(new DeclarationVisitor(), env);
 		statementSequence.run(new StatementVisitor(), env);
 	}
 
