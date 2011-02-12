@@ -17,8 +17,6 @@ public class AssignmentNode implements IInterpretableNode {
 		Object ident = lhn.interpret(env);
 		Object value = rhn.interpret(env);
 		
-		assert ident instanceof Type : "Cannot assign a value to a non-Type instance!";
-		
 		Type var = (Type)ident;
 		var.setValue((Type)value);
 		
