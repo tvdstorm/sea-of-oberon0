@@ -12,14 +12,8 @@ public class LTEqualsExprNode extends ExpressionNode {
 	
 	@Override
 	public OberonInt interpret(Environment env) {
-		Object lhn = getLeftHandNode().interpret(env);
-		Object rhn = getRightHandNode().interpret(env);
-
-		assert (lhn instanceof Type);
-		assert (rhn instanceof Type);
-		
-		int left  = ((Type)lhn).getValue();
-		int right = ((Type)rhn).getValue();
+		int left = getLeftHandValue(env);
+		int right = getRightHandValue(env);
 		
 		if (left <= right) {
 			return new OberonInt(OberonInt.TRUE);
