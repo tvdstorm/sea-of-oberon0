@@ -1,8 +1,10 @@
 package nl.bve.uva.oberon.ast;
 
+import java.util.HashMap;
 import java.util.List;
 
 import nl.bve.uva.oberon.env.Environment;
+import nl.bve.uva.oberon.env.types.Type;
 
 public class TypedFieldListNode implements IInterpretableNode {
 	private List<String> identList;
@@ -14,8 +16,14 @@ public class TypedFieldListNode implements IInterpretableNode {
 	}
 	
 	@Override
-	public Object interpret(Environment env) {
-		// TODO Auto-generated method stub
-		return null;
+	public HashMap<String, Type> interpret(Environment env) {
+		HashMap<String, Type> fields = new HashMap<String, Type>();
+		Type value = (Type)type.interpret(env);
+		
+		for (String ident : identList) {
+			fields.put(ident, value.clone());
+		}
+		
+		return fields;
 	}
 }
