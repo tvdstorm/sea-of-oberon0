@@ -35,7 +35,9 @@
 	</target>
 	
 	<target name="executeApp" depends="compile" >
-		<java classname="nl.bve.uva.oberon.App" classpath="${build.dir}" classpathref="classpath" />
+		<java classname="nl.bve.uva.oberon.App" classpath="${build.dir}" classpathref="classpath">
+			<arg value="testprogs/quicksort.oberon0" />
+		</java>
 	</target>
 	
 	<target name="javancss" >
@@ -49,6 +51,7 @@
 				excludes="/nl/bve/uva/oberon/parser/**.*"
 				outputfile="docs/javancss_metrics.xml"
 				format="xml"/>
+				
 	</target>
 
 	<target name="jdepend" >

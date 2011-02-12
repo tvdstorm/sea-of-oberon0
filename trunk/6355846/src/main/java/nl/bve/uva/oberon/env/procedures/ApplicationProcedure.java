@@ -8,12 +8,12 @@ import nl.bve.uva.oberon.ast.ParametersNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.types.Type;
 
-public class UserProcedure implements Procedure {
+public class ApplicationProcedure implements Procedure {
 	private String name;
 	private List<IInterpretableNode> formalParametersList;
 	private IInterpretableNode body;	
 	
-	public UserProcedure(String name, List<IInterpretableNode> fpList, IInterpretableNode body) {
+	public ApplicationProcedure(String name, List<IInterpretableNode> fpList, IInterpretableNode body) {
 		this.name = name;
 		this.formalParametersList = fpList;
 		this.body = body;

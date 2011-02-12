@@ -16,9 +16,7 @@ public class Environment {
 	private LinkedHashMap<String, Type> identStack = new LinkedHashMap<String, Type>();
 	private LinkedHashMap<String, Procedure> procedureStack = new LinkedHashMap<String, Procedure>();
 	
-	public Environment() {
-		
-	}
+	public Environment() {}
 	
 	public Type createUserType(String typeDef) {
 		if (typeDef.equals("INTEGER")) {

@@ -7,7 +7,7 @@ import nl.bve.uva.oberon.ast.IInterpretableNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.types.Type;
 
-public abstract class BuiltIn implements Procedure {
+public abstract class BuiltInProcedure implements Procedure {
 	@Override
 	public void callProcedure(Environment env, List<IInterpretableNode> actualParameters) {
 		List<TypedParameterList> formalParametersList = getFormalParameters();

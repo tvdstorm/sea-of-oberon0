@@ -15,8 +15,10 @@ import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 
 public class App {
+	private static final String LOCATION_TESTAPPS = "testprogs";
+	
 	public static File chooseFile() {
-		File testFilesDir = new File("testprogs");
+		File testFilesDir = new File(LOCATION_TESTAPPS);
 		File[] oberonApps = testFilesDir.listFiles(new FileFilter() {
 			@Override
 			public boolean accept(File pathname) {
@@ -31,13 +33,20 @@ public class App {
 		System.out.flush();
 		
 		Scanner s = new Scanner(System.in);
+
 		File appToExecute = oberonApps[s.nextInt()];
 		
 		return appToExecute;
 	}
 	
 	public static void main(String[] args) throws Exception {
-		File appToExecute = chooseFile();
+		File appToExecute;
+		
+		if (args.length > 0) {
+			appToExecute = new File(args[0]);
+		} else {
+			appToExecute = chooseFile();
+		}
 		
 		// use the 'smoke test' file quicksort.oberon0 as testfile
 		FileInputStream fis = new FileInputStream(appToExecute);
@@ -55,12 +64,11 @@ public class App {
 			// Begin parsing at rule prog
 			IInterpretableNode startNode = parser.module();
 			
-			System.out.println("lexer: " +lexer.getNumberOfSyntaxErrors());
-			System.out.println("parser: " +parser.getNumberOfSyntaxErrors());
-			
 			if ((lexer.getNumberOfSyntaxErrors() == 0) && (parser.getNumberOfSyntaxErrors() == 0)) {
-				System.out.println("interpret result: " + startNode.interpret(new Environment()));
+				startNode.interpret(new Environment());
 			} else {
+				System.out.println("lexer errors:  " +lexer.getNumberOfSyntaxErrors());
+				System.out.println("parser errors: " +parser.getNumberOfSyntaxErrors());
 				System.out.println("There are parse- and/or lexer-errors!");
 			}
 		} catch (RecognitionException re) {
