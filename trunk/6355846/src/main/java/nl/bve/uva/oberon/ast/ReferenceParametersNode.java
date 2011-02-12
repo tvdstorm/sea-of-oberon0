@@ -21,7 +21,6 @@ public class ReferenceParametersNode implements ParametersNode {
 	
 	@Override
 	public Type processValue(String identName, Type value) {
-		System.out.println("processing value " +identName);
 		if (!identList.contains(identName)) {
 			throw new RuntimeException("Parameter " +identName+ " is not in the list!");
 		}

@@ -3,7 +3,7 @@ package nl.bve.uva.oberon.ast;
 import java.util.List;
 
 import nl.bve.uva.oberon.env.Environment;
-import nl.bve.uva.oberon.env.UserProcedure;
+import nl.bve.uva.oberon.env.procedures.UserProcedure;
 
 public class ProcedureDeclarationNode implements IInterpretableNode {
 	private String ident;

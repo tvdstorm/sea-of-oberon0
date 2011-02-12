@@ -3,12 +3,14 @@ package nl.bve.uva.oberon.env;
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 
+import nl.bve.uva.oberon.env.procedures.Procedure;
 import nl.bve.uva.oberon.env.types.Constant;
 import nl.bve.uva.oberon.env.types.OberonInt;
 import nl.bve.uva.oberon.env.types.Type;
-import nl.bve.uva.oberon.env.types.UserType;
 
 public class Environment {
+	private final String BUILT_IN_SUBPACKAGE = "procedures.builtins";
+	
 	private Environment superSpace;
 	
 	private LinkedHashMap<String, Type> identStack = new LinkedHashMap<String, Type>();
@@ -67,13 +69,53 @@ public class Environment {
 		if (p == null) {
 			if (superSpace != null) {
 				p = superSpace.getProcedure(proc_id);
+			} else {
+				p = loadProcedure(proc_id);
 			}
+			
 			if (p == null) {
 				throw new RuntimeException("No such procedure: " +proc_id);
 			}
 		}
 		
 		return p;
+	}
+	
+	private String getCurrentPackage() {
+		String result = "";
+		
+		Package thisPackage = this.getClass().getPackage();		
+		if (thisPackage != null) {
+			result = thisPackage.getName();
+		}
+		
+		return result;
+	}
+	
+	private Procedure loadProcedure(String procedureName) {
+		Procedure result = null;
+		
+		String builtInsPackage = getCurrentPackage()+ "." + BUILT_IN_SUBPACKAGE;
+		String procedureClassName = builtInsPackage + "." +procedureName;
+		
+		try {
+			Class clazz = Class.forName(procedureClassName);
+			Object o = clazz.newInstance();
+			
+			if (o instanceof Procedure) {
+				result = (Procedure)o;
+			} else {
+				throw new RuntimeException("Loaded class is not a Procedure: " +procedureClassName);
+			}
+		} catch (ClassNotFoundException cnfe) {
+			// do nothing, procedure is not found
+		} catch (IllegalAccessException iae) {
+			throw new RuntimeException("Loaded class cannot be accessed: " +procedureClassName);
+		} catch (InstantiationException ie) {
+			throw new RuntimeException("Loaded class cannot be instantiated: " +procedureClassName);
+		}
+
+		return result;
 	}
 	
 	@Override

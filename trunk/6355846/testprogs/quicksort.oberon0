@@ -51,15 +51,16 @@ END QuickSort;
 
 BEGIN
  i := 0;
- input[0] := 10;
- input[1] := 50;
- input[2] := 13;
- input[3] := 18;
- input[4] := 21;
- 
+ WHILE i < INPUTLENGTH DO
+   Read(input[i]);
+   i := i + 1
+ END;
  QuickSort(input, 0, INPUTLENGTH - 1);
  i := 0;
  WHILE i < INPUTLENGTH DO
+   Write(input[i]);
+   WriteLn;
    i := i + 1
+
  END
 END QuickSort.

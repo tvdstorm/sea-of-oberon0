@@ -1,6 +1,9 @@
 package nl.bve.uva.oberon;
 
+import java.io.File;
+import java.io.FileFilter;
 import java.io.FileInputStream;
+import java.util.Scanner;
 
 import nl.bve.uva.oberon.ast.IInterpretableNode;
 import nl.bve.uva.oberon.env.Environment;
@@ -10,12 +13,34 @@ import nl.bve.uva.oberon.parser.Oberon0Parser;
 import org.antlr.runtime.ANTLRInputStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
-import org.antlr.runtime.tree.CommonTree;
 
 public class App {
+	public static File chooseFile() {
+		File testFilesDir = new File("testprogs");
+		File[] oberonApps = testFilesDir.listFiles(new FileFilter() {
+			@Override
+			public boolean accept(File pathname) {
+				return pathname.getAbsolutePath().endsWith(".oberon0");
+			}
+		});
+		
+		for(int i=0; i < oberonApps.length; i++) {
+			System.out.println("[" +i+ "]: " +oberonApps[i].getAbsolutePath());
+		}
+		System.out.print("Uw keuze: ");
+		System.out.flush();
+		
+		Scanner s = new Scanner(System.in);
+		File appToExecute = oberonApps[s.nextInt()];
+		
+		return appToExecute;
+	}
+	
 	public static void main(String[] args) throws Exception {
+		File appToExecute = chooseFile();
+		
 		// use the 'smoke test' file quicksort.oberon0 as testfile
-		FileInputStream fis = new FileInputStream("testprogs/quicksort.oberon0");
+		FileInputStream fis = new FileInputStream(appToExecute);
 
 		// read from quicksort.oberon0 file
 		ANTLRInputStream input = new ANTLRInputStream(fis);
@@ -34,31 +59,12 @@ public class App {
 			System.out.println("parser: " +parser.getNumberOfSyntaxErrors());
 			
 			if ((lexer.getNumberOfSyntaxErrors() == 0) && (parser.getNumberOfSyntaxErrors() == 0)) {
-				System.out.println("program   result: " + startNode);
 				System.out.println("interpret result: " + startNode.interpret(new Environment()));
 			} else {
-				System.out.println("There are parse-errors!");
+				System.out.println("There are parse- and/or lexer-errors!");
 			}
-
-			
-			
-			if ( (4 / 2) + (4 * 5) == 26 || 25 < 24) 
-				System.out.println("true");
-		
-			
 		} catch (RecognitionException re) {
 			re.printStackTrace();
-		}
-		
-	}
-	
-	public static void printTreeClasses(CommonTree t) {
-		System.out.println(t.getClass());
-		
-		if (t.getChildren() != null) {
-			for (Object o : t.getChildren()) {
-				printTreeClasses((CommonTree)o);
-			}
 		}
 	}
 }
