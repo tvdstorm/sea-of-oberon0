@@ -13,10 +13,7 @@ public class Quicksort {
         // Laad een bestand oberon0 bestand     
         Interpreter interpreter = new Interpreter();
         File file = new File("quicksort.oberon0");
-        String input = "";
-        String output = interpreter.interpret(file, input);
-        
-        System.out.println(output);
+        String input = "5\n4\n3\n2\n1";
+        interpreter.interpret(file, input);
     }
-
 }

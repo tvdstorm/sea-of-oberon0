@@ -42,12 +42,13 @@ tokens {
   PROCEDURES;
   MODULEBODY;
   PROCEDUREBODY;
-  IDENTIFIERLIST;
   FORMALPARAMETER;
   FORMALPARAMETERS;
   ASSIGN;
   ACTUALPARAMETERS;
   CALL;
+  IDENT_SELECT;
+  SELECTORS;
   RECORDSELECTOR;
   ARRAYSELECTOR;
   IDENT;
@@ -56,6 +57,7 @@ tokens {
   DECLARATIONS;
   STATEMENTS;
   IFSTATEMENT;
+  FIELD;
 }
 @header {
   package com.douwekasemier.oberon0.core; 
@@ -99,7 +101,7 @@ selector
 
 factor 
   : identifier selector
-  -> identifier selector?
+  -> ^(IDENT_SELECT identifier ^(SELECTORS selector)?)
   | literal
   -> literal
   | '(' expression ')'
@@ -147,7 +149,7 @@ expression
   
 assignment
   : identifier selector ':=' expression
-  -> ^(ASSIGN identifier selector? expression)
+  -> ^(ASSIGN expression ^(IDENT_SELECT identifier ^(SELECTORS selector)?))
   ;
  
 actualParameters
@@ -213,7 +215,7 @@ arrayType
 
 field
   : (identifierList ':' type)?
-  -> type identifierList
+  -> ^(FIELD type identifierList)
   ; 
   
 recordType
@@ -229,7 +231,7 @@ type
   
 fpSection
   : 'VAR'? identifierList ':' type
-  -> ^(FORMALPARAMETER 'VAR'? type ^(IDENTIFIERLIST identifierList) )
+  -> ^(FORMALPARAMETER 'VAR'? type identifierList )
   ;
   
 formalParameters

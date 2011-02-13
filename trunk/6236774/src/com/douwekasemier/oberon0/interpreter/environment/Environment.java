@@ -4,10 +4,11 @@ import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.util.HashMap;
 
-import com.douwekasemier.oberon0.ast.ASTGenerationException;
-import com.douwekasemier.oberon0.ast.nodes.ProcedureNode;
-import com.douwekasemier.oberon0.ast.nodes.TypeNode;
-import com.douwekasemier.oberon0.interpreter.core.Read;
+import com.douwekasemier.oberon0.exceptions.BuildInFunctionsException;
+import com.douwekasemier.oberon0.exceptions.RuntimeException;
+import com.douwekasemier.oberon0.interpreter.core.functions.Read;
+import com.douwekasemier.oberon0.interpreter.core.functions.Write;
+import com.douwekasemier.oberon0.interpreter.core.functions.WriteLn;
 
 public class Environment {
 
@@ -16,7 +17,7 @@ public class Environment {
     private Environment parent;
     private HashMap<String, Reference> variableRegistry;
     private HashMap<String, Procedure> procedureRegistry;
-    private HashMap<String, TypeNode> typeRegistry;
+    private HashMap<String, Type> typeRegistry;
 
     public Environment(BufferedReader input, PrintWriter output) {
         this(input, output, null);
@@ -29,7 +30,7 @@ public class Environment {
 
         variableRegistry = new HashMap<String, Reference>();
         procedureRegistry = new HashMap<String, Procedure>();
-        typeRegistry = new HashMap<String, TypeNode>();
+        typeRegistry = new HashMap<String, Type>();
     }
 
     public void declareReference(String identifier, Reference reference) {
@@ -48,7 +49,7 @@ public class Environment {
         procedureRegistry.put(identifier, procedure);
     }
 
-    public void declareType(String identifier, TypeNode type) {
+    public void declareType(String identifier, Type type) {
         typeRegistry.put(identifier, type);
     }
 
@@ -89,13 +90,14 @@ public class Environment {
     }
 
     public void loadCoreFunctions() {
-        Read read;
         try {
-            read = new Read();
-            read.attachToEnvironment(this);
-        } catch (ASTGenerationException e) {
+            new Read(this);
+            new Write(this);
+            new WriteLn(this);
+        } catch (BuildInFunctionsException e) {
             e.printStackTrace();
         }
+
     }
 
 }

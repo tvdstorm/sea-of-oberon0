@@ -1,17 +1,22 @@
 package com.douwekasemier.oberon0.interpreter.environment;
-
-import com.douwekasemier.oberon0.ast.Node;
-import com.douwekasemier.oberon0.ast.nodes.ProcedureNode;
-import com.douwekasemier.oberon0.interpreter.Oberon0RuntimeException;
+import com.douwekasemier.oberon0.ast.declaration.ProcedureDeclaration;
 
 public class Procedure {
 
-    public ProcedureNode getProcedureNode() {
-        return (ProcedureNode) procedureNode;
+    private ProcedureDeclaration procedureDeclaration;
+    private Environment environment;
+
+    public Procedure(ProcedureDeclaration procedureDeclaration, Environment environment) {
+        this.procedureDeclaration = procedureDeclaration;
+        this.environment = environment;
     }
 
-    public void setProcedureNode(Node procedureNode) {
-        this.procedureNode = procedureNode;
+    public ProcedureDeclaration getProcedureNode() {
+        return procedureDeclaration;
+    }
+
+    public void setProcedureNode(ProcedureDeclaration procedureDeclaration) {
+        this.procedureDeclaration = procedureDeclaration;
     }
 
     public Environment getEnvironment() {
@@ -21,13 +26,4 @@ public class Procedure {
     public void setEnvironment(Environment environment) {
         this.environment = environment;
     }
-
-    Node procedureNode;
-    Environment environment;
-    
-    public Procedure(ProcedureNode procedureNode, Environment environment) {
-        this.procedureNode = procedureNode;
-        this.environment = environment;
-    }
-
 }

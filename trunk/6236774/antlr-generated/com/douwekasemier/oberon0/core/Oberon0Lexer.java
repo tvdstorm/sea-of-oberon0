@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:50:56 C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g 2011-02-07 11:59:03
+// $ANTLR 3.3 Nov 30, 2010 12:50:56 C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g 2011-02-13 17:23:48
 
   package com.douwekasemier.oberon0.core;
 
@@ -10,8 +10,6 @@ import java.util.ArrayList;
 
 public class Oberon0Lexer extends Lexer {
     public static final int EOF=-1;
-    public static final int T__55=55;
-    public static final int T__56=56;
     public static final int T__57=57;
     public static final int T__58=58;
     public static final int T__59=59;
@@ -21,6 +19,8 @@ public class Oberon0Lexer extends Lexer {
     public static final int T__63=63;
     public static final int T__64=64;
     public static final int T__65=65;
+    public static final int T__66=66;
+    public static final int T__67=67;
     public static final int MODULE=4;
     public static final int BEGIN=5;
     public static final int END=6;
@@ -55,23 +55,25 @@ public class Oberon0Lexer extends Lexer {
     public static final int PROCEDURES=35;
     public static final int MODULEBODY=36;
     public static final int PROCEDUREBODY=37;
-    public static final int IDENTIFIERLIST=38;
-    public static final int FORMALPARAMETER=39;
-    public static final int FORMALPARAMETERS=40;
-    public static final int ASSIGN=41;
-    public static final int ACTUALPARAMETERS=42;
-    public static final int CALL=43;
-    public static final int RECORDSELECTOR=44;
-    public static final int ARRAYSELECTOR=45;
-    public static final int IDENT=46;
-    public static final int EXPRESSION=47;
-    public static final int LITERAL=48;
-    public static final int DECLARATIONS=49;
-    public static final int STATEMENTS=50;
-    public static final int IFSTATEMENT=51;
-    public static final int IDENTIFIER=52;
-    public static final int INTEGER=53;
-    public static final int WHITESPACE=54;
+    public static final int FORMALPARAMETER=38;
+    public static final int FORMALPARAMETERS=39;
+    public static final int ASSIGN=40;
+    public static final int ACTUALPARAMETERS=41;
+    public static final int CALL=42;
+    public static final int IDENT_SELECT=43;
+    public static final int SELECTORS=44;
+    public static final int RECORDSELECTOR=45;
+    public static final int ARRAYSELECTOR=46;
+    public static final int IDENT=47;
+    public static final int EXPRESSION=48;
+    public static final int LITERAL=49;
+    public static final int DECLARATIONS=50;
+    public static final int STATEMENTS=51;
+    public static final int IFSTATEMENT=52;
+    public static final int FIELD=53;
+    public static final int IDENTIFIER=54;
+    public static final int INTEGER=55;
+    public static final int WHITESPACE=56;
 
     // delegates
     // delegators
@@ -665,55 +667,15 @@ public class Oberon0Lexer extends Lexer {
     }
     // $ANTLR end "AND"
 
-    // $ANTLR start "T__55"
-    public final void mT__55() throws RecognitionException {
-        try {
-            int _type = T__55;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:39:7: ( ';' )
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:39:9: ';'
-            {
-            match(';'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__55"
-
-    // $ANTLR start "T__56"
-    public final void mT__56() throws RecognitionException {
-        try {
-            int _type = T__56;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:40:7: ( '.' )
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:40:9: '.'
-            {
-            match('.'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__56"
-
     // $ANTLR start "T__57"
     public final void mT__57() throws RecognitionException {
         try {
             int _type = T__57;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:41:7: ( '[' )
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:41:9: '['
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:39:7: ( ';' )
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:39:9: ';'
             {
-            match('['); 
+            match(';'); 
 
             }
 
@@ -730,10 +692,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__58;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:42:7: ( ']' )
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:42:9: ']'
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:40:7: ( '.' )
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:40:9: '.'
             {
-            match(']'); 
+            match('.'); 
 
             }
 
@@ -750,10 +712,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__59;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:43:7: ( '(' )
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:43:9: '('
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:41:7: ( '[' )
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:41:9: '['
             {
-            match('('); 
+            match('['); 
 
             }
 
@@ -770,10 +732,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__60;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:44:7: ( ')' )
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:44:9: ')'
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:42:7: ( ']' )
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:42:9: ']'
             {
-            match(')'); 
+            match(']'); 
 
             }
 
@@ -790,11 +752,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__61;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:45:7: ( ':=' )
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:45:9: ':='
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:43:7: ( '(' )
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:43:9: '('
             {
-            match(":="); 
-
+            match('('); 
 
             }
 
@@ -811,10 +772,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__62;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:46:7: ( ',' )
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:46:9: ','
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:44:7: ( ')' )
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:44:9: ')'
             {
-            match(','); 
+            match(')'); 
 
             }
 
@@ -831,10 +792,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__63;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:47:7: ( 'DO' )
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:47:9: 'DO'
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:45:7: ( ':=' )
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:45:9: ':='
             {
-            match("DO"); 
+            match(":="); 
 
 
             }
@@ -852,11 +813,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__64;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:48:7: ( 'OF' )
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:48:9: 'OF'
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:46:7: ( ',' )
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:46:9: ','
             {
-            match("OF"); 
-
+            match(','); 
 
             }
 
@@ -873,6 +833,48 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = T__65;
             int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:47:7: ( 'DO' )
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:47:9: 'DO'
+            {
+            match("DO"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__65"
+
+    // $ANTLR start "T__66"
+    public final void mT__66() throws RecognitionException {
+        try {
+            int _type = T__66;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:48:7: ( 'OF' )
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:48:9: 'OF'
+            {
+            match("OF"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__66"
+
+    // $ANTLR start "T__67"
+    public final void mT__67() throws RecognitionException {
+        try {
+            int _type = T__67;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
             // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:49:7: ( ':' )
             // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:49:9: ':'
             {
@@ -886,17 +888,17 @@ public class Oberon0Lexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "T__65"
+    // $ANTLR end "T__67"
 
     // $ANTLR start "INTEGER"
     public final void mINTEGER() throws RecognitionException {
         try {
             int _type = INTEGER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:283:8: ( ( '0' .. '9' )+ )
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:283:10: ( '0' .. '9' )+
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:285:8: ( ( '0' .. '9' )+ )
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:285:10: ( '0' .. '9' )+
             {
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:283:10: ( '0' .. '9' )+
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:285:10: ( '0' .. '9' )+
             int cnt1=0;
             loop1:
             do {
@@ -910,7 +912,7 @@ public class Oberon0Lexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:283:11: '0' .. '9'
+            	    // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:285:11: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -942,8 +944,8 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = IDENTIFIER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:284:11: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:284:13: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:286:11: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:286:13: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -954,7 +956,7 @@ public class Oberon0Lexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:284:33: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:286:33: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -1003,10 +1005,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = WHITESPACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:285:11: ( ( ' ' | '\\t' | '\\n' | '\\r' | '\\f' )+ )
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:285:13: ( ' ' | '\\t' | '\\n' | '\\r' | '\\f' )+
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:287:11: ( ( ' ' | '\\t' | '\\n' | '\\r' | '\\f' )+ )
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:287:13: ( ' ' | '\\t' | '\\n' | '\\r' | '\\f' )+
             {
-            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:285:13: ( ' ' | '\\t' | '\\n' | '\\r' | '\\f' )+
+            // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:287:13: ( ' ' | '\\t' | '\\n' | '\\r' | '\\f' )+
             int cnt3=0;
             loop3:
             do {
@@ -1057,7 +1059,7 @@ public class Oberon0Lexer extends Lexer {
     // $ANTLR end "WHITESPACE"
 
     public void mTokens() throws RecognitionException {
-        // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:1:8: ( MODULE | BEGIN | END | CONST | TYPE | VAR | ARRAY | RECORD | PROCEDURE | WHILE | IF | THEN | ELSIF | ELSE | EQUALS | NOT_EQUALS | GT | GTE | LT | LTE | PLUS | MINUS | OR | NOT | MULT | DIV | MOD | AND | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | INTEGER | IDENTIFIER | WHITESPACE )
+        // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:1:8: ( MODULE | BEGIN | END | CONST | TYPE | VAR | ARRAY | RECORD | PROCEDURE | WHILE | IF | THEN | ELSIF | ELSE | EQUALS | NOT_EQUALS | GT | GTE | LT | LTE | PLUS | MINUS | OR | NOT | MULT | DIV | MOD | AND | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | INTEGER | IDENTIFIER | WHITESPACE )
         int alt4=42;
         alt4 = dfa4.predict(input);
         switch (alt4) {
@@ -1258,79 +1260,79 @@ public class Oberon0Lexer extends Lexer {
                 }
                 break;
             case 29 :
-                // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:1:157: T__55
-                {
-                mT__55(); 
-
-                }
-                break;
-            case 30 :
-                // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:1:163: T__56
-                {
-                mT__56(); 
-
-                }
-                break;
-            case 31 :
-                // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:1:169: T__57
+                // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:1:157: T__57
                 {
                 mT__57(); 
 
                 }
                 break;
-            case 32 :
-                // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:1:175: T__58
+            case 30 :
+                // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:1:163: T__58
                 {
                 mT__58(); 
 
                 }
                 break;
-            case 33 :
-                // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:1:181: T__59
+            case 31 :
+                // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:1:169: T__59
                 {
                 mT__59(); 
 
                 }
                 break;
-            case 34 :
-                // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:1:187: T__60
+            case 32 :
+                // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:1:175: T__60
                 {
                 mT__60(); 
 
                 }
                 break;
-            case 35 :
-                // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:1:193: T__61
+            case 33 :
+                // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:1:181: T__61
                 {
                 mT__61(); 
 
                 }
                 break;
-            case 36 :
-                // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:1:199: T__62
+            case 34 :
+                // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:1:187: T__62
                 {
                 mT__62(); 
 
                 }
                 break;
-            case 37 :
-                // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:1:205: T__63
+            case 35 :
+                // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:1:193: T__63
                 {
                 mT__63(); 
 
                 }
                 break;
-            case 38 :
-                // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:1:211: T__64
+            case 36 :
+                // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:1:199: T__64
                 {
                 mT__64(); 
 
                 }
                 break;
-            case 39 :
-                // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:1:217: T__65
+            case 37 :
+                // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:1:205: T__65
                 {
                 mT__65(); 
+
+                }
+                break;
+            case 38 :
+                // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:1:211: T__66
+                {
+                mT__66(); 
+
+                }
+                break;
+            case 39 :
+                // C:\\Eclipse\\workspace\\6236774\\src\\com\\douwekasemier\\oberon0\\core\\Oberon0.g:1:217: T__67
+                {
+                mT__67(); 
 
                 }
                 break;
@@ -1550,7 +1552,7 @@ public class Oberon0Lexer extends Lexer {
             this.transition = DFA4_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( MODULE | BEGIN | END | CONST | TYPE | VAR | ARRAY | RECORD | PROCEDURE | WHILE | IF | THEN | ELSIF | ELSE | EQUALS | NOT_EQUALS | GT | GTE | LT | LTE | PLUS | MINUS | OR | NOT | MULT | DIV | MOD | AND | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | INTEGER | IDENTIFIER | WHITESPACE );";
+            return "1:1: Tokens : ( MODULE | BEGIN | END | CONST | TYPE | VAR | ARRAY | RECORD | PROCEDURE | WHILE | IF | THEN | ELSIF | ELSE | EQUALS | NOT_EQUALS | GT | GTE | LT | LTE | PLUS | MINUS | OR | NOT | MULT | DIV | MOD | AND | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | INTEGER | IDENTIFIER | WHITESPACE );";
         }
     }
  
