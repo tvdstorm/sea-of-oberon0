@@ -16,7 +16,7 @@ import org.junit.Test;
 
 import com.arievanderveek.soo.ast.ASTNode;
 import com.arievanderveek.soo.ast.codeblocks.ModuleNode;
-import com.arievanderveek.soo.ast.variables.IdentifierNode;
+import com.arievanderveek.soo.ast.expr.IdentifierNode;
 import com.arievanderveek.soo.ast.variables.IntegerTypeNode;
 import com.arievanderveek.soo.runtime.Scope;
 import com.arievanderveek.soo.test.TestASTCreator;
@@ -47,7 +47,7 @@ public class ScopeTest {
 	/**
 	 * Test method for
 	 * {@link com.arievanderveek.soo.runtime.Scope#Scope(java.util.Map, java.util.Map, java.util.Map, java.util.Map)}
-	 * {@link com.arievanderveek.soo.runtime.Scope#getValue(com.arievanderveek.soo.ast.variables.IdentifierNode)}
+	 * {@link com.arievanderveek.soo.runtime.Scope#getValue(com.arievanderveek.soo.ast.expr.IdentifierNode)}
 	 * .
 	 */
 	@Test
@@ -84,7 +84,7 @@ public class ScopeTest {
 	/**
 	 * Test method for
 	 * {@link com.arievanderveek.soo.runtime.Scope#Scope(com.arievanderveek.soo.runtime.Scope, com.arievanderveek.soo.ast.codeblocks.ProcedureNode, java.util.List)}
-	 * {@link com.arievanderveek.soo.runtime.Scope#getValue(com.arievanderveek.soo.ast.variables.IdentifierNode)}
+	 * {@link com.arievanderveek.soo.runtime.Scope#getValue(com.arievanderveek.soo.ast.expr.IdentifierNode)}
 	 * .
 	 */
 	@Test
@@ -96,7 +96,7 @@ public class ScopeTest {
 		Integer expectedValueForPos4InArray = new Integer(3);
 		// Create selector lists
 		List<ASTNode> selectorPos0 = new LinkedList<ASTNode>();
-		selectorPos0.add(new IntegerTypeNode(0));
+		selectorPos0.add(new IntegerNode(0));
 		List<ASTNode> selectorPos1 = new LinkedList<ASTNode>();
 		selectorPos1.add(new IntegerTypeNode(1));
 		List<ASTNode> selectorPos3 = new LinkedList<ASTNode>();
@@ -193,7 +193,7 @@ public class ScopeTest {
 
 	/**
 	 * Test method for
-	 * {@link com.arievanderveek.soo.runtime.Scope#updateValue(com.arievanderveek.soo.ast.variables.IdentifierNode, java.lang.Integer)}.
+	 * {@link com.arievanderveek.soo.runtime.Scope#updateValue(com.arievanderveek.soo.ast.expr.IdentifierNode, java.lang.Integer)}.
 	 * 
 	 */
 	@Test
@@ -225,7 +225,7 @@ public class ScopeTest {
 	
 	/**
 	 * Test method for
-	 * {@link com.arievanderveek.soo.runtime.Scope#updateValue(com.arievanderveek.soo.ast.variables.IdentifierNode, java.lang.Integer)}.
+	 * {@link com.arievanderveek.soo.runtime.Scope#updateValue(com.arievanderveek.soo.ast.expr.IdentifierNode, java.lang.Integer)}.
 	 * 
 	 */
 	@Test

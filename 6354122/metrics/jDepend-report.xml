@@ -897,6 +897,7 @@
         </Package>
 
         <Package Name="com.arievanderveek.soo.ast.binaryoperators">
+            <Package>com.arievanderveek.soo.ast</Package>
             <Package>com.arievanderveek.soo</Package>
             <Package>com.arievanderveek.soo.util</Package>
             <Package>com.arievanderveek.soo</Package>
@@ -916,7 +917,6 @@
         </Package>
 
         <Package Name="com.arievanderveek.soo.ast.unaryoperators">
-            <Package>com.arievanderveek.soo.ast</Package>
             <Package>com.arievanderveek.soo</Package>
             <Package>com.arievanderveek.soo.util</Package>
             <Package>com.arievanderveek.soo</Package>
@@ -942,9 +942,9 @@
         </Package>
 
         <Package Name="com.arievanderveek.soo.runtime">
-            <Package>com.arievanderveek.soo</Package>
             <Package>com.arievanderveek.soo.util</Package>
             <Package>com.arievanderveek.soo</Package>
+            <Package>com.arievanderveek.soo.util</Package>
         </Package>
 
         <Package Name="com.arievanderveek.soo.test">
@@ -955,10 +955,10 @@
         </Package>
 
         <Package Name="com.arievanderveek.soo.test.ast.symboltable">
-            <Package>com.arievanderveek.soo.ast.variables</Package>
-            <Package>com.arievanderveek.soo</Package>
+            <Package>com.arievanderveek.soo.runtime</Package>
             <Package>com.arievanderveek.soo.util</Package>
             <Package>com.arievanderveek.soo</Package>
+            <Package>com.arievanderveek.soo.util</Package>
         </Package>
 
         <Package Name="com.arievanderveek.soo.test.util">

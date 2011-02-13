@@ -1,0 +1,33 @@
+-- First Run
+Enter a number and press enter
+447
+Enter a number and press enter
+54
+Enter a number and press enter
+464
+Enter a number and press enter
+6464
+Enter a number and press enter
+54
+Output: 54  
+Output: 54  
+Output: 447  
+Output: 6464  
+Output: 464
+
+-- Second Run
+Enter a number and press enter
+447
+Enter a number and press enter
+54
+Enter a number and press enter
+464
+Enter a number and press enter
+6464
+Enter a number and press enter
+54
+Output: 54  
+Output: 54  
+Output: 447  
+Output: 6464  
+Output: 464  
