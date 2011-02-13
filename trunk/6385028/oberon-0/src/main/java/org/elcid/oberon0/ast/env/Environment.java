@@ -2,6 +2,7 @@ package org.elcid.oberon0.ast.env;
 
 import java.util.HashMap;
 import java.util.Map;
+import org.elcid.oberon0.ast.TypeNode;
 import org.elcid.oberon0.ast.values.Value;
 import org.elcid.oberon0.exceptions.UnboundVariableException;
 
@@ -13,10 +14,12 @@ import org.elcid.oberon0.exceptions.UnboundVariableException;
  */
 public class Environment {
 
-	private Map<String, Value> map;
+	private Map<String, Value> valueBindings;
+	private Map<String, TypeNode> typeAliases;
 
 	public Environment() {
-		map = new HashMap<String, Value>();
+		valueBindings = new HashMap<String, Value>();
+		typeAliases = new HashMap<String, TypeNode>();
 	}
 
 	/**
@@ -28,7 +31,7 @@ public class Environment {
 	 * @return	the integer that is bound to the variable
 	 */
 	public Value getValue(String variableName) {
-		Value value = map.get(variableName);
+		Value value = valueBindings.get(variableName);
 		if (value == null)
 			throw new UnboundVariableException("Variable " + variableName + " is not bound to an integer");
 		return value;
@@ -41,11 +44,19 @@ public class Environment {
 	 * @param variableName
 	 * @param value
 	 */
-	public void put(String variableName, Value value) {
+	public void putValue(String variableName, Value value) {
 		assert (variableName != null) : "Variable name is null";
 		assert (!variableName.equals("")) : "Variable name is empty string";
 		assert (value != null) : "Value is null";
-		map.put(variableName, value);
+		valueBindings.put(variableName, value);
+	}
+
+	public TypeNode getType(String alias) {
+		return typeAliases.get(alias);
+	}
+
+	public void putTypeAlias(String alias, TypeNode type) {
+		typeAliases.put(alias, type);
 	}
 
 }

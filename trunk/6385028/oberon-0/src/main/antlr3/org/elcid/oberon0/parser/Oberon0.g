@@ -82,9 +82,9 @@ module returns [ModuleNode result]
 
 declarations returns [DeclarationSequenceNode result]
 	:													{ $result = new DeclarationSequenceNode(); }
-		(c=constDecl									{ $result.addAll($c.result); } )?
-		(t=typeDecl										{  } )?
-		(v=varDecl										{  } )?
+		(c=constDecl									{ $result.addConstDecls($c.result); } )?
+		(t=typeDecl										{ $result.addTypeDecls($t.result); } )?
+		(v=varDecl										{ $result.addVarDecls($v.result); } )?
 		(p=procedureDecl SEMI_COLON						{  } )*
 	;
 
@@ -94,12 +94,15 @@ constDecl returns [List<ConstDeclNode> result]
 		)*
 	;
 
-typeDecl
-	:	TYPE_KW (identifier EQUALS_OP type SEMI_COLON)*
+typeDecl returns [List<TypeDeclNode> result]
+	:	TYPE_KW											{ $result = new ArrayList<TypeDeclNode>(); }
+		(i=identifier EQUALS_OP t=type SEMI_COLON		{ $result.add(new TypeDeclNode($i.text, $t.result)); }
+		)*
 	;
 
-varDecl
-	:	VAR_KW (identList COLON type SEMI_COLON)*
+varDecl returns [List<VarDeclNode> result = new ArrayList<VarDeclNode>()]
+	:	VAR_KW (il=identList COLON t=type SEMI_COLON	{ $result.add(new VarDeclNode($il.result, $t.result)); }
+		)*
 	;
 
 procedureDecl
@@ -119,26 +122,31 @@ fPSection
 	|	identList COLON type
 	;
 
-type
-	:	identifier
-	|	arrayType
-	|	recordType
+type returns [TypeNode result]
+	:	identifier										{ $result = new IntType(); }
+	|	a=arrayType										{ $result = $a.result; }
+	|	r=recordType									{ $result = $r.result; }
 	;
 
-identList
-	:	identifier (COMMA identifier)*
+identList returns [List<String> result = new ArrayList<String>()]
+	:	i=identifier									{ $result.add($i.text); }
+		(COMMA ix=identifier							{ $result.add($ix.text); }
+		)*
 	;
 
-arrayType
-	:	ARRAY_KW expression OF_KW type
+arrayType returns [ArrayTypeNode result]
+	:	ARRAY_KW e=expression OF_KW t=type				{ $result = new ArrayTypeNode($e.result, $t.result); }
 	;
 
-fieldList
-	:	(identList COLON type)?
+fieldList returns [RecordFieldListNode result]
+	:	(il=identList COLON t=type						{ $result = new RecordFieldListNode($il.result, $t.result); }
+		)?
 	;
 
-recordType
-	:	RECORD_KW fieldList (SEMI_COLON fieldList)* END_KW
+recordType returns [RecordType result = new RecordType()]
+	:	RECORD_KW f=fieldList							{ $result.add($f.result); }
+		(SEMI_COLON fx=fieldList						{ $result.add($fx.result); }
+		)* END_KW
 	;
 
 statementSequence returns [StatementSequenceNode result]

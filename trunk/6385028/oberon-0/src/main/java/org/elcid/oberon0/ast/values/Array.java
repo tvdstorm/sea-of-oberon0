@@ -10,13 +10,18 @@ import java.util.List;
 public class Array extends Value {
 
 	private List<Value> elements;
+	private Integer maxLength;
 
-	public Array() {
-		this.elements = new ArrayList<Value>();
+	public Array(Integer maxLength) {
+		this.elements = new ArrayList<Value>(maxLength);
+		this.maxLength = maxLength;
 	}
 
 	public void add(Value element) {
-		elements.add(element);
+		if (elements.size() <= maxLength)
+			elements.add(element);
+		else
+			throw new IndexOutOfBoundsException("Array index out of bounds");
 	}
 
 	@Override
