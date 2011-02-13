@@ -3,10 +3,10 @@ package nl.bve.uva.oberon.env.types;
 import java.util.HashMap;
 import java.util.Map;
 
-public class OberonRecord extends Type {
-	private final Map<String, Type> fields;
+public class OberonRecord extends OberonType {
+	private final Map<String, OberonType> fields;
 	
-	public OberonRecord(Map<String, Type> fields) {
+	public OberonRecord(Map<String, OberonType> fields) {
 		this.fields = fields;
 	}
 	
@@ -16,13 +16,13 @@ public class OberonRecord extends Type {
 	}
 	
 	@Override
-	public void setValue(Type t) {
+	public void setValue(OberonType t) {
 		throw new RuntimeException("Cannot set the value of an Array!");
 	}
 	
 	@Override
-	public Type evaluateSelector(String selector) {
-		Type result = fields.get(selector);
+	public OberonType evaluateSelector(String selector) {
+		OberonType result = fields.get(selector);
 		
 		if (result == null) {
 			throw new RuntimeException("There is no field '" +selector+ "' for this OberonRecord!");
@@ -32,10 +32,10 @@ public class OberonRecord extends Type {
 	}
 	
 	@Override
-	public Type clone() {
-		HashMap<String, Type> fieldsCopy = new HashMap<String, Type>();
+	public OberonType clone() {
+		HashMap<String, OberonType> fieldsCopy = new HashMap<String, OberonType>();
 		
-		for(Map.Entry<String, Type> entry : fields.entrySet()) {
+		for(Map.Entry<String, OberonType> entry : fields.entrySet()) {
 			fieldsCopy.put(entry.getKey(), entry.getValue().clone());
 		}
 		

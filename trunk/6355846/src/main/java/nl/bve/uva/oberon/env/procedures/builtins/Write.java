@@ -8,7 +8,7 @@ import nl.bve.uva.oberon.ast.TypedParameterList;
 import nl.bve.uva.oberon.ast.TypedValueParameterList;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.procedures.Procedure;
-import nl.bve.uva.oberon.env.types.Type;
+import nl.bve.uva.oberon.env.types.OberonType;
 
 public class Write extends Procedure {
 	private final String VAL_VAR_STORE = "var_read";
@@ -23,7 +23,7 @@ public class Write extends Procedure {
 	
 	@Override
 	public void execute(Environment env) {
-		Type variable = env.getVariable(VAL_VAR_STORE);
+		OberonType variable = env.getVariable(VAL_VAR_STORE);
 		System.out.print(variable.getValue());
 		System.out.flush();
 	}

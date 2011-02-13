@@ -2,7 +2,7 @@ package nl.bve.uva.oberon.ast;
 
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.types.OberonInt;
-import nl.bve.uva.oberon.env.types.Type;
+import nl.bve.uva.oberon.env.types.OberonType;
 
 public class IfNode implements IInterpretableNode {
 	private IInterpretableNode condition;
@@ -17,7 +17,7 @@ public class IfNode implements IInterpretableNode {
 	
 	@Override
 	public Object interpret(Environment env) {
-		Type t = (Type)condition.interpret(env);
+		OberonType t = (OberonType)condition.interpret(env);
 		
 		if (t.getValue() == OberonInt.TRUE) {
 			Environment subEnv = env.getNewSubSpace();

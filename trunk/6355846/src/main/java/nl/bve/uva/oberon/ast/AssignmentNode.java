@@ -1,7 +1,7 @@
 package nl.bve.uva.oberon.ast;
 
 import nl.bve.uva.oberon.env.Environment;
-import nl.bve.uva.oberon.env.types.Type;
+import nl.bve.uva.oberon.env.types.OberonType;
 
 public class AssignmentNode implements IInterpretableNode {
 	private IInterpretableNode lhn;
@@ -17,8 +17,8 @@ public class AssignmentNode implements IInterpretableNode {
 		Object ident = lhn.interpret(env);
 		Object value = rhn.interpret(env);
 		
-		Type var = (Type)ident;
-		var.setValue((Type)value);
+		OberonType var = (OberonType)ident;
+		var.setValue((OberonType)value);
 		
 		return null;
 	}

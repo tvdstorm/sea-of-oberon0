@@ -1,6 +1,6 @@
 package nl.bve.uva.oberon.env.types;
 
-public class OberonConstant extends Type {
+public class OberonConstant extends OberonType {
 	private OberonInt value;
 	
 	public OberonConstant(OberonInt value) {
@@ -13,17 +13,17 @@ public class OberonConstant extends Type {
 	}
 	
 	@Override
-	public void setValue(Type value) {
+	public void setValue(OberonType value) {
 		throw new RuntimeException("Cannot change the value of a CONSTANT!");
 	}
 	
 	@Override
-	public Type evaluateSelector(String o) {
+	public OberonType evaluateSelector(String o) {
 		throw new RuntimeException("Cannot evaluate an OberonInt type!");
 	}
 	
 	@Override
-	public Type clone() {
+	public OberonType clone() {
 		return new OberonConstant(value);
 	}
 }
