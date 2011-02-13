@@ -22,7 +22,13 @@ public class OberonRecord extends Type {
 	
 	@Override
 	public Type evaluateSelector(String selector) {
-		return fields.get(selector);
+		Type result = fields.get(selector);
+		
+		if (result == null) {
+			throw new RuntimeException("There is no field '" +selector+ "' for this OberonRecord!");
+		}
+		
+		return result;
 	}
 	
 	@Override
