@@ -1,5 +1,7 @@
 package com.kootsjur.oberon.environment;
 
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -110,8 +112,9 @@ public class Module extends Environment
       this.declarations = declarations;
    }
    
-   public void declare()
+   public void declare(final BufferedReader input, final PrintWriter output)
    {
+      GlobalProcedures.initGlobalProcedures(this, input, output);
       declareDeclarations(declarations);
       declareProcedures(procedureDeclarations);
    }
