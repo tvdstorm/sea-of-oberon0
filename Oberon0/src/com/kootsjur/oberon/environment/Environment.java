@@ -71,7 +71,7 @@ public class Environment
    {
       String constantName = constantDeclaration.getName();
       ExpressionEvaluator constantValueEvaluator = constantDeclaration.getExpression();
-      Value constantValue = constantValueEvaluator.evaluate();
+      Value constantValue = constantValueEvaluator.evaluate(this);
       declareConstant(constantName, constantValue);
    }
    

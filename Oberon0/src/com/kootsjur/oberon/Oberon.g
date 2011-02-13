@@ -23,7 +23,7 @@ options {
 
 @lexer::header {
   package com.kootsjur.oberon;
-}
+} 
 
 @members{
 	private Module module;

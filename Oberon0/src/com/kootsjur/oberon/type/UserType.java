@@ -9,7 +9,7 @@ public class UserType extends TypeDefinition
    public UserType(String name)
    {
       super(DataType.USER);
-      this.typeName = name;
+      this.setTypeName(name);
    }
 
    @Override
@@ -18,5 +18,8 @@ public class UserType extends TypeDefinition
       // TODO Auto-generated method stub
       return null;
    }
+
+   public void setTypeName(String typeName){this.typeName = typeName;}
+   public String getTypeName(){return typeName;}
 
 }

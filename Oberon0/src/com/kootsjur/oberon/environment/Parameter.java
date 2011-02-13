@@ -27,18 +27,17 @@ public class Parameter
    
    public Parameter(TypeDefinition type, ParameterDirection direction, Value value)
    {
-      this.type = type;
-      this.direction = direction;
+      this.setType(type);
+      this.setDirection(direction);
       this.value = value;
    }
 
-   public void setValue(Value value)
-   {
-      this.value = value;
-   }
+   public void setValue(Value value){this.value = value;}
+   public Value getValue(){return value;}
 
-   public Value getValue()
-   {
-      return value;
-   }
+   public void setType(TypeDefinition type){this.type = type;}
+   public TypeDefinition getType(){return type;}
+
+   public void setDirection(ParameterDirection direction){this.direction = direction;}
+   public ParameterDirection getDirection(){return direction;}
 }

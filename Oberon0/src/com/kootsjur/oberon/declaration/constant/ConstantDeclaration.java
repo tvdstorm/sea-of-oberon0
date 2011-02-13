@@ -26,7 +26,7 @@ public class ConstantDeclaration implements Declaration
    @Override
    public void declare(Environment environment)
    {
-      Value value = expression.evaluate();
+      Value value = expression.evaluate(environment);
       Constant constant = new Constant(value);
       environment.declareConstant(name,constant);      
    }

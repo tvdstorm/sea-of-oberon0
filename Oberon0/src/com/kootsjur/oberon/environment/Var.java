@@ -20,11 +20,14 @@ public class Var
    
    public Var(TypeDefinition type, Value value)
    {
-      this.type = type;
+      this.setType(type);
       this.value = value;
    }
 
    public void setValue(Value value){this.value = value;}
    public Value getValue(){return value;}
+
+   public void setType(TypeDefinition type){this.type = type;}
+   public TypeDefinition getType(){return type;}
 
 }
