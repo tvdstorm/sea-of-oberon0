@@ -7,7 +7,6 @@ options {
 @header {
   package com.kootsjur.oberon;
   import com.kootsjur.oberon.statement.*;
-  import com.kootsjur.oberon.value.*;
   import com.kootsjur.oberon.environment.*;
   import com.kootsjur.oberon.evaluator.*;
   import com.kootsjur.oberon.declaration.*; 
@@ -17,8 +16,6 @@ options {
   import com.kootsjur.oberon.declaration.type.*;
   import com.kootsjur.oberon.declaration.var.*;
   import com.kootsjur.oberon.type.*;
-  import java.util.List;
-  import java.util.ArrayList;
 }
 
 @lexer::header {
