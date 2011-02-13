@@ -1,11 +1,9 @@
-package com.kootsjur.oberon;
+package com.kootsjur.oberon.parser;
 
 import java.io.File;
 import java.util.Arrays;
 import java.util.Random;
 
-import com.kootsjur.oberon.parser.AbstractOberon;
-import com.kootsjur.oberon.parser.Oberon;
 
 public class QuickSortTests {
 
