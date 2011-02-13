@@ -5,15 +5,18 @@ package com.arievanderveek.soo.ast.codeblocks;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Hashtable;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
 import com.arievanderveek.soo.SeaOfOberonException;
-import com.arievanderveek.soo.ast.ASTNode;
+import com.arievanderveek.soo.ast.expr.IdentifierNode;
+import com.arievanderveek.soo.ast.statements.AbstractParameterNode;
 import com.arievanderveek.soo.ast.statements.CallByRefParameterNode;
+import com.arievanderveek.soo.ast.statements.StatementNode;
+import com.arievanderveek.soo.ast.variables.ConstantNode;
 import com.arievanderveek.soo.ast.variables.FieldNode;
-import com.arievanderveek.soo.ast.variables.IdentifierNode;
+import com.arievanderveek.soo.ast.variables.IdentifierTypeNode;
 import com.arievanderveek.soo.runtime.Scope;
 
 /**
@@ -38,19 +41,14 @@ public class ReadLineCallNode extends ProcedureNode {
 	 */
 	public ReadLineCallNode() {
 		super(METHODNAME, METHODNAME, buildParameters(),
-				new Hashtable<String, ASTNode>(),
-				new Hashtable<String, ASTNode>(),
-				new Hashtable<String, ASTNode>(),
-				new Hashtable<String, ASTNode>(), new LinkedList<ASTNode>());
+				 Collections.<ConstantNode>emptyList(),
+				 Collections.<FieldNode>emptyList(),
+				 Collections.<FieldNode>emptyList(),
+				 Collections.<ProcedureNode>emptyList(),
+				 Collections.<StatementNode>emptyList());
 	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
-	 */
-	@Override
-	public Integer interpret(Scope scope) throws SeaOfOberonException {
+	
+	public void interpret(Scope scope) throws SeaOfOberonException {
 		try {
 			System.out.println("Enter a number and press enter");
 			int consoleInput = 0;
@@ -58,7 +56,6 @@ public class ReadLineCallNode extends ProcedureNode {
 			BufferedReader in = new BufferedReader(converter);
 			consoleInput = Integer.parseInt(in.readLine());
 			scope.updateValue(new IdentifierNode(INPUT_PARAM), consoleInput);
-			return null;
 		} catch (Exception e) {
 			throw new SeaOfOberonException(
 					"Exception while reading from console", e);
@@ -66,11 +63,11 @@ public class ReadLineCallNode extends ProcedureNode {
 
 	}
 
-	private static List<ASTNode> buildParameters() {
-		List<ASTNode> singleParameter = new LinkedList<ASTNode>();
+	private static List<AbstractParameterNode> buildParameters() {
+		List<FieldNode> singleParameter = new LinkedList<FieldNode>();
 		singleParameter.add(new FieldNode(INPUT_PARAM,
-				new IdentifierNode(INPUT_PARAM)));
-		List<ASTNode> block = new LinkedList<ASTNode>();
+				new IdentifierTypeNode(INPUT_PARAM)));
+		List<AbstractParameterNode> block = new LinkedList<AbstractParameterNode>();
 		block.add(new CallByRefParameterNode(singleParameter));
 		return block;
 	}

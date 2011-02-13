@@ -5,18 +5,20 @@ package com.arievanderveek.soo.ast.statements;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
-import com.arievanderveek.soo.ast.variables.IdentifierNode;
+import com.arievanderveek.soo.ast.expr.ExpressionNode;
+import com.arievanderveek.soo.ast.expr.IdentifierNode;
 import com.arievanderveek.soo.runtime.Scope;
 
 /**
  * @author arieveek
  * 
  */
-public class AssignmentNode implements ASTNode {
+public class AssignmentNode implements ASTNode, StatementNode {
 
-	private final ASTNode identifier, expression;
+	private final IdentifierNode identifier;
+	private final ExpressionNode expression;
 
-	public AssignmentNode(ASTNode identifier, ASTNode expression) {
+	public AssignmentNode(IdentifierNode identifier, ExpressionNode expression) {
 		this.identifier = identifier;
 		this.expression = expression;
 	}
@@ -27,10 +29,9 @@ public class AssignmentNode implements ASTNode {
 	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
 	 */
 	@Override
-	public Integer interpret(Scope scope) throws SeaOfOberonException {
+	public void interpret(Scope scope) throws SeaOfOberonException {
 		Integer result = expression.interpret(scope);
 		scope.updateValue((IdentifierNode) identifier, result);
-		return null;
 	}
 
 	/*

@@ -4,7 +4,7 @@
 package com.arievanderveek.soo.ast.variables;
 
 import com.arievanderveek.soo.SeaOfOberonException;
-import com.arievanderveek.soo.ast.ASTNode;
+import com.arievanderveek.soo.ast.expr.ExpressionNode;
 import com.arievanderveek.soo.runtime.Scope;
 
 /**
@@ -13,10 +13,10 @@ import com.arievanderveek.soo.runtime.Scope;
  * @author arieveek
  * 
  */
-public class ArrayTypeNode implements ASTNode {
+public class ArrayTypeNode extends TypeNode  {
 
-	private final ASTNode sizeExpression;
-	private final ASTNode type;
+	private final ExpressionNode sizeExpression;
+	private final TypeNode type;
 
 	/**
 	 * Constructor with all required fields
@@ -26,21 +26,12 @@ public class ArrayTypeNode implements ASTNode {
 	 * @param type
 	 *            the type of the array
 	 */
-	public ArrayTypeNode(ASTNode sizeExpression, ASTNode type) {
+	public ArrayTypeNode(ExpressionNode sizeExpression, TypeNode type) {
 		// Expression will be evaluated later to create a size.
 		this.sizeExpression = sizeExpression;
 		this.type = type;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
-	 */
-	@Override
-	public Integer interpret(Scope scope) throws SeaOfOberonException {
-		return null;
-	}
 
 	/*
 	 * (non-Javadoc)
@@ -60,15 +51,22 @@ public class ArrayTypeNode implements ASTNode {
 	/**
 	 * @return the sizeExpression
 	 */
-	public ASTNode getSizeExpression() {
+	public ExpressionNode getSizeExpression() {
 		return sizeExpression;
 	}
 
 	/**
 	 * @return the type
 	 */
-	public ASTNode getType() {
+	public TypeNode getType() {
 		return type;
+	}
+
+
+	@Override
+	public void registerType(String identifier, Scope scope) throws SeaOfOberonException {
+		Integer resolvedSizeExpression = sizeExpression.interpret(scope);
+		scope.addArraySymbol(identifier,resolvedSizeExpression);
 	}
 
 }

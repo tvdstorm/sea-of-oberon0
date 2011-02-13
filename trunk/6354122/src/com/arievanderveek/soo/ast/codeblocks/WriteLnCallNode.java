@@ -3,11 +3,13 @@
  */
 package com.arievanderveek.soo.ast.codeblocks;
 
-import java.util.Hashtable;
-import java.util.LinkedList;
+import java.util.Collections;
 
 import com.arievanderveek.soo.SeaOfOberonException;
-import com.arievanderveek.soo.ast.ASTNode;
+import com.arievanderveek.soo.ast.statements.AbstractParameterNode;
+import com.arievanderveek.soo.ast.statements.StatementNode;
+import com.arievanderveek.soo.ast.variables.ConstantNode;
+import com.arievanderveek.soo.ast.variables.FieldNode;
 import com.arievanderveek.soo.runtime.Scope;
 
 /**
@@ -28,10 +30,13 @@ public class WriteLnCallNode extends ProcedureNode {
 	 * @param statementSequence
 	 */
 	public WriteLnCallNode() {
-		super(METHODNAME, METHODNAME, new Hashtable<String, ASTNode>(),
-				new Hashtable<String, ASTNode>(),
-				new Hashtable<String, ASTNode>(),
-				new Hashtable<String, ASTNode>(), new LinkedList<ASTNode>());
+		super(METHODNAME, METHODNAME,
+				 Collections.<AbstractParameterNode>emptyList(),
+				 Collections.<ConstantNode>emptyList(),
+				 Collections.<FieldNode>emptyList(),
+				 Collections.<FieldNode>emptyList(),
+				 Collections.<ProcedureNode>emptyList(),
+				 Collections.<StatementNode>emptyList());
 	}
 
 	/*
@@ -40,9 +45,8 @@ public class WriteLnCallNode extends ProcedureNode {
 	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
 	 */
 	@Override
-	public Integer interpret(Scope scope) throws SeaOfOberonException {
+	public void interpret(Scope scope) throws SeaOfOberonException {
 		System.out.println();
-		return null;
 	}
 
 }

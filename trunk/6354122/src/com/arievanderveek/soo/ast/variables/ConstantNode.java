@@ -5,7 +5,7 @@ package com.arievanderveek.soo.ast.variables;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
-import com.arievanderveek.soo.runtime.Scope;
+import com.arievanderveek.soo.ast.expr.ExpressionNode;
 
 /**
  * Represents a declaration of a variable, constant or type.
@@ -13,9 +13,10 @@ import com.arievanderveek.soo.runtime.Scope;
  * @author arieveek
  * 
  */
-public class DeclarationNode implements ASTNode {
+public class ConstantNode implements ASTNode {
 
-	private final ASTNode expression;
+	private final String name;
+	private final ExpressionNode expression;
 
 	/**
 	 * Constructor to create a
@@ -23,9 +24,10 @@ public class DeclarationNode implements ASTNode {
 	 * @param expression
 	 *            Expression linked to the declaration
 	 */
-	public DeclarationNode(ASTNode expression) {
+	public ConstantNode(String name, ExpressionNode expression) {
 		// Expression should not be null
 		assert expression != null;
+		this.name = name;
 		this.expression = expression;
 	}
 
@@ -39,23 +41,17 @@ public class DeclarationNode implements ASTNode {
 		return expression.toTreeString(ident);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
-	 */
-	@Override
-	public Integer interpret(Scope scope) throws SeaOfOberonException {
-		return null;
-	}
-
 	/**
 	 * Getter for expression
 	 * 
 	 * @return The expression
 	 */
-	public ASTNode getExpression() {
+	public ExpressionNode getExpression() {
 		return this.expression;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 }

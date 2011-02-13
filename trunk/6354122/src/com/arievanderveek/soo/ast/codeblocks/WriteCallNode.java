@@ -3,15 +3,18 @@
  */
 package com.arievanderveek.soo.ast.codeblocks;
 
-import java.util.Hashtable;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
 import com.arievanderveek.soo.SeaOfOberonException;
-import com.arievanderveek.soo.ast.ASTNode;
+import com.arievanderveek.soo.ast.expr.IdentifierNode;
+import com.arievanderveek.soo.ast.statements.AbstractParameterNode;
 import com.arievanderveek.soo.ast.statements.CallByRefParameterNode;
+import com.arievanderveek.soo.ast.statements.StatementNode;
+import com.arievanderveek.soo.ast.variables.ConstantNode;
 import com.arievanderveek.soo.ast.variables.FieldNode;
-import com.arievanderveek.soo.ast.variables.IdentifierNode;
+import com.arievanderveek.soo.ast.variables.IdentifierTypeNode;
 import com.arievanderveek.soo.runtime.Scope;
 import com.arievanderveek.soo.util.Constants;
 
@@ -26,10 +29,11 @@ public class WriteCallNode extends ProcedureNode {
 
 	public WriteCallNode() {
 		super(METHODNAME, METHODNAME, buildParameters(),
-				new Hashtable<String, ASTNode>(),
-				new Hashtable<String, ASTNode>(),
-				new Hashtable<String, ASTNode>(),
-				new Hashtable<String, ASTNode>(), new LinkedList<ASTNode>());
+				 Collections.<ConstantNode>emptyList(),
+				 Collections.<FieldNode>emptyList(),
+				 Collections.<FieldNode>emptyList(),
+				 Collections.<ProcedureNode>emptyList(),
+				 Collections.<StatementNode>emptyList());
 	}
 
 	/*
@@ -39,19 +43,18 @@ public class WriteCallNode extends ProcedureNode {
 	 * symboltable.Scope)
 	 */
 	@Override
-	public Integer interpret(Scope scope) throws SeaOfOberonException {
+	public void interpret(Scope scope) throws SeaOfOberonException {
 		StringBuilder sb = new StringBuilder();
 		sb.append(Constants.OUTPUT_TEXT);
 		sb.append(scope.getValue(new IdentifierNode(OUTPUT_PARAM)));
 		System.out.print(sb.toString() + Constants.INDENT);
-		return null;
 	}
 
-	private static List<ASTNode> buildParameters() {
-		List<ASTNode> singleParameter = new LinkedList<ASTNode>();
+	private static List<AbstractParameterNode> buildParameters() {
+		List<FieldNode> singleParameter = new LinkedList<FieldNode>();
 		singleParameter.add(new FieldNode(OUTPUT_PARAM,
-				new IdentifierNode(OUTPUT_PARAM)));
-		List<ASTNode> block = new LinkedList<ASTNode>();
+				new IdentifierTypeNode(OUTPUT_PARAM)));
+		List<AbstractParameterNode> block = new LinkedList<AbstractParameterNode>();
 		block.add(new CallByRefParameterNode(singleParameter));
 		return block;
 	}

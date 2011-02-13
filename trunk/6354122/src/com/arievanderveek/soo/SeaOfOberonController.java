@@ -1,6 +1,6 @@
 package com.arievanderveek.soo;
 
-import com.arievanderveek.soo.ast.ASTNode;
+import com.arievanderveek.soo.ast.codeblocks.ModuleNode;
 import com.arievanderveek.soo.parser.Parser;
 import com.arievanderveek.soo.util.SeaOfOberonConfiguration;
 
@@ -36,14 +36,13 @@ public class SeaOfOberonController {
 					.getParserImplClass());
 			Parser oberon0Parser = (Parser) parserImplClass.newInstance();
 			// Parse the source file and create an AST from it.
-			ASTNode ast = oberon0Parser.parseFile(configuration
-					.getSourceCodeFileName());
+			ModuleNode module = oberon0Parser.parseFile(configuration.getSourceCodeFileName());
 			// Print it to string
 			if (configuration.printTree()) {
-				System.out.println(ast.toTreeString(" "));
+				System.out.println(module.toTreeString(" "));
 			}
 			// Execute Code
-			ast.interpret(null);
+			module.interpret(null);
 		} catch (InstantiationException e) {
 			throw new SeaOfOberonException(
 					"Class could not be instantiated for class "

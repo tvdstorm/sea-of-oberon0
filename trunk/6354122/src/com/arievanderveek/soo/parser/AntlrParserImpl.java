@@ -16,7 +16,7 @@ import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.TokenStream;
 
 import com.arievanderveek.soo.SeaOfOberonException;
-import com.arievanderveek.soo.ast.ASTNode;
+import com.arievanderveek.soo.ast.codeblocks.ModuleNode;
 import com.arievanderveek.soo.parser.antlrimpl.generated.Oberon0Lexer;
 import com.arievanderveek.soo.parser.antlrimpl.generated.Oberon0Parser;
 import com.arievanderveek.soo.parser.antlrimpl.generated.Oberon0Parser.module_return;
@@ -33,7 +33,7 @@ public class AntlrParserImpl implements Parser {
 	 * @see com.arievanderveek.soo.parser.Parser#parseFile(java.lang.String)
 	 */
 	@Override
-	public ASTNode parseFile(String fileName) throws SeaOfOberonException {
+	public ModuleNode parseFile(String fileName) throws SeaOfOberonException {
 		// Open a input stream to the file
 		CharStream stream = null;
 		try {

@@ -1,25 +1,24 @@
 /**
  * 
  */
-package com.arievanderveek.soo.ast.binaryoperators;
+package com.arievanderveek.soo.ast.expr.binaryoperators;
 
 import com.arievanderveek.soo.SeaOfOberonException;
-import com.arievanderveek.soo.ast.ASTNode;
+import com.arievanderveek.soo.ast.expr.ExpressionNode;
 import com.arievanderveek.soo.runtime.Scope;
 
 /**
  * @author arieveek
  * 
  */
-public class DivisionOperatorNode extends AbstractBinaryOperatorNode {
+public class ModulusOperatorNode extends AbstractBinaryOperatorNode {
 
 	/**
 	 * @param leftHandNode
 	 * @param rightHandNode
 	 */
-	public DivisionOperatorNode(ASTNode leftHandNode, ASTNode rightHandNode) {
+	public ModulusOperatorNode(ExpressionNode leftHandNode, ExpressionNode rightHandNode) {
 		super(leftHandNode, rightHandNode);
-		// TODO Auto-generated constructor stub
 	}
 
 	/*
@@ -31,7 +30,7 @@ public class DivisionOperatorNode extends AbstractBinaryOperatorNode {
 	public String toTreeString(String ident) throws SeaOfOberonException {
 		StringBuilder sb = new StringBuilder();
 		sb.append(super.leftHandNode.toTreeString(ident));
-		sb.append(ident + "DIV" + ident);
+		sb.append(ident + "MOD" + ident);
 		sb.append(super.rightHandNode.toTreeString(ident));
 		return sb.toString();
 	}
@@ -44,7 +43,7 @@ public class DivisionOperatorNode extends AbstractBinaryOperatorNode {
 	@Override
 	public Integer interpret(Scope scope) throws SeaOfOberonException {
 		return super.leftHandNode.interpret(scope)
-				/ super.rightHandNode.interpret(scope);
+				% super.rightHandNode.interpret(scope);
 	}
 
 }

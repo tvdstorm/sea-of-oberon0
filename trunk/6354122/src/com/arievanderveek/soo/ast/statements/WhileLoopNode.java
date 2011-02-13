@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
+import com.arievanderveek.soo.ast.expr.ExpressionNode;
 import com.arievanderveek.soo.runtime.Scope;
 import com.arievanderveek.soo.util.Constants;
 
@@ -16,10 +17,10 @@ import com.arievanderveek.soo.util.Constants;
  * @author arieveek
  * 
  */
-public class WhileLoopNode implements ASTNode {
+public class WhileLoopNode implements ASTNode, StatementNode {
 
-	private final ASTNode condition;
-	private final List<ASTNode> statementSequence;
+	private final ExpressionNode condition;
+	private final List<StatementNode> statementSequence;
 
 	/**
 	 * @param condition
@@ -28,7 +29,7 @@ public class WhileLoopNode implements ASTNode {
 	 *            A sequence of statements that should be executed while the
 	 *            condition is true
 	 */
-	public WhileLoopNode(ASTNode condition, List<ASTNode> statementSequence) {
+	public WhileLoopNode(ExpressionNode condition, List<StatementNode> statementSequence) {
 		this.condition = condition;
 		this.statementSequence = statementSequence;
 	}
@@ -39,13 +40,12 @@ public class WhileLoopNode implements ASTNode {
 	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
 	 */
 	@Override
-	public Integer interpret(Scope scope) throws SeaOfOberonException {
+	public void interpret(Scope scope) throws SeaOfOberonException {
 		while (conditionIsTrue(scope)) {
-			for (ASTNode node : statementSequence) {
+			for (StatementNode node : statementSequence) {
 				node.interpret(scope);
 			}
 		}
-		return null;
 	}
 
 	/**
