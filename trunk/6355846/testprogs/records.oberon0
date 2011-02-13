@@ -60,8 +60,13 @@ BEGIN
  END;
  QuickSort(input, 0, INPUTLENGTH - 1);
  testRec.value := 24;
+ testRec.next[0] := 13;
  i := 0;
  Write(testRec.value);
+ WriteLn;
+ Write(testRec.next[0]);
+ WriteLn;
+ Write(testRec.field[0]);
  WriteLn;
  WHILE i < INPUTLENGTH DO
    Write(input[i]);
