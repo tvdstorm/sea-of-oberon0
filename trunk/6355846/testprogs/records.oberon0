@@ -66,8 +66,6 @@ BEGIN
  WriteLn;
  Write(testRec.next[0]);
  WriteLn;
- Write(testRec.field[0]);
- WriteLn;
  WHILE i < INPUTLENGTH DO
    Write(input[i]);
    WriteLn;
