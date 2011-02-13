@@ -37,16 +37,16 @@ public class ExpressionsTest {
 		ExpressionNode expr = parser.expression();
 
 		Environment env = new Environment();
-		env.put("a", new Int(2));
-		Array ar = new Array();
+		env.putValue("a", new Int(2));
+		Array ar = new Array(5);
 		ar.add(new Int(1));
 		ar.add(new Int(2));
-		env.put("ar", ar);
+		env.putValue("ar", ar);
 
 		Record rec = new Record();
 		rec.put("age", new Int(25));
 		rec.put("days", ar);
-		env.put("rec", rec);
+		env.putValue("rec", rec);
 
 
 		//Int result = (Int) expr.eval(new ExpressionVisitor(), env);

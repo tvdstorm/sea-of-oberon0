@@ -39,7 +39,7 @@ public class IfThenElseTest {
 		IfThenElseStmNode ifNode = parser.ifStatement();
 
 		Environment env = new Environment();
-		env.put("a", new Int(5));
+		env.putValue("a", new Int(5));
 
 		ifNode.run(new StatementVisitor(), env);
 

@@ -1,0 +1,16 @@
+MODULE Const;
+
+CONST
+	NUM = 5;
+TYPE
+	hoi = INTEGER;
+VAR
+	a: INTEGER;
+	ar: ARRAY 10 OF INTEGER;
+	rec: RECORD first: INTEGER END;
+
+BEGIN
+	a := 10 * NUM;
+	ar[1] := 3;
+	rec.first := 4
+END Const.

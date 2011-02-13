@@ -40,7 +40,7 @@ public class ConstTest {
 		ModuleNode mod = parser.module();
 
 		Environment env = new Environment();
-		env.put("a", new Int(5));
+		env.putValue("a", new Int(5));
 
 		mod.run(env);
 

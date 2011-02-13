@@ -19,7 +19,7 @@ public class StatementVisitor {
 
 	public void run(AssignmentNode node, Environment localEnv) {
 		Value value = (Value) node.getExpression().eval(new ExpressionVisitor(), localEnv);
-		localEnv.put(node.getIdentSelector().getIdentifier(), value);
+		localEnv.putValue(node.getIdentSelector().getIdentifier(), value);
 	}
 
 	public void run(IfStmNode node, Environment localEnv) {
