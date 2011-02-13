@@ -4,16 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.kootsjur.oberon.environment.Environment;
-import com.kootsjur.oberon.evaluator.ExpressionEvaluator;
+import com.kootsjur.oberon.evaluator.Evaluator;
+import com.kootsjur.oberon.value.Bool;
 
 public class IfStatement extends Statement
 {
-   private ExpressionEvaluator ifCondition;
+   private Evaluator ifCondition;
    private StatementSequence thenStatementSequence;
    private List<IfStatement> elseIfStatements;
    private StatementSequence elseStatementSequence;
    
-   public IfStatement(ExpressionEvaluator ifCondition, StatementSequence thenStatementSequence)
+   public IfStatement(Evaluator ifCondition, StatementSequence thenStatementSequence)
    {
       super(StatementType.IFSTATEMENT);
       this.ifCondition = ifCondition;
@@ -21,7 +22,7 @@ public class IfStatement extends Statement
       this.elseIfStatements = new ArrayList<IfStatement>();
    }
    
-   public IfStatement(ExpressionEvaluator ifCondition, StatementSequence thenStatementSequence, StatementSequence elseStatementSequence)
+   public IfStatement(Evaluator ifCondition, StatementSequence thenStatementSequence, StatementSequence elseStatementSequence)
    {
       super(StatementType.IFSTATEMENT);
       this.ifCondition = ifCondition;
@@ -30,7 +31,7 @@ public class IfStatement extends Statement
       this.elseIfStatements = new ArrayList<IfStatement>();
    }
    
-   public IfStatement(ExpressionEvaluator ifCondition, StatementSequence thenStatementSequence, List<IfStatement> elseIfStatements)
+   public IfStatement(Evaluator ifCondition, StatementSequence thenStatementSequence, List<IfStatement> elseIfStatements)
    {
       super(StatementType.IFSTATEMENT);
       this.ifCondition = ifCondition;
@@ -38,7 +39,7 @@ public class IfStatement extends Statement
       this.elseIfStatements = elseIfStatements;
    }
    
-   public IfStatement(ExpressionEvaluator ifCondition, StatementSequence thenStatementSequence, StatementSequence elseStatementSequence, List<IfStatement> elseIfStatements)
+   public IfStatement(Evaluator ifCondition, StatementSequence thenStatementSequence, StatementSequence elseStatementSequence, List<IfStatement> elseIfStatements)
    {
       super(StatementType.IFSTATEMENT);
       this.ifCondition = ifCondition;
@@ -53,8 +54,8 @@ public class IfStatement extends Statement
       return this.elseIfStatements.add(elseIfStatement);
    }
 
-   public void setIfCondition(ExpressionEvaluator ifCondition){this.ifCondition = ifCondition;}
-   public ExpressionEvaluator getIfCondition(){return ifCondition;}
+   public void setIfCondition(Evaluator ifCondition){this.ifCondition = ifCondition;}
+   public Evaluator getIfCondition(){return ifCondition;}
 
    public void setThenStatementSequence(StatementSequence thenStatementSequence){this.thenStatementSequence = thenStatementSequence;}
    public StatementSequence getThenStatementSequence(){return thenStatementSequence;}
@@ -68,10 +69,31 @@ public class IfStatement extends Statement
    @Override
    public void evaluate(Environment environment)
    {
-      // TODO Auto-generated method stub
+      Bool ifcon = (Bool) ifCondition.evaluate(environment);
+      if(ifcon.getValue())
+      {
+         thenStatementSequence.evaluate(environment);
+         return;
+      }
       
+      if(!elseIfStatements.isEmpty())
+      {
+         for(IfStatement statement : elseIfStatements)
+         {
+            Evaluator ifElseConditionEvaluator = statement.getIfCondition();
+            Bool elseIfCondition = (Bool) ifElseConditionEvaluator.evaluate(environment);
+            if(elseIfCondition.getValue())
+            {
+               StatementSequence statements = statement.getThenStatementSequence();
+               statements.evaluate(environment);
+               return;
+            }
+         }
+      }
+      
+      if(elseStatementSequence != null && !elseStatementSequence.isEmpty())
+      {
+         elseStatementSequence.evaluate(environment);
+      }
    }
-
-
-
 }

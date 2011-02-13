@@ -24,11 +24,21 @@ public class Procedure extends Environment
       declare();
    }
    
+   public FormalParameters getFormalParameters()
+   {
+      return formalParameters;
+   }
    public void declare()
    {
       declareDeclarations(declarations);
       declareProcedures(procedureDeclarations);
       declareParameters(formalParameters);
+   }
+
+   public void run()
+   {
+      statementSequence.evaluate(this);
+      
    }
 
 }

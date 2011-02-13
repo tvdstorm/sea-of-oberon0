@@ -103,7 +103,7 @@ statement returns [Statement s]
 	//(ident (selector)?((actualParameters)?|':='expression)
 	//(ident ((dotSelector)?(actualParameters)|(bracketSelector)?':='expression)
 whileStatement returns [WhileStatement w]
-	:	'WHILE' expression 'DO' statementSequence 'END';	
+	:	'WHILE' expression 'DO' statementSequence 'END' {$w = new WhileStatement($expression.e, $statementSequence.s);};	
 	
 ifStatement returns [IfStatement i]
 	:	'IF' expression1=expression 'THEN' statementSequence1=statementSequence {$i = new IfStatement($expression1.e, $statementSequence1.s);}
@@ -114,7 +114,7 @@ procedureCall
 	:	ident (selector)?(actualParameters); 
 	
 assignment
-	:	ident (selector)?':='expression;
+	:	ident (selector)?':='expression;  
 		
 actualParameters returns [ActualParameters a]
 	: {$a = new ActualParameters();}	'('(expression1=expression {$a.add(new ActualParameter($expression1.e));}(','expression2=expression {$a.add(new ActualParameter($expression2.e));})*)?')';
@@ -163,10 +163,10 @@ arraySelector: ident(bracketSelector)+;
 number returns [Evaluator n]	:	integer {new NumberEvaluator(Integer.parseInt($integer.text));};
 
 selector returns [Evaluator s]:	dotSelector{$s = $dotSelector.d;}|bracketSelector {$s = $bracketSelector.b;};
-
+ 
 dotSelector returns [Evaluator d]: '.'ident;
 
-bracketSelector returns [Evaluator b]: '['expression']' {$b = $expression.e;};
+bracketSelector returns [Evaluator b]: '['expression']' {$b = new BracketSelectorEvaluator($expression.e);};
 
 
 integer	:	DIGIT (DIGIT)*;			 									

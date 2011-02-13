@@ -3,19 +3,20 @@ package com.kootsjur.oberon.statement;
 import com.kootsjur.oberon.environment.Environment;
 import com.kootsjur.oberon.evaluator.Evaluator;
 import com.kootsjur.oberon.evaluator.ExpressionEvaluator;
+import com.kootsjur.oberon.evaluator.SelectorEvaluator;
 import com.kootsjur.oberon.value.Value;
 
 public class Assignment extends Statement
 {
    private String name;
-   private Evaluator selector;
-   private ExpressionEvaluator expression;
+   private SelectorEvaluator selector;
+   private Evaluator expression;
    
    public Assignment(String name, Evaluator selector, ExpressionEvaluator expression)
    {
       super(StatementType.ASSIGNMENT);
       this.name = name;
-      this.selector = selector;
+      this.selector = (SelectorEvaluator) selector;
       this.expression = expression;
    }
    
@@ -28,11 +29,11 @@ public class Assignment extends Statement
       return name;
    }
    
-   public void setSelector(Evaluator selector)
+   public void setSelector(SelectorEvaluator selector)
    {
       this.selector = selector;
    }
-   public Evaluator getSelector()
+   public SelectorEvaluator getSelector()
    {
       return selector;
    }
@@ -41,7 +42,7 @@ public class Assignment extends Statement
    {
       this.expression = expression;
    }
-   public ExpressionEvaluator getExpression()
+   public Evaluator getExpression()
    {
       return expression;
    }
@@ -49,19 +50,25 @@ public class Assignment extends Statement
    @Override
    public void evaluate(Environment environment)
    {
+      
       if(selector == null)
       {
          evaluateName(environment);
       }
       else
       {
-         //evaluateNameSelector(environment);
+         evaluateNameSelector(environment);
       }
+   }
+
+   private void evaluateNameSelector(Environment environment)
+   {
+      selector.assignValue(name, expression, environment);
    }
 
    private void evaluateName(Environment environment)
    {
-      Value value = expression.evaluate();
+      Value value = expression.evaluate(environment);
       environment.assignValue(name, value); 
    }
    

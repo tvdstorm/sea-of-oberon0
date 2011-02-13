@@ -1,10 +1,13 @@
 package com.kootsjur.oberon.statement;
 
+import java.util.Iterator;
 import java.util.List;
-
-import com.kootsjur.oberon.DotSelector;
-import com.kootsjur.oberon.Selector;
+import com.kootsjur.oberon.declaration.formalparameter.FPSection;
+import com.kootsjur.oberon.declaration.formalparameter.FormalParameters;
 import com.kootsjur.oberon.environment.Environment;
+import com.kootsjur.oberon.environment.Procedure;
+import com.kootsjur.oberon.evaluator.Evaluator;
+import com.kootsjur.oberon.value.Value;
 
 public class ProcedureCall extends Statement
 {
@@ -47,8 +50,28 @@ public class ProcedureCall extends Statement
    @Override
    public void evaluate(Environment environment)
    {
-      // TODO Auto-generated method stub
-      
+      Procedure procedure = environment.lookUpProcedure(callTo);
+      if(actualParameters != null && actualParameters.size() > 0)
+      {
+         setParametersValue(procedure,environment);
+      }
+      procedure.run();      
    }
+
+   private void setParametersValue(Procedure procedure,Environment environment)
+   {
+      Iterator<ActualParameter> actuals = actualParameters.iterator();
+      FormalParameters formals = procedure.getFormalParameters(); 
+      for(FPSection fPSection : formals)
+      {
+         for(String parameterName : fPSection.getNames())
+         {
+            ActualParameter actual = actuals.next();
+            Evaluator expression = actual.getExpression();
+            Value value = expression.evaluate(environment);
+            procedure.assignValueToParameter(parameterName,value);
+         }
+      }
+    }
    
 }

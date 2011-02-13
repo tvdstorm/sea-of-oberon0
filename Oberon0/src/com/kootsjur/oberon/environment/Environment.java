@@ -53,6 +53,9 @@ public class Environment
    public void setProcedures(DeclaredProcedures procedures){this.procedures = procedures;}
    public DeclaredProcedures getProcedures(){return procedures;}
    
+   public void setDeclaredParameters(DeclaredParameters parameters){this.parameters = parameters;}
+   public DeclaredParameters getDeclaredParameters(){return parameters;}
+   
    public void declareConstant(String constantName, Constant constant)
    {
       declaredConstants.put(constantName, constant);
