@@ -5,13 +5,13 @@ options {
 }
 
 @header {
-  package com.kootsjur.oberon;
+  package com.kootsjur.oberon.parser;
   import java.util.List
   import java.util.ArrayList;
 }
 
 @lexer::header {
-  package com.kootsjur.oberon;
+  package com.kootsjur.oberon.parser;
 }
 
 @members{

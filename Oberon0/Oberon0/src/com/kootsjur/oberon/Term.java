@@ -1,4 +1,4 @@
-package com.kootsjur.oberon;
+package com.kootsjur.oberon.parser;
 
 public class Term
 {

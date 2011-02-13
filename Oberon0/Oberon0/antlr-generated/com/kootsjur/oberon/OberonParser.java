@@ -1,6 +1,6 @@
 // $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\users\\kootsjur\\workspace\\Oberon0\\src\\com\\kootsjur\\oberon\\Oberon.g 2011-01-30 22:50:22
 
-  package com.kootsjur.oberon;
+  package com.kootsjur.oberon.parser;
   import java.util.List
   import java.util.ArrayList;
 

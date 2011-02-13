@@ -5,7 +5,8 @@ options {
 }
 
 @header {
-  package com.kootsjur.oberon;
+  package com.kootsjur.oberon.parser;
+  import com.kootsjur.oberon.*;
   import com.kootsjur.oberon.statement.*;
   import com.kootsjur.oberon.environment.*;
   import com.kootsjur.oberon.evaluator.*;
@@ -19,16 +20,16 @@ options {
 }
 
 @lexer::header {
-  package com.kootsjur.oberon;
+  package com.kootsjur.oberon.parser;
 } 
 
 @members{
-	private Module module;
+	public Module module;
 }
  
-module	:	'MODULE' ident1=ident';'{module = new Module($ident1.text);} 
-				 declarations {module.setDeclarations($declarations.ld);} 
-				(procedure';' {module.addProcedure($procedure.p);})*
+module returns [Module m]:	'MODULE' ident1=ident';'{$m = new Module($ident1.text);} 
+				 declarations {$m.setDeclarations($declarations.ld);} 
+				(procedure';' {$m.addProcedure($procedure.p);})*
 				('BEGIN' statementSequence {module.setStatementSequence($statementSequence.s);})? 'END' ident '.';	
 
 declarations returns [List<Declaration> ld]

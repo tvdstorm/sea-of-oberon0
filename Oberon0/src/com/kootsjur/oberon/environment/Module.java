@@ -119,13 +119,13 @@ public class Module extends Environment
       declareProcedures(procedureDeclarations);
    }
    
-   public void evaluate()
+   private void evaluate()
    {
       evaluateStatements(statementSequence);
    }
 
    public void run()
    {
-      
+      evaluate();
    }
 }
