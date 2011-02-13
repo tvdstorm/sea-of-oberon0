@@ -1,6 +1,6 @@
 package nl.bve.uva.oberon.env.types;
 
-public class UserType extends Type {
+public class UserType extends OberonType {
 	public UserType() {
 		
 	}
@@ -12,19 +12,19 @@ public class UserType extends Type {
 	}
 	
 	@Override
-	public void setValue(Type value) {
+	public void setValue(OberonType value) {
 		// TODO Auto-generated method stub
 		
 	}
 	
 	@Override
-	public Type evaluateSelector(String s) {
+	public OberonType evaluateSelector(String s) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
 	@Override
-	public Type clone() {
+	public OberonType clone() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -3,7 +3,7 @@ package nl.bve.uva.oberon.ast.expressions;
 import nl.bve.uva.oberon.ast.IInterpretableNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.types.OberonInt;
-import nl.bve.uva.oberon.env.types.Type;
+import nl.bve.uva.oberon.env.types.OberonType;
 
 public class LTEqualsExprNode extends ExpressionNode {
 	public LTEqualsExprNode(IInterpretableNode lhn, IInterpretableNode rhn) {

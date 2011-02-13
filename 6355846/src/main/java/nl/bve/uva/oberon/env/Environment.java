@@ -6,19 +6,19 @@ import java.util.Map.Entry;
 import nl.bve.uva.oberon.env.procedures.Procedure;
 import nl.bve.uva.oberon.env.types.OberonConstant;
 import nl.bve.uva.oberon.env.types.OberonInt;
-import nl.bve.uva.oberon.env.types.Type;
+import nl.bve.uva.oberon.env.types.OberonType;
 
 public class Environment {
 	private final String BUILT_IN_SUBPACKAGE = "procedures.builtins";
 	
 	private Environment superSpace;
 	
-	private LinkedHashMap<String, Type> identStack = new LinkedHashMap<String, Type>();
+	private LinkedHashMap<String, OberonType> identStack = new LinkedHashMap<String, OberonType>();
 	private LinkedHashMap<String, Procedure> procedureStack = new LinkedHashMap<String, Procedure>();
 	
 	public Environment() {}
 	
-	public Type createUserType(String typeDef) {
+	public OberonType createUserType(String typeDef) {
 		if (typeDef.equals("INTEGER")) {
 			return new OberonInt(0);
 		} else {
@@ -38,12 +38,12 @@ public class Environment {
 		identStack.put(const_id, c);
 	}
 	
-	public void addVariable(String var_id, Type var) {
+	public void addVariable(String var_id, OberonType var) {
 		identStack.put(var_id, var);
 	}
 	
-	public Type getVariable(String var_id) {
-		Type t = identStack.get(var_id);
+	public OberonType getVariable(String var_id) {
+		OberonType t = identStack.get(var_id);
 		
 		if (t == null) {
 			if (superSpace != null) {
@@ -125,7 +125,7 @@ public class Environment {
 			sb.append(superSpace.toString());
 		}
 		
-		for (Entry<String, Type> e : identStack.entrySet() ) {
+		for (Entry<String, OberonType> e : identStack.entrySet() ) {
 			sb.append(e.getKey()+ ": " +e.getValue()+ "\n");
 		}
 		

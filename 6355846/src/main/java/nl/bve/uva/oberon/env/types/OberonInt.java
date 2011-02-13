@@ -1,6 +1,6 @@
 package nl.bve.uva.oberon.env.types;
 
-public class OberonInt extends Type {
+public class OberonInt extends OberonType {
 	public static final int FALSE = 0;
 	public static final int TRUE  = 1;
 	
@@ -16,7 +16,7 @@ public class OberonInt extends Type {
 	}
 	
 	@Override
-	public void setValue(Type value) {
+	public void setValue(OberonType value) {
 		if (! (value instanceof OberonInt)) {
 			throw new RuntimeException("Can only assign an OberonInt to an OberonInt (found: " +value.getClass().getCanonicalName());
 		}
@@ -24,12 +24,12 @@ public class OberonInt extends Type {
 	}
 	
 	@Override
-	public Type evaluateSelector(String o) {
+	public OberonType evaluateSelector(String o) {
 		throw new RuntimeException("Cannot evaluate an OberonInt type!");
 	}
 	
 	@Override
-	public Type clone() {
+	public OberonType clone() {
 		return new OberonInt(value);
 	}
 	

@@ -10,7 +10,7 @@ import nl.bve.uva.oberon.ast.TypedReferenceParameterList;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.procedures.Procedure;
 import nl.bve.uva.oberon.env.types.OberonInt;
-import nl.bve.uva.oberon.env.types.Type;
+import nl.bve.uva.oberon.env.types.OberonType;
 
 public class Read extends Procedure {
 	private final String REF_VAR_STORE = "var_storage";
@@ -26,7 +26,7 @@ public class Read extends Procedure {
 	@Override
 	public void execute(Environment env) {
 		Scanner s = new Scanner(System.in);
-		Type variable = env.getVariable(REF_VAR_STORE);
+		OberonType variable = env.getVariable(REF_VAR_STORE);
 		variable.setValue(new OberonInt(s.nextInt()));
 	}
 }

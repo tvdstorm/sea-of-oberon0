@@ -3,7 +3,7 @@ package nl.bve.uva.oberon.ast;
 import java.util.List;
 
 import nl.bve.uva.oberon.env.Environment;
-import nl.bve.uva.oberon.env.types.Type;
+import nl.bve.uva.oberon.env.types.OberonType;
 
 
 public class IdentSelectorNode implements IInterpretableNode {
@@ -17,7 +17,7 @@ public class IdentSelectorNode implements IInterpretableNode {
 	
 	@Override
 	public Object interpret(Environment env) {
-		Type type = env.getVariable(name);
+		OberonType type = env.getVariable(name);
 		
 		if (selectors != null) {
 			for (IInterpretableNode selector : selectors) {

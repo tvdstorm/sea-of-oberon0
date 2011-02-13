@@ -3,7 +3,7 @@ package nl.bve.uva.oberon.ast.expressions;
 import nl.bve.uva.oberon.ast.IInterpretableNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.types.OberonInt;
-import nl.bve.uva.oberon.env.types.Type;
+import nl.bve.uva.oberon.env.types.OberonType;
 
 public abstract class ExpressionNode implements IInterpretableNode {
 	private IInterpretableNode lhn;
@@ -16,12 +16,12 @@ public abstract class ExpressionNode implements IInterpretableNode {
 	
 	public Integer getLeftHandValue(Environment env) {
 		Object leftType = lhn.interpret(env);
-		return ((Type)leftType).getValue();
+		return ((OberonType)leftType).getValue();
 	}
 	
 	public Integer getRightHandValue(Environment env) {
 		Object rightType = rhn.interpret(env);
-		return ((Type)rightType).getValue();
+		return ((OberonType)rightType).getValue();
 		
 	}
 	
