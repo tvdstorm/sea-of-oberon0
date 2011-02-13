@@ -16,9 +16,11 @@ tokens {
   import com.arievanderveek.soo.ast.*;
   import com.arievanderveek.soo.ast.statements.*;
   import com.arievanderveek.soo.ast.variables.*;
-  import com.arievanderveek.soo.ast.unaryoperators.*;
-  import com.arievanderveek.soo.ast.binaryoperators.*;
+  import com.arievanderveek.soo.ast.expr.*;
+  import com.arievanderveek.soo.ast.expr.unaryoperators.*;
+  import com.arievanderveek.soo.ast.expr.binaryoperators.*;
   import com.arievanderveek.soo.ast.codeblocks.*;
+  import java.util.Collections;
   import java.util.Map;
   import java.util.Queue;
   import java.util.Hashtable;
@@ -38,33 +40,33 @@ tokens {
 }
 
 selectorPart
-	: '.'	IDENT { $selector::selectors.add(new IdentifierNode($IDENT.text)); }
-	|	'['	e=expression	']' { $selector::selectors.add($e.node); }
+	: '.'	IDENT { $selector::selectors.add(new Member($IDENT.text)); }
+	|	'['	e=expression	']' { $selector::selectors.add(new Subscript($e.node)); }
 	;
 
-selector returns[List<ASTNode> return_selectors]
+selector returns[List<Selector> return_selectors]
 scope{
-	List<ASTNode> selectors;
+	List<Selector> selectors;
 }
 @init{
-	$selector::selectors = new LinkedList<ASTNode>();
+	$selector::selectors = new LinkedList<Selector>();
 }
 	:	selectorPart*
 	{ $return_selectors = $selector::selectors; }
 	;
 
-identSelector returns[ASTNode node] // done
-	: IDENT selector {$node = new IdentifierNode($IDENT.text , $selector.return_selectors );}
+identSelector returns[IdentifierNode node]
+	: IDENT selector {$node = new IdentifierNode($IDENT.text , new Selectors($selector.return_selectors ));}
 	;
 
-factor returns[ASTNode node] //done
+factor returns[ExpressionNode node]
 	:	identSelector { $node = $identSelector.node;}
-	| INTEGER {$node = new IntegerTypeNode(new Integer($INTEGER.text)) ;}
+	| INTEGER {$node = new IntegerExpressionNode(new Integer($INTEGER.text)) ;}
 	| '(' expression ')' {$node = $expression.node; }
 	| '~'^ f=factor {$node = new NotOperatorNode($f.node); } // Stands for not P
 	;
 
-term returns[ASTNode node] //done
+term returns[ExpressionNode node]
 	: lhs=factor 
 	((times='*'
 	| div='DIV'
@@ -93,7 +95,7 @@ term returns[ASTNode node] //done
 	}
 	;
 
-termList returns[ASTNode node] //done
+termList returns[ExpressionNode node]
 	: lhs=term 
 	((plus='+'
 	|min='-'
@@ -118,11 +120,11 @@ termList returns[ASTNode node] //done
 	}
 	;
 
-negation returns[ASTNode node] //done
+negation
 	:	'-' -> NEGATION
 	;
 
-simpleExpression returns[ASTNode node] //done
+simpleExpression returns[ExpressionNode node]
 @init{
 	boolean isNegation = false;
 }
@@ -140,7 +142,7 @@ simpleExpression returns[ASTNode node] //done
 	}		
 	;
 
-expression returns[ASTNode node] //done
+expression returns[ExpressionNode node]
   :	lhs=simpleExpression ((
 	equal='='
 	|notequal='#'
@@ -177,7 +179,7 @@ expression returns[ASTNode node] //done
 	}
 	;
 	
-assignment returns[ASTNode node] //done
+assignment returns[AssignmentNode node] //done
 	: identSelector ':=' expression
 	{ $node = new AssignmentNode($identSelector.node, $expression.node);} 
 	;
@@ -187,12 +189,12 @@ actualParametersFollowUp //done
 	{$actualParameters::parameters.add($expression.node);}
 	;
 
-actualParameters returns[List<ASTNode> return_expression] //done
+actualParameters returns[List<ExpressionNode> return_expression] //done
 scope{
-	List<ASTNode> parameters;
+	List<ExpressionNode> parameters;
 }
 @init{
-	$actualParameters::parameters = new LinkedList<ASTNode>();
+	$actualParameters::parameters = new LinkedList<ExpressionNode>();
 }
 		: '('
 		expression {$actualParameters::parameters.add($expression.node);} 
@@ -201,7 +203,7 @@ scope{
 		{ $return_expression = $actualParameters::parameters;}
 		;
 		
-procedureCall returns[ASTNode node] // done
+procedureCall returns[ProcedureCallNode node] // done
 	:	 IDENT actualParameters?
 	{
 		// actualParameters returns an
@@ -232,7 +234,7 @@ elsePart
 	}
 	;
 
-ifStatement returns[ASTNode node]
+ifStatement returns[IfStatementNode node]
 scope{
 	IfStatementNode root;
 }
@@ -246,12 +248,12 @@ scope{
 	{$node = $ifStatement::root;}
 	;
 		
-whileStatement returns[ASTNode node] // done
+whileStatement returns[WhileLoopNode node] // done
 	:	'WHILE' expression 'DO' statementSequence 'END'
 	{ $node = new WhileLoopNode($expression.node, $statementSequence.return_statements); }
 	;
 
-statement returns[ASTNode node] // done
+statement returns[StatementNode node] // done
 	:	(
 	  assignment {$node=$assignment.node;}
 	| procedureCall {$node=$procedureCall.node;}
@@ -267,12 +269,12 @@ statementSequenceFollowUp //done
 	}
 	;
 
-statementSequence returns[List<ASTNode> return_statements] //done
+statementSequence returns[List<StatementNode> return_statements] //done
 scope{
-	List<ASTNode> statements
+	List<StatementNode> statements
 }
 @init{
-	$statementSequence::statements = new LinkedList<ASTNode>();
+	$statementSequence::statements = new LinkedList<StatementNode>();
 }
 	:	
 	statement {$statementSequence::statements.add($statement.node); }
@@ -285,17 +287,17 @@ identList returns[List<String> idents] //done
 		{$idents=$ids;}
 	;
 	
-arrayType returns[ASTNode node] // done
+arrayType returns[ArrayTypeNode node] // done
 	:	'ARRAY'	expression 'OF' type
 	{ $node = new ArrayTypeNode($expression.node,$type.node);}
 	;
 	
-fieldList returns[List<ASTNode> return_fieldlist]
+fieldList returns[List<FieldNode> return_fieldlist]
 scope{
-	List<ASTNode> fields
+	List<FieldNode> fields
 }
 @init{
-	$fieldList::fields = new LinkedList<ASTNode>();
+	$fieldList::fields = new LinkedList<FieldNode>();
 }
 	:	(identList ':' type)?
 	{
@@ -312,31 +314,31 @@ recordTypeFollowUp
 	{ $recordType::fields.addAll($fieldList.return_fieldlist);}
 	;
 
-recordType returns[ASTNode node]
+recordType returns[RecordTypeNode node]
 scope{
-	List<ASTNode> fields
+	List<FieldNode> fields
 }
 @init{
-	$recordType::fields = new LinkedList<ASTNode>();	
+	$recordType::fields = new LinkedList<FieldNode>();	
 }
 	:	
 	'RECORD'
 	fieldList 
 	{
-	// $recordType::fields.putAll($fieldList.return_fieldlist);
+	   $recordType::fields.addAll($fieldList.return_fieldlist);
 	}
 	recordTypeFollowUp*
 	'END'
 	{$node = new RecordTypeNode($recordType::fields);}
 	;
 
-type returns[ASTNode node]
-	:	IDENT { $node = new IdentifierNode($IDENT.text);} 
+type returns[TypeNode node]
+	:	IDENT { $node = new IdentifierTypeNode($IDENT.text);} 
 	| arrayType { $node = $arrayType.node;} 
 	| recordType { $node = $recordType.node;}
 	;
 	
-fpSection returns[ASTNode node]
+fpSection returns[AbstractParameterNode node]
 	:	(var='VAR')? fieldList
 		{ 
 			if (var!=null){
@@ -352,12 +354,12 @@ formalParametersFollowUp
 	{ $formalParameters::fields.add($fpSection.node);}
 	;
 
-formalParameters returns[List<ASTNode> formalParams]
+formalParameters returns[List<AbstractParameterNode> formalParams]
 scope{
-	List<ASTNode> fields
+	List<AbstractParameterNode> fields
 }
 @init{
-	$formalParameters::fields = new LinkedList<ASTNode>();	
+	$formalParameters::fields = new LinkedList<AbstractParameterNode>();	
 }
 	:
 	'(' 
@@ -367,9 +369,9 @@ scope{
 	{ $formalParams = $formalParameters::fields;}
 	;
 	
-procedureBody returns[Map<String, ASTNode> return_constants, Map<String, ASTNode> return_types,
-											Map<String, ASTNode> return_variables, Map<String, ASTNode> return_procs,
-											List<ASTNode> return_stats]
+procedureBody returns[List<ConstantNode> return_constants, List<FieldNode> return_types, 
+                     List<FieldNode> return_variables, List<ProcedureNode> return_procs,
+										 List<StatementNode> return_stats]
 	:	declarations ('BEGIN' statementSequence)? 'END'
 	{
 		$return_constants = $declarations.return_constants;
@@ -380,10 +382,10 @@ procedureBody returns[Map<String, ASTNode> return_constants, Map<String, ASTNode
 			if ($statementSequence.return_statements!=null) {
 				$return_stats = $statementSequence.return_statements;
 			} else {
-				$return_stats = new LinkedList<ASTNode>();
+				$return_stats = new LinkedList<StatementNode>();
 			}
 		} else { 
-			$return_stats = new LinkedList<ASTNode>();
+			$return_stats = new LinkedList<StatementNode>();
 		}
 	}
 	;
@@ -392,12 +394,12 @@ procedureDeclaration
 	:	'PROCEDURE' start=IDENT formalParameters? ';' procedureBody end=IDENT
 	{
 	if ($formalParameters.formalParams!=null){
-	$declarations::procedures.put($start.text, new ProcedureNode($start.text, $end.text,
+	$declarations::procedures.add(new ProcedureNode($start.text, $end.text,
 				$formalParameters.formalParams, $procedureBody.return_constants, 
 				$procedureBody.return_types, $procedureBody.return_variables, 
 				$procedureBody.return_procs, $procedureBody.return_stats));
 	} else {
-	$declarations::procedures.put($start.text, new ProcedureNode($start.text, $end.text,
+	$declarations::procedures.add(new ProcedureNode($start.text, $end.text,
 				$procedureBody.return_constants, $procedureBody.return_types,
 				$procedureBody.return_variables, $procedureBody.return_procs, 
 				$procedureBody.return_stats));
@@ -408,14 +410,14 @@ procedureDeclaration
 constDecl
 	: (IDENT '=' expression ';')
 		{
-			$declarations::constants.put($IDENT.text , new DeclarationNode($expression.node));
+			$declarations::constants.add(new ConstantNode($IDENT.text , $expression.node));
 		}
 	;
 	
 typeDecl
 	: ( IDENT '=' type ';')
 		{
-			$declarations::types.put($IDENT.text , new DeclarationNode($type.node));
+			$declarations::types.add(new FieldNode($IDENT.text , $type.node));
 		}
 	;	
 
@@ -423,7 +425,7 @@ varDecl
 	: (identList ':' type ';')
 		{
 			for (Object token : $identList.idents){
-				$declarations::variables.put( ((CommonToken) token).getText(), new DeclarationNode($type.node));
+				$declarations::variables.add( new FieldNode(((CommonToken) token).getText(), $type.node));
 			}
 		}
 	;
@@ -439,19 +441,19 @@ varsDecl
 	: 'VAR' varDecl*
 	;
 	
-declarations returns[Map<String, ASTNode> return_constants, Map<String, ASTNode> return_types, 
-										 Map<String, ASTNode> return_variables, Map<String, ASTNode> return_procs]
+declarations returns[List<ConstantNode> return_constants, List<FieldNode> return_types, 
+										 List<FieldNode> return_variables, List<ProcedureNode> return_procs]
 scope{
-					Map<String, ASTNode> constants;
-					Map<String, ASTNode> types;
-					Map<String, ASTNode> variables;
-					Map<String, ASTNode> procedures;
+					List<ConstantNode> constants;
+					List<FieldNode> types;
+					List<FieldNode> variables;
+					List<ProcedureNode> procedures;
 }
 @init{
-					$declarations::constants = new Hashtable<String, ASTNode>() ;
-					$declarations::types = new Hashtable<String, ASTNode>();
-					$declarations::variables = new Hashtable<String, ASTNode>();
-					$declarations::procedures = new Hashtable<String, ASTNode>();
+					$declarations::constants = new LinkedList<ConstantNode>() ;
+					$declarations::types = new LinkedList<FieldNode>();
+					$declarations::variables = new LinkedList<FieldNode>();
+					$declarations::procedures = new LinkedList<ProcedureNode>();
 }
 
 	:	constsDecl? typesDecl? varsDecl? (procedureDeclaration ';')* 
@@ -464,10 +466,10 @@ scope{
 	}
 	;
 	
-module returns[ASTNode node]
+module returns[ModuleNode node]
 scope{
 	ModuleNode moduleNode;
-	List<ASTNode> statementsSeq;
+	List<StatementNode> statementsSeq;
 }
 	:	'MODULE' start=IDENT ';' declarations	('BEGIN' statementSequence)? 'END' end=IDENT '.'
 	{
@@ -476,10 +478,10 @@ scope{
 				if ($statementSequence.return_statements != null){
 					$module::statementsSeq = $statementSequence.return_statements;
 				} else{
-					$module::statementsSeq = new LinkedList<ASTNode>();
+					$module::statementsSeq = Collections.<StatementNode>emptyList();
 				}
 		} else {
-			$module::statementsSeq = new LinkedList<ASTNode>();
+			$module::statementsSeq = Collections.<StatementNode>emptyList();
 		}
 		// Create the modulenode with all required fields
 		$module::moduleNode = new ModuleNode(	$start.text, $end.text,	$declarations.return_constants,
