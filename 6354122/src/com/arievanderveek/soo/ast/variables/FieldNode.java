@@ -5,7 +5,6 @@ package com.arievanderveek.soo.ast.variables;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
-import com.arievanderveek.soo.runtime.Scope;
 
 /**
  * Represents a field which consists of a field name and type
@@ -16,7 +15,7 @@ import com.arievanderveek.soo.runtime.Scope;
 public class FieldNode implements ASTNode {
 
 	private String name;
-	private ASTNode type;
+	private TypeNode type;
 
 	/**
 	 * Constructor for
@@ -24,7 +23,7 @@ public class FieldNode implements ASTNode {
 	 * @param name
 	 * @param type
 	 */
-	public FieldNode(String name, ASTNode type) {
+	public FieldNode(String name, TypeNode type) {
 		this.name = name;
 		this.type = type;
 	}
@@ -43,20 +42,8 @@ public class FieldNode implements ASTNode {
 	 * 
 	 * @return the type
 	 */
-	public ASTNode getType() {
+	public TypeNode getType() {
 		return type;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.arievanderveek.soo.ast.ASTNode#interpret(com.arievanderveek.soo.
-	 * symboltable.Scope)
-	 */
-	@Override
-	public Integer interpret(Scope scope) throws SeaOfOberonException {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	/*

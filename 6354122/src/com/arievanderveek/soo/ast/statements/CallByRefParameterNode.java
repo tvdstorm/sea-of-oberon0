@@ -6,8 +6,7 @@ package com.arievanderveek.soo.ast.statements;
 import java.util.List;
 
 import com.arievanderveek.soo.SeaOfOberonException;
-import com.arievanderveek.soo.ast.ASTNode;
-import com.arievanderveek.soo.runtime.Scope;
+import com.arievanderveek.soo.ast.variables.FieldNode;
 import com.arievanderveek.soo.util.Constants;
 
 /**
@@ -21,18 +20,8 @@ public class CallByRefParameterNode extends AbstractParameterNode {
 	/**
 	 * @param formalParameter
 	 */
-	public CallByRefParameterNode(List<ASTNode> formalParameter) {
+	public CallByRefParameterNode(List<FieldNode> formalParameter) {
 		super(formalParameter);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
-	 */
-	@Override
-	public Integer interpret(Scope scope) throws SeaOfOberonException {
-		return null;
 	}
 
 	/*

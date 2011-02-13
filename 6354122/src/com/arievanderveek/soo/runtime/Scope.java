@@ -10,14 +10,15 @@ import java.util.Map;
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
 import com.arievanderveek.soo.ast.codeblocks.ProcedureNode;
+import com.arievanderveek.soo.ast.expr.ExpressionNode;
+import com.arievanderveek.soo.ast.expr.IdentifierNode;
+import com.arievanderveek.soo.ast.expr.Selectors;
 import com.arievanderveek.soo.ast.statements.AbstractParameterNode;
 import com.arievanderveek.soo.ast.statements.CallByRefParameterNode;
 import com.arievanderveek.soo.ast.statements.CallByValParameterNode;
-import com.arievanderveek.soo.ast.variables.ArrayTypeNode;
-import com.arievanderveek.soo.ast.variables.DeclarationNode;
+import com.arievanderveek.soo.ast.variables.ConstantNode;
 import com.arievanderveek.soo.ast.variables.FieldNode;
-import com.arievanderveek.soo.ast.variables.IdentifierNode;
-import com.arievanderveek.soo.ast.variables.RecordTypeNode;
+import com.arievanderveek.soo.ast.variables.TypeNode;
 import com.arievanderveek.soo.util.Constants;
 
 /**
@@ -37,8 +38,9 @@ public class Scope {
 
 	private Scope enclosingScope = null;
 	private MemoryMap memoryMap = null;
-	Map<String, Symbol> symbolTable = new Hashtable<String, Symbol>();
-	Map<String, ASTNode> procedures = new Hashtable<String, ASTNode>();
+	Map<String, TypeNode> typeTable;
+	Map<String, Symbol> symbolTable;
+	Map<String, ProcedureNode> procedures;
 
 	/**
 	 * Constructor for root scope as it does not have an enclosing scope. It
@@ -54,21 +56,24 @@ public class Scope {
 	 * @param procedures
 	 * @throws SeaOfOberonException
 	 */
-	public Scope(Map<String, ASTNode> constants, Map<String, ASTNode> types,
-			Map<String, ASTNode> variables, Map<String, ASTNode> procedures)
+	public Scope(List<ConstantNode> constants, List<FieldNode> types,
+			List<FieldNode> variables, List<ProcedureNode> procedures)
 			throws SeaOfOberonException {
 		assert constants != null;
 		assert types != null;
 		assert variables != null;
 		assert procedures != null;
-		assert getMemoryMap() == null; // This is the root, so memoryMap MUST be
-										// null
+		// This is the root, so memoryMap MUST be null.
+		assert getMemoryMap() == null; 
 		// Create a memory map to store the declarations in.
 		symbolTable = new Hashtable<String, Symbol>();
-		this.procedures = new Hashtable<String, ASTNode>();
+		typeTable = new Hashtable<String, TypeNode>();
+		this.procedures = new Hashtable<String, ProcedureNode>();
 		memoryMap = new MemoryMap();
-		processDelcarations(constants, types, variables, procedures);
-		// Create memory map as this is the root
+		registerTypes(types);
+		registerConstants(constants);
+		registerVariables(variables);
+		registerProcedures(procedures);
 	}
 
 	/**
@@ -84,24 +89,75 @@ public class Scope {
 	 * @param procedures
 	 * @throws SeaOfOberonException
 	 */
-	public Scope(Scope enclosingScope, ProcedureNode procedure, List<ASTNode> parameters)
+	public Scope(Scope enclosingScope, ProcedureNode procedure, List<ExpressionNode> actualParameters)
 			throws SeaOfOberonException {
 		// TODO: Rething if procedure is a good param to pass. Increases
 		// dependency
 		assert enclosingScope != null;
 		assert procedure != null;
-		assert parameters != null;
+		assert actualParameters != null;
 		this.enclosingScope = enclosingScope;
 		// An enclosing scope should have a memoryMap so assert this
 		assert getMemoryMap() != null;
 		symbolTable = new Hashtable<String, Symbol>();
-		this.procedures = new Hashtable<String, ASTNode>();
-		processProcedureParameters(procedure, parameters);
-		processDelcarations(procedure.getConstants(), procedure.getTypes(),
-				procedure.getVariables(), procedure.getProcedures());
+		typeTable = new Hashtable<String, TypeNode>();
+		this.procedures = new Hashtable<String, ProcedureNode>();
+		processProcedureParameters(procedure, actualParameters);
+		registerConstants(procedure.getConstants());
+		registerTypes(procedure.getTypes());
+		registerVariables(procedure.getVariables());
+		registerProcedures(procedure.getProcedures());
 	}
 
-	public ASTNode getProcedure(String name) throws SeaOfOberonException {
+	/**
+	 * Registers the procedures for this scope
+	 * 
+	 * @param procedures A list of procedures
+	 */
+	private void registerProcedures(List<ProcedureNode> procedures) {
+		// First add the current procedures
+		for(ProcedureNode procedure : procedures){
+			this.procedures.put(procedure.getCodeBlockName(), procedure);
+		}
+	}
+	
+	/**
+	 * Registers the types in the type table for this scope
+	 * 
+	 * @param types A list of types
+	 */
+	private void registerTypes(List<FieldNode> types) {
+		for (FieldNode node : types) {
+			typeTable.put(node.getName(), node.getType());
+		}
+	}
+	
+	/**
+	 * Registers the constants for this scope
+	 * 
+	 * @param constants A list of constants
+	 * @throws SeaOfOberonException
+	 */
+	private void registerConstants(List<ConstantNode> constants) throws SeaOfOberonException{
+		for (ConstantNode constant : constants){
+			Integer evaluatedExpression = constant.getExpression().interpret(this);
+			addIntegerSymbol(constant.getName(), evaluatedExpression, false);
+		}
+	}
+	
+	private void registerVariables(List<FieldNode> variables) throws SeaOfOberonException {
+		for ( FieldNode fieldNode : variables){
+			registerVariable(fieldNode.getName(), fieldNode.getType());
+		}
+	}
+	
+	public void registerVariable(String name, TypeNode type) throws SeaOfOberonException{
+		type.registerType(name, this);
+	}
+	
+
+	
+	public ProcedureNode getProcedure(String name) throws SeaOfOberonException {
 		if (procedures.containsKey(name)) {
 			return procedures.get(name);
 		} else {
@@ -109,6 +165,18 @@ public class Scope {
 				return enclosingScope.getProcedure(name);
 			} else {
 				throw new SeaOfOberonException("Procedure " + name + " not found in any scope");
+			}
+		}
+	}
+	
+	public TypeNode lookupType(String name) throws SeaOfOberonException {
+		if (typeTable.containsKey(name)) {
+			return typeTable.get(name);
+		} else {
+			if (!isRootScope()) {
+				return enclosingScope.lookupType(name);
+			} else {
+				throw new SeaOfOberonException("Type " + name + " not found in any scope");
 			}
 		}
 	}
@@ -153,40 +221,6 @@ public class Scope {
 		}
 	}
 
-	private Symbol copySymbol(String symbolName) throws SeaOfOberonException {
-		Symbol originalSymbol = lookupSymbol(symbolName);
-		if (originalSymbol != null) {
-			if (originalSymbol.getType() == SymbolTypesEnum.INTEGER) {
-				return copyIntegerSymbol((IntegerSymbol) originalSymbol);
-			}
-			if (originalSymbol.getType() == SymbolTypesEnum.ARRAY) {
-				return copyArraySymbol((ArraySymbol) originalSymbol);
-			} else {
-				throw new SeaOfOberonException("Symboltype not supported:"
-						+ originalSymbol.getType());
-			}
-		} else {
-			return null;
-		}
-	}
-
-	private IntegerSymbol copyIntegerSymbol(IntegerSymbol originalSymbol)
-			throws SeaOfOberonException {
-		MemoryAddress originalAddress = originalSymbol.getMemoryAdress();
-		MemoryAddress copyMemoryAddress = getMemoryMap().copyValueToNewAdress(originalAddress);
-		return new IntegerSymbol(originalSymbol.isMutable(), copyMemoryAddress);
-	}
-
-	private ArraySymbol copyArraySymbol(ArraySymbol originalSymbol) throws SeaOfOberonException {
-		MemoryAddress[] origMemoryAdressList = originalSymbol.getAddressList();
-		MemoryAddress[] copyMemoryAdressList = new MemoryAddress[origMemoryAdressList.length];
-		for (int addressCounter = 0; addressCounter < copyMemoryAdressList.length; addressCounter++) {
-			copyMemoryAdressList[addressCounter] = getMemoryMap().copyValueToNewAdress(
-					origMemoryAdressList[addressCounter]);
-		}
-		return new ArraySymbol(originalSymbol.isMutable(), copyMemoryAdressList);
-	}
-
 	/**
 	 * Get a memory address for a Symbol
 	 * 
@@ -203,7 +237,7 @@ public class Scope {
 			Symbol symbol = symbolTable.get(symbolName);
 			// Make a copy of the selector queue, so we do not destroy it for
 			// later usage.
-			List<ASTNode> selectors = identNode.getSelectors();
+			Selectors selectors = identNode.getSelectors();
 			if (symbol.getType() == SymbolTypesEnum.INTEGER) {
 				if (selectors.size() == 0) {
 					return ((IntegerSymbol) symbol).getMemoryAdress();
@@ -304,82 +338,16 @@ public class Scope {
 		}
 	}
 
-	private void processDelcarations(Map<String, ASTNode> constants, Map<String, ASTNode> types,
-			Map<String, ASTNode> variables, Map<String, ASTNode> procedures)
-			throws SeaOfOberonException {
-		registerTypes(types);
-		registerDeclarations(constants, types, false);
-		registerDeclarations(variables, types, true);
-		// up to now procedures do not need processing, so just assign them to
-		// the variable
-		registerProcedures(procedures);
-	}
-
-	/**
-	 * @param procedures
-	 */
-	private void registerTypes(Map<String, ASTNode> procedures) {
-		// First add the current procedures
-		// TODO: types not supported yet
-		// Then register the system procedures (read/write)
-	}
-
-	/**
-	 * @param procedures
-	 */
-	private void registerProcedures(Map<String, ASTNode> procedures) {
-		// First add the current procedures
-		this.procedures = new Hashtable<String, ASTNode>(procedures);
-		// Then register the system procedures (read/write)
-	}
-
-	private void registerDeclarations(Map<String, ASTNode> variables, Map<String, ASTNode> types,
-			boolean mutable) throws SeaOfOberonException {
-		// TODO: Refactor to use registerDeclaration method.
-		for (String identifier : variables.keySet()) {
-			// TODO: Abstract declaration is not needed, remove it from the tree
-			DeclarationNode currentNode = (DeclarationNode) variables.get(identifier);
-			ASTNode varExpression = currentNode.getExpression();
-			if (varExpression instanceof IdentifierNode) {
-				// If the identifier node contains they Integer keyword
-				IdentifierNode varIdentifier = (IdentifierNode) varExpression;
-				// its an identifier, so lookup the value store it as a symbol
-				if (Constants.INTEGER_VAR_KEYWORD.equalsIgnoreCase(varIdentifier.getName())) {
-					addIntegerSymbol(identifier, new Integer(0), mutable);
-				} else {
-					// Its not the keyword for integer, so look up the type to
-					// determine what it is
-					System.err.println("Types not supported yet");
-					assert false;
-					// Integer resolvedExpression = getValue(varIdentifier);
-					// addIntegerSymbol(identifier, resolvedExpression,
-					// mutable);
-				}
-			} else if (varExpression instanceof ArrayTypeNode) {
-				addArraySymbol(identifier, (ArrayTypeNode) varExpression);
-			} else if (varExpression instanceof RecordTypeNode) {
-				// TODO: implement RecordTypeNode
-				assert false;
-			} else {
-				// Its a regural expression node, so evaluate it and store as a
-				// symbol
-				Integer resolvedExpression = varExpression.interpret(this);
-				addIntegerSymbol(identifier, resolvedExpression, mutable);
-			}
-		}
-	}
-
-	private void addIntegerSymbol(String identifier, Integer value, boolean mutable)
+	public void addIntegerSymbol(String identifier, Integer value, boolean mutable)
 			throws SeaOfOberonException {
 		MemoryAddress memoryAdress = getMemoryMap().addValue(value);
 		IntegerSymbol symbol = new IntegerSymbol(mutable, memoryAdress);
 		symbolTable.put(identifier, symbol);
 	}
 
-	private void addArraySymbol(String identifier, ArrayTypeNode varArray)
+	public void addArraySymbol(String identifier, int arraySize)
 			throws SeaOfOberonException {
 		boolean mutable = true; // arrays are always mutable.
-		Integer arraySize = varArray.getSizeExpression().interpret(this);
 		MemoryAddress[] addressList = new MemoryAddress[arraySize];
 		for (int sizeCounter = 0; sizeCounter < arraySize; sizeCounter++) {
 			addressList[sizeCounter] = getMemoryMap().addValue(new Integer(0));
@@ -389,10 +357,10 @@ public class Scope {
 	}
 
 	/**
-	 * @param parameters
+	 * @param actualParameters
 	 * @throws SeaOfOberonException
 	 */
-	private void processProcedureParameters(ProcedureNode procedure, List<ASTNode> parameters)
+	private void processProcedureParameters(ProcedureNode procedure, List<ExpressionNode> actualParameters)
 			throws SeaOfOberonException {
 		// loop through all procedure nodes and register them as parameter
 		// Keep a counter to match the parameters on the nodes
@@ -408,7 +376,7 @@ public class Scope {
 					// Its a call by refernce, so retrieve the referenced
 					// parameter
 					// and store it in the local symbol map the param name
-					ASTNode referencedParamNode = parameters.get(parameterCounter);
+					ASTNode referencedParamNode = actualParameters.get(parameterCounter);
 					// Test if its an identifier, if not throw an exception
 					if (referencedParamNode instanceof IdentifierNode) {
 						// Get the parameter from the store and put it in local
@@ -460,7 +428,7 @@ public class Scope {
 					FieldNode castParameter = (FieldNode) parameter;
 					String identifier = castParameter.getName();
 					// System.out.println("Ident in keyset" + identifier);
-					ASTNode valParamNode = parameters.get(parameterCounter);
+					ASTNode valParamNode = actualParameters.get(parameterCounter);
 					Integer evaluatedParam = valParamNode.interpret(this);
 					addIntegerSymbol(identifier, evaluatedParam, true);
 					parameterCounter++;

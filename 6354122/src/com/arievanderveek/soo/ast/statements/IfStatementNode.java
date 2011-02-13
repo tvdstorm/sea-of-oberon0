@@ -7,7 +7,8 @@ import java.util.List;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
-import com.arievanderveek.soo.ast.variables.IntegerTypeNode;
+import com.arievanderveek.soo.ast.expr.ExpressionNode;
+import com.arievanderveek.soo.ast.expr.IntegerExpressionNode;
 import com.arievanderveek.soo.runtime.Scope;
 import com.arievanderveek.soo.util.Constants;
 
@@ -15,10 +16,10 @@ import com.arievanderveek.soo.util.Constants;
  * @author arieveek
  * 
  */
-public class IfStatementNode implements ASTNode {
+public class IfStatementNode implements ASTNode, StatementNode {
 
-	private ASTNode ifExpression;
-	private List<ASTNode> thenStatementSequenceNode;
+	private ExpressionNode ifExpression;
+	private List<StatementNode> thenStatementSequenceNode;
 	private IfStatementNode elseNode;
 
 	/**
@@ -29,7 +30,7 @@ public class IfStatementNode implements ASTNode {
 	 * @param thenNode
 	 * @param elseNode
 	 */
-	public IfStatementNode(ASTNode expression, List<ASTNode> thenStatementSequenceNode) {
+	public IfStatementNode(ExpressionNode expression, List<StatementNode> thenStatementSequenceNode) {
 		this.ifExpression = expression;
 		this.thenStatementSequenceNode = thenStatementSequenceNode;
 	}
@@ -44,7 +45,7 @@ public class IfStatementNode implements ASTNode {
 	 *            evaluates to true.
 	 * @return The else node that is the current node in the tree
 	 */
-	public void insertNode(ASTNode expression, List<ASTNode> thenStatementSequenceNode) {
+	public void insertNode(ExpressionNode expression, List<StatementNode> thenStatementSequenceNode) {
 		if (ifExpression == null && thenStatementSequenceNode == null) {
 			this.ifExpression = expression;
 			this.thenStatementSequenceNode = thenStatementSequenceNode;
@@ -56,10 +57,10 @@ public class IfStatementNode implements ASTNode {
 		}
 	}
 
-	public void addFinalElseStatementNode(List<ASTNode> finalElseStatementSequenceNode) {
+	public void addFinalElseStatementNode(List<StatementNode> finalElseStatementSequenceNode) {
 		// Add the final Else statement to the end of the sequence.
 		// Set expression to True, so it always gets executed
-		insertNode(new IntegerTypeNode(1), finalElseStatementSequenceNode);
+		insertNode(new IntegerExpressionNode(1), finalElseStatementSequenceNode);
 	}
 
 	/*
@@ -68,12 +69,12 @@ public class IfStatementNode implements ASTNode {
 	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
 	 */
 	@Override
-	public Integer interpret(Scope scope) throws SeaOfOberonException {
+	public void interpret(Scope scope) throws SeaOfOberonException {
 		// 0 = false and 1 = true and anything else is exception
 		Integer ifResult = ifExpression.interpret(scope);
 		if (ifResult == 1) {
 			// result is true, loop over the then sequence node
-			for (ASTNode node : thenStatementSequenceNode) {
+			for (StatementNode node : thenStatementSequenceNode) {
 				node.interpret(scope);
 			}
 		} else if (ifResult == 0) {
@@ -85,7 +86,6 @@ public class IfStatementNode implements ASTNode {
 		} else {
 			throw new SeaOfOberonException("Result of boolean expression not 1 or 0. " + ifResult);
 		}
-		return null;
 	}
 
 	/*

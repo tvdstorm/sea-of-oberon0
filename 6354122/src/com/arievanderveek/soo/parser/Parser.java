@@ -4,7 +4,7 @@
 package com.arievanderveek.soo.parser;
 
 import com.arievanderveek.soo.SeaOfOberonException;
-import com.arievanderveek.soo.ast.ASTNode;
+import com.arievanderveek.soo.ast.codeblocks.ModuleNode;
 
 /**
  * Interface for a parser implementation
@@ -14,6 +14,6 @@ import com.arievanderveek.soo.ast.ASTNode;
  */
 public interface Parser {
 
-	public ASTNode parseFile(String fileName) throws SeaOfOberonException;
+	public ModuleNode parseFile(String fileName) throws SeaOfOberonException;
 
 }

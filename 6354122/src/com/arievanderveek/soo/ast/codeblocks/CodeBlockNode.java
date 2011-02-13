@@ -4,10 +4,13 @@
 package com.arievanderveek.soo.ast.codeblocks;
 
 import java.util.List;
-import java.util.Map;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
+import com.arievanderveek.soo.ast.statements.StatementNode;
+import com.arievanderveek.soo.ast.variables.ConstantNode;
+import com.arievanderveek.soo.ast.variables.FieldNode;
+import com.arievanderveek.soo.runtime.Scope;
 import com.arievanderveek.soo.util.Constants;
 
 /**
@@ -16,12 +19,15 @@ import com.arievanderveek.soo.util.Constants;
  */
 public abstract class CodeBlockNode implements ASTNode {
 
+	
+	//The constructor ModuleNode(String, String, List<ConstantNode>, List<FieldNode>, List<FieldNode>, List<ProcedureNode>, List<StatementNode>) is undefined
+
 	protected final String codeBlockName;
-	protected final Map<String, ASTNode> constants;
-	protected final Map<String, ASTNode> types;
-	protected final Map<String, ASTNode> variables;
-	protected final Map<String, ASTNode> procedures;
-	protected final List<ASTNode> statementSequence;
+	protected final List<ConstantNode> constants;
+	protected final List<FieldNode> types;
+	protected final List<FieldNode> variables;
+	protected final List<ProcedureNode> procedures;
+	protected final List<StatementNode> statementSequence;
 
 	/**
 	 * Constructor for {@link ModuleNode} with required fields.
@@ -35,9 +41,9 @@ public abstract class CodeBlockNode implements ASTNode {
 	 * @param statementSequence
 	 */
 	public CodeBlockNode(String startName, String endName,
-			Map<String, ASTNode> constants, Map<String, ASTNode> types,
-			Map<String, ASTNode> variables, Map<String, ASTNode> procedures,
-			List<ASTNode> statementSequence) {
+			List<ConstantNode> constants, List<FieldNode> types,
+			List<FieldNode> variables, List<ProcedureNode> procedures,
+			List<StatementNode> statementSequence) {
 		// Assert all the incoming variables
 		assert startName != null;
 		assert endName != null;
@@ -59,6 +65,13 @@ public abstract class CodeBlockNode implements ASTNode {
 		this.procedures = procedures;
 		this.statementSequence = statementSequence;
 	}
+	
+	
+	/**
+	 * Interpret the code block
+	 * @param scope The scope
+	 */
+	public abstract void interpret(Scope scope)throws SeaOfOberonException ;
 
 	/*
 	 * (non-Javadoc)
@@ -73,9 +86,7 @@ public abstract class CodeBlockNode implements ASTNode {
 		sb.append(Constants.LINE_SEPARATOR);
 		sb.append("CONST");
 		sb.append(Constants.LINE_SEPARATOR);
-		for (String nodeKey : constants.keySet()) {
-			ASTNode node = constants.get(nodeKey);
-			sb.append(nodeKey + ident + " = ");
+		for (ConstantNode node : constants) {
 			sb.append(node.toTreeString(ident));
 			sb.append(Constants.LINE_SEPARATOR);
 		}
@@ -83,9 +94,7 @@ public abstract class CodeBlockNode implements ASTNode {
 		sb.append(Constants.LINE_SEPARATOR);
 		sb.append("TYPES");
 		sb.append(Constants.LINE_SEPARATOR);
-		for (String nodeKey : types.keySet()) {
-			ASTNode node = types.get(nodeKey);
-			sb.append(nodeKey + ident + " = ");
+		for (FieldNode node : types) {
 			sb.append(node.toTreeString(ident));
 			sb.append(Constants.LINE_SEPARATOR);
 		}
@@ -93,9 +102,7 @@ public abstract class CodeBlockNode implements ASTNode {
 		sb.append(Constants.LINE_SEPARATOR + Constants.LINE_SEPARATOR);
 		sb.append("VAR");
 		sb.append(Constants.LINE_SEPARATOR);
-		for (String nodeKey : variables.keySet()) {
-			ASTNode node = variables.get(nodeKey);
-			sb.append(nodeKey + ident + " = ");
+		for (FieldNode node : variables) {
 			sb.append(node.toTreeString(ident));
 			sb.append(Constants.LINE_SEPARATOR);
 		}
@@ -103,8 +110,7 @@ public abstract class CodeBlockNode implements ASTNode {
 		sb.append(Constants.LINE_SEPARATOR + Constants.LINE_SEPARATOR);
 		sb.append("PROCS");
 		sb.append(Constants.LINE_SEPARATOR);
-		for (String nodeKey : procedures.keySet()) {
-			ASTNode node = procedures.get(nodeKey);
+		for (ProcedureNode node : procedures) {
 			sb.append(node.toTreeString(ident + ident));
 			sb.append(Constants.LINE_SEPARATOR);
 		}
@@ -112,7 +118,7 @@ public abstract class CodeBlockNode implements ASTNode {
 		sb.append(Constants.LINE_SEPARATOR + Constants.LINE_SEPARATOR);
 		sb.append("Statements:");
 		sb.append(Constants.LINE_SEPARATOR);
-		for (ASTNode node : statementSequence) {
+		for (StatementNode node : statementSequence) {
 			sb.append(node.toTreeString(ident));
 			sb.append(Constants.LINE_SEPARATOR);
 		}
@@ -121,45 +127,33 @@ public abstract class CodeBlockNode implements ASTNode {
 		return sb.toString();
 	}
 
-	/**
-	 * @return the codeBlockName
-	 */
+
 	public String getCodeBlockName() {
 		return codeBlockName;
 	}
 
-	/**
-	 * @return the constants
-	 */
-	public Map<String, ASTNode> getConstants() {
+
+	public List<ConstantNode> getConstants() {
 		return constants;
 	}
 
-	/**
-	 * @return the types
-	 */
-	public Map<String, ASTNode> getTypes() {
+
+	public List<FieldNode> getTypes() {
 		return types;
 	}
 
-	/**
-	 * @return the variables
-	 */
-	public Map<String, ASTNode> getVariables() {
+
+	public List<FieldNode> getVariables() {
 		return variables;
 	}
 
-	/**
-	 * @return the procedures
-	 */
-	public Map<String, ASTNode> getProcedures() {
+
+	public List<ProcedureNode> getProcedures() {
 		return procedures;
 	}
 
-	/**
-	 * @return the statementSequence
-	 */
-	public List<ASTNode> getStatementSequence() {
+
+	public List<StatementNode> getStatementSequence() {
 		return statementSequence;
 	}
 

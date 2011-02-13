@@ -6,7 +6,6 @@ package com.arievanderveek.soo.ast.variables;
 import java.util.List;
 
 import com.arievanderveek.soo.SeaOfOberonException;
-import com.arievanderveek.soo.ast.ASTNode;
 import com.arievanderveek.soo.runtime.Scope;
 
 /**
@@ -15,9 +14,9 @@ import com.arievanderveek.soo.runtime.Scope;
  * @author arieveek
  * 
  */
-public class RecordTypeNode implements ASTNode {
+public class RecordTypeNode extends TypeNode {
 
-	List<ASTNode> recordElements;
+	List<FieldNode> recordElements;
 
 	/**
 	 * Constructor with all required fields
@@ -25,19 +24,8 @@ public class RecordTypeNode implements ASTNode {
 	 * @param recordElements
 	 *            the elements of the record
 	 */
-	public RecordTypeNode(List<ASTNode> recordElements) {
+	public RecordTypeNode(List<FieldNode> recordElements) {
 		this.recordElements = recordElements;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
-	 */
-	@Override
-	public Integer interpret(Scope scope) throws SeaOfOberonException {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	/*
@@ -56,4 +44,10 @@ public class RecordTypeNode implements ASTNode {
 	 * sb.append(recordElements.get((String)key).toTreeString(ident));
 	 * sb.append(ident); } return sb.toString(); }
 	 */
+
+	@Override
+	public void registerType(String identifier, Scope scope) throws SeaOfOberonException {
+		throw new UnsupportedOperationException("Record types not supported");
+		
+	}
 }

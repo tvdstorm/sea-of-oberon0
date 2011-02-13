@@ -1,25 +1,24 @@
 /**
  * 
  */
-package com.arievanderveek.soo.ast.binaryoperators;
+package com.arievanderveek.soo.ast.expr.binaryoperators;
 
 import com.arievanderveek.soo.SeaOfOberonException;
-import com.arievanderveek.soo.ast.ASTNode;
+import com.arievanderveek.soo.ast.expr.ExpressionNode;
 import com.arievanderveek.soo.runtime.Scope;
 
 /**
  * @author arieveek
  * 
  */
-public class SmallerThenOperatorNode extends AbstractBinaryOperatorNode {
+public class EqualOperatorNode extends AbstractBinaryOperatorNode {
 
 	/**
 	 * @param leftHandNode
 	 * @param rightHandNode
 	 */
-	public SmallerThenOperatorNode(ASTNode leftHandNode, ASTNode rightHandNode) {
+	public EqualOperatorNode(ExpressionNode leftHandNode, ExpressionNode rightHandNode) {
 		super(leftHandNode, rightHandNode);
-		// TODO Auto-generated constructor stub
 	}
 
 	/*
@@ -31,7 +30,7 @@ public class SmallerThenOperatorNode extends AbstractBinaryOperatorNode {
 	public String toTreeString(String ident) throws SeaOfOberonException {
 		StringBuilder sb = new StringBuilder();
 		sb.append(super.leftHandNode.toTreeString(ident));
-		sb.append(ident + "Smaller Then" + ident);
+		sb.append(ident + "EQUAL" + ident);
 		sb.append(super.rightHandNode.toTreeString(ident));
 		return sb.toString();
 	}
@@ -43,11 +42,12 @@ public class SmallerThenOperatorNode extends AbstractBinaryOperatorNode {
 	 */
 	@Override
 	public Integer interpret(Scope scope) throws SeaOfOberonException {
-		if (super.leftHandNode.interpret(scope) < super.rightHandNode
+		if (super.leftHandNode.interpret(scope) == super.rightHandNode
 				.interpret(scope)) {
 			return 1;
 		} else {
 			return 0;
 		}
 	}
+
 }

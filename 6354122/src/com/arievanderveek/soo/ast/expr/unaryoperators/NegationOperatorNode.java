@@ -1,10 +1,10 @@
 /**
  * 
  */
-package com.arievanderveek.soo.ast.unaryoperators;
+package com.arievanderveek.soo.ast.expr.unaryoperators;
 
 import com.arievanderveek.soo.SeaOfOberonException;
-import com.arievanderveek.soo.ast.ASTNode;
+import com.arievanderveek.soo.ast.expr.ExpressionNode;
 import com.arievanderveek.soo.runtime.Scope;
 
 /**
@@ -16,7 +16,7 @@ public class NegationOperatorNode extends UnaryOperatorNode {
 	/**
 	 * @param node
 	 */
-	public NegationOperatorNode(ASTNode node) {
+	public NegationOperatorNode(ExpressionNode node) {
 		super(node);
 	}
 

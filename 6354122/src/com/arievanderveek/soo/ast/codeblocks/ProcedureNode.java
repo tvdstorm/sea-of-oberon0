@@ -3,13 +3,16 @@
  */
 package com.arievanderveek.soo.ast.codeblocks;
 
-import java.util.LinkedList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
+import com.arievanderveek.soo.ast.expr.ExpressionNode;
 import com.arievanderveek.soo.ast.statements.AbstractParameterNode;
+import com.arievanderveek.soo.ast.statements.StatementNode;
+import com.arievanderveek.soo.ast.variables.ConstantNode;
+import com.arievanderveek.soo.ast.variables.FieldNode;
 import com.arievanderveek.soo.runtime.Scope;
 import com.arievanderveek.soo.util.Constants;
 
@@ -21,7 +24,7 @@ import com.arievanderveek.soo.util.Constants;
  */
 public class ProcedureNode extends CodeBlockNode {
 	// TODO: Might migrate system procedures to extend from this class
-	protected final List<ASTNode> parameterBlocks;
+	protected final List<AbstractParameterNode> parameterBlocks;
 
 	/**
 	 * Constructor with all required fields
@@ -35,12 +38,12 @@ public class ProcedureNode extends CodeBlockNode {
 	 * @param statementSequence
 	 */
 	public ProcedureNode(String startName, String endName,
-			Map<String, ASTNode> constants, Map<String, ASTNode> types,
-			Map<String, ASTNode> variables, Map<String, ASTNode> procedures,
-			List<ASTNode> statementSequence) {
+			List<ConstantNode> constants, List<FieldNode> types,
+			List<FieldNode> variables, List<ProcedureNode> procedures,
+			List<StatementNode> statementSequence) {
 		super(startName, endName, constants, types, variables, procedures,
 				statementSequence);
-		parameterBlocks = new LinkedList<ASTNode>();
+		parameterBlocks = Collections.<AbstractParameterNode>emptyList();
 	}
 
 	/**
@@ -56,27 +59,21 @@ public class ProcedureNode extends CodeBlockNode {
 	 * @param statementSequence
 	 */
 	public ProcedureNode(String startName, String endName,
-			List<ASTNode> parameterBlocks, Map<String, ASTNode> constants,
-			Map<String, ASTNode> types, Map<String, ASTNode> variables,
-			Map<String, ASTNode> procedures, List<ASTNode> statementSequence) {
+			List<AbstractParameterNode> parameterBlocks, 
+			List<ConstantNode> constants, List<FieldNode> types,
+			List<FieldNode> variables, List<ProcedureNode> procedures,
+			List<StatementNode> statementSequence) {
 		super(startName, endName, constants, types, variables, procedures,
 				statementSequence);
 		this.parameterBlocks = parameterBlocks;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
-	 */
-	@Override
-	public Integer interpret(Scope scope) throws SeaOfOberonException {
+	public void interpret(Scope scope) throws SeaOfOberonException {
 		// loop over statements and call interpret method with the Scope
 		// Variable
-		for (ASTNode statementNode : statementSequence) {
+		for (StatementNode statementNode : statementSequence) {
 			statementNode.interpret(scope);
 		}
-		return null;
 	}
 
 	public String toTreeString(String ident) throws SeaOfOberonException {
@@ -97,20 +94,20 @@ public class ProcedureNode extends CodeBlockNode {
 	/**
 	 * @return the parameterBlocks
 	 */
-	public List<ASTNode> getParameterBlocks() {
+	public List<AbstractParameterNode> getParameterBlocks() {
 		return parameterBlocks;
 	}
 
 	public boolean isAmountOfParametersEqual(
-			List<ASTNode> procedureCallParameters) {
+			List<ExpressionNode> parameters) {
 		// Count all the parameters defined in this class.
 		int amountOfDefinedParameters = 0;
-		for (ASTNode node : parameterBlocks) {
+		for (AbstractParameterNode node : parameterBlocks) {
 			amountOfDefinedParameters += ((AbstractParameterNode) node)
 					.getFormalParameter().size();
 		}
 		// Count all the passed parameters
-		int amountOfPassedParameters = procedureCallParameters.size();
+		int amountOfPassedParameters = parameters.size();
 		if (amountOfDefinedParameters == amountOfPassedParameters) {
 			return true;
 		} else {

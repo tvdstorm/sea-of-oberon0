@@ -18,12 +18,12 @@ import com.arievanderveek.soo.util.Constants;
  */
 public abstract class AbstractParameterNode implements ASTNode {
 
-	final List<ASTNode> formalParameter;
+	final List<FieldNode> formalParameter;
 
 	/**
 	 * @param formalParameter
 	 */
-	public AbstractParameterNode(List<ASTNode> formalParameter) {
+	public AbstractParameterNode(List<FieldNode> formalParameter) {
 		this.formalParameter = formalParameter;
 	}
 
@@ -42,7 +42,7 @@ public abstract class AbstractParameterNode implements ASTNode {
 	/**
 	 * @return the formalParameter
 	 */
-	public List<ASTNode> getFormalParameter() {
+	public List<FieldNode> getFormalParameter() {
 		return formalParameter;
 	}
 }

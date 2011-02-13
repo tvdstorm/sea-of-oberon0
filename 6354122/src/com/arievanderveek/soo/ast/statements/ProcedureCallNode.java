@@ -9,7 +9,8 @@ import java.util.List;
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
 import com.arievanderveek.soo.ast.codeblocks.ProcedureNode;
-import com.arievanderveek.soo.ast.variables.IdentifierNode;
+import com.arievanderveek.soo.ast.expr.ExpressionNode;
+import com.arievanderveek.soo.ast.expr.IdentifierNode;
 import com.arievanderveek.soo.runtime.Scope;
 
 /**
@@ -18,24 +19,24 @@ import com.arievanderveek.soo.runtime.Scope;
  * @author arieveek
  * 
  */
-public class ProcedureCallNode implements ASTNode {
+public class ProcedureCallNode implements ASTNode, StatementNode {
 
-	protected final ASTNode identifier;
-	protected final List<ASTNode> parameters;
+	protected final IdentifierNode identifier;
+	protected final List<ExpressionNode> parameters;
 
 	/**
 	 * @param identifier
 	 */
-	public ProcedureCallNode(ASTNode identifier) {
+	public ProcedureCallNode(IdentifierNode identifier) {
 		this.identifier = identifier;
 		// Create an empty list, so it does not return null.
-		this.parameters = new LinkedList<ASTNode>();
+		this.parameters = new LinkedList<ExpressionNode>();
 	}
 
 	/**
 	 * @param identifier
 	 */
-	public ProcedureCallNode(ASTNode identifier, List<ASTNode> parameters) {
+	public ProcedureCallNode(IdentifierNode identifier, List<ExpressionNode> parameters) {
 		this.identifier = identifier;
 		this.parameters = parameters;
 	}
@@ -46,10 +47,10 @@ public class ProcedureCallNode implements ASTNode {
 	 * @see com.arievanderveek.soo.ast.ASTNode#interpret()
 	 */
 	@Override
-	public Integer interpret(Scope scope) throws SeaOfOberonException {
+	public void interpret(Scope scope) throws SeaOfOberonException {
 		// First lookup the procedure in the scope
-		String procedureName = ((IdentifierNode) identifier).getName();
-		ProcedureNode procedure = (ProcedureNode) scope.getProcedure(procedureName);
+		String procedureName = identifier.getName();
+		ProcedureNode procedure = scope.getProcedure(procedureName);
 		// Validate if the amount of parameters are the same
 		if (!procedure.isAmountOfParametersEqual(parameters)) {
 			throw new SeaOfOberonException("Amount of parameters in procedure call does not match "
@@ -63,7 +64,6 @@ public class ProcedureCallNode implements ASTNode {
 		// Done with the scope, pop the newly created scope from the old scope
 		// so variables are deallocated.
 		scopeForProcedure.popScope();
-		return null;
 	}
 
 	/*
@@ -77,7 +77,7 @@ public class ProcedureCallNode implements ASTNode {
 		sb.append("Procedure" + ident);
 		sb.append(identifier.toTreeString(ident));
 		sb.append(ident + "(" + ident);
-		for (ASTNode node : parameters) {
+		for (ExpressionNode node : parameters) {
 			sb.append(node.toTreeString(ident));
 			sb.append(",");
 		}
