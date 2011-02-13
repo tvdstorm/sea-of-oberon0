@@ -24,7 +24,13 @@ PROCEDURE QuickSort(VAR array: ARRAY INPUTLENGTH OF INTEGER; left, right: INTEGE
 BEGIN
   leftIdx := left;
   rightIdx := right;
-  IF right - left > 0 THEN
+  
+  Write(leftIdx);
+  WriteLn;
+  Write(rightIdx);
+  WriteLn;
+  
+  IF (right - left) > 0 THEN
     pivot := (left + right) DIV 2;
     WHILE (leftIdx <= pivot) & (rightIdx >= pivot) DO
       WHILE (array[leftIdx] < array[pivot]) & (leftIdx <= pivot) DO

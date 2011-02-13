@@ -17,9 +17,7 @@ public class Oberon0 {
 		// Laad een bestand oberon0 bestand
 		Interpreter interpreter = new Interpreter();
 		File file = new File(args[0]);
-        String input = "";
-        String output = interpreter.interpret(file, input);
-
-        //System.out.println(output);
+        String input = "1\n3\n8\n14\n25";
+        interpreter.interpret(file, input);
 	}
 }

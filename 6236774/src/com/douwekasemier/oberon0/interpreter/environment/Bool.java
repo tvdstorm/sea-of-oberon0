@@ -15,5 +15,10 @@ public class Bool implements Value {
     public void setValue(Boolean value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return "Bool: " + value;
+    }
     
 }

@@ -15,19 +15,19 @@ import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.TokenStream;
 import org.antlr.runtime.tree.Tree;
 
-import com.douwekasemier.oberon0.ast.ASTGenerationException;
-import com.douwekasemier.oberon0.ast.Node;
-import com.douwekasemier.oberon0.ast.nodes.ModuleNode;
+import com.douwekasemier.oberon0.ast.declaration.Module;
 import com.douwekasemier.oberon0.core.Oberon0Lexer;
 import com.douwekasemier.oberon0.core.Oberon0Parser;
 import com.douwekasemier.oberon0.core.Oberon0Parser.module_return;
+import com.douwekasemier.oberon0.exceptions.ASTException;
+import com.douwekasemier.oberon0.exceptions.RuntimeException;
 import com.douwekasemier.oberon0.interpreter.environment.Environment;
 
 public class Interpreter {
 
-    public String interpret(File file, String input) {
+    public void interpret(File file, String input) {
         StringWriter writer = new StringWriter();
-        return interpret(file, new BufferedReader(new StringReader(input)), writer);
+        interpret(file, new BufferedReader(new StringReader(input)), writer);
     }
 
     /**
@@ -36,7 +36,7 @@ public class Interpreter {
      *
      * @param file
      */
-    public String interpret(File file, BufferedReader input, StringWriter output) {
+    public void interpret(File file, BufferedReader input, StringWriter output) {
         // Create and run the antlr lexer
         Oberon0Lexer lexer = null;
         try {
@@ -55,10 +55,10 @@ public class Interpreter {
             e.printStackTrace();
         }
 
-        Node module = null;
+        Module module = null;
         try {
             module = ast(parserOutput);
-        } catch (ASTGenerationException e) {
+        } catch (ASTException e) {
             e.printStackTrace();
         }
 
@@ -69,12 +69,13 @@ public class Interpreter {
         environment.loadCoreFunctions();
 
         try {
-            module.interpret(environment);
-            return output.toString();
-        } catch (Oberon0RuntimeException e) {
+            module.run(environment);
+            System.out.println();
+            System.out.println("---- OUTPUT ----");
+            System.out.print(output.toString());
+        } catch (RuntimeException e) {
             e.printStackTrace();
         }
-        return null;
     }
 
     /**
@@ -106,12 +107,12 @@ public class Interpreter {
      * Generate our own AST which implements the Interpreter pattern
      *
      * @param parserOutput
-     * @throws ASTGenerationException
+     * @throws ASTException
      */
-    private Node ast(module_return parserOutput) throws ASTGenerationException {
+    private Module ast(module_return parserOutput) throws ASTException {
         // Get the antlr generated AST
         Tree rootNode = (Tree) parserOutput.getTree();
-        return new ModuleNode(rootNode, null);
+        return new Module(rootNode);
 
     }
 }
