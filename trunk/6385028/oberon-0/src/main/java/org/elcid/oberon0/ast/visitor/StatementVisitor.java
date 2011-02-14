@@ -2,6 +2,7 @@ package org.elcid.oberon0.ast.visitor;
 
 import org.elcid.oberon0.ast.*;
 import org.elcid.oberon0.ast.env.Environment;
+import org.elcid.oberon0.ast.env.Procedure;
 import org.elcid.oberon0.ast.values.*;
 
 /**
@@ -42,6 +43,25 @@ public class StatementVisitor {
 			node.getStatementSequence().run(this, localEnv);
 			node.run(this, localEnv);
 		}
+	}
+
+	public void run(ProcCallStmNode node, Environment localEnv) {
+		// Fetch procedure from env
+		Procedure proc = localEnv.getProcedure(node.getIdentifier());
+		// Create new subenv
+		Environment subEnv = new Environment(localEnv);
+		// Bind actual params to formal params in subenv
+		if (node.getActualParameters().size() == proc.getFormalParams().size()) {
+			for (int i = 0; i < node.getActualParameters().size(); i++) {
+				String identifier = proc.getFormalParams().get(i).getIdentifier();
+				Value value = (Value) node.getActualParameters().get(i).eval(new ExpressionVisitor(), subEnv);
+				subEnv.putValue(identifier, value);
+			}
+		}
+		// Run declarations of proc in subenv
+		proc.getDeclarationSequence().run(new DeclarationVisitor(), subEnv);
+		// Run statement sequence of proc with subenv
+		proc.getStatementSequence().run(new StatementVisitor(), subEnv);
 	}
 
 }
