@@ -55,7 +55,7 @@ public class Interpreter {
 		CommonTree tree = parseExpression(cs);
 		
 		AnExpression exp = AstNodeFactory.createAnExpression(tree);
-		AnValue a = exp.eval();
+		AnValue a = exp.eval(new AnEnvironment());
 		if (!a.getBoolean().getValue()) throw new Exception("WTF");
 	}
 	

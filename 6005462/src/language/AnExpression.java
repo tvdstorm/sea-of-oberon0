@@ -28,18 +28,18 @@ public class AnExpression implements IType {
 	}
 	
 	@Override
-	public AnValue eval() throws Exception{
+	public AnValue eval(AnEnvironment env) throws Exception{
 		checkForNullReference();
 		if (this.numVals == 1) {
-			return rhs.eval();
+			return rhs.eval(env);
 		} else {
 			AnValue lhsValue;
 			if (lhs == null) {
 				lhsValue = null;
 			} else {
-				lhsValue = lhs.eval();
+				lhsValue = lhs.eval(env);
 			}
-			return rhs.eval().operate(op, lhsValue);
+			return rhs.eval(env).operate(op, lhsValue, env);
 		}
 	}
 	
@@ -105,9 +105,8 @@ public class AnExpression implements IType {
 	}
 
 	@Override
-	public AnValue operate(int op, AnValue secondVal) throws Exception {
-		return this.eval().operate(op, secondVal);
+	public AnValue operate(int op, AnValue secondVal, AnEnvironment env) throws Exception {
+		return this.eval(env).operate(op, secondVal, env);
 	}
-
 	
 }

@@ -15,7 +15,7 @@ public class AnValue implements IType {
 	}
 	
 	@Override
-	public AnValue eval() throws Exception {
+	public AnValue eval(AnEnvironment env) throws Exception {
 		return this;
 	}
 
@@ -25,8 +25,8 @@ public class AnValue implements IType {
 	}
 
 	@Override
-	public AnValue operate(int op, AnValue secondVal) throws Exception {
-		return this.value.operate(op, secondVal);
+	public AnValue operate(int op, AnValue secondVal, AnEnvironment env) throws Exception {
+		return this.value.operate(op, secondVal, env);
 	}
 
 	public AnNumber getNumber() throws Exception{

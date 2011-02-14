@@ -14,7 +14,7 @@ public class AnNumber implements IType {
 	}
 	
 	@Override
-	public AnValue eval(){
+	public AnValue eval(AnEnvironment env){
 		throw new UnsupportedOperationException();
 	}
 
@@ -24,7 +24,7 @@ public class AnNumber implements IType {
 	}
 
 	@Override
-	public AnValue operate(int op, AnValue secondVal) throws Exception {
+	public AnValue operate(int op, AnValue secondVal, AnEnvironment env) throws Exception {
 		if (secondVal == null) {
 			return operateSingle(op);
 		}

@@ -20,7 +20,7 @@ public class AnBoolean implements IType {
 	}
 
 	@Override
-	public AnValue operate(int op, AnValue secondVal) throws Exception {
+	public AnValue operate(int op, AnValue secondVal, AnEnvironment env) throws Exception {
 		if (secondVal == null) {
 			return operateSingle(op);
 		}
@@ -40,8 +40,7 @@ public class AnBoolean implements IType {
 	}
 
 	@Override
-	public AnValue eval() throws Exception {
-		// TODO Auto-generated method stub
+	public AnValue eval(AnEnvironment env) throws Exception {
 		return null;
 	}
 	
