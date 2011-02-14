@@ -1,7 +1,8 @@
-package nl.bve.uva.oberon.ast;
+package nl.bve.uva.oberon.shared;
 
 import java.util.List;
 
+import nl.bve.uva.oberon.ast.IInterpretableNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.types.OberonType;
 

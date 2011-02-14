@@ -3,8 +3,8 @@ package nl.bve.uva.oberon.env.procedures;
 import java.util.List;
 
 import nl.bve.uva.oberon.ast.IInterpretableNode;
-import nl.bve.uva.oberon.ast.TypedParameterList;
 import nl.bve.uva.oberon.env.Environment;
+import nl.bve.uva.oberon.shared.TypedParameterList;
 
 public class ApplicationProcedure extends Procedure {
 	private String name;

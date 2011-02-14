@@ -1,5 +1,15 @@
 package nl.bve.uva.oberon.env.types;
 
+/**
+ * This class is the backbone of all the other OberonTypes. It 
+ * contains an int value that can be changed using the setValue
+ * method. Likewise, it can be accessed using the getValue method.
+ * 
+ * It also contains two constants that can be used in Boolean-comparisons.
+ * 
+ * @author Bart v. Eijkelenburg
+ *
+ */
 public class OberonInt extends OberonType {
 	public static final int FALSE = 0;
 	public static final int TRUE  = 1;
@@ -17,10 +27,10 @@ public class OberonInt extends OberonType {
 	
 	@Override
 	public void setValue(OberonType value) {
-		if (! (value instanceof OberonInt)) {
-			throw new RuntimeException("Can only assign an OberonInt to an OberonInt (found: " +value.getClass().getCanonicalName());
+		if (! this.typeEquals(value)) {
+			throw new RuntimeException("Can not assign\n" +value+ " to \n" +this+ "!");
 		}
-		this.value = value.getValue();
+		this.value = ((OberonInt)value).value;
 	}
 	
 	@Override
@@ -29,12 +39,17 @@ public class OberonInt extends OberonType {
 	}
 	
 	@Override
-	public OberonType clone() {
+	public boolean typeEquals(OberonType obj) {
+		return (obj != null && obj instanceof OberonInt);
+	}
+	
+	@Override
+	public OberonInt clone() {
 		return new OberonInt(value);
 	}
 	
 	@Override
 	public String toString() {
-		return value+"";
+		return "OberonInt";
 	}
 }
