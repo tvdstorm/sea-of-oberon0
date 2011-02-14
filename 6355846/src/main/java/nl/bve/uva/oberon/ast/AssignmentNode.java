@@ -14,11 +14,10 @@ public class AssignmentNode implements IInterpretableNode {
 	
 	@Override
 	public Object interpret(Environment env) {
-		Object ident = lhn.interpret(env);
+		OberonType ident = (OberonType)lhn.interpret(env);
 		Object value = rhn.interpret(env);
 		
-		OberonType var = (OberonType)ident;
-		var.setValue((OberonType)value);
+		ident.setValue((OberonType)value);
 		
 		return null;
 	}

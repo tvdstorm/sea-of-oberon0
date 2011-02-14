@@ -4,26 +4,56 @@ import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 
 import nl.bve.uva.oberon.env.procedures.Procedure;
+import nl.bve.uva.oberon.env.types.ApplicationType;
 import nl.bve.uva.oberon.env.types.OberonConstant;
-import nl.bve.uva.oberon.env.types.OberonInt;
 import nl.bve.uva.oberon.env.types.OberonType;
 
+/**
+ * This class can be used as a holder of variables, application-defined-types
+ * and procedures. There are methods to add an access these members.
+ * 
+ * An Environment can have a reference to an outer-Environment. This makes
+ * scoping for nested procedures and other structures possible. If a nested
+ * scope is necessary, a new sub-Environment can be created with the getNewSubSpace
+ * method. When access to members is needed, the subspace will search in its own
+ * Environment first. If no matching member is found, it will pass the call to
+ * its outer-Environment. 
+ * 
+ * For procedures: if a procedure cannot be found, the outermost-Environment will
+ * look in a special directory relative to the location of this class (see constant 
+ * BUILT_IN_SUBPACKAGE), to see whether the wanted procedure is available.
+ *  
+ * @author Bart v. Eijkelenburg
+ *
+ */
 public class Environment {
 	private final String BUILT_IN_SUBPACKAGE = "procedures.builtins";
 	
 	private Environment superSpace;
 	
+	private LinkedHashMap<String, ApplicationType> applicationTypes = new LinkedHashMap<String, ApplicationType>();
 	private LinkedHashMap<String, OberonType> identStack = new LinkedHashMap<String, OberonType>();
 	private LinkedHashMap<String, Procedure> procedureStack = new LinkedHashMap<String, Procedure>();
 	
 	public Environment() {}
 	
-	public OberonType createUserType(String typeDef) {
-		if (typeDef.equals("INTEGER")) {
-			return new OberonInt(0);
-		} else {
-			throw new RuntimeException("User types not implemented yet...");
+	public void addUserType(String name, ApplicationType type) {
+		applicationTypes.put(name, type);
+	}
+	
+	public ApplicationType createApplicationType(String name) {
+		ApplicationType t = applicationTypes.get(name);
+		
+		if (t == null) {
+			if (superSpace != null) {
+				t = superSpace.createApplicationType(name);
+			} 
+			if (t == null) {
+				throw new RuntimeException("No such variable: " +name);
+			}
 		}
+		
+		return t.clone();
 	}
 	
 	public Environment(Environment superSpace) {

@@ -17,6 +17,9 @@ import org.antlr.runtime.RecognitionException;
 public class App {
 	private static final String LOCATION_TESTAPPS = "testprogs";
 	
+	/**
+	 * @return
+	 */
 	public static File chooseFile() {
 		File testFilesDir = new File(LOCATION_TESTAPPS);
 		File[] oberonApps = testFilesDir.listFiles(new FileFilter() {

@@ -22,6 +22,7 @@ package nl.bve.uva.oberon.parser;
 import nl.bve.uva.oberon.ast.*;
 import nl.bve.uva.oberon.ast.expressions.*;
 import nl.bve.uva.oberon.env.*;
+import nl.bve.uva.oberon.shared.*;
 }
 
 @lexer::header {
@@ -93,7 +94,8 @@ fPSection returns [TypedParameterList result]
 	;
 
 type returns [IInterpretableNode result]
-	: IDENT 													{$result = new UserTypeNode($IDENT.text); }
+	: 'INTEGER'													{$result = new IntegerTypeNode(); }
+	| IDENT														{$result = new UserTypeNode($IDENT.text); }
 	| arrayType													{$result = $arrayType.result; }
 	| recordType												{$result = $recordType.result; }
 	;
@@ -121,18 +123,25 @@ identList returns [List<String> result = new ArrayList<String>()]
 statementSequence returns [IInterpretableNode result]
 	:	statementList											{$result = new StatementSequenceNode($statementList.result); };
 
+/* De originele EBNF/ANTLR grammar van Oberon-0 is hier herschreven. In de originele
+   grammar is het mogelijk dat een statement gevolgd door een ';' maar niet door een
+   tweede statement, een null-resultaat op zal leveren. Dit omdat oorspronkelijk de 
+   grammar toestond dat een statement an sich 0 of meerdere keren voorkomt. Dan kan 
+   er dus een ';' gelezen worden door de parser, terwijl er geen volgende statement komt.
+*/
 statementList returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()]
-	:	s1=statement 											{$result.add($s1.result); }
+	:	(s1=statement 											{$result.add($s1.result); }
 			(';' s2=statement									{$result.add($s2.result); }
 			)*
+		   )?
 	;
 
 statement returns [IInterpretableNode result]
-	:	( assignment											{$result = $assignment.result; }
+	:	  assignment											{$result = $assignment.result; }
 		| procedureCall											{$result = $procedureCall.result; }
 		| ifStatement											{$result = $ifStatement.result; }
 		| whileStatement										{$result = $whileStatement.result; }
-		)?
+		
 	;
 
 assignment returns [IInterpretableNode result]

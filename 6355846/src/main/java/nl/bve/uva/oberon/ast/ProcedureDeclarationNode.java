@@ -4,6 +4,7 @@ import java.util.List;
 
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.procedures.ApplicationProcedure;
+import nl.bve.uva.oberon.shared.TypedParameterList;
 
 public class ProcedureDeclarationNode implements IInterpretableNode {
 	private String ident;

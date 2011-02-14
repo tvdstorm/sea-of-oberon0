@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.ListIterator;
 
 import nl.bve.uva.oberon.ast.IInterpretableNode;
-import nl.bve.uva.oberon.ast.TypedParameterList;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.types.OberonType;
+import nl.bve.uva.oberon.shared.TypedParameterList;
 
 public abstract class Procedure {
 	public final void callProcedure(Environment env, List<IInterpretableNode> actualParameters) {

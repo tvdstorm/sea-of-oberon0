@@ -5,12 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-import nl.bve.uva.oberon.ast.TypedParameterList;
-import nl.bve.uva.oberon.ast.TypedReferenceParameterList;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.procedures.Procedure;
 import nl.bve.uva.oberon.env.types.OberonInt;
 import nl.bve.uva.oberon.env.types.OberonType;
+import nl.bve.uva.oberon.shared.TypedParameterList;
+import nl.bve.uva.oberon.shared.TypedReferenceParameterList;
 
 public class Read extends Procedure {
 	private final String REF_VAR_STORE = "var_storage";

@@ -3,25 +3,41 @@ MODULE QuickSort;
 CONST
   INPUTLENGTH = 5;
 
+TYPE
+   StudentRecord = RECORD
+      Number: INTEGER;
+      Name: INTEGER
+   END;
+   
+   PersonRecord = RECORD
+      Number: INTEGER;
+      Name: INTEGER
+   END;
+
 VAR
   input: ARRAY INPUTLENGTH OF ARRAY 5 OF INTEGER;
+  input1: ARRAY INPUTLENGTH OF PersonRecord;
   i, j: INTEGER;
+  Student1: StudentRecord;
+  Student2: PersonRecord;
+  Student3: RECORD
+  	FieldX: INTEGER;
+  	FieldY: INTEGER
+  END;
+  
+  Student4: RECORD
+    FieldW: INTEGER;
+    FieldZ: INTEGER
+  END;
 
-  PROCEDURE Swap(VAR x, y: INTEGER);
-  VAR
-    temp: INTEGER;
-  BEGIN
-    temp := x;
-    x := y;
-    y := temp
-  END Swap;
-
-PROCEDURE Swap2;
-  VAR
-    temp: INTEGER;
-  BEGIN
-    temp := 5;
-  END Swap2;
+PROCEDURE Swap(VAR x, y: INTEGER);
+VAR
+  temp: INTEGER;
+BEGIN
+  temp := x;
+  x := y;
+  y := temp
+END Swap;
 
 BEGIN
  i := 0;
@@ -32,5 +48,17 @@ BEGIN
 
  WHILE i < INPUTLENGTH DO
    i := i + 1
- END
+ END;
+ 
+ Student1.Number := 12345;
+ Student1.Name := 67890;
+ 
+ input1[0].Number := 800;
+ Student1.Number := 14;
+ Write(Student1.Number);
+ WriteLn;
+ 
+ Write(input1[0].Number);
+ WriteLn
+ 
 END QuickSort.

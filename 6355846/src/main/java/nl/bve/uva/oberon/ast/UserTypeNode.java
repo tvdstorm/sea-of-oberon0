@@ -11,6 +11,6 @@ public class UserTypeNode implements IInterpretableNode {
 	
 	@Override
 	public Object interpret(Environment env) {
-		return env.createUserType(name);
+		return env.createApplicationType(name);
 	}
 }
