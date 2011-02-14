@@ -14,6 +14,7 @@ import com.kootsjur.oberon.declaration.type.DeclaredTypes;
 import com.kootsjur.oberon.declaration.type.TypeDeclaration;
 import com.kootsjur.oberon.declaration.var.DeclaredVars;
 import com.kootsjur.oberon.declaration.var.VarDeclaration;
+import com.kootsjur.oberon.evaluator.Evaluator;
 import com.kootsjur.oberon.evaluator.ExpressionEvaluator;
 import com.kootsjur.oberon.statement.StatementSequence;
 import com.kootsjur.oberon.type.TypeDefinition;
@@ -35,6 +36,11 @@ public class Environment
    
    public Environment(Environment parentEnvironment)
    {
+      declaredConstants = new DeclaredConstants();
+      declaredVars = new DeclaredVars();
+      declaredTypes = new DeclaredTypes();
+      procedures = new DeclaredProcedures();
+      parameters = new DeclaredParameters();
       this.parentEnvironment = parentEnvironment;
    }
    
@@ -70,7 +76,7 @@ public class Environment
    public void declareConstant(ConstantDeclaration constantDeclaration)
    {
       String constantName = constantDeclaration.getName();
-      ExpressionEvaluator constantValueEvaluator = constantDeclaration.getExpression();
+      Evaluator constantValueEvaluator = constantDeclaration.getExpression();
       Value constantValue = constantValueEvaluator.evaluate(this);
       declareConstant(constantName, constantValue);
    }

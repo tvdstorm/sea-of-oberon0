@@ -1,17 +1,18 @@
 package com.kootsjur.oberon.type;
 
+import com.kootsjur.oberon.evaluator.Evaluator;
 import com.kootsjur.oberon.evaluator.ExpressionEvaluator;
 import com.kootsjur.oberon.value.Value;
 
 public class ArrayType extends TypeDefinition
 {
-   private ExpressionEvaluator expression;
+   private Evaluator expression;
    private TypeDefinition typeDefinition;
    
-   public ArrayType(ExpressionEvaluator expression, TypeDefinition typeDefinition)
+   public ArrayType(Evaluator expression, TypeDefinition typeDefinition)
    {
       super(DataType.ARRAY);
-      this.expression = expression;
+      this.expression =  expression;
       this.typeDefinition = typeDefinition;
    }
    
@@ -19,7 +20,7 @@ public class ArrayType extends TypeDefinition
    {
       this.expression = expression;
    }
-   public ExpressionEvaluator getExpression()
+   public Evaluator getExpression()
    {
       return expression;
    }

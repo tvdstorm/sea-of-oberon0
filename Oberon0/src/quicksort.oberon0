@@ -1,7 +1,7 @@
 MODULE QuickSort;
 
 CONST
-  INPUTLENGTH = 100;
+  INPUTLENGTH = 5;
 
 VAR
   input: ARRAY INPUTLENGTH OF INTEGER;
@@ -24,7 +24,7 @@ PROCEDURE QuickSort(VAR array: ARRAY INPUTLENGTH OF INTEGER; left, right: INTEGE
 BEGIN
   leftIdx := left;
   rightIdx := right;
-  IF (right - left) > 0 THEN
+  IF right - left > 0 THEN
     pivot := (left + right) DIV 2;
     WHILE (leftIdx <= pivot) & (rightIdx >= pivot) DO
       WHILE (array[leftIdx] < array[pivot]) & (leftIdx <= pivot) DO
@@ -39,7 +39,7 @@ BEGIN
       IF leftIdx - 1 = pivot THEN
         rightIdx := rightIdx + 1;
         pivot := rightIdx
-      ELSIF rightIdx + 1 = pivot THEN
+      ELSEIF rightIdx + 1 = pivot THEN
         leftIdx := leftIdx - 1;
         pivot := leftIdx
       END
@@ -48,6 +48,7 @@ BEGIN
     QuickSort(array, pivot + 1, right)
   END
 END QuickSort;
+
 
 BEGIN
  i := 0;
@@ -59,7 +60,7 @@ BEGIN
  i := 0;
  WHILE i < INPUTLENGTH DO
    Write(input[i]);
-   WriteLn;
+   WriteLn();
    i := i + 1
  END
 END QuickSort.

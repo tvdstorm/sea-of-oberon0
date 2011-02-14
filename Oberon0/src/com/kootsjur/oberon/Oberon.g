@@ -30,7 +30,7 @@ options {
 module returns [Module m]:	'MODULE' ident1=ident';'{$m = new Module($ident1.text);} 
 				 declarations {$m.setDeclarations($declarations.ld);} 
 				(procedure';' {$m.addProcedure($procedure.p);})*
-				('BEGIN' statementSequence {module.setStatementSequence($statementSequence.s);})? 'END' ident '.';	
+				('BEGIN' statementSequence {$m.setStatementSequence($statementSequence.s);})? 'END' ident '.';	
 
 declarations returns [List<Declaration> ld]
 	:	{$ld = new ArrayList<Declaration>();}
@@ -117,8 +117,8 @@ assignment
 actualParameters returns [ActualParameters a]
 	: {$a = new ActualParameters();}	'('(expression1=expression {$a.add(new ActualParameter($expression1.e));}(','expression2=expression {$a.add(new ActualParameter($expression2.e));})*)?')';
 		
-expression returns [ExpressionEvaluator e]
-	:	simpleExpression1=simpleExpression {$e = (ExpressionEvaluator) $simpleExpression1.s;} (
+expression returns [Evaluator e] 
+	:	simpleExpression1=simpleExpression {$e = $simpleExpression1.s;} (
 						('='	{$e = new IsEqualToEvaluator($e, $simpleExpression2.s);}
 						|'#'	{$e = new IsEqualToEvaluator($e, $simpleExpression2.s);}
 						|'<' 	{$e = new IsLesserThenEvaluator($e, $simpleExpression2.s);}

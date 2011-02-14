@@ -1,15 +1,16 @@
 package com.kootsjur.oberon.statement;
 
+import com.kootsjur.oberon.evaluator.Evaluator;
 import com.kootsjur.oberon.evaluator.ExpressionEvaluator;
 
 public class ActualParameter
 {
-   private ExpressionEvaluator expression;
+   private Evaluator expression;
    
-   public ActualParameter(ExpressionEvaluator expression)
+   public ActualParameter(Evaluator expression)
    {
       
-      this.expression = expression;
+      this.expression =  expression;
    }
    
    public void setExpression(ExpressionEvaluator expression)
@@ -17,7 +18,7 @@ public class ActualParameter
       this.expression = expression;
    }
 
-   public ExpressionEvaluator getExpression()
+   public Evaluator getExpression()
    {
       return expression;
    }

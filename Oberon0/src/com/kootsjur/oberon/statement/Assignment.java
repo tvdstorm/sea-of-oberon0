@@ -12,7 +12,7 @@ public class Assignment extends Statement
    private SelectorEvaluator selector;
    private Evaluator expression;
    
-   public Assignment(String name, Evaluator selector, ExpressionEvaluator expression)
+   public Assignment(String name, Evaluator selector, Evaluator expression)
    {
       super(StatementType.ASSIGNMENT);
       this.name = name;

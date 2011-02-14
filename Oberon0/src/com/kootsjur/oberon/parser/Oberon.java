@@ -19,7 +19,6 @@ public class Oberon extends AbstractOberon {
 	protected void evaluate(InputStream src, BufferedReader input, PrintWriter output) throws IOException, RecognitionException {
 	   CharStream stream = new ANTLRInputStream(src);
 		OberonLexer lexer = new OberonLexer(stream);
-		lexer.nextToken();
 		TokenStream tokenStream = new CommonTokenStream(lexer);
 		OberonParser parser = new OberonParser(tokenStream);
 	   Module module = parser.module();

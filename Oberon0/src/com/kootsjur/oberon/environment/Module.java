@@ -78,14 +78,14 @@ public class Module extends Environment
     * @param procedureName
     * @return
     */
-   public ProcedureDeclaration getProcedure(String procedureName)
+   public List<ProcedureDeclaration> getProcedure(String procedureName)
    {
       if(procedureDeclarations == null)
       {
          return null;
       }
       //TODO
-      return null;
+      return procedureDeclarations;
    }
    
    public void setName(String name)
