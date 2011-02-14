@@ -14,10 +14,8 @@ public class WhileNode implements IInterpretableNode {
 	
 	@Override
 	public Object interpret(Environment env) {
-		Environment subEnv = env.getNewSubSpace();
-		
-		while ( ((OberonInt)condition.interpret(subEnv)).getValue() == OberonInt.TRUE) {
-			body.interpret(subEnv);
+		while ( ((OberonInt)condition.interpret(env)).getValue() == OberonInt.TRUE) {
+			body.interpret(env);
 		}
 		
 		return null;

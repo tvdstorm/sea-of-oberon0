@@ -11,8 +11,7 @@ public class ElseNode implements IInterpretableNode {
 	
 	@Override
 	public Object interpret(Environment env) {
-		Environment subEnv = env.getNewSubSpace();
-		return body.interpret(subEnv);
+		return body.interpret(env);
 	}
 	
 	@Override

@@ -1,7 +1,7 @@
 package nl.bve.uva.oberon.env.procedures;
 
+import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 import nl.bve.uva.oberon.ast.IInterpretableNode;
 import nl.bve.uva.oberon.env.Environment;
@@ -22,7 +22,7 @@ public abstract class Procedure {
 		Environment subEnv = env.getNewSubSpace();
 		
 		if (formalParametersList != null && actualParameters != null) {
-			ListIterator<IInterpretableNode> actuals = actualParameters.listIterator();
+			Iterator<IInterpretableNode> actuals = actualParameters.iterator();
 			
 			for (TypedParameterList fpList : formalParametersList) {
 				List<String> identList = fpList.getParametersList();
