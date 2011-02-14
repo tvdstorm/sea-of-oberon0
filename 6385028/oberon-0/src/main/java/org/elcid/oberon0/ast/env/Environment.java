@@ -2,7 +2,6 @@ package org.elcid.oberon0.ast.env;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.elcid.oberon0.ast.ProcedureDeclNode;
 import org.elcid.oberon0.ast.TypeNode;
 import org.elcid.oberon0.ast.values.Value;
 import org.elcid.oberon0.exceptions.UnboundVariableException;
@@ -38,13 +37,11 @@ public class Environment {
 	 * @return	the integer that is bound to the variable
 	 */
 	public Value getValue(String variableName) {
-		Value value = valueBindings.get(variableName);
-		if (value == null) {
-			value = superEnv.getValue(variableName);
-			if (value == null)
-				throw new UnboundVariableException("Variable " + variableName + " is not bound to an integer");
-		}
-		return value;
+		if (valueBindings.containsKey(variableName))
+			return valueBindings.get(variableName);
+		if (superEnv != null)
+			return superEnv.getValue(variableName);
+		throw new UnboundVariableException("Variable " + variableName + " is not bound to an integer");
 	}
 
 	/**
