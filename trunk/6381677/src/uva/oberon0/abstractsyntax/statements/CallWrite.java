@@ -20,4 +20,9 @@ public class CallWrite extends Call
 		System.out.print("Write:" + getActualParameter(0).eval(scope));
 		return 1;
 	}
+	
+	@Override
+	public boolean checkTypes(Scope scope) {
+		return true;
+	}
 }

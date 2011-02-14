@@ -1,5 +1,7 @@
 package uva.oberon0.abstractsyntax.expressions;
 
+import uva.oberon0.abstractsyntax.types.BooleanType;
+import uva.oberon0.abstractsyntax.types.IntegerType;
 import uva.oberon0.runtime.Scope;
 
 /**
@@ -7,13 +9,12 @@ import uva.oberon0.runtime.Scope;
  * 
  * @author Chiel Labee
  */
-public class Equal extends BinaryExpression implements IBooleanExpression {
+public class Equal extends BinaryExpression {
 
 	public Equal(Expression left, Expression right) {
-		super(left, right);
+		super(new BooleanType(), left, right);
 		
-		assert left instanceof INumericExpression;
-		assert right instanceof INumericExpression;
+		assert left.getType().getClass() == right.getType().getClass();
 	}
 
 	@Override

@@ -18,9 +18,9 @@ public class Procedure extends Declaration  implements IBindable
 			DeclarationList declarationList, StatementList statementList) {
 		super(id);
 
-		assert parameterList != null : "No Parameters are available for the current Procedure!";
-		assert declarationList != null : "No Declarations are available for the current Procedure!";
-		assert statementList != null : "No Statements are available for the current Procedure!";
+		assert parameterList != null 	: "No Parameters are available for the current Procedure!";
+		assert declarationList != null 	: "No Declarations are available for the current Procedure!";
+		assert statementList != null 	: "No Statements are available for the current Procedure!";
 
 		_parameterList = parameterList;
 		_declarationList = declarationList;
@@ -37,7 +37,7 @@ public class Procedure extends Declaration  implements IBindable
 	/**
 	 * Gets a specific formal Parameter based on the index number value.
 	 */
-	public Declaration getParameter(int index) {
+	public Variable getParameter(int index) {
 		return _parameterList.get(index);
 	}
 

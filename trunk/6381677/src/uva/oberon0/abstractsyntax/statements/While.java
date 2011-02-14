@@ -1,6 +1,7 @@
 package uva.oberon0.abstractsyntax.statements;
 
 import uva.oberon0.abstractsyntax.expressions.Expression;
+import uva.oberon0.abstractsyntax.types.BooleanType;
 import uva.oberon0.runtime.Scope;
 
 
@@ -18,6 +19,8 @@ public class While extends Statement
 		assert whileExpression != null 		: "No While Expression is available for the current If Statement!";
 		assert whileStatements != null 		: "No While Statement List is available for the current If Statement!";
 
+		assert whileExpression.getType() instanceof BooleanType;
+		
 		_whileExpression = whileExpression;
 		_whileStatementList = whileStatements;
 	}
@@ -33,5 +36,10 @@ public class While extends Statement
 		}
 		
 		return 1;
+	}
+
+	@Override
+	public boolean checkTypes(Scope scope) {
+		return _whileStatementList.checkTypes(scope);
 	}
 }

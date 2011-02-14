@@ -24,6 +24,10 @@ public abstract class Call extends Statement
 	{
 		return _actualParameterList;
 	}
+	public int getActualParameterCount()
+	{
+		return _actualParameterList.size();
+	}
 	/**
 	 * Gets a specific Method Call Actual Parameter based on its list Index value.
 	 */

@@ -1,6 +1,8 @@
 package uva.oberon0.abstractsyntax.statements;
 
 import uva.oberon0.abstractsyntax.expressions.Expression;
+import uva.oberon0.abstractsyntax.types.BooleanType;
+import uva.oberon0.runtime.Scope;
 
 
 /**
@@ -17,6 +19,8 @@ public class ElsIf
 		assert elsIfExpression != null 		: "No Els If Expression is available for the current If Statement!";
 		assert elsIfStatements != null 		: "No Els If Statement List is available for the current If Statement!";
 
+		assert elsIfExpression.getType() instanceof BooleanType;
+		
 		_elsifExpression = elsIfExpression;
 		_elsIfStatementList = elsIfStatements;
 	}
@@ -28,5 +32,10 @@ public class ElsIf
 	public StatementList getStatementList()
 	{
 		return _elsIfStatementList;
+	}
+	
+	public boolean checkTypes(Scope scope)
+	{
+		return _elsIfStatementList.checkTypes(scope);
 	}
 }
