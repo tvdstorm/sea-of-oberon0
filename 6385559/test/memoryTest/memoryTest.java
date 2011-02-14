@@ -5,9 +5,9 @@ import errorhandler.OberonException;
 
 public class memoryTest
 {
-  public static void newScopeTest( Scope prev ) throws OberonException
+  public static void newScopeTest( ScopeManager prev ) throws OberonException
   {
-    Scope s = new Scope( prev );
+    ScopeManager s = new ScopeManager( prev );
     s.addValue( "c", new IntegerValue(10) );
     s.addValue( "d", new IntegerValue(11) );
     s.printMemory();
@@ -19,7 +19,7 @@ public class memoryTest
   
   public static void main(String[] args)
   { 
-    Scope s = new Scope( null );
+    ScopeManager s = new ScopeManager( null );
     try
     {
       s.addValue( "a", new IntegerValue(5) );
