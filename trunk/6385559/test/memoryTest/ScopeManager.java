@@ -3,12 +3,12 @@ package memoryTest;
 import datatype.Value;
 import errorhandler.OberonException;
 
-public class Scope 
+public class ScopeManager 
 {
   private MemoryManager currentMemory;
-  private Scope previousScope;
+  private ScopeManager previousScope;
   
-  public Scope( Scope previous )
+  public ScopeManager( ScopeManager previous )
   {
     this.currentMemory = new MemoryManager();
     this.previousScope = previous;
