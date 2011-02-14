@@ -2,8 +2,6 @@ package uva.oberon0.runtime;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
-
 import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.abstractsyntax.types.RecordField;
@@ -21,11 +19,6 @@ public class ValueRecord extends Value
 		}
 	}
 
-	public Set<Map.Entry<ID, Value>> getValueSet()
-	{
-		return _values.entrySet();
-	}
-	
 	@Override
 	public Value getValueBySelector(Scope scope, BaseNode selector) {
 		ID selectorID = (ID) selector;
@@ -39,4 +32,15 @@ public class ValueRecord extends Value
 		return value;
 	}
 
+	public Scope createScopeForWith(Scope parentScope)
+	{
+		Scope resultScope = new Scope(parentScope);
+		
+		for (Map.Entry<ID, Value> mapEntry : _values.entrySet())
+		{
+			resultScope.putBindable(mapEntry.getKey(), mapEntry.getValue());
+		}
+		
+		return resultScope;
+	}
 }
