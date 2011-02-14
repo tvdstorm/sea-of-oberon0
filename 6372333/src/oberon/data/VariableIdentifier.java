@@ -37,4 +37,12 @@ public class VariableIdentifier extends AbstractIdentifier {
 		return currentScope.getVariable(name);
 	}
 
+	/* (non-Javadoc)
+	 * @see oberon.data.AbstractIdentifier#getText()
+	 */
+	@Override
+	public String getText() {
+		return name;
+	}
+
 }

@@ -1,6 +1,7 @@
 package oberon;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 import oberon.exceptions.ProcedureParamaterCountMismatchException;
@@ -37,5 +38,9 @@ public class StatementSequence{
 				statement.eval(currentScope);
 			}
 		}
+	}
+
+	public List<IStatement> getList() {
+		return Collections.unmodifiableList(body);
 	}
 }

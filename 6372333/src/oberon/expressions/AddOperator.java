@@ -18,4 +18,12 @@ public class AddOperator implements IMathematicalOperator {
 		return lefthandSide + righthandSide;
 	}
 
+	/* (non-Javadoc)
+	 * @see oberon.expressions.IMathematicalOperator#getOperatorSign()
+	 */
+	@Override
+	public String getOperatorSign() {
+		return "+";
+	}
+
 }

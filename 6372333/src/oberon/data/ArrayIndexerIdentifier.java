@@ -62,4 +62,26 @@ public class ArrayIndexerIdentifier extends AbstractIdentifier {
 		return new IntegerArrayIndexerDataType(getDataTypeAsArrayType(currentScope), indexExpression.evalAsInt(currentScope));
 	}
 
+	@Override
+	public String getText() {
+		return selector.getText() +"["+ indexExpression.getText() +"]";
+	}
+
+	/**
+	 * Gets the parent.
+	 *
+	 * @return the parent
+	 */
+	public IIdentifier getParent() {
+		return selector;
+	}
+
+	/**
+	 * Gets the indexer expression.
+	 *
+	 * @return the indexer expression
+	 */
+	public IExpression getIndexerExpression() {
+		return indexExpression;
+	}
 }

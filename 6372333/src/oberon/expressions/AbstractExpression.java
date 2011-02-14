@@ -65,4 +65,8 @@ public abstract class AbstractExpression implements IExpression {
 		return resultType;
 	}
 
+	/* (non-Javadoc)
+	 * @see oberon.IExpression#getText()
+	 */
+	public abstract String getText();
 }

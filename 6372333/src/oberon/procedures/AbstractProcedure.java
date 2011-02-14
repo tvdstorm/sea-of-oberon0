@@ -57,7 +57,7 @@ public abstract class AbstractProcedure implements IProcedure {
 	 *
 	 * @return the body of the procedure
 	 */
-	protected ProcedureBody getBody() {
+	public ProcedureBody getBody() {
 		return body;
 	}
 

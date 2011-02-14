@@ -3,6 +3,7 @@ package oberon.statement;
 import java.io.IOException;
 import java.util.List;
 
+import oberon.IExpression;
 import oberon.IIdentifier;
 import oberon.IStatement;
 import oberon.Scope;
@@ -39,6 +40,15 @@ public class WithStatement implements IStatement {
 			Scope newScope = currentScope.createNewScope(identifierToWith);
 			statement.eval(newScope);
 		}
+	}
+
+	/**
+	 * Gets the identifier.
+	 *
+	 * @return the identifier
+	 */
+	public IIdentifier getIdentifier() {
+		return identifierToWith;
 	}
 
 }

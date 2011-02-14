@@ -1,6 +1,7 @@
 package oberon.statement;
 
 import java.io.IOException;
+import java.nio.charset.CodingErrorAction;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,6 +86,33 @@ public class IfStatement implements IStatement {
 	 */
 	protected Boolean conditionIsTrue(Scope currentScope) {
 		return ifCondition.evalAsBoolean(currentScope);
+	}
+
+	/**
+	 * Gets the conditions.
+	 *
+	 * @return the conditions
+	 */
+	public IExpression getCondition() {
+		return ifCondition;
+	}
+	
+	/**
+	 * Gets the else ifs.
+	 *
+	 * @return the else ifs
+	 */
+	public List<IfStatement> getElseIfs(){
+		return elseIfBlocks;
+	}
+	
+	/**
+	 * Gets the else statements.
+	 *
+	 * @return the else statements
+	 */
+	public List<IStatement> getElseStatements(){
+		return elseBody.getList();
 	}
 
 }

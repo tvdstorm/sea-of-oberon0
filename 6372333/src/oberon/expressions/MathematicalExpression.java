@@ -35,4 +35,9 @@ public class MathematicalExpression extends AbstractLeftAndRightExpression {
 		return operatorImplementation.eval(left, right);
 	}
 
+	@Override
+	public String getText() {
+		return getLefthandSide().getText() + " " + operatorImplementation.getOperatorSign() + " " + getRighthandSide().getText();
+	}
+
 }

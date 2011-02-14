@@ -26,5 +26,11 @@ public interface IIdentifier {
 	 * @throws VariableNotFoundInScopeException 
 	 */
 	public abstract int getValue(Scope currentScope);
-
+	
+	/**
+	 * Gets the expression as text.
+	 *
+	 * @return the text
+	 */
+	public abstract String getText();
 }

@@ -34,4 +34,12 @@ public class ComparisonExpression extends AbstractLeftAndRightExpression {
 		
 		return booleanAsInt(evaluator.eval(leftHandSide.evalAsInt(currentScope), rightHandSide.evalAsInt(currentScope)));
 	}
+
+	/* (non-Javadoc)
+	 * @see oberon.expressions.AbstractExpression#getText()
+	 */
+	@Override
+	public String getText() {
+		return getLefthandSide().getText() + " " + evaluator.getOperatorSign() + " " + getRighthandSide().getText();
+	}
 }

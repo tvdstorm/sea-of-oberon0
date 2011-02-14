@@ -8,8 +8,8 @@ import oberon.Scope;
  */
 public class ParenthesesExpression extends AbstractExpression {
 	
-	/** The _expression. */
-	private final IExpression _expression;
+	/** The expression. */
+	private final IExpression expression;
 
 	/**
 	 * Instantiates a new parentheses expression.
@@ -17,7 +17,7 @@ public class ParenthesesExpression extends AbstractExpression {
 	 * @param expression the expression between the parentheses
 	 */
 	public ParenthesesExpression(final IExpression expression) {
-		_expression = expression;
+		this.expression = expression;
 	}
 	
 	/* (non-Javadoc)
@@ -25,7 +25,15 @@ public class ParenthesesExpression extends AbstractExpression {
 	 */
 	@Override
 	public int evalAsInt(Scope currentScope) {
-		return _expression.evalAsInt(currentScope);
+		return expression.evalAsInt(currentScope);
+	}
+
+	/* (non-Javadoc)
+	 * @see oberon.expressions.AbstractExpression#getText()
+	 */
+	@Override
+	public String getText() {
+		return "(" + expression.getText() + ")";
 	}
 
 }
