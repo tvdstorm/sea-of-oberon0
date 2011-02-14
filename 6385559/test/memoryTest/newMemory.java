@@ -2,9 +2,9 @@ package memoryTest;
 
 import java.util.Vector;
 
-import datatype.Datatype;
+import datatype.Value;
 
 public class newMemory
 {
-  public static Vector<Datatype> x = new Vector<Datatype>(0);
+  public static Vector<Value> x = new Vector<Value>(0);
 }

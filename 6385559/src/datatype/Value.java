@@ -2,24 +2,24 @@ package datatype;
 
 import errorhandler.OberonException;
 
-public class Datatype
+public class Value
 { 
   public void set( int x ) throws OberonException
   {
-    if( !(this instanceof IntegerType) )
+    if( !(this instanceof IntegerValue) )
     {
       this.throwException( "INTEGER" );
     }
-    ((IntegerType)this).setInt( x );
+    ((IntegerValue)this).setInt( x );
   }
   
   public void set( boolean x ) throws OberonException
   {
-    if( !(this instanceof BooleanType) )
+    if( !(this instanceof BooleanValue) )
     {
       this.throwException( "BOOLEAN" );
     }
-    ((BooleanType)this).setBoolean( x );
+    ((BooleanValue)this).setBoolean( x );
   }
   
   public Object get()
@@ -27,131 +27,131 @@ public class Datatype
     return new Object();
   }
   
-  public Datatype add( Datatype right ) throws OberonException
+  public Value add( Value right ) throws OberonException
   {
-    IntegerType returnValue = new IntegerType();
+    IntegerValue returnValue = new IntegerValue();
     integerValues values = this.checkIntegers( right );
     returnValue.set( values.getLeft()+values.getRight() );
     return returnValue;
   }
   
-  public Datatype min( Datatype right ) throws OberonException
+  public Value min( Value right ) throws OberonException
   {
-    IntegerType returnValue = new IntegerType();
+    IntegerValue returnValue = new IntegerValue();
     integerValues values = this.checkIntegers( right );
     returnValue.set( values.getLeft()-values.getRight() );
     return returnValue;
   }
   
-  public Datatype mul( Datatype right ) throws OberonException
+  public Value mul( Value right ) throws OberonException
   {
-    IntegerType returnValue = new IntegerType();
+    IntegerValue returnValue = new IntegerValue();
     integerValues values = this.checkIntegers( right );
     returnValue.set( values.getLeft()*values.getRight() );
     return returnValue;
   }
   
-  public Datatype div( Datatype right ) throws OberonException
+  public Value div( Value right ) throws OberonException
   {
-    IntegerType returnValue = new IntegerType();
+    IntegerValue returnValue = new IntegerValue();
     integerValues values = this.checkIntegers( right );
     returnValue.set( values.getLeft()/values.getRight() );
     return returnValue;
   }
   
-  public Datatype mod( Datatype right ) throws OberonException
+  public Value mod( Value right ) throws OberonException
   {
-    IntegerType returnValue = new IntegerType();
+    IntegerValue returnValue = new IntegerValue();
     integerValues values = this.checkIntegers( right );
     returnValue.set( values.getLeft()%values.getRight() );
     return returnValue;
   }
   
-  public Datatype and( Datatype right ) throws OberonException
+  public Value and( Value right ) throws OberonException
   {
-    BooleanType returnValue = new BooleanType();
+    BooleanValue returnValue = new BooleanValue();
     booleanValues values = this.checkBooleans( right );
     returnValue.set( values.getLeft() && values.getRight() );
     return returnValue;
   }
 
-  public Datatype or( Datatype right ) throws OberonException
+  public Value or( Value right ) throws OberonException
   {
-    BooleanType returnValue = new BooleanType();
+    BooleanValue returnValue = new BooleanValue();
     booleanValues values = this.checkBooleans( right );
     returnValue.set( values.getLeft() || values.getRight() );
     return returnValue;
   }  
 
-  public Datatype eq( Datatype right ) throws OberonException
+  public Value eq( Value right ) throws OberonException
   {
-    BooleanType returnValue = new BooleanType();
+    BooleanValue returnValue = new BooleanValue();
     integerValues values = this.checkIntegers( right );
     returnValue.set( values.getLeft() == values.getRight() );
     return returnValue;
   }
 
-  public Datatype neq( Datatype right ) throws OberonException
+  public Value neq( Value right ) throws OberonException
   {
-    BooleanType returnValue = new BooleanType();
+    BooleanValue returnValue = new BooleanValue();
     integerValues values = this.checkIntegers( right );
     returnValue.set( values.getLeft() != values.getRight() );
     return returnValue;
   }
 
-  public Datatype lteq( Datatype right ) throws OberonException
+  public Value lteq( Value right ) throws OberonException
   {
-    BooleanType returnValue = new BooleanType();
+    BooleanValue returnValue = new BooleanValue();
     integerValues values = this.checkIntegers( right );
     returnValue.set( values.getLeft() <= values.getRight() );
     return returnValue;
   }
 
-  public Datatype gteq( Datatype right ) throws OberonException
+  public Value gteq( Value right ) throws OberonException
   {
-    BooleanType returnValue = new BooleanType();
+    BooleanValue returnValue = new BooleanValue();
     integerValues values = this.checkIntegers( right );
     returnValue.set( values.getLeft() >= values.getRight() );
     return returnValue;
   }
 
-  public Datatype lt( Datatype right ) throws OberonException
+  public Value lt( Value right ) throws OberonException
   {
-    BooleanType returnValue = new BooleanType();
+    BooleanValue returnValue = new BooleanValue();
     integerValues values = this.checkIntegers( right );
     returnValue.set( values.getLeft() < values.getRight() );
     return returnValue;
   }
 
-  public Datatype gt( Datatype right ) throws OberonException
+  public Value gt( Value right ) throws OberonException
   {
-    BooleanType returnValue = new BooleanType();
+    BooleanValue returnValue = new BooleanValue();
     integerValues values = this.checkIntegers( right );
     returnValue.set( values.getLeft() > values.getRight() );
     return returnValue;
   }
   
   // left operant is the current object so you don;t have to give it as a parameter
-  private integerValues checkIntegers( Datatype right ) throws OberonException
+  private integerValues checkIntegers( Value right ) throws OberonException
   {
-    if( !(this instanceof IntegerType && right instanceof IntegerType) )
+    if( !(this instanceof IntegerValue && right instanceof IntegerValue) )
     {
       throw new OberonException( "Invalid datatype, Integer needed other type given." );
     }
-    IntegerType leftOperand = ((IntegerType)this);
-    IntegerType rightOperand = ((IntegerType)right);
+    IntegerValue leftOperand = ((IntegerValue)this);
+    IntegerValue rightOperand = ((IntegerValue)right);
     int leftValue = ((Integer)leftOperand.get());
     int rightValue = ((Integer)rightOperand.get());
     return new integerValues( leftValue, rightValue );
   }
-  private booleanValues checkBooleans( Datatype right ) throws OberonException
+  private booleanValues checkBooleans( Value right ) throws OberonException
   {
-    if( !(this instanceof BooleanType && right instanceof BooleanType) )
+    if( !(this instanceof BooleanValue && right instanceof BooleanValue) )
     {
       throw new OberonException( "Invalid datatype, Integer needed other type given." );
     }
-    BooleanType leftOperand = ((BooleanType)this);
-    BooleanType rightOperand = ((BooleanType)right);
+    BooleanValue leftOperand = ((BooleanValue)this);
+    BooleanValue rightOperand = ((BooleanValue)right);
     boolean leftValue = ((Boolean)leftOperand.get());
     boolean rightValue = ((Boolean)rightOperand.get());
     return new booleanValues( leftValue, rightValue );
@@ -160,11 +160,11 @@ public class Datatype
   private void throwException( String givenType ) throws OberonException
   {
     String currentType = null;
-    if( this instanceof IntegerType )
+    if( this instanceof IntegerValue )
     {
       currentType = "INTEGER";
     }
-    else if( this instanceof BooleanType )
+    else if( this instanceof BooleanValue )
     {
       currentType = "BOOLEAN";
     }

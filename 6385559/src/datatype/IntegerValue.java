@@ -1,6 +1,6 @@
 package datatype;
 
-public class IntegerType extends Datatype
+public class IntegerValue extends Value
 {
   private int value = 0;
   
