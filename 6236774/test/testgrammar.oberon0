@@ -1,4 +1,0 @@
-MODULE Testgrammar;
-BEGIN
-  i := a.b.c[d].e
-END Testgrammar.

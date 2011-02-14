@@ -63,13 +63,15 @@ public class Interpreter {
         }
 
         // Runtime environment
-        Environment environment = new Environment(input, new PrintWriter(output));
+        Environment environment = new Environment(input, new PrintWriter(output), null, "System");
 
         // Built-in functions
         environment.loadCoreFunctions();
+        
+        Environment moduleEnvironment = environment.newEnvironment("Module");
 
         try {
-            module.run(environment);
+            module.run(moduleEnvironment);
             System.out.println();
             System.out.println("---- OUTPUT ----");
             System.out.print(output.toString());

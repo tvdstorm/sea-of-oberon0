@@ -247,7 +247,7 @@ procedureHeading
     
 procedureBody
   :   declarations ('BEGIN' statementSequence)? 'END' identifier
-  ->  ^(DECLARATIONS declarations) statementSequence?
+  ->  ^(DECLARATIONS declarations)? statementSequence?
   ; 
     
 procedureDeclarations

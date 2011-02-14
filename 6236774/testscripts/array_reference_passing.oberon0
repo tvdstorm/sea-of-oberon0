@@ -1,0 +1,27 @@
+MODULE Test;
+
+VAR array: ARRAY 2 OF INTEGER;
+
+PROCEDURE Test(VAR array: ARRAY INPUTLENGTH OF INTEGER; x, y: INTEGER);
+  BEGIN
+  	array[0] := x;
+  	array[1] := y
+END Test;
+
+BEGIN
+  array[0] := 2;
+  array[1] := 4;
+  
+  Write(array[0]);
+  WriteLn;
+  Write(array[1]);
+  WriteLn;
+  WriteLn;
+  
+  Test(array, 1, 3);
+  
+  Write(array[0]);
+  WriteLn;
+  Write(array[1])
+  
+END Test.

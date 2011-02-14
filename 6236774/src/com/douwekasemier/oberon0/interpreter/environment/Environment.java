@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 
 import com.douwekasemier.oberon0.exceptions.BuildInFunctionsException;
-import com.douwekasemier.oberon0.exceptions.RuntimeException;
 import com.douwekasemier.oberon0.interpreter.core.functions.Read;
 import com.douwekasemier.oberon0.interpreter.core.functions.Write;
 import com.douwekasemier.oberon0.interpreter.core.functions.WriteLn;
@@ -15,6 +14,7 @@ public class Environment {
     private BufferedReader input;
     private PrintWriter output;
     private Environment parent;
+    private String label;
     private HashMap<String, Reference> variableRegistry;
     private HashMap<String, Procedure> procedureRegistry;
     private HashMap<String, Type> typeRegistry;
@@ -24,13 +24,31 @@ public class Environment {
     }
 
     public Environment(BufferedReader input, PrintWriter output, Environment parent) {
+        this(input, output, parent, "undefined");
+    }
+
+    public Environment(BufferedReader input, PrintWriter output, Environment parent, String label) {
         this.input = input;
         this.output = output;
         this.parent = parent;
+        this.label = label;
 
         variableRegistry = new HashMap<String, Reference>();
         procedureRegistry = new HashMap<String, Procedure>();
         typeRegistry = new HashMap<String, Type>();
+    }
+    @Override
+    public String toString() {
+        return toString("");
+    }
+
+    public String toString(String ident) {
+        if( parent == null ) {
+            return "Environment @"+ Integer.toHexString(hashCode())+"\r\n  "+ident+"label = " + label + ",\r\n  "+ident+"parent = " + null;            
+        }
+        else {
+            return "Environment @"+ Integer.toHexString(hashCode())+"\r\n  "+ident+"label = " + label + ",\r\n  "+ident+"parent = " + parent.toString(ident + "  ");            
+        }
     }
 
     public void declareReference(String identifier, Reference reference) {
@@ -38,6 +56,11 @@ public class Environment {
     }
 
     public void declareVariable(String identifier, Value value) {
+        // debug
+        //System.out.println("Declare variable ["+identifier+"]");
+        //System.out.println(this);
+        //System.out.println();
+        
         variableRegistry.put(identifier, new Reference(value));
     }
 
@@ -46,6 +69,10 @@ public class Environment {
     }
 
     public void declareProcedure(String identifier, Procedure procedure) {
+        //System.out.println("Declare procedure ["+identifier+"]");
+        //System.out.println(this);
+        //System.out.println();
+        
         procedureRegistry.put(identifier, procedure);
     }
 
@@ -54,7 +81,16 @@ public class Environment {
     }
 
     public Reference getReference(String identifier) {
+        //System.out.println("Get reference ["+identifier+"]");
+        
         Reference ref = variableRegistry.get(identifier);
+        
+        // debug
+        //System.out.println(this);
+        //if( ref != null) {
+            //System.out.println();
+        //}
+        
         if (ref == null && parent != null) {
             ref = parent.getReference(identifier);
         }
@@ -62,7 +98,16 @@ public class Environment {
     }
 
     public Procedure getProcedure(String identifier) {
+        //System.out.println("Get procedure ["+identifier+"]");
+        
         Procedure procedure = procedureRegistry.get(identifier);
+        
+        // debug
+        //System.out.println(this);
+        //if( procedure != null) {
+            //System.out.println();
+        //}
+        
         if (procedure == null && parent != null) {
             procedure = parent.getProcedure(identifier);
         }
@@ -71,6 +116,10 @@ public class Environment {
 
     public Environment newEnvironment() {
         return new Environment(input, output, this);
+    }
+    
+    public Environment newEnvironment(String label) {
+        return new Environment(input, output, this, label);
     }
 
     public BufferedReader getInput() {

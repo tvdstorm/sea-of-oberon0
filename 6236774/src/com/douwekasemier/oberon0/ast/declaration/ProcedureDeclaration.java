@@ -73,7 +73,7 @@ public class ProcedureDeclaration extends AST implements Declarable, Invokable {
 
     @Override
     public void declare(Environment environment) throws RuntimeException {
-        Environment localEnvironment = environment.newEnvironment();
+        Environment localEnvironment = environment.newEnvironment("Procedure declaration <"+identifier+">");
         environment.declareProcedure(identifier, new Procedure(this, localEnvironment));
     }
 

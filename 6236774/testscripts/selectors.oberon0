@@ -1,0 +1,4 @@
+MODULE Test;
+BEGIN
+  i := a.b.c[d].e
+END Test.

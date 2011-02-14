@@ -9,7 +9,9 @@ import com.douwekasemier.oberon0.ast.Interpretable;
 import com.douwekasemier.oberon0.ast.statements.ifstatement.*;
 import com.douwekasemier.oberon0.core.Oberon0Parser;
 import com.douwekasemier.oberon0.exceptions.RuntimeException;
+import com.douwekasemier.oberon0.interpreter.environment.Bool;
 import com.douwekasemier.oberon0.interpreter.environment.Environment;
+import com.douwekasemier.oberon0.interpreter.environment.Value;
 
 public class IfStatement extends AST implements Interpretable {
 
@@ -54,8 +56,29 @@ public class IfStatement extends AST implements Interpretable {
 
     @Override
     public void interpret(Environment environment) throws RuntimeException {
-        // TODO Auto-generated method stub
-
+        boolean doElse = false;
+        if( elsepart != null ) {
+            doElse = true;
+        }
+        
+        Bool ifResult = (Bool) ifpart.getExpression().evaluate(environment);
+        if( ifResult.getValue().booleanValue() ) {
+            ifpart.getStatements().interpret(environment);
+        }
+        else{
+            Bool elsifResult;
+            for(Elsif elsifpart : elsifparts) {
+                elsifResult = (Bool) elsifpart.getExpression().evaluate(environment);
+                if( elsifResult.getValue().booleanValue()) {
+                    elsifpart.getStatements().interpret(environment);
+                    doElse = false;
+                    break;
+                }
+            }
+            
+            if( doElse ) {
+                elsepart.getStatements().interpret(environment);
+            }
+        }
     }
-
 }

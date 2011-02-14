@@ -52,7 +52,7 @@ public class ProcedureCall extends AST implements Interpretable {
     public void interpret(Environment environment) throws RuntimeException {
 
         Procedure procedure = environment.getProcedure(identifier);
-        Environment invokerEnvironment = procedure.getEnvironment().newEnvironment();
+        Environment invokerEnvironment = environment.newEnvironment("Procedure call <"+identifier+">");
         ProcedureDeclaration procedureDeclaration = procedure.getProcedureNode();
         Declarations declarations = procedureDeclaration.getDeclarations();
         if (declarations != null) {
