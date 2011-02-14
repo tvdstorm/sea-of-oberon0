@@ -22,6 +22,7 @@ public abstract class BaseList<E> implements Iterable<E>
 	 */	
 	public void add(E item)
 	{
+		assert item != null;
 		_list.add(item);
 	}
 	/**
