@@ -1,6 +1,6 @@
 package datatype;
 
-public class BooleanType extends Datatype
+public class BooleanValue extends Value
 {
   private boolean value = false;
   

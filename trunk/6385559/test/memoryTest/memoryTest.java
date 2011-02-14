@@ -1,27 +1,32 @@
 package memoryTest;
 
-import java.util.Vector;
 import datatype.*;
 import ast.*;
 
 public class memoryTest
 {
+  
   public static void main(String[] args)
-  {
+  { 
+    MemoryManager manager = new MemoryManager();
     try
     {
-      Datatype x = new IntegerType();
-      x.set( 4 );
-      Datatype y = new IntegerType();
-      y.set( 6 );
-      Datatype z = x.gt( y );
-      System.out.println( z.get().toString() );
-    }
-    catch( Exception e )
-    {
-      System.out.println( "Datatype exception found: " + e.getMessage() );
-    }
-    
+      Value x = new IntegerValue(); x.set( 5 );
+      manager.add( "a", x );
+      x = new IntegerValue(); x.set( 9 );
+      manager.add( "b", x );
+      x = new IntegerValue(); x.set( 1 );
+      manager.add( "c", x );
+      x = new IntegerValue(); x.set( -10 );
+      manager.add( "d", x );
+      
+      manager.printMemory();
+      
+      x = new IntegerValue(); x.set( 59 );
+      manager.set( "a", x );
+      
+      manager.printMemory();
+      
+    } catch( Exception e ){ System.err.println(e.getMessage()); }
   }
-
 }
