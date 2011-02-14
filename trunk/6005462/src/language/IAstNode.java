@@ -2,5 +2,5 @@ package language;
 
 
 public interface IAstNode {	
-	public IAstNode eval() throws Exception;
+	public IAstNode eval(AnEnvironment env) throws Exception;
 }
