@@ -1,40 +1,59 @@
 package language;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class AnContext {
 
-	private HashMap<String, AnIdent> memmory;
-	//private HashMap<String, Boolean> visibility;
-	private AnContext parentContext;
+	private HashMap<String, AnIdent> memIdents;
+	private HashMap<String, AnProcDecl> memProcs;
+	private HashMap<String, AnTypeDecl> memTypes; 
 	
-	public AnContext(AnContext parentContext){
-		this.parentContext = parentContext;
+	public AnContext(){
+		
 	}
 	
-	public void setValuee (String name, AnValue value) throws Exception{
-		AnIdent ident;
-		
-		if(memmory.containsKey(name)){
-			ident = memmory.get(name);
-			ident.assign(value);
-		} else {
-			ident = new AnIdent(name, value.getType());
-			ident.assign(value);
-			memmory.put(name, ident);
+
+	public void setIdents(List<AnIdent> idents){
+		for (AnIdent ident : idents){
+			setIdent(ident);
 		}
 	}
 	
-	public AnValue getValue(String name){
-		
-		if(!memmory.containsKey(null)) return null;
-		
-		AnIdent ident = memmory.get(name); 
-		return ident.getValue();
-	}
-	
 	public AnIdent getIdent(String name){
-		return memmory.get(name);
+		return memIdents.get(name);
 	}
 	
+	public void setIdent(AnIdent ident){
+		memIdents.put(ident.getName(), ident);
+	}
+
+	public void setProcs(List<AnProcDecl> procs){
+		for (AnProcDecl proc : procs){
+			setProc(proc);
+		}
+	}
+	
+	public AnProcDecl getProc(String name){
+		return memProcs.get(name);
+	}
+	
+	public void setProc(AnProcDecl proc){
+		memProcs.put(proc.getName(), proc);
+	}
+
+	public void setTypes(List<AnTypeDecl> types){
+		for (AnTypeDecl typ : types){
+			setType(typ);
+		}
+	}
+	
+	public void setType(AnTypeDecl typ){
+		memTypes.put(typ.getName(), typ);
+	}
+	
+	public AnTypeDecl getType(String name){
+		return memTypes.get(name);
+	}
 }
+

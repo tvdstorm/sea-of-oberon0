@@ -2,10 +2,19 @@ package language;
 
 public class AnTypeDecl implements IAstNode {
 
+	private String name;
+	
 	@Override
-	public IAstNode eval() throws Exception {
+	public IAstNode eval(AnEnvironment env) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	public AnTypeDecl(String name){
+		this.name = name;
+	}
+	
+	public String getName(){
+		return this.name;
+	}
 }

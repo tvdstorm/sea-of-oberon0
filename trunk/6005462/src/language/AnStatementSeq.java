@@ -11,9 +11,9 @@ public class AnStatementSeq implements IAstNode {
 	
 	
 	@Override
-	public IAstNode eval() throws Exception {
+	public IAstNode eval(AnEnvironment env) throws Exception {
 		for (IStatement smt : statementList){
-			smt.eval();
+			smt.eval(env);
 		}
 		return this;
 	}
