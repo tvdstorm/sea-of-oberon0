@@ -8,7 +8,7 @@ import oberon.Scope;
 /**
  * The Class WithAssignmentStatement.
  */
-public class WithAssignmentStatement implements IStatement {
+public class WithAssignmentStatement {
 	
 	/** The expression value. */
 	private final IExpression expressionValue;

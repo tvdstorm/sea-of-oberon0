@@ -13,4 +13,11 @@ public interface IMathematicalOperator {
 	 * @return the int
 	 */
 	int eval(int lefthandSide, int righthandSide);
+
+	/**
+	 * Gets the operator sign.
+	 *
+	 * @return the operator sign
+	 */
+	String getOperatorSign();
 }

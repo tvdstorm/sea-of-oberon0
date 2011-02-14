@@ -56,6 +56,21 @@ public class Main {
 	 */
 	public static IProcedure runParser(Lexer lexer) throws ParserException,
 			LexerException, IOException {
+		IProcedure mainProc = getMain(lexer);
+		
+		Scope newScope = new Scope();
+		final List<IExpression> paramList = new ArrayList<IExpression>();
+			 
+		for (IProcedure sysProc : ModuleConverter.getSystemProcedures()){
+			newScope.addSystemProcedure(sysProc);
+		}
+		
+		mainProc.call(newScope, paramList);
+		
+		return mainProc;
+	}
+
+	public static IProcedure getMain(Lexer lexer) throws ParserException, LexerException, IOException {
 		final Parser parser = new Parser(lexer); 
 		Start ast = null;
 		ast = parser.parse();
@@ -64,16 +79,7 @@ public class Main {
 		final ModuleConverter converter = new ModuleConverter();
 		ast.apply(converter);	
 		
-		Scope newScope = new Scope();
-		
 		final IProcedure mainProc = converter.buildInterpreterResult();
-		final List<IExpression> paramList = new ArrayList<IExpression>();
-			 
-		for (IProcedure sysProc : ModuleConverter.getSystemProcedures()){
-			newScope.addSystemProcedure(sysProc);
-		}
-		
-		mainProc.call(newScope, paramList);
 		
 		return mainProc;
 	}

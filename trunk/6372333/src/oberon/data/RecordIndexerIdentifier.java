@@ -64,21 +64,15 @@ public class RecordIndexerIdentifier extends AbstractIdentifier {
 	public int getValue(Scope currentScope) {
 		IDataType rootRecord = selector.getDataTypeValue(currentScope);
 		
-		if (rootRecord instanceof RecordDataType){
-			RecordDataType record = ((RecordDataType)rootRecord);
-			Iterator<String> subrecordIterator = subRecords.iterator();
-			
-			while (subrecordIterator.hasNext()){
-				record = (RecordDataType) record.getValueAtIndex(subrecordIterator.next());
-			}
-			
-			record.getValueAtIndex(recordFieldname).getValue(currentScope);
-		}
-		else{
-			//TODO: throw
-			System.out.println("Error in rii");
+		RecordDataType record = ((RecordDataType)rootRecord);
+		Iterator<String> subrecordIterator = subRecords.iterator();
+		
+		while (subrecordIterator.hasNext()){
+			record = (RecordDataType) record.getValueAtIndex(subrecordIterator.next());
 		}
 		
+		record.getValueAtIndex(recordFieldname).getValue(currentScope);
+	
 		return 0;
 	}
 
@@ -88,5 +82,45 @@ public class RecordIndexerIdentifier extends AbstractIdentifier {
 	@Override
 	public IDataType getDataTypeValue(Scope currentScope) {
 		return new RecordIndexerDataType((RecordDataType) getDataType(currentScope), recordFieldname);
+	}
+
+	/* (non-Javadoc)
+	 * @see oberon.data.AbstractIdentifier#getText()
+	 */
+	@Override
+	public String getText() {
+		String outputString = selector.getText();
+		for (String subRecord : subRecords){
+			outputString += "." + subRecord;
+		}
+		outputString += "." + recordFieldname;
+		return outputString;
+	}
+	
+	/**
+	 * Gets the selector.
+	 *
+	 * @return the selector
+	 */
+	public IIdentifier getSelector() {
+		return selector;
+	}
+
+	/**
+	 * Gets the sub records.
+	 *
+	 * @return the sub records
+	 */
+	public List<String> getSubRecords() {
+		return subRecords;
+	}
+
+	/**
+	 * Gets the record fieldname.
+	 *
+	 * @return the record fieldname
+	 */
+	public String getRecordFieldname() {
+		return recordFieldname;
 	}
 }

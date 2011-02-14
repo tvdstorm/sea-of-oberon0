@@ -37,5 +37,12 @@ public interface IExpression {
 	 * @throws VariableNotFoundInScopeException the variable not found in scope exception
 	 */
 	public abstract IDataType copy(Scope currentScope, String newName, boolean isShallowCopy);
+	
+	/**
+	 * Gets the expression as text.
+	 *
+	 * @return the text
+	 */
+	public abstract String getText();
 
 }

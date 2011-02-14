@@ -27,4 +27,9 @@ public class IntegerExpression extends AbstractExpression {
 		return value;
 	}
 
+	@Override
+	public String getText() {
+		return String.valueOf(value);
+	}
+
 }

@@ -2,6 +2,7 @@ package oberon.procedures;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -62,5 +63,9 @@ public class ProcedureHeading extends AbstractProcedure {
 	 */
 	public Scope getScope(){
 		return newScope;
+	}
+
+	public List<FormalParamSection> getActualParams() {
+		return Collections.unmodifiableList(getParamSections());		
 	}
 }

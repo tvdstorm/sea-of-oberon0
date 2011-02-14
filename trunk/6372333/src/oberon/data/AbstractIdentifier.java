@@ -18,4 +18,10 @@ public abstract class AbstractIdentifier implements IIdentifier {
 	 */
 	@Override
 	public abstract int getValue(Scope currentScope);
+	
+	/* (non-Javadoc)
+	 * @see oberon.IIdentifier#getText()
+	 */
+	@Override
+	public abstract String getText();
 }

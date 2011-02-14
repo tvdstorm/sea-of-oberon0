@@ -41,4 +41,22 @@ public class ProcedureBody {
 		
 		body.eval(currentScope);
 	}
+
+	/**
+	 * Gets the statements.
+	 *
+	 * @return the statements
+	 */
+	public StatementSequence getStatements() {
+		return body;
+	}
+
+	/**
+	 * Gets the declaration.
+	 *
+	 * @return the declaration
+	 */
+	public Declaration getDeclaration() {
+		return variableDeclaration;
+	}
 }

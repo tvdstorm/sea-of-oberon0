@@ -47,4 +47,21 @@ public class IdentifierExpression extends AbstractExpression {
 		return selector.getDataTypeValue(currentScope).performDeepCopy(newName);
 	}
 
+	/* (non-Javadoc)
+	 * @see oberon.expressions.AbstractExpression#getText()
+	 */
+	@Override
+	public String getText() {
+		return selector.getText();
+	}
+
+	/**
+	 * Gets the identifier.
+	 *
+	 * @return the identifier
+	 */
+	public IIdentifier getIdentifier() {
+		return selector;
+	}
+
 }

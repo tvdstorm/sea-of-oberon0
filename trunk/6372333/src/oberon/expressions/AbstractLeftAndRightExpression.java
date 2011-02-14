@@ -39,7 +39,7 @@ public abstract class AbstractLeftAndRightExpression extends AbstractExpression 
 	 *
 	 * @return the righthand side of the expression
 	 */
-	protected IExpression getRighthandSide() {
+	public IExpression getRighthandSide() {
 		return righthandSide;
 	}
 
@@ -57,7 +57,7 @@ public abstract class AbstractLeftAndRightExpression extends AbstractExpression 
 	 *
 	 * @return the lefthand side of the expression
 	 */
-	protected IExpression getLefthandSide() {
+	public IExpression getLefthandSide() {
 		return lefthandSide;
 	}
 }

@@ -14,7 +14,6 @@ import oberon.node.AAmpExp;
 import oberon.node.AExeqExp;
 import oberon.node.AExgeExp;
 import oberon.node.AExgtExp;
-import oberon.node.AExhaExp;
 import oberon.node.AExseExp;
 import oberon.node.AExstExp;
 import oberon.node.ATilExp;
@@ -42,18 +41,6 @@ public class ComparisonExpressionConverter extends AbstractConverter<IExpression
 		left = ExpConverterFactory.getExpression(node.getLeft());
 		right = ExpConverterFactory.getExpression(node.getRight());
 		operatorImplementation = new EqualsOperator();
-	}
-
-	/* (non-Javadoc)
-	 * @see oberon.analysis.DepthFirstAdapter#caseAExhaExp(oberon.node.AExhaExp)
-	 */
-	@Override
-	public void caseAExhaExp(final AExhaExp node)
-	{
-		//TODO: implement
-//		left = ExpInterpreterFactory.getExpression(node.getLeft());
-//		right = ExpInterpreterFactory.getExpression(node.getRight());
-//		type = ComparisonType.Exha;
 	}
 
 	/* (non-Javadoc)
