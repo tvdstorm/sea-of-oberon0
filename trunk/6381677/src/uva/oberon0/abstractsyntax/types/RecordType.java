@@ -2,7 +2,7 @@ package uva.oberon0.abstractsyntax.types;
 
 import uva.oberon0.runtime.Scope;
 import uva.oberon0.runtime.Value;
-import uva.oberon0.runtime.ValueRecord;
+import uva.oberon0.runtime.RecordValue;
 
 public class RecordType extends BaseType {
 
@@ -18,7 +18,7 @@ public class RecordType extends BaseType {
 	@Override
 	public Value instantiate(Scope scope) 
 	{
-		return new ValueRecord(scope, this);
+		return new RecordValue(scope, this);
 	}
 
 	public RecordFieldList getFields() {

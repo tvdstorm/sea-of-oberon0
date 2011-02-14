@@ -88,7 +88,7 @@ public class Scope {
 			// Determine if the declaration should be passed by Value.
 			else {
 				Value value = formal.instantiate(this);
-				((ValueInt) value).setValue(actual.eval(parent));
+				((IntegerValue) value).setValue(actual.eval(parent));
 
 				// Create and Add an Execution Scope Value to the Value hash.
 				putBindable(formal.getID(), value);
@@ -110,7 +110,7 @@ public class Scope {
 	 *            The Identifier of the Value that should be retrieved.
 	 */
 	public int getValue(ID id) {
-		return ((ValueInt) getValueReference(id)).getValue();
+		return ((IntegerValue) getValueReference(id)).getValue();
 	}
 
 	private Value getValueReference(ID id) {
@@ -149,7 +149,7 @@ public class Scope {
 	 *            The Identifier of the Value that should be stored.
 	 */
 	public void setValue(ID id, int valueNew) {
-		ValueInt scopeValue = (ValueInt) getValueReference(id);
+		IntegerValue scopeValue = (IntegerValue) getValueReference(id);
 		scopeValue.setValue(valueNew);
 	}
 

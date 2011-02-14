@@ -8,11 +8,11 @@ import uva.oberon0.abstractsyntax.types.ID;
  * @author Chiel Labee This class represents an Array based Execution Scope
  *         Value.
  */
-public class ValueArray extends Value 
+public class ArrayValue extends Value 
 {
 	private final Value[] _values;
 
-	public ValueArray(Scope scope, ArrayType type) {
+	public ArrayValue(Scope scope, ArrayType type) {
 		int arrayLength = type.getLength().eval(scope);
 
 		_values = new Value[arrayLength];

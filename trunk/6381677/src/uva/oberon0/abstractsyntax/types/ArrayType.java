@@ -2,7 +2,7 @@ package uva.oberon0.abstractsyntax.types;
 
 import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.runtime.Scope;
-import uva.oberon0.runtime.ValueArray;
+import uva.oberon0.runtime.ArrayValue;
 import uva.oberon0.runtime.Value;
 
 public class ArrayType extends BaseType {
@@ -37,6 +37,6 @@ public class ArrayType extends BaseType {
 
 	@Override
 	public Value instantiate(Scope scope) {
-		return new ValueArray(scope, this);
+		return new ArrayValue(scope, this);
 	}
 }

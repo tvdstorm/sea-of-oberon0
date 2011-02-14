@@ -4,7 +4,7 @@ import uva.oberon0.abstractsyntax.expressions.Expression;
 import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.runtime.Scope;
 import uva.oberon0.runtime.Value;
-import uva.oberon0.runtime.ValueInt;
+import uva.oberon0.runtime.IntegerValue;
 
 /**
  * @author Chiel Labee This class represents a Constanct Declaration.
@@ -21,6 +21,6 @@ public class Constant extends Declaration {
 	}
 
 	public Value instantiate(Scope scope) {
-		return new ValueInt(_expression.eval(scope));
+		return new IntegerValue(_expression.eval(scope));
 	}
 }
