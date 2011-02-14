@@ -7,11 +7,11 @@ import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.abstractsyntax.types.RecordField;
 import uva.oberon0.abstractsyntax.types.RecordType;
 
-public class ValueRecord extends Value 
+public class RecordValue extends Value 
 {
 	private final Map<ID, Value> _values;
 
-	public ValueRecord(Scope scope, RecordType type) {
+	public RecordValue(Scope scope, RecordType type) {
 		_values = new HashMap<ID, Value>(type.getFields().size());
 
 		for (RecordField field : type.getFields()) {

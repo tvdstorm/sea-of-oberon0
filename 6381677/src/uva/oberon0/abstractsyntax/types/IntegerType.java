@@ -2,19 +2,19 @@ package uva.oberon0.abstractsyntax.types;
 
 import uva.oberon0.runtime.Scope;
 import uva.oberon0.runtime.Value;
-import uva.oberon0.runtime.ValueInt;
+import uva.oberon0.runtime.IntegerValue;
 
 /**
  * @author Chiel Labee This class represents an Integer Value Type.
  */
-public class IntType extends BaseType 
+public class IntegerType extends BaseType 
 {
-	public IntType() {
+	public IntegerType() {
 	}
 
 	@Override
 	public Value instantiate(Scope scope) {
-		return new ValueInt();
+		return new IntegerValue();
 	}
 
 }

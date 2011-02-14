@@ -956,7 +956,7 @@ public class OberonParser extends Parser {
                     // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:124:4: INTEGER
                     {
                     match(input,INTEGER,FOLLOW_INTEGER_in_type846); 
-                    node = new IntType();
+                    node = new IntegerType();
 
                     }
                     break;

@@ -2,7 +2,7 @@ package uva.oberon0.abstractsyntax.statements;
 
 import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.runtime.Scope;
-import uva.oberon0.runtime.ValueRecord;
+import uva.oberon0.runtime.RecordValue;
 
 public class With extends Statement {
 
@@ -16,7 +16,7 @@ public class With extends Statement {
 
 	@Override
 	public int eval(Scope scope) {
-		ValueRecord withRecord = (ValueRecord)scope.getBindable(_id);
+		RecordValue withRecord = (RecordValue)scope.getBindable(_id);
 		Scope withScope = withRecord.createScopeForWith(scope);
 		
 		return _statementList.eval(withScope);

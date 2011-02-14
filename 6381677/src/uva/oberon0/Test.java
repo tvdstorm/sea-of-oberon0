@@ -7,7 +7,7 @@ import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.parser.Helper;
 import uva.oberon0.parser.OberonParser;
 import uva.oberon0.runtime.Scope;
-import uva.oberon0.runtime.ValueInt;
+import uva.oberon0.runtime.IntegerValue;
 
 /**
  * @author Chiel Labee Test class for running unit test on the Oberon0 parser
@@ -35,7 +35,7 @@ public class Test {
 		}
 
 		Scope scope = module.createScope();
-		scope.putBindable(new ID("r"), new ValueInt());
+		scope.putBindable(new ID("r"), new IntegerValue());
 		module.eval(scope);
 
 		int result = scope.getValue(new ID("r"));
