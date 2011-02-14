@@ -5,21 +5,21 @@ import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.types.OberonInt;
 import nl.bve.uva.oberon.env.types.OberonType;
 
-public abstract class ExpressionNode implements IInterpretableNode {
+public abstract class BinaryExpressionNode implements IInterpretableNode {
 	private IInterpretableNode lhn;
 	private IInterpretableNode rhn;
 	
-	public ExpressionNode(IInterpretableNode lhn, IInterpretableNode rhn) {
+	public BinaryExpressionNode(IInterpretableNode lhn, IInterpretableNode rhn) {
 		this.lhn = lhn;
 		this.rhn = rhn;
 	}
 	
-	public Integer getLeftHandValue(Environment env) {
+	public Integer evalLhs(Environment env) {
 		Object leftType = lhn.interpret(env);
 		return ((OberonType)leftType).getValue();
 	}
 	
-	public Integer getRightHandValue(Environment env) {
+	public Integer evalRhs(Environment env) {
 		Object rightType = rhn.interpret(env);
 		return ((OberonType)rightType).getValue();
 		

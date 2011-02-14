@@ -1,6 +1,7 @@
 package nl.bve.uva.oberon.env;
 
-import java.util.LinkedHashMap;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import nl.bve.uva.oberon.env.procedures.Procedure;
@@ -31,9 +32,9 @@ public class Environment {
 	
 	private Environment superSpace;
 	
-	private LinkedHashMap<String, ApplicationType> applicationTypes = new LinkedHashMap<String, ApplicationType>();
-	private LinkedHashMap<String, OberonType> identStack = new LinkedHashMap<String, OberonType>();
-	private LinkedHashMap<String, Procedure> procedureStack = new LinkedHashMap<String, Procedure>();
+	private Map<String, ApplicationType> applicationTypes = new HashMap<String, ApplicationType>();
+	private Map<String, OberonType> identStack = new HashMap<String, OberonType>();
+	private Map<String, Procedure> procedureStack = new HashMap<String, Procedure>();
 	
 	public Environment() {}
 	

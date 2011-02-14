@@ -4,15 +4,15 @@ import nl.bve.uva.oberon.ast.IInterpretableNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.types.OberonInt;
 
-public class DivExprNode extends ExpressionNode {
+public class DivExprNode extends BinaryExpressionNode {
 	public DivExprNode(IInterpretableNode lhn, IInterpretableNode rhn) {
 		super(lhn, rhn);
 	}
 	
 	@Override
 	public OberonInt interpret(Environment env) {
-		int left = getLeftHandValue(env);
-		int right = getRightHandValue(env);
+		int left = evalLhs(env);
+		int right = evalRhs(env);
 		
 		return new OberonInt(left / right);
 	}

@@ -20,8 +20,7 @@ public class IfNode implements IInterpretableNode {
 		OberonType t = (OberonType)condition.interpret(env);
 		
 		if (t.getValue() == OberonInt.TRUE) {
-			Environment subEnv = env.getNewSubSpace();
-			body.interpret(subEnv);
+			body.interpret(env);
 		} else if (ifelse != null) {
 			ifelse.interpret(env);
 		}
