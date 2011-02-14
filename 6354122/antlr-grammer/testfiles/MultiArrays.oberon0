@@ -1,0 +1,52 @@
+MODULE QuickSort;
+
+CONST
+  INPUTLENGTH = 5;
+  
+TYPE
+  int = INTEGER; 
+  reftoarray = ARRAY INPUTLENGTH OF int;
+  
+
+VAR
+  result: ARRAY INPUTLENGTH OF reftoarray;
+  test: ARRAY INPUTLENGTH OF int;
+  outerConter, innerConter, totalCounter : int ;
+  
+BEGIN
+	totalCounter := 1;
+	WHILE outerConter < INPUTLENGTH DO
+		result[outerConter][outerConter] := totalCounter;
+		outerConter:= outerConter+1;
+		totalCounter := totalCounter + 20
+	END;
+	outerConter := 0;
+	WHILE outerConter < INPUTLENGTH DO
+		Write(result[outerConter][outerConter]);
+		WriteLn;
+		outerConter:= outerConter+1
+	END;	
+	WriteLn;
+    totalCounter := 1;
+	outerConter := 0;
+	WHILE outerConter < INPUTLENGTH DO
+		innerConter := 0;
+		WHILE innerConter < INPUTLENGTH DO
+			result[outerConter][innerConter] := totalCounter;
+			totalCounter := totalCounter + 1;
+			innerConter := innerConter + 1
+		END;
+		outerConter:= outerConter+1
+	END;
+	outerConter := 0;
+	WHILE outerConter < INPUTLENGTH DO
+		innerConter := 0;
+		WHILE innerConter < INPUTLENGTH DO
+			Write(result[outerConter][innerConter]);
+			WriteLn;
+			innerConter := innerConter + 1
+		END;
+		WriteLn;
+		outerConter:= outerConter+1
+	END
+END QuickSort.

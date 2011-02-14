@@ -286,7 +286,7 @@ public class SymbolTable {
 	 * 
 	 * @return A list of {@link MemoryAddress}
 	 */
-	public List<MemoryAddress> generateNonRefAddressList(Scope scope) {
+	/*public List<MemoryAddress> generateNonRefAddressList(Scope scope) {
 		List<MemoryAddress> addressList = new LinkedList<MemoryAddress>();
 		for (String identifier : symbolTable.keySet()) {
 			Symbol tmpSymbol = symbolTable.get(identifier);
@@ -307,5 +307,5 @@ public class SymbolTable {
 
 		}
 		return addressList;
-	}
+	}*/
 }

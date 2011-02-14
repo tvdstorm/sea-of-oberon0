@@ -6,6 +6,7 @@ package com.arievanderveek.soo.ast.variables;
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.expr.ExpressionNode;
 import com.arievanderveek.soo.runtime.Scope;
+import com.arievanderveek.soo.runtime.Symbol;
 
 /**
  * Represents an array type definition
@@ -66,7 +67,15 @@ public class ArrayTypeNode extends TypeNode  {
 	@Override
 	public void registerType(String identifier, Scope scope) throws SeaOfOberonException {
 		Integer resolvedSizeExpression = sizeExpression.interpret(scope);
-		scope.addArraySymbol(identifier,resolvedSizeExpression);
+		scope.addArraySymbolToTable(identifier,resolvedSizeExpression, type);
 	}
+
+
+	@Override
+	public Symbol createSymbolFromType(Scope scope) throws SeaOfOberonException {
+		Integer resolvedSizeExpression = sizeExpression.interpret(scope);
+		return scope.generateArraySymbol(resolvedSizeExpression, type);
+	}
+	
 
 }

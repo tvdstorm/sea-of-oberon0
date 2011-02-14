@@ -39,9 +39,9 @@ public class Scope {
 
 	private Scope enclosingScope = null;
 	private MemoryMap memoryMap = null;
-	Map<String, TypeNode> typeTable;
-	Map<String, Symbol> symbolTable;
-	Map<String, ProcedureNode> procedures;
+	private Map<String, TypeNode> typeTable;
+	private Map<String, Symbol> symbolTable;
+	private Map<String, ProcedureNode> procedures;
 
 	/**
 	 * Constructor for root scope as it does not have an enclosing scope. It
@@ -57,15 +57,14 @@ public class Scope {
 	 * @param procedures
 	 * @throws SeaOfOberonException
 	 */
-	public Scope(List<ConstantNode> constants, List<FieldNode> types,
-			List<FieldNode> variables, List<ProcedureNode> procedures)
-			throws SeaOfOberonException {
+	public Scope(List<ConstantNode> constants, List<FieldNode> types, List<FieldNode> variables,
+			List<ProcedureNode> procedures) throws SeaOfOberonException {
 		assert constants != null;
 		assert types != null;
 		assert variables != null;
 		assert procedures != null;
 		// This is the root, so memoryMap MUST be null.
-		assert getMemoryMap() == null; 
+		assert getMemoryMap() == null;
 		// Create a memory map to store the declarations in.
 		symbolTable = new Hashtable<String, Symbol>();
 		typeTable = new Hashtable<String, TypeNode>();
@@ -90,8 +89,8 @@ public class Scope {
 	 * @param procedures
 	 * @throws SeaOfOberonException
 	 */
-	public Scope(Scope enclosingScope, ProcedureNode procedure, List<ExpressionNode> actualParameters)
-			throws SeaOfOberonException {
+	public Scope(Scope enclosingScope, ProcedureNode procedure,
+			List<ExpressionNode> actualParameters) throws SeaOfOberonException {
 		// TODO: Rething if procedure is a good param to pass. Increases
 		// dependency
 		assert enclosingScope != null;
@@ -100,64 +99,76 @@ public class Scope {
 		this.enclosingScope = enclosingScope;
 		// An enclosing scope should have a memoryMap so assert this
 		assert getMemoryMap() != null;
-		symbolTable = new Hashtable<String, Symbol>();
-		typeTable = new Hashtable<String, TypeNode>();
+		this.symbolTable = new Hashtable<String, Symbol>();
+		this.typeTable = new Hashtable<String, TypeNode>();
 		this.procedures = new Hashtable<String, ProcedureNode>();
-		processProcedureParameters(procedure, actualParameters);
 		registerConstants(procedure.getConstants());
 		registerTypes(procedure.getTypes());
 		registerVariables(procedure.getVariables());
 		registerProcedures(procedure.getProcedures());
+		processProcedureParameters(procedure, actualParameters);
+	}
+
+	public Scope(Scope enclosingScope, RecordSymbol record) {
+		assert record != null;
+		this.enclosingScope = enclosingScope;
+		// An enclosing scope should have a memoryMap so assert this
+		assert getMemoryMap() != null;
+		// put the record members as new symbols in the symbol table.
+		this.symbolTable = new Hashtable<String, Symbol>(record.getMembers());
+		this.typeTable = new Hashtable<String, TypeNode>();
+		this.procedures = new Hashtable<String, ProcedureNode>();
 	}
 
 	/**
 	 * Registers the procedures for this scope
 	 * 
-	 * @param procedures A list of procedures
+	 * @param procedures
+	 *            A list of procedures
 	 */
 	private void registerProcedures(List<ProcedureNode> procedures) {
 		// First add the current procedures
-		for(ProcedureNode procedure : procedures){
+		for (ProcedureNode procedure : procedures) {
 			this.procedures.put(procedure.getCodeBlockName(), procedure);
 		}
 	}
-	
+
 	/**
 	 * Registers the types in the type table for this scope
 	 * 
-	 * @param types A list of types
+	 * @param types
+	 *            A list of types
 	 */
 	private void registerTypes(List<FieldNode> types) {
 		for (FieldNode node : types) {
 			typeTable.put(node.getName(), node.getType());
 		}
 	}
-	
+
 	/**
 	 * Registers the constants for this scope
 	 * 
-	 * @param constants A list of constants
+	 * @param constants
+	 *            A list of constants
 	 * @throws SeaOfOberonException
 	 */
-	private void registerConstants(List<ConstantNode> constants) throws SeaOfOberonException{
-		for (ConstantNode constant : constants){
+	private void registerConstants(List<ConstantNode> constants) throws SeaOfOberonException {
+		for (ConstantNode constant : constants) {
 			Integer evaluatedExpression = constant.getExpression().interpret(this);
-			addIntegerSymbol(constant.getName(), evaluatedExpression, false);
+			addIntegerSymbolToTable(constant.getName(), evaluatedExpression, false);
 		}
 	}
-	
+
 	private void registerVariables(List<FieldNode> variables) throws SeaOfOberonException {
-		for ( FieldNode fieldNode : variables){
+		for (FieldNode fieldNode : variables) {
 			registerVariable(fieldNode.getName(), fieldNode.getType());
 		}
 	}
-	
-	public void registerVariable(String name, TypeNode type) throws SeaOfOberonException{
+
+	private void registerVariable(String name, TypeNode type) throws SeaOfOberonException {
 		type.registerType(name, this);
 	}
-	
 
-	
 	public ProcedureNode getProcedure(String name) throws SeaOfOberonException {
 		if (procedures.containsKey(name)) {
 			return procedures.get(name);
@@ -169,7 +180,7 @@ public class Scope {
 			}
 		}
 	}
-	
+
 	public TypeNode lookupType(String name) throws SeaOfOberonException {
 		if (typeTable.containsKey(name)) {
 			return typeTable.get(name);
@@ -191,26 +202,14 @@ public class Scope {
 	 * @throws SeaOfOberonException
 	 */
 	public Integer getValue(IdentifierNode identNode) throws SeaOfOberonException {
-		// Lookup the address for the symbol and return the value from memory
-		// System.out.println("Looking up value for " + identNode.getName());
 		return getMemoryMap().getValue(getAddressForSymbol(identNode));
 	}
 
 	public void updateValue(IdentifierNode identNode, Integer value) throws SeaOfOberonException {
-		// Lookup the address for the symbol and return the value from memory
-		// System.out.println("Updating value for " + identNode.getName() +
-		// " with value: " + value);
 		getMemoryMap().updateValue(getAddressForSymbol(identNode), value);
 	}
 
-	/*
-	 * Not needed, deleting of values is not permitted. public void
-	 * deleteValue(IdentifierNode identNode) throws SeaOfOberonException { //
-	 * Lookup the address for the symbol and return the value from memory
-	 * getMemoryMap().deleteValue(getAddressForSymbol(identNode)); }
-	 */
-
-	private Symbol lookupSymbol(String symbolName) {
+	public Symbol lookupSymbol(String symbolName) {
 		if (symbolTable.containsKey(symbolName)) {
 			return symbolTable.get(symbolName);
 		} else {
@@ -230,70 +229,18 @@ public class Scope {
 	 * @throws SeaOfOberonException
 	 */
 	private MemoryAddress getAddressForSymbol(IdentifierNode identNode) throws SeaOfOberonException {
-		// Check if the symbol already exists
 		String symbolName = identNode.getName();
 		if (symbolTable.containsKey(symbolName)) {
-			// Get the memory address and and update the value at the memory
-			// address
-			Symbol symbol = symbolTable.get(symbolName);
-			// Make a copy of the selector queue, so we do not destroy it for
-			// later usage.
-			Selectors selectors = identNode.getSelectors();
-			if (symbol.getType() == SymbolTypesEnum.INTEGER) {
-				if (selectors.getSelectors().size() == 0) {
-					return ((IntegerSymbol) symbol).getMemoryAdress();
-				} else {
-					throw new SeaOfOberonException("Found selectors for an Integer "
-							+ "Symbol for variable " + symbolName);
-				}
-			} else if (symbol.getType() == SymbolTypesEnum.ARRAY) {
-				if (selectors.getSelectors().size() == 1) {
-					return null;
-					/*
-					Selector selector = selectors.getSelectors().get(0);
-					if (selector.g instanceof IdentifierNode) {
-						// if its an identifier, lookup the value for the
-						// position
-						Integer position = getValue((IdentifierNode) selector);
-						return ((ArraySymbol) symbol).getAddress(position);
-					} else {
-						// its must be an ArrayType, evaluate the expression to
-						// get the position
-						Integer position = selector.interpret(this);
-						if (position != null) {
-							// The expression resulted in an integer, so get the
-							// memory and store the value
-							return ((ArraySymbol) symbol).getAddress(position);
-						} else {
-							// Expression null means the expression is not
-							// correct for an Array.
-							throw new SeaOfOberonException("Expression in selector not "
-									+ "correct for symbol " + symbolName);
-						}
-					}
-					*/
-				} else {
-					StringBuilder select = new StringBuilder();
-					select.append("Size" + selectors.getSelectors().size());
-					ASTNode selector = selectors.getSelectors().get(0);
-					while (selector != null) {
-						select.append(selector.toString());
-						select.append(Constants.LINE_SEPARATOR);
-					}
-					// System.out.println(select.toString());
-					// System.out.println(this.toString());
-					throw new SeaOfOberonException("Multidimentional arrays not yet supported");
-				}
-
-			} else {
-				throw new SeaOfOberonException("SymbolType " + symbol.getType() + " not supported");
-			}
+			// found symbol in current table. Handle any selectors if present.
+			Symbol rootSymbol = symbolTable.get(symbolName);
+			Symbol resolvedSymbol = identNode.getSelectors().resolveSelectors(rootSymbol, this);
+			return ((IntegerSymbol) resolvedSymbol).getMemoryAdress();
 		} else if (!isRootScope()) {
+			// We did not find the symbol and root scope, so check enclosing
+			// scope
 			return enclosingScope.getAddressForSymbol(identNode);
 		} else {
-			// If the symbol table does not contain a symbol, it is not defined
-			// as a
-			// variable, thus throw an exception.
+			// Symbol wasn't found in any table, so throw exception.
 			throw new SeaOfOberonException("Symbol " + symbolName
 					+ " is not defined in Symbol Table");
 		}
@@ -304,12 +251,14 @@ public class Scope {
 		for (String key : symbolTable.keySet()) {
 			Symbol symbol = symbolTable.get(key);
 			if (!symbol.isReferencedSymbol()) {
-				if (symbol.getType() == SymbolTypesEnum.INTEGER && !symbol.isReferencedSymbol()) {
+				if (symbol.getType() == SymbolTypesEnum.INTEGER) {
 					getMemoryMap().deleteMemoryAddress(((IntegerSymbol) symbol).getMemoryAdress());
 				} else if (symbol.getType() == SymbolTypesEnum.ARRAY) {
-					for (MemoryAddress address : ((ArraySymbol) symbol).getAddressList()) {
-						getMemoryMap().deleteMemoryAddress(address);
-					}
+					/*
+					 * for (MemoryAddress address : ((ArraySymbol)
+					 * symbol).getAddressList()) {
+					 * getMemoryMap().deleteMemoryAddress(address); }
+					 */
 				} else {
 					// This conditions should never be true!!
 					System.err.println("Neither an Integer or Array" + symbol.getType());
@@ -342,30 +291,54 @@ public class Scope {
 		}
 	}
 
-	public void addIntegerSymbol(String identifier, Integer value, boolean mutable)
+	public void addIntegerSymbolToTable(String identifier, Integer value, boolean mutable)
 			throws SeaOfOberonException {
-		MemoryAddress memoryAdress = getMemoryMap().addValue(value);
-		IntegerSymbol symbol = new IntegerSymbol(mutable, memoryAdress);
-		symbolTable.put(identifier, symbol);
+		symbolTable.put(identifier, generateIntegerSymbol(value, mutable));
 	}
 
-	public void addArraySymbol(String identifier, int arraySize)
+	public void addArraySymbolToTable(String identifier, int arraySize, TypeNode typeNode)
+			throws SeaOfOberonException {
+		symbolTable.put(identifier, generateArraySymbol(arraySize, typeNode));
+	}
+
+	public void addRecordSymbolToTable(String identifier, List<FieldNode> recordMembers)
+			throws SeaOfOberonException {
+		symbolTable.put(identifier, generateRecordSymbol( recordMembers));
+	}
+
+	public IntegerSymbol generateIntegerSymbol(Integer value, boolean mutable)
+			throws SeaOfOberonException {
+		MemoryAddress memoryAdress = getMemoryMap().addValue(value);
+		return new IntegerSymbol(mutable, memoryAdress);
+
+	}
+
+	public ArraySymbol generateArraySymbol(int arraySize, TypeNode typeNode)
 			throws SeaOfOberonException {
 		boolean mutable = true; // arrays are always mutable.
-		MemoryAddress[] addressList = new MemoryAddress[arraySize];
+		Symbol[] addressList = new Symbol[arraySize];
 		for (int sizeCounter = 0; sizeCounter < arraySize; sizeCounter++) {
-			addressList[sizeCounter] = getMemoryMap().addValue(new Integer(0));
+			addressList[sizeCounter] = typeNode.createSymbolFromType(this);
 		}
-		ArraySymbol symbol = new ArraySymbol(mutable, addressList);
-		symbolTable.put(identifier, symbol);
+		return new ArraySymbol(mutable, addressList);
+	}
+
+	public RecordSymbol generateRecordSymbol(List<FieldNode> recordMembers)
+			throws SeaOfOberonException {
+		boolean mutable = true; // arrays are always mutable.
+		Map<String, Symbol> content = new Hashtable<String, Symbol>();
+		for (FieldNode fieldNode : recordMembers) {
+			content.put(fieldNode.getName(), fieldNode.getType().createSymbolFromType(this));
+		}
+		return new RecordSymbol(mutable, content);
 	}
 
 	/**
 	 * @param actualParameters
 	 * @throws SeaOfOberonException
 	 */
-	private void processProcedureParameters(ProcedureNode procedure, List<ExpressionNode> actualParameters)
-			throws SeaOfOberonException {
+	private void processProcedureParameters(ProcedureNode procedure,
+			List<ExpressionNode> actualParameters) throws SeaOfOberonException {
 		// loop through all procedure nodes and register them as parameter
 		// Keep a counter to match the parameters on the nodes
 		int parameterCounter = 0;
@@ -373,9 +346,8 @@ public class Scope {
 			AbstractParameterNode castedParamNode = (AbstractParameterNode) parameterBlockNode;
 			if (castedParamNode instanceof CallByRefParameterNode) {
 				// Loop over parameters in the paramater block
-				for (ASTNode parameter : castedParamNode.getFormalParameter()) {
-					FieldNode castParameter = (FieldNode) parameter;
-					String identifier = castParameter.getName();
+				for (FieldNode parameter : castedParamNode.getFormalParameter()) {
+					String identifier = parameter.getName();
 					// System.out.println("Ident in keyset" + identifier);
 					// Its a call by refernce, so retrieve the referenced
 					// parameter
@@ -388,23 +360,9 @@ public class Scope {
 						// same
 						// type and size.... TODO: write validation.
 						IdentifierNode castedRefParamNode = (IdentifierNode) referencedParamNode;
-						Selectors selectors = castedRefParamNode.getSelectors();
-						Symbol referencedSymbol = null;
-						if (selectors.getSelectors().size() == 0) {
-							referencedSymbol = lookupSymbol(castedRefParamNode.getName());
-						} else {
-							/*Symbol tmpSymbol = lookupSymbol(castedRefParamNode.getName());
-							if (tmpSymbol.getType() == SymbolTypesEnum.ARRAY) {
-								Integer position = selectors.get(0).interpret(this);
-								MemoryAddress address = ((ArraySymbol) tmpSymbol)
-										.getAddress(position);
-								referencedSymbol = new IntegerSymbol(true, address);
-							} else {
-								throw new SeaOfOberonException(
-										"Found more then 1 selector, but no array");
-							}*/
-						}
-						// Change the symbol to referenced
+						Symbol referencedSymbol = lookupSymbol(castedRefParamNode.getName());
+						referencedSymbol = castedRefParamNode.getSelectors().resolveSelectors(
+								referencedSymbol, this);
 						if (referencedSymbol != null) {
 							referencedSymbol.setReferencedSymbol(true);
 							String newSymbolName = identifier;
@@ -434,7 +392,7 @@ public class Scope {
 					// System.out.println("Ident in keyset" + identifier);
 					ExpressionNode valParamNode = actualParameters.get(parameterCounter);
 					Integer evaluatedParam = valParamNode.interpret(this);
-					addIntegerSymbol(identifier, evaluatedParam, true);
+					addIntegerSymbolToTable(identifier, evaluatedParam, true);
 					parameterCounter++;
 				}
 			} else {
@@ -452,11 +410,28 @@ public class Scope {
 			sb.append("Enclosed Scope Contents");
 			sb.append(enclosingScope.toString());
 		}
+		sb.append(Constants.LINE_SEPARATOR);
 		sb.append(getMemoryMap().toString());
+		sb.append(Constants.LINE_SEPARATOR);
+		sb.append("Types");
+		sb.append(Constants.LINE_SEPARATOR);
+		for (String key : typeTable.keySet()) {
+			sb.append(Constants.LINE_SEPARATOR);
+			sb.append(key);
+			sb.append(" = ");
+			try {
+				sb.append(typeTable.get(key).toTreeString("  "));
+			} catch (SeaOfOberonException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		sb.append(Constants.LINE_SEPARATOR);
 		sb.append("Symbols");
 		sb.append(Constants.LINE_SEPARATOR);
 		for (String key : symbolTable.keySet()) {
+			sb.append(Constants.LINE_SEPARATOR);
+			sb.append(key);
 			sb.append(symbolTable.get(key).toString());
 		}
 		sb.append(Constants.LINE_SEPARATOR);

@@ -57,7 +57,8 @@ public class IntegerSymbol extends Symbol {
 
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append(Constants.LINE);
+		sb.append(Constants.LINE_SEPARATOR);
+		sb.append(this.getClass().getSimpleName());
 		sb.append(Constants.LINE_SEPARATOR);
 		sb.append("IsMutable: " + super.isMutable());
 		sb.append(Constants.LINE_SEPARATOR);

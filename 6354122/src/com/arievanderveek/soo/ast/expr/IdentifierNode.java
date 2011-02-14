@@ -71,4 +71,8 @@ public class IdentifierNode extends ExpressionNode {
 	public Selectors getSelectors() {
 		return selectors;
 	}
+	
+	public boolean hasSelectors(){
+		return !selectors.getSelectors().isEmpty();
+	}
 }

@@ -50,6 +50,7 @@ public class ModuleNode extends CodeBlockNode {
 	public void interpret(Scope scope) throws SeaOfOberonException {
 		// Create a new Scope
 		Scope localScope = new Scope(constants, types, variables, procedures);
+		//System.out.println(localScope.toString());
 		// loop over statements and call interpret method with the Scope
 		// Variable
 		for (StatementNode statementNode : statementSequence) {
