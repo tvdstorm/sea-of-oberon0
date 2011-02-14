@@ -3,7 +3,6 @@ package uva.oberon0.abstractsyntax.statements;
 import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.abstractsyntax.types.ITypeCheckable;
-import uva.oberon0.abstractsyntax.types.IntegerType;
 import uva.oberon0.runtime.Scope;
 
 

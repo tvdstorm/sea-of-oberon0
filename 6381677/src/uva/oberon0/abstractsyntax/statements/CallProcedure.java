@@ -1,7 +1,6 @@
 package uva.oberon0.abstractsyntax.statements;
 
 import uva.oberon0.abstractsyntax.declarations.Procedure;
-import uva.oberon0.abstractsyntax.expressions.Expression;
 import uva.oberon0.abstractsyntax.expressions.ExpressionList;
 import uva.oberon0.abstractsyntax.types.BaseType;
 import uva.oberon0.abstractsyntax.types.ID;
