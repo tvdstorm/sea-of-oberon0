@@ -1,0 +1,36 @@
+MODULE Test;
+
+PROCEDURE Test(x, y: INTEGER);
+  VAR
+    a, b: INTEGER;
+
+  PROCEDURE Swap(VAR x, y: INTEGER);
+    VAR
+      t: INTEGER;
+    BEGIN
+      t := x;
+      x := y;
+      y := t
+    END Swap;
+  
+  BEGIN
+    a := x;
+    b := y;
+    
+    Write(a);
+    WriteLn;
+    Write(b);
+    WriteLn;
+    WriteLn;
+    
+    Swap(a, b);
+    
+    Write(a);
+    WriteLn;
+    Write(b);
+    
+  END Test;
+
+BEGIN
+  Test(2, 4)
+END Test.

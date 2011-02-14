@@ -62,20 +62,12 @@ public class Identifier extends AST implements Evaluatable {
             throw new RuntimeException();
         }
     }
-
-    // i := a[0][2];
     
     @Override
     public Reference select(Environment environment, Value from) throws RuntimeException, NotSelectableExpression {
-        // Haal referentie van 'a' op, dit is een referencie naar een array value.
         Reference reference = environment.getReference(identifier);
 
         for (Evaluatable selector : selectors) {
-            // eerste selector = arrayselector '0'
-            // reference is op dit moment een referentie naar array 'a'
-            
-            // tweede selector = arrayselector '0'
-            // reference is op dit moment een referentie naar array in 'a[0]'
             reference = selector.select(environment, reference.getValue());
         }
 

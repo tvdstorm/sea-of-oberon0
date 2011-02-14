@@ -19,7 +19,7 @@ public class Div extends BinaryExpression {
 
         Int leftResult = (Int) left.evaluate(environment);
         Int rightResult = (Int) right.evaluate(environment);
-        result = (int) Math.floor(leftResult.getValue().intValue() / rightResult.getValue().intValue());
+        result = (int)(leftResult.getValue().intValue() / rightResult.getValue().intValue());
         
         return new Int(new Integer(result));
     }

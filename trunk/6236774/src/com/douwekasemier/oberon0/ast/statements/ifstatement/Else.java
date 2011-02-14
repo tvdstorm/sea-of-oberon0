@@ -28,4 +28,12 @@ public class Else extends AST {
 
     }
 
+    public Statements getStatements() {
+        return statements;
+    }
+
+    public void setStatements(Statements statements) {
+        this.statements = statements;
+    }
+
 }

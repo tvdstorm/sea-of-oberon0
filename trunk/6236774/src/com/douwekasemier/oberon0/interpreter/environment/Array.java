@@ -35,7 +35,12 @@ public class Array implements Value {
 
     @Override
     public String toString() {
-        return "Array of " + vartype + " and size " + array.length;
+        String contents = "";
+        for( int i = 0; i < array.length; i++ ) {
+            contents += "\r\n  " + getValue(i);
+        }
+        
+        return "Array of " + vartype + " and size " + array.length + contents;
     }
     
 }

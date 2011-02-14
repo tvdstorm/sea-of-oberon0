@@ -35,4 +35,20 @@ public class If extends AST {
 
     }
 
+    public Evaluatable getExpression() {
+        return expression;
+    }
+
+    public void setExpression(Evaluatable expression) {
+        this.expression = expression;
+    }
+
+    public Statements getStatements() {
+        return statements;
+    }
+
+    public void setStatements(Statements statements) {
+        this.statements = statements;
+    }
+
 }

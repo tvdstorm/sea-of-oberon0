@@ -25,12 +25,10 @@ BEGIN
   leftIdx := left;
   rightIdx := right;
   
-  Write(leftIdx);
-  WriteLn;
-  Write(rightIdx);
+  Write(array);
   WriteLn;
   
-  IF (right - left) > 0 THEN
+  IF right - left > 0 THEN
     pivot := (left + right) DIV 2;
     WHILE (leftIdx <= pivot) & (rightIdx >= pivot) DO
       WHILE (array[leftIdx] < array[pivot]) & (leftIdx <= pivot) DO
@@ -49,9 +47,7 @@ BEGIN
         leftIdx := leftIdx - 1;
         pivot := leftIdx
       END
-    END;
-    QuickSort(array, left, pivot - 1);
-    QuickSort(array, pivot + 1, right)
+    END
   END
 END QuickSort;
 
