@@ -7,10 +7,13 @@ import uva.oberon0.runtime.Scope;
  * 
  * @author Chiel Labee
  */
-public class Equal extends BinaryExpression {
+public class Equal extends BinaryExpression implements IBooleanExpression {
 
 	public Equal(Expression left, Expression right) {
 		super(left, right);
+		
+		assert left instanceof INumericExpression;
+		assert right instanceof INumericExpression;
 	}
 
 	@Override
