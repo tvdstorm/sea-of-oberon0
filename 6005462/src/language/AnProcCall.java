@@ -1,5 +1,5 @@
 package language;
-
+/*
 public class AnProcCall implements IStatement, IAstNode {
 
 	@Override
@@ -7,5 +7,9 @@ public class AnProcCall implements IStatement, IAstNode {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
+	
 
 }
+*/

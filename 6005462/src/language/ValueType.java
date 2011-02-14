@@ -6,5 +6,8 @@ public enum ValueType {
 	BOOLEAN,
 	PROCEDURE,
 	ARRAY,
-	RECORD
+	RECORD,
+	UNDETERMINED,
+	IDENT,
+	TYPEDECL
 }

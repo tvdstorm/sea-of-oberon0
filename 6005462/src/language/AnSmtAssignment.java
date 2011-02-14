@@ -11,8 +11,8 @@ public class AnSmtAssignment implements IStatement {
 	}
 	
 	@Override
-	public IAstNode eval() throws Exception {
-		this.lhs.assign(expr.eval());
+	public IAstNode eval(AnEnvironment env) throws Exception {
+		this.lhs.assign(expr.eval(env));
 		return this;
 	}
 
