@@ -1,7 +1,6 @@
 package uva.oberon0.abstractsyntax.expressions;
 
 import uva.oberon0.abstractsyntax.types.BooleanType;
-import uva.oberon0.abstractsyntax.types.IntegerType;
 import uva.oberon0.runtime.Scope;
 
 /**

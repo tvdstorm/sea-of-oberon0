@@ -3,7 +3,6 @@ package uva.oberon0.runtime.values;
 import java.util.HashMap;
 import java.util.Map;
 import uva.oberon0.abstractsyntax.BaseNode;
-import uva.oberon0.abstractsyntax.types.BaseType;
 import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.abstractsyntax.types.RecordField;
 import uva.oberon0.abstractsyntax.types.RecordType;

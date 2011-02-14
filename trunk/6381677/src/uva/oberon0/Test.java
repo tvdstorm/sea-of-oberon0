@@ -15,11 +15,30 @@ import uva.oberon0.runtime.values.IntegerValue;
  *         and interpreter.
  */
 public class Test {
+	private static void putTestResult(Scope scope, Object value)
+	{
+		if (value instanceof Integer)
+			scope.putBindable(new ID("r"), new IntegerValue());
+
+		if (value instanceof Boolean)
+			scope.putBindable(new ID("r"), new BooleanValue());
+	}
+	private static boolean getTestResult(Scope scope, Object value)
+	{
+		int result = scope.getValueAsInteger(new ID("r"));
+		
+		if (value instanceof Integer)
+			return result == (Integer)value;
+
+		if (value instanceof Boolean)
+			return (result == 1) == (Boolean)value;
+		
+		return false;
+	}
 	private static void runTest(String name, String text) {
 		runTest(name, text, 1);
 	}
-
-	private static void runTest(String name, String text, int resultExpected) {
+	private static void runTest(String name, String text, Object resultExpected) {
 		String codeBody = text;
 
 		if (codeBody.indexOf("BEGIN") == -1)
@@ -36,40 +55,10 @@ public class Test {
 		}
 
 		Scope scope = module.createScope();
-		scope.putBindable(new ID("r"), new IntegerValue());
+		putTestResult(scope, resultExpected);
 		module.eval(scope);
 
-		int result = scope.getValueAsInteger(new ID("r"));
-		if (result != resultExpected) {
-			System.out.println("ERROR: Unable to evaluate [" + name + "].");
-			assert false;
-			return;
-		}
-
-		System.out.println("OK: Test [" + name + "].");
-	}
-	private static void runTest(String name, String text, boolean resultExpected) {
-		String codeBody = text;
-
-		if (codeBody.indexOf("BEGIN") == -1)
-			codeBody = "BEGIN " + codeBody + " END";
-
-		String code = "MODULE runTest; " + codeBody + " runTest.";
-
-		Module module = Helper.createModuleFromText(code);
-
-		if (module == null) {
-			System.out.println("ERROR: Unable to implode [" + name + "].");
-			assert false;
-			return;
-		}
-
-		Scope scope = module.createScope();
-		scope.putBindable(new ID("r"), new BooleanValue());
-		module.eval(scope);
-
-		int result = scope.getValueAsInteger(new ID("r"));
-		if ((result == 1) != resultExpected) {
+		if (!getTestResult(scope, resultExpected)) {
 			System.out.println("ERROR: Unable to evaluate [" + name + "].");
 			assert false;
 			return;

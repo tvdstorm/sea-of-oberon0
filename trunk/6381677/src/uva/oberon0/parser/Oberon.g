@@ -3,7 +3,6 @@ grammar Oberon;
 {
 package uva.oberon0.parser;
 
-import uva.oberon0.abstractsyntax.*;
 import uva.oberon0.abstractsyntax.declarations.*;
 import uva.oberon0.abstractsyntax.expressions.*;
 import uva.oberon0.abstractsyntax.statements.*;
