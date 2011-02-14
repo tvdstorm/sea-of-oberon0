@@ -12,6 +12,7 @@ import com.arievanderveek.soo.ast.ASTNode;
 import com.arievanderveek.soo.ast.codeblocks.ProcedureNode;
 import com.arievanderveek.soo.ast.expr.ExpressionNode;
 import com.arievanderveek.soo.ast.expr.IdentifierNode;
+import com.arievanderveek.soo.ast.expr.Selector;
 import com.arievanderveek.soo.ast.expr.Selectors;
 import com.arievanderveek.soo.ast.statements.AbstractParameterNode;
 import com.arievanderveek.soo.ast.statements.CallByRefParameterNode;
@@ -239,16 +240,18 @@ public class Scope {
 			// later usage.
 			Selectors selectors = identNode.getSelectors();
 			if (symbol.getType() == SymbolTypesEnum.INTEGER) {
-				if (selectors.size() == 0) {
+				if (selectors.getSelectors().size() == 0) {
 					return ((IntegerSymbol) symbol).getMemoryAdress();
 				} else {
 					throw new SeaOfOberonException("Found selectors for an Integer "
 							+ "Symbol for variable " + symbolName);
 				}
 			} else if (symbol.getType() == SymbolTypesEnum.ARRAY) {
-				if (selectors.size() == 1) {
-					ASTNode selector = selectors.get(0);
-					if (selector instanceof IdentifierNode) {
+				if (selectors.getSelectors().size() == 1) {
+					return null;
+					/*
+					Selector selector = selectors.getSelectors().get(0);
+					if (selector.g instanceof IdentifierNode) {
 						// if its an identifier, lookup the value for the
 						// position
 						Integer position = getValue((IdentifierNode) selector);
@@ -268,10 +271,11 @@ public class Scope {
 									+ "correct for symbol " + symbolName);
 						}
 					}
+					*/
 				} else {
 					StringBuilder select = new StringBuilder();
-					select.append("Size" + selectors.size());
-					ASTNode selector = selectors.get(0);
+					select.append("Size" + selectors.getSelectors().size());
+					ASTNode selector = selectors.getSelectors().get(0);
 					while (selector != null) {
 						select.append(selector.toString());
 						select.append(Constants.LINE_SEPARATOR);
@@ -384,12 +388,12 @@ public class Scope {
 						// same
 						// type and size.... TODO: write validation.
 						IdentifierNode castedRefParamNode = (IdentifierNode) referencedParamNode;
-						List<ASTNode> selectors = castedRefParamNode.getSelectors();
+						Selectors selectors = castedRefParamNode.getSelectors();
 						Symbol referencedSymbol = null;
-						if (selectors.size() == 0) {
+						if (selectors.getSelectors().size() == 0) {
 							referencedSymbol = lookupSymbol(castedRefParamNode.getName());
 						} else {
-							Symbol tmpSymbol = lookupSymbol(castedRefParamNode.getName());
+							/*Symbol tmpSymbol = lookupSymbol(castedRefParamNode.getName());
 							if (tmpSymbol.getType() == SymbolTypesEnum.ARRAY) {
 								Integer position = selectors.get(0).interpret(this);
 								MemoryAddress address = ((ArraySymbol) tmpSymbol)
@@ -398,7 +402,7 @@ public class Scope {
 							} else {
 								throw new SeaOfOberonException(
 										"Found more then 1 selector, but no array");
-							}
+							}*/
 						}
 						// Change the symbol to referenced
 						if (referencedSymbol != null) {
@@ -428,7 +432,7 @@ public class Scope {
 					FieldNode castParameter = (FieldNode) parameter;
 					String identifier = castParameter.getName();
 					// System.out.println("Ident in keyset" + identifier);
-					ASTNode valParamNode = actualParameters.get(parameterCounter);
+					ExpressionNode valParamNode = actualParameters.get(parameterCounter);
 					Integer evaluatedParam = valParamNode.interpret(this);
 					addIntegerSymbol(identifier, evaluatedParam, true);
 					parameterCounter++;
