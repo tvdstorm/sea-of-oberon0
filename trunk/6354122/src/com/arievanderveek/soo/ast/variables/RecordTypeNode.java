@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.runtime.Scope;
+import com.arievanderveek.soo.runtime.Symbol;
 
 /**
  * Represents an Record type definition (Not fully implemented yet!!)
@@ -16,7 +17,7 @@ import com.arievanderveek.soo.runtime.Scope;
  */
 public class RecordTypeNode extends TypeNode {
 
-	List<FieldNode> recordElements;
+	List<FieldNode> recordMembers;
 
 	/**
 	 * Constructor with all required fields
@@ -24,8 +25,8 @@ public class RecordTypeNode extends TypeNode {
 	 * @param recordElements
 	 *            the elements of the record
 	 */
-	public RecordTypeNode(List<FieldNode> recordElements) {
-		this.recordElements = recordElements;
+	public RecordTypeNode(List<FieldNode> recordMembers) {
+		this.recordMembers = recordMembers;
 	}
 
 	/*
@@ -35,19 +36,26 @@ public class RecordTypeNode extends TypeNode {
 	 */
 	@Override
 	public String toTreeString(String ident) throws SeaOfOberonException {
-		return "Not Implemented";
-	}
-	/*
-	 * StringBuilder sb = new StringBuilder(); sb.append("RECORD" + ident); for
-	 * (Object key : recordElements.keySet().toArray()){ sb.append(ident);
-	 * sb.append((String)key);
-	 * sb.append(recordElements.get((String)key).toTreeString(ident));
-	 * sb.append(ident); } return sb.toString(); }
-	 */
+	 StringBuilder sb = new StringBuilder(); 
+	 sb.append("RECORD" + ident);
+	 for (FieldNode fieldNode : recordMembers){ 
+		 sb.append(fieldNode.getName());
+		 sb.append(" = ");
+		 sb.append(fieldNode.getType().toTreeString(ident));
+		 sb.append(ident);
+	 }
+	 return sb.toString(); 
+	 }
+	 
 
 	@Override
 	public void registerType(String identifier, Scope scope) throws SeaOfOberonException {
-		throw new UnsupportedOperationException("Record types not supported");
-		
+		scope.addRecordSymbolToTable(identifier,  recordMembers);
 	}
+	
+	@Override
+	public Symbol createSymbolFromType( Scope scope) throws SeaOfOberonException {
+		return scope.generateRecordSymbol( recordMembers);
+	}
+	
 }

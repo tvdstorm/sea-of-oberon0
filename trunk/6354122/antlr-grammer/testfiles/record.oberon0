@@ -1,0 +1,39 @@
+MODULE QuickSort;
+
+CONST
+  INPUTLENGTH = 5;
+  
+TYPE
+  int = INTEGER;
+  record = RECORD 	checkaccount, 
+					balanceaccount, 
+					savingsaccount
+					: INTEGER
+			END;
+
+VAR
+  r: ARRAY INPUTLENGTH OF record;
+  outerConter: INTEGER;
+  addedAmount : int;
+ 
+BEGIN
+	addedAmount := 10;
+	outerConter := 0;
+	WHILE outerConter < INPUTLENGTH DO
+		r[outerConter].checkaccount := addedAmount;
+		r[outerConter].balanceaccount := addedAmount + 40;
+		r[outerConter].savingsaccount := addedAmount + 100;
+		addedAmount := addedAmount + 3;
+		outerConter := outerConter +1
+	END;
+	outerConter := 0;
+	WHILE outerConter < INPUTLENGTH DO
+		Write(r[outerConter].checkaccount);
+		WriteLn;
+		Write(r[outerConter].balanceaccount);
+		WriteLn;
+		Write(r[outerConter].savingsaccount);
+		WriteLn;WriteLn;
+		outerConter := outerConter +1
+	END
+END QuickSort.

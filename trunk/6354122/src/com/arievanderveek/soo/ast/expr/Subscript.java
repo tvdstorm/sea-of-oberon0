@@ -1,8 +1,10 @@
 package com.arievanderveek.soo.ast.expr;
 
 import com.arievanderveek.soo.SeaOfOberonException;
+import com.arievanderveek.soo.runtime.ArraySymbol;
 import com.arievanderveek.soo.runtime.MemoryAddress;
 import com.arievanderveek.soo.runtime.Scope;
+import com.arievanderveek.soo.runtime.Symbol;
 
 public class Subscript extends Selector {
 	
@@ -22,10 +24,12 @@ public class Subscript extends Selector {
 	}
 
 	@Override
-	public MemoryAddress select(MemoryAddress adress, Scope scope) {
-		// TODO Auto-generated method stub
-		return null;
+	public Symbol select(Symbol originalSymbol, Scope scope) throws SeaOfOberonException {
+		Integer position = expression.interpret(scope);
+		if (originalSymbol instanceof ArraySymbol){
+			return ((ArraySymbol)originalSymbol).getSymbol(position);
+		}else{
+			throw new SeaOfOberonException("Subscript identifier ["+position+"] points to a non Array symbol. It was a " + originalSymbol.getClass().getSimpleName());
+		}
 	}
-	
-
 }

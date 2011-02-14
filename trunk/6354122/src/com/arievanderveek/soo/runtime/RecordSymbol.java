@@ -3,36 +3,38 @@
  */
 package com.arievanderveek.soo.runtime;
 
+import java.util.Map;
+
 import com.arievanderveek.soo.util.Constants;
 
 /**
  * @author arieveek
  * 
  */
-public class ArraySymbol extends Symbol {
+public class RecordSymbol extends Symbol {
 
-	private Symbol[] symbolList;
+	private Map<String, Symbol> memberMap;
 
-	public ArraySymbol(boolean mutable, Symbol[] symbolList) {
+	public RecordSymbol(boolean mutable, Map<String, Symbol> memberMap) {
 		super(SymbolTypesEnum.ARRAY, mutable);
-		this.symbolList = symbolList;
+		this.memberMap = memberMap;
 	}
 
-	public void addOrUpdateAddress(Integer position, Symbol newSymbol) {
-		symbolList[position] = newSymbol;
+	public void addOrUpdateAddress(String member, Symbol newSymbol) {
+		memberMap.put(member, newSymbol);
 	}
 
-	public Symbol getSymbol(Integer position) {
-		return symbolList[position];
+	public Symbol getMember(String member) {
+		return memberMap.get(member);
 	}
 
-	public Symbol[] getSymbolList() {
-		return this.symbolList;
+	public Map<String, Symbol> getMembers() {
+		return this.memberMap;
 	}
 
 	@Override
 	public boolean isMutable() {
-		return this.isMutable();
+		return super.isMutable();
 	}
 
 	@Override
@@ -48,20 +50,16 @@ public class ArraySymbol extends Symbol {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(Constants.LINE_SEPARATOR);
-		sb.append(this.getClass().getSimpleName());		
+		sb.append(this.getClass().getSimpleName());
 		sb.append(Constants.LINE_SEPARATOR);
 		sb.append("IsMutable: " + super.isMutable());
 		sb.append(Constants.LINE_SEPARATOR);
 		sb.append("IsReference: " + super.isReferencedSymbol());
-		sb.append(Constants.LINE_SEPARATOR);
-		for (Symbol symbol : symbolList) {
-			sb.append("   ");
-			sb.append("memoryAdress: " + symbol.toString());
+		for (String key : memberMap.keySet()) {
+			Symbol address = memberMap.get(key);
+			sb.append("memoryAdress: " + address.toString());
 			sb.append(Constants.LINE_SEPARATOR);
 		}
-		sb.append(Constants.LINE_SEPARATOR);
 		return sb.toString();
-
 	}
-
 }

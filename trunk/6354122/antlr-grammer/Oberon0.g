@@ -247,7 +247,12 @@ scope{
 	'END'
 	{$node = $ifStatement::root;}
 	;
-		
+
+withDoStatement returns[WithDoNode node]
+  : 'WITH' identSelector 'DO' statementSequence 'END'
+  { $node = new WithDoNode($identSelector.node, $statementSequence.return_statements); }
+  ;
+
 whileStatement returns[WhileLoopNode node] // done
 	:	'WHILE' expression 'DO' statementSequence 'END'
 	{ $node = new WhileLoopNode($expression.node, $statementSequence.return_statements); }
@@ -259,6 +264,7 @@ statement returns[StatementNode node] // done
 	| procedureCall {$node=$procedureCall.node;}
 	| ifStatement {$node=$ifStatement.node;}
 	| whileStatement {$node=$whileStatement.node;}
+	| withDoStatement {$node=$withDoStatement.node;}
 	)?
 	;
 

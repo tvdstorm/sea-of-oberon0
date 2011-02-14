@@ -4,12 +4,54 @@ CONST
   INPUTLENGTH = 5;
   
 TYPE
-  la = INTEGER; bla = la;
+  int = INTEGER; 
+  reftoint = int;
+  
 
 VAR
-  a: bla;
-  b: INTEGER;
+  a,b,whileConter,writeoutput: int;
+  result: ARRAY INPUTLENGTH OF INTEGER;
 
+  PROCEDURE devide(VAR result: ARRAY INPUTLENGTH OF INTEGER; a, b: INTEGER);
+  VAR
+    temp: INTEGER;
+  BEGIN
+    temp := a DIV b;
+    result[0] := temp
+  END devide;
+  
+  PROCEDURE multiply(VAR result: ARRAY INPUTLENGTH OF INTEGER; a, b: INTEGER);
+  VAR
+    temp: INTEGER;
+  BEGIN
+    temp := a * b;
+    result[1] := temp
+  END multiply;
+  
+  PROCEDURE add(VAR result: ARRAY INPUTLENGTH OF INTEGER; a, b: INTEGER);
+  VAR
+    temp: INTEGER;
+  BEGIN
+    temp := a + b;
+    result[2] := temp
+  END add;
+  
+  PROCEDURE substract(VAR result: ARRAY INPUTLENGTH OF INTEGER; a, b: INTEGER);
+  VAR
+    temp: INTEGER;
+  BEGIN
+    temp := a - b;
+    result[3] := temp
+  END substract;
+  
+  PROCEDURE mod(VAR result: ARRAY INPUTLENGTH OF INTEGER; a, b: INTEGER);
+  VAR
+    temp: INTEGER;
+  BEGIN
+    temp := a MOD b;
+    result[4] := temp
+  END mod;
+  
 BEGIN
  a := 0;
  b := 0;
@@ -19,11 +61,18 @@ BEGIN
  WriteLn;
  Write(b);
  WriteLn;
- a := a + INPUTLENGTH;
- b := b + 20;
- Write(a);
  WriteLn;
- Write(b);
- WriteLn
- 
+ devide(result,a,b);
+ multiply(result,a,b);
+ add(result,a,b);
+ substract(result,a,b);
+ mod(result,a,b);
+ whileConter := 0;
+  WHILE whileConter < INPUTLENGTH DO
+   writeoutput:=result[whileConter];
+   Write(writeoutput);
+   Write(result[whileConter]);
+   WriteLn;
+   whileConter := whileConter + 1
+ END
 END QuickSort.
