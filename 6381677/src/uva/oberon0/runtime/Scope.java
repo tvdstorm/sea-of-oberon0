@@ -13,6 +13,8 @@ import uva.oberon0.abstractsyntax.declarations.Variable;
 import uva.oberon0.abstractsyntax.expressions.ExpressionList;
 import uva.oberon0.abstractsyntax.expressions.Reference;
 import uva.oberon0.abstractsyntax.types.ID;
+import uva.oberon0.runtime.values.IntegerValue;
+import uva.oberon0.runtime.values.Value;
 
 /**
  * @author Chiel Labee This class represents an Execution Scope.

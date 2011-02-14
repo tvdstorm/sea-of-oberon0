@@ -1,8 +1,9 @@
-package uva.oberon0.runtime;
+package uva.oberon0.runtime.values;
 
 import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.abstractsyntax.types.ArrayType;
 import uva.oberon0.abstractsyntax.types.ID;
+import uva.oberon0.runtime.Scope;
 
 /**
  * @author Chiel Labee This class represents an Array based Execution Scope

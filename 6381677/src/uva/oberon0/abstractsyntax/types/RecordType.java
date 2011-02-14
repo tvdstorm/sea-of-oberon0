@@ -1,8 +1,8 @@
 package uva.oberon0.abstractsyntax.types;
 
 import uva.oberon0.runtime.Scope;
-import uva.oberon0.runtime.Value;
-import uva.oberon0.runtime.RecordValue;
+import uva.oberon0.runtime.values.Value;
+import uva.oberon0.runtime.values.RecordValue;
 
 public class RecordType extends BaseType {
 
