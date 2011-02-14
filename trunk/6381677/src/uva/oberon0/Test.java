@@ -7,7 +7,7 @@ import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.parser.Helper;
 import uva.oberon0.parser.OberonParser;
 import uva.oberon0.runtime.Scope;
-import uva.oberon0.runtime.IntegerValue;
+import uva.oberon0.runtime.values.IntegerValue;
 
 /**
  * @author Chiel Labee Test class for running unit test on the Oberon0 parser

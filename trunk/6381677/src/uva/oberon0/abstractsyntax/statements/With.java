@@ -2,7 +2,7 @@ package uva.oberon0.abstractsyntax.statements;
 
 import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.runtime.Scope;
-import uva.oberon0.runtime.RecordValue;
+import uva.oberon0.runtime.values.RecordValue;
 
 public class With extends Statement {
 

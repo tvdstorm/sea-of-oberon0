@@ -1,6 +1,8 @@
-package uva.oberon0.runtime;
+package uva.oberon0.runtime.values;
 
 import uva.oberon0.abstractsyntax.BaseNode;
+import uva.oberon0.runtime.IBindable;
+import uva.oberon0.runtime.Scope;
 
 /**
  * @author Chiel Labee This class represents an Execution Scope Value. This

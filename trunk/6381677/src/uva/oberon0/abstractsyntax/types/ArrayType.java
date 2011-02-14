@@ -2,8 +2,8 @@ package uva.oberon0.abstractsyntax.types;
 
 import uva.oberon0.abstractsyntax.BaseNode;
 import uva.oberon0.runtime.Scope;
-import uva.oberon0.runtime.ArrayValue;
-import uva.oberon0.runtime.Value;
+import uva.oberon0.runtime.values.ArrayValue;
+import uva.oberon0.runtime.values.Value;
 
 public class ArrayType extends BaseType {
 
