@@ -15,8 +15,8 @@ public class QuickSortTests {
 
 	
 	public static void main(String[] args) {
-		int runs = 1000;
-		int length = 100;
+		int runs = 1;
+		int length = 10;
 		quickSortTest(new Oberon(), runs, length);
 		quickSortTest(new Oberon(), runs, length);
 	}

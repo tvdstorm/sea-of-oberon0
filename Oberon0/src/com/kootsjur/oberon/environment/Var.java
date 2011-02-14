@@ -10,18 +10,18 @@ public class Var
    
    public Var() 
    {
-      this(null,null);
+      this(null);
    }
+   
    
    public Var(TypeDefinition type)
    {
-      this(type, type.initValue());
+      this.setType(type);
    }
    
-   public Var(TypeDefinition type, Value value)
+   public void initVar(Environment environment)
    {
-      this.setType(type);
-      this.value = value;
+      value = type.initValue(environment);
    }
 
    public void setValue(Value value){this.value = value;}

@@ -51,7 +51,9 @@ public class GlobalProcedures
              try 
              {
                line = input.readLine();
+               System.out.println(line);
                environment.assignValue(fPName, new com.kootsjur.oberon.value.Int(Integer.parseInt(line)));
+               
              } 
              catch (IOException e) 
              {
@@ -71,7 +73,7 @@ public class GlobalProcedures
 
    private static void initWrite(Environment environment, final PrintWriter output)
    {
-      final String fPName = "x";
+      final String fPName = "y";
       List<String> fPNames = new LinkedList<String>();
       fPNames.add(fPName);
       TypeDefinition typeDefinition = new IntegerType();

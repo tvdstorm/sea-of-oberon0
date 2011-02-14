@@ -2,6 +2,8 @@ package com.kootsjur.oberon.statement;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
+
 import com.kootsjur.oberon.declaration.formalparameter.FPSection;
 import com.kootsjur.oberon.declaration.formalparameter.FormalParameters;
 import com.kootsjur.oberon.environment.Environment;
@@ -20,7 +22,9 @@ public class ProcedureCall extends Statement
    {
       super(StatementType.PROCEDURECALL);
       this.callTo = callTo;
-      this.actualParameters = actualParameters;      
+      this.actualParameters = actualParameters;
+      
+      assert(actualParameters != null):"ActualParameters is null";
    }
    
    public boolean addActualParameter(ActualParameter parameter)
@@ -60,12 +64,17 @@ public class ProcedureCall extends Statement
 
    private void setParametersValue(Procedure procedure,Environment environment)
    {
-      Iterator<ActualParameter> actuals = actualParameters.iterator();
+      ListIterator<ActualParameter> actuals = actualParameters.listIterator();     
       FormalParameters formals = procedure.getFormalParameters(); 
+      
       for(FPSection fPSection : formals)
       {
          for(String parameterName : fPSection.getNames())
          {
+            if(!actuals.hasNext())
+            {
+               throw new RuntimeException();
+            }
             ActualParameter actual = actuals.next();
             Evaluator expression = actual.getExpression();
             Value value = expression.evaluate(environment);

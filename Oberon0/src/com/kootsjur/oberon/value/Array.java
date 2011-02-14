@@ -3,25 +3,16 @@ package com.kootsjur.oberon.value;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.kootsjur.oberon.type.TypeDefinition;
-
 
 public class Array<T extends Value> extends Value
 {
    private final List<T> values;
    
-   public Array(int size, TypeDefinition init) {
+   public Array(int size) {
       values = new ArrayList<T>(size);
       for (int i = 0; i < size; i++) {
-         T initValue = getInitValue(init);
-         values.set(i, initValue);
+         values.add(i, null);
       }
-   }
-
-   @SuppressWarnings("unchecked")
-   private T getInitValue(TypeDefinition init)
-   {
-      return (T) init.initValue();
    }
    
    public void set(int i, T value) {

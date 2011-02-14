@@ -14,7 +14,6 @@ public class ArraySelectorEvaluator implements Evaluator
    {
       this.arrayEvaluator = arrayEvaluator;
       this.bracketSelector = bracketSelector;
-      
    }
    
    @SuppressWarnings("rawtypes")

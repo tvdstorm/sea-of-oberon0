@@ -1,5 +1,6 @@
 package com.kootsjur.oberon.type;
 
+import com.kootsjur.oberon.environment.Environment;
 import com.kootsjur.oberon.value.Int;
 
 public class IntegerType extends TypeDefinition
@@ -11,7 +12,7 @@ public class IntegerType extends TypeDefinition
    }
 
    @Override
-   public Int initValue()
+   public Int initValue(Environment environment)
    {
       Int initValue = new Int(0);
       return initValue;

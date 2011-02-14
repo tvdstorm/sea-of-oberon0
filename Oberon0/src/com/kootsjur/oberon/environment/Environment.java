@@ -73,6 +73,15 @@ public class Environment
       declareConstant(constantName, constant);
    }
    
+   public void declareParameters(FormalParameters formalParameters)
+   {
+      for(FPSection formalParameter : formalParameters)
+      {
+         formalParameter.declare(this);
+      }
+      
+   }
+
    public void declareConstant(ConstantDeclaration constantDeclaration)
    {
       String constantName = constantDeclaration.getName();
@@ -83,6 +92,7 @@ public class Environment
    
    public void declareVar(String varName, Var var)
    {
+      var.initVar(this);
       declaredVars.put(varName, var);
    }
    
@@ -121,15 +131,6 @@ public class Environment
       
    }
    
-   public void declareParameters(FormalParameters formalParameters)
-   {
-      for(FPSection formalParameter : formalParameters)
-      {
-         formalParameter.declare(this);
-      }
-      
-   }
-
    public void declareProcedures(List<ProcedureDeclaration> procedureDeclarations)
    {
       for(ProcedureDeclaration procedureDeclaration : procedureDeclarations )

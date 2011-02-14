@@ -12,11 +12,10 @@ public class Assignment extends Statement
    private SelectorEvaluator selector;
    private Evaluator expression;
    
-   public Assignment(String name, Evaluator selector, Evaluator expression)
+   public Assignment(String name, Evaluator expression)
    {
       super(StatementType.ASSIGNMENT);
       this.name = name;
-      this.selector = (SelectorEvaluator) selector;
       this.expression = expression;
    }
    
@@ -29,9 +28,9 @@ public class Assignment extends Statement
       return name;
    }
    
-   public void setSelector(SelectorEvaluator selector)
+   public void setSelector(Evaluator selector)
    {
-      this.selector = selector;
+      this.selector = (SelectorEvaluator) selector;
    }
    public SelectorEvaluator getSelector()
    {

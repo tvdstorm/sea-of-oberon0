@@ -29,6 +29,7 @@ public class WhileStatement extends Statement
       while(condition.getValue())
       {
          statementSequence.evaluate(environment);
+         condition = (Bool) whileCondition.evaluate(environment);
       }      
    }
 }

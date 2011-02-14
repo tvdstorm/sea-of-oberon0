@@ -1,5 +1,6 @@
 package com.kootsjur.oberon.type;
 
+import com.kootsjur.oberon.environment.Environment;
 import com.kootsjur.oberon.value.Value;
 
 public abstract class TypeDefinition
@@ -65,5 +66,5 @@ public abstract class TypeDefinition
       return name;
    }
 
-   public abstract Value initValue();
+   public abstract Value initValue(Environment environment);
 }

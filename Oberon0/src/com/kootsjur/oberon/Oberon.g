@@ -38,7 +38,7 @@ declarations returns [List<Declaration> ld]
 		(typeDeclaration {$ld.addAll($typeDeclaration.ltd);})*	
 		(varDeclaration {$ld.addAll($varDeclaration.lvd);})* 
 		;
- 		
+ 	 	
 constantDeclaration returns [List<ConstantDeclaration> lcd]
 	:'CONST' {$lcd = new ArrayList<ConstantDeclaration>();} (ident '=' expression ';' {$lcd.add(new ConstantDeclaration($ident.text, $expression.e));})+ ;
 	
@@ -58,7 +58,7 @@ procedureBody returns [ProcedureBody pb]
 	: {$pb = new ProcedureBody();}	
 	   declarations {$pb.setDeclarations($declarations.ld);} 
 	   (procedure';' {$pb.addProcedure($procedure.p);})*
-	   ('BEGIN' statementSequence {$pb.setStatementSequence(new StatementSequence());})? 'END' ident;	
+	   ('BEGIN' statementSequence {$pb.setStatementSequence($statementSequence.s);})? 'END' ident;	
 
 procedureHeading returns [ProcedureHeading ph]
 	:	'PROCEDURE'ident {$ph = new ProcedureHeading($ident.text);}(formalParameters) {$ph.setFormalParameters($formalParameters.fp);};
@@ -94,8 +94,10 @@ statementSequence returns [StatementSequence s]
 	: {$s = new StatementSequence();}	statement1=statement{$s.add($statement1.s);}(';'statement2=statement{$s.add($statement2.s);})*;
 	
 statement returns [Statement s]
-	:	(ident ((actualParameters) {$s = new ProcedureCall($ident.text, $actualParameters.a);}
-							| (bracketSelector)? ':=' expression {$s = new Assignment($ident.text, $bracketSelector.b, $expression.e);})
+	:	{boolean bracket = false;} (ident ((actualParameters) {$s = new ProcedureCall($ident.text, $actualParameters.a);}
+							| {bracket = true;}(bracketSelector)? ':=' expression {$s = new Assignment($ident.text,$expression.e); 
+																						if(bracket)((Assignment)$s).setSelector( $bracketSelector.b);
+																					})
 		|ifStatement {$s = $ifStatement.i;}
 		|whileStatement {$s = $whileStatement.w;})?;
 	//(ident (selector)?((actualParameters)?|':='expression)
@@ -119,14 +121,14 @@ actualParameters returns [ActualParameters a]
 		
 expression returns [Evaluator e] 
 	:	simpleExpression1=simpleExpression {$e = $simpleExpression1.s;} (
-						('='	{$e = new IsEqualToEvaluator($e, $simpleExpression2.s);}
-						|'#'	{$e = new IsEqualToEvaluator($e, $simpleExpression2.s);}
-						|'<' 	{$e = new IsLesserThenEvaluator($e, $simpleExpression2.s);}
-						|'<=' 	{$e = new IsEqualOrLesserThenEvaluator($e, $simpleExpression2.s);}
-						|'>'	{$e = new IsGreaterThenEvaluator($e, $simpleExpression2.s);}
-						|'>='	{$e = new IsEqualOrGreaterThenEvaluator($e, $simpleExpression2.s);}
+						('='  simpleExpression2=simpleExpression 	{$e = new IsEqualToEvaluator($e, $simpleExpression2.s);}
+						|'#'  simpleExpression2=simpleExpression 	{$e = new IsEqualToEvaluator($e, $simpleExpression2.s);}
+						|'<'  simpleExpression2=simpleExpression 	{$e = new IsLesserThenEvaluator($e, $simpleExpression2.s);}
+						|'<=' simpleExpression2=simpleExpression 	{$e = new IsEqualOrLesserThenEvaluator($e, $simpleExpression2.s);}
+						|'>'  simpleExpression2=simpleExpression 	{$e = new IsGreaterThenEvaluator($e, $simpleExpression2.s);}
+						|'>=' simpleExpression2=simpleExpression 	{$e = new IsEqualOrGreaterThenEvaluator($e, $simpleExpression2.s);}
 						)
-		simpleExpression2=simpleExpression )?;
+		)?;
 	
 simpleExpression returns[Evaluator s] 
 	:{boolean positive=true;}
@@ -136,19 +138,19 @@ simpleExpression returns[Evaluator s]
 							$s = new NegationEvaluator($s);
 					}
 		(
-		('+'  	{$s = new PlusEvaluator($s,$term2.t);}
-		|'-'  	{$s = new MinEvaluator($s,$term2.t);}
-		|'OR' 	{$s = new OrEvaluator($s,$term2.t);}
-		)term2=term
+		('+' term2=term 	{$s = new PlusEvaluator($s,$term2.t);}
+		|'-' term2=term 	{$s = new MinEvaluator($s,$term2.t);}
+		|'OR' term2=term 	{$s = new OrEvaluator($s,$term2.t);}
+		)
 		)*;
 	
 
 term returns [Evaluator t]	:	factor1=factor {$t = $factor1.f;}
-					(('*'	{$t = new MultEvaluator($t, $factor2.f);}
-					|'DIV'	 {$t = new DivEvaluator($t, $factor2.f);}
-					|'MOD'	{$t = new ModEvaluator($t, $factor2.f);}
-					|'&'	 {$t = new AndEvaluator($t, $factor2.f);}
-					)factor2=factor)*;	
+					(('*' factor2=factor	{$t = new MultEvaluator($t, $factor2.f);}
+					|'DIV' factor2=factor	 {$t = new DivEvaluator($t, $factor2.f);}
+					|'MOD' factor2=factor	{$t = new ModEvaluator($t, $factor2.f);}
+					|'&' factor2=factor	 {$t = new AndEvaluator($t, $factor2.f);}
+					))*;	
  
 factor returns [Evaluator f]:	ident1=ident {$f = new IdentEvaluator($ident1.text);}
 							|ident2=ident {$f = new IdentEvaluator($ident2.text);}(bracketSelector {$f = new ArraySelectorEvaluator($f, $bracketSelector.b);})+
@@ -158,7 +160,7 @@ factor returns [Evaluator f]:	ident1=ident {$f = new IdentEvaluator($ident1.text
 arraySelector: ident(bracketSelector)+;		
 
 
-number returns [Evaluator n]	:	integer {new NumberEvaluator(Integer.parseInt($integer.text));};
+number returns [Evaluator n]	:	integer {$n = new NumberEvaluator(Integer.parseInt($integer.text));};
 
 selector returns [Evaluator s]:	dotSelector{$s = $dotSelector.d;}|bracketSelector {$s = $bracketSelector.b;};
  

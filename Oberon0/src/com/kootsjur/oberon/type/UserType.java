@@ -1,5 +1,6 @@
 package com.kootsjur.oberon.type;
 
+import com.kootsjur.oberon.environment.Environment;
 import com.kootsjur.oberon.value.Value;
 
 public class UserType extends TypeDefinition
@@ -13,7 +14,7 @@ public class UserType extends TypeDefinition
    }
 
    @Override
-   public Value initValue()
+   public Value initValue(Environment environment)
    {
       // TODO Auto-generated method stub
       return null;

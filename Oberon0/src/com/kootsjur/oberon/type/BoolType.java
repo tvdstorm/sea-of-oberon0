@@ -1,5 +1,6 @@
 package com.kootsjur.oberon.type;
 
+import com.kootsjur.oberon.environment.Environment;
 import com.kootsjur.oberon.value.Bool;
 
 public class BoolType extends TypeDefinition
@@ -10,7 +11,7 @@ public class BoolType extends TypeDefinition
    }
 
    @Override
-   public Bool initValue()
+   public Bool initValue(Environment environment)
    {
       Bool initValue = new Bool(false);
       return initValue;

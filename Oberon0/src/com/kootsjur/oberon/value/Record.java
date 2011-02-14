@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.kootsjur.oberon.FieldList;
-import com.kootsjur.oberon.type.TypeDefinition;
 
 public class Record extends Value
 {
@@ -16,10 +15,9 @@ public class Record extends Value
       fields = new HashMap<String, Value>();
       for(FieldList field : fieldList)
       {
-         TypeDefinition type = field.getTypeDefinition();
          for(String fieldName : field.getNames())
          {
-            fields.put(fieldName, type.initValue());
+            fields.put(fieldName, null);
          }
       }
    }
