@@ -1,5 +1,7 @@
 package uva.oberon0.abstractsyntax.expressions;
 
+import uva.oberon0.abstractsyntax.types.BaseType;
+
 
 /**
  * @author Chiel Labee
@@ -8,8 +10,10 @@ package uva.oberon0.abstractsyntax.expressions;
 */
 public abstract class BinaryExpression extends Expression {
 
-	public BinaryExpression(Expression left, Expression right) 
+	protected BinaryExpression(BaseType type, Expression left, Expression right) 
 	{
+		super(type);
+		
 		assert left!= null 	: "No Left Expression is available for the current Binary Expression!";
 		assert right!= null : "No Right Expression is available for the current Binary Expressio!";
 		

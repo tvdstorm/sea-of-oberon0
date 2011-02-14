@@ -1,6 +1,7 @@
 package uva.oberon0.abstractsyntax.statements;
 
 import uva.oberon0.abstractsyntax.expressions.Expression;
+import uva.oberon0.abstractsyntax.types.BooleanType;
 import uva.oberon0.runtime.Scope;
 
 /**
@@ -14,10 +15,13 @@ public class If extends Statement {
 
 	public If(Expression ifExpression, StatementList ifStatements,
 			ElsIfList elsIfList, StatementList elseStatementList) {
+		
 		assert ifExpression != null : "No If Expression is available for the current If Statement!";
 		assert ifStatements != null : "No If Statement List is available for the current If Statement!";
 		assert elsIfList != null : "No ElsIf List is available for the current If Statement!";
 
+		assert ifExpression.getType() instanceof BooleanType;
+		
 		_ifExpression = ifExpression;
 		_ifStatementList = ifStatements;
 		_elsIfList = elsIfList;
@@ -40,5 +44,13 @@ public class If extends Statement {
 		}
 
 		return 1;
+	}
+	
+
+	@Override
+	public boolean checkTypes(Scope scope) {
+		return _ifStatementList.checkTypes(scope) &&
+		_elsIfList.checkTypes(scope) &&
+		(_elseStatementList == null || _elseStatementList.checkTypes(scope));
 	}
 }

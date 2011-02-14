@@ -1,19 +1,20 @@
 package uva.oberon0.abstractsyntax.expressions;
 
+import uva.oberon0.abstractsyntax.types.BooleanType;
 import uva.oberon0.runtime.Scope;
 
 /**
  * This class represents a Logical And Binary Expression (x & y).
  * @author Chiel Labee
  */
-public class And extends BinaryExpression implements IBooleanExpression {
+public class And extends BinaryExpression {
 
 	public And(Expression left, Expression right) {
-		super(left, right);
+		super(new BooleanType(), left, right);
 		
-		assert left instanceof IBooleanExpression;
-		assert right instanceof IBooleanExpression;
-}
+		assert left.getType() instanceof BooleanType;
+		assert right.getType() instanceof BooleanType;
+	}
 
 	@Override
 	public int eval(Scope scope) {

@@ -20,4 +20,9 @@ public class CallWriteLn extends Call
 		System.out.println();
 		return 1;
 	}
+	
+	@Override
+	public boolean checkTypes(Scope scope) {
+		return true;
+	}
 }

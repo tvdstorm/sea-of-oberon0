@@ -66,6 +66,9 @@ CALL_WRITELN
 ASSIGN	:	':=';
 
 INTEGER	:	'INTEGER';
+BOOLEAN	:	'BOOLEAN';
+TRUE	:	'TRUE';
+FALSE	:	'FALSE';
 ARRAY	:	'ARRAY';
 RECORD	:	'RECORD';
 OF	:	'OF';
@@ -121,7 +124,8 @@ procedureActualParams returns [ExpressionList node]
 type	returns [BaseType node]	
 	:	node_array=arrayType								{$node = $node_array.node;}
 	|	node_record=recordType								{$node = $node_record.node;}
-	|	INTEGER										{$node = new IntType();}
+	|	INTEGER										{$node = new IntegerType();}
+	|	BOOLEAN										{$node = new BooleanType();}
 	|	ID										{$node = new IDType($ID.text);}
 	;
 
@@ -143,6 +147,8 @@ factor 	returns [Expression node]
 	:   	ID 										{ID node_id = new ID($ID.text); $node = new Reference(node_id);} 
 		idSelector[node_id]  		
 	| 	INT 										{$node = new IntegerValue($INT.text);}
+	| 	TRUE 										{$node = new BooleanValue(true);}
+	| 	FALSE 										{$node = new BooleanValue(false);}
 	| 	('(' expression ')' 								{$node=$expression.node;})
 	| 	(NOT unary=factor								{$node=new Not($unary.node);})
 	;

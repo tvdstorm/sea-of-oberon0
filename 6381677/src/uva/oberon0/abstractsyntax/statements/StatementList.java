@@ -12,7 +12,6 @@ public class StatementList extends BaseList<Statement>
 {
 	public int eval(Scope scope)
 	{
-		//Loop all Statement Nodes.
 		for (Statement statement : this)
 		{
 			//Evaluate Statement Node.
@@ -25,5 +24,21 @@ public class StatementList extends BaseList<Statement>
 		}
 		
 		return 1;
+	}
+	
+	public boolean checkTypes(Scope scope)
+	{
+		for (Statement statement : this)
+		{
+			//TypeCheck Statement Node.
+			if (!statement.checkTypes(scope))
+			{
+				//Assert incorrect evaluation!
+				assert false : "Incorrect Statement TypeCheck!";
+				return false;
+			}
+		}
+		
+		return true;
 	}
 }

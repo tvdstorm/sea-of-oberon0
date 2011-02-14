@@ -30,4 +30,9 @@ public class CallRead extends Call {
 
 		return 1;
 	}
+	
+	@Override
+	public boolean checkTypes(Scope scope) {
+		return true;
+	}
 }

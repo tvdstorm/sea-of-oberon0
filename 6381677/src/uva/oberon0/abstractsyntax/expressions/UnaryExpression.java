@@ -1,6 +1,7 @@
 package uva.oberon0.abstractsyntax.expressions;
 
 import uva.oberon0.abstractsyntax.BaseNode;
+import uva.oberon0.abstractsyntax.types.BaseType;
 
 /**
  * @author Chiel Labee
@@ -9,8 +10,10 @@ import uva.oberon0.abstractsyntax.BaseNode;
 */
 public abstract class UnaryExpression extends Expression {
 
-	protected UnaryExpression(Expression argument)
+	protected UnaryExpression(BaseType type, Expression argument)
 	{
+		super(type);
+		
 		assert argument != null : "No Argument is available for this Unary Expression!";
 		
 		_argument = argument;

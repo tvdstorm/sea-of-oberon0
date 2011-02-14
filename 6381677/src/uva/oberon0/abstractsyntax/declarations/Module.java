@@ -40,10 +40,23 @@ public class Module {
 	/**
 	 * Performs interpreter evaluation for the current Module structure.
 	 */
-	public int eval(uva.oberon0.runtime.Scope scope) {
+	public int eval(Scope scope) {
+		if (!checkTypes(scope)) {
+			return 0;
+		}
+		
 		return _statements.eval(scope);
 	}
-
+	
+	public boolean checkTypes()
+	{
+		return checkTypes(createScope());
+	}
+	public boolean checkTypes(Scope scope)
+	{
+		return _statements.checkTypes(scope);
+	}
+	
 	public ID getID() {
 		return _id;
 	}

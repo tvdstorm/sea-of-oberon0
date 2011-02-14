@@ -7,6 +7,7 @@ import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.parser.Helper;
 import uva.oberon0.parser.OberonParser;
 import uva.oberon0.runtime.Scope;
+import uva.oberon0.runtime.values.BooleanValue;
 import uva.oberon0.runtime.values.IntegerValue;
 
 /**
@@ -38,7 +39,7 @@ public class Test {
 		scope.putBindable(new ID("r"), new IntegerValue());
 		module.eval(scope);
 
-		int result = scope.getValue(new ID("r"));
+		int result = scope.getValueAsInteger(new ID("r"));
 		if (result != resultExpected) {
 			System.out.println("ERROR: Unable to evaluate [" + name + "].");
 			assert false;
@@ -47,7 +48,36 @@ public class Test {
 
 		System.out.println("OK: Test [" + name + "].");
 	}
+	private static void runTest(String name, String text, boolean resultExpected) {
+		String codeBody = text;
 
+		if (codeBody.indexOf("BEGIN") == -1)
+			codeBody = "BEGIN " + codeBody + " END";
+
+		String code = "MODULE runTest; " + codeBody + " runTest.";
+
+		Module module = Helper.createModuleFromText(code);
+
+		if (module == null) {
+			System.out.println("ERROR: Unable to implode [" + name + "].");
+			assert false;
+			return;
+		}
+
+		Scope scope = module.createScope();
+		scope.putBindable(new ID("r"), new BooleanValue());
+		module.eval(scope);
+
+		int result = scope.getValueAsInteger(new ID("r"));
+		if ((result == 1) != resultExpected) {
+			System.out.println("ERROR: Unable to evaluate [" + name + "].");
+			assert false;
+			return;
+		}
+
+		System.out.println("OK: Test [" + name + "].");
+	}
+	
 	/**
 	 * Runs all unit tests.
 	 */
@@ -109,14 +139,14 @@ public class Test {
 		runTestExpression("Expression Calc Division",
 				"(4+(2+2)) DIV (2+(1+1))", 2);
 
-		//runTestExpression("Expression And", "1 & 1", 1);
-		//runTestExpression("Expression And", "1 & 0", 0);
-		//runTestExpression("Expression And", "1 & 0 = 0", 1);
-		//runTestExpression("Expression And", "0 & 0 = 0", 1);
-		//runTestExpression("Expression Or", "1 OR 1", 1);
-		//runTestExpression("Expression Or", "1 OR 0", 1);
-		//runTestExpression("Expression Or", "0 OR 0 = 0", 1);
-		//runTestExpression("Expression Or", "0 OR 0", 0);
+		runTestExpression("Expression And", "TRUE & TRUE", 1);
+		runTestExpression("Expression And", "TRUE & FALSE", 0);
+		runTestExpression("Expression And", "TRUE & FALSE = FALSE", 1);
+		runTestExpression("Expression And", "FALSE & FALSE = FALSE", 1);
+		runTestExpression("Expression Or", "TRUE OR TRUE", 1);
+		runTestExpression("Expression Or", "TRUE OR FALSE", 1);
+		runTestExpression("Expression Or", "FALSE OR FALSE = FALSE", 1);
+		runTestExpression("Expression Or", "FALSE OR FALSE", 0);
 	}
 
 	/**
@@ -126,11 +156,11 @@ public class Test {
 		runTest("Statement Assign", "r:=1", 1);
 		runTest("Statement Assign with Expression", "r:=1+1", 2);
 		runTest("Statement Multiple Assign",
-				"VAR i,i2,i3: INTEGER; BEGIN i:=1;i2:=2; i3:=3; r:=((i = 1) & (i2 = 2) & (i3 = 3)) END");
+				"VAR i,i2,i3: INTEGER; BEGIN i:=1;i2:=2; i3:=3; r:=((i = 1) & (i2 = 2) & (i3 = 3)) END", true);
 		runTest("Statement Complex Assign",
-				"VAR i,i2: INTEGER; BEGIN i2:=3; i:=i2; r:=((i = 3) & (i = i2)) END");
+				"VAR i,i2: INTEGER; BEGIN i2:=3; i:=i2; r:=((i = 3) & (i = i2)) END", true);
 		runTest("Statement Complex Assign",
-				"VAR i,i2: INTEGER; BEGIN i2:=2; i:=i2+1; r:=((i = 3) & (i # i2) & (i = i2+1)) END");
+				"VAR i,i2: INTEGER; BEGIN i2:=2; i:=i2+1; r:=((i = 3) & (i # i2) & (i = i2+1)) END", true);
 		runTest("Statement Array Assign",
 				"VAR array: ARRAY 1 OF INTEGER; BEGIN array[0]:=1; r:=array[0] END");
 		runTest("Statement Array Assign",
@@ -138,23 +168,23 @@ public class Test {
 		runTest("Statement Record Assign",
 				"VAR i: RECORD test: INTEGER END; BEGIN i.test:=1; r:=i.test END");
 		runTest("Statement Complex Record Assign",
-				"VAR i: RECORD test1,test2: INTEGER END; BEGIN i.test1:=1; i.test2:=2; r:=((i.test1=1) & (i.test2=2)) END");
+				"VAR i: RECORD test1,test2: INTEGER END; BEGIN i.test1:=1; i.test2:=2; r:=((i.test1=1) & (i.test2=2)) END", true);
 		runTest("Statement Type Record Assign",
-				"TYPE rec=RECORD test1,test2: INTEGER END; VAR i: rec; BEGIN i.test1:=1; i.test2:=2; r:=((i.test1=1) & (i.test2=2)) END");
+				"TYPE rec=RECORD test1,test2: INTEGER END; VAR i: rec; BEGIN i.test1:=1; i.test2:=2; r:=((i.test1=1) & (i.test2=2)) END", true);
 		runTest("Statement With Assign",
-				"VAR i: RECORD test1,test2: INTEGER END; BEGIN WITH i DO test1:=1; test2:=2 END; r:=((i.test1=1) & (i.test2=2)) END");
+				"VAR i: RECORD test1,test2: INTEGER END; BEGIN WITH i DO test1:=1; test2:=2 END; r:=((i.test1=1) & (i.test2=2)) END", true);
 		runTest("Statement ByValue Assign",
 				"VAR i,i2: INTEGER; "
 						+ "PROCEDURE SetValue(x, y :INTEGER); BEGIN x:=y END SetValue; "
-						+ "BEGIN i:=2; i2:=3; SetValue(i,i2); r:=((i = 2) & (i # i2)) END");
+						+ "BEGIN i:=2; i2:=3; SetValue(i,i2); r:=((i = 2) & (i # i2)) END", true);
 		runTest("Statement ByReference Assign",
 				"VAR i,i2: INTEGER; "
 						+ "PROCEDURE SetValue(VAR x, y :INTEGER); BEGIN x:=y END SetValue; "
-						+ "BEGIN i2:=3; SetValue(i,i2); r:=((i = 3) & (i = i2)) END");
+						+ "BEGIN i2:=3; SetValue(i,i2); r:=((i = 3) & (i = i2)) END", true);
 		runTest("Statement Array Assign with Int Index",
-				"VAR i: ARRAY 1 OF INTEGER; BEGIN i[0]:=1; r:=(i[0] = 1) END");
+				"VAR i: ARRAY 1 OF INTEGER; BEGIN i[0]:=1; r:=(i[0] = 1) END", true);
 		runTest("Statement Array Assign with Var Index",
-				"VAR i: ARRAY 2 OF INTEGER; VAR i2,x: INTEGER; BEGIN i2:=1; x:=10; i[i2]:=x; r:=(i[i2] = x) END");
+				"VAR i: ARRAY 2 OF INTEGER; VAR i2,x: INTEGER; BEGIN i2:=1; x:=10; i[i2]:=x; r:=(i[i2] = x) END", true);
 
 		runTest("Statement IF", "IF 1=1 THEN r:=(1) END");
 		runTest("Statement IF with ELSE", "IF 1=1 THEN r:=(1) ELSE r:=(0) END");
@@ -172,9 +202,9 @@ public class Test {
 				"IF 1=0 THEN r:=(0) ELSIF 0=1 THEN r:=(0) ELSE r:=(1) END");
 
 		runTest("Statement WHILE",
-				"VAR i: INTEGER; BEGIN i:=0; WHILE i<3 DO i:=i+1 END; r:=(i = 3) END");
+				"VAR i: INTEGER; BEGIN i:=0; WHILE i<3 DO i:=i+1 END; r:=(i = 3) END", true);
 		runTest("Statement WHILE",
-				"VAR i,i2: INTEGER; BEGIN i:=0; i2:=3; WHILE i<i2 DO i:=i+1 END; r:=((i = 3) & (i = i2)) END");
+				"VAR i,i2: INTEGER; BEGIN i:=0; i2:=3; WHILE i<i2 DO i:=i+1 END; r:=((i = 3) & (i = i2)) END", true);
 	}
 
 	/**
@@ -185,6 +215,6 @@ public class Test {
 				+ "PROCEDURE Swap(VAR x, y: INTEGER); " + "VAR temp: INTEGER; "
 				+ "BEGIN " + "temp := x; " + "x := y; " + "y := temp "
 				+ "END Swap;"
-				+ "BEGIN i:=0; j:=1; Swap(i,j); r:=((i = 1) & (j = 0)) END");
+				+ "BEGIN i:=0; j:=1; Swap(i,j); r:=((i = 1) & (j = 0)) END", true);
 	}
 }

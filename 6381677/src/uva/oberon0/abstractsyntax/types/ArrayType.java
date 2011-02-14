@@ -5,8 +5,8 @@ import uva.oberon0.runtime.Scope;
 import uva.oberon0.runtime.values.ArrayValue;
 import uva.oberon0.runtime.values.Value;
 
-public class ArrayType extends BaseType {
-
+public class ArrayType extends BaseType implements ITypeCheckable
+{
 	private final BaseNode _length;
 	private final BaseType _type;
 	

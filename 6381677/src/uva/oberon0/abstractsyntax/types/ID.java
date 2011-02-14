@@ -56,7 +56,7 @@ public class ID extends BaseNode {
 
 	@Override
 	public int eval(Scope scope) {
-		return scope.getValue(this);
+		return scope.getValueAsInteger(this);
 	}
 
 	@Override

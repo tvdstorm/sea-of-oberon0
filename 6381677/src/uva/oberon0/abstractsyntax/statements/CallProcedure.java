@@ -1,6 +1,9 @@
 package uva.oberon0.abstractsyntax.statements;
 
+import uva.oberon0.abstractsyntax.declarations.Procedure;
+import uva.oberon0.abstractsyntax.expressions.Expression;
 import uva.oberon0.abstractsyntax.expressions.ExpressionList;
+import uva.oberon0.abstractsyntax.types.BaseType;
 import uva.oberon0.abstractsyntax.types.ID;
 import uva.oberon0.runtime.Scope;
 
@@ -25,5 +28,29 @@ public class CallProcedure extends Call
 	@Override
 	public int eval(Scope scope) {
 		return scope.callProcedure(_procedureID, getActualParameterList());
+	}
+
+	@Override
+	public boolean checkTypes(Scope scope) {
+		Procedure procedure = (Procedure)scope.getBindable(_procedureID);
+		
+		if (procedure == null) {
+			return false;
+		}
+		
+		if (procedure.getParameterCount() != getActualParameterCount()) {
+			return false;
+		}
+		
+		for (int i = 0; i < getActualParameterCount(); i++) {
+			BaseType actualType = getActualParameter(i).getType();
+			BaseType formalType = procedure.getParameter(i).getType();
+			
+			if (actualType.getClass() != formalType.getClass()) {
+				return false;
+			}
+		}
+		
+		return true;
 	}
 }

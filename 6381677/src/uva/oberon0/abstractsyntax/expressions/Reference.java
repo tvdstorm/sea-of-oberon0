@@ -1,18 +1,21 @@
 package uva.oberon0.abstractsyntax.expressions;
 
 import uva.oberon0.abstractsyntax.types.ID;
+import uva.oberon0.abstractsyntax.types.IntegerType;
 import uva.oberon0.runtime.Scope;
 
-public class Reference extends Expression implements INumericExpression {
+public class Reference extends Expression {
 	private final ID _id;
 
 	public Reference(ID id) {
+		super(new IntegerType());
+		
 		_id = id;
 	}
 
 	@Override
 	public int eval(Scope scope) {
-		return scope.getValue(_id);
+		return scope.getValueAsInteger(_id);
 	}
 
 	public ID getID() {

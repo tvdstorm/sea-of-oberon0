@@ -22,4 +22,11 @@ public class With extends Statement {
 		return _statementList.eval(withScope);
 	}
 
+	@Override
+	public boolean checkTypes(Scope scope) {
+		RecordValue withRecord = (RecordValue)scope.getBindable(_id);
+		Scope withScope = withRecord.createScopeForWith(scope);
+
+		return _statementList.checkTypes(withScope);
+	}
 }

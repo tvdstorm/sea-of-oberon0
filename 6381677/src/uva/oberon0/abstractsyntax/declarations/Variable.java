@@ -2,6 +2,7 @@ package uva.oberon0.abstractsyntax.declarations;
 
 import uva.oberon0.abstractsyntax.types.BaseType;
 import uva.oberon0.abstractsyntax.types.ID;
+import uva.oberon0.abstractsyntax.types.ITypeCheckable;
 import uva.oberon0.runtime.Scope;
 import uva.oberon0.runtime.values.Value;
 
@@ -10,7 +11,7 @@ import uva.oberon0.runtime.values.Value;
  * @author Chiel Labee
  * This class represents a Variable Declaration that is passed by Value.
 */
-public class Variable extends Declaration
+public class Variable extends Declaration implements ITypeCheckable
 {
 	private final BaseType _type;
 	private final boolean _isByReference;
@@ -35,6 +36,9 @@ public class Variable extends Declaration
 	 */
 	public BaseType getType()
 	{
+		if (_type instanceof ITypeCheckable)
+			return ((ITypeCheckable)_type).getType();
+		
 		return _type;
 	}
 	

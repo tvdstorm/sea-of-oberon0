@@ -13,6 +13,7 @@ import uva.oberon0.abstractsyntax.declarations.Variable;
 import uva.oberon0.abstractsyntax.expressions.ExpressionList;
 import uva.oberon0.abstractsyntax.expressions.Reference;
 import uva.oberon0.abstractsyntax.types.ID;
+import uva.oberon0.runtime.values.BooleanValue;
 import uva.oberon0.runtime.values.IntegerValue;
 import uva.oberon0.runtime.values.Value;
 
@@ -111,11 +112,22 @@ public class Scope {
 	 * @param id
 	 *            The Identifier of the Value that should be retrieved.
 	 */
-	public int getValue(ID id) {
-		return ((IntegerValue) getValueReference(id)).getValue();
+	public int getValueAsInteger(ID id) {
+		Value scopeValue = getValueReference(id);
+		
+		if (scopeValue instanceof IntegerValue)
+			return ((IntegerValue) scopeValue).getValue();
+		
+		else if (scopeValue instanceof BooleanValue)
+			return ((BooleanValue) scopeValue).getValue() ? 1 : 0;
+		
+		else {
+			assert false;
+			return 0;
+		}
 	}
 
-	private Value getValueReference(ID id) {
+	public Value getValueReference(ID id) {
 		assert id != null : "ID cannot be Null!";
 
 		Value value = null;
@@ -151,8 +163,16 @@ public class Scope {
 	 *            The Identifier of the Value that should be stored.
 	 */
 	public void setValue(ID id, int valueNew) {
-		IntegerValue scopeValue = (IntegerValue) getValueReference(id);
-		scopeValue.setValue(valueNew);
+		Value scopeValue = getValueReference(id);
+		
+		if (scopeValue instanceof IntegerValue)
+			((IntegerValue)scopeValue).setValue(valueNew);
+
+		else if (scopeValue instanceof BooleanValue)
+			((BooleanValue)scopeValue).setValue(valueNew == 1);
+		
+		else
+			assert false;
 	}
 
 

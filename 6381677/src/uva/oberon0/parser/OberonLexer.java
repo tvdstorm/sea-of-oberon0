@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g 2011-02-07 14:45:55
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g 2011-02-14 15:55:22
 
 package uva.oberon0.parser;
 
@@ -10,14 +10,14 @@ import java.util.ArrayList;
 
 public class OberonLexer extends Lexer {
     public static final int EOF=-1;
-    public static final int T__46=46;
-    public static final int T__47=47;
-    public static final int T__48=48;
     public static final int T__49=49;
     public static final int T__50=50;
     public static final int T__51=51;
     public static final int T__52=52;
     public static final int T__53=53;
+    public static final int T__54=54;
+    public static final int T__55=55;
+    public static final int T__56=56;
     public static final int MODULE=4;
     public static final int PROCEDURE=5;
     public static final int CONST=6;
@@ -54,12 +54,15 @@ public class OberonLexer extends Lexer {
     public static final int CALL_WRITELN=37;
     public static final int ASSIGN=38;
     public static final int INTEGER=39;
-    public static final int ARRAY=40;
-    public static final int RECORD=41;
-    public static final int OF=42;
-    public static final int ID=43;
-    public static final int INT=44;
-    public static final int WHITESPACE=45;
+    public static final int BOOLEAN=40;
+    public static final int TRUE=41;
+    public static final int FALSE=42;
+    public static final int ARRAY=43;
+    public static final int RECORD=44;
+    public static final int OF=45;
+    public static final int ID=46;
+    public static final int INT=47;
+    public static final int WHITESPACE=48;
 
     // delegates
     // delegators
@@ -74,75 +77,15 @@ public class OberonLexer extends Lexer {
     }
     public String getGrammarFileName() { return "D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g"; }
 
-    // $ANTLR start "T__46"
-    public final void mT__46() throws RecognitionException {
-        try {
-            int _type = T__46;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:7:7: ( ';' )
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:7:9: ';'
-            {
-            match(';'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__46"
-
-    // $ANTLR start "T__47"
-    public final void mT__47() throws RecognitionException {
-        try {
-            int _type = T__47;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:8:7: ( '.' )
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:8:9: '.'
-            {
-            match('.'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__47"
-
-    // $ANTLR start "T__48"
-    public final void mT__48() throws RecognitionException {
-        try {
-            int _type = T__48;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:9:7: ( ':' )
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:9:9: ':'
-            {
-            match(':'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__48"
-
     // $ANTLR start "T__49"
     public final void mT__49() throws RecognitionException {
         try {
             int _type = T__49;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:10:7: ( '(' )
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:10:9: '('
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:7:7: ( ';' )
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:7:9: ';'
             {
-            match('('); 
+            match(';'); 
 
             }
 
@@ -159,10 +102,10 @@ public class OberonLexer extends Lexer {
         try {
             int _type = T__50;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:11:7: ( ')' )
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:11:9: ')'
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:8:7: ( '.' )
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:8:9: '.'
             {
-            match(')'); 
+            match('.'); 
 
             }
 
@@ -179,10 +122,10 @@ public class OberonLexer extends Lexer {
         try {
             int _type = T__51;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:12:7: ( ',' )
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:12:9: ','
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:9:7: ( ':' )
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:9:9: ':'
             {
-            match(','); 
+            match(':'); 
 
             }
 
@@ -199,10 +142,10 @@ public class OberonLexer extends Lexer {
         try {
             int _type = T__52;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:13:7: ( '[' )
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:13:9: '['
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:10:7: ( '(' )
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:10:9: '('
             {
-            match('['); 
+            match('('); 
 
             }
 
@@ -219,6 +162,66 @@ public class OberonLexer extends Lexer {
         try {
             int _type = T__53;
             int _channel = DEFAULT_TOKEN_CHANNEL;
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:11:7: ( ')' )
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:11:9: ')'
+            {
+            match(')'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__53"
+
+    // $ANTLR start "T__54"
+    public final void mT__54() throws RecognitionException {
+        try {
+            int _type = T__54;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:12:7: ( ',' )
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:12:9: ','
+            {
+            match(','); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__54"
+
+    // $ANTLR start "T__55"
+    public final void mT__55() throws RecognitionException {
+        try {
+            int _type = T__55;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:13:7: ( '[' )
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:13:9: '['
+            {
+            match('['); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__55"
+
+    // $ANTLR start "T__56"
+    public final void mT__56() throws RecognitionException {
+        try {
+            int _type = T__56;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
             // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:14:7: ( ']' )
             // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:14:9: ']'
             {
@@ -232,7 +235,7 @@ public class OberonLexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "T__53"
+    // $ANTLR end "T__56"
 
     // $ANTLR start "MODULE"
     public final void mMODULE() throws RecognitionException {
@@ -981,13 +984,76 @@ public class OberonLexer extends Lexer {
     }
     // $ANTLR end "INTEGER"
 
+    // $ANTLR start "BOOLEAN"
+    public final void mBOOLEAN() throws RecognitionException {
+        try {
+            int _type = BOOLEAN;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:69:9: ( 'BOOLEAN' )
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:69:11: 'BOOLEAN'
+            {
+            match("BOOLEAN"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "BOOLEAN"
+
+    // $ANTLR start "TRUE"
+    public final void mTRUE() throws RecognitionException {
+        try {
+            int _type = TRUE;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:70:6: ( 'TRUE' )
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:70:8: 'TRUE'
+            {
+            match("TRUE"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "TRUE"
+
+    // $ANTLR start "FALSE"
+    public final void mFALSE() throws RecognitionException {
+        try {
+            int _type = FALSE;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:71:7: ( 'FALSE' )
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:71:9: 'FALSE'
+            {
+            match("FALSE"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "FALSE"
+
     // $ANTLR start "ARRAY"
     public final void mARRAY() throws RecognitionException {
         try {
             int _type = ARRAY;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:69:7: ( 'ARRAY' )
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:69:9: 'ARRAY'
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:72:7: ( 'ARRAY' )
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:72:9: 'ARRAY'
             {
             match("ARRAY"); 
 
@@ -1007,8 +1073,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = RECORD;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:70:8: ( 'RECORD' )
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:70:10: 'RECORD'
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:73:8: ( 'RECORD' )
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:73:10: 'RECORD'
             {
             match("RECORD"); 
 
@@ -1028,8 +1094,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = OF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:71:4: ( 'OF' )
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:71:6: 'OF'
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:74:4: ( 'OF' )
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:74:6: 'OF'
             {
             match("OF"); 
 
@@ -1049,8 +1115,8 @@ public class OberonLexer extends Lexer {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:238:6: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:238:8: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:244:6: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:244:8: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -1061,7 +1127,7 @@ public class OberonLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:238:32: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:244:32: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             loop1:
             do {
                 int alt1=2;
@@ -1110,10 +1176,10 @@ public class OberonLexer extends Lexer {
         try {
             int _type = INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:239:7: ( ( '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' )+ )
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:239:9: ( '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' )+
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:245:7: ( ( '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' )+ )
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:245:9: ( '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' )+
             {
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:239:9: ( '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' )+
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:245:9: ( '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' )+
             int cnt2=0;
             loop2:
             do {
@@ -1167,10 +1233,10 @@ public class OberonLexer extends Lexer {
         try {
             int _type = WHITESPACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:241:8: ( ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+ )
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:241:16: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:247:8: ( ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+ )
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:247:16: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
             {
-            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:241:16: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
+            // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:247:16: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
             int cnt3=0;
             loop3:
             do {
@@ -1221,63 +1287,63 @@ public class OberonLexer extends Lexer {
     // $ANTLR end "WHITESPACE"
 
     public void mTokens() throws RecognitionException {
-        // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:8: ( T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | MODULE | PROCEDURE | CONST | VAR | TYPE | IF | THEN | ELSE | ELSIF | WHILE | WITH | BEGIN | END | DO | EQUAL | UNEQUAL | LESS | LESS_EQUAL | GREAT | GREAT_EQUAL | MIN | PLUS | MUL | DIV | MOD | AND | OR | NOT | DECLARATIONS | INPUTVARS | CALL | CALL_READ | CALL_WRITE | CALL_WRITELN | ASSIGN | INTEGER | ARRAY | RECORD | OF | ID | INT | WHITESPACE )
-        int alt4=50;
+        // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:8: ( T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | MODULE | PROCEDURE | CONST | VAR | TYPE | IF | THEN | ELSE | ELSIF | WHILE | WITH | BEGIN | END | DO | EQUAL | UNEQUAL | LESS | LESS_EQUAL | GREAT | GREAT_EQUAL | MIN | PLUS | MUL | DIV | MOD | AND | OR | NOT | DECLARATIONS | INPUTVARS | CALL | CALL_READ | CALL_WRITE | CALL_WRITELN | ASSIGN | INTEGER | BOOLEAN | TRUE | FALSE | ARRAY | RECORD | OF | ID | INT | WHITESPACE )
+        int alt4=53;
         alt4 = dfa4.predict(input);
         switch (alt4) {
             case 1 :
-                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:10: T__46
-                {
-                mT__46(); 
-
-                }
-                break;
-            case 2 :
-                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:16: T__47
-                {
-                mT__47(); 
-
-                }
-                break;
-            case 3 :
-                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:22: T__48
-                {
-                mT__48(); 
-
-                }
-                break;
-            case 4 :
-                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:28: T__49
+                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:10: T__49
                 {
                 mT__49(); 
 
                 }
                 break;
-            case 5 :
-                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:34: T__50
+            case 2 :
+                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:16: T__50
                 {
                 mT__50(); 
 
                 }
                 break;
-            case 6 :
-                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:40: T__51
+            case 3 :
+                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:22: T__51
                 {
                 mT__51(); 
 
                 }
                 break;
-            case 7 :
-                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:46: T__52
+            case 4 :
+                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:28: T__52
                 {
                 mT__52(); 
 
                 }
                 break;
-            case 8 :
-                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:52: T__53
+            case 5 :
+                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:34: T__53
                 {
                 mT__53(); 
+
+                }
+                break;
+            case 6 :
+                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:40: T__54
+                {
+                mT__54(); 
+
+                }
+                break;
+            case 7 :
+                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:46: T__55
+                {
+                mT__55(); 
+
+                }
+                break;
+            case 8 :
+                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:52: T__56
+                {
+                mT__56(); 
 
                 }
                 break;
@@ -1534,42 +1600,63 @@ public class OberonLexer extends Lexer {
                 }
                 break;
             case 45 :
-                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:290: ARRAY
+                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:290: BOOLEAN
+                {
+                mBOOLEAN(); 
+
+                }
+                break;
+            case 46 :
+                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:298: TRUE
+                {
+                mTRUE(); 
+
+                }
+                break;
+            case 47 :
+                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:303: FALSE
+                {
+                mFALSE(); 
+
+                }
+                break;
+            case 48 :
+                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:309: ARRAY
                 {
                 mARRAY(); 
 
                 }
                 break;
-            case 46 :
-                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:296: RECORD
+            case 49 :
+                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:315: RECORD
                 {
                 mRECORD(); 
 
                 }
                 break;
-            case 47 :
-                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:303: OF
+            case 50 :
+                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:322: OF
                 {
                 mOF(); 
 
                 }
                 break;
-            case 48 :
-                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:306: ID
+            case 51 :
+                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:325: ID
                 {
                 mID(); 
 
                 }
                 break;
-            case 49 :
-                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:309: INT
+            case 52 :
+                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:328: INT
                 {
                 mINT(); 
 
                 }
                 break;
-            case 50 :
-                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:313: WHITESPACE
+            case 53 :
+                // D:\\Projects UVA\\Oberon0\\src\\uva\\oberon0\\parser\\Oberon.g:1:332: WHITESPACE
                 {
                 mWHITESPACE(); 
 
@@ -1583,222 +1670,243 @@ public class OberonLexer extends Lexer {
 
     protected DFA4 dfa4 = new DFA4(this);
     static final String DFA4_eotS =
-        "\3\uffff\1\43\5\uffff\12\37\2\uffff\1\67\1\71\4\uffff\1\37\1\uffff"+
-        "\2\37\5\uffff\7\37\1\106\7\37\1\117\2\37\4\uffff\1\122\1\123\3\37"+
-        "\1\130\3\37\1\134\2\37\1\uffff\3\37\1\143\4\37\1\uffff\1\150\1\37"+
-        "\2\uffff\4\37\1\uffff\2\37\1\160\1\uffff\1\161\1\162\2\37\1\165"+
-        "\1\37\1\uffff\1\37\1\170\2\37\1\uffff\1\37\1\174\4\37\1\u0081\3"+
-        "\uffff\2\37\1\uffff\1\u0084\1\u0085\1\uffff\1\u0087\1\u0088\1\37"+
-        "\1\uffff\1\37\1\u008b\1\u008c\1\37\1\uffff\2\37\2\uffff\1\37\2\uffff"+
-        "\1\37\1\u0092\2\uffff\2\37\1\u0095\1\u0096\1\37\1\uffff\2\37\2\uffff"+
-        "\1\37\1\u009b\1\u009c\1\37\2\uffff\2\37\1\u00a0\1\uffff";
+        "\3\uffff\1\44\5\uffff\12\40\2\uffff\1\72\1\74\4\uffff\1\40\1\uffff"+
+        "\3\40\5\uffff\10\40\1\113\10\40\1\125\2\40\4\uffff\1\130\1\131\4"+
+        "\40\1\137\3\40\1\143\3\40\1\uffff\3\40\1\153\5\40\1\uffff\1\161"+
+        "\1\40\2\uffff\5\40\1\uffff\2\40\1\172\1\uffff\1\173\1\174\1\175"+
+        "\2\40\1\u0080\1\40\1\uffff\1\40\1\u0083\3\40\1\uffff\1\40\1\u0088"+
+        "\5\40\1\u008e\4\uffff\2\40\1\uffff\1\u0091\1\u0092\1\uffff\1\u0094"+
+        "\1\u0095\2\40\1\uffff\1\40\1\u0099\1\u009a\1\u009b\1\40\1\uffff"+
+        "\2\40\2\uffff\1\40\2\uffff\2\40\1\u00a2\3\uffff\2\40\1\u00a5\1\u00a6"+
+        "\1\u00a7\1\40\1\uffff\2\40\3\uffff\1\40\1\u00ac\1\u00ad\1\40\2\uffff"+
+        "\2\40\1\u00b1\1\uffff";
     static final String DFA4_eofS =
-        "\u00a1\uffff";
+        "\u00b2\uffff";
     static final String DFA4_minS =
         "\1\11\2\uffff\1\75\5\uffff\1\117\1\122\2\101\1\110\1\106\1\114"+
-        "\1\110\2\105\2\uffff\2\75\4\uffff\1\106\1\uffff\1\105\1\122\5\uffff"+
-        "\1\104\1\117\1\116\1\114\1\122\1\120\1\105\1\60\1\120\1\123\1\104"+
-        "\1\111\1\124\1\151\1\107\1\60\1\126\1\103\4\uffff\2\60\1\141\1\103"+
-        "\1\122\1\60\1\103\1\123\1\114\1\60\1\105\1\116\1\uffff\1\125\2\105"+
-        "\1\60\1\114\1\110\1\164\1\111\1\uffff\1\60\1\114\2\uffff\1\144\1"+
-        "\117\1\101\1\114\1\uffff\1\105\1\124\1\60\1\uffff\2\60\1\124\1\107"+
-        "\1\60\1\106\1\uffff\1\105\1\60\1\145\1\116\1\uffff\1\101\1\60\1"+
-        "\122\1\131\1\105\1\104\1\60\3\uffff\1\126\1\105\1\uffff\2\60\1\uffff"+
-        "\2\60\1\122\1\uffff\1\104\2\60\1\125\1\uffff\1\101\1\122\2\uffff"+
-        "\1\156\2\uffff\1\101\1\60\2\uffff\2\122\2\60\1\124\1\uffff\1\105"+
-        "\1\123\2\uffff\1\111\2\60\1\117\2\uffff\1\116\1\123\1\60\1\uffff";
+        "\1\110\2\105\2\uffff\2\75\4\uffff\1\106\1\uffff\1\105\1\101\1\122"+
+        "\5\uffff\1\104\1\117\1\116\1\114\1\122\1\120\1\105\1\125\1\60\1"+
+        "\120\1\123\1\104\1\111\1\124\1\151\1\107\1\117\1\60\1\126\1\103"+
+        "\4\uffff\2\60\1\141\1\103\1\114\1\122\1\60\1\103\1\123\1\114\1\60"+
+        "\1\105\1\116\1\105\1\uffff\1\125\2\105\1\60\1\114\1\110\1\164\1"+
+        "\111\1\114\1\uffff\1\60\1\114\2\uffff\1\144\1\117\1\123\1\101\1"+
+        "\114\1\uffff\1\105\1\124\1\60\1\uffff\3\60\1\124\1\107\1\60\1\106"+
+        "\1\uffff\1\105\1\60\1\145\1\116\1\105\1\uffff\1\101\1\60\1\122\1"+
+        "\105\1\131\1\105\1\104\1\60\4\uffff\1\126\1\105\1\uffff\2\60\1\uffff"+
+        "\2\60\1\101\1\122\1\uffff\1\104\3\60\1\125\1\uffff\1\101\1\122\2"+
+        "\uffff\1\156\2\uffff\1\116\1\101\1\60\3\uffff\2\122\3\60\1\124\1"+
+        "\uffff\1\105\1\123\3\uffff\1\111\2\60\1\117\2\uffff\1\116\1\123"+
+        "\1\60\1\uffff";
     static final String DFA4_maxS =
         "\1\176\2\uffff\1\75\5\uffff\1\117\1\122\1\117\1\101\1\131\2\116"+
-        "\1\162\1\105\1\117\2\uffff\2\75\4\uffff\1\122\1\uffff\1\145\1\122"+
-        "\5\uffff\1\104\1\117\1\116\1\114\1\122\1\120\1\105\1\172\1\124\1"+
-        "\123\1\104\1\111\1\124\1\151\1\107\1\172\1\126\1\103\4\uffff\2\172"+
-        "\1\141\1\103\1\122\1\172\1\103\1\123\1\114\1\172\1\105\1\116\1\uffff"+
-        "\1\125\1\105\1\111\1\172\1\114\1\110\1\164\1\111\1\uffff\1\172\1"+
-        "\114\2\uffff\1\144\1\117\1\101\1\114\1\uffff\1\105\1\124\1\172\1"+
-        "\uffff\2\172\1\124\1\107\1\172\1\106\1\uffff\1\105\1\172\1\145\1"+
-        "\116\1\uffff\1\101\1\172\1\122\1\131\1\105\1\104\1\172\3\uffff\1"+
-        "\126\1\105\1\uffff\2\172\1\uffff\2\172\1\122\1\uffff\1\104\2\172"+
-        "\1\125\1\uffff\1\101\1\122\2\uffff\1\156\2\uffff\1\101\1\172\2\uffff"+
-        "\2\122\2\172\1\124\1\uffff\1\105\1\123\2\uffff\1\111\2\172\1\117"+
+        "\1\162\2\117\2\uffff\2\75\4\uffff\1\122\1\uffff\1\145\1\101\1\122"+
+        "\5\uffff\1\104\1\117\1\116\1\114\1\122\1\120\1\105\1\125\1\172\1"+
+        "\124\1\123\1\104\1\111\1\124\1\151\1\107\1\117\1\172\1\126\1\103"+
+        "\4\uffff\2\172\1\141\1\103\1\114\1\122\1\172\1\103\1\123\1\114\1"+
+        "\172\1\105\1\116\1\105\1\uffff\1\125\1\105\1\111\1\172\1\114\1\110"+
+        "\1\164\1\111\1\114\1\uffff\1\172\1\114\2\uffff\1\144\1\117\1\123"+
+        "\1\101\1\114\1\uffff\1\105\1\124\1\172\1\uffff\3\172\1\124\1\107"+
+        "\1\172\1\106\1\uffff\1\105\1\172\1\145\1\116\1\105\1\uffff\1\101"+
+        "\1\172\1\122\1\105\1\131\1\105\1\104\1\172\4\uffff\1\126\1\105\1"+
+        "\uffff\2\172\1\uffff\2\172\1\101\1\122\1\uffff\1\104\3\172\1\125"+
+        "\1\uffff\1\101\1\122\2\uffff\1\156\2\uffff\1\116\1\101\1\172\3\uffff"+
+        "\2\122\3\172\1\124\1\uffff\1\105\1\123\3\uffff\1\111\2\172\1\117"+
         "\2\uffff\1\116\1\123\1\172\1\uffff";
     static final String DFA4_acceptS =
         "\1\uffff\1\1\1\2\1\uffff\1\4\1\5\1\6\1\7\1\10\12\uffff\1\27\1\30"+
-        "\2\uffff\1\35\1\36\1\37\1\42\1\uffff\1\44\2\uffff\1\60\1\61\1\62"+
-        "\1\53\1\3\22\uffff\1\32\1\31\1\34\1\33\14\uffff\1\16\10\uffff\1"+
-        "\26\2\uffff\1\43\1\57\4\uffff\1\41\3\uffff\1\14\6\uffff\1\25\4\uffff"+
-        "\1\40\7\uffff\1\47\1\15\1\17\2\uffff\1\20\2\uffff\1\23\3\uffff\1"+
-        "\50\4\uffff\1\13\2\uffff\1\21\1\22\1\uffff\1\51\1\24\2\uffff\1\55"+
-        "\1\11\5\uffff\1\56\2\uffff\1\54\1\52\4\uffff\1\12\1\46\3\uffff\1"+
-        "\45";
+        "\2\uffff\1\35\1\36\1\37\1\42\1\uffff\1\44\3\uffff\1\63\1\64\1\65"+
+        "\1\53\1\3\24\uffff\1\32\1\31\1\34\1\33\16\uffff\1\16\11\uffff\1"+
+        "\26\2\uffff\1\43\1\62\5\uffff\1\41\3\uffff\1\14\7\uffff\1\25\5\uffff"+
+        "\1\40\10\uffff\1\47\1\15\1\17\1\56\2\uffff\1\20\2\uffff\1\23\4\uffff"+
+        "\1\50\5\uffff\1\13\2\uffff\1\21\1\22\1\uffff\1\51\1\24\3\uffff\1"+
+        "\57\1\60\1\11\6\uffff\1\61\2\uffff\1\54\1\52\1\55\4\uffff\1\12\1"+
+        "\46\3\uffff\1\45";
     static final String DFA4_specialS =
-        "\u00a1\uffff}>";
+        "\u00b2\uffff}>";
     static final String[] DFA4_transitionS = {
-            "\2\41\1\uffff\2\41\22\uffff\1\41\2\uffff\1\24\2\uffff\1\32"+
-            "\1\uffff\1\4\1\5\1\31\1\30\1\6\1\27\1\2\1\uffff\12\40\1\3\1"+
-            "\1\1\25\1\23\1\26\2\uffff\1\36\1\21\1\13\1\22\1\17\3\37\1\16"+
-            "\3\37\1\11\1\37\1\33\1\12\1\37\1\35\1\37\1\15\1\37\1\14\1\20"+
-            "\3\37\1\7\1\uffff\1\10\1\uffff\1\37\1\uffff\32\37\3\uffff\1"+
-            "\34",
+            "\2\42\1\uffff\2\42\22\uffff\1\42\2\uffff\1\24\2\uffff\1\32"+
+            "\1\uffff\1\4\1\5\1\31\1\30\1\6\1\27\1\2\1\uffff\12\41\1\3\1"+
+            "\1\1\25\1\23\1\26\2\uffff\1\37\1\21\1\13\1\22\1\17\1\36\2\40"+
+            "\1\16\3\40\1\11\1\40\1\33\1\12\1\40\1\35\1\40\1\15\1\40\1\14"+
+            "\1\20\3\40\1\7\1\uffff\1\10\1\uffff\1\40\1\uffff\32\40\3\uffff"+
+            "\1\34",
             "",
             "",
-            "\1\42",
+            "\1\43",
             "",
             "",
             "",
             "",
             "",
-            "\1\44",
             "\1\45",
-            "\1\47\15\uffff\1\46",
-            "\1\50",
-            "\1\52\20\uffff\1\51",
-            "\1\53\7\uffff\1\54",
-            "\1\55\1\uffff\1\56",
-            "\1\57\1\60\50\uffff\1\61",
-            "\1\62",
-            "\1\65\3\uffff\1\64\5\uffff\1\63",
+            "\1\46",
+            "\1\50\15\uffff\1\47",
+            "\1\51",
+            "\1\53\11\uffff\1\54\6\uffff\1\52",
+            "\1\55\7\uffff\1\56",
+            "\1\57\1\uffff\1\60",
+            "\1\61\1\62\50\uffff\1\63",
+            "\1\64\11\uffff\1\65",
+            "\1\70\3\uffff\1\67\5\uffff\1\66",
             "",
             "",
-            "\1\66",
-            "\1\70",
-            "",
-            "",
-            "",
-            "",
-            "\1\73\13\uffff\1\72",
-            "",
-            "\1\75\37\uffff\1\74",
-            "\1\76",
+            "\1\71",
+            "\1\73",
             "",
             "",
             "",
             "",
+            "\1\76\13\uffff\1\75",
             "",
-            "\1\77",
-            "\1\100",
+            "\1\100\37\uffff\1\77",
             "\1\101",
             "\1\102",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\1\103",
             "\1\104",
             "\1\105",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
-            "\1\107\3\uffff\1\110",
+            "\1\106",
+            "\1\107",
+            "\1\110",
             "\1\111",
             "\1\112",
-            "\1\113",
-            "\1\114",
-            "\1\115",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
+            "\1\114\3\uffff\1\115",
             "\1\116",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
+            "\1\117",
             "\1\120",
             "\1\121",
-            "",
-            "",
-            "",
-            "",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
+            "\1\122",
+            "\1\123",
             "\1\124",
-            "\1\125",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
             "\1\126",
-            "\12\37\7\uffff\24\37\1\127\5\37\4\uffff\1\37\1\uffff\32\37",
-            "\1\131",
+            "\1\127",
+            "",
+            "",
+            "",
+            "",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
             "\1\132",
             "\1\133",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
+            "\1\134",
             "\1\135",
-            "\1\136",
-            "",
-            "\1\137",
+            "\12\40\7\uffff\24\40\1\136\5\40\4\uffff\1\40\1\uffff\32\40",
             "\1\140",
-            "\1\141\3\uffff\1\142",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
+            "\1\141",
+            "\1\142",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
             "\1\144",
             "\1\145",
             "\1\146",
+            "",
             "\1\147",
-            "",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
-            "\1\151",
-            "",
-            "",
-            "\1\152",
-            "\1\153",
+            "\1\150",
+            "\1\151\3\uffff\1\152",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
             "\1\154",
             "\1\155",
-            "",
             "\1\156",
             "\1\157",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
+            "\1\160",
             "",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
+            "\1\162",
+            "",
+            "",
             "\1\163",
             "\1\164",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
+            "\1\165",
             "\1\166",
-            "",
             "\1\167",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
-            "\1\171",
-            "\1\172",
             "",
-            "\1\173",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
-            "\1\175",
+            "\1\170",
+            "\1\171",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
+            "",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
             "\1\176",
             "\1\177",
-            "\1\u0080",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
-            "",
-            "",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
+            "\1\u0081",
             "",
             "\1\u0082",
-            "\1\u0083",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
+            "\1\u0084",
+            "\1\u0085",
+            "\1\u0086",
             "",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
-            "",
-            "\12\37\7\uffff\13\37\1\u0086\16\37\4\uffff\1\37\1\uffff\32"+
-            "\37",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
+            "\1\u0087",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
             "\1\u0089",
-            "",
             "\1\u008a",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
+            "\1\u008b",
+            "\1\u008c",
             "\1\u008d",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
             "",
-            "\1\u008e",
+            "",
+            "",
+            "",
             "\1\u008f",
-            "",
-            "",
             "\1\u0090",
             "",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
             "",
-            "\1\u0091",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
-            "",
-            "",
-            "\1\u0093",
-            "\1\u0094",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
+            "\12\40\7\uffff\13\40\1\u0093\16\40\4\uffff\1\40\1\uffff\32"+
+            "\40",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
+            "\1\u0096",
             "\1\u0097",
             "",
             "\1\u0098",
-            "\1\u0099",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
+            "\1\u009c",
             "",
-            "",
-            "\1\u009a",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
             "\1\u009d",
-            "",
-            "",
             "\1\u009e",
+            "",
+            "",
             "\1\u009f",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
+            "",
+            "",
+            "\1\u00a0",
+            "\1\u00a1",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
+            "",
+            "",
+            "",
+            "\1\u00a3",
+            "\1\u00a4",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
+            "\1\u00a8",
+            "",
+            "\1\u00a9",
+            "\1\u00aa",
+            "",
+            "",
+            "",
+            "\1\u00ab",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
+            "\1\u00ae",
+            "",
+            "",
+            "\1\u00af",
+            "\1\u00b0",
+            "\12\40\7\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
             ""
     };
 
@@ -1832,7 +1940,7 @@ public class OberonLexer extends Lexer {
             this.transition = DFA4_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | MODULE | PROCEDURE | CONST | VAR | TYPE | IF | THEN | ELSE | ELSIF | WHILE | WITH | BEGIN | END | DO | EQUAL | UNEQUAL | LESS | LESS_EQUAL | GREAT | GREAT_EQUAL | MIN | PLUS | MUL | DIV | MOD | AND | OR | NOT | DECLARATIONS | INPUTVARS | CALL | CALL_READ | CALL_WRITE | CALL_WRITELN | ASSIGN | INTEGER | ARRAY | RECORD | OF | ID | INT | WHITESPACE );";
+            return "1:1: Tokens : ( T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | MODULE | PROCEDURE | CONST | VAR | TYPE | IF | THEN | ELSE | ELSIF | WHILE | WITH | BEGIN | END | DO | EQUAL | UNEQUAL | LESS | LESS_EQUAL | GREAT | GREAT_EQUAL | MIN | PLUS | MUL | DIV | MOD | AND | OR | NOT | DECLARATIONS | INPUTVARS | CALL | CALL_READ | CALL_WRITE | CALL_WRITELN | ASSIGN | INTEGER | BOOLEAN | TRUE | FALSE | ARRAY | RECORD | OF | ID | INT | WHITESPACE );";
         }
     }
  
