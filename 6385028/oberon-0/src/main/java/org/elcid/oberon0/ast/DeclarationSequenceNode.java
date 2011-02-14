@@ -14,11 +14,13 @@ public class DeclarationSequenceNode extends DeclarationNode {
 	private List<ConstDeclNode> constants;
 	private List<TypeDeclNode> typeDecls;
 	private List<VarDeclNode> varDecls;
+	private List<ProcedureDeclNode> procDecls;
 
 	public DeclarationSequenceNode() {
 		constants = new ArrayList<ConstDeclNode>();
 		typeDecls = new ArrayList<TypeDeclNode>();
 		varDecls = new ArrayList<VarDeclNode>();
+		procDecls = new ArrayList<ProcedureDeclNode>();
 	}
 
 	public List<ConstDeclNode> getConstants() {
@@ -31,6 +33,10 @@ public class DeclarationSequenceNode extends DeclarationNode {
 
 	public List<VarDeclNode> getVarDecls() {
 		return varDecls;
+	}
+
+	public List<ProcedureDeclNode> getProcDecls() {
+		return procDecls;
 	}
 
 	public void addConstDecls(List<ConstDeclNode> list) {
@@ -46,6 +52,11 @@ public class DeclarationSequenceNode extends DeclarationNode {
 	public void addVarDecls(List<VarDeclNode> list) {
 		if (!list.isEmpty())
 			varDecls.addAll(list);
+	}
+
+	public void addProcDecls(List<ProcedureDeclNode> list) {
+		if (!list.isEmpty())
+			procDecls.addAll(list);
 	}
 
 	@Override

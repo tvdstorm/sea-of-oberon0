@@ -2,6 +2,7 @@ package org.elcid.oberon0.ast.env;
 
 import java.util.HashMap;
 import java.util.Map;
+import org.elcid.oberon0.ast.ProcedureDeclNode;
 import org.elcid.oberon0.ast.TypeNode;
 import org.elcid.oberon0.ast.values.Value;
 import org.elcid.oberon0.exceptions.UnboundVariableException;
@@ -14,12 +15,18 @@ import org.elcid.oberon0.exceptions.UnboundVariableException;
  */
 public class Environment {
 
-	private Map<String, Value> valueBindings;
-	private Map<String, TypeNode> typeAliases;
+	private Environment superEnv;
+
+	private Map<String, Value> valueBindings = new HashMap<String, Value>();
+	private Map<String, TypeNode> typeAliases = new HashMap<String, TypeNode>();
+	private Map<String, Procedure> procedures = new HashMap<String, Procedure>();
 
 	public Environment() {
-		valueBindings = new HashMap<String, Value>();
-		typeAliases = new HashMap<String, TypeNode>();
+		superEnv = null;
+	}
+
+	public Environment(Environment superEnv) {
+		this.superEnv = superEnv;
 	}
 
 	/**
@@ -32,8 +39,11 @@ public class Environment {
 	 */
 	public Value getValue(String variableName) {
 		Value value = valueBindings.get(variableName);
-		if (value == null)
-			throw new UnboundVariableException("Variable " + variableName + " is not bound to an integer");
+		if (value == null) {
+			value = superEnv.getValue(variableName);
+			if (value == null)
+				throw new UnboundVariableException("Variable " + variableName + " is not bound to an integer");
+		}
 		return value;
 	}
 
@@ -57,6 +67,14 @@ public class Environment {
 
 	public void putTypeAlias(String alias, TypeNode type) {
 		typeAliases.put(alias, type);
+	}
+
+	public Procedure getProcedure(String procedureName) {
+		return procedures.get(procedureName);
+	}
+
+	public void putProcedure(String procedureName, Procedure procedure) {
+		procedures.put(procedureName, procedure);
 	}
 
 }

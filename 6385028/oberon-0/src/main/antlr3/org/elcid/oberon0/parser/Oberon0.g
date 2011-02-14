@@ -85,7 +85,7 @@ declarations returns [DeclarationSequenceNode result]
 		(c=constDecl									{ $result.addConstDecls($c.result); } )?
 		(t=typeDecl										{ $result.addTypeDecls($t.result); } )?
 		(v=varDecl										{ $result.addVarDecls($v.result); } )?
-		(p=procedureDecl SEMI_COLON						{  } )*
+		(p=procedureDecls SEMI_COLON					{ $result.addProcDecls($p.result); } )?
 	;
 
 constDecl returns [List<ConstDeclNode> result]
@@ -105,21 +105,26 @@ varDecl returns [List<VarDeclNode> result = new ArrayList<VarDeclNode>()]
 		)*
 	;
 
-procedureDecl
-	: 	PROCEDURE_KW identifier (formalParams)? SEMI_COLON procedureBody
+procedureDecls returns [List<ProcedureDeclNode> result = new ArrayList<ProcedureDeclNode>()]
+	:	(pd=procedureDecl								{ $result.add($pd.result); } )+
 	;
 
-procedureBody
-	:	declarations (BEGIN_KW statementSequence)? END_KW identifier
+procedureDecl returns [ProcedureDeclNode result]
+	: 	PROCEDURE_KW i=identifier (fp=formalParams)?	{ $result = new ProcedureDeclNode($i.text, $fp.result); }
+		SEMI_COLON d=declarations						{ $result.setDeclarationSequence($d.result); }
+		(BEGIN_KW ss=statementSequence)?				{ $result.setStatementSequence($ss.result); }
+		END_KW identifier
 	;
 
-formalParams
-	:	RND_OPEN (fPSection (SEMI_COLON fPSection)*)? RND_CLOSE
+formalParams returns [FormalParamsNode result = new FormalParamsNode()]
+	:	RND_OPEN (fp1=fPSection							{ $result.add($fp1.result); }
+		(SEMI_COLON fpx=fPSection						{ $result.add($fpx.result); }
+		)*)? RND_CLOSE
 	;
 
-fPSection
-	: 	VAR_KW identList COLON type
-	|	identList COLON type
+fPSection returns [FpSectionNode result]
+	: 	VAR_KW i=identList COLON t=type					{ $result = new FpSectionNode($i.result, $t.result); }
+	|	i=identList COLON t=type						{ $result = new FpSectionNode($i.result, $t.result); }
 	;
 
 type returns [TypeNode result]
@@ -158,7 +163,7 @@ statementSequence returns [StatementSequenceNode result]
 
 statement returns [StatementNode result]
 	:	a=assignment									{ $result = $a.result; }
-	|	p=procedureCall
+	|	p=procedureCall									{ $result = $p.result; }
 	|	i=ifStatement									{ $result = $i.result; }
 	|	w=whileStatement								{ $result = $w.result;}
 	;
@@ -167,8 +172,9 @@ assignment returns [StatementNode result]
 	:	is=identSelector ASSIGN_OP e=expression			{ $result = new AssignmentNode($is.result, $e.result); }
 	;
 
-procedureCall
-	:	identifier (actualParameters)?
+procedureCall returns [ProcCallStmNode result]
+	:	i=identifier									{ $result = new ProcCallStmNode($i.text); }
+		(ap=actualParameters							{ $result.setActualParameters($ap.result); } )?
 	;
 
 whileStatement returns [StatementNode result]
@@ -197,9 +203,11 @@ elseStatement returns [IfThenElseStmNode result]
 	:	ELSE_KW ss=statementSequence					{ $result = new ElseStmNode($ss.result); }
 	;
 
-actualParameters
+actualParameters returns [List<ExpressionNode> result = new ArrayList<ExpressionNode>()]
 	: 	RND_OPEN RND_CLOSE
-	|	RND_OPEN expression (COMMA expression)* RND_CLOSE
+	|	RND_OPEN e1=expression							{ $result.add($e1.result); }
+		(COMMA ex=expression							{ $result.add($ex.result); }
+		)* RND_CLOSE
 	;
 
 expression returns [ExpressionNode result]
