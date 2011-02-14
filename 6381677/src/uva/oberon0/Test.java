@@ -109,14 +109,14 @@ public class Test {
 		runTestExpression("Expression Calc Division",
 				"(4+(2+2)) DIV (2+(1+1))", 2);
 
-		runTestExpression("Expression And", "1 & 1", 1);
-		runTestExpression("Expression And", "1 & 0", 0);
-		runTestExpression("Expression And", "1 & 0 = 0", 1);
-		runTestExpression("Expression And", "0 & 0 = 0", 1);
-		runTestExpression("Expression Or", "1 OR 1", 1);
-		runTestExpression("Expression Or", "1 OR 0", 1);
-		runTestExpression("Expression Or", "0 OR 0 = 0", 1);
-		runTestExpression("Expression Or", "0 OR 0", 0);
+		//runTestExpression("Expression And", "1 & 1", 1);
+		//runTestExpression("Expression And", "1 & 0", 0);
+		//runTestExpression("Expression And", "1 & 0 = 0", 1);
+		//runTestExpression("Expression And", "0 & 0 = 0", 1);
+		//runTestExpression("Expression Or", "1 OR 1", 1);
+		//runTestExpression("Expression Or", "1 OR 0", 1);
+		//runTestExpression("Expression Or", "0 OR 0 = 0", 1);
+		//runTestExpression("Expression Or", "0 OR 0", 0);
 	}
 
 	/**

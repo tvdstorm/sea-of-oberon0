@@ -6,10 +6,13 @@ import uva.oberon0.runtime.Scope;
  * This class represents a Less Than Binary Expression (x < y).
  * @author Chiel Labee
  */
-public class LessThan extends BinaryExpression {
+public class LessThan extends BinaryExpression implements IBooleanExpression {
 
 	public LessThan(Expression left, Expression right) {
 		super(left, right);
+		
+		assert left instanceof INumericExpression;
+		assert right instanceof INumericExpression;
 	}
 
 	@Override

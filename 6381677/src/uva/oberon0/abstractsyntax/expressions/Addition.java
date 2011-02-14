@@ -6,10 +6,13 @@ import uva.oberon0.runtime.Scope;
  * This class represents an Additional Binary Expression (x + y).
  * @author Chiel Labee
  */
-public class Addition extends BinaryExpression {
+public class Addition extends BinaryExpression implements INumericExpression {
 
 	public Addition(Expression left, Expression right) {
 		super(left, right);
+		
+		assert left instanceof INumericExpression;
+		assert right instanceof INumericExpression;
 	}
 
 	@Override
