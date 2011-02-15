@@ -5,7 +5,6 @@ import java.util.List;
 
 import oberon.IExpression;
 import oberon.IIdentifier;
-import oberon.data.VariableIdentifier;
 import oberon.expressions.IdentifierExpression;
 import oberon.statement.AssignmentStatement;
 
@@ -33,7 +32,7 @@ public class AssignmentStatementChecker implements IChecker {
 			IdentifierExpressionChecker identChecker = 
 				new IdentifierExpressionChecker((IdentifierExpression)expression);
 			
-			errorList.addAll(identChecker.canEvalToInt());
+			errorList.addAll(identChecker.canEvalToInt(scope));
 		}
 		
 		return errorList;
