@@ -8,6 +8,10 @@ public class AnEnvironment implements IAstNode {
 
 	private Stack<AnContext> contexts;
 	
+	public AnEnvironment(){
+		this.contexts = new Stack<AnContext>();
+	}
+	
 	@Override
 	public IAstNode eval(AnEnvironment env) throws Exception {
 		// TODO Auto-generated method stub
@@ -66,7 +70,7 @@ public class AnEnvironment implements IAstNode {
 		AnContext ctx;
 		AnIdent ident = null;
 		
-		for (int i = sz; i > 0; i--){
+		for (int i = sz; i >= 0; i--){
 			ctx = contexts.get(i);
 			if (ctx != null){
 				ident = ctx.getIdent(name);

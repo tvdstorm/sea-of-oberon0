@@ -10,6 +10,7 @@ import org.antlr.runtime.CharStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.ParserRuleReturnScope;
 import org.antlr.runtime.RecognitionException;
+import org.antlr.runtime.tree.BaseTree;
 import org.antlr.runtime.tree.CommonTree;
 import org.antlr.runtime.tree.CommonTreeAdaptor;
 
@@ -17,13 +18,23 @@ public class Interpreter {
 
 	public static void main(String[] args) {
 		try {
-			CommonTree tree =  testProcDecl(
+			testProc(
 			  "PROCEDURE AssignIets;"
 			+ "  VAR x: INTEGER; "
 			+ "BEGIN "
 			+ "  x := 1"
 			+ "END Multiply;");
-			int a = 1;
+			
+			testProc(
+		      "PROCEDURE Swap(VAR x, y: INTEGER);"
+			+ "VAR"
+			+ "   temp: INTEGER;"
+			+ " BEGIN"
+			+ "   temp := x;"
+			+ "   x := y;"
+			+ "   y := temp"
+			+ " END Swap;");
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -42,6 +53,15 @@ public class Interpreter {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private static void testProc(String input) throws Exception{
+		CommonTree tree =  testProcDecl(input);
+		CommonTree t = new CommonTree();
+		t.addChild(tree);
+		AnProcDecl proc = AstNodeFactory.createProcDecl(t);
+		
+		proc.eval(new AnEnvironment());
 	}
 	
 	private static CommonTree testProcDecl(String input)throws Exception{
