@@ -6,7 +6,6 @@ import java.util.List;
 import oberon0.ast.variables.IReferable;
 import oberon0.ast.variables.types.IType;
 import oberon0.environment.Context;
-import oberon0.environment.IValue;
 
 public class FPVarNode extends BaseFormalParameterNode {
 
@@ -16,16 +15,7 @@ public class FPVarNode extends BaseFormalParameterNode {
 
 	@Override
 	public void fillIn(Context context, Iterator<IReferable> actualParams) {
-		Iterator<String> fpNames = getFPNamesIter();
-
-		while (fpNames.hasNext()) {
-			IReferable currentActualParam = getNextActualParameter(actualParams);
-			IValue currentAPValue = currentActualParam
-					.eval(context.getParent()).getCopy();
-
-			String currentName = fpNames.next();
-			context.declareVar(currentName, currentAPValue);
-		}
+		baseFillIn(context, actualParams, false);
 	}
 
 }
