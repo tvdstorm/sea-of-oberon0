@@ -1,6 +1,7 @@
 package com.douwekasemier.oberon0.ast.declaration;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.antlr.runtime.tree.Tree;
 
@@ -13,7 +14,7 @@ import com.douwekasemier.oberon0.interpreter.environment.Environment;
 
 public class Declarations extends AST implements Declarable {
 
-    private ArrayList<ConstantDeclaration> constants;
+    private List<ConstantDeclaration> constants;
     private ArrayList<VariableDeclaration> variables;
     private ArrayList<TypeDeclaration> types;
     private ArrayList<ProcedureDeclaration> procedures;
@@ -26,7 +27,7 @@ public class Declarations extends AST implements Declarable {
     }
 
     public Declarations(
-            ArrayList<ConstantDeclaration> constants,
+            List<ConstantDeclaration> constants,
             ArrayList<VariableDeclaration> variables,
             ArrayList<TypeDeclaration> types,
             ArrayList<ProcedureDeclaration> procedures) throws ASTException {
