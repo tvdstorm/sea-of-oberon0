@@ -51,8 +51,12 @@ public class ProcedureCall extends AST implements Interpretable {
     @Override
     public void interpret(Environment environment) throws RuntimeException {
 
+        if( identifier.equals("QuickSort")) {
+            System.out.println("");
+        }
+        
         Procedure procedure = environment.getProcedure(identifier);
-        Environment invokerEnvironment = environment.newEnvironment("Procedure call <"+identifier+">");
+        Environment invokerEnvironment = procedure.getEnvironment().newEnvironment("Procedure call <"+identifier+">");
         ProcedureDeclaration procedureDeclaration = procedure.getProcedureNode();
         Declarations declarations = procedureDeclaration.getDeclarations();
         if (declarations != null) {
@@ -65,11 +69,11 @@ public class ProcedureCall extends AST implements Interpretable {
                 Evaluatable actualParameter = actualParameters.get(i);
                 try {
                     if (formalParameter.isReference()) {
-                        Reference ref = actualParameter.select(invokerEnvironment, null);
+                        Reference ref = actualParameter.select(environment, null);
                         invokerEnvironment.declareReference(identifier, ref);
 
                     } else {
-                        Value value = actualParameter.evaluate(invokerEnvironment);
+                        Value value = actualParameter.evaluate(environment);
                         invokerEnvironment.declareVariable(identifier, value);
                     }
                 } catch (NotSelectableExpression e) {

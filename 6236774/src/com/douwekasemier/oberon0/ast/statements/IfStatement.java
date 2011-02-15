@@ -6,12 +6,13 @@ import org.antlr.runtime.tree.Tree;
 
 import com.douwekasemier.oberon0.ast.AST;
 import com.douwekasemier.oberon0.ast.Interpretable;
-import com.douwekasemier.oberon0.ast.statements.ifstatement.*;
+import com.douwekasemier.oberon0.ast.statements.ifstatement.Else;
+import com.douwekasemier.oberon0.ast.statements.ifstatement.Elsif;
+import com.douwekasemier.oberon0.ast.statements.ifstatement.If;
 import com.douwekasemier.oberon0.core.Oberon0Parser;
 import com.douwekasemier.oberon0.exceptions.RuntimeException;
 import com.douwekasemier.oberon0.interpreter.environment.Bool;
 import com.douwekasemier.oberon0.interpreter.environment.Environment;
-import com.douwekasemier.oberon0.interpreter.environment.Value;
 
 public class IfStatement extends AST implements Interpretable {
 
@@ -64,8 +65,9 @@ public class IfStatement extends AST implements Interpretable {
         Bool ifResult = (Bool) ifpart.getExpression().evaluate(environment);
         if( ifResult.getValue().booleanValue() ) {
             ifpart.getStatements().interpret(environment);
+            
         }
-        else{
+        else {
             Bool elsifResult;
             for(Elsif elsifpart : elsifparts) {
                 elsifResult = (Bool) elsifpart.getExpression().evaluate(environment);
