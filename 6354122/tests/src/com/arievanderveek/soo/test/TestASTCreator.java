@@ -12,6 +12,7 @@ import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.TokenStream;
 
 import com.arievanderveek.soo.ast.ASTNode;
+import com.arievanderveek.soo.ast.codeblocks.ModuleNode;
 import com.arievanderveek.soo.parser.antlrimpl.generated.Oberon0Lexer;
 import com.arievanderveek.soo.parser.antlrimpl.generated.Oberon0Parser;
 import com.arievanderveek.soo.parser.antlrimpl.generated.Oberon0Parser.module_return;
@@ -24,7 +25,7 @@ import com.arievanderveek.soo.parser.antlrimpl.generated.Oberon0Parser.module_re
  */
 public class TestASTCreator {
 	
-	public static ASTNode createASTNode(String content) throws Exception{
+	public static ModuleNode createASTNode(String content) throws Exception{
 		InputStream inputStream = new ByteArrayInputStream(content.getBytes());
 		CharStream stream = new ANTLRInputStream(inputStream);
 		// Parse the input stream with the lexer and parser to create a tree
@@ -37,11 +38,11 @@ public class TestASTCreator {
 		return parseTree.node;		
 	}
 	
-	public static ASTNode createSimpleMathAST() throws Exception{
+	public static ModuleNode createSimpleMathAST() throws Exception{
 		return createASTNode(simpleMath);
 	}
 	
-	public static ASTNode createProcAndVariablesAST() throws Exception{
+	public static ModuleNode createProcAndVariablesAST() throws Exception{
 		return createASTNode(procsConstAndVariables);
 	}
 	

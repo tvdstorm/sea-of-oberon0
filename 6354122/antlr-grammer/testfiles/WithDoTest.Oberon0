@@ -19,15 +19,30 @@ VAR
   bankAccounCounter,savingsAccounCounter: INTEGER;
   addedAmount : int;
  
+PROCEDURE updateBankAccount(VAR bankaccount: record; addedAmount: INTEGER);
+
+  BEGIN
+		WITH bankaccount DO
+			checkaccount := addedAmount;
+			balanceaccount := addedAmount + 340;
+			savingsAccounCounter := 0;
+			WHILE savingsAccounCounter < SAVINGSACCOUNTSIZE DO
+				addedAmount := addedAmount * 2;
+				savingsaccount[savingsAccounCounter] := addedAmount - 234;
+				savingsAccounCounter := savingsAccounCounter+1
+			END
+		END
+END updateBankAccount;
+ 
 BEGIN
-	addedAmount := 10;
+	Read(addedAmount);
 	WITH singleBankAccount DO
-		checkaccount := addedAmount;
+		checkaccount := addedAmount * 2;
 		balanceaccount := addedAmount + 92340;
 		savingsAccounCounter := 0;
 		WHILE savingsAccounCounter < SAVINGSACCOUNTSIZE DO
 			addedAmount := addedAmount * 2;
-			savingsaccount[savingsAccounCounter] := addedAmount + 23;
+			savingsaccount[savingsAccounCounter] := addedAmount;
 			savingsAccounCounter := savingsAccounCounter+1
 		END
 	END;
@@ -47,16 +62,8 @@ BEGIN
 	WriteLn;
 	bankAccounCounter := 0;
 	WHILE bankAccounCounter < MULTIACCOUNTSIZE DO
-		WITH multiBankAccount[bankAccounCounter] DO
-			checkaccount := addedAmount;
-			balanceaccount := addedAmount + 92340;
-			savingsAccounCounter := 0;
-			WHILE savingsAccounCounter < SAVINGSACCOUNTSIZE DO
-				addedAmount := addedAmount * 4;
-				savingsaccount[savingsAccounCounter] := addedAmount + 23;
-				savingsAccounCounter := savingsAccounCounter+1
-			END
-		END;
+		addedAmount := addedAmount + ( ( addedAmount MOD 13 ) * 7 );
+		updateBankAccount(multiBankAccount[bankAccounCounter], addedAmount);
 		bankAccounCounter := bankAccounCounter +1
 	END;
 	bankAccounCounter := 0;
@@ -72,7 +79,7 @@ BEGIN
 					WriteLn;
 					savingsAccounCounter := savingsAccounCounter+1
 				END;
-				WriteLn;WriteLn
+				WriteLn
 			END;
 		bankAccounCounter := bankAccounCounter +1
 	END
