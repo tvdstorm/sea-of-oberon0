@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import oberon0.ast.routines.ICallable;
+import oberon0.ast.variables.types.IType;
 
 /*
  * This is where all known variables, procedures and types can be stored
@@ -13,7 +14,7 @@ public class Context {
 	private String _name;
 	private Map<String, Reference> _variables;
 	private Map<String, ICallable> _procedures;
-	private Map<String, IValue> _types;
+	private Map<String, IType> _types;
 	private Context _parent;
 
 	/*
@@ -25,7 +26,7 @@ public class Context {
 		_name = name;
 		_variables = new HashMap<String, Reference>();
 		_procedures = new HashMap<String, ICallable>();
-		_types = new HashMap<String, IValue>();
+		_types = new HashMap<String, IType>();
 		_parent = parent;
 	}
 
@@ -60,7 +61,7 @@ public class Context {
 	/*
 	 * Get the type with the given name from the scope
 	 */
-	public IValue getType(String name) {
+	public IType getType(String name) {
 		if (containsType(name)) {
 			return _types.get(name);
 		} else {
@@ -98,7 +99,7 @@ public class Context {
 	/*
 	 * declare a new type in the current scope by a name and a value
 	 */
-	public void declareType(String name, IValue type) {
+	public void declareType(String name, IType type) {
 		_types.put(name, type);
 	}
 

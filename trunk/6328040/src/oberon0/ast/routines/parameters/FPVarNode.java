@@ -3,14 +3,14 @@ package oberon0.ast.routines.parameters;
 import java.util.Iterator;
 import java.util.List;
 
-import oberon0.ast.expressions.IEvaluable;
 import oberon0.ast.variables.IReferable;
+import oberon0.ast.variables.types.IType;
 import oberon0.environment.Context;
 import oberon0.environment.IValue;
 
 public class FPVarNode extends BaseFormalParameterNode {
 
-	public FPVarNode(List<String> names, IEvaluable type) {
+	public FPVarNode(List<String> names, IType type) {
 		super(names, type);
 	}
 

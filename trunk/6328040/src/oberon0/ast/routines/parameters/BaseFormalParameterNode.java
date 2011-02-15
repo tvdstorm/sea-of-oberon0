@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import oberon0.ast.expressions.IEvaluable;
 import oberon0.ast.variables.IReferable;
+import oberon0.ast.variables.types.IType;
 
 public abstract class BaseFormalParameterNode implements IFormalParameter {
 	private final List<String> _names;
-	private final IEvaluable _type;
+	private final IType _type;
 
-	protected BaseFormalParameterNode(List<String> names, IEvaluable type) {
+	protected BaseFormalParameterNode(List<String> names, IType type) {
 		if (names != null) {
 			_names = names;
 		} else {

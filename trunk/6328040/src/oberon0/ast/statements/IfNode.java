@@ -15,7 +15,7 @@ public class IfNode implements IExecutable {
 	private final IExecutable _elseBody;
 
 	public IfNode(IEvaluable ifcondition, IExecutable ifbody,
-			ArrayList<IEvaluable> condlist, ArrayList<IExecutable> ifelsbody,
+			List<IEvaluable> condlist, List<IExecutable> ifelsbody,
 			IExecutable elsebody) {
 		_ifCondition = ifcondition;
 		_ifBody = ifbody;
