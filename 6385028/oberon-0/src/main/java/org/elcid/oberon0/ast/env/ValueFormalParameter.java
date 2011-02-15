@@ -19,7 +19,7 @@ public class ValueFormalParameter extends FormalParameter {
 
 	@Override
 	public void declare(Environment env, Value value) {
-		env.declareByValue(identifier, value);
+		env.declareValue(identifier, value.clone());
 	}
 
 }

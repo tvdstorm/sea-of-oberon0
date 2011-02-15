@@ -245,7 +245,7 @@ term returns [ExpressionNode result]
 
 factor returns [ExpressionNode result]
 	:	is=identSelector								{ $result = $is.result; }
-	|	i=integer										{ $result = new IntExpNode(new Int(Integer.parseInt($i.text))); }
+	|	i=integer										{ $result = new IntExpNode(Integer.parseInt($i.text)); }
 	|	RND_OPEN e=expression RND_CLOSE					{ $result = $e.result; }
 	|	TILDE f=factor									{ $result = new NotExpNode($f.result); }
 	;

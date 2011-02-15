@@ -7,6 +7,7 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 import org.elcid.oberon0.ast.IntType;
 import org.elcid.oberon0.ast.values.Int;
+import org.elcid.oberon0.ast.values.Value;
 
 /**
  *
@@ -32,7 +33,7 @@ public class ReadBuiltinProcedure extends Procedure {
 		System.out.println("Waiting for input>>");
 //		int i = Integer.parseInt(JOptionPane.showInputDialog("input"));
 		//Scanner s = new Scanner(System.in);
-		Reference input = env.getReference(INPUT_PARAM);
-		input.set(new Int(new Random().nextInt()), env);
+		Value input = env.getValue(INPUT_PARAM);
+		input.set(new Int(new Random().nextInt(10)));
 	}
 }

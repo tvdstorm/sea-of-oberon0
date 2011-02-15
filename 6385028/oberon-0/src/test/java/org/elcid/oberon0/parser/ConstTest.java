@@ -40,10 +40,10 @@ public class ConstTest {
 		ModuleNode mod = parser.module();
 
 		Environment env = new Environment();
-		env.declareByValue("a", new Int(5));
+		env.declareValue("a", new Int(5));
 
 		mod.run(env);
 
-		System.out.println("a = " + ((Int)env.getReference("a").get()).getValue());
+		System.out.println("a = " + ((Int)env.getValue("a")).getValue());
 	}
 }

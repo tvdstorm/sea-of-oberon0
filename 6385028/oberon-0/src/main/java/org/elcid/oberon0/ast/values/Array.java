@@ -34,4 +34,22 @@ public class Array extends Value {
 		this.maxLength = ((Array) value).maxLength;
 	}
 
+	@Override
+	public Value clone() {
+		Array clone = new Array(maxLength.intValue());
+
+		ArrayList<Value> copiedElements = new ArrayList<Value>();
+		for (Value val : elements) {
+			copiedElements.add(val.clone());
+		}
+		clone.elements = copiedElements;
+
+		return clone;
+	}
+
+	@Override
+	public String toString() {
+		return elements.toString();
+	}
+
 }

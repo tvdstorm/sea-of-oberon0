@@ -31,7 +31,7 @@ public class DeclarationsTest {
 
 		mod.run(env);
 
-		System.out.println("a = " + ((Int)env.getReference("a").get()).getValue());
+		System.out.println("a = " + ((Int)env.getValue("a")).getValue());
 	}
 
 }

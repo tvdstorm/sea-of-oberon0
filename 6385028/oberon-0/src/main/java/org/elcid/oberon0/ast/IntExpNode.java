@@ -2,6 +2,7 @@ package org.elcid.oberon0.ast;
 
 import org.elcid.oberon0.ast.env.Environment;
 import org.elcid.oberon0.ast.values.Int;
+import org.elcid.oberon0.ast.values.Value;
 import org.elcid.oberon0.ast.visitor.ExpressionVisitor;
 
 /**
@@ -11,18 +12,18 @@ import org.elcid.oberon0.ast.visitor.ExpressionVisitor;
  */
 public class IntExpNode extends ExpressionNode {
 
-	private Int value;
+	private int value;
 
-	public IntExpNode(Int value) {
+	public IntExpNode(int value) {
 		this.value = value;
 	}
 
 	public Int getValue() {
-		return value;
+		return new Int(value);
 	}
 
 	@Override
-	public Object eval(ExpressionVisitor visitor, Environment localEnv) {
+	public Value eval(ExpressionVisitor visitor, Environment localEnv) {
 		return visitor.eval(this, localEnv);
 	}
 
