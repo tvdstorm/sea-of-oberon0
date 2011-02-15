@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:50:56 C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g 2011-02-14 01:37:37
+// $ANTLR 3.3 Nov 30, 2010 12:50:56 C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g 2011-02-15 15:33:48
 
 package nl.bve.uva.oberon.parser;
 
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class Oberon0Parser extends Parser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "PLUS", "MINUS", "MULT", "DIV", "MOD", "EQUALS", "NOT_EQ", "OR", "AND", "LT", "LT_EQ", "GT", "GT_EQ", "IDENT", "NUMBER", "INTEGER", "LETTER", "DIGIT", "WHITESPACE", "'MODULE'", "';'", "'BEGIN'", "'END'", "'.'", "'CONST'", "'TYPE'", "'VAR'", "':'", "'PROCEDURE'", "'('", "')'", "'INTEGER'", "'RECORD'", "'ARRAY'", "'OF'", "','", "':='", "'IF'", "'THEN'", "'ELSIF'", "'ELSE'", "'WHILE'", "'DO'", "'['", "']'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "PLUS", "MINUS", "MULT", "DIV", "MOD", "EQUALS", "NOT_EQ", "OR", "AND", "LT", "LT_EQ", "GT", "GT_EQ", "IDENT", "NUMBER", "INTEGER", "LETTER", "DIGIT", "WHITESPACE", "'MODULE'", "';'", "'BEGIN'", "'END'", "'.'", "'CONST'", "'TYPE'", "'VAR'", "':'", "'PROCEDURE'", "'('", "')'", "'INTEGER'", "'RECORD'", "'ARRAY'", "'OF'", "','", "':='", "'IF'", "'THEN'", "'ELSIF'", "'ELSE'", "'WHILE'", "'DO'", "'WITH'", "'['", "']'"
     };
     public static final int EOF=-1;
     public static final int T__23=23;
@@ -44,6 +44,7 @@ public class Oberon0Parser extends Parser {
     public static final int T__46=46;
     public static final int T__47=47;
     public static final int T__48=48;
+    public static final int T__49=49;
     public static final int PLUS=4;
     public static final int MINUS=5;
     public static final int MULT=6;
@@ -1148,7 +1149,7 @@ public class Oberon0Parser extends Parser {
             int alt19=2;
             int LA19_0 = input.LA(1);
 
-            if ( (LA19_0==IDENT||LA19_0==41||LA19_0==45) ) {
+            if ( (LA19_0==IDENT||LA19_0==41||LA19_0==45||LA19_0==47) ) {
                 alt19=1;
             }
             switch (alt19) {
@@ -1214,7 +1215,7 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "statement"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:139:1: statement returns [IInterpretableNode result] : ( assignment | procedureCall | ifStatement | whileStatement );
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:139:1: statement returns [IInterpretableNode result] : ( assignment | procedureCall | ifStatement | whileStatement | withStatement );
     public final IInterpretableNode statement() throws RecognitionException {
         IInterpretableNode result = null;
 
@@ -1226,16 +1227,18 @@ public class Oberon0Parser extends Parser {
 
         IInterpretableNode whileStatement19 = null;
 
+        IInterpretableNode withStatement20 = null;
+
 
         try {
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:140:2: ( assignment | procedureCall | ifStatement | whileStatement )
-            int alt20=4;
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:140:2: ( assignment | procedureCall | ifStatement | whileStatement | withStatement )
+            int alt20=5;
             switch ( input.LA(1) ) {
             case IDENT:
                 {
                 int LA20_1 = input.LA(2);
 
-                if ( (LA20_1==27||LA20_1==40||LA20_1==47) ) {
+                if ( (LA20_1==27||LA20_1==40||LA20_1==48) ) {
                     alt20=1;
                 }
                 else if ( (LA20_1==24||LA20_1==26||LA20_1==33||(LA20_1>=43 && LA20_1<=44)) ) {
@@ -1257,6 +1260,11 @@ public class Oberon0Parser extends Parser {
             case 45:
                 {
                 alt20=4;
+                }
+                break;
+            case 47:
+                {
+                alt20=5;
                 }
                 break;
             default:
@@ -1315,6 +1323,18 @@ public class Oberon0Parser extends Parser {
 
                     }
                     break;
+                case 5 :
+                    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:144:5: withStatement
+                    {
+                    pushFollow(FOLLOW_withStatement_in_statement1133);
+                    withStatement20=withStatement();
+
+                    state._fsp--;
+
+                    result = withStatement20; 
+
+                    }
+                    break;
 
             }
         }
@@ -1334,30 +1354,30 @@ public class Oberon0Parser extends Parser {
     public final IInterpretableNode assignment() throws RecognitionException {
         IInterpretableNode result = null;
 
-        Token IDENT20=null;
-        List<IInterpretableNode> selector21 = null;
+        Token IDENT21=null;
+        List<IInterpretableNode> selector22 = null;
 
-        IInterpretableNode expression22 = null;
+        IInterpretableNode expression23 = null;
 
 
         try {
             // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:148:2: ( IDENT selector ':=' expression )
             // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:148:4: IDENT selector ':=' expression
             {
-            IDENT20=(Token)match(input,IDENT,FOLLOW_IDENT_in_assignment1145); 
-            pushFollow(FOLLOW_selector_in_assignment1147);
-            selector21=selector();
+            IDENT21=(Token)match(input,IDENT,FOLLOW_IDENT_in_assignment1160); 
+            pushFollow(FOLLOW_selector_in_assignment1162);
+            selector22=selector();
 
             state._fsp--;
 
-            result = new IdentSelectorNode((IDENT20!=null?IDENT20.getText():null), selector21); 
-            match(input,40,FOLLOW_40_in_assignment1165); 
-            pushFollow(FOLLOW_expression_in_assignment1167);
-            expression22=expression();
+            result = new IdentSelectorNode((IDENT21!=null?IDENT21.getText():null), selector22); 
+            match(input,40,FOLLOW_40_in_assignment1180); 
+            pushFollow(FOLLOW_expression_in_assignment1182);
+            expression23=expression();
 
             state._fsp--;
 
-            result = new AssignmentNode(result, expression22); 
+            result = new AssignmentNode(result, expression23); 
 
             }
 
@@ -1378,15 +1398,15 @@ public class Oberon0Parser extends Parser {
     public final IInterpretableNode procedureCall() throws RecognitionException {
         IInterpretableNode result = null;
 
-        Token IDENT23=null;
-        List<IInterpretableNode> actualParameters24 = null;
+        Token IDENT24=null;
+        List<IInterpretableNode> actualParameters25 = null;
 
 
         try {
             // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:153:2: ( IDENT ( actualParameters )? )
             // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:153:4: IDENT ( actualParameters )?
             {
-            IDENT23=(Token)match(input,IDENT,FOLLOW_IDENT_in_procedureCall1193); 
+            IDENT24=(Token)match(input,IDENT,FOLLOW_IDENT_in_procedureCall1208); 
             // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:153:10: ( actualParameters )?
             int alt21=2;
             int LA21_0 = input.LA(1);
@@ -1398,8 +1418,8 @@ public class Oberon0Parser extends Parser {
                 case 1 :
                     // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:153:11: actualParameters
                     {
-                    pushFollow(FOLLOW_actualParameters_in_procedureCall1196);
-                    actualParameters24=actualParameters();
+                    pushFollow(FOLLOW_actualParameters_in_procedureCall1211);
+                    actualParameters25=actualParameters();
 
                     state._fsp--;
 
@@ -1409,7 +1429,7 @@ public class Oberon0Parser extends Parser {
 
             }
 
-            result = new ProcedureCallNode((IDENT23!=null?IDENT23.getText():null), actualParameters24); 
+            result = new ProcedureCallNode((IDENT24!=null?IDENT24.getText():null), actualParameters25); 
 
             }
 
@@ -1439,7 +1459,7 @@ public class Oberon0Parser extends Parser {
             // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:158:2: ( '(' (e1= expression ( ',' e2= expression )* )? ')' )
             // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:158:4: '(' (e1= expression ( ',' e2= expression )* )? ')'
             {
-            match(input,33,FOLLOW_33_in_actualParameters1223); 
+            match(input,33,FOLLOW_33_in_actualParameters1238); 
             // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:158:8: (e1= expression ( ',' e2= expression )* )?
             int alt23=2;
             int LA23_0 = input.LA(1);
@@ -1451,7 +1471,7 @@ public class Oberon0Parser extends Parser {
                 case 1 :
                     // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:158:9: e1= expression ( ',' e2= expression )*
                     {
-                    pushFollow(FOLLOW_expression_in_actualParameters1228);
+                    pushFollow(FOLLOW_expression_in_actualParameters1243);
                     e1=expression();
 
                     state._fsp--;
@@ -1472,8 +1492,8 @@ public class Oberon0Parser extends Parser {
                     	case 1 :
                     	    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:159:6: ',' e2= expression
                     	    {
-                    	    match(input,39,FOLLOW_39_in_actualParameters1247); 
-                    	    pushFollow(FOLLOW_expression_in_actualParameters1251);
+                    	    match(input,39,FOLLOW_39_in_actualParameters1262); 
+                    	    pushFollow(FOLLOW_expression_in_actualParameters1266);
                     	    e2=expression();
 
                     	    state._fsp--;
@@ -1494,7 +1514,7 @@ public class Oberon0Parser extends Parser {
 
             }
 
-            match(input,34,FOLLOW_34_in_actualParameters1278); 
+            match(input,34,FOLLOW_34_in_actualParameters1293); 
 
             }
 
@@ -1519,21 +1539,21 @@ public class Oberon0Parser extends Parser {
 
         IInterpretableNode ss1 = null;
 
-        IInterpretableNode elseStatements25 = null;
+        IInterpretableNode elseStatements26 = null;
 
 
         try {
             // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:166:2: ( 'IF' e1= expression 'THEN' ss1= statementSequence ( elseStatements )? 'END' )
             // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:166:4: 'IF' e1= expression 'THEN' ss1= statementSequence ( elseStatements )? 'END'
             {
-            match(input,41,FOLLOW_41_in_ifStatement1293); 
-            pushFollow(FOLLOW_expression_in_ifStatement1297);
+            match(input,41,FOLLOW_41_in_ifStatement1308); 
+            pushFollow(FOLLOW_expression_in_ifStatement1312);
             e1=expression();
 
             state._fsp--;
 
-            match(input,42,FOLLOW_42_in_ifStatement1299); 
-            pushFollow(FOLLOW_statementSequence_in_ifStatement1303);
+            match(input,42,FOLLOW_42_in_ifStatement1314); 
+            pushFollow(FOLLOW_statementSequence_in_ifStatement1318);
             ss1=statementSequence();
 
             state._fsp--;
@@ -1549,8 +1569,8 @@ public class Oberon0Parser extends Parser {
                 case 1 :
                     // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:167:5: elseStatements
                     {
-                    pushFollow(FOLLOW_elseStatements_in_ifStatement1310);
-                    elseStatements25=elseStatements();
+                    pushFollow(FOLLOW_elseStatements_in_ifStatement1325);
+                    elseStatements26=elseStatements();
 
                     state._fsp--;
 
@@ -1560,8 +1580,8 @@ public class Oberon0Parser extends Parser {
 
             }
 
-            match(input,26,FOLLOW_26_in_ifStatement1314); 
-            result = new IfNode(e1, ss1, elseStatements25); 
+            match(input,26,FOLLOW_26_in_ifStatement1329); 
+            result = new IfNode(e1, ss1, elseStatements26); 
 
             }
 
@@ -1612,14 +1632,14 @@ public class Oberon0Parser extends Parser {
                 case 1 :
                     // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:171:5: 'ELSIF' e= expression 'THEN' ss1= statementSequence (es= elseStatements )?
                     {
-                    match(input,43,FOLLOW_43_in_elseStatements1339); 
-                    pushFollow(FOLLOW_expression_in_elseStatements1343);
+                    match(input,43,FOLLOW_43_in_elseStatements1354); 
+                    pushFollow(FOLLOW_expression_in_elseStatements1358);
                     e=expression();
 
                     state._fsp--;
 
-                    match(input,42,FOLLOW_42_in_elseStatements1345); 
-                    pushFollow(FOLLOW_statementSequence_in_elseStatements1349);
+                    match(input,42,FOLLOW_42_in_elseStatements1360); 
+                    pushFollow(FOLLOW_statementSequence_in_elseStatements1364);
                     ss1=statementSequence();
 
                     state._fsp--;
@@ -1636,7 +1656,7 @@ public class Oberon0Parser extends Parser {
                         case 1 :
                             // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:173:5: es= elseStatements
                             {
-                            pushFollow(FOLLOW_elseStatements_in_elseStatements1365);
+                            pushFollow(FOLLOW_elseStatements_in_elseStatements1380);
                             es=elseStatements();
 
                             state._fsp--;
@@ -1654,8 +1674,8 @@ public class Oberon0Parser extends Parser {
                 case 2 :
                     // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:175:4: 'ELSE' ss2= statementSequence
                     {
-                    match(input,44,FOLLOW_44_in_elseStatements1385); 
-                    pushFollow(FOLLOW_statementSequence_in_elseStatements1389);
+                    match(input,44,FOLLOW_44_in_elseStatements1400); 
+                    pushFollow(FOLLOW_statementSequence_in_elseStatements1404);
                     ss2=statementSequence();
 
                     state._fsp--;
@@ -1683,29 +1703,29 @@ public class Oberon0Parser extends Parser {
     public final IInterpretableNode whileStatement() throws RecognitionException {
         IInterpretableNode result = null;
 
-        IInterpretableNode expression26 = null;
+        IInterpretableNode expression27 = null;
 
-        IInterpretableNode statementSequence27 = null;
+        IInterpretableNode statementSequence28 = null;
 
 
         try {
             // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:179:2: ( 'WHILE' expression 'DO' statementSequence 'END' )
             // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:179:4: 'WHILE' expression 'DO' statementSequence 'END'
             {
-            match(input,45,FOLLOW_45_in_whileStatement1412); 
-            pushFollow(FOLLOW_expression_in_whileStatement1414);
-            expression26=expression();
+            match(input,45,FOLLOW_45_in_whileStatement1427); 
+            pushFollow(FOLLOW_expression_in_whileStatement1429);
+            expression27=expression();
 
             state._fsp--;
 
-            match(input,46,FOLLOW_46_in_whileStatement1416); 
-            pushFollow(FOLLOW_statementSequence_in_whileStatement1418);
-            statementSequence27=statementSequence();
+            match(input,46,FOLLOW_46_in_whileStatement1431); 
+            pushFollow(FOLLOW_statementSequence_in_whileStatement1433);
+            statementSequence28=statementSequence();
 
             state._fsp--;
 
-            match(input,26,FOLLOW_26_in_whileStatement1420); 
-            result = new WhileNode(expression26, statementSequence27); 
+            match(input,26,FOLLOW_26_in_whileStatement1435); 
+            result = new WhileNode(expression27, statementSequence28); 
 
             }
 
@@ -1721,8 +1741,51 @@ public class Oberon0Parser extends Parser {
     // $ANTLR end "whileStatement"
 
 
+    // $ANTLR start "withStatement"
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:182:1: withStatement returns [IInterpretableNode result] : 'WITH' expression 'DO' statementSequence 'END' ;
+    public final IInterpretableNode withStatement() throws RecognitionException {
+        IInterpretableNode result = null;
+
+        IInterpretableNode expression29 = null;
+
+        IInterpretableNode statementSequence30 = null;
+
+
+        try {
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:183:2: ( 'WITH' expression 'DO' statementSequence 'END' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:183:4: 'WITH' expression 'DO' statementSequence 'END'
+            {
+            match(input,47,FOLLOW_47_in_withStatement1454); 
+            pushFollow(FOLLOW_expression_in_withStatement1456);
+            expression29=expression();
+
+            state._fsp--;
+
+            match(input,46,FOLLOW_46_in_withStatement1458); 
+            pushFollow(FOLLOW_statementSequence_in_withStatement1460);
+            statementSequence30=statementSequence();
+
+            state._fsp--;
+
+            match(input,26,FOLLOW_26_in_withStatement1462); 
+            result = new WithNode(expression29, statementSequence30); 
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return result;
+    }
+    // $ANTLR end "withStatement"
+
+
     // $ANTLR start "expression"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:182:1: expression returns [IInterpretableNode result] : s1= simpleExpression ( EQUALS s2= simpleExpression | NOT_EQ s2= simpleExpression | LT s2= simpleExpression | LT_EQ s2= simpleExpression | GT s2= simpleExpression | GT_EQ s2= simpleExpression )? ;
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:186:1: expression returns [IInterpretableNode result] : s1= simpleExpression ( EQUALS s2= simpleExpression | NOT_EQ s2= simpleExpression | LT s2= simpleExpression | LT_EQ s2= simpleExpression | GT s2= simpleExpression | GT_EQ s2= simpleExpression )? ;
     public final IInterpretableNode expression() throws RecognitionException {
         IInterpretableNode result = null;
 
@@ -1732,16 +1795,16 @@ public class Oberon0Parser extends Parser {
 
 
         try {
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:183:2: (s1= simpleExpression ( EQUALS s2= simpleExpression | NOT_EQ s2= simpleExpression | LT s2= simpleExpression | LT_EQ s2= simpleExpression | GT s2= simpleExpression | GT_EQ s2= simpleExpression )? )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:183:4: s1= simpleExpression ( EQUALS s2= simpleExpression | NOT_EQ s2= simpleExpression | LT s2= simpleExpression | LT_EQ s2= simpleExpression | GT s2= simpleExpression | GT_EQ s2= simpleExpression )?
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:187:2: (s1= simpleExpression ( EQUALS s2= simpleExpression | NOT_EQ s2= simpleExpression | LT s2= simpleExpression | LT_EQ s2= simpleExpression | GT s2= simpleExpression | GT_EQ s2= simpleExpression )? )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:187:4: s1= simpleExpression ( EQUALS s2= simpleExpression | NOT_EQ s2= simpleExpression | LT s2= simpleExpression | LT_EQ s2= simpleExpression | GT s2= simpleExpression | GT_EQ s2= simpleExpression )?
             {
-            pushFollow(FOLLOW_simpleExpression_in_expression1441);
+            pushFollow(FOLLOW_simpleExpression_in_expression1483);
             s1=simpleExpression();
 
             state._fsp--;
 
             result = s1; 
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:184:4: ( EQUALS s2= simpleExpression | NOT_EQ s2= simpleExpression | LT s2= simpleExpression | LT_EQ s2= simpleExpression | GT s2= simpleExpression | GT_EQ s2= simpleExpression )?
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:188:4: ( EQUALS s2= simpleExpression | NOT_EQ s2= simpleExpression | LT s2= simpleExpression | LT_EQ s2= simpleExpression | GT s2= simpleExpression | GT_EQ s2= simpleExpression )?
             int alt27=7;
             switch ( input.LA(1) ) {
                 case EQUALS:
@@ -1778,10 +1841,10 @@ public class Oberon0Parser extends Parser {
 
             switch (alt27) {
                 case 1 :
-                    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:184:6: EQUALS s2= simpleExpression
+                    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:188:6: EQUALS s2= simpleExpression
                     {
-                    match(input,EQUALS,FOLLOW_EQUALS_in_expression1459); 
-                    pushFollow(FOLLOW_simpleExpression_in_expression1463);
+                    match(input,EQUALS,FOLLOW_EQUALS_in_expression1501); 
+                    pushFollow(FOLLOW_simpleExpression_in_expression1505);
                     s2=simpleExpression();
 
                     state._fsp--;
@@ -1791,10 +1854,10 @@ public class Oberon0Parser extends Parser {
                     }
                     break;
                 case 2 :
-                    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:185:6: NOT_EQ s2= simpleExpression
+                    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:189:6: NOT_EQ s2= simpleExpression
                     {
-                    match(input,NOT_EQ,FOLLOW_NOT_EQ_in_expression1477); 
-                    pushFollow(FOLLOW_simpleExpression_in_expression1481);
+                    match(input,NOT_EQ,FOLLOW_NOT_EQ_in_expression1519); 
+                    pushFollow(FOLLOW_simpleExpression_in_expression1523);
                     s2=simpleExpression();
 
                     state._fsp--;
@@ -1804,10 +1867,10 @@ public class Oberon0Parser extends Parser {
                     }
                     break;
                 case 3 :
-                    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:186:6: LT s2= simpleExpression
+                    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:190:6: LT s2= simpleExpression
                     {
-                    match(input,LT,FOLLOW_LT_in_expression1495); 
-                    pushFollow(FOLLOW_simpleExpression_in_expression1499);
+                    match(input,LT,FOLLOW_LT_in_expression1537); 
+                    pushFollow(FOLLOW_simpleExpression_in_expression1541);
                     s2=simpleExpression();
 
                     state._fsp--;
@@ -1817,10 +1880,10 @@ public class Oberon0Parser extends Parser {
                     }
                     break;
                 case 4 :
-                    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:187:6: LT_EQ s2= simpleExpression
+                    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:191:6: LT_EQ s2= simpleExpression
                     {
-                    match(input,LT_EQ,FOLLOW_LT_EQ_in_expression1514); 
-                    pushFollow(FOLLOW_simpleExpression_in_expression1518);
+                    match(input,LT_EQ,FOLLOW_LT_EQ_in_expression1556); 
+                    pushFollow(FOLLOW_simpleExpression_in_expression1560);
                     s2=simpleExpression();
 
                     state._fsp--;
@@ -1830,10 +1893,10 @@ public class Oberon0Parser extends Parser {
                     }
                     break;
                 case 5 :
-                    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:188:6: GT s2= simpleExpression
+                    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:192:6: GT s2= simpleExpression
                     {
-                    match(input,GT,FOLLOW_GT_in_expression1533); 
-                    pushFollow(FOLLOW_simpleExpression_in_expression1537);
+                    match(input,GT,FOLLOW_GT_in_expression1575); 
+                    pushFollow(FOLLOW_simpleExpression_in_expression1579);
                     s2=simpleExpression();
 
                     state._fsp--;
@@ -1843,10 +1906,10 @@ public class Oberon0Parser extends Parser {
                     }
                     break;
                 case 6 :
-                    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:189:6: GT_EQ s2= simpleExpression
+                    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:193:6: GT_EQ s2= simpleExpression
                     {
-                    match(input,GT_EQ,FOLLOW_GT_EQ_in_expression1552); 
-                    pushFollow(FOLLOW_simpleExpression_in_expression1556);
+                    match(input,GT_EQ,FOLLOW_GT_EQ_in_expression1594); 
+                    pushFollow(FOLLOW_simpleExpression_in_expression1598);
                     s2=simpleExpression();
 
                     state._fsp--;
@@ -1874,7 +1937,7 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "simpleExpression"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:193:1: simpleExpression returns [IInterpretableNode result] : ( PLUS t1= term | MINUS t1= term | t1= term ( PLUS t2= term | MINUS t2= term | OR t2= term )* );
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:197:1: simpleExpression returns [IInterpretableNode result] : ( PLUS t1= term | MINUS t1= term | t1= term ( PLUS t2= term | MINUS t2= term | OR t2= term )* );
     public final IInterpretableNode simpleExpression() throws RecognitionException {
         IInterpretableNode result = null;
 
@@ -1884,7 +1947,7 @@ public class Oberon0Parser extends Parser {
 
 
         try {
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:194:2: ( PLUS t1= term | MINUS t1= term | t1= term ( PLUS t2= term | MINUS t2= term | OR t2= term )* )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:198:2: ( PLUS t1= term | MINUS t1= term | t1= term ( PLUS t2= term | MINUS t2= term | OR t2= term )* )
             int alt29=3;
             switch ( input.LA(1) ) {
             case PLUS:
@@ -1913,10 +1976,10 @@ public class Oberon0Parser extends Parser {
 
             switch (alt29) {
                 case 1 :
-                    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:194:6: PLUS t1= term
+                    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:198:6: PLUS t1= term
                     {
-                    match(input,PLUS,FOLLOW_PLUS_in_simpleExpression1587); 
-                    pushFollow(FOLLOW_term_in_simpleExpression1591);
+                    match(input,PLUS,FOLLOW_PLUS_in_simpleExpression1629); 
+                    pushFollow(FOLLOW_term_in_simpleExpression1633);
                     t1=term();
 
                     state._fsp--;
@@ -1926,10 +1989,10 @@ public class Oberon0Parser extends Parser {
                     }
                     break;
                 case 2 :
-                    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:195:5: MINUS t1= term
+                    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:199:5: MINUS t1= term
                     {
-                    match(input,MINUS,FOLLOW_MINUS_in_simpleExpression1610); 
-                    pushFollow(FOLLOW_term_in_simpleExpression1614);
+                    match(input,MINUS,FOLLOW_MINUS_in_simpleExpression1652); 
+                    pushFollow(FOLLOW_term_in_simpleExpression1656);
                     t1=term();
 
                     state._fsp--;
@@ -1939,15 +2002,15 @@ public class Oberon0Parser extends Parser {
                     }
                     break;
                 case 3 :
-                    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:196:5: t1= term ( PLUS t2= term | MINUS t2= term | OR t2= term )*
+                    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:200:5: t1= term ( PLUS t2= term | MINUS t2= term | OR t2= term )*
                     {
-                    pushFollow(FOLLOW_term_in_simpleExpression1634);
+                    pushFollow(FOLLOW_term_in_simpleExpression1676);
                     t1=term();
 
                     state._fsp--;
 
                     result = t1; 
-                    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:197:3: ( PLUS t2= term | MINUS t2= term | OR t2= term )*
+                    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:201:3: ( PLUS t2= term | MINUS t2= term | OR t2= term )*
                     loop28:
                     do {
                         int alt28=4;
@@ -1972,10 +2035,10 @@ public class Oberon0Parser extends Parser {
 
                         switch (alt28) {
                     	case 1 :
-                    	    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:197:5: PLUS t2= term
+                    	    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:201:5: PLUS t2= term
                     	    {
-                    	    match(input,PLUS,FOLLOW_PLUS_in_simpleExpression1654); 
-                    	    pushFollow(FOLLOW_term_in_simpleExpression1658);
+                    	    match(input,PLUS,FOLLOW_PLUS_in_simpleExpression1696); 
+                    	    pushFollow(FOLLOW_term_in_simpleExpression1700);
                     	    t2=term();
 
                     	    state._fsp--;
@@ -1985,10 +2048,10 @@ public class Oberon0Parser extends Parser {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:198:5: MINUS t2= term
+                    	    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:202:5: MINUS t2= term
                     	    {
-                    	    match(input,MINUS,FOLLOW_MINUS_in_simpleExpression1676); 
-                    	    pushFollow(FOLLOW_term_in_simpleExpression1680);
+                    	    match(input,MINUS,FOLLOW_MINUS_in_simpleExpression1718); 
+                    	    pushFollow(FOLLOW_term_in_simpleExpression1722);
                     	    t2=term();
 
                     	    state._fsp--;
@@ -1998,10 +2061,10 @@ public class Oberon0Parser extends Parser {
                     	    }
                     	    break;
                     	case 3 :
-                    	    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:199:5: OR t2= term
+                    	    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:203:5: OR t2= term
                     	    {
-                    	    match(input,OR,FOLLOW_OR_in_simpleExpression1698); 
-                    	    pushFollow(FOLLOW_term_in_simpleExpression1702);
+                    	    match(input,OR,FOLLOW_OR_in_simpleExpression1740); 
+                    	    pushFollow(FOLLOW_term_in_simpleExpression1744);
                     	    t2=term();
 
                     	    state._fsp--;
@@ -2034,7 +2097,7 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "term"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:209:1: term returns [IInterpretableNode result] : f1= factor ( ( MULT f2= factor | DIV f2= factor | MOD f2= factor | AND f2= factor ) )* ;
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:213:1: term returns [IInterpretableNode result] : f1= factor ( ( MULT f2= factor | DIV f2= factor | MOD f2= factor | AND f2= factor ) )* ;
     public final IInterpretableNode term() throws RecognitionException {
         IInterpretableNode result = null;
 
@@ -2044,16 +2107,16 @@ public class Oberon0Parser extends Parser {
 
 
         try {
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:210:2: (f1= factor ( ( MULT f2= factor | DIV f2= factor | MOD f2= factor | AND f2= factor ) )* )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:210:4: f1= factor ( ( MULT f2= factor | DIV f2= factor | MOD f2= factor | AND f2= factor ) )*
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:214:2: (f1= factor ( ( MULT f2= factor | DIV f2= factor | MOD f2= factor | AND f2= factor ) )* )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:214:4: f1= factor ( ( MULT f2= factor | DIV f2= factor | MOD f2= factor | AND f2= factor ) )*
             {
-            pushFollow(FOLLOW_factor_in_term1738);
+            pushFollow(FOLLOW_factor_in_term1780);
             f1=factor();
 
             state._fsp--;
 
             result = f1; 
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:211:3: ( ( MULT f2= factor | DIV f2= factor | MOD f2= factor | AND f2= factor ) )*
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:215:3: ( ( MULT f2= factor | DIV f2= factor | MOD f2= factor | AND f2= factor ) )*
             loop31:
             do {
                 int alt31=2;
@@ -2066,9 +2129,9 @@ public class Oberon0Parser extends Parser {
 
                 switch (alt31) {
             	case 1 :
-            	    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:211:5: ( MULT f2= factor | DIV f2= factor | MOD f2= factor | AND f2= factor )
+            	    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:215:5: ( MULT f2= factor | DIV f2= factor | MOD f2= factor | AND f2= factor )
             	    {
-            	    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:211:5: ( MULT f2= factor | DIV f2= factor | MOD f2= factor | AND f2= factor )
+            	    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:215:5: ( MULT f2= factor | DIV f2= factor | MOD f2= factor | AND f2= factor )
             	    int alt30=4;
             	    switch ( input.LA(1) ) {
             	    case MULT:
@@ -2100,10 +2163,10 @@ public class Oberon0Parser extends Parser {
 
             	    switch (alt30) {
             	        case 1 :
-            	            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:211:7: MULT f2= factor
+            	            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:215:7: MULT f2= factor
             	            {
-            	            match(input,MULT,FOLLOW_MULT_in_term1760); 
-            	            pushFollow(FOLLOW_factor_in_term1764);
+            	            match(input,MULT,FOLLOW_MULT_in_term1802); 
+            	            pushFollow(FOLLOW_factor_in_term1806);
             	            f2=factor();
 
             	            state._fsp--;
@@ -2113,10 +2176,10 @@ public class Oberon0Parser extends Parser {
             	            }
             	            break;
             	        case 2 :
-            	            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:212:6: DIV f2= factor
+            	            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:216:6: DIV f2= factor
             	            {
-            	            match(input,DIV,FOLLOW_DIV_in_term1781); 
-            	            pushFollow(FOLLOW_factor_in_term1785);
+            	            match(input,DIV,FOLLOW_DIV_in_term1823); 
+            	            pushFollow(FOLLOW_factor_in_term1827);
             	            f2=factor();
 
             	            state._fsp--;
@@ -2126,10 +2189,10 @@ public class Oberon0Parser extends Parser {
             	            }
             	            break;
             	        case 3 :
-            	            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:213:6: MOD f2= factor
+            	            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:217:6: MOD f2= factor
             	            {
-            	            match(input,MOD,FOLLOW_MOD_in_term1803); 
-            	            pushFollow(FOLLOW_factor_in_term1807);
+            	            match(input,MOD,FOLLOW_MOD_in_term1845); 
+            	            pushFollow(FOLLOW_factor_in_term1849);
             	            f2=factor();
 
             	            state._fsp--;
@@ -2139,10 +2202,10 @@ public class Oberon0Parser extends Parser {
             	            }
             	            break;
             	        case 4 :
-            	            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:214:6: AND f2= factor
+            	            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:218:6: AND f2= factor
             	            {
-            	            match(input,AND,FOLLOW_AND_in_term1825); 
-            	            pushFollow(FOLLOW_factor_in_term1829);
+            	            match(input,AND,FOLLOW_AND_in_term1867); 
+            	            pushFollow(FOLLOW_factor_in_term1871);
             	            f2=factor();
 
             	            state._fsp--;
@@ -2179,19 +2242,19 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "factor"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:219:1: factor returns [IInterpretableNode result] : ( IDENT selector | NUMBER | '(' expression ')' );
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:223:1: factor returns [IInterpretableNode result] : ( IDENT selector | NUMBER | '(' expression ')' );
     public final IInterpretableNode factor() throws RecognitionException {
         IInterpretableNode result = null;
 
-        Token IDENT28=null;
-        Token NUMBER30=null;
-        List<IInterpretableNode> selector29 = null;
+        Token IDENT31=null;
+        Token NUMBER33=null;
+        List<IInterpretableNode> selector32 = null;
 
-        IInterpretableNode expression31 = null;
+        IInterpretableNode expression34 = null;
 
 
         try {
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:220:2: ( IDENT selector | NUMBER | '(' expression ')' )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:224:2: ( IDENT selector | NUMBER | '(' expression ')' )
             int alt32=3;
             switch ( input.LA(1) ) {
             case IDENT:
@@ -2218,37 +2281,37 @@ public class Oberon0Parser extends Parser {
 
             switch (alt32) {
                 case 1 :
-                    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:220:5: IDENT selector
+                    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:224:5: IDENT selector
                     {
-                    IDENT28=(Token)match(input,IDENT,FOLLOW_IDENT_in_factor1866); 
-                    pushFollow(FOLLOW_selector_in_factor1868);
-                    selector29=selector();
+                    IDENT31=(Token)match(input,IDENT,FOLLOW_IDENT_in_factor1908); 
+                    pushFollow(FOLLOW_selector_in_factor1910);
+                    selector32=selector();
 
                     state._fsp--;
 
-                    result = new IdentSelectorNode((IDENT28!=null?IDENT28.getText():null), selector29); 
+                    result = new IdentSelectorNode((IDENT31!=null?IDENT31.getText():null), selector32); 
 
                     }
                     break;
                 case 2 :
-                    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:221:6: NUMBER
+                    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:225:6: NUMBER
                     {
-                    NUMBER30=(Token)match(input,NUMBER,FOLLOW_NUMBER_in_factor1888); 
-                    result = new NumberNode(Integer.parseInt((NUMBER30!=null?NUMBER30.getText():null))); 
+                    NUMBER33=(Token)match(input,NUMBER,FOLLOW_NUMBER_in_factor1930); 
+                    result = new NumberNode(Integer.parseInt((NUMBER33!=null?NUMBER33.getText():null))); 
 
                     }
                     break;
                 case 3 :
-                    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:222:6: '(' expression ')'
+                    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:226:6: '(' expression ')'
                     {
-                    match(input,33,FOLLOW_33_in_factor1908); 
-                    pushFollow(FOLLOW_expression_in_factor1910);
-                    expression31=expression();
+                    match(input,33,FOLLOW_33_in_factor1950); 
+                    pushFollow(FOLLOW_expression_in_factor1952);
+                    expression34=expression();
 
                     state._fsp--;
 
-                    match(input,34,FOLLOW_34_in_factor1912); 
-                    result = expression31; 
+                    match(input,34,FOLLOW_34_in_factor1954); 
+                    result = expression34; 
 
                     }
                     break;
@@ -2267,19 +2330,19 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "selector"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:226:1: selector returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()] : ( '.' IDENT | '[' expression ']' )* ;
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:230:1: selector returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()] : ( '.' IDENT | '[' expression ']' )* ;
     public final List<IInterpretableNode> selector() throws RecognitionException {
         List<IInterpretableNode> result =  new ArrayList<IInterpretableNode>();
 
-        Token IDENT32=null;
-        IInterpretableNode expression33 = null;
+        Token IDENT35=null;
+        IInterpretableNode expression36 = null;
 
 
         try {
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:227:2: ( ( '.' IDENT | '[' expression ']' )* )
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:227:5: ( '.' IDENT | '[' expression ']' )*
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:231:2: ( ( '.' IDENT | '[' expression ']' )* )
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:231:5: ( '.' IDENT | '[' expression ']' )*
             {
-            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:227:5: ( '.' IDENT | '[' expression ']' )*
+            // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:231:5: ( '.' IDENT | '[' expression ']' )*
             loop33:
             do {
                 int alt33=3;
@@ -2288,32 +2351,32 @@ public class Oberon0Parser extends Parser {
                 if ( (LA33_0==27) ) {
                     alt33=1;
                 }
-                else if ( (LA33_0==47) ) {
+                else if ( (LA33_0==48) ) {
                     alt33=2;
                 }
 
 
                 switch (alt33) {
             	case 1 :
-            	    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:227:6: '.' IDENT
+            	    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:231:6: '.' IDENT
             	    {
-            	    match(input,27,FOLLOW_27_in_selector1941); 
-            	    IDENT32=(Token)match(input,IDENT,FOLLOW_IDENT_in_selector1943); 
-            	    result.add(new DotSelectorNode((IDENT32!=null?IDENT32.getText():null))); 
+            	    match(input,27,FOLLOW_27_in_selector1983); 
+            	    IDENT35=(Token)match(input,IDENT,FOLLOW_IDENT_in_selector1985); 
+            	    result.add(new DotSelectorNode((IDENT35!=null?IDENT35.getText():null))); 
 
             	    }
             	    break;
             	case 2 :
-            	    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:228:7: '[' expression ']'
+            	    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:232:7: '[' expression ']'
             	    {
-            	    match(input,47,FOLLOW_47_in_selector1965); 
-            	    pushFollow(FOLLOW_expression_in_selector1967);
-            	    expression33=expression();
+            	    match(input,48,FOLLOW_48_in_selector2007); 
+            	    pushFollow(FOLLOW_expression_in_selector2009);
+            	    expression36=expression();
 
             	    state._fsp--;
 
-            	    match(input,48,FOLLOW_48_in_selector1969); 
-            	    result.add(new ElementSelectorNode(expression33)); 
+            	    match(input,49,FOLLOW_49_in_selector2011); 
+            	    result.add(new ElementSelectorNode(expression36)); 
 
             	    }
             	    break;
@@ -2346,7 +2409,7 @@ public class Oberon0Parser extends Parser {
     public static final BitSet FOLLOW_IDENT_in_module178 = new BitSet(new long[]{0x0000000001000000L});
     public static final BitSet FOLLOW_24_in_module180 = new BitSet(new long[]{0x0000000170000000L});
     public static final BitSet FOLLOW_declarations_in_module182 = new BitSet(new long[]{0x0000000006000000L});
-    public static final BitSet FOLLOW_25_in_module189 = new BitSet(new long[]{0x0000220000020000L});
+    public static final BitSet FOLLOW_25_in_module189 = new BitSet(new long[]{0x0000A20000020000L});
     public static final BitSet FOLLOW_statementSequence_in_module191 = new BitSet(new long[]{0x0000000004000000L});
     public static final BitSet FOLLOW_26_in_module207 = new BitSet(new long[]{0x0000000000020000L});
     public static final BitSet FOLLOW_IDENT_in_module211 = new BitSet(new long[]{0x0000000008000000L});
@@ -2379,7 +2442,7 @@ public class Oberon0Parser extends Parser {
     public static final BitSet FOLLOW_IDENT_in_procedureDeclarations491 = new BitSet(new long[]{0x0000000001000000L});
     public static final BitSet FOLLOW_24_in_procedureDeclarations493 = new BitSet(new long[]{0x0000000100000002L});
     public static final BitSet FOLLOW_declarations_in_procedureBody518 = new BitSet(new long[]{0x0000000002000002L});
-    public static final BitSet FOLLOW_25_in_procedureBody525 = new BitSet(new long[]{0x0000220000020000L});
+    public static final BitSet FOLLOW_25_in_procedureBody525 = new BitSet(new long[]{0x0000A20000020000L});
     public static final BitSet FOLLOW_statementSequence_in_procedureBody529 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_33_in_formalParameters575 = new BitSet(new long[]{0x0000000440020000L});
     public static final BitSet FOLLOW_fPSection_in_formalParameters580 = new BitSet(new long[]{0x0000000401000000L});
@@ -2416,84 +2479,90 @@ public class Oberon0Parser extends Parser {
     public static final BitSet FOLLOW_IDENT_in_identList936 = new BitSet(new long[]{0x0000008000000002L});
     public static final BitSet FOLLOW_statementList_in_statementSequence968 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_statement_in_statementList998 = new BitSet(new long[]{0x0000000001000002L});
-    public static final BitSet FOLLOW_24_in_statementList1017 = new BitSet(new long[]{0x0000220000020000L});
+    public static final BitSet FOLLOW_24_in_statementList1017 = new BitSet(new long[]{0x0000A20000020000L});
     public static final BitSet FOLLOW_statement_in_statementList1021 = new BitSet(new long[]{0x0000000001000002L});
     public static final BitSet FOLLOW_assignment_in_statement1062 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_procedureCall_in_statement1080 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ifStatement_in_statement1098 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_whileStatement_in_statement1116 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENT_in_assignment1145 = new BitSet(new long[]{0x0000810008000000L});
-    public static final BitSet FOLLOW_selector_in_assignment1147 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_40_in_assignment1165 = new BitSet(new long[]{0x0000000200060030L});
-    public static final BitSet FOLLOW_expression_in_assignment1167 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENT_in_procedureCall1193 = new BitSet(new long[]{0x0000000200000002L});
-    public static final BitSet FOLLOW_actualParameters_in_procedureCall1196 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_33_in_actualParameters1223 = new BitSet(new long[]{0x0000000600060030L});
-    public static final BitSet FOLLOW_expression_in_actualParameters1228 = new BitSet(new long[]{0x0000008400000000L});
-    public static final BitSet FOLLOW_39_in_actualParameters1247 = new BitSet(new long[]{0x0000000200060030L});
-    public static final BitSet FOLLOW_expression_in_actualParameters1251 = new BitSet(new long[]{0x0000008400000000L});
-    public static final BitSet FOLLOW_34_in_actualParameters1278 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_41_in_ifStatement1293 = new BitSet(new long[]{0x0000000200060030L});
-    public static final BitSet FOLLOW_expression_in_ifStatement1297 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_42_in_ifStatement1299 = new BitSet(new long[]{0x0000220000020000L});
-    public static final BitSet FOLLOW_statementSequence_in_ifStatement1303 = new BitSet(new long[]{0x0000180004000000L});
-    public static final BitSet FOLLOW_elseStatements_in_ifStatement1310 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_26_in_ifStatement1314 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_43_in_elseStatements1339 = new BitSet(new long[]{0x0000000200060030L});
-    public static final BitSet FOLLOW_expression_in_elseStatements1343 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_42_in_elseStatements1345 = new BitSet(new long[]{0x0000220000020000L});
-    public static final BitSet FOLLOW_statementSequence_in_elseStatements1349 = new BitSet(new long[]{0x0000180000000002L});
-    public static final BitSet FOLLOW_elseStatements_in_elseStatements1365 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_44_in_elseStatements1385 = new BitSet(new long[]{0x0000220000020000L});
-    public static final BitSet FOLLOW_statementSequence_in_elseStatements1389 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_45_in_whileStatement1412 = new BitSet(new long[]{0x0000000200060030L});
-    public static final BitSet FOLLOW_expression_in_whileStatement1414 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_46_in_whileStatement1416 = new BitSet(new long[]{0x0000220000020000L});
-    public static final BitSet FOLLOW_statementSequence_in_whileStatement1418 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_26_in_whileStatement1420 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_simpleExpression_in_expression1441 = new BitSet(new long[]{0x000000000001E602L});
-    public static final BitSet FOLLOW_EQUALS_in_expression1459 = new BitSet(new long[]{0x0000000200060030L});
-    public static final BitSet FOLLOW_simpleExpression_in_expression1463 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NOT_EQ_in_expression1477 = new BitSet(new long[]{0x0000000200060030L});
-    public static final BitSet FOLLOW_simpleExpression_in_expression1481 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LT_in_expression1495 = new BitSet(new long[]{0x0000000200060030L});
-    public static final BitSet FOLLOW_simpleExpression_in_expression1499 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LT_EQ_in_expression1514 = new BitSet(new long[]{0x0000000200060030L});
-    public static final BitSet FOLLOW_simpleExpression_in_expression1518 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_GT_in_expression1533 = new BitSet(new long[]{0x0000000200060030L});
-    public static final BitSet FOLLOW_simpleExpression_in_expression1537 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_GT_EQ_in_expression1552 = new BitSet(new long[]{0x0000000200060030L});
-    public static final BitSet FOLLOW_simpleExpression_in_expression1556 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PLUS_in_simpleExpression1587 = new BitSet(new long[]{0x0000000200060030L});
-    public static final BitSet FOLLOW_term_in_simpleExpression1591 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_MINUS_in_simpleExpression1610 = new BitSet(new long[]{0x0000000200060030L});
-    public static final BitSet FOLLOW_term_in_simpleExpression1614 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_term_in_simpleExpression1634 = new BitSet(new long[]{0x0000000000000832L});
-    public static final BitSet FOLLOW_PLUS_in_simpleExpression1654 = new BitSet(new long[]{0x0000000200060030L});
-    public static final BitSet FOLLOW_term_in_simpleExpression1658 = new BitSet(new long[]{0x0000000000000832L});
-    public static final BitSet FOLLOW_MINUS_in_simpleExpression1676 = new BitSet(new long[]{0x0000000200060030L});
-    public static final BitSet FOLLOW_term_in_simpleExpression1680 = new BitSet(new long[]{0x0000000000000832L});
-    public static final BitSet FOLLOW_OR_in_simpleExpression1698 = new BitSet(new long[]{0x0000000200060030L});
-    public static final BitSet FOLLOW_term_in_simpleExpression1702 = new BitSet(new long[]{0x0000000000000832L});
-    public static final BitSet FOLLOW_factor_in_term1738 = new BitSet(new long[]{0x00000000000011C2L});
-    public static final BitSet FOLLOW_MULT_in_term1760 = new BitSet(new long[]{0x0000000200060030L});
-    public static final BitSet FOLLOW_factor_in_term1764 = new BitSet(new long[]{0x00000000000011C2L});
-    public static final BitSet FOLLOW_DIV_in_term1781 = new BitSet(new long[]{0x0000000200060030L});
-    public static final BitSet FOLLOW_factor_in_term1785 = new BitSet(new long[]{0x00000000000011C2L});
-    public static final BitSet FOLLOW_MOD_in_term1803 = new BitSet(new long[]{0x0000000200060030L});
-    public static final BitSet FOLLOW_factor_in_term1807 = new BitSet(new long[]{0x00000000000011C2L});
-    public static final BitSet FOLLOW_AND_in_term1825 = new BitSet(new long[]{0x0000000200060030L});
-    public static final BitSet FOLLOW_factor_in_term1829 = new BitSet(new long[]{0x00000000000011C2L});
-    public static final BitSet FOLLOW_IDENT_in_factor1866 = new BitSet(new long[]{0x0000800008000000L});
-    public static final BitSet FOLLOW_selector_in_factor1868 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NUMBER_in_factor1888 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_33_in_factor1908 = new BitSet(new long[]{0x0000000200060030L});
-    public static final BitSet FOLLOW_expression_in_factor1910 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_factor1912 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_27_in_selector1941 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_IDENT_in_selector1943 = new BitSet(new long[]{0x0000800008000002L});
-    public static final BitSet FOLLOW_47_in_selector1965 = new BitSet(new long[]{0x0000000200060030L});
-    public static final BitSet FOLLOW_expression_in_selector1967 = new BitSet(new long[]{0x0001000000000000L});
-    public static final BitSet FOLLOW_48_in_selector1969 = new BitSet(new long[]{0x0000800008000002L});
+    public static final BitSet FOLLOW_withStatement_in_statement1133 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENT_in_assignment1160 = new BitSet(new long[]{0x0001010008000000L});
+    public static final BitSet FOLLOW_selector_in_assignment1162 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_40_in_assignment1180 = new BitSet(new long[]{0x0000000200060030L});
+    public static final BitSet FOLLOW_expression_in_assignment1182 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENT_in_procedureCall1208 = new BitSet(new long[]{0x0000000200000002L});
+    public static final BitSet FOLLOW_actualParameters_in_procedureCall1211 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_33_in_actualParameters1238 = new BitSet(new long[]{0x0000000600060030L});
+    public static final BitSet FOLLOW_expression_in_actualParameters1243 = new BitSet(new long[]{0x0000008400000000L});
+    public static final BitSet FOLLOW_39_in_actualParameters1262 = new BitSet(new long[]{0x0000000200060030L});
+    public static final BitSet FOLLOW_expression_in_actualParameters1266 = new BitSet(new long[]{0x0000008400000000L});
+    public static final BitSet FOLLOW_34_in_actualParameters1293 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_41_in_ifStatement1308 = new BitSet(new long[]{0x0000000200060030L});
+    public static final BitSet FOLLOW_expression_in_ifStatement1312 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_42_in_ifStatement1314 = new BitSet(new long[]{0x0000A20000020000L});
+    public static final BitSet FOLLOW_statementSequence_in_ifStatement1318 = new BitSet(new long[]{0x0000180004000000L});
+    public static final BitSet FOLLOW_elseStatements_in_ifStatement1325 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_26_in_ifStatement1329 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_43_in_elseStatements1354 = new BitSet(new long[]{0x0000000200060030L});
+    public static final BitSet FOLLOW_expression_in_elseStatements1358 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_42_in_elseStatements1360 = new BitSet(new long[]{0x0000A20000020000L});
+    public static final BitSet FOLLOW_statementSequence_in_elseStatements1364 = new BitSet(new long[]{0x0000180000000002L});
+    public static final BitSet FOLLOW_elseStatements_in_elseStatements1380 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_44_in_elseStatements1400 = new BitSet(new long[]{0x0000A20000020000L});
+    public static final BitSet FOLLOW_statementSequence_in_elseStatements1404 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_45_in_whileStatement1427 = new BitSet(new long[]{0x0000000200060030L});
+    public static final BitSet FOLLOW_expression_in_whileStatement1429 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_46_in_whileStatement1431 = new BitSet(new long[]{0x0000A20000020000L});
+    public static final BitSet FOLLOW_statementSequence_in_whileStatement1433 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_26_in_whileStatement1435 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_47_in_withStatement1454 = new BitSet(new long[]{0x0000000200060030L});
+    public static final BitSet FOLLOW_expression_in_withStatement1456 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_46_in_withStatement1458 = new BitSet(new long[]{0x0000A20000020000L});
+    public static final BitSet FOLLOW_statementSequence_in_withStatement1460 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_26_in_withStatement1462 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_simpleExpression_in_expression1483 = new BitSet(new long[]{0x000000000001E602L});
+    public static final BitSet FOLLOW_EQUALS_in_expression1501 = new BitSet(new long[]{0x0000000200060030L});
+    public static final BitSet FOLLOW_simpleExpression_in_expression1505 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NOT_EQ_in_expression1519 = new BitSet(new long[]{0x0000000200060030L});
+    public static final BitSet FOLLOW_simpleExpression_in_expression1523 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LT_in_expression1537 = new BitSet(new long[]{0x0000000200060030L});
+    public static final BitSet FOLLOW_simpleExpression_in_expression1541 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LT_EQ_in_expression1556 = new BitSet(new long[]{0x0000000200060030L});
+    public static final BitSet FOLLOW_simpleExpression_in_expression1560 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_GT_in_expression1575 = new BitSet(new long[]{0x0000000200060030L});
+    public static final BitSet FOLLOW_simpleExpression_in_expression1579 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_GT_EQ_in_expression1594 = new BitSet(new long[]{0x0000000200060030L});
+    public static final BitSet FOLLOW_simpleExpression_in_expression1598 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PLUS_in_simpleExpression1629 = new BitSet(new long[]{0x0000000200060030L});
+    public static final BitSet FOLLOW_term_in_simpleExpression1633 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_MINUS_in_simpleExpression1652 = new BitSet(new long[]{0x0000000200060030L});
+    public static final BitSet FOLLOW_term_in_simpleExpression1656 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_term_in_simpleExpression1676 = new BitSet(new long[]{0x0000000000000832L});
+    public static final BitSet FOLLOW_PLUS_in_simpleExpression1696 = new BitSet(new long[]{0x0000000200060030L});
+    public static final BitSet FOLLOW_term_in_simpleExpression1700 = new BitSet(new long[]{0x0000000000000832L});
+    public static final BitSet FOLLOW_MINUS_in_simpleExpression1718 = new BitSet(new long[]{0x0000000200060030L});
+    public static final BitSet FOLLOW_term_in_simpleExpression1722 = new BitSet(new long[]{0x0000000000000832L});
+    public static final BitSet FOLLOW_OR_in_simpleExpression1740 = new BitSet(new long[]{0x0000000200060030L});
+    public static final BitSet FOLLOW_term_in_simpleExpression1744 = new BitSet(new long[]{0x0000000000000832L});
+    public static final BitSet FOLLOW_factor_in_term1780 = new BitSet(new long[]{0x00000000000011C2L});
+    public static final BitSet FOLLOW_MULT_in_term1802 = new BitSet(new long[]{0x0000000200060030L});
+    public static final BitSet FOLLOW_factor_in_term1806 = new BitSet(new long[]{0x00000000000011C2L});
+    public static final BitSet FOLLOW_DIV_in_term1823 = new BitSet(new long[]{0x0000000200060030L});
+    public static final BitSet FOLLOW_factor_in_term1827 = new BitSet(new long[]{0x00000000000011C2L});
+    public static final BitSet FOLLOW_MOD_in_term1845 = new BitSet(new long[]{0x0000000200060030L});
+    public static final BitSet FOLLOW_factor_in_term1849 = new BitSet(new long[]{0x00000000000011C2L});
+    public static final BitSet FOLLOW_AND_in_term1867 = new BitSet(new long[]{0x0000000200060030L});
+    public static final BitSet FOLLOW_factor_in_term1871 = new BitSet(new long[]{0x00000000000011C2L});
+    public static final BitSet FOLLOW_IDENT_in_factor1908 = new BitSet(new long[]{0x0001000008000000L});
+    public static final BitSet FOLLOW_selector_in_factor1910 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NUMBER_in_factor1930 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_33_in_factor1950 = new BitSet(new long[]{0x0000000200060030L});
+    public static final BitSet FOLLOW_expression_in_factor1952 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_34_in_factor1954 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_27_in_selector1983 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_IDENT_in_selector1985 = new BitSet(new long[]{0x0001000008000002L});
+    public static final BitSet FOLLOW_48_in_selector2007 = new BitSet(new long[]{0x0000000200060030L});
+    public static final BitSet FOLLOW_expression_in_selector2009 = new BitSet(new long[]{0x0002000000000000L});
+    public static final BitSet FOLLOW_49_in_selector2011 = new BitSet(new long[]{0x0001000008000002L});
 
 }
