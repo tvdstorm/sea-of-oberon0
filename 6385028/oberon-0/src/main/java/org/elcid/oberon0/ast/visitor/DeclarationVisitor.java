@@ -11,6 +11,7 @@ import org.elcid.oberon0.ast.VarDeclNode;
 import org.elcid.oberon0.ast.env.Environment;
 import org.elcid.oberon0.ast.env.FormalParameter;
 import org.elcid.oberon0.ast.env.Procedure;
+import org.elcid.oberon0.ast.env.RuntimeProcedure;
 import org.elcid.oberon0.ast.values.Int;
 import org.elcid.oberon0.ast.values.Value;
 
@@ -56,7 +57,7 @@ public class DeclarationVisitor {
 		for (FpSectionNode section: node.getFormalParams().getFpSections()) {
 			formalParameters.addAll(section.process());
 		}
-		Procedure newProcedure = new Procedure(formalParameters, node.getDeclarationSequence(), node.getStatementSequence());
+		Procedure newProcedure = new RuntimeProcedure(formalParameters, node.getDeclarationSequence(), node.getStatementSequence());
 		env.putProcedure(node.getName(), newProcedure);
 	}
 

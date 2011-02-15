@@ -1,0 +1,9 @@
+MODULE Array;
+
+VAR
+	ar: ARRAY 10 OF INTEGER;
+
+BEGIN
+	ar[0] := 10;
+	Write(ar[0])
+END Array.

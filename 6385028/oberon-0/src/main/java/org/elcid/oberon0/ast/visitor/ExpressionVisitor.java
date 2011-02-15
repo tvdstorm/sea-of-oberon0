@@ -99,20 +99,20 @@ public class ExpressionVisitor {
 	public Value eval(AndExpNode node, Environment localEnv) {
 		Bool left = (Bool) node.getLeftExp().eval(this, localEnv);
 		Bool right = (Bool) node.getRightExp().eval(this, localEnv);
-		return new Bool(left.getValue() && right.getValue());
+		return new Bool((boolean)left.getValue() && (boolean)right.getValue());
 	}
 
 	public Value eval(OrExpNode node, Environment localEnv) {
 		Bool left = (Bool) node.getLeftExp().eval(this, localEnv);
 		Bool right = (Bool) node.getRightExp().eval(this, localEnv);
-		return new Bool(left.getValue() || right.getValue());
+		return new Bool((boolean)left.getValue() || (boolean)right.getValue());
 	}
 
 	public Value eval(IdentSelectorNode node, Environment localEnv) {
 		Reference ref = localEnv.getReference(node.getIdentifier());
 		Value value = ref.get();
 		for(SelectorNode selector : node.getSelectors()) {
-			value = ref.applySelector(selector.select(localEnv));
+			value = value.applySelector(selector.select(localEnv));
 		}
 		return value;
 	}
