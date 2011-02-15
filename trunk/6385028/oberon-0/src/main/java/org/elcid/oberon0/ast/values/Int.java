@@ -9,14 +9,13 @@ import org.elcid.oberon0.exceptions.TerminalValueException;
  */
 public class Int extends Value {
 	
-	private Integer value;
+	private int value;
 
-	public Int(Integer value) {
+	public Int(int value) {
 		this.value = value;
 	}
 
-	public Integer getValue() {
-		assert (value != null) : "Int value is null";
+	public int getValue() {
 		return value;
 	}
 
@@ -29,5 +28,16 @@ public class Int extends Value {
 	public void set(Value value) {
 		this.value = ((Int) value).getValue();
 	}
+
+	@Override
+	public Int clone() {
+		return new Int(value);
+	}
+
+	@Override
+	public String toString() {
+		return this.value + "";
+	}
+
 
 }

@@ -3,7 +3,6 @@ package org.elcid.oberon0.ast.visitor;
 import org.elcid.oberon0.ast.*;
 import org.elcid.oberon0.ast.env.Environment;
 import org.elcid.oberon0.ast.env.Procedure;
-import org.elcid.oberon0.ast.env.Reference;
 import org.elcid.oberon0.ast.values.*;
 
 /**
@@ -20,9 +19,9 @@ public class StatementVisitor {
 	}
 
 	public void run(AssignmentNode node, Environment localEnv) {
-		Value value = (Value) node.getExpression().eval(new ExpressionVisitor(), localEnv);
-		Reference ref = localEnv.getReference(node.getIdentSelector().getIdentifier());
-		ref.set(value, localEnv);
+		Value leftVal = node.getIdentSelector().eval(new ExpressionVisitor(), localEnv);
+		Value rightVal = node.getExpression().eval(new ExpressionVisitor(), localEnv);
+		leftVal.set(rightVal);
 	}
 
 	public void run(IfStmNode node, Environment localEnv) {
@@ -42,12 +41,12 @@ public class StatementVisitor {
 	public void run(WhileStmNode node, Environment localEnv) {
 		boolean condition = ((Bool)node.getCondition().eval(new ExpressionVisitor(), localEnv)).getValue();
 		while (condition) {
-			System.out.println("Performing while");
+			System.out.println("Performing while\n");
 			node.getStatementSequence().run(this, localEnv);
 			condition = ((Bool)node.getCondition().eval(new ExpressionVisitor(), localEnv)).getValue();
-	//		System.out.println("\n\nENVIRONMENT:");
-	//		System.out.println(localEnv.toString());
-	//		System.out.println("\n\nEND ENVIRONMENT:");
+			System.out.println("\n\nENVIRONMENT:");
+			System.out.println(localEnv.toString());
+			System.out.println("\n\nEND ENVIRONMENT:");
 		}
 	}
 

@@ -1,9 +1,26 @@
 MODULE Array;
-
+CONST
+	INPUTLENGTH = 5;
 VAR
-	ar: ARRAY 10 OF INTEGER;
-
+	i, j : INTEGER;
+	ar: ARRAY 5 OF INTEGER;
 BEGIN
-	ar[0] := 10;
-	Write(ar[0])
+ i :=0;
+ WHILE (i < INPUTLENGTH) DO
+   ar[i] := i;
+   Write(ar[i]);
+   WriteLn;
+   i := i + 1
+
+
+ END;
+
+   j := i;
+   i := i + 1;
+   WriteLn;
+   WriteLn;
+   Write(i);
+   WriteLn;
+   Write(j);
+   WriteLn
 END Array.

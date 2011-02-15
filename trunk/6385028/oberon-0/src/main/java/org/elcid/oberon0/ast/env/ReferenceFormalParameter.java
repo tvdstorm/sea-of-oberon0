@@ -19,7 +19,7 @@ public class ReferenceFormalParameter extends FormalParameter {
 
 	@Override
 	public void declare(Environment env, Value value) {
-		env.declareByReference(identifier, value);
+		env.declareValue(identifier, value);
 	}
 
 }

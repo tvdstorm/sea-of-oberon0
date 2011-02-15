@@ -1,6 +1,7 @@
 package org.elcid.oberon0.ast;
 
 import org.elcid.oberon0.ast.env.Environment;
+import org.elcid.oberon0.ast.values.Value;
 import org.elcid.oberon0.ast.visitor.ExpressionVisitor;
 
 /**
@@ -27,7 +28,7 @@ public class ModuloExpNode extends ExpressionNode {
 	}
 
 	@Override
-	public Object eval(ExpressionVisitor visitor, Environment localEnv) {
+	public Value eval(ExpressionVisitor visitor, Environment localEnv) {
 		return visitor.eval(this, localEnv);
 	}
 

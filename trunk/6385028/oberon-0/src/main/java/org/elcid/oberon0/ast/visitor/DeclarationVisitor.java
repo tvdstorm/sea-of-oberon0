@@ -38,7 +38,7 @@ public class DeclarationVisitor {
 
 	public void run(ConstDeclNode node, Environment env) {
 		Int value = (Int) node.getExpression().eval(new ExpressionVisitor(), env);
-		env.declareByValue(node.getName(), value);
+		env.declareValue(node.getName(), value);
 	}
 
 	public void run(TypeDeclNode node, Environment env) {
@@ -48,7 +48,7 @@ public class DeclarationVisitor {
 	public void run(VarDeclNode node, Environment env) {
 		Value nullValue = node.getType().init(new TypeVisitor(), env);
 		for (String identifier: node.getIdentifiers()) {
-			env.declareByReference(identifier, nullValue);
+			env.declareValue(identifier, nullValue);
 		}
 	}
 

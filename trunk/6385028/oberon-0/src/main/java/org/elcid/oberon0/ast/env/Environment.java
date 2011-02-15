@@ -16,7 +16,7 @@ public class Environment {
 
 	private Environment superEnv;
 
-	private Map<String, Reference> valueBindings = new HashMap<String, Reference>();
+	private Map<String, Value> valueBindings = new HashMap<String, Value>();
 	private Map<String, TypeNode> typeAliases = new HashMap<String, TypeNode>();
 	private Map<String, Procedure> procedures = new HashMap<String, Procedure>();
 
@@ -36,20 +36,16 @@ public class Environment {
 	 * @param	variableName
 	 * @return	the integer that is bound to the variable
 	 */
-	public Reference getReference(String variableName) {
+	public Value getValue(String variableName) {
 		if (valueBindings.containsKey(variableName))
 			return valueBindings.get(variableName);
 		if (superEnv != null)
-			return superEnv.getReference(variableName);
+			return superEnv.getValue(variableName);
 		throw new UnboundVariableException("Variable " + variableName + " is not bound to an integer");
 	}
 
-	public void declareByReference(String variableName, Value value) {
-		valueBindings.put(variableName, new RefReference(value));
-	}
-
-	public void declareByValue(String variableName, Value value) {
-		valueBindings.put(variableName, new ValueReference(value));
+	public void declareValue(String variableName, Value value) {
+		valueBindings.put(variableName, value);
 	}
 
 	public TypeNode getType(String alias) {
@@ -73,13 +69,13 @@ public class Environment {
 		if (superEnv != null) {
 			sb.append(superEnv.toString());
 		}
-		sb.append("SUB ENV:");
-		for (Map.Entry<String, Reference> ref : valueBindings.entrySet()) {
-			sb.append(ref.getKey()+ " : " +ref.getValue()+ "\n");
+		sb.append("SUB ENV:\n");
+		for (Map.Entry<String, Value> ref : valueBindings.entrySet()) {
+			sb.append(ref.getKey()+ " : " +ref.getValue().toString()+ "\n");
 		}
 
 		for (Map.Entry<String, Procedure> ref : procedures.entrySet()) {
-			sb.append(ref.getKey()+ " : " +ref.getValue()+ "\n");
+			sb.append(ref.getKey()+ " : " +ref.getValue().toString()+ "\n");
 		}
 		sb.append("END SUB ENV");
 		return sb.toString();

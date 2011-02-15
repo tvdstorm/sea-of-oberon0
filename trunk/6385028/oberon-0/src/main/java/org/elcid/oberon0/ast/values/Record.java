@@ -34,4 +34,28 @@ public class Record extends Value {
 		this.fields = ((Record) value).fields;
 	}
 
+	@Override
+	public Value clone() {
+		Record clone = new Record();
+		
+		Map<String, Value> copiedElements = new HashMap<String, Value>();
+		for (Map.Entry<String, Value> val : fields.entrySet()) {
+			copiedElements.put(val.getKey(), val.getValue());
+		}
+		clone.fields = copiedElements;
+
+		return clone;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		for (Map.Entry<String, Value> val : fields.entrySet()) {
+			sb.append(val.getValue().toString());
+		}
+		return sb.toString();
+	}
+
+	
+
 }

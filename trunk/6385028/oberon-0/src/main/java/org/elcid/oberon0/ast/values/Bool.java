@@ -29,4 +29,16 @@ public class Bool extends Value {
 		this.value = ((Bool)value).getValue();
 	}
 
+	@Override
+	public Value clone() {
+		return new Bool(value.booleanValue());
+	}
+
+	@Override
+	public String toString() {
+		return value.toString();
+	}
+
+
+
 }
