@@ -141,7 +141,7 @@ statement returns [IInterpretableNode result]
 		| procedureCall											{$result = $procedureCall.result; }
 		| ifStatement											{$result = $ifStatement.result; }
 		| whileStatement										{$result = $whileStatement.result; }
-		
+		| withStatement											{$result = $withStatement.result; }
 	;
 
 assignment returns [IInterpretableNode result]
@@ -177,6 +177,10 @@ elseStatements returns [IInterpretableNode result]
 
 whileStatement returns [IInterpretableNode result]
 	:	'WHILE' expression 'DO' statementSequence 'END'			{$result = new WhileNode($expression.result, $statementSequence.result); }
+	;
+
+withStatement returns [IInterpretableNode result]
+	:	'WITH' expression 'DO' statementSequence 'END'			{$result = new WithNode($expression.result, $statementSequence.result); }
 	;
 
 expression returns [IInterpretableNode result]
