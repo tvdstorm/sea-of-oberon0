@@ -40,10 +40,14 @@ public class StatementVisitor {
 	}
 
 	public void run(WhileStmNode node, Environment localEnv) {
-		Boolean condition = ((Bool)node.getCondition().eval(new ExpressionVisitor(), localEnv)).getValue();
-		if (condition) {
+		boolean condition = ((Bool)node.getCondition().eval(new ExpressionVisitor(), localEnv)).getValue();
+		while (condition) {
+			System.out.println("Performing while");
 			node.getStatementSequence().run(this, localEnv);
-			node.run(this, localEnv);
+			condition = ((Bool)node.getCondition().eval(new ExpressionVisitor(), localEnv)).getValue();
+	//		System.out.println("\n\nENVIRONMENT:");
+	//		System.out.println(localEnv.toString());
+	//		System.out.println("\n\nEND ENVIRONMENT:");
 		}
 	}
 
@@ -53,16 +57,14 @@ public class StatementVisitor {
 		// Create new subenv
 		Environment subEnv = new Environment(localEnv);
 		// Bind actual params to formal params in subenv
-		if (node.getActualParameters().size() == proc.getFormalParams().size()) {
+		if ((node.getActualParameters() != null) && (proc.getFormalParams() != null) && (node.getActualParameters().size() == proc.getFormalParams().size())) {
 			for (int i = 0; i < node.getActualParameters().size(); i++) {
 				Value value = (Value) node.getActualParameters().get(i).eval(new ExpressionVisitor(), localEnv);
 				proc.getFormalParams().get(i).declare(subEnv, value);
 			}
 		}
-		// Run declarations of proc in subenv
-		proc.getDeclarationSequence().run(new DeclarationVisitor(), subEnv);
-		// Run statement sequence of proc with subenv
-		proc.getStatementSequence().run(new StatementVisitor(), subEnv);
+		// Execute procedure
+		proc.execute(subEnv);
 	}
 
 }

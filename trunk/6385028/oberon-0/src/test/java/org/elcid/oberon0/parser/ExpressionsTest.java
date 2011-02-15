@@ -35,7 +35,7 @@ public class ExpressionsTest {
 		Oberon0Parser parser = new Oberon0Parser(tokens);
 		// Begin parsing at rule expression
 		ExpressionNode expr = parser.expression();
-
+/*
 		Environment env = new Environment();
 		env.declareByValue("a", new Int(2));
 		Array ar = new Array(5);
@@ -47,7 +47,7 @@ public class ExpressionsTest {
 		rec.put("age", new Int(25));
 		rec.put("days", ar);
 		env.declareByValue("rec", rec);
-
+*/
 
 		//Int result = (Int) expr.eval(new ExpressionVisitor(), env);
 		//System.out.println(result.getValue());

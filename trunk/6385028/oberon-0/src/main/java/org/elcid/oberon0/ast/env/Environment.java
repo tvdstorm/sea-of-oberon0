@@ -68,4 +68,20 @@ public class Environment {
 		procedures.put(procedureName, procedure);
 	}
 
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		if (superEnv != null) {
+			sb.append(superEnv.toString());
+		}
+		sb.append("SUB ENV:");
+		for (Map.Entry<String, Reference> ref : valueBindings.entrySet()) {
+			sb.append(ref.getKey()+ " : " +ref.getValue()+ "\n");
+		}
+
+		for (Map.Entry<String, Procedure> ref : procedures.entrySet()) {
+			sb.append(ref.getKey()+ " : " +ref.getValue()+ "\n");
+		}
+		sb.append("END SUB ENV");
+		return sb.toString();
+	}
 }

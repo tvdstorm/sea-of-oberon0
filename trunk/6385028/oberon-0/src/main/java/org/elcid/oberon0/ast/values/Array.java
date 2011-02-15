@@ -15,13 +15,10 @@ public class Array extends Value {
 	public Array(Integer maxLength) {
 		this.elements = new ArrayList<Value>(maxLength);
 		this.maxLength = maxLength;
-	}
 
-	public void add(Value element) {
-		if (elements.size() <= maxLength)
-			elements.add(element);
-		else
-			throw new IndexOutOfBoundsException("Array index out of bounds");
+		for (int i=0;i<maxLength;i++) {
+			elements.add(new Int(0));
+		}
 	}
 
 	@Override
