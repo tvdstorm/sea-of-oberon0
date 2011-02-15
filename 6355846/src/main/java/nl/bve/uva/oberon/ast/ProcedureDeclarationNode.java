@@ -13,7 +13,7 @@ public class ProcedureDeclarationNode implements IInterpretableNode {
 	
 	public ProcedureDeclarationNode(String name1, String name2, List<TypedParameterList> fp, IInterpretableNode body) {
 		if (! name1.equals(name2)) {
-			throw new RuntimeException("Procedure START-identifier and END-identifier aren't equals: " +name1+ "<>" +name2);
+			throw new RuntimeException("Procedure START-identifier and END-identifier aren't equals: " +name1+ " <> " +name2);
 		}
 		
 		this.ident = name1;
