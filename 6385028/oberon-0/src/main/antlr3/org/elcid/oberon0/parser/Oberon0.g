@@ -123,8 +123,8 @@ formalParams returns [FormalParamsNode result = new FormalParamsNode()]
 	;
 
 fPSection returns [FpSectionNode result]
-	: 	VAR_KW i=identList COLON t=type					{ $result = new FpSectionNode($i.result, $t.result); }
-	|	i=identList COLON t=type						{ $result = new FpSectionNode($i.result, $t.result); }
+	: 	VAR_KW i=identList COLON t=type					{ $result = new ReferenceFpSectionNode($i.result, $t.result); }
+	|	i=identList COLON t=type						{ $result = new ValueFpSectionNode($i.result, $t.result); }
 	;
 
 type returns [TypeNode result]

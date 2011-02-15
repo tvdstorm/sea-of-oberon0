@@ -55,9 +55,8 @@ public class StatementVisitor {
 		// Bind actual params to formal params in subenv
 		if (node.getActualParameters().size() == proc.getFormalParams().size()) {
 			for (int i = 0; i < node.getActualParameters().size(); i++) {
-				String identifier = proc.getFormalParams().get(i).getIdentifier();
 				Value value = (Value) node.getActualParameters().get(i).eval(new ExpressionVisitor(), localEnv);
-				subEnv.declareByValue(identifier, value);
+				proc.getFormalParams().get(i).declare(subEnv, value);
 			}
 		}
 		// Run declarations of proc in subenv
