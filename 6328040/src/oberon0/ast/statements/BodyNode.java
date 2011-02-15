@@ -8,7 +8,7 @@ import oberon0.environment.Context;
 public class BodyNode implements IExecutable {
 	private final List<IExecutable> _statements;
 
-	public BodyNode(ArrayList<IExecutable> statements) {
+	public BodyNode(List<IExecutable> statements) {
 		if (statements != null) {
 			_statements = statements;
 		} else {

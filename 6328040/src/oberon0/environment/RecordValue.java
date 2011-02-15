@@ -3,6 +3,8 @@ package oberon0.environment;
 import java.util.HashMap;
 import java.util.Map;
 
+import oberon0.ast.variables.types.IType;
+
 public class RecordValue implements IValue {
 	private final Map<String, Reference> _fields;
 
@@ -11,6 +13,15 @@ public class RecordValue implements IValue {
 		for (String name : values.keySet()) {
 			_fields.put(name, values.get(name).getCopy());
 		}
+	}
+	
+	public static RecordValue getDefaultValue(Context context, Map<String, IType>  fields) {
+		Map<String, Reference> RefFields = new HashMap<String, Reference>();
+		for (String name : fields.keySet()) {
+			IValue currentDefaultValue = fields.get(name).getDefaultValue(context);
+			RefFields.put(name, new Reference(currentDefaultValue));
+		}
+		return new RecordValue(RefFields);
 	}
 
 	public Reference getReference(String key) {

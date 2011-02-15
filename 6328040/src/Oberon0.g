@@ -57,6 +57,7 @@ import oberon0.ast.expressions.logical.*;
 import oberon0.ast.expressions.arithmetic.*;
 import oberon0.ast.expressions.relational.*;
 import oberon0.ast.variables.*;
+import oberon0.ast.variables.types.*;
 import oberon0.ast.variables.selectors.*;
 import oberon0.ast.declarations.*;
 import oberon0.ast.routines.*;
@@ -244,17 +245,17 @@ assignment returns [ IExecutable node ]
 	;
 
 	
-type	returns [ IEvaluable node ]
-	: ident = IDENT 		{$node = new TypeNode($ident.text);			}
+type	returns [ IType node ]
+	: ident = IDENT 		{$node = new PrimType($ident.text);			}
 	|ARRAY exp = expression 
-		OF typ = type		{$node = new ArrayTypeNode($exp.node, $typ.node);	}
-	| rec = recordType		{$node = new RecordTypeNode($rec.fields);		}
+		OF typ = type		{$node = new ArrayType($exp.node, $typ.node);	}
+	| rec = recordType		{$node = new RecordType($rec.fields);		}
 	;
 	
 
 
-recordType returns [ HashMap<String, IEvaluable> fields ]
-	: RECORD 			{fields = new HashMap<String, IEvaluable>();	}	
+recordType returns [ HashMap<String, IType> fields ]
+	: RECORD 			{fields = new HashMap<String, IType>();	}	
 	( ident1 = identList 
 	COLON 
 	typ1 = type			{for (String ident: $ident1.list) 

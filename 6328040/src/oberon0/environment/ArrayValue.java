@@ -6,11 +6,15 @@ import java.util.List;
 public class ArrayValue implements IValue {
 	private final List<Reference> _references;
 
-	public ArrayValue(IValue type, int size) {
+	public ArrayValue(IValue defaultValue, int size) {
 		_references = new ArrayList<Reference>(size);
 		while (_references.size() < size) {
-			_references.add(new Reference(type));
+			_references.add(new Reference(defaultValue));
 		}
+	}
+	
+	public static ArrayValue getDefaultValue(IValue defaultValue, int size) {
+		return new ArrayValue(defaultValue, size);
 	}
 
 	public ArrayValue(List<Reference> references) {

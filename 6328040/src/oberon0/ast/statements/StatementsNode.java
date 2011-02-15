@@ -8,7 +8,7 @@ import oberon0.environment.Context;
 public class StatementsNode implements IExecutable {
 	private final List<IExecutable> _statementSequence;
 
-	public StatementsNode(ArrayList<IExecutable> statements) {
+	public StatementsNode(List<IExecutable> statements) {
 		if (statements != null) {
 			_statementSequence = statements;
 		} else {
