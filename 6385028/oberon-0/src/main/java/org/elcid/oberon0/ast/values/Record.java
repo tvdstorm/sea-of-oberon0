@@ -29,4 +29,9 @@ public class Record extends Value {
 		return fields.get(identifier);
 	}
 
+	@Override
+	public void set(Value value) {
+		this.fields = ((Record) value).fields;
+	}
+
 }

@@ -38,7 +38,7 @@ public class ExpressionVisitorTest {
 		assertEquals(expResultInt, resultValue.getValue());
 
 		// Test with an integer variable value
-		env.putValue("varName", new Int(25));
+		env.declareByValue("varName", new Int(25));
 		IdentSelectorNode varNode = new IdentSelectorNode("varName");
 		Int resultIntVar = (Int) instance.eval(varNode, env);
 		Integer expResultIntVar = 25;
@@ -56,8 +56,8 @@ public class ExpressionVisitorTest {
 		assertEquals(expResultInt, resultInt.getValue());
 
 		// Test with two integer variable values
-		env.putValue("left", new Int(4));
-		env.putValue("right", new Int(5));
+		env.declareByValue("left", new Int(4));
+		env.declareByValue("right", new Int(5));
 		IdentSelectorNode left = new IdentSelectorNode("left");
 		IdentSelectorNode right = new IdentSelectorNode("right");
 		PlusExpNode nodeIntVar = new PlusExpNode(left, right);
@@ -136,8 +136,8 @@ public class ExpressionVisitorTest {
 		assertEquals(false, resultFalse.getValue());
 
 		// Test with two integer variable values that are equal
-		env.putValue("left", new Int(4));
-		env.putValue("right", new Int(4));
+		env.declareByValue("left", new Int(4));
+		env.declareByValue("right", new Int(4));
 		IdentSelectorNode leftTrue = new IdentSelectorNode("left");
 		IdentSelectorNode rightTrue = new IdentSelectorNode("right");
 		EqualsExpNode nodeTrueVar = new EqualsExpNode(leftTrue, rightTrue);
@@ -145,8 +145,8 @@ public class ExpressionVisitorTest {
 		assertEquals(true, resultTrueVar.getValue());
 
 		// Test with two integer variable values that are not equal
-		env.putValue("left", new Int(4));
-		env.putValue("right", new Int(5));
+		env.declareByValue("left", new Int(4));
+		env.declareByValue("right", new Int(5));
 		IdentSelectorNode leftFalse = new IdentSelectorNode("left");
 		IdentSelectorNode rightFalse = new IdentSelectorNode("right");
 		EqualsExpNode nodeFalseVar = new EqualsExpNode(leftFalse, rightFalse);

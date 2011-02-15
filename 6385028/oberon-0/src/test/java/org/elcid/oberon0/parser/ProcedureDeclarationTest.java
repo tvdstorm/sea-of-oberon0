@@ -40,10 +40,12 @@ public class ProcedureDeclarationTest {
 		ModuleNode mod = parser.module();
 
 		Environment env = new Environment();
-		env.putValue("a", new Int(5));
+		env.declareByReference("a", new Int(5));
 
 		mod.run(env);
 
 		System.out.println(env.getProcedure("Swap").getFormalParams().size());
+		System.out.println("a: " + ((Int)env.getReference("a").get()).getValue());
+		System.out.println("b: " + ((Int)env.getReference("b").get()).getValue());
 	}
 }

@@ -8,5 +8,7 @@ package org.elcid.oberon0.ast.values;
 public abstract class Value {
 
 	public abstract Value applySelector(Object key);
+
+	public abstract void set(Value value);
 	
 }

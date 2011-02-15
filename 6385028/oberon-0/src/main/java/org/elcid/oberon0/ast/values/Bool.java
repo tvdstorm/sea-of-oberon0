@@ -24,4 +24,9 @@ public class Bool extends Value {
 		throw new TerminalValueException("Can't select on a Bool value");
 	}
 
+	@Override
+	public void set(Value value) {
+		this.value = ((Bool)value).getValue();
+	}
+
 }
