@@ -26,7 +26,7 @@ public class ArrayIndexerIdentifierChecker implements IChecker {
 			IdentifierExpression indexerExpressionAsIdentifierExpression = (IdentifierExpression)indexerExpression;
 			errorList.addAll(
 					new IdentifierExpressionChecker(indexerExpressionAsIdentifierExpression)
-					.canEvalToInt());
+					.canEvalToInt(scope));
 		}
 		
 		return errorList;

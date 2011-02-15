@@ -18,8 +18,8 @@ public class ComparisonExpressionChecker implements IChecker {
 	@Override
 	public List<AbstractError> check(TypeCheckScope scope) {		
 		ArrayList<AbstractError> errorList = new ArrayList<AbstractError>();
-		checkPossibleIdentifiers(comparison.getLefthandSide(), errorList);
-		checkPossibleIdentifiers(comparison.getRighthandSide(), errorList);
+		checkPossibleIdentifiers(comparison.getLefthandSide(), errorList, scope);
+		checkPossibleIdentifiers(comparison.getRighthandSide(), errorList, scope);
 		
 		return errorList;
 	}
@@ -29,12 +29,13 @@ public class ComparisonExpressionChecker implements IChecker {
 	 *
 	 * @param operand the operand
 	 * @param errorList the error list
+	 * @param scope 
 	 */
 	private void checkPossibleIdentifiers(IExpression operand,
-			ArrayList<AbstractError> errorList) {
+			ArrayList<AbstractError> errorList, TypeCheckScope scope) {
 		if (operand instanceof IdentifierExpression){
 			IdentifierExpressionChecker checker = new IdentifierExpressionChecker((IdentifierExpression)operand);
-			errorList.addAll(checker.canEvalToInt());
+			errorList.addAll(checker.canEvalToInt(scope));
 		}
 	}
 

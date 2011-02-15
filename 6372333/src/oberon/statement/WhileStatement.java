@@ -39,4 +39,13 @@ public class WhileStatement implements IStatement {
 		}
 	}
 
+	/**
+	 * Gets the condition.
+	 *
+	 * @return the condition
+	 */
+	public IExpression getCondition() {
+		return condition;
+	}
+
 }

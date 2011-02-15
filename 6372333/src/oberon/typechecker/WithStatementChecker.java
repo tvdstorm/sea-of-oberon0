@@ -3,7 +3,9 @@ package oberon.typechecker;
 import java.util.ArrayList;
 import java.util.List;
 
+import oberon.IDataType;
 import oberon.IIdentifier;
+import oberon.data.RecordDataType;
 import oberon.data.VariableIdentifier;
 import oberon.statement.WithStatement;
 
@@ -21,8 +23,18 @@ public class WithStatementChecker implements IChecker {
 		
 		ArrayList<AbstractError> errorList = new ArrayList<AbstractError>();
 		if (identifier instanceof VariableIdentifier){
-			//TODO: check of identifier een record is
-			throw new NotImplementedException();
+			VariableIdentifier variableIdentifier = (VariableIdentifier) identifier;
+			VariableIdentifierIdentifierChecker checker = new VariableIdentifierIdentifierChecker(variableIdentifier);
+			errorList.addAll(checker.check(scope));
+			
+			//only do subsequent checks when the variable is found etc.
+			if (errorList.isEmpty()){
+				IDataType variable = scope.getVariable(variableIdentifier.getText());
+				
+				if (!(variable instanceof RecordDataType)){
+					errorList.add(new VariableIsNotARecordError(variableIdentifier.getText(), scope.getName()));
+				}
+			}
 		}
 		else{
 			errorList.add(new InvalidVariableInWithStatementError(identifier.getText()));
