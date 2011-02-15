@@ -1,27 +1,13 @@
 package org.elcid.oberon0.ast.env;
 
-import org.elcid.oberon0.ast.TypeNode;
+import org.elcid.oberon0.ast.values.Value;
 
 /**
  *
  * @author Pieter Brandwijk
  */
-public class FormalParameter {
+public abstract class FormalParameter {
 
-	private String identifier;
-	private TypeNode type;
-
-	public FormalParameter(String identifier, TypeNode type) {
-		this.identifier = identifier;
-		this.type = type;
-	}
-
-	public String getIdentifier() {
-		return identifier;
-	}
-
-	public TypeNode getType() {
-		return type;
-	}
+	public abstract void declare(Environment env, Value value);
 
 }

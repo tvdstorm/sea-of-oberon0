@@ -54,9 +54,7 @@ public class DeclarationVisitor {
 	public void run(ProcedureDeclNode node, Environment env) {
 		List<FormalParameter> formalParameters = new ArrayList<FormalParameter>();
 		for (FpSectionNode section: node.getFormalParams().getFpSections()) {
-			for (String identifier: section.getIdentifiers()) {
-				formalParameters.add(new FormalParameter(identifier, section.getType()));
-			}
+			formalParameters.addAll(section.process());
 		}
 		Procedure newProcedure = new Procedure(formalParameters, node.getDeclarationSequence(), node.getStatementSequence());
 		env.putProcedure(node.getName(), newProcedure);
