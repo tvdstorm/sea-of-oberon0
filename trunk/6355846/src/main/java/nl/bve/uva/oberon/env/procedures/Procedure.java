@@ -18,35 +18,32 @@ public abstract class Procedure {
 		if (formalParametersList != null && actualParameters == null) {
 			throw new RuntimeException("No actual values given for procedure " +getName()+ " (parameters needed: " +formalParametersList.size());
 		}
-		if (formalParametersList != null && actualParameters != null) {
-			if (actualParameters.size() < formalParametersList.size()) {
-				throw new RuntimeException("Not enough actual values given for procedure " +getName()+ " (parameters needed: " +formalParametersList.size());
-			} else if (actualParameters.size() > formalParametersList.size()) {
-				throw new RuntimeException("Too many actual values given for procedure " +getName()+ " (parameters needed: " +formalParametersList.size());
-			}
-		}
 		
 		Environment subEnv = env.getNewSubSpace();
 		
 		if (formalParametersList != null && actualParameters != null) {
-			fillFormalsWithActuals(subEnv, actualParameters);
+			Iterator<IInterpretableNode> actuals = actualParameters.iterator();
+			
+			for (TypedParameterList fpList : formalParametersList) {
+				List<String> identList = fpList.getParametersList();
+				
+				for (String ident : identList) {
+					if (!actuals.hasNext()) {
+						throw new RuntimeException("Not enough actual values given for procedure " +getName()+ " (parameters needed: " +formalParametersList.size());
+					}
+					
+					OberonType value = (OberonType)actuals.next().interpret(subEnv);
+					value = fpList.processValue(ident, value, subEnv);
+					subEnv.addVariable(ident, value);
+				}
+			}
+			
+			if (actuals.hasNext()) {
+				throw new RuntimeException("Too many actual values given for procedure " +getName()+ " (parameters needed: " +formalParametersList.size());
+			}
 		}
 		
 		execute(subEnv);
-	}
-	
-	private void fillFormalsWithActuals(Environment env, List<IInterpretableNode> actualParameters) {
-		Iterator<IInterpretableNode> actualsIter = actualParameters.iterator();
-		
-		for (TypedParameterList fpList : getFormalParameters()) {
-			List<String> identList = fpList.getParametersList();
-			
-			for (String ident : identList) {
-				OberonType value = (OberonType)actualsIter.next().interpret(env);
-				value = fpList.processValue(ident, value, env);
-				env.addVariable(ident, value);
-			}
-		}
 	}
 	
 	public String getName() {

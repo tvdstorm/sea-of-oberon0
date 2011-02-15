@@ -8,8 +8,17 @@ VAR
   input2: ARRAY INPUTLENGTH OF INTEGER;
   input3: ARRAY INPUTLENGTH OF ARRAY 3 OF ARRAY INPUTLENGTH OF INTEGER;
   input4: ARRAY 5 OF INTEGER;
+  i, j: INTEGER;
 
 BEGIN
+   i := 5;
+   j := i;
+   
+   i := i + 1;
+   Write(i);
+   WriteLn;
+   Write(j);
+   
    input1 := input2;
    input4 := input3[0][0];
    input1 := input4
