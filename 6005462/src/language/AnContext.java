@@ -2,19 +2,24 @@ package language;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AnContext {
 
-	private HashMap<String, AnIdent> memIdents;
-	private HashMap<String, AnProcDecl> memProcs;
-	private HashMap<String, AnTypeDecl> memTypes; 
+	private Map<String, AnIdent> memIdents;
+	private Map<String, AnProcDecl> memProcs;
+	private Map<String, AnTypeDecl> memTypes; 
 	
 	public AnContext(){
-		
+		this.memIdents = new HashMap<String, AnIdent>();
+		this.memProcs = new HashMap<String, AnProcDecl>();
+		this.memTypes = new HashMap<String, AnTypeDecl>();
 	}
+	
 	
 
 	public void setIdents(List<AnIdent> idents){
+		if (idents == null) { return; }
 		for (AnIdent ident : idents){
 			setIdent(ident);
 		}
@@ -29,6 +34,7 @@ public class AnContext {
 	}
 
 	public void setProcs(List<AnProcDecl> procs){
+		if (procs == null) { return; }
 		for (AnProcDecl proc : procs){
 			setProc(proc);
 		}
@@ -43,6 +49,7 @@ public class AnContext {
 	}
 
 	public void setTypes(List<AnTypeDecl> types){
+		if (types == null) { return; }
 		for (AnTypeDecl typ : types){
 			setType(typ);
 		}

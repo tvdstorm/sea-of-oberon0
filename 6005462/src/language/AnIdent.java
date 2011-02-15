@@ -8,6 +8,7 @@ public class AnIdent implements IType {
 	private boolean isConst;
 	
 	public AnIdent(String name, ValueType valType){
+		this.name = name;
 		this.valType = valType;
 		this.value = null;
 		this.isVar = true;

@@ -2,17 +2,19 @@ package language;
 
 public class AnSmtAssignment implements IStatement {
 
-	private AnIdent lhs;
+	private String lhsName;
 	private AnExpression expr;
 	
-	public AnSmtAssignment(AnIdent lhs, AnExpression expr){
-		this.lhs = lhs;
+	public AnSmtAssignment(String lhsName, AnExpression expr){
+		this.lhsName = lhsName;
 		this.expr = expr;
 	}
 	
 	@Override
 	public IAstNode eval(AnEnvironment env) throws Exception {
-		this.lhs.assign(expr.eval(env));
+		AnIdent lhsIdent = env.getIdent(lhsName);
+
+		lhsIdent.assign(expr.eval(env));
 		return this;
 	}
 

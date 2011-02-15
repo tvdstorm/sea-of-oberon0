@@ -19,7 +19,6 @@ tokens {
     FPSECTION;
     RECFIELDS;
     FIELDLIST;
-    IDENTLIST;
     PROCCALL;
     PROCDECL;
     PROCHEAD;
@@ -97,7 +96,7 @@ root
 
 module
     :   MODULE ident SEMI declarations (BEGIN statementSequence)? END ident DOT ->
-        ^(MODULE ident declarations (BEGIN statementSequence)? ident) ; 
+        ^(MODULE ident declarations statementSequence? ident) ; 
 
 identSelector    
     :   ident (selectorRightPart)* ;
@@ -165,7 +164,7 @@ statementSequence
     
 identList
     :   ident (COMMA ident)* 
-    ->  ^(IDENTLIST ident+) ; 
+    ->  ident+ ; 
     
 fieldList
     :   (identList SEMI type)? 

@@ -10,6 +10,7 @@ public class AnProcDecl implements IAstNode {
 	List<AnProcDecl> procDecls;*/ 
 	List<AnIdent> formalParams;
 	List<IStatement> statementSeq;
+	AnContext ctxt;
 	
 	public AnProcDecl(String name,
 					  AnContext ctxt,
@@ -18,11 +19,12 @@ public class AnProcDecl implements IAstNode {
 		this.name = name;
 		this.formalParams = formalParams;
 		this.statementSeq = statementSeq;
+		this.ctxt = ctxt;
 		
 		assert(this.name != null);
 		assert(this.formalParams != null);
 		assert(this.statementSeq != null);
-		
+		assert(this.ctxt != null);
 	}
 	
 	public String getName(){
@@ -30,8 +32,12 @@ public class AnProcDecl implements IAstNode {
 	}
 
 	@Override
-	public IAstNode eval(AnEnvironment env) throws Exception {
-		// TODO Auto-generated method stub
+	public IAstNode eval(AnEnvironment env) throws Exception {		
+		env.addContext(this.ctxt);
+		for(IStatement statement : statementSeq){
+			statement.eval(env);
+		}
+		env.releaseCurrentContext();
 		return null;
 	}
 
