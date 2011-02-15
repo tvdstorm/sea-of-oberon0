@@ -3,6 +3,7 @@ package org.elcid.oberon0.ast.visitor;
 import org.elcid.oberon0.ast.*;
 import org.elcid.oberon0.ast.env.Environment;
 import org.elcid.oberon0.ast.env.Procedure;
+import org.elcid.oberon0.ast.env.Reference;
 import org.elcid.oberon0.ast.values.*;
 
 /**
@@ -20,7 +21,8 @@ public class StatementVisitor {
 
 	public void run(AssignmentNode node, Environment localEnv) {
 		Value value = (Value) node.getExpression().eval(new ExpressionVisitor(), localEnv);
-		localEnv.putValue(node.getIdentSelector().getIdentifier(), value);
+		Reference ref = localEnv.getReference(node.getIdentSelector().getIdentifier());
+		ref.set(value, localEnv);
 	}
 
 	public void run(IfStmNode node, Environment localEnv) {
@@ -54,8 +56,8 @@ public class StatementVisitor {
 		if (node.getActualParameters().size() == proc.getFormalParams().size()) {
 			for (int i = 0; i < node.getActualParameters().size(); i++) {
 				String identifier = proc.getFormalParams().get(i).getIdentifier();
-				Value value = (Value) node.getActualParameters().get(i).eval(new ExpressionVisitor(), subEnv);
-				subEnv.putValue(identifier, value);
+				Value value = (Value) node.getActualParameters().get(i).eval(new ExpressionVisitor(), localEnv);
+				subEnv.declareByValue(identifier, value);
 			}
 		}
 		// Run declarations of proc in subenv

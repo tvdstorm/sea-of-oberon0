@@ -37,6 +37,6 @@ public class WhileStmTest {
 
 		seq.run(new StatementVisitor(), env);
 
-		System.out.println("a = " + ((Int)env.getValue("a")).getValue());
+		System.out.println("a = " + ((Int)env.getReference("a").get()).getValue());
 	}
 }

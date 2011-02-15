@@ -16,7 +16,7 @@ public class Environment {
 
 	private Environment superEnv;
 
-	private Map<String, Value> valueBindings = new HashMap<String, Value>();
+	private Map<String, Reference> valueBindings = new HashMap<String, Reference>();
 	private Map<String, TypeNode> typeAliases = new HashMap<String, TypeNode>();
 	private Map<String, Procedure> procedures = new HashMap<String, Procedure>();
 
@@ -36,26 +36,20 @@ public class Environment {
 	 * @param	variableName
 	 * @return	the integer that is bound to the variable
 	 */
-	public Value getValue(String variableName) {
+	public Reference getReference(String variableName) {
 		if (valueBindings.containsKey(variableName))
 			return valueBindings.get(variableName);
 		if (superEnv != null)
-			return superEnv.getValue(variableName);
+			return superEnv.getReference(variableName);
 		throw new UnboundVariableException("Variable " + variableName + " is not bound to an integer");
 	}
 
-	/**
-	 * Puts a new mapping of a variable name to an integer. If variable name was already bound
-	 * to a value, the old value is overwritten by the new value.
-	 *
-	 * @param variableName
-	 * @param value
-	 */
-	public void putValue(String variableName, Value value) {
-		assert (variableName != null) : "Variable name is null";
-		assert (!variableName.equals("")) : "Variable name is empty string";
-		assert (value != null) : "Value is null";
-		valueBindings.put(variableName, value);
+	public void declareByReference(String variableName, Value value) {
+		valueBindings.put(variableName, new RefReference(value));
+	}
+
+	public void declareByValue(String variableName, Value value) {
+		valueBindings.put(variableName, new ValueReference(value));
 	}
 
 	public TypeNode getType(String alias) {

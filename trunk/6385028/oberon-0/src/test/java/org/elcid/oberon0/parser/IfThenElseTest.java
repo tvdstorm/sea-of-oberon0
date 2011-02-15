@@ -39,12 +39,12 @@ public class IfThenElseTest {
 		IfThenElseStmNode ifNode = parser.ifStatement();
 
 		Environment env = new Environment();
-		env.putValue("a", new Int(5));
+		env.declareByValue("a", new Int(5));
 
 		ifNode.run(new StatementVisitor(), env);
 
-		System.out.println("b = " + ((Int)env.getValue("b")).getValue());
-		System.out.println("c = " + ((Int)env.getValue("c")).getValue());
-		System.out.println("d = " + ((Int)env.getValue("d")).getValue());
+		System.out.println("b = " + ((Int)env.getReference("b").get()).getValue());
+		System.out.println("c = " + ((Int)env.getReference("c").get()).getValue());
+		System.out.println("d = " + ((Int)env.getReference("d").get()).getValue());
 	}
 }

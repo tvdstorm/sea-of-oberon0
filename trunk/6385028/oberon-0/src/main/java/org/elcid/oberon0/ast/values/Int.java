@@ -25,4 +25,9 @@ public class Int extends Value {
 		throw new TerminalValueException("Can't select on an integer value");
 	}
 
+	@Override
+	public void set(Value value) {
+		this.value = ((Int) value).getValue();
+	}
+
 }

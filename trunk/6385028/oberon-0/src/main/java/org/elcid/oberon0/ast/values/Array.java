@@ -31,4 +31,10 @@ public class Array extends Value {
 		return elements.get(index);
 	}
 
+	@Override
+	public void set(Value value) {
+		this.elements = ((Array) value).elements;
+		this.maxLength = ((Array) value).maxLength;
+	}
+
 }
