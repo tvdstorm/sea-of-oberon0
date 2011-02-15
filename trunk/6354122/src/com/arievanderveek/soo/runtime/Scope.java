@@ -172,25 +172,21 @@ public class Scope {
 	public ProcedureNode getProcedure(String name) throws SeaOfOberonException {
 		if (procedures.containsKey(name)) {
 			return procedures.get(name);
-		} else {
-			if (!isRootScope()) {
-				return enclosingScope.getProcedure(name);
-			} else {
-				throw new SeaOfOberonException("Procedure " + name + " not found in any scope");
-			}
 		}
+		if (!isRootScope()) {
+			return enclosingScope.getProcedure(name);
+		}
+		throw new SeaOfOberonException("Procedure " + name + " not found in any scope");
 	}
 
 	public TypeNode lookupType(String name) throws SeaOfOberonException {
 		if (typeTable.containsKey(name)) {
 			return typeTable.get(name);
-		} else {
-			if (!isRootScope()) {
-				return enclosingScope.lookupType(name);
-			} else {
-				throw new SeaOfOberonException("Type " + name + " not found in any scope");
-			}
 		}
+		if (!isRootScope()) {
+				return enclosingScope.lookupType(name);
+		}
+		throw new SeaOfOberonException("Type " + name + " not found in any scope");
 	}
 
 	/**
@@ -212,13 +208,11 @@ public class Scope {
 	public Symbol lookupSymbol(String symbolName) {
 		if (symbolTable.containsKey(symbolName)) {
 			return symbolTable.get(symbolName);
-		} else {
-			if (!isRootScope()) {
-				return enclosingScope.lookupSymbol(symbolName);
-			} else {
-				return null;
-			}
 		}
+		if (!isRootScope()) {
+			return enclosingScope.lookupSymbol(symbolName);
+		}
+		return null;
 	}
 
 	/**
@@ -278,17 +272,15 @@ public class Scope {
 	private boolean isRootScope() {
 		if (enclosingScope == null) {
 			return true;
-		} else {
-			return false;
 		}
+		return false;
 	}
 
 	private MemoryMap getMemoryMap() {
 		if (isRootScope()) {
 			return memoryMap;
-		} else {
-			return enclosingScope.getMemoryMap();
 		}
+		return enclosingScope.getMemoryMap();
 	}
 
 	public void addIntegerSymbolToTable(String identifier, Integer value, boolean mutable)
@@ -315,7 +307,7 @@ public class Scope {
 
 	public ArraySymbol generateArraySymbol(int arraySize, TypeNode typeNode)
 			throws SeaOfOberonException {
-		boolean mutable = true; // arrays are always mutable.
+		boolean mutable = true;
 		Symbol[] addressList = new Symbol[arraySize];
 		for (int sizeCounter = 0; sizeCounter < arraySize; sizeCounter++) {
 			addressList[sizeCounter] = typeNode.createSymbolFromType(this);
@@ -325,7 +317,7 @@ public class Scope {
 
 	public RecordSymbol generateRecordSymbol(List<FieldNode> recordMembers)
 			throws SeaOfOberonException {
-		boolean mutable = true; // arrays are always mutable.
+		boolean mutable = true;
 		Map<String, Symbol> content = new Hashtable<String, Symbol>();
 		for (FieldNode fieldNode : recordMembers) {
 			content.put(fieldNode.getName(), fieldNode.getType().createSymbolFromType(this));

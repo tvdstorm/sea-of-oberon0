@@ -9,15 +9,18 @@ import static org.junit.Assert.fail;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import com.arievanderveek.soo.ast.ASTNode;
 import com.arievanderveek.soo.ast.codeblocks.ModuleNode;
 import com.arievanderveek.soo.ast.expr.IdentifierNode;
-import com.arievanderveek.soo.ast.variables.IntegerTypeNode;
+import com.arievanderveek.soo.ast.expr.IntegerExpressionNode;
+import com.arievanderveek.soo.ast.expr.Selector;
+import com.arievanderveek.soo.ast.expr.Selectors;
+import com.arievanderveek.soo.ast.expr.Subscript;
+import com.arievanderveek.soo.ast.statements.ProcedureCallNode;
+import com.arievanderveek.soo.ast.statements.WhileLoopNode;
 import com.arievanderveek.soo.runtime.Scope;
 import com.arievanderveek.soo.test.TestASTCreator;
 
@@ -95,20 +98,24 @@ public class ScopeTest {
 		Integer expectedValueForPos3InArray = new Integer(4);
 		Integer expectedValueForPos4InArray = new Integer(3);
 		// Create selector lists
-		List<ASTNode> selectorPos0 = new LinkedList<ASTNode>();
-		selectorPos0.add(new IntegerNode(0));
-		List<ASTNode> selectorPos1 = new LinkedList<ASTNode>();
-		selectorPos1.add(new IntegerTypeNode(1));
-		List<ASTNode> selectorPos3 = new LinkedList<ASTNode>();
-		selectorPos3.add(new IntegerTypeNode(3));
-		List<ASTNode> selectorPos4 = new LinkedList<ASTNode>();
-		selectorPos4.add(new IntegerTypeNode(4));
+		List<Selector> selectorPos0 = new LinkedList<Selector>();
+		selectorPos0.add(new Subscript(new IntegerExpressionNode(0)));
+		Selectors selectorsPos0 = new Selectors(selectorPos0);
+		List<Selector> selectorPos1 = new LinkedList<Selector>();
+		selectorPos1.add(new Subscript(new IntegerExpressionNode(1)));
+		Selectors selectorsPos1 = new Selectors(selectorPos1);
+		List<Selector> selectorPos3 = new LinkedList<Selector>();
+		selectorPos3.add(new Subscript(new IntegerExpressionNode(3)));
+		Selectors selectorsPos3 = new Selectors(selectorPos3);
+		List<Selector> selectorPos4 = new LinkedList<Selector>();
+		selectorPos4.add(new Subscript(new IntegerExpressionNode(4)));
+		Selectors selectorsPos4 = new Selectors(selectorPos4);
 		// Create the identifiers for the array positions
 		final String identifier = "input";
-		IdentifierNode Pos0InArray = new IdentifierNode(identifier,	selectorPos0);
-		IdentifierNode Pos1InArray = new IdentifierNode(identifier, selectorPos1);
-		IdentifierNode Pos3InArray = new IdentifierNode(identifier, selectorPos3);
-		IdentifierNode Pos4InArray = new IdentifierNode(identifier, selectorPos4);
+		IdentifierNode Pos0InArray = new IdentifierNode(identifier,	selectorsPos0);
+		IdentifierNode Pos1InArray = new IdentifierNode(identifier, selectorsPos1);
+		IdentifierNode Pos3InArray = new IdentifierNode(identifier, selectorsPos3);
+		IdentifierNode Pos4InArray = new IdentifierNode(identifier, selectorsPos4);
 		try {
 			Scope rootScope = new Scope(procsAndVariables.getConstants(),
 					procsAndVariables.getTypes(),
@@ -116,11 +123,10 @@ public class ScopeTest {
 					procsAndVariables.getProcedures());
 			// Get and interpret the 2nd statement, because that's a while loop
 			// populating an array needed
-			ASTNode whileNode = procsAndVariables.getStatementSequence().get(1);
+			WhileLoopNode whileNode = (WhileLoopNode) procsAndVariables.getStatementSequence().get(1);
 			whileNode.interpret(rootScope);
 			// Get the 3rd statement, because that's a procedure call.
-			ASTNode procCallNode = procsAndVariables.getStatementSequence()
-					.get(2);
+			ProcedureCallNode procCallNode = (ProcedureCallNode) procsAndVariables.getStatementSequence().get(2);
 			// Interpret the procedure call with the currently created scope
 			procCallNode.interpret(rootScope);
 			// Now validate the variables. Pos 1 and 2 should be swapped
@@ -129,7 +135,7 @@ public class ScopeTest {
 			assertEquals(expectedValueForPos1InArray,
 					rootScope.getValue(Pos1InArray));
 			// Redo the test but then with 4th statement. This is also a swap
-			procCallNode = procsAndVariables.getStatementSequence().get(3);
+			procCallNode = (ProcedureCallNode) procsAndVariables.getStatementSequence().get(3);
 			// Interpret the procedure call with the currently created scope
 			procCallNode.interpret(rootScope);
 			// Now validate the variables. Pos 3 and 4 should be swapped
@@ -203,10 +209,12 @@ public class ScopeTest {
 		Integer updateValue2 = new Integer(2374);
 		IdentifierNode identTemp = new IdentifierNode("temp");
 		// Data for array values
-		Queue<ASTNode> selectorPos0 = new LinkedList<ASTNode>();
-		selectorPos0.add(new IntegerTypeNode(0));
-		Queue<ASTNode> selectorPos1 = new LinkedList<ASTNode>();
-		selectorPos1.add(new IntegerTypeNode(1));
+		List<Selector> selectorPos0 = new LinkedList<Selector>();
+		selectorPos0.add(new Subscript(new IntegerExpressionNode(0)));
+		Selectors selectorsPos0 = new Selectors(selectorPos0);
+		List<Selector> selectorPos1 = new LinkedList<Selector>();
+		selectorPos1.add(new Subscript(new IntegerExpressionNode(1)));
+		Selectors selectorsPos1 = new Selectors(selectorPos1);
 		// Do the test
 		try {
 			Scope scope = new Scope(simpleMaths.getConstants(),
@@ -233,13 +241,15 @@ public class ScopeTest {
 		// Data for array values
 		Integer expectedValueForPos0InArray = new Integer(178456);
 		Integer expectedValueForPos1InArray = new Integer(478615);
-		List<ASTNode> selectorPos0 = new LinkedList<ASTNode>();
-		selectorPos0.add(new IntegerTypeNode(0));
-		List<ASTNode> selectorPos1 = new LinkedList<ASTNode>();
-		selectorPos1.add(new IntegerTypeNode(1));
+		List<Selector> selectorPos0 = new LinkedList<Selector>();
+		selectorPos0.add(new Subscript(new IntegerExpressionNode(0)));
+		Selectors selectorsPos0 = new Selectors(selectorPos0);
+		List<Selector> selectorPos1 = new LinkedList<Selector>();
+		selectorPos1.add(new Subscript(new IntegerExpressionNode(1)));
+		Selectors selectorsPos1 = new Selectors(selectorPos1);
 		final String identifier = "input";
-		IdentifierNode Pos0InArray = new IdentifierNode(identifier,selectorPos0);
-		IdentifierNode Pos1InArray = new IdentifierNode(identifier,selectorPos1);
+		IdentifierNode Pos0InArray = new IdentifierNode(identifier,selectorsPos0);
+		IdentifierNode Pos1InArray = new IdentifierNode(identifier,selectorsPos1);
 		// Do the test
 		try {
 			Scope scope = new Scope(simpleMaths.getConstants(),

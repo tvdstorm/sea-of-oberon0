@@ -27,7 +27,7 @@ tokens {
   import java.util.LinkedList;
 }
 
-@lexer::header {
+@lexer::header { 
   package com.arievanderveek.soo.parser.antlrimpl.generated;
 }
 
