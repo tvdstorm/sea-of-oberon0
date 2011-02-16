@@ -3,6 +3,7 @@
  */
 package com.arievanderveek.soo.runtime;
 
+import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.util.Constants;
 
 /**
@@ -24,6 +25,11 @@ public class IntegerSymbol extends Symbol {
 	public IntegerSymbol(boolean mutable, MemoryAddress memoryAdress) {
 		super(SymbolTypesEnum.INTEGER, mutable);
 		this.memoryAdress = memoryAdress;
+	}
+
+	public IntegerSymbol(IntegerSymbol toBeCopiedSymbol) {
+		super(SymbolTypesEnum.ARRAY, toBeCopiedSymbol.isMutable());
+		this.memoryAdress = toBeCopiedSymbol.getMemoryAdress();
 	}
 
 	/**
@@ -67,6 +73,18 @@ public class IntegerSymbol extends Symbol {
 		sb.append("memoryAdress: " + memoryAdress.toString());
 		sb.append(Constants.LINE_SEPARATOR);
 		return sb.toString();
+	}
+
+	@Override
+	public void regenerateMemoryAddress(Scope scope, MemoryMap currentMap)
+			throws SeaOfOberonException {
+		Integer oldValue = scope.lookupMemoryManagerForAdress(memoryAdress).getValue(memoryAdress);
+		MemoryAddress newAddress = currentMap.addValue(oldValue);
+		this.memoryAdress = newAddress;
+	}
+
+	public IntegerSymbol clone() {
+		return new IntegerSymbol(this);
 	}
 
 }
