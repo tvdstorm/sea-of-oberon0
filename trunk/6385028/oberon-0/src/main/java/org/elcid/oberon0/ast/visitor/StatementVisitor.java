@@ -40,32 +40,23 @@ public class StatementVisitor {
 	public void run(WhileStmNode node, Environment localEnv) {
 		boolean condition = ((Bool) node.getCondition().eval(new ExpressionVisitor(), localEnv)).getValue();
 		while (condition) {
-//			System.out.println("Performing while\n");
 			node.getStatementSequence().run(this, localEnv);
 			condition = ((Bool) node.getCondition().eval(new ExpressionVisitor(), localEnv)).getValue();
-//			System.out.println("\n\nENVIRONMENT:");
-//			System.out.println(localEnv.toString());
-//			System.out.println("\n\nEND ENVIRONMENT:");
 		}
 	}
 
 	public void run(ProcCallStmNode node, Environment localEnv) {
-		// Fetch procedure from env
 		Procedure proc = localEnv.getProcedure(node.getIdentifier());
-		// Create new subenv
 		Environment subEnv = new Environment(localEnv);
+		boolean actualParamsExist = node.getActualParameters() != null;
+		boolean formalParamsExist = proc.getFormalParams() != null;
 		// Bind actual params to formal params in subenv
-		if (node.getActualParameters() != null) {
-			if (proc.getFormalParams() != null) {
-				if (node.getActualParameters().size() == proc.getFormalParams().size()) {
-					for (int i = 0; i < node.getActualParameters().size(); i++) {
-						Value value = (Value) node.getActualParameters().get(i).eval(new ExpressionVisitor(), localEnv);
-						proc.getFormalParams().get(i).declare(subEnv, value);
-					}
-				}
+		if (actualParamsExist && formalParamsExist && (node.getActualParameters().size() == proc.getFormalParams().size())) {
+			for (int i = 0; i < node.getActualParameters().size(); i++) {
+				Value value = (Value) node.getActualParameters().get(i).eval(new ExpressionVisitor(), localEnv);
+				proc.getFormalParams().get(i).declare(subEnv, value);
 			}
 		}
-		// Execute procedure
 		proc.execute(subEnv);
 	}
 }
