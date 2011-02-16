@@ -17,8 +17,7 @@ public class MultiplicationOperatorNode extends AbstractBinaryOperatorNode {
 	 * @param leftHandNode
 	 * @param rightHandNode
 	 */
-	public MultiplicationOperatorNode(ExpressionNode leftHandNode,
-			ExpressionNode rightHandNode) {
+	public MultiplicationOperatorNode(ExpressionNode leftHandNode, ExpressionNode rightHandNode) {
 		super(leftHandNode, rightHandNode);
 	}
 
@@ -43,7 +42,6 @@ public class MultiplicationOperatorNode extends AbstractBinaryOperatorNode {
 	 */
 	@Override
 	public Integer interpret(Scope scope) throws SeaOfOberonException {
-		return super.leftHandNode.interpret(scope)
-				* super.rightHandNode.interpret(scope);
+		return super.leftHandNode.interpret(scope) * super.rightHandNode.interpret(scope);
 	}
 }

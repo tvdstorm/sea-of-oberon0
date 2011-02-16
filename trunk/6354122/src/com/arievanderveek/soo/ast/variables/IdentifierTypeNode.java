@@ -5,10 +5,10 @@ import com.arievanderveek.soo.runtime.Scope;
 import com.arievanderveek.soo.runtime.Symbol;
 import com.arievanderveek.soo.util.Constants;
 
-public class IdentifierTypeNode extends TypeNode{
+public class IdentifierTypeNode extends TypeNode {
 
 	private final String name;
-	
+
 	public IdentifierTypeNode(String name) {
 		this.name = name;
 	}
@@ -21,14 +21,14 @@ public class IdentifierTypeNode extends TypeNode{
 	public String getName() {
 		return name;
 	}
-	
-	public static void registerIdentifierType(Scope scope, IdentifierTypeNode identNode){
+
+	public static void registerIdentifierType(Scope scope, IdentifierTypeNode identNode) {
 
 	}
 
 	@Override
 	public void registerVariable(String identifier, Scope scope) throws SeaOfOberonException {
-		if (Constants.INTEGER_VAR_KEYWORD.equals(name)){
+		if (Constants.INTEGER_VAR_KEYWORD.equals(name)) {
 			// Its an integer declaration. Register it as an integer
 			scope.addIntegerSymbolToTable(identifier, new Integer(0), true);
 		} else {
@@ -36,10 +36,10 @@ public class IdentifierTypeNode extends TypeNode{
 			resolvedNode.registerVariable(identifier, scope);
 		}
 	}
-	
+
 	@Override
 	public Symbol createSymbolFromType(Scope scope) throws SeaOfOberonException {
-		if (Constants.INTEGER_VAR_KEYWORD.equals(name)){
+		if (Constants.INTEGER_VAR_KEYWORD.equals(name)) {
 			// Its an integer declaration. Register it as an integer
 			return scope.generateIntegerSymbol(new Integer(0), true);
 		} else {

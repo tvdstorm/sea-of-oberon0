@@ -15,8 +15,7 @@ public abstract class AbstractBinaryOperatorNode extends ExpressionNode {
 
 	protected final ExpressionNode leftHandNode, rightHandNode;
 
-	public AbstractBinaryOperatorNode(ExpressionNode leftHandNode,
-			ExpressionNode rightHandNode) {
+	public AbstractBinaryOperatorNode(ExpressionNode leftHandNode, ExpressionNode rightHandNode) {
 		assert leftHandNode != null;
 		assert rightHandNode != null;
 		this.leftHandNode = leftHandNode;

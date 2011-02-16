@@ -28,12 +28,10 @@ public class ModuleNode extends CodeBlockNode {
 	 * @param procedures
 	 * @param statementSequence
 	 */
-	public ModuleNode(String startName, String endName,
-			List<ConstantNode> constants, List<FieldNode> types,
-			List<FieldNode> variables, List<ProcedureNode> procedures,
+	public ModuleNode(String startName, String endName, List<ConstantNode> constants,
+			List<FieldNode> types, List<FieldNode> variables, List<ProcedureNode> procedures,
 			List<StatementNode> statementSequence) {
-		super(startName, endName, constants, types, variables, procedures,
-				statementSequence);
+		super(startName, endName, constants, types, variables, procedures, statementSequence);
 		// add the system procedures to this node
 		this.procedures.add(new ReadLineCallNode());
 		this.procedures.add(new WriteLnCallNode());
@@ -50,7 +48,7 @@ public class ModuleNode extends CodeBlockNode {
 	public void interpret(Scope scope) throws SeaOfOberonException {
 		// Create a new Scope
 		Scope localScope = new Scope(constants, types, variables, procedures);
-		//System.out.println(localScope.toString());
+		// System.out.println(localScope.toString());
 		// loop over statements and call interpret method with the Scope
 		// Variable
 		for (StatementNode statementNode : statementSequence) {

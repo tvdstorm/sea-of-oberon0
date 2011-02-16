@@ -33,8 +33,7 @@ public class NotOperatorNode extends UnaryOperatorNode {
 			if (getNode().interpret(scope) == 0) {
 				return 1;
 			} else {
-				throw new SeaOfOberonException(
-						"Not Operator node did not return a boolean value");
+				throw new SeaOfOberonException("Not Operator node did not return a boolean value");
 			}
 		}
 	}

@@ -36,26 +36,25 @@ public class RecordTypeNode extends TypeNode {
 	 */
 	@Override
 	public String toTreeString(String ident) throws SeaOfOberonException {
-	 StringBuilder sb = new StringBuilder(); 
-	 sb.append("RECORD" + ident);
-	 for (FieldNode fieldNode : recordMembers){ 
-		 sb.append(fieldNode.getName());
-		 sb.append(" = ");
-		 sb.append(fieldNode.getType().toTreeString(ident));
-		 sb.append(ident);
-	 }
-	 return sb.toString(); 
-	 }
-	 
+		StringBuilder sb = new StringBuilder();
+		sb.append("RECORD" + ident);
+		for (FieldNode fieldNode : recordMembers) {
+			sb.append(fieldNode.getName());
+			sb.append(" = ");
+			sb.append(fieldNode.getType().toTreeString(ident));
+			sb.append(ident);
+		}
+		return sb.toString();
+	}
 
 	@Override
 	public void registerVariable(String identifier, Scope scope) throws SeaOfOberonException {
-		scope.addRecordSymbolToTable(identifier,  recordMembers);
+		scope.addRecordSymbolToTable(identifier, recordMembers);
 	}
-	
+
 	@Override
-	public Symbol createSymbolFromType( Scope scope) throws SeaOfOberonException {
-		return scope.generateRecordSymbol( recordMembers);
+	public Symbol createSymbolFromType(Scope scope) throws SeaOfOberonException {
+		return scope.generateRecordSymbol(recordMembers);
 	}
-	
+
 }

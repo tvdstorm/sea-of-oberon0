@@ -19,8 +19,9 @@ import com.arievanderveek.soo.util.Constants;
  */
 public abstract class CodeBlockNode implements ASTNode {
 
-	
-	//The constructor ModuleNode(String, String, List<ConstantNode>, List<FieldNode>, List<FieldNode>, List<ProcedureNode>, List<StatementNode>) is undefined
+	// The constructor ModuleNode(String, String, List<ConstantNode>,
+	// List<FieldNode>, List<FieldNode>, List<ProcedureNode>,
+	// List<StatementNode>) is undefined
 
 	protected final String codeBlockName;
 	protected final List<ConstantNode> constants;
@@ -40,9 +41,8 @@ public abstract class CodeBlockNode implements ASTNode {
 	 * @param procedures
 	 * @param statementSequence
 	 */
-	public CodeBlockNode(String startName, String endName,
-			List<ConstantNode> constants, List<FieldNode> types,
-			List<FieldNode> variables, List<ProcedureNode> procedures,
+	public CodeBlockNode(String startName, String endName, List<ConstantNode> constants,
+			List<FieldNode> types, List<FieldNode> variables, List<ProcedureNode> procedures,
 			List<StatementNode> statementSequence) {
 		// Assert all the incoming variables
 		assert startName != null;
@@ -55,8 +55,8 @@ public abstract class CodeBlockNode implements ASTNode {
 		// See todo in ASTNode interface. Throwing runtime exceptions is not
 		// good.
 		if (!(startName.equalsIgnoreCase(endName))) {
-			throw new RuntimeException("Startname " + startName + " endname"
-					+ endName + " are not equal");
+			throw new RuntimeException("Startname " + startName + " endname" + endName
+					+ " are not equal");
 		}
 		this.codeBlockName = startName;
 		this.constants = constants;
@@ -65,13 +65,14 @@ public abstract class CodeBlockNode implements ASTNode {
 		this.procedures = procedures;
 		this.statementSequence = statementSequence;
 	}
-	
-	
+
 	/**
 	 * Interpret the code block
-	 * @param scope The scope
+	 * 
+	 * @param scope
+	 *            The scope
 	 */
-	public abstract void interpret(Scope scope)throws SeaOfOberonException ;
+	public abstract void interpret(Scope scope) throws SeaOfOberonException;
 
 	/*
 	 * (non-Javadoc)
@@ -127,31 +128,25 @@ public abstract class CodeBlockNode implements ASTNode {
 		return sb.toString();
 	}
 
-
 	public String getCodeBlockName() {
 		return codeBlockName;
 	}
-
 
 	public List<ConstantNode> getConstants() {
 		return constants;
 	}
 
-
 	public List<FieldNode> getTypes() {
 		return types;
 	}
-
 
 	public List<FieldNode> getVariables() {
 		return variables;
 	}
 
-
 	public List<ProcedureNode> getProcedures() {
 		return procedures;
 	}
-
 
 	public List<StatementNode> getStatementSequence() {
 		return statementSequence;

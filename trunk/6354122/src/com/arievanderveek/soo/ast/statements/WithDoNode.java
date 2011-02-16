@@ -7,7 +7,6 @@ import java.util.List;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
-import com.arievanderveek.soo.ast.expr.ExpressionNode;
 import com.arievanderveek.soo.ast.expr.IdentifierNode;
 import com.arievanderveek.soo.runtime.RecordSymbol;
 import com.arievanderveek.soo.runtime.Scope;
@@ -45,17 +44,20 @@ public class WithDoNode implements ASTNode, StatementNode {
 	@Override
 	public void interpret(Scope scope) throws SeaOfOberonException {
 		// Lookup the symbol and resolve the selectors.
-		Symbol record = identifier.getSelectors().resolveSelectors(scope.lookupSymbol(identifier.getName()), scope);
+		Symbol record = identifier.getSelectors().resolveSelectors(
+				scope.lookupSymbol(identifier.getName()), scope);
 		// The identifier MUST be a record symbob for a "WITH xxx DO"
-		if (record instanceof RecordSymbol){
+		if (record instanceof RecordSymbol) {
 			// Create a new scope for the record, so values can be used as ref
-			Scope withDoScope = new Scope(scope, (RecordSymbol)record);
+			Scope withDoScope = new Scope(scope, (RecordSymbol) record);
 			// Execute the statemens with the new scope.
 			for (StatementNode statementNode : statementSequence) {
 				statementNode.interpret(withDoScope);
 			}
-		}else{
-			throw new SeaOfOberonException(identifier.getName() + " is not of type RecordSymbol, but of type " + record.getClass().getSimpleName());
+		} else {
+			throw new SeaOfOberonException(identifier.getName()
+					+ " is not of type RecordSymbol, but of type "
+					+ record.getClass().getSimpleName());
 		}
 	}
 

@@ -11,7 +11,7 @@ import com.arievanderveek.soo.ast.expr.ExpressionNode;
  * @author arieveek
  * 
  */
-public abstract class UnaryOperatorNode extends ExpressionNode  {
+public abstract class UnaryOperatorNode extends ExpressionNode {
 
 	private final ExpressionNode node;
 
