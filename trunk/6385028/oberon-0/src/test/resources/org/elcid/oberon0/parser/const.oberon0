@@ -1,8 +1,0 @@
-MODULE Const;
-
-CONST
-	NUM = 5;
-
-BEGIN
-	a := 10 * NUM
-END Const.
