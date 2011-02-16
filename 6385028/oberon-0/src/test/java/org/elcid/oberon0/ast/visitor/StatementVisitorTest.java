@@ -1,5 +1,6 @@
 package org.elcid.oberon0.ast.visitor;
 
+import org.elcid.oberon0.ast.visitors.StatementVisitor;
 import org.elcid.oberon0.ast.AssignmentNode;
 import org.elcid.oberon0.ast.ExpressionNode;
 import org.elcid.oberon0.ast.IdentSelectorNode;
