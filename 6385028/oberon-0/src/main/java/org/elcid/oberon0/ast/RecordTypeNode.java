@@ -2,9 +2,9 @@ package org.elcid.oberon0.ast;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.elcid.oberon0.ast.env.Environment;
-import org.elcid.oberon0.ast.values.Value;
-import org.elcid.oberon0.ast.visitors.TypeVisitor;
+import org.elcid.oberon0.env.Environment;
+import org.elcid.oberon0.values.Value;
+import org.elcid.oberon0.visitors.TypeVisitor;
 
 /**
  *

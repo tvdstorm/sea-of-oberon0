@@ -1,4 +1,4 @@
-package org.elcid.oberon0.ast.visitors;
+package org.elcid.oberon0.visitors;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,12 +8,12 @@ import org.elcid.oberon0.ast.FpSectionNode;
 import org.elcid.oberon0.ast.ProcedureDeclNode;
 import org.elcid.oberon0.ast.TypeDeclNode;
 import org.elcid.oberon0.ast.VarDeclNode;
-import org.elcid.oberon0.ast.env.Environment;
-import org.elcid.oberon0.ast.env.FormalParameter;
-import org.elcid.oberon0.ast.env.Procedure;
-import org.elcid.oberon0.ast.env.RuntimeProcedure;
-import org.elcid.oberon0.ast.values.Int;
-import org.elcid.oberon0.ast.values.Value;
+import org.elcid.oberon0.env.Environment;
+import org.elcid.oberon0.env.FormalParameter;
+import org.elcid.oberon0.env.Procedure;
+import org.elcid.oberon0.env.RuntimeProcedure;
+import org.elcid.oberon0.values.Int;
+import org.elcid.oberon0.values.Value;
 
 /**
  *

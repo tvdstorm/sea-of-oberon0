@@ -1,8 +1,8 @@
 package org.elcid.oberon0.ast;
 
-import org.elcid.oberon0.ast.env.Environment;
-import org.elcid.oberon0.ast.values.Value;
-import org.elcid.oberon0.ast.visitors.ExpressionVisitor;
+import org.elcid.oberon0.env.Environment;
+import org.elcid.oberon0.values.Value;
+import org.elcid.oberon0.visitors.ExpressionVisitor;
 
 /**
  * Represents the not ("~") expression in the Oberon-0 language.

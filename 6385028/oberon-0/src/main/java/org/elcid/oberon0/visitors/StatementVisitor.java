@@ -1,9 +1,9 @@
-package org.elcid.oberon0.ast.visitors;
+package org.elcid.oberon0.visitors;
 
 import org.elcid.oberon0.ast.*;
-import org.elcid.oberon0.ast.env.Environment;
-import org.elcid.oberon0.ast.env.Procedure;
-import org.elcid.oberon0.ast.values.*;
+import org.elcid.oberon0.env.Environment;
+import org.elcid.oberon0.env.Procedure;
+import org.elcid.oberon0.values.*;
 
 /**
  * Implements the methods for running statements of the Oberon-0 language.

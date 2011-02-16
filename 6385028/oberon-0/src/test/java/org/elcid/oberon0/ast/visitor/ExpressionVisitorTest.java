@@ -1,10 +1,10 @@
 package org.elcid.oberon0.ast.visitor;
 
-import org.elcid.oberon0.ast.visitors.ExpressionVisitor;
-import org.elcid.oberon0.ast.values.Bool;
+import org.elcid.oberon0.visitors.ExpressionVisitor;
+import org.elcid.oberon0.values.Bool;
 import org.elcid.oberon0.ast.*;
-import org.elcid.oberon0.ast.env.Environment;
-import org.elcid.oberon0.ast.values.Int;
+import org.elcid.oberon0.env.Environment;
+import org.elcid.oberon0.values.Int;
 import org.elcid.oberon0.exceptions.DivideByZeroException;
 import org.elcid.oberon0.exceptions.ModuloZeroException;
 import org.junit.Before;

@@ -1,7 +1,7 @@
 package org.elcid.oberon0.ast;
 
-import org.elcid.oberon0.ast.env.Environment;
-import org.elcid.oberon0.ast.visitors.StatementVisitor;
+import org.elcid.oberon0.env.Environment;
+import org.elcid.oberon0.visitors.StatementVisitor;
 
 /**
  * Base class for statements in the Oberon-0 language.

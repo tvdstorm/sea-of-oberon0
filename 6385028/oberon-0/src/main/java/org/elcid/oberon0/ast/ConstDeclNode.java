@@ -1,7 +1,7 @@
 package org.elcid.oberon0.ast;
 
-import org.elcid.oberon0.ast.env.Environment;
-import org.elcid.oberon0.ast.visitors.DeclarationVisitor;
+import org.elcid.oberon0.env.Environment;
+import org.elcid.oberon0.visitors.DeclarationVisitor;
 
 /**
  *
