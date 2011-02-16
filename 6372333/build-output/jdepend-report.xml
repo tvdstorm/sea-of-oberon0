@@ -478,8 +478,8 @@
 
         <Package name="oberon.typechecker">
             <Stats>
-                <TotalClasses>27</TotalClasses>
-                <ConcreteClasses>25</ConcreteClasses>
+                <TotalClasses>29</TotalClasses>
+                <ConcreteClasses>27</ConcreteClasses>
                 <AbstractClasses>2</AbstractClasses>
                 <Ca>0</Ca>
                 <Ce>5</Ce>
@@ -532,8 +532,14 @@
                 <Class sourceFile="NotSupportedException.java">
                     oberon.typechecker.NotSupportedException
                 </Class>
+                <Class sourceFile="ParameterMismatchException.java">
+                    oberon.typechecker.ParameterMismatchException
+                </Class>
                 <Class sourceFile="ProcedureHeadingChecker.java">
                     oberon.typechecker.ProcedureHeadingChecker
+                </Class>
+                <Class sourceFile="ProcedureNotFoundError.java">
+                    oberon.typechecker.ProcedureNotFoundError
                 </Class>
                 <Class sourceFile="ProcedurecallStatementStatementChecker.java">
                     oberon.typechecker.ProcedurecallStatementStatementChecker

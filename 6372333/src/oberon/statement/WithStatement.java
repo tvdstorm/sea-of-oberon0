@@ -3,7 +3,6 @@ package oberon.statement;
 import java.io.IOException;
 import java.util.List;
 
-import oberon.IExpression;
 import oberon.IIdentifier;
 import oberon.IStatement;
 import oberon.Scope;

@@ -2,7 +2,6 @@ package oberon.statement;
 
 import oberon.IExpression;
 import oberon.IIdentifier;
-import oberon.IStatement;
 import oberon.Scope;
 
 /**
