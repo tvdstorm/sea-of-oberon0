@@ -1,6 +1,6 @@
 package com.douwekasemier.oberon0.exceptions;
 
-public class RuntimeException extends Exception {
+public class Oberon0Exception extends RuntimeException {
 
     /**
      *

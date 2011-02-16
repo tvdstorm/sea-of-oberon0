@@ -7,11 +7,11 @@ public class Array implements Value {
     private Reference[] array;
     private Initializable vartype;
     
-    public Array(Initializable vartype, int size) {
+    public Array(Environment environment, Initializable vartype, int size) {
         this.vartype = vartype;
         array = new Reference[size];
         for(int i = 0; i < size; i++ ) {
-            array[i] = new NullReference();
+            array[i] = new Reference(vartype.initialize(environment));
         }
     }
     

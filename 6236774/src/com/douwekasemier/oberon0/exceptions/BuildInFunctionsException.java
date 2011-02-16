@@ -1,6 +1,6 @@
 package com.douwekasemier.oberon0.exceptions;
 
-public class BuildInFunctionsException extends Exception {
+public class BuildInFunctionsException extends RuntimeException {
 
     /**
      * 

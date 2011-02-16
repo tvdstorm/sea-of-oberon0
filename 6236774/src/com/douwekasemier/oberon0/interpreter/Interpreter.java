@@ -20,7 +20,7 @@ import com.douwekasemier.oberon0.core.Oberon0Lexer;
 import com.douwekasemier.oberon0.core.Oberon0Parser;
 import com.douwekasemier.oberon0.core.Oberon0Parser.module_return;
 import com.douwekasemier.oberon0.exceptions.ASTException;
-import com.douwekasemier.oberon0.exceptions.RuntimeException;
+import com.douwekasemier.oberon0.exceptions.Oberon0Exception;
 import com.douwekasemier.oberon0.interpreter.environment.Environment;
 
 public class Interpreter {
@@ -75,7 +75,7 @@ public class Interpreter {
             System.out.println();
             System.out.println("---- OUTPUT ----");
             System.out.print(output.toString());
-        } catch (RuntimeException e) {
+        } catch (Oberon0Exception e) {
             e.printStackTrace();
         }
     }
