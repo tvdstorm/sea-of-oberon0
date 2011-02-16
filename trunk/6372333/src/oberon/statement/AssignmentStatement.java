@@ -5,7 +5,6 @@ import oberon.IExpression;
 import oberon.IIdentifier;
 import oberon.IStatement;
 import oberon.Scope;
-import oberon.expressions.IdentifierExpression;
 
 /**
  * The Class AssignmentStatement, contains an assignment of a value to an identifier.
