@@ -74,35 +74,30 @@ public class ExpressionVisitor {
 	public Value eval(GreaterExpNode node, Environment localEnv) {
 		Int left = (Int) node.getLeftExp().eval(this, localEnv);
 		Int right = (Int) node.getRightExp().eval(this, localEnv);
-		// System.out.println(left + " > " + right + " = " + (left.getValue() > right.getValue()));
 		return new Bool(left.getValue() > right.getValue());
 	}
 
 	public Value eval(GreaterOrEqualsExpNode node, Environment localEnv) {
 		Int left = (Int) node.getLeftExp().eval(this, localEnv);
 		Int right = (Int) node.getRightExp().eval(this, localEnv);
-		// System.out.println(left + " >= " + right + " = " + (left.getValue() >= right.getValue()));
 		return new Bool(left.getValue() >= right.getValue());
 	}
 
 	public Value eval(LesserExpNode node, Environment localEnv) {
 		Int left = (Int) node.getLeftExp().eval(this, localEnv);
 		Int right = (Int) node.getRightExp().eval(this, localEnv);
-		// System.out.println(left + " < " + right + " = " + (left.getValue() < right.getValue()));
 		return new Bool(left.getValue() < right.getValue());
 	}
 
 	public Value eval(LesserOrEqualsExpNode node, Environment localEnv) {
 		Int left = (Int) node.getLeftExp().eval(this, localEnv);
 		Int right = (Int) node.getRightExp().eval(this, localEnv);
-		// System.out.println(left + " <= " + right + " = " + (left.getValue() <= right.getValue()));
 		return new Bool(left.getValue() <= right.getValue());
 	}
 
 	public Value eval(AndExpNode node, Environment localEnv) {
 		Bool left = (Bool) node.getLeftExp().eval(this, localEnv);
 		Bool right = (Bool) node.getRightExp().eval(this, localEnv);
-		// System.out.println(left + " && " + right + " = " + (left.getValue() && right.getValue()));
 		return new Bool((boolean)left.getValue() && (boolean)right.getValue());
 	}
 
