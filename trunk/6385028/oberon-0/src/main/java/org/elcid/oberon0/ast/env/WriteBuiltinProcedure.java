@@ -25,7 +25,6 @@ public class WriteBuiltinProcedure extends Procedure {
 
 	@Override
 	public void execute(Environment env) {
-		System.out.println("In write procedure");
 		System.out.print(((Int)env.getValue(INPUT_PARAM)).getValue());
 		System.out.flush();
 
