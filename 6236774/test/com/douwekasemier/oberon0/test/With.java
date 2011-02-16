@@ -4,7 +4,7 @@ import java.io.File;
 
 import com.douwekasemier.oberon0.interpreter.Interpreter;
 
-public class Selectors {
+public class With {
 
     /**
      * @param args
@@ -12,7 +12,7 @@ public class Selectors {
     public static void main(String[] args) {
         // Laad een bestand oberon0 bestand     
         Interpreter interpreter = new Interpreter();
-        File file = new File("testscripts/selectors.oberon0");
+        File file = new File("testscripts/with.oberon0");
         String input = "";
         interpreter.interpret(file, input);
     }
