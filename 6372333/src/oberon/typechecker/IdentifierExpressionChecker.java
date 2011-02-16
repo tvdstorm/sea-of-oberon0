@@ -10,14 +10,29 @@ import oberon.data.RecordDataType;
 import oberon.data.VariableIdentifier;
 import oberon.expressions.IdentifierExpression;
 
+/**
+ * The Class IdentifierExpressionChecker.
+ */
 public class IdentifierExpressionChecker {
 
+	/** The identifier. */
 	private final IIdentifier identifier;
 
+	/**
+	 * Instantiates a new identifier expression checker.
+	 *
+	 * @param expression the expression
+	 */
 	public IdentifierExpressionChecker(IdentifierExpression expression) {
 		identifier = expression.getIdentifier();
 	}
 
+	/**
+	 * Can eval to int.
+	 *
+	 * @param scope the scope
+	 * @return the list
+	 */
 	public List<AbstractError> canEvalToInt(TypeCheckScope scope) {
 		ArrayList<AbstractError> errorList = new ArrayList<AbstractError>();
 		

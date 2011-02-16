@@ -4,8 +4,11 @@ import java.io.IOException;
 import java.io.PushbackReader;
 import java.io.StringReader;
 
+import junit.framework.Assert;
+
 import oberon.IProcedure;
 import oberon.Main;
+import oberon.Scope;
 import oberon.lexer.Lexer;
 import oberon.lexer.LexerException;
 import oberon.parser.ParserException;
@@ -15,40 +18,17 @@ import oberon.typechecker.TypeCheckException;
 
 import org.junit.Test;
 
-public class ComparisonExpressionCheckerTest extends AbstractTest {
-
+public class MathematicalExpressionCheckerTest extends AbstractTest {
 	@Test(expected=TypeCheckException.class)
-	public void TestComparisonWithAnArrayAsAnOperand() throws ParserException, LexerException, IOException{
-		String input = "MODULE module;" +
-		"" +
-		"VAR array : ARRAY 10 OF INTEGER; x, y : INTEGER;" +
-		"" +
-		"BEGIN" +
-		"	IF array > 1 THEN" +
-		"		y := y + 1" +
-		"	END " +
-		"END module.";
-
-		StringReader reader = new StringReader(input); 
-		Lexer lexer = new PrintLexer(new PushbackReader(reader));
-
-		IProcedure main = Main.getMain(lexer);
-		ProcedureHeadingChecker checker = new ProcedureHeadingChecker((ProcedureHeading)main);
-		
-		checker.check();
-	}
-	
-	@Test(expected=TypeCheckException.class)
-	public void TestComparisonWithAnIncorrectMathExpressionAsAnOperand() 
+	public void TestMathematicalAnIncorrectMathExpression() 
 		throws ParserException, LexerException, IOException{
 		String input = "MODULE module;" +
 		"" +
 		"VAR array : ARRAY 10 OF INTEGER; x, y : INTEGER;" +
 		"" +
 		"BEGIN" +
-		"	IF (array + 1) > 1 THEN" +
-		"		y := y + 1" +
-		"	END " +
+		"	y := 1 + array" +
+		" " +
 		"END module.";
 
 		StringReader reader = new StringReader(input); 
@@ -59,18 +39,16 @@ public class ComparisonExpressionCheckerTest extends AbstractTest {
 		
 		checker.check();
 	}
-	
 	@Test(expected=TypeCheckException.class)
-	public void TestComparisonWithAnIncorrectComparison() 
+	public void TestMathematicalAnIncorrectMathExpression2() 
 		throws ParserException, LexerException, IOException{
 		String input = "MODULE module;" +
 		"" +
 		"VAR array : ARRAY 10 OF INTEGER; x, y : INTEGER;" +
 		"" +
 		"BEGIN" +
-		"	IF (array + 1) THEN" +
-		"		y := y + 1" +
-		"	END " +
+		"	y := array DIV 1" +
+		"" +
 		"END module.";
 
 		StringReader reader = new StringReader(input); 
@@ -81,46 +59,16 @@ public class ComparisonExpressionCheckerTest extends AbstractTest {
 		
 		checker.check();
 	}
-	
-	@Test(expected=TypeCheckException.class)
-	public void TestComparisonWithARecordAsAnOperand() throws ParserException, LexerException, IOException{
-		String input = "MODULE module;" +
-		"" +
-		"VAR record : RECORD" +
-		"		leeftijd : INTEGER;" +
-		"		getallen : ARRAY 10 OF INTEGER;" +
-		"		adres : RECORD" +
-		"			straat : INTEGER" +
-		"		END;" +
-		"		jaar : INTEGER;" +
-		"	END; " +
-		"	x, y : INTEGER;" +
-		"" +
-		"BEGIN" +
-		"	IF record > 1 THEN" +
-		"		y := y + 1" +
-		"	END " +
-		"END module.";
-
-		StringReader reader = new StringReader(input); 
-		Lexer lexer = new PrintLexer(new PushbackReader(reader));
-
-		IProcedure main = Main.getMain(lexer);
-		ProcedureHeadingChecker checker = new ProcedureHeadingChecker((ProcedureHeading)main);
-		
-		checker.check();
-	}
-
 	@Test
-	public void TestValidComparison() throws ParserException, LexerException, IOException{
+	public void TestMathematicalValidMathExpression() 
+		throws ParserException, LexerException, IOException{
 		String input = "MODULE module;" +
 		"" +
 		"VAR array : ARRAY 10 OF INTEGER; x, y : INTEGER;" +
 		"" +
 		"BEGIN" +
-		"	IF 2 > 1 THEN" +
-		"		y := y + 1" +
-		"	END " +
+		"	y := 25 MOD 6" +
+		"" +
 		"END module.";
 
 		StringReader reader = new StringReader(input); 
@@ -130,5 +78,13 @@ public class ComparisonExpressionCheckerTest extends AbstractTest {
 		ProcedureHeadingChecker checker = new ProcedureHeadingChecker((ProcedureHeading)main);
 		
 		checker.check();
+		
+		reader.reset();
+		lexer = new PrintLexer(new PushbackReader(reader));
+
+		ProcedureHeading mainProc = (ProcedureHeading) Main.runParser(lexer);
+		Scope scope = mainProc.getScope();
+		
+		Assert.assertEquals(1, scope.getVariable("y").getValue(scope));
 	}
 }

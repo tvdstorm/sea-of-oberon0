@@ -9,14 +9,26 @@ import oberon.procedures.ProcedureBody;
 import oberon.procedures.ProcedureHeading;
 import oberon.typechecker.StatementCheckerFactory;
 
+/**
+ * The Class ProcedureHeadingChecker.
+ */
 public class ProcedureHeadingChecker implements IChecker {
 
+	/** The heading. */
 	private final ProcedureHeading heading;
 
+	/**
+	 * Instantiates a new procedure heading checker.
+	 *
+	 * @param heading the heading
+	 */
 	public ProcedureHeadingChecker(ProcedureHeading heading){
 		this.heading = heading;		
 	}
 	
+	/**
+	 * Check.
+	 */
 	public void check(){
 		List<AbstractError> errorList = check(new TypeCheckScope("Module"));
 		
@@ -25,6 +37,9 @@ public class ProcedureHeadingChecker implements IChecker {
 		}		
 	}
 
+	/* (non-Javadoc)
+	 * @see oberon.typechecker.IChecker#check(oberon.typechecker.TypeCheckScope)
+	 */
 	@Override
 	public List<AbstractError> check(TypeCheckScope scope) {
 		ProcedureBody body = heading.getBody();

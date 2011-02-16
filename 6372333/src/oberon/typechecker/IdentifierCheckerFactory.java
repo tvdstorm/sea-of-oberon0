@@ -5,8 +5,17 @@ import oberon.data.ArrayIndexerIdentifier;
 import oberon.data.RecordIndexerIdentifier;
 import oberon.data.VariableIdentifier;
 
+/**
+ * A factory for creating IdentifierChecker objects.
+ */
 public class IdentifierCheckerFactory {
 
+	/**
+	 * Gets the checker.
+	 *
+	 * @param identifier the identifier
+	 * @return the checker
+	 */
 	public static IChecker getChecker(IIdentifier identifier) {
 		if (identifier instanceof ArrayIndexerIdentifier){
 			return new ArrayIndexerIdentifierChecker((ArrayIndexerIdentifier)identifier);

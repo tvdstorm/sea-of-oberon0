@@ -3,6 +3,9 @@ package oberon.typechecker;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The Class DefaultStatementChecker.
+ */
 public class DefaultStatementChecker implements IChecker {
 
 	/* (non-Javadoc)

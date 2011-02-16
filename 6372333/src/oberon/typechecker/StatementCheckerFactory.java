@@ -7,8 +7,17 @@ import oberon.statement.ProcedurecallStatement;
 import oberon.statement.WhileStatement;
 import oberon.statement.WithStatement;
 
+/**
+ * A factory for creating StatementChecker objects.
+ */
 public class StatementCheckerFactory {
 
+	/**
+	 * Gets the checker.
+	 *
+	 * @param statement the statement
+	 * @return the i checker
+	 */
 	public static IChecker GetChecker(IStatement statement) {
 		if (statement instanceof AssignmentStatement){
 			return new AssignmentStatementChecker((AssignmentStatement)statement);

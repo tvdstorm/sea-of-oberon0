@@ -40,4 +40,22 @@ public class ProcedurecallStatement implements IStatement {
 		procedure.call(currentScope, procParameters);
 	}
 
+	/**
+	 * Gets the procedure name.
+	 *
+	 * @return the procedure name
+	 */
+	public String getProcedureName() {
+		return procNameToCall;
+	}
+
+	/**
+	 * Gets the actual parameters.
+	 *
+	 * @return the list
+	 */
+	public List<IExpression> GetActualParameters() {
+		return procParameters;
+	}
+
 }
