@@ -42,7 +42,7 @@ public class DeclarationVisitor {
 	}
 
 	public void run(TypeDeclNode node, Environment env) {
-		env.putTypeAlias(node.getTypeAlias(), node.getType());
+		env.declareType(node.getTypeAlias(), node.getType());
 	}
 
 	public void run(VarDeclNode node, Environment env) {
@@ -58,6 +58,6 @@ public class DeclarationVisitor {
 			formalParameters.addAll(section.process());
 		}
 		Procedure newProcedure = new RuntimeProcedure(formalParameters, node.getDeclarationSequence(), node.getStatementSequence());
-		env.putProcedure(node.getName(), newProcedure);
+		env.declareProcedure(node.getName(), newProcedure);
 	}
 }
