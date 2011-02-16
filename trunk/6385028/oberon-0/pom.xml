@@ -62,8 +62,8 @@
 					</descriptorRefs>
 					<archive>
 						<manifest>
-							<mainClass>org.elcid.oberon0.parser.ManualInputParser</mainClass>
-							<packageName>org.elcid.oberon0.parser</packageName>
+							<mainClass>org.elcid.oberon0.QuickSort</mainClass>
+							<packageName>org.elcid.oberon0</packageName>
 						</manifest>
 					</archive>
 				</configuration>
@@ -74,8 +74,8 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>org.elcid.oberon0.parser.ManualInputParser</mainClass>
-							<packageName>org.elcid.oberon0.parser</packageName>
+							<mainClass>org.elcid.oberon0.QuickSort</mainClass>
+							<packageName>org.elcid.oberon0</packageName>
 						</manifest>
 						<manifestEntries>
 							<mode>development</mode>
@@ -85,14 +85,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<!--resources>
-			<resource>
-				<directory>target/generated-sources/antlr</directory>
-				<includes>
-					<include>**/*.tokens</include>
-				</includes>
-			</resource>
-		</resources-->
 	</build>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
