@@ -20,6 +20,7 @@ tokens {
 package nl.bve.uva.oberon.parser;
 
 import nl.bve.uva.oberon.ast.*;
+import nl.bve.uva.oberon.ast.declarations.*;
 import nl.bve.uva.oberon.ast.expressions.*;
 import nl.bve.uva.oberon.env.*;
 import nl.bve.uva.oberon.shared.*;
@@ -40,33 +41,33 @@ module returns [IInterpretableNode result]
 	;
 
 declarations returns [IInterpretableNode result]
-	:	c=constantDeclarations 
-		t=typeDeclarations 
-		v=varDeclarations 
-		p=procedureDeclarations									{$result = new DeclarationsNode($c.result, $t.result, $v.result, $p.result); }
+	:	c=constantDeclarations
+		t=typeDeclarations
+		v=varDeclarations
+		p=procedureDeclarations									{$result = new AllDeclarationsNode($c.result, $t.result, $v.result, $p.result); }
 	;
 																
-constantDeclarations returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()]	
+constantDeclarations returns [List<DeclarationNode> result = new ArrayList<DeclarationNode>()]	
 	:	('CONST' 
 			(IDENT '=' expression ';'							{$result.add(new ConstantDeclarationNode($IDENT.text, $expression.result)); }
 			)*
 		)?
 	;
 
-typeDeclarations returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()]
+typeDeclarations returns [List<DeclarationNode> result = new ArrayList<DeclarationNode>()]
 	:	('TYPE' 
 			(IDENT '=' type ';'									{$result.add(new TypeDeclarationNode($IDENT.text, $type.result)); }
 			)*
 		)?
 	;
 
-varDeclarations returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()]
+varDeclarations returns [List<DeclarationNode> result = new ArrayList<DeclarationNode>()]
 	:	('VAR'
 			(identList ':' type ';'								{$result.add(new VarDeclarationNode($identList.result, $type.result)); }
 			)* 
 		)?;
 
-procedureDeclarations returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()]
+procedureDeclarations returns [List<DeclarationNode> result = new ArrayList<DeclarationNode>()]
 	:	(
 			'PROCEDURE' i1=IDENT
 				(fp=formalParameters							
