@@ -1,5 +1,7 @@
 package nl.bve.uva.oberon.env.types;
 
+import nl.bve.uva.oberon.shared.SelectorValue;
+
 /**
  * Abstract superclass for all Oberon-types.
  * 
@@ -33,7 +35,7 @@ public abstract class OberonType {
 	 * @param selector : the selector that has to applied to this type's value
 	 * @return : the value that corresponds with the selector
 	 */
-	public abstract OberonType evaluateSelector(String selector);
+	public abstract OberonType evaluateSelector(SelectorValue selector);
 	
 	/**
 	 * If a value is assigned to a type, the actual value can be different

@@ -1,5 +1,7 @@
 package nl.bve.uva.oberon.env.types;
 
+import nl.bve.uva.oberon.shared.SelectorValue;
+
 /**
  * This class is the backbone of all the other OberonTypes. It 
  * contains an int value that can be changed using the setValue
@@ -34,7 +36,7 @@ public class OberonInt extends OberonType {
 	}
 	
 	@Override
-	public OberonType evaluateSelector(String o) {
+	public OberonType evaluateSelector(SelectorValue selector) {
 		throw new RuntimeException("Cannot evaluate an OberonInt type!");
 	}
 	

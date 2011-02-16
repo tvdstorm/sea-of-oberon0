@@ -227,7 +227,7 @@ factor returns [IInterpretableNode result]
 /*			| '~' factor */
 	;
 
-selector returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()]
+selector returns [List<Selector> result = new ArrayList<Selector>()]
 	: 	('.' IDENT 												{$result.add(new DotSelectorNode($IDENT.text)); }
 	  	| '[' expression ']'									{$result.add(new ElementSelectorNode($expression.result)); }
 	  	)*

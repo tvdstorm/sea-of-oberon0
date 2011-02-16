@@ -1,8 +1,8 @@
 package nl.bve.uva.oberon.ast;
 
 import nl.bve.uva.oberon.env.Environment;
+import nl.bve.uva.oberon.shared.SelectorValue;
 
-public interface Selector extends IInterpretableNode {
-	@Override
-	public String interpret(Environment env);
+public abstract class Selector {
+	public abstract SelectorValue evaluate(Environment env);
 }

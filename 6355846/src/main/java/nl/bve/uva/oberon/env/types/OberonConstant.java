@@ -1,5 +1,7 @@
 package nl.bve.uva.oberon.env.types;
 
+import nl.bve.uva.oberon.shared.SelectorValue;
+
 /**
  * A wrapper class for the OberonInt type. The only thing this
  * OberonConstant type does, is to prevent any new value be
@@ -26,7 +28,7 @@ public class OberonConstant extends OberonType {
 	}
 	
 	@Override
-	public OberonType evaluateSelector(String o) {
+	public OberonType evaluateSelector(SelectorValue selector) {
 		throw new RuntimeException("Cannot evaluate an OberonInt type!");
 	}
 	
