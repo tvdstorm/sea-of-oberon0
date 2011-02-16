@@ -9,7 +9,7 @@ import com.douwekasemier.oberon0.ast.AST;
 import com.douwekasemier.oberon0.ast.Declarable;
 import com.douwekasemier.oberon0.core.Oberon0Parser;
 import com.douwekasemier.oberon0.exceptions.ASTException;
-import com.douwekasemier.oberon0.exceptions.RuntimeException;
+import com.douwekasemier.oberon0.exceptions.Oberon0Exception;
 import com.douwekasemier.oberon0.interpreter.environment.Environment;
 
 public class Declarations extends AST implements Declarable {
@@ -66,7 +66,7 @@ public class Declarations extends AST implements Declarable {
     }
 
     @Override
-    public void declare(Environment environment) throws RuntimeException {
+    public void declare(Environment environment) throws Oberon0Exception {
 
         for (ConstantDeclaration constant : constants) {
             constant.declare(environment);

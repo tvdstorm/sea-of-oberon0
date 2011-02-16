@@ -13,7 +13,7 @@ import com.douwekasemier.oberon0.ast.declaration.FormalParameter;
 import com.douwekasemier.oberon0.ast.declaration.ProcedureDeclaration;
 import com.douwekasemier.oberon0.core.Oberon0Parser;
 import com.douwekasemier.oberon0.exceptions.NotSelectableExpression;
-import com.douwekasemier.oberon0.exceptions.RuntimeException;
+import com.douwekasemier.oberon0.exceptions.Oberon0Exception;
 import com.douwekasemier.oberon0.interpreter.environment.Environment;
 import com.douwekasemier.oberon0.interpreter.environment.Procedure;
 import com.douwekasemier.oberon0.interpreter.environment.Reference;
@@ -49,14 +49,10 @@ public class ProcedureCall extends AST implements Interpretable {
     }
 
     @Override
-    public void interpret(Environment environment) throws RuntimeException {
+    public void interpret(Environment environment) throws Oberon0Exception {
 
-        if( identifier.equals("QuickSort")) {
-            System.out.println("");
-        }
-        
         Procedure procedure = environment.getProcedure(identifier);
-        Environment invokerEnvironment = procedure.getEnvironment().newEnvironment("Procedure call <"+identifier+">");
+        Environment invokerEnvironment = procedure.getEnvironment().newEnvironment("Procedure call <" + identifier + ">");
         ProcedureDeclaration procedureDeclaration = procedure.getProcedureNode();
         Declarations declarations = procedureDeclaration.getDeclarations();
         if (declarations != null) {
@@ -78,7 +74,7 @@ public class ProcedureCall extends AST implements Interpretable {
                     }
                 } catch (NotSelectableExpression e) {
                     e.printStackTrace();
-                    throw new RuntimeException();
+                    throw new Oberon0Exception();
                 }
 
                 i++;

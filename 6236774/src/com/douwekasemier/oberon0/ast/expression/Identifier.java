@@ -8,7 +8,7 @@ import com.douwekasemier.oberon0.ast.AST;
 import com.douwekasemier.oberon0.ast.Evaluatable;
 import com.douwekasemier.oberon0.core.Oberon0Parser;
 import com.douwekasemier.oberon0.exceptions.NotSelectableExpression;
-import com.douwekasemier.oberon0.exceptions.RuntimeException;
+import com.douwekasemier.oberon0.exceptions.Oberon0Exception;
 import com.douwekasemier.oberon0.interpreter.environment.Environment;
 import com.douwekasemier.oberon0.interpreter.environment.Reference;
 import com.douwekasemier.oberon0.interpreter.environment.Value;
@@ -54,17 +54,17 @@ public class Identifier extends AST implements Evaluatable {
     }
 
     @Override
-    public Value evaluate(Environment environment) throws RuntimeException {
+    public Value evaluate(Environment environment) throws Oberon0Exception {
         try {             
             return select(environment, null).getValue();
         } catch (NotSelectableExpression e) {
             e.printStackTrace();
-            throw new RuntimeException();
+            throw new Oberon0Exception();
         }
     }
     
     @Override
-    public Reference select(Environment environment, Value from) throws RuntimeException, NotSelectableExpression {
+    public Reference select(Environment environment, Value from) throws Oberon0Exception, NotSelectableExpression {
         Reference reference = environment.getReference(identifier);
 
         for (Evaluatable selector : selectors) {
