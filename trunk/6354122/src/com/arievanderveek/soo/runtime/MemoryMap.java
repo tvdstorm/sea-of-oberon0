@@ -19,7 +19,6 @@ import com.arievanderveek.soo.util.Constants;
  */
 public class MemoryMap {
 
-	private static final int RANDOM_MAX_INT = Integer.MAX_VALUE;
 	private static final int MEMORY_ADRESS_RETRIES = 5;
 
 	private Map<MemoryAddress, Integer> memoryMap = new HashMap<MemoryAddress, Integer>();
@@ -27,6 +26,11 @@ public class MemoryMap {
 	public Integer getValue(MemoryAddress address) {
 		assert address != null;
 		return memoryMap.get(address);
+	}
+	
+	public boolean hasAdress(MemoryAddress address) {
+		assert address != null;
+		return memoryMap.containsKey(address);
 	}
 
 	public Integer deleteValue(MemoryAddress address) {
@@ -66,11 +70,14 @@ public class MemoryMap {
 	}
 
 	private MemoryAddress generateMemoryAdress() throws SeaOfOberonException {
-		Random generator = new Random();
-		MemoryAddress address = new MemoryAddress(generator.nextInt(RANDOM_MAX_INT));
+		// Generate a random generater with current time in millies as seed to ensure
+		// unique generation of numbers. Should be secure enough for single threaded app.
+		Random generator = new Random(System.currentTimeMillis());
+		MemoryAddress address = new MemoryAddress(generator.nextInt());
+		// Now validate if the address is already used, retry generations if it already exists
 		int retryCounter = 0;
 		while (memoryMap.containsKey(address)) {
-			address = new MemoryAddress(generator.nextInt(RANDOM_MAX_INT));
+			address = new MemoryAddress(generator.nextInt());
 			retryCounter++;
 			if (retryCounter > 5) {
 				throw new SeaOfOberonException("Could not generate memory address after "
