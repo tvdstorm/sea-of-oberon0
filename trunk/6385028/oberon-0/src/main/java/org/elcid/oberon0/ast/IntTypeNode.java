@@ -8,9 +8,9 @@ import org.elcid.oberon0.ast.visitors.TypeVisitor;
  *
  * @author Pieter Brandwijk
  */
-public class IntType extends TypeNode {
+public class IntTypeNode extends TypeNode {
 
-	public IntType() {
+	public IntTypeNode() {
 
 	}
 

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
-import org.elcid.oberon0.ast.IntType;
+import org.elcid.oberon0.ast.IntTypeNode;
 import org.elcid.oberon0.ast.env.Environment;
 import org.elcid.oberon0.ast.env.FormalParameter;
 import org.elcid.oberon0.ast.env.Procedure;
@@ -28,7 +28,7 @@ public class ReadBuiltinProcedure extends Procedure {
 	@Override
 	public List<FormalParameter> getFormalParams() {
 		List<FormalParameter> params = new ArrayList<FormalParameter>();
-		params.add(new ReferenceFormalParameter(INPUT_PARAM, new IntType()));
+		params.add(new ReferenceFormalParameter(INPUT_PARAM, new IntTypeNode()));
 		return params;
 	}
 
