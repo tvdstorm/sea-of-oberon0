@@ -1,10 +1,10 @@
-package org.elcid.oberon0.ast.visitors;
+package org.elcid.oberon0.visitors;
 
 import org.elcid.oberon0.ast.*;
-import org.elcid.oberon0.ast.env.Environment;
-import org.elcid.oberon0.ast.values.Bool;
-import org.elcid.oberon0.ast.values.Int;
-import org.elcid.oberon0.ast.values.Value;
+import org.elcid.oberon0.env.Environment;
+import org.elcid.oberon0.values.Bool;
+import org.elcid.oberon0.values.Int;
+import org.elcid.oberon0.values.Value;
 import org.elcid.oberon0.exceptions.DivideByZeroException;
 import org.elcid.oberon0.exceptions.ModuloZeroException;
 

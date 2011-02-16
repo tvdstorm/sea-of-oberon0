@@ -1,9 +1,9 @@
-package org.elcid.oberon0.ast.env;
+package org.elcid.oberon0.env;
 
 import java.util.HashMap;
 import java.util.Map;
 import org.elcid.oberon0.ast.TypeNode;
-import org.elcid.oberon0.ast.values.Value;
+import org.elcid.oberon0.values.Value;
 import org.elcid.oberon0.exceptions.TypeNotKnownException;
 import org.elcid.oberon0.exceptions.UnboundVariableException;
 import org.elcid.oberon0.exceptions.UnknownProcedureException;

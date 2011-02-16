@@ -1,4 +1,4 @@
-package org.elcid.oberon0.ast.values;
+package org.elcid.oberon0.values;
 
 import java.util.ArrayList;
 import java.util.List;

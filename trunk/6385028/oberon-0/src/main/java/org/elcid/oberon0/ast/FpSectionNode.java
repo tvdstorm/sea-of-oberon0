@@ -1,7 +1,7 @@
 package org.elcid.oberon0.ast;
 
 import java.util.List;
-import org.elcid.oberon0.ast.env.FormalParameter;
+import org.elcid.oberon0.env.FormalParameter;
 
 /**
  *

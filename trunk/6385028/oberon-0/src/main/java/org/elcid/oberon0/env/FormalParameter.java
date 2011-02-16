@@ -1,6 +1,6 @@
-package org.elcid.oberon0.ast.env;
+package org.elcid.oberon0.env;
 
-import org.elcid.oberon0.ast.values.Value;
+import org.elcid.oberon0.values.Value;
 
 /**
  *

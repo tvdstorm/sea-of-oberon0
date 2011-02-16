@@ -1,12 +1,12 @@
 package org.elcid.oberon0.ast.visitor;
 
-import org.elcid.oberon0.ast.visitors.StatementVisitor;
+import org.elcid.oberon0.visitors.StatementVisitor;
 import org.elcid.oberon0.ast.AssignmentNode;
 import org.elcid.oberon0.ast.ExpressionNode;
 import org.elcid.oberon0.ast.IdentSelectorNode;
 import org.elcid.oberon0.ast.IntExpNode;
-import org.elcid.oberon0.ast.values.Int;
-import org.elcid.oberon0.ast.env.Environment;
+import org.elcid.oberon0.values.Int;
+import org.elcid.oberon0.env.Environment;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

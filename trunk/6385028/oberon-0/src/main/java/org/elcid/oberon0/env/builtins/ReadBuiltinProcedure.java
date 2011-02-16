@@ -1,4 +1,4 @@
-package org.elcid.oberon0.ast.env.builtins;
+package org.elcid.oberon0.env.builtins;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,12 +6,12 @@ import java.util.Random;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 import org.elcid.oberon0.ast.IntTypeNode;
-import org.elcid.oberon0.ast.env.Environment;
-import org.elcid.oberon0.ast.env.FormalParameter;
-import org.elcid.oberon0.ast.env.Procedure;
-import org.elcid.oberon0.ast.env.ReferenceFormalParameter;
-import org.elcid.oberon0.ast.values.Int;
-import org.elcid.oberon0.ast.values.Value;
+import org.elcid.oberon0.env.Environment;
+import org.elcid.oberon0.env.FormalParameter;
+import org.elcid.oberon0.env.Procedure;
+import org.elcid.oberon0.env.ReferenceFormalParameter;
+import org.elcid.oberon0.values.Int;
+import org.elcid.oberon0.values.Value;
 
 /**
  *

@@ -1,4 +1,4 @@
-package org.elcid.oberon0.ast.env;
+package org.elcid.oberon0.env;
 
 import java.util.List;
 
