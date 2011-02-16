@@ -5,7 +5,7 @@ import org.antlr.runtime.tree.Tree;
 import com.douwekasemier.oberon0.ast.AST;
 import com.douwekasemier.oberon0.ast.Bindable;
 import com.douwekasemier.oberon0.ast.Selectable;
-import com.douwekasemier.oberon0.exceptions.RuntimeException;
+import com.douwekasemier.oberon0.exceptions.Oberon0Exception;
 import com.douwekasemier.oberon0.interpreter.environment.Environment;
 import com.douwekasemier.oberon0.interpreter.environment.Record;
 import com.douwekasemier.oberon0.interpreter.environment.Reference;
@@ -30,7 +30,7 @@ public class RecordSelector extends AST implements Selectable {
     }
 
     @Override
-    public Reference select(Environment environment, Value from) throws RuntimeException {
+    public Reference select(Environment environment, Value from) throws Oberon0Exception {
         Record record = (Record) from;
         return record.getReference(identifier);
     }

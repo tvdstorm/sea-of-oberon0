@@ -7,7 +7,7 @@ import com.douwekasemier.oberon0.ast.Bindable;
 import com.douwekasemier.oberon0.ast.Evaluatable;
 import com.douwekasemier.oberon0.ast.ExpressionBuilder;
 import com.douwekasemier.oberon0.ast.Selectable;
-import com.douwekasemier.oberon0.exceptions.RuntimeException;
+import com.douwekasemier.oberon0.exceptions.Oberon0Exception;
 import com.douwekasemier.oberon0.interpreter.environment.Array;
 import com.douwekasemier.oberon0.interpreter.environment.Environment;
 import com.douwekasemier.oberon0.interpreter.environment.Int;
@@ -32,12 +32,12 @@ public class ArraySelector extends AST implements Selectable {
         expression = ExpressionBuilder.build(antlrTree.getChild(0));
     }
 
-    public Value evaluate(Environment environment) throws RuntimeException {
-        throw new RuntimeException();
+    public Value evaluate(Environment environment) throws Oberon0Exception {
+        throw new Oberon0Exception();
     }
     
     @Override
-    public Reference select(Environment environment, Value from) throws RuntimeException {
+    public Reference select(Environment environment, Value from) throws Oberon0Exception {
         Int locationValue = (Int) expression.evaluate(environment);
         int location = locationValue.getValue().intValue();
 
