@@ -22,16 +22,16 @@ import org.elcid.oberon0.ast.values.Value;
 public class DeclarationVisitor {
 
 	public void run(DeclarationSequenceNode node, Environment env) {
-		for (ConstDeclNode constant: node.getConstants()) {
+		for (ConstDeclNode constant : node.getConstants()) {
 			constant.run(this, env);
 		}
-		for (TypeDeclNode typeDecl: node.getTypeDecls()) {
+		for (TypeDeclNode typeDecl : node.getTypeDecls()) {
 			typeDecl.run(this, env);
 		}
-		for (VarDeclNode varDecl: node.getVarDecls()) {
+		for (VarDeclNode varDecl : node.getVarDecls()) {
 			varDecl.run(this, env);
 		}
-		for (ProcedureDeclNode procDecl: node.getProcDecls()) {
+		for (ProcedureDeclNode procDecl : node.getProcDecls()) {
 			procDecl.run(this, env);
 		}
 	}
@@ -46,19 +46,18 @@ public class DeclarationVisitor {
 	}
 
 	public void run(VarDeclNode node, Environment env) {
-		Value nullValue = node.getType().init(new TypeVisitor(), env);
-		for (String identifier: node.getIdentifiers()) {
+		for (String identifier : node.getIdentifiers()) {
+			Value nullValue = node.getType().init(new TypeVisitor(), env);
 			env.declareValue(identifier, nullValue);
 		}
 	}
 
 	public void run(ProcedureDeclNode node, Environment env) {
 		List<FormalParameter> formalParameters = new ArrayList<FormalParameter>();
-		for (FpSectionNode section: node.getFormalParams().getFpSections()) {
+		for (FpSectionNode section : node.getFormalParams().getFpSections()) {
 			formalParameters.addAll(section.process());
 		}
 		Procedure newProcedure = new RuntimeProcedure(formalParameters, node.getDeclarationSequence(), node.getStatementSequence());
 		env.putProcedure(node.getName(), newProcedure);
 	}
-
 }

@@ -32,8 +32,11 @@ public class ReadBuiltinProcedure extends Procedure {
 	public void execute(Environment env) {
 		System.out.println("Waiting for input>>");
 //		int i = Integer.parseInt(JOptionPane.showInputDialog("input"));
-		//Scanner s = new Scanner(System.in);
+//		Scanner s = new Scanner(System.in);
 		Value input = env.getValue(INPUT_PARAM);
-		input.set(new Int(new Random().nextInt(10)));
+//		input.set(new Int(s.nextInt()));
+		int random = new Random().nextInt(10);
+		System.out.println(random);
+		input.set(new Int(random));
 	}
 }

@@ -15,7 +15,6 @@ import org.elcid.oberon0.exceptions.UnboundVariableException;
 public class Environment {
 
 	private Environment superEnv;
-
 	private Map<String, Value> valueBindings = new HashMap<String, Value>();
 	private Map<String, TypeNode> typeAliases = new HashMap<String, TypeNode>();
 	private Map<String, Procedure> procedures = new HashMap<String, Procedure>();
@@ -37,10 +36,12 @@ public class Environment {
 	 * @return	the integer that is bound to the variable
 	 */
 	public Value getValue(String variableName) {
-		if (valueBindings.containsKey(variableName))
+		if (valueBindings.containsKey(variableName)) {
 			return valueBindings.get(variableName);
-		if (superEnv != null)
+		}
+		if (superEnv != null) {
 			return superEnv.getValue(variableName);
+		}
 		throw new UnboundVariableException("Variable " + variableName + " is not bound to an integer");
 	}
 
@@ -57,7 +58,14 @@ public class Environment {
 	}
 
 	public Procedure getProcedure(String procedureName) {
-		return procedures.get(procedureName);
+		Procedure p = procedures.get(procedureName);
+		if (p == null && superEnv != null) {
+			p = superEnv.getProcedure(procedureName);
+			if (p == null) {
+				throw new RuntimeException("no such procedure: " +procedureName);
+			}
+		}
+		return p;
 	}
 
 	public void putProcedure(String procedureName, Procedure procedure) {
@@ -71,11 +79,11 @@ public class Environment {
 		}
 		sb.append("SUB ENV:\n");
 		for (Map.Entry<String, Value> ref : valueBindings.entrySet()) {
-			sb.append(ref.getKey()+ " : " +ref.getValue().toString()+ "\n");
+			sb.append(ref.getKey() + " : " + ref.getValue().toString() + "\n");
 		}
 
 		for (Map.Entry<String, Procedure> ref : procedures.entrySet()) {
-			sb.append(ref.getKey()+ " : " +ref.getValue().toString()+ "\n");
+			sb.append(ref.getKey() + " : " + ref.getValue().toString() + "\n");
 		}
 		sb.append("END SUB ENV");
 		return sb.toString();
