@@ -1,4 +1,13 @@
 MODULE Test;
+  VAR
+    r: RECORD a, b: INTEGER; c: INTEGER END;
+
 BEGIN
-  i := a.b.c[d].e
+  r.a := 10;
+  r.b := 20;
+  r.c := 30;
+  
+  Write(r.a); WriteLn;
+  Write(r.b); WriteLn;
+  Write(r.c); WriteLn
 END Test.
