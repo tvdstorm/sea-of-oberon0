@@ -27,13 +27,13 @@ public class IdentifierTypeNode extends TypeNode{
 	}
 
 	@Override
-	public void registerType(String identifier, Scope scope) throws SeaOfOberonException {
+	public void registerVariable(String identifier, Scope scope) throws SeaOfOberonException {
 		if (Constants.INTEGER_VAR_KEYWORD.equals(name)){
 			// Its an integer declaration. Register it as an integer
 			scope.addIntegerSymbolToTable(identifier, new Integer(0), true);
 		} else {
 			TypeNode resolvedNode = scope.lookupType(name);
-			resolvedNode.registerType(identifier, scope);
+			resolvedNode.registerVariable(identifier, scope);
 		}
 	}
 	
