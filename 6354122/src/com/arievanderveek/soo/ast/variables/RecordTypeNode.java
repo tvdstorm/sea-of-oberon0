@@ -49,7 +49,7 @@ public class RecordTypeNode extends TypeNode {
 	 
 
 	@Override
-	public void registerType(String identifier, Scope scope) throws SeaOfOberonException {
+	public void registerVariable(String identifier, Scope scope) throws SeaOfOberonException {
 		scope.addRecordSymbolToTable(identifier,  recordMembers);
 	}
 	

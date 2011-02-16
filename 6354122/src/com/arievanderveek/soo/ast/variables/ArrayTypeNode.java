@@ -65,7 +65,7 @@ public class ArrayTypeNode extends TypeNode  {
 
 
 	@Override
-	public void registerType(String identifier, Scope scope) throws SeaOfOberonException {
+	public void registerVariable(String identifier, Scope scope) throws SeaOfOberonException {
 		Integer resolvedSizeExpression = sizeExpression.interpret(scope);
 		scope.addArraySymbolToTable(identifier,resolvedSizeExpression, type);
 	}
