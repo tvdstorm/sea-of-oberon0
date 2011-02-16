@@ -50,7 +50,7 @@ public class ProcedureCallNode implements ASTNode, StatementNode {
 	public void interpret(Scope scope) throws SeaOfOberonException {
 		// First lookup the procedure in the scope
 		String procedureName = identifier.getName();
-		ProcedureNode procedure = scope.getProcedure(procedureName);
+		ProcedureNode procedure = scope.lookupProcedure(procedureName);
 		// Validate if the amount of parameters are the same
 		if (!procedure.isAmountOfParametersEqual(parameters)) {
 			throw new SeaOfOberonException("Amount of parameters in procedure call does not match "
@@ -61,9 +61,6 @@ public class ProcedureCallNode implements ASTNode, StatementNode {
 		Scope scopeForProcedure = new Scope(scope, procedure, this.parameters);
 		// Interpret the procedure with the new scope
 		procedure.interpret(scopeForProcedure);
-		// Done with the scope, pop the newly created scope from the old scope
-		// so variables are deallocated.
-		scopeForProcedure.popScope();
 	}
 
 	/*
