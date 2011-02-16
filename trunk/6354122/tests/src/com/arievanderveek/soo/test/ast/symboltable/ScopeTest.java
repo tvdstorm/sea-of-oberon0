@@ -167,7 +167,7 @@ public class ScopeTest {
 		String[] registerdProcedures = { "Read", "Write", "WriteLn", "Swap" };
 		try {
 			for (String procName : registerdProcedures) {
-				rootScope.getProcedure(procName);
+				rootScope.lookupProcedure(procName);
 			}
 		} catch (Exception e) {
 			fail("Caught exceptions in test: " + e.getMessage());
@@ -176,7 +176,7 @@ public class ScopeTest {
 		String notRegisteredProcedure = "GoFish";
 		boolean exceptionThrown = false;
 		try {
-			rootScope.getProcedure(notRegisteredProcedure);
+			rootScope.lookupProcedure(notRegisteredProcedure);
 		} catch (Exception e) {
 			// This should result in a message stating that proc is not found.
 			exceptionThrown = true;
