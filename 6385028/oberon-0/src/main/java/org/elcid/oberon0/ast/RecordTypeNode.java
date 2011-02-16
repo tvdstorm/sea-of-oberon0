@@ -10,11 +10,11 @@ import org.elcid.oberon0.ast.visitors.TypeVisitor;
  *
  * @author Pieter Brandwijk
  */
-public class RecordType extends TypeNode {
+public class RecordTypeNode extends TypeNode {
 
 	private List<RecordFieldListNode> fieldLists;
 
-	public RecordType() {
+	public RecordTypeNode() {
 		fieldLists = new ArrayList<RecordFieldListNode>();
 	}
 

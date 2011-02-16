@@ -128,7 +128,7 @@ fPSection returns [FpSectionNode result]
 	;
 
 type returns [TypeNode result]
-	:	identifier										{ $result = new IntType(); }
+	:	identifier										{ $result = new IntTypeNode(); }
 	|	a=arrayType										{ $result = $a.result; }
 	|	r=recordType									{ $result = $r.result; }
 	;
@@ -148,7 +148,7 @@ fieldList returns [RecordFieldListNode result]
 		)?
 	;
 
-recordType returns [RecordType result = new RecordType()]
+recordType returns [RecordTypeNode result = new RecordTypeNode()]
 	:	RECORD_KW f=fieldList							{ $result.add($f.result); }
 		(SEMI_COLON fx=fieldList						{ $result.add($fx.result); }
 		)* END_KW

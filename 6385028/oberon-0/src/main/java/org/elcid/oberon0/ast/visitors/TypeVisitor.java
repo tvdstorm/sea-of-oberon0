@@ -16,11 +16,11 @@ public class TypeVisitor {
 		
 	}
 
-	public Value init(IntType node, Environment env) {
+	public Value init(IntTypeNode node, Environment env) {
 		return new Int(0);
 	}
 
-	public Value init(RecordType node, Environment env) {
+	public Value init(RecordTypeNode node, Environment env) {
 		Record newRecord = new Record();
 		for (RecordFieldListNode fieldList: node.getFieldList()) {
 			for (String identifier: fieldList.getIdentifiers()) {
