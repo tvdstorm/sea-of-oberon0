@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package oberon.procedures;
 
 import java.io.IOException;
@@ -65,7 +68,21 @@ public class ProcedureHeading extends AbstractProcedure {
 		return newScope;
 	}
 
+	/**
+	 * Gets the actual params.
+	 *
+	 * @return the actual params
+	 */
 	public List<FormalParamSection> getActualParams() {
+		return Collections.unmodifiableList(getParamSections());		
+	}
+
+	/**
+	 * Gets the formal parameters.
+	 *
+	 * @return the formal parameters
+	 */
+	public List<FormalParamSection> getFormalParameters() {
 		return Collections.unmodifiableList(getParamSections());		
 	}
 }

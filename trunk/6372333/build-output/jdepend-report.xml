@@ -7,11 +7,11 @@
                 <TotalClasses>9</TotalClasses>
                 <ConcreteClasses>3</ConcreteClasses>
                 <AbstractClasses>6</AbstractClasses>
-                <Ca>5</Ca>
-                <Ce>2</Ce>
+                <Ca>6</Ca>
+                <Ce>3</Ce>
                 <A>0.67</A>
-                <I>0.29</I>
-                <D>0.05</D>
+                <I>0.33</I>
+                <D>0</D>
                 <V>1</V>
             </Stats>
 
@@ -50,6 +50,7 @@
 
             <DependsUpon>
                 <Package>oberon.convert</Package>
+                <Package>oberon.data</Package>
                 <Package>oberon.exceptions</Package>
             </DependsUpon>
 
@@ -59,6 +60,7 @@
                 <Package>oberon.expressions</Package>
                 <Package>oberon.procedures</Package>
                 <Package>oberon.statement</Package>
+                <Package>oberon.typechecker</Package>
             </UsedBy>
         </Package>
 
@@ -177,11 +179,11 @@
                 <TotalClasses>11</TotalClasses>
                 <ConcreteClasses>9</ConcreteClasses>
                 <AbstractClasses>2</AbstractClasses>
-                <Ca>2</Ca>
+                <Ca>4</Ca>
                 <Ce>1</Ce>
                 <A>0.18</A>
-                <I>0.33</I>
-                <D>0.48</D>
+                <I>0.2</I>
+                <D>0.62</D>
                 <V>1</V>
             </Stats>
 
@@ -229,15 +231,17 @@
             </DependsUpon>
 
             <UsedBy>
+                <Package>oberon</Package>
                 <Package>oberon.convert</Package>
                 <Package>oberon.expressions</Package>
+                <Package>oberon.typechecker</Package>
             </UsedBy>
         </Package>
 
         <Package name="oberon.exceptions">
             <Stats>
-                <TotalClasses>3</TotalClasses>
-                <ConcreteClasses>3</ConcreteClasses>
+                <TotalClasses>4</TotalClasses>
+                <ConcreteClasses>4</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
                 <Ca>1</Ca>
                 <Ce>0</Ce>
@@ -251,6 +255,9 @@
             </AbstractClasses>
 
             <ConcreteClasses>
+                <Class sourceFile="BadWithStatementField.java">
+                    oberon.exceptions.BadWithStatementField
+                </Class>
                 <Class sourceFile="ProcedureNotFoundInScopeException.java">
                     oberon.exceptions.ProcedureNotFoundInScopeException
                 </Class>
@@ -275,11 +282,11 @@
                 <TotalClasses>21</TotalClasses>
                 <ConcreteClasses>17</ConcreteClasses>
                 <AbstractClasses>4</AbstractClasses>
-                <Ca>1</Ca>
+                <Ca>2</Ca>
                 <Ce>2</Ce>
                 <A>0.19</A>
-                <I>0.67</I>
-                <D>0.14</D>
+                <I>0.5</I>
+                <D>0.31</D>
                 <V>1</V>
             </Stats>
 
@@ -359,6 +366,7 @@
 
             <UsedBy>
                 <Package>oberon.convert</Package>
+                <Package>oberon.typechecker</Package>
             </UsedBy>
         </Package>
 
@@ -367,11 +375,11 @@
                 <TotalClasses>7</TotalClasses>
                 <ConcreteClasses>6</ConcreteClasses>
                 <AbstractClasses>1</AbstractClasses>
-                <Ca>1</Ca>
+                <Ca>2</Ca>
                 <Ce>1</Ce>
                 <A>0.14</A>
-                <I>0.5</I>
-                <D>0.36</D>
+                <I>0.33</I>
+                <D>0.52</D>
                 <V>1</V>
             </Stats>
 
@@ -408,6 +416,7 @@
 
             <UsedBy>
                 <Package>oberon.convert</Package>
+                <Package>oberon.typechecker</Package>
             </UsedBy>
         </Package>
 
@@ -416,11 +425,11 @@
                 <TotalClasses>9</TotalClasses>
                 <ConcreteClasses>9</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
-                <Ca>1</Ca>
+                <Ca>2</Ca>
                 <Ce>1</Ce>
                 <A>0</A>
-                <I>0.5</I>
-                <D>0.5</D>
+                <I>0.33</I>
+                <D>0.67</D>
                 <V>1</V>
             </Stats>
 
@@ -463,6 +472,119 @@
 
             <UsedBy>
                 <Package>oberon.convert</Package>
+                <Package>oberon.typechecker</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="oberon.typechecker">
+            <Stats>
+                <TotalClasses>27</TotalClasses>
+                <ConcreteClasses>25</ConcreteClasses>
+                <AbstractClasses>2</AbstractClasses>
+                <Ca>0</Ca>
+                <Ce>5</Ce>
+                <A>0.07</A>
+                <I>1</I>
+                <D>0.07</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="AbstractError.java">
+                    oberon.typechecker.AbstractError
+                </Class>
+                <Class sourceFile="IChecker.java">
+                    oberon.typechecker.IChecker
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="ArrayIndexerIdentifierChecker.java">
+                    oberon.typechecker.ArrayIndexerIdentifierChecker
+                </Class>
+                <Class sourceFile="AssignmentStatementChecker.java">
+                    oberon.typechecker.AssignmentStatementChecker
+                </Class>
+                <Class sourceFile="DefaultStatementChecker.java">
+                    oberon.typechecker.DefaultStatementChecker
+                </Class>
+                <Class sourceFile="ExpressionChecker.java">
+                    oberon.typechecker.ExpressionChecker
+                </Class>
+                <Class sourceFile="IdentifierCheckerFactory.java">
+                    oberon.typechecker.IdentifierCheckerFactory
+                </Class>
+                <Class sourceFile="IdentifierExpressionChecker.java">
+                    oberon.typechecker.IdentifierExpressionChecker
+                </Class>
+                <Class sourceFile="IfStatementChecker.java">
+                    oberon.typechecker.IfStatementChecker
+                </Class>
+                <Class sourceFile="InvalidConditionError.java">
+                    oberon.typechecker.InvalidConditionError
+                </Class>
+                <Class sourceFile="InvalidVariableInWithStatementError.java">
+                    oberon.typechecker.InvalidVariableInWithStatementError
+                </Class>
+                <Class sourceFile="NotImplementedException.java">
+                    oberon.typechecker.NotImplementedException
+                </Class>
+                <Class sourceFile="NotSupportedException.java">
+                    oberon.typechecker.NotSupportedException
+                </Class>
+                <Class sourceFile="ProcedureHeadingChecker.java">
+                    oberon.typechecker.ProcedureHeadingChecker
+                </Class>
+                <Class sourceFile="ProcedurecallStatementStatementChecker.java">
+                    oberon.typechecker.ProcedurecallStatementStatementChecker
+                </Class>
+                <Class sourceFile="RecordFieldNotFoundError.java">
+                    oberon.typechecker.RecordFieldNotFoundError
+                </Class>
+                <Class sourceFile="RecordIndexerIdentifierChecker.java">
+                    oberon.typechecker.RecordIndexerIdentifierChecker
+                </Class>
+                <Class sourceFile="StatementCheckerFactory.java">
+                    oberon.typechecker.StatementCheckerFactory
+                </Class>
+                <Class sourceFile="TypeCheckException.java">
+                    oberon.typechecker.TypeCheckException
+                </Class>
+                <Class sourceFile="TypeCheckScope.java">
+                    oberon.typechecker.TypeCheckScope
+                </Class>
+                <Class sourceFile="VariableCannotBeAssignedToError.java">
+                    oberon.typechecker.VariableCannotBeAssignedToError
+                </Class>
+                <Class sourceFile="VariableCannotBeEvaluatedToIntError.java">
+                    oberon.typechecker.VariableCannotBeEvaluatedToIntError
+                </Class>
+                <Class sourceFile="VariableIdentifierIdentifierChecker.java">
+                    oberon.typechecker.VariableIdentifierIdentifierChecker
+                </Class>
+                <Class sourceFile="VariableIsNotARecordError.java">
+                    oberon.typechecker.VariableIsNotARecordError
+                </Class>
+                <Class sourceFile="VariableNotFoundError.java">
+                    oberon.typechecker.VariableNotFoundError
+                </Class>
+                <Class sourceFile="WhileStatementChecker.java">
+                    oberon.typechecker.WhileStatementChecker
+                </Class>
+                <Class sourceFile="WithStatementChecker.java">
+                    oberon.typechecker.WithStatementChecker
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>oberon</Package>
+                <Package>oberon.data</Package>
+                <Package>oberon.expressions</Package>
+                <Package>oberon.procedures</Package>
+                <Package>oberon.statement</Package>
+            </DependsUpon>
+
+            <UsedBy>
             </UsedBy>
         </Package>
     </Packages>
@@ -505,6 +627,13 @@
             <Package>oberon</Package>
             <Package>oberon.convert</Package>
             <Package>oberon.statement</Package>
+        </Package>
+
+        <Package Name="oberon.typechecker">
+            <Package>oberon</Package>
+            <Package>oberon.convert</Package>
+            <Package>oberon.statement</Package>
+            <Package>oberon</Package>
         </Package>
 
     </Cycles>

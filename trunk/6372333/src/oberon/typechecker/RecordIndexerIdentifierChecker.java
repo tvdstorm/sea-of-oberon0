@@ -10,14 +10,26 @@ import oberon.data.RecordDataType;
 import oberon.data.RecordIndexerIdentifier;
 import oberon.data.VariableIdentifier;
 
+/**
+ * The Class RecordIndexerIdentifierChecker.
+ */
 public class RecordIndexerIdentifierChecker implements IChecker {
 
+	/** The identifier. */
 	private final RecordIndexerIdentifier identifier;
 
+	/**
+	 * Instantiates a new record indexer identifier checker.
+	 *
+	 * @param identifier the identifier
+	 */
 	public RecordIndexerIdentifierChecker(RecordIndexerIdentifier identifier) {
 		this.identifier = identifier;
 	}
 
+	/* (non-Javadoc)
+	 * @see oberon.typechecker.IChecker#check(oberon.typechecker.TypeCheckScope)
+	 */
 	@Override
 	public List<AbstractError> check(TypeCheckScope scope) {
 		IIdentifier rootSelector = identifier.getSelector();
@@ -30,6 +42,13 @@ public class RecordIndexerIdentifierChecker implements IChecker {
 		return errorList;
 	}
 
+	/**
+	 * Check identifier.
+	 *
+	 * @param scope the scope
+	 * @param rootSelector the root selector
+	 * @param errorList the error list
+	 */
 	private void checkIdentifier(TypeCheckScope scope, IIdentifier rootSelector,
 			List<AbstractError> errorList) {
 		if (rootSelector instanceof VariableIdentifier &&
@@ -47,6 +66,13 @@ public class RecordIndexerIdentifierChecker implements IChecker {
 		}
 	}
 
+	/**
+	 * Check record.
+	 *
+	 * @param record the record
+	 * @param errorList the error list
+	 * @param scope the scope
+	 */
 	private void checkRecord(RecordDataType record, List<AbstractError> errorList, TypeCheckScope scope) {
 		Iterator<String> iterator = identifier.getSubRecords().iterator();
 		

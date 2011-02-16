@@ -5,31 +5,36 @@ import java.util.List;
 
 import oberon.IExpression;
 import oberon.IStatement;
-import oberon.expressions.ComparisonExpression;
 import oberon.statement.IfStatement;
 
+/**
+ * The Class IfStatementChecker.
+ */
 public class IfStatementChecker implements IChecker {
 
+	/** The statement. */
 	private final IfStatement statement;
 
+	/**
+	 * Instantiates a new if statement checker.
+	 *
+	 * @param statement the statement
+	 */
 	public IfStatementChecker(IfStatement statement) {
 		this.statement = statement;
 	}
 
+	/* (non-Javadoc)
+	 * @see oberon.typechecker.IChecker#check(oberon.typechecker.TypeCheckScope)
+	 */
 	@Override
 	public List<AbstractError> check(TypeCheckScope scope) {
 		IExpression ifCondition = statement.getCondition();
 		
 		ArrayList<AbstractError> errorList = new ArrayList<AbstractError>();
-		if (
-				!(ifCondition instanceof ComparisonExpression)
-			){
-			errorList.add(new InvalidConditionError(ifCondition.getText()));
-		}
-		else {
-			IChecker checker = new ComparisonExpressionChecker((ComparisonExpression)ifCondition);
-			errorList.addAll(checker.check(scope));
-		}
+
+		ExpressionChecker checker = new ExpressionChecker(ifCondition);
+		errorList.addAll(checker.canEvalToBoolean(scope));
 		
 		//check all elseifs
 		for (IfStatement elseIf : statement.getElseIfs()){

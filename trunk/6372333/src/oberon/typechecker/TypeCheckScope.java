@@ -16,8 +16,14 @@ public class TypeCheckScope {
 	/** The procedures. */
 	private final Map<String, IProcedure> procedures = new HashMap<String, IProcedure>();
 
+	/** The name. */
 	private final String name;
 	
+	/**
+	 * Instantiates a new type check scope.
+	 *
+	 * @param scopeName the scope name
+	 */
 	protected TypeCheckScope(String scopeName){
 		name = scopeName;
 	}
@@ -64,6 +70,11 @@ public class TypeCheckScope {
 		return procedures.containsKey(procedureName);
 	}
 
+	/**
+	 * Gets the name.
+	 *
+	 * @return the name
+	 */
 	public String getName() {
 		return name;
 	}
@@ -76,5 +87,15 @@ public class TypeCheckScope {
 	 */
 	public IDataType getVariable(String identifierName) {
 		return variables.get(identifierName);
+	}
+
+	/**
+	 * Gets the procedure.
+	 *
+	 * @param procedureName the procedure name
+	 * @return the procedure
+	 */
+	public IProcedure getProcedure(String procedureName) {
+		return procedures.get(procedureName);
 	}
 }
