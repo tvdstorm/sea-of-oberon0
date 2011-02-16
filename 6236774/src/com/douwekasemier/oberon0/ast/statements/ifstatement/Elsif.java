@@ -13,23 +13,12 @@ public class Elsif extends AST {
     private Evaluatable expression;
     private Statements statements;
 
-    public Elsif() {
-        expression = null;
-        statements = null;
-    }
-
-    public Elsif(Statements statements) {
-        this.expression = expression;
-        this.statements = statements;
-    }
-
-    public Elsif(Tree antlrTree){
-        this();
+    public Elsif(Tree antlrTree) {
         antlrType = antlrTree.getType();
         antlrText = antlrTree.getText();
         assert (antlrType == Oberon0Parser.ELSIF);
 
-        expression = ExpressionBuilder.build( antlrTree.getChild(0));
+        expression = ExpressionBuilder.build(antlrTree.getChild(0));
 
         statements = new Statements(antlrTree.getChild(1));
 

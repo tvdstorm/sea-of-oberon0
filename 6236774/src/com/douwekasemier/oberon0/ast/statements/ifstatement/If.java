@@ -13,18 +13,7 @@ public class If extends AST {
     private Evaluatable expression;
     private Statements statements;
 
-    public If() {
-        expression = null;
-        statements = null;
-    }
-
-    public If(Evaluatable expression, Statements statements) {
-        this.expression = expression;
-        this.statements = statements;
-    }
-
     public If(Tree antlrTree) {
-        this();
         antlrType = antlrTree.getType();
         antlrText = antlrTree.getText();
         assert (antlrType == Oberon0Parser.IF);
