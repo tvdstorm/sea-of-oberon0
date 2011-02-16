@@ -5,7 +5,7 @@ import org.antlr.runtime.tree.Tree;
 import com.douwekasemier.oberon0.ast.AST;
 import com.douwekasemier.oberon0.ast.Initializable;
 import com.douwekasemier.oberon0.core.Oberon0Parser;
-import com.douwekasemier.oberon0.exceptions.RuntimeException;
+import com.douwekasemier.oberon0.exceptions.Oberon0Exception;
 import com.douwekasemier.oberon0.interpreter.environment.Bool;
 import com.douwekasemier.oberon0.interpreter.environment.Environment;
 import com.douwekasemier.oberon0.interpreter.environment.Int;
@@ -34,7 +34,7 @@ public class IdentifierType extends AST implements Initializable {
     }
 
     @Override
-    public Value initialize(Environment environment) throws RuntimeException {
+    public Value initialize(Environment environment) throws Oberon0Exception {
         if (identifier.equals("INTEGER")) {
             return new Int(new Integer(0));
         } else if (identifier.equals("BOOLEAN")) {

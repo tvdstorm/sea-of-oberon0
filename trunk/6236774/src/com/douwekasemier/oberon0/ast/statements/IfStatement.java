@@ -10,7 +10,7 @@ import com.douwekasemier.oberon0.ast.statements.ifstatement.Else;
 import com.douwekasemier.oberon0.ast.statements.ifstatement.Elsif;
 import com.douwekasemier.oberon0.ast.statements.ifstatement.If;
 import com.douwekasemier.oberon0.core.Oberon0Parser;
-import com.douwekasemier.oberon0.exceptions.RuntimeException;
+import com.douwekasemier.oberon0.exceptions.Oberon0Exception;
 import com.douwekasemier.oberon0.interpreter.environment.Bool;
 import com.douwekasemier.oberon0.interpreter.environment.Environment;
 
@@ -56,7 +56,7 @@ public class IfStatement extends AST implements Interpretable {
     }
 
     @Override
-    public void interpret(Environment environment) throws RuntimeException {
+    public void interpret(Environment environment) throws Oberon0Exception {
         boolean doElse = false;
         if( elsepart != null ) {
             doElse = true;

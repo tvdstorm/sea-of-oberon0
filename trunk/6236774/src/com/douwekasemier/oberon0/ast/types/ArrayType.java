@@ -1,7 +1,5 @@
 package com.douwekasemier.oberon0.ast.types;
 
-import java.util.ArrayList;
-
 import org.antlr.runtime.tree.Tree;
 
 import com.douwekasemier.oberon0.ast.AST;
@@ -10,7 +8,7 @@ import com.douwekasemier.oberon0.ast.ExpressionBuilder;
 import com.douwekasemier.oberon0.ast.Initializable;
 import com.douwekasemier.oberon0.ast.TypeBuilder;
 import com.douwekasemier.oberon0.core.Oberon0Parser;
-import com.douwekasemier.oberon0.exceptions.RuntimeException;
+import com.douwekasemier.oberon0.exceptions.Oberon0Exception;
 import com.douwekasemier.oberon0.interpreter.environment.Array;
 import com.douwekasemier.oberon0.interpreter.environment.Environment;
 import com.douwekasemier.oberon0.interpreter.environment.Int;
@@ -42,13 +40,15 @@ public class ArrayType extends AST implements Initializable {
     }
 
     @Override
-    public Value initialize(Environment environment) throws RuntimeException {
+    public Value initialize(Environment environment) throws Oberon0Exception {
         Int size = null;
         try {
             size = (Int) sizeExpression.evaluate(environment);
         } catch (ClassCastException e) {
-            throw new RuntimeException();
+            throw new Oberon0Exception();
         }
-        return new Array(vartype, size.getValue().intValue());
+        Array array = new Array(environment, vartype, size.getValue().intValue());
+        
+        return array;
     }
 }

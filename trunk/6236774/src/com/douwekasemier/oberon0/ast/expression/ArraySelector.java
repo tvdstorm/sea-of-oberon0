@@ -6,7 +6,7 @@ import com.douwekasemier.oberon0.ast.AST;
 import com.douwekasemier.oberon0.ast.Evaluatable;
 import com.douwekasemier.oberon0.ast.ExpressionBuilder;
 import com.douwekasemier.oberon0.exceptions.NotSelectableExpression;
-import com.douwekasemier.oberon0.exceptions.RuntimeException;
+import com.douwekasemier.oberon0.exceptions.Oberon0Exception;
 import com.douwekasemier.oberon0.interpreter.environment.Array;
 import com.douwekasemier.oberon0.interpreter.environment.Environment;
 import com.douwekasemier.oberon0.interpreter.environment.Int;
@@ -32,12 +32,12 @@ public class ArraySelector extends AST implements Evaluatable {
     }
 
     @Override
-    public Value evaluate(Environment environment) throws RuntimeException {
+    public Value evaluate(Environment environment) throws Oberon0Exception {
         try {
             return select(environment, null).getValue();
         } catch (NotSelectableExpression e) {
             e.printStackTrace();
-            throw new RuntimeException();
+            throw new Oberon0Exception();
         }
     }
 
@@ -47,7 +47,7 @@ public class ArraySelector extends AST implements Evaluatable {
     // haal referentie naar het veld '0' uit Array.getReference()
 
     @Override
-    public Reference select(Environment environment, Value from) throws RuntimeException, NotSelectableExpression {
+    public Reference select(Environment environment, Value from) throws Oberon0Exception, NotSelectableExpression {
         Int locationValue = (Int) expression.evaluate(environment);
         int location = locationValue.getValue().intValue();
 

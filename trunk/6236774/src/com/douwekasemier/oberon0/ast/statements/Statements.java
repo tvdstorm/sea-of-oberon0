@@ -7,7 +7,7 @@ import org.antlr.runtime.tree.Tree;
 import com.douwekasemier.oberon0.ast.AST;
 import com.douwekasemier.oberon0.ast.Interpretable;
 import com.douwekasemier.oberon0.core.Oberon0Parser;
-import com.douwekasemier.oberon0.exceptions.RuntimeException;
+import com.douwekasemier.oberon0.exceptions.Oberon0Exception;
 import com.douwekasemier.oberon0.interpreter.environment.Environment;
 
 public class Statements extends AST implements Interpretable {
@@ -45,12 +45,15 @@ public class Statements extends AST implements Interpretable {
                 case Oberon0Parser.IFSTATEMENT:
                     statements.add(new IfStatement(antlrChild));
                     break;
+                case Oberon0Parser.WITH:
+                    statements.add(new With(antlrChild));
+                    break;
             }
         }
     }
 
     @Override
-    public void interpret(Environment environment) throws RuntimeException {
+    public void interpret(Environment environment) throws Oberon0Exception {
         for (Interpretable statement : statements) {
             statement.interpret(environment);
         }

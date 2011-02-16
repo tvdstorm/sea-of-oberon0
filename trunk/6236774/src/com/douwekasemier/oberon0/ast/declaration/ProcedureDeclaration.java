@@ -10,7 +10,7 @@ import com.douwekasemier.oberon0.ast.Invokable;
 import com.douwekasemier.oberon0.ast.ParameterBuilder;
 import com.douwekasemier.oberon0.ast.statements.Statements;
 import com.douwekasemier.oberon0.core.Oberon0Parser;
-import com.douwekasemier.oberon0.exceptions.RuntimeException;
+import com.douwekasemier.oberon0.exceptions.Oberon0Exception;
 import com.douwekasemier.oberon0.interpreter.environment.Environment;
 import com.douwekasemier.oberon0.interpreter.environment.Procedure;
 
@@ -72,13 +72,13 @@ public class ProcedureDeclaration extends AST implements Declarable, Invokable {
     }
 
     @Override
-    public void declare(Environment environment) throws RuntimeException {
+    public void declare(Environment environment) throws Oberon0Exception {
         Environment localEnvironment = environment.newEnvironment("Procedure declaration <"+identifier+">");
         environment.declareProcedure(identifier, new Procedure(this, localEnvironment));
     }
 
     @Override
-    public void invoke(Environment environment) throws RuntimeException {
+    public void invoke(Environment environment) throws Oberon0Exception {
         if (statements != null) {
             statements.interpret(environment);
         }
