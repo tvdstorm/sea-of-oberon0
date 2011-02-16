@@ -60,8 +60,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.elcid.oberon0.ast.*;
-import org.elcid.oberon0.values.*;
-import org.elcid.oberon0.visitors.*;
 }
 
 @lexer::header {
