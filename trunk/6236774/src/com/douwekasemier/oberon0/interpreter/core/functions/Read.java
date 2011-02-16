@@ -10,7 +10,7 @@ import com.douwekasemier.oberon0.ast.declaration.FormalParameterRef;
 import com.douwekasemier.oberon0.ast.declaration.ProcedureDeclaration;
 import com.douwekasemier.oberon0.ast.types.IdentifierType;
 import com.douwekasemier.oberon0.exceptions.BuildInFunctionsException;
-import com.douwekasemier.oberon0.exceptions.RuntimeException;
+import com.douwekasemier.oberon0.exceptions.Oberon0Exception;
 import com.douwekasemier.oberon0.interpreter.environment.Environment;
 import com.douwekasemier.oberon0.interpreter.environment.Int;
 import com.douwekasemier.oberon0.interpreter.environment.Value;
@@ -33,13 +33,13 @@ public class Read extends ProcedureDeclaration {
         this();
         try {
             declare(environment);
-        } catch (RuntimeException e) {
+        } catch (Oberon0Exception e) {
             throw new BuildInFunctionsException();
         }
     }
 
     @Override
-    public void invoke(Environment environment) throws RuntimeException {
+    public void invoke(Environment environment) throws Oberon0Exception {
         BufferedReader input = environment.getInput();
 
         try {
@@ -48,7 +48,7 @@ public class Read extends ProcedureDeclaration {
             environment.getReference("into").setValue(newValue);
         } catch (IOException e) {
             e.printStackTrace();
-            throw new RuntimeException();
+            throw new Oberon0Exception();
         }
     }
 }

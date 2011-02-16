@@ -22,6 +22,7 @@ tokens {
   THEN = 'THEN';
   ELSIF = 'ELSIF';
   ELSE = 'ELSE';
+  WITH = 'WITH';
   EQUALS = '=';
   NOT_EQUALS = '#';
   GT = '>';
@@ -185,6 +186,11 @@ ifStatement
     END
   -> ^(IFSTATEMENT ifpart elsifpart* elsepart? END)
   ;
+  
+withStatement
+  : WITH identifier selector 'DO' statementSequence END
+  -> ^(WITH ^(IDENT_SELECT identifier ^(SELECTORS selector)?) statementSequence)
+  ;
 
 whileStatement
   : WHILE expression 'DO' statementSequence END
@@ -196,6 +202,7 @@ statement
   | procedureCall
   | ifStatement
   | whileStatement
+  | withStatement
   ;
   
 statementSequence

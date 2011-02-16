@@ -18,7 +18,7 @@ public class Bool implements Value {
 
     @Override
     public String toString() {
-        return "Bool: " + value;
+        return value ? "TRUE" : "FALSE";
     }
     
 }

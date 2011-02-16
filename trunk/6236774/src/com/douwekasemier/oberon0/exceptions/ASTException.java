@@ -1,6 +1,6 @@
 package com.douwekasemier.oberon0.exceptions;
 
-public class ASTException extends Exception {
+public class ASTException extends RuntimeException {
 
     /**
      *

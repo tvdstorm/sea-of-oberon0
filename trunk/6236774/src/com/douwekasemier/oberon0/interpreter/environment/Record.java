@@ -1,53 +1,45 @@
 package com.douwekasemier.oberon0.interpreter.environment;
 
-import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
-public class Record implements Value {
+public class Record implements Value, Iterable<String> {
 
-    private ArrayList<RecordField> fields;
+    private Map<String, Reference> record;
 
     public Record() {
-        this.fields = new ArrayList<RecordField>();
+        record = new HashMap<String, Reference>();
     }
-    
-    public void addField(RecordField field) {
-        // Check for duplicate record keys
-        for( String identifier: field.getIdentifiers() ) {
-            if( lookup(identifier) != null ) {
-                throw new RuntimeException();
-            }
-        }
-        fields.add(field);
+
+    public void addField(String identifier, Reference reference) {
+        record.put(identifier, reference);
     }
 
     public void setValue(String identifier, Value value) {
-        Reference reference = this.lookup(identifier);
+        Reference reference = record.get(identifier);
         reference.setValue(value);
     }
-    
+
     public Value getValue(String identifier) {
-        Reference reference = this.lookup(identifier);
+        Reference reference = record.get(identifier);
         return reference.getValue();
     }
-    
+
     public void setReference(String identifier, Reference reference) {
-        Reference oldReference = this.lookup(identifier);
-        oldReference = reference;
+        record.put(identifier, reference);
     }
-    
+
     public Reference getReference(String identifier) {
-        return this.lookup(identifier);
+        return record.get(identifier);
     }
 
-    private Reference lookup(String identifier) {
-        Reference reference;
-        for (RecordField field : fields) {
-            reference = field.getReference(identifier);
-            if( reference != null ) {
-                return reference;
-            }
+    @Override
+    public Iterator<String> iterator() {
+        if( record.isEmpty() ) {
+            return Collections.<String>emptyList().iterator();
         }
-        return null;
+        return record.keySet().iterator();
     }
-
 }

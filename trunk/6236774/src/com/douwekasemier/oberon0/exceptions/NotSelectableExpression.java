@@ -1,6 +1,6 @@
 package com.douwekasemier.oberon0.exceptions;
 
-public class NotSelectableExpression extends Exception {
+public class NotSelectableExpression extends RuntimeException {
 
     /**
      * 
