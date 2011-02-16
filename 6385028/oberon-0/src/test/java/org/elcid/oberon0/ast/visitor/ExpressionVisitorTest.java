@@ -27,7 +27,7 @@ public class ExpressionVisitorTest {
 		instance = new ExpressionVisitor();
 		env = new Environment();
 	}
-/*
+
 	@Test
 	public void testVisitValueExpNode() {
 
@@ -41,7 +41,7 @@ public class ExpressionVisitorTest {
 		env.declareValue("varName", new Int(25));
 		IdentSelectorNode varNode = new IdentSelectorNode("varName");
 		Int resultIntVar = (Int) instance.eval(varNode, env);
-		Integer expResultIntVar = 25;
+		int expResultIntVar = 25;
 		assertEquals(expResultIntVar, resultIntVar.getValue());
 
 	}
@@ -50,9 +50,9 @@ public class ExpressionVisitorTest {
 	public void testVisitPlusExpNode() {
 
 		// Test with two integer values
-		PlusExpNode nodeInt = new PlusExpNode(new IntExpNode(new Int(2)), new IntExpNode(new Int(3)));
+		PlusExpNode nodeInt = new PlusExpNode(new IntExpNode(2), new IntExpNode(3));
 		Int resultInt = (Int) instance.eval(nodeInt, null);
-		Integer expResultInt = 5;
+		int expResultInt = 5;
 		assertEquals(expResultInt, resultInt.getValue());
 
 		// Test with two integer variable values
@@ -62,7 +62,7 @@ public class ExpressionVisitorTest {
 		IdentSelectorNode right = new IdentSelectorNode("right");
 		PlusExpNode nodeIntVar = new PlusExpNode(left, right);
 		Int resultIntVar = (Int) instance.eval(nodeIntVar, env);
-		Integer expResultIntVar = 9;
+		int expResultIntVar = 9;
 		assertEquals(expResultIntVar, resultIntVar.getValue());
 	}
 
@@ -70,9 +70,9 @@ public class ExpressionVisitorTest {
 	public void testVisitMinusExpNode() {
 
 		// Test with two integer values
-		MinusExpNode nodeInt = new MinusExpNode(new IntExpNode(new Int(8)), new IntExpNode(new Int(3)));
+		MinusExpNode nodeInt = new MinusExpNode(new IntExpNode(8), new IntExpNode(3));
 		Int resultInt = (Int) instance.eval(nodeInt, null);
-		Integer expResultInt = 5;
+		int expResultInt = 5;
 		assertEquals(expResultInt, resultInt.getValue());
 	}
 
@@ -80,9 +80,9 @@ public class ExpressionVisitorTest {
 	public void testVisitMultiplyExpNode() {
 
 		// Test with two integer values
-		MultiplyExpNode nodeInt = new MultiplyExpNode(new IntExpNode(new Int(3)), new IntExpNode(new Int(3)));
+		MultiplyExpNode nodeInt = new MultiplyExpNode(new IntExpNode(3), new IntExpNode(3));
 		Int resultInt = (Int) instance.eval(nodeInt, null);
-		Integer expResultInt = 9;
+		int expResultInt = 9;
 		assertEquals(expResultInt, resultInt.getValue());
 	}
 
@@ -90,9 +90,9 @@ public class ExpressionVisitorTest {
 	public void testVisitDivideExpNode() {
 
 		// Test with two integer values
-		DivideExpNode nodeInt = new DivideExpNode(new IntExpNode(new Int(9)), new IntExpNode(new Int(3)));
+		DivideExpNode nodeInt = new DivideExpNode(new IntExpNode(9), new IntExpNode(3));
 		Int resultInt = (Int) instance.eval(nodeInt, null);
-		Integer expResultInt = 3;
+		int expResultInt = 3;
 		assertEquals(expResultInt, resultInt.getValue());
 	}
 
@@ -100,7 +100,7 @@ public class ExpressionVisitorTest {
 	public void testVisitDivideExpNodeWithZero() {
 
 		// Test with two integer values
-		DivideExpNode nodeInt = new DivideExpNode(new IntExpNode(new Int(9)), new IntExpNode(new Int(0)));
+		DivideExpNode nodeInt = new DivideExpNode(new IntExpNode(9), new IntExpNode(0));
 		instance.eval(nodeInt, null);
 	}
 
@@ -108,9 +108,9 @@ public class ExpressionVisitorTest {
 	public void testVisitModuloExpNode() {
 
 		// Test with two integer values
-		ModuloExpNode nodeInt = new ModuloExpNode(new IntExpNode(new Int(9)), new IntExpNode(new Int(7)));
+		ModuloExpNode nodeInt = new ModuloExpNode(new IntExpNode(9), new IntExpNode(7));
 		Int resultInt = (Int) instance.eval(nodeInt, null);
-		Integer expResultInt = 2;
+		int expResultInt = 2;
 		assertEquals(expResultInt, resultInt.getValue());
 	}
 
@@ -118,7 +118,7 @@ public class ExpressionVisitorTest {
 	public void testVisitModuloExpNodeWithZero() {
 
 		// Test with two integer values
-		ModuloExpNode nodeInt = new ModuloExpNode(new IntExpNode(new Int(9)), new IntExpNode(new Int(0)));
+		ModuloExpNode nodeInt = new ModuloExpNode(new IntExpNode(9), new IntExpNode(0));
 		instance.eval(nodeInt, null);
 	}
 
@@ -126,12 +126,12 @@ public class ExpressionVisitorTest {
 	public void testVisitEqualsExpNode() {
 
 		// Test with two integer values that are equal
-		EqualsExpNode nodeTrue = new EqualsExpNode(new IntExpNode(new Int(3)), new IntExpNode(new Int(3)));
+		EqualsExpNode nodeTrue = new EqualsExpNode(new IntExpNode(3), new IntExpNode(3));
 		Bool resultTrue = (Bool) instance.eval(nodeTrue, null);
 		assertEquals(true, resultTrue.getValue());
 
 		// Test with two integer values that are not equal
-		EqualsExpNode nodeFalse = new EqualsExpNode(new IntExpNode(new Int(4)), new IntExpNode(new Int(3)));
+		EqualsExpNode nodeFalse = new EqualsExpNode(new IntExpNode(4), new IntExpNode(3));
 		Bool resultFalse = (Bool) instance.eval(nodeFalse, null);
 		assertEquals(false, resultFalse.getValue());
 
@@ -158,12 +158,12 @@ public class ExpressionVisitorTest {
 	public void testVisitNotEqualsExpNode() {
 
 		// Test with two integer values that are not equal
-		NotEqualsExpNode nodeFalse = new NotEqualsExpNode(new IntExpNode(new Int(4)), new IntExpNode(new Int(3)));
+		NotEqualsExpNode nodeFalse = new NotEqualsExpNode(new IntExpNode(4), new IntExpNode(3));
 		Bool resultFalse = (Bool) instance.eval(nodeFalse, null);
 		assertEquals(true, resultFalse.getValue());
 
 		// Test with two integer values that are equal
-		NotEqualsExpNode nodeTrue = new NotEqualsExpNode(new IntExpNode(new Int(3)), new IntExpNode(new Int(3)));
+		NotEqualsExpNode nodeTrue = new NotEqualsExpNode(new IntExpNode(3), new IntExpNode(3));
 		Bool resultTrue = (Bool) instance.eval(nodeTrue, null);
 		assertEquals(false, resultTrue.getValue());
 	}
@@ -172,17 +172,17 @@ public class ExpressionVisitorTest {
 	public void testVisitGreaterExpNode() {
 
 		// Test with two integer values where the left is greater
-		GreaterExpNode nodeTrue = new GreaterExpNode(new IntExpNode(new Int(4)), new IntExpNode(new Int(3)));
+		GreaterExpNode nodeTrue = new GreaterExpNode(new IntExpNode(4), new IntExpNode(3));
 		Bool resultTrue = (Bool) instance.eval(nodeTrue, null);
 		assertEquals(true, resultTrue.getValue());
 
 		// Test with two integer values where the left is not greater
-		GreaterExpNode nodeFalse = new GreaterExpNode(new IntExpNode(new Int(2)), new IntExpNode(new Int(3)));
+		GreaterExpNode nodeFalse = new GreaterExpNode(new IntExpNode(2), new IntExpNode(3));
 		Bool resultFalse = (Bool) instance.eval(nodeFalse, null);
 		assertEquals(false, resultFalse.getValue());
 
 		// Test with two integer values that are equal
-		GreaterExpNode nodeEqual = new GreaterExpNode(new IntExpNode(new Int(3)), new IntExpNode(new Int(3)));
+		GreaterExpNode nodeEqual = new GreaterExpNode(new IntExpNode(3), new IntExpNode(3));
 		Bool resultEqual = (Bool) instance.eval(nodeEqual, null);
 		assertEquals(false, resultEqual.getValue());
 	}
@@ -191,17 +191,17 @@ public class ExpressionVisitorTest {
 	public void testVisitGreaterOrEqualsExpNode() {
 
 		// Test with two integer values where the left is greater
-		GreaterOrEqualsExpNode nodeTrue = new GreaterOrEqualsExpNode(new IntExpNode(new Int(4)), new IntExpNode(new Int(3)));
+		GreaterOrEqualsExpNode nodeTrue = new GreaterOrEqualsExpNode(new IntExpNode(4), new IntExpNode(3));
 		Bool resultTrue = (Bool) instance.eval(nodeTrue, null);
 		assertEquals(true, resultTrue.getValue());
 
 		// Test with two integer values where the left is not greater
-		GreaterOrEqualsExpNode nodeFalse = new GreaterOrEqualsExpNode(new IntExpNode(new Int(2)), new IntExpNode(new Int(3)));
+		GreaterOrEqualsExpNode nodeFalse = new GreaterOrEqualsExpNode(new IntExpNode(2), new IntExpNode(3));
 		Bool resultFalse = (Bool) instance.eval(nodeFalse, null);
 		assertEquals(false, resultFalse.getValue());
 
 		// Test with two integer values that are equal
-		GreaterOrEqualsExpNode nodeEqual = new GreaterOrEqualsExpNode(new IntExpNode(new Int(3)), new IntExpNode(new Int(3)));
+		GreaterOrEqualsExpNode nodeEqual = new GreaterOrEqualsExpNode(new IntExpNode(3), new IntExpNode(3));
 		Bool resultEqual = (Bool) instance.eval(nodeEqual, null);
 		assertEquals(true, resultEqual.getValue());
 	}
@@ -210,17 +210,17 @@ public class ExpressionVisitorTest {
 	public void testVisitLesserExpNode() {
 
 		// Test with two integer values where the left is lesser
-		LesserExpNode nodeTrue = new LesserExpNode(new IntExpNode(new Int(3)), new IntExpNode(new Int(4)));
+		LesserExpNode nodeTrue = new LesserExpNode(new IntExpNode(3), new IntExpNode(4));
 		Bool resultTrue = (Bool) instance.eval(nodeTrue, null);
 		assertEquals(true, resultTrue.getValue());
 
 		// Test with two integer values where the left is not lesser
-		LesserExpNode nodeFalse = new LesserExpNode(new IntExpNode(new Int(3)), new IntExpNode(new Int(2)));
+		LesserExpNode nodeFalse = new LesserExpNode(new IntExpNode(3), new IntExpNode(2));
 		Bool resultFalse = (Bool) instance.eval(nodeFalse, null);
 		assertEquals(false, resultFalse.getValue());
 
 		// Test with two integer values that are equal
-		LesserExpNode nodeEqual = new LesserExpNode(new IntExpNode(new Int(3)), new IntExpNode(new Int(3)));
+		LesserExpNode nodeEqual = new LesserExpNode(new IntExpNode(3), new IntExpNode(3));
 		Bool resultEqual = (Bool) instance.eval(nodeEqual, null);
 		assertEquals(false, resultEqual.getValue());
 	}
@@ -229,17 +229,17 @@ public class ExpressionVisitorTest {
 	public void testVisitLesserOrEqualsExpNode() {
 
 		// Test with two integer values where the left is lesser
-		LesserOrEqualsExpNode nodeTrue = new LesserOrEqualsExpNode(new IntExpNode(new Int(3)), new IntExpNode(new Int(4)));
+		LesserOrEqualsExpNode nodeTrue = new LesserOrEqualsExpNode(new IntExpNode(3), new IntExpNode(4));
 		Bool resultTrue = (Bool) instance.eval(nodeTrue, null);
 		assertEquals(true, resultTrue.getValue());
 
 		// Test with two integer values where the left is not lesser
-		LesserOrEqualsExpNode nodeFalse = new LesserOrEqualsExpNode(new IntExpNode(new Int(3)), new IntExpNode(new Int(2)));
+		LesserOrEqualsExpNode nodeFalse = new LesserOrEqualsExpNode(new IntExpNode(3), new IntExpNode(2));
 		Bool resultFalse = (Bool) instance.eval(nodeFalse, null);
 		assertEquals(false, resultFalse.getValue());
 
 		// Test with two integer values that are equal
-		LesserOrEqualsExpNode nodeEqual = new LesserOrEqualsExpNode(new IntExpNode(new Int(3)), new IntExpNode(new Int(3)));
+		LesserOrEqualsExpNode nodeEqual = new LesserOrEqualsExpNode(new IntExpNode(3), new IntExpNode(3));
 		Bool resultEqual = (Bool) instance.eval(nodeEqual, null);
 		assertEquals(true, resultEqual.getValue());
 	}
@@ -263,5 +263,5 @@ public class ExpressionVisitorTest {
 	public void testVisitNegativeExpNode() {
 
 	}
-*/
+
 }
