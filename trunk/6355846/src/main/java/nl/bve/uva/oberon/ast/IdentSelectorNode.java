@@ -8,9 +8,9 @@ import nl.bve.uva.oberon.env.types.OberonType;
 
 public class IdentSelectorNode implements IInterpretableNode {
 	private String name;
-	private List<IInterpretableNode> selectors;
+	private List<Selector> selectors;
 	
-	public IdentSelectorNode(String name, List<IInterpretableNode> selectors) {
+	public IdentSelectorNode(String name, List<Selector> selectors) {
 		this.name = name;
 		this.selectors = selectors;
 	}
@@ -20,9 +20,8 @@ public class IdentSelectorNode implements IInterpretableNode {
 		OberonType type = env.getVariable(name);
 		
 		if (selectors != null) {
-			for (IInterpretableNode selector : selectors) {
-				Selector s = (Selector)selector;
-				type = type.evaluateSelector(s.interpret(env));
+			for (Selector s : selectors) {
+				type = type.evaluateSelector(s.evaluate(env));
 			}
 		}
 		

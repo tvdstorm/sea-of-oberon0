@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:50:56 C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g 2011-02-15 15:33:48
+// $ANTLR 3.3 Nov 30, 2010 12:50:56 C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g 2011-02-16 19:10:47
 
 package nl.bve.uva.oberon.parser;
 
@@ -1355,7 +1355,7 @@ public class Oberon0Parser extends Parser {
         IInterpretableNode result = null;
 
         Token IDENT21=null;
-        List<IInterpretableNode> selector22 = null;
+        List<Selector> selector22 = null;
 
         IInterpretableNode expression23 = null;
 
@@ -2248,7 +2248,7 @@ public class Oberon0Parser extends Parser {
 
         Token IDENT31=null;
         Token NUMBER33=null;
-        List<IInterpretableNode> selector32 = null;
+        List<Selector> selector32 = null;
 
         IInterpretableNode expression34 = null;
 
@@ -2330,9 +2330,9 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "selector"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:230:1: selector returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()] : ( '.' IDENT | '[' expression ']' )* ;
-    public final List<IInterpretableNode> selector() throws RecognitionException {
-        List<IInterpretableNode> result =  new ArrayList<IInterpretableNode>();
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:230:1: selector returns [List<Selector> result = new ArrayList<Selector>()] : ( '.' IDENT | '[' expression ']' )* ;
+    public final List<Selector> selector() throws RecognitionException {
+        List<Selector> result =  new ArrayList<Selector>();
 
         Token IDENT35=null;
         IInterpretableNode expression36 = null;

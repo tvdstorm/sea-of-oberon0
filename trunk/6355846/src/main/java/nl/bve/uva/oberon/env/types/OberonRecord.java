@@ -3,6 +3,8 @@ package nl.bve.uva.oberon.env.types;
 import java.util.HashMap;
 import java.util.Map;
 
+import nl.bve.uva.oberon.shared.SelectorValue;
+
 /**
  * An OberonRecord contains a mapping to several fields. Each field
  * is an OberonType and can be accessed through the evaluateSelector
@@ -32,8 +34,8 @@ public class OberonRecord extends OberonType {
 	}
 	
 	@Override
-	public OberonType evaluateSelector(String selector) {
-		OberonType result = fields.get(selector);
+	public OberonType evaluateSelector(SelectorValue selector) {
+		OberonType result = fields.get(selector.getField());
 		
 		if (result == null) {
 			throw new RuntimeException("There is no field '" +selector+ "' for this OberonRecord!");

@@ -2,6 +2,7 @@ package nl.bve.uva.oberon.ast;
 
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.types.OberonType;
+import nl.bve.uva.oberon.shared.SelectorValue;
 
 public class WithNode implements IInterpretableNode {
 	private IInterpretableNode expression;
@@ -23,7 +24,8 @@ public class WithNode implements IInterpretableNode {
 			public OberonType getVariable(String varId) {
 				OberonType result = null;
 				try {
-					result = type.evaluateSelector(varId);
+					SelectorValue sv = new SelectorValue(varId);
+					result = type.evaluateSelector(sv);
 				} catch (RuntimeException re) {
 					/* do nothing, field could be available in surrounding environment! */
 				}

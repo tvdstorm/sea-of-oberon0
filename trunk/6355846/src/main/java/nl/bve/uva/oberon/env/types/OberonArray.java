@@ -1,5 +1,7 @@
 package nl.bve.uva.oberon.env.types;
 
+import nl.bve.uva.oberon.shared.SelectorValue;
+
 /**
  * OberonArray is an OberonType for containing multiple values of the
  * same kind. An OberonArray can contain every kind of OberonType.
@@ -34,8 +36,8 @@ public class OberonArray extends OberonType {
 	}
 	
 	@Override
-	public OberonType evaluateSelector(String selector) {
-		return values[Integer.parseInt(selector)];
+	public OberonType evaluateSelector(SelectorValue selector) {
+		return values[selector.getIndex().getValue()];
 	}
 	
 	@Override

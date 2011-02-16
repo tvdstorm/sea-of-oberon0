@@ -1,5 +1,7 @@
 package nl.bve.uva.oberon.env.types;
 
+import nl.bve.uva.oberon.shared.SelectorValue;
+
 /**
  * Class for application-defined types. If there is a type declaration
  * in the Oberon-0 source code, it will be instantiated with this class.
@@ -35,7 +37,7 @@ public class ApplicationType extends OberonType {
 	}
 	
 	@Override
-	public OberonType evaluateSelector(String selector) {
+	public OberonType evaluateSelector(SelectorValue selector) {
 		OberonType result = value.evaluateSelector(selector);
 		
 		if (result == null) {
