@@ -3,9 +3,9 @@ package org.elcid.oberon0.parser;
 import org.antlr.runtime.*;
 import org.elcid.oberon0.ast.ModuleNode;
 import org.elcid.oberon0.ast.env.Environment;
-import org.elcid.oberon0.ast.env.ReadBuiltinProcedure;
-import org.elcid.oberon0.ast.env.WriteBuiltinProcedure;
-import org.elcid.oberon0.ast.env.WriteLnBuiltinProcedure;
+import org.elcid.oberon0.ast.env.builtins.ReadBuiltinProcedure;
+import org.elcid.oberon0.ast.env.builtins.WriteBuiltinProcedure;
+import org.elcid.oberon0.ast.env.builtins.WriteLnBuiltinProcedure;
 
 /**
  * The main method of this class allows for text to be typed into the console. After
@@ -29,9 +29,9 @@ public class ManualInputParser {
 		ModuleNode mod = parser.module();
 
 		Environment env = new Environment();
-		env.putProcedure("Read", new ReadBuiltinProcedure());
-		env.putProcedure("Write", new WriteBuiltinProcedure());
-		env.putProcedure("WriteLn", new WriteLnBuiltinProcedure());
+		env.declareProcedure("Read", new ReadBuiltinProcedure());
+		env.declareProcedure("Write", new WriteBuiltinProcedure());
+		env.declareProcedure("WriteLn", new WriteLnBuiltinProcedure());
 		mod.run(env);
 	}
 }

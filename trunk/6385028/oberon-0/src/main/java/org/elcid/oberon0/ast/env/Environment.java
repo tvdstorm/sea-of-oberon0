@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 import org.elcid.oberon0.ast.TypeNode;
 import org.elcid.oberon0.ast.values.Value;
+import org.elcid.oberon0.exceptions.TypeNotKnownException;
 import org.elcid.oberon0.exceptions.UnboundVariableException;
+import org.elcid.oberon0.exceptions.UnknownProcedureException;
 
 /**
  * Wrapper class that represents a map of the available variable names and their
@@ -14,78 +16,59 @@ import org.elcid.oberon0.exceptions.UnboundVariableException;
  */
 public class Environment {
 
-	private Environment superEnv;
-	private Map<String, Value> valueBindings = new HashMap<String, Value>();
-	private Map<String, TypeNode> typeAliases = new HashMap<String, TypeNode>();
+	private Environment parent;
+	private Map<String, Value> variables = new HashMap<String, Value>();
+	private Map<String, TypeNode> types = new HashMap<String, TypeNode>();
 	private Map<String, Procedure> procedures = new HashMap<String, Procedure>();
 
 	public Environment() {
-		superEnv = null;
+		parent = null;
 	}
 
 	public Environment(Environment superEnv) {
-		this.superEnv = superEnv;
+		this.parent = superEnv;
 	}
-
-	/**
-	 * Returns the integer that is bound to the given variable name. If no mapping
-	 * is found, a runtime exception will be thrown, as the system will not be able
-	 * to recover.
-	 *
-	 * @param	variableName
-	 * @return	the integer that is bound to the variable
-	 */
-	public Value getValue(String variableName) {
-		if (valueBindings.containsKey(variableName)) {
-			return valueBindings.get(variableName);
-		}
-		if (superEnv != null) {
-			return superEnv.getValue(variableName);
-		}
-		throw new UnboundVariableException("Variable " + variableName + " is not bound to an integer");
-	}
-
+	
 	public void declareValue(String variableName, Value value) {
-		valueBindings.put(variableName, value);
+		variables.put(variableName, value);
 	}
 
-	public TypeNode getType(String alias) {
-		return typeAliases.get(alias);
+	public void declareType(String variableName, TypeNode type) {
+		types.put(variableName, type);
 	}
 
-	public void putTypeAlias(String alias, TypeNode type) {
-		typeAliases.put(alias, type);
-	}
-
-	public Procedure getProcedure(String procedureName) {
-		Procedure p = procedures.get(procedureName);
-		if (p == null && superEnv != null) {
-			p = superEnv.getProcedure(procedureName);
-			if (p == null) {
-				throw new RuntimeException("no such procedure: " +procedureName);
-			}
-		}
-		return p;
-	}
-
-	public void putProcedure(String procedureName, Procedure procedure) {
+	public void declareProcedure(String procedureName, Procedure procedure) {
 		procedures.put(procedureName, procedure);
 	}
 
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		if (superEnv != null) {
-			sb.append(superEnv.toString());
+	public Value getValue(String variableName) {
+		if (variables.containsKey(variableName)) {
+			return variables.get(variableName);
 		}
-		sb.append("SUB ENV:\n");
-		for (Map.Entry<String, Value> ref : valueBindings.entrySet()) {
-			sb.append(ref.getKey() + " : " + ref.getValue().toString() + "\n");
+		if (parent != null) {
+			return parent.getValue(variableName);
 		}
-
-		for (Map.Entry<String, Procedure> ref : procedures.entrySet()) {
-			sb.append(ref.getKey() + " : " + ref.getValue().toString() + "\n");
-		}
-		sb.append("END SUB ENV");
-		return sb.toString();
+		throw new UnboundVariableException("Variable " + variableName + " is not bound to a value");
 	}
+
+	public TypeNode getType(String variableName) {
+		if (variables.containsKey(variableName)) {
+			return types.get(variableName);
+		}
+		if (parent != null) {
+			return parent.getType(variableName);
+		}
+		throw new TypeNotKnownException("Type of variable " + variableName + " is not known");
+	}
+
+	public Procedure getProcedure(String procedureName) {
+		if (procedures.containsKey(procedureName)) {
+			return procedures.get(procedureName);
+		}
+		if (parent != null) {
+			return parent.getProcedure(procedureName);
+		}
+		throw new UnknownProcedureException("Procedure " + procedureName + " is unknown in the environment");
+	}
+	
 }

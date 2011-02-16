@@ -1,8 +1,12 @@
-package org.elcid.oberon0.ast.env;
+package org.elcid.oberon0.ast.env.builtins;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.elcid.oberon0.ast.IntType;
+import org.elcid.oberon0.ast.env.Environment;
+import org.elcid.oberon0.ast.env.FormalParameter;
+import org.elcid.oberon0.ast.env.Procedure;
+import org.elcid.oberon0.ast.env.ReferenceFormalParameter;
 import org.elcid.oberon0.ast.values.Int;
 
 /**
