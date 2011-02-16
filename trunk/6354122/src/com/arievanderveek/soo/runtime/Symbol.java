@@ -3,6 +3,8 @@
  */
 package com.arievanderveek.soo.runtime;
 
+import com.arievanderveek.soo.SeaOfOberonException;
+
 /**
  * Interface for a Symbol
  * 
@@ -24,6 +26,12 @@ public abstract class Symbol {
 		this.mutable = mutable;
 	}
 
+	public Symbol(Symbol toBeCopiedSymbol) {
+		this.type = toBeCopiedSymbol.getType();
+		this.referencedSymbol = false;
+		this.mutable = toBeCopiedSymbol.isMutable();
+	}
+
 	public SymbolTypesEnum getType() {
 		return this.type;
 	}
@@ -39,4 +47,20 @@ public abstract class Symbol {
 	public boolean isMutable() {
 		return this.mutable;
 	}
+
+	/**
+	 * Regenates the memory addres. It generates an new adress in the current
+	 * memory map and assigns it the old value
+	 * 
+	 * @param scope
+	 * @throws SeaOfOberonException
+	 */
+	public abstract void regenerateMemoryAddress(Scope scope, MemoryMap currentMap)
+			throws SeaOfOberonException;
+
+	/**
+	 * Returns a clone of the symbol object
+	 */
+	public abstract Symbol clone();
+
 }

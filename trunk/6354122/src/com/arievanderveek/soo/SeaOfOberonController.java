@@ -32,8 +32,7 @@ public class SeaOfOberonController {
 			// Create a new Parser by instantiating a new class with the
 			// implementation class in the configuration
 			@SuppressWarnings("rawtypes")
-			Class parserImplClass = Class.forName(configuration
-					.getParserImplClass());
+			Class parserImplClass = Class.forName(configuration.getParserImplClass());
 			Parser oberon0Parser = (Parser) parserImplClass.newInstance();
 			// Parse the source file and create an AST from it.
 			ModuleNode module = oberon0Parser.parseFile(configuration.getSourceCodeFileName());
@@ -44,13 +43,11 @@ public class SeaOfOberonController {
 			// Execute Code
 			module.interpret(null);
 		} catch (InstantiationException e) {
-			throw new SeaOfOberonException(
-					"Class could not be instantiated for class "
-							+ configuration.getParserImplClass(), e);
+			throw new SeaOfOberonException("Class could not be instantiated for class "
+					+ configuration.getParserImplClass(), e);
 		} catch (IllegalAccessException e) {
-			throw new SeaOfOberonException(
-					"Class or constructor is not accessible for class "
-							+ configuration.getParserImplClass(), e);
+			throw new SeaOfOberonException("Class or constructor is not accessible for class "
+					+ configuration.getParserImplClass(), e);
 		} catch (ClassNotFoundException e) {
 			throw new SeaOfOberonException("Class not found for class"
 					+ configuration.getParserImplClass(), e);

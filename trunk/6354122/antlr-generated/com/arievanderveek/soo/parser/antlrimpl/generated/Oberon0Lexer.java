@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g 2011-02-14 23:22:02
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g 2011-02-17 00:41:42
 
   package com.arievanderveek.soo.parser.antlrimpl.generated;
 
@@ -896,8 +896,8 @@ public class Oberon0Lexer extends Lexer {
     // $ANTLR start "DIGIT"
     public final void mDIGIT() throws RecognitionException {
         try {
-            // E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g:502:16: ( '0' .. '9' )
-            // E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g:502:18: '0' .. '9'
+            // E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g:498:16: ( '0' .. '9' )
+            // E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g:498:18: '0' .. '9'
             {
             matchRange('0','9'); 
 
@@ -912,8 +912,8 @@ public class Oberon0Lexer extends Lexer {
     // $ANTLR start "LETTER"
     public final void mLETTER() throws RecognitionException {
         try {
-            // E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g:503:17: ( ( 'a' .. 'z' | 'A' .. 'Z' ) )
-            // E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g:503:19: ( 'a' .. 'z' | 'A' .. 'Z' )
+            // E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g:499:17: ( ( 'a' .. 'z' | 'A' .. 'Z' ) )
+            // E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g:499:19: ( 'a' .. 'z' | 'A' .. 'Z' )
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -938,10 +938,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = INTEGER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g:505:9: ( ( DIGIT )+ )
-            // E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g:505:11: ( DIGIT )+
+            // E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g:501:9: ( ( DIGIT )+ )
+            // E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g:501:11: ( DIGIT )+
             {
-            // E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g:505:11: ( DIGIT )+
+            // E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g:501:11: ( DIGIT )+
             int cnt1=0;
             loop1:
             do {
@@ -955,7 +955,7 @@ public class Oberon0Lexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g:505:11: DIGIT
+            	    // E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g:501:11: DIGIT
             	    {
             	    mDIGIT(); 
 
@@ -987,11 +987,11 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = IDENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g:506:7: ( LETTER ( LETTER | DIGIT )* )
-            // E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g:506:9: LETTER ( LETTER | DIGIT )*
+            // E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g:502:7: ( LETTER ( LETTER | DIGIT )* )
+            // E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g:502:9: LETTER ( LETTER | DIGIT )*
             {
             mLETTER(); 
-            // E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g:506:16: ( LETTER | DIGIT )*
+            // E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g:502:16: ( LETTER | DIGIT )*
             loop2:
             do {
                 int alt2=2;
@@ -1040,10 +1040,10 @@ public class Oberon0Lexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g:508:4: ( ( ' ' | '\\t' | '\\n' | '\\r' | '\\f' )+ )
-            // E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g:508:6: ( ' ' | '\\t' | '\\n' | '\\r' | '\\f' )+
+            // E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g:504:4: ( ( ' ' | '\\t' | '\\n' | '\\r' | '\\f' )+ )
+            // E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g:504:6: ( ' ' | '\\t' | '\\n' | '\\r' | '\\f' )+
             {
-            // E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g:508:6: ( ' ' | '\\t' | '\\n' | '\\r' | '\\f' )+
+            // E:\\school\\construction\\labassignment2\\6354122\\antlr-grammer\\Oberon0.g:504:6: ( ' ' | '\\t' | '\\n' | '\\r' | '\\f' )+
             int cnt3=0;
             loop3:
             do {

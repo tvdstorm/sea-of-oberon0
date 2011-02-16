@@ -29,8 +29,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		try {
-			SeaOfOberonConfiguration config = ConfigurationFactory
-					.createConfiguration(args);
+			SeaOfOberonConfiguration config = ConfigurationFactory.createConfiguration(args);
 			SeaOfOberonController controller = new SeaOfOberonController(config);
 			controller.executeSourceCode();
 			System.exit(0);

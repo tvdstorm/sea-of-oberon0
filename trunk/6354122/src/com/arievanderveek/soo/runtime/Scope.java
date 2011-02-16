@@ -8,15 +8,12 @@ import java.util.List;
 import java.util.Map;
 
 import com.arievanderveek.soo.SeaOfOberonException;
-import com.arievanderveek.soo.ast.ASTNode;
 import com.arievanderveek.soo.ast.codeblocks.ProcedureNode;
 import com.arievanderveek.soo.ast.expr.ExpressionNode;
 import com.arievanderveek.soo.ast.expr.IdentifierNode;
-import com.arievanderveek.soo.ast.statements.AbstractParameterNode;
-import com.arievanderveek.soo.ast.statements.CallByRefParameterNode;
-import com.arievanderveek.soo.ast.statements.CallByValParameterNode;
 import com.arievanderveek.soo.ast.variables.ConstantNode;
 import com.arievanderveek.soo.ast.variables.FieldNode;
+import com.arievanderveek.soo.ast.variables.FormalParameterNode;
 import com.arievanderveek.soo.ast.variables.TypeNode;
 import com.arievanderveek.soo.util.Constants;
 
@@ -103,13 +100,15 @@ public class Scope {
 		registerVariables(procedure.getVariables());
 		registerProcedures(procedure.getProcedures());
 	}
-	
+
 	/**
-	 * Constructor for With Do statement. It registers the record symbol members as separate
-	 * symbols
+	 * Constructor for With Do statement. It registers the record symbol members
+	 * as separate symbols
 	 * 
-	 * @param enclosingScope The enclosing scope
-	 * @param record The record used in the With Do statement
+	 * @param enclosingScope
+	 *            The enclosing scope
+	 * @param record
+	 *            The record used in the With Do statement
 	 */
 	public Scope(Scope enclosingScope, RecordSymbol record) {
 		assert enclosingScope != null;
@@ -168,7 +167,6 @@ public class Scope {
 		}
 	}
 
-
 	public ProcedureNode lookupProcedure(String name) throws SeaOfOberonException {
 		if (procedures.containsKey(name)) {
 			return procedures.get(name);
@@ -192,28 +190,30 @@ public class Scope {
 			}
 		}
 	}
-	
-	public Symbol lookupSymbol(String symbolName) {
+
+	public Symbol lookupSymbol(String symbolName) throws SeaOfOberonException {
 		if (symbolTable.containsKey(symbolName)) {
 			return symbolTable.get(symbolName);
 		} else {
 			if (!isRootScope()) {
 				return enclosingScope.lookupSymbol(symbolName);
 			} else {
-				return null;
+				throw new SeaOfOberonException("Symbol " + symbolName + " not found in any scope");
 			}
 		}
 	}
-	
-	public MemoryMap lookupMemoryManagerForAdress(MemoryAddress address) throws SeaOfOberonException{
+
+	public MemoryMap lookupMemoryManagerForAdress(MemoryAddress address)
+			throws SeaOfOberonException {
 		if (memoryMap.hasAdress(address)) {
 			return memoryMap;
 		}
 		if (!isRootScope()) {
 			return enclosingScope.lookupMemoryManagerForAdress(address);
 		}
-		throw new SeaOfOberonException("Adress " + address.toString() + " not found in any memorymap");
-	}	
+		throw new SeaOfOberonException("Adress " + address.toString()
+				+ " not found in any memorymap");
+	}
 
 	/**
 	 * Looks up a Symbol in the memory stack and returns it.
@@ -236,7 +236,8 @@ public class Scope {
 	/**
 	 * Gets the memory address for the value of a symbol
 	 * 
-	 * @param identNode The identifier for the symbol
+	 * @param identNode
+	 *            The identifier for the symbol
 	 * @return The memory address for the value of a symbol
 	 * @throws SeaOfOberonException
 	 */
@@ -258,7 +259,7 @@ public class Scope {
 					+ " is not defined in Symbol Table");
 		}
 	}
-	
+
 	/**
 	 * Checks if the current scope is the root scope.
 	 * 
@@ -272,19 +273,16 @@ public class Scope {
 		}
 	}
 
-	/*private MemoryMap getMemoryMap() {
-		if (isRootScope()) {
-			return memoryMap;
-		} else {
-			return enclosingScope.getMemoryMap();
-		}
-	}*/
+	/*
+	 * private MemoryMap getMemoryMap() { if (isRootScope()) { return memoryMap;
+	 * } else { return enclosingScope.getMemoryMap(); } }
+	 */
 
 	public void addIntegerSymbolToTable(String identifier, Integer value, boolean mutable)
 			throws SeaOfOberonException {
 		symbolTable.put(identifier, generateIntegerSymbol(value, mutable));
 	}
-	
+
 	public void addArraySymbolToTable(String identifier, int arraySize, TypeNode typeNode)
 			throws SeaOfOberonException {
 		symbolTable.put(identifier, generateArraySymbol(arraySize, typeNode));
@@ -329,67 +327,38 @@ public class Scope {
 	private void processProcedureParameters(ProcedureNode procedure,
 			List<ExpressionNode> actualParameters) throws SeaOfOberonException {
 		// loop through all procedure nodes and register them as parameter
-		// Keep a counter to match the parameters on the nodes
-		int parameterCounter = 0;
-		for (AbstractParameterNode parameterBlockNode : procedure.getParameterBlocks()) {
-			if (parameterBlockNode instanceof CallByRefParameterNode) {
-				// Loop over parameters in the paramater block
-				for (FieldNode formalParameter : parameterBlockNode.getFormalParameter()) {
-					registerCallByRefParameter(formalParameter, actualParameters, parameterCounter);
-					parameterCounter++;
-				}
-			} else if (parameterBlockNode instanceof CallByValParameterNode) {
-				// TODO: Implemented shortcut, so only Integers are used
-				// Its a call by value, so evaluate the given parameter and
-				// store
-				// it locally for all identifiers in the formal parameter list
-				for (FieldNode formalParameter : parameterBlockNode.getFormalParameter()) {
-					registerCallByValParameter(formalParameter, actualParameters, parameterCounter);
-					parameterCounter++;
-				}
-			} else {
-				throw new SeaOfOberonException(
-						"Parameter not reference or value, should not be possible!!");
-			}
+		List<FormalParameterNode> formalParameters = procedure.getParameterBlocks();
+		for (int parameterCounter = 0; parameterCounter < formalParameters.size(); parameterCounter++) {
+			FormalParameterNode formalParameter = formalParameters.get(parameterCounter);
+			ExpressionNode actualParameter = actualParameters.get(parameterCounter);
+			registerParameter(formalParameter, actualParameter, formalParameter.isCallByReference());
 		}
 	}
-	
-	public void registerCallByValParameter(FieldNode formalParameter, List<ExpressionNode> actualParameters, int parameterCounter) throws SeaOfOberonException{
+
+	private void registerParameter(FieldNode formalParameter, ExpressionNode actualParameter,
+			boolean callByRef) throws SeaOfOberonException {
 		String identifier = formalParameter.getName();
-		// System.out.println("Ident in keyset" + identifier);
-		ExpressionNode valParamNode = actualParameters.get(parameterCounter);
-		Integer evaluatedParam = valParamNode.interpret(this);
-		addIntegerSymbolToTable(identifier, evaluatedParam, true);
-	}
-	
-	public void registerCallByRefParameter(FieldNode formalParameter, List<ExpressionNode> actualParameters, int parameterCounter) throws SeaOfOberonException{
-		String identifier = formalParameter.getName();
-		// Its a call by refernce, so retrieve the referenced parameter
-		// and store it in the local symbol map the param name
-		ExpressionNode referencedParamNode = actualParameters.get(parameterCounter);
-		// Test if its an identifier, if not throw an exception
-		if (referencedParamNode instanceof IdentifierNode) {
-			// Get the parameter from the store and put it in local
-			// the symbol table under its new name.
-			IdentifierNode castedRefParamNode = (IdentifierNode) referencedParamNode;
-			Symbol referencedSymbol = lookupSymbol(castedRefParamNode.getName());
-			referencedSymbol = castedRefParamNode.getSelectors().resolveSelectors(referencedSymbol, this);
-			if (referencedSymbol != null) {
+		// Test if its an identifier, if its an expression
+		if (actualParameter instanceof IdentifierNode) {
+			IdentifierNode castedRefParamNode = (IdentifierNode) actualParameter;
+			Symbol referencedSymbol = castedRefParamNode.getSelectors().resolveSelectors(
+					lookupSymbol(castedRefParamNode.getName()), this);
+			if (callByRef) {
 				referencedSymbol.setReferencedSymbol(true);
-				String newSymbolName = identifier;
-				symbolTable.put(newSymbolName, referencedSymbol);
-				// Succesfully processed symbol so up the parameter
-				// count
-				
+				symbolTable.put(identifier, referencedSymbol);
 			} else {
-				throw new SeaOfOberonException(
-						"Referenced symbol does not exist in any scope. Name: "
-								+ identifier);
+				Symbol callByValSymbol = referencedSymbol.clone();
+				// regenerate the memory addresses for the symbol in the current
+				// memory map
+				callByValSymbol.regenerateMemoryAddress(this, memoryMap);
+				symbolTable.put(identifier, callByValSymbol);
 			}
 		} else {
-			throw new SeaOfOberonException(
-					"CallbyRef Parameter not mapped to identifier at index: "
-							+ parameterCounter);
+			// Its an actual expression, so register the evaluated expression
+			// under the formal
+			// parameter name
+			Integer evaluatedExpression = actualParameter.interpret(this);
+			addIntegerSymbolToTable(identifier, evaluatedExpression, true);
 		}
 	}
 

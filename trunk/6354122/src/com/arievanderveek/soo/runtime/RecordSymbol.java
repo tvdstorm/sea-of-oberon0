@@ -5,6 +5,7 @@ package com.arievanderveek.soo.runtime;
 
 import java.util.Map;
 
+import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.util.Constants;
 
 /**
@@ -18,6 +19,11 @@ public class RecordSymbol extends Symbol {
 	public RecordSymbol(boolean mutable, Map<String, Symbol> memberMap) {
 		super(SymbolTypesEnum.ARRAY, mutable);
 		this.memberMap = memberMap;
+	}
+
+	public RecordSymbol(RecordSymbol toBeCopiedSymbol) {
+		super(SymbolTypesEnum.ARRAY, toBeCopiedSymbol.isMutable());
+		this.memberMap = toBeCopiedSymbol.getMembers();
 	}
 
 	public void addOrUpdateAddress(String member, Symbol newSymbol) {
@@ -61,5 +67,17 @@ public class RecordSymbol extends Symbol {
 			sb.append(Constants.LINE_SEPARATOR);
 		}
 		return sb.toString();
+	}
+
+	@Override
+	public void regenerateMemoryAddress(Scope scope, MemoryMap currentMap)
+			throws SeaOfOberonException {
+		for (String key : memberMap.keySet()) {
+			memberMap.get(key).regenerateMemoryAddress(scope, currentMap);
+		}
+	}
+
+	public RecordSymbol clone() {
+		return new RecordSymbol(this);
 	}
 }
