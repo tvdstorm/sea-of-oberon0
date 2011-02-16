@@ -1,11 +1,12 @@
-package nl.bve.uva.oberon.ast;
+package nl.bve.uva.oberon.ast.declarations;
 
 import java.util.List;
 
+import nl.bve.uva.oberon.ast.IInterpretableNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.types.OberonType;
 
-public class VarDeclarationNode implements IInterpretableNode {
+public class VarDeclarationNode extends DeclarationNode {
 	private List<String> identList;
 	private IInterpretableNode type;
 	
@@ -15,13 +16,11 @@ public class VarDeclarationNode implements IInterpretableNode {
 	}
 	
 	@Override
-	public Object interpret(Environment env) {
+	public void declare(Environment env) {
 		OberonType t = (OberonType)type.interpret(env);
 		
 		for (String ident : identList) {
 			env.addVariable(ident, t.clone());
 		}
-		
-		return null;
 	}
 }

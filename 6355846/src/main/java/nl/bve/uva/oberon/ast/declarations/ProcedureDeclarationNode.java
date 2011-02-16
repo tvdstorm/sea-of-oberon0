@@ -1,12 +1,13 @@
-package nl.bve.uva.oberon.ast;
+package nl.bve.uva.oberon.ast.declarations;
 
 import java.util.List;
 
+import nl.bve.uva.oberon.ast.IInterpretableNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.procedures.ApplicationProcedure;
 import nl.bve.uva.oberon.shared.TypedParameterList;
 
-public class ProcedureDeclarationNode implements IInterpretableNode {
+public class ProcedureDeclarationNode extends DeclarationNode {
 	private String ident;
 	private List<TypedParameterList> formalParameters;
 	private IInterpretableNode body;
@@ -22,8 +23,7 @@ public class ProcedureDeclarationNode implements IInterpretableNode {
 	}
 	
 	@Override
-	public Object interpret(Environment env) {
+	public void declare(Environment env) {
 		env.addProcedure(ident, new ApplicationProcedure(ident, formalParameters, body));
-		return null;
 	}
 }
