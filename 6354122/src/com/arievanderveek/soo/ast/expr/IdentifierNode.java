@@ -23,9 +23,8 @@ public class IdentifierNode extends ExpressionNode {
 		assert name != null;
 		this.name = name;
 		// Create a list of 0 selectors
-		this.selectors = new Selectors(); 
-			
-			
+		this.selectors = new Selectors();
+
 	}
 
 	public IdentifierNode(String name, Selectors selectors) {
@@ -71,8 +70,8 @@ public class IdentifierNode extends ExpressionNode {
 	public Selectors getSelectors() {
 		return selectors;
 	}
-	
-	public boolean hasSelectors(){
+
+	public boolean hasSelectors() {
 		return !selectors.getSelectors().isEmpty();
 	}
 }

@@ -42,8 +42,7 @@ public class DivisionOperatorNode extends AbstractBinaryOperatorNode {
 	 */
 	@Override
 	public Integer interpret(Scope scope) throws SeaOfOberonException {
-		return super.leftHandNode.interpret(scope)
-				/ super.rightHandNode.interpret(scope);
+		return super.leftHandNode.interpret(scope) / super.rightHandNode.interpret(scope);
 	}
 
 }

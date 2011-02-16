@@ -9,10 +9,10 @@ import java.util.List;
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
 import com.arievanderveek.soo.ast.expr.ExpressionNode;
-import com.arievanderveek.soo.ast.statements.AbstractParameterNode;
 import com.arievanderveek.soo.ast.statements.StatementNode;
 import com.arievanderveek.soo.ast.variables.ConstantNode;
 import com.arievanderveek.soo.ast.variables.FieldNode;
+import com.arievanderveek.soo.ast.variables.FormalParameterNode;
 import com.arievanderveek.soo.runtime.Scope;
 import com.arievanderveek.soo.util.Constants;
 
@@ -24,7 +24,7 @@ import com.arievanderveek.soo.util.Constants;
  */
 public class ProcedureNode extends CodeBlockNode {
 	// TODO: Might migrate system procedures to extend from this class
-	protected final List<AbstractParameterNode> parameterBlocks;
+	protected final List<FormalParameterNode> parameterBlocks;
 
 	/**
 	 * Constructor with all required fields
@@ -37,13 +37,11 @@ public class ProcedureNode extends CodeBlockNode {
 	 * @param procedures
 	 * @param statementSequence
 	 */
-	public ProcedureNode(String startName, String endName,
-			List<ConstantNode> constants, List<FieldNode> types,
-			List<FieldNode> variables, List<ProcedureNode> procedures,
+	public ProcedureNode(String startName, String endName, List<ConstantNode> constants,
+			List<FieldNode> types, List<FieldNode> variables, List<ProcedureNode> procedures,
 			List<StatementNode> statementSequence) {
-		super(startName, endName, constants, types, variables, procedures,
-				statementSequence);
-		parameterBlocks = Collections.<AbstractParameterNode>emptyList();
+		super(startName, endName, constants, types, variables, procedures, statementSequence);
+		parameterBlocks = Collections.<FormalParameterNode> emptyList();
 	}
 
 	/**
@@ -59,12 +57,10 @@ public class ProcedureNode extends CodeBlockNode {
 	 * @param statementSequence
 	 */
 	public ProcedureNode(String startName, String endName,
-			List<AbstractParameterNode> parameterBlocks, 
-			List<ConstantNode> constants, List<FieldNode> types,
-			List<FieldNode> variables, List<ProcedureNode> procedures,
+			List<FormalParameterNode> parameterBlocks, List<ConstantNode> constants,
+			List<FieldNode> types, List<FieldNode> variables, List<ProcedureNode> procedures,
 			List<StatementNode> statementSequence) {
-		super(startName, endName, constants, types, variables, procedures,
-				statementSequence);
+		super(startName, endName, constants, types, variables, procedures, statementSequence);
 		this.parameterBlocks = parameterBlocks;
 	}
 
@@ -94,21 +90,20 @@ public class ProcedureNode extends CodeBlockNode {
 	/**
 	 * @return the parameterBlocks
 	 */
-	public List<AbstractParameterNode> getParameterBlocks() {
+	public List<FormalParameterNode> getParameterBlocks() {
 		return parameterBlocks;
 	}
 
-	public boolean isAmountOfParametersEqual(
-			List<ExpressionNode> parameters) {
-		// Count all the parameters defined in this class.
-		int amountOfDefinedParameters = 0;
-		for (AbstractParameterNode node : parameterBlocks) {
-			amountOfDefinedParameters += ((AbstractParameterNode) node)
-					.getFormalParameter().size();
-		}
-		// Count all the passed parameters
-		int amountOfPassedParameters = parameters.size();
-		if (amountOfDefinedParameters == amountOfPassedParameters) {
+	/**
+	 * Check if the amount of formal parameters is equal to the actual given
+	 * parameters
+	 * 
+	 * @param actualParameters
+	 *            the actual parameters
+	 * @return True if equal, else false
+	 */
+	public boolean isAmountOfParametersEqual(List<ExpressionNode> actualParameters) {
+		if (parameterBlocks.size() == actualParameters.size()) {
 			return true;
 		} else {
 			return false;

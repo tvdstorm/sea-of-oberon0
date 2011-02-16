@@ -34,7 +34,7 @@ public interface ASTNode {
 	// TODO: Not happy with the 1 and 0 for booleans, need to discuss what a
 	// good solution
 	// could be
-	//public Integer interpret(Scope scope) throws SeaOfOberonException;
+	// public Integer interpret(Scope scope) throws SeaOfOberonException;
 
 	/**
 	 * Walks the node and all its children to print it as a tree.

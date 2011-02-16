@@ -11,11 +11,10 @@ import java.util.List;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.expr.IdentifierNode;
-import com.arievanderveek.soo.ast.statements.AbstractParameterNode;
-import com.arievanderveek.soo.ast.statements.CallByRefParameterNode;
 import com.arievanderveek.soo.ast.statements.StatementNode;
 import com.arievanderveek.soo.ast.variables.ConstantNode;
 import com.arievanderveek.soo.ast.variables.FieldNode;
+import com.arievanderveek.soo.ast.variables.FormalParameterNode;
 import com.arievanderveek.soo.ast.variables.IdentifierTypeNode;
 import com.arievanderveek.soo.runtime.Scope;
 
@@ -40,14 +39,11 @@ public class ReadLineCallNode extends ProcedureNode {
 	 * @param statementSequence
 	 */
 	public ReadLineCallNode() {
-		super(METHODNAME, METHODNAME, buildParameters(),
-				 Collections.<ConstantNode>emptyList(),
-				 Collections.<FieldNode>emptyList(),
-				 Collections.<FieldNode>emptyList(),
-				 Collections.<ProcedureNode>emptyList(),
-				 Collections.<StatementNode>emptyList());
+		super(METHODNAME, METHODNAME, buildParameters(), Collections.<ConstantNode> emptyList(),
+				Collections.<FieldNode> emptyList(), Collections.<FieldNode> emptyList(),
+				Collections.<ProcedureNode> emptyList(), Collections.<StatementNode> emptyList());
 	}
-	
+
 	public void interpret(Scope scope) throws SeaOfOberonException {
 		try {
 			System.out.println("Enter a number and press enter");
@@ -57,18 +53,16 @@ public class ReadLineCallNode extends ProcedureNode {
 			consoleInput = Integer.parseInt(in.readLine());
 			scope.updateValue(new IdentifierNode(INPUT_PARAM), consoleInput);
 		} catch (Exception e) {
-			throw new SeaOfOberonException(
-					"Exception while reading from console", e);
+			throw new SeaOfOberonException("Exception while reading from console", e);
 		}
 
 	}
 
-	private static List<AbstractParameterNode> buildParameters() {
-		List<FieldNode> singleParameter = new LinkedList<FieldNode>();
-		singleParameter.add(new FieldNode(INPUT_PARAM,
-				new IdentifierTypeNode(INPUT_PARAM)));
-		List<AbstractParameterNode> block = new LinkedList<AbstractParameterNode>();
-		block.add(new CallByRefParameterNode(singleParameter));
+	private static List<FormalParameterNode> buildParameters() {
+		FormalParameterNode param = new FormalParameterNode(INPUT_PARAM, new IdentifierTypeNode(
+				INPUT_PARAM), true);
+		List<FormalParameterNode> block = new LinkedList<FormalParameterNode>();
+		block.add(param);
 		return block;
 	}
 }

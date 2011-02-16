@@ -36,7 +36,6 @@ public class AdditionOperatorNode extends AbstractBinaryOperatorNode {
 	}
 
 	public Integer interpret(Scope scope) throws SeaOfOberonException {
-		return super.leftHandNode.interpret(scope)
-				+ super.rightHandNode.interpret(scope);
+		return super.leftHandNode.interpret(scope) + super.rightHandNode.interpret(scope);
 	}
 }

@@ -6,14 +6,14 @@ import com.arievanderveek.soo.runtime.Scope;
 public class IntegerExpressionNode extends ExpressionNode {
 
 	private final Integer value;
-	
+
 	public IntegerExpressionNode(Integer value) {
 		this.value = value;
 	}
 
 	@Override
 	public Integer interpret(Scope scope) throws SeaOfOberonException {
-			return value;
+		return value;
 	}
 
 	@Override

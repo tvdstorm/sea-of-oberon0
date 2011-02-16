@@ -17,8 +17,7 @@ public class GreaterEqualThenOperatorNode extends AbstractBinaryOperatorNode {
 	 * @param leftHandNode
 	 * @param rightHandNode
 	 */
-	public GreaterEqualThenOperatorNode(ExpressionNode leftHandNode,
-			ExpressionNode rightHandNode) {
+	public GreaterEqualThenOperatorNode(ExpressionNode leftHandNode, ExpressionNode rightHandNode) {
 		super(leftHandNode, rightHandNode);
 	}
 
@@ -43,8 +42,7 @@ public class GreaterEqualThenOperatorNode extends AbstractBinaryOperatorNode {
 	 */
 	@Override
 	public Integer interpret(Scope scope) throws SeaOfOberonException {
-		if (super.leftHandNode.interpret(scope) > super.rightHandNode
-				.interpret(scope)) {
+		if (super.leftHandNode.interpret(scope) > super.rightHandNode.interpret(scope)) {
 			return 1;
 		} else {
 			return 0;

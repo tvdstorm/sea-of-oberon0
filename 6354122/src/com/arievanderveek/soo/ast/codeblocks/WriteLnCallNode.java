@@ -6,10 +6,10 @@ package com.arievanderveek.soo.ast.codeblocks;
 import java.util.Collections;
 
 import com.arievanderveek.soo.SeaOfOberonException;
-import com.arievanderveek.soo.ast.statements.AbstractParameterNode;
 import com.arievanderveek.soo.ast.statements.StatementNode;
 import com.arievanderveek.soo.ast.variables.ConstantNode;
 import com.arievanderveek.soo.ast.variables.FieldNode;
+import com.arievanderveek.soo.ast.variables.FormalParameterNode;
 import com.arievanderveek.soo.runtime.Scope;
 
 /**
@@ -30,13 +30,10 @@ public class WriteLnCallNode extends ProcedureNode {
 	 * @param statementSequence
 	 */
 	public WriteLnCallNode() {
-		super(METHODNAME, METHODNAME,
-				 Collections.<AbstractParameterNode>emptyList(),
-				 Collections.<ConstantNode>emptyList(),
-				 Collections.<FieldNode>emptyList(),
-				 Collections.<FieldNode>emptyList(),
-				 Collections.<ProcedureNode>emptyList(),
-				 Collections.<StatementNode>emptyList());
+		super(METHODNAME, METHODNAME, Collections.<FormalParameterNode> emptyList(), Collections
+				.<ConstantNode> emptyList(), Collections.<FieldNode> emptyList(), Collections
+				.<FieldNode> emptyList(), Collections.<ProcedureNode> emptyList(), Collections
+				.<StatementNode> emptyList());
 	}
 
 	/*

@@ -14,7 +14,7 @@ import com.arievanderveek.soo.runtime.Symbol;
  * @author arieveek
  * 
  */
-public class ArrayTypeNode extends TypeNode  {
+public class ArrayTypeNode extends TypeNode {
 
 	private final ExpressionNode sizeExpression;
 	private final TypeNode type;
@@ -32,7 +32,6 @@ public class ArrayTypeNode extends TypeNode  {
 		this.sizeExpression = sizeExpression;
 		this.type = type;
 	}
-
 
 	/*
 	 * (non-Javadoc)
@@ -63,19 +62,16 @@ public class ArrayTypeNode extends TypeNode  {
 		return type;
 	}
 
-
 	@Override
 	public void registerVariable(String identifier, Scope scope) throws SeaOfOberonException {
 		Integer resolvedSizeExpression = sizeExpression.interpret(scope);
-		scope.addArraySymbolToTable(identifier,resolvedSizeExpression, type);
+		scope.addArraySymbolToTable(identifier, resolvedSizeExpression, type);
 	}
-
 
 	@Override
 	public Symbol createSymbolFromType(Scope scope) throws SeaOfOberonException {
 		Integer resolvedSizeExpression = sizeExpression.interpret(scope);
 		return scope.generateArraySymbol(resolvedSizeExpression, type);
 	}
-	
 
 }
