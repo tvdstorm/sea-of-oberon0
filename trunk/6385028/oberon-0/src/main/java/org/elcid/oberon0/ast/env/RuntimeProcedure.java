@@ -3,8 +3,8 @@ package org.elcid.oberon0.ast.env;
 import java.util.List;
 import org.elcid.oberon0.ast.DeclarationSequenceNode;
 import org.elcid.oberon0.ast.StatementSequenceNode;
-import org.elcid.oberon0.ast.visitor.DeclarationVisitor;
-import org.elcid.oberon0.ast.visitor.StatementVisitor;
+import org.elcid.oberon0.ast.visitors.DeclarationVisitor;
+import org.elcid.oberon0.ast.visitors.StatementVisitor;
 
 /**
  *

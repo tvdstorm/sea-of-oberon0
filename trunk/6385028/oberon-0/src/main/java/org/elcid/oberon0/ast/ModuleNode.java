@@ -1,8 +1,9 @@
 package org.elcid.oberon0.ast;
 
 import org.elcid.oberon0.ast.env.Environment;
-import org.elcid.oberon0.ast.visitor.DeclarationVisitor;
-import org.elcid.oberon0.ast.visitor.StatementVisitor;
+import org.elcid.oberon0.ast.env.builtins.*;
+import org.elcid.oberon0.ast.visitors.DeclarationVisitor;
+import org.elcid.oberon0.ast.visitors.StatementVisitor;
 
 /**
  *
@@ -38,7 +39,11 @@ public class ModuleNode extends Node {
 		return statementSequence;
 	}
 
-	public void run(Environment env) {
+	public void run() {
+		Environment env = new Environment();
+		env.declareProcedure("Read", new ReadBuiltinProcedure());
+		env.declareProcedure("Write", new WriteBuiltinProcedure());
+		env.declareProcedure("WriteLn", new WriteLnBuiltinProcedure());
 		declarationSequence.run(new DeclarationVisitor(), env);
 		statementSequence.run(new StatementVisitor(), env);
 	}

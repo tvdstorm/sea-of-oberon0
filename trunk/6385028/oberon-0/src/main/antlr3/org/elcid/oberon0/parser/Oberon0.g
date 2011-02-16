@@ -61,7 +61,7 @@ import java.util.List;
 
 import org.elcid.oberon0.ast.*;
 import org.elcid.oberon0.ast.values.*;
-import org.elcid.oberon0.ast.visitor.*;
+import org.elcid.oberon0.ast.visitors.*;
 }
 
 @lexer::header {
