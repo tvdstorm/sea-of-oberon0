@@ -1,6 +1,7 @@
 package randy.oberon0.ast.datastructures;
 
-import randy.oberon0.ast.*;
+import randy.oberon0.ast.expression.Expression;
+import randy.oberon0.ast.statement.Block;
 
 public class IfExpressionAndBody
 {

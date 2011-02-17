@@ -5,7 +5,7 @@ import randy.oberon0.interpreter.antlr.Oberon0ASTTreeGenerator;
 import randy.oberon0.interpreter.buildinfunctions.*;
 import randy.oberon0.value.Type;
 import randy.oberon0.value.Value;
-import randy.oberon0.ast.*;
+import randy.oberon0.ast.module.Module;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.exception.Exception;
 

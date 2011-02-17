@@ -1,6 +1,6 @@
 package randy.oberon0.interpreter.runtime.datastructures;
 
-import randy.oberon0.ast.IInvokableFunction;
+import randy.oberon0.interpreter.runtime.IInvokableFunction;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
 
 public class InvokableFunctionAndEnvironment
