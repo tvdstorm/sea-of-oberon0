@@ -6,7 +6,7 @@ import randy.oberon0.ast.statement.Block;
 import randy.oberon0.exception.*;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.*;
-import randy.oberon0.value.Value;
+import randy.oberon0.interpreter.runtime.environment.IValue;
 
 public class ProcedureDeclaration extends BodyDeclaration implements IInvokableFunction
 {
@@ -47,7 +47,7 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 			}
 		}
 	}
-	public void invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
+	public void invoke(RuntimeEnvironment environment, Iterator<IValue> parameterValues) throws RuntimeException
 	{
 		assert(environment != null);
 		assert(parameterValues != null);
@@ -57,7 +57,7 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 			p.registerAsParameter(environment, parameterValues);
 		}
 		// If parameterValues has any values left, the number of arguments don't match
-		if (parameterValues.size() > 0)
+		if (parameterValues.hasNext())
 		{
 			throw new IncorrectNumberOfArgumentsException();
 		}

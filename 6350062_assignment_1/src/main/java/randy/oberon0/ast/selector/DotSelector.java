@@ -2,6 +2,7 @@ package randy.oberon0.ast.selector;
 
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
+import randy.oberon0.interpreter.runtime.environment.Reference;
 import randy.oberon0.value.*;
 
 public class DotSelector extends Selector
@@ -18,12 +19,12 @@ public class DotSelector extends Selector
 		recordMemberName = _recordMemberName;
 	}
 	@Override
-	public Value evaluate(RuntimeEnvironment environment) throws RuntimeException
+	public Reference evaluate(RuntimeEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Evaluate the selector and convert it to a record
-		final Record record = selector.evaluate(environment).dereference().castToRecord();
+		final Record record = selector.evaluate(environment).getValue().castToRecord();
 		// Evaluate the member and return it
-		return new Reference(record.getMemberValue(recordMemberName));
+		return record.getMemberValue(recordMemberName);
 	}
 }

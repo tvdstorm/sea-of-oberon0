@@ -1,7 +1,9 @@
 package randy.oberon0.test;
 
+import java.util.Iterator;
 import java.util.Queue;
 import randy.oberon0.interpreter.runtime.IInvokableFunction;
+import randy.oberon0.interpreter.runtime.environment.IValue;
 import randy.oberon0.exception.*;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.*;
@@ -15,14 +17,19 @@ public class TestWriteFunction implements IInvokableFunction
 		output = _output;
 	}
 	@Override
-	public void invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
+	public void invoke(RuntimeEnvironment environment, Iterator<IValue> parameterValues) throws RuntimeException
 	{
-		if (parameterValues.size() != 1)
+		if (!parameterValues.hasNext())
 			throw new IncorrectNumberOfArgumentsException();
-		Value param = parameterValues.poll();
+		Value param = parameterValues.next().getValue();
 		if (!param.getType().equals(Type.INTEGER))
 			throw new TypeMismatchException(param.getType().toString(), Type.INTEGER.toString());
 		output.add(param.toString());
+		// No parameters should be left
+		if (parameterValues.hasNext())
+		{
+			throw new IncorrectNumberOfArgumentsException();
+		}
 	}
 	public String getName()
 	{

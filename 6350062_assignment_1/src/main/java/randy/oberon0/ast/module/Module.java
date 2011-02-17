@@ -7,7 +7,7 @@ import randy.oberon0.ast.statement.Statement;
 import randy.oberon0.exception.IncorrectNumberOfArgumentsException;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.*;
-import randy.oberon0.value.Value;
+import randy.oberon0.interpreter.runtime.environment.IValue;
 
 public class Module extends ASTNode implements IInvokableFunction
 {
@@ -34,12 +34,13 @@ public class Module extends ASTNode implements IInvokableFunction
 			}
 		}
 	}
-	public void invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
+	@Override
+	public void invoke(RuntimeEnvironment environment, Iterator<IValue> parameterValues) throws RuntimeException
 	{
 		assert(environment != null);
 		assert(parameterValues != null);
 		// Modules don't have parameters
-		if (parameterValues.size() != 0)
+		if (parameterValues.hasNext())
 		{
 			throw new IncorrectNumberOfArgumentsException();
 		}

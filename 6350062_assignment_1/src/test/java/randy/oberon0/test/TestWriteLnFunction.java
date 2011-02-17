@@ -1,11 +1,12 @@
 package randy.oberon0.test;
 
+import java.util.Iterator;
 import java.util.Queue;
 import randy.oberon0.interpreter.runtime.IInvokableFunction;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.exception.*;
 import randy.oberon0.interpreter.runtime.*;
-import randy.oberon0.value.*;
+import randy.oberon0.interpreter.runtime.environment.IValue;
 
 public class TestWriteLnFunction implements IInvokableFunction
 {
@@ -16,9 +17,9 @@ public class TestWriteLnFunction implements IInvokableFunction
 		output = _output;
 	}
 	@Override
-	public void invoke(RuntimeEnvironment environment, Queue<Value> parameterValues) throws RuntimeException
+	public void invoke(RuntimeEnvironment environment, Iterator<IValue> parameterValues) throws RuntimeException
 	{
-		if (parameterValues.size() != 0)
+		if (parameterValues.hasNext())
 			throw new IncorrectNumberOfArgumentsException();
 		output.add(null);
 	}

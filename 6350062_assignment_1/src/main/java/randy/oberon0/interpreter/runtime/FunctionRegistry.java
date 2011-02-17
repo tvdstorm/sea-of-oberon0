@@ -3,16 +3,17 @@ package randy.oberon0.interpreter.runtime;
 import java.util.*;
 import randy.oberon0.exception.DuplicateFunctionException;
 import randy.oberon0.exception.UndefinedMethodException;
-import randy.oberon0.interpreter.runtime.datastructures.InvokableFunctionAndEnvironment;
+import randy.oberon0.interpreter.runtime.datastructures.ClosureAndEnvironment;
+import randy.oberon0.interpreter.runtime.environment.Closure;
 
 public class FunctionRegistry
 {
-	private Map<String, InvokableFunctionAndEnvironment> functions;
+	private Map<String, ClosureAndEnvironment> functions;
 	private FunctionRegistry parent;
 	
 	public FunctionRegistry(FunctionRegistry _parent)
 	{
-		functions = new HashMap<String, InvokableFunctionAndEnvironment>();
+		functions = new HashMap<String, ClosureAndEnvironment>();
 		parent = _parent;
 	}
 	public void registerFunction(String functionName, IInvokableFunction functionPointer, RuntimeEnvironment environment) throws DuplicateFunctionException
@@ -27,9 +28,9 @@ public class FunctionRegistry
 			throw new DuplicateFunctionException(functionName);
 		}
 		// Register the function
-		functions.put(functionName, new InvokableFunctionAndEnvironment(functionPointer, environment));
+		functions.put(functionName, new ClosureAndEnvironment(new Closure(functionPointer), environment));
 	}
-	public InvokableFunctionAndEnvironment resolveFunction(String name) throws UndefinedMethodException
+	public ClosureAndEnvironment resolveFunction(String name) throws UndefinedMethodException
 	{
 		// Check if the function is register in this scope
 		if (functions.get(name) != null)

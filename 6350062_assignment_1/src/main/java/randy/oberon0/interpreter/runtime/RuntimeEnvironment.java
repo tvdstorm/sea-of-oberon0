@@ -3,7 +3,8 @@ package randy.oberon0.interpreter.runtime;
 import randy.oberon0.interpreter.runtime.IInvokableFunction;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.exception.*;
-import randy.oberon0.interpreter.runtime.datastructures.InvokableFunctionAndEnvironment;
+import randy.oberon0.interpreter.runtime.datastructures.ClosureAndEnvironment;
+import randy.oberon0.interpreter.runtime.environment.*;
 import randy.oberon0.value.Value;
 
 public class RuntimeEnvironment
@@ -29,17 +30,21 @@ public class RuntimeEnvironment
 	/**************************************************************************
 	 * Variable functions                                                     *
 	 **************************************************************************/
-	public void registerVariable(String variableName, Value value) throws RuntimeException
+	public void registerVariableByValue(String variableName, Value value) throws RuntimeException
 	{
-		variableStack.registerVariable(variableName, value);
+		variableStack.registerVariableByValue(variableName, value);
+	}
+	public void registerVariableByReference(String variableName, Reference reference) throws RuntimeException
+	{
+		variableStack.registerVariableByReference(variableName, reference);
 	}
 	public void registerConstant(String constantName, Value value) throws RuntimeException
 	{
 		variableStack.registerConstant(constantName, value);
 	}
-	public Value getVariableValue(String variableName) throws RuntimeException
+	public IBindable lookup(String variableName) throws RuntimeException
 	{
-		return variableStack.getVariableValue(variableName);
+		return variableStack.lookup(variableName);
 	}
 	/**************************************************************************
 	 * Function functions                                                     *
@@ -48,7 +53,7 @@ public class RuntimeEnvironment
 	{
 		functionRegistry.registerFunction(functionName, functionPointer, this);
 	}
-	public InvokableFunctionAndEnvironment resolveFunction(String functionName) throws UndefinedMethodException
+	public ClosureAndEnvironment resolveFunction(String functionName) throws UndefinedMethodException
 	{
 		return functionRegistry.resolveFunction(functionName);
 	}
