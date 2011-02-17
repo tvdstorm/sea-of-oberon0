@@ -14,10 +14,6 @@ public class Integer extends Value
 	{
 		return value;
 	}
-	public Value dereference()
-	{
-		return this;
-	}
 	public void setValue(Value _val) throws RuntimeException
 	{
 		Integer v = _val.castToInteger();
