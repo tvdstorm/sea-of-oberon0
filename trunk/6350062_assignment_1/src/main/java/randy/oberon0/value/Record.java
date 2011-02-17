@@ -27,10 +27,6 @@ public class Record extends Value
 		assert(members.get(name) != null);
 		return members.get(name);
 	}
-	public Value dereference()
-	{
-		return this;
-	}
 	@Override
 	public void setValue(Value _val) throws RuntimeException
 	{
