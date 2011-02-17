@@ -104,7 +104,8 @@ varDecl returns [List<VarDeclNode> result = new ArrayList<VarDeclNode>()]
 	;
 
 procedureDecls returns [List<ProcedureDeclNode> result = new ArrayList<ProcedureDeclNode>()]
-	:	(pd=procedureDecl								{ $result.add($pd.result); } )+
+	:	pd=procedureDecl								{ $result.add($pd.result); }
+		(SEMI_COLON pdx=procedureDecl					{ $result.add($pdx.result); } )*
 	;
 
 procedureDecl returns [ProcedureDeclNode result]
@@ -163,7 +164,7 @@ statement returns [StatementNode result]
 	:	a=assignment									{ $result = $a.result; }
 	|	p=procedureCall									{ $result = $p.result; }
 	|	i=ifStatement									{ $result = $i.result; }
-	|	w=whileStatement								{ $result = $w.result;}
+	|	w=whileStatement								{ $result = $w.result; }
 	;
 
 assignment returns [StatementNode result]
