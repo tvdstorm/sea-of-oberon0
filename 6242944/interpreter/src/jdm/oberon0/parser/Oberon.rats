@@ -299,10 +299,18 @@ public WhileStatement WhileStatement =
 	{ yyValue = new WhileStatement(expr, stat); }
 	;
 
+public WithStatement WithStatement =
+	"WITH" Spacing expr:Expression Spacing
+	"DO" stat:StatementSequence
+	"END" Spacing
+	{ yyValue = new WithStatement(expr, stat); }
+	;
+
 public Statement Statement = 
 	  Assignment 
 	/ IfStatement 
-	/ WhileStatement 
+	/ WhileStatement
+	/ WithStatement
 	/ ProcedureCall
 	;
 

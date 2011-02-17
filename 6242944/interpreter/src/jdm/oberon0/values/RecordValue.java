@@ -1,6 +1,9 @@
 package jdm.oberon0.values;
 
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 import jdm.oberon0.interpreter.ValueConstructor;
 import jdm.oberon0.types.RecordType;
@@ -9,11 +12,11 @@ import jdm.oberon0.types.Type;
 public class RecordValue extends Value {
 
 	private RecordType _type;
-	private HashMap<String, ReferenceValue> _values;
+	private Map<String, ReferenceValue> _values;
 	
 	public RecordValue(RecordType type) {
-		HashMap<String, Type> fields = type.getFields();
-		HashMap<String, ReferenceValue> values = new HashMap<String, ReferenceValue>();
+		Map<String, Type> fields = type.getFields();
+		Map<String, ReferenceValue> values = new HashMap<String, ReferenceValue>();
 		
 		for (String name : fields.keySet()) {
 			Type fieldType = fields.get(name);
@@ -60,5 +63,9 @@ public class RecordValue extends Value {
 		RecordValue value = new RecordValue(_type);
 		value._values = new HashMap<String, ReferenceValue>(_values);
 		return value;
+	}
+
+	public Set<String> getFields() {
+		return Collections.unmodifiableSet(_values.keySet());
 	}
 }

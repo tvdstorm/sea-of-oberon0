@@ -1,0 +1,34 @@
+MODULE test;
+	VAR rec : RECORD
+		x, y: INTEGER;
+		a, b: BOOLEAN;
+		nested : RECORD
+			c : INTEGER;
+			d : BOOLEAN
+		END
+	END;
+BEGIN
+	AssertEq(rec.x, 0);
+	AssertEq(rec.a, FALSE);
+	AssertEq(rec.nested.c, 0);
+	AssertEq(rec.nested.d, FALSE);
+
+	WITH rec DO
+		x := 10;
+
+		WITH nested DO
+			c := x * x;
+			d := ~rec.a;
+			
+			AssertEq(x, 10);
+			AssertEq(a, FALSE)
+		END;
+		
+		y := nested.c + 23;
+		b := nested.d
+	END;
+	
+	AssertEq(rec.nested.c, 100);
+	AssertEq(rec.nested.d, TRUE);
+	AssertEq(rec.y, 123)
+END test.

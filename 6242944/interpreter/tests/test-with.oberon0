@@ -1,0 +1,22 @@
+MODULE test;
+	VAR rec : RECORD
+		x, y: INTEGER;
+		a, b: BOOLEAN
+	END;
+BEGIN
+	AssertEq(rec.x, 0);
+	AssertEq(rec.a, FALSE);
+
+	WITH rec DO
+		x := 10;
+		a := FALSE;
+		y := x + x;
+		b := ~a
+	END;
+	
+	AssertEq(rec.x, 10);
+	AssertEq(rec.y, 20);
+	
+	AssertEq(rec.a, FALSE);
+	AssertEq(rec.b, TRUE)
+END test.
