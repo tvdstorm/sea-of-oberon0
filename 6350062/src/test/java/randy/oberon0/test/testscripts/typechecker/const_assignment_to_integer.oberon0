@@ -1,8 +1,0 @@
-MODULE constAssignmentToInteger;
-CONST c = 4;
-VAR i: INTEGER;
-BEGIN
-
-i := c;
-
-END constAssignmentToInteger.

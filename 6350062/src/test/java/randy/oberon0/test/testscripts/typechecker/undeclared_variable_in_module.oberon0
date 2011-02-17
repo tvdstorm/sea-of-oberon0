@@ -1,7 +1,0 @@
-MODULE undeclaredVariableInModule;
-VAR a: INTEGER;
-BEGIN
-
-a := aa;
-
-END undeclaredVariableInModule.

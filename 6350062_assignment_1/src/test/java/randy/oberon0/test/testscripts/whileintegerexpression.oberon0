@@ -1,9 +1,0 @@
-MODULE Whileintegerexpression;
-VAR a: INTEGER;
-BEGIN
-
-WHILE 4 DO
-	a := 1;
-END;
-
-END Whileintegerexpression.

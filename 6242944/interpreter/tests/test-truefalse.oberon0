@@ -1,7 +1,0 @@
-MODULE test;
-BEGIN
-    AssertEq(TRUE, TRUE);
-    AssertEq(FALSE, FALSE);
-    AssertEq(1 < 2, TRUE);
-    AssertEq(1 < 0, FALSE) 
-END test.

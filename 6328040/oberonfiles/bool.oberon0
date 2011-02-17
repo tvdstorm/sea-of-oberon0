@@ -1,8 +1,0 @@
-MODULE testmodule;
-
-VAR
-  i: BOOLEAN;
-
-BEGIN
- i := 6 < 5;
-END testmodule.

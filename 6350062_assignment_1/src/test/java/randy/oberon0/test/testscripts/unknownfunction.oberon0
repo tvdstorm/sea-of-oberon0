@@ -1,6 +1,0 @@
-MODULE UnknownFunction;
-BEGIN
-
-blaat;
-
-END UnknownFunction.

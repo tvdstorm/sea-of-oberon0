@@ -1,6 +1,0 @@
-MODULE UnknownProcedure;
-BEGIN
-
-blaat;
-
-END UnknownProcedure.

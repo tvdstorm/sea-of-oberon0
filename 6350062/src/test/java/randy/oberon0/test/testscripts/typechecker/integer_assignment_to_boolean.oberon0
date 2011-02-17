@@ -1,8 +1,0 @@
-MODULE integerAssignmentToBoolean;
-VAR b: BOOLEAN;
-    i: INTEGER;
-BEGIN
-
-b := i;
-
-END integerAssignmentToBoolean.
