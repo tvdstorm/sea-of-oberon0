@@ -32,6 +32,7 @@ public class Program
 		// Registrate buildin primitive types
 		TypeRegistry typeRegistry = new TypeRegistry(null);
 		typeRegistry.registerType(Type.INTEGER.getTypeText(), new PrimitiveVariableInstantiation(Type.INTEGER));
+		typeRegistry.registerType(Type.BOOLEAN.getTypeText(), new PrimitiveVariableInstantiation(Type.BOOLEAN));
 		
 		FunctionRegistry functionRegistry = new FunctionRegistry(null);
 		

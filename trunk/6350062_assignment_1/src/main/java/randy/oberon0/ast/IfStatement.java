@@ -4,7 +4,7 @@ import java.util.*;
 import randy.library.datastructures.Tuple;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
-import randy.oberon0.value.Integer;
+import randy.oberon0.value.Boolean;
 
 public class IfStatement extends Statement
 {
@@ -25,9 +25,9 @@ public class IfStatement extends Statement
 		for (Tuple<Expression, Block> curIf : ifStatements)
 		{
 			// Evaluate the condition and convert it to an boolean
-			final Integer conditionResult = curIf.getFirst().evaluate(environment).castToInteger();
+			final Boolean conditionResult = curIf.getFirst().evaluate(environment).castToBoolean();
 			// Check if the condition is true
-			if (conditionResult.isTrue())
+			if (conditionResult.getBoolValue())
 			{
 				// Run the associated body
 				curIf.getSecond().run(environment);

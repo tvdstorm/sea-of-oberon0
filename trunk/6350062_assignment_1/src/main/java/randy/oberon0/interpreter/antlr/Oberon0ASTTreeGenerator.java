@@ -11,6 +11,7 @@ import randy.oberon0.exception.*;
 import randy.oberon0.generated.antlr.*;
 import randy.oberon0.generated.antlr.Oberon0Parser.module_return;
 import randy.oberon0.value.Integer;
+import randy.oberon0.value.Boolean;
 import randy.oberon0.value.Type;
 
 public class Oberon0ASTTreeGenerator
@@ -103,6 +104,11 @@ public class Oberon0ASTTreeGenerator
 				throw new ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' in BodyDeclaration on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + "."); 
 		}
 	}
+	public static BooleanLiteral buildBooleanLiteral(Tree tree) throws Exception
+	{
+		assert(tree.getType() == Oberon0Parser.TRUE || tree.getType() == Oberon0Parser.FALSE);
+		return new BooleanLiteral(new Boolean(java.lang.Boolean.parseBoolean(tree.getText())));
+	}
 	public static ConstDeclaration buildConstDeclaration(Tree tree) throws Exception
 	{
 		assert(tree.getType() == Oberon0Parser.CONST);
@@ -148,6 +154,9 @@ public class Oberon0ASTTreeGenerator
 			case Oberon0Parser.AND:
 			case Oberon0Parser.OR:
 				return buildInfixExpression(tree);
+			case Oberon0Parser.TRUE:
+			case Oberon0Parser.FALSE:
+				return buildBooleanLiteral(tree);
 			case Oberon0Parser.INTEGER:
 				return buildIntegerLiteral(tree);
 			case Oberon0Parser.IDENT:
