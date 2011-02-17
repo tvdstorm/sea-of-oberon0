@@ -1,7 +1,6 @@
 package randy.oberon0.interpreter.runtime;
 
 import java.util.*;
-import randy.oberon0.ast.IInvokableFunction;
 import randy.oberon0.exception.DuplicateFunctionException;
 import randy.oberon0.exception.UndefinedMethodException;
 import randy.oberon0.interpreter.runtime.datastructures.InvokableFunctionAndEnvironment;
