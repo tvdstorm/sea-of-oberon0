@@ -1,0 +1,9 @@
+MODULE Arrayaccessoronint;
+
+VAR a: INTEGER;
+BEGIN
+
+a[0] := 1;
+
+END Arrayaccessoronint.
+

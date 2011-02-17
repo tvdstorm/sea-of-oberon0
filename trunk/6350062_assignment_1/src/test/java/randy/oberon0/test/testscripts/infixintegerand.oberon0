@@ -1,0 +1,7 @@
+MODULE Infixintegerand;
+VAR a: INTEGER;
+BEGIN
+
+a := 4 & 4;
+
+END Infixintegerand.

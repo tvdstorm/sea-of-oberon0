@@ -1,0 +1,10 @@
+MODULE Ifnumber;
+
+BEGIN
+
+IF 4 THEN
+	Write(1);
+END;
+
+END Ifnumber.
+

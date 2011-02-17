@@ -1,0 +1,11 @@
+MODULE Multiplication;
+VAR a, b, c: INTEGER;
+BEGIN
+
+Read(a);
+Read(b);
+Read(c);
+Write(a*b);
+Write(a*b*c);
+
+END Multiplication.

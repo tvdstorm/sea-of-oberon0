@@ -1,0 +1,30 @@
+MODULE Prefixoperators;
+VAR a, b: INTEGER;
+BEGIN
+
+a:= -2 * 4;
+
+Read(a);
+Read(b);
+
+Write(a + b);
+Write(a - b);
+Write(a * (+b));
+Write(a DIV b);
+
+Write(-a + b);
+Write(-a - b);
+Write(-a * b);
+Write(-a DIV b);
+
+Write(a + (-b));
+Write(a - (-b));
+Write(a * (-b));
+Write(a DIV (-b));
+
+Write(-a + (-b));
+Write(-a - (-b));
+Write(-a * (-b));
+Write(-a DIV (-b));
+
+END Prefixoperators.
