@@ -3,8 +3,8 @@ package randy.oberon0.interpreter.runtime;
 import java.util.LinkedList;
 import randy.oberon0.interpreter.antlr.Oberon0ASTTreeGenerator;
 import randy.oberon0.interpreter.buildinfunctions.*;
+import randy.oberon0.interpreter.runtime.environment.IValue;
 import randy.oberon0.value.Type;
-import randy.oberon0.value.Value;
 import randy.oberon0.ast.module.Module;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.exception.Exception;
@@ -47,7 +47,7 @@ public class Program
 		// Registrate the modules type declarations in the modole environment
 		module.registerTypeDeclarations(moduleEnvironment);
 		// Invoke the module
-		module.invoke(moduleEnvironment, new LinkedList<Value>());
+		module.invoke(moduleEnvironment, (new LinkedList<IValue>()).iterator());
 	}
 	public void setBuildinFunctions(IBuildinFunctions _buildinFunctions)
 	{

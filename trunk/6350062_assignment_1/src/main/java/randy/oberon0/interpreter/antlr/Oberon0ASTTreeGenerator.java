@@ -165,10 +165,10 @@ public class Oberon0ASTTreeGenerator
 			case Oberon0Parser.INTEGER:
 				return buildIntegerLiteral(tree);
 			case Oberon0Parser.IDENT:
-				return buildVariableSelector(tree);
+				return new SelectorExpression(buildVariableSelector(tree));
 			case Oberon0Parser.ARRAYSELECTOR:
 			case Oberon0Parser.DOTSELECTOR:
-				return buildSelector(tree);
+				return new SelectorExpression(buildSelector(tree));
 			default:
 				throw new ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' in Expression on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + ".");
 		}
