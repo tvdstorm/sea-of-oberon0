@@ -2,18 +2,18 @@ package randy.oberon0.interpreter.runtime;
 
 import java.util.*;
 import randy.oberon0.ast.IInvokableFunction;
-import randy.library.datastructures.Tuple;
 import randy.oberon0.exception.DuplicateFunctionException;
 import randy.oberon0.exception.UndefinedMethodException;
+import randy.oberon0.interpreter.runtime.datastructures.InvokableFunctionAndEnvironment;
 
 public class FunctionRegistry
 {
-	private Map<String, Tuple<RuntimeEnvironment, IInvokableFunction>> functions; // <functionName, <environment, functionPointer>>
+	private Map<String, InvokableFunctionAndEnvironment> functions;
 	private FunctionRegistry parent;
 	
 	public FunctionRegistry(FunctionRegistry _parent)
 	{
-		functions = new HashMap<String, Tuple<RuntimeEnvironment, IInvokableFunction>>();
+		functions = new HashMap<String, InvokableFunctionAndEnvironment>();
 		parent = _parent;
 	}
 	public void registerFunction(String functionName, IInvokableFunction functionPointer, RuntimeEnvironment environment) throws DuplicateFunctionException
@@ -28,9 +28,9 @@ public class FunctionRegistry
 			throw new DuplicateFunctionException(functionName);
 		}
 		// Register the function
-		functions.put(functionName, new Tuple<RuntimeEnvironment, IInvokableFunction>(environment, functionPointer));
+		functions.put(functionName, new InvokableFunctionAndEnvironment(functionPointer, environment));
 	}
-	public Tuple<RuntimeEnvironment, IInvokableFunction> resolveFunction(String name) throws UndefinedMethodException // <environment, functionPointer>
+	public InvokableFunctionAndEnvironment resolveFunction(String name) throws UndefinedMethodException
 	{
 		// Check if the function is register in this scope
 		if (functions.get(name) != null)
