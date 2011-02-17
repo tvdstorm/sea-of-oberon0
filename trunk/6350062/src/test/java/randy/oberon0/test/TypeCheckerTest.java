@@ -57,7 +57,10 @@ public class TypeCheckerTest
 		{"while_integer_expression", new TypeMismatchException(Type.INTEGER.getTypeText(), Type.BOOLEAN.getTypeText()), "INTEGER as WHILE expression"},
 		{"infix_integer_and", new OperatorTypeUndefinedException("AND", Type.INTEGER.getTypeText(), Type.INTEGER.getTypeText()), "And on INTEGER and INTEGER"},
 		{"incorrect_parameter_type", new TypeMismatchException(Type.INTEGER.getTypeText(), Type.ARRAY.getTypeText()), "INTEGER instead of a ARRAY parameter"},
-		{"variable_in_deeper_scope", new UndefinedBindableException("vaa"), "Using a variable declared in a deeper scope in a procedure"},
+		{"variable_in_deeper_scope_before_called", new UndefinedBindableException("vaa"), "Using a variable declared in a deeper scope than the procedure and hasn't been called"},
+		{"variable_in_same_level_procedure", new UndefinedBindableException("va"), "Using a variable declared in the same scope level as the procedure"},
+		{"variable_in_uncalled_procedure", new UndefinedBindableException("vb"), "Using a variable in a lower scope as the procedure, but that isn't in the callstack"},
+		{"variable_in_deeper_scope", new UndefinedBindableException("vaa"), "Using a variable declared in a deeper scope than the procedure"},
 		};
 		return Arrays.asList(data);
 	}

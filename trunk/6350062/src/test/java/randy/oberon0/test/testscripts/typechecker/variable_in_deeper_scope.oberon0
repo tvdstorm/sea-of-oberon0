@@ -1,4 +1,4 @@
-MODULE VariableInDeeperScope;
+MODULE Variablescopingfout5;
 VAR vm: INTEGER;
 
 PROCEDURE a();
@@ -13,15 +13,14 @@ PROCEDURE a();
       vaa := vaa + vm;
       Write(vm);
       Write(vaa);
-      b();
-    END aa;
+      b
+    END vaa;
  BEGIN
     va := 12;
     Write(va);
     va := va + vm;
     Write(vm);
-    vaa := 0;
-    aa();
+    aa
 END a;
 PROCEDURE b();
   VAR vb: INTEGER;
@@ -30,10 +29,11 @@ PROCEDURE b();
     Write(vb);
     vb := vb + vm;
     Write(vb);
-END b;
+    vaa := 0;
+END first;
 BEGIN
 
 Read(vm);
-a();
+a
 
-END VariableInDeeperScope.
+END Variablescopingfout5.
