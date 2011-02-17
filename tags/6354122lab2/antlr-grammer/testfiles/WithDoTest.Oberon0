@@ -1,0 +1,86 @@
+MODULE QuickSort;
+
+CONST
+  MULTIACCOUNTSIZE = 5;
+  SAVINGSACCOUNTSIZE = 2;
+  
+TYPE
+  int = INTEGER;
+  record = RECORD 	checkaccount, 
+					balanceaccount
+					: INTEGER;
+					savingsaccount
+					: ARRAY SAVINGSACCOUNTSIZE OF INTEGER
+			END;
+
+VAR
+  singleBankAccount: record;
+  multiBankAccount: ARRAY MULTIACCOUNTSIZE OF record;
+  bankAccounCounter,savingsAccounCounter: INTEGER;
+  addedAmount : int;
+ 
+PROCEDURE updateBankAccount(VAR bankaccount: record; addedAmount: INTEGER);
+
+  BEGIN
+		WITH bankaccount DO
+			checkaccount := addedAmount;
+			balanceaccount := addedAmount + 340;
+			savingsAccounCounter := 0;
+			WHILE savingsAccounCounter < SAVINGSACCOUNTSIZE DO
+				addedAmount := addedAmount + ( ( addedAmount MOD 33 ) * 23 );
+				savingsaccount[savingsAccounCounter] := addedAmount - 344;
+				savingsAccounCounter := savingsAccounCounter+1
+			END
+		END
+END updateBankAccount;
+ 
+BEGIN
+	Read(addedAmount);
+	WITH singleBankAccount DO
+		checkaccount := addedAmount * 2;
+		balanceaccount := addedAmount + 92340;
+		savingsAccounCounter := 0;
+		WHILE savingsAccounCounter < SAVINGSACCOUNTSIZE DO
+			addedAmount := addedAmount * 2;
+			savingsaccount[savingsAccounCounter] := addedAmount;
+			savingsAccounCounter := savingsAccounCounter+1
+		END
+	END;
+	WITH singleBankAccount DO
+		Write(checkaccount);
+		WriteLn;
+		Write(balanceaccount);
+		WriteLn;
+		savingsAccounCounter := 0;
+		WHILE savingsAccounCounter < SAVINGSACCOUNTSIZE DO
+			Write(savingsaccount[savingsAccounCounter]);
+			WriteLn;
+			savingsAccounCounter := savingsAccounCounter+1
+		END
+	END;
+	WriteLn;
+	WriteLn;
+	bankAccounCounter := 0;
+	WHILE bankAccounCounter < MULTIACCOUNTSIZE DO
+		addedAmount := addedAmount + ( ( addedAmount MOD 13 ) * 7 );
+		updateBankAccount(multiBankAccount[bankAccounCounter], addedAmount);
+		bankAccounCounter := bankAccounCounter +1
+	END;
+	bankAccounCounter := 0;
+	WHILE bankAccounCounter < MULTIACCOUNTSIZE DO
+			WITH multiBankAccount[bankAccounCounter] DO
+				Write(checkaccount);
+				WriteLn;
+				Write(balanceaccount);
+				WriteLn;
+				savingsAccounCounter := 0;
+				WHILE savingsAccounCounter < SAVINGSACCOUNTSIZE DO
+					Write(savingsaccount[savingsAccounCounter]);
+					WriteLn;
+					savingsAccounCounter := savingsAccounCounter+1
+				END;
+				WriteLn
+			END;
+		bankAccounCounter := bankAccounCounter +1
+	END
+END QuickSort.

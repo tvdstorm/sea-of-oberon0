@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="full_build" name="Oberon0 Parser and interpreter" basedir=".">
+	<!-- location definitions -->
+	<property name="src.dir" value="src" />
+	<property name="src.tests" value="tests/src" />
+	<property name="java.dir" value="${src.dir}" />
+	<property name="build.dir" value="bin" />
+	<property name="build.tests" value="tests/bin" />
+	<property name="reports.tests" value="tests/reports" />
+	<property name="dist.dir" value="jar" />
+	<property name="metric.dir" value="metrics" />
+	<property name="javancss.dir" value="metrics/libs" />
+	<property name="jDepend.dir" value="metrics/libs" />
+	<property name="jDepend.buildFolder" value="${build.dir}" />
+	<!-- file name definitions for the metric files -->
+	<property name="jDepend.outputfile" value="jDepend-report.xml" />
+	<property name="javancss.outputfile" value="javaNCSS-report.xml" />
+	<!-- classpath setup -->
+	<path id="javancss.ant.task">
+		<pathelement location="${javancss.dir}/ccl.jar" />
+		<pathelement location="${javancss.dir}/javancss.jar" />
+		<pathelement location="${javancss.dir}/javancss2ant.jar" />
+		<pathelement location="${javancss.dir}/jhbasic.jar" />
+	</path>
+	<path id="jdepend.ant.task">
+		<pathelement location="${jDepend.dir}/jDepend.jar" />
+	</path>
+	<path id="junittest.ant.task">
+		<pathelement location="${build.dir}" />
+	</path>
+	<!-- Full build target-->
+	<target name="full_build">
+		<antcall target="create_run_jar" />
+		<antcall target="run_unit_tests" />
+		<antcall target="create_metrics" />
+	</target>
+	<!-- Compile target -->
+	<target name="compile" description="compile the source ">
+		<mkdir dir="${build.dir}" />
+		<javac srcdir="${src.dir}" destdir="${build.dir}" />
+	</target>
+	<!-- Run unit tests target-->
+	<target name="run_unit_tests">
+		<mkdir dir="${reports.tests}" />
+		<!-- Delete old reports -->
+		<delete>
+			<fileset dir="${reports.tests}" includes="**/*.txt"/>
+		</delete>
+		<!-- Run JUnit task-->
+		<junit printsummary="yes" haltonfailure="yes">
+			<classpath>
+				<pathelement location="${build.tests}" />
+				<pathelement location="${build.dir}" />
+				<pathelement path="${java.class.path}" />
+			</classpath>
+			<formatter type="plain" />
+			<batchtest fork="yes" todir="${reports.tests}">
+				<fileset dir="${src.tests}">
+					<include name="**/*Test*.java" />
+					<!-- Exclude the AST Creator file as it is not a test.-->
+					<exclude name="**/TestASTCreator.java"/>
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+	<!-- Create runnable jar task-->
+	<target name="create_run_jar" depends="compile">
+		<jar destfile="/school/construction/labassignment1/6354122/jar/soo.jar" basedir="${build.dir}">
+			<manifest>
+				<attribute name="Main-Class" value="com.arievanderveek.soo.Main" />
+				<attribute name="Class-Path" value="lib/antlr-3.3-complete.jar lib/commons-cli-1.2.jar"/>
+			</manifest>
+		</jar>
+	</target>
+	<!-- Create metrics taks-->
+	<target name="create_metrics" description="This build file will delete the metrics folder and recreate it">
+		<!-- Delete the old metric files -->
+		<delete file="${metric.dir}/${javancss.outputfile}" failonerror="true" />
+		<delete file="${metric.dir}/${jDepend.outputfile}" failonerror="true" />
+		<!-- Generate the javancss output -->
+		<taskdef name="javancss" classname="javancss.JavancssAntTask" classpathref="javancss.ant.task" />
+		<javancss srcdir="${java.dir}" generatereport="true" outputfile="${metric.dir}/${javancss.outputfile}" format="xml" />
+		<!-- Generate the jDepend metrics -->
+		<jdepend outputfile="${metric.dir}/${jDepend.outputfile}" fork="yes" format="xml">
+			<classespath>
+				<pathelement location="${build.dir}"/>
+			</classespath>
+			<classpath>
+				<pathelement location="${build.dir}"/>
+				<pathelement location="${jDepend.dir}/jDepend.jar"/>
+			</classpath>
+		</jdepend>
+	</target>
+</project>

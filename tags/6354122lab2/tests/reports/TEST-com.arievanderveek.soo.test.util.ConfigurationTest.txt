@@ -1,0 +1,16 @@
+Testsuite: com.arievanderveek.soo.test.util.ConfigurationTest
+Tests run: 3, Failures: 0, Errors: 0, Time elapsed: 0,032 sec
+------------- Standard Output ---------------
+usage: Unrecognized option: -pigscanfly
+ -parser <parser>           (Optional) The parser implementation fully
+                            qualified class name.ANTLR is used by default.
+ -printtree                 (Optional) If given as option the tree will be
+                            printed before interpreting.
+ -sourcefile <sourcefile>   The input Oberon-0 source file
+---------------------------------------------------------------
+
+------------- ---------------- ---------------
+
+Testcase: testCreateConfigurationAllArguments took 0,013 sec
+Testcase: testCreateConfigurationRequiredArguments took 0,001 sec
+Testcase: testCreateConfigurationFaultyArguments took 0,003 sec
