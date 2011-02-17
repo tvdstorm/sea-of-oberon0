@@ -5,6 +5,7 @@ import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
 import randy.oberon0.value.Value;
 import randy.oberon0.value.Integer;
+import randy.oberon0.value.Boolean;
 
 public class InfixGreaterEqualsExpression extends InfixExpression
 {
@@ -22,7 +23,7 @@ public class InfixGreaterEqualsExpression extends InfixExpression
 		// Check if we support the operator
 		if (valLh instanceof Integer && valRh instanceof Integer)
 		{
-			return new Integer(valLh.castToInteger().getIntValue() >= valRh.castToInteger().getIntValue());
+			return new Boolean(valLh.castToInteger().getIntValue() >= valRh.castToInteger().getIntValue());
 		}
 		else
 		{

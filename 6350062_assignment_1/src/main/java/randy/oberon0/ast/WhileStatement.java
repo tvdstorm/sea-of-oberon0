@@ -20,7 +20,7 @@ public class WhileStatement extends Statement
 	{
 		assert(environment != null);
 		// Run while the condition evaluates to true
-		while (condition.evaluate(environment).castToInteger().isTrue())
+		while (condition.evaluate(environment).castToBoolean().getBoolValue())
 		{
 			// Run the body
 			body.run(environment);
