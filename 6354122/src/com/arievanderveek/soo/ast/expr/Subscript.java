@@ -5,6 +5,12 @@ import com.arievanderveek.soo.runtime.ArraySymbol;
 import com.arievanderveek.soo.runtime.Scope;
 import com.arievanderveek.soo.runtime.Symbol;
 
+/**
+ * Represents a subscript selector, example output[i]
+ * 
+ * @author Arie van der Veek
+ *
+ */
 public class Subscript extends Selector {
 
 	private final ExpressionNode expression;

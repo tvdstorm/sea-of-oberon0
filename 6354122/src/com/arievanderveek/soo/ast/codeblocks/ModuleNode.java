@@ -12,6 +12,8 @@ import com.arievanderveek.soo.ast.variables.FieldNode;
 import com.arievanderveek.soo.runtime.Scope;
 
 /**
+ * Represents a module node
+ * 
  * @author arieveek
  * 
  */

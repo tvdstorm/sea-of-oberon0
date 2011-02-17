@@ -1,97 +1,107 @@
 <?xml version="1.0"?>
 <javancss>
-  <date>2011-02-09</date>
-  <time>13:21:15</time>
+  <date>2011-02-17</date>
+  <time>20:14:52</time>
   <packages>
     <package>
       <name>com.arievanderveek.soo</name>
       <classes>3</classes>
       <functions>5</functions>
-      <ncss>41</ncss>
-      <javadocs>7</javadocs>
-      <javadoc_lines>47</javadoc_lines>
-      <single_comment_lines>13</single_comment_lines>
+      <ncss>35</ncss>
+      <javadocs>8</javadocs>
+      <javadoc_lines>52</javadoc_lines>
+      <single_comment_lines>0</single_comment_lines>
       <multi_comment_lines>4</multi_comment_lines>
     </package>
     <package>
       <name>com.arievanderveek.soo.ast</name>
-      <classes>1</classes>
+      <classes>2</classes>
       <functions>2</functions>
-      <ncss>6</ncss>
-      <javadocs>3</javadocs>
+      <ncss>9</ncss>
+      <javadocs>4</javadocs>
       <javadoc_lines>29</javadoc_lines>
-      <single_comment_lines>8</single_comment_lines>
+      <single_comment_lines>0</single_comment_lines>
       <multi_comment_lines>3</multi_comment_lines>
-    </package>
-    <package>
-      <name>com.arievanderveek.soo.ast.binaryoperators</name>
-      <classes>14</classes>
-      <functions>40</functions>
-      <ncss>228</ncss>
-      <javadocs>27</javadocs>
-      <javadoc_lines>110</javadoc_lines>
-      <single_comment_lines>11</single_comment_lines>
-      <multi_comment_lines>172</multi_comment_lines>
     </package>
     <package>
       <name>com.arievanderveek.soo.ast.codeblocks</name>
       <classes>6</classes>
-      <functions>25</functions>
-      <ncss>228</ncss>
-      <javadocs>19</javadocs>
-      <javadoc_lines>112</javadoc_lines>
-      <single_comment_lines>13</single_comment_lines>
-      <multi_comment_lines>49</multi_comment_lines>
+      <functions>26</functions>
+      <ncss>221</ncss>
+      <javadocs>15</javadocs>
+      <javadoc_lines>118</javadoc_lines>
+      <single_comment_lines>9</single_comment_lines>
+      <multi_comment_lines>39</multi_comment_lines>
     </package>
     <package>
-      <name>com.arievanderveek.soo.ast.statements</name>
+      <name>com.arievanderveek.soo.ast.expr</name>
       <classes>7</classes>
-      <functions>25</functions>
-      <ncss>202</ncss>
-      <javadocs>17</javadocs>
-      <javadoc_lines>90</javadoc_lines>
-      <single_comment_lines>14</single_comment_lines>
-      <multi_comment_lines>81</multi_comment_lines>
+      <functions>24</functions>
+      <ncss>121</ncss>
+      <javadocs>12</javadocs>
+      <javadoc_lines>66</javadoc_lines>
+      <single_comment_lines>4</single_comment_lines>
+      <multi_comment_lines>13</multi_comment_lines>
     </package>
     <package>
-      <name>com.arievanderveek.soo.ast.unaryoperators</name>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators</name>
+      <classes>14</classes>
+      <functions>40</functions>
+      <ncss>228</ncss>
+      <javadocs>1</javadocs>
+      <javadoc_lines>6</javadoc_lines>
+      <single_comment_lines>0</single_comment_lines>
+      <multi_comment_lines>167</multi_comment_lines>
+    </package>
+    <package>
+      <name>com.arievanderveek.soo.ast.expr.unaryoperators</name>
       <classes>3</classes>
       <functions>8</functions>
       <ncss>43</ncss>
-      <javadocs>6</javadocs>
-      <javadoc_lines>25</javadoc_lines>
+      <javadocs>2</javadocs>
+      <javadoc_lines>11</javadoc_lines>
       <single_comment_lines>0</single_comment_lines>
       <multi_comment_lines>29</multi_comment_lines>
     </package>
     <package>
-      <name>com.arievanderveek.soo.ast.variables</name>
+      <name>com.arievanderveek.soo.ast.statements</name>
       <classes>6</classes>
-      <functions>26</functions>
-      <ncss>119</ncss>
-      <javadocs>17</javadocs>
-      <javadoc_lines>91</javadoc_lines>
-      <single_comment_lines>7</single_comment_lines>
-      <multi_comment_lines>86</multi_comment_lines>
+      <functions>20</functions>
+      <ncss>195</ncss>
+      <javadocs>14</javadocs>
+      <javadoc_lines>89</javadoc_lines>
+      <single_comment_lines>16</single_comment_lines>
+      <multi_comment_lines>65</multi_comment_lines>
+    </package>
+    <package>
+      <name>com.arievanderveek.soo.ast.variables</name>
+      <classes>7</classes>
+      <functions>33</functions>
+      <ncss>154</ncss>
+      <javadocs>18</javadocs>
+      <javadoc_lines>104</javadoc_lines>
+      <single_comment_lines>4</single_comment_lines>
+      <multi_comment_lines>32</multi_comment_lines>
     </package>
     <package>
       <name>com.arievanderveek.soo.parser</name>
       <classes>2</classes>
       <functions>2</functions>
       <ncss>37</ncss>
-      <javadocs>2</javadocs>
-      <javadoc_lines>10</javadoc_lines>
-      <single_comment_lines>4</single_comment_lines>
+      <javadocs>3</javadocs>
+      <javadoc_lines>19</javadoc_lines>
+      <single_comment_lines>3</single_comment_lines>
       <multi_comment_lines>11</multi_comment_lines>
     </package>
     <package>
       <name>com.arievanderveek.soo.runtime</name>
-      <classes>8</classes>
-      <functions>56</functions>
-      <ncss>424</ncss>
-      <javadocs>19</javadocs>
-      <javadoc_lines>121</javadoc_lines>
-      <single_comment_lines>77</single_comment_lines>
-      <multi_comment_lines>275</multi_comment_lines>
+      <classes>7</classes>
+      <functions>72</functions>
+      <ncss>383</ncss>
+      <javadocs>30</javadocs>
+      <javadoc_lines>196</javadoc_lines>
+      <single_comment_lines>23</single_comment_lines>
+      <multi_comment_lines>21</multi_comment_lines>
     </package>
     <package>
       <name>com.arievanderveek.soo.util</name>
@@ -99,7 +109,7 @@
       <functions>12</functions>
       <ncss>82</ncss>
       <javadocs>14</javadocs>
-      <javadoc_lines>97</javadoc_lines>
+      <javadoc_lines>99</javadoc_lines>
       <single_comment_lines>10</single_comment_lines>
       <multi_comment_lines>9</multi_comment_lines>
     </package>
@@ -114,20 +124,20 @@
       <multi_comment_lines>27</multi_comment_lines>
     </package>
     <total>
-      <classes>54</classes>
-      <functions>201</functions>
-      <ncss>1412</ncss>
-      <javadocs>132</javadocs>
-      <javadoc_lines>736</javadoc_lines>
-      <single_comment_lines>157</single_comment_lines>
-      <multi_comment_lines>746</multi_comment_lines>
+      <classes>61</classes>
+      <functions>244</functions>
+      <ncss>1510</ncss>
+      <javadocs>122</javadocs>
+      <javadoc_lines>793</javadoc_lines>
+      <single_comment_lines>69</single_comment_lines>
+      <multi_comment_lines>420</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>11.00</td><td>54.00</td><td>201.00</td><td>1,412.00</td><td>132.00</td><td>Project</td></tr>
-      <tr><td></td><td>4.91</td><td>18.27</td><td>128.36</td><td>12.00</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.72</td><td>26.15</td><td>2.44</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>7.02</td><td>0.66</td><td>Function</td></tr>
+      <tr><td>12.00</td><td>61.00</td><td>244.00</td><td>1,510.00</td><td>122.00</td><td>Project</td></tr>
+      <tr><td></td><td>5.08</td><td>20.33</td><td>125.83</td><td>10.17</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>4.00</td><td>24.75</td><td>2.00</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>6.19</td><td>0.50</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -141,10 +151,10 @@
     </object>
     <object>
       <name>com.arievanderveek.soo.SeaOfOberonController</name>
-      <ncss>18</ncss>
+      <ncss>11</ncss>
       <functions>2</functions>
       <classes>0</classes>
-      <javadocs>2</javadocs>
+      <javadocs>3</javadocs>
     </object>
     <object>
       <name>com.arievanderveek.soo.SeaOfOberonException</name>
@@ -155,157 +165,227 @@
     </object>
     <object>
       <name>com.arievanderveek.soo.ast.ASTNode</name>
-      <ncss>3</ncss>
-      <functions>2</functions>
-      <classes>0</classes>
-      <javadocs>3</javadocs>
-    </object>
-    <object>
-      <name>com.arievanderveek.soo.ast.binaryoperators.AbstractBinaryOperatorNode</name>
-      <ncss>7</ncss>
+      <ncss>2</ncss>
       <functions>1</functions>
       <classes>0</classes>
-      <javadocs>1</javadocs>
-    </object>
-    <object>
-      <name>com.arievanderveek.soo.ast.binaryoperators.AdditionOperatorNode</name>
-      <ncss>11</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
       <javadocs>2</javadocs>
     </object>
     <object>
-      <name>com.arievanderveek.soo.ast.binaryoperators.AndOperatorNode</name>
-      <ncss>14</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>2</javadocs>
-    </object>
-    <object>
-      <name>com.arievanderveek.soo.ast.binaryoperators.DivisionOperatorNode</name>
-      <ncss>11</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>2</javadocs>
-    </object>
-    <object>
-      <name>com.arievanderveek.soo.ast.binaryoperators.EqualOperatorNode</name>
-      <ncss>14</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>2</javadocs>
-    </object>
-    <object>
-      <name>com.arievanderveek.soo.ast.binaryoperators.GreaterEqualThenOperatorNode</name>
-      <ncss>14</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>2</javadocs>
-    </object>
-    <object>
-      <name>com.arievanderveek.soo.ast.binaryoperators.GreaterThenOperatorNode</name>
-      <ncss>14</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>2</javadocs>
-    </object>
-    <object>
-      <name>com.arievanderveek.soo.ast.binaryoperators.ModulusOperatorNode</name>
-      <ncss>11</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>2</javadocs>
-    </object>
-    <object>
-      <name>com.arievanderveek.soo.ast.binaryoperators.MultiplicationOperatorNode</name>
-      <ncss>11</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>2</javadocs>
-    </object>
-    <object>
-      <name>com.arievanderveek.soo.ast.binaryoperators.NotEqualOperatorNode</name>
-      <ncss>14</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>2</javadocs>
-    </object>
-    <object>
-      <name>com.arievanderveek.soo.ast.binaryoperators.OrOperatorNode</name>
-      <ncss>14</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>2</javadocs>
-    </object>
-    <object>
-      <name>com.arievanderveek.soo.ast.binaryoperators.SmallerEqualThenOperatorNode</name>
-      <ncss>14</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>2</javadocs>
-    </object>
-    <object>
-      <name>com.arievanderveek.soo.ast.binaryoperators.SmallerThenOperatorNode</name>
-      <ncss>14</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>2</javadocs>
-    </object>
-    <object>
-      <name>com.arievanderveek.soo.ast.binaryoperators.SubtractionOperatorNode</name>
-      <ncss>11</ncss>
-      <functions>3</functions>
+      <name>com.arievanderveek.soo.ast.Interpretable</name>
+      <ncss>2</ncss>
+      <functions>1</functions>
       <classes>0</classes>
       <javadocs>2</javadocs>
     </object>
     <object>
       <name>com.arievanderveek.soo.ast.codeblocks.CodeBlockNode</name>
-      <ncss>82</ncss>
-      <functions>8</functions>
+      <ncss>76</ncss>
+      <functions>9</functions>
       <classes>0</classes>
-      <javadocs>8</javadocs>
+      <javadocs>3</javadocs>
     </object>
     <object>
       <name>com.arievanderveek.soo.ast.codeblocks.ModuleNode</name>
-      <ncss>16</ncss>
+      <ncss>12</ncss>
       <functions>3</functions>
       <classes>0</classes>
       <javadocs>2</javadocs>
     </object>
     <object>
       <name>com.arievanderveek.soo.ast.codeblocks.ProcedureNode</name>
-      <ncss>35</ncss>
+      <ncss>30</ncss>
       <functions>6</functions>
       <classes>0</classes>
-      <javadocs>4</javadocs>
+      <javadocs>5</javadocs>
     </object>
     <object>
       <name>com.arievanderveek.soo.ast.codeblocks.ReadLineCallNode</name>
-      <ncss>21</ncss>
+      <ncss>19</ncss>
       <functions>3</functions>
       <classes>0</classes>
       <javadocs>2</javadocs>
     </object>
     <object>
       <name>com.arievanderveek.soo.ast.codeblocks.WriteCallNode</name>
-      <ncss>17</ncss>
+      <ncss>15</ncss>
       <functions>3</functions>
       <classes>0</classes>
       <javadocs>1</javadocs>
     </object>
     <object>
       <name>com.arievanderveek.soo.ast.codeblocks.WriteLnCallNode</name>
-      <ncss>7</ncss>
+      <ncss>6</ncss>
       <functions>2</functions>
       <classes>0</classes>
       <javadocs>2</javadocs>
     </object>
     <object>
-      <name>com.arievanderveek.soo.ast.statements.AbstractParameterNode</name>
-      <ncss>15</ncss>
+      <name>com.arievanderveek.soo.ast.expr.ExpressionNode</name>
+      <ncss>1</ncss>
+      <functions>0</functions>
+      <classes>0</classes>
+      <javadocs>1</javadocs>
+    </object>
+    <object>
+      <name>com.arievanderveek.soo.ast.expr.IdentifierNode</name>
+      <ncss>25</ncss>
+      <functions>7</functions>
+      <classes>0</classes>
+      <javadocs>4</javadocs>
+    </object>
+    <object>
+      <name>com.arievanderveek.soo.ast.expr.IntegerExpressionNode</name>
+      <ncss>8</ncss>
       <functions>3</functions>
       <classes>0</classes>
-      <javadocs>3</javadocs>
+      <javadocs>1</javadocs>
+    </object>
+    <object>
+      <name>com.arievanderveek.soo.ast.expr.Member</name>
+      <ncss>16</ncss>
+      <functions>4</functions>
+      <classes>0</classes>
+      <javadocs>1</javadocs>
+    </object>
+    <object>
+      <name>com.arievanderveek.soo.ast.expr.Selector</name>
+      <ncss>3</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>2</javadocs>
+    </object>
+    <object>
+      <name>com.arievanderveek.soo.ast.expr.Selectors</name>
+      <ncss>21</ncss>
+      <functions>5</functions>
+      <classes>0</classes>
+      <javadocs>2</javadocs>
+    </object>
+    <object>
+      <name>com.arievanderveek.soo.ast.expr.Subscript</name>
+      <ncss>16</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>1</javadocs>
+    </object>
+    <object>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.AbstractBinaryOperatorNode</name>
+      <ncss>7</ncss>
+      <functions>1</functions>
+      <classes>0</classes>
+      <javadocs>1</javadocs>
+    </object>
+    <object>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.AdditionOperatorNode</name>
+      <ncss>11</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.AndOperatorNode</name>
+      <ncss>14</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.DivisionOperatorNode</name>
+      <ncss>11</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.EqualOperatorNode</name>
+      <ncss>14</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.GreaterEqualThenOperatorNode</name>
+      <ncss>14</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.GreaterThenOperatorNode</name>
+      <ncss>14</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.ModulusOperatorNode</name>
+      <ncss>11</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.MultiplicationOperatorNode</name>
+      <ncss>11</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.NotEqualOperatorNode</name>
+      <ncss>14</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.OrOperatorNode</name>
+      <ncss>14</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.SmallerEqualThenOperatorNode</name>
+      <ncss>14</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.SmallerThenOperatorNode</name>
+      <ncss>14</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.SubtractionOperatorNode</name>
+      <ncss>11</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>com.arievanderveek.soo.ast.expr.unaryoperators.NegationOperatorNode</name>
+      <ncss>10</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>com.arievanderveek.soo.ast.expr.unaryoperators.NotOperatorNode</name>
+      <ncss>16</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>com.arievanderveek.soo.ast.expr.unaryoperators.UnaryOperatorNode</name>
+      <ncss>7</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>2</javadocs>
     </object>
     <object>
       <name>com.arievanderveek.soo.ast.statements.AssignmentNode</name>
@@ -315,102 +395,88 @@
       <javadocs>1</javadocs>
     </object>
     <object>
-      <name>com.arievanderveek.soo.ast.statements.CallByRefParameterNode</name>
-      <ncss>11</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>2</javadocs>
-    </object>
-    <object>
-      <name>com.arievanderveek.soo.ast.statements.CallByValParameterNode</name>
-      <ncss>7</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>2</javadocs>
-    </object>
-    <object>
       <name>com.arievanderveek.soo.ast.statements.IfStatementNode</name>
-      <ncss>49</ncss>
+      <ncss>48</ncss>
       <functions>5</functions>
       <classes>0</classes>
       <javadocs>3</javadocs>
     </object>
     <object>
       <name>com.arievanderveek.soo.ast.statements.ProcedureCallNode</name>
-      <ncss>28</ncss>
+      <ncss>26</ncss>
       <functions>4</functions>
       <classes>0</classes>
       <javadocs>3</javadocs>
+    </object>
+    <object>
+      <name>com.arievanderveek.soo.ast.statements.StatementNode</name>
+      <ncss>2</ncss>
+      <functions>1</functions>
+      <classes>0</classes>
+      <javadocs>2</javadocs>
     </object>
     <object>
       <name>com.arievanderveek.soo.ast.statements.WhileLoopNode</name>
-      <ncss>34</ncss>
+      <ncss>33</ncss>
       <functions>4</functions>
       <classes>0</classes>
       <javadocs>3</javadocs>
     </object>
     <object>
-      <name>com.arievanderveek.soo.ast.unaryoperators.NegationOperatorNode</name>
-      <ncss>10</ncss>
+      <name>com.arievanderveek.soo.ast.statements.WithDoNode</name>
+      <ncss>28</ncss>
       <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>2</javadocs>
-    </object>
-    <object>
-      <name>com.arievanderveek.soo.ast.unaryoperators.NotOperatorNode</name>
-      <ncss>16</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>2</javadocs>
-    </object>
-    <object>
-      <name>com.arievanderveek.soo.ast.unaryoperators.UnaryOperatorNode</name>
-      <ncss>7</ncss>
-      <functions>2</functions>
       <classes>0</classes>
       <javadocs>2</javadocs>
     </object>
     <object>
       <name>com.arievanderveek.soo.ast.variables.ArrayTypeNode</name>
-      <ncss>19</ncss>
-      <functions>5</functions>
+      <ncss>29</ncss>
+      <functions>7</functions>
       <classes>0</classes>
       <javadocs>4</javadocs>
     </object>
     <object>
-      <name>com.arievanderveek.soo.ast.variables.DeclarationNode</name>
-      <ncss>11</ncss>
+      <name>com.arievanderveek.soo.ast.variables.ConstantNode</name>
+      <ncss>13</ncss>
       <functions>4</functions>
       <classes>0</classes>
       <javadocs>3</javadocs>
     </object>
     <object>
       <name>com.arievanderveek.soo.ast.variables.FieldNode</name>
-      <ncss>18</ncss>
-      <functions>5</functions>
+      <ncss>16</ncss>
+      <functions>4</functions>
       <classes>0</classes>
       <javadocs>4</javadocs>
     </object>
     <object>
-      <name>com.arievanderveek.soo.ast.variables.IdentifierNode</name>
-      <ncss>25</ncss>
-      <functions>6</functions>
+      <name>com.arievanderveek.soo.ast.variables.FormalParameterNode</name>
+      <ncss>11</ncss>
+      <functions>4</functions>
       <classes>0</classes>
-      <javadocs>3</javadocs>
+      <javadocs>1</javadocs>
     </object>
     <object>
-      <name>com.arievanderveek.soo.ast.variables.IntegerTypeNode</name>
-      <ncss>11</ncss>
-      <functions>3</functions>
+      <name>com.arievanderveek.soo.ast.variables.IdentifierTypeNode</name>
+      <ncss>24</ncss>
+      <functions>7</functions>
       <classes>0</classes>
       <javadocs>1</javadocs>
     </object>
     <object>
       <name>com.arievanderveek.soo.ast.variables.RecordTypeNode</name>
-      <ncss>8</ncss>
-      <functions>3</functions>
+      <ncss>24</ncss>
+      <functions>5</functions>
       <classes>0</classes>
       <javadocs>2</javadocs>
+    </object>
+    <object>
+      <name>com.arievanderveek.soo.ast.variables.TypeNode</name>
+      <ncss>3</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>3</javadocs>
     </object>
     <object>
       <name>com.arievanderveek.soo.parser.AntlrParserImpl</name>
@@ -424,19 +490,19 @@
       <ncss>2</ncss>
       <functions>1</functions>
       <classes>0</classes>
-      <javadocs>1</javadocs>
+      <javadocs>2</javadocs>
     </object>
     <object>
       <name>com.arievanderveek.soo.runtime.ArraySymbol</name>
-      <ncss>28</ncss>
-      <functions>8</functions>
+      <ncss>40</ncss>
+      <functions>11</functions>
       <classes>0</classes>
       <javadocs>1</javadocs>
     </object>
     <object>
       <name>com.arievanderveek.soo.runtime.IntegerSymbol</name>
-      <ncss>26</ncss>
-      <functions>7</functions>
+      <ncss>36</ncss>
+      <functions>10</functions>
       <classes>0</classes>
       <javadocs>3</javadocs>
     </object>
@@ -449,38 +515,31 @@
     </object>
     <object>
       <name>com.arievanderveek.soo.runtime.MemoryMap</name>
-      <ncss>54</ncss>
-      <functions>9</functions>
+      <ncss>56</ncss>
+      <functions>10</functions>
+      <classes>0</classes>
+      <javadocs>1</javadocs>
+    </object>
+    <object>
+      <name>com.arievanderveek.soo.runtime.RecordSymbol</name>
+      <ncss>38</ncss>
+      <functions>11</functions>
       <classes>0</classes>
       <javadocs>1</javadocs>
     </object>
     <object>
       <name>com.arievanderveek.soo.runtime.Scope</name>
-      <ncss>231</ncss>
-      <functions>21</functions>
+      <ncss>155</ncss>
+      <functions>20</functions>
       <classes>0</classes>
-      <javadocs>9</javadocs>
+      <javadocs>20</javadocs>
     </object>
     <object>
       <name>com.arievanderveek.soo.runtime.Symbol</name>
-      <ncss>16</ncss>
-      <functions>5</functions>
-      <classes>0</classes>
-      <javadocs>1</javadocs>
-    </object>
-    <object>
-      <name>com.arievanderveek.soo.runtime.SymbolTable</name>
-      <ncss>24</ncss>
-      <functions>3</functions>
+      <ncss>17</ncss>
+      <functions>7</functions>
       <classes>0</classes>
       <javadocs>3</javadocs>
-    </object>
-    <object>
-      <name>com.arievanderveek.soo.runtime.SymbolTypesEnum</name>
-      <ncss>1</ncss>
-      <functions>0</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
     </object>
     <object>
       <name>com.arievanderveek.soo.util.ConfigurationFactory</name>
@@ -511,12 +570,12 @@
       <javadocs>1</javadocs>
     </object>
     <averages>
-      <ncss>21.28</ncss>
-      <functions>3.72</functions>
+      <ncss>19.61</ncss>
+      <functions>4.00</functions>
       <classes>0.00</classes>
-      <javadocs>2.44</javadocs>
+      <javadocs>2.00</javadocs>
     </averages>
-    <ncss>1,412.00</ncss>
+    <ncss>1,510.00</ncss>
   </objects>
 
   <functions>
@@ -534,9 +593,9 @@
     </function>
     <function>
       <name>com.arievanderveek.soo.SeaOfOberonController.executeSourceCode()</name>
-      <ncss>13</ncss>
-      <ccn>8</ccn>
-      <javadocs>0</javadocs>
+      <ncss>6</ncss>
+      <ccn>2</ccn>
+      <javadocs>1</javadocs>
     </function>
     <function>
       <name>com.arievanderveek.soo.SeaOfOberonException.SeaOfOberonException(String,Throwable)</name>
@@ -551,266 +610,32 @@
       <javadocs>1</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.ASTNode.interpret(Scope)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
       <name>com.arievanderveek.soo.ast.ASTNode.toTreeString(String)</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.AbstractBinaryOperatorNode.AbstractBinaryOperatorNode(ASTNode,ASTNode)</name>
-      <ncss>5</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.AdditionOperatorNode.AdditionOperatorNode(ASTNode,ASTNode)</name>
-      <ncss>2</ncss>
+      <name>com.arievanderveek.soo.ast.Interpretable.interpret(Scope)</name>
+      <ncss>1</ncss>
       <ccn>1</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.AdditionOperatorNode.toTreeString(String)</name>
-      <ncss>6</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.AdditionOperatorNode.interpret(Scope)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.AndOperatorNode.AndOperatorNode(ASTNode,ASTNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.AndOperatorNode.toTreeString(String)</name>
-      <ncss>6</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.AndOperatorNode.interpret(Scope)</name>
-      <ncss>5</ncss>
-      <ccn>4</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.DivisionOperatorNode.DivisionOperatorNode(ASTNode,ASTNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.DivisionOperatorNode.toTreeString(String)</name>
-      <ncss>6</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.DivisionOperatorNode.interpret(Scope)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.EqualOperatorNode.EqualOperatorNode(ASTNode,ASTNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.EqualOperatorNode.toTreeString(String)</name>
-      <ncss>6</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.EqualOperatorNode.interpret(Scope)</name>
-      <ncss>5</ncss>
-      <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.GreaterEqualThenOperatorNode.GreaterEqualThenOperatorNode(ASTNode,ASTNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.GreaterEqualThenOperatorNode.toTreeString(String)</name>
-      <ncss>6</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.GreaterEqualThenOperatorNode.interpret(Scope)</name>
-      <ncss>5</ncss>
-      <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.GreaterThenOperatorNode.GreaterThenOperatorNode(ASTNode,ASTNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.GreaterThenOperatorNode.toTreeString(String)</name>
-      <ncss>6</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.GreaterThenOperatorNode.interpret(Scope)</name>
-      <ncss>5</ncss>
-      <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.ModulusOperatorNode.ModulusOperatorNode(ASTNode,ASTNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.ModulusOperatorNode.toTreeString(String)</name>
-      <ncss>6</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.ModulusOperatorNode.interpret(Scope)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.MultiplicationOperatorNode.MultiplicationOperatorNode(ASTNode,ASTNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.MultiplicationOperatorNode.toTreeString(String)</name>
-      <ncss>6</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.MultiplicationOperatorNode.interpret(Scope)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.NotEqualOperatorNode.NotEqualOperatorNode(ASTNode,ASTNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.NotEqualOperatorNode.toTreeString(String)</name>
-      <ncss>6</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.NotEqualOperatorNode.interpret(Scope)</name>
-      <ncss>5</ncss>
-      <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.OrOperatorNode.OrOperatorNode(ASTNode,ASTNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.OrOperatorNode.toTreeString(String)</name>
-      <ncss>6</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.OrOperatorNode.interpret(Scope)</name>
-      <ncss>5</ncss>
-      <ccn>4</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.SmallerEqualThenOperatorNode.SmallerEqualThenOperatorNode(ASTNode,ASTNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.SmallerEqualThenOperatorNode.toTreeString(String)</name>
-      <ncss>6</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.SmallerEqualThenOperatorNode.interpret(Scope)</name>
-      <ncss>5</ncss>
-      <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.SmallerThenOperatorNode.SmallerThenOperatorNode(ASTNode,ASTNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.SmallerThenOperatorNode.toTreeString(String)</name>
-      <ncss>6</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.SmallerThenOperatorNode.interpret(Scope)</name>
-      <ncss>5</ncss>
-      <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.SubtractionOperatorNode.SubtractionOperatorNode(ASTNode,ASTNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.SubtractionOperatorNode.toTreeString(String)</name>
-      <ncss>6</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.binaryoperators.SubtractionOperatorNode.interpret(Scope)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.codeblocks.CodeBlockNode.CodeBlockNode(String,String,ASTNode,ASTNode,ASTNode,ASTNode,ASTNode)</name>
+      <name>com.arievanderveek.soo.ast.codeblocks.CodeBlockNode.CodeBlockNode(String,String,ConstantNode,FieldNode,FieldNode,ProcedureNode,StatementNode)</name>
       <ncss>15</ncss>
       <ccn>3</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
+      <name>com.arievanderveek.soo.ast.codeblocks.CodeBlockNode.interpret(Scope)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
       <name>com.arievanderveek.soo.ast.codeblocks.CodeBlockNode.toTreeString(String)</name>
-      <ncss>48</ncss>
+      <ncss>41</ncss>
       <ccn>6</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -818,47 +643,47 @@
       <name>com.arievanderveek.soo.ast.codeblocks.CodeBlockNode.getCodeBlockName()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
-      <javadocs>1</javadocs>
+      <javadocs>0</javadocs>
     </function>
     <function>
       <name>com.arievanderveek.soo.ast.codeblocks.CodeBlockNode.getConstants()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
-      <javadocs>1</javadocs>
+      <javadocs>0</javadocs>
     </function>
     <function>
       <name>com.arievanderveek.soo.ast.codeblocks.CodeBlockNode.getTypes()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
-      <javadocs>1</javadocs>
+      <javadocs>0</javadocs>
     </function>
     <function>
       <name>com.arievanderveek.soo.ast.codeblocks.CodeBlockNode.getVariables()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
-      <javadocs>1</javadocs>
+      <javadocs>0</javadocs>
     </function>
     <function>
       <name>com.arievanderveek.soo.ast.codeblocks.CodeBlockNode.getProcedures()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
-      <javadocs>1</javadocs>
+      <javadocs>0</javadocs>
     </function>
     <function>
       <name>com.arievanderveek.soo.ast.codeblocks.CodeBlockNode.getStatementSequence()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
-      <javadocs>1</javadocs>
+      <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.codeblocks.ModuleNode.ModuleNode(String,String,ASTNode,ASTNode,ASTNode,ASTNode,ASTNode)</name>
-      <ncss>8</ncss>
+      <name>com.arievanderveek.soo.ast.codeblocks.ModuleNode.ModuleNode(String,String,ConstantNode,FieldNode,FieldNode,ProcedureNode,StatementNode)</name>
+      <ncss>5</ncss>
       <ccn>1</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
       <name>com.arievanderveek.soo.ast.codeblocks.ModuleNode.interpret(Scope)</name>
-      <ncss>5</ncss>
+      <ncss>4</ncss>
       <ccn>2</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -869,20 +694,20 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.codeblocks.ProcedureNode.ProcedureNode(String,String,ASTNode,ASTNode,ASTNode,ASTNode,ASTNode)</name>
+      <name>com.arievanderveek.soo.ast.codeblocks.ProcedureNode.ProcedureNode(String,String,ConstantNode,FieldNode,FieldNode,ProcedureNode,StatementNode)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.codeblocks.ProcedureNode.ProcedureNode(String,String,ASTNode,ASTNode,ASTNode,ASTNode,ASTNode,ASTNode)</name>
+      <name>com.arievanderveek.soo.ast.codeblocks.ProcedureNode.ProcedureNode(String,String,FormalParameterNode,ConstantNode,FieldNode,FieldNode,ProcedureNode,StatementNode)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
       <name>com.arievanderveek.soo.ast.codeblocks.ProcedureNode.interpret(Scope)</name>
-      <ncss>4</ncss>
+      <ncss>3</ncss>
       <ccn>2</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -899,10 +724,10 @@
       <javadocs>1</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.codeblocks.ProcedureNode.isAmountOfParametersEqual(ASTNode)</name>
-      <ncss>9</ncss>
-      <ccn>4</ccn>
-      <javadocs>0</javadocs>
+      <name>com.arievanderveek.soo.ast.codeblocks.ProcedureNode.isAmountOfParametersEqual(ExpressionNode)</name>
+      <ncss>5</ncss>
+      <ccn>3</ccn>
+      <javadocs>1</javadocs>
     </function>
     <function>
       <name>com.arievanderveek.soo.ast.codeblocks.ReadLineCallNode.ReadLineCallNode()</name>
@@ -912,13 +737,13 @@
     </function>
     <function>
       <name>com.arievanderveek.soo.ast.codeblocks.ReadLineCallNode.interpret(Scope)</name>
-      <ncss>10</ncss>
-      <ccn>4</ccn>
+      <ncss>9</ncss>
+      <ccn>3</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
       <name>com.arievanderveek.soo.ast.codeblocks.ReadLineCallNode.buildParameters()</name>
-      <ncss>6</ncss>
+      <ncss>5</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -930,13 +755,13 @@
     </function>
     <function>
       <name>com.arievanderveek.soo.ast.codeblocks.WriteCallNode.interpret(Scope)</name>
-      <ncss>6</ncss>
+      <ncss>5</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
       <name>com.arievanderveek.soo.ast.codeblocks.WriteCallNode.buildParameters()</name>
-      <ncss>6</ncss>
+      <ncss>5</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -948,37 +773,451 @@
     </function>
     <function>
       <name>com.arievanderveek.soo.ast.codeblocks.WriteLnCallNode.interpret(Scope)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.IdentifierNode.IdentifierNode(String)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.IdentifierNode.IdentifierNode(String,Selectors)</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.IdentifierNode.interpret(Scope)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.IdentifierNode.toTreeString(String)</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.IdentifierNode.getName()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.IdentifierNode.getSelectors()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.IdentifierNode.hasSelectors()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.IntegerExpressionNode.IntegerExpressionNode(Integer)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.IntegerExpressionNode.interpret(Scope)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.IntegerExpressionNode.toTreeString(String)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.Member.Member(String)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.Member.toTreeString(String)</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.Member.select(Symbol,Scope)</name>
+      <ncss>5</ncss>
+      <ccn>4</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.Member.getName()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.Selector.select(Symbol,Scope)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.Selector.toTreeString(String)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.Selectors.Selectors(Selector)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.Selectors.Selectors()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.Selectors.toTreeString(String)</name>
+      <ncss>5</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.Selectors.getSelectors()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.Selectors.resolveSelectors(Symbol,Scope)</name>
+      <ncss>8</ncss>
+      <ccn>2</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.Subscript.Subscript(ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.Subscript.toTreeString(String)</name>
+      <ncss>6</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.Subscript.select(Symbol,Scope)</name>
+      <ncss>6</ncss>
+      <ccn>4</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.AbstractBinaryOperatorNode.AbstractBinaryOperatorNode(ExpressionNode,ExpressionNode)</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.AdditionOperatorNode.AdditionOperatorNode(ExpressionNode,ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.AdditionOperatorNode.toTreeString(String)</name>
+      <ncss>6</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.AdditionOperatorNode.interpret(Scope)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.AndOperatorNode.AndOperatorNode(ExpressionNode,ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.AndOperatorNode.toTreeString(String)</name>
+      <ncss>6</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.AndOperatorNode.interpret(Scope)</name>
+      <ncss>5</ncss>
+      <ccn>4</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.DivisionOperatorNode.DivisionOperatorNode(ExpressionNode,ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.DivisionOperatorNode.toTreeString(String)</name>
+      <ncss>6</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.DivisionOperatorNode.interpret(Scope)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.EqualOperatorNode.EqualOperatorNode(ExpressionNode,ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.EqualOperatorNode.toTreeString(String)</name>
+      <ncss>6</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.EqualOperatorNode.interpret(Scope)</name>
+      <ncss>5</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.GreaterEqualThenOperatorNode.GreaterEqualThenOperatorNode(ExpressionNode,ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.GreaterEqualThenOperatorNode.toTreeString(String)</name>
+      <ncss>6</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.GreaterEqualThenOperatorNode.interpret(Scope)</name>
+      <ncss>5</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.GreaterThenOperatorNode.GreaterThenOperatorNode(ExpressionNode,ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.GreaterThenOperatorNode.toTreeString(String)</name>
+      <ncss>6</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.GreaterThenOperatorNode.interpret(Scope)</name>
+      <ncss>5</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.ModulusOperatorNode.ModulusOperatorNode(ExpressionNode,ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.ModulusOperatorNode.toTreeString(String)</name>
+      <ncss>6</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.ModulusOperatorNode.interpret(Scope)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.MultiplicationOperatorNode.MultiplicationOperatorNode(ExpressionNode,ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.MultiplicationOperatorNode.toTreeString(String)</name>
+      <ncss>6</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.MultiplicationOperatorNode.interpret(Scope)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.NotEqualOperatorNode.NotEqualOperatorNode(ExpressionNode,ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.NotEqualOperatorNode.toTreeString(String)</name>
+      <ncss>6</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.NotEqualOperatorNode.interpret(Scope)</name>
+      <ncss>5</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.OrOperatorNode.OrOperatorNode(ExpressionNode,ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.OrOperatorNode.toTreeString(String)</name>
+      <ncss>6</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.OrOperatorNode.interpret(Scope)</name>
+      <ncss>5</ncss>
+      <ccn>4</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.SmallerEqualThenOperatorNode.SmallerEqualThenOperatorNode(ExpressionNode,ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.SmallerEqualThenOperatorNode.toTreeString(String)</name>
+      <ncss>6</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.SmallerEqualThenOperatorNode.interpret(Scope)</name>
+      <ncss>5</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.SmallerThenOperatorNode.SmallerThenOperatorNode(ExpressionNode,ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.SmallerThenOperatorNode.toTreeString(String)</name>
+      <ncss>6</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.SmallerThenOperatorNode.interpret(Scope)</name>
+      <ncss>5</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.SubtractionOperatorNode.SubtractionOperatorNode(ExpressionNode,ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.SubtractionOperatorNode.toTreeString(String)</name>
+      <ncss>6</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.binaryoperators.SubtractionOperatorNode.interpret(Scope)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.unaryoperators.NegationOperatorNode.NegationOperatorNode(ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.unaryoperators.NegationOperatorNode.toTreeString(String)</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.unaryoperators.NegationOperatorNode.interpret(Scope)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.unaryoperators.NotOperatorNode.NotOperatorNode(ExpressionNode)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.unaryoperators.NotOperatorNode.interpret(Scope)</name>
+      <ncss>8</ncss>
+      <ccn>6</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.unaryoperators.NotOperatorNode.toTreeString(String)</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.expr.unaryoperators.UnaryOperatorNode.UnaryOperatorNode(ExpressionNode)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.statements.AbstractParameterNode.AbstractParameterNode(ASTNode)</name>
+      <name>com.arievanderveek.soo.ast.expr.unaryoperators.UnaryOperatorNode.getNode()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.statements.AbstractParameterNode.toTreeString(String)</name>
-      <ncss>9</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.statements.AbstractParameterNode.getFormalParameter()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.statements.AssignmentNode.AssignmentNode(ASTNode,ASTNode)</name>
+      <name>com.arievanderveek.soo.ast.statements.AssignmentNode.AssignmentNode(IdentifierNode,ExpressionNode)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
       <name>com.arievanderveek.soo.ast.statements.AssignmentNode.interpret(Scope)</name>
-      <ncss>4</ncss>
+      <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -989,62 +1228,26 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.statements.CallByRefParameterNode.CallByRefParameterNode(ASTNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.statements.CallByRefParameterNode.interpret(Scope)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.statements.CallByRefParameterNode.toTreeString(String)</name>
-      <ncss>6</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.statements.CallByValParameterNode.CallByValParameterNode(ASTNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.statements.CallByValParameterNode.interpret(Scope)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.statements.CallByValParameterNode.toTreeString(String)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.statements.IfStatementNode.IfStatementNode(ASTNode,ASTNode)</name>
+      <name>com.arievanderveek.soo.ast.statements.IfStatementNode.IfStatementNode(ExpressionNode,StatementNode)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.statements.IfStatementNode.insertNode(ASTNode,ASTNode)</name>
+      <name>com.arievanderveek.soo.ast.statements.IfStatementNode.insertNode(ExpressionNode,StatementNode)</name>
       <ncss>8</ncss>
       <ccn>4</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.statements.IfStatementNode.addFinalElseStatementNode(ASTNode)</name>
+      <name>com.arievanderveek.soo.ast.statements.IfStatementNode.addFinalElseStatementNode(StatementNode)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
       <name>com.arievanderveek.soo.ast.statements.IfStatementNode.interpret(Scope)</name>
-      <ncss>13</ncss>
+      <ncss>12</ncss>
       <ccn>6</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -1055,20 +1258,20 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.statements.ProcedureCallNode.ProcedureCallNode(ASTNode)</name>
+      <name>com.arievanderveek.soo.ast.statements.ProcedureCallNode.ProcedureCallNode(IdentifierNode)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.statements.ProcedureCallNode.ProcedureCallNode(ASTNode,ASTNode)</name>
+      <name>com.arievanderveek.soo.ast.statements.ProcedureCallNode.ProcedureCallNode(IdentifierNode,ExpressionNode)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
       <name>com.arievanderveek.soo.ast.statements.ProcedureCallNode.interpret(Scope)</name>
-      <ncss>9</ncss>
+      <ncss>7</ncss>
       <ccn>3</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -1079,14 +1282,20 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.statements.WhileLoopNode.WhileLoopNode(ASTNode,ASTNode)</name>
+      <name>com.arievanderveek.soo.ast.statements.StatementNode.interpret(Scope)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.statements.WhileLoopNode.WhileLoopNode(ExpressionNode,StatementNode)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
       <name>com.arievanderveek.soo.ast.statements.WhileLoopNode.interpret(Scope)</name>
-      <ncss>5</ncss>
+      <ncss>4</ncss>
       <ccn>3</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -1103,69 +1312,45 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.unaryoperators.NegationOperatorNode.NegationOperatorNode(ASTNode)</name>
-      <ncss>2</ncss>
+      <name>com.arievanderveek.soo.ast.statements.WithDoNode.WithDoNode(IdentifierNode,StatementNode)</name>
+      <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.unaryoperators.NegationOperatorNode.toTreeString(String)</name>
-      <ncss>5</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.unaryoperators.NegationOperatorNode.interpret(Scope)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.unaryoperators.NotOperatorNode.NotOperatorNode(ASTNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.unaryoperators.NotOperatorNode.interpret(Scope)</name>
+      <name>com.arievanderveek.soo.ast.statements.WithDoNode.interpret(Scope)</name>
       <ncss>8</ncss>
-      <ccn>6</ccn>
+      <ccn>4</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.unaryoperators.NotOperatorNode.toTreeString(String)</name>
-      <ncss>5</ncss>
-      <ccn>1</ccn>
+      <name>com.arievanderveek.soo.ast.statements.WithDoNode.toTreeString(String)</name>
+      <ncss>14</ncss>
+      <ccn>2</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.unaryoperators.UnaryOperatorNode.UnaryOperatorNode(ASTNode)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.unaryoperators.UnaryOperatorNode.getNode()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.variables.ArrayTypeNode.ArrayTypeNode(ASTNode,ASTNode)</name>
+      <name>com.arievanderveek.soo.ast.variables.ArrayTypeNode.ArrayTypeNode(ExpressionNode,TypeNode)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.variables.ArrayTypeNode.interpret(Scope)</name>
+      <name>com.arievanderveek.soo.ast.variables.ArrayTypeNode.registerVariable(String,Scope)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.variables.ArrayTypeNode.createSymbolFromType(Scope)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.variables.ArrayTypeNode.toTreeString(String)</name>
+      <name>com.arievanderveek.soo.ast.variables.ArrayTypeNode.generateArraySymbol(Scope)</name>
       <ncss>7</ncss>
-      <ccn>1</ccn>
+      <ccn>2</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -1181,31 +1366,37 @@
       <javadocs>1</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.variables.DeclarationNode.DeclarationNode(ASTNode)</name>
-      <ncss>3</ncss>
+      <name>com.arievanderveek.soo.ast.variables.ArrayTypeNode.toTreeString(String)</name>
+      <ncss>7</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.variables.ConstantNode.ConstantNode(String,ExpressionNode)</name>
+      <ncss>4</ncss>
       <ccn>1</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.variables.DeclarationNode.toTreeString(String)</name>
+      <name>com.arievanderveek.soo.ast.variables.ConstantNode.toTreeString(String)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.variables.DeclarationNode.interpret(Scope)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.variables.DeclarationNode.getExpression()</name>
+      <name>com.arievanderveek.soo.ast.variables.ConstantNode.getExpression()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.variables.FieldNode.FieldNode(String,ASTNode)</name>
+      <name>com.arievanderveek.soo.ast.variables.ConstantNode.getName()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.variables.FieldNode.FieldNode(String,TypeNode)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>1</javadocs>
@@ -1223,88 +1414,118 @@
       <javadocs>1</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.variables.FieldNode.interpret(Scope)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
       <name>com.arievanderveek.soo.ast.variables.FieldNode.toTreeString(String)</name>
       <ncss>6</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.variables.IdentifierNode.IdentifierNode(String)</name>
-      <ncss>4</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.variables.IdentifierNode.IdentifierNode(String,ASTNode)</name>
-      <ncss>5</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.variables.IdentifierNode.interpret(Scope)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.variables.IdentifierNode.toTreeString(String)</name>
-      <ncss>7</ncss>
-      <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.variables.IdentifierNode.getName()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.variables.IdentifierNode.getSelectors()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.ast.variables.IntegerTypeNode.IntegerTypeNode(Integer)</name>
+      <name>com.arievanderveek.soo.ast.variables.FormalParameterNode.FormalParameterNode(String,TypeNode,boolean)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.variables.IntegerTypeNode.interpret(Scope)</name>
+      <name>com.arievanderveek.soo.ast.variables.FormalParameterNode.isCallByReference()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.variables.IntegerTypeNode.toTreeString(String)</name>
-      <ncss>4</ncss>
+      <name>com.arievanderveek.soo.ast.variables.FormalParameterNode.getName()</name>
+      <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.variables.RecordTypeNode.RecordTypeNode(ASTNode)</name>
+      <name>com.arievanderveek.soo.ast.variables.FormalParameterNode.getType()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.variables.IdentifierTypeNode.IdentifierTypeNode(String)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.variables.IdentifierTypeNode.toTreeString(String)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.variables.IdentifierTypeNode.getName()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.variables.IdentifierTypeNode.registerIdentifierType(Scope,IdentifierTypeNode)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.variables.IdentifierTypeNode.registerVariable(String,Scope)</name>
+      <ncss>7</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.variables.IdentifierTypeNode.createSymbolFromType(Scope)</name>
+      <ncss>5</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.variables.IdentifierTypeNode.generateIntegerSymbol(Scope,Integer,boolean)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.variables.RecordTypeNode.RecordTypeNode(FieldNode)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.variables.RecordTypeNode.interpret(Scope)</name>
+      <name>com.arievanderveek.soo.ast.variables.RecordTypeNode.toTreeString(String)</name>
+      <ncss>9</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.variables.RecordTypeNode.registerVariable(String,Scope)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.variables.RecordTypeNode.createSymbolFromType(Scope)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.variables.RecordTypeNode.toTreeString(String)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
+      <name>com.arievanderveek.soo.ast.variables.RecordTypeNode.generateRecordSymbol(Scope)</name>
+      <ncss>6</ncss>
+      <ccn>2</ccn>
       <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.variables.TypeNode.registerVariable(String,Scope)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.ast.variables.TypeNode.createSymbolFromType(Scope)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
     </function>
     <function>
       <name>com.arievanderveek.soo.parser.AntlrParserImpl.parseFile(String)</name>
@@ -1316,28 +1537,34 @@
       <name>com.arievanderveek.soo.parser.Parser.parseFile(String)</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.runtime.ArraySymbol.ArraySymbol(boolean,MemoryAddress[])</name>
+      <name>com.arievanderveek.soo.runtime.ArraySymbol.ArraySymbol(boolean,Symbol[])</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.runtime.ArraySymbol.addOrUpdateAddress(Integer,MemoryAddress)</name>
+      <name>com.arievanderveek.soo.runtime.ArraySymbol.ArraySymbol(ArraySymbol)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.ArraySymbol.addOrUpdateAddress(Integer,Symbol)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.runtime.ArraySymbol.getAddress(Integer)</name>
+      <name>com.arievanderveek.soo.runtime.ArraySymbol.getSymbol(Integer)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.runtime.ArraySymbol.getAddressList()</name>
+      <name>com.arievanderveek.soo.runtime.ArraySymbol.getSymbolList()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -1362,8 +1589,20 @@
     </function>
     <function>
       <name>com.arievanderveek.soo.runtime.ArraySymbol.toString()</name>
-      <ncss>11</ncss>
+      <ncss>15</ncss>
       <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.ArraySymbol.regenerateMemoryAddress(Scope,MemoryMap)</name>
+      <ncss>3</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.ArraySymbol.clone()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -1371,6 +1610,12 @@
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.IntegerSymbol.IntegerSymbol(IntegerSymbol)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
     </function>
     <function>
       <name>com.arievanderveek.soo.runtime.IntegerSymbol.getMemoryAdress()</name>
@@ -1404,7 +1649,19 @@
     </function>
     <function>
       <name>com.arievanderveek.soo.runtime.IntegerSymbol.toString()</name>
-      <ncss>11</ncss>
+      <ncss>12</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.IntegerSymbol.regenerateMemoryAddress(Scope,MemoryMap)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.IntegerSymbol.clone()</name>
+      <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -1428,6 +1685,12 @@
     </function>
     <function>
       <name>com.arievanderveek.soo.runtime.MemoryMap.getValue(MemoryAddress)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.MemoryMap.hasAdress(MemoryAddress)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -1481,123 +1744,183 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.runtime.Scope.Scope(ASTNode,ASTNode,ASTNode,ASTNode)</name>
-      <ncss>10</ncss>
+      <name>com.arievanderveek.soo.runtime.RecordSymbol.RecordSymbol(boolean,Symbol)</name>
+      <ncss>3</ncss>
       <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.runtime.Scope.Scope(Scope,ProcedureNode,ASTNode)</name>
-      <ncss>10</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.runtime.Scope.getProcedure(String)</name>
-      <ncss>8</ncss>
-      <ccn>6</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.runtime.Scope.getValue(IdentifierNode)</name>
+      <name>com.arievanderveek.soo.runtime.RecordSymbol.RecordSymbol(RecordSymbol)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.RecordSymbol.addOrUpdateAddress(String,Symbol)</name>
       <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.RecordSymbol.getMember(String)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.RecordSymbol.getMembers()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.RecordSymbol.isMutable()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.RecordSymbol.isReferencedSymbol()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.RecordSymbol.setReferencedSymbol(boolean)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.RecordSymbol.toString()</name>
+      <ncss>13</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.RecordSymbol.regenerateMemoryAddress(Scope,MemoryMap)</name>
+      <ncss>3</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.RecordSymbol.clone()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.Scope.Scope(ConstantNode,FieldNode,FieldNode,ProcedureNode)</name>
+      <ncss>13</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.Scope.Scope(Scope,ProcedureNode,ExpressionNode)</name>
+      <ncss>14</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.Scope.Scope(Scope,RecordSymbol)</name>
+      <ncss>8</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.Scope.lookupProcedure(String)</name>
+      <ncss>8</ncss>
+      <ccn>6</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.Scope.lookupType(String)</name>
+      <ncss>8</ncss>
+      <ccn>6</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.Scope.lookupSymbol(String)</name>
+      <ncss>8</ncss>
+      <ccn>6</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.Scope.lookupMemoryManagerForAdress(MemoryAddress)</name>
+      <ncss>6</ncss>
+      <ccn>6</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.Scope.createMemoryAdress(Integer)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.Scope.getValue(IdentifierNode)</name>
+      <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
       <name>com.arievanderveek.soo.runtime.Scope.updateValue(IdentifierNode,Integer)</name>
-      <ncss>2</ncss>
+      <ncss>3</ncss>
       <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.runtime.Scope.lookupSymbol(String)</name>
-      <ncss>8</ncss>
-      <ccn>5</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.runtime.Scope.copySymbol(String)</name>
-      <ncss>11</ncss>
-      <ccn>7</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.runtime.Scope.copyIntegerSymbol(IntegerSymbol)</name>
-      <ncss>4</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.runtime.Scope.copyArraySymbol(ArraySymbol)</name>
-      <ncss>6</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.runtime.Scope.getAddressForSymbol(IdentifierNode)</name>
-      <ncss>38</ncss>
-      <ccn>19</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.runtime.Scope.popScope()</name>
-      <ncss>14</ncss>
-      <ccn>7</ccn>
-      <javadocs>0</javadocs>
+      <name>com.arievanderveek.soo.runtime.Scope.addSymbolToTable(String,Symbol)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.Scope.getAddressForSymbol(IdentifierNode)</name>
+      <ncss>11</ncss>
+      <ccn>6</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.Scope.processProcedureParameters(ProcedureNode,ExpressionNode)</name>
+      <ncss>6</ncss>
+      <ccn>2</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.Scope.registerParameter(FieldNode,ExpressionNode,boolean)</name>
+      <ncss>17</ncss>
+      <ccn>3</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.Scope.registerProcedures(ProcedureNode)</name>
+      <ncss>3</ncss>
+      <ccn>2</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.Scope.registerTypes(FieldNode)</name>
+      <ncss>3</ncss>
+      <ccn>2</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.Scope.registerConstants(ConstantNode)</name>
+      <ncss>6</ncss>
+      <ccn>2</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>com.arievanderveek.soo.runtime.Scope.registerVariables(FieldNode)</name>
+      <ncss>3</ncss>
+      <ccn>2</ccn>
+      <javadocs>1</javadocs>
     </function>
     <function>
       <name>com.arievanderveek.soo.runtime.Scope.isRootScope()</name>
       <ncss>5</ncss>
       <ccn>3</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.runtime.Scope.getMemoryMap()</name>
-      <ncss>5</ncss>
-      <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.runtime.Scope.processDelcarations(ASTNode,ASTNode,ASTNode,ASTNode)</name>
-      <ncss>5</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.runtime.Scope.registerTypes(ASTNode)</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.runtime.Scope.registerProcedures(ASTNode)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>1</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.runtime.Scope.registerDeclarations(ASTNode,ASTNode,boolean)</name>
-      <ncss>20</ncss>
-      <ccn>6</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.runtime.Scope.addIntegerSymbol(String,Integer,boolean)</name>
-      <ncss>4</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.runtime.Scope.addArraySymbol(String,ArrayTypeNode)</name>
-      <ncss>8</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.runtime.Scope.processProcedureParameters(ProcedureNode,ASTNode)</name>
-      <ncss>43</ncss>
-      <ccn>14</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
@@ -1607,14 +1930,14 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.runtime.Symbol.Symbol(SymbolTypesEnum,boolean)</name>
-      <ncss>4</ncss>
+      <name>com.arievanderveek.soo.runtime.Symbol.Symbol(boolean)</name>
+      <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.runtime.Symbol.getType()</name>
-      <ncss>2</ncss>
+      <name>com.arievanderveek.soo.runtime.Symbol.Symbol(Symbol)</name>
+      <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -1637,21 +1960,15 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.runtime.SymbolTable.SymbolTable()</name>
-      <ncss>2</ncss>
+      <name>com.arievanderveek.soo.runtime.Symbol.regenerateMemoryAddress(Scope,MemoryMap)</name>
+      <ncss>1</ncss>
       <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>com.arievanderveek.soo.runtime.SymbolTable.getSymbol(String)</name>
-      <ncss>5</ncss>
-      <ccn>3</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.runtime.SymbolTable.generateNonRefAddressList(Scope)</name>
-      <ncss>15</ncss>
-      <ccn>6</ccn>
+      <name>com.arievanderveek.soo.runtime.Symbol.clone()</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
       <javadocs>1</javadocs>
     </function>
     <function>
@@ -1727,10 +2044,10 @@
       <javadocs>1</javadocs>
     </function>
     <function_averages>
-      <ncss>5.15</ncss>
-      <ccn>1.82</ccn>
-      <javadocs>0.39</javadocs>
+      <ncss>4.38</ncss>
+      <ccn>1.57</ccn>
+      <javadocs>0.31</javadocs>
     </function_averages>
-    <ncss>1,412.00</ncss>
+    <ncss>1,510.00</ncss>
   </functions>
 </javancss>

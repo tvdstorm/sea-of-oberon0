@@ -1,5 +1,5 @@
 Testsuite: com.arievanderveek.soo.test.util.ConfigurationTest
-Tests run: 3, Failures: 0, Errors: 0, Time elapsed: 0,03 sec
+Tests run: 3, Failures: 0, Errors: 0, Time elapsed: 0,032 sec
 ------------- Standard Output ---------------
 usage: Unrecognized option: -pigscanfly
  -parser <parser>           (Optional) The parser implementation fully
@@ -11,6 +11,6 @@ usage: Unrecognized option: -pigscanfly
 
 ------------- ---------------- ---------------
 
-Testcase: testCreateConfigurationAllArguments took 0,012 sec
-Testcase: testCreateConfigurationRequiredArguments took 0 sec
+Testcase: testCreateConfigurationAllArguments took 0,013 sec
+Testcase: testCreateConfigurationRequiredArguments took 0,001 sec
 Testcase: testCreateConfigurationFaultyArguments took 0,003 sec

@@ -14,7 +14,7 @@ import com.arievanderveek.soo.ast.expr.IdentifierNode;
 import com.arievanderveek.soo.runtime.Scope;
 
 /**
- * Represents a procedure call
+ * Represents a procedure call, example: calculateSum(a,b,c)
  * 
  * @author arieveek
  * 

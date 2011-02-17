@@ -12,6 +12,12 @@ import com.arievanderveek.soo.runtime.Scope;
  */
 public interface StatementNode extends ASTNode {
 
+	/**
+	 * Interpret the node, but will not return any value.
+	 * 
+	 * @param scope
+	 * @throws SeaOfOberonException
+	 */
 	public void interpret(Scope scope) throws SeaOfOberonException;
 
 }

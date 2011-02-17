@@ -1,8 +1,8 @@
 Testsuite: com.arievanderveek.soo.test.ast.symboltable.ScopeTest
-Tests run: 5, Failures: 0, Errors: 0, Time elapsed: 0,112 sec
+Tests run: 5, Failures: 0, Errors: 0, Time elapsed: 0,121 sec
 
-Testcase: testRootScope took 0,068 sec
-Testcase: testScopeScopeProcedureNodeListOfASTNode took 0,007 sec
-Testcase: testGetProcedure took 0,006 sec
-Testcase: testUpdateIntegerValue took 0,006 sec
+Testcase: testRootScope took 0,075 sec
+Testcase: testScopeScopeProcedureNodeListOfASTNode took 0,008 sec
+Testcase: testGetProcedure took 0,007 sec
+Testcase: testUpdateIntegerValue took 0,007 sec
 Testcase: testUpdateArrayValue took 0,006 sec

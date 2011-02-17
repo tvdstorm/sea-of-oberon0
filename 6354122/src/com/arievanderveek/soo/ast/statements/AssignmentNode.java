@@ -10,6 +10,8 @@ import com.arievanderveek.soo.ast.expr.IdentifierNode;
 import com.arievanderveek.soo.runtime.Scope;
 
 /**
+ * Represents an assignment node, example: x := 1 + 6
+ * 
  * @author arieveek
  * 
  */

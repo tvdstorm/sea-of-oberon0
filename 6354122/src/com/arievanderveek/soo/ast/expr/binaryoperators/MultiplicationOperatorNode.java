@@ -7,16 +7,8 @@ import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.expr.ExpressionNode;
 import com.arievanderveek.soo.runtime.Scope;
 
-/**
- * @author arieveek
- * 
- */
 public class MultiplicationOperatorNode extends AbstractBinaryOperatorNode {
 
-	/**
-	 * @param leftHandNode
-	 * @param rightHandNode
-	 */
 	public MultiplicationOperatorNode(ExpressionNode leftHandNode, ExpressionNode rightHandNode) {
 		super(leftHandNode, rightHandNode);
 	}

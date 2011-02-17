@@ -13,6 +13,8 @@ import com.arievanderveek.soo.runtime.Scope;
 import com.arievanderveek.soo.util.Constants;
 
 /**
+ * Represents an if statement experession
+ * 
  * @author arieveek
  * 
  */

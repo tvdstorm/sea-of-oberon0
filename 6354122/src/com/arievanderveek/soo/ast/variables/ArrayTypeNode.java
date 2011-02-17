@@ -5,6 +5,7 @@ package com.arievanderveek.soo.ast.variables;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.expr.ExpressionNode;
+import com.arievanderveek.soo.runtime.ArraySymbol;
 import com.arievanderveek.soo.runtime.Scope;
 import com.arievanderveek.soo.runtime.Symbol;
 
@@ -33,19 +34,26 @@ public class ArrayTypeNode extends TypeNode {
 		this.type = type;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.arievanderveek.soo.ast.ASTNode#toTreeString(java.lang.String)
-	 */
 	@Override
-	public String toTreeString(String ident) throws SeaOfOberonException {
-		StringBuilder sb = new StringBuilder();
-		sb.append("ARRAY" + ident);
-		sb.append(sizeExpression.toTreeString(ident));
-		sb.append(ident + "OF" + ident);
-		sb.append(type.toTreeString(ident));
-		return sb.toString();
+	public void registerVariable(String identifier, Scope scope) throws SeaOfOberonException {
+		ArraySymbol arraySymbol = generateArraySymbol(scope);
+		scope.addSymbolToTable(identifier, arraySymbol);
+	}
+
+	@Override
+	public Symbol createSymbolFromType(Scope scope) throws SeaOfOberonException {
+		return generateArraySymbol(scope);
+	}
+
+	private ArraySymbol generateArraySymbol(Scope scope)
+			throws SeaOfOberonException {
+		boolean mutable = true;
+		Integer resolvedSizeExpression = sizeExpression.interpret(scope);
+		Symbol[] addressList = new Symbol[resolvedSizeExpression];
+		for (int sizeCounter = 0; sizeCounter < resolvedSizeExpression; sizeCounter++) {
+			addressList[sizeCounter] = this.type.createSymbolFromType(scope);
+		}
+		return new ArraySymbol(mutable, addressList);
 	}
 
 	/**
@@ -61,17 +69,20 @@ public class ArrayTypeNode extends TypeNode {
 	public TypeNode getType() {
 		return type;
 	}
-
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.arievanderveek.soo.ast.ASTNode#toTreeString(java.lang.String)
+	 */
 	@Override
-	public void registerVariable(String identifier, Scope scope) throws SeaOfOberonException {
-		Integer resolvedSizeExpression = sizeExpression.interpret(scope);
-		scope.addArraySymbolToTable(identifier, resolvedSizeExpression, type);
-	}
-
-	@Override
-	public Symbol createSymbolFromType(Scope scope) throws SeaOfOberonException {
-		Integer resolvedSizeExpression = sizeExpression.interpret(scope);
-		return scope.generateArraySymbol(resolvedSizeExpression, type);
-	}
-
+	public String toTreeString(String ident) throws SeaOfOberonException {
+		StringBuilder sb = new StringBuilder();
+		sb.append("ARRAY" + ident);
+		sb.append(sizeExpression.toTreeString(ident));
+		sb.append(ident + "OF" + ident);
+		sb.append(type.toTreeString(ident));
+		return sb.toString();
+	}	
+	
 }

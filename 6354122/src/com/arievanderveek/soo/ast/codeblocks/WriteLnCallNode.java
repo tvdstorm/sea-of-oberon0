@@ -13,6 +13,8 @@ import com.arievanderveek.soo.ast.variables.FormalParameterNode;
 import com.arievanderveek.soo.runtime.Scope;
 
 /**
+ * Special codeblock node that supports the WriteLn statement
+ * 
  * @author arieveek
  * 
  */

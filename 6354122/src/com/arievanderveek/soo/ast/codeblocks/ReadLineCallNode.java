@@ -19,7 +19,7 @@ import com.arievanderveek.soo.ast.variables.IdentifierTypeNode;
 import com.arievanderveek.soo.runtime.Scope;
 
 /**
- * Special codeblock node that supports the
+ * Special codeblock node that supports the Read( ) statement
  * 
  * @author arieveek
  * 

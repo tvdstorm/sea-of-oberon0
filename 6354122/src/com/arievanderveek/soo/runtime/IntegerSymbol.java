@@ -7,7 +7,7 @@ import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.util.Constants;
 
 /**
- * Abstract class representing the base of a Symbol
+ * Represents an Integer Symbol
  * 
  * @author arieveek
  * 
@@ -23,13 +23,13 @@ public class IntegerSymbol extends Symbol {
 	 * @param memoryAdress
 	 */
 	public IntegerSymbol(boolean mutable, MemoryAddress memoryAdress) {
-		super(SymbolTypesEnum.INTEGER, mutable);
+		super(mutable);
 		this.memoryAdress = memoryAdress;
 	}
 
-	public IntegerSymbol(IntegerSymbol toBeCopiedSymbol) {
-		super(SymbolTypesEnum.ARRAY, toBeCopiedSymbol.isMutable());
-		this.memoryAdress = toBeCopiedSymbol.getMemoryAdress();
+	public IntegerSymbol(IntegerSymbol symbol) {
+		super(symbol.isMutable());
+		this.memoryAdress = symbol.getMemoryAdress();
 	}
 
 	/**

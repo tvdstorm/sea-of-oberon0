@@ -6,34 +6,28 @@ package com.arievanderveek.soo.runtime;
 import com.arievanderveek.soo.SeaOfOberonException;
 
 /**
- * Interface for a Symbol
- * 
+ * Abstract class representing a Symbol. Symbols are datatypes used by the scope to store 
+ * runtime data, like integer values.
+ *  
  * @author arieveek
  * 
  */
 public abstract class Symbol {
 
-	private final SymbolTypesEnum type;
 	// Symbols are always created as copies, and this parameter should be set
 	// explicity when doing a call by reference.
 	private boolean referencedSymbol;
 
 	private final boolean mutable;
 
-	public Symbol(SymbolTypesEnum type, boolean mutable) {
-		this.type = type;
+	public Symbol(boolean mutable) {
 		this.referencedSymbol = false;
 		this.mutable = mutable;
 	}
 
-	public Symbol(Symbol toBeCopiedSymbol) {
-		this.type = toBeCopiedSymbol.getType();
+	public Symbol(Symbol symbol) {
 		this.referencedSymbol = false;
-		this.mutable = toBeCopiedSymbol.isMutable();
-	}
-
-	public SymbolTypesEnum getType() {
-		return this.type;
+		this.mutable = symbol.isMutable();
 	}
 
 	public boolean isReferencedSymbol() {
@@ -49,8 +43,9 @@ public abstract class Symbol {
 	}
 
 	/**
-	 * Regenates the memory addres. It generates an new adress in the current
-	 * memory map and assigns it the old value
+	 * Regenates the memory address. It generates an new address in the current
+	 * memory map and assigns this address to the symbol. It also makes sure all its children,
+	 * regenerate there addresses.
 	 * 
 	 * @param scope
 	 * @throws SeaOfOberonException
@@ -59,7 +54,8 @@ public abstract class Symbol {
 			throws SeaOfOberonException;
 
 	/**
-	 * Returns a clone of the symbol object
+	 * Returns a clone of the symbol object, whith the memory addresses of its original object.
+	 * The regenerateMemoryAddress method can be used to regenerate the memory addresses.
 	 */
 	public abstract Symbol clone();
 

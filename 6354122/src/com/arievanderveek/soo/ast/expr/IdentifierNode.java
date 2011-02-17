@@ -70,7 +70,11 @@ public class IdentifierNode extends ExpressionNode {
 	public Selectors getSelectors() {
 		return selectors;
 	}
-
+	
+	/**
+	 * Checks if therer are selectors
+	 * @return True if selectors present, else false
+	 */
 	public boolean hasSelectors() {
 		return !selectors.getSelectors().isEmpty();
 	}
