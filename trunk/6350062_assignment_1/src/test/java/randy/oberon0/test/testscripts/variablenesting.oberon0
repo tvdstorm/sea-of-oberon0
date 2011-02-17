@@ -2,16 +2,17 @@ MODULE variablenesting;
 
 VAR x: INTEGER;
 
+
+PROCEDURE b();
+  BEGIN
+    Write(x);
+  END b;
 PROCEDURE a();
   VAR x: INTEGER;
   BEGIN
     x := 2;
     b();
   END a;
-PROCEDURE b();
-  BEGIN
-    Write(x);
-  END b;
 
 BEGIN
   x := 1;
