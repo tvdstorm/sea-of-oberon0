@@ -2,6 +2,7 @@ package org.elcid.oberon0.values;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  *
@@ -21,6 +22,10 @@ public class Record extends Value {
 
 	public Value getField(String identifier) {
 		return fields.get(identifier);
+	}
+
+	public Set<String> getKeys() {
+		return fields.keySet();
 	}
 
 	@Override
