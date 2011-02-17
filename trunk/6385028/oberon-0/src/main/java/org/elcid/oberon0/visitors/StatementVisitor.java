@@ -12,48 +12,49 @@ import org.elcid.oberon0.values.*;
  */
 public class StatementVisitor {
 
-	public void run(StatementSequenceNode node, Environment localEnv) {
+	public void run(StatementSequenceNode node, Environment env) {
 		for (StatementNode statement : node.getStatements()) {
-			statement.run(this, localEnv);
+			statement.run(this, env);
 		}
 	}
 
-	public void run(AssignmentNode node, Environment localEnv) {
-		Value leftVal = node.getIdentSelector().eval(new ExpressionVisitor(), localEnv);
-		Value rightVal = node.getExpression().eval(new ExpressionVisitor(), localEnv);
+	public void run(AssignmentNode node, Environment env) {
+		Value leftVal = node.getIdentSelector().eval(new ExpressionVisitor(), env);
+		Value rightVal = node.getExpression().eval(new ExpressionVisitor(), env);
 		leftVal.set(rightVal);
 	}
 
-	public void run(IfStmNode node, Environment localEnv) {
-		Boolean condition = ((Bool) node.getCondition().eval(new ExpressionVisitor(), localEnv)).getValue();
+	public void run(IfStmNode node, Environment env) {
+		Boolean condition = ((Bool) node.getCondition().eval(new ExpressionVisitor(), env)).getValue();
 		if (condition) {
-			node.getStatementSequence().run(this, localEnv);
+			node.getStatementSequence().run(this, env);
 		} else if (node.getElseNode() != null) {
-			node.getElseNode().run(this, localEnv);
+			node.getElseNode().run(this, env);
 		}
 	}
 
-	public void run(ElseStmNode node, Environment localEnv) {
-		node.getStatementSequence().run(this, localEnv);
+	public void run(ElseStmNode node, Environment env) {
+		node.getStatementSequence().run(this, env);
 	}
 
-	public void run(WhileStmNode node, Environment localEnv) {
-		boolean condition = ((Bool) node.getCondition().eval(new ExpressionVisitor(), localEnv)).getValue();
+	public void run(WhileStmNode node, Environment env) {
+		boolean condition = ((Bool) node.getCondition().eval(new ExpressionVisitor(), env)).getValue();
 		while (condition) {
-			node.getStatementSequence().run(this, localEnv);
-			condition = ((Bool) node.getCondition().eval(new ExpressionVisitor(), localEnv)).getValue();
+			node.getStatementSequence().run(this, env);
+			condition = ((Bool) node.getCondition().eval(new ExpressionVisitor(), env)).getValue();
 		}
 	}
 
-	public void run(ProcCallStmNode node, Environment localEnv) {
-		Procedure proc = localEnv.getProcedure(node.getIdentifier());
-		Environment subEnv = new Environment(localEnv);
+	public void run(ProcCallStmNode node, Environment env) {
+		Procedure proc = env.getProcedure(node.getIdentifier());
+		Environment subEnv = new Environment(env);
 		boolean actualParamsExist = node.getActualParameters() != null;
 		boolean formalParamsExist = proc.getFormalParams() != null;
+		
 		// Bind actual params to formal params in subenv
 		if (actualParamsExist && formalParamsExist && (node.getActualParameters().size() == proc.getFormalParams().size())) {
 			for (int i = 0; i < node.getActualParameters().size(); i++) {
-				Value value = (Value) node.getActualParameters().get(i).eval(new ExpressionVisitor(), localEnv);
+				Value value = (Value) node.getActualParameters().get(i).eval(new ExpressionVisitor(), env);
 				proc.getFormalParams().get(i).declare(subEnv, value);
 			}
 		}
