@@ -1,0 +1,7 @@
+MODULE Infixbooleanadd;
+VAR a: INTEGER;
+BEGIN
+
+a := (1 = 1) + (1 = 1);
+
+END Infixbooleanadd.

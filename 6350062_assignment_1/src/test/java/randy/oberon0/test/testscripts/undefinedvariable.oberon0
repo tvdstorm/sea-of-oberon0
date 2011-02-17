@@ -1,0 +1,9 @@
+MODULE UndefinedVariable;
+
+VAR a, b: INTEGER;
+BEGIN
+
+c := 1;
+
+END UndefinedVariable.
+

@@ -1,0 +1,20 @@
+MODULE Arrayparameter;
+VAR ar: ARRAY 5 OF INTEGER;
+PROCEDURE Func(x: ARRAY 5 OF INTEGER);
+  BEGIN
+    Write(ar[0]);
+    Write(ar[1]);
+    Write(ar[2]);
+    Write(ar[3]);
+    Write(ar[4])
+  END Func;
+BEGIN
+
+Read(ar[0]);
+Read(ar[1]);
+Read(ar[2]);
+Read(ar[3]);
+Read(ar[4]);
+Func(ar)
+
+END Arrayparameter.

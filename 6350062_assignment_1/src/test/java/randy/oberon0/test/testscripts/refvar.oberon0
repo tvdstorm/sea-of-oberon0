@@ -1,0 +1,14 @@
+MODULE refvar;
+
+VAR getal: INTEGER;
+
+PROCEDURE inc(VAR input: INTEGER);
+  BEGIN
+    input := input + 1
+  END inc;
+
+BEGIN
+  Read(getal);
+  inc(getal);
+  Write(getal)
+END refvar.

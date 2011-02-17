@@ -1,0 +1,62 @@
+MODULE Record;
+
+TYPE ObjDesc = RECORD
+name: INTEGER;
+type: INTEGER;
+active: INTEGER
+END;
+VAR o: ObjDesc;
+
+PROCEDURE test(in: ObjDesc);
+  TYPE Tuple = RECORD
+    first: INTEGER;
+    second: INTEGER
+  END;
+  VAR t: Tuple;
+  BEGIN
+    Write(in.type);
+    Write(in.name);
+    IF in.active THEN
+		Write(1);
+	ELSE
+		Write(0);
+	END;
+    t.first := in.name;
+    t.second := in.type;
+    Write(t.first);
+    Write(t.second);
+    in.name := in.name + 1;
+  END test;
+PROCEDURE test2(VAR in: ObjDesc);
+  BEGIN
+    Write(in.name);
+    Write(in.type);
+    
+    in.name := in.name + 4;
+    in.type := in.type - 3;
+  END test2;
+BEGIN
+
+Read(o.name);
+Read(o.type);
+o.active := o.name = o.type;
+
+Write(o.name);
+Write(o.type);
+IF o.active THEN
+	Write(1);
+ELSE
+	Write(0);
+END;
+
+test(o);
+
+Write(o.name);
+
+test2(o);
+
+Write(o.name);
+Write(o.type);
+
+END Record.
+
