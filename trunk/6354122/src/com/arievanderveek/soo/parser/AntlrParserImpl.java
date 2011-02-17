@@ -22,6 +22,8 @@ import com.arievanderveek.soo.parser.antlrimpl.generated.Oberon0Parser;
 import com.arievanderveek.soo.parser.antlrimpl.generated.Oberon0Parser.module_return;
 
 /**
+ * Implementation of the parser in ANTLR v3
+ * 
  * @author arieveek
  * 
  */
@@ -34,9 +36,9 @@ public class AntlrParserImpl implements Parser {
 	 */
 	@Override
 	public ModuleNode parseFile(String fileName) throws SeaOfOberonException {
-		// Open a input stream to the file
-		CharStream stream = null;
 		try {
+			// Open a input stream to the file
+			CharStream stream = null;
 			InputStream inputStream = new FileInputStream(new File(fileName));
 			stream = new ANTLRInputStream(inputStream);
 			// Parse the input stream with the lexer and parser to create a tree
@@ -45,7 +47,6 @@ public class AntlrParserImpl implements Parser {
 			Oberon0Parser parser = new Oberon0Parser(tokenStream);
 			module_return parseTree = parser.module();
 			// Return the AST node from the parsing result
-			// TODO: no regocnitionexception is thrown by the parser tree
 			return parseTree.node;
 		} catch (FileNotFoundException fnfe) {
 			throw new SeaOfOberonException("Input file " + fileName + " is not found", fnfe);

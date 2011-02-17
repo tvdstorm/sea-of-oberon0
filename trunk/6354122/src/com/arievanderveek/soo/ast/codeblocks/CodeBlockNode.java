@@ -14,14 +14,12 @@ import com.arievanderveek.soo.runtime.Scope;
 import com.arievanderveek.soo.util.Constants;
 
 /**
+ * Abstract class representing the base of a block of code
+ * 
  * @author arieveek
  * 
  */
 public abstract class CodeBlockNode implements ASTNode {
-
-	// The constructor ModuleNode(String, String, List<ConstantNode>,
-	// List<FieldNode>, List<FieldNode>, List<ProcedureNode>,
-	// List<StatementNode>) is undefined
 
 	protected final String codeBlockName;
 	protected final List<ConstantNode> constants;
@@ -31,7 +29,7 @@ public abstract class CodeBlockNode implements ASTNode {
 	protected final List<StatementNode> statementSequence;
 
 	/**
-	 * Constructor for {@link ModuleNode} with required fields.
+	 * Constructor for {@link CodeBlockNode} with required fields.
 	 * 
 	 * @param startName
 	 * @param endName
@@ -44,16 +42,13 @@ public abstract class CodeBlockNode implements ASTNode {
 	public CodeBlockNode(String startName, String endName, List<ConstantNode> constants,
 			List<FieldNode> types, List<FieldNode> variables, List<ProcedureNode> procedures,
 			List<StatementNode> statementSequence) {
-		// Assert all the incoming variables
 		assert startName != null;
 		assert endName != null;
 		assert constants != null;
 		assert types != null;
 		assert variables != null;
 		assert procedures != null;
-		// assert statementSequence!=null;
-		// See todo in ASTNode interface. Throwing runtime exceptions is not
-		// good.
+		// validate if method start and end name are equal
 		if (!(startName.equalsIgnoreCase(endName))) {
 			throw new RuntimeException("Startname " + startName + " endname" + endName
 					+ " are not equal");

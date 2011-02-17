@@ -3,6 +3,12 @@ package com.arievanderveek.soo.ast.expr;
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.runtime.Scope;
 
+/**
+ * Represents an integer expression
+ * 
+ * @author Arie van der Veek
+ *
+ */
 public class IntegerExpressionNode extends ExpressionNode {
 
 	private final Integer value;

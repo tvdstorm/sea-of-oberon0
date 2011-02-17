@@ -18,6 +18,8 @@ import com.arievanderveek.soo.runtime.Scope;
 import com.arievanderveek.soo.util.Constants;
 
 /**
+ * Special codeblock node that supports the Write( ) statement
+ * 
  * @author arieveek
  * 
  */

@@ -71,8 +71,7 @@ public class MemoryMap {
 
 	private MemoryAddress generateMemoryAdress() throws SeaOfOberonException {
 		// Generate a random generater with current time in millies as seed to
-		// ensure
-		// unique generation of numbers. Should be secure enough for single
+		// ensure unique generation of numbers. Should be secure enough for single
 		// threaded app.
 		Random generator = new Random(System.currentTimeMillis());
 		MemoryAddress address = new MemoryAddress(generator.nextInt());

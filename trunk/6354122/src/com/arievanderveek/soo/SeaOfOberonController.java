@@ -1,6 +1,7 @@
 package com.arievanderveek.soo;
 
 import com.arievanderveek.soo.ast.codeblocks.ModuleNode;
+import com.arievanderveek.soo.parser.AntlrParserImpl;
 import com.arievanderveek.soo.parser.Parser;
 import com.arievanderveek.soo.util.SeaOfOberonConfiguration;
 
@@ -26,32 +27,19 @@ public class SeaOfOberonController {
 		assert (configuration != null);
 		this.configuration = configuration;
 	}
-
+	
+	/**
+	 * Parses and runs the Oberon0 source code.
+	 * 
+	 * @throws SeaOfOberonException
+	 */
 	public void executeSourceCode() throws SeaOfOberonException {
-		try {
-			// Create a new Parser by instantiating a new class with the
-			// implementation class in the configuration
-			@SuppressWarnings("rawtypes")
-			Class parserImplClass = Class.forName(configuration.getParserImplClass());
-			Parser oberon0Parser = (Parser) parserImplClass.newInstance();
-			// Parse the source file and create an AST from it.
-			ModuleNode module = oberon0Parser.parseFile(configuration.getSourceCodeFileName());
-			// Print it to string
-			if (configuration.printTree()) {
-				System.out.println(module.toTreeString(" "));
-			}
-			// Execute Code
-			module.interpret(null);
-		} catch (InstantiationException e) {
-			throw new SeaOfOberonException("Class could not be instantiated for class "
-					+ configuration.getParserImplClass(), e);
-		} catch (IllegalAccessException e) {
-			throw new SeaOfOberonException("Class or constructor is not accessible for class "
-					+ configuration.getParserImplClass(), e);
-		} catch (ClassNotFoundException e) {
-			throw new SeaOfOberonException("Class not found for class"
-					+ configuration.getParserImplClass(), e);
+		Parser oberon0Parser = new AntlrParserImpl();
+		ModuleNode module = oberon0Parser.parseFile(configuration.getSourceCodeFileName());
+		if (configuration.printTree()) {
+			System.out.println(module.toTreeString(" "));
 		}
+		module.interpret(null);
 	}
 
 }

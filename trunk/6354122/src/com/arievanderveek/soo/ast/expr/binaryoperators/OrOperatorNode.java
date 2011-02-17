@@ -7,16 +7,8 @@ import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.expr.ExpressionNode;
 import com.arievanderveek.soo.runtime.Scope;
 
-/**
- * @author arieveek
- * 
- */
 public class OrOperatorNode extends AbstractBinaryOperatorNode {
 
-	/**
-	 * @param leftHandNode
-	 * @param rightHandNode
-	 */
 	public OrOperatorNode(ExpressionNode leftHandNode, ExpressionNode rightHandNode) {
 		super(leftHandNode, rightHandNode);
 	}

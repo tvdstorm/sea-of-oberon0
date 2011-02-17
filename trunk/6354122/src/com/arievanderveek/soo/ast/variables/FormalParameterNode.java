@@ -1,5 +1,13 @@
 package com.arievanderveek.soo.ast.variables;
 
+
+/**
+ * Represents a formal parameter node. It extends the field node with an indicator for
+ * call by reference or value
+ * 
+ * @author Arie van der Veek
+ *
+ */
 public class FormalParameterNode extends FieldNode {
 
 	private final boolean callByReference;

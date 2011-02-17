@@ -88,6 +88,8 @@ public class ProcedureNode extends CodeBlockNode {
 	}
 
 	/**
+	 * Gets the parameter blocks
+	 * 
 	 * @return the parameterBlocks
 	 */
 	public List<FormalParameterNode> getParameterBlocks() {

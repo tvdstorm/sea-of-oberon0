@@ -7,11 +7,11 @@
                 <TotalClasses>3</TotalClasses>
                 <ConcreteClasses>3</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
-                <Ca>10</Ca>
+                <Ca>11</Ca>
                 <Ce>5</Ce>
                 <A>0</A>
-                <I>0.33</I>
-                <D>0.67</D>
+                <I>0.31</I>
+                <D>0.69</D>
                 <V>1</V>
             </Stats>
 
@@ -31,7 +31,7 @@
             </ConcreteClasses>
 
             <DependsUpon>
-                <Package>com.arievanderveek.soo.ast</Package>
+                <Package>com.arievanderveek.soo.ast.codeblocks</Package>
                 <Package>com.arievanderveek.soo.parser</Package>
                 <Package>com.arievanderveek.soo.util</Package>
                 <Package>java.io</Package>
@@ -40,10 +40,11 @@
 
             <UsedBy>
                 <Package>com.arievanderveek.soo.ast</Package>
-                <Package>com.arievanderveek.soo.ast.binaryoperators</Package>
                 <Package>com.arievanderveek.soo.ast.codeblocks</Package>
+                <Package>com.arievanderveek.soo.ast.expr</Package>
+                <Package>com.arievanderveek.soo.ast.expr.binaryoperators</Package>
+                <Package>com.arievanderveek.soo.ast.expr.unaryoperators</Package>
                 <Package>com.arievanderveek.soo.ast.statements</Package>
-                <Package>com.arievanderveek.soo.ast.unaryoperators</Package>
                 <Package>com.arievanderveek.soo.ast.variables</Package>
                 <Package>com.arievanderveek.soo.parser</Package>
                 <Package>com.arievanderveek.soo.runtime</Package>
@@ -54,14 +55,14 @@
 
         <Package name="com.arievanderveek.soo.ast">
             <Stats>
-                <TotalClasses>1</TotalClasses>
+                <TotalClasses>2</TotalClasses>
                 <ConcreteClasses>0</ConcreteClasses>
-                <AbstractClasses>1</AbstractClasses>
-                <Ca>11</Ca>
+                <AbstractClasses>2</AbstractClasses>
+                <Ca>5</Ca>
                 <Ce>3</Ce>
                 <A>1</A>
-                <I>0.21</I>
-                <D>0.21</D>
+                <I>0.38</I>
+                <D>0.38</D>
                 <V>1</V>
             </Stats>
 
@@ -69,6 +70,9 @@
                 <Class sourceFile="ASTNode.java">
                     com.arievanderveek.soo.ast.ASTNode
                 </Class>
+                <Class sourceFile="Interpretable.java">
+                    com.arievanderveek.soo.ast.Interpretable
+                </Class>
             </AbstractClasses>
 
             <ConcreteClasses>
@@ -81,90 +85,11 @@
             </DependsUpon>
 
             <UsedBy>
-                <Package>com.arievanderveek.soo</Package>
-                <Package>com.arievanderveek.soo.ast.binaryoperators</Package>
                 <Package>com.arievanderveek.soo.ast.codeblocks</Package>
+                <Package>com.arievanderveek.soo.ast.expr</Package>
                 <Package>com.arievanderveek.soo.ast.statements</Package>
-                <Package>com.arievanderveek.soo.ast.unaryoperators</Package>
                 <Package>com.arievanderveek.soo.ast.variables</Package>
-                <Package>com.arievanderveek.soo.parser</Package>
-                <Package>com.arievanderveek.soo.parser.antlrimpl.generated</Package>
-                <Package>com.arievanderveek.soo.runtime</Package>
                 <Package>com.arievanderveek.soo.test</Package>
-                <Package>com.arievanderveek.soo.test.ast.symboltable</Package>
-            </UsedBy>
-        </Package>
-
-        <Package name="com.arievanderveek.soo.ast.binaryoperators">
-            <Stats>
-                <TotalClasses>14</TotalClasses>
-                <ConcreteClasses>13</ConcreteClasses>
-                <AbstractClasses>1</AbstractClasses>
-                <Ca>1</Ca>
-                <Ce>4</Ce>
-                <A>0.07</A>
-                <I>0.8</I>
-                <D>0.13</D>
-                <V>1</V>
-            </Stats>
-
-            <AbstractClasses>
-                <Class sourceFile="AbstractBinaryOperatorNode.java">
-                    com.arievanderveek.soo.ast.binaryoperators.AbstractBinaryOperatorNode
-                </Class>
-            </AbstractClasses>
-
-            <ConcreteClasses>
-                <Class sourceFile="AdditionOperatorNode.java">
-                    com.arievanderveek.soo.ast.binaryoperators.AdditionOperatorNode
-                </Class>
-                <Class sourceFile="AndOperatorNode.java">
-                    com.arievanderveek.soo.ast.binaryoperators.AndOperatorNode
-                </Class>
-                <Class sourceFile="DivisionOperatorNode.java">
-                    com.arievanderveek.soo.ast.binaryoperators.DivisionOperatorNode
-                </Class>
-                <Class sourceFile="EqualOperatorNode.java">
-                    com.arievanderveek.soo.ast.binaryoperators.EqualOperatorNode
-                </Class>
-                <Class sourceFile="GreaterEqualThenOperatorNode.java">
-                    com.arievanderveek.soo.ast.binaryoperators.GreaterEqualThenOperatorNode
-                </Class>
-                <Class sourceFile="GreaterThenOperatorNode.java">
-                    com.arievanderveek.soo.ast.binaryoperators.GreaterThenOperatorNode
-                </Class>
-                <Class sourceFile="ModulusOperatorNode.java">
-                    com.arievanderveek.soo.ast.binaryoperators.ModulusOperatorNode
-                </Class>
-                <Class sourceFile="MultiplicationOperatorNode.java">
-                    com.arievanderveek.soo.ast.binaryoperators.MultiplicationOperatorNode
-                </Class>
-                <Class sourceFile="NotEqualOperatorNode.java">
-                    com.arievanderveek.soo.ast.binaryoperators.NotEqualOperatorNode
-                </Class>
-                <Class sourceFile="OrOperatorNode.java">
-                    com.arievanderveek.soo.ast.binaryoperators.OrOperatorNode
-                </Class>
-                <Class sourceFile="SmallerEqualThenOperatorNode.java">
-                    com.arievanderveek.soo.ast.binaryoperators.SmallerEqualThenOperatorNode
-                </Class>
-                <Class sourceFile="SmallerThenOperatorNode.java">
-                    com.arievanderveek.soo.ast.binaryoperators.SmallerThenOperatorNode
-                </Class>
-                <Class sourceFile="SubtractionOperatorNode.java">
-                    com.arievanderveek.soo.ast.binaryoperators.SubtractionOperatorNode
-                </Class>
-            </ConcreteClasses>
-
-            <DependsUpon>
-                <Package>com.arievanderveek.soo</Package>
-                <Package>com.arievanderveek.soo.ast</Package>
-                <Package>com.arievanderveek.soo.runtime</Package>
-                <Package>java.lang</Package>
-            </DependsUpon>
-
-            <UsedBy>
-                <Package>com.arievanderveek.soo.parser.antlrimpl.generated</Package>
             </UsedBy>
         </Package>
 
@@ -173,11 +98,11 @@
                 <TotalClasses>6</TotalClasses>
                 <ConcreteClasses>5</ConcreteClasses>
                 <AbstractClasses>1</AbstractClasses>
-                <Ca>4</Ca>
-                <Ce>9</Ce>
+                <Ca>6</Ca>
+                <Ce>10</Ce>
                 <A>0.17</A>
-                <I>0.69</I>
-                <D>0.14</D>
+                <I>0.62</I>
+                <D>0.21</D>
                 <V>1</V>
             </Stats>
 
@@ -208,6 +133,7 @@
             <DependsUpon>
                 <Package>com.arievanderveek.soo</Package>
                 <Package>com.arievanderveek.soo.ast</Package>
+                <Package>com.arievanderveek.soo.ast.expr</Package>
                 <Package>com.arievanderveek.soo.ast.statements</Package>
                 <Package>com.arievanderveek.soo.ast.variables</Package>
                 <Package>com.arievanderveek.soo.runtime</Package>
@@ -218,72 +144,149 @@
             </DependsUpon>
 
             <UsedBy>
+                <Package>com.arievanderveek.soo</Package>
                 <Package>com.arievanderveek.soo.ast.statements</Package>
+                <Package>com.arievanderveek.soo.parser</Package>
                 <Package>com.arievanderveek.soo.parser.antlrimpl.generated</Package>
                 <Package>com.arievanderveek.soo.runtime</Package>
                 <Package>com.arievanderveek.soo.test.ast.symboltable</Package>
             </UsedBy>
         </Package>
 
-        <Package name="com.arievanderveek.soo.ast.statements">
+        <Package name="com.arievanderveek.soo.ast.expr">
             <Stats>
                 <TotalClasses>7</TotalClasses>
-                <ConcreteClasses>6</ConcreteClasses>
-                <AbstractClasses>1</AbstractClasses>
-                <Ca>3</Ca>
-                <Ce>8</Ce>
-                <A>0.14</A>
-                <I>0.73</I>
-                <D>0.13</D>
+                <ConcreteClasses>5</ConcreteClasses>
+                <AbstractClasses>2</AbstractClasses>
+                <Ca>8</Ca>
+                <Ce>5</Ce>
+                <A>0.29</A>
+                <I>0.38</I>
+                <D>0.33</D>
                 <V>1</V>
             </Stats>
 
             <AbstractClasses>
-                <Class sourceFile="AbstractParameterNode.java">
-                    com.arievanderveek.soo.ast.statements.AbstractParameterNode
+                <Class sourceFile="ExpressionNode.java">
+                    com.arievanderveek.soo.ast.expr.ExpressionNode
+                </Class>
+                <Class sourceFile="Selector.java">
+                    com.arievanderveek.soo.ast.expr.Selector
                 </Class>
             </AbstractClasses>
 
             <ConcreteClasses>
-                <Class sourceFile="AssignmentNode.java">
-                    com.arievanderveek.soo.ast.statements.AssignmentNode
+                <Class sourceFile="IdentifierNode.java">
+                    com.arievanderveek.soo.ast.expr.IdentifierNode
                 </Class>
-                <Class sourceFile="CallByRefParameterNode.java">
-                    com.arievanderveek.soo.ast.statements.CallByRefParameterNode
+                <Class sourceFile="IntegerExpressionNode.java">
+                    com.arievanderveek.soo.ast.expr.IntegerExpressionNode
                 </Class>
-                <Class sourceFile="CallByValParameterNode.java">
-                    com.arievanderveek.soo.ast.statements.CallByValParameterNode
+                <Class sourceFile="Member.java">
+                    com.arievanderveek.soo.ast.expr.Member
                 </Class>
-                <Class sourceFile="IfStatementNode.java">
-                    com.arievanderveek.soo.ast.statements.IfStatementNode
+                <Class sourceFile="Selectors.java">
+                    com.arievanderveek.soo.ast.expr.Selectors
                 </Class>
-                <Class sourceFile="ProcedureCallNode.java">
-                    com.arievanderveek.soo.ast.statements.ProcedureCallNode
-                </Class>
-                <Class sourceFile="WhileLoopNode.java">
-                    com.arievanderveek.soo.ast.statements.WhileLoopNode
+                <Class sourceFile="Subscript.java">
+                    com.arievanderveek.soo.ast.expr.Subscript
                 </Class>
             </ConcreteClasses>
 
             <DependsUpon>
                 <Package>com.arievanderveek.soo</Package>
                 <Package>com.arievanderveek.soo.ast</Package>
-                <Package>com.arievanderveek.soo.ast.codeblocks</Package>
-                <Package>com.arievanderveek.soo.ast.variables</Package>
                 <Package>com.arievanderveek.soo.runtime</Package>
-                <Package>com.arievanderveek.soo.util</Package>
                 <Package>java.lang</Package>
                 <Package>java.util</Package>
             </DependsUpon>
 
             <UsedBy>
                 <Package>com.arievanderveek.soo.ast.codeblocks</Package>
+                <Package>com.arievanderveek.soo.ast.expr.binaryoperators</Package>
+                <Package>com.arievanderveek.soo.ast.expr.unaryoperators</Package>
+                <Package>com.arievanderveek.soo.ast.statements</Package>
+                <Package>com.arievanderveek.soo.ast.variables</Package>
                 <Package>com.arievanderveek.soo.parser.antlrimpl.generated</Package>
                 <Package>com.arievanderveek.soo.runtime</Package>
+                <Package>com.arievanderveek.soo.test.ast.symboltable</Package>
             </UsedBy>
         </Package>
 
-        <Package name="com.arievanderveek.soo.ast.unaryoperators">
+        <Package name="com.arievanderveek.soo.ast.expr.binaryoperators">
+            <Stats>
+                <TotalClasses>14</TotalClasses>
+                <ConcreteClasses>13</ConcreteClasses>
+                <AbstractClasses>1</AbstractClasses>
+                <Ca>1</Ca>
+                <Ce>4</Ce>
+                <A>0.07</A>
+                <I>0.8</I>
+                <D>0.13</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="AbstractBinaryOperatorNode.java">
+                    com.arievanderveek.soo.ast.expr.binaryoperators.AbstractBinaryOperatorNode
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="AdditionOperatorNode.java">
+                    com.arievanderveek.soo.ast.expr.binaryoperators.AdditionOperatorNode
+                </Class>
+                <Class sourceFile="AndOperatorNode.java">
+                    com.arievanderveek.soo.ast.expr.binaryoperators.AndOperatorNode
+                </Class>
+                <Class sourceFile="DivisionOperatorNode.java">
+                    com.arievanderveek.soo.ast.expr.binaryoperators.DivisionOperatorNode
+                </Class>
+                <Class sourceFile="EqualOperatorNode.java">
+                    com.arievanderveek.soo.ast.expr.binaryoperators.EqualOperatorNode
+                </Class>
+                <Class sourceFile="GreaterEqualThenOperatorNode.java">
+                    com.arievanderveek.soo.ast.expr.binaryoperators.GreaterEqualThenOperatorNode
+                </Class>
+                <Class sourceFile="GreaterThenOperatorNode.java">
+                    com.arievanderveek.soo.ast.expr.binaryoperators.GreaterThenOperatorNode
+                </Class>
+                <Class sourceFile="ModulusOperatorNode.java">
+                    com.arievanderveek.soo.ast.expr.binaryoperators.ModulusOperatorNode
+                </Class>
+                <Class sourceFile="MultiplicationOperatorNode.java">
+                    com.arievanderveek.soo.ast.expr.binaryoperators.MultiplicationOperatorNode
+                </Class>
+                <Class sourceFile="NotEqualOperatorNode.java">
+                    com.arievanderveek.soo.ast.expr.binaryoperators.NotEqualOperatorNode
+                </Class>
+                <Class sourceFile="OrOperatorNode.java">
+                    com.arievanderveek.soo.ast.expr.binaryoperators.OrOperatorNode
+                </Class>
+                <Class sourceFile="SmallerEqualThenOperatorNode.java">
+                    com.arievanderveek.soo.ast.expr.binaryoperators.SmallerEqualThenOperatorNode
+                </Class>
+                <Class sourceFile="SmallerThenOperatorNode.java">
+                    com.arievanderveek.soo.ast.expr.binaryoperators.SmallerThenOperatorNode
+                </Class>
+                <Class sourceFile="SubtractionOperatorNode.java">
+                    com.arievanderveek.soo.ast.expr.binaryoperators.SubtractionOperatorNode
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>com.arievanderveek.soo</Package>
+                <Package>com.arievanderveek.soo.ast.expr</Package>
+                <Package>com.arievanderveek.soo.runtime</Package>
+                <Package>java.lang</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>com.arievanderveek.soo.parser.antlrimpl.generated</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="com.arievanderveek.soo.ast.expr.unaryoperators">
             <Stats>
                 <TotalClasses>3</TotalClasses>
                 <ConcreteClasses>2</ConcreteClasses>
@@ -298,22 +301,22 @@
 
             <AbstractClasses>
                 <Class sourceFile="UnaryOperatorNode.java">
-                    com.arievanderveek.soo.ast.unaryoperators.UnaryOperatorNode
+                    com.arievanderveek.soo.ast.expr.unaryoperators.UnaryOperatorNode
                 </Class>
             </AbstractClasses>
 
             <ConcreteClasses>
                 <Class sourceFile="NegationOperatorNode.java">
-                    com.arievanderveek.soo.ast.unaryoperators.NegationOperatorNode
+                    com.arievanderveek.soo.ast.expr.unaryoperators.NegationOperatorNode
                 </Class>
                 <Class sourceFile="NotOperatorNode.java">
-                    com.arievanderveek.soo.ast.unaryoperators.NotOperatorNode
+                    com.arievanderveek.soo.ast.expr.unaryoperators.NotOperatorNode
                 </Class>
             </ConcreteClasses>
 
             <DependsUpon>
                 <Package>com.arievanderveek.soo</Package>
-                <Package>com.arievanderveek.soo.ast</Package>
+                <Package>com.arievanderveek.soo.ast.expr</Package>
                 <Package>com.arievanderveek.soo.runtime</Package>
                 <Package>java.lang</Package>
             </DependsUpon>
@@ -323,37 +326,95 @@
             </UsedBy>
         </Package>
 
-        <Package name="com.arievanderveek.soo.ast.variables">
+        <Package name="com.arievanderveek.soo.ast.statements">
             <Stats>
                 <TotalClasses>6</TotalClasses>
-                <ConcreteClasses>6</ConcreteClasses>
-                <AbstractClasses>0</AbstractClasses>
-                <Ca>5</Ca>
-                <Ce>5</Ce>
-                <A>0</A>
-                <I>0.5</I>
-                <D>0.5</D>
+                <ConcreteClasses>5</ConcreteClasses>
+                <AbstractClasses>1</AbstractClasses>
+                <Ca>3</Ca>
+                <Ce>8</Ce>
+                <A>0.17</A>
+                <I>0.73</I>
+                <D>0.11</D>
                 <V>1</V>
             </Stats>
 
             <AbstractClasses>
+                <Class sourceFile="StatementNode.java">
+                    com.arievanderveek.soo.ast.statements.StatementNode
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="AssignmentNode.java">
+                    com.arievanderveek.soo.ast.statements.AssignmentNode
+                </Class>
+                <Class sourceFile="IfStatementNode.java">
+                    com.arievanderveek.soo.ast.statements.IfStatementNode
+                </Class>
+                <Class sourceFile="ProcedureCallNode.java">
+                    com.arievanderveek.soo.ast.statements.ProcedureCallNode
+                </Class>
+                <Class sourceFile="WhileLoopNode.java">
+                    com.arievanderveek.soo.ast.statements.WhileLoopNode
+                </Class>
+                <Class sourceFile="WithDoNode.java">
+                    com.arievanderveek.soo.ast.statements.WithDoNode
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>com.arievanderveek.soo</Package>
+                <Package>com.arievanderveek.soo.ast</Package>
+                <Package>com.arievanderveek.soo.ast.codeblocks</Package>
+                <Package>com.arievanderveek.soo.ast.expr</Package>
+                <Package>com.arievanderveek.soo.runtime</Package>
+                <Package>com.arievanderveek.soo.util</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>com.arievanderveek.soo.ast.codeblocks</Package>
+                <Package>com.arievanderveek.soo.parser.antlrimpl.generated</Package>
+                <Package>com.arievanderveek.soo.test.ast.symboltable</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="com.arievanderveek.soo.ast.variables">
+            <Stats>
+                <TotalClasses>7</TotalClasses>
+                <ConcreteClasses>6</ConcreteClasses>
+                <AbstractClasses>1</AbstractClasses>
+                <Ca>3</Ca>
+                <Ce>6</Ce>
+                <A>0.14</A>
+                <I>0.67</I>
+                <D>0.19</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="TypeNode.java">
+                    com.arievanderveek.soo.ast.variables.TypeNode
+                </Class>
             </AbstractClasses>
 
             <ConcreteClasses>
                 <Class sourceFile="ArrayTypeNode.java">
                     com.arievanderveek.soo.ast.variables.ArrayTypeNode
                 </Class>
-                <Class sourceFile="DeclarationNode.java">
-                    com.arievanderveek.soo.ast.variables.DeclarationNode
+                <Class sourceFile="ConstantNode.java">
+                    com.arievanderveek.soo.ast.variables.ConstantNode
                 </Class>
                 <Class sourceFile="FieldNode.java">
                     com.arievanderveek.soo.ast.variables.FieldNode
                 </Class>
-                <Class sourceFile="IdentifierNode.java">
-                    com.arievanderveek.soo.ast.variables.IdentifierNode
+                <Class sourceFile="FormalParameterNode.java">
+                    com.arievanderveek.soo.ast.variables.FormalParameterNode
                 </Class>
-                <Class sourceFile="IntegerTypeNode.java">
-                    com.arievanderveek.soo.ast.variables.IntegerTypeNode
+                <Class sourceFile="IdentifierTypeNode.java">
+                    com.arievanderveek.soo.ast.variables.IdentifierTypeNode
                 </Class>
                 <Class sourceFile="RecordTypeNode.java">
                     com.arievanderveek.soo.ast.variables.RecordTypeNode
@@ -363,6 +424,7 @@
             <DependsUpon>
                 <Package>com.arievanderveek.soo</Package>
                 <Package>com.arievanderveek.soo.ast</Package>
+                <Package>com.arievanderveek.soo.ast.expr</Package>
                 <Package>com.arievanderveek.soo.runtime</Package>
                 <Package>java.lang</Package>
                 <Package>java.util</Package>
@@ -370,10 +432,8 @@
 
             <UsedBy>
                 <Package>com.arievanderveek.soo.ast.codeblocks</Package>
-                <Package>com.arievanderveek.soo.ast.statements</Package>
                 <Package>com.arievanderveek.soo.parser.antlrimpl.generated</Package>
                 <Package>com.arievanderveek.soo.runtime</Package>
-                <Package>com.arievanderveek.soo.test.ast.symboltable</Package>
             </UsedBy>
         </Package>
 
@@ -404,7 +464,7 @@
 
             <DependsUpon>
                 <Package>com.arievanderveek.soo</Package>
-                <Package>com.arievanderveek.soo.ast</Package>
+                <Package>com.arievanderveek.soo.ast.codeblocks</Package>
                 <Package>com.arievanderveek.soo.parser.antlrimpl.generated</Package>
                 <Package>java.io</Package>
                 <Package>java.lang</Package>
@@ -486,9 +546,6 @@
                 </Class>
                 <Class sourceFile="Oberon0Parser.java">
                     com.arievanderveek.soo.parser.antlrimpl.generated.Oberon0Parser$fieldList_scope
-                </Class>
-                <Class sourceFile="Oberon0Parser.java">
-                    com.arievanderveek.soo.parser.antlrimpl.generated.Oberon0Parser$formalParametersFollowUp_return
                 </Class>
                 <Class sourceFile="Oberon0Parser.java">
                     com.arievanderveek.soo.parser.antlrimpl.generated.Oberon0Parser$formalParameters_return
@@ -586,14 +643,17 @@
                 <Class sourceFile="Oberon0Parser.java">
                     com.arievanderveek.soo.parser.antlrimpl.generated.Oberon0Parser$whileStatement_return
                 </Class>
+                <Class sourceFile="Oberon0Parser.java">
+                    com.arievanderveek.soo.parser.antlrimpl.generated.Oberon0Parser$withDoStatement_return
+                </Class>
             </ConcreteClasses>
 
             <DependsUpon>
-                <Package>com.arievanderveek.soo.ast</Package>
-                <Package>com.arievanderveek.soo.ast.binaryoperators</Package>
                 <Package>com.arievanderveek.soo.ast.codeblocks</Package>
+                <Package>com.arievanderveek.soo.ast.expr</Package>
+                <Package>com.arievanderveek.soo.ast.expr.binaryoperators</Package>
+                <Package>com.arievanderveek.soo.ast.expr.unaryoperators</Package>
                 <Package>com.arievanderveek.soo.ast.statements</Package>
-                <Package>com.arievanderveek.soo.ast.unaryoperators</Package>
                 <Package>com.arievanderveek.soo.ast.variables</Package>
                 <Package>java.lang</Package>
                 <Package>java.util</Package>
@@ -609,14 +669,14 @@
 
         <Package name="com.arievanderveek.soo.runtime">
             <Stats>
-                <TotalClasses>8</TotalClasses>
-                <ConcreteClasses>7</ConcreteClasses>
+                <TotalClasses>7</TotalClasses>
+                <ConcreteClasses>6</ConcreteClasses>
                 <AbstractClasses>1</AbstractClasses>
-                <Ca>7</Ca>
-                <Ce>9</Ce>
-                <A>0.12</A>
-                <I>0.56</I>
-                <D>0.31</D>
+                <Ca>8</Ca>
+                <Ce>7</Ce>
+                <A>0.14</A>
+                <I>0.47</I>
+                <D>0.39</D>
                 <V>1</V>
             </Stats>
 
@@ -639,35 +699,31 @@
                 <Class sourceFile="MemoryMap.java">
                     com.arievanderveek.soo.runtime.MemoryMap
                 </Class>
+                <Class sourceFile="RecordSymbol.java">
+                    com.arievanderveek.soo.runtime.RecordSymbol
+                </Class>
                 <Class sourceFile="Scope.java">
                     com.arievanderveek.soo.runtime.Scope
-                </Class>
-                <Class sourceFile="SymbolTable.java">
-                    com.arievanderveek.soo.runtime.SymbolTable
-                </Class>
-                <Class sourceFile="SymbolTypesEnum.java">
-                    com.arievanderveek.soo.runtime.SymbolTypesEnum
                 </Class>
             </ConcreteClasses>
 
             <DependsUpon>
                 <Package>com.arievanderveek.soo</Package>
-                <Package>com.arievanderveek.soo.ast</Package>
                 <Package>com.arievanderveek.soo.ast.codeblocks</Package>
-                <Package>com.arievanderveek.soo.ast.statements</Package>
+                <Package>com.arievanderveek.soo.ast.expr</Package>
                 <Package>com.arievanderveek.soo.ast.variables</Package>
                 <Package>com.arievanderveek.soo.util</Package>
-                <Package>java.io</Package>
                 <Package>java.lang</Package>
                 <Package>java.util</Package>
             </DependsUpon>
 
             <UsedBy>
                 <Package>com.arievanderveek.soo.ast</Package>
-                <Package>com.arievanderveek.soo.ast.binaryoperators</Package>
                 <Package>com.arievanderveek.soo.ast.codeblocks</Package>
+                <Package>com.arievanderveek.soo.ast.expr</Package>
+                <Package>com.arievanderveek.soo.ast.expr.binaryoperators</Package>
+                <Package>com.arievanderveek.soo.ast.expr.unaryoperators</Package>
                 <Package>com.arievanderveek.soo.ast.statements</Package>
-                <Package>com.arievanderveek.soo.ast.unaryoperators</Package>
                 <Package>com.arievanderveek.soo.ast.variables</Package>
                 <Package>com.arievanderveek.soo.test.ast.symboltable</Package>
             </UsedBy>
@@ -734,9 +790,9 @@
             </ConcreteClasses>
 
             <DependsUpon>
-                <Package>com.arievanderveek.soo.ast</Package>
                 <Package>com.arievanderveek.soo.ast.codeblocks</Package>
-                <Package>com.arievanderveek.soo.ast.variables</Package>
+                <Package>com.arievanderveek.soo.ast.expr</Package>
+                <Package>com.arievanderveek.soo.ast.statements</Package>
                 <Package>com.arievanderveek.soo.runtime</Package>
                 <Package>com.arievanderveek.soo.test</Package>
                 <Package>java.lang</Package>
@@ -896,27 +952,35 @@
             <Package>com.arievanderveek.soo</Package>
         </Package>
 
-        <Package Name="com.arievanderveek.soo.ast.binaryoperators">
-            <Package>com.arievanderveek.soo.ast</Package>
-            <Package>com.arievanderveek.soo</Package>
-            <Package>com.arievanderveek.soo.util</Package>
-            <Package>com.arievanderveek.soo</Package>
-        </Package>
-
         <Package Name="com.arievanderveek.soo.ast.codeblocks">
-            <Package>com.arievanderveek.soo</Package>
-            <Package>com.arievanderveek.soo.util</Package>
-            <Package>com.arievanderveek.soo</Package>
-        </Package>
-
-        <Package Name="com.arievanderveek.soo.ast.statements">
             <Package>com.arievanderveek.soo.ast.variables</Package>
             <Package>com.arievanderveek.soo</Package>
             <Package>com.arievanderveek.soo.util</Package>
             <Package>com.arievanderveek.soo</Package>
         </Package>
 
-        <Package Name="com.arievanderveek.soo.ast.unaryoperators">
+        <Package Name="com.arievanderveek.soo.ast.expr">
+            <Package>com.arievanderveek.soo.ast</Package>
+            <Package>com.arievanderveek.soo</Package>
+            <Package>com.arievanderveek.soo.util</Package>
+            <Package>com.arievanderveek.soo</Package>
+        </Package>
+
+        <Package Name="com.arievanderveek.soo.ast.expr.binaryoperators">
+            <Package>com.arievanderveek.soo.ast.expr</Package>
+            <Package>com.arievanderveek.soo.ast</Package>
+            <Package>com.arievanderveek.soo</Package>
+            <Package>com.arievanderveek.soo.util</Package>
+            <Package>com.arievanderveek.soo</Package>
+        </Package>
+
+        <Package Name="com.arievanderveek.soo.ast.expr.unaryoperators">
+            <Package>com.arievanderveek.soo</Package>
+            <Package>com.arievanderveek.soo.util</Package>
+            <Package>com.arievanderveek.soo</Package>
+        </Package>
+
+        <Package Name="com.arievanderveek.soo.ast.statements">
             <Package>com.arievanderveek.soo</Package>
             <Package>com.arievanderveek.soo.util</Package>
             <Package>com.arievanderveek.soo</Package>
@@ -929,22 +993,24 @@
         </Package>
 
         <Package Name="com.arievanderveek.soo.parser">
+            <Package>com.arievanderveek.soo.ast.codeblocks</Package>
+            <Package>com.arievanderveek.soo.ast.variables</Package>
             <Package>com.arievanderveek.soo</Package>
             <Package>com.arievanderveek.soo.util</Package>
             <Package>com.arievanderveek.soo</Package>
         </Package>
 
         <Package Name="com.arievanderveek.soo.parser.antlrimpl.generated">
-            <Package>com.arievanderveek.soo.ast</Package>
+            <Package>com.arievanderveek.soo.ast.variables</Package>
             <Package>com.arievanderveek.soo</Package>
             <Package>com.arievanderveek.soo.util</Package>
             <Package>com.arievanderveek.soo</Package>
         </Package>
 
         <Package Name="com.arievanderveek.soo.runtime">
-            <Package>com.arievanderveek.soo.util</Package>
             <Package>com.arievanderveek.soo</Package>
             <Package>com.arievanderveek.soo.util</Package>
+            <Package>com.arievanderveek.soo</Package>
         </Package>
 
         <Package Name="com.arievanderveek.soo.test">
@@ -956,9 +1022,9 @@
 
         <Package Name="com.arievanderveek.soo.test.ast.symboltable">
             <Package>com.arievanderveek.soo.runtime</Package>
-            <Package>com.arievanderveek.soo.util</Package>
             <Package>com.arievanderveek.soo</Package>
             <Package>com.arievanderveek.soo.util</Package>
+            <Package>com.arievanderveek.soo</Package>
         </Package>
 
         <Package Name="com.arievanderveek.soo.test.util">

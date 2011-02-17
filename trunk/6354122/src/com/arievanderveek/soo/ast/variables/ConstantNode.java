@@ -8,7 +8,7 @@ import com.arievanderveek.soo.ast.ASTNode;
 import com.arievanderveek.soo.ast.expr.ExpressionNode;
 
 /**
- * Represents a declaration of a variable, constant or type.
+ * Represents a declaration of a constant.
  * 
  * @author arieveek
  * 

@@ -5,6 +5,12 @@ import com.arievanderveek.soo.runtime.RecordSymbol;
 import com.arievanderveek.soo.runtime.Scope;
 import com.arievanderveek.soo.runtime.Symbol;
 
+/**
+ * Represents a member selector, example bankaccount.savings
+ * 
+ * @author Arie van der Veek
+ *
+ */
 public class Member extends Selector {
 
 	private final String name;

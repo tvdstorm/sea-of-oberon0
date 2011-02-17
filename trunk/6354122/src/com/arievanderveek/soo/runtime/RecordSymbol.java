@@ -9,6 +9,8 @@ import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.util.Constants;
 
 /**
+ * Represents a Record Symbol
+ * 
  * @author arieveek
  * 
  */
@@ -17,13 +19,13 @@ public class RecordSymbol extends Symbol {
 	private Map<String, Symbol> memberMap;
 
 	public RecordSymbol(boolean mutable, Map<String, Symbol> memberMap) {
-		super(SymbolTypesEnum.ARRAY, mutable);
+		super(mutable);
 		this.memberMap = memberMap;
 	}
 
-	public RecordSymbol(RecordSymbol toBeCopiedSymbol) {
-		super(SymbolTypesEnum.ARRAY, toBeCopiedSymbol.isMutable());
-		this.memberMap = toBeCopiedSymbol.getMembers();
+	public RecordSymbol(RecordSymbol symbol) {
+		super( symbol.isMutable());
+		this.memberMap = symbol.getMembers();
 	}
 
 	public void addOrUpdateAddress(String member, Symbol newSymbol) {

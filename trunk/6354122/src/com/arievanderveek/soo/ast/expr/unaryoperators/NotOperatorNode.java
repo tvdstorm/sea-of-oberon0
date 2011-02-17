@@ -7,15 +7,8 @@ import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.expr.ExpressionNode;
 import com.arievanderveek.soo.runtime.Scope;
 
-/**
- * @author arieveek
- * 
- */
 public class NotOperatorNode extends UnaryOperatorNode {
 
-	/**
-	 * @param node
-	 */
 	public NotOperatorNode(ExpressionNode node) {
 		super(node);
 	}

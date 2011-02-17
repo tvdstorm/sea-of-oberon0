@@ -11,15 +11,6 @@ import com.arievanderveek.soo.util.SeaOfOberonConfiguration;
  */
 public class Main {
 
-	// TODO: Implement logging everywhere
-	// TODO: Scope class is to fat, so refactor it!!
-	// TODO: Write ALOT OF unit tests, with refactoring of scope in mind.
-	// TODO: Write javadoc for every class
-	// TODO: Migrate some lists to a Queue/LinkedList interface so FIFO is
-	// guaranteed.
-	// TODO: Check all classes for variable (final) consistency
-	// TODO: Implement record types
-
 	/**
 	 * Parses the arguments and instantiates a instance of the oberon-0
 	 * interpreter

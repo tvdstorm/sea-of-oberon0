@@ -27,8 +27,8 @@ PROCEDURE updateBankAccount(VAR bankaccount: record; addedAmount: INTEGER);
 			balanceaccount := addedAmount + 340;
 			savingsAccounCounter := 0;
 			WHILE savingsAccounCounter < SAVINGSACCOUNTSIZE DO
-				addedAmount := addedAmount * 2;
-				savingsaccount[savingsAccounCounter] := addedAmount - 234;
+				addedAmount := addedAmount + ( ( addedAmount MOD 33 ) * 23 );
+				savingsaccount[savingsAccounCounter] := addedAmount - 344;
 				savingsAccounCounter := savingsAccounCounter+1
 			END
 		END

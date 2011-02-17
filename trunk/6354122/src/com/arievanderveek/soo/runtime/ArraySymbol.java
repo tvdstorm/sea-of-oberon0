@@ -7,6 +7,8 @@ import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.util.Constants;
 
 /**
+ * Represents an Array Symbol.
+ * 
  * @author arieveek
  * 
  */
@@ -15,13 +17,13 @@ public class ArraySymbol extends Symbol {
 	private Symbol[] symbolList;
 
 	public ArraySymbol(boolean mutable, Symbol[] symbolList) {
-		super(SymbolTypesEnum.ARRAY, mutable);
+		super( mutable);
 		this.symbolList = symbolList;
 	}
 
-	public ArraySymbol(ArraySymbol toBeCopiedSymbol) {
-		super(SymbolTypesEnum.ARRAY, toBeCopiedSymbol.isMutable());
-		this.symbolList = toBeCopiedSymbol.getSymbolList();
+	public ArraySymbol(ArraySymbol symbol) {
+		super(symbol.isMutable());
+		this.symbolList = symbol.getSymbolList();
 	}
 
 	public void addOrUpdateAddress(Integer position, Symbol newSymbol) {
