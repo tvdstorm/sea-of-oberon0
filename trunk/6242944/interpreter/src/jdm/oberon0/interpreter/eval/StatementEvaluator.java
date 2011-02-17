@@ -5,6 +5,7 @@ import jdm.oberon0.ast.statements.*;
 import jdm.oberon0.exceptions.InvalidArgumentCountException;
 import jdm.oberon0.interpreter.Callable;
 import jdm.oberon0.interpreter.Context;
+import jdm.oberon0.values.RecordValue;
 import jdm.oberon0.values.ReferenceValue;
 import jdm.oberon0.values.Value;
 
@@ -74,6 +75,17 @@ class StatementEvaluator extends StatementVisitor {
 		while(_exprEval.evalBoolean(statement.getTest())) {
 			execute(statement.getBody());
 		}
+	}
+
+	@Override
+	protected void visitWithStatement(WithStatement statement) {
+		RecordValue record = _exprEval.evalRecord(statement.getValue());
+		_context.pushScope();
+		for(String field : record.getFields()) {
+			_context.getScope().defineVar(field, record.getFieldValue(field));
+		}
+		statement.getBody().accept(this);
+		_context.popScope();
 	}
 	
 	protected void execute(Statement s) {

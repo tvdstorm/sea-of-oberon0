@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <javancss>
-  <date>2011-02-07</date>
-  <time>11:27:57</time>
+  <date>2011-02-17</date>
+  <time>14:25:43</time>
   <packages>
     <package>
       <name>jdm.oberon0.ast</name>
@@ -35,9 +35,9 @@
     </package>
     <package>
       <name>jdm.oberon0.ast.statements</name>
-      <classes>7</classes>
-      <functions>26</functions>
-      <ncss>86</ncss>
+      <classes>8</classes>
+      <functions>31</functions>
+      <ncss>101</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>0</single_comment_lines>
@@ -96,8 +96,8 @@
     <package>
       <name>jdm.oberon0.interpreter.eval</name>
       <classes>5</classes>
-      <functions>49</functions>
-      <ncss>219</ncss>
+      <functions>50</functions>
+      <ncss>227</ncss>
       <javadocs>13</javadocs>
       <javadoc_lines>39</javadoc_lines>
       <single_comment_lines>15</single_comment_lines>
@@ -126,17 +126,17 @@
     <package>
       <name>jdm.oberon0.values</name>
       <classes>6</classes>
-      <functions>51</functions>
-      <ncss>185</ncss>
+      <functions>52</functions>
+      <ncss>190</ncss>
       <javadocs>2</javadocs>
       <javadoc_lines>7</javadoc_lines>
       <single_comment_lines>2</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <total>
-      <classes>85</classes>
-      <functions>306</functions>
-      <ncss>1172</ncss>
+      <classes>86</classes>
+      <functions>313</functions>
+      <ncss>1200</ncss>
       <javadocs>33</javadocs>
       <javadoc_lines>103</javadoc_lines>
       <single_comment_lines>21</single_comment_lines>
@@ -144,9 +144,9 @@
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>13.00</td><td>85.00</td><td>306.00</td><td>1,172.00</td><td>33.00</td><td>Project</td></tr>
-      <tr><td></td><td>6.54</td><td>23.54</td><td>90.15</td><td>2.54</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.60</td><td>13.79</td><td>0.39</td><td>Class</td></tr>
+      <tr><td>13.00</td><td>86.00</td><td>313.00</td><td>1,200.00</td><td>33.00</td><td>Project</td></tr>
+      <tr><td></td><td>6.62</td><td>24.08</td><td>92.31</td><td>2.54</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.64</td><td>13.95</td><td>0.38</td><td>Class</td></tr>
       <tr><td></td><td></td><td></td><td>3.83</td><td>0.11</td><td>Function</td></tr>
     </table>
   </packages>
@@ -188,7 +188,7 @@
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>jdm.oberon0.ast.declarations.Procedure</name>
+      <name>jdm.oberon0.ast.declarations.ProcedureDeclaration</name>
       <ncss>20</ncss>
       <functions>6</functions>
       <classes>0</classes>
@@ -427,13 +427,20 @@
     </object>
     <object>
       <name>jdm.oberon0.ast.statements.StatementVisitor</name>
-      <ncss>6</ncss>
-      <functions>5</functions>
+      <ncss>7</ncss>
+      <functions>6</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>jdm.oberon0.ast.statements.WhileStatement</name>
+      <ncss>12</ncss>
+      <functions>4</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.ast.statements.WithStatement</name>
       <ncss>12</ncss>
       <functions>4</functions>
       <classes>0</classes>
@@ -630,8 +637,8 @@
     </object>
     <object>
       <name>jdm.oberon0.interpreter.eval.StatementEvaluator</name>
-      <ncss>34</ncss>
-      <functions>7</functions>
+      <ncss>41</ncss>
+      <functions>8</functions>
       <classes>0</classes>
       <javadocs>1</javadocs>
     </object>
@@ -728,8 +735,8 @@
     </object>
     <object>
       <name>jdm.oberon0.values.RecordValue</name>
-      <ncss>30</ncss>
-      <functions>7</functions>
+      <ncss>32</ncss>
+      <functions>8</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -748,12 +755,12 @@
       <javadocs>1</javadocs>
     </object>
     <averages>
-      <ncss>11.20</ncss>
-      <functions>3.60</functions>
+      <ncss>11.33</ncss>
+      <functions>3.64</functions>
       <classes>0.00</classes>
-      <javadocs>0.39</javadocs>
+      <javadocs>0.38</javadocs>
     </averages>
-    <ncss>1,172.00</ncss>
+    <ncss>1,200.00</ncss>
   </objects>
 
   <functions>
@@ -830,7 +837,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.declarations.DeclarationVisitor.visitProcedure(Procedure)</name>
+      <name>jdm.oberon0.ast.declarations.DeclarationVisitor.visitProcedure(ProcedureDeclaration)</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -860,37 +867,37 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.declarations.Procedure.Procedure(String,jdm.oberon0.ast.declarations.Parameter,Declarations,StatementSequence)</name>
+      <name>jdm.oberon0.ast.declarations.ProcedureDeclaration.ProcedureDeclaration(String,jdm.oberon0.ast.declarations.Parameter,Declarations,StatementSequence)</name>
       <ncss>5</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.declarations.Procedure.getName()</name>
+      <name>jdm.oberon0.ast.declarations.ProcedureDeclaration.getName()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.declarations.Procedure.getStatements()</name>
+      <name>jdm.oberon0.ast.declarations.ProcedureDeclaration.getStatements()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.declarations.Procedure.getDeclarations()</name>
+      <name>jdm.oberon0.ast.declarations.ProcedureDeclaration.getDeclarations()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.declarations.Procedure.getParameters()</name>
+      <name>jdm.oberon0.ast.declarations.ProcedureDeclaration.getParameters()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.ast.declarations.Procedure.accept(DeclarationVisitor)</name>
+      <name>jdm.oberon0.ast.declarations.ProcedureDeclaration.accept(DeclarationVisitor)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -1532,6 +1539,12 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>jdm.oberon0.ast.statements.StatementVisitor.visitWithStatement(WithStatement)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>jdm.oberon0.ast.statements.WhileStatement.WhileStatement(Expression,StatementSequence)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
@@ -1551,6 +1564,30 @@
     </function>
     <function>
       <name>jdm.oberon0.ast.statements.WhileStatement.accept(StatementVisitor)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.statements.WithStatement.WithStatement(Expression,StatementSequence)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.statements.WithStatement.getValue()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.statements.WithStatement.getBody()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.ast.statements.WithStatement.accept(StatementVisitor)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -1862,7 +1899,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.interpreter.eval.DeclarationEvaluator.visitProcedure(Procedure)</name>
+      <name>jdm.oberon0.interpreter.eval.DeclarationEvaluator.visitProcedure(ProcedureDeclaration)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -2096,6 +2133,12 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>jdm.oberon0.interpreter.eval.StatementEvaluator.visitWithStatement(WithStatement)</name>
+      <ncss>7</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>jdm.oberon0.interpreter.eval.StatementEvaluator.execute(Statement)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
@@ -2162,25 +2205,19 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.interpreter.Scope.lookupVarOrConst(String)</name>
-      <ncss>6</ncss>
-      <ccn>6</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
       <name>jdm.oberon0.interpreter.Scope.defineProcedure(String,Callable)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.interpreter.Scope.lookupProcedure(String)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
+      <name>jdm.oberon0.interpreter.Scope.lookupVarOrConst(String)</name>
+      <ncss>6</ncss>
+      <ccn>6</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.interpreter.Scope.getParentScope()</name>
+      <name>jdm.oberon0.interpreter.Scope.lookupProcedure(String)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -2192,13 +2229,19 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>jdm.oberon0.interpreter.Scope.getParentScope()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>jdm.oberon0.interpreter.Scope.isGlobalScope()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>jdm.oberon0.interpreter.ScriptedProcedure.ScriptedProcedure(Procedure)</name>
+      <name>jdm.oberon0.interpreter.ScriptedProcedure.ScriptedProcedure(ProcedureDeclaration)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -2462,6 +2505,12 @@
       <javadocs>0</javadocs>
     </function>
     <function>
+      <name>jdm.oberon0.values.RecordValue.getFields()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
       <name>jdm.oberon0.values.ReferenceValue.ReferenceValue(Value)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
@@ -2598,6 +2647,6 @@
       <ccn>1.29</ccn>
       <javadocs>0.03</javadocs>
     </function_averages>
-    <ncss>1,172.00</ncss>
+    <ncss>1,200.00</ncss>
   </functions>
 </javancss>
