@@ -45,7 +45,7 @@ public class Program
 		// Registrate the modules type declarations in the modole environment
 		module.registerTypeDeclarations(moduleEnvironment);
 		// Invoke the module
-		module.invoke(moduleEnvironment, (new LinkedList<IValue>()).iterator());
+		module.invoke(moduleEnvironment, (new LinkedList<IBindableValue>()).iterator());
 	}
 	public void setBuildinFunctions(IBuildinFunctions _buildinFunctions)
 	{

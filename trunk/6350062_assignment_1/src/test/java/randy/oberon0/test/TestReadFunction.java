@@ -18,7 +18,7 @@ public class TestReadFunction implements IInvokableFunction
 		input = _input;
 	}
 	@Override
-	public void invoke(RuntimeEnvironment environment, Iterator<IValue> parameterValues) throws RuntimeException
+	public void invoke(RuntimeEnvironment environment, Iterator<IBindableValue> parameterValues) throws RuntimeException
 	{
 		if (!parameterValues.hasNext())
 			throw new IncorrectNumberOfArgumentsException();

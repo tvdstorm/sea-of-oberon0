@@ -6,5 +6,5 @@ import randy.oberon0.interpreter.runtime.environment.*;
 
 public abstract class Expression extends ASTNode
 {
-	public abstract IValue evaluate(RuntimeEnvironment environment) throws RuntimeException;
+	public abstract IBindableValue evaluate(RuntimeEnvironment environment) throws RuntimeException;
 }

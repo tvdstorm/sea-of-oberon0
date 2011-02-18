@@ -13,7 +13,7 @@ public class PrefixMinExpression extends PrefixExpression
 		super(_rhs);
 	}
 	@Override
-	public IValue evaluate(RuntimeEnvironment environment) throws RuntimeException
+	public IBindableValue evaluate(RuntimeEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Evaluate the right hand side expression

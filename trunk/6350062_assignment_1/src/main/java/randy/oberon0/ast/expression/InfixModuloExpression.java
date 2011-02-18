@@ -6,9 +6,9 @@ import randy.oberon0.interpreter.runtime.environment.*;
 import randy.oberon0.value.Value;
 import randy.oberon0.value.Integer;
 
-public class InfixAdditionExpression extends InfixExpression
+public class InfixModuloExpression extends InfixExpression
 {
-	public InfixAdditionExpression(Expression _leftHandExpression, Expression _rightHandExpression)
+	public InfixModuloExpression(Expression _leftHandExpression, Expression _rightHandExpression)
 	{
 		super(_leftHandExpression, _rightHandExpression);
 	}
@@ -22,12 +22,12 @@ public class InfixAdditionExpression extends InfixExpression
 		// Check if we support the operator
 		if (valLh instanceof Integer && valRh instanceof Integer)
 		{
-			return new ByValue(new Integer(valLh.castToInteger().getIntValue() + valRh.castToInteger().getIntValue()));
+			return new ByValue(new Integer(valLh.castToInteger().getIntValue() % valRh.castToInteger().getIntValue()));
 		}
 		else
 		{
 			// No, throw an exception
-			throw new OperatorTypeUndefinedException("+", valLh.getType().toString(), valRh.getType().toString());
+			throw new OperatorTypeUndefinedException("*", valLh.getType().toString(), valRh.getType().toString());
 		}
 	}
 }

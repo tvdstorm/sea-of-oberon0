@@ -14,7 +14,7 @@ public class SelectorExpression extends Expression
 		selector = _selector;
 	}
 	@Override
-	public IValue evaluate(RuntimeEnvironment environment) throws RuntimeException
+	public IBindableValue evaluate(RuntimeEnvironment environment) throws RuntimeException
 	{
 		return selector.evaluate(environment);
 	}

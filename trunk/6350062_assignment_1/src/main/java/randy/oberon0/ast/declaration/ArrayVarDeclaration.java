@@ -47,7 +47,7 @@ public class ArrayVarDeclaration extends VarDeclaration
 		}
 	}
 	@Override
-	public void registerAsParameter(RuntimeEnvironment environment, Iterator<IValue> parameterValues) throws RuntimeException // Use for registering parameters
+	public void registerAsParameter(RuntimeEnvironment environment, Iterator<IBindableValue> parameterValues) throws RuntimeException // Use for registering parameters
 	{
 		assert(environment != null);
 		assert(parameterValues != null);
@@ -68,7 +68,7 @@ public class ArrayVarDeclaration extends VarDeclaration
 				throw new IncorrectNumberOfArgumentsException();
 			}
 			// Fetch a parameter value from the parameter values
-			final IValue parameterValue = parameterValues.next();
+			final IBindableValue parameterValue = parameterValues.next();
 			// Check if the length of the parameter matches the definition
 			Array testArray = parameterValue.getValue().castToArray();
 			boolean bFirst = true;
