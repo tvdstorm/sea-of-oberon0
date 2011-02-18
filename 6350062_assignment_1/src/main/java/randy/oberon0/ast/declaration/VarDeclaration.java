@@ -37,7 +37,7 @@ public class VarDeclaration extends BodyDeclaration
 			newEnvironment.registerVariableByValue(variableName, newEnvironment.resolveType(typeName).instantiate(newEnvironment));
 		}
 	}
-	public void registerAsParameter(RuntimeEnvironment environment, Iterator<IValue> parameterValues) throws RuntimeException // Use for registering parameters
+	public void registerAsParameter(RuntimeEnvironment environment, Iterator<IBindableValue> parameterValues) throws RuntimeException // Use for registering parameters
 	{
 		assert(environment != null);
 		assert(parameterValues != null);
@@ -50,7 +50,7 @@ public class VarDeclaration extends BodyDeclaration
 				throw new IncorrectNumberOfArgumentsException();
 			}
 			// Fetch a parameter value from the parameter values
-			final IValue parameterValue = parameterValues.next();
+			final IBindableValue parameterValue = parameterValues.next();
 			// Resolve the variable type and check if they are compatible
 			if (parameterValue.getValue().getType() != environment.resolveType(typeName).instantiate(environment).getType())
 			{

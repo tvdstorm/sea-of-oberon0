@@ -46,7 +46,7 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 			}
 		}
 	}
-	public void invoke(RuntimeEnvironment environment, Iterator<IValue> parameterValues) throws RuntimeException
+	public void invoke(RuntimeEnvironment environment, Iterator<IBindableValue> parameterValues) throws RuntimeException
 	{
 		assert(environment != null);
 		assert(parameterValues != null);

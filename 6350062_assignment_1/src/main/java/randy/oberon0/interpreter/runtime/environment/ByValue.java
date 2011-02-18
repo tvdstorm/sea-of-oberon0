@@ -2,7 +2,7 @@ package randy.oberon0.interpreter.runtime.environment;
 
 import randy.oberon0.value.Value;
 
-public class ByValue implements IValue
+public class ByValue implements IBindableValue
 {
 	private final Value value;
 	

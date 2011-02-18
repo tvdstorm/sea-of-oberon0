@@ -14,7 +14,7 @@ public class DefaultWriteLnFunction implements IInvokableFunction
 		return "WriteLn";
 	}
 	@Override
-	public void invoke(RuntimeEnvironment environment, Iterator<IValue> parameterValues) throws RuntimeException
+	public void invoke(RuntimeEnvironment environment, Iterator<IBindableValue> parameterValues) throws RuntimeException
 	{
 		// Don't accept any parameters
 		if (parameterValues.hasNext())

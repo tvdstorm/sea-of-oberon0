@@ -16,7 +16,7 @@ public class TestWriteFunction implements IInvokableFunction
 		output = _output;
 	}
 	@Override
-	public void invoke(RuntimeEnvironment environment, Iterator<IValue> parameterValues) throws RuntimeException
+	public void invoke(RuntimeEnvironment environment, Iterator<IBindableValue> parameterValues) throws RuntimeException
 	{
 		if (!parameterValues.hasNext())
 			throw new IncorrectNumberOfArgumentsException();

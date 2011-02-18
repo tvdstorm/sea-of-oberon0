@@ -23,10 +23,10 @@ public class ProcedureCall extends Statement
 	{
 		assert(environment != null);
 		// Evaluate all the parameters and add them to a queue
-		List<IValue> parameters = new LinkedList<IValue>();
+		List<IBindableValue> parameters = new LinkedList<IBindableValue>();
 		for (Expression parameter : parameterExpressions)
 		{
-			IValue v = parameter.evaluate(environment);
+			IBindableValue v = parameter.evaluate(environment);
 			parameters.add(v);
 		}
 		// Resolve the function name to a function

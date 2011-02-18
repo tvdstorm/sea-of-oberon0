@@ -3,7 +3,7 @@ package randy.oberon0.interpreter.runtime.environment;
 import randy.oberon0.exception.ConstAssignmentException;
 import randy.oberon0.value.Value;
 
-public class Reference implements IValue
+public class Reference implements IBindableValue
 {
 	private Value value;
 	

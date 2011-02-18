@@ -17,7 +17,7 @@ public class DefaultReadFunction implements IInvokableFunction
 		return "Read";
 	}
 	@Override
-	public void invoke(RuntimeEnvironment environment, Iterator<IValue> parameterValues) throws RuntimeException
+	public void invoke(RuntimeEnvironment environment, Iterator<IBindableValue> parameterValues) throws RuntimeException
 	{
 		try
 		{

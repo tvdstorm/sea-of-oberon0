@@ -13,7 +13,7 @@ public class InfixAndExpression extends InfixExpression
 		super(_leftHandExpression, _rightHandExpression);
 	}
 	@Override
-	public IValue evaluate(RuntimeEnvironment environment) throws RuntimeException
+	public IBindableValue evaluate(RuntimeEnvironment environment) throws RuntimeException
 	{
 		assert(environment != null);
 		// Evaluate the left and right hand side expressions

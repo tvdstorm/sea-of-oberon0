@@ -150,6 +150,7 @@ public class Oberon0ASTTreeGenerator
 			case Oberon0Parser.PLUS:
 			case Oberon0Parser.DIVIDE:
 			case Oberon0Parser.TIMES:
+			case Oberon0Parser.MOD:
 			case Oberon0Parser.GREATERTHAN:
 			case Oberon0Parser.SMALLERTHAN:
 			case Oberon0Parser.GREATEREQUALS:
@@ -213,6 +214,8 @@ public class Oberon0ASTTreeGenerator
 				return new InfixDivisionExpression(left, right);
 			case Oberon0Parser.TIMES:
 				return new InfixMultiplicationExpression(left, right);
+			case Oberon0Parser.MOD:
+				return new InfixModuloExpression(left, right);
 			case Oberon0Parser.GREATERTHAN:
 				return new InfixGreaterThanExpression(left, right);
 			case Oberon0Parser.SMALLERTHAN:
