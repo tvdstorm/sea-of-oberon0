@@ -12,7 +12,9 @@ import org.elcid.oberon0.values.*;
 public class TypeVisitor {
 
 	public Value init(ArrayTypeNode node, Environment env) {
-		Array newArray = new Array(((Int)node.getArrayLength().eval(new ExpressionVisitor(), env)).getValue());
+		int length = ((Int)node.getArrayLength().eval(new ExpressionVisitor(), env)).getValue();
+		Value type = node.getType().init(this, env);
+		Array newArray = new Array(length, type);
 		return newArray;
 		
 	}
