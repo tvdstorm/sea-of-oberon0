@@ -1,61 +1,90 @@
 package randy.oberon0.interpreter.runtime;
 
+import java.util.*;
 import randy.oberon0.interpreter.runtime.IInvokableFunction;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.exception.*;
-import randy.oberon0.interpreter.runtime.datastructures.ClosureAndEnvironment;
 import randy.oberon0.interpreter.runtime.environment.*;
 import randy.oberon0.value.Value;
 
 public class RuntimeEnvironment
 {
-	private final VariableStack variableStack;
-	private final FunctionRegistry functionRegistry;
+	private final Map<String, IBindable> bindings;
 	private final TypeRegistry typeRegistry;
+	private final RuntimeEnvironment parentScope;
 	
-	public RuntimeEnvironment(VariableStack _variableStack, FunctionRegistry _functionRegistry, TypeRegistry _typeRegistry)
+	public RuntimeEnvironment()
 	{
-		assert(_variableStack != null);
-		assert(_functionRegistry != null);
-		assert(_typeRegistry != null);
-		variableStack = _variableStack;
-		functionRegistry = _functionRegistry;
-		typeRegistry = _typeRegistry;
+		bindings = new HashMap<String, IBindable>();
+		typeRegistry = new TypeRegistry(null);
+		parentScope = null;
 	}
 	public RuntimeEnvironment(RuntimeEnvironment baseEnvironment)
 	{
 		// Create a new environment on top of the base environment
-		this(new VariableStack(baseEnvironment.variableStack), new FunctionRegistry(baseEnvironment.functionRegistry), new TypeRegistry(baseEnvironment.typeRegistry));
+		bindings = new HashMap<String, IBindable>();
+		typeRegistry = new TypeRegistry(baseEnvironment.typeRegistry);
+		parentScope = baseEnvironment;
+	}
+	public IBindable lookup(String name) throws RuntimeException
+	{
+		assert(name != null);
+		assert(name.length() > 0);
+		// Check if the bindable is in the current scope
+		if (bindings.containsKey(name))
+		{
+			return bindings.get(name);
+		}
+		// Check if we have a parent scope and check it for the bindable
+		else if (parentScope != null)
+		{
+			return parentScope.lookup(name);
+		}
+		// The bindable isn't defined in this scope and we don't have a parent scope, return an exception
+		else
+		{
+			throw new UndefinedBindableException(name);
+		}
 	}
 	/**************************************************************************
 	 * Variable functions                                                     *
 	 **************************************************************************/
-	public void registerVariableByValue(String variableName, Value value) throws RuntimeException
+	public void registerVariableByValue(String variableName, Value value) throws DuplicateVariableException
 	{
-		variableStack.registerVariableByValue(variableName, value);
+		registerVariableByReference(variableName, new Reference(value));
 	}
-	public void registerVariableByReference(String variableName, Reference reference) throws RuntimeException
+	public void registerVariableByReference(String variableName, Reference reference) throws DuplicateVariableException
 	{
-		variableStack.registerVariableByReference(variableName, reference);
+		assert(variableName != null);
+		assert(variableName.length() > 0);
+		assert(reference != null);
+		// Check if the variable has already been declared in the current scope
+		if (bindings.containsKey(variableName))
+		{
+			throw new DuplicateVariableException(variableName);
+		}
+		// Add the variable to the current scope
+		bindings.put(variableName, reference);
 	}
-	public void registerConstant(String constantName, Value value) throws RuntimeException
+	public void registerConstant(String constantName, Value value) throws DuplicateVariableException
 	{
-		variableStack.registerConstant(constantName, value);
-	}
-	public IBindable lookup(String variableName) throws RuntimeException
-	{
-		return variableStack.lookup(variableName);
+		// Package the value as a constant and add it as a variable
+		registerVariableByReference(constantName, new Constant(value));
 	}
 	/**************************************************************************
 	 * Function functions                                                     *
 	 **************************************************************************/
 	public void registerFunction(String functionName, IInvokableFunction functionPointer) throws DuplicateFunctionException
 	{
-		functionRegistry.registerFunction(functionName, functionPointer, this);
-	}
-	public ClosureAndEnvironment resolveFunction(String functionName) throws UndefinedMethodException
-	{
-		return functionRegistry.resolveFunction(functionName);
+		assert(functionName != null);
+		assert(functionName.length() > 0);
+		assert(functionPointer != null);
+		// Check if the function has already been declared in the current scope
+		if (bindings.containsKey(functionName))
+		{
+			throw new DuplicateFunctionException(functionName);
+		}
+		bindings.put(functionName, new Closure(functionPointer, this));
 	}
 	/**************************************************************************
 	 * Type functions                                                         *
