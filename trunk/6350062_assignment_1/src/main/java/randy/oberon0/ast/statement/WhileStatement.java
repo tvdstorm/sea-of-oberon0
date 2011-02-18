@@ -2,7 +2,7 @@ package randy.oberon0.ast.statement;
 
 import randy.oberon0.ast.expression.Expression;
 import randy.oberon0.exception.RuntimeException;
-import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
+import randy.oberon0.interpreter.runtime.environment.*;
 
 public class WhileStatement extends Statement
 {

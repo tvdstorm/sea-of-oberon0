@@ -1,4 +1,4 @@
-package randy.oberon0.interpreter.runtime;
+package randy.oberon0.interpreter.runtime.environment;
 
 import java.util.*;
 import randy.oberon0.exception.RuntimeException;

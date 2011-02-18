@@ -2,7 +2,7 @@ package randy.oberon0.ast.statement;
 
 import java.util.*;
 import randy.oberon0.exception.RuntimeException;
-import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
+import randy.oberon0.interpreter.runtime.environment.*;
 
 public class Block extends Statement
 {

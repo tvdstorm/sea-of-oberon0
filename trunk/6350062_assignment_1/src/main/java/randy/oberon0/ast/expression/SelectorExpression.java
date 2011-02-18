@@ -2,8 +2,7 @@ package randy.oberon0.ast.expression;
 
 import randy.oberon0.ast.selector.Selector;
 import randy.oberon0.exception.RuntimeException;
-import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
-import randy.oberon0.interpreter.runtime.environment.IValue;
+import randy.oberon0.interpreter.runtime.environment.*;
 
 public class SelectorExpression extends Expression
 {

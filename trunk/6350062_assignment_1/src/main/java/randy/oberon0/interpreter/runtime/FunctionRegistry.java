@@ -3,8 +3,8 @@ package randy.oberon0.interpreter.runtime;
 import java.util.*;
 import randy.oberon0.exception.DuplicateFunctionException;
 import randy.oberon0.exception.UndefinedMethodException;
-import randy.oberon0.interpreter.runtime.datastructures.ClosureAndEnvironment;
-import randy.oberon0.interpreter.runtime.environment.Closure;
+import randy.oberon0.interpreter.runtime.datastructures.*;
+import randy.oberon0.interpreter.runtime.environment.*;
 
 public class FunctionRegistry
 {

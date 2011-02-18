@@ -4,7 +4,7 @@ import java.util.*;
 import org.junit.Ignore;
 import randy.oberon0.exception.DuplicateFunctionException;
 import randy.oberon0.interpreter.buildinfunctions.*;
-import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
+import randy.oberon0.interpreter.runtime.environment.*;
 
 @Ignore
 public class TestBuildinFunctions implements IBuildinFunctions
