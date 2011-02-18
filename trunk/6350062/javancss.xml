@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <javancss>
-  <date>2011-02-12</date>
-  <time>14:59:33</time>
+  <date>2011-02-18</date>
+  <time>16:55:54</time>
   <packages>
     <package>
       <name>randy.oberon0.ast</name>
@@ -26,8 +26,8 @@
     <package>
       <name>randy.oberon0.ast.declaration</name>
       <classes>7</classes>
-      <functions>28</functions>
-      <ncss>270</ncss>
+      <functions>30</functions>
+      <ncss>272</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>63</single_comment_lines>
@@ -127,7 +127,7 @@
       <name>randy.oberon0.interpreter.runtime.environment</name>
       <classes>11</classes>
       <functions>30</functions>
-      <ncss>166</ncss>
+      <ncss>165</ncss>
       <javadocs>3</javadocs>
       <javadoc_lines>9</javadoc_lines>
       <single_comment_lines>14</single_comment_lines>
@@ -147,10 +147,10 @@
       <name>randy.oberon0.main</name>
       <classes>1</classes>
       <functions>1</functions>
-      <ncss>8</ncss>
+      <ncss>11</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>2</single_comment_lines>
+      <single_comment_lines>0</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <package>
@@ -165,19 +165,19 @@
     </package>
     <total>
       <classes>100</classes>
-      <functions>328</functions>
-      <ncss>2261</ncss>
+      <functions>330</functions>
+      <ncss>2265</ncss>
       <javadocs>6</javadocs>
       <javadoc_lines>18</javadoc_lines>
-      <single_comment_lines>278</single_comment_lines>
+      <single_comment_lines>276</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>16.00</td><td>100.00</td><td>328.00</td><td>2,261.00</td><td>6.00</td><td>Project</td></tr>
-      <tr><td></td><td>6.25</td><td>20.50</td><td>141.31</td><td>0.38</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.28</td><td>22.61</td><td>0.06</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>6.89</td><td>0.02</td><td>Function</td></tr>
+      <tr><td>16.00</td><td>100.00</td><td>330.00</td><td>2,265.00</td><td>6.00</td><td>Project</td></tr>
+      <tr><td></td><td>6.25</td><td>20.63</td><td>141.56</td><td>0.38</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.30</td><td>22.65</td><td>0.06</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>6.86</td><td>0.02</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -240,8 +240,8 @@
     </object>
     <object>
       <name>randy.oberon0.ast.declaration.VarDeclaration</name>
-      <ncss>48</ncss>
-      <functions>6</functions>
+      <ncss>50</ncss>
+      <functions>8</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -835,7 +835,7 @@
     </object>
     <object>
       <name>randy.oberon0.main.Main</name>
-      <ncss>6</ncss>
+      <ncss>8</ncss>
       <functions>1</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
@@ -883,12 +883,12 @@
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>18.04</ncss>
-      <functions>3.28</functions>
+      <ncss>18.08</ncss>
+      <functions>3.30</functions>
       <classes>0.00</classes>
       <javadocs>0.06</javadocs>
     </averages>
-    <ncss>2,261.00</ncss>
+    <ncss>2,265.00</ncss>
   </objects>
 
   <functions>
@@ -1044,13 +1044,7 @@
     </function>
     <function>
       <name>randy.oberon0.ast.declaration.VarDeclaration.VarDeclaration(String,boolean,String)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>randy.oberon0.ast.declaration.VarDeclaration.VarDeclaration(String,boolean,String,boolean)</name>
-      <ncss>7</ncss>
+      <ncss>6</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -1076,6 +1070,24 @@
       <name>randy.oberon0.ast.declaration.VarDeclaration.typeCheckRegisterAsParameter(TypeCheckEnvironment,ITypeCheckBindableValue)</name>
       <ncss>15</ncss>
       <ccn>9</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.declaration.VarDeclaration.getTypeName()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.declaration.VarDeclaration.isReference()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.declaration.VarDeclaration.getVariableNames()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -2628,8 +2640,8 @@
     </function>
     <function>
       <name>randy.oberon0.main.Main.main(String[])</name>
-      <ncss>5</ncss>
-      <ccn>1</ccn>
+      <ncss>7</ncss>
+      <ccn>2</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -2861,10 +2873,10 @@
       <javadocs>0</javadocs>
     </function>
     <function_averages>
-      <ncss>4.90</ncss>
+      <ncss>4.89</ncss>
       <ccn>2.43</ccn>
       <javadocs>0.02</javadocs>
     </function_averages>
-    <ncss>2,261.00</ncss>
+    <ncss>2,265.00</ncss>
   </functions>
 </javancss>

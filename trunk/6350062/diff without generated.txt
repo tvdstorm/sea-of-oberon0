@@ -1,0 +1,588 @@
+6350062_assignment_1\src\main\java\randy\oberon0\ast\declaration\ArrayVarDeclaration.java <=> 6350062\src\main\java\randy\oberon0\ast\declaration\ArrayVarDeclaration.java
+4a9 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+11d4 import removed: randy.oberon0.value.Type
+< import randy.oberon0.value.Type;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\declaration\BodyDeclaration.java <=> 6350062\src\main\java\randy\oberon0\ast\declaration\BodyDeclaration.java
+4a6 import added: randy.oberon0.exception.TypeCheckException
+> import randy.oberon0.exception.TypeCheckException;
+
+4a8 import added: randy.oberon0.interpreter.typecheck.environment.TypeCheckEnvironment
+> import randy.oberon0.interpreter.typecheck.environment.TypeCheckEnvironment;
+
+8,11a13 method added: typeCheckRegister(TypeCheckEnvironment)
+> 	public abstract void typeCheckRegister(TypeCheckEnvironment newEnvironment) throws TypeCheckException;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\declaration\ConstDeclaration.java <=> 6350062\src\main\java\randy\oberon0\ast\declaration\ConstDeclaration.java
+4a6 import added: randy.oberon0.exception.TypeCheckException
+> import randy.oberon0.exception.TypeCheckException;
+
+4a8 import added: randy.oberon0.interpreter.typecheck.environment.TypeCheckEnvironment
+> import randy.oberon0.interpreter.typecheck.environment.TypeCheckEnvironment;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\declaration\ProcedureDeclaration.java <=> 6350062\src\main\java\randy\oberon0\ast\declaration\ProcedureDeclaration.java
+4a10 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+60,63d61 code removed in invoke(RuntimeEnvironment, Iterator<IBindableValue>)
+< 		if (parameterValues.hasNext())
+< 		{
+< 			throw new IncorrectNumberOfArgumentsException();
+< 		}
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\declaration\RecordDeclaration.java <=> 6350062\src\main\java\randy\oberon0\ast\declaration\RecordDeclaration.java
+4a6 import added: randy.oberon0.exception.TypeCheckException
+> import randy.oberon0.exception.TypeCheckException;
+
+4a8 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\declaration\VarDeclaration.java <=> 6350062\src\main\java\randy\oberon0\ast\declaration\VarDeclaration.java
+4a8 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+9,83a65,100 method added: typeCheckRegisterAsParameter(TypeCheckEnvironment, Iterator<ITypeCheckBindableValue>)
+> 	public void typeCheckRegisterAsParameter(TypeCheckEnvironment environment, Iterator<ITypeCheckBindableValue> parameterValues) throws TypeCheckException // Use for registering parameters
+> 	{
+> 		assert(environment != null);
+> 		assert(parameterValues != null);
+> 		// Loop through all variable names
+> 		for (String variableName : variableNames)
+> 		{
+> 			// Check if we have a parameter left
+> 			if (!parameterValues.hasNext())
+> 			{
+> 				throw new IncorrectNumberOfArgumentsException();
+> 			}
+> 			// Fetch a parameter value from the parameter values
+> 			final ITypeCheckBindableValue parameterValue = parameterValues.next();
+> 			// Resolve the variable type and check if they are compatible
+> 			if (!parameterValue.equals(environment.resolveType(typeName)))
+> 			{
+> 				throw new TypeMismatchException(parameterValue.toString(), typeName);
+> 			}
+> 			// Check if the variable is a reference
+> 			if (isReference)
+> 			{
+> 				// Yes, make a reference to the variable and add it to the environment
+> 				if (!(parameterValue instanceof TypeCheckReference))
+> 				{
+> 					throw new ValueToReferenceConversionException();
+> 				}
+> 				environment.registerVariableByReference(variableName, (TypeCheckReference)parameterValue);
+> 			}
+> 			else
+> 			{	
+> 				// No, create a copy of the parameter and register it in the environment
+> 				environment.registerVariableByValue(variableName, parameterValue.getValue());
+> 			}
+> 		}
+> 	}
+
+43,46d43 code removed in registerAsParameter(RuntimeEnvironment, Iterator<IBindableValue>)
+< 			if (!parameterValues.hasNext())
+< 			{
+< 				throw new IncorrectNumberOfArgumentsException();
+< 			}
+
+50,55c44 code removed in registerAsParameter(RuntimeEnvironment, Iterator<IBindableValue>)
+< 			if (parameterValue.getValue().getType() != environment.resolveType(typeName).instantiate(environment).getType())
+< 			{
+< 				throw new TypeMismatchException(parameterValue.getValue().getType().toString(), typeName);
+< 			}
+< 			// Check if the variable is a reference
+< 			if (isReference)
+---
+> 			if (isReference)
+
+58,61d46 code removed in registerAsParameter(RuntimeEnvironment, Iterator<IBindableValue>)
+< 				if (!(parameterValue instanceof Reference))
+< 				{
+< 					throw new ValueToReferenceConversionException();
+< 				}
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\expression\Expression.java <=> 6350062\src\main\java\randy\oberon0\ast\expression\Expression.java
+4a6 import added: randy.oberon0.exception.TypeCheckException
+> import randy.oberon0.exception.TypeCheckException;
+
+4a8 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+8,11a13 method added: typeCheck(TypeCheckEnvironment)
+> 	public abstract ITypeCheckBindableValue typeCheck(TypeCheckEnvironment environment) throws TypeCheckException;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\expression\InfixAdditionExpression.java <=> 6350062\src\main\java\randy\oberon0\ast\expression\InfixAdditionExpression.java
+4a7 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\expression\InfixAndExpression.java <=> 6350062\src\main\java\randy\oberon0\ast\expression\InfixAndExpression.java
+4a7 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\expression\InfixDivisionExpression.java <=> 6350062\src\main\java\randy\oberon0\ast\expression\InfixDivisionExpression.java
+4a7 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\expression\InfixEqualsExpression.java <=> 6350062\src\main\java\randy\oberon0\ast\expression\InfixEqualsExpression.java
+4a7 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\expression\InfixGreaterEqualsExpression.java <=> 6350062\src\main\java\randy\oberon0\ast\expression\InfixGreaterEqualsExpression.java
+4a7 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\expression\InfixGreaterThanExpression.java <=> 6350062\src\main\java\randy\oberon0\ast\expression\InfixGreaterThanExpression.java
+4a7 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\expression\InfixModuloExpression.java <=> 6350062\src\main\java\randy\oberon0\ast\expression\InfixModuloExpression.java
+4a7 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\expression\InfixMultiplicationExpression.java <=> 6350062\src\main\java\randy\oberon0\ast\expression\InfixMultiplicationExpression.java
+4a7 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\expression\InfixNotEqualsExpression.java <=> 6350062\src\main\java\randy\oberon0\ast\expression\InfixNotEqualsExpression.java
+4a7 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\expression\InfixOrExpression.java <=> 6350062\src\main\java\randy\oberon0\ast\expression\InfixOrExpression.java
+4a7 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\expression\InfixSmallerEqualsExpression.java <=> 6350062\src\main\java\randy\oberon0\ast\expression\InfixSmallerEqualsExpression.java
+4a7 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\expression\InfixSmallerThanExpression.java <=> 6350062\src\main\java\randy\oberon0\ast\expression\InfixSmallerThanExpression.java
+4a7 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\expression\InfixSubtractionExpression.java <=> 6350062\src\main\java\randy\oberon0\ast\expression\InfixSubtractionExpression.java
+4a7 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\expression\PrefixMinExpression.java <=> 6350062\src\main\java\randy\oberon0\ast\expression\PrefixMinExpression.java
+4a7 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\expression\PrefixNotExpression.java <=> 6350062\src\main\java\randy\oberon0\ast\expression\PrefixNotExpression.java
+4a7 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\expression\SelectorExpression.java <=> 6350062\src\main\java\randy\oberon0\ast\expression\SelectorExpression.java
+4a6 import added: randy.oberon0.exception.TypeCheckException
+> import randy.oberon0.exception.TypeCheckException;
+
+4a8 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\literal\BooleanLiteral.java <=> 6350062\src\main\java\randy\oberon0\ast\literal\BooleanLiteral.java
+4a6 import added: randy.oberon0.exception.TypeCheckException
+> import randy.oberon0.exception.TypeCheckException;
+
+4a8 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\literal\IntegerLiteral.java <=> 6350062\src\main\java\randy\oberon0\ast\literal\IntegerLiteral.java
+4a7 import added: randy.oberon0.exception.TypeCheckException
+> import randy.oberon0.exception.TypeCheckException;
+
+4a9 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\module\Module.java <=> 6350062\src\main\java\randy\oberon0\ast\module\Module.java
+4a9 import added: randy.oberon0.exception.*
+> import randy.oberon0.exception.*;
+
+4a12 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+9d4 import removed: randy.oberon0.exception.IncorrectNumberOfArgumentsException
+< import randy.oberon0.exception.IncorrectNumberOfArgumentsException;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\selector\ArraySelector.java <=> 6350062\src\main\java\randy\oberon0\ast\selector\ArraySelector.java
+4a5 import added: randy.oberon0.exception.*
+> import randy.oberon0.exception.*;
+
+4a8 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\selector\DotSelector.java <=> 6350062\src\main\java\randy\oberon0\ast\selector\DotSelector.java
+4a4 import added: randy.oberon0.exception.*
+> import randy.oberon0.exception.*;
+
+4a7 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\selector\Selector.java <=> 6350062\src\main\java\randy\oberon0\ast\selector\Selector.java
+4a6 import added: randy.oberon0.exception.TypeCheckException
+> import randy.oberon0.exception.TypeCheckException;
+
+4a8 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+8,11a13 method added: typeCheck(TypeCheckEnvironment)
+> 	public abstract TypeCheckReference typeCheck(TypeCheckEnvironment environment) throws TypeCheckException;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\selector\VariableSelector.java <=> 6350062\src\main\java\randy\oberon0\ast\selector\VariableSelector.java
+4a4 import added: randy.oberon0.exception.*
+> import randy.oberon0.exception.*;
+
+4a7 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\statement\AssignmentStatement.java <=> 6350062\src\main\java\randy\oberon0\ast\statement\AssignmentStatement.java
+4a7 import added: randy.oberon0.exception.TypeCheckException
+> import randy.oberon0.exception.TypeCheckException;
+
+4a9 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\statement\Block.java <=> 6350062\src\main\java\randy\oberon0\ast\statement\Block.java
+4a6 import added: randy.oberon0.exception.TypeCheckException
+> import randy.oberon0.exception.TypeCheckException;
+
+4a8 import added: randy.oberon0.interpreter.typecheck.environment.TypeCheckEnvironment
+> import randy.oberon0.interpreter.typecheck.environment.TypeCheckEnvironment;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\statement\IfStatement.java <=> 6350062\src\main\java\randy\oberon0\ast\statement\IfStatement.java
+4a7 import added: randy.oberon0.exception.TypeCheckException
+> import randy.oberon0.exception.TypeCheckException;
+
+4a9 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\statement\ProcedureCall.java <=> 6350062\src\main\java\randy\oberon0\ast\statement\ProcedureCall.java
+4a8 import added: randy.oberon0.exception.*
+> import randy.oberon0.exception.*;
+
+4a10 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\statement\Statement.java <=> 6350062\src\main\java\randy\oberon0\ast\statement\Statement.java
+4a6 import added: randy.oberon0.exception.TypeCheckException
+> import randy.oberon0.exception.TypeCheckException;
+
+4a8 import added: randy.oberon0.interpreter.typecheck.environment.TypeCheckEnvironment
+> import randy.oberon0.interpreter.typecheck.environment.TypeCheckEnvironment;
+
+8,11a13 method added: typeCheck(TypeCheckEnvironment)
+> 	public abstract void typeCheck(TypeCheckEnvironment environment) throws TypeCheckException;
+
+6350062_assignment_1\src\main\java\randy\oberon0\ast\statement\WhileStatement.java <=> 6350062\src\main\java\randy\oberon0\ast\statement\WhileStatement.java
+4a6 import added: randy.oberon0.exception.TypeCheckException
+> import randy.oberon0.exception.TypeCheckException;
+
+4a8 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+4a9 import added: randy.oberon0.value.Boolean
+> import randy.oberon0.value.Boolean;
+
+6350062_assignment_1\src\main\java\randy\oberon0\exception\ConstAssignmentException.java <=> 6350062\src\main\java\randy\oberon0\exception\ConstAssignmentException.java
+4c4 extended type changed from RuntimeException to TypeCheckException
+< public class ConstAssignmentException extends RuntimeException
+---
+> public class ConstAssignmentException extends TypeCheckException
+
+6350062_assignment_1\src\main\java\randy\oberon0\exception\DuplicateProcedureException.java <=> 6350062\src\main\java\randy\oberon0\exception\DuplicateProcedureException.java
+4c4 extended type changed from RuntimeException to TypeCheckException
+< public class DuplicateProcedureException extends RuntimeException
+---
+> public class DuplicateProcedureException extends TypeCheckException
+
+6350062_assignment_1\src\main\java\randy\oberon0\exception\DuplicateTypeException.java <=> 6350062\src\main\java\randy\oberon0\exception\DuplicateTypeException.java
+4c4 extended type changed from RuntimeException to TypeCheckException
+< public class DuplicateTypeException extends RuntimeException
+---
+> public class DuplicateTypeException extends TypeCheckException
+
+6350062_assignment_1\src\main\java\randy\oberon0\exception\DuplicateVariableException.java <=> 6350062\src\main\java\randy\oberon0\exception\DuplicateVariableException.java
+4c4 extended type changed from RuntimeException to TypeCheckException
+< public class DuplicateVariableException extends RuntimeException
+---
+> public class DuplicateVariableException extends TypeCheckException
+
+6350062_assignment_1\src\main\java\randy\oberon0\exception\IncorrectNumberOfArgumentsException.java <=> 6350062\src\main\java\randy\oberon0\exception\IncorrectNumberOfArgumentsException.java
+4c4 extended type changed from RuntimeException to TypeCheckException
+< public class IncorrectNumberOfArgumentsException extends RuntimeException
+---
+> public class IncorrectNumberOfArgumentsException extends TypeCheckException
+
+6350062_assignment_1\src\main\java\randy\oberon0\exception\OperatorTypeUndefinedException.java <=> 6350062\src\main\java\randy\oberon0\exception\OperatorTypeUndefinedException.java
+4c4 extended type changed from RuntimeException to TypeCheckException
+< public class OperatorTypeUndefinedException extends RuntimeException
+---
+> public class OperatorTypeUndefinedException extends TypeCheckException
+
+6350062_assignment_1\src\main\java\randy\oberon0\exception\TypeMismatchException.java <=> 6350062\src\main\java\randy\oberon0\exception\TypeMismatchException.java
+4c4 extended type changed from RuntimeException to TypeCheckException
+< public class TypeMismatchException extends RuntimeException
+---
+> public class TypeMismatchException extends TypeCheckException
+
+6350062_assignment_1\src\main\java\randy\oberon0\exception\UndefinedBindableException.java <=> 6350062\src\main\java\randy\oberon0\exception\UndefinedBindableException.java
+4c4 extended type changed from RuntimeException to TypeCheckException
+< public class UndefinedBindableException extends RuntimeException
+---
+> public class UndefinedBindableException extends TypeCheckException
+
+6350062_assignment_1\src\main\java\randy\oberon0\exception\UnknownRecordFieldAccess.java <=> 6350062\src\main\java\randy\oberon0\exception\UnknownRecordFieldAccess.java
+4c4 extended type changed from RuntimeException to TypeCheckException
+< public class UnknownRecordFieldAccess extends RuntimeException
+---
+> public class UnknownRecordFieldAccess extends TypeCheckException
+
+6350062_assignment_1\src\main\java\randy\oberon0\exception\UnknownTypeException.java <=> 6350062\src\main\java\randy\oberon0\exception\UnknownTypeException.java
+4c4 extended type changed from RuntimeException to TypeCheckException
+< public class UnknownTypeException extends RuntimeException
+---
+> public class UnknownTypeException extends TypeCheckException
+
+6350062_assignment_1\src\main\java\randy\oberon0\exception\ValueToReferenceConversionException.java <=> 6350062\src\main\java\randy\oberon0\exception\ValueToReferenceConversionException.java
+4c4 extended type changed from RuntimeException to TypeCheckException
+< public class ValueToReferenceConversionException extends RuntimeException
+---
+> public class ValueToReferenceConversionException extends TypeCheckException
+
+6350062_assignment_1\src\main\java\randy\oberon0\interpreter\antlr\Oberon0ASTTreeGenerator.java <=> 6350062\src\main\java\randy\oberon0\interpreter\antlr\Oberon0ASTTreeGenerator.java
+23,421a423,430 method added: buildWithStatement(Tree)
+> 	public static WithStatement buildWithStatement(Tree tree) throws Exception
+> 	{
+> 		assert(tree.getType() == Oberon0Parser.WITH);
+> 		assert(tree.getChildCount() == 2);
+> 		Selector selector = buildSelector(tree.getChild(0));
+> 		Block statement = buildBlock(tree.getChild(1));
+> 		return new WithStatement(selector, statement);
+> 	}
+
+371a371,372 code added in buildStatement(Tree)
+> 			case Oberon0Parser.WITH:
+> 				return buildWithStatement(tree);
+
+6350062_assignment_1\src\main\java\randy\oberon0\interpreter\buildinprocedures\BuildinProcedures.java <=> 6350062\src\main\java\randy\oberon0\interpreter\buildinprocedures\BuildinProcedures.java
+4a5 import added: randy.oberon0.exception.TypeCheckException
+> import randy.oberon0.exception.TypeCheckException;
+
+4a7 import added: randy.oberon0.interpreter.typecheck.environment.TypeCheckEnvironment
+> import randy.oberon0.interpreter.typecheck.environment.TypeCheckEnvironment;
+
+6350062_assignment_1\src\main\java\randy\oberon0\interpreter\buildinprocedures\DefaultReadProcedure.java <=> 6350062\src\main\java\randy\oberon0\interpreter\buildinprocedures\DefaultReadProcedure.java
+4a12 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+6350062_assignment_1\src\main\java\randy\oberon0\interpreter\buildinprocedures\DefaultWriteLnProcedure.java <=> 6350062\src\main\java\randy\oberon0\interpreter\buildinprocedures\DefaultWriteLnProcedure.java
+4a9 import added: randy.oberon0.exception.TypeCheckException
+> import randy.oberon0.exception.TypeCheckException;
+
+4a10 import added: randy.oberon0.exception.UnreachableRuntimeException
+> import randy.oberon0.exception.UnreachableRuntimeException;
+
+4a12 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+6350062_assignment_1\src\main\java\randy\oberon0\interpreter\buildinprocedures\DefaultWriteProcedure.java <=> 6350062\src\main\java\randy\oberon0\interpreter\buildinprocedures\DefaultWriteProcedure.java
+4a9 import added: randy.oberon0.exception.TypeCheckException
+> import randy.oberon0.exception.TypeCheckException;
+
+4a10 import added: randy.oberon0.exception.UnreachableRuntimeException
+> import randy.oberon0.exception.UnreachableRuntimeException;
+
+4a12 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+6350062_assignment_1\src\main\java\randy\oberon0\interpreter\buildinprocedures\IBuildinProcedures.java <=> 6350062\src\main\java\randy\oberon0\interpreter\buildinprocedures\IBuildinProcedures.java
+4a5 import added: randy.oberon0.exception.TypeCheckException
+> import randy.oberon0.exception.TypeCheckException;
+
+4a7 import added: randy.oberon0.interpreter.typecheck.environment.TypeCheckEnvironment
+> import randy.oberon0.interpreter.typecheck.environment.TypeCheckEnvironment;
+
+7,10a12 method added: typeCheckRegister(TypeCheckEnvironment)
+> 	public void typeCheckRegister(TypeCheckEnvironment environment) throws TypeCheckException;
+
+6350062_assignment_1\src\main\java\randy\oberon0\interpreter\runtime\IInvokableProcedure.java <=> 6350062\src\main\java\randy\oberon0\interpreter\runtime\IInvokableProcedure.java
+4a6 import added: randy.oberon0.exception.TypeCheckException
+> import randy.oberon0.exception.TypeCheckException;
+
+4a8 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+8,13a16 method added: typeCheckInvoke(TypeCheckEnvironment, Iterator<ITypeCheckBindableValue>)
+> 	public abstract void typeCheckInvoke(TypeCheckEnvironment environment, Iterator<ITypeCheckBindableValue> parameterValues) throws TypeCheckException;
+
+8,13a17 method added: typeCheckRegisterTypeDeclarations(TypeCheckEnvironment)
+> 	public abstract void typeCheckRegisterTypeDeclarations(TypeCheckEnvironment newEnvironment) throws TypeCheckException;
+
+8,13a18 method added: typeCheckBody(TypeCheckEnvironment)
+> 	public abstract void typeCheckBody(TypeCheckEnvironment newEnvironment) throws TypeCheckException;
+
+6350062_assignment_1\src\main\java\randy\oberon0\interpreter\runtime\Program.java <=> 6350062\src\main\java\randy\oberon0\interpreter\runtime\Program.java
+4a8 import added: randy.oberon0.interpreter.typecheck.environment.*
+> import randy.oberon0.interpreter.typecheck.environment.*;
+
+4a13 import added: randy.oberon0.exception.TypeCheckException
+> import randy.oberon0.exception.TypeCheckException;
+
+13,59a59,81 method added: typeCheck()
+> 	protected void typeCheck() throws TypeCheckException
+> 	{
+> 		// Create a global environment
+> 		TypeCheckEnvironment globalEnvironment = new TypeCheckEnvironment();
+> 		
+> 		// Registrate buildin primitive types
+> 		globalEnvironment.registerType(Type.INTEGER.getTypeText(), new TypeCheckType(Type.INTEGER.getTypeText()));
+> 		globalEnvironment.registerType(Type.BOOLEAN.getTypeText(), new TypeCheckType(Type.BOOLEAN.getTypeText()));
+> 		
+> 		// Registrate buildin procedures
+> 		buildinProcedures.typeCheckRegister(globalEnvironment);
+> 		
+> 		// Create a module environment on top of the global environment
+> 		TypeCheckEnvironment moduleEnvironment = new TypeCheckEnvironment(globalEnvironment);
+> 	
+> 		// Registrate the modules type declarations in the modole environment
+> 		module.typeCheckRegisterTypeDeclarations(moduleEnvironment);
+> 		// Invoke the module
+> 		module.typeCheckInvoke(moduleEnvironment, (new LinkedList<ITypeCheckBindableValue>()).iterator());
+> 		// Refresh the module environment and invoke the body
+> 		moduleEnvironment = new TypeCheckEnvironment(globalEnvironment);
+> 		module.typeCheckBody(moduleEnvironment);
+> 	}
+
+34a36 code added in loadProgram(String, IBuildinProcedures)
+> 		typeCheck();
+
+6350062_assignment_1\src\main\java\randy\oberon0\interpreter\runtime\environment\Constant.java <=> 6350062\src\main\java\randy\oberon0\interpreter\runtime\environment\Constant.java
+4a4 import added: randy.oberon0.exception.UnreachableRuntimeException
+> import randy.oberon0.exception.UnreachableRuntimeException;
+
+4d4 import removed: randy.oberon0.exception.ConstAssignmentException
+< import randy.oberon0.exception.ConstAssignmentException;
+
+6350062_assignment_1\src\main\java\randy\oberon0\interpreter\runtime\environment\IInstantiateableVariable.java <=> 6350062\src\main\java\randy\oberon0\interpreter\runtime\environment\IInstantiateableVariable.java
+4a6 import added: randy.oberon0.interpreter.runtime.environment.RuntimeEnvironment
+> import randy.oberon0.interpreter.runtime.environment.RuntimeEnvironment;
+
+6350062_assignment_1\src\main\java\randy\oberon0\interpreter\runtime\environment\PrimitiveVariableInstantiation.java <=> 6350062\src\main\java\randy\oberon0\interpreter\runtime\environment\PrimitiveVariableInstantiation.java
+4a5 import added: randy.oberon0.exception.UnreachableRuntimeException
+> import randy.oberon0.exception.UnreachableRuntimeException;
+
+5d4 import removed: randy.oberon0.exception.UnknownTypeException
+< import randy.oberon0.exception.UnknownTypeException;
+
+6350062_assignment_1\src\main\java\randy\oberon0\interpreter\runtime\environment\Reference.java <=> 6350062\src\main\java\randy\oberon0\interpreter\runtime\environment\Reference.java
+4a4 import added: randy.oberon0.exception.UnreachableRuntimeException
+> import randy.oberon0.exception.UnreachableRuntimeException;
+
+4d4 import removed: randy.oberon0.exception.ConstAssignmentException
+< import randy.oberon0.exception.ConstAssignmentException;
+
+16c16 throws added: UnreachableRuntimeException
+< 	public void setValue(Value _value) throws ConstAssignmentException
+---
+> 	public void setValue(Value _value) throws UnreachableRuntimeException
+
+16c16 throws removed: ConstAssignmentException
+< 	public void setValue(Value _value) throws ConstAssignmentException
+---
+> 	public void setValue(Value _value) throws UnreachableRuntimeException
+
+6350062_assignment_1\src\main\java\randy\oberon0\interpreter\runtime\environment\RuntimeEnvironment.java <=> 6350062\src\main\java\randy\oberon0\interpreter\runtime\environment\RuntimeEnvironment.java
+46c46 code changed in lookup(String)
+< 			throw new UndefinedBindableException(name);
+---
+> 			throw new UnreachableRuntimeException();
+
+64c64 code changed in registerVariableByReference(String, Reference)
+< 			throw new DuplicateVariableException(variableName);
+---
+> 			throw new UnreachableRuntimeException();
+
+85c85 code changed in registerProcedure(String, IInvokableProcedure)
+< 			throw new DuplicateProcedureException(procedureName);
+---
+> 			throw new UnreachableRuntimeException();
+
+100c100 code changed in registerType(String, IInstantiateableVariable)
+< 			throw new DuplicateTypeException(typeName);
+---
+> 			throw new UnreachableRuntimeException();
+
+120c120 code changed in resolveType(String)
+< 			throw new UnknownTypeException(name);
+---
+> 			throw new UnreachableRuntimeException();
+
+6350062_assignment_1\src\main\java\randy\oberon0\value\Array.java <=> 6350062\src\main\java\randy\oberon0\value\Array.java
+34c34 code changed in setValue(Value)
+< 		Array v = _val.castToArray();
+---
+> 		Array v = (Array)_val;
+
+6350062_assignment_1\src\main\java\randy\oberon0\value\Boolean.java <=> 6350062\src\main\java\randy\oberon0\value\Boolean.java
+20c20 code changed in setValue(Value)
+< 		Boolean v = _val.castToBoolean();
+---
+> 		Boolean v = (Boolean)_val;
+
+6350062_assignment_1\src\main\java\randy\oberon0\value\Integer.java <=> 6350062\src\main\java\randy\oberon0\value\Integer.java
+20c20 code changed in setValue(Value)
+< 		Integer v = _val.castToInteger();
+---
+> 		Integer v = (Integer)_val;
+
+6350062_assignment_1\src\main\java\randy\oberon0\value\Record.java <=> 6350062\src\main\java\randy\oberon0\value\Record.java
+8,97a26,29 method added: getMemberNames()
+> 	public Set<String> getMemberNames()
+> 	{
+> 		return new HashSet<String>(members.keySet());
+> 	}
+
+6350062_assignment_1\src\main\java\randy\oberon0\value\Value.java <=> 6350062\src\main\java\randy\oberon0\value\Value.java
+5d4 import removed: randy.oberon0.exception.*
+< import randy.oberon0.exception.*;
+
+12,19d6,12 method removed: castToInteger()
+< 	public Integer castToInteger() throws TypeMismatchException
+< 	{
+< 		if (this instanceof Integer)
+< 		{
+< 			return (Integer)this;
+< 		}
+< 		throw new TypeMismatchException(getType().toString(), Type.INTEGER.toString());
+< 	}
+
+20,27d6,12 method removed: castToBoolean()
+< 	public Boolean castToBoolean() throws TypeMismatchException
+< 	{
+< 		if (this instanceof Boolean)
+< 		{
+< 			return (Boolean)this;
+< 		}
+< 		throw new TypeMismatchException(getType().toString(), Type.BOOLEAN.toString());
+< 	}
+
+28,35d6,12 method removed: castToArray()
+< 	public Array castToArray() throws TypeMismatchException
+< 	{
+< 		if (this instanceof Array)
+< 		{
+< 			return (Array)this;
+< 		}
+< 		throw new TypeMismatchException(getType().toString(), Type.ARRAY.toString());
+< 	}
+
+36,43d6,12 method removed: castToRecord()
+< 	public Record castToRecord() throws TypeMismatchException
+< 	{
+< 		if (this instanceof Record)
+< 		{
+< 			return (Record)this;
+< 		}
+< 		throw new TypeMismatchException(getType().toString(), Type.RECORD.toString());
+< 	}
+
