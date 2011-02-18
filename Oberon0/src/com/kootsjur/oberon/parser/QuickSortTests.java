@@ -67,9 +67,19 @@ public class QuickSortTests {
 	}
 	
 	private void populate(int[] array) {
-		for (int i = 0; i < array.length; i++) {
-			array[i] = rand.nextInt();
-		}
+	   array[0] = 5;
+	   array[1] = 1;
+	   array[2] = 9;
+	   array[3] = 6;
+	   array[4] = 4;
+	   array[5] = 2;
+	   array[6] = 8;
+	   array[7] = 7;
+	   array[8] = 3;
+	   array[9] = 0;
+		//for (int i = 0; i < array.length; i++) {
+		//	array[i] = rand.nextInt();
+		//}
 	}
 
 	private String toIOString(int array[]) {

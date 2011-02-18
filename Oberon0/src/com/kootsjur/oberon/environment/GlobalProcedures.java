@@ -88,6 +88,7 @@ public class GlobalProcedures
          @Override
          public void evaluate(Environment environment) {
             com.kootsjur.oberon.value.Int y = (com.kootsjur.oberon.value.Int) environment.lookUpValue(fPName);
+            System.out.print(y.getValue());
             output.print(y.getValue());
             output.flush();
          }
@@ -109,6 +110,7 @@ public class GlobalProcedures
          public void evaluate(Environment environement) {
             output.println();
             output.flush();
+            
          }
       };
       String procedureName = "WriteLn";

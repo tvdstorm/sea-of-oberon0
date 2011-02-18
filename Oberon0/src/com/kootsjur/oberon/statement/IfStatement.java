@@ -1,6 +1,7 @@
 package com.kootsjur.oberon.statement;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import com.kootsjur.oberon.environment.Environment;
@@ -19,7 +20,7 @@ public class IfStatement extends Statement
       super(StatementType.IFSTATEMENT);
       this.ifCondition = ifCondition;
       this.thenStatementSequence = thenStatementSequence;
-      this.elseIfStatements = new ArrayList<IfStatement>();
+      this.elseIfStatements = new LinkedList<IfStatement>();
    }
    
    public IfStatement(Evaluator ifCondition, StatementSequence thenStatementSequence, StatementSequence elseStatementSequence)
@@ -28,7 +29,7 @@ public class IfStatement extends Statement
       this.ifCondition = ifCondition;
       this.thenStatementSequence = thenStatementSequence;
       this.elseStatementSequence = elseStatementSequence;
-      this.elseIfStatements = new ArrayList<IfStatement>();
+      this.elseIfStatements = new LinkedList<IfStatement>();
    }
    
    public IfStatement(Evaluator ifCondition, StatementSequence thenStatementSequence, List<IfStatement> elseIfStatements)
