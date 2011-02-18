@@ -7,13 +7,15 @@ package org.elcid.oberon0.values;
 public class Array extends Value {
 
 	private Value[] elements;
+	private Value type;
 
-	public Array(Integer length) {
+	public Array(Integer length, Value elementType) {
 		elements = new Value[length];
+		type = elementType;
 
 		// Initialize array with Ints of 0
 		for (int i = 0; i < length; i++){
-			elements[i] = new Int(0);
+			elements[i] = type.clone();
 		}
 	}
 
@@ -31,7 +33,7 @@ public class Array extends Value {
 
 	@Override
 	public Value clone() {
-		Array clone = new Array(elements.length);
+		Array clone = new Array(elements.length, type);
 		System.arraycopy(this.elements, 0, clone.elements, 0, elements.length);
 		return clone;
 	}
