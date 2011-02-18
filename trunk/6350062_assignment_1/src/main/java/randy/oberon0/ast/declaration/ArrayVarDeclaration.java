@@ -1,12 +1,13 @@
 package randy.oberon0.ast.declaration;
 
 import java.util.*;
-import randy.oberon0.ast.expression.Expression;
+import randy.oberon0.ast.expression.*;
 import randy.oberon0.exception.*;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.environment.*;
-import randy.oberon0.value.*;
+import randy.oberon0.value.Array;
 import randy.oberon0.value.Integer;
+import randy.oberon0.value.Type;
 
 public class ArrayVarDeclaration extends VarDeclaration
 {
@@ -16,7 +17,7 @@ public class ArrayVarDeclaration extends VarDeclaration
 	{
 		super(_typeName, _isReference, _variableNames);
 		assert(_arrayLength.size() >= 1);
-		arrayLength = _arrayLength;
+		arrayLength = new ArrayList<Expression>(_arrayLength);
 	}
 	@Override
 	public void register(RuntimeEnvironment newEnvironment) throws RuntimeException // Use for variable declarations IN procedures or modules
@@ -94,6 +95,10 @@ public class ArrayVarDeclaration extends VarDeclaration
 			if (isReference())
 			{
 				// Yes, make a reference to the variable and add it to the environment
+				if (!(parameterValue instanceof Reference))
+				{
+					throw new ValueToReferenceConversionException();
+				}
 				environment.registerVariableByReference(variableName, (Reference)parameterValue);
 			}
 			else
