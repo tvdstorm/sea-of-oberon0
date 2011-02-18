@@ -1,4 +1,4 @@
-MODULE Functionnesting;
+MODULE Procedurenesting;
 
 PROCEDURE a();
   VAR x: INTEGER;
@@ -34,4 +34,4 @@ BEGIN
 
 a
 
-END Functionnesting.
+END Procedurenesting.

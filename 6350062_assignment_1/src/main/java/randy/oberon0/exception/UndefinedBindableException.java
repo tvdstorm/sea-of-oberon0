@@ -6,6 +6,6 @@ public class UndefinedBindableException extends RuntimeException
 
 	public UndefinedBindableException(String name)
 	{
-		super("The method or variable '" + name + "' is undefined.");
+		super("The procedure or variable '" + name + "' is undefined.");
 	}
 }

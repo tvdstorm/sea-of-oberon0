@@ -1,13 +1,13 @@
 package randy.oberon0.ast.declaration;
 
 import java.util.*;
-import randy.oberon0.interpreter.runtime.IInvokableFunction;
+import randy.oberon0.interpreter.runtime.IInvokableProcedure;
 import randy.oberon0.ast.statement.Block;
 import randy.oberon0.exception.*;
 import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.environment.*;
 
-public class ProcedureDeclaration extends BodyDeclaration implements IInvokableFunction
+public class ProcedureDeclaration extends BodyDeclaration implements IInvokableProcedure
 {
 	private final String procedureName;
 	private final List<VarDeclaration> parameterDeclarations;
@@ -30,8 +30,8 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 	public void register(RuntimeEnvironment newEnvironment) throws RuntimeException
 	{
 		assert(newEnvironment != null);
-		// Register the function in the environment
-		newEnvironment.registerFunction(getName(), this);
+		// Register the procedure in the environment
+		newEnvironment.registerProcedure(getName(), this);
 	}
 	@Override
 	public void registerTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException
@@ -50,7 +50,7 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 	{
 		assert(environment != null);
 		assert(parameterValues != null);
-		// Loop through all parameters and declare them in the invoked functions environment
+		// Loop through all parameters and declare them in the invoked procedures environment
 		for (VarDeclaration p : parameterDeclarations)
 		{
 			p.registerAsParameter(environment, parameterValues);
@@ -68,7 +68,7 @@ public class ProcedureDeclaration extends BodyDeclaration implements IInvokableF
 				bodyDecl.register(environment);
 			}
 		}
-		// Run the body of the function
+		// Run the body of the procedure
 		body.run(environment);
 	}
 	@Override

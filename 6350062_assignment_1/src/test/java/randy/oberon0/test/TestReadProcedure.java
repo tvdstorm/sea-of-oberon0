@@ -3,17 +3,19 @@ package randy.oberon0.test;
 import java.util.Iterator;
 import java.util.Queue;
 import randy.oberon0.interpreter.runtime.IInvokableProcedure;
-import randy.oberon0.interpreter.runtime.environment.*;
+import randy.oberon0.interpreter.runtime.environment.IBindableValue;
+import randy.oberon0.interpreter.runtime.environment.Reference;
 import randy.oberon0.exception.*;
 import randy.oberon0.exception.RuntimeException;
+import randy.oberon0.interpreter.runtime.environment.*;
 import randy.oberon0.value.Integer;
 import randy.oberon0.value.Type;
 
-public class TestReadFunction implements IInvokableProcedure
+public class TestReadProcedure implements IInvokableProcedure
 {
 	private Queue<String> input;
 	
-	public TestReadFunction(Queue<String> _input)
+	public TestReadProcedure(Queue<String> _input)
 	{
 		input = _input;
 	}

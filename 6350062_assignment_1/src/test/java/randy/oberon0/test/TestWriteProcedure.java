@@ -3,32 +3,28 @@ package randy.oberon0.test;
 import java.util.Iterator;
 import java.util.Queue;
 import randy.oberon0.interpreter.runtime.IInvokableProcedure;
-import randy.oberon0.interpreter.runtime.environment.*;
+import randy.oberon0.interpreter.runtime.environment.IBindableValue;
 import randy.oberon0.exception.*;
 import randy.oberon0.exception.RuntimeException;
-import randy.oberon0.value.Integer;
-import randy.oberon0.value.Type;
+import randy.oberon0.interpreter.runtime.environment.*;
+import randy.oberon0.value.*;
 
-public class TestReadFunction implements IInvokableProcedure
+public class TestWriteProcedure implements IInvokableProcedure
 {
-	private Queue<String> input;
-	
-	public TestReadFunction(Queue<String> _input)
+	private Queue<String> output;
+	public TestWriteProcedure(Queue<String> _output)
 	{
-		input = _input;
+		output = _output;
 	}
 	@Override
 	public void invoke(RuntimeEnvironment environment, Iterator<IBindableValue> parameterValues) throws RuntimeException
 	{
 		if (!parameterValues.hasNext())
 			throw new IncorrectNumberOfArgumentsException();
-		Reference param = (Reference)parameterValues.next();
-		if (!param.getValue().getType().equals(Type.INTEGER))
-			throw new TypeMismatchException(param.getValue().getType().toString(), Type.INTEGER.toString());
-		String v = input.poll();
-		if (v == null)
-			throw new IOErrorException("Input stack is empty...");
-		param.setValue(new Integer(java.lang.Integer.parseInt(v)));
+		Value param = parameterValues.next().getValue();
+		if (!param.getType().equals(Type.INTEGER))
+			throw new TypeMismatchException(param.getType().toString(), Type.INTEGER.toString());
+		output.add(param.toString());
 		// No parameters should be left
 		if (parameterValues.hasNext())
 		{
@@ -37,7 +33,7 @@ public class TestReadFunction implements IInvokableProcedure
 	}
 	public String getName()
 	{
-		return "Read";
+		return "Write";
 	}
 	@Override
 	public void registerTypeDeclarations(RuntimeEnvironment newEnvironment) throws RuntimeException

@@ -4,12 +4,12 @@ import java.util.*;
 import randy.oberon0.ast.ASTNode;
 import randy.oberon0.ast.declaration.*;
 import randy.oberon0.ast.statement.Statement;
+import randy.oberon0.interpreter.runtime.IInvokableProcedure;
 import randy.oberon0.exception.IncorrectNumberOfArgumentsException;
 import randy.oberon0.exception.RuntimeException;
-import randy.oberon0.interpreter.runtime.*;
 import randy.oberon0.interpreter.runtime.environment.*;
 
-public class Module extends ASTNode implements IInvokableFunction
+public class Module extends ASTNode implements IInvokableProcedure
 {
 	private final List<BodyDeclaration> bodyDeclarations;
 	private final Statement body;

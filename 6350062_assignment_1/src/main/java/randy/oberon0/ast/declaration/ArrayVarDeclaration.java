@@ -19,7 +19,7 @@ public class ArrayVarDeclaration extends VarDeclaration
 		arrayLength = _arrayLength;
 	}
 	@Override
-	public void register(RuntimeEnvironment newEnvironment) throws RuntimeException // Use for variable declarations IN methods or modules
+	public void register(RuntimeEnvironment newEnvironment) throws RuntimeException // Use for variable declarations IN procedures or modules
 	{
 		assert(newEnvironment != null);
 		// Create a new instantializer for the base type
