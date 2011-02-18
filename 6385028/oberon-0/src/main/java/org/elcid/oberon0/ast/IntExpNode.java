@@ -12,19 +12,19 @@ import org.elcid.oberon0.visitors.ExpressionVisitor;
  */
 public class IntExpNode extends ExpressionNode {
 
-	private int value;
+        private int value;
 
-	public IntExpNode(int value) {
-		this.value = value;
-	}
+        public IntExpNode(int value) {
+                this.value = value;
+        }
 
-	public Int getValue() {
-		return new Int(value);
-	}
+        public Int getValue() {
+                return new Int(value);
+        }
 
-	@Override
-	public Value eval(ExpressionVisitor visitor, Environment localEnv) {
-		return visitor.eval(this, localEnv);
-	}
+        @Override
+        public Value eval(ExpressionVisitor visitor, Environment localEnv) {
+                return visitor.eval(this, localEnv);
+        }
 
 }

@@ -2,7 +2,7 @@ package org.elcid.oberon0.env.builtins;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.elcid.oberon0.ast.IntTypeNode;
+import org.elcid.oberon0.ast.IdentifierTypeNode;
 import org.elcid.oberon0.env.Environment;
 import org.elcid.oberon0.env.FormalParameter;
 import org.elcid.oberon0.env.Procedure;
@@ -23,7 +23,7 @@ public class WriteBuiltinProcedure extends Procedure {
 	@Override
 	public List<FormalParameter> getFormalParams() {
 		List<FormalParameter> params = new ArrayList<FormalParameter>();
-		params.add(new ReferenceFormalParameter(INPUT_PARAM, new IntTypeNode()));
+		params.add(new ReferenceFormalParameter(INPUT_PARAM, new IdentifierTypeNode(IdentifierTypeNode.INTEGER_TYPE)));
 		return params;
 	}
 
