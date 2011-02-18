@@ -16,7 +16,7 @@ public class ProcedureCall extends Statement
 		assert(_procedureName != null);
 		assert(_parameterExpressions != null);
 		procedureName = _procedureName;
-		parameterExpressions = _parameterExpressions;
+		parameterExpressions = new ArrayList<Expression>(_parameterExpressions);
 	}
 	@Override
 	public void run(RuntimeEnvironment environment) throws RuntimeException

@@ -15,7 +15,7 @@ public class RecordDeclaration extends AbstractTypeDeclaration
 		assert(_recordName.length() > 0);
 		assert(_memberVariables != null);
 		recordName = _recordName;
-		memberVariables = _memberVariables;
+		memberVariables = new HashMap<String, String>(_memberVariables);
 	}
 	@Override
 	public void register(RuntimeEnvironment newEnvironment) throws RuntimeException

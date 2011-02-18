@@ -17,7 +17,7 @@ public class VarDeclaration extends BodyDeclaration
 		assert(_variableNames != null);
 		typeName = _typeName;
 		isReference = _isReference;
-		variableNames = _variableNames;
+		variableNames = new ArrayList<String>(_variableNames);
 	}
 	@Override
 	public void register(RuntimeEnvironment newEnvironment) throws RuntimeException // Use for variable declarations IN procedures or modules
@@ -54,6 +54,10 @@ public class VarDeclaration extends BodyDeclaration
 			if (isReference)
 			{
 				// Yes, make a reference to the variable and add it to the environment
+				if (!(parameterValue instanceof Reference))
+				{
+					throw new ValueToReferenceConversionException();
+				}
 				environment.registerVariableByReference(variableName, (Reference)parameterValue);
 			}
 			else

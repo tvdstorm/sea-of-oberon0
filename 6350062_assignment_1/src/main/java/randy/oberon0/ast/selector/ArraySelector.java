@@ -8,8 +8,8 @@ import randy.oberon0.value.Integer;
 
 public class ArraySelector extends Selector
 {
-	private Selector selector;
-	private Expression arrayIndex;
+	private final Selector selector;
+	private final Expression arrayIndex;
 	
 	public ArraySelector(Selector _selector, Expression _arrayIndex)
 	{
