@@ -8,10 +8,18 @@ import org.elcid.oberon0.visitors.TypeVisitor;
  *
  * @author Pieter Brandwijk
  */
-public class IntTypeNode extends TypeNode {
+public class IdentifierTypeNode extends TypeNode{
+	
+	public static final String INTEGER_TYPE = "INTEGER";
 
-	public IntTypeNode() {
+	private String identifier;
 
+	public IdentifierTypeNode(String identifier) {
+		this.identifier = identifier;
+	}
+
+	public String getIdentifier() {
+		return identifier;
 	}
 
 	@Override

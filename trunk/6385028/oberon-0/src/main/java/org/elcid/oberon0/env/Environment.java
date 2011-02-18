@@ -33,8 +33,8 @@ public class Environment {
 		variables.put(variableName, value);
 	}
 
-	public void declareType(String variableName, TypeNode type) {
-		types.put(variableName, type);
+	public void declareType(String typeName, TypeNode type) {
+		types.put(typeName, type);
 	}
 
 	public void declareProcedure(String procedureName, Procedure procedure) {
@@ -51,14 +51,14 @@ public class Environment {
 		throw new UnboundVariableException("Variable " + variableName + " is not bound to a value");
 	}
 
-	public TypeNode getType(String variableName) {
-		if (variables.containsKey(variableName)) {
-			return types.get(variableName);
+	public TypeNode getType(String typeName) {
+		if (types.containsKey(typeName)) {
+			return types.get(typeName);
 		}
 		if (parent != null) {
-			return parent.getType(variableName);
+			return parent.getType(typeName);
 		}
-		throw new TypeNotKnownException("Type of variable " + variableName + " is not known");
+		throw new TypeNotKnownException("Type " + typeName + " is not known");
 	}
 
 	public Procedure getProcedure(String procedureName) {

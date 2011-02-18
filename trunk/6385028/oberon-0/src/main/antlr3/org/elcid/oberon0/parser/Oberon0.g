@@ -127,7 +127,7 @@ fPSection returns [FpSectionNode result]
 	;
 
 type returns [TypeNode result]
-	:	identifier										{ $result = new IntTypeNode(); }
+	:	i=identifier									{ $result = new IdentifierTypeNode($i.text); }
 	|	a=arrayType										{ $result = $a.result; }
 	|	r=recordType									{ $result = $r.result; }
 	;
