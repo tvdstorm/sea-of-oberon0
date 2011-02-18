@@ -14,7 +14,7 @@ public class ArrayVarDeclaration extends VarDeclaration
 	
 	public ArrayVarDeclaration(String _typeName, boolean _isReference, List<String> _variableNames, List<Expression> _arrayLength)
 	{
-		super(_typeName, _isReference, _variableNames, true);
+		super(_typeName, _isReference, _variableNames);
 		assert(_arrayLength.size() >= 1);
 		arrayLength = _arrayLength;
 	}
@@ -23,7 +23,7 @@ public class ArrayVarDeclaration extends VarDeclaration
 	{
 		assert(newEnvironment != null);
 		// Create a new instantializer for the base type
-		IInstantiateableVariable arrayCreator = newEnvironment.resolveType(typeName);
+		IInstantiateableVariable arrayCreator = newEnvironment.resolveType(getTypeName());
 		// Loop through all the length expressions in reverse order
 		ListIterator<Expression> iterator = arrayLength.listIterator(arrayLength.size());
 		while (iterator.hasPrevious())
@@ -40,7 +40,7 @@ public class ArrayVarDeclaration extends VarDeclaration
 		}
 		
 		// Loop through all variable names
-		for (String name : variableNames)
+		for (String name : getVariableNames())
 		{
 			// Create the array and add it in the environment
 			newEnvironment.registerVariableByValue(name, arrayCreator.instantiate(newEnvironment));
@@ -60,7 +60,7 @@ public class ArrayVarDeclaration extends VarDeclaration
 		}
 		
 		// Loop through all variable names
-		for (String variableName : variableNames)
+		for (String variableName : getVariableNames())
 		{
 			// Check if we have a parameter left
 			if (!parameterValues.hasNext())
@@ -91,7 +91,7 @@ public class ArrayVarDeclaration extends VarDeclaration
 				throw new ArrayLengthMismatch();
 			}
 			// Check if the variable is a reference
-			if (isReference)
+			if (isReference())
 			{
 				// Yes, make a reference to the variable and add it to the environment
 				environment.registerVariableByReference(variableName, (Reference)parameterValue);
