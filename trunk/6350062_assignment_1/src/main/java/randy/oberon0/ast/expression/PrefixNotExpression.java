@@ -17,7 +17,7 @@ public class PrefixNotExpression extends PrefixExpression
 	{
 		assert(environment != null);
 		// Evaluate the right hand side expression
-		final Value valRh = rightHandExpression.evaluate(environment).getValue();
+		final Value valRh = getRightHandExpression().evaluate(environment).getValue();
 		// Check if we support the operator
 		if (valRh instanceof Boolean)
 		{
