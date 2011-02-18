@@ -3,7 +3,7 @@ package randy.oberon0.interpreter.runtime;
 import java.util.LinkedList;
 import randy.oberon0.interpreter.antlr.Oberon0ASTTreeGenerator;
 import randy.oberon0.interpreter.buildinfunctions.*;
-import randy.oberon0.interpreter.runtime.environment.IValue;
+import randy.oberon0.interpreter.runtime.environment.*;
 import randy.oberon0.value.Type;
 import randy.oberon0.ast.module.Module;
 import randy.oberon0.exception.RuntimeException;

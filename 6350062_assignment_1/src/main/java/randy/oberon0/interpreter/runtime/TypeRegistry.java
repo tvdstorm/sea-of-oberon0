@@ -3,6 +3,7 @@ package randy.oberon0.interpreter.runtime;
 import java.util.*;
 import randy.oberon0.exception.DuplicateTypeException;
 import randy.oberon0.exception.UnknownTypeException;
+import randy.oberon0.interpreter.runtime.environment.*;
 
 public class TypeRegistry
 {

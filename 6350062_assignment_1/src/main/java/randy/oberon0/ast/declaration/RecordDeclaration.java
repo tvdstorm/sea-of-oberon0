@@ -2,7 +2,7 @@ package randy.oberon0.ast.declaration;
 
 import java.util.*;
 import randy.oberon0.exception.RuntimeException;
-import randy.oberon0.interpreter.runtime.*;
+import randy.oberon0.interpreter.runtime.environment.*;
 
 public class RecordDeclaration extends AbstractTypeDeclaration
 {

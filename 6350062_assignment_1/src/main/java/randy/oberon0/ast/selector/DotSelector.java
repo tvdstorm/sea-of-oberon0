@@ -1,8 +1,7 @@
 package randy.oberon0.ast.selector;
 
 import randy.oberon0.exception.RuntimeException;
-import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
-import randy.oberon0.interpreter.runtime.environment.Reference;
+import randy.oberon0.interpreter.runtime.environment.*;
 import randy.oberon0.value.*;
 
 public class DotSelector extends Selector

@@ -1,7 +1,6 @@
 package randy.oberon0.interpreter.runtime.datastructures;
 
-import randy.oberon0.interpreter.runtime.RuntimeEnvironment;
-import randy.oberon0.interpreter.runtime.environment.Closure;
+import randy.oberon0.interpreter.runtime.environment.*;
 
 public class ClosureAndEnvironment
 {
