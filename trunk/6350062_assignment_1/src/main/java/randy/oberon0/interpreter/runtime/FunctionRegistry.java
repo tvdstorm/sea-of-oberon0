@@ -1,8 +1,7 @@
 package randy.oberon0.interpreter.runtime;
 
 import java.util.*;
-import randy.oberon0.exception.DuplicateFunctionException;
-import randy.oberon0.exception.UndefinedMethodException;
+import randy.oberon0.exception.*;
 import randy.oberon0.interpreter.runtime.datastructures.*;
 import randy.oberon0.interpreter.runtime.environment.*;
 
@@ -16,21 +15,21 @@ public class FunctionRegistry
 		functions = new HashMap<String, ClosureAndEnvironment>();
 		parent = _parent;
 	}
-	public void registerFunction(String functionName, IInvokableFunction functionPointer, RuntimeEnvironment environment) throws DuplicateFunctionException
+	public void registerProcedure(String procedureName, IInvokableProcedure procedurePointer, RuntimeEnvironment environment) throws DuplicateProcedureException
 	{
-		assert(functionName != null);
-		assert(functionName.length() > 0);
-		assert(functionPointer != null);
+		assert(procedureName != null);
+		assert(procedureName.length() > 0);
+		assert(procedurePointer != null);
 		assert(environment != null);
-		// Check if the function has already been registered
-		if (functions.get(functionName) != null)
+		// Check if the procedure has already been registered
+		if (functions.get(procedureName) != null)
 		{
-			throw new DuplicateFunctionException(functionName);
+			throw new DuplicateProcedureException(procedureName);
 		}
-		// Register the function
-		functions.put(functionName, new ClosureAndEnvironment(new Closure(functionPointer, environment), environment));
+		// Register the procedure
+		functions.put(procedureName, new ClosureAndEnvironment(new Closure(procedurePointer, environment), environment));
 	}
-	public ClosureAndEnvironment resolveFunction(String name) throws UndefinedMethodException
+	public ClosureAndEnvironment resolveFunction(String name) throws UndefinedBindableException
 	{
 		// Check if the function is register in this scope
 		if (functions.get(name) != null)
@@ -45,7 +44,7 @@ public class FunctionRegistry
 		// The function isn't registered in this scope and we don't have a parent scope, return an exception
 		else
 		{
-			throw new UndefinedMethodException(name);
+			throw new UndefinedBindableException(name);
 		}
 	}
 }

@@ -1,4 +1,4 @@
-MODULE Functioncalltoofewparameters;
+MODULE Procedurecalltoofewparameters;
 
 PROCEDURE Func(x, y: INTEGER);
   BEGIN
@@ -8,4 +8,4 @@ BEGIN
 
 Func(4)
 
-END Functioncalltoofewparameters.
+END Procedurecalltoofewparameters.

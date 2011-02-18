@@ -8,7 +8,7 @@ import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.interpreter.runtime.*;
 import randy.oberon0.value.*;
 
-public class TestWriteFunction implements IInvokableFunction
+public class TestWriteFunction implements IInvokableProcedure
 {
 	private Queue<String> output;
 	public TestWriteFunction(Queue<String> _output)

@@ -1,6 +1,6 @@
 package randy.oberon0.main;
 
-import randy.oberon0.interpreter.buildinfunctions.BuildinFunctions;
+import randy.oberon0.interpreter.buildinprocedures.BuildinProcedures;
 import randy.oberon0.interpreter.runtime.Program;
 
 public class Main
@@ -10,7 +10,7 @@ public class Main
 		if (args.length == 1)
 		{
 			Program p = new Program();
-			p.loadProgram(args[0], new BuildinFunctions());
+			p.loadProgram(args[0], new BuildinProcedures());
 			p.run();
 		}
 		else

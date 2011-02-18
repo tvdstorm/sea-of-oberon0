@@ -7,11 +7,11 @@ import randy.oberon0.exception.RuntimeException;
 import randy.oberon0.exception.*;
 import randy.oberon0.interpreter.runtime.environment.*;
 
-public class TestWriteLnFunction implements IInvokableProcedure
+public class TestWriteLnProcedure implements IInvokableProcedure
 {
 	private Queue<String> output;
 	
-	public TestWriteLnFunction(Queue<String> _output)
+	public TestWriteLnProcedure(Queue<String> _output)
 	{
 		output = _output;
 	}

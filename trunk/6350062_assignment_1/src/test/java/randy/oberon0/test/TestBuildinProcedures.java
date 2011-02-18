@@ -7,21 +7,21 @@ import randy.oberon0.interpreter.buildinprocedures.*;
 import randy.oberon0.interpreter.runtime.environment.*;
 
 @Ignore
-public class TestBuildinFunctions implements IBuildinProcedures
+public class TestBuildinProcedures implements IBuildinProcedures
 {
 	private Queue<String> input;
 	private Queue<String> output;
-	private TestReadFunction read;
-	private TestWriteFunction write;
-	private TestWriteLnFunction writeLn;
+	private TestReadProcedure read;
+	private TestWriteProcedure write;
+	private TestWriteLnProcedure writeLn;
 		
-	public TestBuildinFunctions()
+	public TestBuildinProcedures()
 	{
 		input = new LinkedList<String>();
 		output = new LinkedList<String>();
-		read = new TestReadFunction(input);
-		write = new TestWriteFunction(output);
-		writeLn = new TestWriteLnFunction(output);
+		read = new TestReadProcedure(input);
+		write = new TestWriteProcedure(output);
+		writeLn = new TestWriteLnProcedure(output);
 	}
 	public void addInput(String value)
 	{
