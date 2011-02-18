@@ -7,21 +7,15 @@ import randy.oberon0.interpreter.runtime.environment.*;
 
 public class VarDeclaration extends BodyDeclaration
 {
-	protected final String typeName;
-	protected final boolean isArray;
-	protected final boolean isReference;
-	protected final List<String> variableNames;
+	private final String typeName;
+	private final boolean isReference;
+	private final List<String> variableNames;
 	
 	public VarDeclaration(String _typeName, boolean _isReference, List<String> _variableNames)
-	{
-		this(_typeName, _isReference, _variableNames, false);
-	}
-	protected VarDeclaration(String _typeName, boolean _isReference, List<String> _variableNames, boolean _isArray)
 	{
 		assert(_typeName != null);
 		assert(_variableNames != null);
 		typeName = _typeName;
-		isArray = _isArray;
 		isReference = _isReference;
 		variableNames = _variableNames;
 	}
@@ -68,5 +62,17 @@ public class VarDeclaration extends BodyDeclaration
 				environment.registerVariableByValue(variableName, parameterValue.getValue().clone());
 			}
 		}
+	}
+	protected String getTypeName()
+	{
+		return typeName;
+	}
+	protected boolean isReference()
+	{
+		return isReference;
+	}
+	protected List<String> getVariableNames()
+	{
+		return variableNames;
 	}
 }
