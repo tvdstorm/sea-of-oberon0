@@ -13,9 +13,7 @@ import com.kootsjur.oberon.declaration.procedure.ProcedureDeclaration;
 import com.kootsjur.oberon.declaration.type.DeclaredTypes;
 import com.kootsjur.oberon.declaration.type.TypeDeclaration;
 import com.kootsjur.oberon.declaration.var.DeclaredVars;
-import com.kootsjur.oberon.declaration.var.VarDeclaration;
 import com.kootsjur.oberon.evaluator.Evaluator;
-import com.kootsjur.oberon.evaluator.ExpressionEvaluator;
 import com.kootsjur.oberon.statement.StatementSequence;
 import com.kootsjur.oberon.type.TypeDefinition;
 import com.kootsjur.oberon.value.Value;
@@ -24,6 +22,7 @@ public class Environment
 {
    private Environment parentEnvironment;
    private DeclaredConstants declaredConstants;
+   @SuppressWarnings("rawtypes")
    private DeclaredVars declaredVars;
    private DeclaredTypes declaredTypes;
    private DeclaredProcedures procedures;
@@ -34,6 +33,7 @@ public class Environment
       this(null);
    }
    
+   @SuppressWarnings("rawtypes")
    public Environment(Environment parentEnvironment)
    {
       declaredConstants = new DeclaredConstants();
@@ -50,7 +50,8 @@ public class Environment
    public void setDeclaredConstants(DeclaredConstants declaredConstants){this.declaredConstants = declaredConstants;}
    public DeclaredConstants getDeclaredConstants(){return declaredConstants;}
    
-   public void setDeclaredVars(DeclaredVars declaredVars){this.declaredVars = declaredVars;}
+   public void setDeclaredVars(@SuppressWarnings("rawtypes") DeclaredVars declaredVars){this.declaredVars = declaredVars;}
+   @SuppressWarnings("rawtypes")
    public DeclaredVars getDeclaredVars(){return declaredVars;}
    
    public void setDeclaredTypes(DeclaredTypes declaredTypes){this.declaredTypes = declaredTypes;}
@@ -90,23 +91,13 @@ public class Environment
       declareConstant(constantName, constantValue);
    }
    
+   @SuppressWarnings({ "unchecked", "rawtypes" })
    public void declareVar(String varName, Var var)
    {
       var.initVar(this);
       declaredVars.put(varName, var);
    }
-   
-   public void declareVar(VarDeclaration varDeclaration)
-   {
-     // Var var = new Var(varDeclaration.getType().init)
-      for(String varName : varDeclaration.getNames())
-      {
-         TypeDefinition varType = varDeclaration.getType();
-         Var var = new Var(varType);
-         declareVar(varName, var);
-      }
-   }
-   
+      
    public void declareType(String typeName, Type type)
    {
       declaredTypes.put(typeName, type);
@@ -125,8 +116,10 @@ public class Environment
       procedures.put(procedureName, procedure);
    }
 
+   @SuppressWarnings("rawtypes")
    public void declareParameter(String parameterName, Parameter parameter)
    {
+      parameter.initVar(this);
       parameters.put(parameterName, parameter);
       
    }
@@ -169,12 +162,13 @@ public class Environment
       return constantToReturn;
    }
    
+   @SuppressWarnings("rawtypes")
    public Var lookUpVar(String varName)
    {
       Var varToReturn = null;
       if(declaredVars.containsKey(varName))
       {
-         varToReturn = declaredVars.get(varName);      
+         varToReturn = (Var) declaredVars.get(varName);      
       }
       else
       {
@@ -186,6 +180,7 @@ public class Environment
       return varToReturn;
    }
    
+   @SuppressWarnings("rawtypes")
    public Parameter lookUpParameter(String parameterName)
    {
       Parameter parameterToReturn = null;
@@ -244,20 +239,38 @@ public class Environment
       return valueToReturn;
    }
    
-   public Value lookUpVarValue(String varName)
+   @SuppressWarnings("rawtypes")
+   public Reference lookUpVarReference(String varName)
    {
       Var var = lookUpVar(varName);
-      Value valueToReturn = var.getValue();
-      return valueToReturn;
+      Reference varReference = var.getReference();
+      return varReference;
    }
    
+   @SuppressWarnings("rawtypes")
+   public Value lookUpVarValue(String varName)
+   {
+      Reference varReference = lookUpVarReference(varName);
+      Value varValue = varReference.getValue();
+      return varValue;
+   }
+   
+   @SuppressWarnings("rawtypes")
    public Value lookUpParameterValue(String parameterName)
    {
-      Parameter parameter = lookUpParameter(parameterName);
-      Value valueToReturn = parameter.getValue();
-      return valueToReturn;
+      Reference parameterReference = lookUpParameterReference(parameterName);
+      Value parameterValue = parameterReference.getValue();
+      return parameterValue;
    }
    
+   @SuppressWarnings("rawtypes")
+   private Reference lookUpParameterReference(String parameterName)
+   {
+      Parameter parameter = lookUpParameter(parameterName);
+      Reference parameterReference = parameter.getReference();
+      return parameterReference;
+   }
+
    public Value lookUpValue(String name)
    {
       Value valueToReturn = null;
@@ -275,22 +288,53 @@ public class Environment
       {
          if(parentEnvironment != null)
          {
-            valueToReturn = lookUpValue(name);
+            valueToReturn = parentEnvironment.lookUpValue(name);
          }
       }
       return valueToReturn;
    }
    
+   @SuppressWarnings("rawtypes")
+   public Reference lookUpReference(String name)
+   {
+      Reference reference = null;
+      if(declaredVars.containsKey(name))
+      {
+         reference = lookUpVarReference(name);
+      }
+      else if(parameters.containsKey(name))
+      {
+         reference = lookUpParameterReference(name);
+      }else
+      {
+         if(parentEnvironment != null)
+         {
+            reference = parentEnvironment.lookUpReference(name);
+         }
+      }
+      return reference;
+   }
+   
+   @SuppressWarnings({ "rawtypes", "unchecked" })
    public void assignValueToVar(String varName, Value value)
    {
       Var var = lookUpVar(varName);
-      var.setValue(value);
+      var.setReferenceValue(value);
+      
    }
    
+   @SuppressWarnings({ "rawtypes", "unchecked" })
+   public void assignActualParameterReference(String parameterName, Reference reference)
+   {
+      Parameter parameter = lookUpParameter(parameterName);
+      parameter.setReference(reference);
+   }
+   
+   @SuppressWarnings({ "rawtypes", "unchecked" })
    public void assignValueToParameter(String parameterName, Value value)
    {
       Parameter parameter = lookUpParameter(parameterName);
-      parameter.setValue(value);
+      parameter.setReferenceValue(value);
    }
    
    public void assignValue(String name, Value value)
@@ -310,5 +354,17 @@ public class Environment
          }
       }
    }
+
+   @SuppressWarnings("rawtypes")
+   public void declareVar(List<String> names, Var var)
+   {
+      for(String name : names)
+      {
+         declareVar(name,var);
+      }
+      
+   }
+
+  
    
 }

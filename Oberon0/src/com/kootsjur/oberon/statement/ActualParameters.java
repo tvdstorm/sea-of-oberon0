@@ -1,9 +1,10 @@
 package com.kootsjur.oberon.statement;
 
-import java.util.ArrayList;
+
+import java.util.LinkedList;
 
 @SuppressWarnings("serial")
-public class ActualParameters extends ArrayList<ActualParameter>
+public class ActualParameters extends LinkedList<ActualParameter>
 {
 
 }

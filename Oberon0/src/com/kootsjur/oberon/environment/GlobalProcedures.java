@@ -11,6 +11,7 @@ import com.kootsjur.oberon.declaration.formalparameter.FPSection;
 import com.kootsjur.oberon.declaration.formalparameter.FormalParameters;
 import com.kootsjur.oberon.declaration.formalparameter.ParameterDirection;
 import com.kootsjur.oberon.declaration.procedure.ProcedureDeclaration;
+import com.kootsjur.oberon.declaration.var.VarDeclaration;
 import com.kootsjur.oberon.statement.Statement;
 import com.kootsjur.oberon.statement.Statement.StatementType;
 import com.kootsjur.oberon.statement.StatementSequence;
@@ -37,10 +38,11 @@ public class GlobalProcedures
       List<String> fPNames = new LinkedList<String>();
       fPNames.add(fPName);
       TypeDefinition typeDefinition = new IntegerType();
-      FPSection fPSection = new FPSection(fPNames,typeDefinition,ParameterDirection.IN);
+      FPSection fPSection = new FPSection(fPNames,typeDefinition,ParameterDirection.INOUT);
       FormalParameters formalParameters = new FormalParameters();
       formalParameters.add(fPSection);      
       List<Declaration> declarations = new LinkedList<Declaration>();
+     // declarations.add(new VarDeclaration, typeDefinition));
       List<ProcedureDeclaration> procedures = new LinkedList<ProcedureDeclaration>();
       Statement statement = new Statement(StatementType.PROCEDURECALL)
       {

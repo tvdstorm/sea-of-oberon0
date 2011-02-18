@@ -3,31 +3,38 @@ package com.kootsjur.oberon.environment;
 import com.kootsjur.oberon.type.TypeDefinition;
 import com.kootsjur.oberon.value.Value;
 
-public class Var
+public class Var<T extends TypeDefinition,V extends Value>
 {
-   private Value value;
-   private TypeDefinition type;
+   private Reference<V> reference;
+   private T type; 
    
    public Var() 
    {
       this(null);
    }
-   
-   
-   public Var(TypeDefinition type)
+      
+   public Var(T type)
    {
-      this.setType(type);
+      this.type = type;
    }
    
    public void initVar(Environment environment)
    {
-      value = type.initValue(environment);
+      V value = initValueOfReference(environment);
+      reference = new Reference<V>(value);
    }
 
-   public void setValue(Value value){this.value = value;}
-   public Value getValue(){return value;}
+   @SuppressWarnings("unchecked")
+   private V initValueOfReference(Environment environment)
+   {
+      return (V) type.initValue(environment);
+   }
 
-   public void setType(TypeDefinition type){this.type = type;}
-   public TypeDefinition getType(){return type;}
+
+   public void setReferenceValue(V value){this.reference.setValue(value);}
+   public void setReference(Reference<V> reference){this.reference = reference;}
+   public Reference<V> getReference(){return reference;}
+   public void setType(T type){this.type = type;}
+   public T getType(){return type;}
 
 }

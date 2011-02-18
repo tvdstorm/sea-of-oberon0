@@ -1,9 +1,10 @@
 package com.kootsjur.oberon.evaluator;
 
 import com.kootsjur.oberon.environment.Environment;
+import com.kootsjur.oberon.environment.Reference;
 import com.kootsjur.oberon.value.Value;
 
-public class IdentEvaluator extends FactorEvaluator
+public class IdentEvaluator extends FactorEvaluator implements LookUpEvaluator
 {
    private final String identName;
    
@@ -17,6 +18,14 @@ public class IdentEvaluator extends FactorEvaluator
    {
       Value valueToReturn = environment.lookUpValue(identName);
       return valueToReturn;
+   }
+
+   @SuppressWarnings("rawtypes")
+   @Override
+   public Reference lvalueOf(Environment environment)
+   {
+      Reference reference = environment.lookUpReference(identName);
+      return reference;
    }
    
 

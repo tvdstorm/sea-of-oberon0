@@ -1,12 +1,12 @@
 package com.kootsjur.oberon.statement;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 import com.kootsjur.oberon.environment.Environment;
 
 
 @SuppressWarnings("serial")
-public class StatementSequence extends ArrayList<Statement>
+public class StatementSequence extends LinkedList<Statement>
 {
 
    public void evaluate(Environment environment)

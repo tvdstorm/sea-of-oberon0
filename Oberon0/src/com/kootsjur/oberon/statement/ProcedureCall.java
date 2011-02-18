@@ -8,7 +8,9 @@ import com.kootsjur.oberon.declaration.formalparameter.FPSection;
 import com.kootsjur.oberon.declaration.formalparameter.FormalParameters;
 import com.kootsjur.oberon.environment.Environment;
 import com.kootsjur.oberon.environment.Procedure;
+import com.kootsjur.oberon.environment.Reference;
 import com.kootsjur.oberon.evaluator.Evaluator;
+import com.kootsjur.oberon.evaluator.LookUpEvaluator;
 import com.kootsjur.oberon.value.Value;
 
 public class ProcedureCall extends Statement
@@ -76,11 +78,34 @@ public class ProcedureCall extends Statement
                throw new RuntimeException();
             }
             ActualParameter actual = actuals.next();
-            Evaluator expression = actual.getExpression();
-            Value value = expression.evaluate(environment);
-            procedure.assignValueToParameter(parameterName,value);
+            switch(fPSection.getParameterDirection())
+            {
+               case IN:
+                  declareValue(procedure,environment,actual,parameterName);
+                  break;
+               case INOUT:
+                  declareByRef(procedure,environment,actual, parameterName);
+                  default:
+            }
          }
       }
     }
+
+   @SuppressWarnings("rawtypes")
+   private void declareByRef(Procedure procedure, Environment environment, ActualParameter actual, String parameterName)
+   {
+      LookUpEvaluator expression = (LookUpEvaluator) actual.getExpression();
+      Reference reference = expression.lvalueOf(environment);
+      procedure.assignActualParameterReference(parameterName, reference);;
+      
+   }
+
+   private void declareValue(Procedure procedure, Environment environment, ActualParameter actual, String parameterName)
+   {
+      Evaluator expression = actual.getExpression();
+      Value value = expression.evaluate(environment);
+      procedure.assignValueToParameter(parameterName, value);
+      
+   }
    
 }
