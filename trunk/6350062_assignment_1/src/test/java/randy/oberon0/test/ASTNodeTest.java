@@ -276,15 +276,15 @@ public class ASTNodeTest
 		{
 			prepareTestThrowException("unknownfunction");
 			program.run();
-			Assert.fail("Should be throwing an UndefinedMethodException...");
+			Assert.fail("Should be throwing an UndefinedBindableException...");
 		}
-		catch (UndefinedMethodException e)
+		catch (UndefinedBindableException e)
 		{
 			// Success
 		}
 		catch (Exception e)
 		{
-			Assert.fail("Should be throwing an UndefinedMethodException instead of a general Exception...");
+			Assert.fail("Should be throwing an UndefinedBindableException instead of a general Exception...");
 		}
 	}
 	@Test
@@ -409,15 +409,15 @@ public class ASTNodeTest
 		{
 			prepareTest("undefinedvariable");
 			program.run();
-			Assert.fail("Should be throwing an UndefinedVariableException...");
+			Assert.fail("Should be throwing an UndefinedBindableException...");
 		}
-		catch (UndefinedVariableException e)
+		catch (UndefinedBindableException e)
 		{
 			// Success
 		}
 		catch (Exception e)
 		{
-			Assert.fail("Should be throwing an UndefinedVariableException...");
+			Assert.fail("Should be throwing an UndefinedBindableException...");
 		}
 	}
 	@Test
@@ -727,15 +727,15 @@ public class ASTNodeTest
 				prepareTest("variablescopingfout" + i);
 				functions.addInput("1");
 				program.run();
-				Assert.fail("Should be throwing an UndefinedVariableException...");
+				Assert.fail("Should be throwing an UndefinedBindableException...");
 			}
-			catch (UndefinedVariableException e)
+			catch (UndefinedBindableException e)
 			{
 				// Success
 			}
 			catch (Exception e)
 			{
-				Assert.fail("Should be throwing an UndefinedVariableException...");
+				Assert.fail("Should be throwing an UndefinedBindableException...");
 			}
 		}
 	}

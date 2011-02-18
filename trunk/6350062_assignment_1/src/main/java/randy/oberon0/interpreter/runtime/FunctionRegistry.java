@@ -28,7 +28,7 @@ public class FunctionRegistry
 			throw new DuplicateFunctionException(functionName);
 		}
 		// Register the function
-		functions.put(functionName, new ClosureAndEnvironment(new Closure(functionPointer), environment));
+		functions.put(functionName, new ClosureAndEnvironment(new Closure(functionPointer, environment), environment));
 	}
 	public ClosureAndEnvironment resolveFunction(String name) throws UndefinedMethodException
 	{
