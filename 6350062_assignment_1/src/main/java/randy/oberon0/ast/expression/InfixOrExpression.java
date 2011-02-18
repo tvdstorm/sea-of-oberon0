@@ -17,8 +17,8 @@ public class InfixOrExpression extends InfixExpression
 	{
 		assert(environment != null);
 		// Evaluate the left and right hand side expressions
-		final Value valRh = rightHandExpression.evaluate(environment).getValue();
-		final Value valLh = leftHandExpression.evaluate(environment).getValue();
+		final Value valRh = getRightHandExpression().evaluate(environment).getValue();
+		final Value valLh = getLeftHandExpression().evaluate(environment).getValue();
 		// Check if we support the operator
 		if (valLh instanceof Boolean && valRh instanceof Boolean)
 		{
