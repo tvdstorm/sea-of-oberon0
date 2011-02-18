@@ -1,23 +1,19 @@
 package org.elcid.oberon0.values;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author Pieter Brandwijk
  */
 public class Array extends Value {
 
-	private List<Value> elements;
-	private Integer maxLength;
+	private Value[] elements;
 
-	public Array(Integer maxLength) {
-		this.elements = new ArrayList<Value>(maxLength);
-		this.maxLength = maxLength;
+	public Array(Integer length) {
+		elements = new Value[length];
 
-		for (int i=0;i<maxLength;i++) {
-			elements.add(new Int(0));
+		// Initialize array with Ints of 0
+		for (int i = 0; i < length; i++){
+			elements[i] = new Int(0);
 		}
 	}
 
@@ -25,25 +21,18 @@ public class Array extends Value {
 	public Value applySelector(Object key) {
 		Int indexValue = (Int) key;
 		Integer index = indexValue.getValue();
-		return elements.get(index);
+		return elements[index];
 	}
 
 	@Override
 	public void set(Value value) {
 		this.elements = ((Array) value).elements;
-		this.maxLength = ((Array) value).maxLength;
 	}
 
 	@Override
 	public Value clone() {
-		Array clone = new Array(maxLength.intValue());
-
-		ArrayList<Value> copiedElements = new ArrayList<Value>();
-		for (Value val : elements) {
-			copiedElements.add(val.clone());
-		}
-		clone.elements = copiedElements;
-
+		Array clone = new Array(elements.length);
+		System.arraycopy(this.elements, 0, clone.elements, 0, elements.length);
 		return clone;
 	}
 
