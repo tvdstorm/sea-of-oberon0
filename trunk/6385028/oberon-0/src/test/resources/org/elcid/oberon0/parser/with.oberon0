@@ -1,0 +1,47 @@
+MODULE QuickSort;
+
+TYPE
+  AGEMONTH = RECORD
+	age : INTEGER;
+	month : INTEGER
+  END;
+
+VAR
+  counter: INTEGER;
+  rec: AGEMONTH;
+
+BEGIN
+  Write(rec.age);
+  WriteLn();
+  Write(rec.month);
+  WriteLn();
+  Write(counter);
+  WriteLn();
+
+  rec.age := 25;
+  Write(rec.age);
+  WriteLn();
+
+  rec.month := 2;
+  Write(rec.month);
+  WriteLn();
+
+  WITH rec DO
+	counter := 1;
+
+	age := 26;
+	Write(age);
+	WriteLn();
+
+	month := 3;
+	Write(month);
+	WriteLn()
+  END;
+
+  Write(rec.age);
+  WriteLn();
+  Write(rec.month);
+  WriteLn();
+  Write(counter);
+  WriteLn()
+END QuickSort.

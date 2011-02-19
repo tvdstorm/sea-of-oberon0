@@ -23,6 +23,7 @@ tokens
 	THEN_KW			=	'THEN'			;
 	ELSIF_KW		=	'ELSIF'			;
 	ELSE_KW			=	'ELSE'			;
+	WITH_KW			=	'WITH'			;
 
 	/* Symbols */
 	SEMI_COLON			=	';'			;
@@ -165,6 +166,12 @@ statement returns [StatementNode result]
 	|	p=procedureCall									{ $result = $p.result; }
 	|	i=ifStatement									{ $result = $i.result; }
 	|	w=whileStatement								{ $result = $w.result; }
+	|	h=withStatement									{ $result = $h.result; }
+	;
+
+withStatement returns [StatementNode result]
+	:	WITH_KW e=expression DO_KW
+		ss=statementSequence END_KW						{ $result = new WithStmNode($e.result, $ss.result); }
 	;
 
 assignment returns [StatementNode result]

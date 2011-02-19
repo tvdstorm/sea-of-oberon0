@@ -60,4 +60,15 @@ public class StatementVisitor {
 		}
 		proc.execute(subEnv);
 	}
+
+	public void run(WithStmNode node, Environment env) {
+		Record rec = (Record) node.getExpression().eval(new ExpressionVisitor(), env);
+		Environment subEnv = new Environment(env);
+
+		for (String fieldName: rec.getKeys()) {
+			subEnv.declareValue(fieldName, rec.getField(fieldName));
+		}
+
+		node.getStatementSequence().run(this, subEnv);
+	}
 }
