@@ -15,7 +15,6 @@ public class AliasInstantiation implements IInstantiateableVariable
 	}
 	public Value instantiate(RuntimeEnvironment environment) throws RuntimeException
 	{
-		IInstantiateableVariable type = (IInstantiateableVariable)environment.lookup(resolvesTo);
-		return type.instantiate(environment);
+		return environment.resolveType(resolvesTo).instantiate(environment);
 	}
 }
