@@ -1,1 +1,12 @@
-4 DIV 2 + 4 * 5 = (24 >= 42) OR (24 < 4)
+MODULE QuickSort;
+
+CONST
+  INPUTLENGTH = 5;
+
+VAR
+  i, j: INTEGER;
+
+BEGIN
+  i := (4 > 1);
+  Write(i)
+END QuickSort.

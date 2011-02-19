@@ -58,8 +58,6 @@ BEGIN
  Write(Student1.Number);
  WriteLn;
  
- INPUTLENGTH := 4;
- 
  Write(input1[0].Number);
  WriteLn
  
