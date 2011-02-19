@@ -13,9 +13,9 @@ public class NegativeNumberNode implements IExpressionNode {
 	
 	@Override
 	public OberonValue eval(Environment env) {
-		OberonValue type = expression.eval(env);
-		type.setValue(new IntValue(type.getValue() * -1));
+		IntValue val = (IntValue)expression.eval(env);
+		val.setValue(new IntValue(val.getValue() * -1));
 		
-		return type;
+		return val;
 	}
 }

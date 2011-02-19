@@ -24,11 +24,6 @@ public class TypeValue extends OberonValue {
 	}
 	
 	@Override
-	public Integer getValue() {
-		return value.getValue();
-	}
-	
-	@Override
 	public void setValue(OberonValue value) {
 		if (! this.typeEquals(value)) {
 			throw new RuntimeException("Can not assign\n" +value+ " to \n" +this+ "!");

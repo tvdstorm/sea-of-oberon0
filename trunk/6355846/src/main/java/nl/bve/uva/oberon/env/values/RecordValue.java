@@ -21,11 +21,6 @@ public class RecordValue extends OberonValue {
 	}
 	
 	@Override
-	public Integer getValue() {
-		throw new RuntimeException("Cannot get the value of an Array!");
-	}
-	
-	@Override
 	public void setValue(OberonValue value) {
 		if (! this.typeEquals(value)) {
 			throw new RuntimeException("Can not assign\n" +value+ " to \n" +this+ "!");
