@@ -1,13 +1,13 @@
 package nl.bve.uva.oberon.ast.selectors;
 
-import nl.bve.uva.oberon.ast.expressions.ExpressionNode;
+import nl.bve.uva.oberon.ast.expressions.IExpressionNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.shared.SelectorValue;
 
-public class ElementSelectorNode extends Selector {
-	private ExpressionNode expression;
+public class ElementSelectorNode implements ISelectorNode {
+	private IExpressionNode expression;
 	
-	public ElementSelectorNode(ExpressionNode expression) {
+	public ElementSelectorNode(IExpressionNode expression) {
 		this.expression = expression;
 	}
 	

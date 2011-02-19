@@ -3,7 +3,7 @@ package nl.bve.uva.oberon.ast.statements;
 import nl.bve.uva.oberon.ast.IExecutableNode;
 import nl.bve.uva.oberon.env.Environment;
 
-public class ElseNode extends StatementNode {
+public class ElseNode implements IStatementNode {
 	private IExecutableNode body;
 	
 	public ElseNode(IExecutableNode body) {

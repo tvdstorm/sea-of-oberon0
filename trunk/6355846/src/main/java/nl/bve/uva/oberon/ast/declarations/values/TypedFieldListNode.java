@@ -9,9 +9,9 @@ import nl.bve.uva.oberon.env.values.OberonValue;
 
 public class TypedFieldListNode {
 	private List<String> identList;
-	private TypeNode type;
+	private ITypeNode type;
 	
-	public TypedFieldListNode(List<String> identList, TypeNode type) {
+	public TypedFieldListNode(List<String> identList, ITypeNode type) {
 		this.identList = identList;
 		this.type = type;
 	}

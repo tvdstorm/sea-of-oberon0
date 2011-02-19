@@ -1,16 +1,16 @@
 package nl.bve.uva.oberon.ast.statements;
 
 import nl.bve.uva.oberon.ast.IExecutableNode;
-import nl.bve.uva.oberon.ast.expressions.ExpressionNode;
+import nl.bve.uva.oberon.ast.expressions.IExpressionNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.values.OberonValue;
 import nl.bve.uva.oberon.shared.SelectorValue;
 
-public class WithNode extends StatementNode {
-	private ExpressionNode expression;
+public class WithNode implements IStatementNode {
+	private IExpressionNode expression;
 	private IExecutableNode body;
 	
-	public WithNode(ExpressionNode expr,IExecutableNode body) {
+	public WithNode(IExpressionNode expr,IExecutableNode body) {
 		this.expression = expr;
 		this.body = body;
 	}

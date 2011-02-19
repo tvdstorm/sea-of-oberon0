@@ -3,13 +3,13 @@ package nl.bve.uva.oberon.env.procedures;
 import java.util.Iterator;
 import java.util.List;
 
-import nl.bve.uva.oberon.ast.expressions.ExpressionNode;
+import nl.bve.uva.oberon.ast.expressions.IExpressionNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.values.OberonValue;
 import nl.bve.uva.oberon.shared.TypedParameterList;
 
 public abstract class Procedure {
-	public final void callProcedure(Environment env, List<ExpressionNode> actualParameters) {
+	public final void callProcedure(Environment env, List<IExpressionNode> actualParameters) {
 		List<TypedParameterList> formalParametersList = getFormalParameters();
 		
 		if (formalParametersList == null && actualParameters != null) {
@@ -22,7 +22,7 @@ public abstract class Procedure {
 		Environment subEnv = env.getNewSubSpace();
 		
 		if (formalParametersList != null && actualParameters != null) {
-			Iterator<ExpressionNode> actuals = actualParameters.iterator();
+			Iterator<IExpressionNode> actuals = actualParameters.iterator();
 			
 			for (TypedParameterList fpList : formalParametersList) {
 				List<String> identList = fpList.getParametersList();

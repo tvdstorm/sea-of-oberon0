@@ -2,15 +2,15 @@ package nl.bve.uva.oberon.ast.statements;
 
 import java.util.List;
 
-import nl.bve.uva.oberon.ast.expressions.ExpressionNode;
+import nl.bve.uva.oberon.ast.expressions.IExpressionNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.procedures.Procedure;
 
-public class ProcedureCallNode extends StatementNode {
+public class ProcedureCallNode implements IStatementNode {
 	private String ident;
-	private List<ExpressionNode> actuals;
+	private List<IExpressionNode> actuals;
 	
-	public ProcedureCallNode(String ident, List<ExpressionNode> actuals) {
+	public ProcedureCallNode(String ident, List<IExpressionNode> actuals) {
 		this.ident = ident;
 		this.actuals = actuals;
 	}

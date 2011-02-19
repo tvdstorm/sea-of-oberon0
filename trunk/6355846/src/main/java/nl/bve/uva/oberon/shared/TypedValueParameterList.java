@@ -2,7 +2,7 @@ package nl.bve.uva.oberon.shared;
 
 import java.util.List;
 
-import nl.bve.uva.oberon.ast.declarations.values.TypeNode;
+import nl.bve.uva.oberon.ast.declarations.values.ITypeNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.values.OberonValue;
 
@@ -11,7 +11,7 @@ public class TypedValueParameterList extends TypedParameterList {
 		super(paramList);
 	}
 	
-	public TypedValueParameterList(List<String> paramList, TypeNode type) {
+	public TypedValueParameterList(List<String> paramList, ITypeNode type) {
 		super(paramList, type);
 	}
 	

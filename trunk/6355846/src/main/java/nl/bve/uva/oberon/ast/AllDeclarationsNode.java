@@ -2,19 +2,19 @@ package nl.bve.uva.oberon.ast;
 
 import java.util.List;
 
-import nl.bve.uva.oberon.ast.declarations.DeclarationNode;
+import nl.bve.uva.oberon.ast.declarations.IDeclarationNode;
 import nl.bve.uva.oberon.env.Environment;
 
 public class AllDeclarationsNode implements IExecutableNode {
-	private List<DeclarationNode> constants;
-	private List<DeclarationNode> types;
-	private List<DeclarationNode> vars;
-	private List<DeclarationNode> procedures;
+	private List<IDeclarationNode> constants;
+	private List<IDeclarationNode> types;
+	private List<IDeclarationNode> vars;
+	private List<IDeclarationNode> procedures;
 
-	public AllDeclarationsNode(List<DeclarationNode> constants,
-							   List<DeclarationNode> types, 
-							   List<DeclarationNode> vars,
-							   List<DeclarationNode> procedures) {
+	public AllDeclarationsNode(List<IDeclarationNode> constants,
+							   List<IDeclarationNode> types, 
+							   List<IDeclarationNode> vars,
+							   List<IDeclarationNode> procedures) {
 		this.constants = constants;
 		this.types = types;
 		this.vars = vars;
@@ -29,8 +29,8 @@ public class AllDeclarationsNode implements IExecutableNode {
 		declareList(procedures, env);
 	}
 
-	private void declareList(List<DeclarationNode> declarations, Environment env) {
-		for (DeclarationNode declaration : declarations) {
+	private void declareList(List<IDeclarationNode> declarations, Environment env) {
+		for (IDeclarationNode declaration : declarations) {
 			declaration.declare(env);
 		}
 	}
