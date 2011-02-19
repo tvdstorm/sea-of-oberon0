@@ -14,11 +14,13 @@ public class RecordValue implements IValue {
 			_fields.put(name, values.get(name).getCopy());
 		}
 	}
-	
-	public static RecordValue getDefaultValue(Context context, Map<String, IType>  fields) {
+
+	public static RecordValue getDefaultValue(Context context,
+			Map<String, IType> fields) {
 		Map<String, Reference> RefFields = new HashMap<String, Reference>();
 		for (String name : fields.keySet()) {
-			IValue currentDefaultValue = fields.get(name).getDefaultValue(context);
+			IValue currentDefaultValue = fields.get(name).getDefaultValue(
+					context);
 			RefFields.put(name, new Reference(currentDefaultValue));
 		}
 		return new RecordValue(RefFields);

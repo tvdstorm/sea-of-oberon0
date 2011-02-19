@@ -12,7 +12,7 @@ import oberon0.environment.Reference;
 
 public abstract class BaseFormalParameterNode implements IFormalParameter {
 	private final List<String> _names;
-	private final IType _type;	//not needed, but could be used for typechecking
+	private final IType _type; // not needed, but could be used for typechecking
 
 	protected BaseFormalParameterNode(List<String> names, IType type) {
 		if (names != null) {
@@ -36,20 +36,23 @@ public abstract class BaseFormalParameterNode implements IFormalParameter {
 					+ "Formal list " + _names.toString());
 		}
 	}
-	
-	public void baseFillIn(Context context, Iterator<IReferable> actualParams, boolean isReferenceVar){
+
+	public void baseFillIn(Context context, Iterator<IReferable> actualParams,
+			boolean isReferenceVar) {
 		Iterator<String> fpNames = getFPNamesIter();
 
 		while (fpNames.hasNext()) {
 			String currentName = fpNames.next();
 			IReferable currentActualParam = getNextActualParameter(actualParams);
-			
-			//fillin
-			if (isReferenceVar){
-				Reference currentAPRef = currentActualParam.deref(context.getParent(), Reference.EMPTY_REFERENCE);
+
+			// fillin
+			if (isReferenceVar) {
+				Reference currentAPRef = currentActualParam.deref(
+						context.getParent(), Reference.EMPTY_REFERENCE);
 				context.declareVar(currentName, currentAPRef);
 			} else {
-				IValue currentAPValue = currentActualParam.eval(context.getParent());
+				IValue currentAPValue = currentActualParam.eval(context
+						.getParent());
 				context.declareVar(currentName, currentAPValue.getCopy());
 			}
 		}

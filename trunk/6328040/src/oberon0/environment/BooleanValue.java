@@ -10,7 +10,7 @@ public class BooleanValue implements IValue {
 	public boolean getValue() {
 		return _value;
 	}
-	
+
 	public static BooleanValue getDefaultValue() {
 		return new BooleanValue(false);
 	}

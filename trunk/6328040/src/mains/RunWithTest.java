@@ -10,7 +10,7 @@ public class RunWithTest {
 
 	public static void main(String[] args) throws IOException {
 		ANTLRFileStream inputfile = new ANTLRFileStream(
-				"oberonfiles/with.oberon0");
+				"oberonfiles/with2.oberon0");
 		Interpreter.interpretFile(inputfile);
 	}
 }
