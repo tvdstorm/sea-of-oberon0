@@ -81,20 +81,4 @@ public class RecordValue extends OberonValue {
 		
 		return new RecordValue(fieldsCopy);
 	}
-	
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("RecordValue: {");
-		
-		if (fields != null) {
-			for (Map.Entry<String, OberonValue> entry : fields.entrySet()) {
-				sb.append(" [" +entry.getKey()+ " : " +entry.getValue()+ "] ");
-			}
-		} 
-		
-		sb.append("}");
-		
-		return sb.toString();
-	}
 }

@@ -7,10 +7,6 @@ import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.values.OberonValue;
 
 public class TypedValueParameterList extends TypedParameterList {
-	public TypedValueParameterList(List<String> paramList) {
-		super(paramList);
-	}
-	
 	public TypedValueParameterList(List<String> paramList, IOberonTypeNode type) {
 		super(paramList, type);
 	}

@@ -49,9 +49,4 @@ public class IntValue extends OberonValue {
 	public IntValue clone() {
 		return new IntValue(value);
 	}
-	
-	@Override
-	public String toString() {
-		return "IntValue";
-	}
 }

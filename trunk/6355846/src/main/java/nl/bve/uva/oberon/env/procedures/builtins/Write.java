@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import nl.bve.uva.oberon.ast.types.IntTypeNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.procedures.Procedure;
 import nl.bve.uva.oberon.env.values.OberonValue;
@@ -16,7 +17,7 @@ public class Write extends Procedure {
 	@Override
 	public List<TypedParameterList> getFormalParameters() {
 		ArrayList<TypedParameterList> parameters = new ArrayList<TypedParameterList>();
-		parameters.add(new TypedValueParameterList(Arrays.asList(new String[] {VAL_VAR_STORE}) ));
+		parameters.add(new TypedValueParameterList(Arrays.asList(new String[] {VAL_VAR_STORE}), new IntTypeNode()));
 		
 		return parameters;
 	}

@@ -69,11 +69,4 @@ public class ArrayValue extends OberonValue {
 		
 		return clone;
 	}
-	
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("ArrayValue[ " +type+ " : " +values.length+ "]");
-		return sb.toString();
-	}
 }
