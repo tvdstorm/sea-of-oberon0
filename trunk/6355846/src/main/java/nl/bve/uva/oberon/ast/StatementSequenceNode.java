@@ -5,7 +5,7 @@ import java.util.List;
 import nl.bve.uva.oberon.ast.statements.StatementNode;
 import nl.bve.uva.oberon.env.Environment;
 
-public class StatementSequenceNode implements IInterpretableNode {
+public class StatementSequenceNode implements IExecutableNode {
 	private List<StatementNode> sequence;
 	
 	public StatementSequenceNode(List<StatementNode> sequence) {
@@ -13,11 +13,9 @@ public class StatementSequenceNode implements IInterpretableNode {
 	}
 	
 	@Override
-	public Object interpret(Environment env) {
+	public void execute(Environment env) {
 		for (StatementNode statement : sequence) {
 			statement.execute(env);
 		}
-		
-		return null;
 	}
 }

@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:50:56 C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g 2011-02-19 18:56:55
+// $ANTLR 3.3 Nov 30, 2010 12:50:56 C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g 2011-02-19 19:16:37
 
 package nl.bve.uva.oberon.parser;
 
@@ -88,15 +88,15 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "module"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:40:1: module returns [IInterpretableNode result] : 'MODULE' i1= IDENT ';' declarations ( 'BEGIN' statementSequence )? 'END' i2= IDENT '.' ;
-    public final IInterpretableNode module() throws RecognitionException {
-        IInterpretableNode result = null;
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:40:1: module returns [IExecutableNode result] : 'MODULE' i1= IDENT ';' declarations ( 'BEGIN' statementSequence )? 'END' i2= IDENT '.' ;
+    public final IExecutableNode module() throws RecognitionException {
+        IExecutableNode result = null;
 
         Token i1=null;
         Token i2=null;
-        IInterpretableNode statementSequence1 = null;
+        IExecutableNode statementSequence1 = null;
 
-        IInterpretableNode declarations2 = null;
+        IExecutableNode declarations2 = null;
 
 
         try {
@@ -155,9 +155,9 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "declarations"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:46:1: declarations returns [IInterpretableNode result] : c= constantDeclarations t= typeDeclarations v= varDeclarations p= procedureDeclarations ;
-    public final IInterpretableNode declarations() throws RecognitionException {
-        IInterpretableNode result = null;
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:46:1: declarations returns [IExecutableNode result] : c= constantDeclarations t= typeDeclarations v= varDeclarations p= procedureDeclarations ;
+    public final IExecutableNode declarations() throws RecognitionException {
+        IExecutableNode result = null;
 
         List<DeclarationNode> c = null;
 
@@ -459,7 +459,7 @@ public class Oberon0Parser extends Parser {
         Token i2=null;
         List<TypedParameterList> fp = null;
 
-        IInterpretableNode pb = null;
+        IExecutableNode pb = null;
 
 
         try {
@@ -540,13 +540,13 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "procedureBody"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:81:1: procedureBody returns [IInterpretableNode result] : d= declarations ( 'BEGIN' ss= statementSequence )? ;
-    public final IInterpretableNode procedureBody() throws RecognitionException {
-        IInterpretableNode result = null;
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:81:1: procedureBody returns [IExecutableNode result] : d= declarations ( 'BEGIN' ss= statementSequence )? ;
+    public final IExecutableNode procedureBody() throws RecognitionException {
+        IExecutableNode result = null;
 
-        IInterpretableNode d = null;
+        IExecutableNode d = null;
 
-        IInterpretableNode ss = null;
+        IExecutableNode ss = null;
 
 
         try {
@@ -1103,9 +1103,9 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "statementSequence"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:127:1: statementSequence returns [IInterpretableNode result] : statementList ;
-    public final IInterpretableNode statementSequence() throws RecognitionException {
-        IInterpretableNode result = null;
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:127:1: statementSequence returns [IExecutableNode result] : statementList ;
+    public final IExecutableNode statementSequence() throws RecognitionException {
+        IExecutableNode result = null;
 
         List<StatementNode> statementList15 = null;
 
@@ -1541,7 +1541,7 @@ public class Oberon0Parser extends Parser {
 
         ExpressionNode e1 = null;
 
-        IInterpretableNode ss1 = null;
+        IExecutableNode ss1 = null;
 
         StatementNode elseStatements26 = null;
 
@@ -1608,11 +1608,11 @@ public class Oberon0Parser extends Parser {
 
         ExpressionNode e = null;
 
-        IInterpretableNode ss1 = null;
+        IExecutableNode ss1 = null;
 
         StatementNode es = null;
 
-        IInterpretableNode ss2 = null;
+        IExecutableNode ss2 = null;
 
 
         try {
@@ -1709,7 +1709,7 @@ public class Oberon0Parser extends Parser {
 
         ExpressionNode expression27 = null;
 
-        IInterpretableNode statementSequence28 = null;
+        IExecutableNode statementSequence28 = null;
 
 
         try {
@@ -1752,7 +1752,7 @@ public class Oberon0Parser extends Parser {
 
         ExpressionNode expression29 = null;
 
-        IInterpretableNode statementSequence30 = null;
+        IExecutableNode statementSequence30 = null;
 
 
         try {

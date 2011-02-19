@@ -20,7 +20,7 @@ public class RecordTypeNode extends TypeNode {
 		Map<String, OberonValue> fields = new HashMap<String, OberonValue>();
 		
 		for (TypedFieldListNode fieldList : fieldLists) {
-			Map<String, OberonValue> newFields = fieldList.interpret(env);
+			Map<String, OberonValue> newFields = fieldList.list(env);
 			for (Map.Entry<String, OberonValue> entry : newFields.entrySet()) {
 				fields.put(entry.getKey(), entry.getValue());
 			}

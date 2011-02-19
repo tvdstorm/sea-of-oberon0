@@ -37,13 +37,13 @@ package nl.bve.uva.oberon.parser;
  * PARSER RULES
  *------------------------------------------------------------------*/
 
-module returns [IInterpretableNode result]
+module returns [IExecutableNode result]
 	:	'MODULE' i1=IDENT ';' declarations 
 			('BEGIN' statementSequence							{$result = $statementSequence.result; }
 			)? 'END' i2=IDENT '.'								{$result = new ModuleNode($i1.text, $i2.text, $declarations.result, $result); }
 	;
 
-declarations returns [IInterpretableNode result]
+declarations returns [IExecutableNode result]
 	:	c=constantDeclarations
 		t=typeDeclarations
 		v=varDeclarations
@@ -78,7 +78,7 @@ procedureDeclarations returns [List<DeclarationNode> result = new ArrayList<Decl
 		)*
 	;
 
-procedureBody returns [IInterpretableNode result]
+procedureBody returns [IExecutableNode result]
 	:	d=declarations 
 			('BEGIN' ss=statementSequence						{$result = $ss.result; }
 			)? 													{$result = new ProcedureBodyNode($d.result, $result); }
@@ -124,7 +124,7 @@ identList returns [List<String> result = new ArrayList<String>()]
 			)*
 	;
 
-statementSequence returns [IInterpretableNode result]
+statementSequence returns [IExecutableNode result]
 	:	statementList											{$result = new StatementSequenceNode($statementList.result); };
 
 /* De originele EBNF/ANTLR grammar van Oberon-0 is hier herschreven. In de originele
