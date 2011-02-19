@@ -2,8 +2,8 @@ package nl.bve.uva.oberon.ast;
 
 import nl.bve.uva.oberon.ast.expressions.ExpressionNode;
 import nl.bve.uva.oberon.env.Environment;
-import nl.bve.uva.oberon.env.types.OberonArray;
-import nl.bve.uva.oberon.env.types.OberonValue;
+import nl.bve.uva.oberon.env.values.ArrayValue;
+import nl.bve.uva.oberon.env.values.OberonValue;
 
 public class ArrayTypeNode implements IInterpretableNode {
 	private ExpressionNode expression;
@@ -19,6 +19,6 @@ public class ArrayTypeNode implements IInterpretableNode {
 		OberonValue size = (OberonValue)expression.eval(env);
 		OberonValue type = (OberonValue)arrayType.interpret(env);
 		
-		return new OberonArray(type, (Integer)size.getValue());
+		return new ArrayValue(type, (Integer)size.getValue());
 	}
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 import nl.bve.uva.oberon.ast.IInterpretableNode;
 import nl.bve.uva.oberon.env.Environment;
-import nl.bve.uva.oberon.env.types.OberonValue;
+import nl.bve.uva.oberon.env.values.OberonValue;
 
 public class TypedReferenceParameterList extends TypedParameterList {
 	public TypedReferenceParameterList(List<String> paramList) {

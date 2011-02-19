@@ -6,7 +6,7 @@ import java.util.List;
 
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.procedures.Procedure;
-import nl.bve.uva.oberon.env.types.OberonValue;
+import nl.bve.uva.oberon.env.values.OberonValue;
 import nl.bve.uva.oberon.shared.TypedParameterList;
 import nl.bve.uva.oberon.shared.TypedValueParameterList;
 

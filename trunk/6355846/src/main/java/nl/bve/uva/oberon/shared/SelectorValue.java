@@ -1,6 +1,6 @@
 package nl.bve.uva.oberon.shared;
 
-import nl.bve.uva.oberon.env.types.OberonValue;
+import nl.bve.uva.oberon.env.values.OberonValue;
 
 public final class SelectorValue {
 	private String stringVal;

@@ -3,7 +3,7 @@ package nl.bve.uva.oberon.ast.statements;
 import nl.bve.uva.oberon.ast.IInterpretableNode;
 import nl.bve.uva.oberon.ast.expressions.ExpressionNode;
 import nl.bve.uva.oberon.env.Environment;
-import nl.bve.uva.oberon.env.types.OberonValue;
+import nl.bve.uva.oberon.env.values.OberonValue;
 import nl.bve.uva.oberon.shared.SelectorValue;
 
 public class WithNode extends StatementNode {
