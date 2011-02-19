@@ -1,0 +1,24 @@
+MODULE Recordparameter;
+
+TYPE ObjDesc = RECORD
+name: INTEGER;
+type: INTEGER;
+active: BOOLEAN
+END;
+Other = RECORD
+name: INTEGER;
+type: INTEGER;
+active: BOOLEAN
+END;
+VAR o: ObjDesc;
+
+PROCEDURE test(in: Other);
+  BEGIN
+    in.name := 0;
+  END test;
+
+BEGIN
+  test(o);
+
+END Recordparameter.
+

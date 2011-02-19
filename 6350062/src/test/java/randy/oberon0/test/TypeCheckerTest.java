@@ -38,6 +38,7 @@ public class TypeCheckerTest
 		{"integer_operations", null, "INTEGER operations"},
 		{"boolean_operations", null, "BOOLEAN operations"},
 		{"const_assignment_to_integer", null, "CONST assignment to INTEGER"},
+		{"record_parameter_goed", null, "Goede type RECORD als parameter"},
 		
 		{"boolean_assignment_to_integer", new TypeMismatchException(Type.BOOLEAN.getTypeText(), Type.INTEGER.getTypeText()), "BOOLEAN assignment to INTEGER"},
 		{"integer_assignment_to_boolean", new TypeMismatchException(Type.INTEGER.getTypeText(), Type.BOOLEAN.getTypeText()), "INTEGER assignment to BOOLEAN"},
@@ -61,6 +62,7 @@ public class TypeCheckerTest
 		{"variable_in_same_level_procedure", new UndefinedBindableException("va"), "Using a variable declared in the same scope level as the procedure"},
 		{"variable_in_uncalled_procedure", new UndefinedBindableException("vb"), "Using a variable in a lower scope as the procedure, but that isn't in the callstack"},
 		{"variable_in_deeper_scope", new UndefinedBindableException("vaa"), "Using a variable declared in a deeper scope than the procedure"},
+		{"record_parameter", new TypeMismatchException("RECORD ObjDesc [name, active, type]", "RECORD Other [name, active, type]"), "Using a different kind of record as parameter"},
 		};
 		return Arrays.asList(data);
 	}
