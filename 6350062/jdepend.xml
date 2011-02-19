@@ -12,8 +12,8 @@
 
         <Package name="randy.oberon0.ast">
             <Stats>
-                <TotalClasses>78</TotalClasses>
-                <ConcreteClasses>70</ConcreteClasses>
+                <TotalClasses>80</TotalClasses>
+                <ConcreteClasses>72</ConcreteClasses>
                 <AbstractClasses>8</AbstractClasses>
                 <Ca>1</Ca>
                 <Ce>3</Ce>
@@ -57,6 +57,12 @@
                 <Class sourceFile="IfExpressionAndBody.java">
                     randy.oberon0.ast.datastructures.IfExpressionAndBody$__CLR3_0_11jz1jzgkb9cvrb
                 </Class>
+                <Class sourceFile="AliasDeclaration.java">
+                    randy.oberon0.ast.declaration.AliasDeclaration
+                </Class>
+                <Class sourceFile="AliasDeclaration.java">
+                    randy.oberon0.ast.declaration.AliasDeclaration$__CLR3_0_12v62v6gkcowhrt
+                </Class>
                 <Class sourceFile="ArrayVarDeclaration.java">
                     randy.oberon0.ast.declaration.ArrayVarDeclaration
                 </Class>
@@ -85,7 +91,7 @@
                     randy.oberon0.ast.declaration.VarDeclaration
                 </Class>
                 <Class sourceFile="VarDeclaration.java">
-                    randy.oberon0.ast.declaration.VarDeclaration$__CLR3_0_11bo1bogkb9cvpt
+                    randy.oberon0.ast.declaration.VarDeclaration$__CLR3_0_11sn1sngkco9lpk
                 </Class>
                 <Class sourceFile="InfixAdditionExpression.java">
                     randy.oberon0.ast.expression.InfixAdditionExpression
@@ -435,14 +441,14 @@
 
         <Package name="randy.oberon0.interpreter">
             <Stats>
-                <TotalClasses>52</TotalClasses>
-                <ConcreteClasses>44</ConcreteClasses>
+                <TotalClasses>55</TotalClasses>
+                <ConcreteClasses>47</ConcreteClasses>
                 <AbstractClasses>8</AbstractClasses>
                 <Ca>3</Ca>
                 <Ce>6</Ce>
                 <A>0.15</A>
                 <I>0.67</I>
-                <D>0.18</D>
+                <D>0.19</D>
                 <V>1</V>
             </Stats>
 
@@ -478,7 +484,7 @@
                     randy.oberon0.interpreter.antlr.Oberon0ASTTreeGenerator
                 </Class>
                 <Class sourceFile="Oberon0ASTTreeGenerator.java">
-                    randy.oberon0.interpreter.antlr.Oberon0ASTTreeGenerator$__CLR3_0_1hshsgkb9cvft
+                    randy.oberon0.interpreter.antlr.Oberon0ASTTreeGenerator$__CLR3_0_12eh2ehgkcohgmh
                 </Class>
                 <Class sourceFile="BuildinProcedures.java">
                     randy.oberon0.interpreter.buildinprocedures.BuildinProcedures
@@ -508,7 +514,13 @@
                     randy.oberon0.interpreter.runtime.Program
                 </Class>
                 <Class sourceFile="Program.java">
-                    randy.oberon0.interpreter.runtime.Program$__CLR3_0_1efefgkb9cvei
+                    randy.oberon0.interpreter.runtime.Program$__CLR3_0_1efefgkcofoz3
+                </Class>
+                <Class sourceFile="AliasInstantiation.java">
+                    randy.oberon0.interpreter.runtime.environment.AliasInstantiation
+                </Class>
+                <Class sourceFile="AliasInstantiation.java">
+                    randy.oberon0.interpreter.runtime.environment.AliasInstantiation$__CLR3_0_12vp2vpgkcpbvdm
                 </Class>
                 <Class sourceFile="ArrayVariableInstantiation.java">
                     randy.oberon0.interpreter.runtime.environment.ArrayVariableInstantiation
@@ -558,6 +570,9 @@
                 <Class sourceFile="RuntimeEnvironment.java">
                     randy.oberon0.interpreter.runtime.environment.RuntimeEnvironment$__CLR3_0_1aqaqgkb9cvcy
                 </Class>
+                <Class sourceFile="TypeCheckAliasType.java">
+                    randy.oberon0.interpreter.typecheck.environment.TypeCheckAliasType$__CLR3_0_12r52r5gkcopyv9
+                </Class>
                 <Class sourceFile="TypeCheckArrayType.java">
                     randy.oberon0.interpreter.typecheck.environment.TypeCheckArrayType
                 </Class>
@@ -592,7 +607,7 @@
                     randy.oberon0.interpreter.typecheck.environment.TypeCheckRecordType
                 </Class>
                 <Class sourceFile="TypeCheckRecordType.java">
-                    randy.oberon0.interpreter.typecheck.environment.TypeCheckRecordType$__CLR3_0_15s5sgkb9cvbk
+                    randy.oberon0.interpreter.typecheck.environment.TypeCheckRecordType$__CLR3_0_11p41p4gkco7b5z
                 </Class>
                 <Class sourceFile="TypeCheckReference.java">
                     randy.oberon0.interpreter.typecheck.environment.TypeCheckReference
