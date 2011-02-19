@@ -2,19 +2,19 @@ package nl.bve.uva.oberon.shared;
 
 import java.util.List;
 
-import nl.bve.uva.oberon.ast.types.IValueNode;
+import nl.bve.uva.oberon.ast.types.IOberonTypeNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.values.OberonValue;
 
 public abstract class TypedParameterList {
 	private List<String> parameterList;
-	private IValueNode type;
+	private IOberonTypeNode type;
 	
 	public TypedParameterList(List<String> parametersList) {
 		this.parameterList = parametersList;
 	}
 	
-	public TypedParameterList(List<String> parameterList, IValueNode type) {
+	public TypedParameterList(List<String> parameterList, IOberonTypeNode type) {
 		this.parameterList = parameterList;
 		this.type = type;
 	}
@@ -23,7 +23,7 @@ public abstract class TypedParameterList {
 		return parameterList;
 	}
 	
-	public IValueNode getType() {
+	public IOberonTypeNode getType() {
 		return type;
 	}
 	
