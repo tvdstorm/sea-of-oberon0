@@ -2,7 +2,7 @@ package nl.bve.uva.oberon.ast.expressions;
 
 import java.util.List;
 
-import nl.bve.uva.oberon.ast.Selector;
+import nl.bve.uva.oberon.ast.selectors.Selector;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.types.OberonType;
 
