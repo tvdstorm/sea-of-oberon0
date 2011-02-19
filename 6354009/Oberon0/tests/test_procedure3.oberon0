@@ -1,0 +1,27 @@
+MODULE Bla;
+VAR
+	a,b,c:INTEGER;
+
+PROCEDURE Swap(VAR x, y, t: INTEGER);
+VAR 
+	temp: INTEGER; 
+BEGIN 
+	IF t > 0 THEN
+		temp := x; 
+		x := y; 
+		y := temp;
+		t := t - 1;
+		Swap(x,y,t)
+	END 
+END Swap;
+	
+BEGIN 
+	a := 0;
+	b := 10;
+	c := 2;
+	Swap(a,b,c);
+	WriteLn(a);
+	WriteLn(b);
+	WriteLn(c)
+	
+END Bla.

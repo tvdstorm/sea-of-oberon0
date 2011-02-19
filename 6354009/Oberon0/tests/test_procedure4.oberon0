@@ -1,0 +1,24 @@
+MODULE Bla;
+CONST 
+	CONSTANT_ONE = 10;
+VAR
+	x:INTEGER;
+	y:INTEGER;
+
+PROCEDURE Swap(x, y: INTEGER);
+VAR 
+	temp: INTEGER; 
+BEGIN 
+	temp := x; 
+	x := y; 
+	y := temp 
+END Swap;
+	
+BEGIN 
+	x := 0;
+	y := 10;
+	Swap(x,y);
+	WriteLn(x);
+	WriteLn(y)
+END Bla.
+

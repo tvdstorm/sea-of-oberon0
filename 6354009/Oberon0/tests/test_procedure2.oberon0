@@ -1,0 +1,17 @@
+MODULE Bla;
+VAR
+	input:ARRAY 2 OF INTEGER;
+
+PROCEDURE Assign(VAR array: ARRAY 2 OF INTEGER);
+BEGIN
+	array[0] := 10;
+	array[1] := 11
+END Assign;
+
+BEGIN 
+	input[0] := 5;
+	input[1] := 6;
+	Assign(input);
+	WriteLn(input[0]);
+	WriteLn(input[1])
+END Bla.

@@ -1,0 +1,10 @@
+MODULE Bla;
+CONST
+	CONSTANT_ONE = 10;
+VAR 
+	i:INTEGER;  
+BEGIN 
+	i := 10;
+	i := i + CONSTANT_ONE;
+	WriteLn(i) 
+END Bla.
