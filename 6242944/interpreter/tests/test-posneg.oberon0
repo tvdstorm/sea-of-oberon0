@@ -1,13 +1,13 @@
 MODULE test;
 BEGIN
-    AssertEq(-2+2, 0);
-    AssertEq(-2, -2);
-    AssertEq(-2+(-2), -4);
-    AssertEq(- 31 - ( - 10 ) , - 21);
+    AssertEqInt(-2+2, 0);
+    AssertEqInt(-2, -2);
+    AssertEqInt(-2+(-2), -4);
+    AssertEqInt(- 31 - ( - 10 ) , - 21);
     
-    AssertEq(+2, 2);
-    AssertEq(+0, 0);
-    AssertEq(+(-3), -3);
-    AssertEq(+(+5), 5);
-    AssertEq(-(3-(-5))+(+(-4))-(+1)-3+6, -10)
+    AssertEqInt(+2, 2);
+    AssertEqInt(+0, 0);
+    AssertEqInt(+(-3), -3);
+    AssertEqInt(+(+5), 5);
+    AssertEqInt(-(3-(-5))+(+(-4))-(+1)-3+6, -10)
 END test.

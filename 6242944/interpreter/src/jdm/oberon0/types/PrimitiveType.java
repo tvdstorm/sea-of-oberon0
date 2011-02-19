@@ -10,6 +10,9 @@ public enum PrimitiveType implements Type {
 
 	@Override
 	public boolean equals(Type other) {
+		if (other instanceof ReferenceType) {
+			other = ((ReferenceType)other).getType();
+		}
 		if (!(other instanceof PrimitiveType)) {
 			return false;
 		}

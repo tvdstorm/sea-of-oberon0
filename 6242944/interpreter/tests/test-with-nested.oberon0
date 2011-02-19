@@ -8,10 +8,10 @@ MODULE test;
 		END
 	END;
 BEGIN
-	AssertEq(rec.x, 0);
-	AssertEq(rec.a, FALSE);
-	AssertEq(rec.nested.c, 0);
-	AssertEq(rec.nested.d, FALSE);
+	AssertEqInt(rec.x, 0);
+	AssertEqBool(rec.a, FALSE);
+	AssertEqInt(rec.nested.c, 0);
+	AssertEqBool(rec.nested.d, FALSE);
 
 	WITH rec DO
 		x := 10;
@@ -20,15 +20,15 @@ BEGIN
 			c := x * x;
 			d := ~rec.a;
 			
-			AssertEq(x, 10);
-			AssertEq(a, FALSE)
+			AssertEqInt(x, 10);
+			AssertEqBool(a, FALSE)
 		END;
 		
 		y := nested.c + 23;
 		b := nested.d
 	END;
 	
-	AssertEq(rec.nested.c, 100);
-	AssertEq(rec.nested.d, TRUE);
-	AssertEq(rec.y, 123)
+	AssertEqInt(rec.nested.c, 100);
+	AssertEqBool(rec.nested.d, TRUE);
+	AssertEqInt(rec.y, 123)
 END test.

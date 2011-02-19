@@ -7,17 +7,18 @@ import java.io.InputStreamReader;
 import jdm.oberon0.builtins.BuiltinProcedure;
 import jdm.oberon0.exceptions.InputException;
 import jdm.oberon0.exceptions.InvalidInputException;
-import jdm.oberon0.interpreter.Context;
+import jdm.oberon0.interpreter.InterpreterContext;
+import jdm.oberon0.types.PrimitiveType;
+import jdm.oberon0.types.ProcedureType;
+import jdm.oberon0.types.ReferenceType;
+import jdm.oberon0.types.Type;
 import jdm.oberon0.values.Value;
 import jdm.oberon0.values.ReferenceValue;
-
-
-
 
 public class ReadProcedure extends BuiltinProcedure {
 	
 	@Override
-	public void execute(Context context, Value[] arguments) {
+	public void execute(InterpreterContext context, Value[] arguments) {
 		ReferenceValue ref = arguments[0].toReference();
 			
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -41,7 +42,9 @@ public class ReadProcedure extends BuiltinProcedure {
 	}
 
 	@Override
-	public int getArgumentCount() {
-		return 1;
+	public ProcedureType getType() {
+		return new ProcedureType(
+			new Type[] { ReferenceType.getRef(PrimitiveType.Integer) }
+		);
 	}
 }

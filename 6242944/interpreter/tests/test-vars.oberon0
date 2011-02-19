@@ -1,11 +1,11 @@
 MODULE test;
 	VAR i : INTEGER;
 BEGIN
-	AssertEq(i, 0);
+	AssertEqInt(i, 0);
 	
 	i := 10;
-	AssertEq(i, 10);
+	AssertEqInt(i, 10);
 	
 	i := i + 1;
-	AssertEq(i, 11)
+	AssertEqInt(i, 11)
 END test.

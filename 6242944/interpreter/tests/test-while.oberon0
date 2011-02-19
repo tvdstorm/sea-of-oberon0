@@ -9,14 +9,14 @@ WHILE i < 10 DO
     i := i + 1
 END;
 
-AssertEq(i, 10);
+AssertEqInt(i, 10);
 
 i := 0;
 
 WHILE i > 0 DO
-    AssertEq(0, 1)
+    AssertEqInt(0, 1)
 END;
 
-AssertEq(i, 0)
+AssertEqInt(i, 0)
 
 END test.

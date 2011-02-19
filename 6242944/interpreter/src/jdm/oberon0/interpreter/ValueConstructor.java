@@ -3,6 +3,7 @@ package jdm.oberon0.interpreter;
 import jdm.oberon0.types.ArrayType;
 import jdm.oberon0.types.PrimitiveType;
 import jdm.oberon0.types.RecordType;
+import jdm.oberon0.types.ReferenceType;
 import jdm.oberon0.types.Type;
 import jdm.oberon0.values.ArrayValue;
 import jdm.oberon0.values.BooleanValue;
@@ -13,6 +14,9 @@ import jdm.oberon0.values.Value;
 public class ValueConstructor {
 
 	public static Value fromType(Type type) {
+		if (type instanceof ReferenceType) {
+			type = ((ReferenceType)type).getType();
+		}
 		if (type == PrimitiveType.Integer) {
 			return new IntegerValue(0);
 		}

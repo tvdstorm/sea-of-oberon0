@@ -367,10 +367,10 @@
                 <ConcreteClasses>4</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
                 <Ca>1</Ca>
-                <Ce>6</Ce>
+                <Ce>7</Ce>
                 <A>0</A>
-                <I>0.86</I>
-                <D>0.14</D>
+                <I>0.88</I>
+                <D>0.12</D>
                 <V>1</V>
             </Stats>
 
@@ -398,6 +398,7 @@
                 <Package>jdm.oberon0.builtins</Package>
                 <Package>jdm.oberon0.exceptions</Package>
                 <Package>jdm.oberon0.interpreter</Package>
+                <Package>jdm.oberon0.types</Package>
                 <Package>jdm.oberon0.values</Package>
             </DependsUpon>
 
@@ -408,14 +409,14 @@
 
         <Package name="jdm.oberon0.exceptions">
             <Stats>
-                <TotalClasses>11</TotalClasses>
-                <ConcreteClasses>11</ConcreteClasses>
+                <TotalClasses>13</TotalClasses>
+                <ConcreteClasses>13</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
-                <Ca>5</Ca>
+                <Ca>4</Ca>
                 <Ce>2</Ce>
                 <A>0</A>
-                <I>0.29</I>
-                <D>0.71</D>
+                <I>0.33</I>
+                <D>0.67</D>
                 <V>1</V>
             </Stats>
 
@@ -450,6 +451,12 @@
                 <Class sourceFile="RuntimeException.java">
                     jdm.oberon0.exceptions.RuntimeException
                 </Class>
+                <Class sourceFile="UndefinedFieldException.java">
+                    jdm.oberon0.exceptions.UndefinedFieldException
+                </Class>
+                <Class sourceFile="UndefinedProcedureException.java">
+                    jdm.oberon0.exceptions.UndefinedProcedureException
+                </Class>
                 <Class sourceFile="UndefinedTypeException.java">
                     jdm.oberon0.exceptions.UndefinedTypeException
                 </Class>
@@ -465,7 +472,6 @@
 
             <UsedBy>
                 <Package>jdm.oberon0.builtins.procedures</Package>
-                <Package>jdm.oberon0.interpreter</Package>
                 <Package>jdm.oberon0.interpreter.eval</Package>
                 <Package>jdm.oberon0.main</Package>
                 <Package>jdm.oberon0.values</Package>
@@ -474,14 +480,14 @@
 
         <Package name="jdm.oberon0.interpreter">
             <Stats>
-                <TotalClasses>6</TotalClasses>
+                <TotalClasses>8</TotalClasses>
                 <ConcreteClasses>5</ConcreteClasses>
-                <AbstractClasses>1</AbstractClasses>
+                <AbstractClasses>3</AbstractClasses>
                 <Ca>5</Ca>
-                <Ce>12</Ce>
-                <A>0.17</A>
-                <I>0.71</I>
-                <D>0.13</D>
+                <Ce>13</Ce>
+                <A>0.38</A>
+                <I>0.72</I>
+                <D>0.1</D>
                 <V>1</V>
             </Stats>
 
@@ -489,23 +495,29 @@
                 <Class sourceFile="Callable.java">
                     jdm.oberon0.interpreter.Callable
                 </Class>
-            </AbstractClasses>
-
-            <ConcreteClasses>
                 <Class sourceFile="Context.java">
                     jdm.oberon0.interpreter.Context
                 </Class>
+                <Class sourceFile="Scope.java">
+                    jdm.oberon0.interpreter.Scope
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
                 <Class sourceFile="Interpreter.java">
                     jdm.oberon0.interpreter.Interpreter
                 </Class>
-                <Class sourceFile="Scope.java">
-                    jdm.oberon0.interpreter.Scope
+                <Class sourceFile="InterpreterContext.java">
+                    jdm.oberon0.interpreter.InterpreterContext
                 </Class>
                 <Class sourceFile="ScriptedProcedure.java">
                     jdm.oberon0.interpreter.ScriptedProcedure
                 </Class>
                 <Class sourceFile="ValueConstructor.java">
                     jdm.oberon0.interpreter.ValueConstructor
+                </Class>
+                <Class sourceFile="ValueScope.java">
+                    jdm.oberon0.interpreter.ValueScope
                 </Class>
             </ConcreteClasses>
 
@@ -516,9 +528,10 @@
                 <Package>jdm.oberon0.ast</Package>
                 <Package>jdm.oberon0.ast.declarations</Package>
                 <Package>jdm.oberon0.builtins</Package>
-                <Package>jdm.oberon0.exceptions</Package>
                 <Package>jdm.oberon0.interpreter.eval</Package>
                 <Package>jdm.oberon0.parser</Package>
+                <Package>jdm.oberon0.typechecker</Package>
+                <Package>jdm.oberon0.typechecker.typecheck</Package>
                 <Package>jdm.oberon0.types</Package>
                 <Package>jdm.oberon0.values</Package>
                 <Package>xtc.parser</Package>
@@ -624,16 +637,24 @@
             <error>No stats available: package referenced, but not analyzed.</error>
         </Package>
 
+        <Package name="jdm.oberon0.typechecker">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="jdm.oberon0.typechecker.typecheck">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
         <Package name="jdm.oberon0.types">
             <Stats>
-                <TotalClasses>4</TotalClasses>
-                <ConcreteClasses>3</ConcreteClasses>
+                <TotalClasses>6</TotalClasses>
+                <ConcreteClasses>5</ConcreteClasses>
                 <AbstractClasses>1</AbstractClasses>
-                <Ca>4</Ca>
+                <Ca>5</Ca>
                 <Ce>2</Ce>
-                <A>0.25</A>
-                <I>0.33</I>
-                <D>0.42</D>
+                <A>0.17</A>
+                <I>0.29</I>
+                <D>0.55</D>
                 <V>1</V>
             </Stats>
 
@@ -650,8 +671,14 @@
                 <Class sourceFile="PrimitiveType.java">
                     jdm.oberon0.types.PrimitiveType
                 </Class>
+                <Class sourceFile="ProcedureType.java">
+                    jdm.oberon0.types.ProcedureType
+                </Class>
                 <Class sourceFile="RecordType.java">
                     jdm.oberon0.types.RecordType
+                </Class>
+                <Class sourceFile="ReferenceType.java">
+                    jdm.oberon0.types.ReferenceType
                 </Class>
             </ConcreteClasses>
 
@@ -662,6 +689,7 @@
 
             <UsedBy>
                 <Package>jdm.oberon0.builtins</Package>
+                <Package>jdm.oberon0.builtins.procedures</Package>
                 <Package>jdm.oberon0.interpreter</Package>
                 <Package>jdm.oberon0.interpreter.eval</Package>
                 <Package>jdm.oberon0.values</Package>

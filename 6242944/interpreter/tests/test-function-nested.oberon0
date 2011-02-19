@@ -29,6 +29,6 @@ a := 3;
 f1(a);
 f1(a);
 
-AssertEq(a, 1950)
+AssertEqInt(a, 1950)
 
 END test.

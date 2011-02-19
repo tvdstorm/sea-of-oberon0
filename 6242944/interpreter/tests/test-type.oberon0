@@ -2,8 +2,8 @@ MODULE test;
 	TYPE int = INTEGER;
 	VAR i : int;
 BEGIN
-	AssertEq(i, 0);
+	AssertEqInt(i, 0);
 	
 	i := i + 10;
-	AssertEq(i, 10)
+	AssertEqInt(i, 10)
 END test.

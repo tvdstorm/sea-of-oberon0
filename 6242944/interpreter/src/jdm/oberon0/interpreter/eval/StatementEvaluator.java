@@ -2,9 +2,8 @@ package jdm.oberon0.interpreter.eval;
 
 import jdm.oberon0.ast.expressions.Expression;
 import jdm.oberon0.ast.statements.*;
-import jdm.oberon0.exceptions.InvalidArgumentCountException;
 import jdm.oberon0.interpreter.Callable;
-import jdm.oberon0.interpreter.Context;
+import jdm.oberon0.interpreter.InterpreterContext;
 import jdm.oberon0.values.RecordValue;
 import jdm.oberon0.values.ReferenceValue;
 import jdm.oberon0.values.Value;
@@ -13,10 +12,10 @@ import jdm.oberon0.values.Value;
  * Evaluator for Oberon0 statements
  */
 class StatementEvaluator extends StatementVisitor {
-	private Context _context;
+	private InterpreterContext _context;
 	private ExpressionEvaluator _exprEval;
 	
-	public StatementEvaluator(Context context) {
+	public StatementEvaluator(InterpreterContext context) {
 		_context = context;
 		_exprEval = new ExpressionEvaluator(context);
 	}
@@ -36,12 +35,8 @@ class StatementEvaluator extends StatementVisitor {
 		Callable callable = _context.getScope().lookupProcedure(name);
 
 		// create arguments for procedure
+		// note: type checker has checked argument count and argument types
 		Expression[] argExprs = procedureCall.getArgs();
-
-		// check argument count
-		if (callable.getArgumentCount() != argExprs.length) {
-			throw new InvalidArgumentCountException(argExprs.length, callable.getArgumentCount());
-		}
 		
 		// evaluate actual arguments
 		Value[] args = new Value[argExprs.length];

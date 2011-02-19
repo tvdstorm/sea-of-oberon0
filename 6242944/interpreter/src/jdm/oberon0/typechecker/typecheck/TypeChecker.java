@@ -1,23 +1,23 @@
-package jdm.oberon0.interpreter.eval;
+package jdm.oberon0.typechecker.typecheck;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import jdm.oberon0.typechecker.TypeCheckerContext;
 import jdm.oberon0.types.*;
 import jdm.oberon0.ast.types.IdentifierType;
 import jdm.oberon0.ast.types.TypeVisitor;
-import jdm.oberon0.interpreter.InterpreterContext;
 
 /**
  * Evaluator to convert AST types to runtime types
  */
-class TypeEvaluator extends TypeVisitor<Type> {
-	private InterpreterContext _context;
-	private ExpressionEvaluator _exprEval;
+class TypeChecker extends TypeVisitor<Type> {
+	private TypeCheckerContext _context;
+	private ExpressionChecker _exprChecker;
 	
-	public TypeEvaluator(InterpreterContext context) {
+	public TypeChecker(TypeCheckerContext context) {
 		_context = context;
-		_exprEval = new ExpressionEvaluator(context);
+		_exprChecker = new ExpressionChecker(context);
 	}
 	
 	@Override
@@ -28,8 +28,8 @@ class TypeEvaluator extends TypeVisitor<Type> {
 	@Override
 	public Type visitArray(jdm.oberon0.ast.types.ArrayType type) {
 		Type elementType = type.getElementType().accept(this);
-		int size = _exprEval.evalInteger(type.getSize());
-		return new ArrayType(ReferenceType.getRef(elementType), size);
+		_exprChecker.checkInteger(type.getSize());
+		return new ArrayType(ReferenceType.getRef(elementType), -1);
 	}
 
 	@Override

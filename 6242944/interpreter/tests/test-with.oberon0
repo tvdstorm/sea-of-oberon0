@@ -4,8 +4,8 @@ MODULE test;
 		a, b: BOOLEAN
 	END;
 BEGIN
-	AssertEq(rec.x, 0);
-	AssertEq(rec.a, FALSE);
+	AssertEqInt(rec.x, 0);
+	AssertEqBool(rec.a, FALSE);
 
 	WITH rec DO
 		x := 10;
@@ -14,9 +14,9 @@ BEGIN
 		b := ~a
 	END;
 	
-	AssertEq(rec.x, 10);
-	AssertEq(rec.y, 20);
-	
-	AssertEq(rec.a, FALSE);
-	AssertEq(rec.b, TRUE)
+	AssertEqInt(rec.x, 10);
+	AssertEqInt(rec.y, 20);
+
+	AssertEqBool(rec.a, FALSE);
+	AssertEqBool(rec.b, TRUE)
 END test.
