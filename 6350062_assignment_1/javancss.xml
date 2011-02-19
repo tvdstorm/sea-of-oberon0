@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <javancss>
-  <date>2011-02-18</date>
-  <time>16:56:08</time>
+  <date>2011-02-19</date>
+  <time>16:49:06</time>
   <packages>
     <package>
       <name>randy.oberon0.ast</name>
@@ -25,9 +25,9 @@
     </package>
     <package>
       <name>randy.oberon0.ast.declaration</name>
-      <classes>7</classes>
-      <functions>19</functions>
-      <ncss>177</ncss>
+      <classes>8</classes>
+      <functions>21</functions>
+      <ncss>193</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>40</single_comment_lines>
@@ -96,8 +96,8 @@
     <package>
       <name>randy.oberon0.interpreter.antlr</name>
       <classes>1</classes>
-      <functions>24</functions>
-      <ncss>305</ncss>
+      <functions>25</functions>
+      <ncss>311</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>2</single_comment_lines>
@@ -125,9 +125,9 @@
     </package>
     <package>
       <name>randy.oberon0.interpreter.runtime.environment</name>
-      <classes>11</classes>
-      <functions>30</functions>
-      <ncss>164</ncss>
+      <classes>12</classes>
+      <functions>32</functions>
+      <ncss>175</ncss>
       <javadocs>3</javadocs>
       <javadoc_lines>9</javadoc_lines>
       <single_comment_lines>14</single_comment_lines>
@@ -154,9 +154,9 @@
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <total>
-      <classes>86</classes>
-      <functions>222</functions>
-      <ncss>1592</ncss>
+      <classes>88</classes>
+      <functions>227</functions>
+      <ncss>1625</ncss>
       <javadocs>3</javadocs>
       <javadoc_lines>9</javadoc_lines>
       <single_comment_lines>151</single_comment_lines>
@@ -164,10 +164,10 @@
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>15.00</td><td>86.00</td><td>222.00</td><td>1,592.00</td><td>3.00</td><td>Project</td></tr>
-      <tr><td></td><td>5.73</td><td>14.80</td><td>106.13</td><td>0.20</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>2.58</td><td>18.51</td><td>0.03</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>7.17</td><td>0.01</td><td>Function</td></tr>
+      <tr><td>15.00</td><td>88.00</td><td>227.00</td><td>1,625.00</td><td>3.00</td><td>Project</td></tr>
+      <tr><td></td><td>5.87</td><td>15.13</td><td>108.33</td><td>0.20</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>2.58</td><td>18.47</td><td>0.03</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>7.16</td><td>0.01</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -190,6 +190,13 @@
       <name>randy.oberon0.ast.declaration.AbstractTypeDeclaration</name>
       <ncss>1</ncss>
       <functions>0</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>randy.oberon0.ast.declaration.AliasDeclaration</name>
+      <ncss>13</ncss>
+      <functions>2</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -594,8 +601,8 @@
     </object>
     <object>
       <name>randy.oberon0.interpreter.antlr.Oberon0ASTTreeGenerator</name>
-      <ncss>286</ncss>
-      <functions>24</functions>
+      <ncss>292</ncss>
+      <functions>25</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -631,6 +638,13 @@
       <name>randy.oberon0.interpreter.buildinprocedures.IBuildinProcedures</name>
       <ncss>2</ncss>
       <functions>1</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>randy.oberon0.interpreter.runtime.environment.AliasInstantiation</name>
+      <ncss>8</ncss>
+      <functions>2</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -775,12 +789,12 @@
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>14.48</ncss>
+      <ncss>14.45</ncss>
       <functions>2.58</functions>
       <classes>0.00</classes>
       <javadocs>0.03</javadocs>
     </averages>
-    <ncss>1,592.00</ncss>
+    <ncss>1,625.00</ncss>
   </objects>
 
   <functions>
@@ -799,6 +813,18 @@
     <function>
       <name>randy.oberon0.ast.datastructures.IfExpressionAndBody.getBody()</name>
       <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.declaration.AliasDeclaration.AliasDeclaration(String,String)</name>
+      <ncss>7</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.ast.declaration.AliasDeclaration.register(RuntimeEnvironment)</name>
+      <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -1428,8 +1454,14 @@
     </function>
     <function>
       <name>randy.oberon0.interpreter.antlr.Oberon0ASTTreeGenerator.buildAbstractTypeDeclaration(Tree)</name>
-      <ncss>7</ncss>
-      <ccn>4</ccn>
+      <ncss>9</ncss>
+      <ccn>6</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.interpreter.antlr.Oberon0ASTTreeGenerator.buildAliasDeclaration(Tree)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -1633,6 +1665,18 @@
     <function>
       <name>randy.oberon0.interpreter.buildinprocedures.IBuildinProcedures.register(RuntimeEnvironment)</name>
       <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.interpreter.runtime.environment.AliasInstantiation.AliasInstantiation(String)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>randy.oberon0.interpreter.runtime.environment.AliasInstantiation.instantiate(RuntimeEnvironment)</name>
+      <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -2117,10 +2161,10 @@
       <javadocs>0</javadocs>
     </function>
     <function_averages>
-      <ncss>4.87</ncss>
-      <ccn>2.46</ccn>
+      <ncss>4.86</ncss>
+      <ccn>2.44</ccn>
       <javadocs>0.01</javadocs>
     </function_averages>
-    <ncss>1,592.00</ncss>
+    <ncss>1,625.00</ncss>
   </functions>
 </javancss>

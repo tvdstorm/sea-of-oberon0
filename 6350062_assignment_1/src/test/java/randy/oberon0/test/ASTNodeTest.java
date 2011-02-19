@@ -770,6 +770,13 @@ public class ASTNodeTest
 		}
 	}
 	@Test
+	public void test_RecordAlias()
+	{
+		prepareTest("recordalias");
+		runTest();
+		Assert.assertTrue(true);
+	}
+	@Test
 	public void test_ArrayRecordNesting()
 	{
 		prepareTest("arrayrecordnesting");
