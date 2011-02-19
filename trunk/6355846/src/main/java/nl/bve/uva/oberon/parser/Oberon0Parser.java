@@ -2,20 +2,64 @@
 
 package nl.bve.uva.oberon.parser;
 
-import nl.bve.uva.oberon.ast.*;
-import nl.bve.uva.oberon.ast.declarations.*;
-import nl.bve.uva.oberon.ast.expressions.*;
-import nl.bve.uva.oberon.ast.expressions.binary.*;
-import nl.bve.uva.oberon.ast.selectors.*;
-import nl.bve.uva.oberon.ast.statements.*;
-import nl.bve.uva.oberon.ast.types.*;
-import nl.bve.uva.oberon.shared.*;
-
-
-import org.antlr.runtime.*;
-import java.util.Stack;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
+
+import nl.bve.uva.oberon.ast.AllDeclarationsNode;
+import nl.bve.uva.oberon.ast.IExecutableNode;
+import nl.bve.uva.oberon.ast.ModuleNode;
+import nl.bve.uva.oberon.ast.ProcedureBodyNode;
+import nl.bve.uva.oberon.ast.StatementSequenceNode;
+import nl.bve.uva.oberon.ast.declarations.ConstantDeclarationNode;
+import nl.bve.uva.oberon.ast.declarations.IDeclarationNode;
+import nl.bve.uva.oberon.ast.declarations.ProcedureDeclarationNode;
+import nl.bve.uva.oberon.ast.declarations.TypeDeclarationNode;
+import nl.bve.uva.oberon.ast.declarations.VarDeclarationNode;
+import nl.bve.uva.oberon.ast.expressions.IExpressionNode;
+import nl.bve.uva.oberon.ast.expressions.IdentSelectorNode;
+import nl.bve.uva.oberon.ast.expressions.NegativeNumberNode;
+import nl.bve.uva.oberon.ast.expressions.NumberNode;
+import nl.bve.uva.oberon.ast.expressions.binary.AndExprNode;
+import nl.bve.uva.oberon.ast.expressions.binary.DivExprNode;
+import nl.bve.uva.oberon.ast.expressions.binary.EqualsExprNode;
+import nl.bve.uva.oberon.ast.expressions.binary.GTEqualsExprNode;
+import nl.bve.uva.oberon.ast.expressions.binary.GTExprNode;
+import nl.bve.uva.oberon.ast.expressions.binary.LTEqualsExprNode;
+import nl.bve.uva.oberon.ast.expressions.binary.LTExprNode;
+import nl.bve.uva.oberon.ast.expressions.binary.MinusExprNode;
+import nl.bve.uva.oberon.ast.expressions.binary.ModExprNode;
+import nl.bve.uva.oberon.ast.expressions.binary.MultExprNode;
+import nl.bve.uva.oberon.ast.expressions.binary.NotEqualsExprNode;
+import nl.bve.uva.oberon.ast.expressions.binary.OrExprNode;
+import nl.bve.uva.oberon.ast.expressions.binary.PlusExprNode;
+import nl.bve.uva.oberon.ast.selectors.DotSelectorNode;
+import nl.bve.uva.oberon.ast.selectors.ElementSelectorNode;
+import nl.bve.uva.oberon.ast.selectors.ISelectorNode;
+import nl.bve.uva.oberon.ast.statements.AssignmentNode;
+import nl.bve.uva.oberon.ast.statements.ElseIfNode;
+import nl.bve.uva.oberon.ast.statements.ElseNode;
+import nl.bve.uva.oberon.ast.statements.IStatementNode;
+import nl.bve.uva.oberon.ast.statements.IfNode;
+import nl.bve.uva.oberon.ast.statements.ProcedureCallNode;
+import nl.bve.uva.oberon.ast.statements.WhileNode;
+import nl.bve.uva.oberon.ast.statements.WithNode;
+import nl.bve.uva.oberon.ast.types.ArrayTypeNode;
+import nl.bve.uva.oberon.ast.types.IOberonTypeNode;
+import nl.bve.uva.oberon.ast.types.IntTypeNode;
+import nl.bve.uva.oberon.ast.types.RecordTypeNode;
+import nl.bve.uva.oberon.ast.types.TypeTypeNode;
+import nl.bve.uva.oberon.ast.types.TypedFieldListNode;
+import nl.bve.uva.oberon.shared.TypedParameterList;
+import nl.bve.uva.oberon.shared.TypedReferenceParameterList;
+import nl.bve.uva.oberon.shared.TypedValueParameterList;
+
+import org.antlr.runtime.BitSet;
+import org.antlr.runtime.NoViableAltException;
+import org.antlr.runtime.Parser;
+import org.antlr.runtime.RecognitionException;
+import org.antlr.runtime.RecognizerSharedState;
+import org.antlr.runtime.Token;
+import org.antlr.runtime.TokenStream;
 
 public class Oberon0Parser extends Parser {
     public static final String[] tokenNames = new String[] {
