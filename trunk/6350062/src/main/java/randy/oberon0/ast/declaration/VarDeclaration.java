@@ -76,9 +76,10 @@ public class VarDeclaration extends BodyDeclaration
 			// Fetch a parameter value from the parameter values
 			final ITypeCheckBindableValue parameterValue = parameterValues.next();
 			// Resolve the variable type and check if they are compatible
-			if (!parameterValue.equals(environment.resolveType(typeName)))
+			ITypeCheckType parameterType = environment.resolveType(typeName);
+			if (!parameterValue.equals(parameterType))
 			{
-				throw new TypeMismatchException(parameterValue.toString(), typeName);
+				throw new TypeMismatchException(parameterValue.toString(), parameterType.toString());
 			}
 			// Check if the variable is a reference
 			if (isReference)

@@ -26,7 +26,15 @@ public class TypeCheckRecordType implements ITypeCheckType
 			return false;
 		}
 		TypeCheckRecordType other = (TypeCheckRecordType)obj;
-		return members.equals(other.members);
+		if (!type.equals(other.type))
+		{
+			return false;
+		}
+		if (!members.equals(other.members))
+		{
+			return false;
+		}
+		return true;
 	}
 	@Override
 	public void mustBe(ITypeCheckType other) throws TypeMismatchException
