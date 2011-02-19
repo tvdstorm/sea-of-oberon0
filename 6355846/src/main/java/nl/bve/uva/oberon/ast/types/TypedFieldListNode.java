@@ -16,7 +16,7 @@ public class TypedFieldListNode {
 		this.type = type;
 	}
 	
-	public Map<String, OberonValue> list(Environment env) {
+	public Map<String, OberonValue> initializeFieldList(Environment env) {
 		HashMap<String, OberonValue> fields = new HashMap<String, OberonValue>();
 		OberonValue value = (OberonValue)type.initializeNew(env);
 		
