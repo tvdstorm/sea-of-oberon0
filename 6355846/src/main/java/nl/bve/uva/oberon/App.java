@@ -5,7 +5,7 @@ import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.util.Scanner;
 
-import nl.bve.uva.oberon.ast.IInterpretableNode;
+import nl.bve.uva.oberon.ast.IExecutableNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.parser.Oberon0Lexer;
 import nl.bve.uva.oberon.parser.Oberon0Parser;
@@ -62,10 +62,10 @@ public class App {
 		
 		try {
 			// Begin parsing at rule prog
-			IInterpretableNode startNode = parser.module();
+			IExecutableNode startNode = parser.module();
 			
 			if ((lexer.getNumberOfSyntaxErrors() == 0) && (parser.getNumberOfSyntaxErrors() == 0)) {
-				startNode.interpret(new Environment());
+				startNode.execute(new Environment());
 			} else {
 				System.out.println("lexer errors:  " +lexer.getNumberOfSyntaxErrors());
 				System.out.println("parser errors: " +parser.getNumberOfSyntaxErrors());

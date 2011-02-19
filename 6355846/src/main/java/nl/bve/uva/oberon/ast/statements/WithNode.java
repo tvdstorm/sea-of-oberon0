@@ -1,6 +1,6 @@
 package nl.bve.uva.oberon.ast.statements;
 
-import nl.bve.uva.oberon.ast.IInterpretableNode;
+import nl.bve.uva.oberon.ast.IExecutableNode;
 import nl.bve.uva.oberon.ast.expressions.ExpressionNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.values.OberonValue;
@@ -8,9 +8,9 @@ import nl.bve.uva.oberon.shared.SelectorValue;
 
 public class WithNode extends StatementNode {
 	private ExpressionNode expression;
-	private IInterpretableNode body;
+	private IExecutableNode body;
 	
-	public WithNode(ExpressionNode expr,IInterpretableNode body) {
+	public WithNode(ExpressionNode expr,IExecutableNode body) {
 		this.expression = expr;
 		this.body = body;
 	}
@@ -39,6 +39,6 @@ public class WithNode extends StatementNode {
 			}
 		};
 	
-		body.interpret(withEnv);
+		body.execute(withEnv);
 	}
 }
