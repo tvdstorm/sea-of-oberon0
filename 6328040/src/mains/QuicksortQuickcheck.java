@@ -14,7 +14,7 @@ public class QuicksortQuickcheck {
 	public static void main(String[] args) throws IOException {
 		// quicksorttest.oberon0 is quicksort with Read replaced by ReadRandom
 		String filename = "oberonfiles/quicksorttest.oberon0";
-		quickcheckQuicksort(10000, filename);
+		quickcheckQuicksort(1000, filename);
 	}
 
 	/*
