@@ -21,7 +21,7 @@ public class WithNode implements IExecutable {
 
 	@Override
 	public void execute(Context context) {
-		Context withContext = context;
+		Context withContext = new Context("with",context);
 
 		BuiltInRoutines builtin = new BuiltInRoutines();
 		builtin.declare(withContext);

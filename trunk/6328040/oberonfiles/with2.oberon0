@@ -1,0 +1,32 @@
+MODULE Withtest;
+
+TYPE 
+	Decimals = RECORD
+	firstd: INTEGER;
+	secondd: INTEGER;
+	END;
+
+	Doubles = RECORD
+	first: INTEGER;
+	second: INTEGER;
+	decimals: Decimals
+	END;
+
+VAR doubs: Doubles;
+  
+BEGIN
+	Read(doubs.first);
+	Read(doubs.second);
+	Read(doubs.decimals.firstd);
+	Read(doubs.decimals.secondd);
+
+	WITH doubs DO
+		Write(first);
+		Write(second);
+		WITH decimals DO
+			Write(firstd);
+			Write(secondd);
+		END;
+	END;
+END Withtest.
+
