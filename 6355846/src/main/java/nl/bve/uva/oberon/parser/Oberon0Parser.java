@@ -9,6 +9,12 @@ import nl.bve.uva.oberon.ast.expressions.*;
 import nl.bve.uva.oberon.ast.expressions.binary.*;
 import nl.bve.uva.oberon.ast.selectors.*;
 import nl.bve.uva.oberon.ast.statements.*;
+import nl.bve.uva.oberon.ast.types.ArrayNode;
+import nl.bve.uva.oberon.ast.types.IValueNode;
+import nl.bve.uva.oberon.ast.types.IntNode;
+import nl.bve.uva.oberon.ast.types.MyTypeNode;
+import nl.bve.uva.oberon.ast.types.RecordNode;
+import nl.bve.uva.oberon.ast.types.TypedFieldListNode;
 import nl.bve.uva.oberon.shared.*;
 
 
