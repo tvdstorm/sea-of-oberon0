@@ -10,10 +10,6 @@ public abstract class TypedParameterList {
 	private List<String> parameterList;
 	private IOberonTypeNode type;
 	
-	public TypedParameterList(List<String> parametersList) {
-		this.parameterList = parametersList;
-	}
-	
 	public TypedParameterList(List<String> parameterList, IOberonTypeNode type) {
 		this.parameterList = parameterList;
 		this.type = type;

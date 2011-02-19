@@ -60,11 +60,4 @@ public class TypeValue extends OberonValue {
 	public TypeValue clone() {
 		return new TypeValue(name, value.clone());
 	}
-	
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("TypeValue[" +name+ ": " +value.toString()+ "]");
-		return sb.toString();
-	}
 }

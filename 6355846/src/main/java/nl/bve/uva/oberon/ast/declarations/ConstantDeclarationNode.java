@@ -3,7 +3,6 @@ package nl.bve.uva.oberon.ast.declarations;
 import nl.bve.uva.oberon.ast.expressions.IExpressionNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.values.ConstantValue;
-import nl.bve.uva.oberon.env.values.IntValue;
 import nl.bve.uva.oberon.env.values.OberonValue;
 
 public class ConstantDeclarationNode implements IDeclarationNode {
@@ -18,7 +17,7 @@ public class ConstantDeclarationNode implements IDeclarationNode {
 	@Override
 	public void declare(Environment env) {
 		OberonValue value = expression.eval(env);
-		ConstantValue c = new ConstantValue((IntValue)value);
+		ConstantValue c = new ConstantValue(value.getValue());
 		
 		env.addConstant(ident, c);
 	}

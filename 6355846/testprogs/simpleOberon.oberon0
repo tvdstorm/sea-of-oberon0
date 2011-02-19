@@ -52,11 +52,13 @@ BEGIN
  
  Student1.Number := 12345;
  Student1.Name := 67890;
- Student1 := Student2;
+ 
  input1[0].Number := 800;
  Student1.Number := 14;
  Write(Student1.Number);
  WriteLn;
+ 
+ INPUTLENGTH := 4;
  
  Write(input1[0].Number);
  WriteLn

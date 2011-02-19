@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+import nl.bve.uva.oberon.ast.types.IntTypeNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.procedures.Procedure;
 import nl.bve.uva.oberon.env.values.IntValue;
@@ -18,7 +19,7 @@ public class Read extends Procedure {
 	@Override
 	public List<TypedParameterList> getFormalParameters() {
 		ArrayList<TypedParameterList> parameters = new ArrayList<TypedParameterList>();
-		parameters.add(new TypedReferenceParameterList(Arrays.asList(new String[] {REF_VAR_STORE}) ));
+		parameters.add(new TypedReferenceParameterList(Arrays.asList(new String[] {REF_VAR_STORE}), new IntTypeNode()));
 		
 		return parameters;
 	}

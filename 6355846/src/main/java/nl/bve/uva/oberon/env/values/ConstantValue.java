@@ -1,6 +1,5 @@
 package nl.bve.uva.oberon.env.values;
 
-import nl.bve.uva.oberon.shared.SelectorValue;
 
 /**
  * A wrapper class for the IntValue type. The only thing this
@@ -10,16 +9,9 @@ import nl.bve.uva.oberon.shared.SelectorValue;
  * @author Bart v. Eijkelenburg
  *
  */
-public class ConstantValue extends OberonValue {
-	private IntValue value;
-	
-	public ConstantValue(IntValue value) {
-		this.value = value;
-	}
-	
-	@Override
-	public Integer getValue() {
-		return value.getValue();
+public class ConstantValue extends IntValue {
+	public ConstantValue(int value) {
+		super(value);
 	}
 	
 	@Override
@@ -28,22 +20,12 @@ public class ConstantValue extends OberonValue {
 	}
 	
 	@Override
-	public OberonValue evaluateSelector(SelectorValue selector) {
-		throw new RuntimeException("Cannot evaluate an IntValue type!");
-	}
-	
-	@Override
 	public boolean typeEquals(OberonValue obj) {
 		return (obj != null && obj instanceof ConstantValue);
 	}
 	
 	@Override
-	public OberonValue clone() {
-		return new ConstantValue(value);
-	}
-	
-	@Override
-	public String toString() {
-		return "ConstantValue[" +value.toString()+ "]";
+	public ConstantValue clone() {
+		return new ConstantValue(getValue());
 	}
 }
