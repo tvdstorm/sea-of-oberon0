@@ -57,9 +57,17 @@ public class Oberon0ASTTreeGenerator
 		{
 			case Oberon0Parser.RECORD:
 				return buildRecordDeclaration(tree);
+			case Oberon0Parser.IDENT:
+				return buildAliasDeclaration(tree);
 			default:
 				throw new ASTTreeBuildException("Encountered unknown parser tree type '" + tree.getType() + "' in AbstractTypeDeclaration on line " + tree.getLine() + " column " + tree.getCharPositionInLine() + ".");
 		}
+	}
+	public static AliasDeclaration buildAliasDeclaration(Tree tree) throws Exception
+	{
+		String alias = tree.getChild(0).getText();
+		String resolvesTo = tree.getChild(1).getText();
+		return new AliasDeclaration(alias, resolvesTo);
 	}
 	public static ArraySelector buildArraySelector(Tree tree) throws Exception
 	{

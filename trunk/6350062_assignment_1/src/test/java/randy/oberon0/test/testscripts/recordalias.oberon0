@@ -1,0 +1,26 @@
+MODULE Recordalias;
+
+TYPE ObjDesc = RECORD
+name: INTEGER;
+type: INTEGER;
+active: BOOLEAN
+END;
+Other = RECORD
+name: INTEGER;
+type: INTEGER;
+active: BOOLEAN
+END;
+Alias = ObjDesc;
+
+VAR o: ObjDesc;
+
+PROCEDURE test(in: Alias);
+  BEGIN
+    in.name := 0;
+  END test;
+
+BEGIN
+  test(o);
+
+END Recordalias.
+

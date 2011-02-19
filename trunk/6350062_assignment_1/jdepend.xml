@@ -12,14 +12,14 @@
 
         <Package name="randy.oberon0.ast">
             <Stats>
-                <TotalClasses>76</TotalClasses>
-                <ConcreteClasses>68</ConcreteClasses>
+                <TotalClasses>78</TotalClasses>
+                <ConcreteClasses>70</ConcreteClasses>
                 <AbstractClasses>8</AbstractClasses>
                 <Ca>1</Ca>
                 <Ce>3</Ce>
-                <A>0.11</A>
+                <A>0.1</A>
                 <I>0.75</I>
-                <D>0.14</D>
+                <D>0.15</D>
                 <V>1</V>
             </Stats>
 
@@ -57,6 +57,12 @@
                 <Class sourceFile="IfExpressionAndBody.java">
                     randy.oberon0.ast.datastructures.IfExpressionAndBody$__CLR3_0_1112112gkb9cxd7
                 </Class>
+                <Class sourceFile="AliasDeclaration.java">
+                    randy.oberon0.ast.declaration.AliasDeclaration
+                </Class>
+                <Class sourceFile="AliasDeclaration.java">
+                    randy.oberon0.ast.declaration.AliasDeclaration$__CLR3_0_11fk1fkgkcp6sai
+                </Class>
                 <Class sourceFile="ArrayVarDeclaration.java">
                     randy.oberon0.ast.declaration.ArrayVarDeclaration
                 </Class>
@@ -85,7 +91,7 @@
                     randy.oberon0.ast.declaration.VarDeclaration
                 </Class>
                 <Class sourceFile="VarDeclaration.java">
-                    randy.oberon0.ast.declaration.VarDeclaration$__CLR3_0_1w6w6gkb9cxc2
+                    randy.oberon0.ast.declaration.VarDeclaration$__CLR3_0_11eb1ebgkcp6f0e
                 </Class>
                 <Class sourceFile="InfixAdditionExpression.java">
                     randy.oberon0.ast.expression.InfixAdditionExpression
@@ -241,7 +247,7 @@
                     randy.oberon0.ast.statement.IfStatement
                 </Class>
                 <Class sourceFile="IfStatement.java">
-                    randy.oberon0.ast.statement.IfStatement$__CLR3_0_1mjmjgkb9cx7g
+                    randy.oberon0.ast.statement.IfStatement$__CLR3_0_1mjmjgkcp4jmc
                 </Class>
                 <Class sourceFile="ProcedureCall.java">
                     randy.oberon0.ast.statement.ProcedureCall
@@ -417,14 +423,14 @@
 
         <Package name="randy.oberon0.interpreter">
             <Stats>
-                <TotalClasses>33</TotalClasses>
-                <ConcreteClasses>28</ConcreteClasses>
+                <TotalClasses>35</TotalClasses>
+                <ConcreteClasses>30</ConcreteClasses>
                 <AbstractClasses>5</AbstractClasses>
                 <Ca>3</Ca>
                 <Ce>6</Ce>
-                <A>0.15</A>
+                <A>0.14</A>
                 <I>0.67</I>
-                <D>0.18</D>
+                <D>0.19</D>
                 <V>1</V>
             </Stats>
 
@@ -451,7 +457,7 @@
                     randy.oberon0.interpreter.antlr.Oberon0ASTTreeGenerator
                 </Class>
                 <Class sourceFile="Oberon0ASTTreeGenerator.java">
-                    randy.oberon0.interpreter.antlr.Oberon0ASTTreeGenerator$__CLR3_0_1ayaygkb9cx33
+                    randy.oberon0.interpreter.antlr.Oberon0ASTTreeGenerator$__CLR3_0_1132132gkcp4jkc
                 </Class>
                 <Class sourceFile="BuildinProcedures.java">
                     randy.oberon0.interpreter.buildinprocedures.BuildinProcedures
@@ -481,7 +487,13 @@
                     randy.oberon0.interpreter.runtime.Program
                 </Class>
                 <Class sourceFile="Program.java">
-                    randy.oberon0.interpreter.runtime.Program$__CLR3_0_18v8vgkb9cx1v
+                    randy.oberon0.interpreter.runtime.Program$__CLR3_0_18v8vgkcp4jml
+                </Class>
+                <Class sourceFile="AliasInstantiation.java">
+                    randy.oberon0.interpreter.runtime.environment.AliasInstantiation
+                </Class>
+                <Class sourceFile="AliasInstantiation.java">
+                    randy.oberon0.interpreter.runtime.environment.AliasInstantiation$__CLR3_0_11g71g7gkcpbgal
                 </Class>
                 <Class sourceFile="ArrayVariableInstantiation.java">
                     randy.oberon0.interpreter.runtime.environment.ArrayVariableInstantiation
