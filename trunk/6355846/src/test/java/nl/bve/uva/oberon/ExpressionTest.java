@@ -1,9 +1,9 @@
 package nl.bve.uva.oberon;
 
 import static org.junit.Assert.assertEquals;
-import nl.bve.uva.oberon.ast.NumberNode;
-import nl.bve.uva.oberon.ast.expressions.BinaryExpressionNode;
-import nl.bve.uva.oberon.ast.expressions.MultExprNode;
+import nl.bve.uva.oberon.ast.expressions.NumberNode;
+import nl.bve.uva.oberon.ast.expressions.binary.BinaryExpressionNode;
+import nl.bve.uva.oberon.ast.expressions.binary.MultExprNode;
 import nl.bve.uva.oberon.env.Environment;
 
 import org.junit.Test;
@@ -18,6 +18,6 @@ public class ExpressionTest {
 		
 		BinaryExpressionNode e1 = new MultExprNode(value1, value2);
 		
-		assertEquals(new Integer(0), e1.interpret(env).getValue());
+		assertEquals(new Integer(0), e1.eval(env).getValue());
 	}
 }

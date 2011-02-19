@@ -22,6 +22,7 @@ package nl.bve.uva.oberon.parser;
 import nl.bve.uva.oberon.ast.*;
 import nl.bve.uva.oberon.ast.declarations.*;
 import nl.bve.uva.oberon.ast.expressions.*;
+import nl.bve.uva.oberon.ast.expressions.binary.*;
 import nl.bve.uva.oberon.env.*;
 import nl.bve.uva.oberon.shared.*;
 }
@@ -146,8 +147,8 @@ statement returns [IInterpretableNode result]
 	;
 
 assignment returns [IInterpretableNode result]
-	:	IDENT selector 											{$result = new IdentSelectorNode($IDENT.text, $selector.result); }
-			':=' expression										{$result = new AssignmentNode($result, $expression.result); }
+	:	IDENT selector 											{ExpressionNode e1 = new IdentSelectorNode($IDENT.text, $selector.result); }
+			':=' expression										{$result = new AssignmentNode(e1, $expression.result); }
 	;
 
 procedureCall returns [IInterpretableNode result]
@@ -155,7 +156,7 @@ procedureCall returns [IInterpretableNode result]
 	;
 
 
-actualParameters returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()]
+actualParameters returns [List<ExpressionNode> result = new ArrayList<ExpressionNode>()]
 	:	'(' (e1=expression 										{$result.add($e1.result); }
 				(',' e2=expression								{$result.add($e2.result); }
 				)*
@@ -184,7 +185,7 @@ withStatement returns [IInterpretableNode result]
 	:	'WITH' expression 'DO' statementSequence 'END'			{$result = new WithNode($expression.result, $statementSequence.result); }
 	;
 
-expression returns [IInterpretableNode result]
+expression returns [ExpressionNode result]
 	:	s1=simpleExpression 									{$result = $s1.result; }
 			( EQUALS s2=simpleExpression						{$result = new EqualsExprNode($s1.result, $s2.result); }
 			| NOT_EQ s2=simpleExpression						{$result = new NotEqualsExprNode($s1.result, $s2.result); }
@@ -195,7 +196,7 @@ expression returns [IInterpretableNode result]
 			)?
 	;
 
-simpleExpression returns [IInterpretableNode result]
+simpleExpression returns [ExpressionNode result]
 	:	  PLUS t1=term 											{$result = $t1.result; }
 		| MINUS	t1=term											{$result = new NegativeNumberNode($t1.result); }
 		| t1=term 												{$result = $t1.result; }
@@ -211,7 +212,7 @@ simpleExpression returns [IInterpretableNode result]
 	Als het eerste argument $f1.result zou zijn, zou als eerste arument van iedere navolgende 
 	node weer '8' genomen worden. 
 */
-term returns [IInterpretableNode result]
+term returns [ExpressionNode result]
 	: f1=factor													{$result = $f1.result; }
 		(	( MULT f2=factor									{$result = new MultExprNode($result, $f2.result); }
 			| DIV f2=factor										{$result = new DivExprNode($result, $f2.result); }
@@ -221,7 +222,7 @@ term returns [IInterpretableNode result]
 		)*
 	;
 
-factor returns [IInterpretableNode result]
+factor returns [ExpressionNode result]
 	: 	IDENT selector											{$result = new IdentSelectorNode($IDENT.text, $selector.result); } 
 			| NUMBER 											{$result = new NumberNode(Integer.parseInt($NUMBER.text)); }
 			| '(' expression ')' 								{$result = $expression.result; }

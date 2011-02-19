@@ -1,9 +1,10 @@
-package nl.bve.uva.oberon.ast;
+package nl.bve.uva.oberon.ast.expressions;
 
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.types.OberonInt;
+import nl.bve.uva.oberon.env.types.OberonType;
 
-public class NumberNode implements IInterpretableNode {
+public class NumberNode extends ExpressionNode {
 	private int value;
 	
 	public NumberNode(Integer value) {
@@ -11,7 +12,7 @@ public class NumberNode implements IInterpretableNode {
 	}
 	
 	@Override
-	public Object interpret(Environment env) {
+	public OberonType eval(Environment env) {
 		return new OberonInt(value);
 	}
 	
