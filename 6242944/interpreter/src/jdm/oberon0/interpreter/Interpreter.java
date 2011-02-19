@@ -13,6 +13,9 @@ import xtc.parser.ParseException;
 import xtc.parser.Result;
 
 public class Interpreter {
+	/**
+	 * Parse, type check and interpret an Oberon module.
+	 */
 	public static void run(Reader reader, String name) throws IOException, ParseException {
 		// parse module
 		OberonParser parser = new OberonParser(reader, name);
@@ -25,16 +28,20 @@ public class Interpreter {
 		runInterpreter(module);
 	}
 
-	// Check types of an Oberon module.
+	/**
+	 * Type check an Oberon module.
+	 */
 	protected static void runTypeChecker(Module module) {
 		TypeCheckerContext context = new TypeCheckerContext();
 		Builtins.initBuiltins(context);
 		
 		ModuleChecker checker = new ModuleChecker(context);
-		checker.evaluate(module);
+		checker.check(module);
 	}
 
-	// Interpret an Oberon module.
+	/**
+	 * Interpret an Oberon module.
+	 */
 	protected static void runInterpreter(Module module) {
 		InterpreterContext context = new InterpreterContext();
 		Builtins.initBuiltins(context);

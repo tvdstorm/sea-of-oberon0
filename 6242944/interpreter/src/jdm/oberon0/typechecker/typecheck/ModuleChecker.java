@@ -15,7 +15,7 @@ public class ModuleChecker {
 		_declEval = new DeclarationChecker(context);
 	}
 	
-	public void evaluate(Module module) {
+	public void check(Module module) {
 		module.getDeclarations().accept(_declEval);
 		module.getStatements().accept(_statEval);
 	}
