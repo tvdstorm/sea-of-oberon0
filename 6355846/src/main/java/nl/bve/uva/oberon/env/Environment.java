@@ -5,9 +5,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import nl.bve.uva.oberon.env.procedures.Procedure;
-import nl.bve.uva.oberon.env.types.ApplicationType;
-import nl.bve.uva.oberon.env.types.OberonConstant;
-import nl.bve.uva.oberon.env.types.OberonValue;
+import nl.bve.uva.oberon.env.values.TypeValue;
+import nl.bve.uva.oberon.env.values.ConstantValue;
+import nl.bve.uva.oberon.env.values.OberonValue;
 
 /**
  * This class can be used as a holder of variables, application-defined-types
@@ -32,18 +32,18 @@ public class Environment {
 	
 	private Environment superSpace;
 	
-	private Map<String, ApplicationType> applicationTypes = new HashMap<String, ApplicationType>();
+	private Map<String, TypeValue> applicationTypes = new HashMap<String, TypeValue>();
 	private Map<String, OberonValue> identStack = new HashMap<String, OberonValue>();
 	private Map<String, Procedure> procedureStack = new HashMap<String, Procedure>();
 	
 	public Environment() {}
 	
-	public void addUserType(String name, ApplicationType type) {
+	public void addUserType(String name, TypeValue type) {
 		applicationTypes.put(name, type);
 	}
 	
-	public ApplicationType createApplicationType(String name) {
-		ApplicationType t = applicationTypes.get(name);
+	public TypeValue createApplicationType(String name) {
+		TypeValue t = applicationTypes.get(name);
 		
 		if (t == null) {
 			if (superSpace != null) {
@@ -65,7 +65,7 @@ public class Environment {
 		return new Environment(this);
 	}
 	
-	public void addConstant(String const_id, OberonConstant c) {
+	public void addConstant(String const_id, ConstantValue c) {
 		identStack.put(const_id, c);
 	}
 	

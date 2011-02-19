@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import nl.bve.uva.oberon.env.Environment;
-import nl.bve.uva.oberon.env.types.OberonRecord;
-import nl.bve.uva.oberon.env.types.OberonValue;
+import nl.bve.uva.oberon.env.values.RecordValue;
+import nl.bve.uva.oberon.env.values.OberonValue;
 
 public class RecordTypeNode implements IInterpretableNode {
 	private List<TypedFieldListNode> fieldLists;
@@ -26,6 +26,6 @@ public class RecordTypeNode implements IInterpretableNode {
 			}
 		}
 		
-		return new OberonRecord(fields);
+		return new RecordValue(fields);
 	}
 }

@@ -2,8 +2,8 @@ package nl.bve.uva.oberon.ast.declarations;
 
 import nl.bve.uva.oberon.ast.IInterpretableNode;
 import nl.bve.uva.oberon.env.Environment;
-import nl.bve.uva.oberon.env.types.ApplicationType;
-import nl.bve.uva.oberon.env.types.OberonValue;
+import nl.bve.uva.oberon.env.values.TypeValue;
+import nl.bve.uva.oberon.env.values.OberonValue;
 
 public class TypeDeclarationNode extends DeclarationNode {
 	private String ident;
@@ -17,7 +17,7 @@ public class TypeDeclarationNode extends DeclarationNode {
 	@Override
 	public void declare(Environment env) {
 		OberonValue t = (OberonValue)type.interpret(env);
-		ApplicationType appType = new ApplicationType(ident, t);
+		TypeValue appType = new TypeValue(ident, t);
 		env.addUserType(ident, appType);
 	}
 }
