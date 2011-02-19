@@ -20,7 +20,7 @@ public class RecordTypeNode implements IOberonTypeNode {
 		Map<String, OberonValue> fields = new HashMap<String, OberonValue>();
 		
 		for (TypedFieldListNode fieldList : fieldLists) {
-			Map<String, OberonValue> newFields = fieldList.list(env);
+			Map<String, OberonValue> newFields = fieldList.initializeFieldList(env);
 			for (Map.Entry<String, OberonValue> entry : newFields.entrySet()) {
 				fields.put(entry.getKey(), entry.getValue());
 			}
