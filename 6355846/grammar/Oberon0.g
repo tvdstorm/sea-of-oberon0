@@ -21,6 +21,7 @@ package nl.bve.uva.oberon.parser;
 
 import nl.bve.uva.oberon.ast.*;
 import nl.bve.uva.oberon.ast.declarations.*;
+import nl.bve.uva.oberon.ast.declarations.values.*;
 import nl.bve.uva.oberon.ast.expressions.*;
 import nl.bve.uva.oberon.ast.expressions.binary.*;
 import nl.bve.uva.oberon.ast.selectors.*;
@@ -96,14 +97,14 @@ fPSection returns [TypedParameterList result]
 		)
 	;
 
-type returns [IInterpretableNode result]
+type returns [TypeNode result]
 	: 'INTEGER'													{$result = new IntegerTypeNode(); }
 	| IDENT														{$result = new UserTypeNode($IDENT.text); }
 	| arrayType													{$result = $arrayType.result; }
 	| recordType												{$result = $recordType.result; }
 	;
 
-recordType returns [IInterpretableNode result]
+recordType returns [TypeNode result]
 	:	'RECORD' fieldLists 'END'								{$result = new RecordTypeNode($fieldLists.result); }
 	;
 
@@ -113,7 +114,7 @@ fieldLists returns [List<TypedFieldListNode> result = new ArrayList<TypedFieldLi
 	 		)*
 	;
 
-arrayType returns [IInterpretableNode result]
+arrayType returns [TypeNode result]
 	:	'ARRAY' expression 'OF' type							{$result = new ArrayTypeNode($expression.result, $type.result); }
 	;
 

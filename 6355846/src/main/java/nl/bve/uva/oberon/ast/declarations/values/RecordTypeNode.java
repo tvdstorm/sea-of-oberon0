@@ -1,14 +1,14 @@
-package nl.bve.uva.oberon.ast;
+package nl.bve.uva.oberon.ast.declarations.values;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import nl.bve.uva.oberon.env.Environment;
-import nl.bve.uva.oberon.env.values.RecordValue;
 import nl.bve.uva.oberon.env.values.OberonValue;
+import nl.bve.uva.oberon.env.values.RecordValue;
 
-public class RecordTypeNode implements IInterpretableNode {
+public class RecordTypeNode extends TypeNode {
 	private List<TypedFieldListNode> fieldLists;
 	
 	public RecordTypeNode(List<TypedFieldListNode> fieldLists) {
@@ -16,7 +16,7 @@ public class RecordTypeNode implements IInterpretableNode {
 	}
 	
 	@Override
-	public Object interpret(Environment env) {
+	public OberonValue initializeNew(Environment env) {
 		Map<String, OberonValue> fields = new HashMap<String, OberonValue>();
 		
 		for (TypedFieldListNode fieldList : fieldLists) {

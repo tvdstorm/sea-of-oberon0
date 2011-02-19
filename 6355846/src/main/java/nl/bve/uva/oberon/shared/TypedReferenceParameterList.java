@@ -2,7 +2,7 @@ package nl.bve.uva.oberon.shared;
 
 import java.util.List;
 
-import nl.bve.uva.oberon.ast.IInterpretableNode;
+import nl.bve.uva.oberon.ast.declarations.values.TypeNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.values.OberonValue;
 
@@ -11,7 +11,7 @@ public class TypedReferenceParameterList extends TypedParameterList {
 		super(paramList);
 	}
 	
-	public TypedReferenceParameterList(List<String> paramList, IInterpretableNode type) {
+	public TypedReferenceParameterList(List<String> paramList, TypeNode type) {
 		super(paramList, type);
 	}
 	
