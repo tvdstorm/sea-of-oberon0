@@ -16,14 +16,14 @@ public class AnExpression implements IType {
 		this.numVals = 3;
 	}
 	
-	public AnExpression(int op, IType rhs){
+	public AnExpression(int op, IType lhs){
 		this.op = op;
-		this.rhs = rhs;
+		this.lhs = lhs;
 		this.numVals = 2;
 	}
 	
 	public AnExpression(IType rhs){
-		this.rhs = rhs;
+		this.lhs = rhs;
 		this.numVals = 1;
 	}
 	
@@ -31,15 +31,15 @@ public class AnExpression implements IType {
 	public AnValue eval(AnEnvironment env) throws Exception{
 		checkForNullReference();
 		if (this.numVals == 1) {
-			return rhs.eval(env);
+			return lhs.eval(env);
 		} else {
-			AnValue lhsValue;
-			if (lhs == null) {
-				lhsValue = null;
+			AnValue rhsValue;
+			if (rhs == null) {
+				rhsValue = null;
 			} else {
-				lhsValue = lhs.eval(env);
+				rhsValue = rhs.eval(env);
 			}
-			return rhs.eval(env).operate(op, lhsValue, env);
+			return lhs.eval(env).operate(op, rhsValue, env);
 		}
 	}
 	
@@ -91,7 +91,7 @@ public class AnExpression implements IType {
 	private void checkForNullReference() throws Exception{
 		assert (this.numVals == 1 || this.numVals == 2 || this.numVals == 3);
 		
-		if ((this.numVals == 1 || this.numVals == 2) && this.rhs == null) throw new Exception("Nullreference for parameter");
+		if ((this.numVals == 1 || this.numVals == 2) && this.lhs == null) throw new Exception("Nullreference for parameter");
 		if (this.numVals == 3 && ((this.rhs == null) || (this.lhs == null))) throw new Exception("Nullreference for parameters");
 	}
 	
