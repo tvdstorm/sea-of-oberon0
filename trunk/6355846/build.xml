@@ -51,7 +51,10 @@
 				excludes="/nl/bve/uva/oberon/parser/**.*"
 				outputfile="docs/javancss_metrics.xml"
 				format="xml"/>
-				
+		
+		<xslt basedir="docs" destdir="docs"
+				includes="javancss_metrics.xml" 
+				style="xslt/javancss2html.xsl" />
 	</target>
 
 	<target name="jdepend" >
@@ -68,6 +71,6 @@
 			
 		<xslt basedir="docs" destdir="docs"
 				includes="jdepend-report.xml" 
-				style="${ant.home}/etc/jdepend.xsl" />
+				style="xslt/jdepend.xsl" />
 	</target>
 </project>
