@@ -2,7 +2,7 @@ package nl.bve.uva.oberon.ast.expressions;
 
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.types.OberonInt;
-import nl.bve.uva.oberon.env.types.OberonType;
+import nl.bve.uva.oberon.env.types.OberonValue;
 
 public class NumberNode extends ExpressionNode {
 	private int value;
@@ -12,7 +12,7 @@ public class NumberNode extends ExpressionNode {
 	}
 	
 	@Override
-	public OberonType eval(Environment env) {
+	public OberonValue eval(Environment env) {
 		return new OberonInt(value);
 	}
 	

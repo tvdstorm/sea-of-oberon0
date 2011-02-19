@@ -4,7 +4,7 @@ import java.util.List;
 
 import nl.bve.uva.oberon.ast.IInterpretableNode;
 import nl.bve.uva.oberon.env.Environment;
-import nl.bve.uva.oberon.env.types.OberonType;
+import nl.bve.uva.oberon.env.types.OberonValue;
 
 public abstract class TypedParameterList {
 	private List<String> parameterList;
@@ -27,5 +27,5 @@ public abstract class TypedParameterList {
 		return type;
 	}
 	
-	public abstract OberonType processValue(String parameter, OberonType value, Environment env);
+	public abstract OberonValue processValue(String parameter, OberonValue value, Environment env);
 }

@@ -3,19 +3,19 @@ package nl.bve.uva.oberon.env.types;
 import nl.bve.uva.oberon.shared.SelectorValue;
 
 /**
- * OberonArray is an OberonType for containing multiple values of the
- * same kind. An OberonArray can contain every kind of OberonType.
+ * OberonArray is an OberonValue for containing multiple values of the
+ * same kind. An OberonArray can contain every kind of OberonValue.
  * 
  * @author Bart v. Eijkelenburg *
  */
-public class OberonArray extends OberonType {
+public class OberonArray extends OberonValue {
 	private String type;
-	private OberonType[] values;
+	private OberonValue[] values;
 	
 	private OberonArray() { /* only for cloning purposes */ }
 	
-	public OberonArray(OberonType value, int size) {
-		values = new OberonType[size];
+	public OberonArray(OberonValue value, int size) {
+		values = new OberonValue[size];
 		for (int i=0; i < values.length; i++) {
 			values[i] = value.clone();
 		}
@@ -28,7 +28,7 @@ public class OberonArray extends OberonType {
 	}
 	
 	@Override
-	public void setValue(OberonType value) {
+	public void setValue(OberonValue value) {
 		if (! this.typeEquals(value)) {
 			throw new RuntimeException("Can not assign\n" +value+ " to \n" +this+ "!");
 		}
@@ -36,12 +36,12 @@ public class OberonArray extends OberonType {
 	}
 	
 	@Override
-	public OberonType evaluateSelector(SelectorValue selector) {
+	public OberonValue evaluateSelector(SelectorValue selector) {
 		return values[selector.getIndex().getValue()];
 	}
 	
 	@Override
-	public boolean typeEquals(OberonType obj) {
+	public boolean typeEquals(OberonValue obj) {
 		boolean result = false;
 		
 		if (obj != null && obj instanceof OberonArray) {
@@ -58,7 +58,7 @@ public class OberonArray extends OberonType {
 	@Override
 	public OberonArray clone() {
 		OberonArray clone = new OberonArray();
-		OberonType[] newValues = new OberonType[values.length];
+		OberonValue[] newValues = new OberonValue[values.length];
 		
 		for (int i=0; i < newValues.length; i++) {
 			newValues[i] = values[i].clone();

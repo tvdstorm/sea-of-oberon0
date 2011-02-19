@@ -4,7 +4,7 @@ import nl.bve.uva.oberon.ast.expressions.ExpressionNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.types.OberonConstant;
 import nl.bve.uva.oberon.env.types.OberonInt;
-import nl.bve.uva.oberon.env.types.OberonType;
+import nl.bve.uva.oberon.env.types.OberonValue;
 
 public class ConstantDeclarationNode extends DeclarationNode {
 	private String ident;
@@ -17,7 +17,7 @@ public class ConstantDeclarationNode extends DeclarationNode {
 	
 	@Override
 	public void declare(Environment env) {
-		OberonType value = expression.eval(env);
+		OberonValue value = expression.eval(env);
 		OberonConstant c = new OberonConstant((OberonInt)value);
 		
 		env.addConstant(ident, c);

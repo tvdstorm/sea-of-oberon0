@@ -2,7 +2,7 @@ package nl.bve.uva.oberon.ast.expressions.binary;
 
 import nl.bve.uva.oberon.ast.expressions.ExpressionNode;
 import nl.bve.uva.oberon.env.Environment;
-import nl.bve.uva.oberon.env.types.OberonType;
+import nl.bve.uva.oberon.env.types.OberonValue;
 
 public abstract class BinaryExpressionNode extends ExpressionNode {
 	private ExpressionNode lhn;
@@ -22,7 +22,7 @@ public abstract class BinaryExpressionNode extends ExpressionNode {
 	}
 	
 	@Override
-	public abstract OberonType eval(Environment env);
+	public abstract OberonValue eval(Environment env);
 	
 	@Override
 	public String toString() {

@@ -7,16 +7,16 @@ import nl.bve.uva.oberon.shared.SelectorValue;
 
 /**
  * An OberonRecord contains a mapping to several fields. Each field
- * is an OberonType and can be accessed through the evaluateSelector
+ * is an OberonValue and can be accessed through the evaluateSelector
  * method.  
  * 
  * @author Bart v. Eijkelenburg
  *
  */
-public class OberonRecord extends OberonType {
-	private Map<String, OberonType> fields;
+public class OberonRecord extends OberonValue {
+	private Map<String, OberonValue> fields;
 	
-	public OberonRecord(Map<String, OberonType> fields) {
+	public OberonRecord(Map<String, OberonValue> fields) {
 		this.fields = fields;
 	}
 	
@@ -26,7 +26,7 @@ public class OberonRecord extends OberonType {
 	}
 	
 	@Override
-	public void setValue(OberonType value) {
+	public void setValue(OberonValue value) {
 		if (! this.typeEquals(value)) {
 			throw new RuntimeException("Can not assign\n" +value+ " to \n" +this+ "!");
 		}
@@ -34,8 +34,8 @@ public class OberonRecord extends OberonType {
 	}
 	
 	@Override
-	public OberonType evaluateSelector(SelectorValue selector) {
-		OberonType result = fields.get(selector.getField());
+	public OberonValue evaluateSelector(SelectorValue selector) {
+		OberonValue result = fields.get(selector.getField());
 		
 		if (result == null) {
 			throw new RuntimeException("There is no field '" +selector+ "' for this OberonRecord!");
@@ -45,7 +45,7 @@ public class OberonRecord extends OberonType {
 	}
 	
 	@Override
-	public boolean typeEquals(OberonType obj) {
+	public boolean typeEquals(OberonValue obj) {
 		boolean result = false;
 		
 		if (obj != null && obj instanceof OberonRecord) {
@@ -53,11 +53,11 @@ public class OberonRecord extends OberonType {
 			
 			if (fields != null && other.fields != null && (fields.size() == other.fields.size())) {
 				result = true;
-				for (Map.Entry<String, OberonType> entry : fields.entrySet()) {
+				for (Map.Entry<String, OberonValue> entry : fields.entrySet()) {
 					String ownField = entry.getKey();
-					OberonType ownType = entry.getValue();
+					OberonValue ownType = entry.getValue();
 					
-					OberonType otherType = other.fields.get(ownField);
+					OberonValue otherType = other.fields.get(ownField);
 					
 					if (otherType == null || !otherType.typeEquals(ownType)) {
 						result = false;
@@ -73,9 +73,9 @@ public class OberonRecord extends OberonType {
 	
 	@Override
 	public OberonRecord clone() {
-		HashMap<String, OberonType> fieldsCopy = new HashMap<String, OberonType>();
+		HashMap<String, OberonValue> fieldsCopy = new HashMap<String, OberonValue>();
 		
-		for(Map.Entry<String, OberonType> entry : fields.entrySet()) {
+		for(Map.Entry<String, OberonValue> entry : fields.entrySet()) {
 			fieldsCopy.put(entry.getKey(), entry.getValue().clone());
 		}
 		
@@ -88,7 +88,7 @@ public class OberonRecord extends OberonType {
 		sb.append("OberonRecord: {");
 		
 		if (fields != null) {
-			for (Map.Entry<String, OberonType> entry : fields.entrySet()) {
+			for (Map.Entry<String, OberonValue> entry : fields.entrySet()) {
 				sb.append(" [" +entry.getKey()+ " : " +entry.getValue()+ "] ");
 			}
 		} 
