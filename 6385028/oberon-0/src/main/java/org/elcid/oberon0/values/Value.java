@@ -13,6 +13,5 @@ public abstract class Value {
 
 	@Override
 	public abstract Value clone();
-
-	public abstract String toString();
+	
 }

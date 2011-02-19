@@ -33,11 +33,5 @@ public class Int extends Value {
 	public Int clone() {
 		return new Int(value);
 	}
-
-	@Override
-	public String toString() {
-		return this.value + "";
-	}
-
-
+	
 }

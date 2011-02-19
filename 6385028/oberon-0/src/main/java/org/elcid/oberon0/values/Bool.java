@@ -34,11 +34,4 @@ public class Bool extends Value {
 		return new Bool(value.booleanValue());
 	}
 
-	@Override
-	public String toString() {
-		return value.toString();
-	}
-
-
-
 }
