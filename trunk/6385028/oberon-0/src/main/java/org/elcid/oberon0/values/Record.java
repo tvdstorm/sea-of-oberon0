@@ -51,16 +51,5 @@ public class Record extends Value {
 
 		return clone;
 	}
-
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		for (Map.Entry<String, Value> val : fields.entrySet()) {
-			sb.append(val.getValue().toString());
-		}
-		return sb.toString();
-	}
-
 	
-
 }

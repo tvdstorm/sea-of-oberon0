@@ -38,9 +38,4 @@ public class Array extends Value {
 		return clone;
 	}
 
-	@Override
-	public String toString() {
-		return elements.toString();
-	}
-
 }
