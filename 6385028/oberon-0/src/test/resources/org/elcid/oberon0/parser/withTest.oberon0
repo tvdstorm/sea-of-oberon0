@@ -1,0 +1,73 @@
+MODULE QuickSort;
+
+CONST
+  INPUTLENGTH = 5;
+
+TYPE
+  StudentRecord = RECORD
+    Student : RECORD
+      Number: INTEGER;
+      Mobile: INTEGER
+    END
+  END;
+
+VAR
+  Counter: INTEGER;
+  
+  Student1: StudentRecord;
+  Student2: StudentRecord;
+  Student3: StudentRecord;
+  
+  Student4: RECORD
+    Number: INTEGER;
+    Mobile: INTEGER
+  END;
+
+PROCEDURE StudentUpdate(VAR s : StudentRecord);
+  BEGIN
+    WITH s.Student DO
+      Number := 100;
+      IF Mobile > 10 THEN
+      	Mobile := 10
+      END
+    END
+  END StudentUpdate;
+  
+PROCEDURE PrintStudent(VAR s : StudentRecord);
+  BEGIN
+    WITH s.Student DO
+      Write(Number);
+      WriteLn;
+      Write(Mobile);
+      WriteLn;
+      WriteLn
+    END
+  END PrintStudent;
+
+BEGIN
+  Student1.Student.Number := 1;
+  Student1.Student.Mobile := 0;
+  
+  Student2.Student.Number := 1;
+  Student2.Student.Mobile := 15;
+
+  PrintStudent(Student1);
+  StudentUpdate(Student1);
+  PrintStudent(Student1);
+  
+  PrintStudent(Student2);
+  StudentUpdate(Student2);
+  PrintStudent(Student2);
+  
+  WITH Student4 DO
+    WHILE Counter < INPUTLENGTH DO
+      Number := Counter;
+      Counter := Counter + 1
+    END;
+    
+    Mobile := 0612345678
+  END;
+  
+  Student3.Student := Student4;
+  PrintStudent(Student3)
+END QuickSort.
