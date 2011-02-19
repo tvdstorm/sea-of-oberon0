@@ -1,11 +1,11 @@
 package nl.bve.uva.oberon.ast.expressions.binary;
 
-import nl.bve.uva.oberon.ast.expressions.ExpressionNode;
+import nl.bve.uva.oberon.ast.expressions.IExpressionNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.values.IntValue;
 
 public class DivExprNode extends BinaryExpressionNode {
-	public DivExprNode(ExpressionNode lhn, ExpressionNode rhn) {
+	public DivExprNode(IExpressionNode lhn, IExpressionNode rhn) {
 		super(lhn, rhn);
 	}
 	

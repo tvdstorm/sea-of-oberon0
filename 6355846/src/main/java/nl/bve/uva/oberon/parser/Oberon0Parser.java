@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:50:56 C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g 2011-02-19 19:16:37
+// $ANTLR 3.3 Nov 30, 2010 12:50:56 C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g 2011-02-19 19:36:56
 
 package nl.bve.uva.oberon.parser;
 
@@ -159,13 +159,13 @@ public class Oberon0Parser extends Parser {
     public final IExecutableNode declarations() throws RecognitionException {
         IExecutableNode result = null;
 
-        List<DeclarationNode> c = null;
+        List<IDeclarationNode> c = null;
 
-        List<DeclarationNode> t = null;
+        List<IDeclarationNode> t = null;
 
-        List<DeclarationNode> v = null;
+        List<IDeclarationNode> v = null;
 
-        List<DeclarationNode> p = null;
+        List<IDeclarationNode> p = null;
 
 
         try {
@@ -209,12 +209,12 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "constantDeclarations"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:53:1: constantDeclarations returns [List<DeclarationNode> result = new ArrayList<DeclarationNode>()] : ( 'CONST' ( IDENT '=' expression ';' )* )? ;
-    public final List<DeclarationNode> constantDeclarations() throws RecognitionException {
-        List<DeclarationNode> result =  new ArrayList<DeclarationNode>();
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:53:1: constantDeclarations returns [List<IDeclarationNode> result = new ArrayList<IDeclarationNode>()] : ( 'CONST' ( IDENT '=' expression ';' )* )? ;
+    public final List<IDeclarationNode> constantDeclarations() throws RecognitionException {
+        List<IDeclarationNode> result =  new ArrayList<IDeclarationNode>();
 
         Token IDENT3=null;
-        ExpressionNode expression4 = null;
+        IExpressionNode expression4 = null;
 
 
         try {
@@ -288,12 +288,12 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "typeDeclarations"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:60:1: typeDeclarations returns [List<DeclarationNode> result = new ArrayList<DeclarationNode>()] : ( 'TYPE' ( IDENT '=' type ';' )* )? ;
-    public final List<DeclarationNode> typeDeclarations() throws RecognitionException {
-        List<DeclarationNode> result =  new ArrayList<DeclarationNode>();
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:60:1: typeDeclarations returns [List<IDeclarationNode> result = new ArrayList<IDeclarationNode>()] : ( 'TYPE' ( IDENT '=' type ';' )* )? ;
+    public final List<IDeclarationNode> typeDeclarations() throws RecognitionException {
+        List<IDeclarationNode> result =  new ArrayList<IDeclarationNode>();
 
         Token IDENT5=null;
-        TypeNode type6 = null;
+        ITypeNode type6 = null;
 
 
         try {
@@ -367,13 +367,13 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "varDeclarations"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:67:1: varDeclarations returns [List<DeclarationNode> result = new ArrayList<DeclarationNode>()] : ( 'VAR' ( identList ':' type ';' )* )? ;
-    public final List<DeclarationNode> varDeclarations() throws RecognitionException {
-        List<DeclarationNode> result =  new ArrayList<DeclarationNode>();
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:67:1: varDeclarations returns [List<IDeclarationNode> result = new ArrayList<IDeclarationNode>()] : ( 'VAR' ( identList ':' type ';' )* )? ;
+    public final List<IDeclarationNode> varDeclarations() throws RecognitionException {
+        List<IDeclarationNode> result =  new ArrayList<IDeclarationNode>();
 
         List<String> identList7 = null;
 
-        TypeNode type8 = null;
+        ITypeNode type8 = null;
 
 
         try {
@@ -451,9 +451,9 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "procedureDeclarations"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:73:1: procedureDeclarations returns [List<DeclarationNode> result = new ArrayList<DeclarationNode>()] : ( 'PROCEDURE' i1= IDENT (fp= formalParameters )? ';' pb= procedureBody 'END' i2= IDENT ';' )* ;
-    public final List<DeclarationNode> procedureDeclarations() throws RecognitionException {
-        List<DeclarationNode> result =  new ArrayList<DeclarationNode>();
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:73:1: procedureDeclarations returns [List<IDeclarationNode> result = new ArrayList<IDeclarationNode>()] : ( 'PROCEDURE' i1= IDENT (fp= formalParameters )? ';' pb= procedureBody 'END' i2= IDENT ';' )* ;
+    public final List<IDeclarationNode> procedureDeclarations() throws RecognitionException {
+        List<IDeclarationNode> result =  new ArrayList<IDeclarationNode>();
 
         Token i1=null;
         Token i2=null;
@@ -690,11 +690,11 @@ public class Oberon0Parser extends Parser {
 
         List<String> i1 = null;
 
-        TypeNode t1 = null;
+        ITypeNode t1 = null;
 
         List<String> i2 = null;
 
-        TypeNode t2 = null;
+        ITypeNode t2 = null;
 
 
         try {
@@ -774,14 +774,14 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "type"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:100:1: type returns [TypeNode result] : ( 'INTEGER' | IDENT | arrayType | recordType );
-    public final TypeNode type() throws RecognitionException {
-        TypeNode result = null;
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:100:1: type returns [ITypeNode result] : ( 'INTEGER' | IDENT | arrayType | recordType );
+    public final ITypeNode type() throws RecognitionException {
+        ITypeNode result = null;
 
         Token IDENT9=null;
-        TypeNode arrayType10 = null;
+        ITypeNode arrayType10 = null;
 
-        TypeNode recordType11 = null;
+        ITypeNode recordType11 = null;
 
 
         try {
@@ -871,9 +871,9 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "recordType"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:107:1: recordType returns [TypeNode result] : 'RECORD' fieldLists 'END' ;
-    public final TypeNode recordType() throws RecognitionException {
-        TypeNode result = null;
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:107:1: recordType returns [ITypeNode result] : 'RECORD' fieldLists 'END' ;
+    public final ITypeNode recordType() throws RecognitionException {
+        ITypeNode result = null;
 
         List<TypedFieldListNode> fieldLists12 = null;
 
@@ -912,11 +912,11 @@ public class Oberon0Parser extends Parser {
 
         List<String> i1 = null;
 
-        TypeNode t1 = null;
+        ITypeNode t1 = null;
 
         List<String> i2 = null;
 
-        TypeNode t2 = null;
+        ITypeNode t2 = null;
 
 
         try {
@@ -1005,13 +1005,13 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "arrayType"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:117:1: arrayType returns [TypeNode result] : 'ARRAY' expression 'OF' type ;
-    public final TypeNode arrayType() throws RecognitionException {
-        TypeNode result = null;
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:117:1: arrayType returns [ITypeNode result] : 'ARRAY' expression 'OF' type ;
+    public final ITypeNode arrayType() throws RecognitionException {
+        ITypeNode result = null;
 
-        ExpressionNode expression13 = null;
+        IExpressionNode expression13 = null;
 
-        TypeNode type14 = null;
+        ITypeNode type14 = null;
 
 
         try {
@@ -1107,7 +1107,7 @@ public class Oberon0Parser extends Parser {
     public final IExecutableNode statementSequence() throws RecognitionException {
         IExecutableNode result = null;
 
-        List<StatementNode> statementList15 = null;
+        List<IStatementNode> statementList15 = null;
 
 
         try {
@@ -1136,13 +1136,13 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "statementList"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:136:1: statementList returns [List<StatementNode> result = new ArrayList<StatementNode>()] : (s1= statement ( ';' s2= statement )* )? ;
-    public final List<StatementNode> statementList() throws RecognitionException {
-        List<StatementNode> result =  new ArrayList<StatementNode>();
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:136:1: statementList returns [List<IStatementNode> result = new ArrayList<IStatementNode>()] : (s1= statement ( ';' s2= statement )* )? ;
+    public final List<IStatementNode> statementList() throws RecognitionException {
+        List<IStatementNode> result =  new ArrayList<IStatementNode>();
 
-        StatementNode s1 = null;
+        IStatementNode s1 = null;
 
-        StatementNode s2 = null;
+        IStatementNode s2 = null;
 
 
         try {
@@ -1219,19 +1219,19 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "statement"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:143:1: statement returns [StatementNode result] : ( assignment | procedureCall | ifStatement | whileStatement | withStatement );
-    public final StatementNode statement() throws RecognitionException {
-        StatementNode result = null;
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:143:1: statement returns [IStatementNode result] : ( assignment | procedureCall | ifStatement | whileStatement | withStatement );
+    public final IStatementNode statement() throws RecognitionException {
+        IStatementNode result = null;
 
-        StatementNode assignment16 = null;
+        IStatementNode assignment16 = null;
 
-        StatementNode procedureCall17 = null;
+        IStatementNode procedureCall17 = null;
 
-        StatementNode ifStatement18 = null;
+        IStatementNode ifStatement18 = null;
 
-        StatementNode whileStatement19 = null;
+        IStatementNode whileStatement19 = null;
 
-        StatementNode withStatement20 = null;
+        IStatementNode withStatement20 = null;
 
 
         try {
@@ -1354,14 +1354,14 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "assignment"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:151:1: assignment returns [StatementNode result] : IDENT selector ':=' expression ;
-    public final StatementNode assignment() throws RecognitionException {
-        StatementNode result = null;
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:151:1: assignment returns [IStatementNode result] : IDENT selector ':=' expression ;
+    public final IStatementNode assignment() throws RecognitionException {
+        IStatementNode result = null;
 
         Token IDENT21=null;
-        List<Selector> selector22 = null;
+        List<ISelectorNode> selector22 = null;
 
-        ExpressionNode expression23 = null;
+        IExpressionNode expression23 = null;
 
 
         try {
@@ -1374,7 +1374,7 @@ public class Oberon0Parser extends Parser {
 
             state._fsp--;
 
-            ExpressionNode e1 = new IdentSelectorNode((IDENT21!=null?IDENT21.getText():null), selector22); 
+            IExpressionNode e1 = new IdentSelectorNode((IDENT21!=null?IDENT21.getText():null), selector22); 
             match(input,40,FOLLOW_40_in_assignment1177); 
             pushFollow(FOLLOW_expression_in_assignment1179);
             expression23=expression();
@@ -1398,12 +1398,12 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "procedureCall"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:156:1: procedureCall returns [StatementNode result] : IDENT ( actualParameters )? ;
-    public final StatementNode procedureCall() throws RecognitionException {
-        StatementNode result = null;
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:156:1: procedureCall returns [IStatementNode result] : IDENT ( actualParameters )? ;
+    public final IStatementNode procedureCall() throws RecognitionException {
+        IStatementNode result = null;
 
         Token IDENT24=null;
-        List<ExpressionNode> actualParameters25 = null;
+        List<IExpressionNode> actualParameters25 = null;
 
 
         try {
@@ -1450,13 +1450,13 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "actualParameters"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:161:1: actualParameters returns [List<ExpressionNode> result = new ArrayList<ExpressionNode>()] : '(' (e1= expression ( ',' e2= expression )* )? ')' ;
-    public final List<ExpressionNode> actualParameters() throws RecognitionException {
-        List<ExpressionNode> result =  new ArrayList<ExpressionNode>();
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:161:1: actualParameters returns [List<IExpressionNode> result = new ArrayList<IExpressionNode>()] : '(' (e1= expression ( ',' e2= expression )* )? ')' ;
+    public final List<IExpressionNode> actualParameters() throws RecognitionException {
+        List<IExpressionNode> result =  new ArrayList<IExpressionNode>();
 
-        ExpressionNode e1 = null;
+        IExpressionNode e1 = null;
 
-        ExpressionNode e2 = null;
+        IExpressionNode e2 = null;
 
 
         try {
@@ -1535,15 +1535,15 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "ifStatement"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:169:1: ifStatement returns [StatementNode result] : 'IF' e1= expression 'THEN' ss1= statementSequence ( elseStatements )? 'END' ;
-    public final StatementNode ifStatement() throws RecognitionException {
-        StatementNode result = null;
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:169:1: ifStatement returns [IStatementNode result] : 'IF' e1= expression 'THEN' ss1= statementSequence ( elseStatements )? 'END' ;
+    public final IStatementNode ifStatement() throws RecognitionException {
+        IStatementNode result = null;
 
-        ExpressionNode e1 = null;
+        IExpressionNode e1 = null;
 
         IExecutableNode ss1 = null;
 
-        StatementNode elseStatements26 = null;
+        IStatementNode elseStatements26 = null;
 
 
         try {
@@ -1602,15 +1602,15 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "elseStatements"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:174:1: elseStatements returns [StatementNode result] : ( 'ELSIF' e= expression 'THEN' ss1= statementSequence (es= elseStatements )? | 'ELSE' ss2= statementSequence );
-    public final StatementNode elseStatements() throws RecognitionException {
-        StatementNode result = null;
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:174:1: elseStatements returns [IStatementNode result] : ( 'ELSIF' e= expression 'THEN' ss1= statementSequence (es= elseStatements )? | 'ELSE' ss2= statementSequence );
+    public final IStatementNode elseStatements() throws RecognitionException {
+        IStatementNode result = null;
 
-        ExpressionNode e = null;
+        IExpressionNode e = null;
 
         IExecutableNode ss1 = null;
 
-        StatementNode es = null;
+        IStatementNode es = null;
 
         IExecutableNode ss2 = null;
 
@@ -1703,11 +1703,11 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "whileStatement"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:182:1: whileStatement returns [StatementNode result] : 'WHILE' expression 'DO' statementSequence 'END' ;
-    public final StatementNode whileStatement() throws RecognitionException {
-        StatementNode result = null;
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:182:1: whileStatement returns [IStatementNode result] : 'WHILE' expression 'DO' statementSequence 'END' ;
+    public final IStatementNode whileStatement() throws RecognitionException {
+        IStatementNode result = null;
 
-        ExpressionNode expression27 = null;
+        IExpressionNode expression27 = null;
 
         IExecutableNode statementSequence28 = null;
 
@@ -1746,11 +1746,11 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "withStatement"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:186:1: withStatement returns [StatementNode result] : 'WITH' expression 'DO' statementSequence 'END' ;
-    public final StatementNode withStatement() throws RecognitionException {
-        StatementNode result = null;
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:186:1: withStatement returns [IStatementNode result] : 'WITH' expression 'DO' statementSequence 'END' ;
+    public final IStatementNode withStatement() throws RecognitionException {
+        IStatementNode result = null;
 
-        ExpressionNode expression29 = null;
+        IExpressionNode expression29 = null;
 
         IExecutableNode statementSequence30 = null;
 
@@ -1789,13 +1789,13 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "expression"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:190:1: expression returns [ExpressionNode result] : s1= simpleExpression ( EQUALS s2= simpleExpression | NOT_EQ s2= simpleExpression | LT s2= simpleExpression | LT_EQ s2= simpleExpression | GT s2= simpleExpression | GT_EQ s2= simpleExpression )? ;
-    public final ExpressionNode expression() throws RecognitionException {
-        ExpressionNode result = null;
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:190:1: expression returns [IExpressionNode result] : s1= simpleExpression ( EQUALS s2= simpleExpression | NOT_EQ s2= simpleExpression | LT s2= simpleExpression | LT_EQ s2= simpleExpression | GT s2= simpleExpression | GT_EQ s2= simpleExpression )? ;
+    public final IExpressionNode expression() throws RecognitionException {
+        IExpressionNode result = null;
 
-        ExpressionNode s1 = null;
+        IExpressionNode s1 = null;
 
-        ExpressionNode s2 = null;
+        IExpressionNode s2 = null;
 
 
         try {
@@ -1941,13 +1941,13 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "simpleExpression"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:201:1: simpleExpression returns [ExpressionNode result] : ( PLUS t1= term | MINUS t1= term | t1= term ( PLUS t2= term | MINUS t2= term | OR t2= term )* );
-    public final ExpressionNode simpleExpression() throws RecognitionException {
-        ExpressionNode result = null;
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:201:1: simpleExpression returns [IExpressionNode result] : ( PLUS t1= term | MINUS t1= term | t1= term ( PLUS t2= term | MINUS t2= term | OR t2= term )* );
+    public final IExpressionNode simpleExpression() throws RecognitionException {
+        IExpressionNode result = null;
 
-        ExpressionNode t1 = null;
+        IExpressionNode t1 = null;
 
-        ExpressionNode t2 = null;
+        IExpressionNode t2 = null;
 
 
         try {
@@ -2101,13 +2101,13 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "term"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:217:1: term returns [ExpressionNode result] : f1= factor ( ( MULT f2= factor | DIV f2= factor | MOD f2= factor | AND f2= factor ) )* ;
-    public final ExpressionNode term() throws RecognitionException {
-        ExpressionNode result = null;
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:217:1: term returns [IExpressionNode result] : f1= factor ( ( MULT f2= factor | DIV f2= factor | MOD f2= factor | AND f2= factor ) )* ;
+    public final IExpressionNode term() throws RecognitionException {
+        IExpressionNode result = null;
 
-        ExpressionNode f1 = null;
+        IExpressionNode f1 = null;
 
-        ExpressionNode f2 = null;
+        IExpressionNode f2 = null;
 
 
         try {
@@ -2246,15 +2246,15 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "factor"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:227:1: factor returns [ExpressionNode result] : ( IDENT selector | NUMBER | '(' expression ')' );
-    public final ExpressionNode factor() throws RecognitionException {
-        ExpressionNode result = null;
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:227:1: factor returns [IExpressionNode result] : ( IDENT selector | NUMBER | '(' expression ')' );
+    public final IExpressionNode factor() throws RecognitionException {
+        IExpressionNode result = null;
 
         Token IDENT31=null;
         Token NUMBER33=null;
-        List<Selector> selector32 = null;
+        List<ISelectorNode> selector32 = null;
 
-        ExpressionNode expression34 = null;
+        IExpressionNode expression34 = null;
 
 
         try {
@@ -2334,12 +2334,12 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "selector"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:234:1: selector returns [List<Selector> result = new ArrayList<Selector>()] : ( '.' IDENT | '[' expression ']' )* ;
-    public final List<Selector> selector() throws RecognitionException {
-        List<Selector> result =  new ArrayList<Selector>();
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:234:1: selector returns [List<ISelectorNode> result = new ArrayList<ISelectorNode>()] : ( '.' IDENT | '[' expression ']' )* ;
+    public final List<ISelectorNode> selector() throws RecognitionException {
+        List<ISelectorNode> result =  new ArrayList<ISelectorNode>();
 
         Token IDENT35=null;
-        ExpressionNode expression36 = null;
+        IExpressionNode expression36 = null;
 
 
         try {

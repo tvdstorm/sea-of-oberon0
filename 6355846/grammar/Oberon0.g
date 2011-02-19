@@ -50,27 +50,27 @@ declarations returns [IExecutableNode result]
 		p=procedureDeclarations									{$result = new AllDeclarationsNode($c.result, $t.result, $v.result, $p.result); }
 	;
 																
-constantDeclarations returns [List<DeclarationNode> result = new ArrayList<DeclarationNode>()]	
+constantDeclarations returns [List<IDeclarationNode> result = new ArrayList<IDeclarationNode>()]	
 	:	('CONST' 
 			(IDENT '=' expression ';'							{$result.add(new ConstantDeclarationNode($IDENT.text, $expression.result)); }
 			)*
 		)?
 	;
 
-typeDeclarations returns [List<DeclarationNode> result = new ArrayList<DeclarationNode>()]
+typeDeclarations returns [List<IDeclarationNode> result = new ArrayList<IDeclarationNode>()]
 	:	('TYPE' 
 			(IDENT '=' type ';'									{$result.add(new TypeDeclarationNode($IDENT.text, $type.result)); }
 			)*
 		)?
 	;
 
-varDeclarations returns [List<DeclarationNode> result = new ArrayList<DeclarationNode>()]
+varDeclarations returns [List<IDeclarationNode> result = new ArrayList<IDeclarationNode>()]
 	:	('VAR'
 			(identList ':' type ';'								{$result.add(new VarDeclarationNode($identList.result, $type.result)); }
 			)* 
 		)?;
 
-procedureDeclarations returns [List<DeclarationNode> result = new ArrayList<DeclarationNode>()]
+procedureDeclarations returns [List<IDeclarationNode> result = new ArrayList<IDeclarationNode>()]
 	:	(
 			'PROCEDURE' i1=IDENT
 				(fp=formalParameters							
@@ -97,14 +97,14 @@ fPSection returns [TypedParameterList result]
 		)
 	;
 
-type returns [TypeNode result]
+type returns [ITypeNode result]
 	: 'INTEGER'													{$result = new IntegerTypeNode(); }
 	| IDENT														{$result = new UserTypeNode($IDENT.text); }
 	| arrayType													{$result = $arrayType.result; }
 	| recordType												{$result = $recordType.result; }
 	;
 
-recordType returns [TypeNode result]
+recordType returns [ITypeNode result]
 	:	'RECORD' fieldLists 'END'								{$result = new RecordTypeNode($fieldLists.result); }
 	;
 
@@ -114,7 +114,7 @@ fieldLists returns [List<TypedFieldListNode> result = new ArrayList<TypedFieldLi
 	 		)*
 	;
 
-arrayType returns [TypeNode result]
+arrayType returns [ITypeNode result]
 	:	'ARRAY' expression 'OF' type							{$result = new ArrayTypeNode($expression.result, $type.result); }
 	;
 
@@ -133,14 +133,14 @@ statementSequence returns [IExecutableNode result]
    grammar toestond dat een statement an sich 0 of meerdere keren voorkomt. Dan kan 
    er dus een ';' gelezen worden door de parser, terwijl er geen volgende statement komt.
 */
-statementList returns [List<StatementNode> result = new ArrayList<StatementNode>()]
+statementList returns [List<IStatementNode> result = new ArrayList<IStatementNode>()]
 	:	(s1=statement 											{$result.add($s1.result); }
 			(';' s2=statement									{$result.add($s2.result); }
 			)*
 		   )?
 	;
 
-statement returns [StatementNode result]
+statement returns [IStatementNode result]
 	:	  assignment											{$result = $assignment.result; }
 		| procedureCall											{$result = $procedureCall.result; }
 		| ifStatement											{$result = $ifStatement.result; }
@@ -148,17 +148,17 @@ statement returns [StatementNode result]
 		| withStatement											{$result = $withStatement.result; }
 	;
 
-assignment returns [StatementNode result]
-	:	IDENT selector 											{ExpressionNode e1 = new IdentSelectorNode($IDENT.text, $selector.result); }
+assignment returns [IStatementNode result]
+	:	IDENT selector 											{IExpressionNode e1 = new IdentSelectorNode($IDENT.text, $selector.result); }
 			':=' expression										{$result = new AssignmentNode(e1, $expression.result); }
 	;
 
-procedureCall returns [StatementNode result]
+procedureCall returns [IStatementNode result]
 	:	IDENT (actualParameters)?								{$result = new ProcedureCallNode($IDENT.text, $actualParameters.result); }
 	;
 
 
-actualParameters returns [List<ExpressionNode> result = new ArrayList<ExpressionNode>()]
+actualParameters returns [List<IExpressionNode> result = new ArrayList<IExpressionNode>()]
 	:	'(' (e1=expression 										{$result.add($e1.result); }
 				(',' e2=expression								{$result.add($e2.result); }
 				)*
@@ -166,12 +166,12 @@ actualParameters returns [List<ExpressionNode> result = new ArrayList<Expression
 		')'
 	;
 
-ifStatement returns [StatementNode result]
+ifStatement returns [IStatementNode result]
 	:	'IF' e1=expression 'THEN' ss1=statementSequence	
 			(elseStatements)? 'END'								{$result = new IfNode($e1.result, $ss1.result, $elseStatements.result); }
 	;
 
-elseStatements returns [StatementNode result]
+elseStatements returns [IStatementNode result]
 	:	 'ELSIF' e=expression 'THEN' ss1=statementSequence		{$result = new ElseIfNode($e.result, $ss1.result, null); }
 			(
 				es=elseStatements								{$result = new ElseIfNode($e.result, $ss1.result, $es.result); }
@@ -179,15 +179,15 @@ elseStatements returns [StatementNode result]
 		|'ELSE' ss2=statementSequence							{$result = new ElseNode($ss2.result); }
 	;
 
-whileStatement returns [StatementNode result]
+whileStatement returns [IStatementNode result]
 	:	'WHILE' expression 'DO' statementSequence 'END'			{$result = new WhileNode($expression.result, $statementSequence.result); }
 	;
 
-withStatement returns [StatementNode result]
+withStatement returns [IStatementNode result]
 	:	'WITH' expression 'DO' statementSequence 'END'			{$result = new WithNode($expression.result, $statementSequence.result); }
 	;
 
-expression returns [ExpressionNode result]
+expression returns [IExpressionNode result]
 	:	s1=simpleExpression 									{$result = $s1.result; }
 			( EQUALS s2=simpleExpression						{$result = new EqualsExprNode($s1.result, $s2.result); }
 			| NOT_EQ s2=simpleExpression						{$result = new NotEqualsExprNode($s1.result, $s2.result); }
@@ -198,7 +198,7 @@ expression returns [ExpressionNode result]
 			)?
 	;
 
-simpleExpression returns [ExpressionNode result]
+simpleExpression returns [IExpressionNode result]
 	:	  PLUS t1=term 											{$result = $t1.result; }
 		| MINUS	t1=term											{$result = new NegativeNumberNode($t1.result); }
 		| t1=term 												{$result = $t1.result; }
@@ -214,7 +214,7 @@ simpleExpression returns [ExpressionNode result]
 	Als het eerste argument $f1.result zou zijn, zou als eerste arument van iedere navolgende 
 	node weer '8' genomen worden. 
 */
-term returns [ExpressionNode result]
+term returns [IExpressionNode result]
 	: f1=factor													{$result = $f1.result; }
 		(	( MULT f2=factor									{$result = new MultExprNode($result, $f2.result); }
 			| DIV f2=factor										{$result = new DivExprNode($result, $f2.result); }
@@ -224,14 +224,14 @@ term returns [ExpressionNode result]
 		)*
 	;
 
-factor returns [ExpressionNode result]
+factor returns [IExpressionNode result]
 	: 	IDENT selector											{$result = new IdentSelectorNode($IDENT.text, $selector.result); } 
 			| NUMBER 											{$result = new NumberNode(Integer.parseInt($NUMBER.text)); }
 			| '(' expression ')' 								{$result = $expression.result; }
 /*			| '~' factor */
 	;
 
-selector returns [List<Selector> result = new ArrayList<Selector>()]
+selector returns [List<ISelectorNode> result = new ArrayList<ISelectorNode>()]
 	: 	('.' IDENT 												{$result.add(new DotSelectorNode($IDENT.text)); }
 	  	| '[' expression ']'									{$result.add(new ElementSelectorNode($expression.result)); }
 	  	)*

@@ -1,14 +1,14 @@
 package nl.bve.uva.oberon.ast.expressions.binary;
 
-import nl.bve.uva.oberon.ast.expressions.ExpressionNode;
+import nl.bve.uva.oberon.ast.expressions.IExpressionNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.values.OberonValue;
 
-public abstract class BinaryExpressionNode extends ExpressionNode {
-	private ExpressionNode lhn;
-	private ExpressionNode rhn;
+public abstract class BinaryExpressionNode implements IExpressionNode {
+	private IExpressionNode lhn;
+	private IExpressionNode rhn;
 	
-	public BinaryExpressionNode(ExpressionNode lhn, ExpressionNode rhn) {
+	public BinaryExpressionNode(IExpressionNode lhn, IExpressionNode rhn) {
 		this.lhn = lhn;
 		this.rhn = rhn;
 	}

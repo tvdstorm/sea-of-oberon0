@@ -4,7 +4,7 @@ import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.values.IntValue;
 import nl.bve.uva.oberon.env.values.OberonValue;
 
-public class NumberNode extends ExpressionNode {
+public class NumberNode implements IExpressionNode {
 	private int value;
 	
 	public NumberNode(Integer value) {
@@ -15,10 +15,4 @@ public class NumberNode extends ExpressionNode {
 	public OberonValue eval(Environment env) {
 		return new IntValue(value);
 	}
-	
-	@Override
-	public String toString() {
-		return "number(" +value+ ")";
-	}
-
 }

@@ -1,15 +1,15 @@
 package nl.bve.uva.oberon.ast.declarations;
 
-import nl.bve.uva.oberon.ast.declarations.values.TypeNode;
+import nl.bve.uva.oberon.ast.declarations.values.ITypeNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.values.OberonValue;
 import nl.bve.uva.oberon.env.values.TypeValue;
 
-public class TypeDeclarationNode extends DeclarationNode {
+public class TypeDeclarationNode implements IDeclarationNode {
 	private String ident;
-	private TypeNode type;
+	private ITypeNode type;
 	
-	public TypeDeclarationNode(String ident, TypeNode type) {
+	public TypeDeclarationNode(String ident, ITypeNode type) {
 		this.ident = ident;
 		this.type = type;
 	}

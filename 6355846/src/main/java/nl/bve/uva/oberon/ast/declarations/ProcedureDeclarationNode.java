@@ -7,7 +7,7 @@ import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.procedures.ApplicationProcedure;
 import nl.bve.uva.oberon.shared.TypedParameterList;
 
-public class ProcedureDeclarationNode extends DeclarationNode {
+public class ProcedureDeclarationNode implements IDeclarationNode {
 	private String ident;
 	private List<TypedParameterList> formalParameters;
 	private IExecutableNode body;

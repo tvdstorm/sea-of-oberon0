@@ -1,16 +1,16 @@
 package nl.bve.uva.oberon.ast.declarations;
 
-import nl.bve.uva.oberon.ast.expressions.ExpressionNode;
+import nl.bve.uva.oberon.ast.expressions.IExpressionNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.values.ConstantValue;
 import nl.bve.uva.oberon.env.values.IntValue;
 import nl.bve.uva.oberon.env.values.OberonValue;
 
-public class ConstantDeclarationNode extends DeclarationNode {
+public class ConstantDeclarationNode implements IDeclarationNode {
 	private String ident;
-	private ExpressionNode expression;
+	private IExpressionNode expression;
 	
-	public ConstantDeclarationNode(String ident, ExpressionNode expression) {
+	public ConstantDeclarationNode(String ident, IExpressionNode expression) {
 		this.ident = ident;
 		this.expression = expression;
 	}

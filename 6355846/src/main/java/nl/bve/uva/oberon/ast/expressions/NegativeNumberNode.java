@@ -4,10 +4,10 @@ import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.values.IntValue;
 import nl.bve.uva.oberon.env.values.OberonValue;
 
-public class NegativeNumberNode extends ExpressionNode {
-	private ExpressionNode expression;
+public class NegativeNumberNode implements IExpressionNode {
+	private IExpressionNode expression;
 	
-	public NegativeNumberNode(ExpressionNode expression) {
+	public NegativeNumberNode(IExpressionNode expression) {
 		this.expression = expression;
 	}
 	

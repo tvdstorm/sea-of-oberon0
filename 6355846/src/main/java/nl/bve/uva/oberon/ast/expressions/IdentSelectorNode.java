@@ -2,16 +2,16 @@ package nl.bve.uva.oberon.ast.expressions;
 
 import java.util.List;
 
-import nl.bve.uva.oberon.ast.selectors.Selector;
+import nl.bve.uva.oberon.ast.selectors.ISelectorNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.values.OberonValue;
 
 
-public class IdentSelectorNode extends ExpressionNode {
+public class IdentSelectorNode implements IExpressionNode {
 	private String name;
-	private List<Selector> selectors;
+	private List<ISelectorNode> selectors;
 	
-	public IdentSelectorNode(String name, List<Selector> selectors) {
+	public IdentSelectorNode(String name, List<ISelectorNode> selectors) {
 		this.name = name;
 		this.selectors = selectors;
 	}
@@ -21,16 +21,11 @@ public class IdentSelectorNode extends ExpressionNode {
 		OberonValue type = env.getVariable(name);
 		
 		if (selectors != null) {
-			for (Selector s : selectors) {
+			for (ISelectorNode s : selectors) {
 				type = type.evaluateSelector(s.evaluate(env));
 			}
 		}
 		
 		return type;
-	}
-	
-	@Override
-	public String toString() {
-		return name+ "(" +selectors+ ")";
 	}
 }

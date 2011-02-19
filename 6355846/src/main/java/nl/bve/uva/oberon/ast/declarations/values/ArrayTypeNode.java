@@ -1,15 +1,15 @@
 package nl.bve.uva.oberon.ast.declarations.values;
 
-import nl.bve.uva.oberon.ast.expressions.ExpressionNode;
+import nl.bve.uva.oberon.ast.expressions.IExpressionNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.values.ArrayValue;
 import nl.bve.uva.oberon.env.values.OberonValue;
 
-public class ArrayTypeNode extends TypeNode {
-	private ExpressionNode expression;
-	private TypeNode arrayType;
+public class ArrayTypeNode implements ITypeNode {
+	private IExpressionNode expression;
+	private ITypeNode arrayType;
 	
-	public ArrayTypeNode(ExpressionNode expression, TypeNode arrayType) {
+	public ArrayTypeNode(IExpressionNode expression, ITypeNode arrayType) {
 		this.expression = expression;
 		this.arrayType = arrayType;
 	}
