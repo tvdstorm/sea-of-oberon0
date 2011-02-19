@@ -12,7 +12,7 @@ public class ArrayValue implements IValue {
 			_references.add(new Reference(defaultValue));
 		}
 	}
-	
+
 	public static ArrayValue getDefaultValue(IValue defaultValue, int size) {
 		return new ArrayValue(defaultValue, size);
 	}

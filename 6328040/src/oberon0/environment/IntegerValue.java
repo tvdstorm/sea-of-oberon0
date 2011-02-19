@@ -10,7 +10,7 @@ public class IntegerValue implements IValue {
 	public int getValue() {
 		return _value;
 	}
-	
+
 	public static IntegerValue getDefaultValue() {
 		return new IntegerValue(0);
 	}

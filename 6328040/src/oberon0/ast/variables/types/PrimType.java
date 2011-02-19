@@ -10,9 +10,9 @@ public class PrimType implements IType {
 	public PrimType(String typename) {
 		_typename = typename;
 	}
-	
-	public void typeFactory(Context context){
-		//TODO: for typechecking, something for arrays and records probably
+
+	public void typeFactory(Context context) {
+		// TODO: for typechecking, something for arrays and records probably
 		if (_typename.equals("INTEGER")) {
 			_type = new IntegerType();
 		} else if (_typename.equals("BOOLEAN")) {
@@ -21,12 +21,12 @@ public class PrimType implements IType {
 			_type = context.getType(_typename);
 		}
 	}
-	
-	public TypeNames getTypeName(Context context){
+
+	public TypeNames getTypeName(Context context) {
 		typeFactory(context);
 		return _type.getTypeName(context);
 	}
-	
+
 	@Override
 	public IValue getDefaultValue(Context context) {
 		typeFactory(context);

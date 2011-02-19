@@ -13,7 +13,7 @@ public class ArrayType implements IType {
 	public ArrayType(IEvaluable size, IType type) {
 		_sizeExpression = size;
 		_type = type;
-	}	
+	}
 
 	@Override
 	public TypeNames getTypeName(Context context) {
@@ -22,7 +22,7 @@ public class ArrayType implements IType {
 
 	@Override
 	public IValue getDefaultValue(Context context) {
-		int size = ((IntegerValue)_sizeExpression.eval(context)).getValue();
+		int size = ((IntegerValue) _sizeExpression.eval(context)).getValue();
 		return ArrayValue.getDefaultValue(_type.getDefaultValue(context), size);
 	}
 

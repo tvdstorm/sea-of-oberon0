@@ -11,11 +11,11 @@ import oberon0.ast.variables.types.IType;
  * Also known as Environment 
  */
 public class Context {
-	private String _name;
+	private final String _name;
 	private Map<String, Reference> _variables;
 	private Map<String, ICallable> _procedures;
 	private Map<String, IType> _types;
-	private Context _parent;
+	private final Context _parent;
 
 	/*
 	 * when there is no parent, use this 'null'-value to increase readability

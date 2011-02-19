@@ -4,7 +4,7 @@ import oberon0.environment.Context;
 import oberon0.environment.IValue;
 import oberon0.environment.IntegerValue;
 
-public class IntegerType implements IType{
+public class IntegerType implements IType {
 
 	@Override
 	public TypeNames getTypeName(Context context) {
