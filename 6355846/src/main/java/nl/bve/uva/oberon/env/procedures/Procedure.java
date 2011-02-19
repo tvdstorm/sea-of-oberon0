@@ -3,13 +3,13 @@ package nl.bve.uva.oberon.env.procedures;
 import java.util.Iterator;
 import java.util.List;
 
-import nl.bve.uva.oberon.ast.IInterpretableNode;
+import nl.bve.uva.oberon.ast.expressions.ExpressionNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.types.OberonType;
 import nl.bve.uva.oberon.shared.TypedParameterList;
 
 public abstract class Procedure {
-	public final void callProcedure(Environment env, List<IInterpretableNode> actualParameters) {
+	public final void callProcedure(Environment env, List<ExpressionNode> actualParameters) {
 		List<TypedParameterList> formalParametersList = getFormalParameters();
 		
 		if (formalParametersList == null && actualParameters != null) {
@@ -22,7 +22,7 @@ public abstract class Procedure {
 		Environment subEnv = env.getNewSubSpace();
 		
 		if (formalParametersList != null && actualParameters != null) {
-			Iterator<IInterpretableNode> actuals = actualParameters.iterator();
+			Iterator<ExpressionNode> actuals = actualParameters.iterator();
 			
 			for (TypedParameterList fpList : formalParametersList) {
 				List<String> identList = fpList.getParametersList();
@@ -32,7 +32,7 @@ public abstract class Procedure {
 						throw new RuntimeException("Not enough actual values given for procedure " +getName()+ " (parameters needed: " +formalParametersList.size());
 					}
 					
-					OberonType value = (OberonType)actuals.next().interpret(subEnv);
+					OberonType value = actuals.next().eval(subEnv);
 					value = fpList.processValue(ident, value, subEnv);
 					subEnv.addVariable(ident, value);
 				}

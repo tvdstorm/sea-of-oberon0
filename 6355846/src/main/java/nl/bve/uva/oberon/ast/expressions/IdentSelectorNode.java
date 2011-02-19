@@ -1,12 +1,13 @@
-package nl.bve.uva.oberon.ast;
+package nl.bve.uva.oberon.ast.expressions;
 
 import java.util.List;
 
+import nl.bve.uva.oberon.ast.Selector;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.types.OberonType;
 
 
-public class IdentSelectorNode implements IInterpretableNode {
+public class IdentSelectorNode extends ExpressionNode {
 	private String name;
 	private List<Selector> selectors;
 	
@@ -16,7 +17,7 @@ public class IdentSelectorNode implements IInterpretableNode {
 	}
 	
 	@Override
-	public Object interpret(Environment env) {
+	public OberonType eval(Environment env) {
 		OberonType type = env.getVariable(name);
 		
 		if (selectors != null) {

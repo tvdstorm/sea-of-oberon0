@@ -1,15 +1,15 @@
-package nl.bve.uva.oberon.ast.expressions;
+package nl.bve.uva.oberon.ast.expressions.binary;
 
-import nl.bve.uva.oberon.ast.IInterpretableNode;
+import nl.bve.uva.oberon.ast.expressions.ExpressionNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.types.OberonInt;
 
 public class MultExprNode extends BinaryExpressionNode {
-	public MultExprNode(IInterpretableNode lhn, IInterpretableNode rhn) {
+	public MultExprNode(ExpressionNode lhn, ExpressionNode rhn) {
 		super(lhn, rhn);
 	}
 	
-	public OberonInt interpret(Environment env) {
+	public OberonInt eval(Environment env) {
 		int left = evalLhs(env);
 		int right = evalRhs(env);
 		

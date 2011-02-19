@@ -1,15 +1,16 @@
 package nl.bve.uva.oberon.ast;
 
+import nl.bve.uva.oberon.ast.expressions.ExpressionNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.types.OberonInt;
 import nl.bve.uva.oberon.env.types.OberonType;
 
 public class IfNode implements IInterpretableNode {
-	private IInterpretableNode condition;
+	private ExpressionNode condition;
 	private IInterpretableNode body;
 	private IInterpretableNode ifelse;
 	
-	public IfNode(IInterpretableNode condition, IInterpretableNode body, IInterpretableNode ifelse) {
+	public IfNode(ExpressionNode condition, IInterpretableNode body, IInterpretableNode ifelse) {
 		this.condition = condition;
 		this.body = body;
 		this.ifelse = ifelse;
@@ -17,7 +18,7 @@ public class IfNode implements IInterpretableNode {
 	
 	@Override
 	public Object interpret(Environment env) {
-		OberonType t = (OberonType)condition.interpret(env);
+		OberonType t = condition.eval(env);
 		
 		if (t.getValue() == OberonInt.TRUE) {
 			body.interpret(env);
