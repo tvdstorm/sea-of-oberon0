@@ -3,6 +3,7 @@ package nl.bve.uva.oberon.ast.expressions.binary;
 import nl.bve.uva.oberon.ast.expressions.IExpressionNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.values.IntValue;
+import nl.bve.uva.oberon.env.values.OberonValue;
 
 public class DivExprNode extends BinaryExpressionNode {
 	public DivExprNode(IExpressionNode lhn, IExpressionNode rhn) {
@@ -10,10 +11,10 @@ public class DivExprNode extends BinaryExpressionNode {
 	}
 	
 	@Override
-	public IntValue eval(Environment env) {
-		int left = evalLhs(env);
-		int right = evalRhs(env);
+	public OberonValue eval(Environment env) {
+		IntValue left  = (IntValue)lhn.eval(env);
+		IntValue right = (IntValue)rhn.eval(env);
 		
-		return new IntValue(left / right);
+		return new IntValue(left.getValue() / right.getValue());
 	}
 }

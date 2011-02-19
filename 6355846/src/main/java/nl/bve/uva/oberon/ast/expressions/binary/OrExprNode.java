@@ -2,7 +2,8 @@ package nl.bve.uva.oberon.ast.expressions.binary;
 
 import nl.bve.uva.oberon.ast.expressions.IExpressionNode;
 import nl.bve.uva.oberon.env.Environment;
-import nl.bve.uva.oberon.env.values.IntValue;
+import nl.bve.uva.oberon.env.values.BooleanValue;
+import nl.bve.uva.oberon.env.values.OberonValue;
 
 public class OrExprNode extends BinaryExpressionNode {
 	public OrExprNode(IExpressionNode lhn, IExpressionNode rhn) {
@@ -10,14 +11,10 @@ public class OrExprNode extends BinaryExpressionNode {
 	}
 	
 	@Override
-	public IntValue eval(Environment env) {
-		int left = evalLhs(env);
-		int right = evalRhs(env);
+	public OberonValue eval(Environment env) {
+		BooleanValue left  = (BooleanValue)lhn.eval(env);
+		BooleanValue right = (BooleanValue)rhn.eval(env);
 		
-		if ((left == IntValue.TRUE) || (right == IntValue.TRUE)) {
-			return new IntValue(IntValue.TRUE);
-		} else {
-			return new IntValue(IntValue.FALSE);
-		}
+		return new BooleanValue(left.getValue() || right.getValue());
 	}
 }

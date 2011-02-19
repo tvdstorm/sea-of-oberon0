@@ -3,6 +3,7 @@ package nl.bve.uva.oberon.ast.types;
 import nl.bve.uva.oberon.ast.expressions.IExpressionNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.values.ArrayValue;
+import nl.bve.uva.oberon.env.values.IntValue;
 import nl.bve.uva.oberon.env.values.OberonValue;
 
 public class ArrayTypeNode implements IOberonTypeNode {
@@ -19,6 +20,6 @@ public class ArrayTypeNode implements IOberonTypeNode {
 		OberonValue size = expression.eval(env);
 		OberonValue type = arrayType.initializeNew(env);
 		
-		return new ArrayValue(type, size.getValue());
+		return new ArrayValue(type, ((IntValue)size).getValue());
 	}
 }

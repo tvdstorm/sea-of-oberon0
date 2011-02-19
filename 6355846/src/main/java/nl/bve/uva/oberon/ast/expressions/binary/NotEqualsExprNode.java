@@ -2,7 +2,8 @@ package nl.bve.uva.oberon.ast.expressions.binary;
 
 import nl.bve.uva.oberon.ast.expressions.IExpressionNode;
 import nl.bve.uva.oberon.env.Environment;
-import nl.bve.uva.oberon.env.values.IntValue;
+import nl.bve.uva.oberon.env.values.BooleanValue;
+import nl.bve.uva.oberon.env.values.OberonValue;
 
 public class NotEqualsExprNode extends BinaryExpressionNode {
 	public NotEqualsExprNode(IExpressionNode lhn, IExpressionNode rhn) {
@@ -10,14 +11,10 @@ public class NotEqualsExprNode extends BinaryExpressionNode {
 	}
 	
 	@Override
-	public IntValue eval(Environment env) {
-		int left = evalLhs(env);
-		int right = evalRhs(env);
+	public BooleanValue eval(Environment env) {
+		OberonValue left  = lhn.eval(env);
+		OberonValue right = rhn.eval(env);
 		
-		if (left != right) {
-			return new IntValue(IntValue.TRUE);
-		} else {
-			return new IntValue(IntValue.FALSE);
-		}
+		return new BooleanValue(!left.getValue().equals(right.getValue()));
 	}
 }

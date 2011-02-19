@@ -10,11 +10,13 @@ import nl.bve.uva.oberon.shared.SelectorValue;
 public abstract class OberonValue {
 	/**
 	 * If the subclass is not a container type like an array or record,
-	 * this method can be used to get the actual int value of the type.
+	 * this method must be overridden to get the actual value of the type.
 	 * 
 	 * @return Integer : the int value of this type
 	 */
-	public abstract Integer getValue();
+	public Object getValue() {
+		throw new RuntimeException("Cannot get the value of " +getClass().getCanonicalName()+ "!");
+	}
 	
 	/**
 	 * This method can be used to assign a new value to this type. The
@@ -27,15 +29,17 @@ public abstract class OberonValue {
 	public abstract void setValue(OberonValue value);
 	
 	/**
-	 * This method can be used for container types like array or record.
+	 * This method can be overridden by container types like array or record.
 	 * Types that aren't container types, should throw a RuntimeException.
 	 * If the container type contains a value that corresponds with the
-	 * selector, it will return that value.
+	 * selector, it should return that value.
 	 * 
 	 * @param selector : the selector that has to applied to this type's value
 	 * @return : the value that corresponds with the selector
 	 */
-	public abstract OberonValue evaluateSelector(SelectorValue selector);
+	public OberonValue evaluateSelector(SelectorValue selector) {
+		throw new RuntimeException("Cannot evaluate an IntValue type!");
+	}
 	
 	/**
 	 * If a value is assigned to a type, the actual value can be different

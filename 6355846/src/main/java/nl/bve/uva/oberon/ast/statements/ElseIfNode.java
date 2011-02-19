@@ -3,8 +3,7 @@ package nl.bve.uva.oberon.ast.statements;
 import nl.bve.uva.oberon.ast.IExecutableNode;
 import nl.bve.uva.oberon.ast.expressions.IExpressionNode;
 import nl.bve.uva.oberon.env.Environment;
-import nl.bve.uva.oberon.env.values.IntValue;
-import nl.bve.uva.oberon.env.values.OberonValue;
+import nl.bve.uva.oberon.env.values.BooleanValue;
 
 public class ElseIfNode implements IStatementNode {
 	private IExpressionNode condition;
@@ -19,11 +18,10 @@ public class ElseIfNode implements IStatementNode {
 	
 	@Override
 	public void execute(Environment env) {
-		OberonValue t = condition.eval(env);
+		BooleanValue val = (BooleanValue)condition.eval(env);
 		
-		if (t.getValue() == IntValue.TRUE) {
-			Environment subEnv = env.getNewSubSpace();
-			body.execute(subEnv);
+		if ( val.getValue() ) {
+			body.execute(env);
 		} else if (nextElse != null) {
 			nextElse.execute(env);
 		}
