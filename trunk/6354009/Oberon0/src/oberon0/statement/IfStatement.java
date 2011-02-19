@@ -2,59 +2,48 @@ package oberon0.statement;
 
 import java.util.ArrayList;
 
-import oberon0.exception.ExecutionException;
+import oberon0.environment.Environment;
 import oberon0.expression.Expression;
-import oberon0.expression.IntegerExpression;
-import oberon0.module.Module;
 
-public class IfStatement implements Statement {
+public class IfStatement extends ConditionStatement {
 
-	Expression expression;
-	ArrayList<Statement>statements;
-	IfStatement followIfStament;
+	private final ArrayList<ConditionStatement> nextConditions;
+	private boolean hasElseStatement;
 	
 	//Constructor
-	public IfStatement(Expression expression, ArrayList<Statement>statements) {
-		this.expression = expression;
-		this.statements = statements;
-		followIfStament = null;
-	}
-	
-	public void addFollowIfStatement(IfStatement ifStatement)
-	{
-		//Set the follow if statement if we dont have one.
-		if (followIfStament == null) {
-			this.followIfStament = ifStatement;
-		}
-		else {
-			/* Give the "follow if statement" to our "follow if statement".
-			 * This will pass it on till the last "follow if statement".
-			 */ 	
-			this.followIfStament.addFollowIfStatement(ifStatement);
-		}
+	public IfStatement(Expression condition) {
+		super(condition);
 
+		nextConditions = new ArrayList<ConditionStatement>();
+		hasElseStatement = false;
 	}
 	
+	public void addElsifStatement(ElsifStatement eslifStat) {
+		nextConditions.add(eslifStat);
+	}
+	
+	public void addElseStatement(ElseStatement elseStat) {
+		assert(hasElseStatement == false):"Added else statement twice.";
+		nextConditions.add(elseStat);
+		hasElseStatement = true;
+	}
+
 	@Override
-	public void execute(Module module) throws ExecutionException {
-		Expression evaluatedExp = expression.evaluate(module);
-		
-		assert(evaluatedExp.getType() == IntegerExpression.TYPE);
-		
-		IntegerExpression intExp = (IntegerExpression)evaluatedExp;
-		
-		//Is the expression true?
-		if (intExp.getIntegerTypeValue() == 1) {
-			//Execute all statements in the if clause.
-			for(Statement statement : statements) {
-				statement.execute(module);
-			}
+	public void execute(Environment env) {
+		if (conditionTrue(env)) {
+			executeStatements(env);
 		}
 		else {
-			if (followIfStament != null) {
-				followIfStament.execute(module);
-			}
+			considerNextConditions(env);
 		}
 	}
 	
+	private void considerNextConditions(Environment env) {
+		for (ConditionStatement condStat : nextConditions) {
+			if (condStat.conditionTrue(env)) {
+				condStat.execute(env);
+				return;
+			}
+		}
+	}
 }

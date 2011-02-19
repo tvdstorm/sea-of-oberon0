@@ -1,0 +1,14 @@
+MODULE Bla;
+VAR
+	car : RECORD engineCnt, doorCnt, wheelCnt: INTEGER END;
+	
+BEGIN 
+	car.engineCnt := 1;
+	car.doorCnt := 2;
+	car.wheelCnt := 4;
+	WriteLn(car.engineCnt);
+	WriteLn(car.doorCnt);
+	WriteLn(car.wheelCnt)
+END Bla.
+
+

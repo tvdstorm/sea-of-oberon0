@@ -1,0 +1,8 @@
+MODULE Bla;
+VAR 
+	i:INTEGER;
+	t:INTEGER;  
+BEGIN 
+	i := 10;
+	WriteLn(i) 
+END Bla.

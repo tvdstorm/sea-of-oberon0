@@ -1,0 +1,33 @@
+MODULE Bla;
+CONST
+	CONSTANT_ONT = 10;
+VAR 
+	i:INTEGER;  
+BEGIN 
+	WriteLn(1 = 1);
+	WriteLn(1 = 0);
+	
+	WriteLn(1 # 1);
+	WriteLn(1 # 0);
+	
+	WriteLn(1 > 0);
+	WriteLn(0 > 1);
+	
+	WriteLn(1 >= 0);
+	WriteLn(1 >= 1);
+	WriteLn(0 >= 1);
+	
+	WriteLn(0 < 1);
+	WriteLn(1 < 0);
+	
+	WriteLn(0 <= 1);
+	WriteLn(1 <= 1);
+	WriteLn(1 <= 0);
+	
+	WriteLn(1 & 1);
+	WriteLn(1 & 0);
+	
+	WriteLn(~(0));
+	WriteLn(~(1))
+END Bla.
+

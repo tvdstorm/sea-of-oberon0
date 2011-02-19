@@ -1,10 +1,9 @@
 package oberon0.expression;
 
-import oberon0.module.Module;
+import oberon0.environment.Environment;
+import oberon0.value.Value;
 
 public interface Expression {
-	
-	Expression evaluate(Module module);
-	
-	public String getType();
+
+	public <T extends Value<?>> T evaluate(Environment env);
 }

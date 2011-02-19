@@ -1,0 +1,12 @@
+MODULE Bla;
+VAR
+	left: INTEGER;
+	right: INTEGER;
+	
+BEGIN 
+	left := 4;
+	right := 2;
+	IF left - right = 2 THEN
+		WriteLn(12);
+	END
+END Bla.

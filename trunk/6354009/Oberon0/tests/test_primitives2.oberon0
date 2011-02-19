@@ -1,0 +1,11 @@
+MODULE Bla;
+VAR
+	x : ARRAY 2 OF INTEGER;
+	
+BEGIN 
+	x[0] := 1;
+	x[1] := 2;
+	WriteLn(x[0]);
+	WriteLn(x[1])
+END Bla.
+

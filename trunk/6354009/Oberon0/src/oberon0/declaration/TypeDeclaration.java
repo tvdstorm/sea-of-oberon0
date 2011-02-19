@@ -1,24 +1,25 @@
 package oberon0.declaration;
 
+import oberon0.environment.EnvObject;
+import oberon0.environment.Environment;
 import oberon0.type.Type;
 
-public class TypeDeclaration {
+public class TypeDeclaration extends Declaration{
 	
-	private String typeName;
-	private Type type;
+	private final Type type;
 	
-	public TypeDeclaration(String typeName,Type type) {
-		this.typeName = typeName;
+	public TypeDeclaration(String identifier,Type type) {
+		super(identifier);
 		this.type = type;
 	}
-
 
 	public Type getType() {
 		return type;
 	}
-
-	public String getTypeName() {
-		return typeName;
+	
+	@Override
+	public EnvObject getEnvironmentObject(Environment env) {
+		return new EnvObject(this, false);
 	}
 	
 }

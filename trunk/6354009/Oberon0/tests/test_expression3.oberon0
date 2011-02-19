@@ -1,0 +1,14 @@
+MODULE Bla;
+
+BEGIN 
+	WriteLn(4 MOD 2 + 1);
+	WriteLn(-1 + 1);
+	WriteLn(2 * 3 + 1);
+	WriteLn(2 * 2 + 2 * 2 DIV 2); 
+	WriteLn(3 * 7 + 2 * 10 DIV 5);
+	WriteLn(3 * (7 + 2) *10 DIV 5) 
+END Bla.
+ 
+
+
+

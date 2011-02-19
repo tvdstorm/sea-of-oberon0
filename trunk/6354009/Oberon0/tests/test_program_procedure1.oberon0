@@ -1,0 +1,12 @@
+MODULE Bla;
+VAR
+	x:INTEGER;
+	y:INTEGER;
+	
+BEGIN 
+	Read(x);
+	Read(y);
+	WriteLn(x);
+	WriteLn(y)
+END Bla.
+

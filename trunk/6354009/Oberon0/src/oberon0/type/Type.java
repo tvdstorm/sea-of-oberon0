@@ -1,29 +1,10 @@
 package oberon0.type;
 
-import oberon0.expression.Expression;
-import oberon0.identifier.Selector;
-import oberon0.module.Module;
+import oberon0.environment.Environment;
+import oberon0.value.Value;
 
-public abstract class Type {
+public interface Type {
 	
-	public static String INTEGER_TYPE = "TYPE_INTEGER";
-	public static String ARRAY_TYPE = "TYPE_ARRAY";
+	public abstract Value<?> createTypeValue(Environment env);
 	
-	private String typeName;
-	
-	public Type(String typeName) {
-		this.typeName = typeName;
-	}
-
-	public String getTypeName() {
-		return typeName;
-	}
-	
-	public abstract Expression getExpression(Selector selector, Module module);
-	
-	public abstract void assignExpression(Expression expression, Selector selector, Module module);
-
-	public abstract Type getNew();
-	
-	public abstract Type getCopy(Module module);
 }

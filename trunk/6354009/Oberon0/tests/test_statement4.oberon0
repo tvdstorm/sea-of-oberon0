@@ -1,0 +1,11 @@
+MODULE Bla;
+VAR
+	i: INTEGER;
+	
+BEGIN 
+	i := 0;
+	WHILE i < 13 DO
+		i := i + 1;
+	END;
+	WriteLn(i)
+END Bla.
