@@ -243,10 +243,21 @@ public class AstNodeFactory {
 		return createAnExpression((BaseTree) tree); 
 	}
 	
+	private static AnExpression createSubExpression(Tree tree){
+		assert(tree != null);
+		return createSubExpression((BaseTree) tree); 
+	}
+	
 	//
 	public static AnExpression createAnExpression(BaseTree parentTree){
-		BaseTree tree = getChildOfType(parentTree, oberonLexer.EXPRESSION);
-		return createSubExpression(tree);
+		BaseTree tree;
+		if (parentTree.getType() != oberonLexer.EXPRESSION) {
+			tree = getChildOfType(parentTree, oberonLexer.EXPRESSION);
+		} else {
+			tree = parentTree;
+		}
+		assert (tree.getChildCount() >= 1);
+		return createSubExpression(tree.getChild(0));
 	}
 	
 	//
@@ -265,7 +276,7 @@ public class AstNodeFactory {
 				return new AnExpression(ident);
 			//Expressions that include an operator
 			case oberonLexer.EXPRESSION:
-				return createSubExpression((BaseTree) tree.getChild(0));
+				return createAnExpression(tree);
 			case oberonLexer.PLUS:
 			case oberonLexer.MIN:
 			case oberonLexer.TILDEFACTOR:
@@ -283,9 +294,9 @@ public class AstNodeFactory {
 				int numChildren = tree.getChildren().size();
 				assert (numChildren == 1 || numChildren == 2);
 				if (numChildren == 2){
-					return new AnExpression(exprType, createAnExpression(tree.getChild(0)), createAnExpression(tree.getChild(1)));
+					return new AnExpression(exprType, createSubExpression(tree.getChild(0)), createSubExpression(tree.getChild(1)));
 				} else {
-					return new AnExpression(exprType, createAnExpression(tree.getChild(0)));
+					return new AnExpression(exprType, createSubExpression(tree.getChild(0)));
 				}
 			default: throw new UnsupportedOperationException();
 		}

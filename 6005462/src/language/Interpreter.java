@@ -18,38 +18,31 @@ public class Interpreter {
 
 	public static void main(String[] args) {
 		try {
-			testProc(
-			  "PROCEDURE AssignIets;"
-			+ "  VAR x: INTEGER; "
-			+ "BEGIN "
-			+ "  x := 1"
-			+ "END Multiply;");
 			
-			testProc(
-		      "PROCEDURE Swap(VAR x, y: INTEGER);"
-			+ "VAR"
-			+ "   temp: INTEGER;"
-			+ " BEGIN"
-			+ "   temp := x;"
-			+ "   x := y;"
-			+ "   y := temp"
-			+ " END Swap;");
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 				
-		//tests();
+		tests();
 	}
 	
 	private static void tests(){
 		
 		try {
-			testExpression("-2 + 4 * 4 = 13");
-			testExpression("-2 + 4 * 4 # 14");
+			testExpression("-2 + 4 * 4 = 14");
+			testExpression("-2 + 4 * 4 # 13");
 			testExpression("-2 + 4 * 4 > 10");
-			testExpression("-2 + 4 * 4 = 13");
+			testExpression("-2 + 4 * 4 = 14");
+			
+			testProc(
+				  "PROCEDURE AssignIets;"
+				+ "  VAR x: INTEGER; "
+				+ "BEGIN "
+				+ "  x := 1"
+				+ "END Multiply;");
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
