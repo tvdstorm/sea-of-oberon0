@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-02-19</date>
-  <time>14:55:11</time>
+  <time>15:09:38</time>
   <packages>
     <package>
       <name>jdm.oberon0.ast</name>
@@ -88,9 +88,9 @@
       <classes>8</classes>
       <functions>31</functions>
       <ncss>150</ncss>
-      <javadocs>4</javadocs>
-      <javadoc_lines>13</javadoc_lines>
-      <single_comment_lines>6</single_comment_lines>
+      <javadocs>7</javadocs>
+      <javadoc_lines>22</javadoc_lines>
+      <single_comment_lines>4</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <package>
@@ -114,6 +114,26 @@
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <package>
+      <name>jdm.oberon0.typechecker</name>
+      <classes>2</classes>
+      <functions>14</functions>
+      <ncss>63</ncss>
+      <javadocs>0</javadocs>
+      <javadoc_lines>0</javadoc_lines>
+      <single_comment_lines>0</single_comment_lines>
+      <multi_comment_lines>0</multi_comment_lines>
+    </package>
+    <package>
+      <name>jdm.oberon0.typechecker.typecheck</name>
+      <classes>5</classes>
+      <functions>49</functions>
+      <ncss>245</ncss>
+      <javadocs>6</javadocs>
+      <javadoc_lines>18</javadoc_lines>
+      <single_comment_lines>17</single_comment_lines>
+      <multi_comment_lines>12</multi_comment_lines>
+    </package>
+    <package>
       <name>jdm.oberon0.types</name>
       <classes>6</classes>
       <functions>16</functions>
@@ -134,20 +154,20 @@
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <total>
-      <classes>92</classes>
-      <functions>325</functions>
-      <ncss>1264</ncss>
-      <javadocs>35</javadocs>
-      <javadoc_lines>109</javadoc_lines>
-      <single_comment_lines>27</single_comment_lines>
-      <multi_comment_lines>20</multi_comment_lines>
+      <classes>99</classes>
+      <functions>388</functions>
+      <ncss>1572</ncss>
+      <javadocs>44</javadocs>
+      <javadoc_lines>136</javadoc_lines>
+      <single_comment_lines>42</single_comment_lines>
+      <multi_comment_lines>32</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>13.00</td><td>92.00</td><td>325.00</td><td>1,264.00</td><td>35.00</td><td>Project</td></tr>
-      <tr><td></td><td>7.08</td><td>25.00</td><td>97.23</td><td>2.69</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.53</td><td>13.74</td><td>0.38</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>3.89</td><td>0.11</td><td>Function</td></tr>
+      <tr><td>15.00</td><td>99.00</td><td>388.00</td><td>1,572.00</td><td>44.00</td><td>Project</td></tr>
+      <tr><td></td><td>6.60</td><td>25.87</td><td>104.80</td><td>2.93</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.92</td><td>15.88</td><td>0.44</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>4.05</td><td>0.11</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -668,7 +688,7 @@
       <ncss>18</ncss>
       <functions>3</functions>
       <classes>0</classes>
-      <javadocs>0</javadocs>
+      <javadocs>3</javadocs>
     </object>
     <object>
       <name>jdm.oberon0.interpreter.InterpreterContext</name>
@@ -796,13 +816,62 @@
       <classes>0</classes>
       <javadocs>1</javadocs>
     </object>
+    <object>
+      <name>jdm.oberon0.typechecker.typecheck.DeclarationChecker</name>
+      <ncss>40</ncss>
+      <functions>5</functions>
+      <classes>0</classes>
+      <javadocs>1</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker</name>
+      <ncss>93</ncss>
+      <functions>30</functions>
+      <classes>0</classes>
+      <javadocs>2</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.typechecker.typecheck.ModuleChecker</name>
+      <ncss>9</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>1</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.typechecker.typecheck.StatementChecker</name>
+      <ncss>51</ncss>
+      <functions>8</functions>
+      <classes>0</classes>
+      <javadocs>1</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.typechecker.typecheck.TypeChecker</name>
+      <ncss>19</ncss>
+      <functions>4</functions>
+      <classes>0</classes>
+      <javadocs>1</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.typechecker.TypeCheckerContext</name>
+      <ncss>7</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>jdm.oberon0.typechecker.TypeScope</name>
+      <ncss>42</ncss>
+      <functions>11</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
     <averages>
-      <ncss>11.02</ncss>
-      <functions>3.53</functions>
+      <ncss>12.88</ncss>
+      <functions>3.92</functions>
       <classes>0.00</classes>
-      <javadocs>0.38</javadocs>
+      <javadocs>0.44</javadocs>
     </averages>
-    <ncss>1,264.00</ncss>
+    <ncss>1,572.00</ncss>
   </objects>
 
   <functions>
@@ -2190,19 +2259,19 @@
       <name>jdm.oberon0.interpreter.Interpreter.run(Reader,String)</name>
       <ncss>7</ncss>
       <ccn>1</ccn>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </function>
     <function>
       <name>jdm.oberon0.interpreter.Interpreter.runTypeChecker(Module)</name>
       <ncss>5</ncss>
       <ccn>1</ccn>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </function>
     <function>
       <name>jdm.oberon0.interpreter.Interpreter.runInterpreter(Module)</name>
       <ncss>5</ncss>
       <ccn>1</ccn>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </function>
     <function>
       <name>jdm.oberon0.interpreter.InterpreterContext.InterpreterContext()</name>
@@ -2756,11 +2825,389 @@
       <ccn>2</ccn>
       <javadocs>0</javadocs>
     </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.DeclarationChecker.DeclarationChecker(TypeCheckerContext)</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.DeclarationChecker.visitConstDeclaration(ConstDeclaration)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.DeclarationChecker.visitTypeDeclaration(TypeDeclaration)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.DeclarationChecker.visitVarDeclaration(VarDeclaration)</name>
+      <ncss>4</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.DeclarationChecker.visitProcedure(ProcedureDeclaration)</name>
+      <ncss>18</ncss>
+      <ccn>4</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.ExpressionChecker(TypeCheckerContext)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.visitIdentifier(Identifier)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.visitIntegerLiteral(IntegerLiteral)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.checkArray(Expression)</name>
+      <ncss>7</ncss>
+      <ccn>4</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.checkRecord(Expression)</name>
+      <ncss>7</ncss>
+      <ccn>4</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.check(Expression,Type)</name>
+      <ncss>4</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.checkInteger(Expression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.checkBoolean(Expression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.checkRelational(BinaryExpression)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.checkArithmetic(BinaryExpression)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.checkAndOr(BinaryExpression)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.visitGtExpression(GtExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.visitGeExpression(GeExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.visitLtExpression(LtExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.visitLeExpression(LeExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.visitEqExpression(EqExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.visitNeExpression(NeExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.visitAddExpression(AddExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.visitSubExpression(SubExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.visitMulExpression(MulExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.visitDivExpression(DivExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.visitModExpression(ModExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.visitAndExpression(AndExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.visitOrExpression(OrExpression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.visitNegExpression(NegExpression)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.visitPosExpression(PosExpression)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.visitNotExpression(NotExpression)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.visitArraySelector(ArraySelector)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.visitRecordSelector(RecordSelector)</name>
+      <ncss>6</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ExpressionChecker.checkReference(Expression)</name>
+      <ncss>5</ncss>
+      <ccn>3</ccn>
+      <javadocs>1</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ModuleChecker.ModuleChecker(TypeCheckerContext)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.ModuleChecker.check(Module)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.StatementChecker.StatementChecker(TypeCheckerContext)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.StatementChecker.visitAssignment(Assignment)</name>
+      <ncss>5</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.StatementChecker.visitProcedureCall(ProcedureCall)</name>
+      <ncss>20</ncss>
+      <ccn>10</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.StatementChecker.visitStatementSequence(StatementSequence)</name>
+      <ncss>3</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.StatementChecker.visitIfStatement(IfStatement)</name>
+      <ncss>5</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.StatementChecker.visitWhileStatement(WhileStatement)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.StatementChecker.visitWithStatement(WithStatement)</name>
+      <ncss>7</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.StatementChecker.check(Statement)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.TypeChecker.TypeChecker(TypeCheckerContext)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.TypeChecker.visitIdentifierType(IdentifierType)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.TypeChecker.visitArray(jdm.oberon0.ast.types.ArrayType)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.typecheck.TypeChecker.visitRecord(jdm.oberon0.ast.types.RecordType)</name>
+      <ncss>7</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.TypeCheckerContext.TypeCheckerContext()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.TypeCheckerContext.getScope()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.TypeCheckerContext.pushScope()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.TypeScope.TypeScope()</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.TypeScope.TypeScope(TypeScope)</name>
+      <ncss>6</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.TypeScope.defineConstant(String,Type)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.TypeScope.defineType(String,Type)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.TypeScope.defineProcedure(String,BuiltinProcedure)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.TypeScope.defineProcedure(String,ProcedureType)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.TypeScope.lookupVarOrConst(String)</name>
+      <ncss>6</ncss>
+      <ccn>6</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.TypeScope.lookupProcedure(String)</name>
+      <ncss>4</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.TypeScope.lookupType(String)</name>
+      <ncss>4</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.TypeScope.defineVar(String,Type)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.typechecker.TypeScope.defineConstant(String,Value)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
     <function_averages>
-      <ncss>2.57</ncss>
-      <ccn>1.27</ccn>
+      <ncss>2.77</ncss>
+      <ccn>1.33</ccn>
       <javadocs>0.03</javadocs>
     </function_averages>
-    <ncss>1,264.00</ncss>
+    <ncss>1,572.00</ncss>
   </functions>
 </javancss>

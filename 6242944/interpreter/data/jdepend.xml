@@ -19,11 +19,11 @@
                 <TotalClasses>2</TotalClasses>
                 <ConcreteClasses>1</ConcreteClasses>
                 <AbstractClasses>1</AbstractClasses>
-                <Ca>6</Ca>
+                <Ca>7</Ca>
                 <Ce>4</Ce>
                 <A>0.5</A>
-                <I>0.4</I>
-                <D>0.1</D>
+                <I>0.36</I>
+                <D>0.14</D>
                 <V>1</V>
             </Stats>
 
@@ -53,6 +53,7 @@
                 <Package>jdm.oberon0.ast.types</Package>
                 <Package>jdm.oberon0.interpreter</Package>
                 <Package>jdm.oberon0.interpreter.eval</Package>
+                <Package>jdm.oberon0.typechecker.typecheck</Package>
             </UsedBy>
         </Package>
 
@@ -61,11 +62,11 @@
                 <TotalClasses>8</TotalClasses>
                 <ConcreteClasses>6</ConcreteClasses>
                 <AbstractClasses>2</AbstractClasses>
-                <Ca>3</Ca>
+                <Ca>4</Ca>
                 <Ce>6</Ce>
                 <A>0.25</A>
-                <I>0.67</I>
-                <D>0.08</D>
+                <I>0.6</I>
+                <D>0.15</D>
                 <V>1</V>
             </Stats>
 
@@ -112,6 +113,7 @@
                 <Package>jdm.oberon0.ast</Package>
                 <Package>jdm.oberon0.interpreter</Package>
                 <Package>jdm.oberon0.interpreter.eval</Package>
+                <Package>jdm.oberon0.typechecker.typecheck</Package>
             </UsedBy>
         </Package>
 
@@ -120,11 +122,11 @@
                 <TotalClasses>24</TotalClasses>
                 <ConcreteClasses>20</ConcreteClasses>
                 <AbstractClasses>4</AbstractClasses>
-                <Ca>4</Ca>
+                <Ca>5</Ca>
                 <Ce>2</Ce>
                 <A>0.17</A>
-                <I>0.33</I>
-                <D>0.5</D>
+                <I>0.29</I>
+                <D>0.55</D>
                 <V>1</V>
             </Stats>
 
@@ -216,6 +218,7 @@
                 <Package>jdm.oberon0.ast.statements</Package>
                 <Package>jdm.oberon0.ast.types</Package>
                 <Package>jdm.oberon0.interpreter.eval</Package>
+                <Package>jdm.oberon0.typechecker.typecheck</Package>
             </UsedBy>
         </Package>
 
@@ -224,11 +227,11 @@
                 <TotalClasses>8</TotalClasses>
                 <ConcreteClasses>6</ConcreteClasses>
                 <AbstractClasses>2</AbstractClasses>
-                <Ca>3</Ca>
+                <Ca>4</Ca>
                 <Ce>4</Ce>
                 <A>0.25</A>
-                <I>0.57</I>
-                <D>0.18</D>
+                <I>0.5</I>
+                <D>0.25</D>
                 <V>1</V>
             </Stats>
 
@@ -273,6 +276,7 @@
                 <Package>jdm.oberon0.ast</Package>
                 <Package>jdm.oberon0.ast.declarations</Package>
                 <Package>jdm.oberon0.interpreter.eval</Package>
+                <Package>jdm.oberon0.typechecker.typecheck</Package>
             </UsedBy>
         </Package>
 
@@ -281,11 +285,11 @@
                 <TotalClasses>5</TotalClasses>
                 <ConcreteClasses>3</ConcreteClasses>
                 <AbstractClasses>2</AbstractClasses>
-                <Ca>2</Ca>
+                <Ca>3</Ca>
                 <Ce>4</Ce>
                 <A>0.4</A>
-                <I>0.67</I>
-                <D>0.07</D>
+                <I>0.57</I>
+                <D>0.03</D>
                 <V>1</V>
             </Stats>
 
@@ -320,6 +324,7 @@
             <UsedBy>
                 <Package>jdm.oberon0.ast.declarations</Package>
                 <Package>jdm.oberon0.interpreter.eval</Package>
+                <Package>jdm.oberon0.typechecker.typecheck</Package>
             </UsedBy>
         </Package>
 
@@ -328,11 +333,11 @@
                 <TotalClasses>2</TotalClasses>
                 <ConcreteClasses>0</ConcreteClasses>
                 <AbstractClasses>2</AbstractClasses>
-                <Ca>2</Ca>
+                <Ca>3</Ca>
                 <Ce>4</Ce>
                 <A>1</A>
-                <I>0.67</I>
-                <D>0.67</D>
+                <I>0.57</I>
+                <D>0.57</D>
                 <V>1</V>
             </Stats>
 
@@ -358,6 +363,7 @@
             <UsedBy>
                 <Package>jdm.oberon0.builtins.procedures</Package>
                 <Package>jdm.oberon0.interpreter</Package>
+                <Package>jdm.oberon0.typechecker</Package>
             </UsedBy>
         </Package>
 
@@ -412,11 +418,11 @@
                 <TotalClasses>13</TotalClasses>
                 <ConcreteClasses>13</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
-                <Ca>4</Ca>
+                <Ca>6</Ca>
                 <Ce>2</Ce>
                 <A>0</A>
-                <I>0.33</I>
-                <D>0.67</D>
+                <I>0.25</I>
+                <D>0.75</D>
                 <V>1</V>
             </Stats>
 
@@ -474,6 +480,8 @@
                 <Package>jdm.oberon0.builtins.procedures</Package>
                 <Package>jdm.oberon0.interpreter.eval</Package>
                 <Package>jdm.oberon0.main</Package>
+                <Package>jdm.oberon0.typechecker</Package>
+                <Package>jdm.oberon0.typechecker.typecheck</Package>
                 <Package>jdm.oberon0.values</Package>
             </UsedBy>
         </Package>
@@ -483,11 +491,11 @@
                 <TotalClasses>8</TotalClasses>
                 <ConcreteClasses>5</ConcreteClasses>
                 <AbstractClasses>3</AbstractClasses>
-                <Ca>5</Ca>
+                <Ca>6</Ca>
                 <Ce>13</Ce>
                 <A>0.38</A>
-                <I>0.72</I>
-                <D>0.1</D>
+                <I>0.68</I>
+                <D>0.06</D>
                 <V>1</V>
             </Stats>
 
@@ -542,6 +550,7 @@
                 <Package>jdm.oberon0.builtins.procedures</Package>
                 <Package>jdm.oberon0.interpreter.eval</Package>
                 <Package>jdm.oberon0.main</Package>
+                <Package>jdm.oberon0.typechecker</Package>
                 <Package>jdm.oberon0.values</Package>
             </UsedBy>
         </Package>
@@ -638,11 +647,96 @@
         </Package>
 
         <Package name="jdm.oberon0.typechecker">
-            <error>No stats available: package referenced, but not analyzed.</error>
+            <Stats>
+                <TotalClasses>2</TotalClasses>
+                <ConcreteClasses>2</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>2</Ca>
+                <Ce>7</Ce>
+                <A>0</A>
+                <I>0.78</I>
+                <D>0.22</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="TypeCheckerContext.java">
+                    jdm.oberon0.typechecker.TypeCheckerContext
+                </Class>
+                <Class sourceFile="TypeScope.java">
+                    jdm.oberon0.typechecker.TypeScope
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+                <Package>jdm.oberon0.builtins</Package>
+                <Package>jdm.oberon0.exceptions</Package>
+                <Package>jdm.oberon0.interpreter</Package>
+                <Package>jdm.oberon0.types</Package>
+                <Package>jdm.oberon0.values</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>jdm.oberon0.interpreter</Package>
+                <Package>jdm.oberon0.typechecker.typecheck</Package>
+            </UsedBy>
         </Package>
 
         <Package name="jdm.oberon0.typechecker.typecheck">
-            <error>No stats available: package referenced, but not analyzed.</error>
+            <Stats>
+                <TotalClasses>5</TotalClasses>
+                <ConcreteClasses>5</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>1</Ca>
+                <Ce>10</Ce>
+                <A>0</A>
+                <I>0.91</I>
+                <D>0.09</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="DeclarationChecker.java">
+                    jdm.oberon0.typechecker.typecheck.DeclarationChecker
+                </Class>
+                <Class sourceFile="ExpressionChecker.java">
+                    jdm.oberon0.typechecker.typecheck.ExpressionChecker
+                </Class>
+                <Class sourceFile="ModuleChecker.java">
+                    jdm.oberon0.typechecker.typecheck.ModuleChecker
+                </Class>
+                <Class sourceFile="StatementChecker.java">
+                    jdm.oberon0.typechecker.typecheck.StatementChecker
+                </Class>
+                <Class sourceFile="TypeChecker.java">
+                    jdm.oberon0.typechecker.typecheck.TypeChecker
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+                <Package>jdm.oberon0.ast</Package>
+                <Package>jdm.oberon0.ast.declarations</Package>
+                <Package>jdm.oberon0.ast.expressions</Package>
+                <Package>jdm.oberon0.ast.statements</Package>
+                <Package>jdm.oberon0.ast.types</Package>
+                <Package>jdm.oberon0.exceptions</Package>
+                <Package>jdm.oberon0.typechecker</Package>
+                <Package>jdm.oberon0.types</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>jdm.oberon0.interpreter</Package>
+            </UsedBy>
         </Package>
 
         <Package name="jdm.oberon0.types">
@@ -650,11 +744,11 @@
                 <TotalClasses>6</TotalClasses>
                 <ConcreteClasses>5</ConcreteClasses>
                 <AbstractClasses>1</AbstractClasses>
-                <Ca>5</Ca>
+                <Ca>7</Ca>
                 <Ce>2</Ce>
                 <A>0.17</A>
-                <I>0.29</I>
-                <D>0.55</D>
+                <I>0.22</I>
+                <D>0.61</D>
                 <V>1</V>
             </Stats>
 
@@ -692,6 +786,8 @@
                 <Package>jdm.oberon0.builtins.procedures</Package>
                 <Package>jdm.oberon0.interpreter</Package>
                 <Package>jdm.oberon0.interpreter.eval</Package>
+                <Package>jdm.oberon0.typechecker</Package>
+                <Package>jdm.oberon0.typechecker.typecheck</Package>
                 <Package>jdm.oberon0.values</Package>
             </UsedBy>
         </Package>
@@ -701,11 +797,11 @@
                 <TotalClasses>6</TotalClasses>
                 <ConcreteClasses>5</ConcreteClasses>
                 <AbstractClasses>1</AbstractClasses>
-                <Ca>3</Ca>
+                <Ca>4</Ca>
                 <Ce>5</Ce>
                 <A>0.17</A>
-                <I>0.62</I>
-                <D>0.21</D>
+                <I>0.56</I>
+                <D>0.28</D>
                 <V>1</V>
             </Stats>
 
@@ -745,6 +841,7 @@
                 <Package>jdm.oberon0.builtins.procedures</Package>
                 <Package>jdm.oberon0.interpreter</Package>
                 <Package>jdm.oberon0.interpreter.eval</Package>
+                <Package>jdm.oberon0.typechecker</Package>
             </UsedBy>
         </Package>
 
@@ -815,6 +912,19 @@
         </Package>
 
         <Package Name="jdm.oberon0.main">
+            <Package>jdm.oberon0.interpreter</Package>
+            <Package>jdm.oberon0.values</Package>
+            <Package>jdm.oberon0.interpreter</Package>
+        </Package>
+
+        <Package Name="jdm.oberon0.typechecker">
+            <Package>jdm.oberon0.interpreter</Package>
+            <Package>jdm.oberon0.values</Package>
+            <Package>jdm.oberon0.interpreter</Package>
+        </Package>
+
+        <Package Name="jdm.oberon0.typechecker.typecheck">
+            <Package>jdm.oberon0.typechecker</Package>
             <Package>jdm.oberon0.interpreter</Package>
             <Package>jdm.oberon0.values</Package>
             <Package>jdm.oberon0.interpreter</Package>
