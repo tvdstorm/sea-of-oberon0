@@ -7,6 +7,5 @@ import jdm.oberon0.values.Value;
  */
 public interface Callable {
 	
-	public int getArgumentCount();
-	public abstract void execute(Context context, Value[] arguments);
+	public abstract void execute(InterpreterContext context, Value[] arguments);
 }

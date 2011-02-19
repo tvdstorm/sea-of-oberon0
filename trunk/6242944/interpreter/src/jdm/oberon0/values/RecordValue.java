@@ -15,11 +15,10 @@ public class RecordValue extends Value {
 	private Map<String, ReferenceValue> _values;
 	
 	public RecordValue(RecordType type) {
-		Map<String, Type> fields = type.getFields();
 		Map<String, ReferenceValue> values = new HashMap<String, ReferenceValue>();
 		
-		for (String name : fields.keySet()) {
-			Type fieldType = fields.get(name);
+		for (String name : type.getFields()) {
+			Type fieldType = type.getFieldType(name).getType();
 			Value fieldValue = ValueConstructor.fromType(fieldType);
 			values.put(name, ReferenceValue.getRef(fieldValue));
 		}

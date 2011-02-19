@@ -6,7 +6,7 @@ import jdm.oberon0.ast.Module;
 import jdm.oberon0.ast.declarations.Parameter;
 import jdm.oberon0.ast.declarations.ProcedureDeclaration;
 import jdm.oberon0.exceptions.InvalidArgumentTypeException;
-import jdm.oberon0.interpreter.Context;
+import jdm.oberon0.interpreter.InterpreterContext;
 import jdm.oberon0.interpreter.ScriptedProcedure;
 import jdm.oberon0.types.Type;
 import jdm.oberon0.values.Value;
@@ -15,11 +15,11 @@ import jdm.oberon0.values.Value;
  * Evaluator for Oberon0 modules and procedures.
  */
 public class Evaluator {
-	private Context _context;
+	private InterpreterContext _context;
 	private DeclarationEvaluator _declEval;
 	private StatementEvaluator _statEval;
 	
-	public Evaluator(Context context) {
+	public Evaluator(InterpreterContext context) {
 		_context = context;
 		_statEval = new StatementEvaluator(context);
 		_declEval = new DeclarationEvaluator(context);

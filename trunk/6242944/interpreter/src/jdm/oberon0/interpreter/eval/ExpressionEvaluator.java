@@ -2,16 +2,16 @@ package jdm.oberon0.interpreter.eval;
 
 import jdm.oberon0.ast.expressions.*;
 import jdm.oberon0.exceptions.DivisionByZeroException;
-import jdm.oberon0.interpreter.Context;
+import jdm.oberon0.interpreter.InterpreterContext;
 import jdm.oberon0.values.*;
 
 /** 
  * Evaluator for Oberon0 expressions
  */
 class ExpressionEvaluator extends ExpressionVisitor<Value> {
-	private Context _context;
+	private InterpreterContext _context;
 
-	protected ExpressionEvaluator(Context context) {
+	protected ExpressionEvaluator(InterpreterContext context) {
 		_context = context;
 	}
 	

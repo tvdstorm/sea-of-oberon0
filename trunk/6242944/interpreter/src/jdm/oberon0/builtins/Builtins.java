@@ -23,6 +23,7 @@ public abstract class Builtins {
 		scope.defineProcedure("Read", new ReadProcedure());
 		scope.defineProcedure("Write", new WriteProcedure());
 		scope.defineProcedure("WriteLn", new WriteLnProcedure());
-		scope.defineProcedure("AssertEq", new AssertEqProcedure());
+		scope.defineProcedure("AssertEqInt", new AssertEqProcedure(PrimitiveType.Integer));
+		scope.defineProcedure("AssertEqBool", new AssertEqProcedure(PrimitiveType.Boolean));
 	}
 }

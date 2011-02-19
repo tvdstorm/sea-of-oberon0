@@ -1,15 +1,15 @@
 package jdm.oberon0.types;
 
 public class ArrayType implements Type {
-	protected Type _elementType;
+	protected ReferenceType _elementType;
 	protected int _size;
 	
-	public ArrayType(Type elementType, int size) {
+	public ArrayType(ReferenceType elementType, int size) {
 		_elementType = elementType;
 		_size = size;
 	}
 
-	public Type getElementType() {
+	public ReferenceType getElementType() {
 		return _elementType;
 	}
 	

@@ -1,27 +1,27 @@
 MODULE test;
 BEGIN
-    AssertEq(TRUE & TRUE, TRUE);
-    AssertEq(TRUE & FALSE, FALSE);
-    AssertEq(FALSE & TRUE, FALSE);
-    AssertEq(FALSE & FALSE, FALSE);
+    AssertEqBool(TRUE & TRUE, TRUE);
+    AssertEqBool(TRUE & FALSE, FALSE);
+    AssertEqBool(FALSE & TRUE, FALSE);
+    AssertEqBool(FALSE & FALSE, FALSE);
     
-    AssertEq(TRUE&TRUE, TRUE);
-    AssertEq(TRUE&FALSE, FALSE);
+    AssertEqBool(TRUE&TRUE, TRUE);
+    AssertEqBool(TRUE&FALSE, FALSE);
     
-    AssertEq(TRUE OR TRUE, TRUE);
-    AssertEq(TRUE OR FALSE, TRUE);
-    AssertEq(FALSE OR TRUE, TRUE);
-    AssertEq(FALSE OR FALSE, FALSE);
+    AssertEqBool(TRUE OR TRUE, TRUE);
+    AssertEqBool(TRUE OR FALSE, TRUE);
+    AssertEqBool(FALSE OR TRUE, TRUE);
+    AssertEqBool(FALSE OR FALSE, FALSE);
    
-    AssertEq((2 < 3) & (3 < 4) & (4 < 5) & (10 < 1), FALSE);
-    AssertEq((2 < 3) & (3 < 4) & (4 < 5) & (10 > 1), TRUE);
+    AssertEqBool((2 < 3) & (3 < 4) & (4 < 5) & (10 < 1), FALSE);
+    AssertEqBool((2 < 3) & (3 < 4) & (4 < 5) & (10 > 1), TRUE);
     
-    AssertEq( (2 > 3) OR (3 < 4) OR (1 # 0), TRUE);
-    AssertEq( (2 > 3) OR (3 > 4) OR (1 = 0), FALSE);
+    AssertEqBool( (2 > 3) OR (3 < 4) OR (1 # 0), TRUE);
+    AssertEqBool( (2 > 3) OR (3 > 4) OR (1 = 0), FALSE);
     
-    AssertEq( (TRUE & TRUE) OR (FALSE & FALSE), TRUE);
-    AssertEq( (TRUE OR TRUE) & (FALSE OR TRUE), TRUE);
+    AssertEqBool( (TRUE & TRUE) OR (FALSE & FALSE), TRUE);
+    AssertEqBool( (TRUE OR TRUE) & (FALSE OR TRUE), TRUE);
     
-    AssertEq(TRUE & TRUE OR FALSE, TRUE);
-    AssertEq(FALSE & TRUE OR FALSE, FALSE)
+    AssertEqBool(TRUE & TRUE OR FALSE, TRUE);
+    AssertEqBool(FALSE & TRUE OR FALSE, FALSE)
 END test.

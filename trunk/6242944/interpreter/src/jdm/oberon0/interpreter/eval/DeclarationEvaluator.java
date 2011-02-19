@@ -1,7 +1,7 @@
 package jdm.oberon0.interpreter.eval;
 
 import jdm.oberon0.ast.declarations.*;
-import jdm.oberon0.interpreter.Context;
+import jdm.oberon0.interpreter.InterpreterContext;
 import jdm.oberon0.interpreter.ScriptedProcedure;
 import jdm.oberon0.interpreter.ValueConstructor;
 import jdm.oberon0.types.Type;
@@ -11,23 +11,16 @@ import jdm.oberon0.values.Value;
  * Evaluator for declarations
  */
 class DeclarationEvaluator extends DeclarationVisitor {
-	private Context _context;
+	private InterpreterContext _context;
 	private ExpressionEvaluator _exprEval;
 	private TypeEvaluator _typeEval;
 	
-	public DeclarationEvaluator(Context context) {
+	public DeclarationEvaluator(InterpreterContext context) {
 		_context = context;
 		_exprEval = new ExpressionEvaluator(context);
 		_typeEval = new TypeEvaluator(context);
 	}
 	
-	@Override
-	protected void visitDeclarations(Declarations declarations) {
-		for(Declaration decl : declarations.getDeclarations()) {
-			decl.accept(this);
-		}
-	}
-
 	@Override
 	protected void visitConstDeclaration(ConstDeclaration declaration) {
 		String name = declaration.getName();

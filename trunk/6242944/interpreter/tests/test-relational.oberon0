@@ -1,26 +1,26 @@
 MODULE test;
 BEGIN
-    AssertEq(2 >= 1, TRUE);
-    AssertEq(2 >= 2, TRUE);
-    AssertEq(2 >= 3, FALSE);
+    AssertEqBool(2 >= 1, TRUE);
+    AssertEqBool(2 >= 2, TRUE);
+    AssertEqBool(2 >= 3, FALSE);
 
-    AssertEq(2 <= 1, FALSE);
-    AssertEq(2 <= 2, TRUE);
-    AssertEq(2 <= 3, TRUE);
+    AssertEqBool(2 <= 1, FALSE);
+    AssertEqBool(2 <= 2, TRUE);
+    AssertEqBool(2 <= 3, TRUE);
 
-    AssertEq(2 < 1, FALSE);
-    AssertEq(2 < 2, FALSE);
-    AssertEq(2 < 3, TRUE);
+    AssertEqBool(2 < 1, FALSE);
+    AssertEqBool(2 < 2, FALSE);
+    AssertEqBool(2 < 3, TRUE);
 
-    AssertEq(2 > 1, TRUE);
-    AssertEq(2 > 2, FALSE);
-    AssertEq(2 > 3, FALSE);
+    AssertEqBool(2 > 1, TRUE);
+    AssertEqBool(2 > 2, FALSE);
+    AssertEqBool(2 > 3, FALSE);
 
-    AssertEq(2 = 1, FALSE);
-    AssertEq(2 = 2, TRUE);
-    AssertEq(2 = 3, FALSE);
+    AssertEqBool(2 = 1, FALSE);
+    AssertEqBool(2 = 2, TRUE);
+    AssertEqBool(2 = 3, FALSE);
 
-    AssertEq(2 # 1, TRUE);
-    AssertEq(2 # 2, FALSE);
-    AssertEq(2 # 3, TRUE)
+    AssertEqBool(2 # 1, TRUE);
+    AssertEqBool(2 # 2, FALSE);
+    AssertEqBool(2 # 3, TRUE)
 END test.

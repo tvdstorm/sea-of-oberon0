@@ -14,17 +14,12 @@ public class ScriptedProcedure implements Callable {
 	}
 
 	@Override
-	public void execute(Context context, Value[] arguments) {
+	public void execute(InterpreterContext context, Value[] arguments) {
 		context.executeProcedure(this, arguments);
 	}
 
 	public ProcedureDeclaration getNode() {
 		return _node;
-	}
-
-	@Override
-	public int getArgumentCount() {
-		return _node.getParameters().size();
 	}
 }
 

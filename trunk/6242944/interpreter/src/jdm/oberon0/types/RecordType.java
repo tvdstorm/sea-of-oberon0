@@ -1,16 +1,14 @@
 package jdm.oberon0.types;
 
-import java.util.HashMap;
+import java.util.Collections;
+import java.util.Map;
+import java.util.Set;
 
 public class RecordType implements Type {
-	private HashMap<String, Type> _fields;
+	private Map<String, ReferenceType> _fields;
 	
-	public RecordType(HashMap<String, Type> fields) {
+	public RecordType(Map<String, ReferenceType> fields) {
 		_fields = fields;
-	}
-
-	public HashMap<String, Type> getFields() {
-		return _fields;
 	}
 
 	@Override
@@ -20,6 +18,14 @@ public class RecordType implements Type {
 		}
 		RecordType recordOther = (RecordType)other;
 		return _fields.equals(recordOther._fields);
+	}
+	
+	public ReferenceType getFieldType(String field) {
+		return _fields.get(field);
+	}
+	
+	public Set<String> getFields() {
+		return Collections.unmodifiableSet(_fields.keySet());
 	}
 }
 
