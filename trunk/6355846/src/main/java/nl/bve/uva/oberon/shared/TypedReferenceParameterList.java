@@ -4,7 +4,7 @@ import java.util.List;
 
 import nl.bve.uva.oberon.ast.IInterpretableNode;
 import nl.bve.uva.oberon.env.Environment;
-import nl.bve.uva.oberon.env.types.OberonType;
+import nl.bve.uva.oberon.env.types.OberonValue;
 
 public class TypedReferenceParameterList extends TypedParameterList {
 	public TypedReferenceParameterList(List<String> paramList) {
@@ -16,7 +16,7 @@ public class TypedReferenceParameterList extends TypedParameterList {
 	}
 	
 	@Override
-	public OberonType processValue(String parameter, OberonType value, Environment env) {
+	public OberonValue processValue(String parameter, OberonValue value, Environment env) {
 		if (!parameter.contains(parameter)) {
 			throw new RuntimeException("Parameter " +parameter+ " is not in the list!");
 		}

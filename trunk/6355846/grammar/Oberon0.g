@@ -25,7 +25,6 @@ import nl.bve.uva.oberon.ast.expressions.*;
 import nl.bve.uva.oberon.ast.expressions.binary.*;
 import nl.bve.uva.oberon.ast.selectors.*;
 import nl.bve.uva.oberon.ast.statements.*;
-import nl.bve.uva.oberon.env.*;
 import nl.bve.uva.oberon.shared.*;
 }
 

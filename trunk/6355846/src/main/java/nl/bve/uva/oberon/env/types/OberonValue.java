@@ -7,7 +7,7 @@ import nl.bve.uva.oberon.shared.SelectorValue;
  * 
  * @author Bart v. Eijkelenburg
  */
-public abstract class OberonType {
+public abstract class OberonValue {
 	/**
 	 * If the subclass is not a container type like an array or record,
 	 * this method can be used to get the actual int value of the type.
@@ -24,7 +24,7 @@ public abstract class OberonType {
 	 * 
 	 * @param value : the new value for this type 
 	 */
-	public abstract void setValue(OberonType value);
+	public abstract void setValue(OberonValue value);
 	
 	/**
 	 * This method can be used for container types like array or record.
@@ -35,7 +35,7 @@ public abstract class OberonType {
 	 * @param selector : the selector that has to applied to this type's value
 	 * @return : the value that corresponds with the selector
 	 */
-	public abstract OberonType evaluateSelector(SelectorValue selector);
+	public abstract OberonValue evaluateSelector(SelectorValue selector);
 	
 	/**
 	 * If a value is assigned to a type, the actual value can be different
@@ -49,13 +49,13 @@ public abstract class OberonType {
 	 * @param obj : the type to compare to
 	 * @return : true if this type is type-equals, false if otherwise
 	 */
-	public abstract boolean typeEquals(OberonType obj);
+	public abstract boolean typeEquals(OberonValue obj);
 	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#clone()
 	 */
 	@Override
-	public abstract OberonType clone();
+	public abstract OberonValue clone();
 	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()

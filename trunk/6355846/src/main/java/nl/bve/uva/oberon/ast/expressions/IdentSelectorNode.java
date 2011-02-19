@@ -4,7 +4,7 @@ import java.util.List;
 
 import nl.bve.uva.oberon.ast.selectors.Selector;
 import nl.bve.uva.oberon.env.Environment;
-import nl.bve.uva.oberon.env.types.OberonType;
+import nl.bve.uva.oberon.env.types.OberonValue;
 
 
 public class IdentSelectorNode extends ExpressionNode {
@@ -17,8 +17,8 @@ public class IdentSelectorNode extends ExpressionNode {
 	}
 	
 	@Override
-	public OberonType eval(Environment env) {
-		OberonType type = env.getVariable(name);
+	public OberonValue eval(Environment env) {
+		OberonValue type = env.getVariable(name);
 		
 		if (selectors != null) {
 			for (Selector s : selectors) {

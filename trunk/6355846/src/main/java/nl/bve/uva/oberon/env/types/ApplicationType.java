@@ -10,11 +10,11 @@ import nl.bve.uva.oberon.shared.SelectorValue;
  * 
  * @author Bart v. Eijkelenburg
  */
-public class ApplicationType extends OberonType {
+public class ApplicationType extends OberonValue {
 	private String name;
-	private OberonType value;
+	private OberonValue value;
 	
-	public ApplicationType(String name, OberonType value) {
+	public ApplicationType(String name, OberonValue value) {
 		if (name == null && "".equals(name) || value == null) {
 			throw new IllegalArgumentException("Cannot instantiate an ApplicationType with a null or empty value: (name: '" +name+ "', value: '" +value+ "'!");
 		}
@@ -29,7 +29,7 @@ public class ApplicationType extends OberonType {
 	}
 	
 	@Override
-	public void setValue(OberonType value) {
+	public void setValue(OberonValue value) {
 		if (! this.typeEquals(value)) {
 			throw new RuntimeException("Can not assign\n" +value+ " to \n" +this+ "!");
 		}
@@ -37,8 +37,8 @@ public class ApplicationType extends OberonType {
 	}
 	
 	@Override
-	public OberonType evaluateSelector(SelectorValue selector) {
-		OberonType result = value.evaluateSelector(selector);
+	public OberonValue evaluateSelector(SelectorValue selector) {
+		OberonValue result = value.evaluateSelector(selector);
 		
 		if (result == null) {
 			throw new RuntimeException("There is no '" +selector+ "' for this ApplicationType!");
@@ -48,7 +48,7 @@ public class ApplicationType extends OberonType {
 	}
 	
 	@Override
-	public boolean typeEquals(OberonType obj) {
+	public boolean typeEquals(OberonValue obj) {
 		if (obj != null && obj instanceof ApplicationType && this.name.equals(((ApplicationType)obj).name)) {
 			return value.typeEquals(((ApplicationType)obj).value);
 		} else {

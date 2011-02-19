@@ -1,10 +1,10 @@
 package nl.bve.uva.oberon.shared;
 
-import nl.bve.uva.oberon.env.types.OberonType;
+import nl.bve.uva.oberon.env.types.OberonValue;
 
 public final class SelectorValue {
 	private String stringVal;
-	private OberonType oberonVal;
+	private OberonValue oberonVal;
 
 	public SelectorValue(String val) {
 		if (val == null) {
@@ -13,7 +13,7 @@ public final class SelectorValue {
 		this.stringVal = val;
 	}
 
-	public SelectorValue(OberonType val) {
+	public SelectorValue(OberonValue val) {
 		if (val == null) {
 			throw new IllegalArgumentException("Cannot instantiate SelectorValue with " + val);
 		}
@@ -27,7 +27,7 @@ public final class SelectorValue {
 		throw new RuntimeException("Cannot get a fieldname for this SelectorValue!");
 	}
 
-	public OberonType getIndex() {
+	public OberonValue getIndex() {
 		if (oberonVal != null) {
 			return oberonVal;
 		}

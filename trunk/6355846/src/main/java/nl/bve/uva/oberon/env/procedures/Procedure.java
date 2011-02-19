@@ -5,7 +5,7 @@ import java.util.List;
 
 import nl.bve.uva.oberon.ast.expressions.ExpressionNode;
 import nl.bve.uva.oberon.env.Environment;
-import nl.bve.uva.oberon.env.types.OberonType;
+import nl.bve.uva.oberon.env.types.OberonValue;
 import nl.bve.uva.oberon.shared.TypedParameterList;
 
 public abstract class Procedure {
@@ -32,7 +32,7 @@ public abstract class Procedure {
 						throw new RuntimeException("Not enough actual values given for procedure " +getName()+ " (parameters needed: " +formalParametersList.size());
 					}
 					
-					OberonType value = actuals.next().eval(subEnv);
+					OberonValue value = actuals.next().eval(subEnv);
 					value = fpList.processValue(ident, value, subEnv);
 					subEnv.addVariable(ident, value);
 				}

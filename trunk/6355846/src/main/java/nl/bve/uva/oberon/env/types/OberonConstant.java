@@ -10,7 +10,7 @@ import nl.bve.uva.oberon.shared.SelectorValue;
  * @author Bart v. Eijkelenburg
  *
  */
-public class OberonConstant extends OberonType {
+public class OberonConstant extends OberonValue {
 	private OberonInt value;
 	
 	public OberonConstant(OberonInt value) {
@@ -23,22 +23,22 @@ public class OberonConstant extends OberonType {
 	}
 	
 	@Override
-	public void setValue(OberonType value) {
+	public void setValue(OberonValue value) {
 		throw new RuntimeException("Cannot change the value of a CONSTANT!");
 	}
 	
 	@Override
-	public OberonType evaluateSelector(SelectorValue selector) {
+	public OberonValue evaluateSelector(SelectorValue selector) {
 		throw new RuntimeException("Cannot evaluate an OberonInt type!");
 	}
 	
 	@Override
-	public boolean typeEquals(OberonType obj) {
+	public boolean typeEquals(OberonValue obj) {
 		return (obj != null && obj instanceof OberonConstant);
 	}
 	
 	@Override
-	public OberonType clone() {
+	public OberonValue clone() {
 		return new OberonConstant(value);
 	}
 	

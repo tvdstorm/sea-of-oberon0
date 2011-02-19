@@ -4,7 +4,7 @@ import java.util.List;
 
 import nl.bve.uva.oberon.ast.IInterpretableNode;
 import nl.bve.uva.oberon.env.Environment;
-import nl.bve.uva.oberon.env.types.OberonType;
+import nl.bve.uva.oberon.env.types.OberonValue;
 
 public class VarDeclarationNode extends DeclarationNode {
 	private List<String> identList;
@@ -17,7 +17,7 @@ public class VarDeclarationNode extends DeclarationNode {
 	
 	@Override
 	public void declare(Environment env) {
-		OberonType t = (OberonType)type.interpret(env);
+		OberonValue t = (OberonValue)type.interpret(env);
 		
 		for (String ident : identList) {
 			env.addVariable(ident, t.clone());

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import nl.bve.uva.oberon.env.Environment;
-import nl.bve.uva.oberon.env.types.OberonType;
+import nl.bve.uva.oberon.env.types.OberonValue;
 
 public class TypedFieldListNode implements IInterpretableNode {
 	private List<String> identList;
@@ -16,9 +16,9 @@ public class TypedFieldListNode implements IInterpretableNode {
 	}
 	
 	@Override
-	public HashMap<String, OberonType> interpret(Environment env) {
-		HashMap<String, OberonType> fields = new HashMap<String, OberonType>();
-		OberonType value = (OberonType)type.interpret(env);
+	public HashMap<String, OberonValue> interpret(Environment env) {
+		HashMap<String, OberonValue> fields = new HashMap<String, OberonValue>();
+		OberonValue value = (OberonValue)type.interpret(env);
 		
 		for (String ident : identList) {
 			fields.put(ident, value.clone());

@@ -12,7 +12,7 @@ import nl.bve.uva.oberon.shared.SelectorValue;
  * @author Bart v. Eijkelenburg
  *
  */
-public class OberonInt extends OberonType {
+public class OberonInt extends OberonValue {
 	public static final int FALSE = 0;
 	public static final int TRUE  = 1;
 	
@@ -28,7 +28,7 @@ public class OberonInt extends OberonType {
 	}
 	
 	@Override
-	public void setValue(OberonType value) {
+	public void setValue(OberonValue value) {
 		if (! this.typeEquals(value)) {
 			throw new RuntimeException("Can not assign\n" +value+ " to \n" +this+ "!");
 		}
@@ -36,12 +36,12 @@ public class OberonInt extends OberonType {
 	}
 	
 	@Override
-	public OberonType evaluateSelector(SelectorValue selector) {
+	public OberonValue evaluateSelector(SelectorValue selector) {
 		throw new RuntimeException("Cannot evaluate an OberonInt type!");
 	}
 	
 	@Override
-	public boolean typeEquals(OberonType obj) {
+	public boolean typeEquals(OberonValue obj) {
 		return (obj != null && obj instanceof OberonInt);
 	}
 	

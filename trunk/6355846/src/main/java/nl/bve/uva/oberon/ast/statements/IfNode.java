@@ -4,7 +4,7 @@ import nl.bve.uva.oberon.ast.IInterpretableNode;
 import nl.bve.uva.oberon.ast.expressions.ExpressionNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.types.OberonInt;
-import nl.bve.uva.oberon.env.types.OberonType;
+import nl.bve.uva.oberon.env.types.OberonValue;
 
 public class IfNode extends StatementNode {
 	private ExpressionNode condition;
@@ -19,7 +19,7 @@ public class IfNode extends StatementNode {
 	
 	@Override
 	public void execute(Environment env) {
-		OberonType t = condition.eval(env);
+		OberonValue t = condition.eval(env);
 		
 		if (t.getValue() == OberonInt.TRUE) {
 			body.interpret(env);

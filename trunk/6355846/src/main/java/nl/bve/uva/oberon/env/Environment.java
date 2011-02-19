@@ -7,7 +7,7 @@ import java.util.Map.Entry;
 import nl.bve.uva.oberon.env.procedures.Procedure;
 import nl.bve.uva.oberon.env.types.ApplicationType;
 import nl.bve.uva.oberon.env.types.OberonConstant;
-import nl.bve.uva.oberon.env.types.OberonType;
+import nl.bve.uva.oberon.env.types.OberonValue;
 
 /**
  * This class can be used as a holder of variables, application-defined-types
@@ -33,7 +33,7 @@ public class Environment {
 	private Environment superSpace;
 	
 	private Map<String, ApplicationType> applicationTypes = new HashMap<String, ApplicationType>();
-	private Map<String, OberonType> identStack = new HashMap<String, OberonType>();
+	private Map<String, OberonValue> identStack = new HashMap<String, OberonValue>();
 	private Map<String, Procedure> procedureStack = new HashMap<String, Procedure>();
 	
 	public Environment() {}
@@ -69,12 +69,12 @@ public class Environment {
 		identStack.put(const_id, c);
 	}
 	
-	public void addVariable(String var_id, OberonType var) {
+	public void addVariable(String var_id, OberonValue var) {
 		identStack.put(var_id, var);
 	}
 	
-	public OberonType getVariable(String var_id) {
-		OberonType t = identStack.get(var_id);
+	public OberonValue getVariable(String var_id) {
+		OberonValue t = identStack.get(var_id);
 		
 		if (t == null) {
 			if (superSpace != null) {
@@ -156,7 +156,7 @@ public class Environment {
 			sb.append(superSpace.toString());
 		}
 		
-		for (Entry<String, OberonType> e : identStack.entrySet() ) {
+		for (Entry<String, OberonValue> e : identStack.entrySet() ) {
 			sb.append(e.getKey()+ ": " +e.getValue()+ "\n");
 		}
 		
