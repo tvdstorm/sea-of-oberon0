@@ -1,4 +1,4 @@
-package nl.bve.uva.oberon.ast.declarations.values;
+package nl.bve.uva.oberon.ast.types;
 
 import java.util.HashMap;
 import java.util.List;

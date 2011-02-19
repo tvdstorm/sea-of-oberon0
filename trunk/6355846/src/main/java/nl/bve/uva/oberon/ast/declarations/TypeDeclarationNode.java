@@ -1,6 +1,6 @@
 package nl.bve.uva.oberon.ast.declarations;
 
-import nl.bve.uva.oberon.ast.declarations.values.IValueNode;
+import nl.bve.uva.oberon.ast.types.IValueNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.values.OberonValue;
 import nl.bve.uva.oberon.env.values.TypeValue;
