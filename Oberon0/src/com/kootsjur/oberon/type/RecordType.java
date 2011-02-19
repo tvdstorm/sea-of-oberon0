@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.kootsjur.oberon.FieldList;
 import com.kootsjur.oberon.environment.Environment;
+import com.kootsjur.oberon.value.Record;
 import com.kootsjur.oberon.value.Value;
 
 public class RecordType extends TypeDefinition
@@ -39,8 +40,16 @@ public class RecordType extends TypeDefinition
    @Override
    public Value initValue(Environment environment)
    {
-      // TODO Auto-generated method stub
-      return null;
+      Record record = new Record(fields);
+      for(FieldList field : fields)
+      {
+         Value value = field.getTypeDefinition().initValue(environment);
+         for(String name : field.getNames())
+         {
+            record.set(name, value);
+         }
+      }
+      return record;
    }
 
 }

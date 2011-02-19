@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.kootsjur.oberon.declaration.Declaration;
 import com.kootsjur.oberon.declaration.procedure.ProcedureDeclaration;
+import com.kootsjur.oberon.statement.Statement;
 import com.kootsjur.oberon.statement.StatementSequence;
 
 
@@ -48,7 +49,10 @@ public class Module extends Environment
    
    private void evaluate()
    {
-      evaluateStatements(statementSequence);
+      for(Statement statement : statementSequence)
+      {
+         statement.evaluate(this);
+      }
    }
 
    public void run()

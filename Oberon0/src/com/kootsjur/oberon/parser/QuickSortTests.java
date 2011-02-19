@@ -15,7 +15,7 @@ public class QuickSortTests {
 
 	
 	public static void main(String[] args) {
-		int runs = 1;
+		int runs = 10;
 		int length = 10;
 		quickSortTest(new Oberon(), runs, length);
 		quickSortTest(new Oberon(), runs, length);
@@ -56,7 +56,7 @@ public class QuickSortTests {
 			
 			Arrays.sort(array);
 			String expected = toIOString(array);
-
+			output =output.replace("\r\n","\n");
 			if (!output.equals(expected)) {
 				throw new RuntimeException("test failed: sorting of '" +
 						input + "' not equal to expected '" + expected +
@@ -67,16 +67,16 @@ public class QuickSortTests {
 	}
 	
 	private void populate(int[] array) {
-	   array[0] = 5;
-	   array[1] = 1;
-	   array[2] = 9;
-	   array[3] = 6;
-	   array[4] = 4;
-	   array[5] = 2;
-	   array[6] = 8;
+	   array[0] = 4;
+	   array[1] = 9 ;
+	   array[2] = 5;
+	   array[3] = 2;
+	   array[4] = 1;
+	   array[5] = 6;
+	   array[6] = 0;
 	   array[7] = 7;
 	   array[8] = 3;
-	   array[9] = 0;
+	   array[9] = 8;
 		//for (int i = 0; i < array.length; i++) {
 		//	array[i] = rand.nextInt();
 		//}

@@ -15,6 +15,7 @@ import com.kootsjur.oberon.value.Array;
 import com.kootsjur.oberon.value.Bool;
 import com.kootsjur.oberon.value.Int;
 import com.kootsjur.oberon.value.Record;
+import com.kootsjur.oberon.value.Value;
 
 public class VarDeclaration implements Declaration
 {
@@ -32,62 +33,59 @@ public class VarDeclaration implements Declaration
    public void setType(TypeDefinition typeDefinition){this.typeDefinition = typeDefinition;}
    public TypeDefinition getType(){return typeDefinition;}
    
+   @SuppressWarnings({ "rawtypes" })
    @Override
    public void declare(Environment environment)
    {
+      Value value = typeDefinition.initValue(environment);
       switch(typeDefinition.getDataType())
       {
-         case BOOL:
-            Var<BoolType, Bool> boolVar = new Var<BoolType, Bool>((BoolType)typeDefinition);
-            environment.declareVar(names, boolVar);
+         case BOOL:     
+            environment.declareBoolVars(names, (Bool)value);
             return;
          case INTEGER:
-            Var<IntegerType, Int> intVar = new Var<IntegerType, Int>((IntegerType)typeDefinition);
-            environment.declareVar(names, intVar);
+            environment.declareIntVars(names,(Int) value);
             return;
          case ARRAY:
             ArrayType arrayType = (ArrayType)typeDefinition;
             declareArrayVar(environment, arrayType);
             return;
          case RECORD:
-            Var<RecordType,Record> recordVar = new Var<RecordType,Record>((RecordType)typeDefinition);
-            environment.declareVar(names, recordVar);
-            return;
-         case USER:
-            Var<UserType,Record> userVar = new Var<UserType,Record>((UserType)typeDefinition);
-            environment.declareVar(names, userVar);
+            environment.declareRecordVars(names, (Record)value);
             return;
             default:
-               Var var = new Var(typeDefinition);
-               environment.declareVar(names, var);
+               environment.declareVar(names, value);
       }
    }
+   
+   @SuppressWarnings("unchecked")
    private void declareArrayVar(Environment environment, ArrayType arrayType)
    {
+      
       switch(arrayType.getDataType())
       {
+         
          case BOOL:
-            Var<ArrayType, Array<Bool>> boolArrayVar = new Var<ArrayType, Array<Bool>>(arrayType);
-            environment.declareVar(names, boolArrayVar);
+            Array<Bool> boolArray = (Array<Bool>) typeDefinition.initValue(environment);
+            environment.declareBoolArrayVars(names, boolArray);
             return;
          case INTEGER:
-            Var<ArrayType, Array<Int>> integerArrayVar = new Var<ArrayType, Array<Int>>(arrayType);
-            environment.declareVar(names, integerArrayVar);
+            Array<Int> intArray = (Array<Int>) typeDefinition.initValue(environment);
+            environment.declareIntegerArrayVars(names, intArray);
             return;
          case ARRAY:
-            Var<ArrayType, Array<Array>> arrayArrayVar = new Var<ArrayType, Array<Array>>(arrayType);
-            environment.declareVar(names, arrayArrayVar);
+            Array<Array> arrayArray = (Array<Array>) typeDefinition.initValue(environment);
+            environment.declareArrayArrayVars(names, arrayArray);
             return;
          case RECORD:
-            Var<ArrayType, Array<Record>> recordArrayVar = new Var<ArrayType, Array<Record>>(arrayType);
-            environment.declareVar(names, recordArrayVar);
+            Array<Record> recordArray = (Array<Record>) typeDefinition.initValue(environment);
+            environment.declareRecordArrayVars(names, recordArray);
             return;
             default:
-               Var<ArrayType, Array> userArrayVar = new Var<ArrayType, Array>(arrayType);
-               environment.declareVar(names, userArrayVar);
+               Array array = (Array) typeDefinition.initValue(environment);
+               environment.declareVar(names, array);
 
       }   
-      
-      
    }
+   
 }

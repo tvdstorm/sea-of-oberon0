@@ -73,20 +73,25 @@ public class IfStatement extends Statement
       Bool ifcon = (Bool) ifCondition.evaluate(environment);
       if(ifcon.getValue())
       {
-         thenStatementSequence.evaluate(environment);
+         for(Statement statement : thenStatementSequence)
+         {
+            statement.evaluate(environment);
+         }
          return;
       }
       
       if(!elseIfStatements.isEmpty())
       {
-         for(IfStatement statement : elseIfStatements)
+         for(IfStatement ifStatement : elseIfStatements)
          {
-            Evaluator ifElseConditionEvaluator = statement.getIfCondition();
+            Evaluator ifElseConditionEvaluator = ifStatement.getIfCondition();
             Bool elseIfCondition = (Bool) ifElseConditionEvaluator.evaluate(environment);
             if(elseIfCondition.getValue())
             {
-               StatementSequence statements = statement.getThenStatementSequence();
-               statements.evaluate(environment);
+               for(Statement statement : ifStatement.getThenStatementSequence())
+               {
+                  statement.evaluate(environment);
+               }
                return;
             }
          }
@@ -94,7 +99,10 @@ public class IfStatement extends Statement
       
       if(elseStatementSequence != null && !elseStatementSequence.isEmpty())
       {
-         elseStatementSequence.evaluate(environment);
+         for(Statement statement : elseStatementSequence)
+         {
+            statement.evaluate(environment);
+         }
       }
    }
 }

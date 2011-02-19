@@ -1,5 +1,6 @@
 package com.kootsjur.oberon.statement;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import com.kootsjur.oberon.environment.Environment;
@@ -15,7 +16,10 @@ public class StatementSequence extends LinkedList<Statement>
       {
          for(Statement statement : this)
          {
-            statement.evaluate(environment);
+            if(statement != null)
+            {
+               statement.evaluate(environment);
+            }
          }
       }
    }

@@ -66,5 +66,5 @@ public abstract class TypeDefinition
       return name;
    }
 
-   public abstract Value initValue(Environment environment);
+   public abstract  Value initValue(Environment environment);
 }

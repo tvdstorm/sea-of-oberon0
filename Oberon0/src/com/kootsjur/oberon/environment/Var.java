@@ -16,21 +16,9 @@ public class Var<T extends TypeDefinition,V extends Value>
    public Var(T type)
    {
       this.type = type;
+      reference = new Reference<V>();
    }
    
-   public void initVar(Environment environment)
-   {
-      V value = initValueOfReference(environment);
-      reference = new Reference<V>(value);
-   }
-
-   @SuppressWarnings("unchecked")
-   private V initValueOfReference(Environment environment)
-   {
-      return (V) type.initValue(environment);
-   }
-
-
    public void setReferenceValue(V value){this.reference.setValue(value);}
    public void setReference(Reference<V> reference){this.reference = reference;}
    public Reference<V> getReference(){return reference;}

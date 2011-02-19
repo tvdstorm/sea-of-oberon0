@@ -94,10 +94,10 @@ statementSequence returns [StatementSequence s]
 	: {$s = new StatementSequence();}	statement1=statement{$s.add($statement1.s);}(';'statement2=statement{$s.add($statement2.s);})*;
 	
 statement returns [Statement s]
-	:	{boolean bracket = false;} (ident ((actualParameters) {$s = new ProcedureCall($ident.text, $actualParameters.a);}
+	:	{boolean bracket = false;} ((ident ((actualParameters) {$s = new ProcedureCall($ident.text, $actualParameters.a);}
 							| {bracket = true;}(bracketSelector)? ':=' expression {$s = new Assignment($ident.text,$expression.e); 
 																						if(bracket)((Assignment)$s).setSelector( $bracketSelector.b);
-																					})
+																					}))
 		|ifStatement {$s = $ifStatement.i;}
 		|whileStatement {$s = $whileStatement.w;})?;
 	//(ident (selector)?((actualParameters)?|':='expression)

@@ -5,13 +5,13 @@ import com.kootsjur.oberon.type.TypeDefinition;
 public class Field
 {
    private String name;
-   private TypeDefinition type;
 
+
+   public Field(String name){
+      this.name = name;
+   }
    public void setName(String name){this.name = name;}
    public String getName(){return name;}
-
-   public void setType(TypeDefinition type){this.type = type;}
-   public TypeDefinition getType(){return type;}
    
    @Override
    public boolean equals(Object obj) {

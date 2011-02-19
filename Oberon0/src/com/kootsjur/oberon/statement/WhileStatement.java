@@ -28,7 +28,10 @@ public class WhileStatement extends Statement
       Bool condition = (Bool) whileCondition.evaluate(environment);
       while(condition.getValue())
       {
-         statementSequence.evaluate(environment);
+         for(Statement statement : statementSequence)
+         {
+            statement.evaluate(environment);
+         }
          condition = (Bool) whileCondition.evaluate(environment);
       }      
    }

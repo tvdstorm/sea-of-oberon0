@@ -15,7 +15,16 @@ import com.kootsjur.oberon.declaration.type.TypeDeclaration;
 import com.kootsjur.oberon.declaration.var.DeclaredVars;
 import com.kootsjur.oberon.evaluator.Evaluator;
 import com.kootsjur.oberon.statement.StatementSequence;
+import com.kootsjur.oberon.type.ArrayType;
+import com.kootsjur.oberon.type.BoolType;
+import com.kootsjur.oberon.type.IntegerType;
+import com.kootsjur.oberon.type.RecordType;
 import com.kootsjur.oberon.type.TypeDefinition;
+import com.kootsjur.oberon.type.UserType;
+import com.kootsjur.oberon.value.Array;
+import com.kootsjur.oberon.value.Bool;
+import com.kootsjur.oberon.value.Int;
+import com.kootsjur.oberon.value.Record;
 import com.kootsjur.oberon.value.Value;
 
 public class Environment
@@ -94,7 +103,6 @@ public class Environment
    @SuppressWarnings({ "unchecked", "rawtypes" })
    public void declareVar(String varName, Var var)
    {
-      var.initVar(this);
       declaredVars.put(varName, var);
    }
       
@@ -119,9 +127,7 @@ public class Environment
    @SuppressWarnings("rawtypes")
    public void declareParameter(String parameterName, Parameter parameter)
    {
-      parameter.initVar(this);
       parameters.put(parameterName, parameter);
-      
    }
    
    public void declareProcedures(List<ProcedureDeclaration> procedureDeclarations)
@@ -139,11 +145,6 @@ public class Environment
          declaration.declare(this);
       }
    } 
-   
-   public void evaluateStatements(StatementSequence statementSequence)
-   {
-      statementSequence.evaluate(this);
-   }
    
    public Constant lookUpConstant(String constantName)
    {
@@ -356,15 +357,105 @@ public class Environment
    }
 
    @SuppressWarnings("rawtypes")
-   public void declareVar(List<String> names, Var var)
+   public void declareVar(List<String> names)
    {
       for(String name : names)
       {
+         Var var = new Var();
+         declareVar(name, var);
+      }
+   }
+
+   public void declareBoolVars(List<String> names, Bool value)
+   {
+      for(String name : names)
+      {
+         Var<BoolType, Bool> boolVar = new Var<BoolType, Bool>();
+         boolVar.setReferenceValue(value);
+         declareVar(name,boolVar);
+      }
+   }
+
+   public void declareIntVars(List<String> names, Int value)
+   {
+      for(String name : names)
+      {
+         Var<IntegerType, Int> intVar = new Var<IntegerType, Int>();
+         intVar.setReferenceValue(value);
+         declareVar(name,intVar);
+      }
+   }
+
+   public void declareRecordVars(List<String> names, Record value)
+   {
+      for(String name : names)
+      {
+         Var<RecordType, Record> recordVar = new Var<RecordType, Record>();
+         recordVar.setReferenceValue(value);
+         declareVar(name,recordVar);
+      }
+   }
+
+   public void declareUserVars(List<String> names, Record value)
+   {
+      for(String name : names)
+      {
+         Var<UserType, Record> userVar = new Var<UserType, Record>();
+         userVar.setReferenceValue(value);
+         declareVar(name,userVar);
+      }
+   }
+
+   public void declareBoolArrayVars(List<String> names, Array<Bool> value)
+   {
+      for(String name : names)
+      {
+         Var<ArrayType, Array<Bool>> boolArrayVar = new Var<ArrayType, Array<Bool>>();
+         boolArrayVar.setReferenceValue(value);
+         declareVar(name,boolArrayVar);
+      }
+   }
+
+   public void declareIntegerArrayVars(List<String> names, Array<Int> value)
+   {
+      for(String name : names)
+      {
+         Var<ArrayType, Array<Int>> integerArrayVar = new Var<ArrayType, Array<Int>>();
+         integerArrayVar.setReferenceValue(value);
+         declareVar(name,integerArrayVar);
+      }
+   }
+
+   @SuppressWarnings("rawtypes")
+   public void declareArrayArrayVars(List<String> names, Array<Array> value)
+   {
+      for(String name : names)
+      {
+         Var<ArrayType, Array<Array>> arrayArrayVar = new Var<ArrayType, Array<Array>>();
+         arrayArrayVar.setReferenceValue(value);
+         declareVar(name,arrayArrayVar);
+      }
+   }
+
+   public void declareRecordArrayVars(List<String> names, Array<Record> value)
+   {
+      for(String name : names)
+      {
+         Var<ArrayType, Array<Record>> recordArrayVar = new Var<ArrayType, Array<Record>>();
+         recordArrayVar.setReferenceValue(value);
+         declareVar(name,recordArrayVar);
+      }
+   }
+
+   @SuppressWarnings({ "rawtypes", "unchecked" })
+   public void declareVar(List<String> names, Value value)
+   {
+      for(String name:names)
+      {
+         Var var = new Var();
+         var.setReferenceValue(value);
          declareVar(name,var);
       }
       
-   }
-
-  
-   
+   }   
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import com.kootsjur.oberon.declaration.Declaration;
 import com.kootsjur.oberon.declaration.formalparameter.FormalParameters;
 import com.kootsjur.oberon.declaration.procedure.ProcedureDeclaration;
+import com.kootsjur.oberon.statement.Statement;
 import com.kootsjur.oberon.statement.StatementSequence;
 
 public class Procedure extends Environment
@@ -37,8 +38,10 @@ public class Procedure extends Environment
 
    public void run()
    {
-      statementSequence.evaluate(this);
-      
+      for(Statement statement : statementSequence)
+      {
+         statement.evaluate(this);
+      }
    }
 
 }
