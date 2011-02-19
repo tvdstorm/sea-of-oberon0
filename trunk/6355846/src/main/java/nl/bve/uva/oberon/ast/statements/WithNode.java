@@ -1,11 +1,12 @@
-package nl.bve.uva.oberon.ast;
+package nl.bve.uva.oberon.ast.statements;
 
+import nl.bve.uva.oberon.ast.IInterpretableNode;
 import nl.bve.uva.oberon.ast.expressions.ExpressionNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.types.OberonType;
 import nl.bve.uva.oberon.shared.SelectorValue;
 
-public class WithNode implements IInterpretableNode {
+public class WithNode extends StatementNode {
 	private ExpressionNode expression;
 	private IInterpretableNode body;
 	
@@ -15,12 +16,11 @@ public class WithNode implements IInterpretableNode {
 	}
 	
 	@Override
-	public Object interpret(Environment env) {
+	public void execute(Environment env) {
 		final OberonType type = expression.eval(env);
 		final Environment superSpace = env;
 		
 		Environment withEnv = new Environment(env) {
-			
 			@Override
 			public OberonType getVariable(String varId) {
 				OberonType result = null;
@@ -40,6 +40,5 @@ public class WithNode implements IInterpretableNode {
 		};
 	
 		body.interpret(withEnv);
-		return null;
 	}
 }

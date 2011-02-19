@@ -1,4 +1,4 @@
-package nl.bve.uva.oberon.ast;
+package nl.bve.uva.oberon.ast.selectors;
 
 import nl.bve.uva.oberon.ast.expressions.ExpressionNode;
 import nl.bve.uva.oberon.env.Environment;

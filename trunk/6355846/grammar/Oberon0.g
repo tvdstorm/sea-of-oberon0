@@ -23,6 +23,8 @@ import nl.bve.uva.oberon.ast.*;
 import nl.bve.uva.oberon.ast.declarations.*;
 import nl.bve.uva.oberon.ast.expressions.*;
 import nl.bve.uva.oberon.ast.expressions.binary.*;
+import nl.bve.uva.oberon.ast.selectors.*;
+import nl.bve.uva.oberon.ast.statements.*;
 import nl.bve.uva.oberon.env.*;
 import nl.bve.uva.oberon.shared.*;
 }
@@ -131,14 +133,14 @@ statementSequence returns [IInterpretableNode result]
    grammar toestond dat een statement an sich 0 of meerdere keren voorkomt. Dan kan 
    er dus een ';' gelezen worden door de parser, terwijl er geen volgende statement komt.
 */
-statementList returns [List<IInterpretableNode> result = new ArrayList<IInterpretableNode>()]
+statementList returns [List<StatementNode> result = new ArrayList<StatementNode>()]
 	:	(s1=statement 											{$result.add($s1.result); }
 			(';' s2=statement									{$result.add($s2.result); }
 			)*
 		   )?
 	;
 
-statement returns [IInterpretableNode result]
+statement returns [StatementNode result]
 	:	  assignment											{$result = $assignment.result; }
 		| procedureCall											{$result = $procedureCall.result; }
 		| ifStatement											{$result = $ifStatement.result; }
@@ -146,12 +148,12 @@ statement returns [IInterpretableNode result]
 		| withStatement											{$result = $withStatement.result; }
 	;
 
-assignment returns [IInterpretableNode result]
+assignment returns [StatementNode result]
 	:	IDENT selector 											{ExpressionNode e1 = new IdentSelectorNode($IDENT.text, $selector.result); }
 			':=' expression										{$result = new AssignmentNode(e1, $expression.result); }
 	;
 
-procedureCall returns [IInterpretableNode result]
+procedureCall returns [StatementNode result]
 	:	IDENT (actualParameters)?								{$result = new ProcedureCallNode($IDENT.text, $actualParameters.result); }
 	;
 
@@ -164,12 +166,12 @@ actualParameters returns [List<ExpressionNode> result = new ArrayList<Expression
 		')'
 	;
 
-ifStatement returns [IInterpretableNode result]
+ifStatement returns [StatementNode result]
 	:	'IF' e1=expression 'THEN' ss1=statementSequence	
 			(elseStatements)? 'END'								{$result = new IfNode($e1.result, $ss1.result, $elseStatements.result); }
 	;
 
-elseStatements returns [IInterpretableNode result]
+elseStatements returns [StatementNode result]
 	:	 'ELSIF' e=expression 'THEN' ss1=statementSequence		{$result = new ElseIfNode($e.result, $ss1.result, null); }
 			(
 				es=elseStatements								{$result = new ElseIfNode($e.result, $ss1.result, $es.result); }
@@ -177,11 +179,11 @@ elseStatements returns [IInterpretableNode result]
 		|'ELSE' ss2=statementSequence							{$result = new ElseNode($ss2.result); }
 	;
 
-whileStatement returns [IInterpretableNode result]
+whileStatement returns [StatementNode result]
 	:	'WHILE' expression 'DO' statementSequence 'END'			{$result = new WhileNode($expression.result, $statementSequence.result); }
 	;
 
-withStatement returns [IInterpretableNode result]
+withStatement returns [StatementNode result]
 	:	'WITH' expression 'DO' statementSequence 'END'			{$result = new WithNode($expression.result, $statementSequence.result); }
 	;
 

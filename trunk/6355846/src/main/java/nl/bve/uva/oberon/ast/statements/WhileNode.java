@@ -1,10 +1,11 @@
-package nl.bve.uva.oberon.ast;
+package nl.bve.uva.oberon.ast.statements;
 
+import nl.bve.uva.oberon.ast.IInterpretableNode;
 import nl.bve.uva.oberon.ast.expressions.ExpressionNode;
 import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.types.OberonInt;
 
-public class WhileNode implements IInterpretableNode {
+public class WhileNode extends StatementNode {
 	private ExpressionNode condition;
 	private IInterpretableNode body;
 	
@@ -14,11 +15,9 @@ public class WhileNode implements IInterpretableNode {
 	}
 	
 	@Override
-	public Object interpret(Environment env) {
+	public void execute(Environment env) {
 		while ( condition.eval(env).getValue() == OberonInt.TRUE) {
 			body.interpret(env);
 		}
-		
-		return null;
 	}
 }
