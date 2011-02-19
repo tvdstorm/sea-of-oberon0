@@ -5,11 +5,11 @@ import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.values.ArrayValue;
 import nl.bve.uva.oberon.env.values.OberonValue;
 
-public class ArrayNode implements IValueNode {
+public class ArrayTypeNode implements IOberonTypeNode {
 	private IExpressionNode expression;
-	private IValueNode arrayType;
+	private IOberonTypeNode arrayType;
 	
-	public ArrayNode(IExpressionNode expression, IValueNode arrayType) {
+	public ArrayTypeNode(IExpressionNode expression, IOberonTypeNode arrayType) {
 		this.expression = expression;
 		this.arrayType = arrayType;
 	}

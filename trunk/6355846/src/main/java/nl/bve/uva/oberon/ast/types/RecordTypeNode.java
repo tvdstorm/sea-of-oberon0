@@ -8,10 +8,10 @@ import nl.bve.uva.oberon.env.Environment;
 import nl.bve.uva.oberon.env.values.OberonValue;
 import nl.bve.uva.oberon.env.values.RecordValue;
 
-public class RecordNode implements IValueNode {
+public class RecordTypeNode implements IOberonTypeNode {
 	private List<TypedFieldListNode> fieldLists;
 	
-	public RecordNode(List<TypedFieldListNode> fieldLists) {
+	public RecordTypeNode(List<TypedFieldListNode> fieldLists) {
 		this.fieldLists = fieldLists;
 	}
 	

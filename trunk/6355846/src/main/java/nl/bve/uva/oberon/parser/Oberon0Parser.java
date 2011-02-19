@@ -1,20 +1,14 @@
-// $ANTLR 3.3 Nov 30, 2010 12:50:56 C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g 2011-02-19 19:36:56
+// $ANTLR 3.3 Nov 30, 2010 12:50:56 C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g 2011-02-19 20:24:20
 
 package nl.bve.uva.oberon.parser;
 
 import nl.bve.uva.oberon.ast.*;
 import nl.bve.uva.oberon.ast.declarations.*;
-import nl.bve.uva.oberon.ast.declarations.values.*;
 import nl.bve.uva.oberon.ast.expressions.*;
 import nl.bve.uva.oberon.ast.expressions.binary.*;
 import nl.bve.uva.oberon.ast.selectors.*;
 import nl.bve.uva.oberon.ast.statements.*;
-import nl.bve.uva.oberon.ast.types.ArrayNode;
-import nl.bve.uva.oberon.ast.types.IValueNode;
-import nl.bve.uva.oberon.ast.types.IntNode;
-import nl.bve.uva.oberon.ast.types.MyTypeNode;
-import nl.bve.uva.oberon.ast.types.RecordNode;
-import nl.bve.uva.oberon.ast.types.TypedFieldListNode;
+import nl.bve.uva.oberon.ast.types.*;
 import nl.bve.uva.oberon.shared.*;
 
 
@@ -299,7 +293,7 @@ public class Oberon0Parser extends Parser {
         List<IDeclarationNode> result =  new ArrayList<IDeclarationNode>();
 
         Token IDENT5=null;
-        IValueNode type6 = null;
+        IOberonTypeNode type6 = null;
 
 
         try {
@@ -379,7 +373,7 @@ public class Oberon0Parser extends Parser {
 
         List<String> identList7 = null;
 
-        IValueNode type8 = null;
+        IOberonTypeNode type8 = null;
 
 
         try {
@@ -696,11 +690,11 @@ public class Oberon0Parser extends Parser {
 
         List<String> i1 = null;
 
-        IValueNode t1 = null;
+        IOberonTypeNode t1 = null;
 
         List<String> i2 = null;
 
-        IValueNode t2 = null;
+        IOberonTypeNode t2 = null;
 
 
         try {
@@ -780,14 +774,14 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "type"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:100:1: type returns [IValueNode result] : ( 'INTEGER' | IDENT | arrayType | recordType );
-    public final IValueNode type() throws RecognitionException {
-        IValueNode result = null;
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:100:1: type returns [IOberonTypeNode result] : ( 'INTEGER' | IDENT | arrayType | recordType );
+    public final IOberonTypeNode type() throws RecognitionException {
+        IOberonTypeNode result = null;
 
         Token IDENT9=null;
-        IValueNode arrayType10 = null;
+        IOberonTypeNode arrayType10 = null;
 
-        IValueNode recordType11 = null;
+        IOberonTypeNode recordType11 = null;
 
 
         try {
@@ -826,7 +820,7 @@ public class Oberon0Parser extends Parser {
                     // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:101:4: 'INTEGER'
                     {
                     match(input,35,FOLLOW_35_in_type699); 
-                    result = new IntNode(); 
+                    result = new IntTypeNode(); 
 
                     }
                     break;
@@ -834,7 +828,7 @@ public class Oberon0Parser extends Parser {
                     // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:102:4: IDENT
                     {
                     IDENT9=(Token)match(input,IDENT,FOLLOW_IDENT_in_type718); 
-                    result = new MyTypeNode((IDENT9!=null?IDENT9.getText():null)); 
+                    result = new TypeTypeNode((IDENT9!=null?IDENT9.getText():null)); 
 
                     }
                     break;
@@ -877,9 +871,9 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "recordType"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:107:1: recordType returns [IValueNode result] : 'RECORD' fieldLists 'END' ;
-    public final IValueNode recordType() throws RecognitionException {
-        IValueNode result = null;
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:107:1: recordType returns [IOberonTypeNode result] : 'RECORD' fieldLists 'END' ;
+    public final IOberonTypeNode recordType() throws RecognitionException {
+        IOberonTypeNode result = null;
 
         List<TypedFieldListNode> fieldLists12 = null;
 
@@ -895,7 +889,7 @@ public class Oberon0Parser extends Parser {
             state._fsp--;
 
             match(input,26,FOLLOW_26_in_recordType789); 
-            result = new RecordNode(fieldLists12); 
+            result = new RecordTypeNode(fieldLists12); 
 
             }
 
@@ -918,11 +912,11 @@ public class Oberon0Parser extends Parser {
 
         List<String> i1 = null;
 
-        IValueNode t1 = null;
+        IOberonTypeNode t1 = null;
 
         List<String> i2 = null;
 
-        IValueNode t2 = null;
+        IOberonTypeNode t2 = null;
 
 
         try {
@@ -1011,13 +1005,13 @@ public class Oberon0Parser extends Parser {
 
 
     // $ANTLR start "arrayType"
-    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:117:1: arrayType returns [IValueNode result] : 'ARRAY' expression 'OF' type ;
-    public final IValueNode arrayType() throws RecognitionException {
-        IValueNode result = null;
+    // C:\\Eclipse\\workspace\\OberonInterpreter\\grammar\\Oberon0.g:117:1: arrayType returns [IOberonTypeNode result] : 'ARRAY' expression 'OF' type ;
+    public final IOberonTypeNode arrayType() throws RecognitionException {
+        IOberonTypeNode result = null;
 
         IExpressionNode expression13 = null;
 
-        IValueNode type14 = null;
+        IOberonTypeNode type14 = null;
 
 
         try {
@@ -1036,7 +1030,7 @@ public class Oberon0Parser extends Parser {
 
             state._fsp--;
 
-            result = new ArrayNode(expression13, type14); 
+            result = new ArrayTypeNode(expression13, type14); 
 
             }
 
