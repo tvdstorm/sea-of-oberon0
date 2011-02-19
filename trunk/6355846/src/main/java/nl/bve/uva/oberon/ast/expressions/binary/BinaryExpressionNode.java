@@ -23,9 +23,4 @@ public abstract class BinaryExpressionNode implements IExpressionNode {
 	
 	@Override
 	public abstract OberonValue eval(Environment env);
-	
-	@Override
-	public String toString() {
-		return getClass().getSimpleName() + "(" +lhn+ ", " +rhn+ ")";
-	}
 }
