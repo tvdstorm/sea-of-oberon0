@@ -415,8 +415,8 @@
 
         <Package name="jdm.oberon0.exceptions">
             <Stats>
-                <TotalClasses>13</TotalClasses>
-                <ConcreteClasses>13</ConcreteClasses>
+                <TotalClasses>14</TotalClasses>
+                <ConcreteClasses>14</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
                 <Ca>6</Ca>
                 <Ce>2</Ce>
@@ -453,6 +453,9 @@
                 </Class>
                 <Class sourceFile="InvalidTypeException.java">
                     jdm.oberon0.exceptions.InvalidTypeException
+                </Class>
+                <Class sourceFile="RedeclarationException.java">
+                    jdm.oberon0.exceptions.RedeclarationException
                 </Class>
                 <Class sourceFile="RuntimeException.java">
                     jdm.oberon0.exceptions.RuntimeException
