@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <javancss>
   <date>2011-02-19</date>
-  <time>15:09:38</time>
+  <time>15:26:26</time>
   <packages>
     <package>
       <name>jdm.oberon0.ast</name>
@@ -75,11 +75,11 @@
     </package>
     <package>
       <name>jdm.oberon0.exceptions</name>
-      <classes>13</classes>
-      <functions>13</functions>
-      <ncss>66</ncss>
-      <javadocs>13</javadocs>
-      <javadoc_lines>40</javadoc_lines>
+      <classes>14</classes>
+      <functions>14</functions>
+      <ncss>71</ncss>
+      <javadocs>14</javadocs>
+      <javadoc_lines>43</javadoc_lines>
       <single_comment_lines>0</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </package>
@@ -117,7 +117,7 @@
       <name>jdm.oberon0.typechecker</name>
       <classes>2</classes>
       <functions>14</functions>
-      <ncss>63</ncss>
+      <ncss>66</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>0</single_comment_lines>
@@ -154,20 +154,20 @@
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <total>
-      <classes>99</classes>
-      <functions>388</functions>
-      <ncss>1572</ncss>
-      <javadocs>44</javadocs>
-      <javadoc_lines>136</javadoc_lines>
+      <classes>100</classes>
+      <functions>389</functions>
+      <ncss>1580</ncss>
+      <javadocs>45</javadocs>
+      <javadoc_lines>139</javadoc_lines>
       <single_comment_lines>42</single_comment_lines>
       <multi_comment_lines>32</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>15.00</td><td>99.00</td><td>388.00</td><td>1,572.00</td><td>44.00</td><td>Project</td></tr>
-      <tr><td></td><td>6.60</td><td>25.87</td><td>104.80</td><td>2.93</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.92</td><td>15.88</td><td>0.44</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>4.05</td><td>0.11</td><td>Function</td></tr>
+      <tr><td>15.00</td><td>100.00</td><td>389.00</td><td>1,580.00</td><td>45.00</td><td>Project</td></tr>
+      <tr><td></td><td>6.67</td><td>25.93</td><td>105.33</td><td>3.00</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.89</td><td>15.80</td><td>0.45</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>4.06</td><td>0.12</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -600,6 +600,13 @@
       <javadocs>1</javadocs>
     </object>
     <object>
+      <name>jdm.oberon0.exceptions.RedeclarationException</name>
+      <ncss>4</ncss>
+      <functions>1</functions>
+      <classes>0</classes>
+      <javadocs>1</javadocs>
+    </object>
+    <object>
       <name>jdm.oberon0.exceptions.RuntimeException</name>
       <ncss>4</ncss>
       <functions>1</functions>
@@ -860,18 +867,18 @@
     </object>
     <object>
       <name>jdm.oberon0.typechecker.TypeScope</name>
-      <ncss>42</ncss>
+      <ncss>44</ncss>
       <functions>11</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>12.88</ncss>
-      <functions>3.92</functions>
+      <ncss>12.81</ncss>
+      <functions>3.89</functions>
       <classes>0.00</classes>
-      <javadocs>0.44</javadocs>
+      <javadocs>0.45</javadocs>
     </averages>
-    <ncss>1,572.00</ncss>
+    <ncss>1,580.00</ncss>
   </objects>
 
   <functions>
@@ -1897,6 +1904,12 @@
     </function>
     <function>
       <name>jdm.oberon0.exceptions.InvalidTypeException.InvalidTypeException(String)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>jdm.oberon0.exceptions.RedeclarationException.RedeclarationException(String)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -3169,8 +3182,8 @@
     </function>
     <function>
       <name>jdm.oberon0.typechecker.TypeScope.defineProcedure(String,ProcedureType)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
+      <ncss>4</ncss>
+      <ccn>3</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -3208,6 +3221,6 @@
       <ccn>1.33</ccn>
       <javadocs>0.03</javadocs>
     </function_averages>
-    <ncss>1,572.00</ncss>
+    <ncss>1,580.00</ncss>
   </functions>
 </javancss>

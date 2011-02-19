@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import jdm.oberon0.builtins.BuiltinProcedure;
+import jdm.oberon0.exceptions.RedeclarationException;
 import jdm.oberon0.exceptions.UndefinedProcedureException;
 import jdm.oberon0.exceptions.UndefinedTypeException;
 import jdm.oberon0.exceptions.UndefinedVariableException;
@@ -42,10 +43,13 @@ public class TypeScope extends Scope {
 	}
 	
 	public void defineProcedure(String name, BuiltinProcedure procedure) {
-		_procedures.put(name, procedure.getType());
+		defineProcedure(name, procedure.getType());
 	}
 	
 	public void defineProcedure(String name, ProcedureType type) {
+		if (_procedures.containsKey(name)) {
+			throw new RedeclarationException(name);
+		}
 		_procedures.put(name, type);
 	}
 	
