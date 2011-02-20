@@ -12,6 +12,10 @@ public class TypeDeclaration implements Declaration
   
    public TypeDeclaration(String name, TypeDefinition typeDefinition)
    {
+      //pre-condition
+      assert(name != null):"Error in Constructor TypeDeclaration!  parameter name is null!";
+      assert(typeDefinition != null):"Error in Constructor TypeDeclaration!  parameter typeDefinition is null!";
+      
       this.name = name;
       this.typeDefinition = typeDefinition;
       
@@ -25,7 +29,14 @@ public class TypeDeclaration implements Declaration
    @Override
    public void declare(Environment environment)
    {
+      //pre-Condition
+      assert(environment != null):"Error in TypeDeclaration method declare! Environment is null!";
+      
       Type type = new Type(typeDefinition);
       environment.declareType(name, type);
+      
+      //post-condition
+      assert(environment.getDeclaredTypes().containsKey(name)):"Error in TypeDeclaration method declare! Type is not declared!";
+      assert(environment.getDeclaredTypes().get(name).equals(type)):"Error in TypeDeclaration method declare! type is not equal!";
    }
 }

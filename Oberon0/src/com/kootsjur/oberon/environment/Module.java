@@ -24,17 +24,23 @@ public class Module extends Environment
       this.name = name;
       declarations = new ArrayList<Declaration>();
       procedureDeclarations = new ArrayList<ProcedureDeclaration>();
+      
+      assert(declarations != null):"Error declarations is not initialised";
+      assert(procedureDeclarations != null):"Error procedureDeclarations is not initialised";
    }
    
    public boolean addDeclaration(Declaration declaration)
    {
-      assert(declarations != null):"Error declarations is not initialised";
+      //pre-condition
+      assert(declaration != null):"Error in Module method addDeclaration. declaration is null";
+      
       return declarations.add(declaration);
    }
       
    public boolean addProcedure(ProcedureDeclaration procedureDeclaration)
    {
-      assert(procedureDeclarations != null):"Error procedureDeclarations is not initialised";
+      //pre-condition
+      assert(procedureDeclaration != null):"Error in Module method addProcedure. procedureDeclaration is null";
       
       return procedureDeclarations.add(procedureDeclaration);
    }
@@ -49,9 +55,12 @@ public class Module extends Environment
    
    private void evaluate()
    {
-      for(Statement statement : statementSequence)
+      if(statementSequence != null)
       {
-         statement.evaluate(this);
+         for(Statement statement : statementSequence)
+         {
+            statement.evaluate(this);
+         }
       }
    }
 

@@ -15,6 +15,10 @@ public class ProcedureDeclaration implements Declaration
    
    public ProcedureDeclaration(ProcedureHeading procedureHeading, ProcedureBody procedureBody)
    {
+      //pre-condition
+      assert(procedureHeading != null):"Error in Constructor ProcedureDeclaration!  parameter procedureHeading is null!";
+      assert(procedureBody != null):"Error in Constructor ProcedureDeclaration!  parameter procedureBody is null!";
+      
       this.procedureHeading = procedureHeading;
       this.procedureBody = procedureBody;
    }
@@ -28,12 +32,19 @@ public class ProcedureDeclaration implements Declaration
    @Override
    public void declare(Environment environment)
    {
+      //pre-Condition
+      assert(environment != null):"Error in FPSection method declare! Environment is null!";
+      
       String procedureName = procedureHeading.getName();
       FormalParameters formalParameters = procedureHeading.getFormalParameters();
       List<Declaration> declarations = procedureBody.getDeclarations();
       List<ProcedureDeclaration> procedures = procedureBody.getProcedures();
       StatementSequence statementSequence = procedureBody.getStatementSequence();
       Procedure procedure = new Procedure(formalParameters, declarations, procedures, statementSequence, environment);
-      environment.declareProcedure(procedureName, procedure);      
+      environment.declareProcedure(procedureName, procedure);  
+      
+      //post-condition
+      assert(environment.getProcedures().containsKey(procedureName)):"Error in ProcedureDeclaration method declare! Procedure is not declared!";
+      assert(environment.getDeclaredConstants().get(procedureName).equals(procedure)):"Error in ProcedureDeclaration method declare! procedure is not equal!";
    }
 }

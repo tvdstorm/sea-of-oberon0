@@ -13,6 +13,10 @@ public class ConstantDeclaration implements Declaration
 
    public ConstantDeclaration(String name, Evaluator expression)
    {
+      //pre-Condition
+      assert(name != null):"Error in Constructor ConstantDeclaration! name is null!";
+      assert(expression != null):"Error in Constructor ConstantDeclaration! expression is null!";
+      
       this.name = name;
       this.expression = expression;
    }
@@ -26,10 +30,16 @@ public class ConstantDeclaration implements Declaration
    @Override
    public void declare(Environment environment)
    {
+      //pre-Condition
+      assert(environment != null):"Error in ConstantDeclaration method declare! Environment is null!";
       
       Value value = expression.evaluate(environment);
       Constant constant = new Constant(value);
-      environment.declareConstant(name,constant);      
+      environment.declareConstant(name,constant);
+      
+      //post-condition
+      assert(environment.getDeclaredConstants().containsKey(name)):"Error in ConstantDeclaration method declare! Constant is not declared!";
+      assert(environment.getDeclaredConstants().get(name).equals(constant)):"Error in ConstantDeclaration method declare! constant is not equal!";
    }
 
 }

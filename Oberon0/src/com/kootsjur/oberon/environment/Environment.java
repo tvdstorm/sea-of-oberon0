@@ -74,11 +74,19 @@ public class Environment
    
    public void declareConstant(String constantName, Constant constant)
    {
+      //pre-condition
+      assert(constantName != null):"Error in Environment declareConstant. parameter constantName is null";
+      assert(constant != null):"Error in Environment declareConstant. parameter constant is null";
+      
       declaredConstants.put(constantName, constant);
    }
    
    public void declareConstant(String constantName, Value constantValue)
    {
+      //pre-condition
+      assert(constantName != null):"Error in Environment declareConstant. parameter constantName is null";
+      assert(constantValue != null):"Error in Environment declareConstant. parameter constantValue is null";
+      
       Constant constant = new Constant(constantValue);
       declareConstant(constantName, constant);
    }
