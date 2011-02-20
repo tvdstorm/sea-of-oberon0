@@ -9,17 +9,11 @@ public class ActualParameter
    
    public ActualParameter(Evaluator expression)
    {
+      assert(expression != null):"Error!Parameter expression in ActualParameterConstructor is null";
       
       this.expression =  expression;
    }
    
-   public void setExpression(ExpressionEvaluator expression)
-   {
-      this.expression = expression;
-   }
-
-   public Evaluator getExpression()
-   {
-      return expression;
-   }
+   public void setExpression(ExpressionEvaluator expression){this.expression = expression;}
+   public Evaluator getExpression(){return expression;}
 }

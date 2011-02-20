@@ -17,29 +17,14 @@ public class RecordType extends TypeDefinition
       this.fields = fields;
    }
    
-   /**
-    * Set the fields to the specified value.
-    *
-    * @param fields The fields to set.
-    */
-   public void setFields(List<FieldList> fields)
-   {
-      this.fields = fields;
-   }
-
-   /**
-    * Get the fields.
-    *
-    * @return Returns the fields as a List<FieldList>.
-    */
-   public List<FieldList> getFields()
-   {
-      return fields;
-   }
+   public void setFields(List<FieldList> fields){this.fields = fields;}
+   public List<FieldList> getFields(){return fields;}
 
    @Override
    public Value initValue(Environment environment)
    {
+      assert(environment != null):"Error in RecordType method initValue. Parameter environment is null!";
+      
       Record record = new Record(fields);
       for(FieldList field : fields)
       {

@@ -1,12 +1,9 @@
 package com.kootsjur.oberon.value;
 
-import com.kootsjur.oberon.type.TypeDefinition;
-
 public class Field
 {
    private String name;
-
-
+   
    public Field(String name){
       this.name = name;
    }

@@ -15,41 +15,26 @@ public class Assignment extends Statement
    public Assignment(String name, Evaluator expression)
    {
       super(StatementType.ASSIGNMENT);
+      
+      assert(name != null):"Error!Parameter in name in Assignment Constructor is null!";
+      assert(expression != null):"Error!Parameter expression in Assignment Constructor is null!";
+      
       this.name = name;
       this.expression = expression;
    }
    
-   public void setName(String name)
-   {
-      this.name = name;
-   }
-   public String getName()
-   {
-      return name;
-   }
+   public void setName(String name){this.name = name;}
+   public String getName(){return name;}
    
-   public void setSelector(Evaluator selector)
-   {
-      this.selector = (SelectorEvaluator) selector;
-   }
-   public SelectorEvaluator getSelector()
-   {
-      return selector;
-   }
+   public void setSelector(Evaluator selector){this.selector = (SelectorEvaluator) selector;}
+   public SelectorEvaluator getSelector(){return selector;}
    
-   public void setExpression(ExpressionEvaluator expression)
-   {
-      this.expression = expression;
-   }
-   public Evaluator getExpression()
-   {
-      return expression;
-   }
+   public void setExpression(ExpressionEvaluator expression){this.expression = expression;}
+   public Evaluator getExpression(){return expression;}
 
    @Override
    public void evaluate(Environment environment)
    {
-      
       if(selector == null)
       {
          evaluateName(environment);

@@ -17,5 +17,4 @@ public class IntegerType extends TypeDefinition
       Int initValue = new Int(0);
       return initValue;
    }
-
 }

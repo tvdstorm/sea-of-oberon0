@@ -21,31 +21,20 @@ public class ArrayType extends TypeDefinition
       this.typeDefinition = typeDefinition;
    }
    
-   public void setExpression(ExpressionEvaluator expression)
-   {
-      this.expression = expression;
-   }
-   public Evaluator getExpression()
-   {
-      return expression;
-   }
+   public void setExpression(ExpressionEvaluator expression){this.expression = expression;}
+   public Evaluator getExpression(){return expression;}
    
-   public void setTypeDefinition(TypeDefinition typeDefinition)
-   {
-      this.typeDefinition = typeDefinition;
-   }
-   public TypeDefinition getTypeDefinition()
-   {
-      return typeDefinition;
-   }
+   public void setTypeDefinition(TypeDefinition typeDefinition){this.typeDefinition = typeDefinition;}
+   public TypeDefinition getTypeDefinition(){return typeDefinition;}
 
    @SuppressWarnings("rawtypes")
    @Override
    public Value initValue(Environment environment)
    {
+      assert(environment != null):"Error in ArrayType method initValue. Parameter environment is null!";
+      
       Int size = (Int) expression.evaluate(environment);
       int intsize = size.getValue();
-      
       
       switch(typeDefinition.getDataType())
       { 

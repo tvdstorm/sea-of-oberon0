@@ -13,15 +13,8 @@ public abstract class Statement
       this.statementType = statementType;
    }
    
-   public void setStatementType(StatementType statementType)
-   {
-      this.statementType = statementType;
-   }
-
-   public StatementType getStatementType()
-   {
-      return statementType;
-   }
+   public void setStatementType(StatementType statementType){this.statementType = statementType;}
+   public StatementType getStatementType(){return statementType;}
 
    public abstract void evaluate(Environment environment);
 }

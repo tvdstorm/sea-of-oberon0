@@ -25,6 +25,8 @@ public class WhileStatement extends Statement
    @Override
    public void evaluate(Environment environment)
    {
+      assert(environment != null):"Error in WhileStatement method environment. Parameter environment is null";
+      
       Bool condition = (Bool) whileCondition.evaluate(environment);
       while(condition.getValue())
       {

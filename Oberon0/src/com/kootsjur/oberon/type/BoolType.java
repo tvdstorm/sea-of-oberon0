@@ -12,7 +12,7 @@ public class BoolType extends TypeDefinition
 
    @Override
    public Bool initValue(Environment environment)
-   {
+   {      
       Bool initValue = new Bool(false);
       return initValue;
    }

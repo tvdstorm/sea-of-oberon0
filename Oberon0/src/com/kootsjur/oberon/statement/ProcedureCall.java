@@ -25,10 +25,13 @@ public class ProcedureCall extends Statement
    public ProcedureCall(String callTo, List<ActualParameter> actualParameters)
    {
       super(StatementType.PROCEDURECALL);
+      assert(actualParameters != null):"Error in ProcedureCall constructor. Parameter actualParameters is null";
+      assert(callTo != null):"Error in ProcedureCall constructor. callTo actualParameters is null";
+      
       this.callTo = callTo;
       this.actualParameters = actualParameters;
       
-      assert(actualParameters != null):"ActualParameters is null";
+      
    }
    
    public boolean addActualParameter(ActualParameter parameter)
@@ -36,28 +39,17 @@ public class ProcedureCall extends Statement
       return this.actualParameters.add(parameter);
    }
    
-   public void setCallTo(String callTo)
-   {
-      this.callTo = callTo;
-   }
+   public void setCallTo(String callTo){this.callTo = callTo;}
+   public String getCallTo(){return callTo;}
    
-   public String getCallTo()
-   {
-      return callTo;
-   }
-   
-   public void setActualParameters(List<ActualParameter> actualParameters)
-   {
-      this.actualParameters = actualParameters;
-   }
-   public List<ActualParameter> getActualParameters()
-   {
-      return actualParameters;
-   }
+   public void setActualParameters(List<ActualParameter> actualParameters){this.actualParameters = actualParameters;}
+   public List<ActualParameter> getActualParameters(){return actualParameters;}
 
    @Override
    public void evaluate(Environment environment)
    {
+      assert(environment != null):"Error in ProcedureCall method evaluate. Parameter environment is null!";
+      
       Procedure procedureInEnvironment = environment.lookUpProcedure(callTo);
       FormalParameters formalParameters = procedureInEnvironment.getFormalParameters();
       List<Declaration> declarations = procedureInEnvironment.getDeclarations();
