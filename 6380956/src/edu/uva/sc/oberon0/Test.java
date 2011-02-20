@@ -6,15 +6,70 @@ import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.TokenStream;
 
+import edu.uva.sc.oberon0.Evaluators.Structural.Module;
+
 public class Test {
 
 	public static void main(String[] args) throws RecognitionException {
-		CharStream charStream = new ANTLRStringStream("a:=2;a + 1");
+//		CharStream charStream = new ANTLRStringStream(
+//				"MODULE QuickSort;"+
+//					"\nCONST INPUTLENGTH = 5;"+
+//					"\nVAR input: ARRAY INPUTLENGTH OF INTEGER;"+
+//					"\ni: INTEGER;"+
+//					"\nPROCEDURE QuickSort(VAR array: ARRAY INPUTLENGTH OF INTEGER; left, right: INTEGER);"+
+//						"\nVAR\n pivot, leftIdx, rightIdx: INTEGER;"+
+//						"\nPROCEDURE Swap(VAR x, y: INTEGER);"+
+//							  "\nVAR"+
+//							  "\ntemp: INTEGER;"+
+//						"\nBEGIN"+
+//								  "\ntemp := x;"+
+//								  "\nx := y;"+
+//								  "\ny := temp"+
+//						"\nEND Swap;"+
+//					"\nBEGIN"+
+//						"\nleftIdx := left;"+
+//					    "\nrightIdx := right;"+
+//					    "\na := 1;"+
+//					    "\nb := 2;"+
+//					    "\nSwap(a, b);"+
+//					"\nEND QuickSort;"+
+//				"\nEND QuickSort."
+//				);
+		CharStream charStream = new ANTLRStringStream(
+				"MODULE QuickSort;"+
+					"\nCONST INPUTLENGTH = 5;"+
+					"\nVAR input: ARRAY INPUTLENGTH OF INTEGER;"+
+					"\na, b, i: INTEGER;"+
+					"\nPROCEDURE QuickSort(VAR array: ARRAY INPUTLENGTH OF INTEGER; left, right: INTEGER);"+
+						"\nVAR\n pivot, leftIdx, rightIdx: INTEGER;"+
+						
+					"\nBEGIN"+
+						"\nleftIdx := left;"+
+					    "\nrightIdx := right;"+
+					"\nEND QuickSort;"+
+					"\nPROCEDURE Swap(VAR x, y: INTEGER);"+
+					  "\nVAR"+
+					  "\ntemp: INTEGER;"+
+					"\nBEGIN"+
+						  "\ntemp := x;"+
+						  "\nx := y;"+
+						  "\ny := temp"+
+					"\nEND Swap;"+
+					"\nBEGIN"+
+						"\na := 1;"+
+					    "\nb := 2;"+
+					    "\nSwap(a, b);"+
+					    "\nWrite(a);"+
+					    "\nWrite(b);"+
+				"\nEND QuickSort."
+				);
 		oberon0Lexer lexer = new oberon0Lexer(charStream);
 		TokenStream tokenStream = new CommonTokenStream(lexer);
 		oberon0Parser parser = new oberon0Parser(tokenStream);
 		
-		System.out.println(parser.test().toString());
+		//System.out.println(parser.module().toString());
+		Module mod = parser.module();
+		mod.evaluate(mod);
 	}
 
 }

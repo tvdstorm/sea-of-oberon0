@@ -10,8 +10,11 @@ options {
   import edu.uva.sc.oberon0.Evaluators.*;
   import edu.uva.sc.oberon0.Evaluators.Boolean.*;
   import edu.uva.sc.oberon0.Evaluators.Numerical.*;
+  import edu.uva.sc.oberon0.Evaluators.Structural.*;
   import java.util.Map;
   import java.util.HashMap;
+  import java.util.List;
+  import java.util.LinkedList;
 }
 
 @lexer::header {
@@ -19,31 +22,31 @@ options {
   import edu.uva.sc.oberon0.Evaluators.*;
   import edu.uva.sc.oberon0.Evaluators.Boolean.*;
   import edu.uva.sc.oberon0.Evaluators.Numerical.*;
+  import edu.uva.sc.oberon0.Evaluators.Structural.*;
 }
 @members {
-  private Map<String, IEvaluator> variables = new HashMap<String, IEvaluator>();
+  
 }
 
 INTEGER : '0'..'9'+;
 IDENT : ('a'..'z' | 'A'..'Z')('a'..'z' | 'A'..'Z' | '0'..'9')*;
 WS : (' ' | '\n' | '\r' | '\f' | '\t') + {$channel = HIDDEN;};
 
+
 factor returns [IEvaluator e] 
   : IDENT s=selector 
-  {String sel = (s==null)?"":s;
-  $e=variables.get($IDENT.text+sel);}
-  
-  | INTEGER {$e=new IntegerEvaluator(Integer.parseInt($INTEGER.text));} 
+  {$e = new VariableRef($IDENT.text, s);}
+  | INTEGER {$e=new Integ($INTEGER);} 
   | '(' exp=expression ')' {$e=exp;} 
   | '~' factor;
 term returns [IEvaluator e] 
   : 
     arg1=factor {$e=arg1;}
     (
-	    '*' arg2=factor {$e=new MultEvaluator(arg1.evaluate(), arg2.evaluate());} 
-	    | 'DIV' arg2=factor {$e=new DivEvaluator(arg1.evaluate(), arg2.evaluate());} 
-	    | 'MOD' arg2=factor {$e=new ModEvaluator(arg1.evaluate(), arg2.evaluate());} 
-	    | '&' arg2=factor {$e=new AndEvaluator(arg1, arg2);} 
+	    '*' arg2=factor {$e=new Mult(arg1, arg2);} 
+	    | 'DIV' arg2=factor {$e=new Div(arg1, arg2);} 
+	    | 'MOD' arg2=factor {$e=new Mod(arg1, arg2);} 
+	    | '&' arg2=factor {$e=new And(arg1, arg2);} 
     )*;
 simpleExpression returns [IEvaluator e] 
   : (
@@ -51,54 +54,122 @@ simpleExpression returns [IEvaluator e]
       |'-'
      )? 
      arg1=term {$e=arg1;}
-     ('+' arg2=term {$e=new AddEvaluator(arg1.evaluate(), arg2.evaluate());} 
-     |'-' arg2=term {$e=new MinEvaluator(arg1.evaluate(), arg2.evaluate());} 
-     |'OR' arg2=term {$e=new OrEvaluator(arg1, arg2);} 
+     ('+' arg2=term {$e=new Add(arg1, arg2);} 
+     |'-' arg2=term {$e=new Min(arg1, arg2);} 
+     |'OR' arg2=term {$e=new Or(arg1, arg2);} 
      )*;
 expression returns [IEvaluator e] 
   : arg1=simpleExpression  {$e=arg1;}
     (
-      '=' arg2=simpleExpression {$e=new EqualEvaluator(arg1, arg2);} 
-	    | '#' arg2=simpleExpression {$e=new NotEqualEvaluator(arg1, arg2);}
-	    | '<' arg2=simpleExpression {$e=new SmallerEvaluator(arg1, arg2);}
-	    | '<=' arg2=simpleExpression {$e=new SmallerOrEqualEvaluator(arg1, arg2);}
-	    | '>' arg2=simpleExpression {$e=new BiggerEvaluator(arg1, arg2);}
-	    | '>=' arg2=simpleExpression {$e=new BiggerOrEqualEvaluator(arg1, arg2);}
+      '=' arg2=simpleExpression {$e=new Equal(arg1, arg2);} 
+	    | '#' arg2=simpleExpression {$e=new NotEqual(arg1, arg2);}
+	    | '<' arg2=simpleExpression {$e=new Smaller(arg1, arg2);}
+	    | '<=' arg2=simpleExpression {$e=new SmallerOrEqual(arg1, arg2);}
+	    | '>' arg2=simpleExpression {$e=new Bigger(arg1, arg2);}
+	    | '>=' arg2=simpleExpression {$e=new BiggerOrEqual(arg1, arg2);}
     )?;
-selector returns [String s] 
+selector returns [ISelector s] 
   : ( 
-    '[' exp=expression ']' {$s='['+exp.toString()+']';}
-    | '.' IDENT {$s='.'+$IDENT.text;}
+    '[' exp=expression ']' {$s=new ArraySelector(exp);}
+    | '.' IDENT {$s=new ObjectSelector($IDENT);}
   )*; //TODO: .IDENT does not work
-assignment
-  : IDENT arg1=selector ':=' arg2=expression 
-  {String sel = (arg1==null)?"":arg1;
-  variables.put($IDENT.text + sel, arg2);};
-   
-test returns [IEvaluator e] : a=assignment ';' ex=expression {$e=ex;};
+assignment returns [Assignment a]
+  : IDENT sel=selector ':=' exp=expression 
+  {$a = new Assignment($IDENT.text, sel, exp);};
+  
 
-actualParameters returns [IEvaluator e] : '(' (expression (',' expression)*)? ')';
-procedureCall returns [IEvaluator e] : IDENT (actualParameters)?;
+actualParameters returns [List<IEvaluator> lp] :
+{{List<IEvaluator> paramsList = new LinkedList<IEvaluator>();}} 
+'(' (
+	exp1=expression {paramsList.add(exp1);}
+	(',' exp2=expression {paramsList.add(exp2);} )*
+)? ')' 
+{$lp = paramsList;}
+;
+
+procedureCall returns [ProcedureCall pc] : 
+IDENT (ap=actualParameters)? 
+{$pc=new ProcedureCall($IDENT.text, ap);}
+;
 ifStatement returns [IEvaluator e] : 'IF' expression 'THEN' statementSequence
   ('ELSIF' expression 'THEN' statementSequence)*
   ('ELSE' statementSequence)? 'END';
 whileStatement returns [IEvaluator e] : 'WHILE' expression 'DO' statementSequence 'END';
-statement returns [IEvaluator e] : (assignment | procedureCall | ifStatement | whileStatement)?;
-statementSequence returns [IEvaluator e] : statement (';' statement)*;
-identList returns [IEvaluator e] : IDENT (',' IDENT)*;
-arrayType returns [IEvaluator e] : 'ARRAY' expression 'OF' type;
-fieldList returns [IEvaluator e]  :  (identList ':' type)?; 
-recordType returns [IEvaluator e] : 'RECORD' fieldList (';' fieldList)* 'END';
-type returns [IEvaluator e] : IDENT | arrayType | recordType;
-fPSection returns [IEvaluator e]  :  ('VAR')? identList ':' type;
+statement returns [IStatement s] : 
+( assgn=assignment {$s = assgn;}
+| pc=procedureCall {$s = pc;}
+| ifs=ifStatement //{$s = ifs;}
+| wh=whileStatement //{$s = while;}
+)?;
 
-formalParameters returns [IEvaluator e]  :  '(' (fPSection (';' fPSection)*)? ')'; 
-procedureHeading returns [IEvaluator e]  :  'PROCEDURE' IDENT (formalParameters)?; 
-procedureBody returns [IEvaluator e]  :  declarations ('BEGIN' statementSequence)? 'END'; 
-procedureDeclaration returns [IEvaluator e]  :  procedureHeading ';' procedureBody IDENT; 
-declarations returns [IEvaluator e]  :  ('CONST' (IDENT '=' expression ';')*)? 
- ('TYPE' (IDENT '=' type ';')*)? 
- ('VAR' (identList ':' type ';')*)? 
- (procedureDeclaration ';')*;
-module returns [IEvaluator e]  :  'MODULE' IDENT ';' declarations 
- ('BEGIN' statementSequence)? 'END' IDENT '.';
+statementSequence returns [List<IStatement> ls] :
+{List<IStatement> statementsList = new LinkedList<IStatement>();}
+s1=statement {statementsList.add(s1);}
+(';' s2=statement {if(s2!=null)statementsList.add(s2);})*
+{$ls=statementsList;}
+;
+
+identList returns [List<String> il] : 
+{List<String> idents = new LinkedList<String>();}
+i1=IDENT {idents.add(i1.getText());}
+(',' i2=IDENT {idents.add(i2.getText());})*
+{$il=idents;};
+
+arrayType returns [ArrayType at] : 'ARRAY' exp=expression 'OF' t=type {$at=new ArrayType(exp, t);};
+
+fieldList returns [IEvaluator e]  :  (identList ':' type)?; 
+recordType returns [RecordType rt] : 'RECORD' fieldList (';' fieldList)* 'END';
+
+type returns [IType t] : 
+IDENT {$t=new SomeType($IDENT.text);} 
+| at=arrayType {$t=at;}
+| rt=recordType {$t=rt;}
+;
+fPSection returns [FormalParametersSection fps]  :  
+(byRef='VAR')? il=identList ':' t=type 
+{String var = (byRef!=null)?byRef.getText():"NONVAR";
+$fps = new FormalParametersSection(il, t, var);
+};
+
+formalParameters returns [List<FormalParametersSection> lfps]  :
+{List<FormalParametersSection> fpsList = new LinkedList<FormalParametersSection>();}  
+'(' (fps1=fPSection { fpsList.add(fps1); }
+  (';' fps2=fPSection { fpsList.add(fps2); })*)? 
+')'
+{$lfps=fpsList;}
+; 
+procedureHeading returns [ProcedureHeading ph]  :  
+'PROCEDURE' IDENT (fp=formalParameters)? {$ph=new ProcedureHeading($IDENT.text, fp);}; 
+
+procedureBody returns [ProcedureBody pb]  :  
+d=declarations ('BEGIN' ss=statementSequence)? 'END' 
+{ProcedureBody result = new ProcedureBody(d, ss);
+  for(IDeclaration decl : d){
+    decl.AddToScope(result);
+  }
+  $pb = result;
+}; 
+
+procedureDeclaration returns [ProcedureDeclaration pd]  :  
+ph=procedureHeading ';' pb=procedureBody IDENT
+{$pd = new ProcedureDeclaration(ph, pb, $IDENT.text);}
+; 
+
+declarations returns [List<IDeclaration> dl]  :  
+ {List<IDeclaration> declars = new LinkedList<IDeclaration>();}
+ ('CONST' (id1=IDENT '=' exp=expression ';' { declars.add(new ConstDeclaration(id1.getText(), exp)); } )*)? 
+ ('TYPE' (id2=IDENT '=' t1=type ';' { declars.add(new TypeObjectDeclaration(id2.getText(), t1)); } )*)? 
+ ('VAR' (il=identList ':' t2=type ';' { declars.add(new VarDeclaration(il, t2)); } )*)? 
+ (pd=procedureDeclaration ';'{ declars.add(pd); })*
+ {$dl = declars;}
+ ;
+ 
+module returns [Module m]  :  'MODULE' i1=IDENT ';' dl=declarations 
+ ('BEGIN' ss=statementSequence)? 'END' i2=IDENT '.'
+ {Module result =new Module(i1.getText(), dl, ss);
+	 for(IDeclaration decl : dl){
+	  decl.AddToScope(result);
+	 }
+ $m=result;
+ }
+ ;
