@@ -4,8 +4,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
+import com.kootsjur.oberon.declaration.Declaration;
 import com.kootsjur.oberon.declaration.formalparameter.FPSection;
 import com.kootsjur.oberon.declaration.formalparameter.FormalParameters;
+import com.kootsjur.oberon.declaration.procedure.ProcedureDeclaration;
 import com.kootsjur.oberon.environment.Environment;
 import com.kootsjur.oberon.environment.Procedure;
 import com.kootsjur.oberon.environment.Reference;
@@ -56,12 +58,18 @@ public class ProcedureCall extends Statement
    @Override
    public void evaluate(Environment environment)
    {
-      Procedure procedure = environment.lookUpProcedure(callTo);
+      Procedure procedureInEnvironment = environment.lookUpProcedure(callTo);
+      FormalParameters formalParameters = procedureInEnvironment.getFormalParameters();
+      List<Declaration> declarations = procedureInEnvironment.getDeclarations();
+      List<ProcedureDeclaration> procedureDeclarations = procedureInEnvironment.getProcedureDeclarations();
+      StatementSequence statementSequence = procedureInEnvironment.getStatementSequence();
+      Procedure procedureToRun = new Procedure(formalParameters, declarations, procedureDeclarations, statementSequence, procedureInEnvironment.getParent());
+      procedureToRun.declare();
       if(actualParameters != null && actualParameters.size() > 0)
       {
-         setParametersValue(procedure,environment);
+         setParametersValue(procedureToRun,environment);
       }
-      procedure.run();      
+      procedureToRun.run();      
    }
 
    private void setParametersValue(Procedure procedure,Environment environment)

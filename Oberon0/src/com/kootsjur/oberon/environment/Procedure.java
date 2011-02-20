@@ -22,13 +22,28 @@ public class Procedure extends Environment
       this.declarations = declarations;
       this.procedureDeclarations = procedureDeclarations;
       this.statementSequence = statementSequence;
-      declare();
    }
    
    public FormalParameters getFormalParameters()
    {
       return formalParameters;
    }
+   
+   public List<Declaration> getDeclarations()
+   {
+      return declarations;
+   }
+   
+   public List<ProcedureDeclaration> getProcedureDeclarations()
+   {
+      return procedureDeclarations;
+   }
+   
+   public StatementSequence getStatementSequence()
+   {
+      return statementSequence;
+   }
+   
    public void declare()
    {
       declareDeclarations(declarations);
