@@ -11,7 +11,6 @@ import com.kootsjur.oberon.declaration.formalparameter.FPSection;
 import com.kootsjur.oberon.declaration.formalparameter.FormalParameters;
 import com.kootsjur.oberon.declaration.formalparameter.ParameterDirection;
 import com.kootsjur.oberon.declaration.procedure.ProcedureDeclaration;
-import com.kootsjur.oberon.declaration.var.VarDeclaration;
 import com.kootsjur.oberon.statement.Statement;
 import com.kootsjur.oberon.statement.Statement.StatementType;
 import com.kootsjur.oberon.statement.StatementSequence;

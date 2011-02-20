@@ -14,7 +14,6 @@ import com.kootsjur.oberon.declaration.type.DeclaredTypes;
 import com.kootsjur.oberon.declaration.type.TypeDeclaration;
 import com.kootsjur.oberon.declaration.var.DeclaredVars;
 import com.kootsjur.oberon.evaluator.Evaluator;
-import com.kootsjur.oberon.statement.StatementSequence;
 import com.kootsjur.oberon.type.ArrayType;
 import com.kootsjur.oberon.type.BoolType;
 import com.kootsjur.oberon.type.IntegerType;

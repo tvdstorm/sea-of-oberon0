@@ -1,6 +1,5 @@
 package com.kootsjur.oberon.statement;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 import com.kootsjur.oberon.environment.Environment;
