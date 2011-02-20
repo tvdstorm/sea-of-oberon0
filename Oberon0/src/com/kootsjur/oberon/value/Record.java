@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.kootsjur.oberon.Field;
-import com.kootsjur.oberon.FieldList;
 import com.kootsjur.oberon.environment.Reference;
 
 public class Record extends Value

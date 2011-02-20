@@ -2,8 +2,8 @@ package com.kootsjur.oberon.type;
 
 import java.util.List;
 
-import com.kootsjur.oberon.FieldList;
 import com.kootsjur.oberon.environment.Environment;
+import com.kootsjur.oberon.value.FieldList;
 import com.kootsjur.oberon.value.Record;
 import com.kootsjur.oberon.value.Value;
 
