@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.antlr.runtime.tree.Tree;
 
 import com.douwekasemier.oberon0.ast.builders.TypeBuilder;
-import com.douwekasemier.oberon0.ast.types.IdentifierType;
+import com.douwekasemier.oberon0.ast.types.SimpleType;
 import com.douwekasemier.oberon0.core.Oberon0Parser;
 
 public class FormalParameterRef extends FormalParameter {
@@ -25,7 +25,7 @@ public class FormalParameterRef extends FormalParameter {
         }
     }
 
-    public FormalParameterRef(IdentifierType formalparameterType, ArrayList<String> formalparameterIdentifiers) {
+    public FormalParameterRef(SimpleType formalparameterType, ArrayList<String> formalparameterIdentifiers) {
         super(formalparameterType, formalparameterIdentifiers);
         reference = true;
     }

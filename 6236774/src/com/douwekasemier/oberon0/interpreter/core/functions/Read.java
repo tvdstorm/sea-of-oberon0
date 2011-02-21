@@ -9,7 +9,7 @@ import com.douwekasemier.oberon0.ast.declaration.FormalParameter;
 import com.douwekasemier.oberon0.ast.declaration.FormalParameterRef;
 import com.douwekasemier.oberon0.ast.declaration.FormalParameters;
 import com.douwekasemier.oberon0.ast.declaration.ProcedureDeclaration;
-import com.douwekasemier.oberon0.ast.types.IdentifierType;
+import com.douwekasemier.oberon0.ast.types.SimpleType;
 import com.douwekasemier.oberon0.exceptions.Oberon0Exception;
 import com.douwekasemier.oberon0.interpreter.environment.Environment;
 import com.douwekasemier.oberon0.interpreter.environment.Int;
@@ -23,7 +23,7 @@ public class Read extends ProcedureDeclaration {
         super();
         identifier = "Read";
 
-        IdentifierType formalparameterType = new IdentifierType("INTEGER");
+        SimpleType formalparameterType = new SimpleType("INTEGER");
         ArrayList<String> formalparameterIdentifiers = new ArrayList<String>();
         formalparameterIdentifiers.add("into");
         

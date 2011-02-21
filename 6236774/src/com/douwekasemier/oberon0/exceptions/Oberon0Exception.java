@@ -2,6 +2,14 @@ package com.douwekasemier.oberon0.exceptions;
 
 public class Oberon0Exception extends RuntimeException {
 
+    public Oberon0Exception(String string) {
+        super(string);
+    }
+
+    public Oberon0Exception() {
+        super();
+    }
+
     /**
      *
      */

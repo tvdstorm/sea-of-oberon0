@@ -11,7 +11,7 @@ public final class TypeBuilder {
     public static final Initializable build(Tree antlrTree) {
         switch (antlrTree.getType()) {
             case Oberon0Parser.IDENTIFIER:
-                return new IdentifierType(antlrTree); 
+                return new SimpleType(antlrTree); 
             case Oberon0Parser.ARRAY:
                 return new ArrayType(antlrTree);
             case Oberon0Parser.RECORD:
