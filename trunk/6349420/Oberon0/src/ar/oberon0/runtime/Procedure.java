@@ -1,6 +1,10 @@
 package ar.oberon0.runtime;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ar.oberon0.ast.statements.StatementSequence;
+import ar.oberon0.shared.CheckViolation;
 import ar.oberon0.shared.Interpretable;
 import ar.oberon0.shared.TechnicalException;
 
@@ -24,6 +28,11 @@ public class Procedure implements Interpretable {
 	public Object interpret(final Context context) throws TechnicalException {
 		this.statementsToExecute.interpret(this.procedureContext);
 		return 0;
+	}
+
+	@Override
+	public List<CheckViolation> check(Context context) {
+		return new ArrayList<CheckViolation>();
 	}
 
 }

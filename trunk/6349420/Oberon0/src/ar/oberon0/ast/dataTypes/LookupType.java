@@ -17,11 +17,6 @@ public class LookupType implements CreatableType {
 
 	@Override
 	public Value createInstance(Context context) throws TechnicalException {
-		if (PrimitiveTypes.doesPrimitiveTypeExist(name)) {
-			return new SimpleType(name).createInstance(context);
-		}
-
-		// If the code comes here it means that it was a TypeIdentifier.
 		CreatableType type = context.getType(this.name);
 		return type.createInstance(context);
 	}

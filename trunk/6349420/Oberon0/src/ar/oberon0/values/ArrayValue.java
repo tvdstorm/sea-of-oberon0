@@ -9,7 +9,7 @@ import ar.oberon0.shared.TechnicalException;
 /*
  * This class is used to store datafields in a list. Array is a default oberon 0 datastructure.
  */
-public class ArrayValue implements Value {
+public class ArrayValue extends ValueBase {
 	/*
 	 * The java aray containing the DataFields (variables).
 	 */
@@ -32,13 +32,6 @@ public class ArrayValue implements Value {
 		initArray(length, childType);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * ar.oberon0.interpreter.Interpretable#Interpret(ar.oberon0.interpreter
-	 * .Memory.Context)
-	 */
 	@Override
 	public Object interpret(Context context) throws TechnicalException {
 		return this;
@@ -64,11 +57,6 @@ public class ArrayValue implements Value {
 		return this.items[index.getValueAsInt()];
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see ar.oberon0.interpreter.DataTypes.DataType#getType()
-	 */
 	@Override
 	public CreatableType getType() {
 		return new ArrayType(this.length, this.childType);

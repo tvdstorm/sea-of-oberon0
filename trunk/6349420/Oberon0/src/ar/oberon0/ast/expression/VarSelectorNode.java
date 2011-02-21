@@ -1,7 +1,11 @@
 package ar.oberon0.ast.expression;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ar.oberon0.runtime.Context;
 import ar.oberon0.runtime.DataField;
+import ar.oberon0.shared.CheckViolation;
 import ar.oberon0.shared.Interpretable;
 import ar.oberon0.shared.TechnicalException;
 
@@ -22,7 +26,7 @@ public class VarSelectorNode extends SelectorNode implements Interpretable {
 
 	@Override
 	protected final DataField getItem(final DataField parent, final Context context) throws TechnicalException {
-		assert parent != null : "The parent parameter must be null. A VarSelector can only occur as first selector.";
+		assert parent == null : "The parent parameter must be null. A VarSelector can only occur as first selector.";
 
 		DataField resultVar = context.getVarOrConstantAsDataField(this.identName);
 		// If there is no next selector node the resultField is the field that
@@ -33,5 +37,14 @@ public class VarSelectorNode extends SelectorNode implements Interpretable {
 		// If there is a selector node invoke the next selector.
 		return getNextNode().getItem(resultVar, context);
 
+	}
+
+	@Override
+	public List<CheckViolation> check(Context context) {
+		List<CheckViolation> violations = new ArrayList<CheckViolation>();
+		if (!context.doesVarOrConstantExist(identName)) {
+			violations.add(new CheckViolation("There is no variable or constant " + this.identName + " in the scope.", this.getClass()));
+		}
+		return violations;
 	}
 }

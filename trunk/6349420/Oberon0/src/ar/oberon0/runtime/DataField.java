@@ -1,7 +1,11 @@
 package ar.oberon0.runtime;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ar.oberon0.ast.dataTypes.CreatableType;
 import ar.oberon0.ast.dataTypes.LookupType;
+import ar.oberon0.shared.CheckViolation;
 import ar.oberon0.shared.Interpretable;
 import ar.oberon0.shared.TechnicalException;
 import ar.oberon0.values.Value;
@@ -39,6 +43,11 @@ public class DataField implements Interpretable {
 	public final Object interpret(final Context context) throws TechnicalException {
 		ifNotInitInit(context);
 		return getValue(context);
+	}
+
+	@Override
+	public List<CheckViolation> check(Context context) {
+		return new ArrayList<CheckViolation>();
 	}
 
 	public final void setValue(final Value value, final Context context) throws TechnicalException {

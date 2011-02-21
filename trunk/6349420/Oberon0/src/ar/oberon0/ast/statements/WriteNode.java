@@ -1,8 +1,11 @@
 package ar.oberon0.ast.statements;
 
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import ar.oberon0.runtime.Context;
+import ar.oberon0.shared.CheckViolation;
 import ar.oberon0.shared.Helper;
 import ar.oberon0.shared.Interpretable;
 import ar.oberon0.shared.TechnicalException;
@@ -46,6 +49,11 @@ public class WriteNode implements Interpretable {
 			getStreamToWriteTo().print(this.stringMessage);
 		}
 		return 0;
+	}
+
+	@Override
+	public List<CheckViolation> check(Context context) {
+		return new ArrayList<CheckViolation>();
 	}
 
 	public final void addToMessage(final String text) {

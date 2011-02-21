@@ -1,7 +1,10 @@
 package ar.oberon0.ast.declarations;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map.Entry;
 
+import ar.oberon0.ast.dataTypes.CreatableType;
 import ar.oberon0.ast.statements.StatementSequence;
 import ar.oberon0.lists.ConstantList;
 import ar.oberon0.lists.DataFieldList;
@@ -11,6 +14,7 @@ import ar.oberon0.lists.TypeIdentifierList;
 import ar.oberon0.runtime.Context;
 import ar.oberon0.runtime.DataField;
 import ar.oberon0.runtime.Procedure;
+import ar.oberon0.shared.CheckViolation;
 import ar.oberon0.shared.TechnicalException;
 
 /*
@@ -67,6 +71,40 @@ public class ProcedureDeclaration {
 		checkAndAddActualParametersToContext(actualParameters, procedureContext);
 		Procedure procedure = new Procedure(this.statementSequence, procedureContext);
 		return procedure;
+	}
+
+	public List<CheckViolation> checkParameters(Context context, final List<DataField> actualParameters) {
+		List<CheckViolation> violations = new ArrayList<CheckViolation>();
+		if (!isFormalAndActualParamaterCountSame(this.formalParameters, actualParameters)) {
+			violations.add(new CheckViolation("The number of actual parameters does not match the number of formal parameters.", this.getClass()));
+		}
+		for (int i = 0; i < this.formalParameters.getCount(); i++) {
+			DataField rawParameter = actualParameters.get(i);
+			CreatableType formalParameterType = this.formalParameters.getFormalParameter(i).getType();
+			if (!rawParameter.getType().equals(formalParameterType)) {
+				violations.add(new CheckViolation("The type of parameter \"" + this.formalParameters.getNameOfParameter(i) + "\" did not match the type of the formal parameter in the function \""
+						+ this.name + "\".", this.getClass()));
+			}
+		}
+		return violations;
+	}
+
+	public List<CheckViolation> check(Context context) {
+		Context procedureContext = this.context.clone();
+		procedureContext.setParentContext(context);
+		for (int i = 0; i < this.formalParameters.getCount(); i++) {
+			procedureContext.addVariable(this.formalParameters.getNameOfParameter(i), new DataField(this.formalParameters.getFormalParameter(i).getType()));
+		}
+
+		List<CheckViolation> violations = new ArrayList<CheckViolation>();
+		violations.addAll(this.statementSequence.check(procedureContext));
+		ProcedureList procedures = procedureContext.getProcedures();
+		for (Entry<String, ProcedureDeclaration> dec : procedures) {
+			if (!dec.getKey().equals(this.name)) {
+				violations.addAll(dec.getValue().check(procedureContext));
+			}
+		}
+		return violations;
 	}
 
 	/*

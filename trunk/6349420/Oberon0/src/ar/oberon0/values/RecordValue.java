@@ -10,7 +10,7 @@ import ar.oberon0.runtime.Context;
 import ar.oberon0.runtime.DataField;
 import ar.oberon0.shared.TechnicalException;
 
-public class RecordValue implements Value {
+public class RecordValue extends ValueBase {
 
 	private CreatableType type;
 	private Map<String, DataField> members;

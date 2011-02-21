@@ -1,5 +1,7 @@
 package ar.oberon0.shared;
 
+import java.util.List;
+
 import ar.oberon0.runtime.Context;
 
 /*
@@ -13,4 +15,6 @@ public interface Interpretable {
 	 * interpreting node.
 	 */
 	Object interpret(Context context) throws TechnicalException;
+
+	List<CheckViolation> check(Context context);
 }

@@ -6,8 +6,10 @@ package ar.oberon0.ast.dataTypes;
 public class SimpleTypeFactory {
 	public CreatableType getType(String name) {
 
-		if (PrimitiveTypes.doesPrimitiveTypeExist(name)) {
-			return new SimpleType(name);
+		if (name.equals("INTEGER")) {
+			return new IntegerType();
+		} else if (name.equals("BOOLEAN")) {
+			return new BooleanType();
 		}
 		return new LookupType(name);
 	}

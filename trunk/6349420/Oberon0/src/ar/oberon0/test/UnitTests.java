@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.List;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -15,7 +16,7 @@ import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.TokenStream;
 
-import ar.oberon0.ast.dataTypes.SimpleType;
+import ar.oberon0.ast.dataTypes.IntegerType;
 import ar.oberon0.ast.statements.ReadNode;
 import ar.oberon0.ast.statements.WriteNode;
 import ar.oberon0.lists.ConstantList;
@@ -24,6 +25,7 @@ import ar.oberon0.parser.Oberon0Lexer;
 import ar.oberon0.parser.Oberon0Parser;
 import ar.oberon0.runtime.Context;
 import ar.oberon0.runtime.DataField;
+import ar.oberon0.shared.CheckViolation;
 import ar.oberon0.shared.Interpretable;
 import ar.oberon0.values.BooleanValue;
 import ar.oberon0.values.IntegerValue;
@@ -55,6 +57,23 @@ public class UnitTests extends TestCase {
 		return parser;
 	}
 
+	public void testTypeChecking() {
+
+		List<CheckViolation> violations = InterpreterExecuter.check("ExtRef\\TypeCheckerTest", "module", "module");
+		assertTrue(violations.size() == 2);
+		assertTrue(violations.get(0).getMessage().equals("The types of the assignment did not match."));
+		assertTrue(violations.get(1).getMessage().equals("There is no variable or constant var2 in the scope."));
+	}
+
+	public void testTypeChecking2() {
+
+		List<CheckViolation> violations = InterpreterExecuter.check("ExtRef\\TypeCheckerTest2", "module", "module");
+		assertTrue(violations.size() == 3);
+		assertTrue(violations.get(0).getMessage().equals("The type of parameter \"message\" did not match the type of the formal parameter in the function \"PrintHallo\"."));
+		assertTrue(violations.get(1).getMessage().equals("There is no procedure with the name FunctieDieNietBestaat."));
+		assertTrue(violations.get(2).getMessage().equals("The types of the assignment did not match."));
+	}
+
 	public void testSmokeTest() {
 		inputForProgram.println("10");
 		inputForProgram.println("14");
@@ -73,7 +92,7 @@ public class UnitTests extends TestCase {
 		expectedResult.addString("14");
 		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
 
-		InterpreterExecuter.Execute("ExtRef\\smoke.txt", "module", "module");
+		InterpreterExecuter.interpret("ExtRef\\smoke.txt", "module", "module");
 
 		assertTrue(evaluator.evaluate(resultStream));
 	}
@@ -83,7 +102,7 @@ public class UnitTests extends TestCase {
 		expectedResult.addString("23");
 		expectedResult.addString("4");
 		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
-		InterpreterExecuter.Execute("ExtRef\\TypeIdentifierTest", "module", "module");
+		InterpreterExecuter.interpret("ExtRef\\TypeIdentifierTest", "module", "module");
 
 		assertTrue(evaluator.evaluate(resultStream));
 	}
@@ -94,7 +113,7 @@ public class UnitTests extends TestCase {
 		expectedResult.addString("5");
 		expectedResult.addString("23");
 		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
-		InterpreterExecuter.Execute("ExtRef\\WithTest", "module", "module");
+		InterpreterExecuter.interpret("ExtRef\\WithTest", "module", "module");
 
 		assertTrue(evaluator.evaluate(resultStream));
 	}
@@ -105,7 +124,7 @@ public class UnitTests extends TestCase {
 		expectedResult.addString("2");
 		expectedResult.addString("3");
 		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
-		InterpreterExecuter.Execute("ExtRef\\RecordTypeTest", "module", "module");
+		InterpreterExecuter.interpret("ExtRef\\RecordTypeTest", "module", "module");
 
 		assertTrue(evaluator.evaluate(resultStream));
 	}
@@ -114,7 +133,7 @@ public class UnitTests extends TestCase {
 		ExpectedResult expectedResult = new ExpectedResult();
 		expectedResult.addString("3");
 		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
-		InterpreterExecuter.Execute("ExtRef\\DivisionTest", "module", "module");
+		InterpreterExecuter.interpret("ExtRef\\DivisionTest", "module", "module");
 
 		assertTrue(evaluator.evaluate(resultStream));
 	}
@@ -126,7 +145,7 @@ public class UnitTests extends TestCase {
 		expectedResult.addString("3");
 		expectedResult.addString("3");
 		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
-		InterpreterExecuter.Execute("ExtRef\\ProcedureWithParametersTest", "module", "module");
+		InterpreterExecuter.interpret("ExtRef\\ProcedureWithParametersTest", "module", "module");
 
 		assertTrue(evaluator.evaluate(resultStream));
 	}
@@ -136,7 +155,7 @@ public class UnitTests extends TestCase {
 		expectedResult.addString("hallo");
 
 		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
-		InterpreterExecuter.Execute("ExtRef\\ProcedureWithoutParametersTest", "module", "module");
+		InterpreterExecuter.interpret("ExtRef\\ProcedureWithoutParametersTest", "module", "module");
 
 		assertTrue(evaluator.evaluate(resultStream));
 	}
@@ -146,7 +165,7 @@ public class UnitTests extends TestCase {
 		expectedResult.addString("9");
 		expectedResult.addString("9");
 		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
-		InterpreterExecuter.Execute("ExtRef\\ConstantImmutabilityTest", "module", "module");
+		InterpreterExecuter.interpret("ExtRef\\ConstantImmutabilityTest", "module", "module");
 
 		assertTrue(evaluator.evaluate(resultStream));
 	}
@@ -156,7 +175,7 @@ public class UnitTests extends TestCase {
 		expectedResult.addString("5");
 		expectedResult.addString("9");
 		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
-		InterpreterExecuter.Execute("ExtRef\\ArrayTest", "module", "module");
+		InterpreterExecuter.interpret("ExtRef\\ArrayTest", "module", "module");
 
 		assertTrue(evaluator.evaluate(resultStream));
 	}
@@ -165,7 +184,7 @@ public class UnitTests extends TestCase {
 		ExpectedResult expectedResult = new ExpectedResult();
 		expectedResult.addString("9");
 		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
-		InterpreterExecuter.Execute("ExtRef\\ConstantTest", "module", "module");
+		InterpreterExecuter.interpret("ExtRef\\ConstantTest", "module", "module");
 
 		assertTrue(evaluator.evaluate(resultStream));
 	}
@@ -174,7 +193,7 @@ public class UnitTests extends TestCase {
 		ExpectedResult expectedResult = new ExpectedResult();
 		expectedResult.addString("testtt");
 		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
-		InterpreterExecuter.Execute("ExtRef\\SimpleModuleTest", "module", "module");
+		InterpreterExecuter.interpret("ExtRef\\SimpleModuleTest", "module", "module");
 
 		assertTrue(evaluator.evaluate(resultStream));
 	}
@@ -187,7 +206,7 @@ public class UnitTests extends TestCase {
 		expectedResult.addString("a");
 		expectedResult.addString("a");
 		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
-		InterpreterExecuter.Execute("ExtRef\\WhileTest", "module", "module");
+		InterpreterExecuter.interpret("ExtRef\\WhileTest", "module", "module");
 
 		assertTrue(evaluator.evaluate(resultStream));
 	}
@@ -196,7 +215,7 @@ public class UnitTests extends TestCase {
 		ExpectedResult expectedResult = new ExpectedResult();
 		expectedResult.addString("in if");
 		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
-		InterpreterExecuter.Execute("ExtRef\\IfTest", "ifStatement", "ifStatement");
+		InterpreterExecuter.interpret("ExtRef\\IfTest", "ifStatement", "ifStatement");
 
 		assertTrue(evaluator.evaluate(resultStream));
 	}
@@ -205,7 +224,7 @@ public class UnitTests extends TestCase {
 		ExpectedResult expectedResult = new ExpectedResult();
 		expectedResult.addString("in else");
 		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
-		InterpreterExecuter.Execute("ExtRef\\IfElseTest", "ifStatement", "ifStatement");
+		InterpreterExecuter.interpret("ExtRef\\IfElseTest", "ifStatement", "ifStatement");
 
 		assertTrue(evaluator.evaluate(resultStream));
 	}
@@ -214,7 +233,7 @@ public class UnitTests extends TestCase {
 		ExpectedResult expectedResult = new ExpectedResult();
 		expectedResult.addString("in else if");
 		TestResultEvaluator evaluator = new TestResultEvaluator(expectedResult);
-		InterpreterExecuter.Execute("ExtRef\\IfElseElseIfTest", "ifStatement", "ifStatement");
+		InterpreterExecuter.interpret("ExtRef\\IfElseElseIfTest", "ifStatement", "ifStatement");
 
 		assertTrue(evaluator.evaluate(resultStream));
 	}
@@ -321,7 +340,7 @@ public class UnitTests extends TestCase {
 		try {
 			Context context = new Context();
 			ConstantList constants = new ConstantList();
-			constants.addItem("a", new DataField(new SimpleType("INTEGER"), new IntegerValue(9)));
+			constants.addItem("a", new DataField(new IntegerType(), new IntegerValue(9)));
 			context.addConstants(constants);
 			Object result = interpreter.interpret(context);
 			assertTrue(((DataField) result).getValue(context).toString().compareTo("9") == 0);
@@ -343,7 +362,7 @@ public class UnitTests extends TestCase {
 		try {
 			Context context = new Context();
 			DataFieldList varList = new DataFieldList();
-			DataField variable = new DataField(new SimpleType("INTEGER"));
+			DataField variable = new DataField(new IntegerType());
 			varList.addItem("a", variable);
 			context.addVariables(varList);
 			Object result = interpreter.interpret(context);

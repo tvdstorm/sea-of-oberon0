@@ -243,6 +243,21 @@ with returns [Interpretable with]
 		'END' 
 	;
 
+
+
+
+
+
+
+fragment LETTER : ('a'..'z' | 'A'..'Z') ;
+fragment DIGIT : '0'..'9';
+INTEGER : DIGIT+ ;
+IDENT : LETTER (LETTER | DIGIT)*;
+WS : (' ' | '\t' | '\n' | '\r' | '\f')+ {$channel = HIDDEN;};
+ 
+
+
+
 write returns [Interpretable write]
 	:	
 		('Write' 
@@ -261,12 +276,4 @@ read returns [Interpretable read]
 	:	'Read''(' IDENT  										{VarSelectorNode selector = new VarSelectorNode($IDENT.getText());}
 		selector[selector] ')'										{$read = new ReadNode(selector);}
 	;
-
-
-
-fragment LETTER : ('a'..'z' | 'A'..'Z') ;
-fragment DIGIT : '0'..'9';
-INTEGER : DIGIT+ ;
-IDENT : LETTER (LETTER | DIGIT)*;
-WS : (' ' | '\t' | '\n' | '\r' | '\f')+ {$channel = HIDDEN;};
  

@@ -4,10 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 import ar.oberon0.ast.expression.VarSelectorNode;
 import ar.oberon0.runtime.Context;
 import ar.oberon0.runtime.DataField;
+import ar.oberon0.shared.CheckViolation;
 import ar.oberon0.shared.Interpretable;
 import ar.oberon0.shared.TechnicalException;
 import ar.oberon0.values.IntegerValue;
@@ -41,6 +44,11 @@ public class ReadNode implements Interpretable {
 		int inputFromConsole = getInputAsInteger();
 		setValueOfDataField(context, variable, inputFromConsole);
 		return 0;
+	}
+
+	@Override
+	public List<CheckViolation> check(Context context) {
+		return new ArrayList<CheckViolation>();
 	}
 
 	private void setValueOfDataField(final Context context, final DataField variable, final int inputFromConsole) throws TechnicalException {

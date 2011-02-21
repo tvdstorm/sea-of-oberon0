@@ -48,6 +48,10 @@ public final class Context {
 		this.procedures = procedures;
 	}
 
+	public ProcedureList getProcedures() {
+		return this.procedures;
+	}
+
 	public Context() {
 		this.parentContext = null;
 		this.variables = new DataFieldList();
@@ -57,6 +61,16 @@ public final class Context {
 
 	public CreatableType getType(final String name) {
 		return this.typeIdentifiers.getItem(name);
+	}
+
+	public boolean DoesProcedureExist(final String name) {
+		if (itemExist(name, this.procedures)) {
+			return true;
+		}
+		if (this.parentContext != null) {
+			return this.parentContext.DoesProcedureExist(name);
+		}
+		return false;
 	}
 
 	public ProcedureDeclaration getProcedure(final String name) throws TechnicalException {
@@ -123,6 +137,18 @@ public final class Context {
 		clone.typeIdentifiers = this.typeIdentifiers;
 		clone.variables = this.variables.clone();
 		return clone;
+	}
+
+	public boolean doesVarOrConstantExist(final String name) {
+		if (itemExist(name, this.variables)) {
+			return true;
+		} else if (itemExist(name, this.constants)) {
+			return true;
+		} else if (parentContext != null) {
+			return parentContext.doesVarOrConstantExist(name);
+		} else {
+			return false;
+		}
 	}
 
 	public DataField getVarOrConstantAsDataField(final String name) throws TechnicalException {
