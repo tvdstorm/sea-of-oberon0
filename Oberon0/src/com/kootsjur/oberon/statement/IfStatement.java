@@ -76,9 +76,32 @@ public class IfStatement extends Statement
          {
             statement.evaluate(environment);
          }
-         return;
+         return; //condition true. No need to process elseIfStatements! neither else statement!
       }
       
+      if(processElseIfStatements(environment))
+      {
+         return;//one elseIfcondition was true so no need to process else statement
+      }
+      
+      processElseStatements(environment);
+   }
+
+   private void processElseStatements(Environment environment)
+   {
+      if(elseStatementSequence != null && !elseStatementSequence.isEmpty())
+      {
+         for(Statement statement : elseStatementSequence)
+         {
+            statement.evaluate(environment);
+         }
+      }
+      
+   }
+
+   private boolean processElseIfStatements(Environment environment)
+   {
+      boolean isElseIfs = false;
       if(!elseIfStatements.isEmpty())
       {
          for(IfStatement ifStatement : elseIfStatements)
@@ -91,17 +114,12 @@ public class IfStatement extends Statement
                {
                   statement.evaluate(environment);
                }
-               return;
+               isElseIfs = true;
+               break;
             }
          }
       }
       
-      if(elseStatementSequence != null && !elseStatementSequence.isEmpty())
-      {
-         for(Statement statement : elseStatementSequence)
-         {
-            statement.evaluate(environment);
-         }
-      }
+      return isElseIfs;
    }
 }

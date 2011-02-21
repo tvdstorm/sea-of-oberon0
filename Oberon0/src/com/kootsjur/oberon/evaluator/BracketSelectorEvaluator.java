@@ -1,7 +1,6 @@
 package com.kootsjur.oberon.evaluator;
 
 import com.kootsjur.oberon.environment.Environment;
-import com.kootsjur.oberon.value.Array;
 import com.kootsjur.oberon.value.Int;
 import com.kootsjur.oberon.value.Value;
 
