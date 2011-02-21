@@ -30,6 +30,7 @@ public class Environment
 {
    private Environment parentEnvironment;
    private DeclaredConstants declaredConstants;
+   
    @SuppressWarnings("rawtypes")
    private DeclaredVars declaredVars;
    private DeclaredTypes declaredTypes;
@@ -58,7 +59,8 @@ public class Environment
    public void setDeclaredConstants(DeclaredConstants declaredConstants){this.declaredConstants = declaredConstants;}
    public DeclaredConstants getDeclaredConstants(){return declaredConstants;}
    
-   public void setDeclaredVars(@SuppressWarnings("rawtypes") DeclaredVars declaredVars){this.declaredVars = declaredVars;}
+   @SuppressWarnings("rawtypes")
+   public void setDeclaredVars(DeclaredVars declaredVars){this.declaredVars = declaredVars;}
    @SuppressWarnings("rawtypes")
    public DeclaredVars getDeclaredVars(){return declaredVars;}
    
@@ -120,10 +122,16 @@ public class Environment
    
    public void declareType(TypeDeclaration typeDeclaration)
    {
+      //pre-conditions
+      assert(typeDeclaration != null): "Error in Environment method declareType!Parameter typeDeclaration is null!";
+      
       String typeName = typeDeclaration.getName();
       TypeDefinition typeDefinition = typeDeclaration.getTypeDefinition();
       Type type = new Type(typeDefinition);
       declareType(typeName,type);
+      
+      //post-condition
+      assert(declaredTypes.containsKey(typeName)):"Error declaringType. declaredTypes does not contain name of typeDeclaration as Key ";
    }
    
    public void declareProcedure(String procedureName, Procedure procedure)
