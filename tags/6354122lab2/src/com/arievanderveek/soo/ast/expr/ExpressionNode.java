@@ -1,7 +1,7 @@
 package com.arievanderveek.soo.ast.expr;
 
 import com.arievanderveek.soo.ast.ASTNode;
-import com.arievanderveek.soo.ast.Interpretable;
+import com.arievanderveek.soo.ast.InterpretableAsInteger;
 
 /**
  * Abstract class representing an expression node
@@ -9,6 +9,6 @@ import com.arievanderveek.soo.ast.Interpretable;
  * @author Arie van der Veek
  *
  */
-public abstract class ExpressionNode implements Interpretable, ASTNode {
+public abstract class ExpressionNode implements InterpretableAsInteger, ASTNode {
 
 }
