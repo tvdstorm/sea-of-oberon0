@@ -91,15 +91,28 @@ procedureCall returns [ProcedureCall pc] :
 IDENT (ap=actualParameters)? 
 {$pc=new ProcedureCall($IDENT.text, ap);}
 ;
-ifStatement returns [IEvaluator e] : 'IF' expression 'THEN' statementSequence
-  ('ELSIF' expression 'THEN' statementSequence)*
-  ('ELSE' statementSequence)? 'END';
-whileStatement returns [IEvaluator e] : 'WHILE' expression 'DO' statementSequence 'END';
+
+ifStatement returns [IfStatement ifs] :
+{IfStatement result = new IfStatement();} 
+'IF' exp1=expression 'THEN' ss1=statementSequence
+{result.SetIfBlock(new SimpleIfStatement(exp1, ss1));}
+('ELSIF' exp2=expression 'THEN' ss2=statementSequence
+{result.AddElseIf(new SimpleIfStatement(exp2, ss2));}
+)*
+('ELSE' ss3=statementSequence)? 'END'
+{result.SetElseStatements(ss3);
+$ifs = result;}
+;
+
+whileStatement returns [WhileStatement ws] : 
+'WHILE' exp=expression 'DO' ss=statementSequence 'END'
+{$ws=new WhileStatement(exp, ss);}
+;
 statement returns [IStatement s] : 
 ( assgn=assignment {$s = assgn;}
 | pc=procedureCall {$s = pc;}
-| ifs=ifStatement //{$s = ifs;}
-| wh=whileStatement //{$s = while;}
+| ifs=ifStatement {$s = ifs;}
+| wh=whileStatement {$s = wh;}
 )?;
 
 statementSequence returns [List<IStatement> ls] :
