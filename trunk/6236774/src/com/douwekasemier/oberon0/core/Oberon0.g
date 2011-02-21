@@ -1,294 +1,275 @@
 grammar Oberon0;
 
 options {
-  language = Java;
-  output=AST;
-  backtrack=true;
-  ASTLabelType=CommonTree;
+  language     = Java;
+  output       = AST;
+  backtrack    = true;
+  ASTLabelType = CommonTree;
 }
+
 tokens {
-// Keywords
-	MODULE = 'MODULE';
-	BEGIN = 'BEGIN';
-	END = 'END';
-  CONST = 'CONST'; 
-  TYPE = 'TYPE'; 
-  VAR = 'VAR';
-  ARRAY = 'ARRAY';
-  RECORD = 'RECORD';
-  PROCEDURE = 'PROCEDURE';
-  WHILE = 'WHILE'; 
-  IF = 'IF';
-  THEN = 'THEN';
-  ELSIF = 'ELSIF';
-  ELSE = 'ELSE';
-  WITH = 'WITH';
-  EQUALS = '=';
+  // KEYWORDS
+  MODULE     = 'MODULE';
+  BEGIN      = 'BEGIN';
+  END        = 'END';
+  CONST      = 'CONST';
+  TYPE       = 'TYPE';
+  VAR        = 'VAR';
+  ARRAY      = 'ARRAY';
+  RECORD     = 'RECORD';
+  PROCEDURE  = 'PROCEDURE';
+  WHILE      = 'WHILE';
+  IF         = 'IF';
+  THEN       = 'THEN';
+  ELSIF      = 'ELSIF';
+  ELSE       = 'ELSE';
+  WITH       = 'WITH';
+  EQUALS     = '=';
   NOT_EQUALS = '#';
-  GT = '>';
-  GTE = '>=';
-  LT = '<';
-  LTE = '<=';
-  PLUS = '+';
-  MINUS = '-';
-  OR = 'OR';
-  NOT = '~';
-  MULT = '*';
-  DIV = 'DIV';
-  MOD = 'MOD';
-  AND = '&';
+  GT         = '>';
+  GTE        = '>=';
+  LT         = '<';
+  LTE        = '<=';
+  PLUS       = '+';
+  MINUS      = '-';
+  OR         = 'OR';
+  NOT        = '~';
+  MULT       = '*';
+  DIV        = 'DIV';
+  MOD        = 'MOD';
+  AND        = '&';
+  
+
+  // EXTRA AST KEYWORDS
+  ACTUALS;
+  ARRAYSELECTOR;
+  ASSIGN;
+  CALL;
   CONSTANTS;
-  VARIABLES;
-  TYPES;
-  PROCEDURES;
-  MODULEBODY;
-  PROCEDUREBODY;
+  DECLARATIONS;
+  EXPRESSION;
+  FIELD;
   FORMALPARAMETER;
   FORMALPARAMETERS;
-  ASSIGN;
-  ACTUALPARAMETERS;
-  CALL;
   IDENT_SELECT;
-  SELECTORS;
-  RECORDSELECTOR;
-  ARRAYSELECTOR;
-  IDENT;
-  EXPRESSION;
-  LITERAL;
-  DECLARATIONS;
-  STATEMENTS;
+  IDENTIFIERS;
   IFSTATEMENT;
-  FIELD;
+  LITERAL;
+  MODULEBODY;
+  PROCEDUREBODY;
+  PROCEDURES;
+  RECORDSELECTOR;
+  SELECTORS;
+  STATEMENTS;
+  TYPES;
+  VARIABLES;
 }
+
 @header {
-  package com.douwekasemier.oberon0.core; 
+package com.douwekasemier.oberon0.core;
 }
+
 @lexer::header {
-  package com.douwekasemier.oberon0.core;
+package com.douwekasemier.oberon0.core;
 }
 
+
+// DECLARATIONS
 module
-  : MODULE identifier ';' moduleBody  '.' EOF
-  -> ^(MODULE moduleBody)
-  ;
-  
+  : MODULE identifier ';' moduleBody '.' EOF
+  -> ^(MODULE identifier moduleBody);
+
 moduleBody
-  : declarations (BEGIN statementSequence)? END identifier
-  -> ^(DECLARATIONS declarations?) statementSequence?
+  : declarations (BEGIN statementSequence)? END identifier 
+  ->  ^(DECLARATIONS declarations?) ^(STATEMENTS statementSequence?);
+
+declarations
+  : constantDeclarations? typeDeclarations? varDeclarations? procedureDeclarations?
+  -> ^(CONSTANTS constantDeclarations?) ^(TYPES typeDeclarations?) ^(VARIABLES varDeclarations?) ^(PROCEDURES procedureDeclarations?);
+
+constantDeclarations
+  : CONST (identifier '=' expression ';')*
+  -> ^(CONST identifier expression)*;
+
+typeDeclarations
+  : TYPE (identifier '=' type ';')*
+  -> ^(TYPE identifier type)*;
+
+procedureDeclarations
+  : (procedureHeading ';' procedureBody ';')*
+  -> ^(PROCEDURE procedureHeading procedureBody)*;
+
+procedureHeading
+  : PROCEDURE identifier formalParameters?
+    -> identifier ^(FORMALPARAMETERS formalParameters?);
+
+formalParameters
+  : '(' (fpSection (';' fpSection)*)? ')' 
+  -> fpSection+;
+
+fpSection
+  : 'VAR'? identifierList ':' type 
+  -> ^(FORMALPARAMETER 'VAR'? type identifierList) ;
+
+procedureBody
+  : declarations ('BEGIN' statementSequence)? 'END' identifier 
+  -> ^(DECLARATIONS declarations?) ^(STATEMENTS statementSequence?);
+
+varDeclarations
+  : VAR (identifierList ':' type ';')*
+  -> ^(VAR type identifierList)*;
+
+
+// EXPRESSIONS
+expression
+  : simpleExpression comparer simpleExpression
+  -> ^(comparer simpleExpression simpleExpression)
+  | simpleExpression
+  -> simpleExpression ;
+
+comparer
+  : EQUALS
+  | NOT_EQUALS
+  | LT
+  | LTE
+  | GT
+  | GTE
   ;
 
-identifier
-  : IDENTIFIER
+simpleExpression
+  : unary^? term (weakops^ term)*
   ;
-  
-integer
-  : INTEGER
-  ;
-  
-literal
-  : integer
-  ;
-  
-subselector
-  : '.' identifier
-  -> ^(RECORDSELECTOR identifier)
-  | '[' expression ']'
-	-> ^(ARRAYSELECTOR expression)
-  ;
-  
-selector
-  : (subselector)*
-  ; 
 
-factor 
-  : identifier selector
-  -> ^(IDENT_SELECT identifier ^(SELECTORS selector)?)
+unary
+  : (PLUS | MINUS)
+  -> MINUS?
+  ;
+
+term
+  : factor (strongops^ factor)* ;
+
+factor
+  : identifier selectors
+  -> ^( IDENT_SELECT identifier ^(SELECTORS selectors?) )
   | literal
   -> literal
   | '(' expression ')'
   -> expression
   | NOT factor
-  -> ^(NOT factor)
-  ;
-  
+  -> ^(NOT factor) ;
+
 strongops
   : MULT
   | DIV
   | MOD
-  | AND
-  ;
-  
-term
-  : factor (strongops^ factor)*
-  ;
-
-unary
-  : PLUS | MINUS
-  -> MINUS?
-  ;
+  | AND ;
 
 weakops
   : PLUS
   | MINUS
-  | OR
-  ;
-  
-simpleExpression
-  : unary^? term (weakops^ term)*
-  ;
-  
-comparer
-  : EQUALS | NOT_EQUALS | LT | LTE | GT | GTE
-  ;
-  
-expression
-  : simpleExpression comparer simpleExpression
-  -> ^(comparer simpleExpression simpleExpression)
-  | simpleExpression 
-  -> simpleExpression
-  ;
-  
-assignment
-  : identifier selector ':=' expression
-  -> ^(ASSIGN expression ^(IDENT_SELECT identifier ^(SELECTORS selector)?))
-  ;
- 
-actualParameters
-  : '(' (expression (',' expression)*)? ')'
-  //-> ^(ACTUALPARAMETERS expression+)
-  -> expression+
-  ;  
+  | OR ;
 
-procedureCall
-  : identifier actualParameters?
-  -> ^(CALL identifier actualParameters?)
-  ;
+identifier
+  : IDENTIFIER ;
 
-ifpart
-  : IF expression THEN statementSequence
-  -> ^(IF expression statementSequence)
-  ;
-  
-elsifpart
-  : ELSIF expression THEN statementSequence
-  -> ^(ELSIF expression statementSequence)
-  ;
+identifierList:
+  identifier (',' identifier)*
+  -> ^(IDENTIFIERS identifier+);
 
-elsepart
-  : ELSE statementSequence
-  -> ^(ELSE statementSequence)
-  ;
+integer
+  : INTEGER ;
 
-ifStatement
-  : ifpart
-    elsifpart*
-    elsepart?
-    END
-  -> ^(IFSTATEMENT ifpart elsifpart* elsepart? END)
-  ;
-  
-withStatement
-  : WITH identifier selector 'DO' statementSequence END
-  -> ^(WITH ^(IDENT_SELECT identifier ^(SELECTORS selector)?) statementSequence)
-  ;
+literal
+  : integer ;
 
-whileStatement
-  : WHILE expression 'DO' statementSequence END
-  -> ^(WHILE expression statementSequence)
-  ;
-  
+subselector
+  : '.' identifier 
+  -> ^(RECORDSELECTOR identifier)
+  | '[' expression ']'
+  -> ^(ARRAYSELECTOR expression) ;
+
+selectors
+  : (subselector)* ;
+
+
+// STATEMENTS
+
 statement
   : assignment
   | procedureCall
   | ifStatement
   | whileStatement
-  | withStatement
-  ;
-  
+  | withStatement ;
+
+assignment
+  : identifier selectors ':=' expression
+  -> ^( ASSIGN expression ^( IDENT_SELECT identifier ^(SELECTORS selectors?) ) );
+
+ifStatement
+  : ifpart elsifpart* elsepart? END
+  -> ^(IFSTATEMENT ifpart elsifpart* elsepart?);
+
+ifpart
+  : IF expression THEN statementSequence
+  -> ^(IF expression ^(STATEMENTS statementSequence));
+
+elsifpart
+  : ELSIF expression THEN statementSequence
+  -> ^(ELSIF expression ^(STATEMENTS statementSequence));
+
+elsepart
+  : ELSE statementSequence
+  -> ^(ELSE ^(STATEMENTS statementSequence)) ;
+
+procedureCall
+  : identifier actualParameters?
+  -> ^(CALL identifier ^(ACTUALS actualParameters?));
+
+actualParameters
+  : '(' (expression (',' expression)*)? ')'
+  -> expression+;
+
+whileStatement
+  : WHILE expression 'DO' statementSequence END
+  -> ^(WHILE expression ^(STATEMENTS statementSequence));
+
+withStatement
+  : WITH identifier selectors 'DO' statementSequence END
+  -> ^( WITH ^( IDENT_SELECT identifier ^(SELECTORS selectors?) ) ^(STATEMENTS statementSequence) );
+
 statementSequence
   : statement (';' statement)*
-  -> ^(STATEMENTS (statement)+)
-  ;
-  
-identifierList
-  : identifier (',' identifier)*
-  -> identifier+
-  ;
-  
-arrayType
-  : ARRAY expression 'OF' type
-  -> ^(ARRAY type expression)
-  ;
+  -> statement+;
 
-field
-  : (identifierList ':' type)?
-  -> ^(FIELD type identifierList)
-  ; 
-  
-recordType
-  : RECORD field (';' field)* 'END'
-  -> ^(RECORD field+)
-  ;
+// TYPES
 
 type
   : identifier
   | arrayType
-  | recordType
-  ;  
-  
-fpSection
-  : 'VAR'? identifierList ':' type
-  -> ^(FORMALPARAMETER 'VAR'? type identifierList )
-  ;
-  
-formalParameters
-  : '(' (fpSection (';' fpSection)*)? ')'
-//  -> ^(FORMALPARAMETERS fpSection+)
-  -> fpSection+
-  ;
+  | recordType ;
 
-procedureHeading
-  :  PROCEDURE identifier formalParameters? 
-  -> identifier formalParameters?
-  ;
-    
-procedureBody
-  :   declarations ('BEGIN' statementSequence)? 'END' identifier
-  ->  ^(DECLARATIONS declarations)? statementSequence?
-  ; 
-    
-procedureDeclarations
-  : procedureHeading ';' procedureBody
-  -> ^(PROCEDURE procedureHeading procedureBody)
-  ;
-  
-constantDeclarations
-  : CONST (identifier '=' expression ';')*
-  -> ^(CONST identifier expression)*
-  ;
-  
-typeDeclarations
-  : TYPE (identifier '=' type ';')*
-  -> ^(TYPE identifier type)*
-  ;
-  
-varDeclarations
-  : VAR (identifierList ':' type ';')*
-  -> ^(VAR type identifierList)*
-  ;
-  
-declarations
-  : constantDeclarations?
-    typeDeclarations?
-    varDeclarations? 
-    (procedureDeclarations ';')*
- -> constantDeclarations?
-    typeDeclarations?
-    varDeclarations?
-    (procedureDeclarations*)?
-  ;
-  
- // Reguliere tokens   
-INTEGER: ('0'..'9')+;
-IDENTIFIER: ('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'0'..'9')* ;  
-WHITESPACE: (' ' | '\t' | '\n' | '\r' | '\f')+ {$channel = HIDDEN;};
+arrayType
+  : ARRAY expression 'OF' type
+  -> ^(ARRAY type expression);
+
+recordType
+  : RECORD field (';' field)* 'END'
+  -> ^(RECORD field+);
+
+field
+  : (identifierList ':' type)?
+  -> ^(FIELD type identifierList);
+
+
+// TOKENS
+
+INTEGER
+  : ('0'..'9')+ ;
+
+IDENTIFIER
+  : ('a'..'z'|'A'..'Z')
+    ('a'..'z'|'A'..'Z'|'0'..'9')* ;
+
+WHITESPACE
+  : ( ' ' | '\t' | '\n' | '\r' | '\f' )+
+    { $channel = HIDDEN; } ;

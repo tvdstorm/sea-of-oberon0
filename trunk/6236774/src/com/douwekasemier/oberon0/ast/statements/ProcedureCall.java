@@ -1,12 +1,9 @@
 package com.douwekasemier.oberon0.ast.statements;
 
-import java.util.ArrayList;
-
 import org.antlr.runtime.tree.Tree;
 
 import com.douwekasemier.oberon0.ast.AST;
 import com.douwekasemier.oberon0.ast.Evaluatable;
-import com.douwekasemier.oberon0.ast.ExpressionBuilder;
 import com.douwekasemier.oberon0.ast.Interpretable;
 import com.douwekasemier.oberon0.ast.declaration.Declarations;
 import com.douwekasemier.oberon0.ast.declaration.FormalParameter;
@@ -22,34 +19,20 @@ import com.douwekasemier.oberon0.interpreter.environment.Value;
 public class ProcedureCall extends AST implements Interpretable {
 
     private String identifier;
-    private ArrayList<Evaluatable> actualParameters;
-
-    public ProcedureCall() {
-        identifier = null;
-        actualParameters = new ArrayList<Evaluatable>();
-    }
-
-    public ProcedureCall(String identifier, ArrayList<Evaluatable> actualParameters) {
-        this.identifier = identifier;
-        this.actualParameters = actualParameters;
-    }
+    private ActualParameters actualParameters;
 
     public ProcedureCall(Tree antlrTree) {
-        this();
-        antlrType = antlrTree.getType();
-        antlrText = antlrTree.getText();
+        super(antlrTree);
         assert (antlrType == Oberon0Parser.CALL);
-
+        
+        assert(antlrTree.getChild(0).getType() == Oberon0Parser.IDENTIFIER);
         identifier = antlrTree.getChild(0).getText();
 
-        // Parameters
-        for (int i = 1; i < antlrTree.getChildCount(); i++) {
-            actualParameters.add(ExpressionBuilder.build(antlrTree.getChild(i)));
-        }
+        actualParameters = new ActualParameters(antlrTree.getChild(1));
     }
 
     @Override
-    public void interpret(Environment environment) throws Oberon0Exception {
+    public void interpret(Environment environment) {
 
         Procedure procedure = environment.getProcedure(identifier);
         Environment invokerEnvironment = procedure.getEnvironment().newEnvironment("Procedure call <" + identifier + ">");

@@ -17,6 +17,8 @@ public class Quicksort {
         for( int i = 0; i < 10; i++ ) {
             input += ((int)(Math.random() * 98) + 1) + "\n";
         }
+        System.out.println("--- INPUT ----");
+        System.out.print(input);
         interpreter.interpret(file, input);
     }
 }

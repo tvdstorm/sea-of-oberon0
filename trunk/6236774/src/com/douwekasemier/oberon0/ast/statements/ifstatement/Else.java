@@ -11,12 +11,10 @@ public class Else extends AST {
     private Statements statements;
 
     public Else(Tree antlrTree) {
-        antlrType = antlrTree.getType();
-        antlrText = antlrTree.getText();
+        super(antlrTree);
         assert (antlrType == Oberon0Parser.ELSE);
 
         statements = new Statements(antlrTree.getChild(0));
-
     }
 
     public Statements getStatements() {

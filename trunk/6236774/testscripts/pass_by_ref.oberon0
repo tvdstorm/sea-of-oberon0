@@ -1,0 +1,15 @@
+MODULE Ref;
+
+VAR x: INTEGER;
+
+PROCEDURE Ref(VAR ref: INTEGER);
+  BEGIN
+  	ref := 3
+END Ref;
+
+BEGIN
+  x := 2;
+  Ref(x);
+  Write(x)
+  
+END Ref.

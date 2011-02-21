@@ -2,24 +2,18 @@ package com.douwekasemier.oberon0.interpreter.core.functions;
 import java.io.PrintWriter;
 
 import com.douwekasemier.oberon0.ast.declaration.ProcedureDeclaration;
-import com.douwekasemier.oberon0.exceptions.BuildInFunctionsException;
 import com.douwekasemier.oberon0.exceptions.Oberon0Exception;
 import com.douwekasemier.oberon0.interpreter.environment.Environment;
+import com.douwekasemier.oberon0.interpreter.environment.Procedure;
 
 public class WriteLn extends ProcedureDeclaration {
     
-    public WriteLn() {
+    public WriteLn(Environment environment) {
         super();
         identifier = "WriteLn";
-    }
-    
-    public WriteLn(Environment environment) throws BuildInFunctionsException {
-        this();
-        try {
-            declare(environment);
-        } catch (Oberon0Exception e) {
-            throw new BuildInFunctionsException();
-        }
+
+        Environment localEnvironment = environment.newEnvironment("Procedure declaration <" + identifier + ">");
+        environment.declareProcedure(identifier, new Procedure(this, localEnvironment));
     }
 
     @Override

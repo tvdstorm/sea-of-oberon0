@@ -4,7 +4,7 @@ import org.antlr.runtime.tree.Tree;
 
 import com.douwekasemier.oberon0.ast.AST;
 import com.douwekasemier.oberon0.ast.Evaluatable;
-import com.douwekasemier.oberon0.ast.ExpressionBuilder;
+import com.douwekasemier.oberon0.ast.builders.ExpressionBuilder;
 import com.douwekasemier.oberon0.ast.statements.Statements;
 import com.douwekasemier.oberon0.core.Oberon0Parser;
 
@@ -14,14 +14,11 @@ public class Elsif extends AST {
     private Statements statements;
 
     public Elsif(Tree antlrTree) {
-        antlrType = antlrTree.getType();
-        antlrText = antlrTree.getText();
+        super(antlrTree);
         assert (antlrType == Oberon0Parser.ELSIF);
 
         expression = ExpressionBuilder.build(antlrTree.getChild(0));
-
         statements = new Statements(antlrTree.getChild(1));
-
     }
 
     public Evaluatable getExpression() {

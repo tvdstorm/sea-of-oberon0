@@ -2,19 +2,18 @@ package com.douwekasemier.oberon0.test;
 
 import java.io.File;
 
-public class AST {
+import com.douwekasemier.oberon0.interpreter.Interpreter;
 
-    
+public class PassByRef {
+
     /**
      * @param args
      */
     public static void main(String[] args) {
         // Laad een bestand oberon0 bestand     
-        ASTTestInterpreter interpreter = new ASTTestInterpreter();
-        File file = new File("testscripts/quicksort.oberon0");
-        String input = "1\n5\n3\n13\n8";
+        Interpreter interpreter = new Interpreter();
+        File file = new File("testscripts/pass_by_ref.oberon0");
+        String input = "";
         interpreter.interpret(file, input);
-        
     }
-
 }

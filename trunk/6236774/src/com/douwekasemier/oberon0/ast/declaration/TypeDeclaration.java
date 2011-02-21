@@ -9,9 +9,8 @@ import com.douwekasemier.oberon0.interpreter.environment.Environment;
 
 public class TypeDeclaration extends AST implements Declarable {
 
-    public TypeDeclaration(Tree node) {
-        antlrType = node.getType();
-        antlrText = node.getText();
+    public TypeDeclaration(Tree antlrTree) {
+        super(antlrTree);
     }
 
     @Override

@@ -1,38 +1,32 @@
 package com.douwekasemier.oberon0.ast.declaration;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.antlr.runtime.tree.Tree;
 
 import com.douwekasemier.oberon0.ast.AST;
 import com.douwekasemier.oberon0.ast.Initializable;
+import com.douwekasemier.oberon0.ast.types.IdentifierType;
 import com.douwekasemier.oberon0.exceptions.Oberon0Exception;
 import com.douwekasemier.oberon0.interpreter.environment.Environment;
 import com.douwekasemier.oberon0.interpreter.environment.Value;
 
 public abstract class FormalParameter extends AST implements Initializable {
-    
+
     protected boolean reference;
     protected Initializable vartype;
-    protected ArrayList<String> identifiers;
+    protected List<String> identifiers;
 
-    public FormalParameter() {
-        reference = false;
-        vartype = null;
+    public FormalParameter(Tree antlrTree) {
+        super(antlrTree);
         identifiers = new ArrayList<String>();
     }
 
-    public FormalParameter(boolean reference, Initializable vartype, ArrayList<String> identifiers) {
-        this.reference = reference;
+    public FormalParameter(IdentifierType vartype, List<String> identifiers) {
+        super();
         this.vartype = vartype;
         this.identifiers = identifiers;
-    }
-
-    public FormalParameter(Tree node) {
-        this();
-        
-        antlrType = node.getType();
-        antlrText = node.getText();
     }
 
     public boolean isReference() {
@@ -51,11 +45,11 @@ public abstract class FormalParameter extends AST implements Initializable {
         this.vartype = vartype;
     }
 
-    public ArrayList<String> getIdentifiers() {
+    public List<String> getIdentifiers() {
         return identifiers;
     }
 
-    public void setIdentifiers(ArrayList<String> identifiers) {
+    public void setIdentifiers(List<String> identifiers) {
         this.identifiers = identifiers;
     }
 

@@ -4,8 +4,8 @@ import org.antlr.runtime.tree.Tree;
 
 import com.douwekasemier.oberon0.ast.AST;
 import com.douwekasemier.oberon0.ast.Evaluatable;
-import com.douwekasemier.oberon0.ast.ExpressionBuilder;
 import com.douwekasemier.oberon0.ast.Interpretable;
+import com.douwekasemier.oberon0.ast.builders.ExpressionBuilder;
 import com.douwekasemier.oberon0.ast.expression.Identifier;
 import com.douwekasemier.oberon0.core.Oberon0Parser;
 import com.douwekasemier.oberon0.exceptions.NotSelectableExpression;
@@ -19,22 +19,9 @@ public class Assignment extends AST implements Interpretable {
     private Identifier identAndSelectors;
     private Evaluatable expression;
 
-    public Assignment() {
-        identAndSelectors = null;
-        expression = null;
-    }
-
-    public Assignment(Identifier identAndSelectors, Evaluatable expression) {
-        this.identAndSelectors = identAndSelectors;
-        this.expression = expression;
-    }
-
     // Generate AST from rewrite -> ^(ASSIGN expression identifier ^(SELECTORS selector)?)
     public Assignment(Tree antlrTree) {
-        this();
-        antlrType = antlrTree.getType();
-        antlrText = antlrTree.getText();
-
+        super(antlrTree);
         assert (antlrType == Oberon0Parser.ASSIGN);
 
         // Expression
@@ -45,7 +32,7 @@ public class Assignment extends AST implements Interpretable {
     }
 
     @Override
-    public void interpret(Environment environment) throws Oberon0Exception {
+    public void interpret(Environment environment) {
         Value value = expression.evaluate(environment);
         Reference reference;
         try {

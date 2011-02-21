@@ -2,7 +2,7 @@ package com.douwekasemier.oberon0.ast.expression;
 
 import org.antlr.runtime.tree.Tree;
 
-import com.douwekasemier.oberon0.exceptions.Oberon0Exception;
+import com.douwekasemier.oberon0.core.Oberon0Parser;
 import com.douwekasemier.oberon0.interpreter.environment.Environment;
 import com.douwekasemier.oberon0.interpreter.environment.Int;
 import com.douwekasemier.oberon0.interpreter.environment.Value;
@@ -11,17 +11,15 @@ public class Div extends BinaryExpression {
 
     public Div(Tree antlrTree) {
         super(antlrTree);
+        assert (antlrType == Oberon0Parser.DIV);
     }
-    
-    @Override
-    public Value evaluate(Environment environment) throws Oberon0Exception {
-        int result;
 
+    @Override
+    public Value evaluate(Environment environment) {
         Int leftResult = (Int) left.evaluate(environment);
         Int rightResult = (Int) right.evaluate(environment);
-        result = (int)(leftResult.getValue().intValue() / rightResult.getValue().intValue());
-        
-        return new Int(new Integer(result));
+
+        return new Int((leftResult.getValue() / rightResult.getValue()));
     }
 
 }

@@ -7,12 +7,8 @@ import org.antlr.runtime.tree.Tree;
 
 import com.douwekasemier.oberon0.ast.AST;
 import com.douwekasemier.oberon0.ast.Initializable;
-import com.douwekasemier.oberon0.ast.TypeBuilder;
+import com.douwekasemier.oberon0.ast.builders.TypeBuilder;
 import com.douwekasemier.oberon0.core.Oberon0Parser;
-
-/*   j: RECORD a,b,c: INTEGER; y: INTEGER; z: INTEGER END;
- *   -> (RECORD (FIELD INTEGER, a, b, c) (FIELD INTEGER, y) (FIELD INTEGER, z)
- */
 
 public class RecordTypeField extends AST implements Iterable<String> {
 
@@ -20,8 +16,7 @@ public class RecordTypeField extends AST implements Iterable<String> {
     private ArrayList<String> identifiers;
 
     public RecordTypeField(Tree antlrTree) {
-        antlrType = antlrTree.getType();
-        antlrText = antlrTree.getText();
+        super(antlrTree);
         assert (antlrType == Oberon0Parser.FIELD);
 
         // Add var type node
