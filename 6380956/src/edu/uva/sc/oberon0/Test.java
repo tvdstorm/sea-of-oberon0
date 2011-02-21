@@ -56,11 +56,22 @@ public class Test {
 						  "\ny := temp"+
 					"\nEND Swap;"+
 					"\nBEGIN"+
-						"\na := 1;"+
-					    "\nb := 2;"+
+						"\na := 0+1;"+
+					    "\nb := 1+1;"+
 					    "\nSwap(a, b);"+
-					    "\nWrite(a);"+
-					    "\nWrite(b);"+
+					    //"\nWrite(a);"+
+					    //"\nWrite(b);"+
+					    "\nWHILE (a <= 4) DO"+
+					    	"\na := a + 1"+
+					    "\nEND;"+
+					    //"\nWrite(a);"+
+					    "\nIF a-1 = 4 THEN"+
+					    	"\nWrite(a);"+
+					    "\nELSIF a=5 THEN"+
+					    	"\nWrite(a+10);"+
+					    "\nELSE"+
+					    	"\nWrite(a+100);"+
+					    "\nEND"+
 				"\nEND QuickSort."
 				);
 		oberon0Lexer lexer = new oberon0Lexer(charStream);
