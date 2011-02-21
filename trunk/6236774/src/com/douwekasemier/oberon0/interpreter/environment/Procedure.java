@@ -1,7 +1,7 @@
 package com.douwekasemier.oberon0.interpreter.environment;
 import com.douwekasemier.oberon0.ast.declaration.ProcedureDeclaration;
 
-public class Procedure {
+public class Procedure implements Bindable {
 
     private ProcedureDeclaration procedureDeclaration;
     private Environment environment;

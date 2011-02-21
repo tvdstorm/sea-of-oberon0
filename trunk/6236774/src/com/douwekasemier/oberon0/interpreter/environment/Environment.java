@@ -17,8 +17,7 @@ public class Environment {
     private PrintWriter output;
     private Environment parent;
     private String label;
-    private Map<String, Reference> variableRegistry;
-    private Map<String, Procedure> procedureRegistry;
+    private Map<String, Bindable> bindableRegistry;
     private Map<String, Initializable> typeRegistry;
 
     public Environment(BufferedReader input, PrintWriter output) {
@@ -35,8 +34,7 @@ public class Environment {
         this.parent = parent;
         this.label = label;
 
-        variableRegistry = new HashMap<String, Reference>();
-        procedureRegistry = new HashMap<String, Procedure>();
+        bindableRegistry = new HashMap<String, Bindable>();
         typeRegistry = new HashMap<String, Initializable>();
     }
 
@@ -55,19 +53,19 @@ public class Environment {
     }
 
     public void declareReference(String identifier, Reference reference) {
-        variableRegistry.put(identifier, reference);
+        bindableRegistry.put(identifier, reference);
     }
 
     public void declareVariable(String identifier, Value value) {
-        variableRegistry.put(identifier, new Reference(value));
+        bindableRegistry.put(identifier, new Reference(value));
     }
 
     public void declareConstant(String identifier, Value value) {
-        variableRegistry.put(identifier, new Reference(value));
+        bindableRegistry.put(identifier, new Reference(value));
     }
 
     public void declareProcedure(String identifier, Procedure procedure) {
-        procedureRegistry.put(identifier, procedure);
+        bindableRegistry.put(identifier, procedure);
     }
 
     public void declareType(String identifier, Initializable type) {
@@ -75,7 +73,7 @@ public class Environment {
     }
 
     public Reference getReference(String identifier) {
-        Reference ref = variableRegistry.get(identifier);
+        Reference ref = (Reference) bindableRegistry.get(identifier);
 
         if (ref == null && parent != null) {
             ref = parent.getReference(identifier);
@@ -84,7 +82,7 @@ public class Environment {
     }
 
     public Procedure getProcedure(String identifier) {
-        Procedure procedure = procedureRegistry.get(identifier);
+        Procedure procedure = (Procedure) bindableRegistry.get(identifier);
 
         if (procedure == null && parent != null) {
             procedure = parent.getProcedure(identifier);

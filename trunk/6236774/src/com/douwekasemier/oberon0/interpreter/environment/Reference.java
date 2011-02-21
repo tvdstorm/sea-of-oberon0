@@ -1,6 +1,7 @@
 package com.douwekasemier.oberon0.interpreter.environment;
 
-public class Reference {
+
+public class Reference implements Bindable {
 
     private Value value;
 
