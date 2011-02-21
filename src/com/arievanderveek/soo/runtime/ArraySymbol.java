@@ -73,7 +73,7 @@ public class ArraySymbol extends Symbol {
 	}
 
 	@Override
-	public void regenerateMemoryAddress(Scope scope, MemoryMap currentMap)
+	public void regenerateMemoryAddress(Scope scope, MemoryManager currentMap)
 			throws SeaOfOberonException {
 		for (Symbol symbol : symbolList) {
 			symbol.regenerateMemoryAddress(scope, currentMap);

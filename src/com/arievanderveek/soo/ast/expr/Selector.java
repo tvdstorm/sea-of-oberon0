@@ -14,6 +14,7 @@ public abstract class Selector implements ASTNode {
 
 	/**
 	 * Selects the symbol indicated by the selector from the original symbol
+	 * 
 	 * @param originalSymbol The original symbol
 	 * @param scope The scope
 	 * @return The selected symbol

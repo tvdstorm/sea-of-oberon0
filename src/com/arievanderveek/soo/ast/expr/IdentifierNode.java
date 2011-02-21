@@ -15,14 +15,11 @@ import com.arievanderveek.soo.runtime.Scope;
 public class IdentifierNode extends ExpressionNode {
 
 	private final String name;
-	// TODO: Re-think selector setup. Might remove the node and just add the
-	// queue here.
 	private final Selectors selectors;
 
 	public IdentifierNode(String name) {
 		assert name != null;
 		this.name = name;
-		// Create a list of 0 selectors
 		this.selectors = new Selectors();
 
 	}
@@ -72,7 +69,7 @@ public class IdentifierNode extends ExpressionNode {
 	}
 	
 	/**
-	 * Checks if therer are selectors
+	 * Checks if there are selectors
 	 * @return True if selectors present, else false
 	 */
 	public boolean hasSelectors() {

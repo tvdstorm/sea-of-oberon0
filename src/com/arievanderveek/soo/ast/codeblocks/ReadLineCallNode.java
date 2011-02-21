@@ -30,13 +30,7 @@ public class ReadLineCallNode extends ProcedureNode {
 	private final static String INPUT_PARAM = "readInputParam";
 
 	/**
-	 * @param startName
-	 * @param endName
-	 * @param constants
-	 * @param types
-	 * @param variables
-	 * @param procedures
-	 * @param statementSequence
+	 * Construtor that creates an readline  call node with method name Read
 	 */
 	public ReadLineCallNode() {
 		super(METHODNAME, METHODNAME, buildParameters(), Collections.<ConstantNode> emptyList(),

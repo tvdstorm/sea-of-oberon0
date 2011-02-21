@@ -36,16 +36,16 @@ public class ArrayTypeNode extends TypeNode {
 
 	@Override
 	public void registerVariable(String identifier, Scope scope) throws SeaOfOberonException {
-		ArraySymbol arraySymbol = generateArraySymbol(scope);
+		ArraySymbol arraySymbol = createArraySymbol(scope);
 		scope.addSymbolToTable(identifier, arraySymbol);
 	}
 
 	@Override
 	public Symbol createSymbolFromType(Scope scope) throws SeaOfOberonException {
-		return generateArraySymbol(scope);
+		return createArraySymbol(scope);
 	}
 
-	private ArraySymbol generateArraySymbol(Scope scope)
+	private ArraySymbol createArraySymbol(Scope scope)
 			throws SeaOfOberonException {
 		boolean mutable = true;
 		Integer resolvedSizeExpression = sizeExpression.interpret(scope);

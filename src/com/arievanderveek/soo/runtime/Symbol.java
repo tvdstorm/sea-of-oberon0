@@ -50,7 +50,7 @@ public abstract class Symbol {
 	 * @param scope
 	 * @throws SeaOfOberonException
 	 */
-	public abstract void regenerateMemoryAddress(Scope scope, MemoryMap currentMap)
+	public abstract void regenerateMemoryAddress(Scope scope, MemoryManager currentMap)
 			throws SeaOfOberonException;
 
 	/**

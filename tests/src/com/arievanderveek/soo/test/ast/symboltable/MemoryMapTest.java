@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.arievanderveek.soo.runtime.MemoryAddress;
-import com.arievanderveek.soo.runtime.MemoryMap;
+import com.arievanderveek.soo.runtime.MemoryManager;
 
 /**
  * @author arieveek
@@ -17,7 +17,7 @@ import com.arievanderveek.soo.runtime.MemoryMap;
  */
 public class MemoryMapTest {
 
-	MemoryMap memory = new MemoryMap();
+	MemoryManager memory = new MemoryManager();
 	Integer valueOne = new Integer("10");
 	Integer valueTwo = new Integer("20");
 	Integer valueThree = new Integer("30");
@@ -40,11 +40,11 @@ public class MemoryMapTest {
 	 * The private methods must be executed in a predefined order, therefore they are not exposed.
 	 * 
 	 * Test method for:
-	 * 	- {@link com.arievanderveek.soo.runtime.MemoryMap#getValue(com.arievanderveek.soo.runtime.MemoryAddress)}.
-	 *  - {@link com.arievanderveek.soo.runtime.MemoryMap#removeValue(com.arievanderveek.soo.runtime.MemoryAddress)}
-	 *  - {@link com.arievanderveek.soo.runtime.MemoryMap#updateValue(com.arievanderveek.soo.runtime.MemoryAddress, java.lang.Integer)}.
-	 *  - {@link com.arievanderveek.soo.runtime.MemoryMap#addValue(java.lang.Integer)}
-	 *  - {@link com.arievanderveek.soo.runtime.MemoryMap#copyValueToNewAdress(MemoryAddress)}
+	 * 	- {@link com.arievanderveek.soo.runtime.MemoryManager#getValue(com.arievanderveek.soo.runtime.MemoryAddress)}.
+	 *  - {@link com.arievanderveek.soo.runtime.MemoryManager#removeValue(com.arievanderveek.soo.runtime.MemoryAddress)}
+	 *  - {@link com.arievanderveek.soo.runtime.MemoryManager#updateValue(com.arievanderveek.soo.runtime.MemoryAddress, java.lang.Integer)}.
+	 *  - {@link com.arievanderveek.soo.runtime.MemoryManager#addValue(java.lang.Integer)}
+	 *  - {@link com.arievanderveek.soo.runtime.MemoryManager#copyValueToNewAdress(MemoryAddress)}
 	 *  
 	 */
 	@Test

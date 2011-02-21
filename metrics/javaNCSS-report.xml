@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <javancss>
-  <date>2011-02-17</date>
-  <time>20:14:52</time>
+  <date>2011-02-21</date>
+  <time>10:36:30</time>
   <packages>
     <package>
       <name>com.arievanderveek.soo</name>
@@ -28,8 +28,8 @@
       <classes>6</classes>
       <functions>26</functions>
       <ncss>221</ncss>
-      <javadocs>15</javadocs>
-      <javadoc_lines>118</javadoc_lines>
+      <javadocs>16</javadocs>
+      <javadoc_lines>109</javadoc_lines>
       <single_comment_lines>9</single_comment_lines>
       <multi_comment_lines>39</multi_comment_lines>
     </package>
@@ -39,8 +39,8 @@
       <functions>24</functions>
       <ncss>121</ncss>
       <javadocs>12</javadocs>
-      <javadoc_lines>66</javadoc_lines>
-      <single_comment_lines>4</single_comment_lines>
+      <javadoc_lines>67</javadoc_lines>
+      <single_comment_lines>1</single_comment_lines>
       <multi_comment_lines>13</multi_comment_lines>
     </package>
     <package>
@@ -77,10 +77,10 @@
       <name>com.arievanderveek.soo.ast.variables</name>
       <classes>7</classes>
       <functions>33</functions>
-      <ncss>154</ncss>
+      <ncss>157</ncss>
       <javadocs>18</javadocs>
-      <javadoc_lines>104</javadoc_lines>
-      <single_comment_lines>4</single_comment_lines>
+      <javadoc_lines>108</javadoc_lines>
+      <single_comment_lines>3</single_comment_lines>
       <multi_comment_lines>32</multi_comment_lines>
     </package>
     <package>
@@ -99,7 +99,7 @@
       <functions>72</functions>
       <ncss>383</ncss>
       <javadocs>30</javadocs>
-      <javadoc_lines>196</javadoc_lines>
+      <javadoc_lines>239</javadoc_lines>
       <single_comment_lines>23</single_comment_lines>
       <multi_comment_lines>21</multi_comment_lines>
     </package>
@@ -126,18 +126,18 @@
     <total>
       <classes>61</classes>
       <functions>244</functions>
-      <ncss>1510</ncss>
-      <javadocs>122</javadocs>
-      <javadoc_lines>793</javadoc_lines>
-      <single_comment_lines>69</single_comment_lines>
+      <ncss>1513</ncss>
+      <javadocs>123</javadocs>
+      <javadoc_lines>832</javadoc_lines>
+      <single_comment_lines>65</single_comment_lines>
       <multi_comment_lines>420</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>12.00</td><td>61.00</td><td>244.00</td><td>1,510.00</td><td>122.00</td><td>Project</td></tr>
-      <tr><td></td><td>5.08</td><td>20.33</td><td>125.83</td><td>10.17</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>4.00</td><td>24.75</td><td>2.00</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>6.19</td><td>0.50</td><td>Function</td></tr>
+      <tr><td>12.00</td><td>61.00</td><td>244.00</td><td>1,513.00</td><td>123.00</td><td>Project</td></tr>
+      <tr><td></td><td>5.08</td><td>20.33</td><td>126.08</td><td>10.25</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>4.00</td><td>24.80</td><td>2.02</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>6.20</td><td>0.50</td><td>Function</td></tr>
     </table>
   </packages>
 
@@ -210,7 +210,7 @@
       <ncss>15</ncss>
       <functions>3</functions>
       <classes>0</classes>
-      <javadocs>1</javadocs>
+      <javadocs>2</javadocs>
     </object>
     <object>
       <name>com.arievanderveek.soo.ast.codeblocks.WriteLnCallNode</name>
@@ -438,14 +438,14 @@
     </object>
     <object>
       <name>com.arievanderveek.soo.ast.variables.ConstantNode</name>
-      <ncss>13</ncss>
+      <ncss>14</ncss>
       <functions>4</functions>
       <classes>0</classes>
       <javadocs>3</javadocs>
     </object>
     <object>
       <name>com.arievanderveek.soo.ast.variables.FieldNode</name>
-      <ncss>16</ncss>
+      <ncss>18</ncss>
       <functions>4</functions>
       <classes>0</classes>
       <javadocs>4</javadocs>
@@ -514,7 +514,7 @@
       <javadocs>1</javadocs>
     </object>
     <object>
-      <name>com.arievanderveek.soo.runtime.MemoryMap</name>
+      <name>com.arievanderveek.soo.runtime.MemoryManager</name>
       <ncss>56</ncss>
       <functions>10</functions>
       <classes>0</classes>
@@ -570,12 +570,12 @@
       <javadocs>1</javadocs>
     </object>
     <averages>
-      <ncss>19.61</ncss>
+      <ncss>19.66</ncss>
       <functions>4.00</functions>
       <classes>0.00</classes>
-      <javadocs>2.00</javadocs>
+      <javadocs>2.02</javadocs>
     </averages>
-    <ncss>1,510.00</ncss>
+    <ncss>1,513.00</ncss>
   </objects>
 
   <functions>
@@ -751,7 +751,7 @@
       <name>com.arievanderveek.soo.ast.codeblocks.WriteCallNode.WriteCallNode()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
-      <javadocs>0</javadocs>
+      <javadocs>1</javadocs>
     </function>
     <function>
       <name>com.arievanderveek.soo.ast.codeblocks.WriteCallNode.interpret(Scope)</name>
@@ -1348,7 +1348,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.variables.ArrayTypeNode.generateArraySymbol(Scope)</name>
+      <name>com.arievanderveek.soo.ast.variables.ArrayTypeNode.createArraySymbol(Scope)</name>
       <ncss>7</ncss>
       <ccn>2</ccn>
       <javadocs>0</javadocs>
@@ -1373,7 +1373,7 @@
     </function>
     <function>
       <name>com.arievanderveek.soo.ast.variables.ConstantNode.ConstantNode(String,ExpressionNode)</name>
-      <ncss>4</ncss>
+      <ncss>5</ncss>
       <ccn>1</ccn>
       <javadocs>1</javadocs>
     </function>
@@ -1397,7 +1397,7 @@
     </function>
     <function>
       <name>com.arievanderveek.soo.ast.variables.FieldNode.FieldNode(String,TypeNode)</name>
-      <ncss>3</ncss>
+      <ncss>5</ncss>
       <ccn>1</ccn>
       <javadocs>1</javadocs>
     </function>
@@ -1480,7 +1480,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.variables.IdentifierTypeNode.generateIntegerSymbol(Scope,Integer,boolean)</name>
+      <name>com.arievanderveek.soo.ast.variables.IdentifierTypeNode.createIntegerSymbol(Scope,Integer,boolean)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -1510,7 +1510,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.ast.variables.RecordTypeNode.generateRecordSymbol(Scope)</name>
+      <name>com.arievanderveek.soo.ast.variables.RecordTypeNode.createRecordSymbol(Scope)</name>
       <ncss>6</ncss>
       <ccn>2</ccn>
       <javadocs>0</javadocs>
@@ -1594,7 +1594,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.runtime.ArraySymbol.regenerateMemoryAddress(Scope,MemoryMap)</name>
+      <name>com.arievanderveek.soo.runtime.ArraySymbol.regenerateMemoryAddress(Scope,MemoryManager)</name>
       <ncss>3</ncss>
       <ccn>2</ccn>
       <javadocs>0</javadocs>
@@ -1654,7 +1654,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.runtime.IntegerSymbol.regenerateMemoryAddress(Scope,MemoryMap)</name>
+      <name>com.arievanderveek.soo.runtime.IntegerSymbol.regenerateMemoryAddress(Scope,MemoryManager)</name>
       <ncss>4</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -1684,61 +1684,61 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.runtime.MemoryMap.getValue(MemoryAddress)</name>
+      <name>com.arievanderveek.soo.runtime.MemoryManager.getValue(MemoryAddress)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.runtime.MemoryMap.hasAdress(MemoryAddress)</name>
+      <name>com.arievanderveek.soo.runtime.MemoryManager.hasAdress(MemoryAddress)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.runtime.MemoryMap.deleteValue(MemoryAddress)</name>
+      <name>com.arievanderveek.soo.runtime.MemoryManager.deleteValue(MemoryAddress)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.runtime.MemoryMap.deleteMemoryAddress(MemoryAddress)</name>
+      <name>com.arievanderveek.soo.runtime.MemoryManager.deleteMemoryAddress(MemoryAddress)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.runtime.MemoryMap.deleteMemoryAddressList(MemoryAddress)</name>
+      <name>com.arievanderveek.soo.runtime.MemoryManager.deleteMemoryAddressList(MemoryAddress)</name>
       <ncss>4</ncss>
       <ccn>2</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.runtime.MemoryMap.updateValue(MemoryAddress,Integer)</name>
+      <name>com.arievanderveek.soo.runtime.MemoryManager.updateValue(MemoryAddress,Integer)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.runtime.MemoryMap.addValue(Integer)</name>
+      <name>com.arievanderveek.soo.runtime.MemoryManager.addValue(Integer)</name>
       <ncss>5</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.runtime.MemoryMap.copyValueToNewAdress(MemoryAddress)</name>
+      <name>com.arievanderveek.soo.runtime.MemoryManager.copyValueToNewAdress(MemoryAddress)</name>
       <ncss>5</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.runtime.MemoryMap.generateMemoryAdress()</name>
+      <name>com.arievanderveek.soo.runtime.MemoryManager.generateMemoryAdress()</name>
       <ncss>10</ncss>
       <ccn>4</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.runtime.MemoryMap.toString()</name>
+      <name>com.arievanderveek.soo.runtime.MemoryManager.toString()</name>
       <ncss>14</ncss>
       <ccn>2</ccn>
       <javadocs>0</javadocs>
@@ -1798,7 +1798,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.runtime.RecordSymbol.regenerateMemoryAddress(Scope,MemoryMap)</name>
+      <name>com.arievanderveek.soo.runtime.RecordSymbol.regenerateMemoryAddress(Scope,MemoryManager)</name>
       <ncss>3</ncss>
       <ccn>2</ccn>
       <javadocs>0</javadocs>
@@ -1960,7 +1960,7 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>com.arievanderveek.soo.runtime.Symbol.regenerateMemoryAddress(Scope,MemoryMap)</name>
+      <name>com.arievanderveek.soo.runtime.Symbol.regenerateMemoryAddress(Scope,MemoryManager)</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
       <javadocs>1</javadocs>
@@ -2044,10 +2044,10 @@
       <javadocs>1</javadocs>
     </function>
     <function_averages>
-      <ncss>4.38</ncss>
+      <ncss>4.39</ncss>
       <ccn>1.57</ccn>
-      <javadocs>0.31</javadocs>
+      <javadocs>0.32</javadocs>
     </function_averages>
-    <ncss>1,510.00</ncss>
+    <ncss>1,513.00</ncss>
   </functions>
 </javancss>

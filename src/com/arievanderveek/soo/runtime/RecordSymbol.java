@@ -72,7 +72,7 @@ public class RecordSymbol extends Symbol {
 	}
 
 	@Override
-	public void regenerateMemoryAddress(Scope scope, MemoryMap currentMap)
+	public void regenerateMemoryAddress(Scope scope, MemoryManager currentMap)
 			throws SeaOfOberonException {
 		for (String key : memberMap.keySet()) {
 			memberMap.get(key).regenerateMemoryAddress(scope, currentMap);

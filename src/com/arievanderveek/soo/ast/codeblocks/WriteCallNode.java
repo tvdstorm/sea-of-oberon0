@@ -27,7 +27,10 @@ public class WriteCallNode extends ProcedureNode {
 
 	private final static String METHODNAME = "Write";
 	private final static String OUTPUT_PARAM = "writeOutputParam";
-
+	
+	/**
+	 * Construtor that creates an write call node with method name Write
+	 */
 	public WriteCallNode() {
 		super(METHODNAME, METHODNAME, buildParameters(), Collections.<ConstantNode> emptyList(),
 				Collections.<FieldNode> emptyList(), Collections.<FieldNode> emptyList(),
