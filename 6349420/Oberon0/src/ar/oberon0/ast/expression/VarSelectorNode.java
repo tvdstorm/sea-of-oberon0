@@ -40,7 +40,7 @@ public class VarSelectorNode extends SelectorNode implements Interpretable {
 	}
 
 	@Override
-	public List<CheckViolation> check(Context context) {
+	public List<CheckViolation> check(final Context context) {
 		List<CheckViolation> violations = new ArrayList<CheckViolation>();
 		if (!context.doesVarOrConstantExist(identName)) {
 			violations.add(new CheckViolation("There is no variable or constant " + this.identName + " in the scope.", this.getClass()));

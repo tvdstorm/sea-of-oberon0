@@ -19,12 +19,12 @@ public class IfNode implements Interpretable {
 	private List<IfStatement> elseIfStatementsList;
 	private Interpretable elseStatements;
 
-	public void setElse(Interpretable statementsToExecute) {
+	public final void setElse(final Interpretable statementsToExecute) {
 		Assert.assertNotNull("The statementsToExecute parameter can't be null", statementsToExecute);
 		this.elseStatements = statementsToExecute;
 	}
 
-	public IfNode(Interpretable expression, Interpretable statementsToExecute) {
+	public IfNode(final Interpretable expression, final Interpretable statementsToExecute) {
 		assert statementsToExecute != null : "The statementsToExecute parameter can't be null";
 		assert expression != null : "The expression parameter can't be null";
 		this.mainIfStatements = new IfStatement(expression, statementsToExecute);
@@ -32,7 +32,7 @@ public class IfNode implements Interpretable {
 	}
 
 	@Override
-	public Object interpret(Context context) throws TechnicalException {
+	public Object interpret(final Context context) throws TechnicalException {
 		if (this.mainIfStatements.isExpressionTrue(context)) {
 			this.mainIfStatements.execute(context);
 			return 0;
@@ -50,7 +50,7 @@ public class IfNode implements Interpretable {
 	}
 
 	@Override
-	public List<CheckViolation> check(Context context) {
+	public List<CheckViolation> check(final Context context) {
 		List<CheckViolation> violations = new ArrayList<CheckViolation>();
 		violations.addAll(this.mainIfStatements.check(context));
 		for (IfStatement elseIf : this.elseIfStatementsList) {
@@ -62,7 +62,7 @@ public class IfNode implements Interpretable {
 		return violations;
 	}
 
-	public void addElseIf(Interpretable expression, Interpretable statementsToExecute) {
+	public final void addElseIf(final Interpretable expression, final Interpretable statementsToExecute) {
 		Assert.assertNotNull("The statementsToExecute parameter can't be null", statementsToExecute);
 		Assert.assertNotNull("The expression parameter can't be null", expression);
 		this.elseIfStatementsList.add(new IfStatement(expression, statementsToExecute));
@@ -76,12 +76,12 @@ public class IfNode implements Interpretable {
 		private Interpretable ifExpression;
 		private Interpretable statements;
 
-		public IfStatement(Interpretable expression, Interpretable statements) {
+		public IfStatement(final Interpretable expression, final Interpretable statements) {
 			this.ifExpression = expression;
 			this.statements = statements;
 		}
 
-		public boolean isExpressionTrue(Context context) throws TechnicalException {
+		public boolean isExpressionTrue(final Context context) throws TechnicalException {
 			return ((BooleanValue) this.ifExpression.interpret(context)).equals(true);
 		}
 
@@ -89,7 +89,7 @@ public class IfNode implements Interpretable {
 			statements.interpret(context);
 		}
 
-		public List<CheckViolation> check(Context context) {
+		public List<CheckViolation> check(final Context context) {
 			List<CheckViolation> violations = new ArrayList<CheckViolation>();
 			violations.addAll(this.ifExpression.check(context));
 			if (violations.size() == 0) {

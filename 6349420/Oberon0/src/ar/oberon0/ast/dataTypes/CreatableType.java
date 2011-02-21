@@ -12,5 +12,5 @@ public interface CreatableType {
 	/*
 	 * Create the specified Value object.
 	 */
-	public Value createInstance(Context context) throws TechnicalException;
+	Value createInstance(Context context) throws TechnicalException;
 }

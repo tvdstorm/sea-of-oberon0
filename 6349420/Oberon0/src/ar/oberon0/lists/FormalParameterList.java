@@ -22,7 +22,7 @@ public class FormalParameterList {
 		this._parameters = new ArrayList<FormalParameterWithName>();
 	}
 
-	public int getCount() {
+	public final int getCount() {
 		return this._parameters.size();
 	}
 
@@ -30,7 +30,7 @@ public class FormalParameterList {
 	 * Add a parameter to the list for each identifier in the list with the
 	 * specified type.
 	 */
-	public void addParameters(IdentList identifiers, CreatableType type, FormalParameter.Direction direction) {
+	public final void addParameters(final IdentList identifiers, final CreatableType type, final FormalParameter.Direction direction) {
 		assert identifiers != null : "The identifiers parameter can't be null.";
 		assert type != null : "The type parameter can't be null.";
 		assert direction != null : "The direction parameter can't be null.";

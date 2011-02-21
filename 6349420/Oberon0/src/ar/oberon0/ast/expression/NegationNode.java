@@ -27,7 +27,7 @@ public class NegationNode implements Interpretable {
 	}
 
 	@Override
-	public List<CheckViolation> check(Context context) {
+	public List<CheckViolation> check(final Context context) {
 		List<CheckViolation> violations = new ArrayList<CheckViolation>();
 		violations.addAll(_nodeToNegate.check(context));
 

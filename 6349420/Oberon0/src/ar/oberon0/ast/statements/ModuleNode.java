@@ -23,40 +23,40 @@ public class ModuleNode implements Interpretable {
 	private String name;
 	private StatementSequence statements;
 
-	public void setConstants(ConstantList constants) {
+	public final void setConstants(final ConstantList constants) {
 		this.context.addConstants(constants);
 	}
 
-	public void setTypeIdentifiers(TypeIdentifierList types) {
+	public final void setTypeIdentifiers(final TypeIdentifierList types) {
 		this.context.addTypeIdentifiers(types);
 	}
 
-	public void setVars(DataFieldList variables) {
+	public final void setVars(final DataFieldList variables) {
 		this.context.addVariables(variables);
 	}
 
-	public void setChildProcedures(ProcedureList childProcedures) {
+	public final void setChildProcedures(final ProcedureList childProcedures) {
 		this.context.setProcedures(childProcedures);
 	}
 
-	public void setStatements(StatementSequence statementsToExecute) {
+	public final void setStatements(final StatementSequence statementsToExecute) {
 		assert statementsToExecute != null : "The statementsToExecute parameter can't be null";
 		this.statements = statementsToExecute;
 	}
 
-	public ModuleNode(String name) {
+	public ModuleNode(final String name) {
 		this.name = name;
 		this.context = new Context();
 	}
 
 	@Override
-	public Object interpret(Context context) throws TechnicalException {
+	public Object interpret(final Context context) throws TechnicalException {
 		this.statements.interpret(this.context);
 		return 0;
 	}
 
 	@Override
-	public List<CheckViolation> check(Context context) {
+	public List<CheckViolation> check(final Context context) {
 		List<CheckViolation> violations = new ArrayList<CheckViolation>();
 		violations.addAll(this.statements.check(this.context));
 		ProcedureList procedures = this.context.getProcedures();

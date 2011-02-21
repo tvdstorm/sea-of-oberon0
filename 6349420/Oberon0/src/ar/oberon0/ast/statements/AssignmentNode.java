@@ -40,7 +40,7 @@ public class AssignmentNode implements Interpretable {
 	}
 
 	@Override
-	public List<CheckViolation> check(Context context) {
+	public List<CheckViolation> check(final Context context) {
 		List<CheckViolation> violations = new ArrayList<CheckViolation>();
 		violations.addAll(this.value.check(context));
 		violations.addAll(this.varSelector.check(context));
@@ -59,7 +59,7 @@ public class AssignmentNode implements Interpretable {
 		return violations;
 	}
 
-	private DataField getVariable(Context context) {
+	private DataField getVariable(final Context context) {
 		Object rawVariable = this.varSelector.interpret(context);
 		assert rawVariable instanceof DataField : "The object returned by the ident selector was not of the type DataField";
 		return (DataField) rawVariable;

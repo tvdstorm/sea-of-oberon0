@@ -10,7 +10,7 @@ public class CheckViolation {
 		return this.message;
 	}
 
-	public CheckViolation(String message, Type javaSourceType) {
+	public CheckViolation(final String message, final Type javaSourceType) {
 		this.message = message;
 		this.javaSourceType = javaSourceType;
 	}

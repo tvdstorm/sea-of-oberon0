@@ -12,7 +12,7 @@ public class ArrayType implements CreatableType {
 	private Interpretable length;
 	private CreatableType type;
 
-	public ArrayType(Interpretable length, CreatableType type) {
+	public ArrayType(final Interpretable length, final CreatableType type) {
 		assert length != null : "the length parameter can't be null.";
 		assert type != null : "the type parameter can't be null.";
 		this.length = length;
@@ -20,7 +20,7 @@ public class ArrayType implements CreatableType {
 	}
 
 	@Override
-	public Value createInstance(Context context) throws TechnicalException {
+	public Value createInstance(final Context context) throws TechnicalException {
 		IntegerValue length = (IntegerValue) Helper.getValue((Interpretable) this.length.interpret(context), context);
 		return new ArrayValue(length, this.type);
 	}

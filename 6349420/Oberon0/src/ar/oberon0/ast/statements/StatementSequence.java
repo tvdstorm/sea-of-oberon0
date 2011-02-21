@@ -16,14 +16,14 @@ public class StatementSequence implements Interpretable {
 
 	private List<Interpretable> statements;
 
-	public StatementSequence(Interpretable statement) {
+	public StatementSequence(final Interpretable statement) {
 		Assert.assertNotNull("The statement parameter can't be null.", statement);
 		this.statements = new ArrayList<Interpretable>();
 		addStatement(statement);
 	}
 
 	@Override
-	public Object interpret(Context context) throws TechnicalException {
+	public Object interpret(final Context context) throws TechnicalException {
 		for (Interpretable statement : this.statements) {
 			statement.interpret(context);
 		}
@@ -31,7 +31,7 @@ public class StatementSequence implements Interpretable {
 	}
 
 	@Override
-	public List<CheckViolation> check(Context context) {
+	public List<CheckViolation> check(final Context context) {
 		List<CheckViolation> violations = new ArrayList<CheckViolation>();
 		for (Interpretable statement : statements) {
 			violations.addAll(statement.check(context));
@@ -39,7 +39,7 @@ public class StatementSequence implements Interpretable {
 		return violations;
 	}
 
-	public void addStatement(Interpretable statement) {
+	public final void addStatement(final Interpretable statement) {
 		assert statement != null : "The statement parameter can't be null.";
 		this.statements.add(statement);
 	}

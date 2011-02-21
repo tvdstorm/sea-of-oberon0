@@ -26,14 +26,14 @@ public class ArrayValue extends ValueBase {
 	/*
 	 * Create a new array of length length and of type childType.
 	 */
-	public ArrayValue(IntegerValue length, CreatableType childType) {
+	public ArrayValue(final IntegerValue length, final CreatableType childType) {
 		this.childType = childType;
 		this.length = length;
 		initArray(length, childType);
 	}
 
 	@Override
-	public Object interpret(Context context) throws TechnicalException {
+	public Object interpret(final Context context) throws TechnicalException {
 		return this;
 	}
 
@@ -43,7 +43,7 @@ public class ArrayValue extends ValueBase {
 	 * be returned if the datafields are not initialized. because of this reason
 	 * every element in the array is initialized when the array is created.
 	 */
-	private void initArray(IntegerValue length, CreatableType type) {
+	private void initArray(final IntegerValue length, final CreatableType type) {
 		this.items = new DataField[length.getValueAsInt()];
 		for (int i = 0; i < length.getValueAsInt(); i++) {
 			this.items[i] = new DataField(type);
@@ -53,7 +53,7 @@ public class ArrayValue extends ValueBase {
 	/*
 	 * Get the datafield at location the specified index.
 	 */
-	public DataField getDataFieldAt(IntegerValue index) {
+	public final DataField getDataFieldAt(final IntegerValue index) {
 		return this.items[index.getValueAsInt()];
 	}
 

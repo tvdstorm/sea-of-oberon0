@@ -15,7 +15,7 @@ public abstract class ValueBase implements Value {
 	public abstract CreatableType getType();
 
 	@Override
-	public List<CheckViolation> check(Context context) {
+	public List<CheckViolation> check(final Context context) {
 		return new ArrayList<CheckViolation>();
 	}
 

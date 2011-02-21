@@ -5,7 +5,7 @@ package ar.oberon0.shared;
  * The default exception message is used for the message. If this exception is thrown it comes from the Interpreter.
  */
 public class TechnicalException extends RuntimeException {
-	public TechnicalException(String message) {
+	public TechnicalException(final String message) {
 		super(message);
 	}
 

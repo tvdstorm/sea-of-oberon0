@@ -20,7 +20,7 @@ public class RecordType implements CreatableType {
 		this.members = new HashMap<String, CreatableType>();
 	}
 
-	public void addFieldList(FieldList fieldList) {
+	public final void addFieldList(final FieldList fieldList) {
 		if (fieldList != null) {
 			for (String fieldName : fieldList.getFieldNames()) {
 				this.members.put(fieldName, fieldList.getType());
@@ -29,7 +29,7 @@ public class RecordType implements CreatableType {
 	}
 
 	@Override
-	public Value createInstance(Context context) throws TechnicalException {
+	public Value createInstance(final Context context) throws TechnicalException {
 		RecordValue recordValue = new RecordValue(this);
 		Iterator<Entry<String, CreatableType>> it = members.entrySet().iterator();
 		while (it.hasNext()) {

@@ -31,7 +31,7 @@ public class Procedure implements Interpretable {
 	}
 
 	@Override
-	public List<CheckViolation> check(Context context) {
+	public List<CheckViolation> check(final Context context) {
 		return new ArrayList<CheckViolation>();
 	}
 

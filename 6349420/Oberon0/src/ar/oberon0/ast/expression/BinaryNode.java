@@ -48,7 +48,7 @@ abstract class BinaryNode implements Interpretable {
 	}
 
 	@Override
-	public List<CheckViolation> check(Context context) {
+	public List<CheckViolation> check(final Context context) {
 		assert getAcceptedTypes() != null : "the getAcceptedTypes getter can't return a null reference.";
 
 		List<CheckViolation> violations = new ArrayList<CheckViolation>();
@@ -78,7 +78,7 @@ abstract class BinaryNode implements Interpretable {
 		return violations;
 	}
 
-	private boolean isAcceptedType(CreatableType type) {
+	private boolean isAcceptedType(final CreatableType type) {
 		for (Type acceptedType : getAcceptedTypes()) {
 			if (((Class) acceptedType).isInstance(type)) {
 				return true;

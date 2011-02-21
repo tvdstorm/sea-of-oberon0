@@ -18,13 +18,13 @@ public class WithNode implements Interpretable {
 	private VarSelectorNode selector;
 	private StatementSequence statementsToExecute;
 
-	public WithNode(Interpretable selector, StatementSequence statementsToExecute) {
+	public WithNode(final Interpretable selector, final StatementSequence statementsToExecute) {
 		this.selector = (VarSelectorNode) selector;
 		this.statementsToExecute = statementsToExecute;
 	}
 
 	@Override
-	public Object interpret(Context context) throws TechnicalException {
+	public Object interpret(final Context context) throws TechnicalException {
 		Context withContext = new Context();
 		withContext.setParentContext(context);
 		DataField field = (DataField) this.selector.interpret(context);
@@ -40,7 +40,7 @@ public class WithNode implements Interpretable {
 	}
 
 	@Override
-	public List<CheckViolation> check(Context context) {
+	public List<CheckViolation> check(final Context context) {
 		List<CheckViolation> violations = new ArrayList<CheckViolation>();
 		violations.addAll(this.statementsToExecute.check(context));
 		DataField field = (DataField) this.selector.interpret(context);

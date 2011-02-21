@@ -37,7 +37,7 @@ public class ProcedureCallNode implements Interpretable {
 	}
 
 	@Override
-	public List<CheckViolation> check(Context context) {
+	public List<CheckViolation> check(final Context context) {
 		List<CheckViolation> violations = new ArrayList<CheckViolation>();
 		if (!context.DoesProcedureExist(this.procedureName)) {
 			violations.add(new CheckViolation("There is no procedure with the name " + this.procedureName + ".", this.getClass()));

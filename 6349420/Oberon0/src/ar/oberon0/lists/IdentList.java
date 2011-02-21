@@ -13,7 +13,7 @@ public class IdentList implements Iterable<String> {
 
 	private List<String> identifiers;
 
-	public List<String> getIdentifiers() {
+	public final List<String> getIdentifiers() {
 		return this.identifiers;
 	}
 
