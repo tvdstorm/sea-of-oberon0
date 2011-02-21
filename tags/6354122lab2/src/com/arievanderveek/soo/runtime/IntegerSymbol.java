@@ -76,7 +76,7 @@ public class IntegerSymbol extends Symbol {
 	}
 
 	@Override
-	public void regenerateMemoryAddress(Scope scope, MemoryMap currentMap)
+	public void regenerateMemoryAddress(Scope scope, MemoryManager currentMap)
 			throws SeaOfOberonException {
 		Integer oldValue = scope.lookupMemoryManagerForAdress(memoryAdress).getValue(memoryAdress);
 		MemoryAddress newAddress = currentMap.addValue(oldValue);

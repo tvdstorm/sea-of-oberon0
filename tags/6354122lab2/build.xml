@@ -65,7 +65,7 @@
 	</target>
 	<!-- Create runnable jar task-->
 	<target name="create_run_jar" depends="compile">
-		<jar destfile="/school/construction/labassignment1/6354122/jar/soo.jar" basedir="${build.dir}">
+		<jar destfile="jar/soo.jar" basedir="${build.dir}">
 			<manifest>
 				<attribute name="Main-Class" value="com.arievanderveek.soo.Main" />
 				<attribute name="Class-Path" value="lib/antlr-3.3-complete.jar lib/commons-cli-1.2.jar"/>

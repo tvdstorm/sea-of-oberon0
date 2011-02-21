@@ -23,13 +23,7 @@ public class WriteLnCallNode extends ProcedureNode {
 	private final static String METHODNAME = "WriteLn";
 
 	/**
-	 * @param startName
-	 * @param endName
-	 * @param constants
-	 * @param types
-	 * @param variables
-	 * @param procedures
-	 * @param statementSequence
+	 * Construtor that creates an write line call node with method name WriteLn
 	 */
 	public WriteLnCallNode() {
 		super(METHODNAME, METHODNAME, Collections.<FormalParameterNode> emptyList(), Collections

@@ -25,7 +25,7 @@ public class ConstantNode implements ASTNode {
 	 *            Expression linked to the declaration
 	 */
 	public ConstantNode(String name, ExpressionNode expression) {
-		// Expression should not be null
+		assert name != null;
 		assert expression != null;
 		this.name = name;
 		this.expression = expression;

@@ -17,7 +17,7 @@ import com.arievanderveek.soo.util.Constants;
  * @author arieveek
  * 
  */
-public class MemoryMap {
+public class MemoryManager {
 
 	private static final int MEMORY_ADRESS_RETRIES = 5;
 

@@ -18,12 +18,14 @@ public class FieldNode implements ASTNode {
 	private TypeNode type;
 
 	/**
-	 * Constructor for
+	 * Constructor for a field node
 	 * 
 	 * @param name
 	 * @param type
 	 */
 	public FieldNode(String name, TypeNode type) {
+		assert name != null;
+		assert type != null;
 		this.name = name;
 		this.type = type;
 	}

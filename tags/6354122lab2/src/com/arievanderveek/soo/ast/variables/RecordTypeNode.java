@@ -52,16 +52,16 @@ public class RecordTypeNode extends TypeNode {
 
 	@Override
 	public void registerVariable(String identifier, Scope scope) throws SeaOfOberonException {
-		RecordSymbol recordSymbol = generateRecordSymbol(scope);
+		RecordSymbol recordSymbol = createRecordSymbol(scope);
 		scope.addSymbolToTable(identifier, recordSymbol);
 	}
 
 	@Override
 	public Symbol createSymbolFromType(Scope scope) throws SeaOfOberonException {
-		return generateRecordSymbol(scope);
+		return createRecordSymbol(scope);
 	}
 
-	private RecordSymbol generateRecordSymbol(Scope scope)
+	private RecordSymbol createRecordSymbol(Scope scope)
 			throws SeaOfOberonException {
 		boolean mutable = true;
 		Map<String, Symbol> content = new Hashtable<String, Symbol>();

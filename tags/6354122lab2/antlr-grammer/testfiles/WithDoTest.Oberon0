@@ -8,15 +8,15 @@ TYPE
   int = INTEGER;
   record = RECORD 	checkaccount, 
 					balanceaccount
-					: INTEGER;
+					: int;
 					savingsaccount
-					: ARRAY SAVINGSACCOUNTSIZE OF INTEGER
+					: ARRAY SAVINGSACCOUNTSIZE OF int
 			END;
 
 VAR
   singleBankAccount: record;
   multiBankAccount: ARRAY MULTIACCOUNTSIZE OF record;
-  bankAccounCounter,savingsAccounCounter: INTEGER;
+  bankAccounCounter,savingsAccounCounter: int;
   addedAmount : int;
  
 PROCEDURE updateBankAccount(VAR bankaccount: record; addedAmount: INTEGER);

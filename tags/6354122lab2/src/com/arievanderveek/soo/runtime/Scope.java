@@ -26,14 +26,15 @@ import com.arievanderveek.soo.util.Constants;
  */
 public class Scope {
 
-	private Scope enclosingScope = null;
-	private MemoryMap memoryMap = null;
+	private Scope enclosingScope;
+	private MemoryManager memoryManager;
 	private Map<String, TypeNode> typeTable;
 	private Map<String, Symbol> symbolTable;
 	private Map<String, ProcedureNode> procedures;
 
 	/**
-	 * Constructor for a basic scope without enclosing scope or parameter processing.
+	 * Constructor for a basic scope without enclosing scope or parameter
+	 * processing.
 	 * 
 	 * @param constants
 	 * @param types
@@ -51,7 +52,7 @@ public class Scope {
 		this.symbolTable = new Hashtable<String, Symbol>();
 		this.typeTable = new Hashtable<String, TypeNode>();
 		this.procedures = new Hashtable<String, ProcedureNode>();
-		memoryMap = new MemoryMap();
+		memoryManager = new MemoryManager();
 		registerTypes(types);
 		registerConstants(constants);
 		registerVariables(variables);
@@ -63,12 +64,14 @@ public class Scope {
 	 * for procedure calls, so procedure headings are processed and stored in
 	 * the symbol table.
 	 * 
-	 * @param enclosingScope The enclosing scope
-	 * @param procedure The procedure called
-	 * @param actualParameters The actual parameters by which the procedure is called
+	 * @param enclosingScope
+	 *            The enclosing scope
+	 * @param procedure
+	 *            The procedure called
+	 * @param actualParameters
+	 *            The actual parameters by which the procedure is called
 	 * @throws SeaOfOberonException
 	 */
-
 
 	public Scope(Scope enclosingScope, ProcedureNode procedure,
 			List<ExpressionNode> actualParameters) throws SeaOfOberonException {
@@ -81,7 +84,7 @@ public class Scope {
 		symbolTable = new Hashtable<String, Symbol>();
 		typeTable = new Hashtable<String, TypeNode>();
 		this.procedures = new Hashtable<String, ProcedureNode>();
-		memoryMap = new MemoryMap();
+		memoryManager = new MemoryManager();
 		processProcedureParameters(procedure, actualParameters);
 		registerConstants(procedure.getConstants());
 		registerTypes(procedure.getTypes());
@@ -90,11 +93,14 @@ public class Scope {
 	}
 
 	/**
-	 * Scope constructor for With Do statement. It registers the record symbol members
-	 * as separate symbols and processes nothing else like procedure parameters.
+	 * Scope constructor for With Do statement. It registers the record symbol
+	 * members as separate symbols and processes nothing else like procedure
+	 * parameters.
 	 * 
-	 * @param enclosingScope The enclosing scope
-	 * @param record The record used in the With Do statement
+	 * @param enclosingScope
+	 *            The enclosing scope
+	 * @param record
+	 *            The record used in the With Do statement
 	 */
 	public Scope(Scope enclosingScope, RecordSymbol record) {
 		assert enclosingScope != null;
@@ -105,14 +111,18 @@ public class Scope {
 		// Create rest of object with emtpy objects.
 		this.typeTable = new Hashtable<String, TypeNode>();
 		this.procedures = new Hashtable<String, ProcedureNode>();
-		memoryMap = new MemoryMap();
+		memoryManager = new MemoryManager();
 	}
 
 	/**
-	 * Looks up a procedure in the current scope. If it is not found it tries the enclosing scope
-	 * @param name Procedure name
+	 * Looks up a procedure in the current scope. If it is not found it tries
+	 * the enclosing scope
+	 * 
+	 * @param name
+	 *            Procedure name
 	 * @return Procedure node
-	 * @throws SeaOfOberonException If the procedure is not found in any scope
+	 * @throws SeaOfOberonException
+	 *             If the procedure is not found in any scope
 	 */
 	public ProcedureNode lookupProcedure(String name) throws SeaOfOberonException {
 		if (procedures.containsKey(name)) {
@@ -127,10 +137,14 @@ public class Scope {
 	}
 
 	/**
-	 * Looks up a type in the current scope. If it is not found it tries the enclosing scope
-	 * @param name Type name
+	 * Looks up a type in the current scope. If it is not found it tries the
+	 * enclosing scope
+	 * 
+	 * @param name
+	 *            Type name
 	 * @return Type node
-	 * @throws SeaOfOberonException If the type is not found in any scope
+	 * @throws SeaOfOberonException
+	 *             If the type is not found in any scope
 	 */
 	public TypeNode lookupType(String name) throws SeaOfOberonException {
 		if (typeTable.containsKey(name)) {
@@ -145,10 +159,14 @@ public class Scope {
 	}
 
 	/**
-	 * Looks up a Symbol in the current scope. If it is not found it tries the enclosing scope
-	 * @param name Symbol name
+	 * Looks up a Symbol in the current scope. If it is not found it tries the
+	 * enclosing scope
+	 * 
+	 * @param name
+	 *            Symbol name
 	 * @return Symbol node
-	 * @throws SeaOfOberonException If the Symbol is not found in any scope
+	 * @throws SeaOfOberonException
+	 *             If the Symbol is not found in any scope
 	 */
 	public Symbol lookupSymbol(String symbolName) throws SeaOfOberonException {
 		if (symbolTable.containsKey(symbolName)) {
@@ -163,15 +181,19 @@ public class Scope {
 	}
 
 	/**
-	 * Looks up a MemoryMap in the current scope. If it is not found it tries the enclosing scope
-	 * @param address The memory address
+	 * Looks up a MemoryMap in the current scope. If it is not found it tries
+	 * the enclosing scope
+	 * 
+	 * @param address
+	 *            The memory address
 	 * @return The memory map
-	 * @throws SeaOfOberonException If the MemoryAddress is not found in any scope
+	 * @throws SeaOfOberonException
+	 *             If the MemoryAddress is not found in any scope
 	 */
-	public MemoryMap lookupMemoryManagerForAdress(MemoryAddress address)
+	public MemoryManager lookupMemoryManagerForAdress(MemoryAddress address)
 			throws SeaOfOberonException {
-		if (memoryMap.hasAdress(address)) {
-			return memoryMap;
+		if (memoryManager.hasAdress(address)) {
+			return memoryManager;
 		}
 		if (!isRootScope()) {
 			return enclosingScope.lookupMemoryManagerForAdress(address);
@@ -179,21 +201,25 @@ public class Scope {
 		throw new SeaOfOberonException("Adress " + address.toString()
 				+ " not found in any memorymap");
 	}
-	
+
 	/**
-	 * Creates a new memory address with the given value in the current memory map
-	 * @param value the value that should be stored in the memory map
+	 * Creates a new memory address with the given value in the current memory
+	 * map
+	 * 
+	 * @param value
+	 *            the value that should be stored in the memory map
 	 * @return the created memory address
 	 * @throws SeaOfOberonException
 	 */
-	public MemoryAddress createMemoryAdress(Integer value) throws SeaOfOberonException{
-		return memoryMap.addValue(value);
+	public MemoryAddress createMemoryAdress(Integer value) throws SeaOfOberonException {
+		return memoryManager.addValue(value);
 	}
 
 	/**
-	 * Looks up a Symbol in the memory stack and returns it.
+	 * Looks up the value of a symbol with the identifier and returns it.
 	 * 
-	 * @param symbolName the name of the Symbol
+	 * @param symbolName
+	 *            the name of the Symbol
 	 * @return Returns a Integer or null if the symbol is not found
 	 * @throws SeaOfOberonException
 	 */
@@ -203,9 +229,12 @@ public class Scope {
 	}
 
 	/**
-	 * Update a value in memory for an identifier 
-	 * @param identNode the identifier
-	 * @param value the value that should be set
+	 * Update a value in memory for an identifier
+	 * 
+	 * @param identNode
+	 *            the identifier
+	 * @param value
+	 *            the value that should be set
 	 * @throws SeaOfOberonException
 	 */
 	public void updateValue(IdentifierNode identNode, Integer value) throws SeaOfOberonException {
@@ -213,24 +242,27 @@ public class Scope {
 		lookupMemoryManagerForAdress(address).updateValue(address, value);
 	}
 
-	
 	/**
 	 * Adds a symbol in the symbol table
-	 * @param identifier The identifier under which the symbol should be stored
-	 * @param symbol the symbol that should be stored
+	 * 
+	 * @param identifier
+	 *            The identifier under which the symbol should be stored
+	 * @param symbol
+	 *            the symbol that should be stored
 	 * @throws SeaOfOberonException
 	 */
-	public void addSymbolToTable(String identifier, Symbol symbol)
-	throws SeaOfOberonException {
+	public void addSymbolToTable(String identifier, Symbol symbol) throws SeaOfOberonException {
 		symbolTable.put(identifier, symbol);
 	}
 
 	/**
 	 * Gets the memory address for a symbol
 	 * 
-	 * @param identNode the identifier for a symbol
+	 * @param identNode
+	 *            the identifier for a symbol
 	 * @return the memoroy address for the symbol
-	 * @throws SeaOfOberonException If the symbol cannot be found
+	 * @throws SeaOfOberonException
+	 *             If the symbol cannot be found
 	 */
 	private MemoryAddress getAddressForSymbol(IdentifierNode identNode) throws SeaOfOberonException {
 		String symbolName = identNode.getName();
@@ -240,7 +272,8 @@ public class Scope {
 			Symbol resolvedSymbol = identNode.getSelectors().resolveSelectors(rootSymbol, this);
 			return ((IntegerSymbol) resolvedSymbol).getMemoryAdress();
 		} else if (!isRootScope()) {
-			// We did not find the symbol and root scope, so check enclosing scope
+			// We did not find the symbol and root scope, so check enclosing
+			// scope
 			return enclosingScope.getAddressForSymbol(identNode);
 		} else {
 			// Symbol wasn't found in any table, so throw exception.
@@ -248,11 +281,15 @@ public class Scope {
 					+ " is not defined in Symbol Table");
 		}
 	}
-	
+
 	/**
-	 * Processes procedure parameters. Maps the actual parameters to the formal parameters  
-	 * @param procedure The procedure which contains the formal parameters
-	 * @param actualParameters the actual parameters
+	 * Processes procedure parameters. Maps the actual parameters to the formal
+	 * parameters
+	 * 
+	 * @param procedure
+	 *            The procedure which contains the formal parameters
+	 * @param actualParameters
+	 *            the actual parameters
 	 * @throws SeaOfOberonException
 	 */
 	private void processProcedureParameters(ProcedureNode procedure,
@@ -267,19 +304,22 @@ public class Scope {
 	}
 
 	/**
-	 * Registers a single parameter. If it's a call by value parameter a copy of the symbol with
-	 * new memory addresses is stored in the symbol table. If its a call by reference parameter
-	 * the referenced symbol is looked up and stored in the local symbol table under its new name
+	 * Registers a single parameter. If it's a call by value parameter a copy of
+	 * the symbol with new memory addresses is stored in the symbol table. If
+	 * its a call by reference parameter the referenced symbol is looked up and
+	 * stored in the local symbol table under its new name
 	 * 
-	 * @param formalParameter A formal parameter
-	 * @param actualParameter An actual parameter
-	 * @param callByRef A call by reference indicator
+	 * @param formalParameter
+	 *            A formal parameter
+	 * @param actualParameter
+	 *            An actual parameter
+	 * @param callByRef
+	 *            A call by reference indicator
 	 * @throws SeaOfOberonException
 	 */
 	private void registerParameter(FieldNode formalParameter, ExpressionNode actualParameter,
 			boolean callByRef) throws SeaOfOberonException {
 		String identifier = formalParameter.getName();
-		// Test if its an identifier, if its an expression
 		if (actualParameter instanceof IdentifierNode) {
 			IdentifierNode castedRefParamNode = (IdentifierNode) actualParameter;
 			Symbol referencedSymbol = castedRefParamNode.getSelectors().resolveSelectors(
@@ -289,9 +329,9 @@ public class Scope {
 				symbolTable.put(identifier, referencedSymbol);
 			} else {
 				Symbol callByValSymbol = referencedSymbol.clone();
-				// regenerate the memory addresses for the symbol in the current
-				// memory map
-				callByValSymbol.regenerateMemoryAddress(this, memoryMap);
+				// regenerate the memory addresses, so the assigned values are copied to the
+				// the memory manager of this scop to implement call by value.
+				callByValSymbol.regenerateMemoryAddress(this, memoryManager);
 				symbolTable.put(identifier, callByValSymbol);
 			}
 		} else {
@@ -303,7 +343,7 @@ public class Scope {
 			symbolTable.put(identifier, integerSymbol);
 		}
 	}
-	
+
 	/**
 	 * Registers the procedures for this scope
 	 * 
@@ -357,7 +397,7 @@ public class Scope {
 			fieldNode.getType().registerVariable(fieldNode.getName(), this);
 		}
 	}
-	
+
 	/**
 	 * Checks if the current scope is the root scope.
 	 * 
@@ -379,7 +419,7 @@ public class Scope {
 			sb.append("Enclosed Scope Contents");
 			sb.append(enclosingScope.toString());
 		}
-		sb.append(this.memoryMap.toString());
+		sb.append(this.memoryManager.toString());
 		sb.append(Constants.LINE_SEPARATOR);
 		sb.append("Symbols");
 		sb.append(Constants.LINE_SEPARATOR);

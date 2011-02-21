@@ -38,7 +38,7 @@ public class IdentifierTypeNode extends TypeNode {
 	public void registerVariable(String identifier, Scope scope) throws SeaOfOberonException {
 		if (Constants.INTEGER_VAR_KEYWORD.equals(name)) {
 			// Its an integer declaration. Register it as an integer
-			Symbol intSymbol = generateIntegerSymbol(scope,  new Integer(0), true);
+			Symbol intSymbol = createIntegerSymbol(scope,  new Integer(0), true);
 			scope.addSymbolToTable(identifier, intSymbol);
 		} else {
 			TypeNode resolvedNode = scope.lookupType(name);
@@ -50,13 +50,13 @@ public class IdentifierTypeNode extends TypeNode {
 	public Symbol createSymbolFromType(Scope scope) throws SeaOfOberonException {
 		if (Constants.INTEGER_VAR_KEYWORD.equals(name)) {
 			// Its an integer declaration. Register it as an integer
-			return generateIntegerSymbol(scope, new Integer(0), true);
+			return createIntegerSymbol(scope, new Integer(0), true);
 		} else {
 			return scope.lookupType(name).createSymbolFromType(scope);
 		}
 	}
 
-	public IntegerSymbol generateIntegerSymbol(Scope scope, Integer value, boolean mutable)
+	public IntegerSymbol createIntegerSymbol(Scope scope, Integer value, boolean mutable)
 			throws SeaOfOberonException {
 		MemoryAddress memoryAdress = scope.createMemoryAdress(value);
 		return new IntegerSymbol(mutable, memoryAdress);
