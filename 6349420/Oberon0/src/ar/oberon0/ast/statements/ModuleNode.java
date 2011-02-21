@@ -1,10 +1,16 @@
 package ar.oberon0.ast.statements;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map.Entry;
+
+import ar.oberon0.ast.declarations.ProcedureDeclaration;
 import ar.oberon0.lists.ConstantList;
 import ar.oberon0.lists.DataFieldList;
 import ar.oberon0.lists.ProcedureList;
 import ar.oberon0.lists.TypeIdentifierList;
 import ar.oberon0.runtime.Context;
+import ar.oberon0.shared.CheckViolation;
 import ar.oberon0.shared.Interpretable;
 import ar.oberon0.shared.TechnicalException;
 
@@ -49,4 +55,14 @@ public class ModuleNode implements Interpretable {
 		return 0;
 	}
 
+	@Override
+	public List<CheckViolation> check(Context context) {
+		List<CheckViolation> violations = new ArrayList<CheckViolation>();
+		violations.addAll(this.statements.check(this.context));
+		ProcedureList procedures = this.context.getProcedures();
+		for (Entry<String, ProcedureDeclaration> dec : procedures) {
+			violations.addAll(dec.getValue().check(context));
+		}
+		return violations;
+	}
 }

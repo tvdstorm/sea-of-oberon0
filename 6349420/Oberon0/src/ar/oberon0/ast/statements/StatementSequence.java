@@ -5,6 +5,7 @@ import java.util.List;
 
 import junit.framework.Assert;
 import ar.oberon0.runtime.Context;
+import ar.oberon0.shared.CheckViolation;
 import ar.oberon0.shared.Interpretable;
 import ar.oberon0.shared.TechnicalException;
 
@@ -27,6 +28,15 @@ public class StatementSequence implements Interpretable {
 			statement.interpret(context);
 		}
 		return 0;
+	}
+
+	@Override
+	public List<CheckViolation> check(Context context) {
+		List<CheckViolation> violations = new ArrayList<CheckViolation>();
+		for (Interpretable statement : statements) {
+			violations.addAll(statement.check(context));
+		}
+		return violations;
 	}
 
 	public void addStatement(Interpretable statement) {

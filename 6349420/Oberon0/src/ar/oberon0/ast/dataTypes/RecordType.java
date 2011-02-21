@@ -39,4 +39,12 @@ public class RecordType implements CreatableType {
 		return recordValue;
 	}
 
+	@Override
+	public boolean equals(Object objectToCompare) {
+		if (objectToCompare instanceof RecordType) {
+			return true;
+		}
+		return false;
+	}
+
 }

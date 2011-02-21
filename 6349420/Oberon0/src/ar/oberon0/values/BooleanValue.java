@@ -1,12 +1,11 @@
 package ar.oberon0.values;
 
+import ar.oberon0.ast.dataTypes.BooleanType;
 import ar.oberon0.ast.dataTypes.CreatableType;
-import ar.oberon0.ast.dataTypes.PrimitiveTypes;
-import ar.oberon0.ast.dataTypes.SimpleType;
 import ar.oberon0.runtime.Context;
 import ar.oberon0.shared.TechnicalException;
 
-public class BooleanValue implements Value {
+public class BooleanValue extends ValueBase implements Negatable {
 
 	private Boolean value;
 
@@ -24,7 +23,7 @@ public class BooleanValue implements Value {
 
 	@Override
 	public CreatableType getType() {
-		return new SimpleType(PrimitiveTypes.BOOLEAN);
+		return new BooleanType();
 	}
 
 	@Override
@@ -46,5 +45,10 @@ public class BooleanValue implements Value {
 			return this.value == (Boolean) obj;
 		}
 		return false;
+	}
+
+	@Override
+	public Value negate() {
+		return new BooleanValue(!this.value);
 	}
 }

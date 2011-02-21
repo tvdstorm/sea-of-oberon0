@@ -7,6 +7,7 @@ import ar.oberon0.ast.declarations.ProcedureDeclaration;
 import ar.oberon0.runtime.Context;
 import ar.oberon0.runtime.DataField;
 import ar.oberon0.runtime.Procedure;
+import ar.oberon0.shared.CheckViolation;
 import ar.oberon0.shared.Helper;
 import ar.oberon0.shared.Interpretable;
 import ar.oberon0.shared.TechnicalException;
@@ -33,6 +34,17 @@ public class ProcedureCallNode implements Interpretable {
 		// Create the procedure instance.
 		Procedure procedureToInvoke = procedureDeclaration.createProcedure(context, actualParameters);
 		return procedureToInvoke.interpret(context);
+	}
+
+	@Override
+	public List<CheckViolation> check(Context context) {
+		List<CheckViolation> violations = new ArrayList<CheckViolation>();
+		if (!context.DoesProcedureExist(this.procedureName)) {
+			violations.add(new CheckViolation("There is no procedure with the name " + this.procedureName + ".", this.getClass()));
+			return violations;
+		}
+		violations.addAll(context.getProcedure(this.procedureName).checkParameters(context, createParameterList(this.parameters, context)));
+		return violations;
 	}
 
 	/*

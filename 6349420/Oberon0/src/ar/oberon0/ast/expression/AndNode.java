@@ -1,5 +1,10 @@
 package ar.oberon0.ast.expression;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+
+import ar.oberon0.ast.dataTypes.BooleanType;
 import ar.oberon0.runtime.Context;
 import ar.oberon0.shared.Interpretable;
 import ar.oberon0.shared.TechnicalException;
@@ -17,4 +22,10 @@ public class AndNode extends BinaryNode {
 		return new BooleanValue(rawResult);
 	}
 
+	@Override
+	List<Type> getAcceptedTypes() {
+		List<Type> acceptedTypes = new ArrayList<Type>();
+		acceptedTypes.add(BooleanType.class);
+		return acceptedTypes;
+	}
 }

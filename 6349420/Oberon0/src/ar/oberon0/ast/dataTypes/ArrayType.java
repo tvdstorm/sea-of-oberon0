@@ -25,4 +25,12 @@ public class ArrayType implements CreatableType {
 		return new ArrayValue(length, this.type);
 	}
 
+	@Override
+	public boolean equals(Object objectToCompare) {
+		if (objectToCompare instanceof ArrayType) {
+			return true;
+		}
+		return false;
+	}
+
 }

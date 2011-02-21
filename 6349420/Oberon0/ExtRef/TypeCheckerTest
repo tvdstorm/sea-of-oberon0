@@ -1,0 +1,9 @@
+MODULE module;
+	CONST const1 = 9;  
+	VAR var1 : BOOLEAN; 
+
+BEGIN 
+	var1 := 2+1; 
+	Write("testtt");
+	var2 := 1
+END module

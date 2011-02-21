@@ -1,13 +1,12 @@
 package ar.oberon0.values;
 
 import ar.oberon0.ast.dataTypes.CreatableType;
-import ar.oberon0.ast.dataTypes.PrimitiveTypes;
-import ar.oberon0.ast.dataTypes.SimpleType;
+import ar.oberon0.ast.dataTypes.IntegerType;
 import ar.oberon0.runtime.Context;
 import ar.oberon0.shared.Helper;
 import ar.oberon0.shared.TechnicalException;
 
-public class IntegerValue implements ArithmeticValue, ComparableValue {
+public class IntegerValue extends ValueBase implements ArithmeticValue, ComparableValue {
 
 	private int value;
 
@@ -19,6 +18,7 @@ public class IntegerValue implements ArithmeticValue, ComparableValue {
 		this.value = value;
 	}
 
+	@Override
 	public final Object interpret(final Context context) throws TechnicalException {
 		return this;
 	}
@@ -29,7 +29,7 @@ public class IntegerValue implements ArithmeticValue, ComparableValue {
 
 	@Override
 	public final CreatableType getType() {
-		return new SimpleType(PrimitiveTypes.INTEGER);
+		return new IntegerType();
 	}
 
 	@Override

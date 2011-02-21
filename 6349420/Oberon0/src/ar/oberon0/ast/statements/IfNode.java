@@ -5,6 +5,7 @@ import java.util.List;
 
 import junit.framework.Assert;
 import ar.oberon0.runtime.Context;
+import ar.oberon0.shared.CheckViolation;
 import ar.oberon0.shared.Interpretable;
 import ar.oberon0.shared.TechnicalException;
 import ar.oberon0.values.BooleanValue;
@@ -48,6 +49,19 @@ public class IfNode implements Interpretable {
 		return 0;
 	}
 
+	@Override
+	public List<CheckViolation> check(Context context) {
+		List<CheckViolation> violations = new ArrayList<CheckViolation>();
+		violations.addAll(this.mainIfStatements.check(context));
+		for (IfStatement elseIf : this.elseIfStatementsList) {
+			violations.addAll(elseIf.check(context));
+		}
+		if (this.elseStatements != null) {
+			violations.addAll(this.elseStatements.check(context));
+		}
+		return violations;
+	}
+
 	public void addElseIf(Interpretable expression, Interpretable statementsToExecute) {
 		Assert.assertNotNull("The statementsToExecute parameter can't be null", statementsToExecute);
 		Assert.assertNotNull("The expression parameter can't be null", expression);
@@ -73,6 +87,19 @@ public class IfNode implements Interpretable {
 
 		public void execute(Context context) throws TechnicalException {
 			statements.interpret(context);
+		}
+
+		public List<CheckViolation> check(Context context) {
+			List<CheckViolation> violations = new ArrayList<CheckViolation>();
+			violations.addAll(this.ifExpression.check(context));
+			if (violations.size() == 0) {
+				Object result = this.ifExpression.interpret(context);
+				if (!(result instanceof BooleanValue)) {
+					violations.add(new CheckViolation("The expression of a if node must return a BooleanValue", this.getClass()));
+				}
+			}
+			violations.addAll(this.statements.check(context));
+			return violations;
 		}
 
 	}

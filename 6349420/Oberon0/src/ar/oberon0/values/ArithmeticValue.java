@@ -5,7 +5,7 @@ import ar.oberon0.shared.TechnicalException;
 /*
  * When a class implements this interface it means that it can do arithmetic calculations.
  */
-public interface ArithmeticValue extends Value {
+public interface ArithmeticValue extends Value, Negatable {
 	/*
 	 * Multiply the current value with the value of the parameter.
 	 */
@@ -15,11 +15,6 @@ public interface ArithmeticValue extends Value {
 	 * Return the sum of the current value and the value of the parameter.
 	 */
 	Value add(Value value) throws TechnicalException;
-
-	/*
-	 * Return the negation of the current value.
-	 */
-	Value negate();
 
 	/*
 	 * Return the subtraction of the parameter value from the current value.
