@@ -4,12 +4,12 @@ import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.runtime.Scope;
 
 /**
- * Interface indicating a class is interpretable to an integer.
+ * Interface indicating a class is interpretable as an integer.
  * 
  * @author Arie van der Veek
  *
  */
-public interface Interpretable {
+public interface InterpretableAsInteger {
 
 	/**
 	 * Interprets the class and returns the interpretation as integer value

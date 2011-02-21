@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.arievanderveek.soo.SeaOfOberonException;
 import com.arievanderveek.soo.ast.ASTNode;
+import com.arievanderveek.soo.ast.InterpretableAsVoid;
 import com.arievanderveek.soo.ast.statements.StatementNode;
 import com.arievanderveek.soo.ast.variables.ConstantNode;
 import com.arievanderveek.soo.ast.variables.FieldNode;
@@ -19,7 +20,7 @@ import com.arievanderveek.soo.util.Constants;
  * @author arieveek
  * 
  */
-public abstract class CodeBlockNode implements ASTNode {
+public abstract class CodeBlockNode implements ASTNode, InterpretableAsVoid {
 
 	protected final String codeBlockName;
 	protected final List<ConstantNode> constants;
