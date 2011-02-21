@@ -21,7 +21,7 @@ public class WriteNode implements Interpretable {
 	private String stringMessage;
 	private static PrintStream streamToWriteTo;
 
-	public static void setStreamToWriteTo(PrintStream stream) {
+	public static void setStreamToWriteTo(final PrintStream stream) {
 		streamToWriteTo = stream;
 	}
 
@@ -52,7 +52,7 @@ public class WriteNode implements Interpretable {
 	}
 
 	@Override
-	public List<CheckViolation> check(Context context) {
+	public List<CheckViolation> check(final Context context) {
 		return new ArrayList<CheckViolation>();
 	}
 

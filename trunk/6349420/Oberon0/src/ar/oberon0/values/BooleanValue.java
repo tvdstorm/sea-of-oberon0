@@ -27,7 +27,7 @@ public class BooleanValue extends ValueBase implements Negatable {
 	}
 
 	@Override
-	public Object interpret(Context context) throws TechnicalException {
+	public Object interpret(final Context context) throws TechnicalException {
 		return this;
 	}
 

@@ -9,11 +9,11 @@ public class FieldList {
 	private IdentList fieldNames;
 	private CreatableType type;
 
-	public List<String> getFieldNames() {
+	public final List<String> getFieldNames() {
 		return this.fieldNames.getIdentifiers();
 	}
 
-	public CreatableType getType() {
+	public final CreatableType getType() {
 		return this.type;
 	}
 

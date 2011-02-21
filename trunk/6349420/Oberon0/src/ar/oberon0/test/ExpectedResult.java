@@ -11,7 +11,7 @@ class ExpectedResult implements Iterable<String> {
 		this.expectedStrings = new ArrayList<String>();
 	}
 
-	protected void addString(String expectedString) {
+	protected void addString(final String expectedString) {
 		this.expectedStrings.add(expectedString);
 	}
 

@@ -16,7 +16,7 @@ public class RecordSelectorNode extends SelectorNode {
 	}
 
 	@Override
-	protected DataField getItem(DataField parent, Context context) throws TechnicalException {
+	protected DataField getItem(final DataField parent, final Context context) throws TechnicalException {
 		assert parent != null : "The parent parameter can't be null. A RecordSelector can't be the first selector.";
 
 		if (!(parent.getType() instanceof RecordType) && parent.getType().getClass() != LookupType.class) {

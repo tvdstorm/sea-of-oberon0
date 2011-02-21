@@ -15,25 +15,25 @@ public class RecordValue extends ValueBase {
 	private CreatableType type;
 	private Map<String, DataField> members;
 
-	public DataField getMember(String name) {
+	public final DataField getMember(final String name) {
 		return members.get(name);
 	}
 
-	public Iterator<Entry<String, DataField>> getMembers() {
+	public final Iterator<Entry<String, DataField>> getMembers() {
 		return members.entrySet().iterator();
 	}
 
-	public RecordValue(CreatableType type) {
+	public RecordValue(final CreatableType type) {
 		this.members = new HashMap<String, DataField>();
 		this.type = type;
 	}
 
 	@Override
-	public Object interpret(Context context) throws TechnicalException {
+	public Object interpret(final Context context) throws TechnicalException {
 		return this;
 	}
 
-	public void addMember(String name, DataField field) {
+	public final void addMember(final String name, final DataField field) {
 		this.members.put(name, field);
 	}
 

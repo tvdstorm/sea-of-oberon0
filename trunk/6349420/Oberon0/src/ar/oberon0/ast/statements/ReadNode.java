@@ -22,7 +22,7 @@ public class ReadNode implements Interpretable {
 	private VarSelectorNode selector;
 	private static BufferedReader streamToReadFrom;
 
-	public static void setStreamToReadFrom(InputStream stream) {
+	public static void setStreamToReadFrom(final InputStream stream) {
 		streamToReadFrom = new BufferedReader(new InputStreamReader(stream));
 	}
 
@@ -47,7 +47,7 @@ public class ReadNode implements Interpretable {
 	}
 
 	@Override
-	public List<CheckViolation> check(Context context) {
+	public List<CheckViolation> check(final Context context) {
 		return new ArrayList<CheckViolation>();
 	}
 

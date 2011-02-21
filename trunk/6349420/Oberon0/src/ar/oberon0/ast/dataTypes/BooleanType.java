@@ -8,7 +8,7 @@ import ar.oberon0.values.Value;
 public class BooleanType implements CreatableType {
 
 	@Override
-	public Value createInstance(Context context) throws TechnicalException {
+	public Value createInstance(final Context context) throws TechnicalException {
 		return new BooleanValue();
 	}
 

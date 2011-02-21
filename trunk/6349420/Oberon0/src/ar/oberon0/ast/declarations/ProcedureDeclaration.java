@@ -73,7 +73,7 @@ public class ProcedureDeclaration {
 		return procedure;
 	}
 
-	public List<CheckViolation> checkParameters(Context context, final List<DataField> actualParameters) {
+	public final List<CheckViolation> checkParameters(final Context context, final List<DataField> actualParameters) {
 		List<CheckViolation> violations = new ArrayList<CheckViolation>();
 		if (!isFormalAndActualParamaterCountSame(this.formalParameters, actualParameters)) {
 			violations.add(new CheckViolation("The number of actual parameters does not match the number of formal parameters.", this.getClass()));
@@ -89,7 +89,7 @@ public class ProcedureDeclaration {
 		return violations;
 	}
 
-	public List<CheckViolation> check(Context context) {
+	public final List<CheckViolation> check(final Context context) {
 		Context procedureContext = this.context.clone();
 		procedureContext.setParentContext(context);
 		for (int i = 0; i < this.formalParameters.getCount(); i++) {

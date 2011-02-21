@@ -25,7 +25,7 @@ public class WhileNode implements Interpretable {
 	 * loop has to stop. the statementToExecute parameter contains the
 	 * statements that are executed every time the while loop is processed.
 	 */
-	public WhileNode(Interpretable controlExpression, Interpretable statementsToExecute) {
+	public WhileNode(final Interpretable controlExpression, final Interpretable statementsToExecute) {
 		assert controlExpression != null : "The controlExpression parameter can't be null.";
 		assert statementsToExecute != null : "The statementsToExecute parameter can't be null.";
 		this.controlExpression = controlExpression;
@@ -33,7 +33,7 @@ public class WhileNode implements Interpretable {
 	}
 
 	@Override
-	public Object interpret(Context context) throws TechnicalException {
+	public Object interpret(final Context context) throws TechnicalException {
 		while (((BooleanValue) this.controlExpression.interpret(context)).equals(true)) {
 			this.statementsToExecute.interpret(context);
 		}
@@ -41,7 +41,7 @@ public class WhileNode implements Interpretable {
 	}
 
 	@Override
-	public List<CheckViolation> check(Context context) {
+	public List<CheckViolation> check(final Context context) {
 		return new ArrayList<CheckViolation>();
 	}
 }

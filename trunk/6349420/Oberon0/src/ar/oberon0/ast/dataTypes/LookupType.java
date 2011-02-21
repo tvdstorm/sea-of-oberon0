@@ -16,7 +16,7 @@ public class LookupType implements CreatableType {
 	}
 
 	@Override
-	public Value createInstance(Context context) throws TechnicalException {
+	public Value createInstance(final Context context) throws TechnicalException {
 		CreatableType type = context.getType(this.name);
 		return type.createInstance(context);
 	}
