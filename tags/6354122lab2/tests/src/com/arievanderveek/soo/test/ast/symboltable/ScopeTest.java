@@ -211,10 +211,8 @@ public class ScopeTest {
 		// Data for array values
 		List<Selector> selectorPos0 = new LinkedList<Selector>();
 		selectorPos0.add(new Subscript(new IntegerExpressionNode(0)));
-		Selectors selectorsPos0 = new Selectors(selectorPos0);
 		List<Selector> selectorPos1 = new LinkedList<Selector>();
 		selectorPos1.add(new Subscript(new IntegerExpressionNode(1)));
-		Selectors selectorsPos1 = new Selectors(selectorPos1);
 		// Do the test
 		try {
 			Scope scope = new Scope(simpleMaths.getConstants(),

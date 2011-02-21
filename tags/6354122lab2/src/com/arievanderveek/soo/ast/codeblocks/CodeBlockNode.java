@@ -11,7 +11,6 @@ import com.arievanderveek.soo.ast.InterpretableAsVoid;
 import com.arievanderveek.soo.ast.statements.StatementNode;
 import com.arievanderveek.soo.ast.variables.ConstantNode;
 import com.arievanderveek.soo.ast.variables.FieldNode;
-import com.arievanderveek.soo.runtime.Scope;
 import com.arievanderveek.soo.util.Constants;
 
 /**
