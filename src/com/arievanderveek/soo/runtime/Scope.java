@@ -41,6 +41,7 @@ public class Scope {
 	 * @param variables
 	 * @param procedures
 	 * @throws SeaOfOberonException
+	 * 
 	 */
 	public Scope(List<ConstantNode> constants, List<FieldNode> types, List<FieldNode> variables,
 			List<ProcedureNode> procedures) throws SeaOfOberonException {
