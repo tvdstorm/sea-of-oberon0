@@ -11,7 +11,6 @@ import org.antlr.runtime.CharStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.TokenStream;
 
-import com.arievanderveek.soo.ast.ASTNode;
 import com.arievanderveek.soo.ast.codeblocks.ModuleNode;
 import com.arievanderveek.soo.parser.antlrimpl.generated.Oberon0Lexer;
 import com.arievanderveek.soo.parser.antlrimpl.generated.Oberon0Parser;
