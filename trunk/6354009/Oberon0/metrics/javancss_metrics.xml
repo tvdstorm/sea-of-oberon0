@@ -1,389 +1,414 @@
 <?xml version="1.0"?>
 <javancss>
-  <date>2011-02-07</date>
-  <time>12:01:31</time>
+  <date>2011-02-21</date>
+  <time>09:19:14</time>
   <packages>
     <package>
       <name>oberon0</name>
       <classes>1</classes>
       <functions>1</functions>
-      <ncss>18</ncss>
+      <ncss>14</ncss>
+      <javadocs>0</javadocs>
+      <javadoc_lines>0</javadoc_lines>
+      <single_comment_lines>0</single_comment_lines>
+      <multi_comment_lines>0</multi_comment_lines>
+    </package>
+    <package>
+      <name>oberon0.declaration</name>
+      <classes>7</classes>
+      <functions>31</functions>
+      <ncss>141</ncss>
+      <javadocs>0</javadocs>
+      <javadoc_lines>0</javadoc_lines>
+      <single_comment_lines>0</single_comment_lines>
+      <multi_comment_lines>0</multi_comment_lines>
+    </package>
+    <package>
+      <name>oberon0.environment</name>
+      <classes>3</classes>
+      <functions>17</functions>
+      <ncss>76</ncss>
+      <javadocs>0</javadocs>
+      <javadoc_lines>0</javadoc_lines>
+      <single_comment_lines>1</single_comment_lines>
+      <multi_comment_lines>0</multi_comment_lines>
+    </package>
+    <package>
+      <name>oberon0.expression</name>
+      <classes>21</classes>
+      <functions>44</functions>
+      <ncss>249</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>2</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <package>
-      <name>oberon0.declaration</name>
-      <classes>3</classes>
-      <functions>12</functions>
-      <ncss>45</ncss>
+      <name>oberon0.program</name>
+      <classes>4</classes>
+      <functions>14</functions>
+      <ncss>89</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>1</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <package>
-      <name>oberon0.exception</name>
-      <classes>6</classes>
-      <functions>0</functions>
-      <ncss>18</ncss>
+      <name>oberon0.selector</name>
+      <classes>3</classes>
+      <functions>7</functions>
+      <ncss>27</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
       <single_comment_lines>0</single_comment_lines>
-      <multi_comment_lines>18</multi_comment_lines>
-    </package>
-    <package>
-      <name>oberon0.expression</name>
-      <classes>19</classes>
-      <functions>60</functions>
-      <ncss>273</ncss>
-      <javadocs>0</javadocs>
-      <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>28</single_comment_lines>
-      <multi_comment_lines>0</multi_comment_lines>
-    </package>
-    <package>
-      <name>oberon0.identifier</name>
-      <classes>4</classes>
-      <functions>11</functions>
-      <ncss>48</ncss>
-      <javadocs>0</javadocs>
-      <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>1</single_comment_lines>
-      <multi_comment_lines>0</multi_comment_lines>
-    </package>
-    <package>
-      <name>oberon0.module</name>
-      <classes>1</classes>
-      <functions>27</functions>
-      <ncss>123</ncss>
-      <javadocs>0</javadocs>
-      <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>51</single_comment_lines>
-      <multi_comment_lines>0</multi_comment_lines>
-    </package>
-    <package>
-      <name>oberon0.procedure</name>
-      <classes>2</classes>
-      <functions>18</functions>
-      <ncss>102</ncss>
-      <javadocs>0</javadocs>
-      <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>28</single_comment_lines>
-      <multi_comment_lines>0</multi_comment_lines>
-    </package>
-    <package>
-      <name>oberon0.program</name>
-      <classes>1</classes>
-      <functions>9</functions>
-      <ncss>68</ncss>
-      <javadocs>0</javadocs>
-      <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>15</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <package>
       <name>oberon0.statement</name>
-      <classes>5</classes>
-      <functions>10</functions>
-      <ncss>94</ncss>
+      <classes>9</classes>
+      <functions>28</functions>
+      <ncss>152</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>13</single_comment_lines>
-      <multi_comment_lines>3</multi_comment_lines>
+      <single_comment_lines>2</single_comment_lines>
+      <multi_comment_lines>0</multi_comment_lines>
     </package>
     <package>
       <name>oberon0.type</name>
-      <classes>3</classes>
-      <functions>24</functions>
-      <ncss>116</ncss>
+      <classes>6</classes>
+      <functions>12</functions>
+      <ncss>68</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>16</single_comment_lines>
+      <single_comment_lines>0</single_comment_lines>
+      <multi_comment_lines>0</multi_comment_lines>
+    </package>
+    <package>
+      <name>oberon0.value</name>
+      <classes>5</classes>
+      <functions>24</functions>
+      <ncss>106</ncss>
+      <javadocs>0</javadocs>
+      <javadoc_lines>0</javadoc_lines>
+      <single_comment_lines>0</single_comment_lines>
       <multi_comment_lines>0</multi_comment_lines>
     </package>
     <total>
-      <classes>45</classes>
-      <functions>172</functions>
-      <ncss>905</ncss>
+      <classes>59</classes>
+      <functions>178</functions>
+      <ncss>922</ncss>
       <javadocs>0</javadocs>
       <javadoc_lines>0</javadoc_lines>
-      <single_comment_lines>155</single_comment_lines>
-      <multi_comment_lines>21</multi_comment_lines>
+      <single_comment_lines>6</single_comment_lines>
+      <multi_comment_lines>0</multi_comment_lines>
     </total>
     <table>
       <tr><td>Packages</td><td>Classes</td><td>Functions</td><td>NCSS</td><td>Javadocs</td><td>per</td></tr>
-      <tr><td>10.00</td><td>45.00</td><td>172.00</td><td>905.00</td><td>0.00</td><td>Project</td></tr>
-      <tr><td></td><td>4.50</td><td>17.20</td><td>90.50</td><td>0.00</td><td>Package</td></tr>
-      <tr><td></td><td></td><td>3.82</td><td>20.11</td><td>0.00</td><td>Class</td></tr>
-      <tr><td></td><td></td><td></td><td>5.26</td><td>0.00</td><td>Function</td></tr>
+      <tr><td>9.00</td><td>59.00</td><td>178.00</td><td>922.00</td><td>0.00</td><td>Project</td></tr>
+      <tr><td></td><td>6.56</td><td>19.78</td><td>102.44</td><td>0.00</td><td>Package</td></tr>
+      <tr><td></td><td></td><td>3.02</td><td>15.63</td><td>0.00</td><td>Class</td></tr>
+      <tr><td></td><td></td><td></td><td>5.18</td><td>0.00</td><td>Function</td></tr>
     </table>
   </packages>
 
   <objects>
     <object>
-      <name>oberon0.declaration.Constant</name>
-      <ncss>10</ncss>
-      <functions>3</functions>
+      <name>oberon0.declaration.ConstantDeclaration</name>
+      <ncss>7</ncss>
+      <functions>2</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>oberon0.declaration.TypeDeclaration</name>
-      <ncss>10</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon0.declaration.Variable</name>
-      <ncss>16</ncss>
-      <functions>6</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon0.exception.ExecutionException</name>
-      <ncss>2</ncss>
-      <functions>0</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon0.exception.IncorrectStatementException</name>
-      <ncss>2</ncss>
-      <functions>0</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon0.exception.MissingModuleClosureStatementException</name>
-      <ncss>2</ncss>
-      <functions>0</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon0.exception.MissingProcedureClosureStatementException</name>
-      <ncss>2</ncss>
-      <functions>0</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon0.exception.ProcedureNotFoundException</name>
-      <ncss>2</ncss>
-      <functions>0</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon0.exception.UnknownVariableException</name>
-      <ncss>2</ncss>
-      <functions>0</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon0.expression.AlwaysTrueExpression</name>
+      <name>oberon0.declaration.Declaration</name>
       <ncss>7</ncss>
       <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>oberon0.expression.AndExpression</name>
-      <ncss>11</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon0.expression.ArrayExpression</name>
-      <ncss>11</ncss>
-      <functions>4</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon0.expression.DevideExpression</name>
-      <ncss>11</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon0.expression.EqualExpression</name>
-      <ncss>13</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon0.expression.Expression</name>
-      <ncss>3</ncss>
+      <name>oberon0.declaration.FormParamDeclaration</name>
+      <ncss>7</ncss>
       <functions>2</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>oberon0.expression.GreaterExpression</name>
-      <ncss>13</ncss>
+      <name>oberon0.declaration.ModuleDeclaration</name>
+      <ncss>22</ncss>
+      <functions>7</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.declaration.ProcedureDeclaration</name>
+      <ncss>47</ncss>
+      <functions>11</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.declaration.TypeDeclaration</name>
+      <ncss>9</ncss>
       <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>oberon0.expression.GreaterOrEqualExpression</name>
-      <ncss>13</ncss>
+      <name>oberon0.declaration.VariableDeclaration</name>
+      <ncss>9</ncss>
       <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>oberon0.expression.IdentifierExpression</name>
-      <ncss>11</ncss>
+      <name>oberon0.environment.Environment</name>
+      <ncss>40</ncss>
+      <functions>9</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.environment.EnvObject</name>
+      <ncss>12</ncss>
       <functions>4</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>oberon0.expression.IntegerExpression</name>
-      <ncss>13</ncss>
-      <functions>5</functions>
+      <name>oberon0.environment.ReferenceLink</name>
+      <ncss>14</ncss>
+      <functions>4</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>oberon0.expression.LeftRightExpression</name>
+      <name>oberon0.expression.BinaryExpression</name>
+      <ncss>6</ncss>
+      <functions>1</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.expression.ConstantExpression</name>
+      <ncss>8</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.expression.DevideExpression</name>
+      <ncss>7</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.expression.EqualsToExpression</name>
+      <ncss>7</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.expression.Expression</name>
+      <ncss>2</ncss>
+      <functions>1</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.expression.ExpressionFactory</name>
+      <ncss>44</ncss>
+      <functions>4</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.expression.GreaterOrEqualsToExpression</name>
+      <ncss>7</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.expression.GreaterThanExpression</name>
+      <ncss>7</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.expression.LogicalAndExpression</name>
+      <ncss>7</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.expression.LogicalNotExpression</name>
+      <ncss>6</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.expression.MinusExpression</name>
+      <ncss>7</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.expression.ModulusExpression</name>
+      <ncss>7</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.expression.NegationExpression</name>
+      <ncss>6</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.expression.NotEqualsToExpression</name>
+      <ncss>7</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.expression.OrExpression</name>
+      <ncss>7</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.expression.PlusExpression</name>
+      <ncss>7</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.expression.SmallerOrEqualsToExpression</name>
+      <ncss>7</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.expression.SmallerThanExpression</name>
+      <ncss>7</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.expression.TimesExpression</name>
+      <ncss>7</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.expression.UnaryExpression</name>
+      <ncss>4</ncss>
+      <functions>1</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.expression.VariableExpression</name>
+      <ncss>13</ncss>
+      <functions>4</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.Main</name>
+      <ncss>9</ncss>
+      <functions>1</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.program.Program</name>
       <ncss>15</ncss>
       <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>oberon0.expression.MinusExpression</name>
-      <ncss>11</ncss>
-      <functions>3</functions>
+      <name>oberon0.program.ReadProcedureDeclaration</name>
+      <ncss>19</ncss>
+      <functions>5</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>oberon0.expression.ModuloExpression</name>
-      <ncss>11</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon0.expression.NegationExpression</name>
-      <ncss>14</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon0.expression.NotEqualExpression</name>
+      <name>oberon0.program.WriteLineProcedureDeclaration</name>
       <ncss>13</ncss>
       <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>oberon0.expression.PlusExpression</name>
+      <name>oberon0.program.WriteProcedureDeclararion</name>
       <ncss>11</ncss>
       <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>oberon0.expression.SmallerExpression</name>
-      <ncss>13</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon0.expression.SmallerOrEqualExpression</name>
-      <ncss>13</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon0.expression.TimesExpression</name>
-      <ncss>11</ncss>
-      <functions>3</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon0.identifier.ArrayIndexSelector</name>
-      <ncss>8</ncss>
+      <name>oberon0.selector.BracketSelector</name>
+      <ncss>6</ncss>
       <functions>2</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>oberon0.identifier.Identifier</name>
+      <name>oberon0.selector.DotSelector</name>
+      <ncss>6</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.selector.Selector</name>
+      <ncss>11</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.statement.AssignmentStatement</name>
+      <ncss>15</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.statement.ConditionStatement</name>
       <ncss>14</ncss>
       <functions>4</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>oberon0.identifier.Selector</name>
-      <ncss>13</ncss>
+      <name>oberon0.statement.ElseStatement</name>
+      <ncss>7</ncss>
       <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
-      <name>oberon0.identifier.VariableSelector</name>
-      <ncss>8</ncss>
-      <functions>2</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon0.Main</name>
-      <ncss>12</ncss>
-      <functions>1</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon0.module.Module</name>
-      <ncss>107</ncss>
-      <functions>27</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon0.procedure.Parameter</name>
-      <ncss>25</ncss>
-      <functions>6</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon0.procedure.Procedure</name>
-      <ncss>62</ncss>
-      <functions>12</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon0.program.Program</name>
-      <ncss>57</ncss>
-      <functions>9</functions>
-      <classes>0</classes>
-      <javadocs>0</javadocs>
-    </object>
-    <object>
-      <name>oberon0.statement.AssigmentStatement</name>
-      <ncss>9</ncss>
+      <name>oberon0.statement.ElsifStatement</name>
+      <ncss>6</ncss>
       <functions>2</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
@@ -391,14 +416,14 @@
     <object>
       <name>oberon0.statement.IfStatement</name>
       <ncss>23</ncss>
-      <functions>3</functions>
+      <functions>5</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>oberon0.statement.ProcedureCallStatement</name>
-      <ncss>17</ncss>
-      <functions>2</functions>
+      <ncss>10</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
@@ -411,56 +436,251 @@
     </object>
     <object>
       <name>oberon0.statement.WhileStatement</name>
-      <ncss>15</ncss>
+      <ncss>6</ncss>
       <functions>2</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
+      <name>oberon0.statement.WithStatement</name>
+      <ncss>29</ncss>
+      <functions>6</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
       <name>oberon0.type.ArrayType</name>
-      <ncss>60</ncss>
-      <functions>10</functions>
+      <ncss>12</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.type.DeclaredType</name>
+      <ncss>4</ncss>
+      <functions>2</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>oberon0.type.IntegerType</name>
-      <ncss>26</ncss>
-      <functions>8</functions>
+      <ncss>3</ncss>
+      <functions>1</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.type.RecordField</name>
+      <ncss>11</ncss>
+      <functions>3</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.type.RecordType</name>
+      <ncss>13</ncss>
+      <functions>3</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <object>
       <name>oberon0.type.Type</name>
+      <ncss>2</ncss>
+      <functions>1</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.value.ArrayValue</name>
+      <ncss>24</ncss>
+      <functions>4</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.value.BooleanValue</name>
+      <ncss>5</ncss>
+      <functions>2</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.value.IntegerValue</name>
       <ncss>12</ncss>
-      <functions>6</functions>
+      <functions>5</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.value.RecordValue</name>
+      <ncss>24</ncss>
+      <functions>4</functions>
+      <classes>0</classes>
+      <javadocs>0</javadocs>
+    </object>
+    <object>
+      <name>oberon0.value.Value</name>
+      <ncss>20</ncss>
+      <functions>9</functions>
       <classes>0</classes>
       <javadocs>0</javadocs>
     </object>
     <averages>
-      <ncss>16.36</ncss>
-      <functions>3.82</functions>
+      <ncss>11.63</ncss>
+      <functions>3.02</functions>
       <classes>0.00</classes>
       <javadocs>0.00</javadocs>
     </averages>
-    <ncss>905.00</ncss>
+    <ncss>922.00</ncss>
   </objects>
 
   <functions>
     <function>
-      <name>oberon0.declaration.Constant.Constant(String,Expression)</name>
+      <name>oberon0.declaration.ConstantDeclaration.ConstantDeclaration(String,IntegerValue)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.declaration.Constant.getIdentifier()</name>
+      <name>oberon0.declaration.ConstantDeclaration.getEnvironmentObject(Environment)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.declaration.Constant.getExpression()</name>
+      <name>oberon0.declaration.Declaration.Declaration(String)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.declaration.Declaration.getIdentifier()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.declaration.Declaration.getEnvironmentObject(Environment)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.declaration.FormParamDeclaration.FormParamDeclaration(String,Type,boolean)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.declaration.FormParamDeclaration.isByRefference()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.declaration.ModuleDeclaration.ModuleDeclaration(String)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.declaration.ModuleDeclaration.addDeclarations(Declaration)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.declaration.ModuleDeclaration.getDeclarations()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.declaration.ModuleDeclaration.addStatements(Statement)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.declaration.ModuleDeclaration.getStatements()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.declaration.ModuleDeclaration.start(Environment)</name>
+      <ncss>5</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.declaration.ModuleDeclaration.getEnvironmentObject(Environment)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.declaration.ProcedureDeclaration.ProcedureDeclaration(String)</name>
+      <ncss>5</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.declaration.ProcedureDeclaration.addDeclarations(Declaration)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.declaration.ProcedureDeclaration.addFormalParameters(FormParamDeclaration)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.declaration.ProcedureDeclaration.getDeclarations()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.declaration.ProcedureDeclaration.addStatements(Statement)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.declaration.ProcedureDeclaration.getStatements()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.declaration.ProcedureDeclaration.start(Environment,Expression)</name>
+      <ncss>8</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.declaration.ProcedureDeclaration.setParameterValues(Environment,Environment,Expression)</name>
+      <ncss>6</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.declaration.ProcedureDeclaration.getReferenceLinks(Expression)</name>
+      <ncss>9</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.declaration.ProcedureDeclaration.isReffereceCandidate(FormParamDeclaration,Expression)</name>
+      <ncss>2</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.declaration.ProcedureDeclaration.getEnvironmentObject(Environment)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -478,103 +698,151 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.declaration.TypeDeclaration.getTypeName()</name>
+      <name>oberon0.declaration.TypeDeclaration.getEnvironmentObject(Environment)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.declaration.Variable.Variable(String,Type)</name>
+      <name>oberon0.declaration.VariableDeclaration.VariableDeclaration(String,Type)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.declaration.Variable.getIdentifier()</name>
+      <name>oberon0.declaration.VariableDeclaration.getType()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.declaration.Variable.getType()</name>
+      <name>oberon0.declaration.VariableDeclaration.getEnvironmentObject(Environment)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.declaration.Variable.assignExpression(Expression,Selector,Module)</name>
+      <name>oberon0.environment.Environment.Environment(Environment)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.environment.Environment.declare(Declaration)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.environment.Environment.declare(Declaration)</name>
+      <ncss>3</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.environment.Environment.getValue(String)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.environment.Environment.getValue(String,Selector)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.environment.Environment.assignValue(String,Value)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.environment.Environment.getProcedure(String)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.environment.Environment.findEnvObject(String)</name>
+      <ncss>6</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.environment.Environment.copyValues(Environment,ReferenceLink)</name>
+      <ncss>7</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.environment.EnvObject.EnvObject(Object,boolean)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.environment.EnvObject.getObject()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.declaration.Variable.getExpression(Selector,Module)</name>
+      <name>oberon0.environment.EnvObject.setObject(Object)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.declaration.Variable.getNew()</name>
+      <name>oberon0.environment.EnvObject.isMutable()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.AlwaysTrueExpression.AlwaysTrueExpression()</name>
-      <ncss>1</ncss>
+      <name>oberon0.environment.ReferenceLink.ReferenceLink(String,String,Selector)</name>
+      <ncss>4</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.AlwaysTrueExpression.evaluate(Module)</name>
+      <name>oberon0.environment.ReferenceLink.getInnerIdentifier()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.AlwaysTrueExpression.getType()</name>
+      <name>oberon0.environment.ReferenceLink.getOuterIdentifier()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.AndExpression.AndExpression(Expression,Expression)</name>
+      <name>oberon0.environment.ReferenceLink.getOuterSelector()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.AndExpression.evaluate(Module)</name>
-      <ncss>5</ncss>
+      <name>oberon0.expression.BinaryExpression.BinaryExpression(Expression,Expression)</name>
+      <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.AndExpression.getType()</name>
+      <name>oberon0.expression.ConstantExpression.ConstantExpression(Integer)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.ArrayExpression.ArrayExpression(ArrayType)</name>
+      <name>oberon0.expression.ConstantExpression.getValue()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.ArrayExpression.getArrayType()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.expression.ArrayExpression.getType()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.expression.ArrayExpression.evaluate(Module)</name>
+      <name>oberon0.expression.ConstantExpression.evaluate(Environment)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
@@ -586,152 +854,98 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.DevideExpression.evaluate(Module)</name>
-      <ncss>5</ncss>
+      <name>oberon0.expression.DevideExpression.evaluate(Environment)</name>
+      <ncss>4</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.DevideExpression.getType()</name>
+      <name>oberon0.expression.EqualsToExpression.EqualsToExpression(Expression,Expression)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.EqualExpression.EqualExpression(Expression,Expression)</name>
-      <ncss>2</ncss>
+      <name>oberon0.expression.EqualsToExpression.evaluate(Environment)</name>
+      <ncss>4</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.EqualExpression.evaluate(Module)</name>
-      <ncss>7</ncss>
-      <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.expression.EqualExpression.getType()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.expression.Expression.evaluate(Module)</name>
+      <name>oberon0.expression.Expression.evaluate(Environment)</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.Expression.getType()</name>
-      <ncss>1</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.expression.GreaterExpression.GreaterExpression(Expression,Expression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.expression.GreaterExpression.evaluate(Module)</name>
-      <ncss>7</ncss>
+      <name>oberon0.expression.ExpressionFactory.getBinaryExpression(String,Expression,Expression)</name>
+      <ncss>9</ncss>
       <ccn>3</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.GreaterExpression.getType()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.expression.GreaterOrEqualExpression.GreaterOrEqualExpression(Expression,Expression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.expression.GreaterOrEqualExpression.evaluate(Module)</name>
-      <ncss>7</ncss>
+      <name>oberon0.expression.ExpressionFactory.getUnaryExpression(String,Expression)</name>
+      <ncss>9</ncss>
       <ccn>3</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.GreaterOrEqualExpression.getType()</name>
+      <name>oberon0.expression.ExpressionFactory.getVariableExpression(String,Selector)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.IdentifierExpression.IdentifierExpression(Identifier)</name>
+      <name>oberon0.expression.ExpressionFactory.getConstantExpression(int)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.IdentifierExpression.getIdentifier()</name>
+      <name>oberon0.expression.GreaterOrEqualsToExpression.GreaterOrEqualsToExpression(Expression,Expression)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.IdentifierExpression.evaluate(Module)</name>
+      <name>oberon0.expression.GreaterOrEqualsToExpression.evaluate(Environment)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.expression.GreaterThanExpression.GreaterThanExpression(Expression,Expression)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.IdentifierExpression.getType()</name>
+      <name>oberon0.expression.GreaterThanExpression.evaluate(Environment)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.expression.LogicalAndExpression.LogicalAndExpression(Expression,Expression)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.IntegerExpression.IntegerExpression(IntegerType)</name>
+      <name>oberon0.expression.LogicalAndExpression.evaluate(Environment)</name>
+      <ncss>4</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.expression.LogicalNotExpression.LogicalNotExpression(Expression)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.IntegerExpression.getIntegerType()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.expression.IntegerExpression.getIntegerTypeValue()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.expression.IntegerExpression.getType()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.expression.IntegerExpression.evaluate(Module)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.expression.LeftRightExpression.LeftRightExpression(Expression,Expression)</name>
+      <name>oberon0.expression.LogicalNotExpression.evaluate(Environment)</name>
       <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.expression.LeftRightExpression.getLeftValue(Module)</name>
-      <ncss>4</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.expression.LeftRightExpression.getRightValue(Module)</name>
-      <ncss>4</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -742,32 +956,20 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.MinusExpression.evaluate(Module)</name>
-      <ncss>5</ncss>
+      <name>oberon0.expression.MinusExpression.evaluate(Environment)</name>
+      <ncss>4</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.MinusExpression.getType()</name>
+      <name>oberon0.expression.ModulusExpression.ModulusExpression(Expression,Expression)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.ModuloExpression.ModuloExpression(Expression,Expression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.expression.ModuloExpression.evaluate(Module)</name>
-      <ncss>5</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.expression.ModuloExpression.getType()</name>
-      <ncss>2</ncss>
+      <name>oberon0.expression.ModulusExpression.evaluate(Environment)</name>
+      <ncss>4</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -778,33 +980,33 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.NegationExpression.evaluate(Module)</name>
-      <ncss>7</ncss>
+      <name>oberon0.expression.NegationExpression.evaluate(Environment)</name>
+      <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.NegationExpression.getType()</name>
+      <name>oberon0.expression.NotEqualsToExpression.NotEqualsToExpression(Expression,Expression)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.NotEqualExpression.NotEqualExpression(Expression,Expression)</name>
+      <name>oberon0.expression.NotEqualsToExpression.evaluate(Environment)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.expression.OrExpression.OrExpression(Expression,Expression)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.NotEqualExpression.evaluate(Module)</name>
-      <ncss>7</ncss>
-      <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.expression.NotEqualExpression.getType()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
+      <name>oberon0.expression.OrExpression.evaluate(Environment)</name>
+      <ncss>4</ncss>
+      <ccn>2</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
@@ -814,50 +1016,32 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.PlusExpression.evaluate(Module)</name>
-      <ncss>5</ncss>
+      <name>oberon0.expression.PlusExpression.evaluate(Environment)</name>
+      <ncss>4</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.PlusExpression.getType()</name>
+      <name>oberon0.expression.SmallerOrEqualsToExpression.SmallerOrEqualsToExpression(Expression,Expression)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.SmallerExpression.SmallerExpression(Expression,Expression)</name>
+      <name>oberon0.expression.SmallerOrEqualsToExpression.evaluate(Environment)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.expression.SmallerThanExpression.SmallerThanExpression(Expression,Expression)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.SmallerExpression.evaluate(Module)</name>
-      <ncss>7</ncss>
-      <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.expression.SmallerExpression.getType()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.expression.SmallerOrEqualExpression.SmallerOrEqualExpression(Expression,Expression)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.expression.SmallerOrEqualExpression.evaluate(Module)</name>
-      <ncss>7</ncss>
-      <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.expression.SmallerOrEqualExpression.getType()</name>
-      <ncss>2</ncss>
+      <name>oberon0.expression.SmallerThanExpression.evaluate(Environment)</name>
+      <ncss>4</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
@@ -868,622 +1052,562 @@
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.TimesExpression.evaluate(Module)</name>
-      <ncss>5</ncss>
+      <name>oberon0.expression.TimesExpression.evaluate(Environment)</name>
+      <ncss>4</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.expression.TimesExpression.getType()</name>
+      <name>oberon0.expression.UnaryExpression.UnaryExpression(Expression)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.identifier.ArrayIndexSelector.ArrayIndexSelector(Expression)</name>
+      <name>oberon0.expression.VariableExpression.VariableExpression(String,Selector)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.identifier.ArrayIndexSelector.getIndexExpression()</name>
+      <name>oberon0.expression.VariableExpression.getIdentifier()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.identifier.Identifier.Identifier(String)</name>
+      <name>oberon0.expression.VariableExpression.getSelector()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.identifier.Identifier.addSelector(Selector)</name>
-      <ncss>5</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.identifier.Identifier.getIdentifier()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.identifier.Identifier.getSelector()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.identifier.Selector.Selector(String)</name>
+      <name>oberon0.expression.VariableExpression.evaluate(Environment)</name>
       <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.identifier.Selector.getType()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.identifier.Selector.addSelector(Selector)</name>
-      <ncss>5</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.identifier.VariableSelector.VariableSelector(String)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.identifier.VariableSelector.getVariable()</name>
-      <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
       <name>oberon0.Main.main(String[])</name>
-      <ncss>11</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.module.Module.Module(String)</name>
       <ncss>8</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.module.Module.getIdentifier()</name>
+      <name>oberon0.program.Program.Program(ModuleDeclaration)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.module.Module.addConstant(Constant)</name>
-      <ncss>2</ncss>
+      <name>oberon0.program.Program.run(String[],PrintStream)</name>
+      <ncss>5</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.module.Module.addConstants(Constant)</name>
-      <ncss>3</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.module.Module.getConstantExpression(String)</name>
-      <ncss>2</ncss>
+      <name>oberon0.program.Program.ioProcedureDeclarations(String[],PrintStream)</name>
+      <ncss>6</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.module.Module.addTypeDeclaration(TypeDeclaration)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.module.Module.addTypeDeclarations(TypeDeclaration)</name>
-      <ncss>3</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.module.Module.getTypeDeclaration(String)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.module.Module.addVariable(Variable)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.module.Module.addVariables(Variable)</name>
-      <ncss>3</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.module.Module.getVariable(String)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.module.Module.addProcedure(Procedure)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.module.Module.addProcedures(Procedure)</name>
-      <ncss>3</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.module.Module.getProcedure(String)</name>
-      <ncss>9</ncss>
-      <ccn>6</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.module.Module.addStatement(Statement)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.module.Module.addStatements(Statement)</name>
-      <ncss>3</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.module.Module.setHigherModule(Module)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.module.Module.assignExpressionToVariable(Identifier,Expression)</name>
+      <name>oberon0.program.ReadProcedureDeclaration.ReadProcedureDeclaration(String[])</name>
       <ncss>4</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.module.Module.getValueForIdentifier(Identifier)</name>
-      <ncss>15</ncss>
-      <ccn>7</ccn>
+      <name>oberon0.program.ReadProcedureDeclaration.start(Environment,Expression)</name>
+      <ncss>4</ncss>
+      <ccn>3</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.module.Module.start()</name>
-      <ncss>3</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.module.Module.setProgram(Program)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.module.Module.getProgram()</name>
+      <name>oberon0.program.ReadProcedureDeclaration.pushArguments(String[])</name>
       <ncss>5</ncss>
       <ccn>3</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.module.Module.getNewConstants()</name>
+      <name>oberon0.program.ReadProcedureDeclaration.hasArguments()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.module.Module.getNewTypeDeclarations()</name>
+      <name>oberon0.program.ReadProcedureDeclaration.getEnvironmentObject(Environment)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.module.Module.getNewVariables()</name>
+      <name>oberon0.program.WriteLineProcedureDeclaration.WriteLineProcedureDeclaration(PrintStream)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.program.WriteLineProcedureDeclaration.start(Environment,Expression)</name>
+      <ncss>6</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.program.WriteLineProcedureDeclaration.getEnvironmentObject(Environment)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.program.WriteProcedureDeclararion.WriteProcedureDeclararion(PrintStream)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.program.WriteProcedureDeclararion.start(Environment,Expression)</name>
+      <ncss>4</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.program.WriteProcedureDeclararion.getEnvironmentObject(Environment)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.selector.BracketSelector.BracketSelector(Expression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.selector.BracketSelector.getIndexExpression()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.selector.DotSelector.DotSelector(String)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.selector.DotSelector.getIdentifier()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.selector.Selector.Selector()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.selector.Selector.addSelector(Selector)</name>
       <ncss>5</ncss>
       <ccn>2</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.module.Module.getNewProcedures()</name>
-      <ncss>5</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.module.Module.getNewStatements()</name>
+      <name>oberon0.selector.Selector.getNestedSelector()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.procedure.Parameter.Parameter(String,Type,boolean)</name>
+      <name>oberon0.statement.AssignmentStatement.AssignmentStatement(String,Selector,Expression)</name>
       <ncss>4</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.procedure.Parameter.isReferenced()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.procedure.Parameter.getHigherModuleIdentifier()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.procedure.Parameter.hasHigherModuleIdentifier()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.procedure.Parameter.assignExpression(Expression,Selector,Module)</name>
+      <name>oberon0.statement.AssignmentStatement.execute(Environment)</name>
       <ncss>7</ncss>
       <ccn>2</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.procedure.Parameter.getNew()</name>
-      <ncss>5</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.procedure.Procedure.Procedure(String)</name>
+      <name>oberon0.statement.ConditionStatement.ConditionStatement(Expression)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.procedure.Procedure.addParameter(Parameter)</name>
+      <name>oberon0.statement.ConditionStatement.addStatements(Statement)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.procedure.Procedure.addParameters(Parameter)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.procedure.Procedure.setParamerterExpressions(Expression)</name>
-      <ncss>6</ncss>
+      <name>oberon0.statement.ConditionStatement.executeStatements(Environment)</name>
+      <ncss>3</ncss>
       <ccn>2</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.procedure.Procedure.getValueForIdentifier(Identifier)</name>
-      <ncss>6</ncss>
+      <name>oberon0.statement.ConditionStatement.conditionTrue(Environment)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.statement.ElseStatement.ElseStatement()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.statement.ElseStatement.conditionTrue(Environment)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.statement.ElseStatement.execute(Environment)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.statement.ElsifStatement.ElsifStatement(Expression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.statement.ElsifStatement.execute(Environment)</name>
+      <ncss>3</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.statement.IfStatement.IfStatement(Expression)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.statement.IfStatement.addElsifStatement(ElsifStatement)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.statement.IfStatement.addElseStatement(ElseStatement)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.statement.IfStatement.execute(Environment)</name>
+      <ncss>5</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.statement.IfStatement.considerNextConditions(Environment)</name>
+      <ncss>5</ncss>
       <ccn>3</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.procedure.Procedure.assignExpressionToVariable(Identifier,Expression)</name>
-      <ncss>6</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.procedure.Procedure.getVariable(String)</name>
+      <name>oberon0.statement.ProcedureCallStatement.ProcedureCallStatement(String)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.procedure.Procedure.start()</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.procedure.Procedure.getParameter(String)</name>
-      <ncss>6</ncss>
-      <ccn>4</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.procedure.Procedure.passParameterExpressionsToHigherModule()</name>
-      <ncss>8</ncss>
-      <ccn>4</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.procedure.Procedure.getNew()</name>
-      <ncss>11</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.procedure.Procedure.getNewParameters()</name>
-      <ncss>5</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.program.Program.Program(Module)</name>
-      <ncss>4</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.program.Program.getModule()</name>
+      <name>oberon0.statement.ProcedureCallStatement.setActualParameters(Expression)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.program.Program.addArguments(String[])</name>
-      <ncss>4</ncss>
-      <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.program.Program.start()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.program.Program.isReservedProcedureCall(String)</name>
-      <ncss>5</ncss>
-      <ccn>5</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.program.Program.executeReserverdProcedure(String,Expression,Module)</name>
-      <ncss>10</ncss>
-      <ccn>4</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.program.Program.read(Expression,Module)</name>
-      <ncss>11</ncss>
-      <ccn>4</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.program.Program.write(Expression,Module)</name>
-      <ncss>9</ncss>
-      <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.program.Program.writeLn(Expression,Module)</name>
-      <ncss>4</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.statement.AssigmentStatement.AssigmentStatement(Identifier,Expression)</name>
+      <name>oberon0.statement.ProcedureCallStatement.execute(Environment)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.statement.AssigmentStatement.execute(Module)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.statement.IfStatement.IfStatement(Expression,Statement)</name>
-      <ncss>4</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.statement.IfStatement.addFollowIfStatement(IfStatement)</name>
-      <ncss>5</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.statement.IfStatement.execute(Module)</name>
-      <ncss>10</ncss>
-      <ccn>4</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.statement.ProcedureCallStatement.ProcedureCallStatement(String,Expression)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.statement.ProcedureCallStatement.execute(Module)</name>
-      <ncss>11</ncss>
-      <ccn>4</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.statement.Statement.execute(Module)</name>
+      <name>oberon0.statement.Statement.execute(Environment)</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.statement.WhileStatement.WhileStatement(Expression,Statement)</name>
+      <name>oberon0.statement.WhileStatement.WhileStatement(Expression)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.statement.WhileStatement.execute(Environment)</name>
+      <ncss>3</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.statement.WithStatement.WithStatement(Expression)</name>
       <ncss>3</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.statement.WhileStatement.execute(Module)</name>
-      <ncss>9</ncss>
-      <ccn>3</ccn>
+      <name>oberon0.statement.WithStatement.addStatements(Statement)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.statement.WithStatement.execute(Environment)</name>
+      <ncss>6</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.statement.WithStatement.getRecordValue(Environment)</name>
+      <ncss>4</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.statement.WithStatement.createInnerEnvironment(RecordValue,Environment)</name>
+      <ncss>7</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.statement.WithStatement.passValuesToRecord(RecordValue,Environment)</name>
+      <ncss>4</ncss>
+      <ccn>2</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
       <name>oberon0.type.ArrayType.ArrayType(Expression,Type)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.type.ArrayType.createTypeValue(Environment)</name>
+      <ncss>6</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.type.DeclaredType.DeclaredType(String)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.type.DeclaredType.createTypeValue(Environment)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.type.IntegerType.createTypeValue(Environment)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.type.RecordField.RecordField(String,Type)</name>
       <ncss>4</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.type.ArrayType.ArrayType(Type[])</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.type.ArrayType.getValues()</name>
+      <name>oberon0.type.RecordField.getIdentifier()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.type.ArrayType.getExpression(Selector,Module)</name>
-      <ncss>6</ncss>
-      <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.type.ArrayType.assignExpression(Expression,Selector,Module)</name>
-      <ncss>17</ncss>
-      <ccn>5</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.type.ArrayType.getNew()</name>
+      <name>oberon0.type.RecordField.getType()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.type.ArrayType.getCopy(Module)</name>
-      <ncss>7</ncss>
-      <ccn>3</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.type.ArrayType.createTypeArray(Module)</name>
-      <ncss>5</ncss>
-      <ccn>2</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.type.ArrayType.getIndexValueFromSelector(Selector,Module)</name>
-      <ncss>5</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.type.ArrayType.getIntegerValueFromExpression(Expression,Module)</name>
-      <ncss>5</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.type.IntegerType.IntegerType()</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.type.IntegerType.IntegerType(int)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.type.IntegerType.IntegerType(String)</name>
-      <ncss>3</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.type.IntegerType.getCopy(Module)</name>
+      <name>oberon0.type.RecordType.RecordType()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.type.IntegerType.getExpression(Selector,Module)</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.type.IntegerType.getValue()</name>
-      <ncss>2</ncss>
-      <ccn>1</ccn>
-      <javadocs>0</javadocs>
-    </function>
-    <function>
-      <name>oberon0.type.IntegerType.assignExpression(Expression,Selector,Module)</name>
+      <name>oberon0.type.RecordType.createTypeValue(Environment)</name>
       <ncss>7</ncss>
       <ccn>2</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.type.IntegerType.getNew()</name>
+      <name>oberon0.type.RecordType.addFields(RecordField)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.type.Type.Type(String)</name>
+      <name>oberon0.type.Type.createTypeValue(Environment)</name>
+      <ncss>1</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.value.ArrayValue.ArrayValue(Value[],Type)</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.type.Type.getTypeName()</name>
+      <name>oberon0.value.ArrayValue.getValue(Selector,Environment)</name>
+      <ncss>8</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.value.ArrayValue.setValue(Selector,Environment,Value)</name>
+      <ncss>8</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.value.ArrayValue.getCopy()</name>
+      <ncss>5</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.value.BooleanValue.BooleanValue(boolean)</name>
+      <ncss>2</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.value.BooleanValue.getCopy()</name>
       <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.type.Type.getExpression(Selector,Module)</name>
+      <name>oberon0.value.IntegerValue.IntegerValue(Integer)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.value.IntegerValue.getValue(Selector,Environment)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.value.IntegerValue.setValue(Selector,Environment,Value)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.value.IntegerValue.getBoolValue()</name>
+      <ncss>2</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.value.IntegerValue.getCopy()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.value.RecordValue.RecordValue(Value,Type)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.value.RecordValue.getValue(Selector,Environment)</name>
+      <ncss>8</ncss>
+      <ccn>3</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.value.RecordValue.setValue(Selector,Environment,Value)</name>
+      <ncss>8</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.value.RecordValue.getCopy()</name>
+      <ncss>5</ncss>
+      <ccn>2</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.value.Value.Value(T,Type)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.value.Value.getTrueValue()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.value.Value.setTrueValue(T)</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.value.Value.getValue(Selector,Environment)</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.type.Type.assignExpression(Expression,Selector,Module)</name>
+      <name>oberon0.value.Value.setValue(Selector,Environment,Value)</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.type.Type.getNew()</name>
+      <name>oberon0.value.Value.getCopy()</name>
       <ncss>1</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function>
-      <name>oberon0.type.Type.getCopy(Module)</name>
-      <ncss>1</ncss>
+      <name>oberon0.value.Value.isValueType(Object)</name>
+      <ncss>3</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.value.Value.toString()</name>
+      <ncss>2</ncss>
+      <ccn>1</ccn>
+      <javadocs>0</javadocs>
+    </function>
+    <function>
+      <name>oberon0.value.Value.getType()</name>
+      <ncss>2</ncss>
       <ccn>1</ccn>
       <javadocs>0</javadocs>
     </function>
     <function_averages>
-      <ncss>3.58</ncss>
-      <ccn>1.48</ccn>
+      <ncss>3.12</ncss>
+      <ccn>1.26</ccn>
       <javadocs>0.00</javadocs>
     </function_averages>
-    <ncss>905.00</ncss>
+    <ncss>922.00</ncss>
   </functions>
 </javancss>
