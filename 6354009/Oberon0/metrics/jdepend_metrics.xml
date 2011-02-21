@@ -4,14 +4,14 @@
 
         <Package name="oberon0">
             <Stats>
-                <TotalClasses>47</TotalClasses>
-                <ConcreteClasses>47</ConcreteClasses>
+                <TotalClasses>33</TotalClasses>
+                <ConcreteClasses>33</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
                 <Ca>1</Ca>
-                <Ce>14</Ce>
+                <Ce>11</Ce>
                 <A>0</A>
-                <I>0.93</I>
-                <D>0.07</D>
+                <I>0.92</I>
+                <D>0.08</D>
                 <V>1</V>
             </Stats>
 
@@ -21,9 +21,6 @@
             <ConcreteClasses>
                 <Class sourceFile="Main.java">
                     oberon0.Main
-                </Class>
-                <Class sourceFile="Oberon0Interpreter.java">
-                    oberon0.Oberon0Interpreter
                 </Class>
                 <Class sourceFile="Oberon0Lexer.java">
                     oberon0.Oberon0Lexer
@@ -38,25 +35,10 @@
                     oberon0.Oberon0Parser$actualParameters_return
                 </Class>
                 <Class sourceFile="Oberon0Parser.java">
-                    oberon0.Oberon0Parser$arrSelector_return
-                </Class>
-                <Class sourceFile="Oberon0Parser.java">
                     oberon0.Oberon0Parser$arrayType_return
                 </Class>
                 <Class sourceFile="Oberon0Parser.java">
                     oberon0.Oberon0Parser$assignment_return
-                </Class>
-                <Class sourceFile="Oberon0Parser.java">
-                    oberon0.Oberon0Parser$attrSelector_return
-                </Class>
-                <Class sourceFile="Oberon0Parser.java">
-                    oberon0.Oberon0Parser$beginBlock_return
-                </Class>
-                <Class sourceFile="Oberon0Parser.java">
-                    oberon0.Oberon0Parser$begin_return
-                </Class>
-                <Class sourceFile="Oberon0Parser.java">
-                    oberon0.Oberon0Parser$constantBlock_return
                 </Class>
                 <Class sourceFile="Oberon0Parser.java">
                     oberon0.Oberon0Parser$constantDecleration_return
@@ -65,13 +47,7 @@
                     oberon0.Oberon0Parser$declarations_return
                 </Class>
                 <Class sourceFile="Oberon0Parser.java">
-                    oberon0.Oberon0Parser$doStatements_return
-                </Class>
-                <Class sourceFile="Oberon0Parser.java">
-                    oberon0.Oberon0Parser$elseStatement_return
-                </Class>
-                <Class sourceFile="Oberon0Parser.java">
-                    oberon0.Oberon0Parser$elsifStatement_return
+                    oberon0.Oberon0Parser$declaredType_return
                 </Class>
                 <Class sourceFile="Oberon0Parser.java">
                     oberon0.Oberon0Parser$expression_return
@@ -81,9 +57,6 @@
                 </Class>
                 <Class sourceFile="Oberon0Parser.java">
                     oberon0.Oberon0Parser$fieldList_return
-                </Class>
-                <Class sourceFile="Oberon0Parser.java">
-                    oberon0.Oberon0Parser$formalParametersStart_return
                 </Class>
                 <Class sourceFile="Oberon0Parser.java">
                     oberon0.Oberon0Parser$formalParameters_return
@@ -98,22 +71,16 @@
                     oberon0.Oberon0Parser$ifStatement_return
                 </Class>
                 <Class sourceFile="Oberon0Parser.java">
+                    oberon0.Oberon0Parser$integerType_return
+                </Class>
+                <Class sourceFile="Oberon0Parser.java">
                     oberon0.Oberon0Parser$module_return
-                </Class>
-                <Class sourceFile="Oberon0Parser.java">
-                    oberon0.Oberon0Parser$negation_return
-                </Class>
-                <Class sourceFile="Oberon0Parser.java">
-                    oberon0.Oberon0Parser$procedureBody_return
                 </Class>
                 <Class sourceFile="Oberon0Parser.java">
                     oberon0.Oberon0Parser$procedureCall_return
                 </Class>
                 <Class sourceFile="Oberon0Parser.java">
                     oberon0.Oberon0Parser$procedureDeclaration_return
-                </Class>
-                <Class sourceFile="Oberon0Parser.java">
-                    oberon0.Oberon0Parser$procedureHeading_return
                 </Class>
                 <Class sourceFile="Oberon0Parser.java">
                     oberon0.Oberon0Parser$program_return
@@ -137,22 +104,10 @@
                     oberon0.Oberon0Parser$term_return
                 </Class>
                 <Class sourceFile="Oberon0Parser.java">
-                    oberon0.Oberon0Parser$thenStatments_return
-                </Class>
-                <Class sourceFile="Oberon0Parser.java">
-                    oberon0.Oberon0Parser$typeBlock_return
-                </Class>
-                <Class sourceFile="Oberon0Parser.java">
                     oberon0.Oberon0Parser$typeDecleration_return
                 </Class>
                 <Class sourceFile="Oberon0Parser.java">
                     oberon0.Oberon0Parser$type_return
-                </Class>
-                <Class sourceFile="Oberon0Parser.java">
-                    oberon0.Oberon0Parser$typedIdentList_return
-                </Class>
-                <Class sourceFile="Oberon0Parser.java">
-                    oberon0.Oberon0Parser$variableBlock_return
                 </Class>
                 <Class sourceFile="Oberon0Parser.java">
                     oberon0.Oberon0Parser$variableDecleration_return
@@ -160,21 +115,21 @@
                 <Class sourceFile="Oberon0Parser.java">
                     oberon0.Oberon0Parser$whileStatement_return
                 </Class>
+                <Class sourceFile="Oberon0Parser.java">
+                    oberon0.Oberon0Parser$withStatement_return
+                </Class>
             </ConcreteClasses>
 
             <DependsUpon>
-                <Package>java.io</Package>
                 <Package>java.lang</Package>
                 <Package>java.util</Package>
                 <Package>oberon0.declaration</Package>
-                <Package>oberon0.exception</Package>
                 <Package>oberon0.expression</Package>
-                <Package>oberon0.identifier</Package>
-                <Package>oberon0.module</Package>
-                <Package>oberon0.procedure</Package>
                 <Package>oberon0.program</Package>
+                <Package>oberon0.selector</Package>
                 <Package>oberon0.statement</Package>
                 <Package>oberon0.type</Package>
+                <Package>oberon0.value</Package>
                 <Package>org.antlr.runtime</Package>
                 <Package>org.antlr.runtime.tree</Package>
             </DependsUpon>
@@ -186,57 +141,72 @@
 
         <Package name="oberon0.declaration">
             <Stats>
-                <TotalClasses>3</TotalClasses>
-                <ConcreteClasses>3</ConcreteClasses>
-                <AbstractClasses>0</AbstractClasses>
-                <Ca>3</Ca>
-                <Ce>5</Ce>
-                <A>0</A>
-                <I>0.62</I>
-                <D>0.38</D>
+                <TotalClasses>7</TotalClasses>
+                <ConcreteClasses>6</ConcreteClasses>
+                <AbstractClasses>1</AbstractClasses>
+                <Ca>4</Ca>
+                <Ce>7</Ce>
+                <A>0.14</A>
+                <I>0.64</I>
+                <D>0.22</D>
                 <V>1</V>
             </Stats>
 
             <AbstractClasses>
+                <Class sourceFile="Declaration.java">
+                    oberon0.declaration.Declaration
+                </Class>
             </AbstractClasses>
 
             <ConcreteClasses>
-                <Class sourceFile="Constant.java">
-                    oberon0.declaration.Constant
+                <Class sourceFile="ConstantDeclaration.java">
+                    oberon0.declaration.ConstantDeclaration
+                </Class>
+                <Class sourceFile="FormParamDeclaration.java">
+                    oberon0.declaration.FormParamDeclaration
+                </Class>
+                <Class sourceFile="ModuleDeclaration.java">
+                    oberon0.declaration.ModuleDeclaration
+                </Class>
+                <Class sourceFile="ProcedureDeclaration.java">
+                    oberon0.declaration.ProcedureDeclaration
                 </Class>
                 <Class sourceFile="TypeDeclaration.java">
                     oberon0.declaration.TypeDeclaration
                 </Class>
-                <Class sourceFile="Variable.java">
-                    oberon0.declaration.Variable
+                <Class sourceFile="VariableDeclaration.java">
+                    oberon0.declaration.VariableDeclaration
                 </Class>
             </ConcreteClasses>
 
             <DependsUpon>
                 <Package>java.lang</Package>
+                <Package>java.util</Package>
+                <Package>oberon0.environment</Package>
                 <Package>oberon0.expression</Package>
-                <Package>oberon0.identifier</Package>
-                <Package>oberon0.module</Package>
+                <Package>oberon0.statement</Package>
                 <Package>oberon0.type</Package>
+                <Package>oberon0.value</Package>
             </DependsUpon>
 
             <UsedBy>
                 <Package>oberon0</Package>
-                <Package>oberon0.module</Package>
-                <Package>oberon0.procedure</Package>
+                <Package>oberon0.environment</Package>
+                <Package>oberon0.program</Package>
+                <Package>oberon0.statement</Package>
             </UsedBy>
         </Package>
 
-        <Package name="oberon0.exception">
+        <Package name="oberon0.environment">
             <Stats>
-                <TotalClasses>6</TotalClasses>
-                <ConcreteClasses>6</ConcreteClasses>
+                <TotalClasses>3</TotalClasses>
+                <ConcreteClasses>3</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
                 <Ca>6</Ca>
-                <Ce>1</Ce>
+                <Ce>5</Ce>
                 <A>0</A>
-                <I>0.14</I>
-                <D>0.86</D>
+                <I>0.45</I>
+                <D>0.55</D>
                 <V>1</V>
             </Stats>
 
@@ -244,284 +214,147 @@
             </AbstractClasses>
 
             <ConcreteClasses>
-                <Class sourceFile="ExecutionException.java">
-                    oberon0.exception.ExecutionException
+                <Class sourceFile="EnvObject.java">
+                    oberon0.environment.EnvObject
                 </Class>
-                <Class sourceFile="IncorrectStatementException.java">
-                    oberon0.exception.IncorrectStatementException
+                <Class sourceFile="Environment.java">
+                    oberon0.environment.Environment
                 </Class>
-                <Class sourceFile="MissingModuleClosureStatementException.java">
-                    oberon0.exception.MissingModuleClosureStatementException
-                </Class>
-                <Class sourceFile="MissingProcedureClosureStatementException.java">
-                    oberon0.exception.MissingProcedureClosureStatementException
-                </Class>
-                <Class sourceFile="ProcedureNotFoundException.java">
-                    oberon0.exception.ProcedureNotFoundException
-                </Class>
-                <Class sourceFile="UnknownVariableException.java">
-                    oberon0.exception.UnknownVariableException
+                <Class sourceFile="ReferenceLink.java">
+                    oberon0.environment.ReferenceLink
                 </Class>
             </ConcreteClasses>
 
             <DependsUpon>
                 <Package>java.lang</Package>
+                <Package>java.util</Package>
+                <Package>oberon0.declaration</Package>
+                <Package>oberon0.selector</Package>
+                <Package>oberon0.value</Package>
             </DependsUpon>
 
             <UsedBy>
-                <Package>oberon0</Package>
-                <Package>oberon0.module</Package>
-                <Package>oberon0.procedure</Package>
+                <Package>oberon0.declaration</Package>
+                <Package>oberon0.expression</Package>
                 <Package>oberon0.program</Package>
                 <Package>oberon0.statement</Package>
-                <Package>oberon0.tests</Package>
+                <Package>oberon0.type</Package>
+                <Package>oberon0.value</Package>
             </UsedBy>
         </Package>
 
         <Package name="oberon0.expression">
             <Stats>
-                <TotalClasses>19</TotalClasses>
+                <TotalClasses>21</TotalClasses>
                 <ConcreteClasses>18</ConcreteClasses>
-                <AbstractClasses>1</AbstractClasses>
-                <Ca>9</Ca>
-                <Ce>4</Ce>
-                <A>0.05</A>
-                <I>0.31</I>
-                <D>0.64</D>
+                <AbstractClasses>3</AbstractClasses>
+                <Ca>7</Ca>
+                <Ce>6</Ce>
+                <A>0.14</A>
+                <I>0.46</I>
+                <D>0.4</D>
                 <V>1</V>
             </Stats>
 
             <AbstractClasses>
+                <Class sourceFile="BinaryExpression.java">
+                    oberon0.expression.BinaryExpression
+                </Class>
                 <Class sourceFile="Expression.java">
                     oberon0.expression.Expression
+                </Class>
+                <Class sourceFile="UnaryExpression.java">
+                    oberon0.expression.UnaryExpression
                 </Class>
             </AbstractClasses>
 
             <ConcreteClasses>
-                <Class sourceFile="AlwaysTrueExpression.java">
-                    oberon0.expression.AlwaysTrueExpression
-                </Class>
-                <Class sourceFile="AndExpression.java">
-                    oberon0.expression.AndExpression
-                </Class>
-                <Class sourceFile="ArrayExpression.java">
-                    oberon0.expression.ArrayExpression
+                <Class sourceFile="ConstantExpression.java">
+                    oberon0.expression.ConstantExpression
                 </Class>
                 <Class sourceFile="DevideExpression.java">
                     oberon0.expression.DevideExpression
                 </Class>
-                <Class sourceFile="EqualExpression.java">
-                    oberon0.expression.EqualExpression
+                <Class sourceFile="EqualsToExpression.java">
+                    oberon0.expression.EqualsToExpression
                 </Class>
-                <Class sourceFile="GreaterExpression.java">
-                    oberon0.expression.GreaterExpression
+                <Class sourceFile="ExpressionFactory.java">
+                    oberon0.expression.ExpressionFactory
                 </Class>
-                <Class sourceFile="GreaterOrEqualExpression.java">
-                    oberon0.expression.GreaterOrEqualExpression
+                <Class sourceFile="GreaterOrEqualsToExpression.java">
+                    oberon0.expression.GreaterOrEqualsToExpression
                 </Class>
-                <Class sourceFile="IdentifierExpression.java">
-                    oberon0.expression.IdentifierExpression
+                <Class sourceFile="GreaterThanExpression.java">
+                    oberon0.expression.GreaterThanExpression
                 </Class>
-                <Class sourceFile="IntegerExpression.java">
-                    oberon0.expression.IntegerExpression
+                <Class sourceFile="LogicalAndExpression.java">
+                    oberon0.expression.LogicalAndExpression
                 </Class>
-                <Class sourceFile="LeftRightExpression.java">
-                    oberon0.expression.LeftRightExpression
+                <Class sourceFile="LogicalNotExpression.java">
+                    oberon0.expression.LogicalNotExpression
                 </Class>
                 <Class sourceFile="MinusExpression.java">
                     oberon0.expression.MinusExpression
                 </Class>
-                <Class sourceFile="ModuloExpression.java">
-                    oberon0.expression.ModuloExpression
+                <Class sourceFile="ModulusExpression.java">
+                    oberon0.expression.ModulusExpression
                 </Class>
                 <Class sourceFile="NegationExpression.java">
                     oberon0.expression.NegationExpression
                 </Class>
-                <Class sourceFile="NotEqualExpression.java">
-                    oberon0.expression.NotEqualExpression
+                <Class sourceFile="NotEqualsToExpression.java">
+                    oberon0.expression.NotEqualsToExpression
+                </Class>
+                <Class sourceFile="OrExpression.java">
+                    oberon0.expression.OrExpression
                 </Class>
                 <Class sourceFile="PlusExpression.java">
                     oberon0.expression.PlusExpression
                 </Class>
-                <Class sourceFile="SmallerExpression.java">
-                    oberon0.expression.SmallerExpression
+                <Class sourceFile="SmallerOrEqualsToExpression.java">
+                    oberon0.expression.SmallerOrEqualsToExpression
                 </Class>
-                <Class sourceFile="SmallerOrEqualExpression.java">
-                    oberon0.expression.SmallerOrEqualExpression
+                <Class sourceFile="SmallerThanExpression.java">
+                    oberon0.expression.SmallerThanExpression
                 </Class>
                 <Class sourceFile="TimesExpression.java">
                     oberon0.expression.TimesExpression
                 </Class>
-            </ConcreteClasses>
-
-            <DependsUpon>
-                <Package>java.lang</Package>
-                <Package>oberon0.identifier</Package>
-                <Package>oberon0.module</Package>
-                <Package>oberon0.type</Package>
-            </DependsUpon>
-
-            <UsedBy>
-                <Package>oberon0</Package>
-                <Package>oberon0.declaration</Package>
-                <Package>oberon0.identifier</Package>
-                <Package>oberon0.module</Package>
-                <Package>oberon0.procedure</Package>
-                <Package>oberon0.program</Package>
-                <Package>oberon0.statement</Package>
-                <Package>oberon0.tests</Package>
-                <Package>oberon0.type</Package>
-            </UsedBy>
-        </Package>
-
-        <Package name="oberon0.identifier">
-            <Stats>
-                <TotalClasses>4</TotalClasses>
-                <ConcreteClasses>4</ConcreteClasses>
-                <AbstractClasses>0</AbstractClasses>
-                <Ca>8</Ca>
-                <Ce>2</Ce>
-                <A>0</A>
-                <I>0.2</I>
-                <D>0.8</D>
-                <V>1</V>
-            </Stats>
-
-            <AbstractClasses>
-            </AbstractClasses>
-
-            <ConcreteClasses>
-                <Class sourceFile="ArrayIndexSelector.java">
-                    oberon0.identifier.ArrayIndexSelector
-                </Class>
-                <Class sourceFile="Identifier.java">
-                    oberon0.identifier.Identifier
-                </Class>
-                <Class sourceFile="Selector.java">
-                    oberon0.identifier.Selector
-                </Class>
-                <Class sourceFile="VariableSelector.java">
-                    oberon0.identifier.VariableSelector
+                <Class sourceFile="VariableExpression.java">
+                    oberon0.expression.VariableExpression
                 </Class>
             </ConcreteClasses>
 
             <DependsUpon>
                 <Package>java.lang</Package>
-                <Package>oberon0.expression</Package>
-            </DependsUpon>
-
-            <UsedBy>
-                <Package>oberon0</Package>
-                <Package>oberon0.declaration</Package>
-                <Package>oberon0.expression</Package>
-                <Package>oberon0.module</Package>
-                <Package>oberon0.procedure</Package>
-                <Package>oberon0.statement</Package>
-                <Package>oberon0.tests</Package>
-                <Package>oberon0.type</Package>
-            </UsedBy>
-        </Package>
-
-        <Package name="oberon0.module">
-            <Stats>
-                <TotalClasses>1</TotalClasses>
-                <ConcreteClasses>1</ConcreteClasses>
-                <AbstractClasses>0</AbstractClasses>
-                <Ca>8</Ca>
-                <Ce>10</Ce>
-                <A>0</A>
-                <I>0.56</I>
-                <D>0.44</D>
-                <V>1</V>
-            </Stats>
-
-            <AbstractClasses>
-            </AbstractClasses>
-
-            <ConcreteClasses>
-                <Class sourceFile="Module.java">
-                    oberon0.module.Module
-                </Class>
-            </ConcreteClasses>
-
-            <DependsUpon>
-                <Package>java.lang</Package>
+                <Package>java.lang.reflect</Package>
                 <Package>java.util</Package>
-                <Package>oberon0.declaration</Package>
-                <Package>oberon0.exception</Package>
-                <Package>oberon0.expression</Package>
-                <Package>oberon0.identifier</Package>
-                <Package>oberon0.procedure</Package>
-                <Package>oberon0.program</Package>
-                <Package>oberon0.statement</Package>
-                <Package>oberon0.type</Package>
+                <Package>oberon0.environment</Package>
+                <Package>oberon0.selector</Package>
+                <Package>oberon0.value</Package>
             </DependsUpon>
 
             <UsedBy>
                 <Package>oberon0</Package>
                 <Package>oberon0.declaration</Package>
-                <Package>oberon0.expression</Package>
-                <Package>oberon0.procedure</Package>
                 <Package>oberon0.program</Package>
+                <Package>oberon0.selector</Package>
                 <Package>oberon0.statement</Package>
-                <Package>oberon0.tests</Package>
                 <Package>oberon0.type</Package>
-            </UsedBy>
-        </Package>
-
-        <Package name="oberon0.procedure">
-            <Stats>
-                <TotalClasses>2</TotalClasses>
-                <ConcreteClasses>2</ConcreteClasses>
-                <AbstractClasses>0</AbstractClasses>
-                <Ca>3</Ca>
-                <Ce>8</Ce>
-                <A>0</A>
-                <I>0.73</I>
-                <D>0.27</D>
-                <V>1</V>
-            </Stats>
-
-            <AbstractClasses>
-            </AbstractClasses>
-
-            <ConcreteClasses>
-                <Class sourceFile="Parameter.java">
-                    oberon0.procedure.Parameter
-                </Class>
-                <Class sourceFile="Procedure.java">
-                    oberon0.procedure.Procedure
-                </Class>
-            </ConcreteClasses>
-
-            <DependsUpon>
-                <Package>java.lang</Package>
-                <Package>java.util</Package>
-                <Package>oberon0.declaration</Package>
-                <Package>oberon0.exception</Package>
-                <Package>oberon0.expression</Package>
-                <Package>oberon0.identifier</Package>
-                <Package>oberon0.module</Package>
-                <Package>oberon0.type</Package>
-            </DependsUpon>
-
-            <UsedBy>
-                <Package>oberon0</Package>
-                <Package>oberon0.module</Package>
-                <Package>oberon0.statement</Package>
+                <Package>oberon0.value</Package>
             </UsedBy>
         </Package>
 
         <Package name="oberon0.program">
             <Stats>
-                <TotalClasses>1</TotalClasses>
-                <ConcreteClasses>1</ConcreteClasses>
+                <TotalClasses>4</TotalClasses>
+                <ConcreteClasses>4</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
-                <Ca>4</Ca>
+                <Ca>2</Ca>
                 <Ce>7</Ce>
                 <A>0</A>
-                <I>0.64</I>
-                <D>0.36</D>
+                <I>0.78</I>
+                <D>0.22</D>
                 <V>1</V>
             </Stats>
 
@@ -532,48 +365,106 @@
                 <Class sourceFile="Program.java">
                     oberon0.program.Program
                 </Class>
+                <Class sourceFile="ReadProcedureDeclaration.java">
+                    oberon0.program.ReadProcedureDeclaration
+                </Class>
+                <Class sourceFile="WriteLineProcedureDeclaration.java">
+                    oberon0.program.WriteLineProcedureDeclaration
+                </Class>
+                <Class sourceFile="WriteProcedureDeclararion.java">
+                    oberon0.program.WriteProcedureDeclararion
+                </Class>
             </ConcreteClasses>
 
             <DependsUpon>
                 <Package>java.io</Package>
                 <Package>java.lang</Package>
                 <Package>java.util</Package>
-                <Package>oberon0.exception</Package>
+                <Package>oberon0.declaration</Package>
+                <Package>oberon0.environment</Package>
                 <Package>oberon0.expression</Package>
-                <Package>oberon0.module</Package>
-                <Package>oberon0.type</Package>
+                <Package>oberon0.value</Package>
             </DependsUpon>
 
             <UsedBy>
                 <Package>oberon0</Package>
-                <Package>oberon0.module</Package>
-                <Package>oberon0.statement</Package>
                 <Package>oberon0.tests</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="oberon0.selector">
+            <Stats>
+                <TotalClasses>3</TotalClasses>
+                <ConcreteClasses>3</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>5</Ca>
+                <Ce>2</Ce>
+                <A>0</A>
+                <I>0.29</I>
+                <D>0.71</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="BracketSelector.java">
+                    oberon0.selector.BracketSelector
+                </Class>
+                <Class sourceFile="DotSelector.java">
+                    oberon0.selector.DotSelector
+                </Class>
+                <Class sourceFile="Selector.java">
+                    oberon0.selector.Selector
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.lang</Package>
+                <Package>oberon0.expression</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>oberon0</Package>
+                <Package>oberon0.environment</Package>
+                <Package>oberon0.expression</Package>
+                <Package>oberon0.statement</Package>
+                <Package>oberon0.value</Package>
             </UsedBy>
         </Package>
 
         <Package name="oberon0.statement">
             <Stats>
-                <TotalClasses>5</TotalClasses>
-                <ConcreteClasses>4</ConcreteClasses>
-                <AbstractClasses>1</AbstractClasses>
+                <TotalClasses>9</TotalClasses>
+                <ConcreteClasses>7</ConcreteClasses>
+                <AbstractClasses>2</AbstractClasses>
                 <Ca>2</Ca>
-                <Ce>8</Ce>
-                <A>0.2</A>
-                <I>0.8</I>
+                <Ce>7</Ce>
+                <A>0.22</A>
+                <I>0.78</I>
                 <D>0</D>
                 <V>1</V>
             </Stats>
 
             <AbstractClasses>
+                <Class sourceFile="ConditionStatement.java">
+                    oberon0.statement.ConditionStatement
+                </Class>
                 <Class sourceFile="Statement.java">
                     oberon0.statement.Statement
                 </Class>
             </AbstractClasses>
 
             <ConcreteClasses>
-                <Class sourceFile="AssigmentStatement.java">
-                    oberon0.statement.AssigmentStatement
+                <Class sourceFile="AssignmentStatement.java">
+                    oberon0.statement.AssignmentStatement
+                </Class>
+                <Class sourceFile="ElseStatement.java">
+                    oberon0.statement.ElseStatement
+                </Class>
+                <Class sourceFile="ElsifStatement.java">
+                    oberon0.statement.ElsifStatement
                 </Class>
                 <Class sourceFile="IfStatement.java">
                     oberon0.statement.IfStatement
@@ -584,32 +475,34 @@
                 <Class sourceFile="WhileStatement.java">
                     oberon0.statement.WhileStatement
                 </Class>
+                <Class sourceFile="WithStatement.java">
+                    oberon0.statement.WithStatement
+                </Class>
             </ConcreteClasses>
 
             <DependsUpon>
                 <Package>java.lang</Package>
                 <Package>java.util</Package>
-                <Package>oberon0.exception</Package>
+                <Package>oberon0.declaration</Package>
+                <Package>oberon0.environment</Package>
                 <Package>oberon0.expression</Package>
-                <Package>oberon0.identifier</Package>
-                <Package>oberon0.module</Package>
-                <Package>oberon0.procedure</Package>
-                <Package>oberon0.program</Package>
+                <Package>oberon0.selector</Package>
+                <Package>oberon0.value</Package>
             </DependsUpon>
 
             <UsedBy>
                 <Package>oberon0</Package>
-                <Package>oberon0.module</Package>
+                <Package>oberon0.declaration</Package>
             </UsedBy>
         </Package>
 
         <Package name="oberon0.tests">
             <Stats>
-                <TotalClasses>6</TotalClasses>
-                <ConcreteClasses>6</ConcreteClasses>
+                <TotalClasses>1</TotalClasses>
+                <ConcreteClasses>1</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
                 <Ca>0</Ca>
-                <Ce>12</Ce>
+                <Ce>7</Ce>
                 <A>0</A>
                 <I>1</I>
                 <D>0</D>
@@ -620,38 +513,18 @@
             </AbstractClasses>
 
             <ConcreteClasses>
-                <Class sourceFile="AssignmentsTest.java">
-                    oberon0.tests.AssignmentsTest
-                </Class>
-                <Class sourceFile="ExpressionsTest.java">
-                    oberon0.tests.ExpressionsTest
-                </Class>
-                <Class sourceFile="PrimitiveTypeTests.java">
-                    oberon0.tests.PrimitiveTypeTests
-                </Class>
-                <Class sourceFile="ProcedureTest.java">
-                    oberon0.tests.ProcedureTest
-                </Class>
-                <Class sourceFile="ReseverProcedureTest.java">
-                    oberon0.tests.ReseverProcedureTest
-                </Class>
-                <Class sourceFile="StamentsTest.java">
-                    oberon0.tests.StamentsTest
+                <Class sourceFile="Oberon0Tests.java">
+                    oberon0.tests.Oberon0Tests
                 </Class>
             </ConcreteClasses>
 
             <DependsUpon>
                 <Package>java.io</Package>
                 <Package>java.lang</Package>
+                <Package>java.util</Package>
                 <Package>oberon0</Package>
-                <Package>oberon0.exception</Package>
-                <Package>oberon0.expression</Package>
-                <Package>oberon0.identifier</Package>
-                <Package>oberon0.module</Package>
                 <Package>oberon0.program</Package>
-                <Package>oberon0.type</Package>
                 <Package>org.antlr.runtime</Package>
-                <Package>org.antlr.runtime.tree</Package>
                 <Package>org.junit</Package>
             </DependsUpon>
 
@@ -661,14 +534,14 @@
 
         <Package name="oberon0.type">
             <Stats>
-                <TotalClasses>3</TotalClasses>
-                <ConcreteClasses>2</ConcreteClasses>
+                <TotalClasses>6</TotalClasses>
+                <ConcreteClasses>5</ConcreteClasses>
                 <AbstractClasses>1</AbstractClasses>
-                <Ca>7</Ca>
-                <Ce>4</Ce>
-                <A>0.33</A>
-                <I>0.36</I>
-                <D>0.3</D>
+                <Ca>3</Ca>
+                <Ce>5</Ce>
+                <A>0.17</A>
+                <I>0.62</I>
+                <D>0.21</D>
                 <V>1</V>
             </Stats>
 
@@ -682,26 +555,86 @@
                 <Class sourceFile="ArrayType.java">
                     oberon0.type.ArrayType
                 </Class>
+                <Class sourceFile="DeclaredType.java">
+                    oberon0.type.DeclaredType
+                </Class>
                 <Class sourceFile="IntegerType.java">
                     oberon0.type.IntegerType
+                </Class>
+                <Class sourceFile="RecordField.java">
+                    oberon0.type.RecordField
+                </Class>
+                <Class sourceFile="RecordType.java">
+                    oberon0.type.RecordType
                 </Class>
             </ConcreteClasses>
 
             <DependsUpon>
                 <Package>java.lang</Package>
+                <Package>java.util</Package>
+                <Package>oberon0.environment</Package>
                 <Package>oberon0.expression</Package>
-                <Package>oberon0.identifier</Package>
-                <Package>oberon0.module</Package>
+                <Package>oberon0.value</Package>
             </DependsUpon>
 
             <UsedBy>
                 <Package>oberon0</Package>
                 <Package>oberon0.declaration</Package>
+                <Package>oberon0.value</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="oberon0.value">
+            <Stats>
+                <TotalClasses>5</TotalClasses>
+                <ConcreteClasses>4</ConcreteClasses>
+                <AbstractClasses>1</AbstractClasses>
+                <Ca>7</Ca>
+                <Ce>6</Ce>
+                <A>0.2</A>
+                <I>0.46</I>
+                <D>0.34</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+                <Class sourceFile="Value.java">
+                    oberon0.value.Value
+                </Class>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="ArrayValue.java">
+                    oberon0.value.ArrayValue
+                </Class>
+                <Class sourceFile="BooleanValue.java">
+                    oberon0.value.BooleanValue
+                </Class>
+                <Class sourceFile="IntegerValue.java">
+                    oberon0.value.IntegerValue
+                </Class>
+                <Class sourceFile="RecordValue.java">
+                    oberon0.value.RecordValue
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+                <Package>oberon0.environment</Package>
                 <Package>oberon0.expression</Package>
-                <Package>oberon0.module</Package>
-                <Package>oberon0.procedure</Package>
+                <Package>oberon0.selector</Package>
+                <Package>oberon0.type</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>oberon0</Package>
+                <Package>oberon0.declaration</Package>
+                <Package>oberon0.environment</Package>
+                <Package>oberon0.expression</Package>
                 <Package>oberon0.program</Package>
-                <Package>oberon0.tests</Package>
+                <Package>oberon0.statement</Package>
+                <Package>oberon0.type</Package>
             </UsedBy>
         </Package>
 
@@ -721,61 +654,66 @@
     <Cycles>
         <Package Name="oberon0">
             <Package>oberon0.program</Package>
+            <Package>oberon0.declaration</Package>
+            <Package>oberon0.value</Package>
             <Package>oberon0.expression</Package>
-            <Package>oberon0.type</Package>
-            <Package>oberon0.expression</Package>
+            <Package>oberon0.value</Package>
         </Package>
 
         <Package Name="oberon0.declaration">
+            <Package>oberon0.value</Package>
             <Package>oberon0.expression</Package>
-            <Package>oberon0.type</Package>
+            <Package>oberon0.value</Package>
+        </Package>
+
+        <Package Name="oberon0.environment">
+            <Package>oberon0.value</Package>
             <Package>oberon0.expression</Package>
+            <Package>oberon0.value</Package>
         </Package>
 
         <Package Name="oberon0.expression">
-            <Package>oberon0.type</Package>
-            <Package>oberon0.expression</Package>
-        </Package>
-
-        <Package Name="oberon0.identifier">
-            <Package>oberon0.expression</Package>
-            <Package>oberon0.type</Package>
-            <Package>oberon0.expression</Package>
-        </Package>
-
-        <Package Name="oberon0.module">
-            <Package>oberon0.expression</Package>
-            <Package>oberon0.type</Package>
-            <Package>oberon0.expression</Package>
-        </Package>
-
-        <Package Name="oberon0.procedure">
-            <Package>oberon0.expression</Package>
-            <Package>oberon0.type</Package>
+            <Package>oberon0.value</Package>
             <Package>oberon0.expression</Package>
         </Package>
 
         <Package Name="oberon0.program">
+            <Package>oberon0.declaration</Package>
+            <Package>oberon0.value</Package>
             <Package>oberon0.expression</Package>
-            <Package>oberon0.type</Package>
+            <Package>oberon0.value</Package>
+        </Package>
+
+        <Package Name="oberon0.selector">
+            <Package>oberon0.expression</Package>
+            <Package>oberon0.value</Package>
             <Package>oberon0.expression</Package>
         </Package>
 
         <Package Name="oberon0.statement">
             <Package>oberon0.expression</Package>
-            <Package>oberon0.type</Package>
+            <Package>oberon0.value</Package>
             <Package>oberon0.expression</Package>
         </Package>
 
         <Package Name="oberon0.tests">
+            <Package>oberon0</Package>
+            <Package>oberon0.program</Package>
+            <Package>oberon0.declaration</Package>
+            <Package>oberon0.value</Package>
             <Package>oberon0.expression</Package>
-            <Package>oberon0.type</Package>
-            <Package>oberon0.expression</Package>
+            <Package>oberon0.value</Package>
         </Package>
 
         <Package Name="oberon0.type">
             <Package>oberon0.expression</Package>
-            <Package>oberon0.type</Package>
+            <Package>oberon0.value</Package>
+            <Package>oberon0.expression</Package>
+        </Package>
+
+        <Package Name="oberon0.value">
+            <Package>oberon0.expression</Package>
+            <Package>oberon0.value</Package>
         </Package>
 
     </Cycles>
