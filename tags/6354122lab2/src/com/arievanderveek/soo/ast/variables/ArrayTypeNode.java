@@ -47,12 +47,12 @@ public class ArrayTypeNode extends TypeNode {
 
 	private ArraySymbol createArraySymbol(Scope scope)
 			throws SeaOfOberonException {
-		boolean mutable = true;
 		Integer resolvedSizeExpression = sizeExpression.interpret(scope);
 		Symbol[] addressList = new Symbol[resolvedSizeExpression];
 		for (int sizeCounter = 0; sizeCounter < resolvedSizeExpression; sizeCounter++) {
 			addressList[sizeCounter] = this.type.createSymbolFromType(scope);
 		}
+		boolean mutable = true;
 		return new ArraySymbol(mutable, addressList);
 	}
 
