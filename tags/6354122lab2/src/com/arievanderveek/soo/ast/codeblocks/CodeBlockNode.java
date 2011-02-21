@@ -62,13 +62,6 @@ public abstract class CodeBlockNode implements ASTNode, InterpretableAsVoid {
 		this.statementSequence = statementSequence;
 	}
 
-	/**
-	 * Interpret the code block
-	 * 
-	 * @param scope
-	 *            The scope
-	 */
-	public abstract void interpret(Scope scope) throws SeaOfOberonException;
 
 	/*
 	 * (non-Javadoc)
