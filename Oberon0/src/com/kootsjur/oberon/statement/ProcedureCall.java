@@ -49,12 +49,12 @@ public class ProcedureCall extends Statement
    {
       assert(environment != null):"Error in ProcedureCall method evaluate. Parameter environment is null!";
       
-      Procedure procedureInEnvironment = environment.lookUpProcedure(callTo);
-      FormalParameters formalParameters = procedureInEnvironment.getFormalParameters();
-      List<Declaration> declarations = procedureInEnvironment.getDeclarations();
-      List<ProcedureDeclaration> procedureDeclarations = procedureInEnvironment.getProcedureDeclarations();
-      StatementSequence statementSequence = procedureInEnvironment.getStatementSequence();
-      Procedure procedureToRun = new Procedure(formalParameters, declarations, procedureDeclarations, statementSequence, procedureInEnvironment.getParent());
+      Procedure procedureEnvironment = environment.lookUpProcedure(callTo);
+      FormalParameters formalParameters = procedureEnvironment.getFormalParameters();
+      List<Declaration> declarations = procedureEnvironment.getDeclarations();
+      List<ProcedureDeclaration> procedureDeclarations = procedureEnvironment.getProcedureDeclarations();
+      StatementSequence statementSequence = procedureEnvironment.getStatementSequence();
+      Procedure procedureToRun = new Procedure(formalParameters, declarations, procedureDeclarations, statementSequence, procedureEnvironment.getParent());
       procedureToRun.declare();
       if(actualParameters != null && actualParameters.size() > 0)
       {
