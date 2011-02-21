@@ -1,0 +1,16 @@
+MODULE Assignment;
+
+PROCEDURE Assignment(x: INTEGER);
+  VAR
+    y: INTEGER;
+
+  BEGIN
+    y := x;
+    Write(y);
+    WriteLn
+  END Assignment;
+
+BEGIN
+ Assignment(2)
+ 
+END Assignment.

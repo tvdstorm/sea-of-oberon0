@@ -14,7 +14,6 @@ import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.TokenStream;
 import org.antlr.runtime.tree.Tree;
 
-import com.douwekasemier.oberon0.ast.ASTSystemOutLogger;
 import com.douwekasemier.oberon0.ast.declaration.Module;
 import com.douwekasemier.oberon0.core.Oberon0Lexer;
 import com.douwekasemier.oberon0.core.Oberon0Parser;
@@ -53,6 +52,7 @@ public class ASTTestInterpreter {
             e.printStackTrace();
         }
 
+        @SuppressWarnings("unused")
         Module module = null;
         try {
             module = ast(parserOutput);
@@ -96,7 +96,6 @@ public class ASTTestInterpreter {
     private Module ast(module_return parserOutput) throws ASTException {
         // Get the antlr generated AST
         Tree rootNode = (Tree) parserOutput.getTree();
-        com.douwekasemier.oberon0.ast.AST.setLogger(new ASTSystemOutLogger());
         Module module = new Module(rootNode);
         return module;
     }

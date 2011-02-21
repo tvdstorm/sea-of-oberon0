@@ -4,31 +4,29 @@ import java.util.ArrayList;
 
 import org.antlr.runtime.tree.Tree;
 
-import com.douwekasemier.oberon0.ast.Initializable;
-import com.douwekasemier.oberon0.ast.TypeBuilder;
+import com.douwekasemier.oberon0.ast.builders.TypeBuilder;
+import com.douwekasemier.oberon0.ast.types.IdentifierType;
 import com.douwekasemier.oberon0.core.Oberon0Parser;
 
 public class FormalParameterCopy extends FormalParameter {
 
-    public FormalParameterCopy() {
-        super();
-        reference = false;
-    }
-
-    public FormalParameterCopy(Initializable vartype, ArrayList<String> identifiers) {
-        super(false, vartype, identifiers);
-    }
-    
     public FormalParameterCopy(Tree antlrTree) {
         super(antlrTree);
         assert (antlrType == Oberon0Parser.FORMALPARAMETER);
+
         reference = false;
-        
+
         vartype = TypeBuilder.build(antlrTree.getChild(0));
 
         // Identifiers
-        for (int i = 1; i < antlrTree.getChildCount(); i++) {
-            identifiers.add(antlrTree.getChild(i).getText());
+        Tree antlrIdentifiers = antlrTree.getChild(1);
+        for (int i = 0; i < antlrIdentifiers.getChildCount(); i++) {
+            assert (antlrIdentifiers.getChild(i).getType() == Oberon0Parser.IDENTIFIER);
+            identifiers.add(antlrIdentifiers.getChild(i).getText());
         }
+    }
+
+    public FormalParameterCopy(IdentifierType formalparameterType, ArrayList<String> formalparameterIdentifiers) {
+        super(formalparameterType, formalparameterIdentifiers);
     }
 }

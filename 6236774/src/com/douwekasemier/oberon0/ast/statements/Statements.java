@@ -1,34 +1,25 @@
 package com.douwekasemier.oberon0.ast.statements;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.antlr.runtime.tree.Tree;
 
 import com.douwekasemier.oberon0.ast.AST;
 import com.douwekasemier.oberon0.ast.Interpretable;
 import com.douwekasemier.oberon0.core.Oberon0Parser;
-import com.douwekasemier.oberon0.exceptions.Oberon0Exception;
 import com.douwekasemier.oberon0.interpreter.environment.Environment;
 
 public class Statements extends AST implements Interpretable {
 
-    private ArrayList<Interpretable> statements;
-
-    public Statements() {
-        statements = new ArrayList<Interpretable>();
-    }
-
-    public Statements(ArrayList<Interpretable> statements) {
-        this.statements = statements;
-    }
+    private List<Interpretable> statements;
 
     public Statements(Tree antlrTree) {
-        this();
-        antlrType = antlrTree.getType();
-        antlrText = antlrTree.getText();
-
+        super(antlrTree);
         assert (antlrType == Oberon0Parser.STATEMENTS);
 
+        statements = new ArrayList<Interpretable>();
+        
         // Loop statements
         for (int i = 0; i < antlrTree.getChildCount(); i++) {
             Tree antlrChild = antlrTree.getChild(i);
@@ -48,12 +39,14 @@ public class Statements extends AST implements Interpretable {
                 case Oberon0Parser.WITH:
                     statements.add(new With(antlrChild));
                     break;
+                default:
+                    throw new AssertionError("Incorrect node in Statements");
             }
         }
     }
 
     @Override
-    public void interpret(Environment environment) throws Oberon0Exception {
+    public void interpret(Environment environment) {
         for (Interpretable statement : statements) {
             statement.interpret(environment);
         }

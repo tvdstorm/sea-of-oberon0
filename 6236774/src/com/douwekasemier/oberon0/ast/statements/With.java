@@ -16,8 +16,7 @@ public class With extends AST implements Interpretable {
     private Statements statements;
 
     public With(Tree antlrTree) {
-        antlrType = antlrTree.getType();
-        antlrText = antlrTree.getText();
+        super(antlrTree);
         assert (antlrType == Oberon0Parser.WITH);
 
         identifier = new Identifier(antlrTree.getChild(0));
@@ -26,9 +25,9 @@ public class With extends AST implements Interpretable {
 
     @Override
     public void interpret(Environment environment) throws Oberon0Exception {
-        Environment withEnvironment = environment.newEnvironment("With statement <"+identifier+">");
+        Environment withEnvironment = environment.newEnvironment("With statement <" + identifier + ">");
         Record record = (Record) identifier.evaluate(environment);
-        for( String identifier : record ) {
+        for (String identifier : record) {
             withEnvironment.declareReference(identifier, record.getReference(identifier));
         }
         statements.interpret(withEnvironment);

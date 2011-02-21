@@ -1,8 +1,5 @@
 package com.douwekasemier.oberon0.test;
 
-import java.io.File;
-
-import com.douwekasemier.oberon0.interpreter.Interpreter;
 
 public class QuicksortJava {
 
@@ -27,9 +24,9 @@ public class QuicksortJava {
     }
 
     public void quicksort(int[] a, int lo, int hi) {
-        System.out.println();
-        System.out.println("CALL quicksort: lo["+lo+"] hi["+hi+"]");
-        System.out.println();
+        //System.out.println();
+        //System.out.println("CALL quicksort: lo["+lo+"] hi["+hi+"]");
+        //System.out.println();
         print();
         int i = lo;
         int j = hi;
