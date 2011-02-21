@@ -7,7 +7,7 @@ import org.antlr.runtime.tree.Tree;
 
 import com.douwekasemier.oberon0.ast.AST;
 import com.douwekasemier.oberon0.ast.Initializable;
-import com.douwekasemier.oberon0.ast.types.IdentifierType;
+import com.douwekasemier.oberon0.ast.types.SimpleType;
 import com.douwekasemier.oberon0.exceptions.Oberon0Exception;
 import com.douwekasemier.oberon0.interpreter.environment.Environment;
 import com.douwekasemier.oberon0.interpreter.environment.Value;
@@ -23,7 +23,7 @@ public abstract class FormalParameter extends AST implements Initializable {
         identifiers = new ArrayList<String>();
     }
 
-    public FormalParameter(IdentifierType vartype, List<String> identifiers) {
+    public FormalParameter(SimpleType vartype, List<String> identifiers) {
         super();
         this.vartype = vartype;
         this.identifiers = identifiers;

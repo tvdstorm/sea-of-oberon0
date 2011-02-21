@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.antlr.runtime.tree.Tree;
 
 import com.douwekasemier.oberon0.ast.builders.TypeBuilder;
-import com.douwekasemier.oberon0.ast.types.IdentifierType;
+import com.douwekasemier.oberon0.ast.types.SimpleType;
 import com.douwekasemier.oberon0.core.Oberon0Parser;
 
 public class FormalParameterCopy extends FormalParameter {
@@ -26,7 +26,7 @@ public class FormalParameterCopy extends FormalParameter {
         }
     }
 
-    public FormalParameterCopy(IdentifierType formalparameterType, ArrayList<String> formalparameterIdentifiers) {
+    public FormalParameterCopy(SimpleType formalparameterType, ArrayList<String> formalparameterIdentifiers) {
         super(formalparameterType, formalparameterIdentifiers);
     }
 }

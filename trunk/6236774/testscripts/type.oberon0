@@ -1,0 +1,9 @@
+MODULE Type;
+  TYPE
+    rij = ARRAY 10 OF INTEGER;
+  VAR
+    a: rij;
+BEGIN
+  a := 4;
+  Write(a)
+END Type.

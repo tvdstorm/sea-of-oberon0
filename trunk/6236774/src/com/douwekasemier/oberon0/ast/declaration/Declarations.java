@@ -10,8 +10,8 @@ import com.douwekasemier.oberon0.interpreter.environment.Environment;
 public class Declarations extends AST implements Declarable {
 
     private Constants constants;
-    private Variables variables;
     private Types types;
+    private Variables variables;
     private Procedures procedures;
 
     public Declarations(Tree antlrTree) {
@@ -27,8 +27,8 @@ public class Declarations extends AST implements Declarable {
     @Override
     public void declare(Environment environment) {
         constants.declare(environment);
-        variables.declare(environment);
         types.declare(environment);
+        variables.declare(environment);
         procedures.declare(environment);
     }
 }

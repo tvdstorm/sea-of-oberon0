@@ -8,7 +8,7 @@ import com.douwekasemier.oberon0.ast.declaration.FormalParameter;
 import com.douwekasemier.oberon0.ast.declaration.FormalParameterCopy;
 import com.douwekasemier.oberon0.ast.declaration.FormalParameters;
 import com.douwekasemier.oberon0.ast.declaration.ProcedureDeclaration;
-import com.douwekasemier.oberon0.ast.types.IdentifierType;
+import com.douwekasemier.oberon0.ast.types.SimpleType;
 import com.douwekasemier.oberon0.exceptions.Oberon0Exception;
 import com.douwekasemier.oberon0.interpreter.environment.Environment;
 import com.douwekasemier.oberon0.interpreter.environment.Procedure;
@@ -19,7 +19,7 @@ public class Write extends ProcedureDeclaration {
         super();
         identifier = "Write";
 
-        IdentifierType formalparameterType = new IdentifierType("INTEGER");
+        SimpleType formalparameterType = new SimpleType("INTEGER");
         ArrayList<String> formalparameterIdentifiers = new ArrayList<String>();
         formalparameterIdentifiers.add("print");
 
