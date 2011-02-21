@@ -1,9 +1,14 @@
 package com.kootsjur.oberon.statement;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import com.kootsjur.oberon.environment.Environment;
+import com.kootsjur.oberon.evaluator.BracketSelectorEvaluator;
+import com.kootsjur.oberon.evaluator.DotSelectorEvaluator;
 import com.kootsjur.oberon.evaluator.Evaluator;
 import com.kootsjur.oberon.evaluator.ExpressionEvaluator;
 import com.kootsjur.oberon.evaluator.SelectorEvaluator;
+import com.kootsjur.oberon.value.Int;
 import com.kootsjur.oberon.value.Value;
 
 public class Assignment extends Statement
@@ -35,26 +40,44 @@ public class Assignment extends Statement
    @Override
    public void evaluate(Environment environment)
    {
+      assert(environment != null):"Error in Assignment method evaluate. Parameter environment is null";
+      
+      Value value = expression.evaluate(environment);
       if(selector == null)
       {
-         evaluateName(environment);
+         assignValueWithoutSelector(value,environment); 
       }
       else
       {
-         evaluateNameSelector(environment);
+         assignValueWithSelector(value,environment);
       }
    }
 
-   private void evaluateNameSelector(Environment environment)
+   private void assignValueWithoutSelector(Value value, Environment environment)
    {
-      selector.assignValue(name, expression, environment);
+      environment.assignValue(name, value);
    }
 
-   private void evaluateName(Environment environment)
+   private void assignValueWithSelector(Value value, Environment environment)
    {
-      Value value = expression.evaluate(environment);
-      environment.assignValue(name, value); 
+      if(selector instanceof BracketSelectorEvaluator)
+      {
+         assignValueWithBracketSelector(value,environment);
+         
+      }else if(selector instanceof DotSelectorEvaluator)
+      {
+         assignValueWithDotSelector(value,environment);
+      }
    }
-   
 
+   private void assignValueWithDotSelector(Value value, Environment environment)
+   {
+      throw new NotImplementedException();
+   }
+
+   private void assignValueWithBracketSelector(Value value, Environment environment)
+   {
+      Int arraySelector = (Int) selector.evaluate(environment);
+      environment.assignValue(name, arraySelector, value);
+   }
 }

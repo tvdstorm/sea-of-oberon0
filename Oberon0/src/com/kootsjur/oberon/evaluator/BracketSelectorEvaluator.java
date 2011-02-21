@@ -20,15 +20,11 @@ public class BracketSelectorEvaluator implements SelectorEvaluator
       return value;
    }
    
-   @SuppressWarnings({ "rawtypes", "unchecked" })
    @Override
    public void assignValue(String name, Evaluator expressionToAssign,Environment environment)
    {
-      Array array = (Array) environment.lookUpValue(name);
       Int select = (Int) expressionEvaluator.evaluate(environment);
       Value value = expressionToAssign.evaluate(environment);
-      
-      array.set(select.getValue(), value);
-      
+      environment.assignValue(name, select, value);      
    }
 }

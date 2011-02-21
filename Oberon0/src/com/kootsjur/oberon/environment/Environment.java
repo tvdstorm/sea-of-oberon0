@@ -353,6 +353,29 @@ public class Environment
       parameter.setReferenceValue(value);
    }
    
+   @SuppressWarnings({ "rawtypes", "unchecked" })
+   public void assignValue(String name, Int selector, Value value)
+   {
+      Array array = (Array) this.lookUpValue(name);      
+      array.set(selector.getValue(), value);
+   }
+   
+   @SuppressWarnings({ "unchecked", "rawtypes" })
+   public void assignValue(String name, Int[] selectors, Value value)
+   {
+      Array array = (Array) this.lookUpValue(name);
+      int selectorsLength = selectors.length;
+      
+      for(int i=0;i<selectorsLength-1;i++)
+      {
+         int selector = selectors[i].getValue();
+         array = (Array) array.get(selector).getValue();
+      }
+      
+      int lastSelector = selectors[selectorsLength-1].getValue();
+      array.set(lastSelector, value);
+   }
+   
    public void assignValue(String name, Value value)
    {
       if(declaredVars.containsKey(name))
