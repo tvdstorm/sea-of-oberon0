@@ -21,16 +21,18 @@ public class Assignment implements IStatement {
 	@Override
 	public Object evaluate(IScope scope) {
 		//selector.evaluate(scope);
+		IScope destScope = scope;
 		String leftName = this.varName;
 		Object leftRef = scope.GetVarValue(this.varName);
 		if(leftRef!=null && leftRef.getClass().getName().equals("edu.uva.sc.oberon0.Evaluators.Structural.VariableRef")){
 			leftName = ((VariableRef)leftRef).name; 
+			destScope = (((VariableRef)leftRef).scope != null)?((VariableRef)leftRef).scope : scope;
 		}
 		Object value = this.value.evaluate(scope);
-		if(value!=null && value.getClass().getName().equals("edu.uva.sc.oberon0.Evaluators.Structural.VariableRef")){
-			value = ((VariableRef)value).evaluate(scope); 
-		}
-		scope.SetVarValue(leftName, value);
+		//if(value!=null && value.getClass().getName().equals("edu.uva.sc.oberon0.Evaluators.Structural.VariableRef")){
+		//	value = ((VariableRef)value).evaluate(scope); 
+		//}
+		destScope.SetVarValue(leftName, value);
 		return null;
 	}
 }

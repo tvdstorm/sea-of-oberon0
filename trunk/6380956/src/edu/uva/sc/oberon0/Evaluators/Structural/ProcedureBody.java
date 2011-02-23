@@ -1,12 +1,13 @@
 package edu.uva.sc.oberon0.Evaluators.Structural;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import edu.uva.sc.oberon0.Evaluators.IEvaluator;
 
-public class ProcedureBody implements IEvaluator, IScope {
+public class ProcedureBody implements IEvaluator, IScope, Serializable {
 	List<IDeclaration> declarations;
 	List<IStatement> statements;
 	IScope parentScope;

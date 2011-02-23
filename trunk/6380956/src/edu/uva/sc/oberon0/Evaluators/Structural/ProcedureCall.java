@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import edu.uva.sc.oberon0.ObjectCloner;
 import edu.uva.sc.oberon0.Evaluators.IEvaluator;
 
 public class ProcedureCall implements IStatement, IScope {
@@ -24,16 +25,27 @@ public class ProcedureCall implements IStatement, IScope {
 		int index = 0;
 		for (FormalParametersSection fps : proc.heading.GetParameters()) {
 			for (String formalParamName : fps.GetFormalParameters()) {
-				Object actualParamValue = (fps.isByRef)?
-						this.parameters.get(index): 
-						this.parameters.get(index).evaluate(scope);
+				Object actualParamValue = this.parameters.get(index);
+				if(!fps.isByRef){
+					actualParamValue = this.parameters.get(index).evaluate(scope);
+				} else{
+					((VariableRef)actualParamValue).SetScope(scope);
+				}
+						
 				AddToScope(formalParamName);
 				SetVarValue(formalParamName, actualParamValue);
 				
 				index++;
 			}
 		}
-		proc.body.evaluate(this);
+		ProcedureBody procBody = null;
+		try {
+			procBody = (ProcedureBody)ObjectCloner.deepCopy(proc.body);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		procBody.evaluate(this);
 		return null;
 	}
 

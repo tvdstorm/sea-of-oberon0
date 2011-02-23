@@ -39,7 +39,7 @@ public class Test {
 				"MODULE QuickSort;"+
 					"\nCONST INPUTLENGTH = 5;"+
 					"\nVAR input: ARRAY INPUTLENGTH OF INTEGER;"+
-					"\na, b, i: INTEGER;"+
+					"\nx, y, a, b, i: INTEGER;"+
 					"\nPROCEDURE QuickSort(VAR array: ARRAY INPUTLENGTH OF INTEGER; left, right: INTEGER);"+
 						"\nVAR\n pivot, leftIdx, rightIdx: INTEGER;"+
 						
@@ -53,25 +53,33 @@ public class Test {
 					"\nBEGIN"+
 						  "\ntemp := x;"+
 						  "\nx := y;"+
-						  "\ny := temp"+
+						  "\ny := temp;"+
+					"\nEND Swap;"+
+					"\nPROCEDURE RecTest(VAR x: INTEGER);"+
+					"\nBEGIN"+
+						  "\nx := x + 1;"+
+						  "\nIF x < 5 THEN"+
+						    	"\nRecTest(x);"+
+						  "\nEND"+
 					"\nEND Swap;"+
 					"\nBEGIN"+
-						"\na := 0+1;"+
-					    "\nb := 1+1;"+
-					    "\nSwap(a, b);"+
+					    "\nx := 1;"+
+					    "\ny := 2;"+
+					    //"\nSwap(x, y);"+
+					    "\nRecTest(x);"+
+					    "\nWrite(x);"+
+					    //"\nWrite(y);"+
+					    //"\nWHILE (a <= 4) DO"+
+					    //	"\na := a + 1"+
+					    //"\nEND;"+
 					    //"\nWrite(a);"+
-					    //"\nWrite(b);"+
-					    "\nWHILE (a <= 4) DO"+
-					    	"\na := a + 1"+
-					    "\nEND;"+
-					    //"\nWrite(a);"+
-					    "\nIF a-1 = 4 THEN"+
-					    	"\nWrite(a);"+
-					    "\nELSIF a=5 THEN"+
-					    	"\nWrite(a+10);"+
-					    "\nELSE"+
-					    	"\nWrite(a+100);"+
-					    "\nEND"+
+					    //"\nIF a-1 = 4 THEN"+
+					    //	"\nWrite(a);"+
+					    //"\nELSIF a=5 THEN"+
+					    //	"\nWrite(a+10);"+
+					    //"\nELSE"+
+					    //	"\nWrite(a+100);"+
+					    //"\nEND"+
 				"\nEND QuickSort."
 				);
 		oberon0Lexer lexer = new oberon0Lexer(charStream);

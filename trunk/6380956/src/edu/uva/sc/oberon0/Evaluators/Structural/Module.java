@@ -54,12 +54,13 @@ public class Module implements IEvaluator, IScope {
 
 	@Override
 	public String toString() {
-		evaluate(this);
-		String result = "";
-		for (IDeclaration decl : declarations) {
-			result += "\n"+decl.toString();
-		}
-		return "moduleName: "+name + "\n declarations: " + result;
+		//evaluate(this);
+		//String result = "";
+		//for (IDeclaration decl : declarations) {
+		//	result += "\n"+decl.toString();
+		//}
+		//return "moduleName: "+name + "\n declarations: " + result;
+		return super.toString();
 	}
 
 	@Override
