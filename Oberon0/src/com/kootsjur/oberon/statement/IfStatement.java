@@ -16,7 +16,6 @@ public class IfStatement extends Statement
    
    public IfStatement(Evaluator ifCondition, StatementSequence thenStatementSequence)
    {
-      super(StatementType.IFSTATEMENT);
       this.ifCondition = ifCondition;
       this.thenStatementSequence = thenStatementSequence;
       this.elseIfStatements = new LinkedList<IfStatement>();
@@ -24,7 +23,6 @@ public class IfStatement extends Statement
    
    public IfStatement(Evaluator ifCondition, StatementSequence thenStatementSequence, StatementSequence elseStatementSequence)
    {
-      super(StatementType.IFSTATEMENT);
       this.ifCondition = ifCondition;
       this.thenStatementSequence = thenStatementSequence;
       this.elseStatementSequence = elseStatementSequence;
@@ -33,7 +31,7 @@ public class IfStatement extends Statement
    
    public IfStatement(Evaluator ifCondition, StatementSequence thenStatementSequence, List<IfStatement> elseIfStatements)
    {
-      super(StatementType.IFSTATEMENT);
+	   super();
       this.ifCondition = ifCondition;
       this.thenStatementSequence = thenStatementSequence;
       this.elseIfStatements = elseIfStatements;
@@ -41,7 +39,6 @@ public class IfStatement extends Statement
    
    public IfStatement(Evaluator ifCondition, StatementSequence thenStatementSequence, StatementSequence elseStatementSequence, List<IfStatement> elseIfStatements)
    {
-      super(StatementType.IFSTATEMENT);
       this.ifCondition = ifCondition;
       this.thenStatementSequence = thenStatementSequence;
       this.elseStatementSequence = elseStatementSequence;

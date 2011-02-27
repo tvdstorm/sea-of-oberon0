@@ -6,15 +6,13 @@ public abstract class Statement
 {
    public enum StatementType { PROCEDURECALL, ASSIGNMENT, IFSTATEMENT, WHILESTATEMENT}
    
-   private StatementType statementType;
 
-   public Statement(StatementType statementType)
+
+   public Statement()
    {
-      this.statementType = statementType;
+      
    }
    
-   public void setStatementType(StatementType statementType){this.statementType = statementType;}
-   public StatementType getStatementType(){return statementType;}
 
    public abstract void evaluate(Environment environment);
 }

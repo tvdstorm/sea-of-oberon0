@@ -12,7 +12,6 @@ import com.kootsjur.oberon.declaration.formalparameter.FormalParameters;
 import com.kootsjur.oberon.declaration.formalparameter.ParameterDirection;
 import com.kootsjur.oberon.declaration.procedure.ProcedureDeclaration;
 import com.kootsjur.oberon.statement.Statement;
-import com.kootsjur.oberon.statement.Statement.StatementType;
 import com.kootsjur.oberon.statement.StatementSequence;
 import com.kootsjur.oberon.type.IntegerType;
 import com.kootsjur.oberon.type.TypeDefinition;
@@ -43,7 +42,7 @@ public class GlobalProcedures
       List<Declaration> declarations = new LinkedList<Declaration>();
      // declarations.add(new VarDeclaration, typeDefinition));
       List<ProcedureDeclaration> procedures = new LinkedList<ProcedureDeclaration>();
-      Statement statement = new Statement(StatementType.PROCEDURECALL)
+      Statement statement = new Statement()
       {
          @Override
          public void evaluate(Environment environment) 
@@ -83,7 +82,7 @@ public class GlobalProcedures
       formalParameters.add(fPSection);      
       List<Declaration> declarations = new LinkedList<Declaration>();
       List<ProcedureDeclaration> procedures = new LinkedList<ProcedureDeclaration>();
-      Statement statement = new Statement(StatementType.PROCEDURECALL){
+      Statement statement = new Statement(){
          @Override
          public void evaluate(Environment environment) {
             com.kootsjur.oberon.value.Int y = (com.kootsjur.oberon.value.Int) environment.lookUpValue(fPName);
@@ -104,7 +103,7 @@ public class GlobalProcedures
       FormalParameters formalParameters = new FormalParameters();
       List<Declaration> declarations = new LinkedList<Declaration>();
       List<ProcedureDeclaration> procedures = new LinkedList<ProcedureDeclaration>();
-      Statement statement = new Statement(StatementType.PROCEDURECALL){
+      Statement statement = new Statement(){
          @Override
          public void evaluate(Environment environement) {
             output.println();

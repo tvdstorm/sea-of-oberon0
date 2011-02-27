@@ -1,5 +1,5 @@
 grammar Oberon;
-
+ 
 options {
   language = Java;
 }
@@ -17,8 +17,9 @@ options {
   import com.kootsjur.oberon.declaration.type.*;
   import com.kootsjur.oberon.declaration.var.*;
   import com.kootsjur.oberon.type.*;
+  import com.kootsjur.oberon.value.*;
 }
-
+ 
 @lexer::header {
   package com.kootsjur.oberon.parser;
 } 
@@ -105,6 +106,9 @@ statement returns [Statement s]
 whileStatement returns [WhileStatement w]
 	:	'WHILE' expression 'DO' statementSequence 'END' {$w = new WhileStatement($expression.e, $statementSequence.s);};	
 	
+withStatement returns [WithStatement w]
+  : 'WITH' expression 'DO' statementSequence 'END' {$w = new WithStatement($expression.e, $statementSequence.s);};
+  
 ifStatement returns [IfStatement i]
 	:	'IF' expression1=expression 'THEN' statementSequence1=statementSequence {$i = new IfStatement($expression1.e, $statementSequence1.s);}
 						('ELSEIF' expression2=expression 'THEN' statementSequence2=statementSequence {$i.addElseIfStatement(new IfStatement($expression2.e, $statementSequence2.s));})*
@@ -153,21 +157,22 @@ term returns [Evaluator t]	:	factor1=factor {$t = $factor1.f;}
 					))*;	
  
 factor returns [Evaluator f]:	ident1=ident {$f = new IdentEvaluator($ident1.text);}
-							|ident2=ident {$f = new IdentEvaluator($ident2.text);}(bracketSelector {$f = new ArraySelectorEvaluator($f, $bracketSelector.b);})+
+							|arraySelector {$f=$arraySelector.a;}
+							|recordSelector {$f=$recordSelector.r;} 
 							|number {$f = $number.n;}
 							|'('expression')' {$f = $expression.e;};
 			
-arraySelector: ident(bracketSelector)+;		
+arraySelector returns [Evaluator a]:{List<Evaluator> brackets = new ArrayList<Evaluator>();} ident(bracketSelector{brackets.add($bracketSelector.b);})+ {$a=new ArraySelectorEvaluator(new IdentEvaluator($ident.text), brackets);};
 
+recordSelector returns [Evaluator r]:{List<Evaluator> dots = new ArrayList<Evaluator>();} ident(dotSelector {dots.add($dotSelector.d);})+ {$r=new RecordSelectorEvaluator(new IdentEvaluator($ident.text),dots);};	
 
 number returns [Evaluator n]	:	integer {$n = new NumberEvaluator(Integer.parseInt($integer.text));};
 
 selector returns [Evaluator s]:	dotSelector{$s = $dotSelector.d;}|bracketSelector {$s = $bracketSelector.b;};
  
-dotSelector returns [Evaluator d]: '.'ident;
+dotSelector returns [Evaluator d]: '.'ident {$d=new DotSelectorEvaluator($ident.text);};
 
 bracketSelector returns [Evaluator b]: '['expression']' {$b = new BracketSelectorEvaluator($expression.e);};
-
 
 integer	:	DIGIT (DIGIT)*;			 									
 

@@ -11,9 +11,9 @@ public class WhileStatement extends Statement
 
    public WhileStatement(Evaluator whileCondition, StatementSequence statementSequence)
    {
-      super(StatementType.WHILESTATEMENT);
-      this.whileCondition = whileCondition;
-      this.statementSequence = statementSequence;
+	   super();
+	   this.whileCondition = whileCondition;
+	   this.statementSequence = statementSequence;
    }
 
    public void setWhileCondition(Evaluator whileCondition){this.whileCondition = whileCondition;}

@@ -23,7 +23,7 @@ public class ProcedureCall extends Statement
 
    public ProcedureCall(String callTo, List<ActualParameter> actualParameters)
    {
-      super(StatementType.PROCEDURECALL);
+	  super();
       assert(actualParameters != null):"Error in ProcedureCall constructor. Parameter actualParameters is null";
       assert(callTo != null):"Error in ProcedureCall constructor. callTo actualParameters is null";
       

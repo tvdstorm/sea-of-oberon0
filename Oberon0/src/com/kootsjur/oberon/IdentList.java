@@ -1,4 +1,4 @@
-package com.kootsjur.oberon.parser;
+package com.kootsjur.oberon;
 
 import java.util.ArrayList;
 

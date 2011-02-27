@@ -35,9 +35,9 @@ public class Record extends Value
    }
    
    @SuppressWarnings("rawtypes")
-   public Reference get(String name) 
+   public Reference get(Field field) 
    {
-      return fields.get(name);
+      return fields.get(field);
    }
    
    

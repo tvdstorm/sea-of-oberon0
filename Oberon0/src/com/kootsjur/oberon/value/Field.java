@@ -1,6 +1,6 @@
 package com.kootsjur.oberon.value;
 
-public class Field
+public class Field extends Value
 {
    private String name;
    
