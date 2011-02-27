@@ -96,10 +96,11 @@ statementSequence returns [StatementSequence s]
 	
 statement returns [Statement s]
 	:	{boolean bracket = false;} ((ident ((actualParameters) {$s = new ProcedureCall($ident.text, $actualParameters.a);}
-							| {bracket = true;}(bracketSelector)? ':=' expression {$s = new Assignment($ident.text,$expression.e); 
-																						if(bracket)((Assignment)$s).setSelector( $bracketSelector.b);
+							| {bracket = true;}(selector)? ':=' expression {$s = new Assignment($ident.text,$expression.e); 
+																						if(bracket)((Assignment)$s).setSelector( $selector.s);
 																					}))
 		|ifStatement {$s = $ifStatement.i;}
+		|withStatement {$s = $withStatement.w;} 
 		|whileStatement {$s = $whileStatement.w;})?;
 	//(ident (selector)?((actualParameters)?|':='expression)
 	//(ident ((dotSelector)?(actualParameters)|(bracketSelector)?':='expression)

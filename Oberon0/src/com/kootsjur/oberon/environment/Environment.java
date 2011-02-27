@@ -485,15 +485,28 @@ public class Environment
       }
    }
 
-   @SuppressWarnings({ "rawtypes", "unchecked" })
    public void declareVar(List<String> names, Value value)
    {
       for(String name:names)
       {
-         Var var = new Var();
-         var.setReferenceValue(value);
-         declareVar(name,var);
+         declareVar(name,value);
       }
       
-   }   
+   } 
+   
+   @SuppressWarnings({ "unchecked", "rawtypes" })
+   public void declareVar(String name, Value value)
+   {
+         Var var = new Var();
+         var.setReferenceValue(value);
+         declareVar(name,var);    
+   }  
+   
+   @SuppressWarnings({ "unchecked", "rawtypes" })
+   public void declareVarByReference(String name, Reference reference)
+   {
+         Var var = new Var();
+         var.setReference(reference);
+         declareVar(name,var);    
+   }  
 }

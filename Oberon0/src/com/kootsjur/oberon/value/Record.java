@@ -9,7 +9,7 @@ import com.kootsjur.oberon.environment.Reference;
 public class Record extends Value
 {
    @SuppressWarnings("rawtypes")
-   private Map<Field, Reference> fields;
+   private HashMap<Field, Reference> fields;
    
    @SuppressWarnings("rawtypes")
    public Record(List<FieldList> fieldList)
@@ -19,7 +19,7 @@ public class Record extends Value
       {
          for(String fieldName : field.getNames())
          {
-            fields.put(new Field(fieldName),null);
+            fields.put(new Field(fieldName),new Reference());
          }
       }
    }
@@ -31,13 +31,19 @@ public class Record extends Value
       if(fields.containsKey(field))
       {
          fields.get(field).setValue(value);
-      }
+      }           
    }
    
    @SuppressWarnings("rawtypes")
    public Reference get(Field field) 
    {
       return fields.get(field);
+   }
+   
+   @SuppressWarnings("rawtypes")
+   public Map<Field,Reference> getFields()
+   {
+	   return fields;
    }
    
    
