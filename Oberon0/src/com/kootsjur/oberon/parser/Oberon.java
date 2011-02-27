@@ -14,21 +14,22 @@ import org.antlr.runtime.CharStream;
 import com.kootsjur.oberon.environment.Module;
 
 public class Oberon extends AbstractOberon {
-	
+
 	@Override
-	protected void evaluate(InputStream src, BufferedReader input, PrintWriter output) throws IOException, RecognitionException {
-	   CharStream stream = new ANTLRInputStream(src);
+	protected void evaluate(InputStream src, BufferedReader input,
+			PrintWriter output) throws IOException, RecognitionException {
+		CharStream stream = new ANTLRInputStream(src);
 		OberonLexer lexer = new OberonLexer(stream);
 		TokenStream tokenStream = new CommonTokenStream(lexer);
 		OberonParser parser = new OberonParser(tokenStream);
-	   Module module = parser.module();
-	   module.declare(input, output);
-	   module.run();
-		
+		Module module = parser.module();
+		module.declare(input, output);
+		module.run();
+
 	}
 
 	@Override
 	public String getName() {
 		return "interpreter";
-	}	
+	}
 }

@@ -14,97 +14,101 @@ import com.kootsjur.oberon.evaluator.Evaluator;
 import com.kootsjur.oberon.evaluator.LookUpEvaluator;
 import com.kootsjur.oberon.value.Value;
 
-public class ProcedureCall extends Statement
-{
-   private String callTo;
+public class ProcedureCall extends Statement {
+	private String callTo;
 
-   private List<ActualParameter> actualParameters;
-   
+	private List<ActualParameter> actualParameters;
 
-   public ProcedureCall(String callTo, List<ActualParameter> actualParameters)
-   {
-	  super();
-      assert(actualParameters != null):"Error in ProcedureCall constructor. Parameter actualParameters is null";
-      assert(callTo != null):"Error in ProcedureCall constructor. callTo actualParameters is null";
-      
-      this.callTo = callTo;
-      this.actualParameters = actualParameters;
-      
-      
-   }
-   
-   public boolean addActualParameter(ActualParameter parameter)
-   {
-      return this.actualParameters.add(parameter);
-   }
-   
-   public void setCallTo(String callTo){this.callTo = callTo;}
-   public String getCallTo(){return callTo;}
-   
-   public void setActualParameters(List<ActualParameter> actualParameters){this.actualParameters = actualParameters;}
-   public List<ActualParameter> getActualParameters(){return actualParameters;}
+	public ProcedureCall(String callTo, List<ActualParameter> actualParameters) {
+		super();
+		assert (actualParameters != null) : "Error in ProcedureCall constructor. Parameter actualParameters is null";
+		assert (callTo != null) : "Error in ProcedureCall constructor. callTo actualParameters is null";
 
-   @Override
-   public void evaluate(Environment environment)
-   {
-      assert(environment != null):"Error in ProcedureCall method evaluate. Parameter environment is null!";
-      
-      Procedure procedureEnvironment = environment.lookUpProcedure(callTo);
-      FormalParameters formalParameters = procedureEnvironment.getFormalParameters();
-      List<Declaration> declarations = procedureEnvironment.getDeclarations();
-      List<ProcedureDeclaration> procedureDeclarations = procedureEnvironment.getProcedureDeclarations();
-      StatementSequence statementSequence = procedureEnvironment.getStatementSequence();
-      Procedure procedureToRun = new Procedure(formalParameters, declarations, procedureDeclarations, statementSequence, procedureEnvironment.getParent());
-      procedureToRun.declare();
-      if(actualParameters != null && actualParameters.size() > 0)
-      {
-         setParametersValue(procedureToRun,environment);
-      }
-      procedureToRun.run();      
-   }
+		this.callTo = callTo;
+		this.actualParameters = actualParameters;
 
-   private void setParametersValue(Procedure procedure,Environment environment)
-   {
-      ListIterator<ActualParameter> actuals = actualParameters.listIterator();     
-      FormalParameters formals = procedure.getFormalParameters(); 
-      
-      for(FPSection fPSection : formals)
-      {
-         for(String parameterName : fPSection.getNames())
-         {
-            if(!actuals.hasNext())
-            {
-               throw new RuntimeException();
-            }
-            ActualParameter actual = actuals.next();
-            switch(fPSection.getParameterDirection())
-            {
-               case IN:
-                  declareValue(procedure,environment,actual,parameterName);
-                  break;
-               case INOUT:
-                  declareByRef(procedure,environment,actual, parameterName);
-                  default:
-            }
-         }
-      }
-    }
+	}
 
-   @SuppressWarnings("rawtypes")
-   private void declareByRef(Procedure procedure, Environment environment, ActualParameter actual, String parameterName)
-   {
-      LookUpEvaluator expression = (LookUpEvaluator) actual.getExpression();
-      Reference reference = expression.lvalueOf(environment);
-      procedure.assignActualParameterReference(parameterName, reference);;
-      
-   }
+	public boolean addActualParameter(ActualParameter parameter) {
+		return this.actualParameters.add(parameter);
+	}
 
-   private void declareValue(Procedure procedure, Environment environment, ActualParameter actual, String parameterName)
-   {
-      Evaluator expression = actual.getExpression();
-      Value value = expression.evaluate(environment);
-      procedure.assignValueToParameter(parameterName, value);
-      
-   }
-   
+	public void setCallTo(String callTo) {
+		this.callTo = callTo;
+	}
+
+	public String getCallTo() {
+		return callTo;
+	}
+
+	public void setActualParameters(List<ActualParameter> actualParameters) {
+		this.actualParameters = actualParameters;
+	}
+
+	public List<ActualParameter> getActualParameters() {
+		return actualParameters;
+	}
+
+	@Override
+	public void evaluate(Environment environment) {
+		assert (environment != null) : "Error in ProcedureCall method evaluate. Parameter environment is null!";
+
+		Procedure procedureEnvironment = environment.lookUpProcedure(callTo);
+		FormalParameters formalParameters = procedureEnvironment
+				.getFormalParameters();
+		List<Declaration> declarations = procedureEnvironment.getDeclarations();
+		List<ProcedureDeclaration> procedureDeclarations = procedureEnvironment
+				.getProcedureDeclarations();
+		StatementSequence statementSequence = procedureEnvironment
+				.getStatementSequence();
+		Procedure procedureToRun = new Procedure(formalParameters,
+				declarations, procedureDeclarations, statementSequence,
+				procedureEnvironment.getParent());
+		procedureToRun.declare();
+		if (actualParameters != null && actualParameters.size() > 0) {
+			setParametersValue(procedureToRun, environment);
+		}
+		procedureToRun.run();
+	}
+
+	private void setParametersValue(Procedure procedure, Environment environment) {
+		ListIterator<ActualParameter> actuals = actualParameters.listIterator();
+		FormalParameters formals = procedure.getFormalParameters();
+
+		for (FPSection fPSection : formals) {
+			for (String parameterName : fPSection.getNames()) {
+				if (!actuals.hasNext()) {
+					throw new RuntimeException();
+				}
+				ActualParameter actual = actuals.next();
+				switch (fPSection.getParameterDirection()) {
+				case IN:
+					declareValue(procedure, environment, actual, parameterName);
+					break;
+				case INOUT:
+					declareByRef(procedure, environment, actual, parameterName);
+				default:
+				}
+			}
+		}
+	}
+
+	@SuppressWarnings("rawtypes")
+	private void declareByRef(Procedure procedure, Environment environment,
+			ActualParameter actual, String parameterName) {
+		LookUpEvaluator expression = (LookUpEvaluator) actual.getExpression();
+		Reference reference = expression.lvalueOf(environment);
+		procedure.assignActualParameterReference(parameterName, reference);
+		;
+
+	}
+
+	private void declareValue(Procedure procedure, Environment environment,
+			ActualParameter actual, String parameterName) {
+		Evaluator expression = actual.getExpression();
+		Value value = expression.evaluate(environment);
+		procedure.assignValueToParameter(parameterName, value);
+
+	}
+
 }

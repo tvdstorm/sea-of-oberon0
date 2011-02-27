@@ -5,7 +5,6 @@ import java.util.HashMap;
 import com.kootsjur.oberon.environment.Parameter;
 
 @SuppressWarnings({ "serial", "rawtypes" })
-public class DeclaredParameters extends HashMap<String, Parameter >
-{
+public class DeclaredParameters extends HashMap<String, Parameter> {
 
 }

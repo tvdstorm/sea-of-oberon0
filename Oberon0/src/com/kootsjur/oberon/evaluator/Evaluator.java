@@ -4,6 +4,6 @@ import com.kootsjur.oberon.environment.Environment;
 import com.kootsjur.oberon.value.Value;
 
 public interface Evaluator {
-   
-   Value evaluate(Environment environment);
+
+	Value evaluate(Environment environment);
 }

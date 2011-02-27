@@ -7,9 +7,9 @@ public class Int extends Value {
 	public Int(int value) {
 		this.value = value;
 	}
-	
+
 	public Integer getValue() {
 		return value;
 	}
-	
+
 }

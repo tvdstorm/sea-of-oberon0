@@ -12,66 +12,62 @@ import java.io.StringWriter;
 
 import org.antlr.runtime.RecognitionException;
 
-public abstract class AbstractOberon  {
+public abstract class AbstractOberon {
 	protected final BufferedReader stdin;
 	protected final PrintWriter stdout;
 
 	protected AbstractOberon() {
-		this(new BufferedReader(new InputStreamReader(System.in)), new PrintWriter(System.out));
+		this(new BufferedReader(new InputStreamReader(System.in)),
+				new PrintWriter(System.out));
 	}
-	
+
 	protected AbstractOberon(BufferedReader input, PrintWriter output) {
 		this.stdin = input;
 		this.stdout = output;
 	}
-	
-	public void run(File file, String ...inputs) {
+
+	public void run(File file, String... inputs) {
 		String str = "";
 		for (int i = 0; i < inputs.length; i++) {
-			str +=  inputs[i] + "\n";
+			str += inputs[i] + "\n";
 		}
 		run(file, str);
 	}
-	
+
 	public void run(File file, String input) {
 		BufferedReader stdin = new BufferedReader(new StringReader(input));
 		run(file, stdin);
 	}
-	
+
 	public String runIntoString(File file, String input) {
 		StringWriter writer = new StringWriter();
 		run(file, input, new PrintWriter(writer));
 		return writer.toString();
 	}
-	
+
 	public void run(File file, String input, PrintWriter output) {
 		BufferedReader stdin = new BufferedReader(new StringReader(input));
-		run(file, stdin, output);		
+		run(file, stdin, output);
 	}
-	
+
 	public void run(File file) {
 		run(file, stdin);
 	}
-	
-	public void run(File file, BufferedReader input)  {
+
+	public void run(File file, BufferedReader input) {
 		run(file, input, stdout);
 	}
-	
-	
+
 	public void run(File file, BufferedReader input, PrintWriter output) {
 		FileInputStream src = null;
 		try {
 			src = new FileInputStream(file);
-         evaluate(src, input, output);
-		}
-		catch (IOException e) {
+			evaluate(src, input, output);
+		} catch (IOException e) {
 			throw new RuntimeException(e);
-		}
-		catch (RecognitionException e)
-      {
-         e.printStackTrace();
-      }
-		finally {
+		} catch (RecognitionException e) {
+			e.printStackTrace();
+		} finally {
 			if (src != null) {
 				try {
 					src.close();
@@ -82,7 +78,8 @@ public abstract class AbstractOberon  {
 		}
 	}
 
+	protected abstract void evaluate(InputStream src, BufferedReader input,
+			PrintWriter output) throws IOException, RecognitionException;
 
-	protected abstract void evaluate(InputStream src, BufferedReader input, PrintWriter output) throws IOException, RecognitionException;
 	public abstract String getName();
 }
