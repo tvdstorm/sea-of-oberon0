@@ -15,8 +15,9 @@ public class ConstDeclaration implements IDeclaration {
 	
 	@Override
 	public Object evaluate(IScope scope) {
-		scope.SetVarValue(this.name, this.value);
-		return value.evaluate(scope);
+		Object result = value.evaluate(scope);
+		scope.SetVarValue(this.name, result, null, scope);
+		return result;
 	}
 	@Override
 	public String toString() {
@@ -34,7 +35,7 @@ public class ConstDeclaration implements IDeclaration {
 	}
 	@Override
 	public void AddToScope(IScope scope) {
-		scope.AddToScope(this.name);
+		scope.AddToScope(this.name, null);
 		
 	}
 }

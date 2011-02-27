@@ -34,24 +34,39 @@ public class ProcedureBody implements IEvaluator, IScope, Serializable {
 		return null;
 	}
 	@Override
-	public Object GetVarValue(String varName) {
+	public Object GetVarValue(String varName, ISelector selector, IScope scope) {
 		Object result = refs.get(varName);
-		if(result == null) result = this.parentScope.GetVarValue(varName);
+		if(result == null){
+			result = this.parentScope.GetVarValue(varName, selector, scope);
+		} else if(selector != null && result != null && !VariableRef.IsMyType(result)) {
+			result = ((ISelectable)result).get(selector, this);
+		}
+		if(VariableRef.IsMyType(result) && selector != null) {
+			((VariableRef)result).selector = selector;
+		}
 		return result;
 	}
 	@Override
-	public void SetVarValue(String varName, Object value) {
+	public void SetVarValue(String varName, Object value, ISelector selector, IScope scope) {
+
 		if(!refs.containsKey(varName)) {
-			parentScope.SetVarValue(varName, value);
+			parentScope.SetVarValue(varName, value, selector, scope);
 		} else {
+			
+			Object var = refs.get(varName);
+			if(selector != null && var != null) {
+				((ISelectable)var).put(selector, value, scope);
+				value = var;
+			}
+			
 			this.refs.put(varName, value);
 		}	
 	}
 
 	@Override
-	public void AddToScope(String varName) {
+	public void AddToScope(String varName, IType type) {
 		if(!refs.containsKey(varName)) {
-			this.refs.put(varName, null);
+			this.refs.put(varName, type);
 		}
 	}
 	@Override
@@ -64,7 +79,7 @@ public class ProcedureBody implements IEvaluator, IScope, Serializable {
 	}
 	@Override
 	public ProcedureDeclaration GetProcedure(String procedureName) {
-		return (ProcedureDeclaration)GetVarValue(procedureName);
+		return (ProcedureDeclaration)GetVarValue(procedureName, null, null);
 	}
 	public String toString(){
 		String result = "PROCBODY: ";
