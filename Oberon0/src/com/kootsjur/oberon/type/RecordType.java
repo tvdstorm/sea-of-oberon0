@@ -3,6 +3,7 @@ package com.kootsjur.oberon.type;
 import java.util.List;
 
 import com.kootsjur.oberon.environment.Environment;
+import com.kootsjur.oberon.value.Field;
 import com.kootsjur.oberon.value.FieldList;
 import com.kootsjur.oberon.value.Record;
 import com.kootsjur.oberon.value.Value;
@@ -31,7 +32,7 @@ public class RecordType extends TypeDefinition
          Value value = field.getTypeDefinition().initValue(environment);
          for(String name : field.getNames())
          {
-            record.set(name, value);
+            record.set(new Field(name), value);
          }
       }
       return record;

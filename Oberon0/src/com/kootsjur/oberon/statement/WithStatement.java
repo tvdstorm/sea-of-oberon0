@@ -4,7 +4,6 @@ import java.util.Map;
 import com.kootsjur.oberon.environment.Environment;
 import com.kootsjur.oberon.environment.Reference;
 import com.kootsjur.oberon.evaluator.Evaluator;
-import com.kootsjur.oberon.value.Field;
 import com.kootsjur.oberon.value.Record;
 import com.kootsjur.oberon.value.Value;
 
@@ -35,11 +34,11 @@ public class WithStatement extends Statement {
 		
 		Record record = (Record) recordExpression.evaluate(environment);
 		Environment withEnvironment = new Environment(environment);
-		Map<Field,Reference> fieldReferenceMap = record.getFields();
-		for(Field field : fieldReferenceMap.keySet())
+		Map<String,Reference> fieldReferenceMap = record.getFields();
+		for(String field : fieldReferenceMap.keySet())
 		{
 			Reference reference = fieldReferenceMap.get(field);
-			withEnvironment.declareVarByReference(field.getName(),reference);
+			withEnvironment.declareVarByReference(field,reference);
 		}
 		statementSequence.evaluate(withEnvironment);
 	}

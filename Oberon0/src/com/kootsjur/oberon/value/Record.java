@@ -9,25 +9,33 @@ import com.kootsjur.oberon.environment.Reference;
 public class Record extends Value
 {
    @SuppressWarnings("rawtypes")
-   private HashMap<Field, Reference> fields;
+   private HashMap<String, Reference> fields;
    
    @SuppressWarnings("rawtypes")
    public Record(List<FieldList> fieldList)
    {
-      fields = new HashMap<Field, Reference>();
+      fields = new HashMap<String, Reference>();
       for(FieldList field : fieldList)
       {
          for(String fieldName : field.getNames())
          {
-            fields.put(new Field(fieldName),new Reference());
+            fields.put(fieldName,new Reference());
          }
       }
    }
    
    @SuppressWarnings("unchecked")
-   public void set(String name, Value value) 
+   public void set(Field field, Value value) 
    {
-      Field field = new Field(name);
+      if(fields.containsKey(field.getName()))
+      {
+         fields.get(field.getName()).setValue(value);
+      }           
+   }
+   
+   @SuppressWarnings("unchecked")
+   public void set(String field, Value value) 
+   {
       if(fields.containsKey(field))
       {
          fields.get(field).setValue(value);
@@ -41,7 +49,7 @@ public class Record extends Value
    }
    
    @SuppressWarnings("rawtypes")
-   public Map<Field,Reference> getFields()
+   public Map<String,Reference> getFields()
    {
 	   return fields;
    }

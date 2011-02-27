@@ -22,6 +22,7 @@ import com.kootsjur.oberon.type.TypeDefinition;
 import com.kootsjur.oberon.type.UserType;
 import com.kootsjur.oberon.value.Array;
 import com.kootsjur.oberon.value.Bool;
+import com.kootsjur.oberon.value.Field;
 import com.kootsjur.oberon.value.Int;
 import com.kootsjur.oberon.value.Record;
 import com.kootsjur.oberon.value.Value;
@@ -360,6 +361,12 @@ public class Environment
       array.set(selector.getValue(), value);
    }
    
+   public void assignValue(String name, Field recordSelector, Value value)
+   {
+		Record record = (Record) this.lookUpValue(name);
+		record.set(recordSelector, value);
+   }  
+   
    @SuppressWarnings({ "unchecked", "rawtypes" })
    public void assignValue(String name, Int[] selectors, Value value)
    {
@@ -389,7 +396,7 @@ public class Environment
       {
          if(parentEnvironment != null)
          {
-            assignValue(name, value);
+        	 parentEnvironment.assignValue(name, value);
          }
       }
    }
@@ -508,5 +515,6 @@ public class Environment
          Var var = new Var();
          var.setReference(reference);
          declareVar(name,var);    
-   }  
+   }
+
 }

@@ -1,13 +1,12 @@
 package com.kootsjur.oberon.statement;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import com.kootsjur.oberon.environment.Environment;
 import com.kootsjur.oberon.evaluator.BracketSelectorEvaluator;
-import com.kootsjur.oberon.evaluator.RecordSelectorEvaluator;
+import com.kootsjur.oberon.evaluator.DotSelectorEvaluator;
 import com.kootsjur.oberon.evaluator.Evaluator;
 import com.kootsjur.oberon.evaluator.ExpressionEvaluator;
 import com.kootsjur.oberon.evaluator.SelectorEvaluator;
+import com.kootsjur.oberon.value.Field;
 import com.kootsjur.oberon.value.Int;
 import com.kootsjur.oberon.value.Value;
 
@@ -62,7 +61,7 @@ public class Assignment extends Statement
       {
          assignValueWithBracketSelector(value,environment);
          
-      }else if(selector instanceof RecordSelectorEvaluator)
+      }else if(selector instanceof DotSelectorEvaluator)
       {
          assignValueWithDotSelector(value,environment);
       }
@@ -70,12 +69,13 @@ public class Assignment extends Statement
 
    private void assignValueWithDotSelector(Value value, Environment environment)
    {
-      throw new NotImplementedException();
+      Field recordSelector = ((DotSelectorEvaluator) selector).evaluate(environment);
+      environment.assignValue(name,recordSelector,value);
    }
 
    private void assignValueWithBracketSelector(Value value, Environment environment)
    {
-      Int arraySelector = (Int) selector.evaluate(environment);
+      Int arraySelector = ((BracketSelectorEvaluator) selector).evaluate(environment);
       environment.assignValue(name, arraySelector, value);
    }
 }

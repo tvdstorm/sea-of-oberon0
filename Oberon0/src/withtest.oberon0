@@ -1,0 +1,33 @@
+MODULE WithTest;
+
+CONST
+  INPUTLENGTH = 5;
+
+VAR
+  input: ARRAY INPUTLENGTH OF INTEGER;
+  record: RECORD field1, field2, field3, field4, field5 :INTEGER END;
+  return, i: INTEGER;
+
+BEGIN
+ i := 0;
+ WHILE i < INPUTLENGTH DO
+   Read(input[i]);
+   i := i + 1
+ END;
+
+IF INPUTLENGTH > 4 THEN
+  	record.field1 := input[0];
+	record.field2 := input[1];
+	record.field3 := input[2];
+	record.field4 := input[3];
+	record.field5 := input[4]
+END;
+
+WITH record DO
+	return := (field1+field2+field3+field4)*field5
+END;
+
+Write(return);
+WriteLn()
+
+END WithTest.
