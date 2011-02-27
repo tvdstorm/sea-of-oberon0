@@ -4,7 +4,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import com.kootsjur.oberon.environment.Environment;
 import com.kootsjur.oberon.evaluator.BracketSelectorEvaluator;
-import com.kootsjur.oberon.evaluator.DotSelectorEvaluator;
+import com.kootsjur.oberon.evaluator.RecordSelectorEvaluator;
 import com.kootsjur.oberon.evaluator.Evaluator;
 import com.kootsjur.oberon.evaluator.ExpressionEvaluator;
 import com.kootsjur.oberon.evaluator.SelectorEvaluator;
@@ -19,8 +19,6 @@ public class Assignment extends Statement
    
    public Assignment(String name, Evaluator expression)
    {
-      super(StatementType.ASSIGNMENT);
-      
       assert(name != null):"Error!Parameter in name in Assignment Constructor is null!";
       assert(expression != null):"Error!Parameter expression in Assignment Constructor is null!";
       
@@ -64,7 +62,7 @@ public class Assignment extends Statement
       {
          assignValueWithBracketSelector(value,environment);
          
-      }else if(selector instanceof DotSelectorEvaluator)
+      }else if(selector instanceof RecordSelectorEvaluator)
       {
          assignValueWithDotSelector(value,environment);
       }
