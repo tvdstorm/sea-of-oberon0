@@ -23,16 +23,20 @@ public class Assignment implements IStatement {
 		//selector.evaluate(scope);
 		IScope destScope = scope;
 		String leftName = this.varName;
-		Object leftRef = scope.GetVarValue(this.varName);
+		ISelector selector = this.selector;
+		Object leftRef = scope.GetVarValue(this.varName, null, scope);
 		if(leftRef!=null && leftRef.getClass().getName().equals("edu.uva.sc.oberon0.Evaluators.Structural.VariableRef")){
+			VariableRef rootLeftRef = ((VariableRef)leftRef).GetRootRef(scope);
+			rootLeftRef.selector = ((VariableRef)leftRef).selector;
+			leftRef = (rootLeftRef != null)? rootLeftRef : leftRef;
 			leftName = ((VariableRef)leftRef).name; 
 			destScope = (((VariableRef)leftRef).scope != null)?((VariableRef)leftRef).scope : scope;
+			selector = (((VariableRef)leftRef).selector != null)?((VariableRef)leftRef).selector : selector;
 		}
+
 		Object value = this.value.evaluate(scope);
-		//if(value!=null && value.getClass().getName().equals("edu.uva.sc.oberon0.Evaluators.Structural.VariableRef")){
-		//	value = ((VariableRef)value).evaluate(scope); 
-		//}
-		destScope.SetVarValue(leftName, value);
+
+		destScope.SetVarValue(leftName, value, selector, scope);
 		return null;
 	}
 }

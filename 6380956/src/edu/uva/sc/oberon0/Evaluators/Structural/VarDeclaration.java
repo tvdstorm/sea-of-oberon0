@@ -30,7 +30,7 @@ public class VarDeclaration implements IDeclaration {
 	@Override
 	public void AddToScope(IScope scope) {
 		for (String name : names) {
-			scope.AddToScope(name);
+			scope.AddToScope(name, type);
 		}
 		
 	}

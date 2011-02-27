@@ -26,18 +26,21 @@ public class ProcedureCall implements IStatement, IScope {
 		for (FormalParametersSection fps : proc.heading.GetParameters()) {
 			for (String formalParamName : fps.GetFormalParameters()) {
 				Object actualParamValue = this.parameters.get(index);
+				ISelector selector = null;
 				if(!fps.isByRef){
 					actualParamValue = this.parameters.get(index).evaluate(scope);
 				} else{
 					((VariableRef)actualParamValue).SetScope(scope);
+					selector = ((VariableRef)actualParamValue).selector;
 				}
 						
-				AddToScope(formalParamName);
-				SetVarValue(formalParamName, actualParamValue);
+				AddToScope(formalParamName, fps.formalParametersSectionType);
+				SetVarValue(formalParamName, actualParamValue, selector, scope);
 				
 				index++;
 			}
 		}
+
 		ProcedureBody procBody = null;
 		try {
 			procBody = (ProcedureBody)ObjectCloner.deepCopy(proc.body);
@@ -50,25 +53,35 @@ public class ProcedureCall implements IStatement, IScope {
 	}
 
 	@Override
-	public Object GetVarValue(String varName) {
+	public Object GetVarValue(String varName, ISelector selector, IScope scope) {
 		Object result = refs.get(varName);
-		if(result == null) result = this.parentScope.GetVarValue(varName);
+		if(result == null){
+			result = this.parentScope.GetVarValue(varName, selector, scope);
+		} else if(selector != null && result != null && !VariableRef.IsMyType(result)) {
+			result = ((ISelectable)result).get(selector, this);
+		}
+		if(VariableRef.IsMyType(result) && selector != null) {
+			((VariableRef)result).selector = selector;
+		}
 		return result;
+		
 	}
 
 	@Override
-	public void SetVarValue(String varName, Object value) {
+	public void SetVarValue(String varName, Object value, ISelector selector, IScope scope) {
+		
 		if(!refs.containsKey(varName)) {
-			parentScope.SetVarValue(varName, value);
+			parentScope.SetVarValue(varName, value, selector, scope);
 		} else {
+			
 			this.refs.put(varName, value);
 		}	
 	}
 
 	@Override
-	public void AddToScope(String varName) {
+	public void AddToScope(String varName, IType type) {
 		if(!refs.containsKey(varName)) {
-			this.refs.put(varName, null);
+			this.refs.put(varName, type);
 		}
 	}
 	@Override
@@ -83,6 +96,6 @@ public class ProcedureCall implements IStatement, IScope {
 
 	@Override
 	public ProcedureDeclaration GetProcedure(String procedureName) {
-		return (ProcedureDeclaration)GetVarValue(procedureName);
+		return (ProcedureDeclaration)GetVarValue(procedureName, null, null);
 	}
 }

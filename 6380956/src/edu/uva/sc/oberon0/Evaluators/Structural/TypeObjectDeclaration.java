@@ -28,7 +28,7 @@ public class TypeObjectDeclaration implements IDeclaration {
 	}
 	@Override
 	public void AddToScope(IScope scope) {
-		scope.AddToScope(this.name);
+		scope.AddToScope(this.name, this.type);
 		
 	}
 }

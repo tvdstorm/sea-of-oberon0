@@ -21,12 +21,12 @@ public class ProcedureDeclaration implements IDeclaration {
 	public Object evaluate(IScope scope) {
 		heading.evaluate(scope);
 		//body.evaluate(scope);
-		scope.SetVarValue(heading.GetName(), this);
+		scope.SetVarValue(heading.GetName(), this, null, scope);
 		return null;
 	}
 	@Override
 	public void AddToScope(IScope scope) {
-		scope.AddToScope(this.heading.GetName());
+		scope.AddToScope(this.heading.GetName(), null);
 		
 	}
 	public String toString(){

@@ -49,7 +49,7 @@ public class Module implements IEvaluator, IScope {
 		ProcedureBody body = new ProcedureBody(null, sttmnts);
 		ProcedureDeclaration procDecl = new ProcedureDeclaration(heading, body, null);
 		procDecl.AddToScope(this);
-		SetVarValue("Write", procDecl);
+		SetVarValue("Write", procDecl, null, null);
 	}
 
 	@Override
@@ -64,21 +64,30 @@ public class Module implements IEvaluator, IScope {
 	}
 
 	@Override
-	public Object GetVarValue(String varName) {
-		return refs.get(varName);
+	public Object GetVarValue(String varName, ISelector selector, IScope scope) {
+		Object result = refs.get(varName);
+		if(selector != null && result != null) {
+			result = ((ISelectable)result).get(selector, scope);
+		}
+		return result;
 	}
 
 	@Override
-	public void SetVarValue(String varName, Object value) {
+	public void SetVarValue(String varName, Object value, ISelector selector, IScope scope) {
 		if(refs.containsKey(varName)) {
+			Object var = refs.get(varName);
+			if(selector != null && var != null) {
+				((ISelectable)var).put(selector, value, scope);
+				value = var;
+			}
 			this.refs.put(varName, value);
 		}
 	}
 
 	@Override
-	public void AddToScope(String varName) {
+	public void AddToScope(String varName, IType type) {
 		if(!refs.containsKey(varName)) {
-			this.refs.put(varName, null);
+			this.refs.put(varName, type);
 		}
 	}
 	
@@ -96,7 +105,7 @@ public class Module implements IEvaluator, IScope {
 
 	@Override
 	public ProcedureDeclaration GetProcedure(String procedureName) {
-		return (ProcedureDeclaration)GetVarValue(procedureName);
+		return (ProcedureDeclaration)GetVarValue(procedureName, null, this);
 	}
 
 }
