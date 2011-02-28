@@ -8,23 +8,27 @@ public class AnExpression implements IType {
 	private IType rhs;
 	private int op;
 	private int numVals;
+	private String stringRepresentation; 
 	
-	public AnExpression(int op, IType lhs, IType rhs){
+	public AnExpression(int op, IType lhs, IType rhs, String stringRep){
 		this.op = op;
 		this.lhs = lhs;
 		this.rhs = rhs;
 		this.numVals = 3;
+		this.stringRepresentation = stringRep;
 	}
 	
-	public AnExpression(int op, IType lhs){
+	public AnExpression(int op, IType lhs, String stringRep){
 		this.op = op;
 		this.lhs = lhs;
 		this.numVals = 2;
+		this.stringRepresentation = stringRep;
 	}
 	
-	public AnExpression(IType rhs){
-		this.lhs = rhs;
+	public AnExpression(IType lhs, String stringRep){
+		this.lhs = lhs;
 		this.numVals = 1;
+		this.stringRepresentation = stringRep;
 	}
 	
 	@Override
@@ -43,6 +47,10 @@ public class AnExpression implements IType {
 		}
 	}
 	
+	@Override
+	public String toString(){
+		return this.stringRepresentation;
+	}
 	
 	private ValueType getOpType(){
 		switch(this.op){
@@ -71,20 +79,11 @@ public class AnExpression implements IType {
 	@Override
 	//Check wheter or not the types match. If they do then return the type. Else throw an exception
 	public ValueType getType() throws Exception {
-		ValueType opType;
-		checkForNullReference();
 		if (this.numVals == 1) {
-			return this.rhs.getType();
-		} else if (this.numVals == 2) {
-			opType = getOpType();
-			if (typesMatch(opType, rhs.getType()))
-				return opType;
+			return this.lhs.getType();
 		} else {
-			opType = getOpType();
-			if (typesMatch(opType, lhs.getType(), rhs.getType()))
-				return opType;
+			return getOpType();
 		}
-		throw new Exception("Type mismatch");
 	}
 	
 	
@@ -109,4 +108,32 @@ public class AnExpression implements IType {
 		return this.eval(env).operate(op, secondVal, env);
 	}
 	
+	public AnIdent getIdent(AnEnvironment env) throws Exception{
+		assert(this.numVals == 1);
+		if (this.lhs.getClass() == AnIdent.class){
+			return (AnIdent) this.lhs;
+		} else {
+			return null;
+		}
+	}
+
+	@Override
+	public void typeCheck(AnEnvironment env) throws Exception {
+		checkForNullReference();
+		ValueType opType;
+		lhs.typeCheck(env);
+		
+		if (this.numVals == 1) {
+			this.lhs.typeCheck(env);
+		} else if (this.numVals == 2) {
+			opType = getOpType();
+			typesMatch(opType, lhs.getType());
+		} else {
+			opType = getOpType();
+			typesMatch(opType, lhs.getType(), rhs.getType());
+			rhs.typeCheck(env);
+		}
+	}
+	
+
 }

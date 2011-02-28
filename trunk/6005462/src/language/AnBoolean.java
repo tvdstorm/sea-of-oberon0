@@ -41,8 +41,17 @@ public class AnBoolean implements IType {
 
 	@Override
 	public AnValue eval(AnEnvironment env) throws Exception {
-		return null;
+		return new AnValue(this.value);
+	}
+
+	@Override
+	public void typeCheck(AnEnvironment env) {
+		return;
 	}
 	
+	@Override
+	public String toString(){
+		return "Boolean: " + this.getValue();
+	}
 
 }

@@ -4,8 +4,8 @@ public class AnIdent implements IType {
 	protected AnValue value;
 	protected String name;
 	protected ValueType valType;
-	private boolean isVar;
-	private boolean isConst;
+	protected boolean isVar;
+	protected boolean isConst;
 	
 	public AnIdent(String name, ValueType valType){
 		this.name = name;
@@ -16,6 +16,8 @@ public class AnIdent implements IType {
 	}
 	
 	public void assign(AnValue value) throws Exception{
+		assert(value != null);
+		
 		if (valType == ValueType.UNDETERMINED){
 			this.valType = value.getType();
 		} else if (value.getType() != valType) {
@@ -30,30 +32,39 @@ public class AnIdent implements IType {
 	
 	@Override
 	public AnValue eval(AnEnvironment env) throws Exception {
-		if (value == null){
-			throw new Exception("Null reference: " + name);
-		} else {
-			return value.eval(env);
-		}
+		checkForNullReference(env);
+		return value.eval(env);
 	}
 
 	@Override
 	public ValueType getType() throws Exception {
-		/*if (value == null){
-			throw new Exception("Null reference: " + name);
-		} else {
-			return value.getType();
-		}*/
 		return this.valType;
 	}
+	
+	public void linkToEnvironment(AnEnvironment env) throws Exception{
+		AnIdent ident = env.getIdent(this.getName());
+		if (ident != null){
+			this.name = ident.name;
+			this.valType = ident.valType;
+			this.value = ident.value;
+			this.isVar = ident.isVar;
+			this.isConst = ident.isConst;
+		}
+	}
 
+	private void checkForNullReference(AnEnvironment env) throws Exception{
+		if (this.getValue() == null){
+			this.linkToEnvironment(env);
+			if (this.getValue() == null){
+				throw new Exception("Null reference: " + name);
+			}
+		}
+	}
+	
 	@Override
 	public AnValue operate(int op, AnValue secondVal, AnEnvironment env) throws Exception {
-		if (value == null){
-			throw new Exception("Null reference: " + name);
-		} else {
-			return this.value.operate(op, secondVal, env);
-		}
+		checkForNullReference(env);
+		return this.value.operate(op, secondVal, env);
 	}
 	
 	public AnValue getValue(){
@@ -74,5 +85,30 @@ public class AnIdent implements IType {
 	
 	public boolean isConst(){
 		return this.isConst;
+	}
+	
+	public boolean hasValue(){
+		return (this.value != null);
+	}
+
+	@Override
+	public void typeCheck(AnEnvironment env) throws Exception {
+		if (this.valType == ValueType.UNDETERMINED){
+			this.linkToEnvironment(env);
+		}
+		
+		if (this.value != null && this.valType != this.value.getType()) {
+			throw new Exception ("Types dont match up for " + this.getName() + " " + value.toString());
+		}
+	}
+	
+	@Override
+	public String toString(){
+		if (this.getValue() != null){
+			return this.getName() + " = " + this.getValue().toString();
+		} else {
+			return this.getName();
+		}
+		
 	}
 }

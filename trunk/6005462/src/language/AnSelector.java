@@ -1,7 +1,7 @@
 package language;
 
-import java.util.HashMap;
-import java.util.Map;
+//import java.util.HashMap;
+//import java.util.Map;
 
 public class AnSelector implements IAstNode {
 /*
@@ -22,5 +22,11 @@ public class AnSelector implements IAstNode {
 	public IAstNode eval(AnEnvironment env) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void typeCheck(AnEnvironment env) throws Exception {
+		// TODO Auto-generated method stub
+		
 	}
 }
