@@ -2,8 +2,6 @@ package language;
 
 import java.util.Stack;
 
-import javax.naming.Context;
-
 public class AnEnvironment implements IAstNode {
 
 	private Stack<AnContext> contexts;
@@ -49,7 +47,7 @@ public class AnEnvironment implements IAstNode {
 		AnContext ctx;
 		AnProcDecl proc = null;
 		
-		for (int i = sz; i > 0; i--){
+		for (int i = sz; i >= 0; i--){
 			ctx = contexts.get(i);
 			if (ctx != null){
 				proc = ctx.getProc(name);
@@ -85,4 +83,17 @@ public class AnEnvironment implements IAstNode {
 		//Which it obviously is.
 		return ident; 
 	}
+
+	@Override
+	public void typeCheck(AnEnvironment env) throws Exception {
+		AnContext ctx;
+		int sz = contexts.size() - 1;
+		for (int i = sz; i >= 0; i--){
+			ctx = contexts.get(i);
+			if (ctx != null){
+				ctx.typeCheck(env);
+			}
+		}
+		
+	} 
 }

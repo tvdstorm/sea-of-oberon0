@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AnContext {
+public class AnContext implements IAstNode{
 
 	private Map<String, AnIdent> memIdents;
 	private Map<String, AnProcDecl> memProcs;
@@ -61,6 +61,26 @@ public class AnContext {
 	
 	public AnTypeDecl getType(String name){
 		return memTypes.get(name);
+	}
+
+
+
+	@Override
+	public IAstNode eval(AnEnvironment env) throws Exception {
+		return null;
+	}
+
+	@Override
+	public void typeCheck(AnEnvironment env) throws Exception {		
+		for (AnIdent ident : memIdents.values()){
+			ident.typeCheck(env);
+		}
+		for (AnProcDecl proc : memProcs.values()){
+			proc.typeCheck(env);
+		}
+		for (AnTypeDecl typDecl : memTypes.values()){
+			typDecl.typeCheck(env);
+		}
 	}
 }
 
