@@ -60,7 +60,6 @@ public class Test {
 				"\nBEGIN"+
 					"\ni := 0;"+
 					"\nWHILE i < INPUTLENGTH DO"+
-						//"\ninput[i] := 4-i;"+ //TODO: !!!!!!READ funct
 						"\nRead(input[i]);"+
 						"\ni := i + 1"+
 					"\nEND;"+

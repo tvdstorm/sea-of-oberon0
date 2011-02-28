@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:50:56 F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g 2011-02-28 01:40:58
+// $ANTLR 3.3 Nov 30, 2010 12:50:56 C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g 2011-02-28 10:05:45
 
   package edu.uva.sc.oberon0;
 
@@ -64,15 +64,15 @@ public class oberon0Lexer extends Lexer {
         super(input,state);
 
     }
-    public String getGrammarFileName() { return "F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g"; }
+    public String getGrammarFileName() { return "C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g"; }
 
     // $ANTLR start "T__7"
     public final void mT__7() throws RecognitionException {
         try {
             int _type = T__7;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:11:6: ( '(' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:11:8: '('
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:11:6: ( '(' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:11:8: '('
             {
             match('('); 
 
@@ -91,8 +91,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__8;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:12:6: ( ')' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:12:8: ')'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:12:6: ( ')' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:12:8: ')'
             {
             match(')'); 
 
@@ -111,8 +111,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__9;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:13:6: ( '~' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:13:8: '~'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:13:6: ( '~' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:13:8: '~'
             {
             match('~'); 
 
@@ -131,8 +131,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__10;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:14:7: ( '*' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:14:9: '*'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:14:7: ( '*' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:14:9: '*'
             {
             match('*'); 
 
@@ -151,8 +151,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__11;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:15:7: ( 'DIV' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:15:9: 'DIV'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:15:7: ( 'DIV' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:15:9: 'DIV'
             {
             match("DIV"); 
 
@@ -172,8 +172,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__12;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:16:7: ( 'MOD' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:16:9: 'MOD'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:16:7: ( 'MOD' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:16:9: 'MOD'
             {
             match("MOD"); 
 
@@ -193,8 +193,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__13;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:17:7: ( '&' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:17:9: '&'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:17:7: ( '&' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:17:9: '&'
             {
             match('&'); 
 
@@ -213,8 +213,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__14;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:18:7: ( '+' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:18:9: '+'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:18:7: ( '+' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:18:9: '+'
             {
             match('+'); 
 
@@ -233,8 +233,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__15;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:19:7: ( '-' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:19:9: '-'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:19:7: ( '-' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:19:9: '-'
             {
             match('-'); 
 
@@ -253,8 +253,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__16;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:20:7: ( 'OR' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:20:9: 'OR'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:20:7: ( 'OR' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:20:9: 'OR'
             {
             match("OR"); 
 
@@ -274,8 +274,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__17;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:21:7: ( '=' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:21:9: '='
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:21:7: ( '=' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:21:9: '='
             {
             match('='); 
 
@@ -294,8 +294,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__18;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:22:7: ( '#' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:22:9: '#'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:22:7: ( '#' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:22:9: '#'
             {
             match('#'); 
 
@@ -314,8 +314,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__19;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:23:7: ( '<' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:23:9: '<'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:23:7: ( '<' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:23:9: '<'
             {
             match('<'); 
 
@@ -334,8 +334,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__20;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:24:7: ( '<=' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:24:9: '<='
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:24:7: ( '<=' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:24:9: '<='
             {
             match("<="); 
 
@@ -355,8 +355,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__21;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:25:7: ( '>' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:25:9: '>'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:25:7: ( '>' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:25:9: '>'
             {
             match('>'); 
 
@@ -375,8 +375,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__22;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:26:7: ( '>=' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:26:9: '>='
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:26:7: ( '>=' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:26:9: '>='
             {
             match(">="); 
 
@@ -396,8 +396,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__23;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:27:7: ( '[' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:27:9: '['
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:27:7: ( '[' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:27:9: '['
             {
             match('['); 
 
@@ -416,8 +416,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__24;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:28:7: ( ']' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:28:9: ']'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:28:7: ( ']' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:28:9: ']'
             {
             match(']'); 
 
@@ -436,8 +436,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__25;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:29:7: ( '.' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:29:9: '.'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:29:7: ( '.' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:29:9: '.'
             {
             match('.'); 
 
@@ -456,8 +456,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__26;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:30:7: ( ':=' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:30:9: ':='
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:30:7: ( ':=' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:30:9: ':='
             {
             match(":="); 
 
@@ -477,8 +477,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__27;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:31:7: ( ',' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:31:9: ','
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:31:7: ( ',' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:31:9: ','
             {
             match(','); 
 
@@ -497,8 +497,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:32:7: ( 'IF' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:32:9: 'IF'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:32:7: ( 'IF' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:32:9: 'IF'
             {
             match("IF"); 
 
@@ -518,8 +518,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:33:7: ( 'THEN' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:33:9: 'THEN'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:33:7: ( 'THEN' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:33:9: 'THEN'
             {
             match("THEN"); 
 
@@ -539,8 +539,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:34:7: ( 'ELSIF' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:34:9: 'ELSIF'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:34:7: ( 'ELSIF' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:34:9: 'ELSIF'
             {
             match("ELSIF"); 
 
@@ -560,8 +560,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:35:7: ( 'ELSE' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:35:9: 'ELSE'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:35:7: ( 'ELSE' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:35:9: 'ELSE'
             {
             match("ELSE"); 
 
@@ -581,8 +581,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:36:7: ( 'END' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:36:9: 'END'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:36:7: ( 'END' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:36:9: 'END'
             {
             match("END"); 
 
@@ -602,8 +602,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__33;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:37:7: ( 'WHILE' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:37:9: 'WHILE'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:37:7: ( 'WHILE' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:37:9: 'WHILE'
             {
             match("WHILE"); 
 
@@ -623,8 +623,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:38:7: ( 'DO' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:38:9: 'DO'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:38:7: ( 'DO' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:38:9: 'DO'
             {
             match("DO"); 
 
@@ -644,8 +644,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__35;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:39:7: ( ';' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:39:9: ';'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:39:7: ( ';' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:39:9: ';'
             {
             match(';'); 
 
@@ -664,8 +664,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:40:7: ( 'ARRAY' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:40:9: 'ARRAY'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:40:7: ( 'ARRAY' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:40:9: 'ARRAY'
             {
             match("ARRAY"); 
 
@@ -685,8 +685,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__37;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:41:7: ( 'OF' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:41:9: 'OF'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:41:7: ( 'OF' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:41:9: 'OF'
             {
             match("OF"); 
 
@@ -706,8 +706,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__38;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:42:7: ( ':' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:42:9: ':'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:42:7: ( ':' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:42:9: ':'
             {
             match(':'); 
 
@@ -726,8 +726,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__39;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:43:7: ( 'RECORD' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:43:9: 'RECORD'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:43:7: ( 'RECORD' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:43:9: 'RECORD'
             {
             match("RECORD"); 
 
@@ -747,8 +747,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__40;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:44:7: ( 'VAR' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:44:9: 'VAR'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:44:7: ( 'VAR' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:44:9: 'VAR'
             {
             match("VAR"); 
 
@@ -768,8 +768,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__41;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:45:7: ( 'PROCEDURE' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:45:9: 'PROCEDURE'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:45:7: ( 'PROCEDURE' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:45:9: 'PROCEDURE'
             {
             match("PROCEDURE"); 
 
@@ -789,8 +789,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__42;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:46:7: ( 'BEGIN' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:46:9: 'BEGIN'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:46:7: ( 'BEGIN' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:46:9: 'BEGIN'
             {
             match("BEGIN"); 
 
@@ -810,8 +810,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__43;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:47:7: ( 'CONST' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:47:9: 'CONST'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:47:7: ( 'CONST' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:47:9: 'CONST'
             {
             match("CONST"); 
 
@@ -831,8 +831,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__44;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:48:7: ( 'TYPE' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:48:9: 'TYPE'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:48:7: ( 'TYPE' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:48:9: 'TYPE'
             {
             match("TYPE"); 
 
@@ -852,8 +852,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = T__45;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:49:7: ( 'MODULE' )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:49:9: 'MODULE'
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:49:7: ( 'MODULE' )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:49:9: 'MODULE'
             {
             match("MODULE"); 
 
@@ -873,10 +873,10 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = INTEGER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:25:9: ( ( '0' .. '9' )+ )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:25:11: ( '0' .. '9' )+
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:26:9: ( ( '0' .. '9' )+ )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:26:11: ( '0' .. '9' )+
             {
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:25:11: ( '0' .. '9' )+
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:26:11: ( '0' .. '9' )+
             int cnt1=0;
             loop1:
             do {
@@ -890,7 +890,7 @@ public class oberon0Lexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:25:11: '0' .. '9'
+            	    // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:26:11: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -922,8 +922,8 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = IDENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:26:7: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:26:9: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:27:7: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:27:9: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -934,7 +934,7 @@ public class oberon0Lexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:26:30: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:27:30: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -947,7 +947,7 @@ public class oberon0Lexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:
+            	    // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:
             	    {
             	    if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
             	        input.consume();
@@ -983,10 +983,10 @@ public class oberon0Lexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:27:4: ( ( ' ' | '\\n' | '\\r' | '\\f' | '\\t' )+ )
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:27:6: ( ' ' | '\\n' | '\\r' | '\\f' | '\\t' )+
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:28:4: ( ( ' ' | '\\n' | '\\r' | '\\f' | '\\t' )+ )
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:28:6: ( ' ' | '\\n' | '\\r' | '\\f' | '\\t' )+
             {
-            // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:27:6: ( ' ' | '\\n' | '\\r' | '\\f' | '\\t' )+
+            // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:28:6: ( ' ' | '\\n' | '\\r' | '\\f' | '\\t' )+
             int cnt3=0;
             loop3:
             do {
@@ -1000,7 +1000,7 @@ public class oberon0Lexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:
+            	    // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:
             	    {
             	    if ( (input.LA(1)>='\t' && input.LA(1)<='\n')||(input.LA(1)>='\f' && input.LA(1)<='\r')||input.LA(1)==' ' ) {
             	        input.consume();
@@ -1037,299 +1037,299 @@ public class oberon0Lexer extends Lexer {
     // $ANTLR end "WS"
 
     public void mTokens() throws RecognitionException {
-        // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:8: ( T__7 | T__8 | T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | INTEGER | IDENT | WS )
+        // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:8: ( T__7 | T__8 | T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | INTEGER | IDENT | WS )
         int alt4=42;
         alt4 = dfa4.predict(input);
         switch (alt4) {
             case 1 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:10: T__7
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:10: T__7
                 {
                 mT__7(); 
 
                 }
                 break;
             case 2 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:15: T__8
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:15: T__8
                 {
                 mT__8(); 
 
                 }
                 break;
             case 3 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:20: T__9
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:20: T__9
                 {
                 mT__9(); 
 
                 }
                 break;
             case 4 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:25: T__10
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:25: T__10
                 {
                 mT__10(); 
 
                 }
                 break;
             case 5 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:31: T__11
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:31: T__11
                 {
                 mT__11(); 
 
                 }
                 break;
             case 6 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:37: T__12
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:37: T__12
                 {
                 mT__12(); 
 
                 }
                 break;
             case 7 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:43: T__13
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:43: T__13
                 {
                 mT__13(); 
 
                 }
                 break;
             case 8 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:49: T__14
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:49: T__14
                 {
                 mT__14(); 
 
                 }
                 break;
             case 9 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:55: T__15
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:55: T__15
                 {
                 mT__15(); 
 
                 }
                 break;
             case 10 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:61: T__16
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:61: T__16
                 {
                 mT__16(); 
 
                 }
                 break;
             case 11 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:67: T__17
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:67: T__17
                 {
                 mT__17(); 
 
                 }
                 break;
             case 12 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:73: T__18
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:73: T__18
                 {
                 mT__18(); 
 
                 }
                 break;
             case 13 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:79: T__19
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:79: T__19
                 {
                 mT__19(); 
 
                 }
                 break;
             case 14 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:85: T__20
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:85: T__20
                 {
                 mT__20(); 
 
                 }
                 break;
             case 15 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:91: T__21
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:91: T__21
                 {
                 mT__21(); 
 
                 }
                 break;
             case 16 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:97: T__22
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:97: T__22
                 {
                 mT__22(); 
 
                 }
                 break;
             case 17 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:103: T__23
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:103: T__23
                 {
                 mT__23(); 
 
                 }
                 break;
             case 18 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:109: T__24
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:109: T__24
                 {
                 mT__24(); 
 
                 }
                 break;
             case 19 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:115: T__25
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:115: T__25
                 {
                 mT__25(); 
 
                 }
                 break;
             case 20 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:121: T__26
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:121: T__26
                 {
                 mT__26(); 
 
                 }
                 break;
             case 21 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:127: T__27
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:127: T__27
                 {
                 mT__27(); 
 
                 }
                 break;
             case 22 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:133: T__28
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:133: T__28
                 {
                 mT__28(); 
 
                 }
                 break;
             case 23 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:139: T__29
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:139: T__29
                 {
                 mT__29(); 
 
                 }
                 break;
             case 24 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:145: T__30
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:145: T__30
                 {
                 mT__30(); 
 
                 }
                 break;
             case 25 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:151: T__31
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:151: T__31
                 {
                 mT__31(); 
 
                 }
                 break;
             case 26 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:157: T__32
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:157: T__32
                 {
                 mT__32(); 
 
                 }
                 break;
             case 27 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:163: T__33
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:163: T__33
                 {
                 mT__33(); 
 
                 }
                 break;
             case 28 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:169: T__34
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:169: T__34
                 {
                 mT__34(); 
 
                 }
                 break;
             case 29 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:175: T__35
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:175: T__35
                 {
                 mT__35(); 
 
                 }
                 break;
             case 30 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:181: T__36
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:181: T__36
                 {
                 mT__36(); 
 
                 }
                 break;
             case 31 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:187: T__37
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:187: T__37
                 {
                 mT__37(); 
 
                 }
                 break;
             case 32 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:193: T__38
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:193: T__38
                 {
                 mT__38(); 
 
                 }
                 break;
             case 33 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:199: T__39
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:199: T__39
                 {
                 mT__39(); 
 
                 }
                 break;
             case 34 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:205: T__40
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:205: T__40
                 {
                 mT__40(); 
 
                 }
                 break;
             case 35 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:211: T__41
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:211: T__41
                 {
                 mT__41(); 
 
                 }
                 break;
             case 36 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:217: T__42
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:217: T__42
                 {
                 mT__42(); 
 
                 }
                 break;
             case 37 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:223: T__43
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:223: T__43
                 {
                 mT__43(); 
 
                 }
                 break;
             case 38 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:229: T__44
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:229: T__44
                 {
                 mT__44(); 
 
                 }
                 break;
             case 39 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:235: T__45
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:235: T__45
                 {
                 mT__45(); 
 
                 }
                 break;
             case 40 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:241: INTEGER
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:241: INTEGER
                 {
                 mINTEGER(); 
 
                 }
                 break;
             case 41 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:249: IDENT
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:249: IDENT
                 {
                 mIDENT(); 
 
                 }
                 break;
             case 42 :
-                // F:\\docs\\master\\SoftwareConstruction\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:255: WS
+                // C:\\anton\\oberon0\\src\\edu\\uva\\sc\\oberon0\\oberon0.g:1:255: WS
                 {
                 mWS(); 
 
