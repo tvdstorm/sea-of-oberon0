@@ -24,15 +24,20 @@ public class Assignment implements IStatement {
 	}
 	@Override
 	public Object evaluate(IScope scope) {
-		//selector.evaluate(scope);
+
 		IScope destScope = scope;
 		String leftName = this.varName;
 		ISelector selector = this.selector;
+		
 		Object leftRef = scope.GetVarValue(this.varName, null, scope);
-		if(leftRef!=null && VariableRef.IsMyType(leftRef)){
+		
+		if(leftRef!=null && VariableRef.IsMyType(leftRef)) {
+			
 			VariableRef rootLeftRef = ((VariableRef)leftRef).GetRootRef(scope);
 			rootLeftRef.selector = ((VariableRef)leftRef).selector;
+			
 			leftRef = (rootLeftRef != null)? rootLeftRef : leftRef;
+			
 			leftName = ((VariableRef)leftRef).name; 
 			destScope = (((VariableRef)leftRef).scope != null)?((VariableRef)leftRef).scope : scope;
 			selector = (((VariableRef)leftRef).selector != null)?((VariableRef)leftRef).selector : selector;

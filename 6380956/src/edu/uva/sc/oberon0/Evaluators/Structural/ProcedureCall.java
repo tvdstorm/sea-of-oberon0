@@ -28,12 +28,17 @@ public class ProcedureCall implements IStatement, IScope {
 	@Override
 	public Object evaluate(IScope scope) {
 		SetParentScope(scope);
+		
 		ProcedureDeclaration proc = scope.GetProcedure(this.procedureName);
+		
 		int index = 0;
 		for (FormalParametersSection fps : proc.heading.GetParameters()) {
+			
 			for (String formalParamName : fps.GetFormalParameters()) {
+				
 				Object actualParamValue = this.parameters.get(index);
 				ISelector selector = null;
+				
 				if(!fps.isByRef){
 					actualParamValue = this.parameters.get(index).evaluate(scope);
 				} else{
@@ -62,10 +67,15 @@ public class ProcedureCall implements IStatement, IScope {
 	@Override
 	public Object GetVarValue(String varName, ISelector selector, IScope scope) {
 		Object result = refs.get(varName);
+		
 		if(result == null){
+			
 			result = this.parentScope.GetVarValue(varName, selector, scope);
+			
 		} else if(selector != null && result != null && !VariableRef.IsMyType(result)) {
+			
 			result = ((ISelectable)result).get(selector, this);
+			
 		}
 		if(VariableRef.IsMyType(result) && selector != null) {
 			((VariableRef)result).selector = selector;
