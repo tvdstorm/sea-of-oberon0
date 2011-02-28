@@ -1,8 +1,14 @@
 package edu.uva.sc.oberon0.Evaluators.Structural;
 
 import edu.uva.sc.oberon0.Evaluators.IEvaluator;
+import edu.uva.sc.oberon0.Evaluators.Types.ConstType;
+import edu.uva.sc.oberon0.Evaluators.Types.IType;
 
 public class ConstDeclaration implements IDeclaration {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	String name;
 	IEvaluator value;
 	IType type;

@@ -1,9 +1,9 @@
 package edu.uva.sc.oberon0.Evaluators.Structural;
 
 import java.io.Serializable;
-import java.util.Map;
 
-import edu.uva.sc.oberon0.Evaluators.IEvaluator;
+import edu.uva.sc.oberon0.Evaluators.Selectors.ISelector;
+import edu.uva.sc.oberon0.Evaluators.Types.IType;
 
 public interface IScope extends Serializable {
 	Object GetVarValue(String varName, ISelector selector, IScope scope);

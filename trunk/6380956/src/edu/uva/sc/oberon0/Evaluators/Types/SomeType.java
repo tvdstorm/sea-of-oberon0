@@ -1,6 +1,12 @@
-package edu.uva.sc.oberon0.Evaluators.Structural;
+package edu.uva.sc.oberon0.Evaluators.Types;
+
+import edu.uva.sc.oberon0.Evaluators.Structural.IScope;
 
 public class SomeType implements IType {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	String name;
 	public SomeType(String name){
 		this.name = name;

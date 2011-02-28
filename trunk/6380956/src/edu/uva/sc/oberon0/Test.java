@@ -57,45 +57,25 @@ public class Test {
 						    "\nQuickSort(array, pivot + 1, right)"+
 					    "\nEND"+
 					"\nEND QuickSort;"+
-//					"\nPROCEDURE RecTest(VAR x: INTEGER);"+
-//					"\nBEGIN"+
-//						  "\nx := x + 1;"+
-//						  "\nIF x < 5 THEN"+
-//						    	"\nRecTest(x);"+
-//						  "\nEND;"+
-//					"\nEND Swap;"+
 				"\nBEGIN"+
 					"\ni := 0;"+
 					"\nWHILE i < INPUTLENGTH DO"+
-						"\ninput[i] := 4-i;"+ //TODO: !!!!!!READ funct
+						//"\ninput[i] := 4-i;"+ //TODO: !!!!!!READ funct
+						"\nRead(input[i]);"+
 						"\ni := i + 1"+
 					"\nEND;"+
+//					"\ninput[0] :=4;"+
+//					"\ninput[1] :=13;"+
+//					"\ninput[2] :=0;"+
+//					"\ninput[3] :=35;"+
+//					"\ninput[4] :=22;"+
 					"\nQuickSort(input, 0, INPUTLENGTH - 1);"+
 					"\ni := 0;"+
 					"\nWHILE i < INPUTLENGTH DO"+
 						"\nWrite(input[i]);"+
-						//"\nWriteLn;"+
+						"\nWriteLn;"+
 						"\ni := i + 1"+
 					"\nEND"+
-//					    "\nx := 1;"+
-//					    "\ny := 2;"+
-//					    "\na := 2;"+
-//					    "\ninput[4] := 2;"+
-//					    "\nSwap(x, y);"+
-//					    "\nRecTest(input[2]);"+
-//					    "\nWrite(input[2]);"+
-//					    "\nWrite(y);"+
-//					    "\nWHILE (a <= 4) DO"+
-//					    	"\na := a + 1"+
-//					    "\nEND;"+
-//					    "\nWrite(a);"+
-//					    "\nIF (a = 6) & (x <= 3) THEN"+
-//					    	"\nWrite(a);"+
-//					    "\nELSIF a=5 THEN"+
-//					    	"\nWrite(a+10);"+
-//					    "\nELSE"+
-//					    	"\nWrite(a+100);"+
-//					    "\nEND"+
 				"\nEND QuickSort."
 				);
 		oberon0Lexer lexer = new oberon0Lexer(charStream);

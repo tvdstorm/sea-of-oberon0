@@ -1,11 +1,19 @@
-package edu.uva.sc.oberon0.Evaluators.Structural;
+package edu.uva.sc.oberon0.Evaluators.Types;
 
 import java.util.ArrayList;
 
 import edu.uva.sc.oberon0.Evaluators.IEvaluator;
-import edu.uva.sc.oberon0.Evaluators.Numerical.Integ;
+import edu.uva.sc.oberon0.Evaluators.Selectors.ArraySelector;
+import edu.uva.sc.oberon0.Evaluators.Selectors.ISelectable;
+import edu.uva.sc.oberon0.Evaluators.Selectors.ISelector;
+import edu.uva.sc.oberon0.Evaluators.Structural.IScope;
+import edu.uva.sc.oberon0.Evaluators.Structural.VariableRef;
 
 public class ArrayType implements IType, ISelectable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	Integer length;
 	IEvaluator expr;
 	IType type;
@@ -42,12 +50,14 @@ public class ArrayType implements IType, ISelectable {
 		Integer index = (Integer)((ArraySelector)selector).evaluate(scope);
 		return this.array.get(index);
 	}
-	private ArrayList InitArrayList(Integer size){
-		ArrayList result = new ArrayList<Object>(size);
+	private ArrayList<Object> InitArrayList(Integer size){
+		ArrayList<Object> result = new ArrayList<Object>(size);
 		for (int i = 0; i < size; i++){
 			result.add(null);
 		}
 		return result;
 	}
-	
+	public static Boolean IsMyType(Object toCheck) {
+		return toCheck.getClass().getName().equals(VariableRef.class.getName());
+	}
 }

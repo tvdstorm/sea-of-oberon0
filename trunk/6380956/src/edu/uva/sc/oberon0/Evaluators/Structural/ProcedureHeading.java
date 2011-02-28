@@ -5,6 +5,10 @@ import java.util.List;
 import edu.uva.sc.oberon0.Evaluators.IEvaluator;
 
 public class ProcedureHeading implements IEvaluator {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	String procedureName;
 	List<FormalParametersSection> formalParametersSections;
 	

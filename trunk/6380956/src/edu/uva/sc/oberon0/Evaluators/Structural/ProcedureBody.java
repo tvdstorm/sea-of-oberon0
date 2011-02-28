@@ -6,8 +6,15 @@ import java.util.List;
 import java.util.Map;
 
 import edu.uva.sc.oberon0.Evaluators.IEvaluator;
+import edu.uva.sc.oberon0.Evaluators.Selectors.ISelectable;
+import edu.uva.sc.oberon0.Evaluators.Selectors.ISelector;
+import edu.uva.sc.oberon0.Evaluators.Types.IType;
 
 public class ProcedureBody implements IEvaluator, IScope, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	List<IDeclaration> declarations;
 	List<IStatement> statements;
 	IScope parentScope;

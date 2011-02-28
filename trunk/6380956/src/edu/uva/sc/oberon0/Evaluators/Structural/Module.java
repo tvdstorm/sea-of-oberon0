@@ -5,8 +5,16 @@ import java.util.Map;
 import java.util.HashMap;
 
 import edu.uva.sc.oberon0.Evaluators.IEvaluator;
+import edu.uva.sc.oberon0.Evaluators.Selectors.ISelectable;
+import edu.uva.sc.oberon0.Evaluators.Selectors.ISelector;
+import edu.uva.sc.oberon0.Evaluators.Types.IType;
+import edu.uva.sc.oberon0.Evaluators.Types.SomeType;
 
 public class Module implements IEvaluator, IScope {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	String name;
 	List<IDeclaration> declarations;
 	List<IStatement> statements;
@@ -21,7 +29,32 @@ public class Module implements IEvaluator, IScope {
 	
 	@Override
 	public Object evaluate(IScope scope) {
-		InitSystemProcedures();
+		List<String> writeParams = new LinkedList<String>();
+		writeParams.add("paramToWrite");
+		
+		List<IStatement> writeStatements = new LinkedList<IStatement>();
+		IStatement systemPrintOut = new OberonWriteStatement(null, "paramToWrite");
+		writeStatements.add(systemPrintOut);
+		
+		InitSystemProcedure(writeParams, "Write", "writeType", writeStatements, "NONVAR");
+		
+		
+		List<String> readParams = new LinkedList<String>();
+		readParams.add("paramToRead");
+		
+		List<IStatement> readStatements = new LinkedList<IStatement>();
+		IStatement systemRead = new OberonReadStatement("paramToRead");
+		readStatements.add(systemRead);
+		
+		InitSystemProcedure(readParams, "Read", "readType", readStatements, "VAR");
+		
+		
+		List<IStatement> writeLnStatements = new LinkedList<IStatement>();
+		IStatement systemWriteLn = new OberonWriteStatement("\n", null);
+		writeLnStatements.add(systemWriteLn);
+		
+		InitSystemProcedure(null, "WriteLn", null, writeLnStatements, "NONVAR");
+		
 		if(declarations != null){
 			for (IDeclaration decl : declarations) {
 				decl.evaluate(scope);
@@ -34,24 +67,26 @@ public class Module implements IEvaluator, IScope {
 		}
 		return null;
 	}
-	private void InitSystemProcedures() {
+
+	private void InitSystemProcedure(List<String> paramNames, String procName, String typeName, List<IStatement> sttmnts, String isVarStr) {
 		List<FormalParametersSection> fps = new LinkedList<FormalParametersSection>();
 		
 		List<String> params = new LinkedList<String>();
-		params.add("paramToWrite");
-		FormalParametersSection paramSection = new FormalParametersSection(params, new SomeType("writeType"), "NONVAR");
-		fps.add(paramSection);
-		ProcedureHeading heading = new ProcedureHeading("Write", fps);
-		List<IStatement> sttmnts = new LinkedList<IStatement>();
+		if(paramNames != null){
+			for (String paramName : paramNames) {
+				params.add(paramName);
+			}
+		}
 		
-		IStatement systemPrintOut = new OberonWriteStatement();
-		sttmnts.add(systemPrintOut);
+		FormalParametersSection paramSection = new FormalParametersSection(params, new SomeType(typeName), isVarStr);
+		fps.add(paramSection);
+		ProcedureHeading heading = new ProcedureHeading(procName, fps);
+
 		ProcedureBody body = new ProcedureBody(null, sttmnts);
 		ProcedureDeclaration procDecl = new ProcedureDeclaration(heading, body, null);
 		procDecl.AddToScope(this);
-		SetVarValue("Write", procDecl, null, null);
+		SetVarValue(procName, procDecl, null, null);
 	}
-
 	@Override
 	public String toString() {
 		//evaluate(this);
