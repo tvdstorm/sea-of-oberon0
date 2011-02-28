@@ -45,4 +45,13 @@ public class AnValue implements IType {
 		}
 	}
 
+	@Override
+	public void typeCheck(AnEnvironment env) throws Exception {
+		value.typeCheck(env);		
+	}
+
+	@Override
+	public String toString(){
+		return value.toString();
+	}
 }

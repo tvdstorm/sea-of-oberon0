@@ -11,15 +11,14 @@ public class AstNodeFactory {
 
 	private AstNodeFactory() {}
 	
-	//^(MODULE ident declarations (BEGIN statementSequence)? ident) ; 
 	public static AnModule createModule(BaseTree parentTree) throws Exception{
 		assert(parentTree != null);
 		BaseTree tree = getChildOfType(parentTree, oberonLexer.MODULE);
 		
-		String moduleName = getIdentNameFromTree(parentTree);
-		AnContext decls = createDeclarations(parentTree);
-		List<IStatement> statementSeq = createAnStatementSequence(parentTree);
-		return null;
+		String moduleName = getIdentNameFromTree(tree);
+		AnContext decls = createDeclarations(tree);		
+		List<IStatement> statementSeq = createAnStatementSequence(tree);
+		return new AnModule(moduleName, decls, statementSeq);
 	}
 	
 	public static AnContext createDeclarations(BaseTree parentTree) throws Exception{
@@ -32,7 +31,6 @@ public class AstNodeFactory {
 		List<AnProcDecl> procDecls = createListOfAnProcDecl(btDecls);
 		
 		
-		
 		AnContext ctxt = new AnContext();
 		ctxt.setIdents(constDecls);
 		ctxt.setIdents(varDecls);
@@ -43,7 +41,12 @@ public class AstNodeFactory {
 	//
 	public static AnProcDecl createProcDecl(BaseTree parentTree) throws Exception{		
 		assert(parentTree != null);
-		BaseTree tree = getChildOfType(parentTree, oberonLexer.PROCDECL);
+		BaseTree tree;
+		if (parentTree.getType() == oberonLexer.PROCDECL){
+			tree = parentTree;
+		} else {
+			tree = getChildOfType(parentTree, oberonLexer.PROCDECL);
+		}
 		
 		//Procheader gerelateerd
 		BaseTree btProcHeader = getChildOfType(tree, oberonLexer.PROCHEAD);
@@ -149,7 +152,7 @@ public class AstNodeFactory {
 			isVar = isVar(child);
 			valType = getTypeFromTree(child);
 			
-			List<BaseTree> btIdents = getChildrenOfType(child, oberonLexer.IDENT);
+			List<BaseTree> btIdents = getChildrenOfType(child, oberonLexer.IDENTIFIER);
 			for (BaseTree btIdent : btIdents){
 				params.add(createAnIdentParam(btIdent, valType, isVar));
 			}
@@ -185,43 +188,63 @@ public class AstNodeFactory {
 			case oberonLexer.PROCCALL: return createSmtProcCall(btStatement);
 			case oberonLexer.IFSTATEMENT: return createSmtIf(btStatement);
 			case oberonLexer.WHILE: return createSmtWhile(btStatement);
+			case oberonLexer.ASSERT: return createSmtAssert(btStatement);
 			default: throw new UnsupportedOperationException();
 		}
 	}
 	
-	
-	public static AnSmtWhile createSmtWhile(BaseTree tree){
+	public static AnSmtAssert createSmtAssert(BaseTree tree){
 		assert(tree != null);
-		return null;
+		assert(tree.getType()== oberonLexer.ASSERT);
+		
+		AnExpression condition = createAnExpression(tree);
+		return new  AnSmtAssert(condition, tree.toStringTree());
 	}
 	
-	public static AnSmtIf createSmtIf(BaseTree tree){
+	public static AnSmtWhile createSmtWhile(BaseTree tree) throws Exception{
 		assert(tree != null);
-		return null;
+		assert(tree.getType()== oberonLexer.WHILE);
+
+		AnExpression condition = createAnExpression(tree);
+		List<IStatement> statements = createAnStatementSequence(tree);
+		return new AnSmtWhile(condition, statements);
+	}
+	
+	public static AnSmtIf createSmtIf(BaseTree tree) throws Exception{
+		assert(tree != null);
+		assert(tree.getType()== oberonLexer.IFSTATEMENT);
+		
+		AnExpression condition = createAnExpression(tree);
+		List<IStatement> statements = createAnStatementSequence(tree);
+		return new AnSmtIf(condition, statements);
 	}
 	
 	
 	//->  ^(PROCCALL identSelector actualParameters?) ;
 	public static AnSmtProcCall createSmtProcCall(BaseTree parentTree) throws Exception{
 		assert(parentTree != null);
-		BaseTree tree = getChildOfType(parentTree, oberonLexer.PROCCALL);
+		BaseTree tree;
+		if (parentTree.getType() == oberonLexer.PROCCALL){
+			tree = parentTree;
+		} else {
+			tree = getChildOfType(parentTree, oberonLexer.PROCCALL);
+		}
 		assert(tree != null);
-		AnIdent ident = createIdent(tree, ValueType.PROCEDURE);
-		List<AnValue> actualParams = createActualParams(tree);
-		return new AnSmtProcCall(ident, actualParams);
+		List<AnExpression> actualParams = createActualParams(tree);
+		return new AnSmtProcCall(getIdentNameFromTree(tree), actualParams);
 	}
 	
 	
-	private static List<AnValue> createActualParams(BaseTree parentTree) throws Exception{
+	private static List<AnExpression> createActualParams(BaseTree parentTree) throws Exception{
 		assert(parentTree != null);
 		BaseTree tree = getChildOfType(parentTree, oberonLexer.ACTUALPARAMS);
 		
-		List<AnValue> actualParams = new ArrayList<AnValue>();
+		List<AnExpression> actualParams = new ArrayList<AnExpression>();
 		List<BaseTree> children = getChildrenOfType(tree, oberonLexer.EXPRESSION);
 		AnExpression expr;
 		for (BaseTree child : children){
 			expr = createSubExpression(child);
-			actualParams.add(expr.eval(null));
+			actualParams.add(expr);
 		}
 		
 		return actualParams;
@@ -265,15 +288,16 @@ public class AstNodeFactory {
 		assert(tree != null);
 		assert(tree.getChildCount() == 1 || tree.getChildCount() == 2);
 		
+		String stringRepr = tree.toStringTree();
 		int exprType = tree.getType();
 		switch(exprType){
 			//Values
 			case oberonLexer.NUMBER:
 				AnValue val = createValue(tree);
-				return new AnExpression(val);
+				return new AnExpression(val, stringRepr);
 			case oberonLexer.IDENTIFIER:
 				IType ident = createIdent(tree, ValueType.UNDETERMINED);
-				return new AnExpression(ident);
+				return new AnExpression(ident, stringRepr);
 			//Expressions that include an operator
 			case oberonLexer.EXPRESSION:
 				return createAnExpression(tree);
@@ -293,10 +317,12 @@ public class AstNodeFactory {
 			case oberonLexer.GTEQ:
 				int numChildren = tree.getChildren().size();
 				assert (numChildren == 1 || numChildren == 2);
+				AnExpression lhs = createSubExpression(tree.getChild(0));
 				if (numChildren == 2){
-					return new AnExpression(exprType, createSubExpression(tree.getChild(0)), createSubExpression(tree.getChild(1)));
+					AnExpression rhs = createSubExpression(tree.getChild(1));
+					return new AnExpression(exprType, lhs, rhs, stringRepr);
 				} else {
-					return new AnExpression(exprType, createSubExpression(tree.getChild(0)));
+					return new AnExpression(exprType, lhs, stringRepr);
 				}
 			default: throw new UnsupportedOperationException();
 		}
@@ -305,9 +331,7 @@ public class AstNodeFactory {
 	
 	private static AnIdent createIdent(BaseTree parentTree, ValueType valType){
 		assert(parentTree != null);
-		
-		BaseTree tree = getChildOfType(parentTree, oberonLexer.IDENTIFIER);
-		return new AnIdent(tree.toString(), valType);
+		return new AnIdent(getIdentNameFromTree(parentTree), valType);
 	}
 	
 	private static AnIdent createAnIdentParam(BaseTree parentTree, ValueType valType, boolean isVar){
@@ -383,12 +407,7 @@ public class AstNodeFactory {
 			return null;
 		}
 	}
-	
 
-	/*type
-	    :   ident -> ^(TYPE ident)
-	    |   arrayType -> ^(TYPE arrayType) 
-	    |   recordType -> ^(TYPE recordType) ;*/
 	private static ValueType getTypeFromTree(BaseTree parentTree){
 		BaseTree tree = getChildOfType(parentTree, oberonLexer.TYPE);
 		assert (tree != null);
@@ -413,8 +432,6 @@ public class AstNodeFactory {
 		}
 		return tokenToValueType(tree.getType());
 	}
-	
-	//Private static BaseTree getFirstChild()
 	
 	private static boolean isVar(BaseTree parent){
 		return (getChildOfType(parent, oberonLexer.VAR) != null);

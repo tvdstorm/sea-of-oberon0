@@ -17,13 +17,6 @@ import org.antlr.runtime.tree.CommonTreeAdaptor;
 public class Interpreter {
 
 	public static void main(String[] args) {
-		try {
-			
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 				
 		tests();
 	}
@@ -31,7 +24,7 @@ public class Interpreter {
 	private static void tests(){
 		
 		try {
-			testExpression("-2 + 4 * 4 = 14");
+			/*testExpression("-2 + 4 * 4 = 14");
 			testExpression("-2 + 4 * 4 # 13");
 			testExpression("-2 + 4 * 4 > 10");
 			testExpression("-2 + 4 * 4 = 14");
@@ -42,6 +35,27 @@ public class Interpreter {
 				+ "BEGIN "
 				+ "  x := 1"
 				+ "END Multiply;");
+			*/
+			testModule(
+				"MODULE test;" + "\n"
+				+ "VAR" + "\n"
+				+ "  i: INTEGER;" + "\n"
+				+ "  j: INTEGER;" + "\n"
+				+ "PROCEDURE Swap(VAR x, y: INTEGER);" + "\n"
+				+ "VAR" + "\n"
+				+ "  temp: INTEGER;" + "\n"
+				+ "BEGIN" + "\n"
+				+ "  temp := x;" + "\n"
+				+ "  x := y;" + "\n"
+				+ "  y := temp" + "\n"
+				+ "END Swap;" + "\n"
+				+ "BEGIN" + "\n"
+				+ "  i := 1;" + "\n"
+				+ "  j := 2;" + "\n"
+				+ "  Swap(i, j);" + "\n"
+				+ "  ASSERT(j = 1);" + "\n"
+				+ "END" + "\n"
+				+ "END test.");	
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -53,13 +67,30 @@ public class Interpreter {
 		CommonTree t = new CommonTree();
 		t.addChild(tree);
 		AnProcDecl proc = AstNodeFactory.createProcDecl(t);
-		
-		proc.eval(new AnEnvironment());
+		AnEnvironment env = new AnEnvironment();
+		proc.typeCheck(env);
+		proc.eval(env);
+	}
+	
+	private static void testModule(String input) throws Exception{
+		CommonTree tree =  testMod(input);
+		CommonTree t = new CommonTree();
+		t.addChild(tree);
+		AnModule mod = AstNodeFactory.createModule(t);
+		AnEnvironment env = new AnEnvironment();
+		mod.typeCheck(env);
+		mod.eval(env);
 	}
 	
 	private static CommonTree testProcDecl(String input)throws Exception{
 		CharStream cs = new ANTLRStringStream(input);
 		CommonTree tree = parseProcedure(cs);
+		return tree;
+	}
+	
+	private static CommonTree testMod(String input)throws Exception{
+		CharStream cs = new ANTLRStringStream(input);
+		CommonTree tree = parseModule(cs);
 		return tree;
 	}
 	
@@ -121,6 +152,19 @@ public class Interpreter {
 		return tree;
 	}
 	
+	private static CommonTree parseModule(CharStream cs){
+		oberonParser parser = getParser(cs);
+		ParserRuleReturnScope ruleReturn = null;
+		try {
+			ruleReturn = parser.module();
+		} catch (RecognitionException e) {
+			e.printStackTrace();
+		}
+		
+		if (ruleReturn == null) return null;
+		CommonTree tree = (CommonTree) ruleReturn.getTree();
+		return tree;
+	}
 	/*private static CommonTree stringToTree(String input){
 		CharStream cs = new ANTLRStringStream(input);
 		return parse(cs);

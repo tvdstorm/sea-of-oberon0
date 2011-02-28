@@ -15,12 +15,17 @@ public class AnNumber implements IType {
 	
 	@Override
 	public AnValue eval(AnEnvironment env){
-		throw new UnsupportedOperationException();
+		return new AnValue(this.value);
 	}
 
 	@Override
 	public ValueType getType() {
 		return ValueType.NUMBER;
+	}
+	
+	@Override
+	public String toString(){
+		return "Number: " + this.getValue();
 	}
 
 	@Override
@@ -67,5 +72,11 @@ public class AnNumber implements IType {
 			default: throw new UnsupportedOperationException();
 		}
 	}
+
+	@Override
+	public void typeCheck(AnEnvironment env) throws Exception {
+		return; 
+	}
+	
 
 }

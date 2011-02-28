@@ -91,6 +91,9 @@ MODULE      :   'MODULE';
 RECORD      :   'RECORD';
 PROCEDURE   :   'PROCEDURE';
 
+//For testing purposes
+ASSERT      :   'ASSERT';
+
 root
     : module EOF!;
 
@@ -152,11 +155,15 @@ elseStatement
 whileStatement
     :   WHILE^ expression DO! statementSequence END! ; 
 
+assertStatement
+    :   ASSERT^ LP! expression RP!;
+
 statement
     :   (((identSelector ASSIGN expression) => assignment -> ^(STATEMENT assignment)) 
         | procedureCall -> ^(STATEMENT procedureCall)
         | ifStatement -> ^(STATEMENT ifStatement)
-        | whileStatement -> ^(STATEMENT whileStatement))? ;
+        | whileStatement -> ^(STATEMENT whileStatement))? 
+        | assertStatement -> ^(STATEMENT assertStatement);
 
 statementSequence
     :   statement (SEMI statement)* 
