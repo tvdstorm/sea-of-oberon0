@@ -3,8 +3,13 @@ package edu.uva.sc.oberon0.Evaluators.Structural;
 import java.util.List;
 
 import edu.uva.sc.oberon0.Evaluators.IEvaluator;
+import edu.uva.sc.oberon0.Evaluators.Types.IType;
 
 public class FormalParametersSection implements IEvaluator {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	List<String> formalParameters;
 	IType formalParametersSectionType;
 	Boolean isByRef=false;

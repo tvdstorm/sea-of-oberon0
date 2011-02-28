@@ -4,6 +4,10 @@ import edu.uva.sc.oberon0.Evaluators.IEvaluator;
 import edu.uva.sc.oberon0.Evaluators.Structural.IScope;
 
 public class Add implements IEvaluator {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private IEvaluator arg1;
 	private IEvaluator arg2;
 	@Override

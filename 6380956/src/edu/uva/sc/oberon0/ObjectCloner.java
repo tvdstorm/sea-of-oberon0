@@ -1,13 +1,10 @@
 package edu.uva.sc.oberon0;
 
 import java.io.*;
-import java.util.*;
-import java.awt.*;
+
 public class ObjectCloner
 {
-   // so that nobody can accidentally create an ObjectCloner object
    private ObjectCloner(){}
-   // returns a deep copy of an object
    static public Object deepCopy(Object oldObj) throws Exception
    {
       ObjectOutputStream oos = null;
@@ -15,20 +12,19 @@ public class ObjectCloner
       try
       {
          ByteArrayOutputStream bos = 
-               new ByteArrayOutputStream(); // A
-         oos = new ObjectOutputStream(bos); // B
-         // serialize and pass the object
-         oos.writeObject(oldObj);   // C
-         oos.flush();               // D
+               new ByteArrayOutputStream(); 
+         oos = new ObjectOutputStream(bos); 
+
+         oos.writeObject(oldObj);   
+         oos.flush();               
          ByteArrayInputStream bin = 
-               new ByteArrayInputStream(bos.toByteArray()); // E
-         ois = new ObjectInputStream(bin);                  // F
-         // return the new object
-         return ois.readObject(); // G
+               new ByteArrayInputStream(bos.toByteArray()); 
+         ois = new ObjectInputStream(bin);                  
+
+         return ois.readObject(); 
       }
       catch(Exception e)
       {
-         System.out.println("Exception in ObjectCloner = " + e);
          throw(e);
       }
       finally

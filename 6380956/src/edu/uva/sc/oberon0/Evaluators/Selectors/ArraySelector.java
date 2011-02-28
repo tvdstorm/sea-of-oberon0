@@ -1,6 +1,7 @@
-package edu.uva.sc.oberon0.Evaluators.Structural;
+package edu.uva.sc.oberon0.Evaluators.Selectors;
 
 import edu.uva.sc.oberon0.Evaluators.IEvaluator;
+import edu.uva.sc.oberon0.Evaluators.Structural.IScope;
 
 public class ArraySelector implements ISelector {
 	IEvaluator index;

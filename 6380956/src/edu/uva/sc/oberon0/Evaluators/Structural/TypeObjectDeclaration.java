@@ -1,9 +1,13 @@
 package edu.uva.sc.oberon0.Evaluators.Structural;
 
-import edu.uva.sc.oberon0.Evaluators.IEvaluator;
+import edu.uva.sc.oberon0.Evaluators.Types.IType;
 
 public class TypeObjectDeclaration implements IDeclaration {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private IType type;
 

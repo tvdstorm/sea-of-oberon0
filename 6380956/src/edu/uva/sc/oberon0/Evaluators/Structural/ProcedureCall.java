@@ -6,8 +6,15 @@ import java.util.Map;
 
 import edu.uva.sc.oberon0.ObjectCloner;
 import edu.uva.sc.oberon0.Evaluators.IEvaluator;
+import edu.uva.sc.oberon0.Evaluators.Selectors.ISelectable;
+import edu.uva.sc.oberon0.Evaluators.Selectors.ISelector;
+import edu.uva.sc.oberon0.Evaluators.Types.IType;
 
 public class ProcedureCall implements IStatement, IScope {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	String procedureName;
 	List<IEvaluator> parameters;
 	IScope parentScope;

@@ -1,10 +1,15 @@
 package edu.uva.sc.oberon0.Evaluators.Structural;
 
-import org.antlr.runtime.Token;
 
 import edu.uva.sc.oberon0.Evaluators.IEvaluator;
+import edu.uva.sc.oberon0.Evaluators.Selectors.ISelector;
+import edu.uva.sc.oberon0.Evaluators.Types.ArrayType;
 
 public class VariableRef implements IEvaluator {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	String name;
 	ISelector selector;
 	IScope scope;
@@ -27,7 +32,7 @@ public class VariableRef implements IEvaluator {
 			((VariableRef)result).selector = (((VariableRef)result).selector ==null)?this.selector:((VariableRef)result).selector;
 			result = ((VariableRef)result).evaluate(scope);
 			
-		} else if(result.getClass().getName().equals("edu.uva.sc.oberon0.Evaluators.Structural.ArrayType")){
+		} else if(ArrayType.IsMyType(result)){
 			result = ((ArrayType)result).get(this.selector, scope);
 		}
 		return result;

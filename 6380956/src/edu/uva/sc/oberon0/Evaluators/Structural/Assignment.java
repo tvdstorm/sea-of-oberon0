@@ -1,10 +1,14 @@
 package edu.uva.sc.oberon0.Evaluators.Structural;
 
-import org.antlr.runtime.Token;
 
 import edu.uva.sc.oberon0.Evaluators.IEvaluator;
+import edu.uva.sc.oberon0.Evaluators.Selectors.ISelector;
 
 public class Assignment implements IStatement {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	String varName;
 	ISelector selector;
 	IEvaluator value;
@@ -25,7 +29,7 @@ public class Assignment implements IStatement {
 		String leftName = this.varName;
 		ISelector selector = this.selector;
 		Object leftRef = scope.GetVarValue(this.varName, null, scope);
-		if(leftRef!=null && leftRef.getClass().getName().equals("edu.uva.sc.oberon0.Evaluators.Structural.VariableRef")){
+		if(leftRef!=null && VariableRef.IsMyType(leftRef)){
 			VariableRef rootLeftRef = ((VariableRef)leftRef).GetRootRef(scope);
 			rootLeftRef.selector = ((VariableRef)leftRef).selector;
 			leftRef = (rootLeftRef != null)? rootLeftRef : leftRef;

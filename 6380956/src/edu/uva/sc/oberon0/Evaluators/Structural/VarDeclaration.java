@@ -2,7 +2,13 @@ package edu.uva.sc.oberon0.Evaluators.Structural;
 
 import java.util.List;
 
+import edu.uva.sc.oberon0.Evaluators.Types.IType;
+
 public class VarDeclaration implements IDeclaration {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private List<String> names;
 	private IType type;
 

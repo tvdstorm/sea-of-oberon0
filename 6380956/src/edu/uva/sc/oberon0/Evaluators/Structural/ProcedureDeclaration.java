@@ -1,12 +1,10 @@
 package edu.uva.sc.oberon0.Evaluators.Structural;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import edu.uva.sc.oberon0.Evaluators.IEvaluator;
-
 public class ProcedureDeclaration implements IDeclaration {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	ProcedureHeading heading;
 	ProcedureBody body;
 	String closeTag;

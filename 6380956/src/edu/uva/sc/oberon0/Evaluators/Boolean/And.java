@@ -4,6 +4,10 @@ import edu.uva.sc.oberon0.Evaluators.IEvaluator;
 import edu.uva.sc.oberon0.Evaluators.Structural.IScope;
 
 public class And implements IBool {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private IBool arg1;
 	private IBool arg2;
 	@Override

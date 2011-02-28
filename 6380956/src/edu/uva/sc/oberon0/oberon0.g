@@ -11,21 +11,15 @@ options {
   import edu.uva.sc.oberon0.Evaluators.Boolean.*;
   import edu.uva.sc.oberon0.Evaluators.Numerical.*;
   import edu.uva.sc.oberon0.Evaluators.Structural.*;
-  import java.util.Map;
-  import java.util.HashMap;
+  import edu.uva.sc.oberon0.Evaluators.Conditional.*;
+  import edu.uva.sc.oberon0.Evaluators.Selectors.*;
+  import edu.uva.sc.oberon0.Evaluators.Types.*;
   import java.util.List;
   import java.util.LinkedList;
 }
 
 @lexer::header {
   package edu.uva.sc.oberon0;
-  import edu.uva.sc.oberon0.Evaluators.*;
-  import edu.uva.sc.oberon0.Evaluators.Boolean.*;
-  import edu.uva.sc.oberon0.Evaluators.Numerical.*;
-  import edu.uva.sc.oberon0.Evaluators.Structural.*;
-}
-@members {
-  
 }
 
 INTEGER : '0'..'9'+;
@@ -68,11 +62,13 @@ expression returns [IEvaluator e]
 	    | '>' arg2=simpleExpression {$e=new Bigger(arg1, arg2);}
 	    | '>=' arg2=simpleExpression {$e=new BiggerOrEqual(arg1, arg2);}
     )?;
+    
 selector returns [ISelector s] 
   : ( 
     '[' exp=expression ']' {$s=new ArraySelector(exp);}
     | '.' IDENT {$s=new ObjectSelector($IDENT);}
   )*; //TODO: .IDENT does not work
+  
 assignment returns [Assignment a]
   : IDENT sel=selector ':=' exp=expression 
   {$a = new Assignment($IDENT.text, sel, exp);};

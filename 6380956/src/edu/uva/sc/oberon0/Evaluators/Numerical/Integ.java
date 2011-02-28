@@ -6,6 +6,10 @@ import edu.uva.sc.oberon0.Evaluators.IEvaluator;
 import edu.uva.sc.oberon0.Evaluators.Structural.IScope;
 
 public class Integ implements IEvaluator {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int arg1;
 	@Override
 	public Integer evaluate(IScope scope) {
