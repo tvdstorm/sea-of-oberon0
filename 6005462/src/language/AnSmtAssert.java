@@ -1,23 +1,20 @@
 package language;
 
-import java.util.List;
-
-public class AnSmtWhile implements IAstNode, IStatement {
+public class AnSmtAssert implements IStatement {
 
 	private AnExpression condition;
-	private List<IStatement> statementSeq;
+	private String stringRepresentation;
 	
-	public AnSmtWhile(AnExpression condition, List<IStatement> statementSeq){
+	public AnSmtAssert(AnExpression condition, String stringRepresentation){
 		this.condition = condition;
-		this.statementSeq = statementSeq;
+		this.stringRepresentation = stringRepresentation;
 	}
 	
 	@Override
 	public IAstNode eval(AnEnvironment env) throws Exception {
-		while (condition.eval(env).getBoolean().getValue()){
-			for (IStatement smt : statementSeq){
-				smt.eval(env);
-			}
+		AnBoolean result = condition.eval(env).getBoolean();
+		if (!result.getValue()){
+			throw new Exception("Failed assertion: " + this.toString());
 		}
 		return this;
 	}
@@ -28,10 +25,10 @@ public class AnSmtWhile implements IAstNode, IStatement {
 			throw new Exception("Condition for ifstatement doesn't resolve to a boolean type: " + condition.toString());
 		}
 		this.condition.typeCheck(env);
-		for (IStatement smt : this.statementSeq){
-			smt.typeCheck(env);
-		}
 	}
-
-
+	
+	@Override
+	public String toString(){
+		return this.stringRepresentation;
+	}
 }

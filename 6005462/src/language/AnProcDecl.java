@@ -4,13 +4,11 @@ import java.util.List;
 
 public class AnProcDecl implements IAstNode {
 	String name;
-	/*List<AnIdentConst> constDecls;
-	List<AnTypeDecl> typeDecls; 
-	List<AnIdent> varDecls;
-	List<AnProcDecl> procDecls;*/ 
 	List<AnIdent> formalParams;
+	List<AnExpression> actualParams;
 	List<IStatement> statementSeq;
 	AnContext ctxt;
+	AnContext fpCtxt;
 	
 	public AnProcDecl(String name,
 					  AnContext ctxt,
@@ -20,6 +18,7 @@ public class AnProcDecl implements IAstNode {
 		this.formalParams = formalParams;
 		this.statementSeq = statementSeq;
 		this.ctxt = ctxt;
+		this.fpCtxt = null;
 		
 		assert(this.name != null);
 		assert(this.formalParams != null);
@@ -33,12 +32,101 @@ public class AnProcDecl implements IAstNode {
 
 	@Override
 	public IAstNode eval(AnEnvironment env) throws Exception {		
+		assert(this.fpCtxt != null);
+		env.addContext(this.fpCtxt);
 		env.addContext(this.ctxt);
+		
+		bindValues(env);
 		for(IStatement statement : statementSeq){
 			statement.eval(env);
 		}
+		returnValues(env);
 		env.releaseCurrentContext();
-		return null;
+		env.releaseCurrentContext();
+		
+		this.fpCtxt = null; //Zorgt er voor dat je verplicht bent een fpCtxt aan te maken
+		return this;
+	}
+
+	private void bindValues(AnEnvironment env) throws Exception{
+		AnExpression expr;
+		AnIdent ident;
+		for (int i = 0; i < actualParams.size(); i++){
+			expr = this.actualParams.get(i);
+			ident = this.formalParams.get(i);
+			assert(expr != null);
+			assert(ident != null);
+			
+			ident.assign(expr.eval(env));
+			
+			fpCtxt.setIdent(ident);
+		}
+	}
+	
+	private void returnValues(AnEnvironment env) throws Exception{
+		AnExpression expr;
+		AnIdent ident;
+		for (int i = 0; i < actualParams.size(); i++){
+			ident = this.formalParams.get(i);
+			assert(ident != null);
+			
+			if (ident.isVar){
+				expr = this.actualParams.get(i);
+				assert(expr != null);
+				
+				AnIdent varIdent = expr.getIdent(env);
+				varIdent.assign(ident.getValue());
+			}
+		}
+	}
+	
+	public void setFPContext(List<AnExpression> actualParams, AnEnvironment env) throws Exception{
+		this.fpCtxt = new AnContext();
+		
+		for (AnIdent param : this.formalParams){
+			this.fpCtxt.setIdent(param);
+		}
+		
+		this.actualParams = actualParams;
+		checkParams(env);
+	}
+	
+	private void checkParams(AnEnvironment env) throws Exception{
+		if (this.actualParams.size() != this.formalParams.size()){
+			throw new Exception("Number of parameters do not match up for " + this.name);
+		}
+		
+		for (int i = 0; i < actualParams.size(); i++){
+			AnIdent fpIdent = formalParams.get(i);
+			AnExpression parExpr = actualParams.get(i);
+			
+			parExpr.typeCheck(env);
+			
+			if (parExpr.getType() != fpIdent.getType()){
+				throw new Exception("Parameter types don't match up for " + fpIdent.toString());
+			}
+		}
+	}
+	
+
+	@Override
+	public void typeCheck(AnEnvironment env) throws Exception {
+		assert(this.formalParams != null);
+		assert(this.fpCtxt != null);
+		
+		env.addContext(this.fpCtxt);
+		env.addContext(this.ctxt);
+		
+		checkParams(env);
+		for (IStatement smt: statementSeq){
+			smt.typeCheck(env);
+		}
+		
+		ctxt.typeCheck(env);
+		fpCtxt.typeCheck(env);
+		
+		env.releaseCurrentContext();
+		env.releaseCurrentContext();
 	}
 
 }

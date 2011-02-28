@@ -18,4 +18,9 @@ public class AnSmtAssignment implements IStatement {
 		return this;
 	}
 
+	@Override
+	public void typeCheck(AnEnvironment env) throws Exception {
+		this.expr.typeCheck(env);
+	}
+
 }

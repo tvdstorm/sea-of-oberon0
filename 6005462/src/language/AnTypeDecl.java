@@ -17,4 +17,10 @@ public class AnTypeDecl implements IAstNode {
 	public String getName(){
 		return this.name;
 	}
+
+	@Override
+	public void typeCheck(AnEnvironment env) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
 }
