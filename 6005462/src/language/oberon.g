@@ -28,7 +28,6 @@ tokens {
     BRACKETSELECTOR;
     NUMBER;
     VARS;
-    VALUE;
     CONSTS;
     TYPES;
 } 
