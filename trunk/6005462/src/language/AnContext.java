@@ -6,31 +6,31 @@ import java.util.Map;
 
 public class AnContext implements IAstNode{
 
-	private Map<String, AnIdent> memIdents;
+	private Map<String, AnIdentDecl> memIdents;
 	private Map<String, AnProcDecl> memProcs;
 	private Map<String, AnTypeDecl> memTypes; 
 	
 	public AnContext(){
-		this.memIdents = new HashMap<String, AnIdent>();
+		this.memIdents = new HashMap<String, AnIdentDecl>();
 		this.memProcs = new HashMap<String, AnProcDecl>();
 		this.memTypes = new HashMap<String, AnTypeDecl>();
 	}
 	
 	
 
-	public void setIdents(List<AnIdent> idents){
+	public void setIdents(List<AnIdentDecl> idents){
 		if (idents == null) { return; }
-		for (AnIdent ident : idents){
-			setIdent(ident);
+		for (AnIdentDecl identDecl : idents){
+			setIdentDecl(identDecl);
 		}
 	}
 	
-	public AnIdent getIdent(String name){
+	public AnIdentDecl getIdent(String name){
 		return memIdents.get(name);
 	}
 	
-	public void setIdent(AnIdent ident){
-		memIdents.put(ident.getName(), ident);
+	public void setIdentDecl(AnIdentDecl identDelc){
+		memIdents.put(identDelc.getName(), identDelc);
 	}
 
 	public void setProcs(List<AnProcDecl> procs){
@@ -72,7 +72,7 @@ public class AnContext implements IAstNode{
 
 	@Override
 	public void typeCheck(AnEnvironment env) throws Exception {		
-		for (AnIdent ident : memIdents.values()){
+		for (AnIdentDecl ident : memIdents.values()){
 			ident.typeCheck(env);
 		}
 		for (AnProcDecl proc : memProcs.values()){

@@ -4,7 +4,7 @@ import java.util.List;
 
 public class AnProcDecl implements IAstNode {
 	String name;
-	List<AnIdent> formalParams;
+	List<AnIdentDecl> formalParams;
 	List<AnExpression> actualParams;
 	List<IStatement> statementSeq;
 	AnContext ctxt;
@@ -12,7 +12,7 @@ public class AnProcDecl implements IAstNode {
 	
 	public AnProcDecl(String name,
 					  AnContext ctxt,
-					  List<AnIdent> formalParams,
+					  List<AnIdentDecl> formalParams,
 					  List<IStatement> statementSeq) {
 		this.name = name;
 		this.formalParams = formalParams;
@@ -50,7 +50,7 @@ public class AnProcDecl implements IAstNode {
 
 	private void bindValues(AnEnvironment env) throws Exception{
 		AnExpression expr;
-		AnIdent ident;
+		AnIdentDecl ident;
 		for (int i = 0; i < actualParams.size(); i++){
 			expr = this.actualParams.get(i);
 			ident = this.formalParams.get(i);
@@ -59,13 +59,13 @@ public class AnProcDecl implements IAstNode {
 			
 			ident.assign(expr.eval(env));
 			
-			fpCtxt.setIdent(ident);
+			fpCtxt.setIdentDecl(ident);
 		}
 	}
 	
 	private void returnValues(AnEnvironment env) throws Exception{
 		AnExpression expr;
-		AnIdent ident;
+		AnIdentDecl ident;
 		for (int i = 0; i < actualParams.size(); i++){
 			ident = this.formalParams.get(i);
 			assert(ident != null);
@@ -83,8 +83,8 @@ public class AnProcDecl implements IAstNode {
 	public void setFPContext(List<AnExpression> actualParams, AnEnvironment env) throws Exception{
 		this.fpCtxt = new AnContext();
 		
-		for (AnIdent param : this.formalParams){
-			this.fpCtxt.setIdent(param);
+		for (AnIdentDecl param : this.formalParams){
+			this.fpCtxt.setIdentDecl(param);
 		}
 		
 		this.actualParams = actualParams;
@@ -97,13 +97,13 @@ public class AnProcDecl implements IAstNode {
 		}
 		
 		for (int i = 0; i < actualParams.size(); i++){
-			AnIdent fpIdent = formalParams.get(i);
+			AnIdentDecl fpIdentDecl = formalParams.get(i);
 			AnExpression parExpr = actualParams.get(i);
 			
 			parExpr.typeCheck(env);
 			
-			if (parExpr.getType() != fpIdent.getType()){
-				throw new Exception("Parameter types don't match up for " + fpIdent.toString());
+			if (parExpr.getType() != fpIdentDecl.getType()){
+				throw new Exception("Parameter types don't match up for " + fpIdentDecl.toString());
 			}
 		}
 	}
