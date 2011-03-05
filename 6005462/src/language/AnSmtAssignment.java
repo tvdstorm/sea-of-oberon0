@@ -12,7 +12,7 @@ public class AnSmtAssignment implements IStatement {
 	
 	@Override
 	public IAstNode eval(AnEnvironment env) throws Exception {
-		AnIdent lhsIdent = env.getIdent(lhsName);
+		AnIdentDecl lhsIdent = env.getIdentDecl(lhsName);
 
 		lhsIdent.assign(expr.eval(env));
 		return this;

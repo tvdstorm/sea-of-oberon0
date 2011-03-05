@@ -63,25 +63,25 @@ public class AnEnvironment implements IAstNode {
 		return proc; 
 	}
 	
-	public AnIdent getIdent(String name) throws Exception{
+	public AnIdentDecl getIdentDecl(String name) throws Exception{
 		int sz = contexts.size() - 1;
 		AnContext ctx;
-		AnIdent ident = null;
+		AnIdentDecl identDecl = null;
 		
 		for (int i = sz; i >= 0; i--){
 			ctx = contexts.get(i);
 			if (ctx != null){
-				ident = ctx.getIdent(name);
-				if (ident != null) return ident;  
+				identDecl = ctx.getIdent(name);
+				if (identDecl != null) return identDecl;  
 			}
 		}
 		
-		if (ident == null) { 
+		if (identDecl == null) { 
 			throw new Exception("Cannot find ident: " + name); 
 		}
 		//Apparently Eclipse doesnt know what it wants. It whines it wants a return statement but if I add one it whines it's dead code. 
 		//Which it obviously is.
-		return ident; 
+		return identDecl; 
 	}
 
 	@Override

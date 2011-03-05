@@ -1,6 +1,6 @@
 package language;
 
-public class AnIdentConst extends AnIdent {
+public class AnIdentConst extends AnIdentDecl {
 	//TODO Mss niet extenden van AnIdent omdat Assign niet van toepassing is op een const
 	// mogelijke oplossing is een abstracte Ident te maken mss zelfs met de naam variabele
 	
