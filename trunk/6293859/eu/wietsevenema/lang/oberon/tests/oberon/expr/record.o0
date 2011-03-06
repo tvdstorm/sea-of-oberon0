@@ -1,0 +1,31 @@
+MODULE Record;
+	TYPE PERSON = RECORD 
+		Age, Length: INTEGER ;  
+		Subscribed: BOOLEAN
+		END;
+	VAR globalPerson: PERSON;
+		
+	PROCEDURE test (VAR person : PERSON); 
+		BEGIN 
+			person.Age := 18;
+			person.Length := 188;
+			person.Subscribed := FALSE
+		END test;
+		PROCEDURE nested();
+			VAR test : RECORD nested : RECORD number : ARRAY 2 OF INTEGER END END;
+		BEGIN
+			test.nested.number[0] := 99;
+		 	AssertEqualsInt(99, test.nested.number[0])
+		END nested;	
+	BEGIN 
+	
+	
+	/* Call method test with reference to globalPerson */	
+		test(globalPerson);
+		AssertEqualsBool(FALSE, globalPerson.Subscribed);
+		AssertEqualsInt(18, globalPerson.Age);
+		AssertEqualsInt(188, globalPerson.Length);
+			
+		nested()
+		
+	END Record.

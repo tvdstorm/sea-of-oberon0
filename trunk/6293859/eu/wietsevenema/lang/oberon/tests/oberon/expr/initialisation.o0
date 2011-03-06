@@ -1,0 +1,19 @@
+MODULE Init;
+	VAR globalPerson: 
+		RECORD 
+			Age, Length: INTEGER ;  
+			Subscribed: BOOLEAN
+		END;
+	arrayint : ARRAY 10 OF ARRAY 10 OF INTEGER;
+	arraybool : ARRAY 10 OF BOOLEAN;
+	
+	BEGIN 
+	/* Standaard worden arrayvalues geinitialiseerd op 0 of false */
+		AssertEqualsBool(FALSE, globalPerson.Subscribed);
+		AssertEqualsInt(0, globalPerson.Age);
+		AssertEqualsInt(0, globalPerson.Length);
+		AssertEqualsInt(0, arrayint[0][9]);
+		AssertEqualsInt(0, arrayint[9][0]);
+		AssertEqualsBool(FALSE, arraybool[0]);
+		AssertEqualsBool(FALSE, arraybool[9])
+	END Record.

@@ -1,0 +1,124 @@
+module eu.wietsevenema.lang.oberon.parser.Declaration(
+	Symbol, Identifier, Expression, Statement);
+
+import Symbol;
+import Identifier;
+import Expression;
+import Statement;
+
+Declarations Declarations = 
+	cd:ConstantDecls? td:TypeDecls? vd:VarDecls? pds:(ProcedureDecl void:";":Symbol)*
+	{
+		yyValue = new Declarations( cd, td, vd, pds.list());
+	}
+	;
+		
+VarType Type = 
+	"BOOLEAN":Word 
+	{
+		yyValue = new BooleanType();
+	}
+  / "INTEGER":Word
+	{
+		yyValue = new IntegerType();
+	}
+  / yyValue:ArrayType
+  / yyValue:RecordType
+  / id:Identifier
+	{
+		yyValue = new TypeAlias(id);
+	}
+	;
+
+VarType ArrayType = 
+	"ARRAY":Word exp:Expression "OF":Word type:Type
+	{
+		yyValue = new ArrayType( exp, type);
+	}
+	;
+
+VarType RecordType = 
+	"RECORD":Word fl:FieldList fls:(void:";":Symbol FieldList)* "END":Word
+	{
+		yyValue = new RecordType( new Pair<Node>(fl, fls).list() );
+	}
+	;
+
+generic FieldList = 
+	ids:IdentList void:":":Symbol type:Type
+	;
+
+List<ConstantDecl> ConstantDecls = 
+	"CONST":Word cds:(ConstantDecl)+
+	{
+		yyValue = new ArrayList<ConstantDecl>(cds.list());
+	}
+	;
+
+ConstantDecl ConstantDecl = 
+	id:Identifier "=":Symbol exp:Expression ";":Symbol 
+	{
+		yyValue = new ConstantDecl(id, exp);
+	}
+	;
+
+List<TypeDecl> TypeDecls = 
+	"TYPE":Word tds:(TypeDecl)+
+	{
+		yyValue = new ArrayList<TypeDecl>(tds.list());
+	}
+	;
+
+TypeDecl TypeDecl =
+	id:Identifier void:"=":Symbol type:Type void:";":Symbol 
+	{
+		yyValue = new TypeDecl(id, type);
+	}
+	;
+
+List<VarDecl> VarDecls = 
+	"VAR":Word vds:(VarDecl)+
+	{
+		yyValue = new ArrayList<VarDecl>(vds.list());
+	}
+	;
+
+VarDecl VarDecl = 
+	ids:IdentList ":":Symbol type:Type ";":Symbol
+	{
+		yyValue = new VarDecl(ids, type);
+	}
+	;
+
+
+generic FPSection = 
+	("VAR":Word)? IdentList void:":":Symbol Type
+	;
+
+List<Node> FormalParameters = 
+	fp:FPSection fps:(void:";":Symbol FPSection )*
+	{ 
+		yyValue = new Pair<Node>(fp, fps).list(); 
+	}
+	;
+
+ProcedureDecl ProcedureDecl = 
+	"PROCEDURE":Word idstart:Identifier 
+	formals:( void:"(":Symbol (FormalParameters)? void:")":Symbol )? ";":Symbol 
+	decls:Declarations 
+	stats:(void:"BEGIN":Word StatementSequence)? 
+	"END":Word Identifier  
+	{
+		yyValue = new ProcedureDecl(idstart, formals, decls, stats);
+	}
+	;
+
+Module Module = 
+	"MODULE":Word idstart:Identifier ";":Symbol 
+	decls:Declarations 
+	stats:( void:"BEGIN":Word StatementSequence)? 
+	"END":Word Identifier ".":Symbol
+	{
+		yyValue = new Module(idstart, decls, stats );
+	}
+	;

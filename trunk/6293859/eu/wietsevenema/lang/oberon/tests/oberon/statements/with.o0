@@ -1,0 +1,28 @@
+MODULE Record;
+	TYPE PERSON = RECORD 
+		Age, Length: INTEGER ;  
+		Subscribed: BOOLEAN
+		END;
+	VAR globalPerson: PERSON;
+	Age : INTEGER;
+	BEGIN 
+		Age := 80;
+		
+		/* Assert values */		
+		AssertEqualsBool(FALSE, globalPerson.Subscribed);
+		AssertEqualsInt(0, globalPerson.Age);
+		AssertEqualsInt(0, globalPerson.Length);
+		AssertEqualsInt(80, Age);
+		
+		WITH globalPerson DO
+			Age := 2+2;
+			Length := 200;
+			Subscribed := TRUE
+		END;
+		
+		AssertEqualsBool(TRUE, globalPerson.Subscribed);
+		AssertEqualsInt(4, globalPerson.Age);
+		AssertEqualsInt(200, globalPerson.Length);
+		AssertEqualsInt(80, Age)
+		
+	END Record.
