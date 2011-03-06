@@ -1,0 +1,20 @@
+MODULE Test;
+
+VAR
+	x, y: INTEGER;
+
+PROCEDURE Swap(VAR x, y: INTEGER);
+  VAR
+    temp: INTEGER;
+  BEGIN
+    temp := x;
+    x := y;
+    y := temp
+  END Swap;
+
+BEGIN
+	x := 1;
+	y := 2;
+	Swap(x, y)
+
+END Test.

@@ -1,0 +1,230 @@
+module eu.wietsevenema.lang.oberon.parser.Expression(
+	Spacing, Symbol, Identifier);
+
+import Spacing;
+import Symbol;
+import Identifier;
+
+
+/*
+ * factor = ident selector | number | "(" expression ")" | "~" factor. 
+ */
+
+Expression Factor =
+   <Constant>                 	yyValue:Constant
+ / <ParenthesizedExpression> 	yyValue:ParenthesizedExpression
+ / <LogicalNegation>			yyValue:LogicalNegationExpression
+ / <Selector>             		yyValue:Selector 
+ ;
+
+LogicalNegationExpression LogicalNegationExpression =
+	"~":Symbol f:Factor 
+	{
+    	yyValue = new LogicalNegationExpression((Expression)f);
+	}
+	;
+
+	
+Expression Selector 
+	= seed:Identifier actions:SelectorTail*
+	{
+		yyValue = apply(actions,seed);
+	}
+	;
+
+constant Action<Expression> SelectorTail = 
+	"[":Symbol right:Expression "]":Symbol
+	{
+		yyValue = new Action<Expression>(){
+			public Expression run(Expression left){
+				Expression result = new ArraySelector(left, right);
+				result.setLocation(location(yyStart));
+				return result;
+			}
+		};
+	}
+	/ ".":Symbol key:Identifier
+	{
+		yyValue = new Action<Expression>(){
+			public Expression run(Expression left){
+				Expression result = new RecordSelector(left, key);
+				result.setLocation(location(yyStart));
+				return result;
+			}
+		};
+	}
+	;
+	
+
+Node ParenthesizedExpression =
+  void:"(":Symbol yyValue:Expression void:")":Symbol
+  ;
+
+Node Constant = 
+    IntegerConstant Spacing
+  / BooleanConstant 
+  ;
+
+/*
+ * term = factor {("*" | "DIV" | "MOD" | "&") factor}. 
+ */
+Node Term
+	= seed:Factor actions:TermTail*
+	{
+		yyValue = apply(actions, seed);
+	}
+	;
+	
+constant Action<Expression> TermTail =
+	"*":Symbol right:Factor 
+	{
+		yyValue = new Action<Expression>(){
+			public Expression run(Expression left){
+				Expression result = new MultiplicativeExpression(left, right);
+				result.setLocation(location(yyStart));
+				return result;
+			}
+		};
+	}
+	/
+	"DIV":Symbol right:Factor 
+	{
+		yyValue = new Action<Expression>(){
+			public Expression run(Expression left){
+				Expression result = new DivisiveExpression(left, right);
+				result.setLocation(location(yyStart));
+				return result;
+			}
+		};
+	}
+	/
+	"MOD":Symbol right:Factor 
+	{
+		yyValue = new Action<Expression>(){
+			public Expression run(Expression left){
+				Expression result = new ModulusExpression(left, right);
+				result.setLocation(location(yyStart));
+				return result;
+			}
+		};
+	}
+	/
+	"&":Symbol right:Factor 
+	{
+		yyValue = new Action<Expression>(){
+			public Expression run(Expression left){
+				Expression result = new LogicalConjunctiveExpression(left, right);
+				result.setLocation(location(yyStart));
+				return result;
+			}
+		};
+	}
+	;
+
+/*
+ * SimpleExpression = ["+"|"-"] term {("+"|"-" | "OR") term}. 
+ */
+Expression SimpleExpression 
+	= seed:UnaryPlusMin actions:SimpleExpressionTail*
+	{
+		yyValue = apply(actions,seed);
+	}
+	;
+
+constant Action<Expression> SimpleExpressionTail = 
+	"+":Symbol right:Term
+	{
+		yyValue = new Action<Expression>(){
+			public Expression run(Expression left){
+				Expression result = new AdditiveExpression(left, (Expression) right);
+				result.setLocation(location(yyStart));
+				return result;
+			}
+		};
+	}
+	/
+	"-":Symbol right:Term
+	{
+		yyValue = new Action<Expression>(){
+			public Expression run(Expression left){
+				Expression result = new SubtractiveExpression(left, (Expression) right);
+				result.setLocation(location(yyStart));
+				return result;
+			}
+		};
+	}
+	/
+	"OR":Symbol right:Term
+	{
+		yyValue = new Action<Expression>(){
+			public Expression run(Expression left){
+				Expression result = new LogicalDisjunctiveExpression(left, (Expression) right);
+				result.setLocation(location(yyStart));
+				return result;
+			}
+		};
+	}
+	;
+
+Expression UnaryPlusMin = 
+	void:"-":Symbol ue:Term
+	{
+    	yyValue = new UnaryMinExpression((Expression)ue);
+	}
+  	/ void:"+":Symbol yyValue:Term  /* ignore unary plus */
+	/ yyValue:Term  
+	;
+
+/*
+ * expression = SimpleExpression 
+ * 		[("=" | "#" | "<" | "<=" | ">" | ">=") SimpleExpression].
+ */
+Expression Expression = 
+	left:SimpleExpression "=":Symbol right:SimpleExpression
+	{
+		yyValue = new EqualityExpression(left, right);
+	}
+	/ left:SimpleExpression "#":Symbol right:SimpleExpression
+	{
+		yyValue = new NotExpression(left, right);
+	}
+	/ left:SimpleExpression "<":Symbol right:SimpleExpression
+	{
+		yyValue = new LessExpression(left, right);
+	}
+	/ left:SimpleExpression "<=":Symbol right:SimpleExpression
+	{
+		yyValue = new LessOrEqualExpression(left, right);
+	}
+	/ left:SimpleExpression ">":Symbol right:SimpleExpression
+	{
+		yyValue = new GreaterExpression(left, right);
+	}
+	/ left:SimpleExpression ">=":Symbol right:SimpleExpression
+	{
+		yyValue = new GreaterOrEqualExpression(left, right);
+	}
+	/ yyValue:SimpleExpression
+	;	
+	
+
+IntegerConstant IntegerConstant = nr:DecimalNumeral 
+	 {
+		try {
+        	yyValue = new IntegerConstant(Integer.decode(nr));
+     	} catch (NumberFormatException x) {
+        	yyValue = null; 
+     	}
+	}
+	;
+	
+BooleanConstant BooleanConstant =
+    "TRUE":Word 
+	{
+		yyValue = new BooleanConstant( Boolean.TRUE );
+	}
+  / "FALSE":Word
+	{
+		yyValue = new BooleanConstant( Boolean.FALSE );
+	}
+	;

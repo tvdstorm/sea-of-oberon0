@@ -1,0 +1,88 @@
+module eu.wietsevenema.lang.oberon.parser.Statement(
+	Symbol, Identifier, Expression);
+
+import Symbol;
+import Identifier;
+import Expression;
+
+List<Statement> StatementSequence = 
+	statement:Statement statements:( void:";":Symbol Statement)*
+       { 
+		yyValue = new Pair<Statement>(statement, statements).list(); 
+	}
+	;
+
+ProcedureCallStatement ProcedureCallStatement = 
+ 	id:Identifier params:( void:"(":Symbol (ActualParameters)? void:")":Symbol )?
+	{
+		yyValue = new ProcedureCallStatement(id, params);
+	}
+ 	;
+
+List<Expression> ActualParameters = 
+	act:Expression acts:( void:",":Symbol Expression)*
+       { 
+		yyValue = new Pair<Expression>(act, acts).list(); 
+	}
+	;
+
+ElseIfStatement ElseIfStatement =  
+	"ELSIF":Word
+	cond:Expression
+	"THEN":Word
+	truestats: StatementSequence
+	{
+		yyValue = new ElseIfStatement( cond, truestats );
+	}
+	;
+
+WithStatement WithStatement = 
+	"WITH":Word
+	record:Expression
+	"DO":Word
+	stats:StatementSequence 
+	"END":Word
+	{
+		yyValue = new WithStatement( record, stats);
+	}
+	; 
+
+
+IfStatement IfStatement = 
+	"IF":Word 
+	cond:Expression
+	"THEN":Word
+	truestats:StatementSequence 
+	elseifs:(ElseIfStatement)*
+	falsestats:(void:"ELSE":Word StatementSequence)? 
+	"END":Word
+	{
+		yyValue = new IfStatement( cond, truestats, elseifs.list(), falsestats);
+	}
+	; 
+
+WhileStatement WhileStatement = 
+	"WHILE":Word 
+	cond:Expression
+	"DO":Word 
+	stats:StatementSequence 
+	"END":Word
+	{
+		yyValue = new WhileStatement( cond, stats );
+	}
+	;
+
+Statement Statement = 
+	yyValue:AssignmentStatement
+  / yyValue:WhileStatement
+  / yyValue:IfStatement
+  / yyValue:WithStatement
+  / yyValue:ProcedureCallStatement
+	; 
+
+AssignmentStatement AssignmentStatement = 
+	id:Selector ":=":Symbol exp:Expression
+		{
+			yyValue= new AssignmentStatement(id, exp);
+		}
+	;

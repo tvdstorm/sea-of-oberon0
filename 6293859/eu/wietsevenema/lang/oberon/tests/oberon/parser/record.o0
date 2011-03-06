@@ -1,0 +1,20 @@
+MODULE Record;
+	VAR globalPerson: 
+		RECORD 
+			Age, Length: INTEGER ;  
+			Subscribed: BOOLEAN
+		END;
+	input : INTEGER;
+		
+	PROCEDURE test (VAR person : RECORD Age, Length: INTEGER ; Subscribed: BOOLEAN END); 
+		BEGIN 
+			person.Age := 18;
+			person.Length := 188;
+			person.Subscribed := FALSE
+		END test;	
+	
+	BEGIN 
+		globalPerson.Age := 0;
+		globalPerson.Length := 0;
+		globalPerson.Subscribed := FALSE
+	END Record.

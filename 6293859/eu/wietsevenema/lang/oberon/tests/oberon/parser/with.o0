@@ -1,0 +1,9 @@
+MODULE With;
+BEGIN 
+			
+	WITH arecord DO
+		member1 := 2+2;
+		member2 := FALSE
+	END
+	
+END With.
