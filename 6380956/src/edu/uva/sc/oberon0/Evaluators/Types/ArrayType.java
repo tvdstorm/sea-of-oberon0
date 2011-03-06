@@ -41,23 +41,25 @@ public class ArrayType implements IType, ISelectable {
 
 	@Override
 	public void put(ISelector selector, Object value, IScope scope) {
-		Integer index = (Integer)((ArraySelector)selector).evaluate(scope);
-		this.array.set(index, value);
+		
+		this.array.set(GetIndex(selector, scope), value);
 	}
 
 	@Override
 	public Object get(ISelector selector, IScope scope) {
-		Integer index = (Integer)((ArraySelector)selector).evaluate(scope);
-		return this.array.get(index);
+		return this.array.get(GetIndex(selector, scope));
+	}
+	private Integer GetIndex(ISelector selector, IScope scope) {
+		return (Integer)((ArraySelector)selector).evaluate(scope);
 	}
 	private ArrayList<Object> InitArrayList(Integer size){
 		ArrayList<Object> result = new ArrayList<Object>(size);
 		for (int i = 0; i < size; i++){
-			result.add(null);
+			result.add(this.type);
 		}
 		return result;
 	}
 	public static Boolean IsMyType(Object toCheck) {
-		return toCheck.getClass().getName().equals(VariableRef.class.getName());
+		return toCheck.getClass().getName().equals(ArrayType.class.getName());
 	}
 }
