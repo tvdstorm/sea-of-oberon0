@@ -2,6 +2,7 @@ package edu.uva.sc.oberon0.Evaluators.Structural;
 
 
 import edu.uva.sc.oberon0.Evaluators.IEvaluator;
+import edu.uva.sc.oberon0.Evaluators.Selectors.ISelectable;
 import edu.uva.sc.oberon0.Evaluators.Selectors.ISelector;
 import edu.uva.sc.oberon0.Evaluators.Types.ArrayType;
 
@@ -13,11 +14,18 @@ public class VariableRef implements IEvaluator {
 	String name;
 	ISelector selector;
 	IScope scope;
+	public Boolean getDeepest = true;
 	
 	public VariableRef(String name, ISelector selector)
 	{
 		this.name = name;
 		this.selector = selector;
+	}
+	public VariableRef(String name, ISelector selector, IScope scope)
+	{
+		this.name = name;
+		this.selector = selector;
+		this.scope = scope;
 	}
 	@Override
 	public Object evaluate(IScope scope) {
@@ -32,8 +40,8 @@ public class VariableRef implements IEvaluator {
 			((VariableRef)result).selector = (((VariableRef)result).selector ==null)?this.selector:((VariableRef)result).selector;
 			result = ((VariableRef)result).evaluate(scope);
 			
-		} else if(ArrayType.IsMyType(result)){
-			result = ((ArrayType)result).get(this.selector, scope);
+		} else if(result instanceof ISelectable && this.selector != null && getDeepest){
+			result = ((ISelectable)result).get(this.selector, scope);
 		}
 		return result;
 	}
@@ -42,6 +50,9 @@ public class VariableRef implements IEvaluator {
 		
 	}
 	public VariableRef GetRootRef(IScope scope2) {
+		if(this.scope == null)
+			this.scope = scope2;
+		
 		if(this.scope != null){
 			IScope currentScope = (scope2 != null)?scope2:this.scope;
 			Object varValue = this.scope.GetVarValue(this.name, this.selector, currentScope);
